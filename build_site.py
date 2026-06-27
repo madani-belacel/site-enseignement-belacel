@@ -115,7 +115,8 @@ def extract_description(md_text):
             capture = True
             continue
         if capture and line.strip() and not line.startswith('>') and not line.startswith('---'):
-            return line.strip()[:200]
+            desc = re.sub(r'\*\*(.+?)\*\*', r'\1', line.strip()[:200])
+            return desc
     return "Support de cours — Dr. Madani BELACEL"
 
 
@@ -184,7 +185,9 @@ def build_page(md_text, filename, rel_path, downloads=None):
 
     meta_html = ""
     if meta_lines:
-        items = "".join(f"<li>{l}</li>" for l in meta_lines[:10])
+        def boldify(line):
+            return re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', line)
+        items = "".join(f"<li>{boldify(l)}</li>" for l in meta_lines[:10])
         meta_html = f'<div class="md-meta"><strong>Informations :</strong><ul>{items}</ul></div>'
 
     download_html = ""
