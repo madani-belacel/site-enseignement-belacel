@@ -26,6 +26,11 @@
   .md-content strong { font-weight: 700; }
   .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
   .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
 </style>
 </head><body>
 
@@ -61,6 +66,7 @@
 <main class="page-content">
   <div class="md-content">
     <div class="md-meta"><strong>Informations :</strong><ul><li>- **Sources :** `Cours_Latex/` (fichiers `.tex` structurés par niveau)</li><li>- **Script de build :** `latex/build_official_reseaux.py`</li><li>- **Génération complémentaire :** `Réseaux-USTO-MathInfo/` (scripts Python + sources Markdown)</li><li>- **Sortie :** `Série_Officielle/` (PDF + PPTX)</li><li>- **Pipeline global :** `python build_official_reseaux.py --niveau all --type all`</li><li>- **Références pédagogiques :** Pujolle (Réseaux), Goupille (Routage IP), Servin (Réseaux et télécoms) — ouvrages de référence utilisés dans le cadre national.</li><li>- **Chemin absolu :** `C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/`</li><li>- **Fichiers concernés :** `PG-fr.docx` (couverture PDF), `Presentation_BELACEL_V3.pptx` (présentations)</li><li>- **Raison :** Mutualisation des templates entre plusieurs modules pédagogiques.</li><li>- **Alternative future :** Copie locale des templates dans `Module_Réseau_Mostaganem/latex/templates/` pour supprimer la dépendance externe.</li></ul></div>
+    
     <h1>Programme du Module — Réseaux Informatiques (USTO MathInfo)</h1>
 <table>
 <thead>

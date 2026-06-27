@@ -26,6 +26,11 @@
   .md-content strong { font-weight: 700; }
   .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
   .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
 </style>
 </head><body>
 
@@ -61,6 +66,7 @@
 <main class="page-content">
   <div class="md-content">
     <div class="md-meta"><strong>Informations :</strong><ul><li>**BGP-4** (*Border Gateway Protocol*) échange de préfixes entre systèmes autonomes (AS). Path-vector : évite boucles via **AS-PATH**.</li><li>**eBGP** : voisins AS différents (souvent directement connectés ou multihop).</li><li>**iBGP** : même AS — nécessite full-mesh ou route reflectors.</li><li>**Bonnes pratiques** : prefix-lists strictes, max-prefix, TTL security, MD5 TCP, RPKI (aperçu).</li><li>**Convergence** : plus lente qu'IGP — acceptable à l'échelle Internet.</li></ul></div>
+    
     <h1>Chapitre 01 — Inter-domain routing — BGP</h1>
 <table>
 <thead>

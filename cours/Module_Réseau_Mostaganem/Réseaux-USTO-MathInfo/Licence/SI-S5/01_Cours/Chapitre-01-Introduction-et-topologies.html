@@ -26,6 +26,11 @@
   .md-content strong { font-weight: 700; }
   .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
   .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
 </style>
 </head><body>
 
@@ -61,6 +66,7 @@
 <main class="page-content">
   <div class="md-content">
     <div class="md-meta"><strong>Informations :</strong><ul><li>- **Redondance** : si un lien tombe, chemin alternatif.</li><li>- **Coût** : plus élevé qu'une étoile pure.</li><li>**Loi de Bandwidth-Delay Product (BDP)** :</li><li>**Exemple** : Lien 100 Mbps, RTT = 50 ms</li><li>**Besoin** : 24 postes, 1 serveur, Internet, impression réseau.</li><li>**Métrique clé** : RTT Oran–Alger ~ 30–80 ms → impact sur applications synchrones.</li><li>**Énoncé** : Transfert de 4 Go sur un lien 500 Mbps, RTT 40 ms. Temps de transmission minimum ? BDP ?</li></ul></div>
+    
     <h1>Chapitre 01 — Introduction et topologies</h1>
 <table>
 <thead>

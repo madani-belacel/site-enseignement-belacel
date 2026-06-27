@@ -45,6 +45,11 @@ HEADER_HTML = """<!DOCTYPE html><html lang="fr" data-theme="light"><head>
   .md-content strong {{ font-weight: 700; }}
   .md-meta {{ background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }}
   .md-meta strong {{ font-family: var(--font-heading); }}
+  .download-bar {{ display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }}
+  .download-link {{ display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }}
+  .download-link:hover {{ opacity: 0.85; }}
+  .download-pdf {{ background: #e74c3c; color: #fff; }}
+  .download-pptx {{ background: #d24726; color: #fff; }}
 </style>
 </head><body>
 
@@ -158,7 +163,7 @@ def md_to_html(md_text, title, description):
     return html_body
 
 
-def build_page(md_text, filename, rel_path):
+def build_page(md_text, filename, rel_path, downloads=None):
     """Build a full HTML page from markdown content."""
     title = extract_title(md_text, filename)
     description = extract_description(md_text)
@@ -176,6 +181,14 @@ def build_page(md_text, filename, rel_path):
     if meta_lines:
         items = "".join(f"<li>{l}</li>" for l in meta_lines[:10])
         meta_html = f'<div class="md-meta"><strong>Informations :</strong><ul>{items}</ul></div>'
+
+    download_html = ""
+    if downloads:
+        links = "".join(
+            f'<a href="{fn}" download class="download-link download-{ext.lower()}">⬇ {ext}</a>'
+            for ext, fn in downloads
+        )
+        download_html = f'<div class="download-bar">{links}</div>'
 
     root_path = "../" * (rel_path.count('/') + 1)
 
@@ -218,6 +231,7 @@ def build_page(md_text, filename, rel_path):
 <main class="page-content">
   <div class="md-content">
     {meta_html}
+    {download_html}
     {html_body}
   </div>
 </main>
@@ -279,7 +293,13 @@ def scan_and_convert(source_dir, site_dir):
 
             try:
                 md_text = fpath.read_text(encoding='utf-8', errors='replace')
-                html_page = build_page(md_text, fpath.name, str(target_rel))
+                # Find sibling PDF/PPTX for download links
+                downloads = []
+                for sib_ext in ['.pdf', '.pptx']:
+                    sib = fpath.with_suffix(sib_ext)
+                    if sib.exists():
+                        downloads.append((sib_ext[1:].upper(), sib.name))
+                html_page = build_page(md_text, fpath.name, str(target_rel), downloads)
                 target_path.parent.mkdir(parents=True, exist_ok=True)
                 target_path.write_text(html_page, encoding='utf-8')
                 converted += 1
