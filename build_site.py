@@ -22,7 +22,7 @@ HEADER_HTML = """<!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <title>{title} — Dr. Madani BELACEL</title>
 <meta name="description" content="{description}">
 <link rel="stylesheet" href="{root_path}css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<link rel="icon" href="{root_path}images/Université_de_Mostaganem.png">
 <style>
   .md-content {{ max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }}
   .md-content h1 {{ font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }}
@@ -56,7 +56,7 @@ HEADER_HTML = """<!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <header class="header" role="banner">
   <div class="header-inner">
     <a href="{root_path}index.html" class="header-logo">
-      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <img src="{root_path}images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
       <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
     </a>
     <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
@@ -76,6 +76,11 @@ HEADER_HTML = """<!DOCTYPE html><html lang="fr" data-theme="light"><head>
 
 FOOTER_HTML = """<footer class="footer" role="contentinfo">
   <div class="container">
+    <div class="footer-logos">
+      <img src="{root_path}images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="{root_path}images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts" class="footer-logo">
+      <img src="{root_path}images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
     <div class="footer-infos">
       <span>📧 madani.belacel@univ-mosta.dz</span>
       <span>📍 Université de Mostaganem</span>
