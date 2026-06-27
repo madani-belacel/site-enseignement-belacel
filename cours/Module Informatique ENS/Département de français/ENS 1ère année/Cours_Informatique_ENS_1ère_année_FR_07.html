@@ -1,0 +1,462 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 1ère année — Séance 07 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 1ère année — Séance 07 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Éléments matériels :**</li><li>- **Routeur** : interconnecte les réseaux, achemine les paquets</li><li>- **Switch** : connecte les machines d'un même réseau local</li><li>- **Point d'accès** : extension Wi-Fi du réseau filaire</li><li>- **Câble Ethernet (RJ45)** : connexion filaire jusqu'à 1 Gbit/s</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_1ère_année_FR_07.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 1ère année — Séance 07 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Distinguer LAN, WAN, WLAN et donner des exemples concrets
+- Lire et interpréter une adresse IPv4 et son masque de sous-réseau
+- Expliquer le rôle du DNS dans la résolution de noms
+- Décrire le modèle client-serveur avec un exemple du Web
+- Différencier les protocoles HTTP, HTTPS, FTP, SMTP, IMAP, POP3
+- Comprendre le principe du cloud computing et ses usages pédagogiques</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Types de réseaux (LAN, WAN, WLAN) — 10 min</li>
+<li>Adresses IP, masque et sous-réseau — 15 min</li>
+<li>DNS : l'annuaire d'Internet — 15 min</li>
+<li>Modèle client-serveur — 15 min</li>
+<li>Protocoles du Web et de la messagerie — 15 min</li>
+<li>Cloud computing — 10 min</li>
+<li>QCM et conclusion — 5 min</li>
+</ol>
+<hr />
+<h2>1. Types de réseaux <em>(10 min)</em></h2>
+<p>Un <strong>réseau informatique</strong> est un ensemble d'appareils interconnectés qui échangent des données.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Portée</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LAN</strong> (Local Area Network)</td>
+<td>Bâtiment, salle</td>
+<td>Réseau de la salle informatique</td>
+</tr>
+<tr>
+<td><strong>WAN</strong> (Wide Area Network)</td>
+<td>Région, pays, monde</td>
+<td>Internet</td>
+</tr>
+<tr>
+<td><strong>WLAN</strong> (Wireless LAN)</td>
+<td>Local, sans fil</td>
+<td>Wi-Fi de l'établissement</td>
+</tr>
+<tr>
+<td><strong>MAN</strong> (Metropolitan Area Network)</td>
+<td>Ville</td>
+<td>Réseau universitaire urbain</td>
+</tr>
+<tr>
+<td><strong>PAN</strong> (Personal Area Network)</td>
+<td>~10 m</td>
+<td>Bluetooth, smartphone</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Topologie d&#39;un réseau typique&quot;</span>
+<span class="w">        </span><span class="n">INTERNET</span><span class="p">[</span><span class="n">INTERNET</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">WAN</span><span class="w"> </span><span class="n">mondial</span><span class="p">]</span>
+<span class="w">        </span><span class="n">FAI</span><span class="p">[</span><span class="n">FAI</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Fournisseur</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">accès</span><span class="p">]</span>
+<span class="w">        </span><span class="n">ROUT</span><span class="p">[</span><span class="n">Routeur</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">ADSL</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Fibre</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">ROUT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SW1</span><span class="p">[</span><span class="n">Switch</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Réseau</span><span class="w"> </span><span class="n">filaire</span><span class="p">]</span>
+<span class="w">        </span><span class="n">ROUT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">AP</span><span class="p">[</span><span class="n">Point</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">accès</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Wi</span><span class="o">-</span><span class="n">Fi</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">WLAN</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">SW1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">PC1</span><span class="p">[</span><span class="n">PC</span><span class="w"> </span><span class="n">fixe</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="w">        </span><span class="n">SW1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">PC2</span><span class="p">[</span><span class="n">PC</span><span class="w"> </span><span class="n">fixe</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+<span class="w">        </span><span class="n">SW1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SRV</span><span class="p">[</span><span class="n">Serveur</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">pédagogique</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">AP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TEL</span><span class="p">[</span><span class="n">Smartphone</span><span class="p">]</span>
+<span class="w">        </span><span class="n">AP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TAB</span><span class="p">[</span><span class="n">Tablette</span><span class="p">]</span>
+<span class="w">        </span><span class="n">AP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">PC3</span><span class="p">[</span><span class="n">PC</span><span class="w"> </span><span class="n">portable</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">INTERNET</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">FAI</span>
+<span class="w">    </span><span class="n">FAI</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROUT</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">INTERNET</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">FAI</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ROUT</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">SW1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">AP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">SRV</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">1</span><span class="n">abc9c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Éléments matériels :</strong>
+- <strong>Routeur</strong> : interconnecte les réseaux, achemine les paquets
+- <strong>Switch</strong> : connecte les machines d'un même réseau local
+- <strong>Point d'accès</strong> : extension Wi-Fi du réseau filaire
+- <strong>Câble Ethernet (RJ45)</strong> : connexion filaire jusqu'à 1 Gbit/s</p>
+<p><strong>Exemple pédagogique :</strong> dans une salle de classe, le réseau local (LAN) relie les PC via un switch. Le routeur donne accès à Internet (WAN) via le FAI. Le Wi-Fi (WLAN) permet aux tablettes de se connecter sans fil.</p>
+<hr />
+<h2>2. Adresses IP et masque <em>(15 min)</em></h2>
+<p>Une <strong>adresse IP</strong> est un identifiant unique attribué à chaque appareil connecté à un réseau.</p>
+<h3>IPv4 (32 bits)</h3>
+<p>Format : 4 nombres décimaux de 0 à 255, séparés par des points.</p>
+<p><code>192.168.1.10</code> — adresse privée typique d'un réseau local</p>
+<p>Classe d'adresses privées : <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code></p>
+<h3>IPv6 (128 bits)</h3>
+<p>Format : 8 groupes hexadécimaux de 16 bits, séparés par <code>:</code>.</p>
+<p><code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></p>
+<h3>Masque de sous-réseau</h3>
+<p>Le <strong>masque</strong> détermine quelle partie de l'adresse IP identifie le réseau et quelle partie identifie la machine.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">IP</span><span class="w"> </span><span class="o">:</span><span class="w">       </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.10</span>
+<span class="n">Masque</span><span class="w"> </span><span class="o">:</span><span class="w">   </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span><span class="w">  </span><span class="o">(/</span><span class="mi">24</span><span class="o">)</span>
+<span class="n">Réseau</span><span class="w"> </span><span class="o">:</span><span class="w">   </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span>
+<span class="n">Machine</span><span class="w"> </span><span class="o">:</span><span class="w">  </span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.10</span>
+<span class="n">Nombre</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">machines</span><span class="w"> </span><span class="n">possibles</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">254</span><span class="w"> </span><span class="o">(</span><span class="mi">2</span><span class="err">⁸</span><span class="w"> </span><span class="err">−</span><span class="w"> </span><span class="mi">2</span><span class="o">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Décodage d&#39;</span><span class="n">une</span><span class="w"> </span><span class="n">adresse</span><span class="w"> </span><span class="n">IPv4</span><span class="s">&quot;</span>
+<span class="s">        IP[&quot;</span><span class="mf">192.168.1.10</span><span class="s">&quot;]</span>
+<span class="s">        MSK[&quot;</span><span class="n">Masque</span><span class="o">:</span><span class="w"> </span><span class="mf">255.255.255.0</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="p">(</span><span class="o">/</span><span class="mi">24</span><span class="p">)</span><span class="s">&quot;]</span>
+<span class="s">        NET[&quot;</span><span class="n">Partie</span><span class="w"> </span><span class="n">réseau</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mf">192.168.1</span><span class="s">&quot;]</span>
+<span class="s">        HOST[&quot;</span><span class="n">Partie</span><span class="w"> </span><span class="n">machine</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mf">.10</span><span class="s">&quot;]</span>
+<span class="s">        BROAD[&quot;</span><span class="n">Broadcast</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mf">192.168.1.255</span><span class="s">&quot;]</span>
+<span class="s">    end</span>
+
+<span class="s">    IP --&gt; MSK</span>
+<span class="s">    MSK --&gt; NET</span>
+<span class="s">    MSK --&gt; HOST</span>
+<span class="s">    NET --&gt; BROAD</span>
+
+<span class="s">    style IP fill:#3498db,color:#fff</span>
+<span class="s">    style MSK fill:#e74c3c,color:#fff</span>
+<span class="s">    style NET fill:#2ecc71,color:#fff</span>
+<span class="s">    style HOST fill:#f39c12,color:#fff</span>
+<span class="s">    style BROAD fill:#95a5a6,color:#fff</span>
+</code></pre></div>
+
+<p><strong>Commandes essentielles :</strong></p>
+<div class="codehilite"><pre><span></span><code>ip<span class="w"> </span>addr<span class="w">          </span><span class="c1"># Linux : voir sa configuration IP</span>
+ipconfig<span class="w">         </span><span class="c1"># Windows : voir sa configuration IP</span>
+ping<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w">     </span><span class="c1"># Tester la connectivité Internet</span>
+traceroute<span class="w"> </span>google.com<span class="w">  </span><span class="c1"># Visualiser le chemin des paquets</span>
+</code></pre></div>
+
+<hr />
+<h2>3. DNS — Domain Name System <em>(15 min)</em></h2>
+<p>Le <strong>DNS</strong> est l'annuaire téléphonique d'Internet : il traduit les noms de domaine en adresses IP.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">U</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Utilisateur</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Navigateur</span><span class="w"> </span><span class="p">(</span><span class="n">Client</span><span class="p">)</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Serveur</span><span class="w"> </span><span class="n">DNS</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">W</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Serveur</span><span class="w"> </span><span class="n">Web</span>
+
+<span class="w">    </span><span class="n">U</span><span class="o">-&gt;&gt;</span><span class="n">B</span><span class="o">:</span><span class="w"> </span><span class="n">Tape</span><span class="w"> </span><span class="s">&quot;www.google.com&quot;</span>
+<span class="w">    </span><span class="n">B</span><span class="o">-&gt;&gt;</span><span class="n">DNS</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Quelle est l&#39;</span><span class="n">IP</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"> </span><span class="o">?</span><span class="s">&quot;</span>
+<span class="s">    DNS-&gt;&gt;DNS: Recherche dans sa base</span>
+<span class="s">    DNS--&gt;&gt;B: &quot;</span><span class="mf">142.250.185.4</span><span class="s">&quot;</span>
+<span class="s">    B-&gt;&gt;W: Connexion à 142.250.185.4:443 (HTTP GET)</span>
+<span class="s">    W--&gt;&gt;B: Réponse HTML / JSON</span>
+<span class="s">    B--&gt;&gt;U: Page affichée</span>
+</code></pre></div>
+
+<p><strong>Hiérarchie DNS :</strong>
+1. <strong>Racine</strong> (<code>.</code>) — 13 serveurs racines dans le monde
+2. <strong>TLD</strong> (<code>.com</code>, <code>.org</code>, <code>.dz</code>, <code>.fr</code>) — gérés par les registres
+3. <strong>Domaine</strong> (<code>google.com</code>, <code>univ-mostaganem.dz</code>) — acheté par l'organisation
+4. <strong>Sous-domaine</strong> (<code>www.google.com</code>, <code>moodle.univ-mostaganem.dz</code>)</p>
+<p><strong>Commande :</strong></p>
+<div class="codehilite"><pre><span></span><code>nslookup<span class="w"> </span>google.com<span class="w">        </span><span class="c1"># Interroger le DNS</span>
+dig<span class="w"> </span>google.com<span class="w">             </span><span class="c1"># Interrogation détaillée (Linux)</span>
+</code></pre></div>
+
+<p><strong>Application pédagogique :</strong> montrer aux élèves que <code>www.google.com</code> et <code>142.250.185.4</code> désignent le même serveur. Expliquer pourquoi les noms sont plus faciles à retenir que les adresses IP.</p>
+<hr />
+<h2>4. Modèle client-serveur <em>(15 min)</em></h2>
+<p>Le <strong>modèle client-serveur</strong> est l'architecture fondamentale du Web : un client demande une ressource, un serveur la fournit.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Modèle Client-Serveur&quot;</span>
+<span class="w">        </span><span class="n">C1</span><span class="p">[</span><span class="n">Navigateur</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Client</span><span class="w"> </span><span class="n">HTTP</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C2</span><span class="p">[</span><span class="n">App</span><span class="w"> </span><span class="n">mobile</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Client</span><span class="w"> </span><span class="n">API</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C3</span><span class="p">[</span><span class="n">Client</span><span class="w"> </span><span class="n">FTP</span><span class="p">]</span>
+
+<span class="w">        </span><span class="n">S1</span><span class="p">[</span><span class="n">Serveur</span><span class="w"> </span><span class="n">Web</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Apache</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Nginx</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S2</span><span class="p">[</span><span class="n">Serveur</span><span class="w"> </span><span class="n">FTP</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S3</span><span class="p">[</span><span class="n">Base</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">données</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">C1</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Requête HTTP GET&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">S1</span>
+<span class="w">    </span><span class="n">C2</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Requête API REST&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">S1</span>
+<span class="w">    </span><span class="n">C3</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Connexion FTP&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">S2</span>
+<span class="w">    </span><span class="n">S1</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Requête SQL&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">S3</span>
+
+<span class="w">    </span><span class="n">S1</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Réponse HTML/JSON&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">C1</span>
+<span class="w">    </span><span class="n">S1</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Réponse JSON&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">C2</span>
+<span class="w">    </span><span class="n">S2</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Fichiers&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">C3</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">95</span><span class="n">a5a6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Rôles :</strong> le <strong>client</strong> initie la requête (navigateur), le <strong>serveur</strong> fournit les ressources (machine toujours allumée).</p>
+<p><strong>Exemple :</strong> saisir <code>https://moodle.ens-mostaganem.dz</code> → navigateur (client) interroge DNS → envoie requête HTTP GET → serveur répond avec HTML → affichage.</p>
+<p><strong>Variantes :</strong> client-serveur classique, pair-à-pair (Torrent), 3-tiers (client → app → BDD).</p>
+<hr />
+<h2>5. Protocoles de communication <em>(15 min)</em></h2>
+<h3>Pile TCP/IP</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">graph</span><span class="w"> </span><span class="nv">TB</span>
+<span class="w">    </span><span class="nv">subgraph</span><span class="w"> </span><span class="s2">&quot;Pile TCP/IP (4 couches)&quot;</span>
+<span class="w">        </span><span class="nv">APP</span>[<span class="s2">&quot;Couche Application&lt;br/&gt;HTTP · HTTPS · FTP · SMTP · IMAP · POP3 · DNS&quot;</span>]
+<span class="w">        </span><span class="nv">TRANS</span>[<span class="s2">&quot;Couche Transport&lt;br/&gt;TCP (fiable) · UDP (rapide)&quot;</span>]
+<span class="w">        </span><span class="nv">INTER</span>[<span class="s2">&quot;Couche Internet&lt;br/&gt;IP · ICMP (ping)&quot;</span>]
+<span class="w">        </span><span class="nv">ACCES</span>[<span class="s2">&quot;Couche Accès réseau&lt;br/&gt;Ethernet · Wi-Fi · ADSL&quot;</span>]
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">APP</span><span class="w"> </span><span class="nv">fill</span>:#<span class="nv">e74c3c</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">TRANS</span><span class="w"> </span><span class="nv">fill</span>:<span class="sc">#3498</span><span class="nv">db</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">INTER</span><span class="w"> </span><span class="nv">fill</span>:<span class="sc">#2</span><span class="nv">ecc71</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">ACCES</span><span class="w"> </span><span class="nv">fill</span>:#<span class="nv">f39c12</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+</code></pre></div>
+
+<h3>Protocoles du Web</h3>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Port</th>
+<th>Usage</th>
+<th>Chiffré</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HTTP</strong></td>
+<td>80</td>
+<td>Navigation web (non sécurisé)</td>
+<td>Non</td>
+</tr>
+<tr>
+<td><strong>HTTPS</strong></td>
+<td>443</td>
+<td>Navigation web sécurisée (TLS/SSL)</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td><strong>FTP</strong></td>
+<td>21</td>
+<td>Transfert de fichiers</td>
+<td>Non</td>
+</tr>
+<tr>
+<td><strong>SFTP/FTPS</strong></td>
+<td>22/990</td>
+<td>Transfert sécurisé</td>
+<td>Oui</td>
+</tr>
+</tbody>
+</table>
+<p><strong>HTTPS</strong> ajoute une couche de chiffrement TLS entre le client et le serveur.
+- Cadenas vert dans le navigateur
+- Certificat numérique délivré par une autorité de certification (CA)
+- Empêche l'espionnage des données sur le réseau</p>
+<h3>Protocoles de messagerie</h3>
+<ul>
+<li><strong>SMTP</strong> (Simple Mail Transfer Protocol) — port 25 ou 587 : envoi de courriels</li>
+<li><strong>IMAP</strong> (Internet Message Access Protocol) — port 143 : réception et synchronisation multi-appareils (les messages restent sur le serveur)</li>
+<li><strong>POP3</strong> (Post Office Protocol v3) — port 110 : réception et téléchargement local (les messages sont supprimés du serveur)</li>
+</ul>
+<p><strong>Comparaison IMAP vs POP3 :</strong>
+| IMAP | POP3 |
+|------|------|
+| Messages sur le serveur | Messages téléchargés localement |
+| Synchronisation multi-appareils | Un seul appareil |
+| Accès depuis n'importe où | Accès hors ligne |
+| Recommandé pour usage professionnel | Usage sur un seul ordinateur |</p>
+<p><strong>Pour l'enseignant :</strong> utiliser <strong>IMAP</strong> (synchro multi-appareils), l'<strong>email institutionnel</strong> pour toute communication officielle, et rédiger des emails professionnels (objet clair, formule, signature).</p>
+<hr />
+<h2>6. Cloud computing <em>(10 min)</em></h2>
+<p>Le <strong>cloud computing</strong> est la mise à disposition de ressources informatiques (stockage, calcul, applications) via Internet, sans gestion directe de l'infrastructure.</p>
+<h3>Modèles de service</h3>
+<table>
+<thead>
+<tr>
+<th>Modèle</th>
+<th>Exemple</th>
+<th>Usage enseignant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SaaS</strong> (Software as a Service)</td>
+<td>Moodle, Google Classroom, Office 365</td>
+<td>Plateforme pédagogique</td>
+</tr>
+<tr>
+<td><strong>PaaS</strong> (Platform as a Service)</td>
+<td>Heroku, PythonAnywhere</td>
+<td>Déploiement d'applications</td>
+</tr>
+<tr>
+<td><strong>IaaS</strong> (Infrastructure as a Service)</td>
+<td>AWS, Azure, OVH</td>
+<td>Machines virtuelles</td>
+</tr>
+</tbody>
+</table>
+<h3>Services cloud pour l'enseignant</h3>
+<ul>
+<li><strong>OneDrive / Google Drive</strong> : stockage, partage et sauvegarde de documents pédagogiques</li>
+<li><strong>Moodle</strong> : dépôt de cours, rendus de TD, forums, QCM en ligne</li>
+<li><strong>GitHub / GitLab</strong> : hébergement de code, gestion de versions, projets NSI</li>
+<li><strong>Overleaf</strong> : rédaction collaborative en LaTeX</li>
+<li><strong>Padlet / Framapad</strong> : collaboration en temps réel</li>
+</ul>
+<p><strong>Avantages :</strong> accessibilité (depuis n'importe où), sauvegarde automatique, partage facilité, mise à jour automatique.</p>
+<p><strong>Inconvénients :</strong> dépendance à la connexion Internet, confidentialité des données (RGPD), coût potentiel.</p>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Que signifie LAN ?</strong>
+   a) Large Area Network  b) Local Area Network ✓  c) Long Access Network</p>
+</li>
+<li>
+<p><strong>Quelle est la taille d'une adresse IPv4 ?</strong>
+   a) 16 bits  b) 32 bits ✓  c) 128 bits</p>
+</li>
+<li>
+<p><strong>Quel est le rôle du DNS ?</strong>
+   a) Chiffrer les communications  b) Traduire les noms de domaine en adresses IP ✓  c) Gérer les mots de passe</p>
+</li>
+<li>
+<p><strong>Quel protocole garantit une connexion Web chiffrée ?</strong>
+   a) HTTP  b) HTTPS ✓  c) FTP</p>
+</li>
+<li>
+<p><strong>Quel protocole de messagerie est recommandé pour une synchronisation multi-appareils ?</strong>
+   a) POP3  b) SMTP  c) IMAP ✓</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<p>Internet repose sur une infrastructure hiérarchique (routeurs, serveurs DNS) et des protocoles standardisés (TCP/IP, HTTP, SMTP). Le modèle client-serveur organise les échanges. La sécurité (HTTPS) et le cloud transforment les usages pédagogiques. En tant que futur enseignant, maîtriser ces bases vous permet d'utiliser les outils numériques avec discernement.</p>
+<p><strong>Prochain cours :</strong> Sécurité informatique et éthique numérique.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong>
+- <strong>SNT Seconde</strong> (thème « Internet ») : utiliser <code>ping</code> et <code>traceroute</code> pour visualiser le chemin des données. Activité débranchée : élèves-routeurs avec des tables de routage.
+- <strong>NSI Première</strong> : modéliser client-serveur avec des sockets en Python. Architecture TCP/IP vue en détail.
+- <strong>EMC</strong> : débattre des enjeux du cloud (données personnelles, souveraineté numérique).</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Faire simuler une requête DNS : un élève est le client, un autre le DNS, un autre le serveur web. Ils échangent des enveloppes avec les adresses IP.</p>
+<p><strong>Prolongement :</strong> Les étudiants peuvent explorer les couches applicatives (HTTP/2, DNS, DHCP, SMTP) et simuler un dialogue client-serveur avec des sockets Python. Proposer une activité complémentaire : créer un petit serveur web en Python avec Flask et le déployer localement pour comprendre le fonctionnement d'une application web.</p>
+<hr />
+<h2>Bibliographie</h2>
+<ul>
+<li>Kurose &amp; Ross — <em>Computer Networking: A Top-Down Approach</em> (8th ed.)  </li>
+<li>Tanenbaum &amp; Wetherall — <em>Computer Networks</em> (6th ed.)  </li>
+<li>ANSSI — <em>Guide de sécurisation des réseaux</em> (disponible sur www.ssi.gouv.fr)  </li>
+<li>RFC 1034 — <em>Domain Names — Concepts and Facilities</em>  </li>
+<li>RFC 2616 — <em>HTTP/1.1</em>  </li>
+<li>Documentation Mozilla : <em>How the Internet works</em> (developer.mozilla.org)</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

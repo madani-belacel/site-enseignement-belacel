@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 1 — Session 08 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 1 — Session 08 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 1 — English Department</li><li>**Duration:** 1h30</li><li>**Academic Year:** 2025-2026</li><li>**Problem statement:** Identify the security pillar (Confidentiality, Integrity, Availability) involved in each situation:</li><li>**Answer:**</li><li>**Problem statement:** Rank the following passwords from weakest to strongest. Justify.</li><li>**Answer** (from weakest to strongest):</li><li>**Rule:** min 12 characters, mix of types, no dictionary word.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_AN_08.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 1 — Session 08 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Learning Objectives</h2>
+<p>By the end of this tutorial session, the student is able to:
+- Identify the three pillars of security (Confidentiality, Integrity, Availability)
+- Evaluate password strength and apply best practices
+- Recognize the signs of a phishing attempt
+- Apply the 3-2-1 backup rule
+- Identify situations that comply or not with the GDPR</p>
+<hr />
+<h2>Tutorial Plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — CIA Triangle</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — Passwords</td>
+<td>20 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — Phishing</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — 3-2-1 Backup</td>
+<td>15 min</td>
+<td>75 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — GDPR</td>
+<td>15 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>CIA Triangle of security</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;CIA Triangle&quot;</span>
+<span class="w">        </span><span class="n">C</span><span class="p">[</span><span class="n">Confidentiality</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="kr">Only</span><span class="w"> </span><span class="n">authorized</span><span class="w"> </span><span class="n">people</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">can</span><span class="w"> </span><span class="n">access</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">data</span><span class="p">]</span>
+<span class="w">        </span><span class="n">I</span><span class="p">[</span><span class="n">Integrity</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="kt">Data</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="kr">not</span><span class="w"> </span><span class="n">been</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">modified</span><span class="w"> </span><span class="n">without</span><span class="w"> </span><span class="n">authorization</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D</span><span class="p">[</span><span class="n">Availability</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="kt">Data</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">accessible</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="kr">when</span><span class="w"> </span><span class="n">needed</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">I</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">C</span>
+
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Ex1</span><span class="p">[</span><span class="s">&quot;🔒 Ransomware: encrypted files&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Ex2</span><span class="p">[</span><span class="s">&quot;✏️ Grade modified without authorization&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Ex3</span><span class="p">[</span><span class="s">&quot;❌ Moodle server inaccessible&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Ex1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Ex2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Ex3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h2>Phishing detection</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Email</span><span class="w"> </span><span class="n">received</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">{</span><span class="n">Legitimate</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">sender</span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="p">{</span><span class="n">Urgency</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">requested</span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">Phish</span><span class="p">[</span><span class="err">🛑</span><span class="w"> </span><span class="n">PHISHING</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">{</span><span class="n">Request</span><span class="w"> </span><span class="k">for</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">credentials</span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">{</span><span class="n">Suspicious</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">URL</span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">Phish</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">{</span><span class="n">Shortened</span><span class="w"> </span><span class="n">URL</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">bit</span><span class="p">.</span><span class="n">ly</span><span class="p">,</span><span class="w"> </span><span class="n">tinyurl</span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">Phish</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">Safe</span><span class="p">[</span><span class="err">✅</span><span class="w"> </span><span class="n">Legitimate</span><span class="w"> </span><span class="n">email</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">Phish</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">Safe</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Safe</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Phish</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 1 — CIA Triangle <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Identify the security pillar (Confidentiality, Integrity, Availability) involved in each situation:</p>
+<ol>
+<li>A ransomware encrypts a teacher's files.</li>
+<li>A student modifies their grade in the class Excel file.</li>
+<li>The Moodle server is inaccessible on the day tutorial submissions are due.</li>
+<li>An email containing passwords is intercepted.</li>
+<li>A hard drive fails without a backup.</li>
+</ol>
+<p><strong>Answer:</strong>
+1. Confidentiality + Availability (files inaccessible and encrypted)
+2. Integrity (data modified without authorization)
+3. Availability (service unavailable)
+4. Confidentiality (intercepted data)
+5. Availability (lost data)</p>
+<hr />
+<h2>Exercise 2 — Passwords <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Rank the following passwords from weakest to strongest. Justify.</p>
+<ol>
+<li><code>123456</code></li>
+<li><code>Mot2Passe!</code></li>
+<li><code>ENS.Mostaganem2026!</code></li>
+<li><code>azerty</code></li>
+<li><code>J'aimeLesTartesAuxPommes!</code></li>
+<li><code>password</code></li>
+</ol>
+<p><strong>Answer</strong> (from weakest to strongest):</p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Password</th>
+<th>Length</th>
+<th>Issue</th>
+<th>Estimated time to crack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6 (weak)</td>
+<td><code>123456</code></td>
+<td>6</td>
+<td>Sequential, top 1 password</td>
+<td>&lt; 1 second</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>password</code></td>
+<td>8</td>
+<td>Common word, dictionary</td>
+<td>&lt; 1 second</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>azerty</code></td>
+<td>6</td>
+<td>French dictionary word</td>
+<td>&lt; 1 second</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>Mot2Passe!</code></td>
+<td>10</td>
+<td>Compound word with predictable substitutions</td>
+<td>A few minutes</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>J'aimeLesTartesAuxPommes!</code></td>
+<td>27</td>
+<td>Very long but full sentence (phrase dictionary attack possible)</td>
+<td>Years</td>
+</tr>
+<tr>
+<td>1 (strong)</td>
+<td><code>ENS.Mostaganem2026!</code></td>
+<td>22</td>
+<td>Long, mixed case/numbers/symbols, not predictable</td>
+<td>Centuries</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule:</strong> min 12 characters, mix of types, no dictionary word.</p>
+<hr />
+<h2>Exercise 3 — Phishing <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Analyze the following email and identify 5 warning signs:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">From</span><span class="o">:</span><span class="w"> </span><span class="n">support</span><span class="err">@</span><span class="n">enseignemrnt</span><span class="o">-</span><span class="n">mosta</span><span class="o">.</span><span class="na">dz</span>
+<span class="n">Subject</span><span class="o">:</span><span class="w"> </span><span class="n">URGENT</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">closed</span>
+
+<span class="n">Hello</span><span class="o">,</span>
+
+<span class="n">Your</span><span class="w"> </span><span class="n">university</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">deactivated</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="n">hours</span>
+<span class="n">due</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">lack</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">update</span><span class="o">.</span><span class="w"> </span><span class="n">Click</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">confirm</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">credentials</span><span class="o">:</span>
+<span class="n">http</span><span class="o">://</span><span class="n">bit</span><span class="o">.</span><span class="na">ly</span><span class="o">/</span><span class="mi">2</span><span class="n">XkL9pQ</span>
+
+<span class="n">Sincerely</span><span class="o">,</span>
+<span class="n">The</span><span class="w"> </span><span class="n">IT</span><span class="w"> </span><span class="n">department</span>
+<span class="n">ENS</span><span class="w"> </span><span class="n">Mostaganem</span>
+</code></pre></div>
+
+<p><strong>Answer — Warning signs:</strong>
+1. <strong>Suspicious sender</strong>: <code>enseignemrnt-mosta.dz</code> (spelling mistake, not the official domain)
+2. <strong>Urgency</strong>: "URGENT", "48 hours" — psychological pressure to avoid thinking
+3. <strong>Request for credentials</strong>: no legitimate service asks for a password by email
+4. <strong>Shortened URL</strong>: <code>bit.ly</code> hides the real destination
+5. <strong>Vague signature</strong>: "The IT department" with no specific name</p>
+<p><strong>What to do:</strong> Do not click. Report to administration. Check directly on the official website.</p>
+<hr />
+<h2>Exercise 4 — 3-2-1 Backup <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Apply the 3-2-1 rule for a teacher who has:</p>
+<ul>
+<li>Their courses on their laptop</li>
+<li>Their grades on a USB key</li>
+<li>Their thesis on the office hard drive</li>
+</ul>
+<p>Propose a concrete backup strategy.</p>
+<p><strong>Answer:</strong>
+| Copy | Medium | Location |
+|------|--------|----------|
+| Original | Laptop | Office |
+| Copy 1 | External hard drive | Home (in a drawer) |
+| Copy 2 | Cloud (OneDrive/Google Drive) | Online |</p>
+<p><strong>3 copies</strong> (original + 2 backups), <strong>2 different media</strong> (hard drive + cloud), <strong>1 copy off-site</strong> (cloud).</p>
+<p>For the thesis: additionally, paper version + USB key in a different location (at a colleague's).</p>
+<hr />
+<h2>Exercise 5 — GDPR and ethics <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> For each situation, say whether it complies with GDPR or not, and why.</p>
+<ol>
+<li>A teacher posts a list of grades with first and last names in the hallway.</li>
+<li>A teacher uses their personal Gmail email to contact their students.</li>
+<li>A teacher deletes student files at the end of the school year.</li>
+<li>A teacher films their students in class without informing them.</li>
+<li>A teacher uses student data for research without anonymizing it.</li>
+</ol>
+<p><strong>Answer:</strong>
+1. <strong>Not compliant</strong> — grades are personal data, public display is prohibited without consent.
+2. <strong>Not compliant</strong> — personal emails (Gmail, Yahoo) do not guarantee data protection. Use the institutional email.
+3. <strong>Compliant</strong> — GDPR requires a retention period limited to what is necessary.
+4. <strong>Not compliant</strong> — the right to image requires prior written authorization (for minors, parental consent).
+5. <strong>Not compliant</strong> — data must be anonymized before use in research.</p>
+<hr />
+<h2>Self-assessment Quiz</h2>
+<ol>
+<li>
+<p><strong>The security pillar that guarantees data has not been modified is:</strong>
+   a) Confidentiality  b) Integrity ✓  c) Availability</p>
+</li>
+<li>
+<p><strong>A strong password must:</strong>
+   a) Be short and easy to remember  b) Contain at least 12 mixed characters ✓  c) Contain your first name</p>
+</li>
+<li>
+<p><strong>An email asking you to click urgently to confirm your password is:</strong>
+   a) A legitimate message from IT  b) A phishing attempt ✓  c) An automated email</p>
+</li>
+<li>
+<p><strong>The 3-2-1 backup rule means:</strong>
+   a) 3 copies, 2 media, 1 off-site ✓  b) 3 backups per day  c) 2 USB keys and 1 hard drive</p>
+</li>
+<li>
+<p><strong>According to GDPR, personal data must be:</strong>
+   a) Kept indefinitely  b) Anonymized for research ✓  c) Shared on social networks</p>
+</li>
+</ol>
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CIA Triad</td>
+<td>20%</td>
+<td>Does not know the 3 pillars</td>
+<td>2 out of 3 pillars</td>
+<td>3 correct pillars with examples</td>
+</tr>
+<tr>
+<td>Strong passwords</td>
+<td>20%</td>
+<td>Cannot distinguish strong/weak</td>
+<td>Criteria partially identified</td>
+<td>Correct criteria + testing tool</td>
+</tr>
+<tr>
+<td>Phishing</td>
+<td>20%</td>
+<td>No sign identified</td>
+<td>1-2 signs identified</td>
+<td>3+ correct signs</td>
+</tr>
+<tr>
+<td>Workstation security</td>
+<td>20%</td>
+<td>No measure proposed</td>
+<td>1-2 measures</td>
+<td>3+ relevant measures</td>
+</tr>
+<tr>
+<td>GDPR and ethics</td>
+<td>20%</td>
+<td>Does not know GDPR</td>
+<td>Principles partially understood</td>
+<td>Principles well understood + examples</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<h3>Teaching transposition</h3>
+<p>Digital security is a theme in the SNT (Seconde) curriculum and a major citizenship issue. The CIA triangle can be taught with everyday life examples: confidentiality is a locked diary, integrity is a document whose integrity is verified, availability is being able to access your notebook when needed. Phishing can be the subject of a practical workshop with fake emails prepared by the teacher.</p>
+<h3>Trainer advice</h3>
+<p>Exercise 2 (passwords) is very revealing: ask students to test their own passwords on sites like "howsecureismypassword.net" (being careful not to enter real passwords). Exercise 3 (phishing) can be turned into a game: prepare 5 emails (3 legitimate and 2 phishing) and ask students to sort them. Exercise 5 (GDPR) is crucial for the civic education of future teachers.</p>
+<h3>Extension</h3>
+<p>Organize a "Capture The Flag" (CTF) challenge adapted for beginners: students must identify phishing emails, find weak passwords in scenarios, and propose corrections. Use the "Root-Me" platform or a home-made CTF prepared by the teacher with basic security challenges.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

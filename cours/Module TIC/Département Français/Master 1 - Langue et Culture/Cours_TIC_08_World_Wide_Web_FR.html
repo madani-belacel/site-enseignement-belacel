@@ -1,0 +1,586 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 08 — World Wide Web — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 08 — World Wide Web</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 1 — Langue et Culture</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 1 Langue et Culture</li><li>**Compétences pré-requises :** TIC 07 ; notions de base sur HTTP et HTML</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_08_World_Wide_Web_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 08 — World Wide Web</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> Master 1 — Langue et Culture<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 1 Langue et Culture</p>
+<p><strong>Compétences pré-requises :</strong> TIC 07 ; notions de base sur HTTP et HTML</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Décomposer une URL et comprendre l'architecture client-serveur
+- Décrire le fonctionnement du Web comme espace documentaire et objet de recherche
+- Expliquer les principes du Web sémantique et du Web 2.0</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Utiliser des outils de web scraping pour constituer un corpus textuel
+- Évaluer la qualité d'une source Web selon des critères académiques rigoureux
+- Analyser du contenu généré par les utilisateurs (UGC) comme donnée de recherche</p>
+<p><strong>En termes de savoir-être :</strong>
+- Sensibilisation à l'archivage du Web pour la mémoire culturelle
+- Éthique du scraping et respect des conditions d'utilisation des sites</p>
+<p><strong>Mode d'évaluation :</strong> TD 25 % + Analyse de corpus Web 40 % + QCM 35 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Mini-projet : constitution d'un petit corpus Web (10 pages) sur un thème linguistique</li>
+<li>Analyse critique d'un site Web avec la grille CRAP</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>Dépôt du corpus + fiche méthodologique (outils, critères, limites)</li>
+<li>QCM Web / HTTP / HTML / Web sémantique</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Barats, C. (2013). <em>Manuel d'analyse du web en sciences humaines et sociales</em>. Armand Colin.</li>
+<li>Rogers, R. (2013). <em>Digital Methods</em>. MIT Press.</li>
+<li>Berners-Lee, T. (2000). <em>Weaving the Web</em>. HarperCollins.</li>
+<li>Hockx-Yu, H. (2014). « Web Archiving at the British Library ». <em>Digital Humanities Quarterly</em>, 8(2).</li>
+<li>MDN Web Docs — HTML, HTTP, URL</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p><strong>Arrêté 933 (2016)</strong> : Les compétences en analyse des médias numériques font partie du référentiel du Master Langue et Culture. <strong>Arrêté 129 (2019)</strong> : Introduction des humanités numériques (Digital Humanities) dans les programmes de lettres.</p>
+<p><strong>Loi 08-15 (2008)</strong> sur le droit d'auteur : le contenu Web est protégé. Le scraping et la réutilisation de données en ligne doivent respecter les licenses. Le <strong>code pénal algérien</strong> (art. 303 bis) sanctionne l'accès frauduleux aux systèmes informatiques.</p>
+<p><strong>Recommandation CNREN</strong> : Utiliser les corpus Web dans la recherche en lettres et langues, conformément aux principes de la science ouverte.</p>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction — Le Web comme objet de recherche</li>
+<li>Architecture du Web : client-serveur</li>
+<li>URL : structure et syntaxe avancée</li>
+<li>HTTP/HTTPS : protocoles et sécurité</li>
+<li>HTML : structure sémantique des pages</li>
+<li>Web scraping : constitution de corpus</li>
+<li>Web 2.0 et contenu généré par les utilisateurs</li>
+<li>Web sémantique et données liées</li>
+<li>Archivage du Web pour la mémoire culturelle</li>
+<li>Évaluation des sources Web</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Web</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Web</span><span class="w"> </span><span class="mf">1.0</span><span class="o">:</span><span class="w"> </span><span class="n">Lecture</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Web</span><span class="w"> </span><span class="mf">2.0</span><span class="o">:</span><span class="w"> </span><span class="n">Participation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Web</span><span class="w"> </span><span class="mf">3.0</span><span class="o">:</span><span class="w"> </span><span class="n">Sémantique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Pages</span><span class="w"> </span><span class="n">statiques</span><span class="w"> </span><span class="n">HTML</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Liens</span><span class="w"> </span><span class="n">hypertextes</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Réseaux</span><span class="w"> </span><span class="n">sociaux</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Blogs</span><span class="p">,</span><span class="w"> </span><span class="n">forums</span><span class="p">,</span><span class="w"> </span><span class="n">UGC</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Wikis</span><span class="p">,</span><span class="w"> </span><span class="n">plateformes</span><span class="w"> </span><span class="n">collaboratives</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Données</span><span class="w"> </span><span class="n">liées</span><span class="w"> </span><span class="p">(</span><span class="n">Linked</span><span class="w"> </span><span class="n">Data</span><span class="p">)]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Ontologies</span><span class="p">,</span><span class="w"> </span><span class="n">RDF</span><span class="p">,</span><span class="w"> </span><span class="n">SPARQL</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">27</span><span class="n">ae60</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">8e44</span><span class="n">ad</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Introduction — Le Web comme objet de recherche <em>(10 min)</em></h2>
+<p>Le <strong>World Wide Web</strong> (WWW) a été inventé en 1989 par <strong>Tim Berners-Lee</strong> au CERN pour faciliter le partage de documents entre chercheurs. Aujourd'hui, le Web est à la fois :</p>
+<ul>
+<li>Une <strong>infrastructure documentaire</strong> (pages, médias, applications)</li>
+<li>Un <strong>objet d'étude</strong> pour les sciences du langage et de la culture</li>
+<li>Un <strong>terrain de collecte</strong> (corpus, enquêtes, observations)</li>
+</ul>
+<p><strong>En Master Langue et Culture</strong> : le Web permet d'étudier les discours en ligne, les communautés virtuelles, l'évolution des langues, et la circulation des contenus culturels. L'analyse du Web s'inscrit dans le courant des <strong>Digital Humanities</strong> (Humanités Numériques).</p>
+<hr />
+<h2>Architecture du Web : client-serveur <em>(10 min)</em></h2>
+<p><strong>Modèle client-serveur</strong> :
+- <strong>Client</strong> : navigateur (Chrome, Firefox, Edge) envoie une requête HTTP
+- <strong>Serveur</strong> : hébergeur (Apache, Nginx) renvoie la ressource (HTML, CSS, JS, média)
+- <strong>Protocole</strong> : HTTP/HTTPS (couche application de TCP/IP)</p>
+<p><strong>Cycle requête-réponse</strong> :</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Client</span><span class="w"> </span><span class="p">(</span><span class="n">navigateur</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="p">[</span><span class="n">GET</span><span class="w"> </span><span class="o">/</span><span class="n">page</span><span class="p">.</span><span class="n">html</span><span class="p">]</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Serveur</span>
+<span class="n">Serveur</span><span class="w"> </span><span class="o">--</span><span class="p">[</span><span class="mi">200</span><span class="w"> </span><span class="n">OK</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">contenu</span><span class="w"> </span><span class="n">HTML</span><span class="p">]</span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Client</span>
+</code></pre></div>
+
+<p><strong>Middleware</strong> dans le contexte académique :
+- <strong>Proxy universitaire</strong> : intercepte les requêtes pour l'authentification aux ressources payantes
+- <strong>CDN</strong> (Content Delivery Network) : accélère la livraison des contenus
+- <strong>Cache</strong> : stockage local (navigateur) et intermédiaire (proxy)</p>
+<hr />
+<h2>URL : structure et syntaxe avancée <em>(10 min)</em></h2>
+<p>Décomposition d'une URL académique :</p>
+<div class="codehilite"><pre><span></span><code>https://hal.science/hal-01234567v1/document
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schéma</td>
+<td>Protocole</td>
+<td><code>https://</code></td>
+</tr>
+<tr>
+<td>Sous-domaine</td>
+<td>Service spécifique</td>
+<td><code>hal</code></td>
+</tr>
+<tr>
+<td>Domaine principal</td>
+<td>Institution</td>
+<td><code>science</code></td>
+</tr>
+<tr>
+<td>TLD</td>
+<td>Extension</td>
+<td><code>.fr</code>, <code>.dz</code>, <code>.org</code></td>
+</tr>
+<tr>
+<td>Chemin</td>
+<td>Ressource</td>
+<td><code>/hal-01234567v1/document</code></td>
+</tr>
+<tr>
+<td>Paramètres</td>
+<td>Requête</td>
+<td><code>?q=linguistique+algérie</code></td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td>Ancre</td>
+<td><code>#bibliographie</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exercice Master</strong> : analyser l'URL d'un article dans Cairn, d'un cours Moodle, d'une page HAL. Identifier les paramètres de session et les éventuels identifiants.</p>
+<p><strong>Internationalized Domain Names (IDN)</strong> : domaines en caractères non latins (arabe, cyrillique, chinois). Exemple : <code>.dz</code> (Algérie) avec caractères arabes possibles à l'avenir.</p>
+<hr />
+<h2>HTTP/HTTPS : protocoles et sécurité <em>(10 min)</em></h2>
+<p><strong>Méthodes HTTP</strong> :
+| Méthode | Usage | Exemple académique |
+|---------|-------|-------------------|
+| GET | Récupérer une ressource | Afficher article HAL |
+| POST | Envoyer des données | Soumettre formulaire Moodle |
+| PUT | Mettre à jour | Modifier profil ORCID |
+| DELETE | Supprimer | Retirer un fichier |</p>
+<p><strong>Codes de statut</strong> :
+- <strong>2xx</strong> : succès (200 OK)
+- <strong>3xx</strong> : redirection (301, 302)
+- <strong>4xx</strong> : erreur client (404 Not Found, 403 Forbidden)
+- <strong>5xx</strong> : erreur serveur (500 Internal Server Error)</p>
+<p><strong>HTTPS</strong> : HTTP sur TLS (chiffrement). Vérifier le cadenas dans la barre d'adresse avant de saisir des identifiants universitaires.</p>
+<p><strong>HTTP/2 et HTTP/3</strong> : versions plus rapides (multiplexage, QUIC). Impact sur la consultation de corpus volumineux.</p>
+<hr />
+<h2>HTML : structure sémantique des pages <em>(10 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;fr&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mon mémoire - HAL<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;Résumé de recherche en linguistique&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Titre du mémoire<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;author&quot;</span><span class="p">&gt;</span>Par Étudiant X<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;introduction&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Introduction<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contenu de l&#39;introduction...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>© 2025 - Licence CC-BY<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Balises sémantiques HTML5</strong> : <code>header</code>, <code>nav</code>, <code>main</code>, <code>article</code>, <code>section</code>, <code>aside</code>, <code>footer</code> — améliorent l'accessibilité et le référencement.</p>
+<p><strong>HTML pour le chercheur</strong> : inspecter une page (F12) permet de comprendre la structure d'un site, d'extraire des données, d'analyser les microdonnées (schema.org) pour le Web sémantique.</p>
+<hr />
+<h2>Web scraping : constitution de corpus <em>(15 min)</em></h2>
+<h3>Méthodes de collecte de données Web</h3>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Outil</th>
+<th>Volume</th>
+<th>Compétence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copier-coller manuel</td>
+<td>—</td>
+<td>Faible</td>
+<td>Aucune</td>
+</tr>
+<tr>
+<td>Extension navigateur</td>
+<td>Data Miner, Web Scraper</td>
+<td>Moyen</td>
+<td>Basique</td>
+</tr>
+<tr>
+<td>Script Python</td>
+<td>BeautifulSoup, Scrapy</td>
+<td>Élevé</td>
+<td>Programmation</td>
+</tr>
+<tr>
+<td>API officielle</td>
+<td>Twitter API, YouTube Data API</td>
+<td>Très élevé</td>
+<td>Développement</td>
+</tr>
+<tr>
+<td>Outil no-code</td>
+<td>Octoparse, ParseHub</td>
+<td>Moyen</td>
+<td>Configuration</td>
+</tr>
+</tbody>
+</table>
+<h3>Bonnes pratiques pour la recherche en langue</h3>
+<ol>
+<li><strong>Respecter le <code>robots.txt</code></strong> du site (indique les pages interdites au scraping)</li>
+<li><strong>Limiter le taux de requêtes</strong> (ne pas surcharger le serveur)</li>
+<li><strong>Citer la source</strong> : date de collecte, URL, méthode</li>
+<li><strong>Consentement</strong> : pour les données personnelles ou les forums privés</li>
+<li><strong>Anonymisation</strong> : supprimer les identifiants des participants</li>
+</ol>
+<h3>Exemple de corpus Web pour Master Langue et Culture</h3>
+<ul>
+<li>Commentaires YouTube sur une chaîne algérienne (français/darija)</li>
+<li>Articles de presse en ligne algérienne (El Watan, Liberté)</li>
+<li>Forums de discussion en tamazight</li>
+<li>Pages Facebook d'artistes ou d'écrivains algériens</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Page</span><span class="w"> </span><span class="n">Web</span><span class="w"> </span><span class="n">HTML</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Inspecter</span><span class="w"> </span><span class="n">F12</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Identifier</span><span class="w"> </span><span class="n">structure</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Sélecteurs</span><span class="w"> </span><span class="n">CSS</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">XPath</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Script</span><span class="w"> </span><span class="n">Python</span><span class="w"> </span><span class="n">avec</span><span class="w"> </span><span class="n">BeautifulSoup</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Fichier</span><span class="w"> </span><span class="n">CSV</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">JSON</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="n">linguistique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Frequences</span><span class="p">,</span><span class="w"> </span><span class="n">concordancier</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">sentiments</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Web 2.0 et contenu généré par les utilisateurs <em>(10 min)</em></h2>
+<p><strong>Web 2.0</strong> (O'Reilly 2005) : passage du Web statique (lecture) au Web participatif (écriture). Caractéristiques :
+- Contenu généré par les utilisateurs (UGC)
+- Plateformes collaboratives (Wikipédia, YouTube, Facebook, Instagram)
+- Architecture de la participation</p>
+<p><strong>Intérêt pour la recherche en langue et culture</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Plateforme</th>
+<th>Données exploitables</th>
+<th>Question de recherche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YouTube</td>
+<td>Commentaires, transcriptions</td>
+<td>Variations linguistiques en Algérie</td>
+</tr>
+<tr>
+<td>Facebook</td>
+<td>Posts, réactions, commentaires</td>
+<td>Code-switching français/darija</td>
+</tr>
+<tr>
+<td>Twitter/X</td>
+<td>Tweets, hashtags, retweets</td>
+<td>Discours politique en ligne</td>
+</tr>
+<tr>
+<td>Wikipedia</td>
+<td>Historique de révision</td>
+<td>Construction collaborative du savoir</td>
+</tr>
+<tr>
+<td>Blogs</td>
+<td>Articles, commentaires</td>
+<td>Écriture numérique et standards</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analyse du discours numérique</strong> : prendre en compte le contexte technique (limite de caractères, affordances de la plateforme), le multilinguisme, et les normes communicatives spécifiques à chaque site.</p>
+<hr />
+<h2>Web sémantique et données liées <em>(10 min)</em></h2>
+<p><strong>Web sémantique</strong> (Berners-Lee et al. 2001) : extension du Web où l'information est structurée pour être interprétable par les machines.</p>
+<p><strong>Technologies clés</strong> :
+- <strong>RDF</strong> (Resource Description Framework) : graphe de triplets (sujet-prédicat-objet)
+- <strong>SPARQL</strong> : langage de requête pour les données RDF
+- <strong>OWL</strong> : langage d'ontologies
+- <strong>SKOS</strong> : systèmes d'organisation des connaissances
+- <strong>schema.org</strong> : vocabulaire structuré pour les moteurs de recherche</p>
+<p><strong>Application en SHS</strong> :
+- <strong>Wikidata</strong> : base de connaissances collaborative liée
+- <strong>BNF Data</strong> : données bibliographiques liées
+- <strong>Pleiades</strong> : ressources en géographie ancienne liée
+- <strong>DBpedia</strong> : version structurée de Wikipédia</p>
+<p><strong>Exercice</strong> : interroger Wikidata avec SPARQL pour extraire les écrivains algériens francophones.</p>
+<hr />
+<h2>Archivage du Web pour la mémoire culturelle <em>(5 min)</em></h2>
+<p><strong>Problème</strong> : le Web est éphémère — les pages disparaissent, les contenus changent (lien brisé = référence perdue).</p>
+<p><strong>Projets d'archivage</strong> :
+- <strong>Internet Archive / Wayback Machine</strong> (archive.org) : 866 milliards de pages archivées
+- <strong>Archives du Web français</strong> (BnF) : dépôt légal du Web depuis 2006
+- <strong>Archive.today</strong> : capture instantanée</p>
+<p><strong>Pour le chercheur</strong> :
+- Archiver systématiquement les pages citées dans votre mémoire
+- Utiliser le DOI (Digital Object Identifier) pour les ressources pérennes
+- Préférer les ressources avec une politique d'archivage (HAL, OpenEdition)</p>
+<hr />
+<h2>Évaluation des sources Web <em>(5 min)</em></h2>
+<p><strong>Grille CRAP</strong> adaptée au contexte algérien :</p>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Questions à se poser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Currency</strong> (Actualité)</td>
+<td>Date de publication ? Mise à jour récente ?</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong> (Fiabilité)</td>
+<td>Sources citées ? Auteur identifiable ? Références ?</td>
+</tr>
+<tr>
+<td><strong>Authority</strong> (Autorité)</td>
+<td>Affiliation institutionnelle ? Titres académiques ?</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong> (Finalité)</td>
+<td>Site institutionnel (.dz, .gov) ? Commercial ? Militant ?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pièges spécifiques</strong> :
+- Sites « académiques » auto-publiés sans comité de lecture
+- Mélange information/opinion sur les blogs
+- Deepfakes et désinformation en ligne</p>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<ul>
+<li>Le Web est un objet d'étude riche pour les sciences du langage</li>
+<li>Compétences clés : scraping, évaluation des sources, analyse de l'UGC</li>
+<li>Web sémantique et archivage : enjeux de la recherche numérique</li>
+<li><strong>TD 08</strong> : constituer un mini-corpus Web (10 pages) sur un thème de votre mémoire, avec fiche méthodologique</li>
+<li><strong>Prochain cours</strong> : Réseaux informatiques et analyse des réseaux sociaux (TIC 09)</li>
+</ul>
+<hr />
+<h2>Déroulement séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Activité</th>
+<th>Modalité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–10 min</td>
+<td>Introduction : Web comme objet de recherche</td>
+<td>Exposé magistral</td>
+<td>Diapos 1–3</td>
+</tr>
+<tr>
+<td>10–20 min</td>
+<td>Architecture client-serveur et URL avancée</td>
+<td>Démo : analyse URL Moodle, HAL</td>
+<td>Navigateur, F12</td>
+</tr>
+<tr>
+<td>20–30 min</td>
+<td>HTTP/HTTPS et codes de statut</td>
+<td>Exercice : inspecter requêtes réseau</td>
+<td>F12 onglet Réseau</td>
+</tr>
+<tr>
+<td>30–40 min</td>
+<td>HTML sémantique</td>
+<td>Démo : inspecter structure page</td>
+<td>F12 onglet Éléments</td>
+</tr>
+<tr>
+<td>40–55 min</td>
+<td>Web scraping : constitution de corpus</td>
+<td>Atelier : copier une page → fichier texte</td>
+<td>Data Miner + Python</td>
+</tr>
+<tr>
+<td>55–65 min</td>
+<td>Web 2.0 et analyse UGC</td>
+<td>Étude de cas : commentaires YouTube</td>
+<td>Corpus en ligne</td>
+</tr>
+<tr>
+<td>65–75 min</td>
+<td>Web sémantique : requête SPARQL</td>
+<td>Démo : interroger Wikidata</td>
+<td>Query.wikidata.org</td>
+</tr>
+<tr>
+<td>75–85 min</td>
+<td>Évaluation des sources + archivage</td>
+<td>Exercice : évaluer 3 sites avec grille CRAP</td>
+<td>Sites variés</td>
+</tr>
+<tr>
+<td>85–90 min</td>
+<td>Conclusion et TD</td>
+<td>Distribution consignes TD 08</td>
+<td>Diapo TD</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation (5 questions)</h2>
+<p><strong>1. Quelle méthode HTTP est utilisée pour soumettre un formulaire sur Moodle ?</strong>
+- a) GET
+- b) POST ✓
+- c) PUT
+- d) DELETE</p>
+<p><strong>2. Que signifie le code HTTP 404 ?</strong>
+- a) Succès de la requête
+- b) Redirection permanente
+- c) Ressource non trouvée ✓
+- d) Erreur serveur interne</p>
+<p><strong>3. Dans le contexte du Web sémantique, que signifie RDF ?</strong>
+- a) Rapid Data Format
+- b) Resource Description Framework ✓
+- c) Réseau de Diffusion Français
+- d) Random Data File</p>
+<p><strong>4. Quel outil est recommandé pour archiver une page Web citée dans un mémoire ?</strong>
+- a) Google Drive
+- b) Wayback Machine (Internet Archive) ✓
+- c) Dropbox
+- d) Microsoft Word</p>
+<p><strong>5. Lequel de ces éléments n'est PAS une caractéristique du Web 2.0 ?</strong>
+- a) Pages statiques uniquement en lecture ✓
+- b) Contenu généré par les utilisateurs
+- c) Plateformes collaboratives
+- d) Réseaux sociaux</p>
+<hr />
+<h2>Note pédagogique Master</h2>
+<p><strong>Transposition didactique :</strong> Ce cours transforme la simple « navigation Web » (niveau licence) en une <strong>méthodologie de recherche numérique</strong>. L'étudiant apprend à considérer le Web comme un terrain d'enquête et une source de données. L'accent est mis sur les compétences techniques minimales (inspecter, scraper) et les compétences réflexives (éthique, évaluation).</p>
+<p><strong>Conseil pour le formateur :</strong> Prévoir une connexion Internet stable pour les démonstrations de scraping et de SPARQL. Avoir un plan B (captures d'écran, exemples hors ligne) en cas de coupure. Montrer des exemples algériens concrets (presse en ligne, pages Facebook). Attention à l'aspect juridique : ne pas encourager le scraping illégal.</p>
+<p><strong>Prolongement recherche :</strong> Les étudiants peuvent explorer les <em>Digital Methods</em> (Rogers 2013) pour une analyse approfondie des controverses en ligne, ou constituer un corpus longitudinal de presse algérienne en ligne pour une analyse diachronique du discours.</p>
+<hr />
+<h2>Références académiques</h2>
+<ul>
+<li>Barats, C. (dir.) (2013). <em>Manuel d'analyse du web en sciences humaines et sociales</em>. Armand Colin.</li>
+<li>Berners-Lee, T., Hendler, J., &amp; Lassila, O. (2001). « The Semantic Web ». <em>Scientific American</em>, 284(5), 34–43.</li>
+<li>Hockx-Yu, H. (2014). « Web Archiving at the British Library ». <em>Digital Humanities Quarterly</em>, 8(2).</li>
+<li>O'Reilly, T. (2005). « What Is Web 2.0? Design Patterns and Business Models for the Next Generation of Software ». <em>O'Reilly Media</em>.</li>
+<li>Rogers, R. (2013). <em>Digital Methods</em>. MIT Press.</li>
+<li>Paveau, M.-A. (2017). <em>L'Analyse du discours numérique : Dictionnaire des formes et des pratiques</em>. Hermann.</li>
+<li>Marvan, N. (2022). « Le discours numérique en Algérie : enjeux méthodologiques ». <em>Revue des Sciences du Langage</em>, 14, 87–102.</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

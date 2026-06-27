@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP Informatique — ENS 1ère année — TP 05 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TP Informatique — ENS 1ère année — TP 05 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Créer un script `listes.py` qui :</li><li>**Exemple attendu :**</li><li>**Corrigé :**</li><li>**Énoncé :** Créer un script `recherche.py` qui :</li><li>**Exemple attendu :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TP_Informatique_ENS_1ère_année_FR_05.pdf</code></p>
+</blockquote>
+<h1>TP Informatique — ENS 1ère année — TP 05 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce TP, l'étudiant est capable de :
+- Manipuler les listes (création, ajout, suppression, parcours)
+- Utiliser les méthodes de liste : <code>append()</code>, <code>remove()</code>, <code>sort()</code>, <code>index()</code>
+- Comprendre l'indicage et le slicing
+- Implémenter des algorithmes de recherche et de tri simples
+- Distinguer liste et tuple
+- Utiliser les compréhensions de listes pour filtrer des données</p>
+<hr />
+<h2>Plan du TP</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil et révision</td>
+<td>5 min</td>
+<td>Rappel sur les listes</td>
+</tr>
+<tr>
+<td>Exercice 1</td>
+<td>15 min</td>
+<td>Manipulation de listes</td>
+</tr>
+<tr>
+<td>Exercice 2</td>
+<td>15 min</td>
+<td>Recherche dans une liste</td>
+</tr>
+<tr>
+<td>Exercice 3</td>
+<td>20 min</td>
+<td>Liste de notes avec coefficients</td>
+</tr>
+<tr>
+<td>Exercice 4</td>
+<td>20 min</td>
+<td>Tri à bulles</td>
+</tr>
+<tr>
+<td>Exercice 5</td>
+<td>15 min</td>
+<td>Filtrage d'une liste</td>
+</tr>
+<tr>
+<td>QCM et bilan</td>
+<td>15 min</td>
+<td>Auto-évaluation et conclusion</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — Manipulation de listes <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>listes.py</code> qui :
+1. Crée une liste vide <code>notes</code>
+2. Ajoute 5 notes saisies par l'utilisateur
+3. Affiche la liste
+4. Affiche la note max, min et la moyenne
+5. Supprime la note la plus basse
+6. Affiche la liste triée</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Note 1 : 12
+Note 2 : 15
+Note 3 : 8
+Note 4 : 19
+Note 5 : 10
+Liste : [12.0, 15.0, 8.0, 19.0, 10.0]
+Max : 19.0 — Min : 8.0 — Moyenne : 12.80
+Après suppression de la plus basse : [10.0, 12.0, 15.0, 19.0]
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">notes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Note </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> : &quot;</span><span class="p">))</span>
+    <span class="n">notes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste : </span><span class="si">{</span><span class="n">notes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max : </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span><span class="si">}</span><span class="s2"> — Min : </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span><span class="si">}</span><span class="s2"> — Moyenne : </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">notes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">notes</span><span class="p">))</span>
+<span class="n">notes</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Après suppression de la plus basse : </span><span class="si">{</span><span class="n">notes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — Recherche dans une liste <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>recherche.py</code> qui :
+1. Crée une liste de prénoms
+2. Demande un prénom à l'utilisateur
+3. Indique si le prénom est dans la liste et à quelle position
+4. Propose d'ajouter le prénom s'il n'existe pas</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Liste actuelle : [&#39;Ali&#39;, &#39;Sara&#39;, &#39;Mohamed&#39;, &#39;Leila&#39;, &#39;Ahmed&#39;]
+Prénom à chercher : Sara
+Sara trouvé à la position 2.
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Saisir</span><span class="w"> </span><span class="n">prénom</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">{</span><span class="n">Prénom</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">liste</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">position</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">{</span><span class="n">Ajouter</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Ajouter</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">trier</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Fin</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">prenoms</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;Mohamed&quot;</span><span class="p">,</span> <span class="s2">&quot;Leila&quot;</span><span class="p">,</span> <span class="s2">&quot;Ahmed&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste actuelle : </span><span class="si">{</span><span class="n">prenoms</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">recherche</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Prénom à chercher : &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">recherche</span> <span class="ow">in</span> <span class="n">prenoms</span><span class="p">:</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">prenoms</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">recherche</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">recherche</span><span class="si">}</span><span class="s2"> trouvé à la position </span><span class="si">{</span><span class="n">pos</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">recherche</span><span class="si">}</span><span class="s2"> n&#39;est pas dans la liste.&quot;</span><span class="p">)</span>
+    <span class="n">ajout</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Voulez-vous l&#39;ajouter ? (o/n) : &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ajout</span> <span class="o">==</span> <span class="s2">&quot;o&quot;</span><span class="p">:</span>
+        <span class="n">prenoms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recherche</span><span class="p">)</span>
+        <span class="n">prenoms</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nouvelle liste : </span><span class="si">{</span><span class="n">prenoms</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Liste de notes avec coefficients <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>notes_coef.py</code> qui :
+1. Demande le nombre de matières
+2. Pour chaque matière, demande le nom, la note et le coefficient
+3. Stocke les données dans une liste de dictionnaires
+4. Calcule la moyenne pondérée
+5. Affiche un tableau récapitulatif</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Nombre de matières : 3
+
+--- Matière 1 ---
+Nom : Maths
+Note (0–20) : 14
+Coefficient : 4
+
+--- Matière 2 ---
+Nom : Français
+Note (0–20) : 12
+Coefficient : 3
+
+--- Matière 3 ---
+Nom : Anglais
+Note (0–20) : 16
+Coefficient : 2
+
+Moyenne pondérée : 13.78/20
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">matieres</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nombre de matières : &quot;</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Matière </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ---&quot;</span><span class="p">)</span>
+    <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nom : &quot;</span><span class="p">)</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Note (0–20) : &quot;</span><span class="p">))</span>
+    <span class="n">coef</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Coefficient : &quot;</span><span class="p">))</span>
+    <span class="n">matieres</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;nom&quot;</span><span class="p">:</span> <span class="n">nom</span><span class="p">,</span> <span class="s2">&quot;note&quot;</span><span class="p">:</span> <span class="n">note</span><span class="p">,</span> <span class="s2">&quot;coef&quot;</span><span class="p">:</span> <span class="n">coef</span><span class="p">})</span>
+
+<span class="n">total_points</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;note&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;coef&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matieres</span><span class="p">)</span>
+<span class="n">total_coefs</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;coef&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matieres</span><span class="p">)</span>
+<span class="n">moyenne</span> <span class="o">=</span> <span class="n">total_points</span> <span class="o">/</span> <span class="n">total_coefs</span> <span class="k">if</span> <span class="n">total_coefs</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">45</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Matière&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Note&#39;</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Coef&#39;</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Total&#39;</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">45</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matieres</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;note&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;coef&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;note&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;8.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;coef&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;8.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">&lt;8.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">45</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne pondérée : </span><span class="si">{</span><span class="n">moyenne</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">/20&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Tri à bulles <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>tri_bulles.py</code> qui implémente l'algorithme de tri à bulles sans utiliser <code>sort()</code>. Le programme doit :
+1. Créer une liste aléatoire de 10 nombres
+2. Afficher la liste originale
+3. Trier avec l'algorithme à bulles
+4. Afficher la liste triée
+5. Compter le nombre d'échanges effectués</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Liste</span><span class="w"> </span><span class="n">non</span><span class="w"> </span><span class="n">triée</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">n</span><span class="mi">-1</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="mi">-2</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">{</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Échanger</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="err">↔</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Passer</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="n">suivant</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">{</span><span class="w"> </span><span class="n">Fin</span><span class="w"> </span><span class="n">parcours</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">C</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">suivant</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">{</span><span class="w"> </span><span class="n">Liste</span><span class="w"> </span><span class="n">triée</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Liste</span><span class="w"> </span><span class="n">triée</span><span class="p">]</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">tri_bulles</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tri à bulles, retourne le nombre d&#39;échanges.&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+    <span class="n">echanges</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">liste</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">liste</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">liste</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">liste</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">liste</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">liste</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">echanges</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">echanges</span>
+
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Originale : </span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">echanges</span> <span class="o">=</span> <span class="n">tri_bulles</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Triée      : </span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Échanges   : </span><span class="si">{</span><span class="n">echanges</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Filtrer une liste <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>filtre.py</code> qui :
+1. Crée une liste de 20 nombres aléatoires entre 0 et 100
+2. Crée une nouvelle liste contenant uniquement les nombres pairs
+3. Crée une nouvelle liste contenant uniquement les nombres ≥ 50
+4. Affiche les trois listes avec leurs longueurs</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Tous      : [12, 45, 78, 23, 56, 91, 34, 67, 8, 90, ...] (20 éléments)
+Pairs     : [12, 78, 56, 34, 8, 90, ...] (11 éléments)
+≥ 50      : [78, 56, 91, 67, 90, ...] (8 éléments)
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">nombres</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nombres</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">grands</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nombres</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tous      : </span><span class="si">{</span><span class="n">nombres</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">nombres</span><span class="p">)</span><span class="si">}</span><span class="s2"> éléments)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pairs     : </span><span class="si">{</span><span class="n">pairs</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span><span class="si">}</span><span class="s2"> éléments)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;≥ 50      : </span><span class="si">{</span><span class="n">grands</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">grands</span><span class="p">)</span><span class="si">}</span><span class="s2"> éléments)&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Quelle méthode permet d'ajouter un élément à la fin d'une liste ?</strong>
+   a) <code>insert()</code> ✓
+   b) <code>append()</code>
+   c) <code>add()</code></p>
+</li>
+<li>
+<p><strong>Quelle est la complexité du tri à bulles dans le pire des cas ?</strong>
+   a) O(n)
+   b) O(n²) ✓
+   c) O(log n)</p>
+</li>
+<li>
+<p><strong>Quel index correspond au premier élément d'une liste Python ?</strong>
+   a) 1
+   b) 0 ✓
+   c) -1</p>
+</li>
+<li>
+<p><strong>Comment supprimer la première occurrence d'une valeur dans une liste ?</strong>
+   a) <code>del()</code>
+   b) <code>remove()</code> ✓
+   c) <code>pop()</code></p>
+</li>
+<li>
+<p><strong>Que retourne <code>len([1, 2, 3])</code> ?</strong>
+   a) 2
+   b) 3 ✓
+   c) 4</p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation TP 05</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Création et manipulation de listes</td>
+<td>20 %</td>
+<td>Ne sait pas créer de liste</td>
+<td>Opérations basiques</td>
+<td>Maîtrise complète</td>
+</tr>
+<tr>
+<td>Méthodes de liste</td>
+<td>20 %</td>
+<td>N'utilise aucune méthode</td>
+<td>Quelques méthodes</td>
+<td>Toutes les méthodes</td>
+</tr>
+<tr>
+<td>Algorithmes sur listes</td>
+<td>20 %</td>
+<td>Aucun algorithme</td>
+<td>Algorithme partiel</td>
+<td>Algorithme correct</td>
+</tr>
+<tr>
+<td>Compréhension de listes</td>
+<td>20 %</td>
+<td>Ne connaît pas</td>
+<td>Utilisation hasardeuse</td>
+<td>Utilisation appropriée</td>
+</tr>
+<tr>
+<td>Dictionnaires imbriqués</td>
+<td>20 %</td>
+<td>Ne maîtrise pas</td>
+<td>Utilisation partielle</td>
+<td>Utilisation correcte</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Manipulation listes</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Recherche</td>
+<td>15 min</td>
+<td>35 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Notes avec coeff</td>
+<td>20 min</td>
+<td>55 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Tri à bulles</td>
+<td>20 min</td>
+<td>75 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Filtrage</td>
+<td>15 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Ce TP introduit les listes Python comme structure de données fondamentale. Le tri à bulles (exercice 4) est l'occasion d'illustrer concrètement la complexité algorithmique O(n²) vue en cours théorique. En situation de classe au secondaire, on peut :
+- <strong>Collège (cycle 4)</strong> : Utiliser l'exercice 2 (recherche) pour apprendre à organiser des données. Demander aux élèves de chercher un mot dans le dictionnaire papier, puis de comparer avec l'algorithme informatique.
+- <strong>Lycée (SNT/NSI)</strong> : L'exercice 3 (notes avec coefficients) est un outil de suivi scolaire réel.</p>
+<h3>Conseil formateur</h3>
+<p>Bien expliquer que les indices de liste commencent à 0 (et non à 1). Utiliser des post-its sur le tableau pour visualiser une liste et les opérations d'insertion/suppression. Pour les élèves de Seconde SNT, limiter les exercices aux listes simples (sans indices négatifs ni slicing) pour éviter la confusion.</p>
+<h3>Prolongement</h3>
+<p>Implémenter un algorithme de recherche dichotomique sur une liste triée de mots du dictionnaire français. Comparer le nombre d'étapes nécessaires avec la recherche séquentielle.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

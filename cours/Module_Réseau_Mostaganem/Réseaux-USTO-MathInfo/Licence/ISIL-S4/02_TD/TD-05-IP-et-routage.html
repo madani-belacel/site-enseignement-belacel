@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD 05 — IP et routage — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TD 05 — IP et routage</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**a)** Classe C. Réseau: 192.168.5.0/24. Broadcast: 192.168.5.255. Hôtes: .1–.254. **254 hôtes**.</li><li>**b)** Classe B. Réseau: 172.16.0.0/16. Broadcast: 172.16.255.255. Hôtes: 172.16.0.1–172.16.255.254. **65534 hôtes**.</li><li>**c)** Classe A. Réseau: 10.0.0.0/8. Broadcast: 10.255.255.255. **16 777 214 hôtes**.</li></ul></div>
+    <h1>TD 05 — IP et routage</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>2 h</td>
+</tr>
+<tr>
+<td><strong>Chapitres associés</strong></td>
+<td>Ch. 05</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — Adressage IPv4 (8 pts)</h2>
+<p>Pour chaque adresse, déterminer : <strong>classe</strong> (historique), <strong>adresse réseau</strong>, <strong>adresse broadcast</strong>, <strong>plage d'hôtes</strong>, <strong>nombre d'hôtes utilisables</strong>.</p>
+<p><strong>a)</strong> <code>192.168.5.100/24</code></p>
+<p><strong>b)</strong> <code>172.16.40.200/16</code></p>
+<p><strong>c)</strong> <code>10.50.30.25/8</code></p>
+<hr />
+<h2>Exercice 2 — Subnetting (8 pts)</h2>
+<p>L'entreprise dispose du réseau <code>192.168.10.0/24</code>. Elle souhaite créer <strong>4 sous-réseaux</strong> de taille égale.</p>
+<p><strong>a)</strong> Quel masque de sous-réseau utiliser (notation CIDR) ?</p>
+<p><strong>b)</strong> Donner l'adresse réseau, broadcast et plage d'hôtes pour chaque sous-réseau.</p>
+<p><strong>c)</strong> Combien d'hôtes utilisables par sous-réseau ?</p>
+<p><strong>d)</strong> L'hôte <code>192.168.10.130/26</code> appartient à quel sous-réseau ?</p>
+<hr />
+<h2>Exercice 3 — Routage statique (6 pts)</h2>
+<p>Topologie :</p>
+<div class="codehilite"><pre><span></span><code>PC-A (192.168.1.10/24, GW 192.168.1.1)
+    │
+  R1: Fa0/0 = 192.168.1.1/24, Fa0/1 = 10.0.0.1/30
+    │
+  R2: Fa0/0 = 10.0.0.2/30, Fa0/1 = 192.168.2.1/24
+    │
+PC-B (192.168.2.10/24, GW 192.168.2.1)
+</code></pre></div>
+
+<p><strong>a)</strong> PC-A envoie un paquet à PC-B. Quelle est la passerelle utilisée par PC-A ?</p>
+<p><strong>b)</strong> Écrire la commande de route statique sur R1 pour atteindre 192.168.2.0/24.</p>
+<p><strong>c)</strong> Écrire la commande de route statique sur R2 pour atteindre 192.168.1.0/24.</p>
+<p><strong>d)</strong> Combien de routeurs le paquet traverse-t-il ?</p>
+<hr />
+<h2>Exercice 4 — Table de routage (4 pts)</h2>
+<p>Voici la table de routage d'un routeur :</p>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Masque</th>
+<th>Next-hop</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.0</td>
+<td>255.255.255.0</td>
+<td>Direct</td>
+<td>Fa0/0</td>
+</tr>
+<tr>
+<td>192.168.2.0</td>
+<td>255.255.255.0</td>
+<td>Direct</td>
+<td>Fa0/1</td>
+</tr>
+<tr>
+<td>10.0.0.0</td>
+<td>255.255.255.0</td>
+<td>Direct</td>
+<td>S0/0</td>
+</tr>
+<tr>
+<td>0.0.0.0</td>
+<td>0.0.0.0</td>
+<td>10.0.0.254</td>
+<td>S0/0</td>
+</tr>
+</tbody>
+</table>
+<p>Pour chaque destination, indiquer l'interface de sortie :</p>
+<p><strong>a)</strong> 192.168.1.50 → ?</p>
+<p><strong>b)</strong> 192.168.2.100 → ?</p>
+<p><strong>c)</strong> 172.16.0.1 → ?</p>
+<p><strong>d)</strong> 10.0.0.15 → ?</p>
+<hr />
+<h2>Annexe — Corrigé TD 05</h2>
+<h3>Corrigé Exercice 1</h3>
+<p><strong>a)</strong> Classe C. Réseau: 192.168.5.0/24. Broadcast: 192.168.5.255. Hôtes: .1–.254. <strong>254 hôtes</strong>.</p>
+<p><strong>b)</strong> Classe B. Réseau: 172.16.0.0/16. Broadcast: 172.16.255.255. Hôtes: 172.16.0.1–172.16.255.254. <strong>65534 hôtes</strong>.</p>
+<p><strong>c)</strong> Classe A. Réseau: 10.0.0.0/8. Broadcast: 10.255.255.255. <strong>16 777 214 hôtes</strong>.</p>
+<h3>Corrigé Exercice 2</h3>
+<p><strong>a)</strong> /26 (255.255.255.192) — emprunt de 2 bits → 4 sous-réseaux</p>
+<p><strong>b)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sous-réseau</th>
+<th>Réseau</th>
+<th>Broadcast</th>
+<th>Hôtes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>192.168.10.0/26</td>
+<td>.63</td>
+<td>.1–.62</td>
+</tr>
+<tr>
+<td>2</td>
+<td>192.168.10.64/26</td>
+<td>.127</td>
+<td>.65–.126</td>
+</tr>
+<tr>
+<td>3</td>
+<td>192.168.10.128/26</td>
+<td>.191</td>
+<td>.129–.190</td>
+</tr>
+<tr>
+<td>4</td>
+<td>192.168.10.192/26</td>
+<td>.255</td>
+<td>.193–.254</td>
+</tr>
+</tbody>
+</table>
+<p><strong>c)</strong> <strong>62 hôtes</strong> par sous-réseau</p>
+<p><strong>d)</strong> Bloc 128–191 → <strong>192.168.10.128/26</strong> (sous-réseau 3)</p>
+<h3>Corrigé Exercice 3</h3>
+<p><strong>a)</strong> <strong>192.168.1.1</strong> (R1 Fa0/0)</p>
+<p><strong>b)</strong> <code>ip route 192.168.2.0 255.255.255.0 10.0.0.2</code></p>
+<p><strong>c)</strong> <code>ip route 192.168.1.0 255.255.255.0 10.0.0.1</code></p>
+<p><strong>d)</strong> <strong>2 routeurs</strong> (R1 et R2)</p>
+<h3>Corrigé Exercice 4</h3>
+<p><strong>a)</strong> Fa0/0 (direct)
+<strong>b)</strong> Fa0/1 (direct)
+<strong>c)</strong> S0/0 via 10.0.0.254 (route par défaut)
+<strong>d)</strong> S0/0 (direct 10.0.0.0/24)</p>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 05 — Couche Réseau IP et routage</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 1ère année — Séance 02 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 1ère année — Séance 02 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Conversion binaire → hexa :** Grouper par 4 bits à partir de la droite, convertir chaque groupe.</li><li>**Conversion hexa → binaire :** Chaque chiffre hexa donne 4 bits.</li><li>**Conversion hexa → décimal :**</li><li>**Usage courant :** L'hexadécimal est utilisé pour représenter les couleurs en HTML/CSS (`#FF0000` pour le rouge, `#FFFFFF` pour le blanc, `#000000` pour le noir), les adresses mémoire, et les adresses MAC.</li><li>**Exemple :** Le mot "Hello" en ASCII :</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_1ère_année_FR_02.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 1ère année — Séance 02 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Convertir un nombre décimal en binaire et vice versa
+- Convertir un nombre binaire en hexadécimal et vice versa
+- Expliquer la différence entre ASCII et Unicode/UTF-8
+- Coder un caractère à partir de son code ASCII ou Unicode
+- Calculer la taille d'une image bitmap (pixels, résolution, profondeur de couleur)
+- Appliquer ces notions à des exemples concrets pour l'enseignement des langues</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction : pourquoi représenter l'information ? <em>(5 min)</em></li>
+<li>Le système binaire (base 2) <em>(20 min)</em></li>
+<li>Le système hexadécimal (base 16) <em>(15 min)</em></li>
+<li>Codage des caractères : ASCII, Unicode, UTF-8 <em>(20 min)</em></li>
+<li>Codage des images : bitmap, pixels, résolution, couleur <em>(20 min)</em></li>
+<li>Applications pédagogiques pour l'enseignement des langues <em>(10 min)</em></li>
+</ol>
+<hr />
+<h2>1. Arbre des codages</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">INFO</span><span class="p">[</span><span class="s">&quot;Information numérique&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">NOMBRES</span><span class="p">[</span><span class="s">&quot;Nombres&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">INFO</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TEXTES</span><span class="p">[</span><span class="s">&quot;Textes&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">INFO</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">IMAGES</span><span class="p">[</span><span class="s">&quot;Images&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">INFO</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SON</span><span class="p">[</span><span class="s">&quot;Son (échantillonnage)&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">NOMBRES</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BIN</span><span class="p">[</span><span class="s">&quot;Binaire (base 2)&lt;br/&gt;0 et 1&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">NOMBRES</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DEC</span><span class="p">[</span><span class="s">&quot;Décimal (base 10)&lt;br/&gt;0-9&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">NOMBRES</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">HEX</span><span class="p">[</span><span class="s">&quot;Hexadécimal (base 16)&lt;br/&gt;0-9, A-F&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">TEXTES</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="nf">ASCII</span><span class="p">[</span><span class="s">&quot;ASCII&lt;br/&gt;128 car. (7 bits)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">TEXTES</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">UNICODE</span><span class="p">[</span><span class="s">&quot;Unicode&lt;br/&gt;~150 000 car.&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kt">UNICODE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">UTF8</span><span class="p">[</span><span class="s">&quot;UTF-8&lt;br/&gt;1-4 octets&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">IMAGES</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BITMAP</span><span class="p">[</span><span class="s">&quot;Bitmap&lt;br/&gt;Matrice de pixels&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BITMAP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">COULEUR</span><span class="p">[</span><span class="s">&quot;Couleur RVB&lt;br/&gt;24 bits/pixel&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BITMAP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">NB</span><span class="p">[</span><span class="s">&quot;Noir &amp; Blanc&lt;br/&gt;1 bit/pixel&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">SON</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ECH</span><span class="p">[</span><span class="s">&quot;Échantillonnage&lt;br/&gt;kHz + quantification&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BIN</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HEX</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="kt">ASCII</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">UTF8</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BITMAP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>L'information numérique</strong> est toujours représentée avec des <strong>0 et des 1</strong> (bits). Tout type de donnée (nombre, texte, image, son, vidéo) est converti en binaire pour être traité par un ordinateur.</p>
+<hr />
+<h2>2. Le système binaire (base 2)</h2>
+<h3>Principe</h3>
+<p>Le système binaire utilise uniquement deux chiffres : <strong>0</strong> et <strong>1</strong>. Chaque position correspond à une puissance de 2.</p>
+<table>
+<thead>
+<tr>
+<th>2⁷</th>
+<th>2⁶</th>
+<th>2⁵</th>
+<th>2⁴</th>
+<th>2³</th>
+<th>2²</th>
+<th>2¹</th>
+<th>2⁰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>128</td>
+<td>64</td>
+<td>32</td>
+<td>16</td>
+<td>8</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3>Conversion décimal → binaire : méthode des divisions successives</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">Exemple</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">convertir</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">binaire</span>
+
+<span class="mi">42</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="o">,</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">(</span><span class="n">bit</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">poids</span><span class="w"> </span><span class="n">faible</span><span class="o">)</span>
+<span class="mi">21</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="o">,</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mi">1</span>
+<span class="mi">10</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="o">,</span><span class="w">  </span><span class="n">reste</span><span class="w"> </span><span class="mi">0</span>
+<span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">,</span><span class="w">  </span><span class="n">reste</span><span class="w"> </span><span class="mi">1</span>
+<span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">,</span><span class="w">  </span><span class="n">reste</span><span class="w"> </span><span class="mi">0</span>
+<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w">  </span><span class="n">reste</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="n">Lecture</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">restes</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">bas</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">haut</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">42</span><span class="err">₁₀</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">101010</span><span class="err">₂</span>
+</code></pre></div>
+
+<h3>Conversion binaire → décimal : méthode des puissances</h3>
+<div class="codehilite"><pre><span></span><code><span class="mf">101010</span><span class="n">₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="err">×</span><span class="mf">2</span><span class="n">⁵</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0</span><span class="err">×</span><span class="mf">2</span><span class="n">⁴</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="err">×</span><span class="mf">2</span><span class="n">³</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0</span><span class="err">×</span><span class="mf">2</span><span class="n">²</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="err">×</span><span class="mf">2</span><span class="n">¹</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0</span><span class="err">×</span><span class="mf">2</span><span class="n">⁰</span>
+<span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mf">32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mf">42</span><span class="n">₁₀</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Binaire → Décimal&quot;</span>
+<span class="w">        </span><span class="n">B1</span><span class="p">[</span><span class="s">&quot;1010₂&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P1</span><span class="p">[</span><span class="s">&quot;1×2³ + 0×2² + 1×2¹ + 0×2⁰&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">P1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R1</span><span class="p">[</span><span class="s">&quot;= 8 + 0 + 2 + 0 = 10₁₀&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Décimal → Binaire&quot;</span>
+<span class="w">        </span><span class="n">DEC1</span><span class="p">[</span><span class="s">&quot;13₁₀&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DIV</span><span class="p">[</span><span class="s">&quot;13÷2=6 r1&lt;br/&gt;6÷2=3 r0&lt;br/&gt;3÷2=1 r1&lt;br/&gt;1÷2=0 r1&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">DIV</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BIN1</span><span class="p">[</span><span class="s">&quot;= 1101₂&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BIN1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Bit = Binary Digit.</strong> Un octet (byte) = 8 bits. Un octet permet de coder 256 valeurs différentes (2⁸).</p>
+<hr />
+<h2>3. Le système hexadécimal (base 16)</h2>
+<h3>Principe</h3>
+<p>L'hexadécimal utilise 16 chiffres : <strong>0-9</strong> puis <strong>A-B-C-D-E-F</strong> (A=10, B=11, C=12, D=13, E=14, F=15).</p>
+<p><strong>Pourquoi l'hexadécimal ?</strong> Parce qu'un chiffre hexa correspond exactement à 4 bits (un quartet), ce qui rend les conversions binaire-hexa très simples.</p>
+<h3>Tableau de conversion</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">block</span><span class="o">-</span><span class="n">beta</span>
+<span class="w">    </span><span class="n">columns</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">    </span><span class="n">block</span><span class="o">:</span><span class="n">group1</span>
+<span class="w">        </span><span class="n">columns</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">        </span><span class="n">B0</span><span class="p">[</span><span class="s">&quot;0000&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">B1</span><span class="p">[</span><span class="s">&quot;0001&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">B2</span><span class="p">[</span><span class="s">&quot;0010&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">B3</span><span class="p">[</span><span class="s">&quot;0011&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B4</span><span class="p">[</span><span class="s">&quot;0100&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">B5</span><span class="p">[</span><span class="s">&quot;0101&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">B6</span><span class="p">[</span><span class="s">&quot;0110&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">B7</span><span class="p">[</span><span class="s">&quot;0111&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B8</span><span class="p">[</span><span class="s">&quot;1000&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">B9</span><span class="p">[</span><span class="s">&quot;1001&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">BA</span><span class="p">[</span><span class="s">&quot;1010&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">BB</span><span class="p">[</span><span class="s">&quot;1011&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">BC</span><span class="p">[</span><span class="s">&quot;1100&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">BD</span><span class="p">[</span><span class="s">&quot;1101&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">BE</span><span class="p">[</span><span class="s">&quot;1110&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">BF</span><span class="p">[</span><span class="s">&quot;1111&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">space</span>
+<span class="w">    </span><span class="n">block</span><span class="o">:</span><span class="n">group2</span>
+<span class="w">        </span><span class="n">columns</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">        </span><span class="n">H0</span><span class="p">[</span><span class="s">&quot;0&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">H1</span><span class="p">[</span><span class="s">&quot;1&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">H2</span><span class="p">[</span><span class="s">&quot;2&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">H3</span><span class="p">[</span><span class="s">&quot;3&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">H4</span><span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">H5</span><span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">H6</span><span class="p">[</span><span class="s">&quot;6&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">H7</span><span class="p">[</span><span class="s">&quot;7&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">H8</span><span class="p">[</span><span class="s">&quot;8&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">H9</span><span class="p">[</span><span class="s">&quot;9&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">HA</span><span class="p">[</span><span class="s">&quot;A&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">HB</span><span class="p">[</span><span class="s">&quot;B&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">HC</span><span class="p">[</span><span class="s">&quot;C&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">HD</span><span class="p">[</span><span class="s">&quot;D&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">HE</span><span class="p">[</span><span class="s">&quot;E&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">HF</span><span class="p">[</span><span class="s">&quot;F&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">space</span>
+<span class="w">    </span><span class="n">block</span><span class="o">:</span><span class="n">group3</span>
+<span class="w">        </span><span class="n">columns</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">        </span><span class="n">D0</span><span class="p">[</span><span class="s">&quot;0&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D1</span><span class="p">[</span><span class="s">&quot;1&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D2</span><span class="p">[</span><span class="s">&quot;2&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D3</span><span class="p">[</span><span class="s">&quot;3&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D4</span><span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D5</span><span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D6</span><span class="p">[</span><span class="s">&quot;6&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D7</span><span class="p">[</span><span class="s">&quot;7&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D8</span><span class="p">[</span><span class="s">&quot;8&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D9</span><span class="p">[</span><span class="s">&quot;9&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D10</span><span class="p">[</span><span class="s">&quot;10&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D11</span><span class="p">[</span><span class="s">&quot;11&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D12</span><span class="p">[</span><span class="s">&quot;12&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D13</span><span class="p">[</span><span class="s">&quot;13&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D14</span><span class="p">[</span><span class="s">&quot;14&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">D15</span><span class="p">[</span><span class="s">&quot;15&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">group1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">group2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">group3</span>
+</code></pre></div>
+
+<p><strong>Conversion binaire → hexa :</strong> Grouper par 4 bits à partir de la droite, convertir chaque groupe.</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1010</span><span class="w"> </span><span class="mf">1110</span><span class="w"> </span><span class="mf">0101</span><span class="n">₂</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="mf">5</span><span class="n">₁₆</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">AE5₁₆</span>
+
+<span class="n">A</span><span class="w"> </span><span class="p">(</span><span class="mf">1010</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="n">₁₀</span>
+<span class="n">E</span><span class="w"> </span><span class="p">(</span><span class="mf">1110</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">14</span><span class="n">₁₀</span>
+<span class="mf">5</span><span class="w"> </span><span class="p">(</span><span class="mf">0101</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="n">₁₀</span>
+</code></pre></div>
+
+<p><strong>Conversion hexa → binaire :</strong> Chaque chiffre hexa donne 4 bits.</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">3</span><span class="n">F₁₆</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">0011</span><span class="w"> </span><span class="mf">1111</span><span class="n">₂</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">111111</span><span class="n">₂</span>
+</code></pre></div>
+
+<p><strong>Conversion hexa → décimal :</strong></p>
+<div class="codehilite"><pre><span></span><code>AE5₁₆ = A×16² + E×16¹ + 5×16⁰
+      = 10×256 + 14×16 + 5
+      = 2560 + 224 + 5
+      = 2789₁₀
+</code></pre></div>
+
+<p><strong>Usage courant :</strong> L'hexadécimal est utilisé pour représenter les couleurs en HTML/CSS (<code>#FF0000</code> pour le rouge, <code>#FFFFFF</code> pour le blanc, <code>#000000</code> pour le noir), les adresses mémoire, et les adresses MAC.</p>
+<hr />
+<h2>4. Codage des caractères</h2>
+<h3>ASCII (American Standard Code for Information Interchange)</h3>
+<ul>
+<li>Créé en 1963, standardisé en 1967</li>
+<li><strong>7 bits</strong> par caractère → 128 caractères (0-127)</li>
+<li>Contient : lettres anglaises (A-Z, a-z), chiffres (0-9), signes de ponctuation, caractères de contrôle</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Table ASCII (extrait)&quot;</span>
+<span class="w">        </span><span class="n">L1</span><span class="p">[</span><span class="s">&quot;65 → A&lt;br/&gt;66 → B&lt;br/&gt;67 → C&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L2</span><span class="p">[</span><span class="s">&quot;97 → a&lt;br/&gt;98 → b&lt;br/&gt;99 → c&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L3</span><span class="p">[</span><span class="s">&quot;48 → 0&lt;br/&gt;49 → 1&lt;br/&gt;50 → 2&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L4</span><span class="p">[</span><span class="s">&quot;32 → espace&lt;br/&gt;33 → !&lt;br/&gt;63 → ?&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Limitation&quot;</span>
+<span class="w">        </span><span class="n">LIM</span><span class="p">[</span><span class="s">&quot;Pas d&#39;</span><span class="n">accents</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Pas</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="err">ç</span><span class="p">,</span><span class="w"> </span><span class="err">é</span><span class="p">,</span><span class="w"> </span><span class="err">è</span><span class="p">,</span><span class="w"> </span><span class="err">ê</span><span class="p">,</span><span class="w"> </span><span class="err">œ</span><span class="p">,</span><span class="w"> </span><span class="err">æ</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Pas</span><span class="w"> </span><span class="n">d</span><span class="s">&#39;arabe, chinois, etc.&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">L1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">LIM</span>
+<span class="w">    </span><span class="n">L2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">LIM</span>
+<span class="w">    </span><span class="n">L3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">LIM</span>
+<span class="w">    </span><span class="n">L4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">LIM</span>
+</code></pre></div>
+
+<p><strong>Exemple :</strong> Le mot "Hello" en ASCII :</p>
+<div class="codehilite"><pre><span></span><code>H → 72 → 0100 1000
+e → 101 → 0110 0101
+l → 108 → 0110 1100
+l → 108 → 0110 1100
+o → 111 → 0110 1111
+</code></pre></div>
+
+<h3>Unicode et UTF-8</h3>
+<p><strong>Unicode :</strong> Répertoire universel de caractères. Chaque caractère possède un <strong>point de code</strong> unique (ex: U+0041 pour 'A', U+00E9 pour 'é', U+0628 pour 'ب').</p>
+<p><strong>UTF-8 :</strong> Encodage dominant sur le Web (&gt; 95%). Utilise de <strong>1 à 4 octets</strong> par caractère :
+- 1 octet : caractères ASCII (U+0000 à U+007F) — compatibilité ascendante
+- 2 octets : lettres accentuées, alphabets grec, cyrillique, arabe (U+0080 à U+07FF)
+- 3 octets : caractères asiatiques (CJK), symboles divers (U+0800 à U+FFFF)
+- 4 octets : caractères rares, émojis (U+10000 à U+10FFFF)</p>
+<p><strong>Exemples :</strong> A (U+0041, 1 octet 41), é (U+00E9, 2 octets C3 A9), ç (U+00E7, C3 A7), œ (U+0153, C5 93), ب (U+0628, D8 A8), 😀 (U+1F600, 4 octets F0 9F 98 80).</p>
+<p><strong>Application pour l'enseignement du français :</strong> Les caractères accentués (é, è, ê, ë, à, â, ç, œ, æ, î, ï, ô, û, ü) sont codés sur 2 octets en UTF-8. Un fichier texte contenant du français doit être enregistré en UTF-8 pour éviter les problèmes d'affichage (apparition de « ?? » ou de caractères illisibles).</p>
+<hr />
+<h2>5. Codage des images bitmap</h2>
+<h3>Schéma d'une image bitmap</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">graph</span><span class="w"> </span><span class="nv">TB</span>
+<span class="w">    </span><span class="nv">subgraph</span><span class="w"> </span><span class="s2">&quot;Image bitmap 4×4&quot;</span>
+<span class="w">        </span><span class="nv">P11</span>[<span class="s2">&quot;(255,0,0)&quot;</span>]<span class="w"> </span><span class="nv">P12</span>[<span class="s2">&quot;(255,0,0)&quot;</span>]<span class="w"> </span><span class="nv">P13</span>[<span class="s2">&quot;(0,0,255)&quot;</span>]<span class="w"> </span><span class="nv">P14</span>[<span class="s2">&quot;(0,0,255)&quot;</span>]
+<span class="w">        </span><span class="nv">P21</span>[<span class="s2">&quot;(255,0,0)&quot;</span>]<span class="w"> </span><span class="nv">P22</span>[<span class="s2">&quot;(255,0,0)&quot;</span>]<span class="w"> </span><span class="nv">P23</span>[<span class="s2">&quot;(0,0,255)&quot;</span>]<span class="w"> </span><span class="nv">P24</span>[<span class="s2">&quot;(0,0,255)&quot;</span>]
+<span class="w">        </span><span class="nv">P31</span>[<span class="s2">&quot;(0,255,0)&quot;</span>]<span class="w"> </span><span class="nv">P32</span>[<span class="s2">&quot;(0,255,0)&quot;</span>]<span class="w"> </span><span class="nv">P33</span>[<span class="s2">&quot;(255,255,0)&quot;</span>]<span class="w"> </span><span class="nv">P34</span>[<span class="s2">&quot;(255,255,0)&quot;</span>]
+<span class="w">        </span><span class="nv">P41</span>[<span class="s2">&quot;(0,255,0)&quot;</span>]<span class="w"> </span><span class="nv">P42</span>[<span class="s2">&quot;(0,255,0)&quot;</span>]<span class="w"> </span><span class="nv">P43</span>[<span class="s2">&quot;(255,255,0)&quot;</span>]<span class="w"> </span><span class="nv">P44</span>[<span class="s2">&quot;(255,255,0)&quot;</span>]
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="nv">subgraph</span><span class="w"> </span><span class="s2">&quot;Légende&quot;</span>
+<span class="w">        </span><span class="nv">R</span>[<span class="s2">&quot;Rouge = (255,0,0)&lt;br/&gt;RVB 24 bits&quot;</span>]
+<span class="w">        </span><span class="nv">B</span>[<span class="s2">&quot;Bleu = (0,0,255)&quot;</span>]
+<span class="w">        </span><span class="nv">G</span>[<span class="s2">&quot;Vert = (0,255,0)&quot;</span>]
+<span class="w">        </span><span class="nv">J</span>[<span class="s2">&quot;Jaune = (255,255,0)&quot;</span>]
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="nv">fill</span>:#<span class="nv">ff0000</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="nv">fill</span>:<span class="sc">#0000</span><span class="nv">ff</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="nv">fill</span>:<span class="sc">#00</span><span class="nv">ff00</span>,<span class="nv">color</span>:<span class="sc">#000</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">J</span><span class="w"> </span><span class="nv">fill</span>:#<span class="nv">ffff00</span>,<span class="nv">color</span>:<span class="sc">#000</span>
+</code></pre></div>
+
+<p><strong>Pixel = Picture Element.</strong> Plus petite unité d'une image numérique.</p>
+<p><strong>Résolution :</strong> nombre de pixels (largeur × hauteur). Exemple : 1920 × 1080 = 2 073 600 pixels (Full HD).</p>
+<p><strong>Profondeur de couleur :</strong> nombre de bits par pixel (bpp).
+- 1 bpp : noir et blanc (2 couleurs)
+- 8 bpp : 256 couleurs (palette)
+- 24 bpp : 16,7 millions de couleurs (RVB : 8 bits par canal)
+- 32 bpp : 24 bits + canal alpha (transparence)</p>
+<h3>Calcul de la taille d'une image</h3>
+<div class="codehilite"><pre><span></span><code>Taille (en octets) = Largeur × Hauteur × (Profondeur / 8)
+
+Exemple : image 1920 × 1080 en 24 bits
+Taille = 1920 × 1080 × 3
+       = 6 220 800 octets
+       ≈ 5,93 Mo
+</code></pre></div>
+
+<p><strong>Exercice :</strong> Une image de 800 × 600 pixels en noir et blanc (1 bit/pixel) pèse :</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">800</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mf">600</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mf">1</span><span class="o">/</span><span class="mf">8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="mf">000</span><span class="w"> </span><span class="n">octets</span><span class="w"> </span><span class="err">≈</span><span class="w"> </span><span class="mf">58</span><span class="p">,</span><span class="mf">6</span><span class="w"> </span><span class="n">Ko</span>
+</code></pre></div>
+
+<p><strong>Comparaison :</strong> Une photo en 24 bits de 12 mégapixels (4000 × 3000) pèse :</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">4000</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mf">3000</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">36</span><span class="w"> </span><span class="mf">000</span><span class="w"> </span><span class="mf">000</span><span class="w"> </span><span class="n">octets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">36</span><span class="w"> </span><span class="n">Mo</span><span class="w"> </span><span class="p">(</span><span class="n">non</span><span class="w"> </span><span class="n">compressé</span><span class="p">)</span>
+</code></pre></div>
+
+<p>C'est pourquoi les formats compressés (JPEG, PNG) sont utilisés.</p>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Combien de bits y a-t-il dans un octet ?</strong>
+   a) 4 bits  b) 8 bits ✓  c) 16 bits</p>
+</li>
+<li>
+<p><strong>Quelle est la valeur décimale de 1010₂ ?</strong>
+   a) 8  b) 10 ✓  c) 12</p>
+</li>
+<li>
+<p><strong>Quel encodage de caractères est dominant sur le Web ?</strong>
+   a) ASCII  b) UTF-8 ✓  c) ISO-8859-1</p>
+</li>
+<li>
+<p><strong>Combien d'octets utilise UTF-8 pour coder le caractère « é » ?</strong>
+   a) 1 octet  b) 2 octets ✓  c) 3 octets</p>
+</li>
+<li>
+<p><strong>Une image de 1024 × 768 pixels en 24 bits pèse approximativement :</strong>
+   a) 768 Ko  b) 2,25 Mo ✓  c) 5 Mo</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion</h2>
+<p>La représentation de l'information est le fondement de toute l'informatique. Les conversions binaire/hexa/décimal, le codage des caractères (ASCII, Unicode/UTF-8) et le codage des images sont des notions essentielles pour comprendre comment un ordinateur stocke et manipule les données. Pour un enseignant de français, la maîtrise du codage UTF-8 est particulièrement importante pour éviter les problèmes d'affichage des caractères accentués dans les documents numériques.</p>
+<p><strong>Prochaine séance :</strong> Architecture machine — le modèle de von Neumann et le cycle d'exécution.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> En classe de SNT Seconde (thème « Données structurées »), on peut proposer :
+- Activité débranchée : coder son prénom en binaire avec des cartes noires (0) et blanches (1)
+- Activité : convertir des mots français en ASCII, puis constater que les accents ne sont pas codés
+- Activité : créer une image bitmap en noir et blanc sur papier quadrillé (chaque case = un pixel)</p>
+<p><strong>Lien avec les langues :</strong> Expliquer pourquoi certains caractères français (œ, æ, Œ, Æ) peuvent poser problème dans des fichiers exportés depuis Word vers un autre logiciel (problème d'encodage). Montrer l'importance de toujours enregistrer en UTF-8.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Pour aider les élèves à visualiser les concepts abstraits de codage, privilégier les activités débranchées (cartes, papier quadrillé) avant de passer aux outils numériques. Utiliser le site « Codage binaire » pour des exercices interactifs. Rappeler que la maîtrise du codage des caractères est essentielle pour les enseignants de français qui manipulent des fichiers texte avec accents.
+<strong>Prolongement :</strong> Les étudiants peuvent approfondir en explorant le codage des images (bitmap, RVB, compression JPEG) et le codage audio (échantillonnage, quantification). Proposer une activité complémentaire : créer une image bitmap en Python à partir d'une matrice de pixels en niveaux de gris (projet interdisciplinaire mathématiques-informatique).</p>
+<hr />
+<h2>Bibliographie</h2>
+<ul>
+<li>Goupille, P. (2014). <em>Technologie des ordinateurs</em>. Éditions Dunod (chapitres 1 et 2).</li>
+<li>Tanenbaum, A. &amp; Austin, T. (2012). <em>Architecture de l'ordinateur</em> (6e éd.). Pearson.</li>
+<li>Unicode Consortium (2024). <em>The Unicode Standard</em> — https://unicode.org</li>
+<li>Dowek, G. et al. (2019). <em>SNT Seconde — Sciences Numériques et Technologie</em>. Hachette.</li>
+<li>Wikipedia — « Codage des caractères », « Image bitmap », « UTF-8 » (consultation libre).</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

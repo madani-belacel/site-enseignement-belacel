@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD 03 — QoS et Traffic Shaping pour Applications Multimédia — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TD 03 — QoS et Traffic Shaping pour Applications Multimédia</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    
+    <h1>TD 03 — QoS et Traffic Shaping pour Applications Multimédia</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Master RSID</td>
+</tr>
+<tr>
+<td><strong>Semestre</strong></td>
+<td>M2</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>2 h</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>Projet-Recherche</td>
+</tr>
+<tr>
+<td><strong>Enseignant</strong></td>
+<td>BELACEL Madani</td>
+</tr>
+<tr>
+<td><strong>Chapitres associés</strong></td>
+<td>Ch. 03</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs</h2>
+<ul>
+<li>Configurer des classes DiffServ pour trafic multimédia</li>
+<li>Mettre en œuvre du traffic shaping (policing, shaping)</li>
+<li>Analyser l'impact des paramètres QoS sur la perception utilisateur</li>
+</ul>
+<h2>Consignes générales</h2>
+<ul>
+<li>Justifier toutes les réponses (calculs, schémas, tableaux).</li>
+<li>Les schémas doivent être lisibles et légendés.</li>
+<li>Durée indicative : 2 h en autonomie encadrée.</li>
+</ul>
+<hr />
+<h2>Exercice 1 — Classification DiffServ (6 pts)</h2>
+<p>On considère un réseau IP supportant trois types de trafic :</p>
+<table>
+<thead>
+<tr>
+<th>Trafic</th>
+<th>DSCP</th>
+<th>Bande passante requise</th>
+<th>Sensibilité latence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VoIP</td>
+<td>EF (46)</td>
+<td>128 Kbps par flux</td>
+<td>&lt; 150 ms</td>
+</tr>
+<tr>
+<td>Vidéo 4K</td>
+<td>AF41 (34)</td>
+<td>25 Mbps par flux</td>
+<td>&lt; 200 ms</td>
+</tr>
+<tr>
+<td>Web / Mail</td>
+<td>BE (0)</td>
+<td>Best-effort</td>
+<td>Aucune</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Proposer une politique de classification sur le routeur d'accès.</li>
+<li>Justifier l'ordre de priorité des files d'attente.</li>
+</ol>
+<hr />
+<h2>Exercice 2 — Traffic Shaping (6 pts)</h2>
+<p>Un fournisseur d'accès propose un abonnement 100 Mbps avec un CIR (Committed Information Rate) de 50 Mbps et un CBS (Committed Burst Size) de 10 Mo.</p>
+<ol>
+<li>Expliquer le rôle du token bucket dans ce contexte.</li>
+<li>Calculer le temps nécessaire pour écouler un burst de 50 Mo.</li>
+<li>Proposer une configuration d'interface routeur Cisco (policy-map, class, shape/police).</li>
+</ol>
+<hr />
+<h2>Exercice 3 — QoS E2E (4 pts)</h2>
+<p>Décrire la chaîne de traitement QoS de bout en bout pour un appel VoIP entre deux sites distants (Site A → FAI → CDN → Site B). Préciser les points de dégradation possibles.</p>
+<hr />
+<h2>Exercice 4 — Analyse MOS (4 pts)</h2>
+<p>À partir des métriques de QoS collectées (latence = 180 ms, jitter = 40 ms, perte = 2 %), estimer la note MOS (Mean Opinion Score) de la communication VoIP. La formule simplifiée est :</p>
+<div class="codehilite"><pre><span></span><code>MOS = 4.5 - 0.03 <span class="gs">* L - 0.01 *</span> J - 0.2 * P
+</code></pre></div>
+
+<p>où L = latence (ms), J = jitter (ms), P = perte (%).</p>
+<hr />
+<h2>Annexe — Corrigé TD 03</h2>
+<ol>
+<li>Classification : class-map match-all VOIP → match dscp EF ; class-map match-all VIDEO → match dscp AF41 ; class-map match-all WEB → match dscp default</li>
+<li>Token bucket : le seau se remplit à 50 Mbps (CIR), taille max 10 Mo (CBS) ; un burst de 50 Mo nécessite (50-10)/50 + 10/50 = 0.8 + 0.2 = 1.0 s si le seau était plein</li>
+<li>Chafne E2E : terminal → switch accès → routeur aggregation → FAI → internet → CDN → site B ; dégradations : congestion accès, bufferbloat, perte paquets, jitter accumulateur</li>
+<li>MOS = 4.5 - 0.03<em>180 - 0.01</em>40 - 0.2*2 = 4.5 - 5.4 - 0.4 - 0.4 = -1.7 → qualité inacceptable. Seuils à respecter : latence &lt; 150 ms, jitter &lt; 30 ms, perte &lt; 1 %.</li>
+</ol>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 03</li>
+<li>RFC 2474 — Definition of the DS Field</li>
+<li>RFC 4594 — Configuration Guidelines for DiffServ</li>
+<li>ITU-T G.107 — The E-Model for VoIP</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

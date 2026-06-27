@@ -1,0 +1,796 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 02 — Modèle OSI et pile TCP/IP — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 02 — Modèle OSI et pile TCP/IP</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Scénario** : Un étudiant Université de Mostaganem ouvre un navigateur et accède à `http://www.univ-mosta.dz`</li><li>**Énoncé** : Pour chaque protocole, indiquez la couche OSI et TCP/IP correspondante :</li></ul></div>
+    <h1>Chapitre 02 — Modèle OSI et pile TCP/IP</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>UEF422 — Réseaux</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM (+ 2 h TD associé)</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>02 / 08</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[KR] Ch. 1.3 ; [FO] Ch. 2 ; [TA] Ch. 1.4</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs du chapitre</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li>Décrire les <strong>7 couches du modèle OSI</strong> et leurs fonctions respectives.</li>
+<li>Décrire les <strong>4 couches de la pile TCP/IP</strong> et leur correspondance avec OSI.</li>
+<li>Expliquer le mécanisme d'<strong>encapsulation</strong> et de <strong>désencapsulation</strong> des données.</li>
+<li>Identifier la <strong>PDU</strong> (Protocol Data Unit) associée à chaque couche.</li>
+<li>Comparer les modèles OSI et TCP/IP (approche théorique vs implémentation réelle).</li>
+</ol>
+<hr />
+<h2>Plan du chapitre</h2>
+<ol>
+<li>Pourquoi un modèle en couches ?</li>
+<li>Le modèle OSI (ISO 7498)</li>
+<li>La pile TCP/IP (DoD)</li>
+<li>Correspondance OSI ↔ TCP/IP</li>
+<li>Encapsulation et désencapsulation</li>
+<li>Exemples concrets : parcours d'une requête HTTP</li>
+<li>Questions de révision et QCM</li>
+</ol>
+<hr />
+<h2>1. Pourquoi un modèle en couches ?</h2>
+<h3>1.1 Problématique</h3>
+<p>Construire un réseau global impliquant des technologies hétérogènes (cuivre, fibre, Wi-Fi, différents fabricants) nécessite une <strong>architecture structurée</strong> pour :</p>
+<ul>
+<li><strong>Modulariser</strong> les fonctions (chaque couche a un rôle précis)</li>
+<li><strong>Faciliter l'interopérabilité</strong> (standardisation)</li>
+<li><strong>Permettre l'évolution</strong> indépendante de chaque couche</li>
+<li><strong>Simplifier l'enseignement</strong> et le dépannage</li>
+</ul>
+<h3>1.2 Principe fondamental</h3>
+<blockquote>
+<p>Chaque couche <strong>utilise les services</strong> de la couche inférieure et <strong>offre des services</strong> à la couche supérieure.</p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────────────┐
+│           Couche N+1 (Application)          │
+├─────────────────────────────────────────────┤
+│           Couche N   (Transport)            │
+├─────────────────────────────────────────────┤
+│           Couche N-1 (Réseau)               │
+├─────────────────────────────────────────────┤
+│           Couche N-2 (Liaison)              │
+├─────────────────────────────────────────────┤
+│           Couche N-3 (Physique)             │
+└─────────────────────────────────────────────┘
+         ▲                           │
+    Services offerts          Services utilisés
+</code></pre></div>
+
+<hr />
+<h2>2. Le modèle OSI (ISO 7498)</h2>
+<p>Le modèle <strong>OSI</strong> (<em>Open Systems Interconnection</em>), standardisé par l'<strong>ISO</strong> en 1984, définit <strong>7 couches</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Nom</th>
+<th>Fonction principale</th>
+<th>PDU</th>
+<th>Exemples de protocoles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>Application</strong></td>
+<td>Interface avec l'utilisateur et les applications</td>
+<td><strong>Data</strong></td>
+<td>HTTP, DNS, FTP, SMTP</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>Présentation</strong></td>
+<td>Format des données, chiffrement, compression</td>
+<td>Data</td>
+<td>SSL/TLS, JPEG, ASCII</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>Session</strong></td>
+<td>Établissement, gestion, fermeture de sessions</td>
+<td>Data</td>
+<td>NetBIOS, RPC</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>Transport</strong></td>
+<td>Communication bout-à-bout fiable ou non</td>
+<td><strong>Segment</strong> (TCP) / <strong>Datagramme</strong> (UDP)</td>
+<td>TCP, UDP</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>Réseau</strong></td>
+<td>Adressage logique, routage inter-réseaux</td>
+<td><strong>Paquet</strong></td>
+<td>IP, ICMP, OSPF</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>Liaison de données</strong></td>
+<td>Accès au média, adressage physique, détection d'erreurs</td>
+<td><strong>Trame</strong></td>
+<td>Ethernet, Wi-Fi (802.11), PPP</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><strong>Physique</strong></td>
+<td>Transmission des bits sur le média</td>
+<td><strong>Bits</strong></td>
+<td>Câbles, connecteurs, signaux</td>
+</tr>
+</tbody>
+</table>
+<h3>2.1 Mnémotechnique</h3>
+<blockquote>
+<p><strong>« All People Seem To Need Data Processing »</strong>
+Application — Présentation — Session — Transport — Network — Data Link — Physical</p>
+</blockquote>
+<p>Version francophone :</p>
+<blockquote>
+<p><strong>« Astrologues Persévérants Servent Théoriquement Neuf Dieux Parfaits »</strong></p>
+</blockquote>
+<h3>2.2 Détail par couche</h3>
+<h4>Couche 1 — Physique</h4>
+<ul>
+<li>Transmet les <strong>bits</strong> (0 et 1) sur le support physique.</li>
+<li>Définit : tensions, fréquences, connecteurs (RJ-45), topologie physique.</li>
+</ul>
+<h4>Couche 2 — Liaison de données</h4>
+<ul>
+<li>Organise les bits en <strong>trames</strong>, détecte/corrige les erreurs.</li>
+<li>Adressage <strong>MAC</strong> (48 bits, ex : <code>AA:BB:CC:DD:EE:FF</code>).</li>
+<li>Commutation locale (switch).</li>
+</ul>
+<h4>Couche 3 — Réseau</h4>
+<ul>
+<li><strong>Adressage logique</strong> (IPv4/IPv6), <strong>routage</strong> entre réseaux.</li>
+<li>Le routeur est l'équipement clé de cette couche.</li>
+</ul>
+<h4>Couche 4 — Transport</h4>
+<ul>
+<li>Communication <strong>de bout en bout</strong> entre processus (applications).</li>
+<li><strong>Ports</strong> (16 bits, 0–65535) pour multiplexer les applications.</li>
+<li>TCP : fiable, ordonné. UDP : rapide, sans connexion.</li>
+</ul>
+<h4>Couches 5, 6, 7 — Session, Présentation, Application</h4>
+<ul>
+<li>En pratique, souvent <strong>regroupées</strong> en « couche Application » dans TCP/IP.</li>
+<li>Gestion des sessions, format des données, protocoles applicatifs.</li>
+</ul>
+<p><img alt="Modèle OSI — 7 couches" src="../../../Ressources-Communes/Images-Schemas/OSI-TCP-IP/modele-osi-7-couches.png" /></p>
+<hr />
+<h2>3. La pile TCP/IP</h2>
+<p>La pile <strong>TCP/IP</strong> (<em>Transmission Control Protocol / Internet Protocol</em>), développée pour <strong>ARPANET</strong> puis <strong>Internet</strong>, est le modèle <strong>réellement implémenté</strong>. Elle comporte <strong>4 couches</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Couche TCP/IP</th>
+<th>Fonction</th>
+<th>Protocoles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Application</strong></td>
+<td>Services réseau aux applications</td>
+<td>HTTP, DNS, FTP, SMTP, SSH, Telnet</td>
+</tr>
+<tr>
+<td><strong>Transport</strong></td>
+<td>Communication bout-à-bout</td>
+<td><strong>TCP</strong>, <strong>UDP</strong></td>
+</tr>
+<tr>
+<td><strong>Internet</strong></td>
+<td>Adressage et routage</td>
+<td><strong>IP</strong> (v4/v6), ICMP, ARP</td>
+</tr>
+<tr>
+<td><strong>Accès réseau</strong></td>
+<td>Transmission sur le média physique</td>
+<td>Ethernet, Wi-Fi, PPP</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">OSI</span><span class="p">[</span><span class="s">&quot;Modèle OSI (7 couches)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">        </span><span class="n">L7</span><span class="p">[</span><span class="mi">7</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Application</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L6</span><span class="p">[</span><span class="mi">6</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Présentation</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L5</span><span class="p">[</span><span class="mi">5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Session</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L4</span><span class="p">[</span><span class="mi">4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Transport</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L3</span><span class="p">[</span><span class="mi">3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Réseau</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L2</span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Liaison</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L1</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Physique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">TCPIP</span><span class="p">[</span><span class="s">&quot;Pile TCP/IP (4 couches)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">Application</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T</span><span class="p">[</span><span class="n">Transport</span><span class="p">]</span>
+<span class="w">        </span><span class="n">I</span><span class="p">[</span><span class="n">Internet</span><span class="p">]</span>
+<span class="w">        </span><span class="n">N</span><span class="p">[</span><span class="n">Accès</span><span class="w"> </span><span class="n">réseau</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">L7</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A</span>
+<span class="w">    </span><span class="n">L6</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A</span>
+<span class="w">    </span><span class="n">L5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A</span>
+<span class="w">    </span><span class="n">L4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T</span>
+<span class="w">    </span><span class="n">L3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span>
+<span class="w">    </span><span class="n">L2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">N</span>
+<span class="w">    </span><span class="n">L1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">N</span>
+</code></pre></div>
+
+<hr />
+<h2>4. Correspondance OSI ↔ TCP/IP</h2>
+<table>
+<thead>
+<tr>
+<th>Couche OSI</th>
+<th>Couche TCP/IP</th>
+<th>Équipement associé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7 — Application</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6 — Présentation</td>
+<td><strong>Application</strong></td>
+<td>Passerelle, proxy</td>
+</tr>
+<tr>
+<td>5 — Session</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4 — Transport</td>
+<td><strong>Transport</strong></td>
+<td>Firewall L4</td>
+</tr>
+<tr>
+<td>3 — Réseau</td>
+<td><strong>Internet</strong></td>
+<td><strong>Routeur</strong></td>
+</tr>
+<tr>
+<td>2 — Liaison</td>
+<td><strong>Accès réseau</strong></td>
+<td><strong>Switch</strong>, carte réseau</td>
+</tr>
+<tr>
+<td>1 — Physique</td>
+<td><strong>Accès réseau</strong></td>
+<td>Hub, câbles, répéteur</td>
+</tr>
+</tbody>
+</table>
+<h3>4.1 Tableau comparatif OSI vs TCP/IP</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Modèle OSI</th>
+<th>Pile TCP/IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Origine</strong></td>
+<td>ISO (1984)</td>
+<td>DARPA / ARPANET (1970s)</td>
+</tr>
+<tr>
+<td><strong>Couches</strong></td>
+<td>7</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Nature</strong></td>
+<td>Modèle de <strong>référence</strong> théorique</td>
+<td>Modèle <strong>implémenté</strong> (Internet)</td>
+</tr>
+<tr>
+<td><strong>Développement</strong></td>
+<td>Protocoles définis <strong>après</strong> le modèle</td>
+<td>Protocoles définis <strong>avant</strong> le modèle</td>
+</tr>
+<tr>
+<td><strong>Usage actuel</strong></td>
+<td>Pédagogique, diagnostic</td>
+<td>Production (Internet)</td>
+</tr>
+<tr>
+<td><strong>Couches 5-6 OSI</strong></td>
+<td>Distinctes</td>
+<td>Fusionnées dans Application</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>En pratique</strong> : On utilise le modèle <strong>OSI pour comprendre et diagnostiquer</strong>, et la pile <strong>TCP/IP pour implémenter</strong>.</p>
+</blockquote>
+<hr />
+<h2>5. Encapsulation et désencapsulation</h2>
+<h3>5.1 Principe de l'encapsulation</h3>
+<p>Lorsqu'une application envoie des données, chaque couche ajoute son <strong>en-tête</strong> (header) — parfois un <strong>pied de page</strong> (trailer) — avant de transmettre à la couche inférieure. Ce processus s'appelle l'<strong>encapsulation</strong>.</p>
+<div class="codehilite"><pre><span></span><code>Application  │  Data (Données)
+             ▼
+Transport    │ [En-tête TCP/UDP │ Data]                    = Segment
+             ▼
+Réseau       │ [En-tête IP │ En-tête TCP/UDP │ Data]       = Paquet
+             ▼
+Liaison      │ [En-tête Eth │ En-tête IP │ ... │ Data │ FCS] = Trame
+             ▼
+Physique     │  0 1 0 1 1 0 0 1 ...                          = Bits
+</code></pre></div>
+
+<h3>5.2 PDU par couche</h3>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Nom de la PDU</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td><strong>Data</strong> (Données)</td>
+<td>Message applicatif (ex : requête HTTP)</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td><strong>Segment</strong> (TCP) ou <strong>Datagramme</strong> (UDP)</td>
+<td>En-tête TCP/UDP + Data</td>
+</tr>
+<tr>
+<td>Réseau</td>
+<td><strong>Paquet</strong> (Packet)</td>
+<td>En-tête IP + Segment</td>
+</tr>
+<tr>
+<td>Liaison</td>
+<td><strong>Trame</strong> (Frame)</td>
+<td>En-tête Ethernet + Paquet + FCS</td>
+</tr>
+<tr>
+<td>Physique</td>
+<td><strong>Bits</strong></td>
+<td>Signal électrique/optique</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 Désencapsulation (réception)</h3>
+<p>À la réception, chaque couche <strong>retire son en-tête</strong> et transmet le contenu à la couche supérieure :</p>
+<div class="codehilite"><pre><span></span><code>Bits → Trame → Paquet → Segment → Data → Application
+  L1     L2      L3       L4        L7
+</code></pre></div>
+
+<p><img alt="Encapsulation des données" src="../../../Ressources-Communes/Images-Schemas/OSI-TCP-IP/encapsulation-pdu.png" /></p>
+<h3>5.4 Exemple : en-têtes d'une trame Ethernet/IP/TCP</h3>
+<table>
+<thead>
+<tr>
+<th>En-tête</th>
+<th>Taille</th>
+<th>Champs principaux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ethernet II</strong></td>
+<td>14 octets</td>
+<td>MAC dest (6), MAC src (6), Type (2)</td>
+</tr>
+<tr>
+<td><strong>IP (v4)</strong></td>
+<td>20 octets min.</td>
+<td>IP src, IP dest, TTL, Protocole</td>
+</tr>
+<tr>
+<td><strong>TCP</strong></td>
+<td>20 octets min.</td>
+<td>Port src, Port dest, Seq, Ack, Flags</td>
+</tr>
+<tr>
+<td><strong>HTTP</strong></td>
+<td>Variable</td>
+<td>GET /index.html HTTP/1.1 …</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Exemple concret : parcours d'une requête HTTP</h2>
+<p><strong>Scénario</strong> : Un étudiant Université de Mostaganem ouvre un navigateur et accède à <code>http://www.univ-mosta.dz</code></p>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Couche</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Application</td>
+<td>Le navigateur forme la requête <code>GET / HTTP/1.1</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Transport</td>
+<td>TCP établit une connexion (3-way handshake) vers port 80</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Réseau</td>
+<td>IP encapsule avec adresse source (192.168.1.10) et dest (IP du serveur)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Liaison</td>
+<td>Ethernet ajoute les adresses MAC source et destination</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Physique</td>
+<td>Les bits sont transmis sur le câble / Wi-Fi</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Routeur</td>
+<td>Lit l'en-tête IP (couche 3), route vers le réseau suivant</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Serveur</td>
+<td>Désencapsulation couche par couche, traitement HTTP</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Retour</td>
+<td>La page HTML remonte les couches en sens inverse</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="err">É</span><span class="n">tudiant</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">SW</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Switch</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Routeur</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Serveur</span><span class="w"> </span><span class="n">Web</span>
+
+<span class="w">    </span><span class="n">PC</span><span class="o">-&gt;&gt;</span><span class="n">SW</span><span class="o">:</span><span class="w"> </span><span class="n">Trame</span><span class="w"> </span><span class="n">Ethernet</span><span class="w"> </span><span class="p">(</span><span class="n">IP</span><span class="o">+</span><span class="n">TCP</span><span class="o">+</span><span class="n">HTTP</span><span class="w"> </span><span class="n">GET</span><span class="p">)</span>
+<span class="w">    </span><span class="n">SW</span><span class="o">-&gt;&gt;</span><span class="n">R</span><span class="o">:</span><span class="w"> </span><span class="n">Trame</span><span class="w"> </span><span class="p">(</span><span class="n">commutation</span><span class="w"> </span><span class="n">L2</span><span class="p">)</span>
+<span class="w">    </span><span class="n">R</span><span class="o">-&gt;&gt;</span><span class="n">S</span><span class="o">:</span><span class="w"> </span><span class="n">Paquet</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">routé</span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;&gt;</span><span class="n">R</span><span class="o">:</span><span class="w"> </span><span class="n">Réponse</span><span class="w"> </span><span class="n">HTTP</span><span class="w"> </span><span class="p">(</span><span class="n">HTML</span><span class="p">)</span>
+<span class="w">    </span><span class="n">R</span><span class="o">-&gt;&gt;</span><span class="n">SW</span><span class="o">:</span><span class="w"> </span><span class="n">Paquet</span><span class="w"> </span><span class="n">retour</span>
+<span class="w">    </span><span class="n">SW</span><span class="o">-&gt;&gt;</span><span class="n">PC</span><span class="o">:</span><span class="w"> </span><span class="n">Trame</span><span class="w"> </span><span class="n">livrée</span>
+</code></pre></div>
+
+<hr />
+<h2>7. Adressage à chaque couche</h2>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Type d'adresse</th>
+<th>Exemple</th>
+<th>Portée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Liaison (L2)</td>
+<td><strong>Adresse MAC</strong></td>
+<td><code>4C:EB:42:A1:B2:C3</code></td>
+<td>Segment local (LAN)</td>
+</tr>
+<tr>
+<td>Réseau (L3)</td>
+<td><strong>Adresse IP</strong></td>
+<td><code>192.168.1.10</code></td>
+<td>Inter-réseaux (global avec routage)</td>
+</tr>
+<tr>
+<td>Transport (L4)</td>
+<td><strong>Port</strong></td>
+<td><code>443</code> (HTTPS)</td>
+<td>Processus sur un hôte</td>
+</tr>
+<tr>
+<td>Application (L7)</td>
+<td><strong>URL / nom de domaine</strong></td>
+<td><code>www.univ-mosta.dz</code></td>
+<td>Service utilisateur</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Règle clé</strong> : Les adresses <strong>MAC</strong> ne traversent pas les routeurs ; les adresses <strong>IP</strong> sont conservées de bout en bout.</p>
+</blockquote>
+<hr />
+<h2>8. Questions de révision</h2>
+<h3>Questions ouvertes</h3>
+<ol>
+<li>Citez les 7 couches OSI dans l'ordre et donnez la fonction de chacune.</li>
+<li>Quelle est la PDU de la couche Transport ? Et celle de la couche Liaison ?</li>
+<li>Expliquez l'encapsulation avec un exemple concret.</li>
+<li>Pourquoi le modèle OSI est-il utile même si TCP/IP est le standard implémenté ?</li>
+<li>Quel équipement fonctionne en couche 3 ? Et en couche 2 ?</li>
+</ol>
+<h3>Exercice d'application</h3>
+<p><strong>Énoncé</strong> : Pour chaque protocole, indiquez la couche OSI et TCP/IP correspondante :</p>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Couche OSI</th>
+<th>Couche TCP/IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Ethernet</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>Solution</summary>
+
+| Protocole | Couche OSI | Couche TCP/IP |
+|-----------|------------|---------------|
+| HTTP | 7 — Application | Application |
+| TCP | 4 — Transport | Transport |
+| IP | 3 — Réseau | Internet |
+| Ethernet | 2 — Liaison | Accès réseau |
+| DNS | 7 — Application | Application |
+</details>
+
+<hr />
+<h2>9. QCM — Auto-évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Le modèle OSI comporte…</td>
+<td>4 couches</td>
+<td>5 couches</td>
+<td>7 couches</td>
+<td>8 couches</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>La couche Transport OSI correspond à…</td>
+<td>Internet</td>
+<td>Transport TCP/IP</td>
+<td>Accès réseau</td>
+<td>Application</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>La PDU de la couche Réseau est…</td>
+<td>Trame</td>
+<td>Segment</td>
+<td>Paquet</td>
+<td>Bit</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>L'encapsulation signifie…</td>
+<td>Supprimer les en-têtes</td>
+<td>Ajouter des en-têtes à chaque couche</td>
+<td>Chiffrer les données</td>
+<td>Compresser</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Un routeur opère principalement en couche…</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>7</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>TCP est un protocole de couche…</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>7</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>L'adresse MAC appartient à la couche…</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>La pile TCP/IP a été conçue pour…</td>
+<td>Token Ring</td>
+<td>ARPANET/Internet</td>
+<td>Réseaux téléphoniques</td>
+<td>Bluetooth</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Le protocole HTTP est en couche…</td>
+<td>Transport</td>
+<td>Réseau</td>
+<td>Application</td>
+<td>Physique</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>La trame Ethernet contient…</td>
+<td>Uniquement des bits</td>
+<td>Paquet IP + en-tête Ethernet</td>
+<td>Un segment TCP seul</td>
+<td>Une URL</td>
+<td><strong>b</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Kurose &amp; Ross</strong> [KR], § 1.5 — <em>Internet Protocol Stack</em></li>
+<li><strong>Forouzan</strong> [FO], Chapitre 2 — <em>Network Models</em></li>
+<li><strong>Tanenbaum</strong> [TA], § 1.4 — <em>Reference Models</em></li>
+<li><strong>ISO/IEC 7498-1</strong> — Modèle OSI de base</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Faire un exercice « découper une enveloppe » (poupées russes) pour visualiser l'encapsulation. Démonstration Wireshark : montrer les en-têtes Ethernet → IP → TCP → HTTP d'une capture. Préparer le TD 2.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

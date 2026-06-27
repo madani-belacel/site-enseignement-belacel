@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Enseignement — Dr. Madani BELACEL</title>
+<meta name="description" content="Supports de cours par module : TIC, Informatique ENS, Recherche Documentaire, Réseaux Mostaganem.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="enseignement.html">Enseignement</a></li>
+        <li><a href="recherche.html">Recherche</a></li>
+        <li><a href="habilitation.html">Habilitation</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header">
+  <div class="container"><h1>📚 Enseignement</h1><p>Explorez les supports de cours par module et par niveau</p></div>
+</div>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="index.html">Accueil</a></li>
+    <li class="current">Enseignement</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="container">
+    <div class="search-bar" role="search" aria-label="Recherche dans les cours">
+      <input type="text" id="search-input" class="search-input" placeholder="🔍 Rechercher un cours, un mot-clé…" aria-label="Rechercher">
+      <select id="filter-module" class="filter-select" aria-label="Filtrer par module">
+        <option value="">Tous les modules</option>
+        <option value="tic">TIC</option>
+        <option value="ens">Informatique ENS</option>
+        <option value="rd">Recherche Documentaire</option>
+        <option value="reseaux">Réseaux</option>
+      </select>
+      <select id="filter-type" class="filter-select" aria-label="Filtrer par type">
+        <option value="">Tous les types</option>
+        <option value="cours">Cours</option>
+        <option value="td">TD</option>
+        <option value="tp">TP</option>
+      </select>
+      <select id="filter-lang" class="filter-select" aria-label="Filtrer par langue">
+        <option value="">Toutes langues</option>
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <div id="results-count"></div>
+
+    <section aria-labelledby="modules-title" style="margin-top:1rem;">
+      <h2 id="modules-title" class="section-title">Modules d'enseignement</h2>
+      <div class="module-grid">
+        <a href="tic.html" class="module-card">
+          <div class="module-icon">💻</div>
+          <h3>Module TIC</h3>
+          <p>Technologies de l'Information et de la Communication — 10 cours + TD officiels, 14 variantes (7 FR + 7 EN)</p>
+          <div class="module-meta"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-cours">Cours + TD</span></div>
+        </a>
+        <a href="informatique-ens.html" class="module-card">
+          <div class="module-icon">📚</div>
+          <h3>Module Informatique ENS</h3>
+          <p>Informatique fondamentale pour l'ENS — Algorithmique, Python, POO, BD, Web, Git, Scratch, projet</p>
+          <div class="module-meta"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-cours">9 Cours + 9 TD</span></div>
+        </a>
+        <a href="recherche-documentaire.html" class="module-card">
+          <div class="module-icon">🔍</div>
+          <h3>Module Recherche Documentaire</h3>
+          <p>Méthodologie de recherche : problématique, Zotero, APA 7, synthèse bibliographique — M2 DLE</p>
+          <div class="module-meta"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-cours">10 Cours</span></div>
+        </a>
+        <a href="reseaux.html" class="module-card">
+          <div class="module-icon">🌐</div>
+          <h3>Module Réseaux Mostaganem</h3>
+          <p>Réseaux — ISIL-S4, SI-S5, Ingénieur S5→S9, Master RSID M1/M2. Pipeline LaTeX complet.</p>
+          <div class="module-meta"><span class="badge badge-fr">FR</span><span class="badge badge-cours">Cours + TD + TP</span><span class="badge badge-pdf">PDF+PPTX</span></div>
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+(function() {
+  // Load course data from generated_courses.json
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'js/generated_courses.json', true);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      var courses = JSON.parse(xhr.responseText);
+      // Update all .doc-item links
+      document.querySelectorAll('.doc-item').forEach(function(item) {
+        var title = (item.querySelector('.doc-title') || {}).textContent || '';
+        var match = courses.filter(function(c) {
+          return c.file.replace(/\.(md|pdf|pptx)$/i, '').indexOf(title.replace(/[\s-]/g, '_').substring(0, 20)) > -1;
+        });
+        if (match.length > 0) {
+          item.href = match[0].path;
+        }
+      });
+    }
+  };
+  xhr.send();
+})();
+</script>
+
+</body></html>

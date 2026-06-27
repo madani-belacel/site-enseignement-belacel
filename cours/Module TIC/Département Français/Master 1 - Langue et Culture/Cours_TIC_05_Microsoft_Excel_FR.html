@@ -1,0 +1,904 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 05 — Microsoft Excel : Analyse de Données pour la Recherche en Langues — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 05 — Microsoft Excel : Analyse de Données pour la Recherche en Langues</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 1 — Langue et Culture</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 1 Langue et Culture</li><li>**Compétences pré-requises :** TIC 04 ; Word (styles, citations) ; notions de base de calcul arithmétique</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_05_Microsoft_Excel_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 05 — Microsoft Excel : Analyse de Données pour la Recherche en Langues</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani
+<strong>Module :</strong> TIC
+<strong>Niveau :</strong> Master 1 — Langue et Culture
+<strong>Durée :</strong> 1h30
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 1 Langue et Culture</p>
+<p><strong>Compétences pré-requises :</strong> TIC 04 ; Word (styles, citations) ; notions de base de calcul arithmétique</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Comprendre le rôle du tableur dans la recherche quantitative en sciences du langage
+- Distinguer les types de données (nominal, ordinal, intervalle, ratio) et leur traitement dans Excel
+- Maîtriser les fonctions statistiques de base pour l'analyse de corpus et d'enquêtes
+- Connaître les principes de nettoyage et de préparation des données pour l'analyse</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Créer et gérer une base de données de recherche (corpus, enquête, lexique) dans Excel
+- Utiliser les fonctions avancées : RECHERCHEV, SI, SOMME.SI, NB.SI, fonctions de texte
+- Réaliser des graphiques scientifiques (histogrammes, courbes, nuages de points, boîtes à moustaches)
+- Nettoyer et structurer des données textuelles pour l'analyse quantitative
+- Exporter des données vers d'autres outils (SPSS, R, Python)</p>
+<p><strong>En termes de savoir-être :</strong>
+- Adopter une démarche rigoureuse de gestion des données de recherche
+- Vérifier la cohérence et la fiabilité des données saisies
+- Documenter ses traitements pour assurer la reproductibilité</p>
+<p><strong>Mode d'évaluation :</strong> TD 25 % + Projet « Analyse quantitative d'un corpus ou d'une enquête » 35 % + QCM 20 % + Examen pratique 20 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Atelier : création d'une base de données d'enquête sociolinguistique</li>
+<li>TP : analyse statistique descriptive d'un corpus textuel (fréquences lexicales)</li>
+<li>Exercice : nettoyage et préparation d'un fichier de données brut</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM fonctions Excel et analyse de données</li>
+<li>TP noté : fichier Excel complet avec données nettoyées, analyses statistiques, graphiques et interprétation</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Biber, D., Conrad, S., &amp; Reppen, R. (1998). <em>Corpus Linguistics: Investigating Language Structure and Use</em>. Cambridge University Press.</li>
+<li>Baayen, R. H. (2008). <em>Analyzing Linguistic Data: A Practical Introduction to Statistics Using R</em>. Cambridge University Press.</li>
+<li>Levshina, N. (2015). <em>How to Do Linguistics with R</em>. John Benjamins.</li>
+<li>Wickham, H. &amp; Grolemund, G. (2017). <em>R for Data Science</em>. O'Reilly.</li>
+<li>Microsoft Learn — Excel pour l'analyse de données</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p><strong>Arrêté n° 933</strong> du 28 juillet 2016 — UEM 1.1 Méthodologie : la maîtrise des outils de traitement et d'analyse de données quantitatives est une compétence évaluée dans le cadre des enseignements méthodologiques du Master.</p>
+<p><strong>Référentiel CNE (Compétences Numériques Essentielles)</strong> — Domaine 1 (Information et données) et Domaine 3 (Création de contenu). Les compétences visées incluent :
+- Traiter des données avec un tableur
+- Visualiser des données sous forme graphique
+- Appliquer des traitements statistiques de base</p>
+<p><strong>Plan National de Développement de la Recherche (PNDR) 2025-2029</strong> : l'axe « Sciences Humaines et Sociales à l'ère du numérique » encourage l'utilisation des méthodes quantitatives et computationnelles dans la recherche en langues et cultures.</p>
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Arrêté</span><span class="w"> </span><span class="mi">933</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">UEM</span><span class="w"> </span><span class="mf">1.1</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Méthodes</span><span class="w"> </span><span class="n">quantitatives</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">données</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Enquêtes</span><span class="w"> </span><span class="n">sociolinguistiques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">corpus</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Traitement</span><span class="w"> </span><span class="n">statistique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Excel</span><span class="w"> </span><span class="n">pour</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">recherche</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Saisie</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nettoyage</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Fonctions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">formules</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I1</span><span class="p">[</span><span class="n">RECHERCHEV</span><span class="p">,</span><span class="w"> </span><span class="n">SI</span><span class="p">,</span><span class="w"> </span><span class="n">NB</span><span class="p">.</span><span class="n">SI</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I2</span><span class="p">[</span><span class="n">Statistiques</span><span class="w"> </span><span class="n">descriptives</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Visualisation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J1</span><span class="p">[</span><span class="n">Histogrammes</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J2</span><span class="p">[</span><span class="n">Boîtes</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">moustaches</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J3</span><span class="p">[</span><span class="n">Nuages</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">points</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Export</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">interopérabilité</span><span class="p">]</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">SPSS</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">Python</span><span class="p">]</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">Rapports</span><span class="w"> </span><span class="n">Word</span><span class="o">/</span><span class="n">PDF</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>Plan du Cours</h2>
+<ol>
+<li>Introduction : Excel dans la recherche en langues</li>
+<li>Types de données et structuration d'une base de recherche</li>
+<li>Nettoyage et préparation des données</li>
+<li>Fonctions essentielles pour l'analyse linguistique</li>
+<li>Fonctions de texte pour le traitement de corpus</li>
+<li>Statistiques descriptives pour les données langagières</li>
+<li>Graphiques scientifiques pour la recherche en langues</li>
+<li>Export, interopérabilité et bonnes pratiques</li>
+<li>Conclusion et transition vers PowerPoint</li>
+</ol>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Phase</th>
+<th>Activité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-10 min</td>
+<td>Introduction</td>
+<td>Pourquoi le quantitatif en linguistique ? Exemples : enquête dialectale, fréquences lexicales, analyse stylométrique</td>
+<td>Diapos 1-5</td>
+</tr>
+<tr>
+<td>10-25 min</td>
+<td>Exposé</td>
+<td>Types de données (nominal, ordinal, intervalle). Structuration d'une base : lignes = observations, colonnes = variables. Nettoyage</td>
+<td>Diapos 6-12</td>
+</tr>
+<tr>
+<td>25-45 min</td>
+<td>TP guidé</td>
+<td>Saisie d'un fichier d'enquête sociolinguistique (10 variables, 20 répondants). Application des formats : texte, nombre, date, liste déroulante</td>
+<td>Excel</td>
+</tr>
+<tr>
+<td>45-60 min</td>
+<td>Exposé + démo</td>
+<td>Fonctions SI, NB.SI, SOMME.SI, RECHERCHEV. Fonctions de texte : GAUCHE, DROITE, NBCAR, SUBSTITUE, MAJUSCULE</td>
+<td>Diapos 13-20</td>
+</tr>
+<tr>
+<td>60-75 min</td>
+<td>TP guidé</td>
+<td>Calculs sur le fichier d'enquête : fréquences, moyennes, écart-types. Tableaux croisés dynamiques simples</td>
+<td>Excel</td>
+</tr>
+<tr>
+<td>75-85 min</td>
+<td>Exposé + démo</td>
+<td>Graphiques scientifiques : histogramme de fréquences lexicales, courbe de richesse lexicale, nuage de mots (via add-in)</td>
+<td>Diapos 21-26</td>
+</tr>
+<tr>
+<td>85-90 min</td>
+<td>Conclusion</td>
+<td>Synthèse, annonce du projet, transition vers PowerPoint</td>
+<td>Diapos 27-28</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>1. Introduction : Excel dans la Recherche en Langues <em>(10 min)</em></h2>
+<h3>1.1 Pourquoi Excel en Master Langue et Culture ?</h3>
+<p>Excel n'est pas un outil « réservé aux comptables ». En sciences du langage, il permet de :</p>
+<ul>
+<li><strong>Analyser des enquêtes sociolinguistiques</strong> : dépouiller des questionnaires, croiser des variables (âge × usage du dialecte, niveau d'études × compétence en français)</li>
+<li><strong>Gérer des corpus textuels</strong> : compiler des métadonnées (auteur, date, genre, nombre de mots), calculer des fréquences lexicales</li>
+<li><strong>Analyser des données lexicales</strong> : créer des lexiques de fréquence, étudier la richesse lexicale (type/token ratio), la densité lexicale</li>
+<li><strong>Visualiser des données</strong> : produire des graphiques pour illustrer ses résultats dans le mémoire</li>
+<li><strong>Préparer des données pour des outils avancés</strong> : structurer des données pour les importer dans R, SPSS, AntConc, Python</li>
+</ul>
+<h3>1.2 Cas concrets de recherche avec Excel</h3>
+<table>
+<thead>
+<tr>
+<th>Projet de recherche</th>
+<th>Données dans Excel</th>
+<th>Analyse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enquête sur les pratiques linguistiques à Oran</td>
+<td>150 répondants × 25 variables</td>
+<td>Tris à plat, tris croisés, graphiques</td>
+</tr>
+<tr>
+<td>Analyse stylométrique de 10 romans algériens</td>
+<td>10 fichiers × métadonnées + fréquences</td>
+<td>Type/token ratio, mots-clés, dispersion</td>
+</tr>
+<tr>
+<td>Lexique de spécialité du français juridique</td>
+<td>500 termes × 8 variables</td>
+<td>Fréquences, domaines, catégories grammaticales</td>
+</tr>
+<tr>
+<td>Corpus de discours politiques</td>
+<td>50 discours × 15 variables linguistiques</td>
+<td>Évolution temporelle, comparaison locuteurs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Types de Données et Structuration <em>(15 min)</em></h2>
+<h3>2.1 Rappel : interface et concepts</h3>
+<ul>
+<li><strong>Classeur</strong> (.xlsx) : fichier contenant plusieurs feuilles</li>
+<li><strong>Feuille</strong> (Sheet) : grille de cellules</li>
+<li><strong>Cellule</strong> : intersection ligne/colonne (ex: B5)</li>
+<li><strong>Plage</strong> : ensemble de cellules (ex: A1:D10)</li>
+<li><strong>Tableau structuré</strong> : <code>Insertion → Tableau</code> (ou <code>Ctrl+T</code>) → plage nommée avec filtres automatiques</li>
+</ul>
+<h3>2.2 Types de données en recherche linguistique</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Exemple</th>
+<th>Traitement Excel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nominal</strong> (catégoriel)</td>
+<td>Dialecte (oranais, algérois, constantinois)</td>
+<td>Texte ; graphique en secteurs</td>
+</tr>
+<tr>
+<td><strong>Ordinal</strong></td>
+<td>Niveau de français (A1, A2, B1, B2)</td>
+<td>Texte ordonné ; graphique en barres</td>
+</tr>
+<tr>
+<td><strong>Intervalle</strong></td>
+<td>Âge (25-34, 35-44)</td>
+<td>Nombre ; histogramme</td>
+</tr>
+<tr>
+<td><strong>Ratio</strong></td>
+<td>Nombre de mots, fréquence lexicale</td>
+<td>Nombre décimal ; histogramme, nuage</td>
+</tr>
+<tr>
+<td><strong>Texte libre</strong></td>
+<td>Transcription d'entretien</td>
+<td>Texte long ; non quantifiable directement</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 Structurer une base de données de recherche</h3>
+<p><strong>Règle d'or</strong> : une ligne = une observation ; une colonne = une variable.</p>
+<p>Exemple : base d'enquête sociolinguistique</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Age</th>
+<th>Sexe</th>
+<th>Ville</th>
+<th>Dialecte_usage</th>
+<th>Niveau_fr</th>
+<th>Profession</th>
+<th>Heures_tv_fr</th>
+<th>Mots_par_jour_fr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>22</td>
+<td>F</td>
+<td>Oran</td>
+<td>Oranais</td>
+<td>B2</td>
+<td>Étudiante</td>
+<td>3</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>002</td>
+<td>35</td>
+<td>H</td>
+<td>Alger</td>
+<td>Algérois</td>
+<td>C1</td>
+<td>Enseignant</td>
+<td>1</td>
+<td>800</td>
+</tr>
+<tr>
+<td>003</td>
+<td>28</td>
+<td>F</td>
+<td>Constantine</td>
+<td>Constantinois</td>
+<td>B1</td>
+<td>Journaliste</td>
+<td>2</td>
+<td>2000</td>
+</tr>
+</tbody>
+</table>
+<h3>2.4 Mise en forme des données</h3>
+<ul>
+<li><strong>En-têtes en ligne 1</strong> : court, sans espaces, sans accents (ex: <code>Dialecte_usage</code> plutôt que « Dialecte d'usage »)</li>
+<li><strong>Format des colonnes</strong> : sélectionner la colonne → <code>Accueil → Format</code> → Texte / Nombre / Date</li>
+<li><strong>Validation des données</strong> : <code>Données → Validation des données</code> → créer des listes déroulantes (ex: Homme/Femme) pour éviter les erreurs de saisie</li>
+<li><strong>Tableau structuré</strong> : <code>Ctrl+T</code> → les formules deviennent lisibles : <code>=SOMME(Tableau1[Colonne1])</code></li>
+<li><strong>Gel des volets</strong> : <code>Affichage → Figer les volets</code> → figer la ligne d'en-tête</li>
+</ul>
+<hr />
+<h2>3. Nettoyage et Préparation des Données <em>(15 min)</em></h2>
+<h3>3.1 Pourquoi nettoyer ses données ?</h3>
+<p>Les données brutes contiennent presque toujours des erreurs : espaces invisibles, doublons, valeurs manquantes, formats inconsistants. Un nettoyage rigoureux est <strong>indispensable</strong> avant toute analyse.</p>
+<h3>3.2 Techniques de nettoyage dans Excel</h3>
+<table>
+<thead>
+<tr>
+<th>Problème</th>
+<th>Solution Excel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Espaces avant/après</td>
+<td><code>=SUPPRESPACE(A2)</code></td>
+</tr>
+<tr>
+<td>Doublons</td>
+<td><code>Données → Supprimer les doublons</code></td>
+</tr>
+<tr>
+<td>Valeurs manquantes</td>
+<td><code>=NB.VIDE(plage)</code> pour les repérer</td>
+</tr>
+<tr>
+<td>Casse incohérente</td>
+<td><code>=MAJUSCULE(A2)</code>, <code>=MINUSCULE(A2)</code>, <code>=NOMPROPRE(A2)</code></td>
+</tr>
+<tr>
+<td>Caractères non imprimables</td>
+<td><code>=EPURAGE(A2)</code></td>
+</tr>
+<tr>
+<td>Format nombre stocké en texte</td>
+<td>Sélectionner la colonne → <code>Données → Convertir</code></td>
+</tr>
+<tr>
+<td>Fusions de cellules</td>
+<td>Éviter absolument ! Remplir plutôt vers le bas (<code>Ctrl+D</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Nettoyer un corpus textuel</h3>
+<p>Supprimer lignes vides, uniformiser la casse, supprimer la ponctuation (<code>=SUBSTITUE(A2;".";"")</code>), compter les mots par cellule (<code>=NBCAR(A2)-NBCAR(SUBSTITUE(A2;" ";""))+1</code>), filtrer les anomalies.</p>
+<h3>3.4 Structurer des métadonnées de corpus</h3>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Auteur</th>
+<th>Titre_oeuvre</th>
+<th>Annee</th>
+<th>Genre</th>
+<th>Nb_mots</th>
+<th>Nb_types</th>
+<th>TTR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>roman01.txt</td>
+<td>Dib, Mohammed</td>
+<td>La Grande Maison</td>
+<td>1952</td>
+<td>Roman</td>
+<td>45230</td>
+<td>5230</td>
+<td>0.116</td>
+</tr>
+<tr>
+<td>roman02.txt</td>
+<td>Mammeri, Mouloud</td>
+<td>La Colline oubliée</td>
+<td>1952</td>
+<td>Roman</td>
+<td>38900</td>
+<td>4890</td>
+<td>0.126</td>
+</tr>
+<tr>
+<td>roman03.txt</td>
+<td>Kateb, Yacine</td>
+<td>Nedjma</td>
+<td>1956</td>
+<td>Roman</td>
+<td>62400</td>
+<td>7120</td>
+<td>0.114</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Fonctions Essentielles pour l'Analyse Linguistique <em>(15 min)</em></h2>
+<h3>4.1 Fonctions statistiques de base</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Syntaxe</th>
+<th>Usage en recherche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOMME</td>
+<td><code>=SOMME(D2:D100)</code></td>
+<td>Total de mots d'un corpus</td>
+</tr>
+<tr>
+<td>MOYENNE</td>
+<td><code>=MOYENNE(E2:E100)</code></td>
+<td>Longueur moyenne des textes</td>
+</tr>
+<tr>
+<td>MEDIANE</td>
+<td><code>=MEDIANE(E2:E100)</code></td>
+<td>Valeur centrale (robuste aux extrêmes)</td>
+</tr>
+<tr>
+<td>ECARTYPE</td>
+<td><code>=ECARTYPE.STANDARD(E2:E100)</code></td>
+<td>Dispersion des longueurs</td>
+</tr>
+<tr>
+<td>MIN / MAX</td>
+<td><code>=MIN(E2:E100)</code></td>
+<td>Texte le plus court / le plus long</td>
+</tr>
+<tr>
+<td>NB</td>
+<td><code>=NB(E2:E100)</code></td>
+<td>Nombre de textes (valeurs numériques)</td>
+</tr>
+<tr>
+<td>NBVAL</td>
+<td><code>=NBVAL(A2:A100)</code></td>
+<td>Nombre de textes (tout type)</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Fonctions conditionnelles</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Syntaxe</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NB.SI</td>
+<td><code>=NB.SI(B2:B100;"F")</code></td>
+<td>Compter le nombre de femmes dans l'enquête</td>
+</tr>
+<tr>
+<td>NB.SI.ENS</td>
+<td><code>=NB.SI.ENS(B2:B100;"F";C2:C100;"&gt;30")</code></td>
+<td>Femmes de plus de 30 ans</td>
+</tr>
+<tr>
+<td>SOMME.SI</td>
+<td><code>=SOMME.SI(D2:D100;"Oranais";E2:E100)</code></td>
+<td>Total mots des textes oranais</td>
+</tr>
+<tr>
+<td>SOMME.SI.ENS</td>
+<td><code>=SOMME.SI.ENS(E2:E100;D2:D100;"Oranais";B2:B100;"F")</code></td>
+<td>Total mots des textes oranais d'autrices</td>
+</tr>
+<tr>
+<td>MOYENNE.SI</td>
+<td><code>=MOYENNE.SI(B2:B100;"H";C2:C100)</code></td>
+<td>Âge moyen des hommes</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 RECHERCHEV (VLOOKUP)</h3>
+<p>Permet de <strong>fusionner deux tables</strong> à partir d'une clé commune. Essentiel pour croiser des données de corpus avec des métadonnées.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">=</span><span class="nt">RECHERCHEV</span><span class="o">(</span><span class="nt">A2</span><span class="o">;</span><span class="s1">&#39;Meta corpus&#39;</span><span class="o">!</span><span class="nt">A</span><span class="p">:</span><span class="nd">B</span><span class="o">;</span><span class="nt">2</span><span class="o">;</span><span class="nt">FAUX</span><span class="o">)</span>
+</code></pre></div>
+
+<p><strong>Exemple</strong> : dans une table « Fréquences lexicales », ajouter la catégorie grammaticale de chaque mot à partir d'une table « Lexique de référence ».</p>
+<h3>4.4 Tableaux croisés dynamiques (TCD)</h3>
+<p>Les <strong>TCD</strong> sont l'outil le plus puissant d'Excel pour explorer des données multidimensionnelles.</p>
+<ol>
+<li>Sélectionner votre tableau → <code>Insertion → Tableau croisé dynamique</code></li>
+<li>Glisser les variables dans les zones :</li>
+<li><strong>Lignes</strong> : la variable à explorer (ex: Dialecte)</li>
+<li><strong>Colonnes</strong> : la variable de croisement (ex: Sexe)</li>
+<li><strong>Valeurs</strong> : la mesure (ex: Nb de répondants)</li>
+<li>Le TCD calcule automatiquement les effectifs et pourcentages</li>
+</ol>
+<hr />
+<h2>5. Fonctions de Texte pour le Traitement de Corpus <em>(10 min)</em></h2>
+<h3>5.1 Manipulation de chaînes</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Syntaxe</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NBCAR</td>
+<td><code>=NBCAR(A2)</code></td>
+<td>Compter les caractères d'un texte</td>
+</tr>
+<tr>
+<td>GAUCHE</td>
+<td><code>=GAUCHE(A2;10)</code></td>
+<td>Extraire les 10 premiers caractères</td>
+</tr>
+<tr>
+<td>DROITE</td>
+<td><code>=DROITE(A2;4)</code></td>
+<td>Extraire l'extension ou l'année</td>
+</tr>
+<tr>
+<td>STXT</td>
+<td><code>=STXT(A2;5;3)</code></td>
+<td>Extraire 3 caractères à partir du 5e</td>
+</tr>
+<tr>
+<td>CHERCHE</td>
+<td><code>=CHERCHE("mot";A2)</code></td>
+<td>Position d'un mot dans la chaîne</td>
+</tr>
+<tr>
+<td>SUBSTITUE</td>
+<td><code>=SUBSTITUE(A2;"ancien";"nouveau")</code></td>
+<td>Remplacer un mot par un autre</td>
+</tr>
+<tr>
+<td>SUPPRESPACE</td>
+<td><code>=SUPPRESPACE(A2)</code></td>
+<td>Supprimer les espaces inutiles</td>
+</tr>
+<tr>
+<td>CONCAT</td>
+<td><code>=CONCAT(A2;" ";B2)</code></td>
+<td>Assembler des valeurs textuelles</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Analyse de fréquence lexicale</h3>
+<p>Segmenter le corpus en mots (outil externe : Python, AntConc) → TXT mot par ligne → Importer dans Excel → <code>Insertion → Tableau croisé dynamique</code> (mot en ligne, comptage en valeur) → Trier par fréquence. Alternative : <code>=NB.SI(plage;mot)</code> pour un mot spécifique.</p>
+<h3>5.3 Exemple : Type/Token Ratio (TTR)</h3>
+<p>Le <strong>Type/Token Ratio</strong> mesure la richesse lexicale d'un texte :
+- <strong>Tokens</strong> (occurrences) : nombre total de mots
+- <strong>Types</strong> (formes distinctes) : nombre de mots différents
+- <strong>TTR</strong> = Types / Tokens (plus le ratio est élevé, plus le vocabulaire est riche)</p>
+<p>Dans Excel : <code>TTR = B2 / A2</code> où B2 = nombre de types et A2 = nombre de tokens.</p>
+<table>
+<thead>
+<tr>
+<th>Texte</th>
+<th>Tokens</th>
+<th>Types</th>
+<th>TTR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roman A</td>
+<td>45000</td>
+<td>5200</td>
+<td>0.116</td>
+</tr>
+<tr>
+<td>Roman B</td>
+<td>38000</td>
+<td>6100</td>
+<td>0.161</td>
+</tr>
+<tr>
+<td>Roman C</td>
+<td>62000</td>
+<td>7100</td>
+<td>0.115</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Statistiques Descriptives pour les Données Langagières <em>(10 min)</em></h2>
+<h3>6.1 Tendances centrales et dispersion</h3>
+<p><strong>Moyenne</strong> (longueur moyenne des mots), <strong>Médiane</strong> (robuste aux valeurs extrêmes), <strong>Mode</strong> (catégorie dominante). <strong>Écart-type</strong> (dispersion), <strong>Variance</strong>, <strong>Quartiles</strong> (<code>=QUARTILE(plage;1)</code>), <strong>Boîte à moustaches</strong>.</p>
+<h3>6.2 Analyse des fréquences</h3>
+<p>Pour un tableau de fréquences lexicales :
+1. Calculer la fréquence relative : <code>fréquence_relative = occurrence_mot / total_tokens * 100</code>
+2. Calculer le rang de fréquence (loi de Zipf) : <code>=RANG(fréquence; plage_fréquences; 0)</code>
+3. Visualiser la distribution : histogramme avec courbe de tendance</p>
+<p><strong>Loi de Zipf</strong> : dans tout corpus, la fréquence d'un mot est inversement proportionnelle à son rang. Quelques mots très fréquents (le, de, un) représentent une grande partie du corpus — des milliers de mots rares complètent la distribution.</p>
+<hr />
+<h2>7. Graphiques Scientifiques pour la Recherche en Langues <em>(10 min)</em></h2>
+<h3>7.1 Types de graphiques et usages</h3>
+<table>
+<thead>
+<tr>
+<th>Type de graphique</th>
+<th>Usage en recherche</th>
+<th>Données</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Histogramme</strong></td>
+<td>Distribution d'âge, fréquences lexicales</td>
+<td>Variable quantitative</td>
+</tr>
+<tr>
+<td><strong>Barres groupées</strong></td>
+<td>Comparaison de moyennes par groupe</td>
+<td>Variable catégorielle × quantitative</td>
+</tr>
+<tr>
+<td><strong>Secteurs (camembert)</strong></td>
+<td>Répartition par dialecte, par sexe</td>
+<td>Variable catégorielle (peu de modalités)</td>
+</tr>
+<tr>
+<td><strong>Courbe</strong></td>
+<td>Évolution temporelle (fréquence d'un mot dans le temps)</td>
+<td>Variable quantitative continue</td>
+</tr>
+<tr>
+<td><strong>Nuage de points</strong></td>
+<td>Corrélation entre deux variables (âge × score)</td>
+<td>Deux variables quantitatives</td>
+</tr>
+<tr>
+<td><strong>Boîte à moustaches</strong></td>
+<td>Comparaison de distributions (longueur des textes par auteur)</td>
+<td>Quantitative × catégorielle</td>
+</tr>
+</tbody>
+</table>
+<h3>7.2 Créer un graphique scientifique</h3>
+<ol>
+<li>Sélectionner les données (en-têtes inclus)</li>
+<li><code>Insertion → Graphique</code> → choisir le type</li>
+<li>Personnaliser :</li>
+<li><strong>Titre</strong> : explicite (ex: « Distribution des fréquences lexicales dans le corpus »)</li>
+<li><strong>Axes</strong> : nommer l'axe X et Y (avec unités si nécessaire)</li>
+<li><strong>Légende</strong> : claire, concise</li>
+<li><strong>Couleurs</strong> : sobres (éviter les couleurs vives)</li>
+<li><strong>Style</strong> : <code>+</code> → cocher « Courbe de tendance » si pertinent (R² à afficher)</li>
+<li>Copier-coller dans Word : <code>Ctrl+C</code> dans Excel → <code>Ctrl+V</code> dans Word → <strong>Conserver le formatage source et lier les données</strong></li>
+</ol>
+<h3>7.3 Exemple : Histogramme de fréquences lexicales</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Corpus</span><span class="w"> </span><span class="n">textuel</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">AntConc</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Python</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Liste</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">fréquences</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Excel</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Tableau</span><span class="o">:</span><span class="w"> </span><span class="n">Mot</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Fréquence</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Fréquence</span><span class="w"> </span><span class="n">relative</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Histogramme</span><span class="o">:</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="n">mots</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Courbe</span><span class="o">:</span><span class="w"> </span><span class="n">distribution</span><span class="w"> </span><span class="n">complète</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">quels</span><span class="w"> </span><span class="n">mots</span><span class="w"> </span><span class="n">dominent</span><span class="w"> </span><span class="o">?</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">loi</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Zipf</span><span class="w"> </span><span class="n">vérifiée</span><span class="w"> </span><span class="o">?</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>8. Export, Interopérabilité et Bonnes Pratiques <em>(10 min)</em></h2>
+<h3>8.1 Exporter depuis Excel</h3>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Usage</th>
+<th>Méthode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>.xlsx</strong></td>
+<td>Travail, modifiable</td>
+<td>Fichier → Enregistrer</td>
+</tr>
+<tr>
+<td><strong>.csv</strong> (UTF-8)</td>
+<td>Import dans R, Python, AntConc</td>
+<td>Fichier → Enregistrer sous → CSV UTF-8</td>
+</tr>
+<tr>
+<td><strong>.pdf</strong></td>
+<td>Diffusion, insertion mémoire</td>
+<td>Fichier → Exporter → PDF</td>
+</tr>
+<tr>
+<td><strong>.xls</strong></td>
+<td>Compatibilité ancienne</td>
+<td>Éviter sauf nécessité</td>
+</tr>
+<tr>
+<td><strong>.txt</strong> (tabulation)</td>
+<td>Import dans TXM, SPSS</td>
+<td>Enregistrer sous → Texte (tab)</td>
+</tr>
+</tbody>
+</table>
+<h3>8.2 Bonnes pratiques</h3>
+<p>Un fichier = un projet. Feuilles : README (description), Raw (brut, jamais modifié), Clean (nettoyé), Analyses. Documenter les formules, protéger les cellules, versionner (<code>analyse_v1.xlsx</code>).</p>
+<h3>8.3 Interopérabilité avec d'autres outils</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Format d'import depuis Excel</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AntConc</strong></td>
+<td>TXT (un texte par fichier) + CSV pour métadonnées</td>
+<td>Analyse de corpus</td>
+</tr>
+<tr>
+<td><strong>R / RStudio</strong></td>
+<td>CSV (via <code>read.csv()</code>)</td>
+<td>Statistiques avancées</td>
+</tr>
+<tr>
+<td><strong>Python (pandas)</strong></td>
+<td>CSV, XLSX (via <code>pd.read_csv()</code>, <code>pd.read_excel()</code>)</td>
+<td>TAL, machine learning</td>
+</tr>
+<tr>
+<td><strong>SPSS</strong></td>
+<td>CSV, XLSX</td>
+<td>Statistiques en SHS</td>
+</tr>
+<tr>
+<td><strong>Gephi</strong></td>
+<td>CSV (table de nœuds + table de liens)</td>
+<td>Analyse de réseaux</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>9. Conclusion <em>(5 min)</em></h2>
+<p>Excel est un outil puissant et accessible pour l'analyse quantitative en sciences du langage. Il permet de structurer, nettoyer, analyser et visualiser des données de recherche sans nécessiter de compétences en programmation.</p>
+<p><strong>Prochain cours :</strong> Microsoft PowerPoint — Communication scientifique et soutenance de mémoire.</p>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li><strong>Dans une base de données Excel bien structurée, que représente une ligne ?</strong></li>
+<li>a) Une variable</li>
+<li>b) Une observation (individu, texte, mot) ✓</li>
+<li>c) Un calcul</li>
+<li>
+<p>d) Un graphique</p>
+</li>
+<li>
+<p><strong>Quelle fonction permet de compter le nombre de femmes dans une colonne « Sexe » ?</strong></p>
+</li>
+<li>a) <code>=SOMME(B2:B100;"F")</code></li>
+<li>b) <code>=NB.SI(B2:B100;"F")</code> ✓</li>
+<li>c) <code>=SI(B2="F";1;0)</code></li>
+<li>
+<p>d) <code>=RECHERCHEV("F";B2:B100;1;FAUX)</code></p>
+</li>
+<li>
+<p><strong>Que mesure le Type/Token Ratio (TTR) ?</strong></p>
+</li>
+<li>a) La longueur moyenne des mots dans un texte</li>
+<li>b) La richesse lexicale d'un texte ✓</li>
+<li>c) La vitesse de lecture d'un texte</li>
+<li>
+<p>d) Le nombre de phrases dans un texte</p>
+</li>
+<li>
+<p><strong>Quel graphique est le plus approprié pour montrer la corrélation entre l'âge et la fréquence d'usage d'un dialecte ?</strong></p>
+</li>
+<li>a) Un histogramme</li>
+<li>b) Un nuage de points ✓</li>
+<li>c) Un secteur (camembert)</li>
+<li>
+<p>d) Une courbe</p>
+</li>
+<li>
+<p><strong>Quelle fonction permet d'extraire les 5 derniers caractères d'une cellule ?</strong></p>
+</li>
+<li>a) <code>=GAUCHE(A2;5)</code></li>
+<li>b) <code>=DROITE(A2;5)</code> ✓</li>
+<li>c) <code>=STXT(A2;5;5)</code></li>
+<li>d) <code>=NBCAR(A2)-5</code></li>
+</ol>
+<hr />
+<h2>Note pédagogique Master</h2>
+<h3>Transposition didactique pour le Master</h3>
+<p>Ce cours introduit l'étudiant en Langue et Culture à une <strong>démarche quantitative</strong> qui peut sembler éloignée de sa formation littéraire. La transposition didactique est essentielle :</p>
+<ol>
+<li><strong>Du qualitatif au quantitatif</strong> : l'étudiant en lettres est formé à l'analyse qualitative (interprétation de textes, analyse du discours). Excel lui montre comment les méthodes quantitatives peuvent enrichir et objectiver ses analyses.</li>
+<li><strong>De la théorie à la pratique</strong> : la loi de Zipf, le TTR, les fréquences lexicales sont des concepts abstraits — Excel permet de les manipuler concrètement sur des données réelles.</li>
+<li><strong>De l'outil à la méthode</strong> : Excel n'est pas présenté comme un logiciel bureautique mais comme un <strong>environnement d'analyse</strong> — les fonctions sont enseignées dans leur contexte d'application (recherche).</li>
+<li><strong>De la donnée à l'interprétation</strong> : le cours insiste sur le fait qu'un résultat quantitatif n'a de sens que dans un cadre théorique — Excel produit des chiffres, le chercheur produit du sens.</li>
+<li><strong>De l'autonomie à la collaboration</strong> : les fichiers Excel bien structurés peuvent être partagés, réutilisés, combinés — c'est une initiation aux principes de la science ouverte.</li>
+</ol>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li><strong>Avant la séance</strong> : préparer un fichier Excel « brut » contenant des données d'enquête fictives mais réalistes (20 répondants, 10 variables). Distribuer ce fichier comme base de travail.</li>
+<li><strong>Pédagogie</strong> : le cours mêle exposés (concepts) et TP (manipulations). Chaque nouvelle fonction doit être immédiatement testée par les étudiants sur leur fichier.</li>
+<li><strong>Difficulté anticipée</strong> : les étudiants en Langue et Culture peuvent être angoissés par les chiffres. Insistez sur le fait qu'il n'y a que des additions, des divisions et des comptages — pas de mathématiques avancées.</li>
+<li><strong>Évaluation</strong> : le projet noté consiste à analyser un petit corpus (20 textes courts) ou une enquête (30 répondants) avec Excel : fichier structuré, nettoyage, statistiques descriptives, 2 graphiques, interprétation d'une demi-page.</li>
+</ul>
+<h3>Prolongement recherche</h3>
+<p>Ce cours constitue la première étape d'un parcours d'analyse quantitative :
+- <strong>Analyse statistique avancée</strong> : initiation à R / RStudio au Semestre 2 (package <code>stylo</code> pour la stylométrie)
+- <strong>Traitement Automatique des Langues</strong> : Python avec NLTK pour l'analyse automatisée de corpus — les données préparées dans Excel alimenteront les scripts Python
+- <strong>Enquête de terrain</strong> : conception de questionnaires et traitement des données avec Excel puis SPSS
+- <strong>Atelier visualisation de données</strong> : création de visualisations avancées avec R (ggplot2), Tableau, ou DataWrapper
+- <strong>Mémoire</strong> : le fichier Excel d'analyse peut être annexé au mémoire comme preuve du travail méthodologique</p>
+<p>Ressources pour aller plus loin :
+- Levshina, N. (2015). <em>How to Do Linguistics with R</em>. John Benjamins.
+- MOOC « Analyse de données avec Excel » sur OpenClassrooms
+- Formation « Excel pour la recherche » sur FUN-MOOC
+- Ateliers DATA-IST (CNRS) : gestion et analyse de données pour les SHS</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

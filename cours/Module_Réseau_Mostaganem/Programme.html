@@ -1,0 +1,574 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Programme du Module — Réseaux Informatiques (USTO MathInfo) — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../index.html">Accueil</a></li>
+        <li><a href="../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../recherche.html">Recherche</a></li>
+        <li><a href="../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../ressources.html">Ressources</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../index.html">Accueil</a></li>
+    <li><a href="../../enseignement.html">Enseignement</a></li>
+    <li class="current">Programme du Module — Réseaux Informatiques (USTO MathInfo)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>- **Sources :** `Cours_Latex/` (fichiers `.tex` structurés par niveau)</li><li>- **Script de build :** `latex/build_official_reseaux.py`</li><li>- **Génération complémentaire :** `Réseaux-USTO-MathInfo/` (scripts Python + sources Markdown)</li><li>- **Sortie :** `Série_Officielle/` (PDF + PPTX)</li><li>- **Pipeline global :** `python build_official_reseaux.py --niveau all --type all`</li><li>- **Références pédagogiques :** Pujolle (Réseaux), Goupille (Routage IP), Servin (Réseaux et télécoms) — ouvrages de référence utilisés dans le cadre national.</li><li>- **Chemin absolu :** `C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/`</li><li>- **Fichiers concernés :** `PG-fr.docx` (couverture PDF), `Presentation_BELACEL_V3.pptx` (présentations)</li><li>- **Raison :** Mutualisation des templates entre plusieurs modules pédagogiques.</li><li>- **Alternative future :** Copie locale des templates dans `Module_Réseau_Mostaganem/latex/templates/` pour supprimer la dépendance externe.</li></ul></div>
+    <h1>Programme du Module — Réseaux Informatiques (USTO MathInfo)</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Établissement</strong></td>
+<td>USTO MB — Faculté des Mathématiques et Informatique</td>
+</tr>
+<tr>
+<td><strong>Filière</strong></td>
+<td>ISIL, SI, Ingénieur Réseaux, Master RSID</td>
+</tr>
+<tr>
+<td><strong>Volume horaire</strong></td>
+<td>Variable selon niveau (45h-60h par semestre)</td>
+</tr>
+<tr>
+<td><strong>Crédits</strong></td>
+<td>Variable selon maquette</td>
+</tr>
+<tr>
+<td><strong>Enseignant responsable</strong></td>
+<td>BELACEL Madani</td>
+</tr>
+<tr>
+<td><strong>Contact</strong></td>
+<td>m.belacel@ens-mostaganem.dz</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>1. Présentation du module</h2>
+<p>Le module <strong>Réseaux Informatiques</strong> couvre l'ensemble des concepts fondamentaux et avancés des réseaux : des topologies de base (ISIL-S4) jusqu'aux architectures Cloud et SDN (Master RSID). Il est structuré par niveau de Licence, Ingénieur et Master.</p>
+<h2>2. Niveaux couverts</h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Filière</th>
+<th>Semestres</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISIL-S4</td>
+<td>Licence ISIL</td>
+<td>S4</td>
+<td>Fondamentaux : OSI, TCP/IP, Ethernet, IP, Transport</td>
+</tr>
+<tr>
+<td>SI-S5</td>
+<td>Licence SI</td>
+<td>S5</td>
+<td>Réseaux avancés : subnetting, VLAN, IPv6</td>
+</tr>
+<tr>
+<td>ING-S5→S9</td>
+<td>Ingénieur Réseaux</td>
+<td>S5→S9</td>
+<td>Routage dynamique, BGP, MPLS, QoS, virtualisation, IoT</td>
+</tr>
+<tr>
+<td>RSID-M1</td>
+<td>Master RSID</td>
+<td>S1→S2</td>
+<td>Cloud, SD-WAN, Kubernetes, Zero Trust, SDN, automatisation</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Programme détaillé</h2>
+<h3>ISIL-S4 (8 chapitres)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+<th>Thèmes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Introduction et topologies</td>
+<td>Topologies bus, étoile, anneau, maillage ; normes et organismes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Modèle OSI vs TCP/IP</td>
+<td>Architecture en couches, encapsulation, PDU</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Couche Physique</td>
+<td>Supports cuivre, fibre, sans-fil ; codage et modulation</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Couche Liaison Ethernet</td>
+<td>Trames, MAC, commutateur, LLC</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Couche Réseau IP et routage</td>
+<td>Adressage IP, classes, CIDR, routage statique</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Couche Transport TCP/UDP</td>
+<td>Segments, ports, contrôle de flux, fiabilité</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Couche Application</td>
+<td>DNS, HTTP, FTP, SMTP, DHCP</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Équipements réseaux</td>
+<td>Hub, switch, routeur, pare-feu, CSU/DSU</td>
+</tr>
+</tbody>
+</table>
+<h3>SI-S5 (9 chapitres)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+<th>Thèmes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Introduction et topologies</td>
+<td>Rappels ISIL, compléments topologies</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Modèle OSI et TCP/IP</td>
+<td>Révision approfondie, comparaison détaillée</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Couche Physique</td>
+<td>Supports spécialisés, normes avancées</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Couche Liaison Ethernet et VLAN</td>
+<td>VLAN, trunking, STP, agrégation</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Couche Réseau IP - Subnetting avancé</td>
+<td>VLSM, CIDR avancé, calcul de sous-réseaux</td>
+</tr>
+<tr>
+<td>6</td>
+<td>IPv6 et transition IPv4-IPv6</td>
+<td>Adressage IPv6, tunnels, dual-stack</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Couche Transport TCP/UDP et performances</td>
+<td>Fenêtre glissante, congestion, QoS</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Couche Application et services réseau</td>
+<td>DNS avancé, LDAP, NFS, services web</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Équipements, dépannage et best practices</td>
+<td>Diagnostic, outils, bonnes pratiques</td>
+</tr>
+</tbody>
+</table>
+<h3>ING-S5 (Routage et services avancés)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rappels architecture réseau</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Routage dynamique (RIP, EIGRP)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>OSPF v2 (link-state, zones, LSA)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ACL et filtrage</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Services réseau avancés</td>
+</tr>
+</tbody>
+</table>
+<h3>ING-S6 (Opérateur et WAN)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>BGP (attributs, path selection, iBGP/eBGP)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MPLS concepts (LDP, LSP, VPN MPLS)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>QoS fondamentaux (DiffServ, IntServ, PHB)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Haute disponibilité (HSRP, VRRP, GLBP)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>WAN opérateurs (leased lines, MPLS L3VPN)</td>
+</tr>
+</tbody>
+</table>
+<h3>ING-S7 (Virtualisation et SDN)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Virtualisation (VM, hyperviseur, conteneurs)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Réseaux virtuels (vSwitch, VXLAN, NVGRE)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SDN (OpenFlow, controllers, architectures)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NFV (virtualisation des fonctions réseau)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Datacenter networking (Spine-Leaf, fabric)</td>
+</tr>
+</tbody>
+</table>
+<h3>ING-S8 (Réseaux sans-fil et sécurité)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Wireless 802.11 (Wi-Fi 6, maillage)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Sécurité WLAN (WPA3, 802.1X, RADIUS)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>VPN (IPsec, SSL-VPN, site-to-site, remote-access)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pare-feu (stateful, NGFW, proxy)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>IDS/IPS (Snort, Suricata, détection d'anomalies)</td>
+</tr>
+</tbody>
+</table>
+<h3>ING-S9 (IoT, QoS et multimédia)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IoT (architectures, LoRa, NB-IoT, Zigbee)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Protocoles IoT (MQTT, CoAP, 6LoWPAN)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>QoS multimédia (VoIP, vidéo, streaming)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Monitoring (SNMP, NetFlow, sFlow, observabilité)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Projet intégrateur (étude de cas réseau complet)</td>
+</tr>
+</tbody>
+</table>
+<h3>RSID-M1-S1 (Cloud, SD-WAN, Kubernetes, Zero Trust)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Cloud networking (VPC, hybrid cloud, AWS/Azure networking)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SD-WAN (architecture, orchestration, policies)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kubernetes networking (CNI, services, ingress, network policies)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Zero Trust (micro-segmentation, SASE, ZTNA)</td>
+</tr>
+</tbody>
+</table>
+<h3>RSID-M1-S2 (SDN, automatisation, menace)</h3>
+<table>
+<thead>
+<tr>
+<th>Chap.</th>
+<th>Titre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Threat landscape (cybermenaces, kill chain, MITRE ATT&amp;CK)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SDN programmable (OpenFlow, P4, ONOS, ODL)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Network automation (Ansible, NAPALM, Terraform, CI/CD)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Séminaire (veille technologique, projet recherche)</td>
+</tr>
+</tbody>
+</table>
+<h2>4. Modalités d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Composante</th>
+<th>Poids</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contrôle continu (TD/TP)</td>
+<td>40 %</td>
+</tr>
+<tr>
+<td>Examen pratique</td>
+<td>20 %</td>
+</tr>
+<tr>
+<td>Examen final</td>
+<td>40 %</td>
+</tr>
+</tbody>
+</table>
+<h2>5. Pipeline de génération</h2>
+<p>Ce module utilise un pipeline LaTeX → Python :
+- <strong>Sources :</strong> <code>Cours_Latex/</code> (fichiers <code>.tex</code> structurés par niveau)
+- <strong>Script de build :</strong> <code>latex/build_official_reseaux.py</code>
+- <strong>Génération complémentaire :</strong> <code>Réseaux-USTO-MathInfo/</code> (scripts Python + sources Markdown)
+- <strong>Sortie :</strong> <code>Série_Officielle/</code> (PDF + PPTX)
+- <strong>Pipeline global :</strong> <code>python build_official_reseaux.py --niveau all --type all</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce module Réseaux s'inscrit dans le cadre réglementaire algérien de la formation en Mathématiques et Informatique :</p>
+<ul>
+<li><strong>Arrêté ministériel fixant les programmes du cycle Licence (ISIL, SI) — Filière Mathématiques et Informatique</strong> — définit les objectifs, contenus et volumes horaires des enseignements.</li>
+<li><strong>Arrêté ministériel fixant les programmes du cycle Ingénieur (Réseaux et Systèmes)</strong> — cadre institutionnel des formations d'ingénieur.</li>
+<li><strong>Arrêté ministériel fixant les programmes du cycle Master (RSID — Réseaux et Systèmes d'Information Distribués)</strong> — cadre institutionnel de la formation Master.</li>
+<li><strong>Programme national de la filière Mathématiques et Informatique (USTO-MB / Université de Mostaganem)</strong> — référentiel officiel pour les enseignements de réseaux.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement des réseaux informatiques.</li>
+<li><strong>Références pédagogiques :</strong> Pujolle (Réseaux), Goupille (Routage IP), Servin (Réseaux et télécoms) — ouvrages de référence utilisés dans le cadre national.</li>
+</ul>
+<hr />
+<h3>Note sur les dépendances externes</h3>
+<p>Le pipeline de génération utilise des <strong>templates externes</strong> situés dans un répertoire partagé :</p>
+<ul>
+<li><strong>Chemin absolu :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/</code></li>
+<li><strong>Fichiers concernés :</strong> <code>PG-fr.docx</code> (couverture PDF), <code>Presentation_BELACEL_V3.pptx</code> (présentations)</li>
+<li><strong>Raison :</strong> Mutualisation des templates entre plusieurs modules pédagogiques.</li>
+<li><strong>Alternative future :</strong> Copie locale des templates dans <code>Module_Réseau_Mostaganem/latex/templates/</code> pour supprimer la dépendance externe.</li>
+</ul>
+<blockquote>
+<p><strong>Document</strong> : Programme du module Réseaux — BELACEL Madani — USTO MB — <em>Mise à jour : 2025-2026</em></p>
+</blockquote>
+<hr />
+<h2>Conformité au canvas universitaire algérien</h2>
+<p>Ce programme est aligné sur le <strong>canvas universitaire algérien</strong> dans le cadre du <strong>système LMD (Licence-Master-Doctorat)</strong> et de l'<strong>approche par compétences (APC)</strong> :</p>
+<h3>Références réglementaires</h3>
+<ul>
+<li><strong>Arrêté ministériel n° 712</strong> fixant les programmes des concours d'accès aux ENS.</li>
+<li><strong>Arrêté ministériel portant création des filières et spécialités</strong> dans le système LMD.</li>
+<li><strong>Programme national de la filière</strong> tel que défini par le Ministère de l'Enseignement Supérieur et de la Recherche Scientifique.</li>
+<li><strong>Référentiel des compétences algérien</strong> adapté à la spécialité.</li>
+</ul>
+<h3>Structure LMD</h3>
+<table>
+<thead>
+<tr>
+<th>Composante</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Crédits ECTS</strong></td>
+<td>Volume de travail total de l'étudiant (cours, TD, TP, travail personnel)</td>
+</tr>
+<tr>
+<td><strong>Coefficient</strong></td>
+<td>Poids du module dans l'UE</td>
+</tr>
+<tr>
+<td><strong>Approche par compétences</strong></td>
+<td>Objectifs formulés en Savoir / Savoir-faire / Savoir-être</td>
+</tr>
+<tr>
+<td><strong>Évaluation continue</strong></td>
+<td>Contrôle continu (40%) + Examen final (60%)</td>
+</tr>
+</tbody>
+</table>
+<h3>Volume horaire conforme</h3>
+<ul>
+<li>CM : 1h30 par séance (apports théoriques)</li>
+<li>TD : 1h30 par séance (application guidée)</li>
+<li>TP : selon spécialité (pratique en salle informatique)</li>
+<li>Travail personnel : 1h30 par séance (auto-apprentissage, projets)</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Document mis à jour le 26/06/2026 — Conforme au canvas universitaire algérien (LMD / APC)</strong></p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../js/data.js"></script>
+<script src="../../js/main.js"></script>
+</body></html>

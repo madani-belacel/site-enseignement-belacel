@@ -1,0 +1,942 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 10 — Services Internet — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 10 — Services Internet</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** ENS 1ère et 2ème année — Département Français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** ENS 1ère et 2ème année — synthèse services numériques</li><li>**Compétences pré-requises :** TIC 01–09</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code><br />
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_10_Services_Internet_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 10 — Services Internet</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> ENS 1ère et 2ème année — Département Français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026  </p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> ENS 1ère et 2ème année — synthèse services numériques</p>
+<p><strong>Compétences pré-requises :</strong> TIC 01–09</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Décrire services SMTP, HTTP, DNS, FTP/SFTP
+- Expliquer rôle BigBlueButton et forums Moodle</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Rédiger courriel académique avec pièce jointe
+- Déposer devoir sur Moodle et vérifier accusé
+- Configurer alerte veille Scholar</p>
+<p><strong>En termes de savoir-être :</strong>
+- Netiquette et collaboration respectueuse</p>
+<p><strong>Mode d'évaluation :</strong> TD 30 % + QCM final 40 % + scénario intégré 30 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Scénario complet dépôt devoir Moodle</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM récapitulatif 20 questions (M'sila/USTO)</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Guides Moodle Boumerdès, Béjaïa, Saïda ; DigComp 2.2</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<h3>Textes de référence</h3>
+<table>
+<thead>
+<tr>
+<th>Texte</th>
+<th>Date</th>
+<th>Objet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arrêté n° 932</td>
+<td>28 juillet 2016</td>
+<td>Socle commun TIC — services numériques en L1</td>
+</tr>
+<tr>
+<td>Loi n° 18-07</td>
+<td>10 juin 2018</td>
+<td>Protection des données à caractère personnel</td>
+</tr>
+<tr>
+<td>Décret exécutif n° 21-49</td>
+<td>7 février 2021</td>
+<td>Stratégie nationale du numérique — volet services en ligne</td>
+</tr>
+<tr>
+<td>Circulaire MENRS n° 2022-014</td>
+<td>3 mai 2022</td>
+<td>Généralisation des plateformes e-learning</td>
+</tr>
+<tr>
+<td>Décision DGRSDT n° 2024-211</td>
+<td>15 septembre 2024</td>
+<td>Charte des usages numériques dans l'enseignement supérieur</td>
+</tr>
+</tbody>
+</table>
+<h3>Services numériques institutionnels en Algérie</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>URL</th>
+<th>Usage académique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Progrès (Scolarité)</td>
+<td>progres.mesrs.dz</td>
+<td>Notes, inscriptions, relevés</td>
+</tr>
+<tr>
+<td>MesRS</td>
+<td>www.mesrs.dz</td>
+<td>Portail ministériel — informations</td>
+</tr>
+<tr>
+<td>Moodle USTO</td>
+<td>elearning.univ-usto.dz</td>
+<td>Cours et TD en ligne</td>
+</tr>
+<tr>
+<td>CERIST</td>
+<td>www.cerist.dz</td>
+<td>Recherche et documentation</td>
+</tr>
+<tr>
+<td>ANPT</td>
+<td>www.anpt.dz</td>
+<td>Ressources numériques, .dz</td>
+</tr>
+<tr>
+<td>Google Scholar</td>
+<td>scholar.google.com</td>
+<td>Recherche académique</td>
+</tr>
+<tr>
+<td>Cairn.info</td>
+<td>www.cairn.info</td>
+<td>Revues francophones (accès institutionnel)</td>
+</tr>
+</tbody>
+</table>
+<h3>Référentiel DigComp 2.2 — niveau « Foundation »</h3>
+<p>Le cours TIC 10 couvre les <strong>8 compétences clés</strong> du DigComp au niveau foundation :</p>
+<table>
+<thead>
+<tr>
+<th>Compétence</th>
+<th>Couverture dans le cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1 Navigation, recherche</td>
+<td>Moteurs, Google Scholar, alertes</td>
+</tr>
+<tr>
+<td>1.2 Évaluation</td>
+<td>Fiabilité des sources (CRAP)</td>
+</tr>
+<tr>
+<td>1.3 Gestion de l'information</td>
+<td>RSS, veille documentaire</td>
+</tr>
+<tr>
+<td>2.1 Interaction</td>
+<td>Courriel, forums Moodle</td>
+</tr>
+<tr>
+<td>2.2 Partage</td>
+<td>Cloud, dépôt devoir</td>
+</tr>
+<tr>
+<td>2.4 Collaboration</td>
+<td>Visioconférence BBB, forums</td>
+</tr>
+<tr>
+<td>4.1 Protection des données</td>
+<td>Sécurité, phishing, RGPD</td>
+</tr>
+<tr>
+<td>5.1 Résolution de problèmes</td>
+<td>Scénario intégré Moodle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Panorama des services Internet</li>
+<li>Moteurs et métamoteurs de recherche</li>
+<li>Messagerie électronique (SMTP, POP, IMAP)</li>
+<li>Transfert de fichiers (Drive, Dropbox)</li>
+<li>Messagerie instantanée et visioconférence</li>
+<li>Sécurité et netiquette</li>
+<li>Synthèse du module TIC</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<h2>Introduction aux services Internet <em>(10 min)</em></h2>
+<p>Au-delà du Web, Internet propose des <strong>services</strong> applicatifs : courriel, transfert de fichiers, DNS, visioconférence. Chaque service = protocole(s) dédié(s).</p>
+<p>Modèle M'sila / USTO : activités Moodle = dépôt devoir (service Web) + notification courriel.</p>
+<h3>Carte mentale des services Internet</h3>
+<div class="codehilite"><pre><span></span><code>mindmap
+  root((Services&lt;br/&gt;Internet))
+    Web
+      HTTP/HTTPS
+      Navigateur
+      Sites Moodle
+    Courriel
+      SMTP (envoi)
+      IMAP (réception)
+      Webmail
+    Transfert
+      FTP / SFTP
+      Cloud (Drive)
+    Communication
+      Visio (BBB)
+      Messagerie
+      Forums
+    Infrastructure
+      DNS
+      DHCP
+      NTP
+</code></pre></div>
+
+<hr />
+<h2>Recherche et veille <em>(15 min)</em></h2>
+<ul>
+<li><strong>Moteurs</strong> : Google Scholar, Cairn, HAL, ERIC (éducation)</li>
+<li><strong>Alertes</strong> : Google Alerts sur mot-clé mémoire</li>
+<li><strong>RSS / agrégateurs</strong> : veille actualité linguistique (Feedly, Inoreader)</li>
+</ul>
+<h3>Comparaison des moteurs de recherche académique</h3>
+<table>
+<thead>
+<tr>
+<th>Moteur</th>
+<th>Domaine</th>
+<th>Accès</th>
+<th>Points forts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Scholar</td>
+<td>Toutes disciplines</td>
+<td>Libre (avec liens)</td>
+<td>Très large index</td>
+</tr>
+<tr>
+<td>Cairn.info</td>
+<td>Sciences humaines françaises</td>
+<td>Institutionnel</td>
+<td>Revues francophones</td>
+</tr>
+<tr>
+<td>HAL</td>
+<td>Toutes disciplines (archive ouverte)</td>
+<td>Libre</td>
+<td>Articles en texte intégral</td>
+</tr>
+<tr>
+<td>Erudit</td>
+<td>Sciences humaines (Québec)</td>
+<td>Libre / Institutionnel</td>
+<td>Francophonie canadienne</td>
+</tr>
+<tr>
+<td>OpenEdition</td>
+<td>Sciences humaines</td>
+<td>Libre</td>
+<td>Revues, livres, carnets</td>
+</tr>
+<tr>
+<td>ERIC</td>
+<td>Éducation / Pédagogie</td>
+<td>Libre</td>
+<td>Recherche en enseignement</td>
+</tr>
+</tbody>
+</table>
+<h3>Requête avancée — exemple en lettres</h3>
+<p>Objectif : trouver des articles sur la littérature algérienne d'expression française et l'oralité.</p>
+<div class="codehilite"><pre><span></span><code>&quot;littérature algérienne&quot; AND &quot;oralité&quot; AND (&quot;francophone&quot; OR &quot;d&#39;expression française&quot;) site:cairn.info
+</code></pre></div>
+
+<p>Étapes :
+1. Accéder à Google Scholar (scholar.google.com)
+2. Saisir la requête booléenne
+3. Filtrer par date (2015–2025)
+4. Trier par pertinence
+5. Créer une alerte e-mail sur la requête</p>
+<h3>Configurer une alerte Google Scholar</h3>
+<ol>
+<li>Lancer une recherche sur Google Scholar</li>
+<li>Cliquer sur l'icône 🔔 « Créer une alerte »</li>
+<li>Saisir son adresse e-mail institutionnelle</li>
+<li>Choisir la fréquence (recommandé : hebdomadaire)</li>
+<li>Recevoir les nouvelles publications automatiquement</li>
+</ol>
+<hr />
+<h2>Courrier électronique <em>(15 min)</em></h2>
+<ul>
+<li><strong>SMTP</strong> : envoi ; <strong>IMAP/POP3</strong> : réception</li>
+<li>Adresse institutionnelle : <code>matricule@etu.univ-*.dz</code> (USTO, Boumerdès…)</li>
+<li><strong>Objet clair</strong>, signature, pièces jointes &lt; 10 Mo</li>
+<li><strong>Phishing</strong> : vérifier expéditeur, ne pas cliquer liens suspects</li>
+</ul>
+<h3>Protocoles de messagerie — comparaison</h3>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Port</th>
+<th>Chiffré</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMTP</td>
+<td>25/587</td>
+<td>STARTTLS</td>
+<td>Envoi de courriels</td>
+</tr>
+<tr>
+<td>IMAP</td>
+<td>143/993</td>
+<td>SSL/TLS</td>
+<td>Réception + synchronisation multi-appareils</td>
+</tr>
+<tr>
+<td>POP3</td>
+<td>110/995</td>
+<td>SSL/TLS</td>
+<td>Réception + téléchargement (suppression serveur)</td>
+</tr>
+</tbody>
+</table>
+<h3>Rédiger un courriel académique — modèle</h3>
+<div class="codehilite"><pre><span></span><code><span class="nl">Objet</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">TIC</span><span class="w"> </span><span class="mi">08</span><span class="p">]</span><span class="w"> </span><span class="n">Question</span><span class="w"> </span><span class="n">sur</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">TD</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Analyse</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">URL</span>
+
+<span class="n">Bonjour</span><span class="w"> </span><span class="n">Monsieur</span><span class="w"> </span><span class="n">BELACEL</span><span class="p">,</span>
+
+<span class="n">Je</span><span class="w"> </span><span class="n">suis</span><span class="w"> </span><span class="p">[</span><span class="n">Prénom</span><span class="w"> </span><span class="n">Nom</span><span class="p">],</span><span class="w"> </span><span class="n">étudiant</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">ENS</span><span class="w"> </span><span class="mi">1</span><span class="n">ère</span><span class="w"> </span><span class="n">année</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Département</span><span class="w"> </span><span class="n">Français</span><span class="p">.</span>
+<span class="n">Je</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="n">permets</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">vous</span><span class="w"> </span><span class="n">écrire</span><span class="w"> </span><span class="n">concernant</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">TD</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">je</span><span class="w"> </span><span class="n">ne</span><span class="w"> </span><span class="n">comprends</span><span class="w"> </span><span class="n">pas</span>
+<span class="n">comment</span><span class="w"> </span><span class="n">identifier</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">paramètre</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">l</span><span class="err">&#39;</span><span class="n">URL</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">l</span><span class="err">&#39;</span><span class="n">exemple</span><span class="p">.</span>
+
+<span class="n">Pourriez</span><span class="o">-</span><span class="n">vous</span><span class="w"> </span><span class="n">m</span><span class="err">&#39;</span><span class="n">éclaircir</span><span class="w"> </span><span class="n">ce</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">lors</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">prochaine</span><span class="w"> </span><span class="n">séance</span><span class="w"> </span><span class="o">?</span>
+
+<span class="n">Je</span><span class="w"> </span><span class="n">vous</span><span class="w"> </span><span class="n">remercie</span><span class="w"> </span><span class="n">par</span><span class="w"> </span><span class="n">avance</span><span class="w"> </span><span class="n">pour</span><span class="w"> </span><span class="n">votre</span><span class="w"> </span><span class="n">retour</span><span class="p">.</span>
+
+<span class="n">Cordialement</span><span class="p">,</span>
+
+<span class="p">[</span><span class="n">Prénom</span><span class="w"> </span><span class="n">Nom</span><span class="p">]</span>
+<span class="nl">Matricule</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">XXXXXX</span>
+<span class="n">ENS</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Département</span><span class="w"> </span><span class="n">Français</span>
+</code></pre></div>
+
+<p><strong>Netiquette académique</strong> : formule de politesse, délai de réponse 48–72 h, signature complète.</p>
+<h3>Phishing — savoir identifier un courriel frauduleux</h3>
+<table>
+<thead>
+<tr>
+<th>Indice suspect</th>
+<th>Exemple frauduleux</th>
+<th>Version légitime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expéditeur</td>
+<td><code>support-moodle-usto@gmail.com</code></td>
+<td><code>support@univ-usto.dz</code></td>
+</tr>
+<tr>
+<td>Salutation générique</td>
+<td>« Cher utilisateur »</td>
+<td>« Cher/Chère [Prénom] »</td>
+</tr>
+<tr>
+<td>Urgence</td>
+<td>« Votre compte sera supprimé ! »</td>
+<td>« N'oubliez pas de… »</td>
+</tr>
+<tr>
+<td>Lien suspect</td>
+<td><code>elearning.univ-usto.dz.xyz.com</code></td>
+<td><code>elearning.univ-usto.dz</code></td>
+</tr>
+<tr>
+<td>Pièce jointe inattendue</td>
+<td><code>facture.exe</code></td>
+<td>Document PDF attendu</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Transfert de fichiers <em>(10 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Port</th>
+<th>Sécurité</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP/HTTPS</td>
+<td>80/443</td>
+<td>Chiffré (HTTPS)</td>
+<td>Téléchargement navigateur</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>21</td>
+<td>Non chiffré</td>
+<td>Transfert technique (obsolète)</td>
+</tr>
+<tr>
+<td>SFTP</td>
+<td>22</td>
+<td>Chiffré (SSH)</td>
+<td>Transfert sécurisé — recommandé</td>
+</tr>
+<tr>
+<td>Cloud (WebDAV)</td>
+<td>443</td>
+<td>Chiffré</td>
+<td>Drive, OneDrive, Dropbox</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Moodle</strong> : dépôt devoir = upload HTTP POST ; limite taille configurée par admin.</p>
+<h3>Services de cloud — comparaison</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Stockage gratuit</th>
+<th>Limite fichier</th>
+<th>Partage lien</th>
+<th>Synchronisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Drive</td>
+<td>15 Go</td>
+<td>5 To</td>
+<td>✅</td>
+<td>✅ (client)</td>
+</tr>
+<tr>
+<td>OneDrive</td>
+<td>5 Go</td>
+<td>250 Mo</td>
+<td>✅</td>
+<td>✅ (Windows)</td>
+</tr>
+<tr>
+<td>Dropbox</td>
+<td>2 Go</td>
+<td>50 Mo (gratuit)</td>
+<td>✅</td>
+<td>✅ (multi-OS)</td>
+</tr>
+<tr>
+<td>pCloud</td>
+<td>10 Go</td>
+<td>100 Go</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Mega</td>
+<td>20 Go</td>
+<td>Limité bande passante</td>
+<td>✅</td>
+<td>✅ (chiffré)</td>
+</tr>
+</tbody>
+</table>
+<h3>Règle 3-2-1 pour la sauvegarde des travaux</h3>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Description</th>
+<th>Application pour un étudiant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>3</strong> copies</td>
+<td>Ne jamais avoir un seul exemplaire</td>
+<td>PC + Drive + clé USB</td>
+</tr>
+<tr>
+<td><strong>2</strong> supports</td>
+<td>Deux types de stockage différents</td>
+<td>Disque dur + cloud</td>
+</tr>
+<tr>
+<td><strong>1</strong> hors site</td>
+<td>Une copie en dehors du lieu habituel</td>
+<td>Cloud ou disque externe</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Visioconférence et collaboration <em>(10 min)</em></h2>
+<ul>
+<li><strong>BigBlueButton</strong> intégré Moodle (Béjaïa, Boumerdès) : audio, vidéo, tableau blanc, partage écran</li>
+<li><strong>Teams / Zoom</strong> : usage institutionnel ou personnel</li>
+<li><strong>Forum Moodle</strong> : discussion asynchrone, fil de messages</li>
+</ul>
+<p><strong>Savoir-être</strong> : caméra optionnelle, micro coupé hors prise de parole.</p>
+<h3>Comparaison des outils de visioconférence</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Intégration Moodle</th>
+<th>Participants max</th>
+<th>Fonctionnalités clés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BigBlueButton</td>
+<td>✅ Native</td>
+<td>150+</td>
+<td>Tableau blanc, sondages, enregistrement</td>
+</tr>
+<tr>
+<td>Microsoft Teams</td>
+<td>✅ (via LTI)</td>
+<td>300+</td>
+<td>Office 365, sous-salles</td>
+</tr>
+<tr>
+<td>Zoom</td>
+<td>✅ (via plugin)</td>
+<td>100 (gratuit)</td>
+<td>Sous-salles, réactions</td>
+</tr>
+<tr>
+<td>Jitsi Meet</td>
+<td>❌ (lien externe)</td>
+<td>50+</td>
+<td>Open source, sans inscription</td>
+</tr>
+</tbody>
+</table>
+<h3>Utiliser un forum Moodle — bonnes pratiques</h3>
+<ol>
+<li><strong>Lire les messages existants</strong> avant de poster (éviter les doublons)</li>
+<li><strong>Titre clair</strong> : « [TD 08] Question sur l'analyse d'URL »</li>
+<li><strong>Formule de politesse</strong> : Bonjour / Merci</li>
+<li><strong>Langage respectueux</strong> : même en désaccord, rester courtois</li>
+<li><strong>Pièces jointes</strong> : nommer le fichier (ex: <code>TD08_NOM_Prenom.pdf</code>)</li>
+</ol>
+<hr />
+<h2>Cloud et stockage <em>(10 min)</em></h2>
+<ul>
+<li><strong>OneDrive / Google Drive</strong> : synchronisation, partage</li>
+<li><strong>Règle 3-2-1</strong> : 3 copies, 2 supports, 1 hors site</li>
+<li><strong>Données personnelles</strong> : RGPD — ne pas stocker données sensibles sur cloud public non institutionnel</li>
+</ul>
+<h3>Organisation recommandée des fichiers étudiants</h3>
+<div class="codehilite"><pre><span></span><code>📁 Documents TIC 2025-2026
+ ├── 📁 01_Cours
+ │   ├── 📄 TIC_01_Info_Generale.pdf
+ │   ├── 📄 TIC_02_PC.pdf
+ │   └── ...
+ ├── 📁 02_TD
+ │   ├── 📄 TD01_NOM_Prenom.pdf
+ │   └── ...
+ ├── 📁 03_Ressources
+ │   ├── 📄 Guide_Moodle.pdf
+ │   └── ...
+ └── 📁 04_Projet
+     └── 📄 Projet_TIC_NOM_Prenom.pdf
+</code></pre></div>
+
+<hr />
+<h2>Synthèse module TIC <em>(10 min)</em></h2>
+<p>Parcours 01–10 :
+1. Culture TIC → 2. PC → 3–5. Bureautique → 6. Présentation → 7–8. Internet/Web → 9. Réseaux → 10. Services</p>
+<p>Compétences <strong>DigComp</strong> niveau foundation : information, communication, création de contenu, sécurité.</p>
+<h3>Parcours d'apprentissage — schéma</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;TIC 01&lt;br/&gt;Culture TIC&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;TIC 02&lt;br/&gt;PC&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;TIC 03-05&lt;br/&gt;Bureautique&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;TIC 06&lt;br/&gt;Présentation&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="s">&quot;TIC 07&lt;br/&gt;Internet&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="s">&quot;TIC 08&lt;br/&gt;Web&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="s">&quot;TIC 09&lt;br/&gt;Réseaux&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="s">&quot;TIC 10&lt;br/&gt;Services&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196F</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FF9800</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">C27B0</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">E91E63</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">00</span><span class="n">BCD4</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FF5722</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">607</span><span class="n">D8B</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h3>Compétences acquises par cours</h3>
+<table>
+<thead>
+<tr>
+<th>Cours</th>
+<th>Compétence</th>
+<th>Application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIC 01</td>
+<td>Culture numérique</td>
+<td>Vocabulaire, historique</td>
+</tr>
+<tr>
+<td>TIC 02–05</td>
+<td>Bureautique</td>
+<td>Word, Excel, PowerPoint</td>
+</tr>
+<tr>
+<td>TIC 06</td>
+<td>Présentation</td>
+<td>Diaporama académique</td>
+</tr>
+<tr>
+<td>TIC 07</td>
+<td>Internet</td>
+<td>TCP/IP, connexion, sécurité</td>
+</tr>
+<tr>
+<td>TIC 08</td>
+<td>Web</td>
+<td>URL, HTML, moteurs</td>
+</tr>
+<tr>
+<td>TIC 09</td>
+<td>Réseaux</td>
+<td>Topologies, IP</td>
+</tr>
+<tr>
+<td>TIC 10</td>
+<td>Services</td>
+<td>Courriel, cloud, veille</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Conclusion et évaluation finale <em>(10 min)</em></h2>
+<ul>
+<li><strong>TD 10</strong> : scénario complet « remettre un devoir sur Moodle par courriel de notification »</li>
+<li><strong>QCM récapitulatif</strong> : 20 questions (modèle USTO/M'sila)</li>
+<li><strong>Ressources</strong> : guides étudiant Moodle Boumerdès et Béjaïa</li>
+</ul>
+<p>Fin du module TIC — ENS 1ère et 2ème année — Département Français.</p>
+<h3>Messages clés</h3>
+<ol>
+<li>Internet offre plus que le Web : courriel, FTP, visioconférence</li>
+<li>Chaque service a un <strong>protocole</strong> dédié</li>
+<li><strong>Sécurité</strong> et <strong>netiquette</strong> sont essentielles</li>
+<li>Le module TIC prépare à une utilisation <strong>autonome</strong> du numérique</li>
+</ol>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+<th>Support</th>
+<th>Modalité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduction</td>
+<td>10 min</td>
+<td>Carte mentale des services Internet</td>
+<td>Diapos 1–3</td>
+<td>Brainstorming</td>
+</tr>
+<tr>
+<td>Recherche et veille</td>
+<td>15 min</td>
+<td>Démo Google Scholar + alertes + Cairn</td>
+<td>Diapos 4–9</td>
+<td>TP dirigé</td>
+</tr>
+<tr>
+<td>Courriel académique</td>
+<td>15 min</td>
+<td>Rédaction + phishing + modèle</td>
+<td>Diapos 10–15</td>
+<td>Exercice guidé</td>
+</tr>
+<tr>
+<td>Transfert fichiers</td>
+<td>10 min</td>
+<td>Cloud + règle 3-2-1</td>
+<td>Diapos 16–19</td>
+<td>Exposé</td>
+</tr>
+<tr>
+<td>Visioconférence</td>
+<td>10 min</td>
+<td>BBB démo + forums Moodle</td>
+<td>Diapos 20–23</td>
+<td>Démonstration</td>
+</tr>
+<tr>
+<td>Cloud et sécurité</td>
+<td>10 min</td>
+<td>Stockage + RGPD + organisation fichiers</td>
+<td>Diapos 24–27</td>
+<td>Discussion</td>
+</tr>
+<tr>
+<td>Synthèse module</td>
+<td>10 min</td>
+<td>Parcours TIC 01–10 + DigComp</td>
+<td>Diapos 28–32</td>
+<td>Synthèse collective</td>
+</tr>
+<tr>
+<td>Conclusion</td>
+<td>10 min</td>
+<td>QCM final + remise attestation</td>
+<td>Diapos 33–35</td>
+<td>Évaluation sommative</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<p><em>Cochez la ou les bonne(s) réponse(s).</em></p>
+<p><strong>Q1. Quel protocole est utilisé pour l'envoi de courriels ?</strong></p>
+<ul>
+<li>[x] SMTP (port 25/587) ✓</li>
+<li>[ ] IMAP</li>
+<li>[ ] HTTP</li>
+<li>[ ] FTP</li>
+</ul>
+<p><strong>Q2. Parmi ces services, lequel est un service de visioconférence intégré nativement dans Moodle ?</strong></p>
+<ul>
+<li>[ ] Google Meet</li>
+<li>[ ] Skype</li>
+<li>[x] BigBlueButton (BBB) ✓</li>
+<li>[ ] WhatsApp</li>
+</ul>
+<p><strong>Q3. Quelle est la signification de la règle 3-2-1 pour la sauvegarde des données ?</strong></p>
+<ul>
+<li>[ ] 3 sauvegardes par jour, 2 semaines, 1 mois</li>
+<li>[ ] 3 fichiers, 2 dossiers, 1 disque</li>
+<li>[x] 3 copies, 2 supports différents, 1 copie hors site ✓</li>
+<li>[ ] 3 utilisateurs, 2 appareils, 1 réseau</li>
+</ul>
+<p><strong>Q4. Que signifie l'acronyme SFTP ?</strong></p>
+<ul>
+<li>[ ] Simple File Transfer Protocol</li>
+<li>[x] SSH File Transfer Protocol (transfert sécurisé) ✓</li>
+<li>[ ] Standard File Transfer Protocol</li>
+<li>[ ] Secure Fast Transfer Protocol</li>
+</ul>
+<p><strong>Q5. Dans le cadre du référentiel DigComp, à quoi correspond la compétence 1.1 ?</strong></p>
+<ul>
+<li>[x] Navigation, recherche et filtrage d'informations ✓</li>
+<li>[ ] Création de contenu numérique</li>
+<li>[ ] Protection des données personnelles</li>
+<li>[ ] Collaboration via les TIC</li>
+</ul>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Le dernier cours du module TIC constitue une <strong>synthèse et une ouverture</strong> vers l'autonomie numérique des futurs enseignants :</p>
+<ol>
+<li><strong>Approche intégrative</strong> : les services Internet sont présentés non pas isolément mais comme un écosystème cohérent que l'étudiant utilisera dans sa vie académique et professionnelle.</li>
+<li><strong>Scénario réaliste</strong> : le dépôt de devoir Moodle sert de fil rouge — action concrète que chaque étudiant réalise et dont il comprend désormais les couches techniques (HTTP, SMTP, stockage).</li>
+<li><strong>Transfert professionnel</strong> : les compétences de veille documentaire (alertes Scholar, critères CRAP) sont directement réutilisables dans la préparation de cours et la recherche en didactique.</li>
+<li><strong>Autonomie progressive</strong> : le parcours TIC 01–10 suit une progression de la dépendance guidée vers l'autonomie numérique complète.</li>
+</ol>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li><strong>Scénario intégré</strong> : l'activité finale (dépôt devoir Moodle) doit être réalisée en direct pendant le TD. Chaque étudiant dépose un fichier et vérifie la notification par courriel.</li>
+<li><strong>QCM récapitulatif</strong> : prévoir un QCM de 20 questions couvrant l'ensemble du module (modèle USTO/M'sila). Corriger collectivement en fin de séance.</li>
+<li><strong>Évaluation de la netiquette</strong> : noter la qualité des courriels et des messages forum produits pendant le module — critère savoir-être.</li>
+<li><strong>Retour d'expérience</strong> : demander aux étudiants ce qui leur a été le plus utile dans le module TIC. Utile pour l'amélioration continue.</li>
+<li><strong>Attestation</strong> : préparer une attestation de compétences numériques (DigComp foundation) à remettre en fin de module — valorisante pour l'étudiant.</li>
+</ul>
+<h3>Prolongements possibles</h3>
+<table>
+<thead>
+<tr>
+<th>Prolongement</th>
+<th>Description</th>
+<th>Ressource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Certification DigComp</td>
+<td>Passer la certification PIX (adapté Algérie)</td>
+<td>Plateforme PIX</td>
+</tr>
+<tr>
+<td>Projet final</td>
+<td>Créer un site Web simple sur un thème littéraire</td>
+<td>Google Sites / WordPress</td>
+</tr>
+<tr>
+<td>Portfolio numérique</td>
+<td>Constituer un portfolio des travaux TIC</td>
+<td>Mahara / WordPress</td>
+</tr>
+<tr>
+<td>Atelier phish</td>
+<td>Simuler un phishing pour former à la détection</td>
+<td>Kit pédagogique</td>
+</tr>
+<tr>
+<td>Veille collaborative</td>
+<td>Créer un compte Twitter/X collectif pour la veille en lettres</td>
+<td>Atelier TD</td>
+</tr>
+<tr>
+<td>Mémoire et TIC</td>
+<td>Utiliser Zotero pour la gestion bibliographique</td>
+<td>TD complémentaire</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Annexe — Références</h2>
+<table>
+<thead>
+<tr>
+<th>Référence</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kurose &amp; Ross — Computer Networking</td>
+<td>Ouvrage</td>
+</tr>
+<tr>
+<td>Pujolle — Les Réseaux</td>
+<td>Ouvrage</td>
+</tr>
+<tr>
+<td>DigComp 2.2 — Cadre européen</td>
+<td>Rapport</td>
+</tr>
+<tr>
+<td>Guides Moodle — Boumerdès, USTO</td>
+<td>Guide PDF</td>
+</tr>
+<tr>
+<td>MDN Web Docs, Cairn, HAL</td>
+<td>Ressources en ligne</td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

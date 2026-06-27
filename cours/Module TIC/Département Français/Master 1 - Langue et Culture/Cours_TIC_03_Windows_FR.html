@@ -1,0 +1,629 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 03 — Windows : Organisation Numérique pour la Recherche — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 03 — Windows : Organisation Numérique pour la Recherche</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 1 — Langue et Culture</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 1 Langue et Culture</li><li>**Compétences pré-requises :** TIC 02 ; architecture de l'ordinateur ; notions de fichiers et dossiers</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_03_Windows_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 03 — Windows : Organisation Numérique pour la Recherche</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani
+<strong>Module :</strong> TIC
+<strong>Niveau :</strong> Master 1 — Langue et Culture
+<strong>Durée :</strong> 1h30
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 1 Langue et Culture</p>
+<p><strong>Compétences pré-requises :</strong> TIC 02 ; architecture de l'ordinateur ; notions de fichiers et dossiers</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Maîtriser l'organisation du système de fichiers Windows pour la recherche académique
+- Comprendre les principes d'arborescence pour les données de recherche
+- Distinguer les formats de fichiers pour les données scientifiques (TXT, CSV, XML, JSON, TSV)
+- Connaître les outils Windows pour la recherche : Explorateur avancé, PowerShell, sous-système Linux (WSL)</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Structurer un espace de travail pour un projet de recherche / mémoire
+- Utiliser les outils de gestion bibliographique (Zotero) sous Windows
+- Automatiser des tâches simples de gestion de fichiers (renommage, tri)
+- Maîtriser la recherche avancée de fichiers par métadonnées et contenu
+- Utiliser les outils d'accessibilité et de productivité pour la rédaction scientifique</p>
+<p><strong>En termes de savoir-être :</strong>
+- Adopter une organisation méthodique et reproductible de ses données de recherche
+- Respecter les principes FAIR (Findable, Accessible, Interoperable, Reusable) dans la gestion de ses fichiers
+- Développer une culture de la sauvegarde et de l'archivage</p>
+<p><strong>Mode d'évaluation :</strong> TD 30 % + Projet « Organisation d'un espace de recherche numérique » 30 % + QCM 20 % + Examen pratique 20 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Atelier : construction d'une arborescence pour projet de mémoire <code>M1_Langues_Culture/</code></li>
+<li>TP : installation et configuration de Zotero avec son plugin Word</li>
+<li>Exercice : renommage batch de fichiers de corpus avec PowerShell</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM gestion de fichiers et formats scientifiques</li>
+<li>TP noté : organisation d'un dossier de recherche complet (corpus, bibliographie, brouillons, livrables)</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Microsoft Learn — Gestion des fichiers sous Windows 11</li>
+<li>Zotero — Guide officiel de démarrage</li>
+<li>Briney, K. (2015). <em>Data Management for Researchers</em>. Pelagic Publishing.</li>
+<li>Wilkinson, M. et al. (2016). The FAIR Guiding Principles for scientific data management. <em>Scientific Data</em>, 3, 160018.</li>
+<li>Guide étudiant Moodle Béjaïa — dépôt de fichiers et organisation</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p><strong>Arrêté ministériel 933</strong> (2016) : les compétences en organisation et gestion de l'information numérique relèvent de l'unité UEM 1.1 (Méthodologie).</p>
+<p><strong>Décision n° 75</strong> (2021) : dépôt électronique des mémoires via la plateforme <strong>Dépôt Légal Numérique</strong> (DLN) au format PDF/A.</p>
+<p><strong>Référentiel CNE</strong> — Domaine 2 (Communication et collaboration) : organisation des dossiers, partage cloud, nomenclature explicite.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Arrêté</span><span class="w"> </span><span class="mi">933</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">UEM</span><span class="w"> </span><span class="mf">1.1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Compétences</span><span class="w"> </span><span class="n">numériques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Organisation</span><span class="w"> </span><span class="n">fichiers</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Gestion</span><span class="w"> </span><span class="n">bibliographique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Dépôt</span><span class="w"> </span><span class="n">DLN</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">PDF</span><span class="o">/</span><span class="n">A</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Principes</span><span class="w"> </span><span class="n">FAIR</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Findable</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Accessible</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Interoperable</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Reusable</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>Plan du Cours</h2>
+<ol>
+<li>Introduction : Windows comme environnement de recherche</li>
+<li>Arborescence de recherche : principes et conventions</li>
+<li>Formats de fichiers pour la recherche en langues</li>
+<li>Outils avancés de gestion de fichiers</li>
+<li>Gestion bibliographique avec Zotero</li>
+<li>Automatisation et productivité</li>
+<li>Sauvegarde, archivage et principes FAIR</li>
+<li>Conclusion et transition vers Word</li>
+</ol>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Phase</th>
+<th>Activité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-10 min</td>
+<td>Introduction</td>
+<td>Présentation du lien entre Windows et recherche académique. Sondage : comment organisez-vous vos fichiers ?</td>
+<td>Diapos 1-4</td>
+</tr>
+<tr>
+<td>10-25 min</td>
+<td>Exposé participatif</td>
+<td>Arborescence pour un projet de mémoire. Convention de nommage. Formats de fichiers scientifiques (TXT, CSV, XML, JSON). Démonstration Explorateur de fichiers</td>
+<td>Diapos 5-12</td>
+</tr>
+<tr>
+<td>25-40 min</td>
+<td>Atelier guidé</td>
+<td>Construction d'une arborescence type : chaque étudiant crée l'arbre <code>M1_Nom/Cours/Recherche/Memoire/Bibliographie/Corpus/Donnees</code></td>
+<td>Ordinateurs</td>
+</tr>
+<tr>
+<td>40-55 min</td>
+<td>Démonstration + TP</td>
+<td>Installation configuration Zotero. Connexion au word processor. Ajout de références. Création d'une bibliographie</td>
+<td>Diapos 13-18, Zotero</td>
+</tr>
+<tr>
+<td>55-70 min</td>
+<td>Exposé</td>
+<td>Automatisation : renommage batch, recherche avancée, PowerShell pour manipuler des fichiers texte. WSL pour outils Linux</td>
+<td>Diapos 19-24</td>
+</tr>
+<tr>
+<td>70-80 min</td>
+<td>Synthèse</td>
+<td>Sauvegarde 3-2-1, archivage long terme, principes FAIR. Discussion sur le plan de gestion des données pour le mémoire</td>
+<td>Diapos 25-28</td>
+</tr>
+<tr>
+<td>80-90 min</td>
+<td>Conclusion + QCM</td>
+<td>Récapitulatif, QCM, annonce projet noté : « Plan de gestion des données de recherche »</td>
+<td>Diapos 29-30</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>1. Introduction : Windows comme Environnement de Recherche <em>(10 min)</em></h2>
+<h3>1.1 Pourquoi Windows est crucial en Master</h3>
+<p>Au niveau Licence, Windows était un outil pour accéder à Moodle, écrire des devoirs et naviguer. En Master, Windows devient <strong>l'environnement de travail du chercheur</strong> :</p>
+<ul>
+<li><strong>Gestion de données</strong> : organiser, nommer, trouver et archiver des centaines de fichiers (corpus, articles, notes, données brutes)</li>
+<li><strong>Écosystème logiciel</strong> : faire cohabiter Zotero, Word, AntConc, Python, TXM, navigateurs, lecteurs PDF</li>
+<li><strong>Interopérabilité</strong> : Windows doit dialoguer avec des serveurs Linux, des clouds, des bases de données</li>
+<li><strong>Automatisation</strong> : des tâches répétitives (renommage, conversion, tri) peuvent et doivent être automatisées</li>
+</ul>
+<h3>1.2 Windows 11 pour la recherche</h3>
+<p>Windows 11 offre des fonctionnalités particulièrement utiles pour le chercheur en langues :
+- <strong>Snap Layouts</strong> : organiser ses fenêtres (Word, Zotero, navigateur, Explorateur) sur un grand écran
+- <strong>Virtual Desktops</strong> : séparer ses espaces (recherche / rédaction / administratif)
+- <strong>Windows Terminal</strong> : terminal moderne intégré (PowerShell, CMD, WSL)
+- <strong>WSL 2</strong> (Windows Subsystem for Linux) : exécuter des outils Linux natifs (Python, R, TXM) sans dual-boot
+- <strong>PowerToys</strong> : outils avancés (PowerRename, PowerToys Run, FancyZones)</p>
+<hr />
+<h2>2. Arborescence de Recherche : Principes et Conventions <em>(15 min)</em></h2>
+<h3>2.1 Pourquoi une arborescence rigoureuse ?</h3>
+<p>Une <strong>arborescence bien conçue</strong> est le fondement d'une recherche reproductible. Elle permet de :
+- Retrouver instantanément n'importe quel fichier
+- Distinguer les données brutes des données traitées
+- Séparer les versions de travail des versions finales
+- Faciliter le partage et l'archivage</p>
+<h3>2.2 Arborescence type pour un Master Langue et Culture</h3>
+<div class="codehilite"><pre><span></span><code>D:/
+└── Recherche/
+    └── M1_Langues_Culture/
+        ├── 00_Administratif/
+        │   ├── Convention_stage.pdf
+        │   ├── Emploi_du_temps.pdf
+        │   └── Inscriptions/
+        ├── 01_Cours/
+        │   ├── TIC/
+        │   ├── Linguistique/
+        │   ├── Litterature/
+        │   └── Culture/
+        ├── 02_Memoire/
+        │   ├── 00_Projet/
+        │   │   ├── Sujet_V1.docx
+        │   │   └── Bibliographie_initiale.zotero
+        │   ├── 01_Corpus/
+        │   │   ├── 00_Raw/          (données brutes, non modifiées)
+        │   │   ├── 01_Cleaned/      (données nettoyées)
+        │   │   └── 02_Annotated/    (données annotées)
+        │   ├── 02_Scripts/
+        │   │   ├── Python/
+        │   │   └── R/
+        │   ├── 03_Analyses/
+        │   │   ├── Statistiques/
+        │   │   ├── Graphiques/
+        │   │   └── Tableaux/
+        │   ├── 04_Redaction/
+        │   │   ├── 00_Notes/
+        │   │   ├── 01_Plan/
+        │   │   ├── 02_Chapitres/
+        │   │   └── 03_Versions_Finales/
+        │   └── 05_Soutenance/
+        │       ├── Diaporama/
+        │       └── Documents/
+        └── 03_Bibliographie/
+            ├── Zotero.sqlite
+            ├── PDFs/
+            └── Notes_lecture/
+</code></pre></div>
+
+<h3>2.3 Conventions de nommage</h3>
+<table>
+<thead>
+<tr>
+<th>Règle</th>
+<th>Exemple</th>
+<th>Pourquoi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date ISO (AAAA-MM-JJ) en premier</td>
+<td><code>2025-10-15_Compte_rendu_TD.docx</code></td>
+<td>Tri chronologique automatique</td>
+</tr>
+<tr>
+<td>Noms sans espaces ni accents</td>
+<td><code>corpus_presse_2025</code></td>
+<td>Compatibilité scripts et outils Linux</td>
+</tr>
+<tr>
+<td>Version explicite</td>
+<td><code>Memoire_Ch1_v2.docx</code></td>
+<td>Évite les confusions</td>
+</tr>
+<tr>
+<td>Suffixe de statut</td>
+<td><code>_BRUT</code>, <code>_PROPRE</code>, <code>_FINAL</code></td>
+<td>Distingue les états des données</td>
+</tr>
+</tbody>
+</table>
+<h3>2.4 Métadonnées et recherche avancée</h3>
+<p>Windows indexe automatiquement les fichiers pour permettre une recherche par :
+- <strong>Nom et extension</strong>
+- <strong>Contenu textuel</strong> (Word, PDF, TXT) : taper un mot présent dans le document
+- <strong>Métadonnées</strong> : auteur, date de création, mots-clés (onglet Détails dans Propriétés)
+- <strong>Tags Windows</strong> : ajouter des tags aux fichiers de recherche (ex: #corpus, #litterature_algerienne)</p>
+<p><strong>Astuce Master</strong> : utilisez <code>ext:.pdf auteur:belacel</code> dans la barre de recherche de l'Explorateur pour filtrer par extension ET auteur simultanément.</p>
+<hr />
+<h2>3. Formats de Fichiers pour la Recherche en Langues <em>(15 min)</em></h2>
+<h3>3.1 Formats textuels</h3>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Usage</th>
+<th>Avantage</th>
+<th>Inconvénient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>.txt</strong> (UTF-8)</td>
+<td>Corpus bruts, scripts, notes</td>
+<td>Universel, lisible par tout outil</td>
+<td>Pas de mise en forme</td>
+</tr>
+<tr>
+<td><strong>.csv</strong></td>
+<td>Données tabulaires (métadonnées de corpus)</td>
+<td>Structuré, importable dans Excel/R/Python</td>
+<td>Encodage UTF-8 à vérifier</td>
+</tr>
+<tr>
+<td><strong>.xml</strong></td>
+<td>Corpus annotés (TEI, XML)</td>
+<td>Standard pour humanités numériques</td>
+<td>Verbosité, taille</td>
+</tr>
+<tr>
+<td><strong>.json</strong></td>
+<td>Données structurées pour API, web</td>
+<td>Léger, natif en Python/JS</td>
+<td>Moins standard en SHS</td>
+</tr>
+<tr>
+<td><strong>.md</strong> (Markdown)</td>
+<td>Notes de recherche, documentation</td>
+<td>Léger, versionnable (Git), convertible (Pandoc)</td>
+<td>Pas de mise en page riche</td>
+</tr>
+<tr>
+<td><strong>.pdf/.pdfa</strong></td>
+<td>Diffusion, archivage, dépôt légal</td>
+<td>Universel, non modifiable</td>
+<td>Difficile à traiter automatiquement</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Le format TEI (Text Encoding Initiative)</h3>
+<p>Le <strong>TEI XML</strong> est le format standard international pour l'encodage de textes en sciences humaines. Il permet de :
+- Baliser des structures textuelles (chapitres, paragraphes, vers)
+- Annoter des entités nommées (personnes, lieux, dates)
+- Coder des phénomènes linguistiques (variantes, corrections, gloses)
+- Assurer l'interopérabilité entre projets et institutions</p>
+<p><strong>Exemple minimal :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;TEI&gt;</span>
+<span class="w">  </span><span class="nt">&lt;teiHeader&gt;</span>
+<span class="w">    </span><span class="nt">&lt;fileDesc&gt;</span>
+<span class="w">      </span><span class="nt">&lt;titleStmt&gt;&lt;title&gt;</span>Corpus<span class="w"> </span>de<span class="w"> </span>romans<span class="w"> </span>algériens<span class="nt">&lt;/title&gt;&lt;/titleStmt&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/fileDesc&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/teiHeader&gt;</span>
+<span class="w">  </span><span class="nt">&lt;text&gt;</span>
+<span class="w">    </span><span class="nt">&lt;body&gt;</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span>Ceci<span class="w"> </span>est<span class="w"> </span>un<span class="w"> </span><span class="nt">&lt;rs</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;person&quot;</span><span class="nt">&gt;</span>personnage<span class="nt">&lt;/rs&gt;</span><span class="w"> </span>dans<span class="w"> </span>le<span class="w"> </span>texte.<span class="nt">&lt;/p&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/body&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/text&gt;</span>
+<span class="nt">&lt;/TEI&gt;</span>
+</code></pre></div>
+
+<h3>3.3 Conversion entre formats</h3>
+<p>Un chercheur en langues doit savoir convertir ses fichiers entre formats selon les besoins :
+- <strong>Pandoc</strong> : <code>.md</code> ↔ <code>.docx</code> ↔ <code>.pdf</code> ↔ <code>.tex</code> (outil en ligne de commande)
+- <strong>Calibre</strong> : conversion de formats de livres numériques (ePub, Mobi)
+- <strong>Python (pandas)</strong> : <code>.csv</code> ↔ <code>.json</code> ↔ <code>.xml</code> pour données tabulaires
+- <strong>PowerShell</strong> : manipulation de fichiers texte (encodage, remplacement)</p>
+<hr />
+<h2>4. Outils Avancés de Gestion de Fichiers <em>(15 min)</em></h2>
+<h3>4.1 Explorateur de fichiers avancé</h3>
+<p>Windows 11 propose des fonctionnalités avancées souvent méconnues :</p>
+<ul>
+<li><strong>Volet de navigation</strong> structuré (Accès rapide, OneDrive, Ce PC)</li>
+<li><strong>Volet d'aperçu</strong> (<code>Alt+P</code>) : visualiser un fichier sans l'ouvrir (PDF, image, texte)</li>
+<li><strong>Regrouper par</strong> : par type, date, auteur, tags</li>
+<li><strong>Filtrer</strong> : par taille, type, date de modification</li>
+<li><strong>Bibliothèques</strong> : regrouper virtuellement des dossiers dispersés</li>
+<li><strong>Compresser / Extraire</strong> : gestion native des ZIP</li>
+</ul>
+<h3>4.2 Recherche avancée avec l'Explorateur</h3>
+<p>Syntaxe de recherche dans la barre de l'Explorateur :</p>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>corpus</code></td>
+<td>Fichiers contenant "corpus" dans le nom ou le contenu</td>
+</tr>
+<tr>
+<td><code>type:.pdf</code></td>
+<td>Uniquement les PDF</td>
+</tr>
+<tr>
+<td><code>datemodif:&gt;01/09/2025</code></td>
+<td>Modifiés après septembre 2025</td>
+</tr>
+<tr>
+<td><code>auteur:belacel</code></td>
+<td>Fichiers dont l'auteur est Belacel</td>
+</tr>
+<tr>
+<td><code>taille:&gt;10Mo</code></td>
+<td>Fichiers de plus de 10 Mo</td>
+</tr>
+<tr>
+<td><code>tags:corpus</code></td>
+<td>Fichiers taggés "corpus"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Combinaison</strong> : <code>type:.pdf datemodif:&gt;01/09/2025 corpus algérien</code></p>
+<h3>4.3 Windows Terminal et PowerShell</h3>
+<p><strong>PowerShell</strong> permet d'automatiser des tâches : renommer en masse (<code>Get-ChildItem *.txt | Rename-Item -NewName { $_.Name -replace 'X', 'Y' }</code>), compter les mots, convertir l'encodage en UTF-8.</p>
+<h3>4.4 WSL (Windows Subsystem for Linux)</h3>
+<p>WSL 2 exécute un noyau Linux sous Windows — utile pour les outils TAL natifs (TreeTagger, Stanza), Python/R en environnement Unix, et Git en ligne de commande.</p>
+<hr />
+<h2>5. Gestion Bibliographique avec Zotero <em>(15 min)</em></h2>
+<h3>5.1 Pourquoi un gestionnaire bibliographique en Master ?</h3>
+<p>Un mémoire de Master cite 30 à 80 sources. Zotero automatise la gestion des références et la génération des bibliographies.</p>
+<h3>5.2 Installation et configuration</h3>
+<ol>
+<li><strong>Télécharger Zotero</strong> depuis <code>zotero.org</code> (version standalone)</li>
+<li><strong>Installer le connecteur</strong> pour navigateur (Chrome/Firefox/Edge)</li>
+<li><strong>Installer le plugin Word</strong> (inclus dans l'installateur Zotero)</li>
+<li><strong>Configurer</strong> :</li>
+<li>Préférences → Citer → Style : APA 7 (ou autre selon consigne)</li>
+<li>Préférences → Sync : créer un compte Zotero.org pour synchronisation cloud</li>
+<li>Préférences → Avancé : dossier de stockage des PDFs</li>
+</ol>
+<h3>5.3 Ajouter des références</h3>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Connecteur navigateur</strong></td>
+<td>Depuis une page web (Cairn, Google Scholar, Persée, OpenEdition), cliquez sur l'icône Zotero</td>
+</tr>
+<tr>
+<td><strong>Import PDF</strong></td>
+<td>Glissez-déposez un PDF dans Zotero — il extrait automatiquement les métadonnées</td>
+</tr>
+<tr>
+<td><strong>Identifiant</strong></td>
+<td>Saisissez un DOI, ISBN, PMID — Zotero télécharge la notice</td>
+</tr>
+<tr>
+<td><strong>Saisie manuelle</strong></td>
+<td>Ajoutez une référence si aucune méthode automatique ne fonctionne</td>
+</tr>
+</tbody>
+</table>
+<h3>5.4 Organiser sa bibliothèque</h3>
+<ul>
+<li><strong>Collections</strong> : dossiers thématiques (Linguistique, Littérature, Méthodologie)</li>
+<li><strong>Tags</strong> : mots-clés transversaux (#corpus, #analyse_discours, #sociolinguistique)</li>
+<li><strong>Notes</strong> : associer des notes de lecture à chaque référence</li>
+<li><strong>Recherche avancée</strong> : sauvegarder des recherches réutilisables</li>
+</ul>
+<h3>5.5 Citer avec Zotero dans Word</h3>
+<p>Dans Word : onglet <strong>Zotero</strong> → <strong>Add/Edit Citation</strong> → chercher la référence → insérer. En fin de document : <strong>Add/Edit Bibliography</strong> génère la bibliographie. Avantage clé : changer de style (MLA → APA) met à jour toutes les citations d'un clic. (Voir Cours 04 pour le détail complet.)</p>
+<hr />
+<h2>6. Automatisation et Productivité <em>(10 min)</em></h2>
+<h3>6.1 Raccourcis clavier essentiels</h3>
+<p><code>Win+E</code> (Explorateur) — <code>Win+D</code> (Bureau) — <code>Win+Tab</code> (Bureaux virtuels) — <code>Win+L</code> (Verrouiller) — <code>Win+S</code> (Recherche) — <code>F2</code> (Renommer) — <code>Ctrl+Shift+N</code> (Nouveau dossier) — <code>Ctrl+Maj+Échap</code> (Gestionnaire tâches)</p>
+<h3>6.2 PowerToys (Microsoft Power Utilities)</h3>
+<ul>
+<li><strong>PowerRename</strong> : renommage avancé avec regex (utile pour normaliser des noms de fichiers de corpus)</li>
+<li><strong>FancyZones</strong> : disposition avancée des fenêtres (Word à gauche, Zotero à droite, navigateur en haut)</li>
+<li><strong>PowerToys Run</strong> : lanceur d'applications et recherche rapide (<code>Alt + Espace</code>)</li>
+<li><strong>Text Extractor</strong> : OCR sur n'importe quelle zone de l'écran (<code>Win + Shift + T</code>)</li>
+<li><strong>Color Picker</strong> : sélecteur de couleurs (<code>Win + Shift + C</code>)</li>
+</ul>
+<hr />
+<h2>7. Sauvegarde, Archivage et Principes FAIR <em>(10 min)</em></h2>
+<h3>7.1 Stratégie de sauvegarde 3-2-1</h3>
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Description</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 copies</td>
+<td>Toujours 3 copies de vos données</td>
+<td>Original + sauvegarde1 + sauvegarde2</td>
+</tr>
+<tr>
+<td>2 supports</td>
+<td>Sur au moins 2 supports différents</td>
+<td>SSD interne + disque externe</td>
+</tr>
+<tr>
+<td>1 hors site</td>
+<td>1 copie hors de votre domicile</td>
+<td>Cloud (OneDrive, Google Drive) + clé chez un proche</td>
+</tr>
+</tbody>
+</table>
+<h3>7.2 Windows et l'archivage long terme</h3>
+<ul>
+<li><strong>Historique des fichiers</strong> : activer dans Paramètres → Sauvegarde → Historique des fichiers</li>
+<li><strong>OneDrive</strong> : synchronisation cloud automatique (USTO offre un compte via Office 365)</li>
+<li><strong>Point de restauration</strong> : avant installation de nouveaux logiciels de recherche</li>
+<li><strong>PDF/A</strong> : format d'archivage validé par le Dépôt Légal Numérique algérien (Décision n°75)</li>
+</ul>
+<h3>7.3 Les principes FAIR appliqués à l'organisation Windows</h3>
+<p><strong>F</strong>indable (nommage + tags) — <strong>A</strong>ccessible (chemins logiques + OneDrive) — <strong>I</strong>nteroperable (formats ouverts TXT/CSV/XML) — <strong>R</strong>eusable (README.txt dans chaque dossier décrivant contenu, source, conventions).</p>
+<hr />
+<h2>8. Conclusion <em>(10 min)</em></h2>
+<p>Windows n'est pas qu'un système d'exploitation : c'est <strong>l'infrastructure numérique</strong> de votre recherche en Master. Une organisation rigoureuse de vos fichiers, une gestion professionnelle de votre bibliographie et une stratégie de sauvegarde solide sont des compétences aussi importantes que la rédaction elle-même.</p>
+<p><strong>Prochain cours :</strong> Microsoft Word — Rédaction du mémoire : styles, gestion de longs documents, intégration Zotero.</p>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li><strong>Quelle convention de nommage garantit un tri chronologique automatique dans l'Explorateur Windows ?</strong></li>
+<li>a) <code>Memoire_v1_final.docx</code></li>
+<li>b) <code>2025-10-15_Memoire_Ch1.docx</code> ✓</li>
+<li>c) <code>Chapitre 1 du mémoire.docx</code></li>
+<li>
+<p>d) <code>final_memoire.docx</code></p>
+</li>
+<li>
+<p><strong>Quel logiciel permet de gérer ses références bibliographiques et de les citer automatiquement dans Word ?</strong></p>
+</li>
+<li>a) Microsoft OneNote</li>
+<li>b) Zotero ✓</li>
+<li>c) Adobe Acrobat</li>
+<li>
+<p>d) Notepad++</p>
+</li>
+<li>
+<p><strong>Que signifie le format TEI ?</strong></p>
+</li>
+<li>a) Traitement Électronique de l'Information</li>
+<li>b) Text Encoding Initiative ✓</li>
+<li>c) Technique d'Extraction Informatique</li>
+<li>
+<p>d) Tableau d'Étude Interactif</p>
+</li>
+<li>
+<p><strong>Quelle est la première règle de la stratégie de sauvegarde 3-2-1 ?</strong></p>
+</li>
+<li>a) Utiliser un disque dur externe</li>
+<li>b) Avoir 3 copies de ses données ✓</li>
+<li>c) Sauvegarder une fois par semaine</li>
+<li>
+<p>d) Utiliser uniquement le cloud</p>
+</li>
+<li>
+<p><strong>Sous Windows, quel outil permet d'exécuter des commandes Linux en parallèle de Windows ?</strong></p>
+</li>
+<li>a) PowerShell</li>
+<li>b) WSL (Windows Subsystem for Linux) ✓</li>
+<li>c) Gestionnaire des tâches</li>
+<li>d) Bloc-notes</li>
+</ol>
+<hr />
+<h2>Note pédagogique Master</h2>
+<h3>Transposition didactique pour le Master</h3>
+<p>Ce cours marque une rupture qualitative avec l'approche Licence : il ne s'agit plus d'« apprendre à utiliser Windows » mais de <strong>concevoir Windows comme un environnement de recherche professionnel</strong>. La transposition s'articule autour de cinq compétences-clés :</p>
+<ol>
+<li><strong>Architecture de l'information</strong> : l'étudiant apprend à organiser ses données selon une logique de recherche (données brutes → nettoyées → analysées → publiées) plutôt qu'une logique « dossier personnel ».</li>
+<li><strong>Interopérabilité</strong> : Windows doit cohabiter avec Zotero, WSL, des clouds, des formats multiples — l'étudiant comprend l'écosystème logiciel dans son ensemble.</li>
+<li><strong>Automatisation</strong> : les tâches répétitives (renommage, conversion, tri) sont confiées à des scripts — premier pas vers la pensée computationnelle.</li>
+<li><strong>Gestion bibliographique</strong> : Zotero n'est pas un outil facultatif mais un <strong>prérequis méthodologique</strong> pour le mémoire.</li>
+<li><strong>Reproductibilité</strong> : l'organisation des fichiers et la documentation associée (README.txt) anticipent les exigences de la recherche scientifique.</li>
+</ol>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li><strong>Avant la séance</strong> : demander aux étudiants de créer un compte Zotero.org et d'installer Zotero. Vérifier que Windows est à jour.</li>
+<li><strong>Matériel nécessaire</strong> : un vidéoprojecteur pour montrer l'explorateur, Zotero, et les manipulations. Préparer un dossier ZIP avec des fichiers à renommer pour l'atelier PowerShell.</li>
+<li><strong>Points d'attention</strong> : la partie Zotero est longue — prévoir 20 min dédiées. Certains étudiants auront des difficultés avec PowerShell ; rassurez-les en montrant que quelques commandes suffisent pour gagner un temps considérable.</li>
+<li><strong>Évaluation</strong> : le projet noté consiste à rendre un plan de gestion des données pour le mémoire — structuré, avec arborescence, conventions de nommage, et description de la stratégie de sauvegarde.</li>
+</ul>
+<h3>Prolongement recherche</h3>
+<p>Ce cours prépare directement :
+- <strong>L'atelier Zotero avancé</strong> (Semestre 2) : styles personnalisés, groupes collaboratifs, API Zotero
+- <strong>L'enquête de terrain</strong> (S2) : organisation des données d'enquête (entretiens, questionnaires)
+- <strong>Le dépôt du mémoire</strong> : respect des normes du Dépôt Légal Numérique algérien
+- <strong>Twitter / Academia.edu / ResearchGate</strong> : gestion des identifiants numériques du chercheur (ORCID)</p>
+<p>Pour les étudiants souhaitant approfondir : suivre le MOOC « Gestion des données de la recherche » sur FUN-MOOC ou la formation « Data Management » proposée par le CRAIM (Alger).</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

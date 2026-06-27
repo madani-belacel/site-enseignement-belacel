@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD 04 — Ethernet et commutation — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TD 04 — Ethernet et commutation</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**b)** L'adresse `FF:FF:FF:FF:FF:FF` est de quel type ?</li><li>**c)** Le 1er octet `03:AA:BB:CC:DD:EE` indique unicast ou multicast ? (bit I/G = ?)</li><li>**a)** PC1 broadcast ARP « Qui a 192.168.1.20 ? » → PC2 répond unicast « 192.168.1.20 est BB:BB:BB:00:00:02 »</li><li>**b)** AA:AA → port 1, BB:BB → port 2, CC:CC → port GW (si trafic vu)</li><li>**c)** MAC dest = **CC:CC:CC:00:00:03** (passerelle, car 8.8.8.8 hors réseau local)</li></ul></div>
+    <h1>TD 04 — Ethernet et commutation</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>2 h</td>
+</tr>
+<tr>
+<td><strong>Chapitres associés</strong></td>
+<td>Ch. 04</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — Adresses MAC (4 pts)</h2>
+<p><strong>a)</strong> Combien de bits contient une adresse MAC ?</p>
+<p><strong>b)</strong> L'adresse <code>FF:FF:FF:FF:FF:FF</code> est de quel type ?</p>
+<p><strong>c)</strong> Le 1er octet <code>03:AA:BB:CC:DD:EE</code> indique unicast ou multicast ? (bit I/G = ?)</p>
+<p><strong>d)</strong> Quel protocole résout une adresse IP en adresse MAC ?</p>
+<hr />
+<h2>Exercice 2 — Trame Ethernet (6 pts)</h2>
+<p><strong>a)</strong> Dessiner la structure d'une trame Ethernet II en indiquant la taille de chaque champ.</p>
+<p><strong>b)</strong> Quelle est la taille minimale et maximale d'une trame (hors préambule) ?</p>
+<p><strong>c)</strong> Si le payload IP fait 28 octets, combien d'octets de padding sont ajoutés ?</p>
+<p><strong>d)</strong> L'EtherType <code>0x0800</code> indique quel protocole de couche 3 ?</p>
+<hr />
+<h2>Exercice 3 — Switch vs Hub (5 pts)</h2>
+<p>Un réseau contient 4 PC connectés à un switch en full-duplex 1 Gbps.</p>
+<p><strong>a)</strong> Combien de domaines de collision y a-t-il ?</p>
+<p><strong>b)</strong> Si on remplace le switch par un hub half-duplex, que se passe-t-il pour les domaines de collision ?</p>
+<p><strong>c)</strong> Le PC-A envoie une trame au PC-B. Le switch a les deux MAC en table. Sur quels ports la trame est-elle transmise ?</p>
+<p><strong>d)</strong> Le PC-A envoie une trame broadcast. Sur quels ports ?</p>
+<hr />
+<h2>Exercice 4 — Table MAC et ARP (5 pts)</h2>
+<p>Réseau : PC1 (MAC: AA:AA:AA:00:00:01, IP: 192.168.1.10), PC2 (MAC: BB:BB:BB:00:00:02, IP: 192.168.1.20), Switch port 1/2, Passerelle (MAC: CC:CC:CC:00:00:03, IP: 192.168.1.1).</p>
+<p><strong>a)</strong> PC1 ping PC2 pour la première fois. Décrire les messages ARP échangés.</p>
+<p><strong>b)</strong> Après 5 minutes d'inactivité, que contient la table MAC du switch ?</p>
+<p><strong>c)</strong> PC1 envoie un paquet IP à 8.8.8.8. Quelle est la MAC destination de la trame ?</p>
+<hr />
+<h2>Annexe — Corrigé TD 04</h2>
+<h3>Corrigé Exercice 1</h3>
+<p><strong>a)</strong> 48 bits (6 octets)
+<strong>b)</strong> <strong>Broadcast</strong>
+<strong>c)</strong> 03 = 000000<strong>11</strong> → bit I/G = 1 → <strong>Multicast</strong> (ou localement administré)
+<strong>d)</strong> <strong>ARP</strong></p>
+<h3>Corrigé Exercice 2</h3>
+<p><strong>a)</strong> Dest MAC (6) | Src MAC (6) | Type (2) | Data (46-1500) | FCS (4)</p>
+<p><strong>b)</strong> Min = <strong>64 octets</strong>, Max = <strong>1518 octets</strong></p>
+<p><strong>c)</strong> Payload 28 + En-tête Eth 14 + FCS 4 = 46 → pas de padding (46 = minimum data)</p>
+<p><strong>d)</strong> <strong>IPv4</strong></p>
+<h3>Corrigé Exercice 3</h3>
+<p><strong>a)</strong> <strong>4</strong> domaines (1 par port, full-duplex)
+<strong>b)</strong> <strong>1 seul</strong> domaine partagé, collisions possibles
+<strong>c)</strong> <strong>Uniquement port de PC-B</strong> (commutation unicast)
+<strong>d)</strong> <strong>Tous les ports</strong> sauf le port source (flooding broadcast)</p>
+<h3>Corrigé Exercice 4</h3>
+<p><strong>a)</strong> PC1 broadcast ARP « Qui a 192.168.1.20 ? » → PC2 répond unicast « 192.168.1.20 est BB:BB:BB:00:00:02 »</p>
+<p><strong>b)</strong> AA:AA → port 1, BB:BB → port 2, CC:CC → port GW (si trafic vu)</p>
+<p><strong>c)</strong> MAC dest = <strong>CC:CC:CC:00:00:03</strong> (passerelle, car 8.8.8.8 hors réseau local)</p>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 04 — Couche Liaison Ethernet</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

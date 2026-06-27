@@ -1,0 +1,727 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 06 — Couche Transport : TCP et UDP — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 06 — Couche Transport : TCP et UDP</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    
+    <h1>Chapitre 06 — Couche Transport : TCP et UDP</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>UEF422 — Réseaux</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM (+ 2 h TD associé)</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>06 / 08</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[KR] Ch. 3 ; [FO] Ch. 23–24 ; RFC 793, RFC 768</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs du chapitre</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li>Expliquer le rôle de la couche <strong>Transport</strong> (communication bout-à-bout).</li>
+<li>Comparer <strong>TCP</strong> et <strong>UDP</strong> (fiabilité, connexion, usage).</li>
+<li>Décrire le <strong>three-way handshake</strong> TCP.</li>
+<li>Comprendre les <strong>ports</strong> et les <strong>sockets</strong>.</li>
+<li>Identifier les <strong>ports well-known</strong> des services courants.</li>
+</ol>
+<hr />
+<h2>Plan du chapitre</h2>
+<ol>
+<li>Rôle de la couche Transport</li>
+<li>Ports et sockets</li>
+<li>Protocole UDP</li>
+<li>Protocole TCP</li>
+<li>Comparaison TCP vs UDP</li>
+<li>Multiplexage et démultiplexage</li>
+<li>Exemples, exercices, QCM</li>
+</ol>
+<hr />
+<h2>1. Rôle de la couche Transport</h2>
+<p>La couche <strong>Transport (Layer 4)</strong> assure la communication <strong>de bout en bout</strong> (entre processus/applications sur des hôtes distants) :</p>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multiplexage/démultiplage</strong></td>
+<td>Diriger les données vers la bonne application (via les <strong>ports</strong>)</td>
+</tr>
+<tr>
+<td><strong>Fiabilité</strong> (TCP)</td>
+<td>Retransmission, ordonnancement, contrôle d'erreurs</td>
+</tr>
+<tr>
+<td><strong>Contrôle de flux</strong></td>
+<td>Adapter le débit à la capacité du récepteur</td>
+</tr>
+<tr>
+<td><strong>Segmentation</strong></td>
+<td>Découper les messages en segments</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>La couche Réseau (IP) livre des paquets <strong>hôte à hôte</strong>. La couche Transport livre des données <strong>processus à processus</strong>.</p>
+</blockquote>
+<p><img alt="Couche Transport — socket" src="../../../Ressources-Communes/Images-Schemas/Transport/couche-transport-socket.png" /></p>
+<hr />
+<h2>2. Ports et sockets</h2>
+<h3>2.1 Port</h3>
+<ul>
+<li>Numéro sur <strong>16 bits</strong> → plage <strong>0–65535</strong>.</li>
+<li>Identifie un <strong>processus/application</strong> sur un hôte.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Plage</th>
+<th>Type</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 – 1023</td>
+<td><strong>Well-known</strong> (système)</td>
+<td>80 (HTTP), 443 (HTTPS), 53 (DNS), 22 (SSH)</td>
+</tr>
+<tr>
+<td>1024 – 49151</td>
+<td><strong>Registered</strong></td>
+<td>3306 (MySQL), 8080 (HTTP alt)</td>
+</tr>
+<tr>
+<td>49152 – 65535</td>
+<td><strong>Dynamiques/éphémères</strong></td>
+<td>Ports clients temporaires</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Socket</h3>
+<p>Une <strong>socket</strong> = adresse IP + port → identifie de manière unique une connexion :</p>
+<p>$$\text{Socket} = (\text{IP}, \text{Port})$$</p>
+<p>Exemple : <code>(192.168.1.10, 54321)</code> — processus client sur le PC.</p>
+<p>Une connexion TCP est identifiée par un <strong>quadruplet</strong> :
+$$(IP_{src}, Port_{src}, IP_{dest}, Port_{dest})$$</p>
+<h3>2.3 Ports well-known essentiels</h3>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Protocole</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20/21</td>
+<td>TCP</td>
+<td>FTP (data/control)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>TCP</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>23</td>
+<td>TCP</td>
+<td>Telnet</td>
+</tr>
+<tr>
+<td>25</td>
+<td>TCP</td>
+<td>SMTP (email)</td>
+</tr>
+<tr>
+<td>53</td>
+<td>TCP/UDP</td>
+<td>DNS</td>
+</tr>
+<tr>
+<td>67/68</td>
+<td>UDP</td>
+<td>DHCP</td>
+</tr>
+<tr>
+<td>80</td>
+<td>TCP</td>
+<td>HTTP</td>
+</tr>
+<tr>
+<td>110</td>
+<td>TCP</td>
+<td>POP3</td>
+</tr>
+<tr>
+<td>443</td>
+<td>TCP</td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td>3389</td>
+<td>TCP</td>
+<td>RDP (Bureau à distance)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Protocole UDP</h2>
+<p><strong>UDP</strong> (<em>User Datagram Protocol</em>) — RFC 768</p>
+<h3>3.1 Caractéristiques</h3>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mode</td>
+<td><strong>Sans connexion</strong> (connectionless)</td>
+</tr>
+<tr>
+<td>Fiabilité</td>
+<td><strong>Non fiable</strong> (pas de retransmission)</td>
+</tr>
+<tr>
+<td>Ordre</td>
+<td><strong>Non garanti</strong></td>
+</tr>
+<tr>
+<td>Overhead</td>
+<td><strong>Minimal</strong> (8 octets d'en-tête)</td>
+</tr>
+<tr>
+<td>Vitesse</td>
+<td><strong>Rapide</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Format du datagramme UDP</h3>
+<div class="codehilite"><pre><span></span><code><span class="err">┌────────────────┬────────────────┬──────────┬──────────┐</span>
+<span class="err">│</span><span class="w">  </span><span class="n">Port</span><span class="w"> </span><span class="n">Source</span><span class="w">   </span><span class="err">│</span><span class="w">  </span><span class="n">Port</span><span class="w"> </span><span class="n">Dest</span><span class="w">     </span><span class="err">│</span><span class="w"> </span><span class="n">Longueur</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Checksum</span><span class="w"> </span><span class="err">│</span>
+<span class="err">│</span><span class="w">   </span><span class="p">(</span><span class="mi">16</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w">    </span><span class="err">│</span><span class="w">   </span><span class="p">(</span><span class="mi">16</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w">    </span><span class="err">│</span><span class="p">(</span><span class="mi">16</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="p">(</span><span class="mi">16</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────────────────┴────────────────┴──────────┴──────────┤</span>
+<span class="err">│</span><span class="w">                      </span><span class="n">Données</span><span class="w"> </span><span class="p">(</span><span class="n">Payload</span><span class="p">)</span><span class="w">                 </span><span class="err">│</span>
+<span class="err">└───────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<h3>3.3 Usages de UDP</h3>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Raison du choix UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DNS</strong></td>
+<td>Requête/réponse simple, petite taille</td>
+</tr>
+<tr>
+<td><strong>DHCP</strong></td>
+<td>Broadcast, pas de connexion</td>
+</tr>
+<tr>
+<td><strong>VoIP / Streaming</strong></td>
+<td>Tolérance à la perte, faible latence</td>
+</tr>
+<tr>
+<td><strong>SNMP</strong></td>
+<td>Requêtes de gestion réseau</td>
+</tr>
+<tr>
+<td><strong>Online gaming</strong></td>
+<td>Rapidité &gt; fiabilité absolue</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Protocole TCP</h2>
+<p><strong>TCP</strong> (<em>Transmission Control Protocol</em>) — RFC 793</p>
+<h3>4.1 Caractéristiques</h3>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mode</td>
+<td><strong>Orienté connexion</strong> (connection-oriented)</td>
+</tr>
+<tr>
+<td>Fiabilité</td>
+<td><strong>Fiable</strong> (retransmission, ACK)</td>
+</tr>
+<tr>
+<td>Ordre</td>
+<td><strong>Garanti</strong> (numéros de séquence)</td>
+</tr>
+<tr>
+<td>Contrôle de flux</td>
+<td><strong>Fenêtre glissante</strong> (flow control)</td>
+</tr>
+<tr>
+<td>Overhead</td>
+<td><strong>Plus élevé</strong> (20+ octets d'en-tête)</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Format du segment TCP</h3>
+<div class="codehilite"><pre><span></span><code><span class="err">┌──────────┬──────────┬─────────────────┬─────────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="n">Port</span><span class="w"> </span><span class="n">Src</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="n">Port</span><span class="w"> </span><span class="n">Dst</span><span class="err">│</span><span class="w">  </span><span class="n">Sequence</span><span class="w"> </span><span class="n">Number</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├──────────┴──────────┼─────────────────┬─────────────────┤</span>
+<span class="err">│</span><span class="w">   </span><span class="n">Ack</span><span class="w"> </span><span class="n">Number</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w">   </span><span class="err">│</span><span class="n">Offset</span><span class="err">│</span><span class="w"> </span><span class="n">Flags</span><span class="w">  </span><span class="err">│</span><span class="w">    </span><span class="n">Window</span><span class="w"> </span><span class="n">Size</span><span class="w">   </span><span class="err">│</span>
+<span class="err">├─────────────────────┼──────┴────────┼───────────────────┤</span>
+<span class="err">│</span><span class="w">      </span><span class="n">Checksum</span><span class="w">       </span><span class="err">│</span><span class="w">  </span><span class="n">Urgent</span><span class="w"> </span><span class="n">Ptr</span><span class="w">  </span><span class="err">│</span><span class="w">    </span><span class="n">Options</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├─────────────────────┴──────────────┴───────────────────┤</span>
+<span class="err">│</span><span class="w">                      </span><span class="n">Données</span><span class="w"> </span><span class="p">(</span><span class="n">Payload</span><span class="p">)</span><span class="w">                  </span><span class="err">│</span>
+<span class="err">└────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sequence Number</strong></td>
+<td>Numéro du 1er octet de données du segment</td>
+</tr>
+<tr>
+<td><strong>Ack Number</strong></td>
+<td>Prochain octet attendu (accusé de réception)</td>
+</tr>
+<tr>
+<td><strong>Flags</strong></td>
+<td>SYN, ACK, FIN, RST, PSH, URG</td>
+</tr>
+<tr>
+<td><strong>Window Size</strong></td>
+<td>Taille de la fenêtre de réception (flow control)</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 Three-Way Handshake (établissement de connexion)</h3>
+<div class="codehilite"><pre><span></span><code>Client                              Serveur
+  │                                    │
+  │──────── SYN (seq=x) ──────────────→│  1. Client demande connexion
+  │                                    │
+  │←─── SYN+ACK (seq=y, ack=x+1) ─────│  2. Serveur accepte
+  │                                    │
+  │──────── ACK (ack=y+1) ────────────→│  3. Client confirme
+  │                                    │
+  │        Connexion ÉTABLIE           │
+  │←────────── Data ─────────────────→│  Échange de données
+  │                                    │
+  │──────── FIN ──────────────────────→│  Fermeture
+  │←─────── FIN+ACK ──────────────────│
+  │──────── ACK ──────────────────────→│
+  │        Connexion FERMÉE            │
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Client</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Serveur</span>
+<span class="w">    </span><span class="n">C</span><span class="o">-&gt;&gt;</span><span class="n">S</span><span class="o">:</span><span class="w"> </span><span class="n">SYN</span><span class="w"> </span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;&gt;</span><span class="n">C</span><span class="o">:</span><span class="w"> </span><span class="n">SYN</span><span class="o">-</span><span class="n">ACK</span><span class="w"> </span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="n">ack</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<span class="w">    </span><span class="n">C</span><span class="o">-&gt;&gt;</span><span class="n">S</span><span class="o">:</span><span class="w"> </span><span class="n">ACK</span><span class="w"> </span><span class="p">(</span><span class="n">ack</span><span class="o">=</span><span class="mi">301</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Note</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="n">S</span><span class="o">:</span><span class="w"> </span><span class="n">Connexion</span><span class="w"> </span><span class="err">é</span><span class="n">tablie</span>
+<span class="w">    </span><span class="n">C</span><span class="o">-&gt;&gt;</span><span class="n">S</span><span class="o">:</span><span class="w"> </span><span class="kt">DATA</span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;&gt;</span><span class="n">C</span><span class="o">:</span><span class="w"> </span><span class="kt">DATA</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ACK</span>
+<span class="w">    </span><span class="n">C</span><span class="o">-&gt;&gt;</span><span class="n">S</span><span class="o">:</span><span class="w"> </span><span class="n">FIN</span>
+<span class="w">    </span><span class="n">S</span><span class="o">-&gt;&gt;</span><span class="n">C</span><span class="o">:</span><span class="w"> </span><span class="n">FIN</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ACK</span>
+<span class="w">    </span><span class="n">C</span><span class="o">-&gt;&gt;</span><span class="n">S</span><span class="o">:</span><span class="w"> </span><span class="n">ACK</span>
+<span class="w">    </span><span class="n">Note</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="n">S</span><span class="o">:</span><span class="w"> </span><span class="n">Connexion</span><span class="w"> </span><span class="n">fermée</span>
+</code></pre></div>
+
+<h3>4.4 Fermeture de connexion (Four-Way)</h3>
+<ol>
+<li>Client → FIN → Serveur</li>
+<li>Serveur → ACK → Client (half-close)</li>
+<li>Serveur → FIN → Client</li>
+<li>Client → ACK → Serveur</li>
+</ol>
+<h3>4.5 Contrôle de flux (Flow Control)</h3>
+<ul>
+<li>Le récepteur annonce sa <strong>fenêtre de réception</strong> (Window Size).</li>
+<li>L'émetteur ne peut pas envoyer plus de données que la fenêtre le permet.</li>
+<li>Évite la saturation du buffer du récepteur.</li>
+</ul>
+<h3>4.6 Contrôle de congestion (aperçu)</h3>
+<ul>
+<li>TCP adapte son débit en fonction de la <strong>congestion du réseau</strong>.</li>
+<li>Algorithmes : Slow Start, Congestion Avoidance (AIMD).</li>
+<li>→ Approfondi en SI-S5 / Ingénieur.</li>
+</ul>
+<hr />
+<h2>5. Comparaison TCP vs UDP</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Connexion</strong></td>
+<td>Orienté connexion (handshake)</td>
+<td>Sans connexion</td>
+</tr>
+<tr>
+<td><strong>Fiabilité</strong></td>
+<td>✅ Retransmission, ACK</td>
+<td>❌ Best effort</td>
+</tr>
+<tr>
+<td><strong>Ordre</strong></td>
+<td>✅ Garanti</td>
+<td>❌ Non garanti</td>
+</tr>
+<tr>
+<td><strong>Vitesse</strong></td>
+<td>Plus lent (overhead)</td>
+<td>Plus rapide</td>
+</tr>
+<tr>
+<td><strong>En-tête</strong></td>
+<td>20–60 octets</td>
+<td>8 octets</td>
+</tr>
+<tr>
+<td><strong>Contrôle de flux</strong></td>
+<td>✅ Fenêtre glissante</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Usage typique</strong></td>
+<td>Web, email, FTP, SSH</td>
+<td>DNS, VoIP, streaming, jeux</td>
+</tr>
+<tr>
+<td><strong>Analogie</strong></td>
+<td><strong>Téléphone</strong> (appel avant de parler)</td>
+<td><strong>Lettre</strong> (envoyer sans confirmation)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Règle pratique</strong> : Si la <strong>fiabilité</strong> est critique → TCP. Si la <strong>rapidité/latence</strong> est critique → UDP.</p>
+</blockquote>
+<hr />
+<h2>6. Multiplexage et démultiplexage</h2>
+<h3>6.1 Multiplexage (émission)</h3>
+<p>Le transport <strong>collecte</strong> les données de plusieurs sockets et les transmet via IP :</p>
+<div class="codehilite"><pre><span></span><code>App HTTP (port 80)  ──┐
+App DNS  (port 53)  ──┼──→ TCP/UDP ──→ IP ──→ Réseau
+App SSH  (port 22)  ──┘
+</code></pre></div>
+
+<h3>6.2 Démultipliplexage (réception)</h3>
+<p>À la réception, TCP/UDP utilise le <strong>port destination</strong> pour livrer les données à la bonne application :</p>
+<div class="codehilite"><pre><span></span><code>Réseau ──→ IP ──→ TCP/UDP ──→ Port 80 → Navigateur
+                           ──→ Port 53 → Résolveur DNS
+</code></pre></div>
+
+<hr />
+<h2>7. Exemples concrets</h2>
+<h3>Exemple 1 — Connexion à un site web</h3>
+<ol>
+<li>Navigateur ouvre socket <code>(IP_client, port_ephemere) → (IP_serveur, 443)</code></li>
+<li>TCP three-way handshake</li>
+<li>TLS négocie le chiffrement (couche Présentation)</li>
+<li>HTTP GET envoyé via TCP</li>
+<li>Serveur répond avec HTML</li>
+<li>TCP ferme la connexion</li>
+</ol>
+<h3>Exemple 2 — Requête DNS (UDP)</h3>
+<ol>
+<li><code>(192.168.1.10, 52341) → (8.8.8.8, 53)</code> — datagramme UDP</li>
+<li>Serveur DNS répond en UDP — <code>(8.8.8.8, 53) → (192.168.1.10, 52341)</code></li>
+<li>Pas de handshake, pas de retransmission TCP</li>
+</ol>
+<h3>Exemple 3 — Visualisation avec netstat</h3>
+<div class="codehilite"><pre><span></span><code>netstat<span class="w"> </span>-an<span class="w">          </span><span class="c1"># Windows/Linux — connexions actives</span>
+netstat<span class="w"> </span>-tulnp<span class="w">       </span><span class="c1"># Linux — ports en écoute</span>
+</code></pre></div>
+
+<p>Sortie typique :</p>
+<div class="codehilite"><pre><span></span><code>Proto  Local Address       Foreign Address     State
+TCP    192.168.1.10:54321  142.250.80.68:443   ESTABLISHED
+UDP    0.0.0.0:53                             
+TCP    0.0.0.0:80          0.0.0.0:0           LISTENING
+</code></pre></div>
+
+<hr />
+<h2>8. Exercices et QCM</h2>
+<h3>Exercice 1</h3>
+<p>Pour chaque application, choisir TCP ou UDP et justifier :</p>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>TCP / UDP</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Téléchargement de fichier</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Visioconférence</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Consultation de page web</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Requête DNS</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>Solution</summary>
+
+| Application | Protocole | Justification |
+|-------------|-----------|---------------|
+| Téléchargement | **TCP** | Fiabilité requise (intégrité du fichier) |
+| Visioconférence | **UDP** | Latence faible, perte tolérable |
+| Page web | **TCP** (HTTP/HTTPS) | Fiabilité requise |
+| DNS | **UDP** (principalement) | Requête/réponse simple et rapide |
+</details>
+
+<h3>QCM</h3>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>TCP est…</td>
+<td>Sans connexion</td>
+<td>Orienté connexion</td>
+<td>Sans adressage</td>
+<td>Couche 3</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Le port HTTP est…</td>
+<td>21</td>
+<td>25</td>
+<td>80</td>
+<td>443</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>UDP a un en-tête de…</td>
+<td>8 octets</td>
+<td>20 octets</td>
+<td>32 octets</td>
+<td>64 octets</td>
+<td><strong>a</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Le three-way handshake utilise le flag…</td>
+<td>FIN</td>
+<td>SYN</td>
+<td>RST</td>
+<td>URG</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Les ports 0–1023 sont…</td>
+<td>Dynamiques</td>
+<td>Well-known</td>
+<td>Interdits</td>
+<td>Multicast</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>DNS utilise principalement…</td>
+<td>TCP</td>
+<td>UDP</td>
+<td>ICMP</td>
+<td>ARP</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>HTTPS utilise le port…</td>
+<td>80</td>
+<td>8080</td>
+<td>443</td>
+<td>22</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Le contrôle de flux TCP utilise…</td>
+<td>TTL</td>
+<td>Window Size</td>
+<td>MAC</td>
+<td>EtherType</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Une socket est…</td>
+<td>Une adresse MAC</td>
+<td>IP + Port</td>
+<td>Un protocole L3</td>
+<td>Un câble</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Pour du streaming vidéo, on préfère souvent…</td>
+<td>TCP</td>
+<td>UDP</td>
+<td>ICMP</td>
+<td>ARP</td>
+<td><strong>b</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Kurose &amp; Ross</strong> [KR], Chapitre 3 — <em>Transport Layer</em></li>
+<li><strong>Forouzan</strong> [FO], Chapitres 23–24 — <em>TCP, UDP</em></li>
+<li><strong>RFC 793</strong> — Transmission Control Protocol</li>
+<li><strong>RFC 768</strong> — User Datagram Protocol</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Démonstration Wireshark du handshake TCP (TP 5). Faire observer <code>netstat</code> pendant une navigation web. TD 6 : exercices comparatifs TCP/UDP.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

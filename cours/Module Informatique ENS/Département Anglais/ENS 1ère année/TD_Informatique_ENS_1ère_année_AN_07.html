@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 1 — Session 07 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 1 — Session 07 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 1 — English Department</li><li>**Duration:** 1h30</li><li>**Academic Year:** 2025-2026</li><li>**Problem statement:** Match each term with its definition.</li><li>**Answer:** 1→C, 2→E, 3→A, 4→B, 5→D, 6→F</li><li>**Problem statement:**</li><li>**Answer:**</li><li>**Problem statement:** Describe the communication steps when a user visits `https://www.ens-mostaganem.dz`.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_AN_07.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 1 — Session 07 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Learning Objectives</h2>
+<p>By the end of this tutorial session, the student is able to:
+- Distinguish the different types of networks (LAN, WAN, Internet) and their scope
+- Understand the role of IP addresses (IPv4/IPv6), subnet mask, and DNS
+- Describe the steps of a client-server communication and the role of each protocol
+- Associate network protocols with their default ports
+- Compare file sharing methods and recommend the most suitable one</p>
+<hr />
+<h2>Tutorial Plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — Network vocabulary</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — IP addresses</td>
+<td>20 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — Client-server</td>
+<td>15 min</td>
+<td>55 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — Protocols and ports</td>
+<td>20 min</td>
+<td>75 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — Cloud and storage</td>
+<td>15 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Types of networks and client-server communication</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Types of networks&quot;</span>
+<span class="w">        </span><span class="n">LAN</span><span class="p">[</span><span class="s">&quot;LAN — Local Area Network&lt;br/&gt;(room, building)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">WAN</span><span class="p">[</span><span class="s">&quot;WAN — Wide Area Network&lt;br/&gt;(city, country)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Internet</span><span class="p">[</span><span class="s">&quot;Internet&lt;br/&gt;Worldwide network of networks&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">LAN</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">WAN</span>
+<span class="w">    </span><span class="n">WAN</span><span class="w"> </span><span class="o">&lt;--&gt;</span><span class="w"> </span><span class="n">Internet</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Client-server communication&quot;</span>
+<span class="w">        </span><span class="n">Client</span><span class="p">[</span><span class="n">Browser</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Client</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DNS</span><span class="p">[</span><span class="n">DNS</span><span class="w"> </span><span class="n">Server</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Name</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">IP</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Client</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Server</span><span class="p">[</span><span class="n">Web</span><span class="w"> </span><span class="n">Server</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Server</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Client</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">Internet</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Client</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">LAN</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">WAN</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Internet</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Client</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h2>Protocols and ports</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Application Layer&quot;</span>
+<span class="w">        </span><span class="n">HTTP</span><span class="p">[</span><span class="s">&quot;HTTP :80&lt;br/&gt;Unencrypted browsing&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">HTTPS</span><span class="p">[</span><span class="s">&quot;HTTPS :443&lt;br/&gt;Encrypted browsing&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">FTP</span><span class="p">[</span><span class="s">&quot;FTP :21&lt;br/&gt;File transfer&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">SSH</span><span class="p">[</span><span class="s">&quot;SSH :22&lt;br/&gt;Secure remote access&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">SMTP</span><span class="p">[</span><span class="s">&quot;SMTP :25&lt;br/&gt;Sending emails&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">IMAP</span><span class="p">[</span><span class="s">&quot;IMAP :143&lt;br/&gt;Receiving emails&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Transport Layer&quot;</span>
+<span class="w">        </span><span class="n">TCP</span><span class="p">[</span><span class="s">&quot;TCP&lt;br/&gt;Reliable connection&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">UDP</span><span class="p">[</span><span class="s">&quot;UDP&lt;br/&gt;Fast, unreliable&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">HTTP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TCP</span>
+<span class="w">    </span><span class="n">HTTPS</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TCP</span>
+<span class="w">    </span><span class="n">FTP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TCP</span>
+<span class="w">    </span><span class="n">SSH</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TCP</span>
+<span class="w">    </span><span class="n">SMTP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TCP</span>
+<span class="w">    </span><span class="n">IMAP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TCP</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HTTP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HTTPS</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">FTP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">SSH</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">SMTP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">IMAP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">TCP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">UDP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 1 — Network vocabulary <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Match each term with its definition.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. LAN</td>
+<td>A. Worldwide network interconnecting millions of networks</td>
+</tr>
+<tr>
+<td>2. WAN</td>
+<td>B. Unique address of a device on the network</td>
+</tr>
+<tr>
+<td>3. Internet</td>
+<td>C. Local network (building, room)</td>
+</tr>
+<tr>
+<td>4. IP Address</td>
+<td>D. Translates domain names into IP addresses</td>
+</tr>
+<tr>
+<td>5. DNS</td>
+<td>E. Wide area network (city, country)</td>
+</tr>
+<tr>
+<td>6. URL</td>
+<td>F. Address of a resource on the Web</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Answer:</strong> 1→C, 2→E, 3→A, 4→B, 5→D, 6→F</p>
+<hr />
+<h2>Exercise 2 — IP addresses <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong>
+1. What is the difference between IPv4 and IPv6?
+2. Which class does the address <code>192.168.1.1</code> belong to?
+3. How many different IPv4 addresses can be encoded at most?
+4. How many IPv6 addresses?
+5. What does the command <code>ping 8.8.8.8</code> do?</p>
+<p><strong>Answer:</strong>
+1. IPv4: 32 bits (4 bytes), ~4.3 billion addresses. IPv6: 128 bits, astronomical number of addresses.
+2. <code>192.168.x.x</code> is a private class C address (local networks).
+3. 2³² = 4,294,967,296 (approximately 4.3 billion).
+4. 2¹²⁸ = 340,282,366,920,938,463,463,374,607,431,768,211,456 (340 undecillion).
+5. <code>ping 8.8.8.8</code> tests connectivity to Google's DNS server — if it responds, the Internet connection works.</p>
+<hr />
+<h2>Exercise 3 — Client-server <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Describe the communication steps when a user visits <code>https://www.ens-mostaganem.dz</code>.</p>
+<p>For each step, indicate whether it is the client (browser) or the server that acts.</p>
+<ol>
+<li>Entering the URL in the address bar</li>
+<li>DNS request to find the IP address</li>
+<li>Establishing the TCP connection</li>
+<li>TLS negotiation (encryption)</li>
+<li>Sending the HTTP GET request</li>
+<li>Processing the request by the server</li>
+<li>Sending the response (HTML page)</li>
+<li>Displaying the page in the browser</li>
+</ol>
+<p><strong>Answer:</strong>
+1. Client (user)
+2. Client (the browser queries the DNS)
+3. Client and server (TCP handshake)
+4. Client and server (TLS handshake)
+5. Client
+6. Server
+7. Server
+8. Client</p>
+<hr />
+<h2>Exercise 4 — Protocols and ports <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Match each protocol with its default port and its use.</p>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Port</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>22</td>
+<td>Secure file transfer</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>80</td>
+<td>Secure remote access</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>21</td>
+<td>Unencrypted web browsing</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>443</td>
+<td>Encrypted web browsing</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>25</td>
+<td>Receiving emails</td>
+</tr>
+<tr>
+<td>IMAP</td>
+<td>143</td>
+<td>Sending emails</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Answer:</strong>
+| Protocol | Port | Use |
+|----------|------|-----|
+| HTTP | 80 | Unencrypted web browsing |
+| HTTPS | 443 | Encrypted web browsing |
+| FTP | 21 | File transfer |
+| SSH | 22 | Secure remote access |
+| SMTP | 25 | Sending emails |
+| IMAP | 143 | Receiving emails (multi-device sync) |</p>
+<hr />
+<h2>Exercise 5 — Cloud and storage <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> You need to share a 50 MB folder (courses, tutorials, images) with your tutorial group.</p>
+<ol>
+<li>What are the advantages and disadvantages of each method:
+   a) USB key
+   b) Email (attachment)
+   c) Google Drive / OneDrive
+   d) Moodle</li>
+<li>Which method do you recommend and why?</li>
+</ol>
+<p><strong>Answer:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB key</td>
+<td>No Internet needed, fast</td>
+<td>Risk of loss/virus, in-person only</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>Simple, traceable</td>
+<td>Attachment limit (often 25 MB)</td>
+</tr>
+<tr>
+<td>Drive/OneDrive</td>
+<td>Share via link, accessible everywhere, versioning</td>
+<td>Requires Internet and an account</td>
+</tr>
+<tr>
+<td>Moodle</td>
+<td>Integrated with the university, secure</td>
+<td>Less flexible, interface sometimes heavy</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> Drive or Moodle for 50 MB (email is limited to 25 MB). USB key as a backup for in-person.</p>
+<hr />
+<h2>Self-assessment Quiz</h2>
+<ol>
+<li>
+<p><strong>A LAN network covers:</strong>
+   a) A city  b) A building or room ✓  c) The whole world</p>
+</li>
+<li>
+<p><strong>IPv4 uses addresses of:</strong>
+   a) 32 bits ✓  b) 64 bits  c) 128 bits</p>
+</li>
+<li>
+<p><strong>The HTTPS protocol uses port:</strong>
+   a) 80  b) 443 ✓  c) 22</p>
+</li>
+<li>
+<p><strong>The role of DNS is to:</strong>
+   a) Encrypt communications  b) Translate a domain name into an IP address ✓  c) Manage emails</p>
+</li>
+<li>
+<p><strong>Which protocol is used to send an email?</strong>
+   a) HTTP  b) FTP  c) SMTP ✓</p>
+</li>
+</ol>
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network types (LAN/WAN)</td>
+<td>15%</td>
+<td>Does not distinguish types</td>
+<td>1-2 correct types</td>
+<td>3 correct types</td>
+</tr>
+<tr>
+<td>IP addressing and mask</td>
+<td>20%</td>
+<td>Incorrect calculations</td>
+<td>Partially correct calculations</td>
+<td>Correct calculations</td>
+</tr>
+<tr>
+<td>Client-server model</td>
+<td>20%</td>
+<td>Does not understand the model</td>
+<td>Partial understanding</td>
+<td>Complete understanding</td>
+</tr>
+<tr>
+<td>Protocols and ports</td>
+<td>20%</td>
+<td>No protocol identified</td>
+<td>2-3 protocols</td>
+<td>5 correct protocols</td>
+</tr>
+<tr>
+<td>Cloud and storage</td>
+<td>15%</td>
+<td>Does not know the services</td>
+<td>1-2 services cited</td>
+<td>3+ services with advantages</td>
+</tr>
+<tr>
+<td>Network diagram</td>
+<td>10%</td>
+<td>No diagram</td>
+<td>Partial diagram</td>
+<td>Complete and correct diagram</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<h3>Teaching transposition</h3>
+<p>Network concepts can be introduced in SNT Seconde with simple analogies: the local network is like the rooms of a school connected by hallways, the Internet is like the global road network. The IP address is like a postal address, DNS is like a phone book. For protocols, HTTP can be compared to a postcard (plain text) and HTTPS to a sealed letter.</p>
+<h3>Trainer advice</h3>
+<p>Exercise 3 (client-server) is central: ask students to re-enact the scene in pairs, one playing the client and the other the server. Each step is verbalized. For exercise 4 (ports), have them create a laminated memory card with protocols/ports to review regularly. Exercise 5 (Cloud) is very concrete: have students share their own file sharing practices.</p>
+<h3>Extension</h3>
+<p>Set up a small local web server with Python (<code>python -m http.server 8000</code>) and access it from a browser. Observe the requests with developer tools (F12 → Network tab). Identify HTTP codes (200, 404, 500) and understand what they mean.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

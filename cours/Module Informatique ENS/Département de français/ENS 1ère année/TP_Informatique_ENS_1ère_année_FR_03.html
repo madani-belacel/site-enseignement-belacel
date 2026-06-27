@@ -1,0 +1,483 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP Informatique — ENS 1ère année — TP 03 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TP Informatique — ENS 1ère année — TP 03 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Créer un script `tables.py` qui affiche la table de multiplication d'un nombre saisi, de 1 à 10, en utilisant une boucle `for`.</li><li>**Exemple attendu :**</li><li>**Corrigé :**</li><li>**Diagramme d'une boucle `for` :**</li><li>**Énoncé :** Créer un script `somme_n.py` qui :</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TP_Informatique_ENS_1ère_année_FR_03.pdf</code></p>
+</blockquote>
+<h1>TP Informatique — ENS 1ère année — TP 03 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce TP, l'étudiant est capable de :
+- Maîtriser la boucle <code>for</code> avec <code>range()</code>
+- Maîtriser la boucle <code>while</code> avec condition d'arrêt
+- Utiliser <code>break</code> et <code>continue</code> pour contrôler l'exécution
+- Implémenter des algorithmes itératifs (somme, suite, jeu)
+- Valider des saisies répétées avec compteur de tentatives</p>
+<hr />
+<h2>Plan du TP</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Contenu</th>
+<th>Durée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>Rappel sur les boucles</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Exercice 1</td>
+<td>Table de multiplication</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Exercice 2</td>
+<td>Somme des N premiers entiers</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Exercice 3</td>
+<td>Suite de Fibonacci</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 4</td>
+<td>Devinette numérique</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 5</td>
+<td>Validation répétée (mot de passe × 3)</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Prérequis</h2>
+<ul>
+<li>TP 01 et TP 02 bouclés (variables, conditions, <code>try</code>/<code>except</code>)</li>
+<li>Notion de <code>range()</code> et de boucle vues en cours</li>
+</ul>
+<hr />
+<h2>Exercice 1 — Table de multiplication <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>tables.py</code> qui affiche la table de multiplication d'un nombre saisi, de 1 à 10, en utilisant une boucle <code>for</code>.</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Nombre</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">7</span>
+<span class="mi">7</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
+<span class="mi">7</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span>
+<span class="o">...</span>
+<span class="mi">7</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">70</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nombre : &quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> × </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Veuillez entrer un nombre entier.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Diagramme d'une boucle <code>for</code> :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Définir</span><span class="w"> </span><span class="n">n</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Initialiser i = 1&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">{</span><span class="s">&quot;i ≤ 10 ?&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">i</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="s">&quot;Incrémenter i (i + 1)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Fin</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — Somme des N premiers entiers <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>somme_n.py</code> qui :
+1. Demande un entier N à l'utilisateur
+2. Calcule la somme des entiers de 1 à N avec une boucle <code>for</code>
+3. Calcule la somme des entiers pairs de 1 à N
+4. Vérifie le résultat avec la formule mathématique S = N(N+1)/2</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>N = 10
+Somme 1 à 10 : 55
+Somme des pairs : 30
+Formule : 55 — Vérifié ✓
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;N = &quot;</span><span class="p">))</span>
+    <span class="n">somme</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">somme_pairs</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">somme</span> <span class="o">+=</span> <span class="n">i</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">somme_pairs</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="n">formule</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Somme 1 à </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">somme</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Somme des pairs : </span><span class="si">{</span><span class="n">somme_pairs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Formule : </span><span class="si">{</span><span class="n">formule</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; — &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vérifié ✓&quot;</span> <span class="k">if</span> <span class="n">somme</span> <span class="o">==</span> <span class="n">formule</span> <span class="k">else</span> <span class="s2">&quot;Erreur ✗&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Veuillez entrer un entier.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Suite de Fibonacci <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>fibonacci.py</code> qui affiche les N premiers termes de la suite de Fibonacci (N saisi par l'utilisateur). F(0) = 0, F(1) = 1, F(n) = F(n-1) + F(n-2).</p>
+<p><strong>Exemple attendu (n = 10) :</strong></p>
+<div class="codehilite"><pre><span></span><code>Nombre de termes : 10
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nombre de termes : &quot;</span><span class="p">))</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="nb">print</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Veuillez entrer un entier.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Devinette numérique <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>devine.py</code> qui :
+1. Choisit un nombre aléatoire entre 1 et 100
+2. Demande à l'utilisateur de deviner
+3. Indique si le nombre est trop petit ou trop grand
+4. Limite à 7 tentatives maximum
+5. Affiche le nombre secret si perdu</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Devinez le nombre entre 1 et 100 (7 tentatives max).
+Votre proposition : 50
+Trop grand.
+Votre proposition : 25
+Trop petit.
+...
+</code></pre></div>
+
+<p><strong>Diagramme de flux de la devinette :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Générer nombre secret</span><span class="se">\n</span><span class="s">(1 à 100)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Initialiser tentatives = 0&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">{</span><span class="s">&quot;tentatives &lt; 7 ?&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Saisir</span><span class="w"> </span><span class="n">proposition</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Inc</span><span class="p">.</span><span class="w"> </span><span class="n">tentatives</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">{</span><span class="n">Proposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">Bravo</span><span class="w"> </span><span class="o">!</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">I</span><span class="p">{</span><span class="n">Proposition</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">Trop</span><span class="w"> </span><span class="n">petit</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">Trop</span><span class="w"> </span><span class="n">grand</span><span class="p">]</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">Perdu</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">secret</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">Fin</span><span class="p">]</span>
+<span class="w">    </span><span class="n">L</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">secret</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">tentatives</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_tentatives</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Devinez le nombre entre 1 et 100 (7 tentatives max).&quot;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="n">tentatives</span> <span class="o">&lt;</span> <span class="n">max_tentatives</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">essai</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Votre proposition : &quot;</span><span class="p">))</span>
+        <span class="n">tentatives</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">essai</span> <span class="o">==</span> <span class="n">secret</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bravo ! Trouvé en </span><span class="si">{</span><span class="n">tentatives</span><span class="si">}</span><span class="s2"> tentative(s).&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">elif</span> <span class="n">essai</span> <span class="o">&lt;</span> <span class="n">secret</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trop petit.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trop grand.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entrez un nombre valide.&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">tentatives</span> <span class="o">==</span> <span class="n">max_tentatives</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perdu ! Le nombre était </span><span class="si">{</span><span class="n">secret</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Validation répétée (mot de passe × 3) <em>(10 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>mdp_repet.py</code> qui :
+1. Définit un mot de passe secret fixe (ex: "ENS2026")
+2. Demande à l'utilisateur de saisir le mot de passe
+3. Accorde 3 tentatives maximum
+4. Affiche « Accès autorisé » ou « Compte bloqué »</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Mot de passe : python
+Mot de passe incorrect (2 tentative(s) restante(s))
+Mot de passe : 1234
+Mot de passe incorrect (1 tentative(s) restante(s))
+Mot de passe : ENS2026
+Accès autorisé ✓
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">mot_de_passe</span> <span class="o">=</span> <span class="s2">&quot;ENS2026&quot;</span>
+<span class="n">tentatives</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">while</span> <span class="n">tentatives</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">saisie</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Mot de passe : &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">saisie</span> <span class="o">==</span> <span class="n">mot_de_passe</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accès autorisé ✓&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tentatives</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">tentatives</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mot de passe incorrect (</span><span class="si">{</span><span class="n">tentatives</span><span class="si">}</span><span class="s2"> tentative(s) restante(s))&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compte bloqué — trop de tentatives.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Diagramme d'une boucle <code>while</code> :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Initialiser tentatives = 3&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">{</span><span class="n">tentatives</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Saisir</span><span class="w"> </span><span class="n">mot</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">passe</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">{</span><span class="n">Correct</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Accès</span><span class="w"> </span><span class="n">autorisé</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Fin</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Décrémenter</span><span class="w"> </span><span class="n">tentatives</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">{</span><span class="n">tentatives</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">tentative</span><span class="w"> </span><span class="n">restante</span><span class="p">]</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Compte</span><span class="w"> </span><span class="n">bloqué</span><span class="p">]</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>Combien de fois la boucle <code>for i in range(5):</code> s'exécute-t-elle ?</li>
+<li>a) 4 fois  </li>
+<li>b) 5 fois ✓  </li>
+<li>
+<p>c) 6 fois</p>
+</li>
+<li>
+<p>Que fait l'instruction <code>break</code> dans une boucle <code>while</code> ?</p>
+</li>
+<li>a) Elle saute une itération  </li>
+<li>b) Elle arrête la boucle immédiatement ✓  </li>
+<li>
+<p>c) Elle redémarre la boucle</p>
+</li>
+<li>
+<p>Quelle est la somme des entiers de 1 à 100 avec la formule ?</p>
+</li>
+<li>a) 4950  </li>
+<li>b) 5050 ✓  </li>
+<li>
+<p>c) 5150</p>
+</li>
+<li>
+<p>Dans la suite de Fibonacci, que vaut F(5) si F(0)=0 et F(1)=1 ?</p>
+</li>
+<li>a) 3  </li>
+<li>b) 5 ✓  </li>
+<li>
+<p>c) 8</p>
+</li>
+<li>
+<p>Quelle condition arrête une boucle <code>while True:</code> ?</p>
+</li>
+<li>a) <code>continue</code>  </li>
+<li>b) <code>break</code> ✓  </li>
+<li>c) <code>pass</code></li>
+</ol>
+<hr />
+<h2>Grille d'évaluation TP 03</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boucle <code>for</code> et <code>range()</code></td>
+<td>20 %</td>
+<td>Ne maîtrise pas</td>
+<td>Syntaxe partielle</td>
+<td>Utilisation correcte</td>
+</tr>
+<tr>
+<td>Boucle <code>while</code> et condition</td>
+<td>20 %</td>
+<td>Ne maîtrise pas</td>
+<td>Condition incorrecte</td>
+<td>Condition correcte</td>
+</tr>
+<tr>
+<td><code>break</code> et contrôle de flux</td>
+<td>20 %</td>
+<td>N'utilise pas</td>
+<td>Utilisation hasardeuse</td>
+<td>Utilisation appropriée</td>
+</tr>
+<tr>
+<td>Algorithmes itératifs</td>
+<td>20 %</td>
+<td>Aucun implémenté</td>
+<td>Implémentation partielle</td>
+<td>Algorithmes corrects</td>
+</tr>
+<tr>
+<td>Gestion des tentatives</td>
+<td>20 %</td>
+<td>Aucune gestion</td>
+<td>Gestion partielle</td>
+<td>Gestion complète</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil et rappel boucles</td>
+<td>10 min</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Table de multiplication</td>
+<td>15 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Somme des N premiers</td>
+<td>15 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Suite de Fibonacci</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Devinette numérique</td>
+<td>20 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Validation répétée</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Ce TP sur les boucles et itérations est crucial pour développer la pensée algorithmique des futurs enseignants. Chaque exercice illustre un usage distinct des structures répétitives. La table de multiplication (ex. 1) est l'exemple le plus simple pour introduire <code>for</code> et peut être présentée dès la 4e. La somme des N premiers entiers (ex. 2) permet un aller-retour fructueux entre algorithmique et mathématiques (formule close vs calcul itératif). La suite de Fibonacci (ex. 3) est un classique interdisciplinaire (mathématiques, biologie, architecture). La devinette numérique (ex. 5) introduit la validation de données (<code>try/except</code>) et la génération aléatoire (<code>random</code>).</p>
+<h3>Conseil formateur</h3>
+<p>Bien distinguer <code>for</code> (quand le nombre d'itérations est connu) et <code>while</code> (quand on attend une condition). Montrer le débogueur pas à pas de Thonny pour visualiser l'évolution des variables à chaque itération. Pour les élèves de collège, utiliser exclusivement <code>for</code> avec <code>range()</code> et des exemples concrets (compter le nombre de voyelles dans une phrase).</p>
+<h3>Prolongement</h3>
+<p>Implémenter un jeu de « Juste Prix » où l'ordinateur choisit un nombre aléatoire entre 1 et 100 et l'utilisateur doit le deviner en un minimum de tentatives. Ajouter un historique des tentatives.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

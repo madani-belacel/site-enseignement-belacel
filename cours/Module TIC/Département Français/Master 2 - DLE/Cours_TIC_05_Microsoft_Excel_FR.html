@@ -1,0 +1,479 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 05 — Microsoft Excel : Analyse de Données pour la Recherche en Didactique — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 05 — Microsoft Excel : Analyse de Données pour la Recherche en Didactique</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 2 — DLE</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 2 DLE</li><li>**Compétences pré-requises :** TIC 04 ; notions de base en statistique descriptive</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_05_Microsoft_Excel_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 05 — Microsoft Excel : Analyse de Données pour la Recherche en Didactique</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> Master 2 — DLE<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 2 DLE</p>
+<p><strong>Compétences pré-requises :</strong> TIC 04 ; notions de base en statistique descriptive</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Distinguer types de données (nominales, ordinales, continues) en didactique
+- Comprendre les principes de la statistique descriptive pour l'analyse d'enquête
+- Identifier les biais de saisie et méthodes de nettoyage</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Construire un tableau de données d'enquête structuré (codage des réponses)
+- Calculer fréquences, moyennes, écarts-types avec Excel
+- Réaliser des tableaux croisés dynamiques pour l'analyse de questionnaire
+- Produire des graphiques pour publication (histogramme, boîte à moustaches)
+- Exporter les données et graphiques pour le mémoire et la présentation</p>
+<p><strong>En termes de savoir-être :</strong>
+- Vérifier la cohérence et l'intégrité des données avant analyse
+- Documenter le protocole de codage pour la reproductibilité</p>
+<p><strong>Mode d'évaluation :</strong> TD 30 % + Fichier analyse 50 % + QCM 20 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Atelier : saisie et codage d'un questionnaire Likert (20 répondants)</li>
+<li>TP : tableau croisé dynamique pour analyse de fréquences</li>
+<li>TP : graphique comparatif pour publication</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM analyse de données et formules</li>
+<li>Rendu : fichier .xlsx avec données, TCD, graphiques + documentation</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Pallant, J. (2020). <em>SPSS Survival Manual</em> (7th ed.) — transposition Excel</li>
+<li>Field, A. (2018). <em>Discovering Statistics Using IBM SPSS Statistics</em> — chapitres 1-4</li>
+<li>Larose, D. T. &amp; Larose, C. D. (2019). <em>Data Science Using Python and R</em> — nettoyage</li>
+<li>Guides Microsoft Learn — Excel analyse de données</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>La collecte et l'analyse de données en didactique des langues s'inscrivent dans le cadre de :
+- <strong>Loi 18-07 relative à la protection des données personnelles</strong> : obligation de consentement éclairé et d'anonymisation
+- <strong>Arrêté 932/2016</strong> : le mémoire de Master peut inclure un volet expérimental ou enquête
+- <strong>Circulaire DGRSDT 2022</strong> : les données de recherche doivent être conservées 5 ans après la soutenance
+- <strong>Projet NUM-ESRS</strong> : standardisation des formats de données (.csv, .xlsx) pour réutilisation</p>
+<hr />
+<h2>Plan du Cours</h2>
+<ol>
+<li>Introduction : Excel comme outil d'analyse en didactique des langues</li>
+<li>Structure des données d'enquête : lignes = sujets, colonnes = variables</li>
+<li>Codage des réponses et nettoyage des données</li>
+<li>Statistiques descriptives avec Excel</li>
+<li>Tableaux croisés dynamiques pour questionnaires</li>
+<li>Graphiques pour publication académique</li>
+<li>Export des données et documentation</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Questionnaire</span><span class="w"> </span><span class="n">papier</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Saisie</span><span class="w"> </span><span class="n">Excel</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Nettoyage</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Codage</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Statistiques</span><span class="w"> </span><span class="n">descriptives</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">TCD</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tris</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">plat</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Graphiques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Discussion</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Mémoire</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Article</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Dépôt</span><span class="w"> </span><span class="n">DSpace</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">CSV</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Données</span><span class="w"> </span><span class="n">brutes</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">{</span><span class="n">Saisie</span><span class="w"> </span><span class="n">propre</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="n">descriptive</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Nettoyage</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Tableau</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">fréquences</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Moyenne</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Écart</span><span class="o">-</span><span class="n">type</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Graphique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Tableau</span><span class="w"> </span><span class="n">croisé</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Interprétation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span>
+</code></pre></div>
+
+<hr />
+<h2>1. Introduction : Excel pour l'Analyse en Didactique <em>(10 min)</em></h2>
+<p>En Master 2 DLE, Excel sert à analyser les données issues de questionnaires d'enquête, tests de niveau, entretiens structurés et observations de classe. Il permet :</p>
+<ul>
+<li>La saisie et le codage systématique des réponses</li>
+<li>Le calcul de statistiques descriptives (moyenne, écart-type, fréquences)</li>
+<li>La construction de tableaux croisés pour explorer les relations entre variables</li>
+<li>La production de graphiques prêts pour publication</li>
+</ul>
+<p><strong>Exemple type :</strong> Analyse d'un questionnaire sur l'impact des TICE en classe de FLE (20 questions, 30 répondants, échelle Likert).</p>
+<hr />
+<h2>2. Structure des Données <em>(10 min)</em></h2>
+<p><strong>Règle d'or :</strong> Une ligne = un sujet ; une colonne = une variable.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Sexe</th>
+<th>Age</th>
+<th>Niveau_Fr</th>
+<th>Heures_TICE</th>
+<th>Motivation</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>F</td>
+<td>22</td>
+<td>B2</td>
+<td>3</td>
+<td>4</td>
+<td>15</td>
+</tr>
+<tr>
+<td>02</td>
+<td>M</td>
+<td>24</td>
+<td>C1</td>
+<td>5</td>
+<td>5</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Types de variables :</strong>
+- <strong>Nominales</strong> : Sexe, Université, Filière
+- <strong>Ordinales</strong> : Niveau (A1-C2), Satisfaction (1-5)
+- <strong>Continues</strong> : Âge, Score, Heures de travail</p>
+<hr />
+<h2>3. Codage des Réponses et Nettoyage <em>(15 min)</em></h2>
+<p><strong>Codage :</strong> transformer les réponses textuelles en valeurs numériques :
+- <code>Homme = 1, Femme = 2</code>
+- <code>Toujours = 5, Souvent = 4, Parfois = 3, Rarement = 2, Jamais = 1</code></p>
+<p><strong>Nettoyage :</strong>
+- Supprimer les lignes vides
+- Vérifier les valeurs aberrantes (âge = 150)
+- Remplacer les valeurs manquantes par <code>N/A</code> ou <code>-99</code>
+- Uniformiser les formats (dates, séparateur décimal)</p>
+<hr />
+<h2>4. Statistiques Descriptives <em>(20 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Utilité</th>
+<th>Syntaxe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=MOYENNE()</code></td>
+<td>Moyenne d'une série</td>
+<td><code>=MOYENNE(B2:B31)</code></td>
+</tr>
+<tr>
+<td><code>=ECARTYPE.STANDARD()</code></td>
+<td>Dispersion</td>
+<td><code>=ECARTYPE.STANDARD(B2:B31)</code></td>
+</tr>
+<tr>
+<td><code>=NB.SI()</code></td>
+<td>Fréquence d'une valeur</td>
+<td><code>=NB.SI(C2:C31;"F")</code></td>
+</tr>
+<tr>
+<td><code>=MAX()</code> / <code>=MIN()</code></td>
+<td>Étendue</td>
+<td><code>=MAX(D2:D31)</code></td>
+</tr>
+<tr>
+<td><code>=QUARTILE()</code></td>
+<td>Distribution</td>
+<td><code>=QUARTILE(D2:D31;1)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interprétation :</strong> une moyenne de 4,2 sur une échelle de satisfaction (1-5) indique un fort taux de satisfaction ; un écart-type faible (&lt; 0,8) montre un consensus.</p>
+<hr />
+<h2>5. Tableaux Croisés Dynamiques <em>(15 min)</em></h2>
+<p><strong>TCD = l'outil le plus puissant d'Excel pour l'analyse d'enquête.</strong></p>
+<ol>
+<li>Sélectionner les données → Insertion → Tableau croisé dynamique</li>
+<li>Lignes : variable indépendante (Sexe, Niveau)</li>
+<li>Colonnes : variable dépendante (Satisfaction, Score)</li>
+<li>Valeurs : moyenne, somme, effectif</li>
+</ol>
+<p><strong>Exemple :</strong> Satisfaction × Sexe → permet de voir si les femmes sont plus satisfaites des TICE que les hommes.</p>
+<p><strong>Segment :</strong> ajouter des filtres visuels (par Niveau, par Université) pour explorer les sous-groupes.</p>
+<hr />
+<h2>6. Graphiques pour Publication <em>(15 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Type de graphique</th>
+<th>Usage en didactique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Histogramme</td>
+<td>Fréquences des réponses</td>
+</tr>
+<tr>
+<td>Barres groupées</td>
+<td>Comparaison (pré-test / post-test)</td>
+</tr>
+<tr>
+<td>Boîte à moustaches</td>
+<td>Distribution des scores</td>
+</tr>
+<tr>
+<td>Nuage de points</td>
+<td>Corrélation (heures TICE × progression)</td>
+</tr>
+<tr>
+<td>Radar</td>
+<td>Profil de compétences</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommandations pour publication :</strong>
+- Polices de caractères sobres (Arial, 10-12 pt)
+- Titre clair, légendes, source
+- Palette de couleurs accessible (ColorBrewer)
+- Résolution ≥ 300 dpi pour l'export</p>
+<hr />
+<h2>7. Export et Documentation <em>(10 min)</em></h2>
+<p><strong>Formats :</strong>
+- <code>.xlsx</code> — données brutes + analyses
+- <code>.csv</code> — données interopérables (DSpace)
+- <code>.pdf</code> — graphiques pour le mémoire</p>
+<p><strong>Documentation du protocole :</strong> chaque fichier Excel doit contenir une feuille "Readme" décrivant :
+- Source des données
+- Date de collecte
+- Variables et codage
+- Traitements effectués</p>
+<hr />
+<h2>8. Conclusion <em>(10 min)</em></h2>
+<p>L'analyse de données avec Excel est une compétence clé pour le Master 2 DLE, permettant de passer des données brutes aux résultats interprétés. Elle prépare aux analyses plus avancées sous SPSS, R ou JASP pour le doctorat.</p>
+<p><strong>Prochain cours :</strong> Microsoft PowerPoint — Présentations académiques et soutenance.</p>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Phase</th>
+<th>Activité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 min</td>
+<td>Introduction</td>
+<td>Enjeux : analyse d'enquête en M2</td>
+<td>Diapos 1-3</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Structure données</td>
+<td>Codage, types de variables</td>
+<td>Fiche méthode</td>
+</tr>
+<tr>
+<td>15 min</td>
+<td>Nettoyage</td>
+<td>Saisie, vérification, validation</td>
+<td>TP Excel</td>
+</tr>
+<tr>
+<td>20 min</td>
+<td>Statistiques</td>
+<td>MOYENNE, NB.SI, ECARTYPE</td>
+<td>TP guidé</td>
+</tr>
+<tr>
+<td>15 min</td>
+<td>TCD</td>
+<td>Tableau croisé, segments</td>
+<td>TP guidé</td>
+</tr>
+<tr>
+<td>15 min</td>
+<td>Graphiques</td>
+<td>Histogramme, boîte, barres</td>
+<td>TP guidé</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Export</td>
+<td>CSV, PDF, documentation</td>
+<td>Discussion</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Conclusion + QCM</td>
+<td>Synthèse et auto-évaluation</td>
+<td>QCM Moodle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>Dans un tableau de données d'enquête bien structuré, une ligne représente :</li>
+<li>a) Une variable</li>
+<li>b) Un sujet / répondant ✓</li>
+<li>
+<p>c) Une question</p>
+</li>
+<li>
+<p>Quelle fonction Excel permet de compter le nombre de femmes dans un échantillon ?</p>
+</li>
+<li>a) <code>=NB()</code></li>
+<li>b) <code>=NB.SI()</code> ✓</li>
+<li>
+<p>c) <code>=SI()</code></p>
+</li>
+<li>
+<p>Quel type de graphique est adapté à une comparaison pré-test / post-test ?</p>
+</li>
+<li>a) Diagramme circulaire</li>
+<li>b) Barres groupées ✓</li>
+<li>
+<p>c) Nuage de points</p>
+</li>
+<li>
+<p>Un tableau croisé dynamique permet de :</p>
+</li>
+<li>a) Croiser des variables et calculer des agrégats ✓</li>
+<li>b) Trier des données alphabétiquement</li>
+<li>
+<p>c) Créer un graphique</p>
+</li>
+<li>
+<p>Que doit contenir la feuille "Readme" dans un fichier Excel de recherche ?</p>
+</li>
+<li>a) Les formules utilisées</li>
+<li>b) La source, les variables, le codage, les traitements ✓</li>
+<li>c) Les mots de passe</li>
+</ol>
+<hr />
+<h2>Note pédagogique Master 2</h2>
+<p><strong>Transposition recherche :</strong> Ce cours transpose les méthodes d'analyse quantitative issues de la psychométrie et de la sociolinguistique. Le questionnaire Likert, l'analyse de fiabilité (alpha de Cronbach) et le TCD préparent les étudiants aux analyses avancées sous SPSS (module "Analyse de données" au S2). La documentation du protocole répond aux exigences FAIR de reproductibilité.</p>
+<p><strong>Conseil au formateur :</strong> Commencer par un jeu de données réel (ex. enquête TICE déjà collectée par un collègue) plutôt qu'un tableau fictif. Les étudiants en didactique sont souvent réticents aux chiffres : une approche par problème concret (ex. "Votre mémoire montre-t-il que les TICE améliorent l'oral ?") facilite l'engagement. Prévoir un temps de manipulation libre après le TP cadré.</p>
+<p><strong>Prolongement :</strong> Ce cours prépare les étudiants à l'analyse quantitative en doctorat (SPSS, JASP, R). Les étudiants peuvent être invités à suivre le cours "Statistical Methods for Language Research" sur Coursera (University of Toronto) ou le MOOC "Statistique pour la recherche en éducation" (FUN-MOOC).</p>
+<hr />
+<h2>Annexe — Pièges à éviter</h2>
+<table>
+<thead>
+<tr>
+<th>Piège</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saisir des textes libres dans une colonne quantitative</td>
+<td>Utiliser des listes déroulantes (Validation des données)</td>
+</tr>
+<tr>
+<td>Calculer une moyenne sur des données ordinales</td>
+<td>Vérifier la nature de l'échelle</td>
+</tr>
+<tr>
+<td>Fusionner des cellules dans un tableau de données</td>
+<td>Ne jamais fusionner dans la feuille de données brutes</td>
+</tr>
+<tr>
+<td>Interpréter une corrélation comme une causalité</td>
+<td>Toujours mentionner "association" et non "cause"</td>
+</tr>
+<tr>
+<td>Oublier les étiquettes des axes</td>
+<td>Légende + titre + unité obligatoires</td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

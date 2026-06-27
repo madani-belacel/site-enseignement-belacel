@@ -1,0 +1,684 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD Informatique — ENS 1ère année — Séance 05 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TD Informatique — ENS 1ère année — Séance 05 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Identifier le type (entier, réel, booléen, chaîne) de chaque valeur :</li><li>**Corrigé :**</li><li>**Q :** Quel est le résultat de `int(3.14)` ? De `float("42")` ?</li><li>- **R :** `int(3.14)` = 3 (troncature). `float("42")` = 42.0</li><li>**Énoncé :** Écrire en pseudo-code un algorithme qui :</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_FR_05.pdf</code></p>
+</blockquote>
+<h1>TD Informatique — ENS 1ère année — Séance 05 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de cette séance de TD, l'étudiant est capable de :
+- Distinguer les types de données (entier, réel, booléen, chaîne) et les utiliser correctement
+- Écrire des algorithmes utilisant des structures conditionnelles (si/sinon) et des boucles (pour, tant que)
+- Concevoir un algorithme complet de calcul de moyenne avec recherche du min/max
+- Estimer et comparer la complexité algorithmique de différents algorithmes (O(1), O(n), O(n²))
+- Analyser un problème et le décomposer en étapes algorithmiques</p>
+<hr />
+<h2>Plan du TD</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Variables et types</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Conditions</td>
+<td>20 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Boucles</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Algorithme complet</td>
+<td>20 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Complexité</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Structures algorithmiques fondamentales</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Types de données&quot;</span>
+<span class="w">        </span><span class="n">T1</span><span class="p">[</span><span class="s">&quot;int : 42, -5&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T2</span><span class="p">[</span><span class="s">&quot;float : 3.14, 0.001&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T3</span><span class="p">[</span><span class="s">&quot;bool : vrai, faux&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T4</span><span class="p">[</span><span class="s">&quot;string : &#39;</span><span class="n">Bonjour</span><span class="s">&#39;&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Structures de contrôle&quot;</span>
+<span class="w">        </span><span class="n">C1</span><span class="p">[</span><span class="n">Condition</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">SI</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">ALORS</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">SINON</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C2</span><span class="p">[</span><span class="n">Boucle</span><span class="w"> </span><span class="n">POUR</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Nombre</span><span class="w"> </span><span class="n">fixe</span><span class="w"> </span><span class="n">d</span><span class="s">&#39;itérations]</span>
+<span class="s">        C3[Boucle TANT QUE&lt;br/&gt;Condition d&#39;</span><span class="n">arrêt</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Algorithmes&quot;</span>
+<span class="w">        </span><span class="n">A1</span><span class="p">[</span><span class="n">Calcul</span><span class="w"> </span><span class="n">somme</span><span class="o">/</span><span class="n">moyenne</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A2</span><span class="p">[</span><span class="n">Recherche</span><span class="w"> </span><span class="nf">min</span><span class="o">/</span><span class="nf">max</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A3</span><span class="p">[</span><span class="nf">Table</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">multiplication</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">T1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C1</span>
+<span class="w">    </span><span class="n">T2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C1</span>
+<span class="w">    </span><span class="n">T3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C1</span>
+<span class="w">    </span><span class="n">T4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C1</span>
+<span class="w">    </span><span class="n">C1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A1</span>
+<span class="w">    </span><span class="n">C1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A2</span>
+<span class="w">    </span><span class="n">C2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A1</span>
+<span class="w">    </span><span class="n">C2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A2</span>
+<span class="w">    </span><span class="n">C2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A3</span>
+<span class="w">    </span><span class="n">C3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A1</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">T1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">T2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">T3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">T4</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h2>Comparaison des complexités</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Complexité&quot;</span>
+<span class="w">        </span><span class="n">O1</span><span class="p">[</span><span class="s">&quot;O(1) — Constant&lt;br/&gt;Accès direct par indice&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">On</span><span class="p">[</span><span class="s">&quot;O(n) — Linéaire&lt;br/&gt;Parcours d&#39;</span><span class="n">un</span><span class="w"> </span><span class="n">tableau</span><span class="s">&quot;]</span>
+<span class="s">        On2[&quot;</span><span class="n">O</span><span class="p">(</span><span class="n">n²</span><span class="p">)</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Quadratique</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Double</span><span class="w"> </span><span class="n">boucle</span><span class="w"> </span><span class="n">imbriquée</span><span class="s">&quot;]</span>
+<span class="s">    end</span>
+
+<span class="s">    O1 --&gt; Ex1[&quot;</span><span class="n">Ex</span><span class="o">:</span><span class="w"> </span><span class="n">Lire</span><span class="w"> </span><span class="n">tab</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="s">&quot;]</span>
+<span class="s">    On --&gt; Ex2[&quot;</span><span class="n">Ex</span><span class="o">:</span><span class="w"> </span><span class="n">Rechercher</span><span class="w"> </span><span class="n">un</span><span class="w"> </span><span class="n">nom</span><span class="s">&quot;]</span>
+<span class="s">    On2 --&gt; Ex3[&quot;</span><span class="n">Ex</span><span class="o">:</span><span class="w"> </span><span class="n">Comparer</span><span class="w"> </span><span class="n">chaque</span><span class="w"> </span><span class="err">é</span><span class="n">lément</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">avec</span><span class="w"> </span><span class="n">tous</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">autres</span><span class="s">&quot;]</span>
+
+<span class="s">    style O1 fill:#2ecc71,color:#fff</span>
+<span class="s">    style On fill:#e67e22,color:#000</span>
+<span class="s">    style On2 fill:#e74c3c,color:#fff</span>
+<span class="s">    style Ex1 fill:#4a90d9,color:#fff</span>
+<span class="s">    style Ex2 fill:#4a90d9,color:#fff</span>
+<span class="s">    style Ex3 fill:#4a90d9,color:#fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 1 — Variables et types <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Identifier le type (entier, réel, booléen, chaîne) de chaque valeur :</p>
+<ol>
+<li><code>42</code></li>
+<li><code>"Bonjour"</code></li>
+<li><code>3.14</code></li>
+<li><code>vrai</code></li>
+<li><code>'A'</code></li>
+<li><code>-5</code></li>
+<li><code>0.001</code></li>
+<li><code>"123"</code></li>
+</ol>
+<p><strong>Corrigé :</strong>
+1. Entier (int)
+2. Chaîne (string)
+3. Réel (float)
+4. Booléen (bool)
+5. Chaîne (string) — un caractère seul reste une chaîne
+6. Entier (int)
+7. Réel (float)
+8. Chaîne (string) — les guillemets indiquent une chaîne même si le contenu est numérique</p>
+<p><strong>Q :</strong> Quel est le résultat de <code>int(3.14)</code> ? De <code>float("42")</code> ?
+- <strong>R :</strong> <code>int(3.14)</code> = 3 (troncature). <code>float("42")</code> = 42.0</p>
+<hr />
+<h2>Exercice 2 — Conditions <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Écrire en pseudo-code un algorithme qui :</p>
+<ol>
+<li>Demande l'âge de l'utilisateur</li>
+<li>Affiche « Majeur » si l'âge ≥ 18, « Mineur » sinon</li>
+<li>Si l'âge ≥ 65, afficher « Senior » en plus</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code>AFFICHER &quot;Quel est votre âge ?&quot;
+LIRE age
+SI age &gt;= 18 ALORS
+    AFFICHER &quot;Majeur&quot;
+    SI age &gt;= 65 ALORS
+        AFFICHER &quot;Senior&quot;
+    FIN SI
+SINON
+    AFFICHER &quot;Mineur&quot;
+FIN SI
+</code></pre></div>
+
+<h3>Code Python équivalent</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Quel est votre âge ? &quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Majeur&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">65</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Senior&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mineur&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>Variante — Classification complète</h3>
+<div class="codehilite"><pre><span></span><code>SI age &lt; 13 ALORS
+    AFFICHER &quot;Enfant&quot;
+SINON SI age &lt; 18 ALORS
+    AFFICHER &quot;Adolescent&quot;
+SINON SI age &lt; 65 ALORS
+    AFFICHER &quot;Adulte&quot;
+SINON
+    AFFICHER &quot;Senior&quot;
+FIN SI
+</code></pre></div>
+
+<p><strong>Table de vérité :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Âge</th>
+<th>Affichage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>Mineur</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Majeur</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Majeur, Senior</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 3 — Boucles <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Écrire en pseudo-code :</p>
+<ol>
+<li>Afficher les nombres pairs de 2 à 20 (inclus)</li>
+<li>Calculer la somme des nombres de 1 à n (n saisi par l'utilisateur)</li>
+<li>Afficher la table de multiplication d'un nombre saisi (de 1 à 10)</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// 1. Nombres pairs</span>
+<span class="n">POUR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">DE</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span>À<span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="n">PAS</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">FAIRE</span>
+<span class="w">    </span><span class="n">AFFICHER</span><span class="w"> </span><span class="n">i</span>
+<span class="n">FIN</span><span class="w"> </span><span class="n">POUR</span>
+
+<span class="c1">// 2. Somme 1 à n</span>
+<span class="n">AFFICHER</span><span class="w"> </span><span class="s">&quot;Donner n&quot;</span>
+<span class="n">LIRE</span><span class="w"> </span><span class="n">n</span>
+<span class="n">somme</span><span class="w"> </span>←<span class="w"> </span><span class="mi">0</span>
+<span class="n">POUR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">DE</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>À<span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">FAIRE</span>
+<span class="w">    </span><span class="n">somme</span><span class="w"> </span>←<span class="w"> </span><span class="n">somme</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span>
+<span class="n">FIN</span><span class="w"> </span><span class="n">POUR</span>
+<span class="n">AFFICHER</span><span class="w"> </span><span class="s">&quot;Somme : &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">somme</span>
+
+<span class="c1">// 3. Table de multiplication</span>
+<span class="n">AFFICHER</span><span class="w"> </span><span class="s">&quot;Donner un nombre&quot;</span>
+<span class="n">LIRE</span><span class="w"> </span><span class="n">nb</span>
+<span class="n">POUR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">DE</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span>À<span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">FAIRE</span>
+<span class="w">    </span><span class="n">AFFICHER</span><span class="w"> </span><span class="n">nb</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; × &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nb</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span>
+<span class="n">FIN</span><span class="w"> </span><span class="n">POUR</span>
+</code></pre></div>
+
+<h3>Schéma de l'algorithme (somme 1 à n)</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Donner</span><span class="w"> </span><span class="n">n</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Lire</span><span class="w"> </span><span class="n">n</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">somme</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">{</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">somme</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">somme</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">somme</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Fin</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">J</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h3>Table de traçage (n = 5)</h3>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>somme</th>
+<th>i ≤ 5 ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Vrai</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>Vrai</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>Vrai</td>
+</tr>
+<tr>
+<td>4</td>
+<td>10</td>
+<td>Vrai</td>
+</tr>
+<tr>
+<td>5</td>
+<td>15</td>
+<td>Vrai</td>
+</tr>
+<tr>
+<td>6</td>
+<td>—</td>
+<td>Faux → fin</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Résultat :</strong> somme = 15</p>
+<h3>Code Python équivalent</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 1. Nombres pairs de 2 à 20</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="c1"># 2. Somme 1 à n</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Donner n : &quot;</span><span class="p">))</span>
+<span class="n">somme</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">somme</span> <span class="o">+=</span> <span class="n">i</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Somme :&quot;</span><span class="p">,</span> <span class="n">somme</span><span class="p">)</span>
+
+<span class="c1"># 3. Table de multiplication</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Donner un nombre : &quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">nb</span><span class="p">,</span> <span class="s2">&quot;×&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">nb</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Variante TANT QUE :</strong> remplacer <code>POUR i DE 1 À n</code> par <code>i ← 1</code> / <code>TANT QUE i &lt;= n</code> / <code>i ← i + 1</code>.</p>
+<hr />
+<h2>Exercice 4 — Algorithme complet <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Écrire un algorithme qui :
+1. Demande 5 notes à l'utilisateur
+2. Calcule la moyenne
+3. Affiche « Admis » si moyenne ≥ 10, « Ajourné » sinon
+4. Affiche la note la plus haute et la plus basse</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code>max ← 0
+min ← 20
+somme ← 0
+POUR i DE 1 À 5 FAIRE
+    AFFICHER &quot;Note &quot;, i, &quot; : &quot;
+    LIRE note
+    somme ← somme + note
+    SI note &gt; max ALORS max ← note FIN SI
+    SI note &lt; min ALORS min ← note FIN SI
+FIN POUR
+moyenne ← somme / 5
+AFFICHER &quot;Moyenne : &quot;, moyenne
+SI moyenne &gt;= 10 ALORS
+    AFFICHER &quot;Admis&quot;
+SINON
+    AFFICHER &quot;Ajourné&quot;
+FIN SI
+AFFICHER &quot;Meilleure note : &quot;, max
+AFFICHER &quot;Moins bonne note : &quot;, min
+</code></pre></div>
+
+<h3>Table de traçage (notes [8, 12, 15, 6, 19])</h3>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>note</th>
+<th>somme</th>
+<th>max</th>
+<th>min</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>12</td>
+<td>20</td>
+<td>12</td>
+<td>8</td>
+</tr>
+<tr>
+<td>3</td>
+<td>15</td>
+<td>35</td>
+<td>15</td>
+<td>8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>41</td>
+<td>15</td>
+<td>6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>19</td>
+<td>60</td>
+<td>19</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>Moyenne = 60 / 5 = 12 → <strong>Admis</strong> | Meilleure : 19 | Moins bonne : 6</p>
+<h3>Code Python équivalent</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">max_note</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">min_note</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">somme</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Note </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> : &quot;</span><span class="p">))</span>
+    <span class="n">somme</span> <span class="o">+=</span> <span class="n">note</span>
+    <span class="k">if</span> <span class="n">note</span> <span class="o">&gt;</span> <span class="n">max_note</span><span class="p">:</span>
+        <span class="n">max_note</span> <span class="o">=</span> <span class="n">note</span>
+    <span class="k">if</span> <span class="n">note</span> <span class="o">&lt;</span> <span class="n">min_note</span><span class="p">:</span>
+        <span class="n">min_note</span> <span class="o">=</span> <span class="n">note</span>
+
+<span class="n">moyenne</span> <span class="o">=</span> <span class="n">somme</span> <span class="o">/</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moyenne :&quot;</span><span class="p">,</span> <span class="n">moyenne</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">moyenne</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Admis&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ajourné&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Meilleure note :&quot;</span><span class="p">,</span> <span class="n">max_note</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moins bonne note :&quot;</span><span class="p">,</span> <span class="n">min_note</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Variante mention :</strong> ≥ 16 « Très bien » | ≥ 14 « Bien » | ≥ 12 « Assez bien » | ≥ 10 « Passable » | &lt; 10 « Insuffisant »</p>
+<p><strong>Généralisation :</strong> remplacer 5 par N saisi par l'utilisateur.</p>
+<hr />
+<h2>Exercice 5 — Complexité <em>(10 min)</em></h2>
+<p><strong>Énoncé :</strong> Pour chaque algorithme, estimer la complexité (O(1), O(n), O(n²)) :</p>
+<ol>
+<li>Accéder au 3ème élément d'un tableau</li>
+<li>Parcourir un tableau de 100 éléments</li>
+<li>Comparer chaque élément d'un tableau avec tous les autres</li>
+<li>Lire le premier caractère d'une chaîne</li>
+<li>Rechercher un nom dans une liste non triée de n noms</li>
+</ol>
+<p><strong>Corrigé :</strong>
+1. O(1) — accès direct par indice
+2. O(n) — parcours linéaire
+3. O(n²) — double boucle imbriquée
+4. O(1) — accès direct
+5. O(n) — dans le pire cas, on parcourt toute la liste</p>
+<h3>Analyse détaillée</h3>
+<table>
+<thead>
+<tr>
+<th>Algorithme</th>
+<th>Complexité</th>
+<th>Opérations (n=100)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accès par indice</td>
+<td>O(1)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Parcours simple</td>
+<td>O(n)</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Double boucle</td>
+<td>O(n²)</td>
+<td>10 000</td>
+</tr>
+<tr>
+<td>Boucle triple</td>
+<td>O(n³)</td>
+<td>1 000 000</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Quel est le type de <code>"42"</code> en pseudo-code ?</strong>
+   a) Entier  b) Chaîne ✓  c) Réel</p>
+</li>
+<li>
+<p><strong>Une structure conditionnelle utilise le mot-clé :</strong>
+   a) POUR  b) SI ✓  c) TANT QUE</p>
+</li>
+<li>
+<p><strong>Quelle boucle est la plus adaptée pour parcourir un tableau de taille connue ?</strong>
+   a) POUR ✓  b) TANT QUE  c) RÉPÉTER</p>
+</li>
+<li>
+<p><strong>La complexité d'une double boucle imbriquée (pour i, pour j) est :</strong>
+   a) O(n)  b) O(n²) ✓  c) O(1)</p>
+</li>
+<li>
+<p><strong>Dans l'algorithme de moyenne, trouver la note maximale nécessite :</strong>
+   a) Un parcours du tableau ✓  b) Un tri complet  c) Une recherche dichotomique</p>
+</li>
+</ol>
+<hr />
+<h2>Différenciation pédagogique</h2>
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Approche</th>
+<th>Exercices ciblés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Débutant</strong></td>
+<td>Traçage guidé pas à pas</td>
+<td>Ex2 (table de vérité), Ex3 (tracer n=5), Ex4 (tracer notes)</td>
+</tr>
+<tr>
+<td><strong>Intermédiaire</strong></td>
+<td>Écriture autonome</td>
+<td>Ex3 (version TANT QUE), Ex4 (Q2 — N notes)</td>
+</tr>
+<tr>
+<td><strong>Avancé</strong></td>
+<td>Optimisation, généralisation</td>
+<td>Ex4 (Q1 — mentions), Ex5 (Q7 — estimation temporelle)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Grille d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variables et types</td>
+<td>20 %</td>
+<td>Types incorrects</td>
+<td>Types partiellement corrects</td>
+<td>Types corrects</td>
+</tr>
+<tr>
+<td>Structures conditionnelles</td>
+<td>20 %</td>
+<td>Conditions incorrectes</td>
+<td>Syntaxe partiellement correcte</td>
+<td>Syntaxe correcte</td>
+</tr>
+<tr>
+<td>Boucles</td>
+<td>20 %</td>
+<td>Boucles incorrectes</td>
+<td>Boucles partiellement correctes</td>
+<td>Boucles correctes</td>
+</tr>
+<tr>
+<td>Algorithme complet</td>
+<td>20 %</td>
+<td>Algorithme inexistant</td>
+<td>Algorithme partiel</td>
+<td>Algorithme complet</td>
+</tr>
+<tr>
+<td>Complexité algorithmique</td>
+<td>20 %</td>
+<td>Ne sait pas calculer</td>
+<td>Calcul partiel</td>
+<td>Calcul correct et justifié</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>L'algorithmique est au cœur des programmes de SNT (Seconde) et de NSI (Première/Terminale). En Seconde, on se limite à lire et modifier des algorithmes simples. En Première NSI, les élèves écrivent leurs premiers algorithmes en Python. L'analogie de la recette de cuisine fonctionne bien : les ingrédients sont les variables, les étapes sont les instructions, et les choix (si la sauce est trop liquide, ajouter de la farine) sont les conditions.</p>
+<h3>Conseil pour l'enseignant formateur</h3>
+<p>L'exercice 4 (algorithme complet) est l'exercice le plus important : il mobilise toutes les notions du TD. Demander aux étudiants d'écrire d'abord l'algorithme sur papier, puis de le tester mentalement avec des notes exemples (par exemple : 8, 12, 15, 6, 19). Vérifier que chaque étudiant suit l'exécution pas à pas (traçage manuel). La complexité (exercice 5) est une notion difficile : l'expliquer visuellement avec des graphiques.</p>
+<h3>Prolongement</h3>
+<p>Demander aux étudiants de traduire l'algorithme de l'exercice 4 en Python dans un fichier <code>moyenne.py</code>. Ajouter une fonction qui détermine si la moyenne est « Très bien » (≥ 16), « Bien » (≥ 14), « Assez bien » (≥ 12), « Passable » (≥ 10) ou « Insuffisant » (&lt; 10). Tester avec différents jeux de notes.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 2ème année — Séance 06 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 2ème année — Séance 06 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 2ème année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</li><li>**Public visé :** Étudiants ENS 2ème année — Département Français</li><li>**Compétences pré-requises :** Réseaux (ENS1 séance 07), fichiers Python (ENS1 séance 09)</li><li>**Objectifs transversaux :**</li><li>**Mode d'évaluation :** TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_2ème_année_FR_06.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 2ème année — Séance 06 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 2ème année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</p>
+<p><strong>Public visé :</strong> Étudiants ENS 2ème année — Département Français</p>
+<p><strong>Compétences pré-requises :</strong> Réseaux (ENS1 séance 07), fichiers Python (ENS1 séance 09)</p>
+<p><strong>Objectifs transversaux :</strong>
+- Appliquer la programmation orientée objet (classes, héritage, encapsulation) en Python
+- Concevoir des algorithmes avancés (tri, recherche, récursivité) et estimer leur complexité
+- Modéliser des données avec le modèle relationnel et requêtes SQL de base
+- Comprendre l'architecture Web (HTML, CSS, JavaScript intro, HTTP)
+- Utiliser Git et méthodes de travail collaboratif (branches, merge)
+- Préparer l'enseignement de l'informatique au collège/lycée (Scratch, Python pédagogique)</p>
+<p><strong>Mode d'évaluation :</strong> TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</p>
+<p><strong>Bibliographie :</strong> MDN Web Docs (developer.mozilla.org) ; Duckett — <em>HTML &amp; CSS</em></p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Créer une page HTML structurée (head, body, sections)
+- Appliquer des styles CSS (couleurs, polices, mise en page)
+- Ajouter un script JavaScript simple (interaction utilisateur)
+- Expliquer le cycle requête/réponse HTTP
+- Comprendre le rôle des formulaires Web</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Architecture Web (client-serveur)</li>
+<li>HTML : structure d'une page</li>
+<li>CSS : mise en forme</li>
+<li>JavaScript : interaction</li>
+<li>Formulaires Web</li>
+<li>Déploiement et hébergement</li>
+<li>Mini-projet : page personnelle enseignant</li>
+</ol>
+<hr />
+<h2>1. Architecture Web <em>(10 min)</em></h2>
+<p><strong>Client-serveur :</strong> le navigateur (client) envoie une requête HTTP au serveur, qui répond avec le contenu.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Client</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Navigateur</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Serveur</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Serveur</span><span class="w"> </span><span class="n">Web</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">BD</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Base</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">données</span>
+
+<span class="w">    </span><span class="n">Client</span><span class="o">-&gt;&gt;</span><span class="nl">Serveur</span><span class="p">:</span><span class="w"> </span><span class="k">GET</span><span class="w"> </span><span class="o">/</span><span class="k">index</span><span class="p">.</span><span class="n">html</span>
+<span class="w">    </span><span class="n">Serveur</span><span class="o">--&gt;&gt;</span><span class="nl">Client</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="n">OK</span><span class="w"> </span><span class="o">[</span><span class="n">HTML</span><span class="o">]</span>
+<span class="w">    </span><span class="n">Client</span><span class="o">-&gt;&gt;</span><span class="nl">Serveur</span><span class="p">:</span><span class="w"> </span><span class="k">GET</span><span class="w"> </span><span class="o">/</span><span class="n">style</span><span class="p">.</span><span class="n">css</span>
+<span class="w">    </span><span class="n">Serveur</span><span class="o">--&gt;&gt;</span><span class="nl">Client</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="n">OK</span><span class="w"> </span><span class="o">[</span><span class="n">CSS</span><span class="o">]</span>
+<span class="w">    </span><span class="n">Client</span><span class="o">-&gt;&gt;</span><span class="nl">Serveur</span><span class="p">:</span><span class="w"> </span><span class="n">POST</span><span class="w"> </span><span class="o">/</span><span class="n">envoyer</span><span class="w"> </span><span class="p">(</span><span class="n">formulaire</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Serveur</span><span class="o">-&gt;&gt;</span><span class="nl">BD</span><span class="p">:</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">messages</span>
+<span class="w">    </span><span class="n">BD</span><span class="o">--&gt;&gt;</span><span class="nl">Serveur</span><span class="p">:</span><span class="w"> </span><span class="n">OK</span>
+<span class="w">    </span><span class="n">Serveur</span><span class="o">--&gt;&gt;</span><span class="nl">Client</span><span class="p">:</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="n">Redirect</span><span class="w"> </span><span class="o">/</span><span class="n">merci</span>
+<span class="w">    </span><span class="n">Client</span><span class="o">-&gt;&gt;</span><span class="nl">Serveur</span><span class="p">:</span><span class="w"> </span><span class="k">GET</span><span class="w"> </span><span class="o">/</span><span class="n">merci</span>
+<span class="w">    </span><span class="n">Serveur</span><span class="c1">--&gt;&gt;Client: 200 OK [HTML]</span>
+</code></pre></div>
+
+<p><strong>URL :</strong> <code>https://www.ens-mostaganem.dz/departements/francais</code>
+- <code>https</code> : protocole sécurisé
+- <code>www.ens-mostaganem.dz</code> : nom de domaine
+- <code>/departements/francais</code> : chemin</p>
+<hr />
+<h2>2. HTML <em>(20 min)</em></h2>
+<p>HTML (HyperText Markup Language) utilise des balises pour structurer le contenu.</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;fr&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mon Portfolio — Enseignant<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>BELACEL Madani<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#cours&quot;</span><span class="p">&gt;</span>Cours<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#recherche&quot;</span><span class="p">&gt;</span>Recherche<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#contact&quot;</span><span class="p">&gt;</span>Contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;cours&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Mes cours<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Informatique ENS 1ère année<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Informatique ENS 2ème année<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>TIC — Licence<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;recherche&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Recherche<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Année<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Publication<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2025<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>TICE en Algérie<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>© 2026 BELACEL Madani — ENS Mostaganem<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Balises sémantiques :</strong> <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code> (meilleur référencement et accessibilité).</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">html</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">head</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">body</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">meta</span><span class="w"> </span><span class="n">charset</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">title</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">header</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">main</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">footer</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">h1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">nav</span><span class="p">]</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="p">]</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">section</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="n">cours</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">N</span><span class="p">[</span><span class="n">section</span><span class="w"> </span><span class="kt">id</span><span class="o">=</span><span class="n">recherche</span><span class="p">]</span>
+<span class="w">    </span><span class="n">M</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">O</span><span class="p">[</span><span class="n">h2</span><span class="p">]</span>
+<span class="w">    </span><span class="n">M</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P</span><span class="p">[</span><span class="n">ul</span><span class="p">]</span>
+<span class="w">    </span><span class="n">P</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Q</span><span class="p">[</span><span class="n">li</span><span class="p">]</span>
+<span class="w">    </span><span class="n">P</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">li</span><span class="p">]</span>
+<span class="w">    </span><span class="n">N</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S</span><span class="p">[</span><span class="n">table</span><span class="p">]</span>
+<span class="w">    </span><span class="n">S</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">[</span><span class="n">tr</span><span class="p">]</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">U</span><span class="p">[</span><span class="n">th</span><span class="p">]</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">V</span><span class="p">[</span><span class="n">th</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">W</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">003366</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">003366</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">003366</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>3. CSS <em>(15 min)</em></h2>
+<p>CSS (Cascading Style Sheets) contrôle l'apparence.</p>
+<div class="codehilite"><pre><span></span><code><span class="c">/* style.css */</span>
+<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Segoe UI&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f5f5f5</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#003366</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">nav</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">nav</span><span class="w"> </span><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">underline</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">table</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">border-collapse</span><span class="p">:</span><span class="w"> </span><span class="kc">collapse</span><span class="p">;</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">th</span><span class="o">,</span><span class="w"> </span><span class="nt">td</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#ddd</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">left</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">th</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#003366</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Intégration :</strong> <code>&lt;link rel="stylesheet" href="style.css"&gt;</code> dans le <code>&lt;head&gt;</code>.</p>
+<hr />
+<h2>4. JavaScript <em>(15 min)</em></h2>
+<p>JavaScript permet l'interactivité côté client.</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Calculateur de moyenne<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;note1&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Note 1&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;note2&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Note 2&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;note3&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Note 3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;calculer()&quot;</span><span class="p">&gt;</span>Calculer<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;resultat&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="kd">function</span><span class="w"> </span><span class="nx">calculer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nx">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;note1&quot;</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nx">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;note2&quot;</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nx">n3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;note3&quot;</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nx">moyenne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">n1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n3</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;resultat&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="s2">&quot;Moyenne : &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">moyenne</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>5. Formulaires <em>(15 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/envoyer&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;nom&quot;</span><span class="p">&gt;</span>Nom :<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;nom&quot;</span> <span class="na">required</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;email&quot;</span><span class="p">&gt;</span>Email :<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;email&quot;</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;message&quot;</span><span class="p">&gt;</span>Message :<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;message&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;message&quot;</span> <span class="na">rows</span><span class="o">=</span><span class="s">&quot;5&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Envoyer<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Types d'input :</strong> <code>text</code>, <code>email</code>, <code>number</code>, <code>date</code>, <code>file</code>, <code>password</code>, <code>checkbox</code>, <code>radio</code>.</p>
+<hr />
+<h2>6. Déploiement <em>(10 min)</em></h2>
+<p>Options gratuites pour héberger un site enseignant :
+- <strong>GitHub Pages</strong> : <code>username.github.io</code>
+- <strong>Netlify</strong> : déploiement automatique depuis Git
+- <strong>Google Sites</strong> : sans code (WYSIWYG)
+- <strong>Moodle</strong> : espace cours intégré</p>
+<hr />
+<h2>7. Mini-projet <em>(10 min)</em></h2>
+<p>Créer une page web personnelle pour votre futur métier d'enseignant :
+1. Structure HTML (bio, cours, contact)
+2. Style CSS (couleurs ENS : bleu foncé #003366)
+3. Formulaire de contact
+4. Lien vers le dépôt GitHub</p>
+<hr />
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Que signifie HTML ?</strong>
+   a) HyperText Markup Language ✓  b) High Tech Modern Language  c) Home Tool Markup Language</p>
+</li>
+<li>
+<p><strong>Quelle balise HTML permet de créer un lien hypertexte ?</strong>
+   a) <code>&lt;link&gt;</code>  b) <code>&lt;a&gt;</code> ✓  c) <code>&lt;href&gt;</code></p>
+</li>
+<li>
+<p><strong>Quel langage contrôle l'apparence d'une page Web ?</strong>
+   a) HTML  b) CSS ✓  c) JavaScript</p>
+</li>
+<li>
+<p><strong>Quel type d'input HTML est utilisé pour les mots de passe ?</strong>
+   a) <code>text</code>  b) <code>password</code> ✓  c) <code>hidden</code></p>
+</li>
+<li>
+<p><strong>Qu'est-ce qu'une requête HTTP GET ?</strong>
+   a) Envoie des données au serveur via l'URL ✓  b) Modifie la base de données  c) Établit une connexion permanente</p>
+</li>
+</ol>
+<hr />
+<h2>8. Conclusion <em>(5 min)</em></h2>
+<p>HTML structure, CSS habille, JavaScript anime. Ces trois technologies sont la base du Web. Un enseignant moderne sait créer et publier du contenu en ligne.</p>
+<p><strong>Prochain cours :</strong> Git et collaboration.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> Le Web peut être enseigné au collège à travers la création de pages HTML simples. En SNT Seconde (thème "Web"), les élèves apprennent à distinguer client et serveur, à comprendre le rôle du navigateur, et à inspecter le code source d'une page. L'activité de mini-projet "page personnelle enseignant" peut être adaptée pour des élèves de 3ème en leur faisant créer une page HTML sur un métier qui les intéresse. La séquence client-serveur peut être simulée par un jeu de rôle : un élève est le serveur, un autre le client.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Les étudiants ont souvent du mal avec la séparation HTML/CSS. Insistez sur le principe de responsabilité unique : HTML pour le fond, CSS pour la forme. Un exercice efficace consiste à fournir le même HTML et demander aux étudiants d'appliquer des CSS différents pour produire des rendus visuels totalement différents. Cela illustre la puissance et la flexibilité du CSS.</p>
+<p><strong>Prolongement :</strong> Les étudiants peuvent créer un mini-site complet d'enseignant avec plusieurs pages (accueil, cours, contact), un menu de navigation responsive (media queries), et un formulaire de contact fonctionnel utilisant un service comme Formspree ou un backend Flask simple. Ils peuvent également ajouter une page "portfolio de projets" avec des captures d'écran et des liens GitHub.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

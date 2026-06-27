@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 1ère année — Séance 01 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 1ère année — Séance 01 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Objectifs généraux du module :**</li><li>**Compétences pré-requises :** Baccalauréat ; notions de base en TIC (navigateur web, traitement de texte, messagerie).</li><li>**Public visé :** Étudiants de 1ère année à l'École Normale Supérieure, Département de français, futurs enseignants de français au secondaire.</li><li>**Articulation pédagogique :** Les séances 02 à 04 posent les fondements théoriques de l'architecture machine. Les séances 05 et 06 introduisent l'algorithmique et les structures de données, socle de la pensée computationnelle. Les séances 07 et 08 traitent des réseaux et de la sécurité, compétences citoyennes essentielles. Enfin, les séances 09 et 10 sont consacrées à la programmation Python et au projet de fin de module.</li><li>**Constat :** Le numérique est omniprésent dans l'enseignement des langues : plateformes LMS (Moodle, Google Classroom), correcteurs orthographiques (Antidote, LanguageTool), dictionnaires en ligne (WordReference, Linguee), exerciseurs (Quizlet, LearningApps, Duolingo), classes virtuelles (Zoom, BigBlueButton), outils d'écriture collaborative (Etherpad, Framapad), et IA générative (ChatGPT pour la rédaction).</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_1ère_année_FR_01.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 1ère année — Séance 01 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Décrire la structure globale du module, ses 10 séances et ses objectifs généraux
+- Expliquer pourquoi l'informatique est essentielle dans la formation des enseignants de français
+- Se repérer dans les modalités d'évaluation (TD, TP, QCM, projet)
+- Lier chaque notion du cours aux programmes SNT Seconde et NSI Première
+- Identifier les compétences numériques du CRCN / PIX attendues d'un enseignant</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Présentation du module — plan, objectifs, évaluation <em>(15 min)</em></li>
+<li>Tour de table : représentations des étudiants sur l'informatique <em>(10 min)</em></li>
+<li>Les 10 séances du module — timeline et graphe de dépendances <em>(10 min)</em></li>
+<li>Pourquoi l'informatique pour les enseignants de langues ? <em>(20 min)</em></li>
+<li>Liens avec les programmes SNT Seconde et NSI Première <em>(15 min)</em></li>
+<li>Modalités d'évaluation détaillées <em>(10 min)</em></li>
+<li>Questions et attentes <em>(10 min)</em></li>
+</ol>
+<hr />
+<h2>1. Présentation du module</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">mindmap</span>
+<span class="w">  </span><span class="nx">root</span><span class="p">((</span><span class="nx">Informatique</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">ENS</span><span class="w"> </span><span class="mi">1</span><span class="nx">ère</span><span class="w"> </span><span class="nx">année</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">Architecture</span>
+<span class="w">      </span><span class="nx">Représentation</span><span class="w"> </span><span class="nx">info</span>
+<span class="w">        </span><span class="nx">Binaire</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">Hexa</span>
+<span class="w">        </span><span class="nx">ASCII</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="w">        </span><span class="nx">Images</span><span class="w"> </span><span class="nx">bitmap</span>
+<span class="w">      </span><span class="nx">Machine</span>
+<span class="w">        </span><span class="nx">von</span><span class="w"> </span><span class="nx">Neumann</span>
+<span class="w">        </span><span class="nx">Fetch</span><span class="o">-</span><span class="nx">Decode</span><span class="o">-</span><span class="nx">Execute</span>
+<span class="w">        </span><span class="nx">Hiérarchie</span><span class="w"> </span><span class="nx">mémoire</span>
+<span class="w">      </span><span class="nx">OS</span>
+<span class="w">        </span><span class="nx">Processus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">threads</span>
+<span class="w">        </span><span class="nx">Ordonnancement</span>
+<span class="w">        </span><span class="nx">Système</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">fichiers</span>
+<span class="w">    </span><span class="nx">Algorithmique</span>
+<span class="w">      </span><span class="nx">Fondamentaux</span>
+<span class="w">        </span><span class="nx">Variables</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">types</span>
+<span class="w">        </span><span class="nx">Conditions</span>
+<span class="w">        </span><span class="nx">Boucles</span>
+<span class="w">      </span><span class="nx">Complexité</span>
+<span class="w">        </span><span class="nx">O</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="nx">O</span><span class="p">(</span><span class="nx">n</span><span class="p">),</span><span class="w"> </span><span class="nx">O</span><span class="p">(</span><span class="nx">n²</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">Structures</span>
+<span class="w">        </span><span class="nx">Tableaux</span>
+<span class="w">        </span><span class="nx">Piles</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">files</span>
+<span class="w">    </span><span class="nx">Réseaux</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">Web</span>
+<span class="w">      </span><span class="nx">TCP</span><span class="o">/</span><span class="nx">IP</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">DNS</span>
+<span class="w">      </span><span class="nx">HTTP</span><span class="o">/</span><span class="nx">HTTPS</span>
+<span class="w">      </span><span class="nx">Modèle</span><span class="w"> </span><span class="nx">client</span><span class="o">-</span><span class="nx">serveur</span>
+<span class="w">    </span><span class="nx">Sécurité</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">Éthique</span>
+<span class="w">      </span><span class="nx">CIA</span><span class="w"> </span><span class="nx">triad</span>
+<span class="w">      </span><span class="nx">Mots</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">passe</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">MFA</span>
+<span class="w">      </span><span class="nx">RGPD</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">données</span><span class="w"> </span><span class="nx">élèves</span>
+<span class="w">    </span><span class="nx">Programmation</span><span class="w"> </span><span class="nx">Python</span>
+<span class="w">      </span><span class="nx">Variables</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">types</span>
+<span class="w">      </span><span class="nx">Conditions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">boucles</span>
+<span class="w">      </span><span class="nx">Fonctions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">fichiers</span>
+<span class="w">      </span><span class="nx">Projet</span><span class="w"> </span><span class="nx">pédagogique</span>
+</code></pre></div>
+
+<p><strong>Objectifs généraux du module :</strong></p>
+<ul>
+<li>Comprendre l'architecture fondamentale d'un système informatique (CPU, mémoire, E/S, bus)</li>
+<li>Maîtriser les bases des systèmes d'exploitation (processus, threads, fichiers, commandes)</li>
+<li>Concevoir des algorithmes et évaluer leur complexité élémentaire (O(1), O(n), O(n²))</li>
+<li>Utiliser des structures de données classiques (tableaux, piles LIFO, files FIFO)</li>
+<li>Comprendre les principes réseau (IP, DNS, HTTP/HTTPS, client-serveur)</li>
+<li>Maîtriser les bases de la sécurité informatique (CIA, mots de passe, MFA, RGPD)</li>
+<li>S'initier à la programmation Python dans une perspective d'enseignement</li>
+<li>Relier chaque notion aux programmes SNT/NSI du secondaire</li>
+</ul>
+<p><strong>Compétences pré-requises :</strong> Baccalauréat ; notions de base en TIC (navigateur web, traitement de texte, messagerie).</p>
+<p><strong>Public visé :</strong> Étudiants de 1ère année à l'École Normale Supérieure, Département de français, futurs enseignants de français au secondaire.</p>
+<hr />
+<h2>2. Les 10 séances du module</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">timeline</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="n">Déroulement</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">séances</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Introduction</span><span class="w"> </span><span class="n">au</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">objectifs</span><span class="p">,</span><span class="w"> </span><span class="n">plan</span><span class="p">,</span><span class="w"> </span><span class="err">é</span><span class="n">valuation</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">02</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Représentation</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">l</span><span class="s1">&#39;information : binaire, hexa, ASCII, UTF-8, images</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">03</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Architecture</span><span class="w"> </span><span class="n">machine</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">von</span><span class="w"> </span><span class="n">Neumann</span><span class="p">,</span><span class="w"> </span><span class="n">fetch</span><span class="o">-</span><span class="n">decode</span><span class="o">-</span><span class="n">execute</span><span class="p">,</span><span class="w"> </span><span class="n">hiérarchie</span><span class="w"> </span><span class="n">mémoire</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">04</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Systèmes</span><span class="w"> </span><span class="n">d</span><span class="s1">&#39;exploitation : processus, threads, ordonnancement, fichiers</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">05</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Algorithmique</span><span class="w"> </span><span class="n">fondamentale</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">variables</span><span class="p">,</span><span class="w"> </span><span class="n">conditions</span><span class="p">,</span><span class="w"> </span><span class="n">boucles</span><span class="p">,</span><span class="w"> </span><span class="n">complexité</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">06</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Structures</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">données</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">tableaux</span><span class="p">,</span><span class="w"> </span><span class="n">piles</span><span class="w"> </span><span class="n">LIFO</span><span class="p">,</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">FIFO</span><span class="p">,</span><span class="w"> </span><span class="n">listes</span><span class="w"> </span><span class="n">chaînées</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">07</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Réseaux</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">Internet</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">TCP</span><span class="o">/</span><span class="n">IP</span><span class="p">,</span><span class="w"> </span><span class="n">DNS</span><span class="p">,</span><span class="w"> </span><span class="n">HTTP</span><span class="o">/</span><span class="n">HTTPS</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="o">-</span><span class="n">serveur</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Sécurité</span><span class="w"> </span><span class="n">informatique</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">confidentialité</span><span class="p">,</span><span class="w"> </span><span class="n">intégrité</span><span class="p">,</span><span class="w"> </span><span class="n">disponibilité</span><span class="p">,</span><span class="w"> </span><span class="n">RGPD</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">09</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Initiation</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="n">Python</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">variables</span><span class="p">,</span><span class="w"> </span><span class="n">conditions</span><span class="p">,</span><span class="w"> </span><span class="n">boucles</span><span class="p">,</span><span class="w"> </span><span class="n">fonctions</span><span class="p">,</span><span class="w"> </span><span class="n">fichiers</span>
+<span class="w">    </span><span class="n">Séance</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Projet</span><span class="w"> </span><span class="n">Python</span><span class="w"> </span><span class="n">pédagogique</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">quiz</span><span class="p">,</span><span class="w"> </span><span class="n">calcul</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">moyennes</span><span class="p">,</span><span class="w"> </span><span class="n">mini</span><span class="o">-</span><span class="n">application</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">S01</span><span class="p">[</span><span class="n">Séance</span><span class="w"> </span><span class="mo">01</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Introduction</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S02</span><span class="p">[</span><span class="n">Séance</span><span class="w"> </span><span class="mo">02</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Représentation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">S02</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S03</span><span class="p">[</span><span class="n">Séance</span><span class="w"> </span><span class="mo">03</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Architecture</span><span class="p">]</span>
+<span class="w">    </span><span class="n">S03</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S04</span><span class="p">[</span><span class="n">Séance</span><span class="w"> </span><span class="mo">04</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Systèmes</span><span class="w"> </span><span class="n">d</span><span class="s">&#39;exploitation]</span>
+<span class="s">    S04 --&gt; S05[Séance 05&lt;br/&gt;Algorithmique]</span>
+<span class="s">    S05 --&gt; S06[Séance 06&lt;br/&gt;Structures de données]</span>
+<span class="s">    S06 --&gt; S07[Séance 07&lt;br/&gt;Réseaux]</span>
+<span class="s">    S07 --&gt; S08[Séance 08&lt;br/&gt;Sécurité]</span>
+<span class="s">    S08 --&gt; S09[Séance 09&lt;br/&gt;Python]</span>
+<span class="s">    S09 --&gt; S10[Séance 10&lt;br/&gt;Projet Python]</span>
+
+<span class="s">    style S01 fill:#4a90d9,color:#fff</span>
+<span class="s">    style S05 fill:#2ecc71,color:#fff</span>
+<span class="s">    style S10 fill:#e74c3c,color:#fff</span>
+</code></pre></div>
+
+<p><strong>Articulation pédagogique :</strong> Les séances 02 à 04 posent les fondements théoriques de l'architecture machine. Les séances 05 et 06 introduisent l'algorithmique et les structures de données, socle de la pensée computationnelle. Les séances 07 et 08 traitent des réseaux et de la sécurité, compétences citoyennes essentielles. Enfin, les séances 09 et 10 sont consacrées à la programmation Python et au projet de fin de module.</p>
+<hr />
+<h2>3. Importance de l'informatique pour les enseignants de langues</h2>
+<p><strong>Constat :</strong> Le numérique est omniprésent dans l'enseignement des langues : plateformes LMS (Moodle, Google Classroom), correcteurs orthographiques (Antidote, LanguageTool), dictionnaires en ligne (WordReference, Linguee), exerciseurs (Quizlet, LearningApps, Duolingo), classes virtuelles (Zoom, BigBlueButton), outils d'écriture collaborative (Etherpad, Framapad), et IA générative (ChatGPT pour la rédaction).</p>
+<p><strong>Pourquoi un enseignant de français doit-il maîtriser les bases de l'informatique ?</strong></p>
+<ol>
+<li>
+<p><strong>Contribution au programme SNT Seconde :</strong> Le programme SNT (Sciences Numériques et Technologie) est obligatoire pour tous les élèves de Seconde. Les enseignants de lettres peuvent être sollicités pour les thèmes « Données structurées », « Internet », « Réseaux sociaux » en lien avec la lecture, l'écriture et la culture informationnelle.</p>
+</li>
+<li>
+<p><strong>Compétences numériques du CRCN (Cadre de Référence des Compétences Numériques) :</strong> Le CRCN définit 5 domaines (Information et données, Communication, Création de contenus, Protection et sécurité, Environnement numérique). La certification PIX est obligatoire pour les enseignants. Un enseignant de français doit notamment maîtriser le domaine « Création de contenus » (traitement de texte, présentation multimédia, édition de documents).</p>
+</li>
+<li>
+<p><strong>Outils pédagogiques numériques pour la classe de français :</strong> Un enseignant formé peut intégrer des quiz interactifs (Kahoot, Quizinière), des cartes mentales (XMind, Mindomo), des outils de dictionnaires et de correction en ligne, des plateformes d'écriture (Framapad, Etherpad), des exerciseurs de grammaire, et des ressources audio/vidéo (Podcast, YouTube).</p>
+</li>
+<li>
+<p><strong>Pensée computationnelle et analyse linguistique :</strong> La logique algorithmique (séquences, conditions, boucles) est transposable à l'étude de la grammaire (analyse syntaxique descendante, arbres de dérivation), à la phonétique (règles de prononciation conditionnelles), et à la didactique des langues (structuration séquentielle des apprentissages).</p>
+</li>
+<li>
+<p><strong>Culture numérique citoyenne :</strong> Comprendre le fonctionnement d'Internet, les moteurs de recherche, les algorithmes de recommandation, la sécurité des données personnelles et les enjeux éthiques du numérique (RGPD, désinformation, cyberharcèlement) est indispensable pour former les élèves à une citoyenneté numérique responsable.</p>
+</li>
+</ol>
+<p><strong>Exemples concrets pour la classe de français :</strong>
+- Comprendre pourquoi certains caractères français (œ, æ, ç, é, è) s'affichent mal dans un fichier texte → notion d'encodage UTF-8
+- Analyser le fonctionnement d'un correcteur orthographique → algorithmes de comparaison de chaînes
+- Comprendre le référencement Google → algorithme PageRank, indexation
+- Sécuriser les données des élèves → notions de chiffrement, mot de passe, RGPD</p>
+<hr />
+<h2>4. Liens avec les programmes SNT/NSI</h2>
+<table>
+<thead>
+<tr>
+<th>Thème SNT Seconde</th>
+<th>Lien avec le cours</th>
+<th>Applications en français</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Données structurées</td>
+<td>Séance 02 (codage) + Séance 06 (structures)</td>
+<td>Typologie des textes, analyse grammaticale</td>
+</tr>
+<tr>
+<td>Internet</td>
+<td>Séance 07 (réseaux)</td>
+<td>Recherche documentaire, évaluation des sources</td>
+</tr>
+<tr>
+<td>Architecture machine</td>
+<td>Séance 03 (von Neumann)</td>
+<td>Histoire des techniques, impact sur l'écriture</td>
+</tr>
+<tr>
+<td>Algorithmes</td>
+<td>Séance 05 (algorithmique)</td>
+<td>Structures narratives, grammaire générative</td>
+</tr>
+<tr>
+<td>Réseaux sociaux</td>
+<td>Séance 08 (sécurité, éthique)</td>
+<td>Éducation aux médias, cyberharcèlement</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Thème NSI Première</th>
+<th>Lien avec le cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Types de données, opérateurs</td>
+<td>Séance 05</td>
+</tr>
+<tr>
+<td>Conditions et boucles</td>
+<td>Séance 05</td>
+</tr>
+<tr>
+<td>Tableaux, piles, files</td>
+<td>Séance 06</td>
+</tr>
+<tr>
+<td>Complexité algorithmique</td>
+<td>Séance 05</td>
+</tr>
+<tr>
+<td>Transmission de données</td>
+<td>Séance 07</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Modalités d'évaluation</h2>
+<div class="codehilite"><pre><span></span><code>pie title Répartition de l&#39;évaluation du module
+    &quot;TD (40%)&quot; : 40
+    &quot;TP Python (35%)&quot; : 35
+    &quot;QCM (25%)&quot; : 25
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Composante</th>
+<th>Détail</th>
+<th>Poids</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TD</td>
+<td>Exercices sur papier : architecture, réseaux, algorithmique, structures</td>
+<td>40 %</td>
+</tr>
+<tr>
+<td>TP Python</td>
+<td>Séances pratiques (09 et 10) : programmation en salle machine</td>
+<td>35 %</td>
+</tr>
+<tr>
+<td>QCM</td>
+<td>5 questions par séance (auto-évaluation formative)</td>
+<td>25 %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Règles :</strong>
+- La note de TD comprend des exercices à rendre après chaque séance (sauf séance 01)
+- Le TP Python donne lieu à un projet individuel ou en binôme présenté en séance 10
+- Les QCM sont notés sur 5 points chacun ; seules les 5 meilleures notes comptent
+- Une soutenance courte (5 minutes) du projet Python est prévue en séance 10
+- La présence en cours est obligatoire (contrôle continu)</p>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Combien de séances comporte le module d'informatique ?</strong>
+   a) 8 séances  b) 10 séances ✓  c) 12 séances</p>
+</li>
+<li>
+<p><strong>Quel est le poids des TP Python dans l'évaluation totale ?</strong>
+   a) 25 %  b) 35 % ✓  c) 40 %</p>
+</li>
+<li>
+<p><strong>Quel programme du secondaire algérien est lié à l'informatique en Seconde ?</strong>
+   a) NSI  b) SNT ✓  c) EMI</p>
+</li>
+<li>
+<p><strong>Quel est le principal objectif du module pour les futurs enseignants ?</strong>
+   a) Devenir programmeur professionnel  b) Comprendre l'informatique pour l'enseigner ✓  c) Réparer des ordinateurs</p>
+</li>
+<li>
+<p><strong>Quel outil numérique est cité comme exerciseur pour l'enseignement des langues ?</strong>
+   a) Photoshop  b) Quizlet ✓  c) Excel</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion</h2>
+<p>Cette séance introductive a posé le cadre du module. L'informatique n'est pas une discipline isolée du reste de la formation : elle est au cœur des pratiques pédagogiques modernes, y compris dans l'enseignement des langues et des lettres. Les 10 séances qui suivent sont conçues pour donner aux futurs enseignants de français les concepts fondamentaux et les compétences pratiques nécessaires pour intégrer le numérique dans leur enseignement et pour contribuer efficacement aux programmes SNT/NSI du secondaire.</p>
+<p><strong>Prochaine séance :</strong> Représentation de l'information — binaire, hexadécimal, codage ASCII/UTF-8, codage des images bitmap.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> Cette séance introductive peut être adaptée pour une classe de Seconde SNT en début d'année. L'enseignant peut :
+- Faire un tour de table sur les usages numériques des élèves (smartphone, réseaux sociaux, jeux vidéo)
+- Présenter le programme SNT sous forme de mindmap (comme fait ici)
+- Expliquer le lien entre les sciences numériques et les autres disciplines (français, histoire-géographie, mathématiques, SVT)
+- Proposer une activité de réflexion : « À quoi sert un ordinateur dans la vie quotidienne ? »</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Inviter les étudiants ENS à réfléchir à leur propre rapport au numérique (forces, faiblesses, attentes) pour personnaliser leur parcours d'apprentissage tout au long du module. Les étudiants peuvent tenir un journal de bord numérique de leurs apprentissages.</p>
+<p><strong>Prolongement :</strong> Demander aux étudiants de préparer pour la séance 2 un court texte (5 lignes) listant les appareils numériques qu'ils utilisent quotidiennement, pour amorcer la réflexion sur la représentation de l'information.</p>
+<hr />
+<h2>Bibliographie</h2>
+<ul>
+<li>Ministère de l'Éducation nationale (2019). <em>Programme SNT Seconde</em> — Bulletin officiel spécial n°1 du 22 janvier 2019.</li>
+<li>Ministère de l'Éducation nationale (2019). <em>Programme NSI Première et Terminale</em> — Bulletin officiel spécial n°1 du 22 janvier 2019.</li>
+<li>CRCN — Cadre de Référence des Compétences Numériques (2020). https://pix.fr/cadre-de-reference</li>
+<li>Dowek, G. et al. (2019). <em>Sciences Numériques et Technologie — Seconde</em>. Éditions Hachette Éducation.</li>
+<li>Tanenbaum, A. &amp; Austin, T. (2012). <em>Architecture de l'ordinateur</em> (6e éd.). Pearson (chapitres introductifs).</li>
+<li>Documentation Python 3 (2024). https://docs.python.org/fr/3/</li>
+<li>Académie de Versailles (2020). <em>Guide d'équipement numérique pour l'enseignement des lettres</em>.</li>
+<li>Fluckiger, C. (2019). <em>Numérique et formation des enseignants de langues</em>. Revue des sciences de l'éducation.</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

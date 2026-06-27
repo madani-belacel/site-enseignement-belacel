@@ -1,0 +1,594 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP Informatique — ENS 1ère année — TP 08 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TP Informatique — ENS 1ère année — TP 08 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Sujet :** Créer un **Quiz pédagogique interactif** sur les notions d'informatique vues dans le module.</li><li>**Fonctionnalités attendues :**</li><li>**Énoncé :** Créer un fichier `questions.csv` avec au moins 15 questions réparties en 4 catégories (Architecture, Algorithmique, Python, Réseaux). Format : Categorie, Question, Reponse.</li><li>**Corrigé :**</li><li>**Énoncé :** Créer les fonctions de chargement des questions dans `quiz.py` :</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TP_Informatique_ENS_1ère_année_FR_08.pdf</code></p>
+</blockquote>
+<h1>TP Informatique — ENS 1ère année — TP 08 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce TP, l'étudiant est capable de :
+- Concevoir un mini-projet Python complet de A à Z
+- Structurer un projet en plusieurs fichiers
+- Implémenter une interface utilisateur interactive (menu)
+- Appliquer les bonnes pratiques : fonctions, docstrings, gestion d'erreurs
+- Produire un projet pédagogique réutilisable en classe
+- Importer et exporter des données au format CSV</p>
+<hr />
+<h2>Plan du TP</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Présentation du projet</td>
+<td>10 min</td>
+<td>Architecture et structure</td>
+</tr>
+<tr>
+<td>Exercice 1</td>
+<td>15 min</td>
+<td>Créer la base questions CSV</td>
+</tr>
+<tr>
+<td>Exercice 2</td>
+<td>15 min</td>
+<td>Module de chargement CSV</td>
+</tr>
+<tr>
+<td>Exercice 3</td>
+<td>20 min</td>
+<td>Interface menu interactive</td>
+</tr>
+<tr>
+<td>Exercice 4</td>
+<td>15 min</td>
+<td>Tirage aléatoire et scoring</td>
+</tr>
+<tr>
+<td>Exercice 5</td>
+<td>15 min</td>
+<td>Export des résultats</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Présentation du mini-projet</h2>
+<p><strong>Sujet :</strong> Créer un <strong>Quiz pédagogique interactif</strong> sur les notions d'informatique vues dans le module.</p>
+<p><strong>Fonctionnalités attendues :</strong>
+1. Charger des questions depuis un fichier CSV (4 catégories, 15+ questions)
+2. Poser les questions dans un ordre aléatoire
+3. Gérer plusieurs catégories (Architecture, Algorithmique, Python, Réseaux)
+4. Chronométrer le quiz
+5. Calculer le score et afficher les résultats
+6. Exporter les résultats dans un fichier CSV
+7. Interface en ligne de commande avec menu</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Projet</span><span class="p">[</span><span class="n">Structure</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">Projet</span><span class="w"> </span><span class="n">Quiz</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">quiz</span><span class="p">.</span><span class="n">py</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">questions</span><span class="p">.</span><span class="n">csv</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">resultats</span><span class="p">.</span><span class="n">csv</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Menu</span><span class="w"> </span><span class="n">interactif</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Lancer</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">quiz</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">règles</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Quitter</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Charger</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">questions</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Filtrer</span><span class="w"> </span><span class="n">par</span><span class="w"> </span><span class="n">catégorie</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Mélanger</span><span class="w"> </span><span class="n">aléatoirement</span><span class="p">]</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Poser</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">questions</span><span class="p">]</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Calculer</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">score</span><span class="p">]</span>
+<span class="w">    </span><span class="n">L</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">résultats</span><span class="p">]</span>
+<span class="w">    </span><span class="n">M</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">N</span><span class="p">[</span><span class="n">Exporter</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">CSV</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>Barème complet</h2>
+<table>
+<thead>
+<tr>
+<th>Partie</th>
+<th>Points</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base de questions CSV</td>
+<td>4 pts</td>
+<td>4 catégories, 15+ questions, format correct</td>
+</tr>
+<tr>
+<td>Module de chargement</td>
+<td>4 pts</td>
+<td>Fonctions charger, filtrer, mélanger</td>
+</tr>
+<tr>
+<td>Interface menu</td>
+<td>4 pts</td>
+<td>Menu clair, navigation fluide, gestion d'erreurs</td>
+</tr>
+<tr>
+<td>Tirage aléatoire et scoring</td>
+<td>4 pts</td>
+<td>Ordre aléatoire, score, mention, chronomètre</td>
+</tr>
+<tr>
+<td>Export des résultats</td>
+<td>4 pts</td>
+<td>Export CSV propre, horodatage</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>20 pts</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — Créer la base questions CSV <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un fichier <code>questions.csv</code> avec au moins 15 questions réparties en 4 catégories (Architecture, Algorithmique, Python, Réseaux). Format : Categorie, Question, Reponse.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;Architecture&quot;</span><span class="p">,</span> <span class="s2">&quot;Que signifie CPU ?&quot;</span><span class="p">,</span> <span class="s2">&quot;Central Processing Unit&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Architecture&quot;</span><span class="p">,</span> <span class="s2">&quot;La RAM est-elle volatile ?&quot;</span><span class="p">,</span> <span class="s2">&quot;Oui&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Architecture&quot;</span><span class="p">,</span> <span class="s2">&quot;Quel modèle est à la base des ordinateurs modernes ?&quot;</span><span class="p">,</span> <span class="s2">&quot;von Neumann&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Algorithmique&quot;</span><span class="p">,</span> <span class="s2">&quot;Quelle structure suit le principe LIFO ?&quot;</span><span class="p">,</span> <span class="s2">&quot;Pile&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Algorithmique&quot;</span><span class="p">,</span> <span class="s2">&quot;Quelle structure suit le principe FIFO ?&quot;</span><span class="p">,</span> <span class="s2">&quot;File&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Algorithmique&quot;</span><span class="p">,</span> <span class="s2">&quot;Quelle est la complexité du tri à bulles ?&quot;</span><span class="p">,</span> <span class="s2">&quot;O(n²)&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Quelle fonction affiche du texte en Python ?&quot;</span><span class="p">,</span> <span class="s2">&quot;print&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Quel mot-clé définit une fonction ?&quot;</span><span class="p">,</span> <span class="s2">&quot;def&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Quel type retourne input() ?&quot;</span><span class="p">,</span> <span class="s2">&quot;str&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Comment gérer les erreurs en Python ?&quot;</span><span class="p">,</span> <span class="s2">&quot;try/except&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Réseaux&quot;</span><span class="p">,</span> <span class="s2">&quot;Que signifie IP ?&quot;</span><span class="p">,</span> <span class="s2">&quot;Internet Protocol&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Réseaux&quot;</span><span class="p">,</span> <span class="s2">&quot;Quel protocole sécurise HTTP ?&quot;</span><span class="p">,</span> <span class="s2">&quot;HTTPS&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Réseaux&quot;</span><span class="p">,</span> <span class="s2">&quot;Que signifie DNS ?&quot;</span><span class="p">,</span> <span class="s2">&quot;Domain Name System&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Réseaux&quot;</span><span class="p">,</span> <span class="s2">&quot;Quel port utilise HTTP ?&quot;</span><span class="p">,</span> <span class="s2">&quot;80&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Réseaux&quot;</span><span class="p">,</span> <span class="s2">&quot;Que signifie LAN ?&quot;</span><span class="p">,</span> <span class="s2">&quot;Local Area Network&quot;</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;questions.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Categorie&quot;</span><span class="p">,</span> <span class="s2">&quot;Question&quot;</span><span class="p">,</span> <span class="s2">&quot;Reponse&quot;</span><span class="p">])</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span><span class="si">}</span><span class="s2"> questions créées dans questions.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — Module de chargement CSV <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer les fonctions de chargement des questions dans <code>quiz.py</code> :
+1. <code>charger_questions(fichier)</code> — charge le CSV et retourne une liste de dictionnaires
+2. <code>filtrer_par_categorie(questions, categorie)</code> — filtre les questions par catégorie
+3. <code>melanger_questions(questions)</code> — mélange aléatoirement</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="k">def</span> <span class="nf">charger_questions</span><span class="p">(</span><span class="n">fichier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Charge les questions depuis un fichier CSV.&quot;&quot;&quot;</span>
+    <span class="n">questions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fichier</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+                <span class="n">questions</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s2">&quot;categorie&quot;</span><span class="p">:</span> <span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Categorie&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Question&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;reponse&quot;</span><span class="p">:</span> <span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Reponse&quot;</span><span class="p">]</span>
+                <span class="p">})</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erreur : fichier </span><span class="si">{</span><span class="n">fichier</span><span class="si">}</span><span class="s2"> introuvable.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">questions</span>
+
+<span class="k">def</span> <span class="nf">filtrer_par_categorie</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">categorie</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filtre les questions par catégorie.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">categorie</span> <span class="o">==</span> <span class="s2">&quot;Toutes&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">questions</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">questions</span> <span class="k">if</span> <span class="n">q</span><span class="p">[</span><span class="s2">&quot;categorie&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">categorie</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">melanger_questions</span><span class="p">(</span><span class="n">questions</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mélange les questions aléatoirement.&quot;&quot;&quot;</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">questions</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Interface menu interactive <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer le menu principal du quiz avec les options suivantes :
+1. Lancer le quiz (choix de catégorie)
+2. Afficher les règles
+3. Quitter</p>
+<p>Le menu doit être clair, robuste et gérer les erreurs de saisie.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Écran</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">accueil</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Menu</span><span class="w"> </span><span class="n">principal</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="mf">1.</span><span class="w"> </span><span class="n">Lancer</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">quiz</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="mf">2.</span><span class="w"> </span><span class="n">Règles</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="mf">3.</span><span class="w"> </span><span class="n">Quitter</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Choisir</span><span class="w"> </span><span class="n">catégorie</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Saisir</span><span class="w"> </span><span class="n">nom</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Lancer</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">quiz</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">résultats</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Exporter</span><span class="w"> </span><span class="o">?</span><span class="p">]</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Exporter</span><span class="w"> </span><span class="n">CSV</span><span class="p">]</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">règles</span><span class="p">]</span>
+<span class="w">    </span><span class="n">L</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">Fin</span><span class="p">]</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">menu_principal</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Affiche le menu principal et gère les choix.&quot;&quot;&quot;</span>
+    <span class="n">questions</span> <span class="o">=</span> <span class="n">charger_questions</span><span class="p">(</span><span class="s2">&quot;questions.csv&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">questions</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Toutes&quot;</span><span class="p">,</span> <span class="s2">&quot;Architecture&quot;</span><span class="p">,</span> <span class="s2">&quot;Algorithmique&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="s2">&quot;Réseaux&quot;</span><span class="p">]</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Lancer le quiz&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Règles&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Quitter&quot;</span><span class="p">)</span>
+        <span class="n">choix</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Votre choix : &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">choix</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">cat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Catégorie (1-5) : &quot;</span><span class="p">))</span>
+                <span class="n">cat</span> <span class="o">=</span> <span class="n">categories</span><span class="p">[</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="s2">&quot;Toutes&quot;</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+                <span class="n">cat</span> <span class="o">=</span> <span class="s2">&quot;Toutes&quot;</span>
+            <span class="n">qf</span> <span class="o">=</span> <span class="n">filtrer_par_categorie</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Questions : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">qf</span><span class="p">)</span><span class="si">}</span><span class="s2"> dans &#39;</span><span class="si">{</span><span class="n">cat</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="n">lancer_quiz</span><span class="p">(</span><span class="n">qf</span><span class="p">,</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Votre nom : &quot;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">choix</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;• Réponse textuelle • 4 catégories • Score /20 • Export CSV&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">choix</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Au revoir !&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Choix invalide.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Tirage aléatoire et scoring <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Ajouter les fonctions de quiz avec tirage aléatoire, scoring et mention. Le programme mélange les questions, pose chaque question, vérifie la réponse, et attribue une mention.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">poser_question</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pose une question et retourne True si bonne réponse.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[</span><span class="si">{</span><span class="n">question</span><span class="p">[</span><span class="s1">&#39;categorie&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">question</span><span class="p">[</span><span class="s1">&#39;question&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">reponse</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Votre réponse : &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">reponse_attendue</span> <span class="o">=</span> <span class="n">question</span><span class="p">[</span><span class="s1">&#39;reponse&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">reponse</span> <span class="o">==</span> <span class="n">reponse_attendue</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Correct !&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✗ Faux. Réponse : </span><span class="si">{</span><span class="n">question</span><span class="p">[</span><span class="s1">&#39;reponse&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">lancer_quiz</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="n">nom_eleve</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lance le quiz avec mélange aléatoire et chronomètre.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">questions</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aucune question à poser.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">questions</span> <span class="o">=</span> <span class="n">melanger_questions</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+    <span class="n">debut</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Quiz lancé ! (</span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2"> questions) ===&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Question </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">poser_question</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">temps</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">debut</span>
+    <span class="n">afficher_resultats</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">temps</span><span class="p">)</span>
+    <span class="n">exporter</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Exporter les résultats ? (o/n) : &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">exporter</span> <span class="o">==</span> <span class="s2">&quot;o&quot;</span> <span class="ow">and</span> <span class="n">nom_eleve</span><span class="p">:</span>
+        <span class="n">exporter_resultats</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">temps</span><span class="p">,</span> <span class="n">nom_eleve</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">afficher_resultats</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">temps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Affiche les résultats avec mention.&quot;&quot;&quot;</span>
+    <span class="n">pourcentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">score</span> <span class="o">/</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;           RÉSULTATS&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">score</span> <span class="o">/</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Score : </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">pourcentage</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Note : </span><span class="si">{</span><span class="n">note</span><span class="si">}</span><span class="s2">/20&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temps : </span><span class="si">{</span><span class="n">temps</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">pourcentage</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">mention</span> <span class="o">=</span> <span class="s2">&quot;Parfait !&quot;</span>
+    <span class="k">elif</span> <span class="n">pourcentage</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="n">mention</span> <span class="o">=</span> <span class="s2">&quot;Très bien !&quot;</span>
+    <span class="k">elif</span> <span class="n">pourcentage</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">mention</span> <span class="o">=</span> <span class="s2">&quot;Bien !&quot;</span>
+    <span class="k">elif</span> <span class="n">pourcentage</span> <span class="o">&gt;=</span> <span class="mi">40</span><span class="p">:</span>
+        <span class="n">mention</span> <span class="o">=</span> <span class="s2">&quot;Peut mieux faire.&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mention</span> <span class="o">=</span> <span class="s2">&quot;À revoir.&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mention : </span><span class="si">{</span><span class="n">mention</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Export des résultats <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Ajouter la fonction d'export qui sauvegarde les résultats (date, nom, score, total, pourcentage, temps) dans <code>resultats.csv</code> avec horodatage automatique.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Quiz</span><span class="w"> </span><span class="n">terminé</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">{</span><span class="n">Exporter</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Ouvrir</span><span class="w"> </span><span class="n">resultats</span><span class="p">.</span><span class="n">csv</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Retour</span><span class="w"> </span><span class="n">menu</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">{</span><span class="n">Fichier</span><span class="w"> </span><span class="n">vide</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Écrire</span><span class="w"> </span><span class="n">en</span><span class="o">-</span><span class="n">tête</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Ignorer</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Ajouter</span><span class="w"> </span><span class="n">résultat</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="err">✓</span><span class="w"> </span><span class="n">Exporté</span><span class="w"> </span><span class="o">!</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">exporter_resultats</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">temps</span><span class="p">,</span> <span class="n">nom_eleve</span><span class="p">,</span> <span class="n">nom_fichier</span><span class="o">=</span><span class="s2">&quot;resultats.csv&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exporte les résultats du quiz dans un fichier CSV.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nom_fichier</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Eleve&quot;</span><span class="p">,</span> <span class="s2">&quot;Score&quot;</span><span class="p">,</span> <span class="s2">&quot;Total&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Pourcentage&quot;</span><span class="p">,</span> <span class="s2">&quot;Note_20&quot;</span><span class="p">,</span> <span class="s2">&quot;Temps_s&quot;</span><span class="p">])</span>
+        <span class="n">note</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">score</span> <span class="o">/</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">pourcentage</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">score</span><span class="o">/</span><span class="n">total</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;0&quot;</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span> <span class="n">nom_eleve</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span>
+                        <span class="n">pourcentage</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">temps</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Résultats exportés dans </span><span class="si">{</span><span class="n">nom_fichier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Point d&#39;entrée du programme.&quot;&quot;&quot;</span>
+    <span class="n">afficher_accueil</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;questions.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+            <span class="k">pass</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">⚠️  Fichier questions.csv introuvable. Lancez d&#39;abord l&#39;exercice 1.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">menu_principal</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Quelle fonction permet de mélanger aléatoirement une liste ?</strong> a) <code>random.shuffle()</code> ✓ b) <code>random.choice()</code> c) <code>random.sample()</code></p>
+</li>
+<li>
+<p><strong>Quel est le bon format pour un fichier CSV ?</strong> a) Données séparées par des virgules ✓ b) Données séparées par des espaces c) Données en format JSON</p>
+</li>
+<li>
+<p><strong>Que fait <code>csv.DictReader()</code> ?</strong> a) Lit chaque ligne comme un dictionnaire ✓ b) Écrit des dictionnaires c) Convertit une liste en dictionnaire</p>
+</li>
+<li>
+<p><strong>Dans le barème du mini-projet, combien de points vaut la base de questions ?</strong> a) 2 points b) 4 points ✓ c) 6 points</p>
+</li>
+<li>
+<p><strong>Quel module Python permet d'obtenir la date du jour ?</strong> a) <code>datetime</code> ✓ b) <code>time</code> c) <code>calendar</code></p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation du mini-projet</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fonctionnalité complète</td>
+<td>20 %</td>
+<td>Le programme ne s'exécute pas</td>
+<td>Fonctionne partiellement</td>
+<td>Fonctionne parfaitement</td>
+</tr>
+<tr>
+<td>Code structuré</td>
+<td>15 %</td>
+<td>Pas de fonctions</td>
+<td>Quelques fonctions</td>
+<td>Fonctions bien organisées</td>
+</tr>
+<tr>
+<td>Gestion des erreurs</td>
+<td>15 %</td>
+<td>Aucune gestion</td>
+<td>Gestion partielle</td>
+<td>try/except + validation</td>
+</tr>
+<tr>
+<td>Fichiers CSV</td>
+<td>15 %</td>
+<td>Pas de CSV</td>
+<td>Lecture ou écriture seulement</td>
+<td>Lecture et écriture correctes</td>
+</tr>
+<tr>
+<td>Interface utilisateur</td>
+<td>15 %</td>
+<td>Pas de menu</td>
+<td>Menu basique</td>
+<td>Menu clair et fonctionnel</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>10 %</td>
+<td>Aucune</td>
+<td>Commentaires minimes</td>
+<td>Docstrings + commentaires</td>
+</tr>
+<tr>
+<td>Originalité du projet</td>
+<td>10 %</td>
+<td>Copie conforme</td>
+<td>Légères adaptations</td>
+<td>Projet personnalisé</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Présentation du projet</td>
+<td>10 min</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Base de questions</td>
+<td>15 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Module chargement</td>
+<td>15 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Interface menu</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Tirage et scoring</td>
+<td>15 min</td>
+<td>75 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Export et finalisation</td>
+<td>15 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Ce mini-projet est l'aboutissement du module. Il mobilise <strong>toutes les compétences acquises</strong> : variables, conditions, boucles, fonctions, listes, dictionnaires, fichiers CSV, et gestion d'erreurs.
+- <strong>Pour les futurs enseignants</strong> : Ce quiz est un outil directement réutilisable. Ils peuvent adapter les questions à leur matière (histoire, langues, sciences) et utiliser l'export CSV pour suivre la progression des élèves.
+- <strong>En classe de secondaire</strong> : Simplifier en ne gardant qu'une seule catégorie de questions.</p>
+<h3>Conseil formateur</h3>
+<p>Accompagner les étudiants dans la structuration du projet : découpage en fonctions, fichier de données séparé, gestion des erreurs. Le projet peut être réalisé en binômes (programmation en paire). Évaluer sur la qualité du code (commentaires, nommage) autant que sur le fonctionnement. Pour les élèves de lycée, alléger le cahier des charges en supprimant l'export CSV.</p>
+<h3>Prolongement</h3>
+<p>Transformer le quiz en application web avec Flask (programme de ENS 2ème année). Ajouter une base de données SQLite pour stocker les questions et les scores des utilisateurs. Ce projet fil rouge peut devenir le sujet du projet ENS1 présenté en séance 10.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

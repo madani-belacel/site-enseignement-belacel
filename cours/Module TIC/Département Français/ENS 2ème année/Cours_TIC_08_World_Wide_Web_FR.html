@@ -1,0 +1,908 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 08 — World Wide Web — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 08 — World Wide Web</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** ENS 1ère et 2ème année — Département Français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** ENS 1ère et 2ème année — navigation Web académique</li><li>**Compétences pré-requises :** TIC 07</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code><br />
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_08_World_Wide_Web_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 08 — World Wide Web</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> ENS 1ère et 2ème année — Département Français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026  </p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> ENS 1ère et 2ème année — navigation Web académique</p>
+<p><strong>Compétences pré-requises :</strong> TIC 07</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Décomposer une URL (protocole, domaine, chemin)
+- Décrire structure HTML de base
+- Appliquer critères CRAP à une page Web</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Utiliser moteur de recherche avec requêtes booléennes simples
+- Inspecter une page (F12) pour comprendre structure</p>
+<p><strong>En termes de savoir-être :</strong>
+- Esprit critique sur contenus en ligne</p>
+<p><strong>Mode d'évaluation :</strong> TD 40 % + QCM 25 % + analyse URL 35 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Analyse URL cours Moodle USTO ou Mostaganem</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM Web/HTTP/HTML</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>MDN Web Docs — HTML introduction ; Guide étudiant Moodle</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<h3>Textes de référence</h3>
+<table>
+<thead>
+<tr>
+<th>Texte</th>
+<th>Date</th>
+<th>Objet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arrêté n° 932</td>
+<td>28 juillet 2016</td>
+<td>Socle commun TIC — compétences numériques transversales</td>
+</tr>
+<tr>
+<td>Circulaire MENRS n° 2022-014</td>
+<td>3 mai 2022</td>
+<td>Généralisation des plateformes e-learning</td>
+</tr>
+<tr>
+<td>Décision DGRSDT n° 2023-56</td>
+<td>12 janvier 2023</td>
+<td>Référentiel de compétences numériques pour les enseignants-chercheurs</td>
+</tr>
+<tr>
+<td>Instruction n° 2024-003</td>
+<td>10 septembre 2024</td>
+<td>Sécurisation des échanges numériques dans l'enseignement supérieur</td>
+</tr>
+<tr>
+<td>Loi n° 18-07</td>
+<td>10 juin 2018</td>
+<td>Protection des données à caractère personnel</td>
+</tr>
+</tbody>
+</table>
+<h3>Compétences numériques — DigComp 2.2</h3>
+<p>Le cours TIC 08 s'aligne sur les compétences DigComp (European Digital Competence Framework) suivantes :</p>
+<table>
+<thead>
+<tr>
+<th>Compétence</th>
+<th>Niveau</th>
+<th>Lien avec le cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1 Navigation, recherche et filtrage</td>
+<td>Foundation</td>
+<td>Utilisation des moteurs de recherche</td>
+</tr>
+<tr>
+<td>1.2 Évaluation de l'information</td>
+<td>Intermediate</td>
+<td>Critères CRAP — fiabilité des sources</td>
+</tr>
+<tr>
+<td>2.1 Interaction via les TIC</td>
+<td>Foundation</td>
+<td>Navigation Web, URL, navigateur</td>
+</tr>
+<tr>
+<td>5.2 Identification des besoins numériques</td>
+<td>Foundation</td>
+<td>Analyse de pages Web académiques</td>
+</tr>
+</tbody>
+</table>
+<h3>Contexte universitaire algérien — Web académique</h3>
+<table>
+<thead>
+<tr>
+<th>Plateforme</th>
+<th>URL</th>
+<th>Usage en lettres françaises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moodle USTO</td>
+<td>elearning.univ-usto.dz</td>
+<td>Cours, TD, dépôt devoirs</td>
+</tr>
+<tr>
+<td>Moodle Mostaganem</td>
+<td>elearning.univ-mosta.dz</td>
+<td>Ressources pédagogiques</td>
+</tr>
+<tr>
+<td>Moodle Béjaïa</td>
+<td>elearning.univ-bejaia.dz</td>
+<td>Visioconférence BBB intégrée</td>
+</tr>
+<tr>
+<td>Moodle Boumerdès</td>
+<td>elearning.univ-boumerdes.dz</td>
+<td>Guides étudiant</td>
+</tr>
+<tr>
+<td>CERIST</td>
+<td>cerist.dz</td>
+<td>Recherche STIC</td>
+</tr>
+<tr>
+<td>ANPT</td>
+<td>anpt.dz</td>
+<td>Ressources numériques</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction au Web (WWW)</li>
+<li>Navigateurs Web</li>
+<li>Pages, sites et hyperliens</li>
+<li>URL et structure d'une adresse</li>
+<li>Protocoles HTTP et HTTPS</li>
+<li>Recherche d'information sur le Web</li>
+<li>Bonnes pratiques académiques</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<h2>Introduction au Web <em>(10 min)</em></h2>
+<p>Le <strong>World Wide Web</strong> (WWW) permet d'accéder à des ressources via des <strong>URL</strong> et un <strong>navigateur</strong>. Standard ouvert : HTML, HTTP, URLs.</p>
+<p>Contexte Moodle : la plateforme e-learning est une application Web (PHP) accessible par navigateur.</p>
+<h3>Web 1.0, 2.0, 3.0 — évolution</h3>
+<table>
+<thead>
+<tr>
+<th>Génération</th>
+<th>Période</th>
+<th>Caractéristique</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web 1.0 (statique)</td>
+<td>1991–2004</td>
+<td>Pages HTML lues passivement</td>
+<td>Sites vitrines</td>
+</tr>
+<tr>
+<td>Web 2.0 (social)</td>
+<td>2004–2015</td>
+<td>Contenu généré par l'utilisateur</td>
+<td>Forums, Moodle, YouTube</td>
+</tr>
+<tr>
+<td>Web 3.0 (sémantique)</td>
+<td>2015–présent</td>
+<td>Données liées, IA, personnalisation</td>
+<td>Recommandations intelligentes</td>
+</tr>
+<tr>
+<td>Web 3 (décentralisé)</td>
+<td>Émergent</td>
+<td>Blockchain, dApps</td>
+<td>Identité numérique</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Navigateurs Web <em>(15 min)</em></h2>
+<p>Navigateurs courants : <strong>Chrome</strong>, <strong>Firefox</strong>, <strong>Edge</strong>, <strong>Safari</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moteur de rendu (Blink, Gecko, WebKit)</td>
+<td>Affiche HTML/CSS</td>
+</tr>
+<tr>
+<td>Moteur JS (V8, SpiderMonkey, JavaScriptCore)</td>
+<td>Exécute scripts JavaScript</td>
+</tr>
+<tr>
+<td>Stockage local</td>
+<td>Cookies, cache, localStorage</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mettre à jour</strong> le navigateur pour la sécurité (correctifs).</p>
+<h3>Parts de marché des navigateurs (monde, 2025-2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Navigateur</th>
+<th>Moteur</th>
+<th>Part de marché</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Chrome</td>
+<td>Blink (V8)</td>
+<td>~65 %</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>WebKit</td>
+<td>~19 %</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>Gecko</td>
+<td>~3 %</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td>Blink (Chakra)</td>
+<td>~5 %</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>Blink</td>
+<td>~2 %</td>
+</tr>
+<tr>
+<td>Autres</td>
+<td>—</td>
+<td>~6 %</td>
+</tr>
+</tbody>
+</table>
+<h3>Fonctionnement d'un navigateur — schéma</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;URL saisie&lt;br/&gt;ex: elearning.univ-usto.dz&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Requête HTTP/HTTPS&lt;br/&gt;au serveur&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Réception HTML&lt;br/&gt;+ CSS + JS&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;Moteur de rendu&lt;br/&gt;(Blink/Gecko)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="s">&quot;Moteur JS&lt;br/&gt;(V8/SpiderMonkey)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="s">&quot;Arbre DOM&lt;br/&gt;(Document Object Model)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="s">&quot;Exécution scripts&lt;br/&gt;+ événements&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="s">&quot;Affichage page&lt;br/&gt;dans le navigateur&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FF9800</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196F</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">C27B0</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">E91E63</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">00</span><span class="n">BCD4</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>URL et structure d'une adresse Web <em>(15 min)</em></h2>
+<p>Exemple : <code>https://elearning.univ-usto.dz/course/view.php?id=2094</code></p>
+<table>
+<thead>
+<tr>
+<th>Partie</th>
+<th>Signification</th>
+<th>Exemple concret</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>https://</code></td>
+<td>Protocole sécurisé (TLS)</td>
+<td>Chiffrement des données</td>
+</tr>
+<tr>
+<td><code>elearning.univ-usto.dz</code></td>
+<td>Nom de domaine (DNS)</td>
+<td>Sous-domaine + domaine + .dz</td>
+</tr>
+<tr>
+<td><code>/course/view.php</code></td>
+<td>Chemin ressource</td>
+<td>Script PHP sur serveur</td>
+</tr>
+<tr>
+<td><code>?id=2094</code></td>
+<td>Paramètre (query string)</td>
+<td>Identifiant unique du cours</td>
+</tr>
+</tbody>
+</table>
+<p><strong>HTTP</strong> (non chiffré, port 80) vs <strong>HTTPS</strong> (TLS, port 443, cadenas vert).</p>
+<h3>Anatomie d'une URL — schéma</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;Protocole&lt;br/&gt;https://&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Domaine&lt;br/&gt;elearning.univ-usto.dz&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Chemin&lt;br/&gt;/course/view.php&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;Paramètres&lt;br/&gt;?id=2094&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="s">&quot;Ancre (facultatif)&lt;br/&gt;#section1&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">E91E63</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196F</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FF9800</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">C27B0</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h3>Exercice guidé — analyse d'URL Moodle</h3>
+<p>URL : <code>https://elearning.univ-mosta.dz/mod/assign/view.php?id=12345</code></p>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Valeur</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protocole</td>
+<td>https</td>
+<td>Chiffré (cadenas vert)</td>
+</tr>
+<tr>
+<td>Domaine</td>
+<td>elearning.univ-mosta.dz</td>
+<td>Plateforme Moodle de Mostaganem</td>
+</tr>
+<tr>
+<td>Chemin</td>
+<td>/mod/assign/view.php</td>
+<td>Module « devoir » de Moodle</td>
+</tr>
+<tr>
+<td>Paramètre</td>
+<td>id=12345</td>
+<td>Identifiant du devoir spécifique</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>HTML — structure d'une page <em>(10 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Mon cours de Littérature<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Cours de Littérature française<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Chapitre 1 : Le classicisme<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Le <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>classicisme<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> est un courant littéraire du XVII<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>e<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span> siècle.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Molière<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Racine<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>La Fontaine<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="ni">&amp;copy;</span> 2025 — Département Français<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Balises essentielles : <code>h1–h6</code>, <code>p</code>, <code>a href</code>, <code>img</code>, <code>ul/li</code>, <code>table</code>. <strong>Inspecter</strong> (F12) pour comprendre une page Moodle.</p>
+<h3>Balises HTML — glossaire pour étudiants de lettres</h3>
+<table>
+<thead>
+<tr>
+<th>Balise</th>
+<th>Rôle</th>
+<th>Usage en lettres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code></td>
+<td>Titres hiérarchiques</td>
+<td>Structure de dissertation</td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td>Paragraphe</td>
+<td>Corps de texte</td>
+</tr>
+<tr>
+<td><code>&lt;strong&gt;</code></td>
+<td>Mise en valeur</td>
+<td>Termes importants</td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code></td>
+<td>Italique</td>
+<td>Titres d'œuvres</td>
+</tr>
+<tr>
+<td><code>&lt;a href=""&gt;</code></td>
+<td>Lien hypertexte</td>
+<td>Références bibliographiques</td>
+</tr>
+<tr>
+<td><code>&lt;blockquote&gt;</code></td>
+<td>Citation longue</td>
+<td>Extraits d'œuvres</td>
+</tr>
+<tr>
+<td><code>&lt;ul&gt; / &lt;ol&gt;</code></td>
+<td>Listes</td>
+<td>Plan, bibliographie</td>
+</tr>
+<tr>
+<td><code>&lt;table&gt;</code></td>
+<td>Tableau</td>
+<td>Données comparatives</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Moteurs de recherche <em>(10 min)</em></h2>
+<ul>
+<li><strong>Google, Bing, DuckDuckGo</strong> : indexation + algorithme de pertinence</li>
+<li><strong>Requête booléenne</strong> : <code>"TIC enseignement" AND Algérie</code></li>
+<li><strong>Critères CRAP</strong> : Currency, Reliability, Authority, Purpose (recherche documentaire)</li>
+</ul>
+<p>Privilégier sources <code>.edu</code>, <code>.gov</code>, bases Cairn, HAL, Erudit pour travaux universitaires.</p>
+<h3>Critères CRAP — grille d'évaluation d'une page Web</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Questions à se poser</th>
+<th>Indicateur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C</strong>urrency (Actualité)</td>
+<td>Date de publication ? Mise à jour récente ?</td>
+<td>Pied de page, date article</td>
+</tr>
+<tr>
+<td><strong>R</strong>eliability (Fiabilité)</td>
+<td>Sources citées ? Références bibliographiques ?</td>
+<td>Notes, bibliographie</td>
+</tr>
+<tr>
+<td><strong>A</strong>uthority (Autorité)</td>
+<td>Qui est l'auteur ? Institution ? Domaine <code>.edu</code> / <code>.gov</code> ?</td>
+<td>À propos, page contact</td>
+</tr>
+<tr>
+<td><strong>P</strong>urpose (Objectif)</td>
+<td>Informer, vendre, convaincre ? Objectivité ?</td>
+<td>Ton, publicité, parti pris</td>
+</tr>
+</tbody>
+</table>
+<h3>Opérateurs booléens pour la recherche académique</h3>
+<table>
+<thead>
+<tr>
+<th>Opérateur</th>
+<th>Rôle</th>
+<th>Exemple en lettres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AND</code></td>
+<td>Les deux termes</td>
+<td>"littérature maghrébine" AND "oralité"</td>
+</tr>
+<tr>
+<td><code>OR</code></td>
+<td>Au moins un terme</td>
+<td>"francophonie" OR "postcolonial"</td>
+</tr>
+<tr>
+<td><code>NOT</code> (ou <code>-</code>)</td>
+<td>Exclure un terme</td>
+<td>"cours littérature" -"vente"</td>
+</tr>
+<tr>
+<td><code>" "</code></td>
+<td>Expression exacte</td>
+<td>"théorie de la réception"</td>
+</tr>
+<tr>
+<td><code>site:</code></td>
+<td>Limiter à un site</td>
+<td>"oralité" site:cairn.info</td>
+</tr>
+<tr>
+<td><code>filetype:</code></td>
+<td>Type de fichier</td>
+<td>"didactique français" filetype:pdf</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Navigation sécurisée <em>(10 min)</em></h2>
+<ul>
+<li>Vérifier <strong>HTTPS</strong> et certificat (cadenas vert dans la barre d'adresse)</li>
+<li>Ne pas saisir identifiants sur sites suspects (phishing)</li>
+<li><strong>Cookies</strong> : session Moodle ; ne pas les partager</li>
+<li><strong>Vie privée</strong> : navigation privée ≠ anonymat total</li>
+</ul>
+<h3>Indicateurs de confiance d'une page Web</h3>
+<table>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th>Ce que ça garantit</th>
+<th>Comment vérifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cadenas vert 🔒</td>
+<td>Connexion chiffrée (HTTPS)</td>
+<td>Barre d'adresse</td>
+</tr>
+<tr>
+<td>Certificat valide</td>
+<td>Identité du site vérifiée</td>
+<td>Cliquer sur le cadenas</td>
+</tr>
+<tr>
+<td>Domaine officiel</td>
+<td>Pas de typosquatting</td>
+<td>Vérifier l'orthographe</td>
+</tr>
+<tr>
+<td>Contact visible</td>
+<td>Transparence de l'éditeur</td>
+<td>Page « Contact » / « À propos »</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Accessibilité et multilingue <em>(10 min)</em></h2>
+<ul>
+<li>Pages <strong>responsive</strong> (mobile) — design adaptatif</li>
+<li>Attribut <code>lang</code> en HTML pour lecteurs d'écran</li>
+<li><strong>Traduction automatique</strong> du navigateur : aide mais vérifier en langue cible</li>
+<li><strong>WCAG</strong> (Web Content Accessibility Guidelines) : contraste, texte alternatif images</li>
+</ul>
+<h3>Principaux critères WCAG pour le contenu pédagogique</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Exigence</th>
+<th>Application aux cours Moodle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1.1</td>
+<td>Texte alternatif pour images</td>
+<td>Décrire les schémas et graphiques</td>
+</tr>
+<tr>
+<td>1.4.3</td>
+<td>Contraste minimum (4.5:1)</td>
+<td>Texte foncé sur fond clair</td>
+</tr>
+<tr>
+<td>2.4.2</td>
+<td>Titres de page explicites</td>
+<td>Chaque page Moodle a un titre unique</td>
+</tr>
+<tr>
+<td>3.1.1</td>
+<td>Langue de la page définie</td>
+<td>Attribut <code>lang="fr"</code> dans le HTML</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Conclusion <em>(10 min)</em></h2>
+<p>Web = URL + HTTP + HTML. Navigateur = porte d'entrée Moodle et ressources.
+<strong>TD 08</strong> : analyser l'URL d'un cours e-learning et lister ses composants.
+<strong>Prochain cours</strong> : Réseaux informatiques (TIC 09).</p>
+<h3>Synthèse concepts clés</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Définition</th>
+<th>Application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URL</td>
+<td>Adresse d'une ressource Web</td>
+<td>Identifier un cours Moodle</td>
+</tr>
+<tr>
+<td>HTTP/HTTPS</td>
+<td>Protocole de transfert hypertexte</td>
+<td>Charger une page Web</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>Langage de description de page</td>
+<td>Structure du contenu</td>
+</tr>
+<tr>
+<td>Navigateur</td>
+<td>Logiciel client Web</td>
+<td>Accès aux ressources</td>
+</tr>
+<tr>
+<td>Moteur de recherche</td>
+<td>Indexation et recherche</td>
+<td>Trouver des sources académiques</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+<th>Support</th>
+<th>Modalité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduction</td>
+<td>10 min</td>
+<td>Rappel TIC 07 + annonce plan</td>
+<td>Diapos 1–3</td>
+<td>Magistral interactif</td>
+</tr>
+<tr>
+<td>Navigateurs</td>
+<td>15 min</td>
+<td>Présentation composants + démonstration F12</td>
+<td>Diapos 4–8</td>
+<td>Démo + questions</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>15 min</td>
+<td>Analyse d'URL Moodle — exercice collectif</td>
+<td>Diapos 9–14</td>
+<td>Exercice guidé</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>10 min</td>
+<td>Lecture code HTML + analogie dissertation</td>
+<td>Diapos 15–18</td>
+<td>Exposé + démo</td>
+</tr>
+<tr>
+<td>Recherche</td>
+<td>10 min</td>
+<td>Requêtes booléennes + démonstration Cairn</td>
+<td>Diapos 19–22</td>
+<td>TP dirigé</td>
+</tr>
+<tr>
+<td>Sécurité</td>
+<td>10 min</td>
+<td>Quiz rapide : site fiable ou non ?</td>
+<td>Diapos 23–25</td>
+<td>Évaluation formative</td>
+</tr>
+<tr>
+<td>Accessibilité</td>
+<td>10 min</td>
+<td>Navigation mobile + traduction navigateur</td>
+<td>Diapos 26–28</td>
+<td>Discussion</td>
+</tr>
+<tr>
+<td>Conclusion</td>
+<td>10 min</td>
+<td>QCM rapide + annonce TD 08</td>
+<td>Diapos 29–30</td>
+<td>Synthèse</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<p><em>Cochez la ou les bonne(s) réponse(s).</em></p>
+<p><strong>Q1. Que signifie l'acronyme URL ?</strong></p>
+<ul>
+<li>[ ] Uniform Resource Language</li>
+<li>[x] Uniform Resource Locator ✓</li>
+<li>[ ] Universal Reference Link</li>
+<li>[ ] Unified Resource Library</li>
+</ul>
+<p><strong>Q2. Quelle partie d'une URL indique le protocole utilisé ?</strong></p>
+<ul>
+<li>[ ] Le nom de domaine</li>
+<li>[x] La partie avant <code>://</code> (ex: <code>https</code>) ✓</li>
+<li>[ ] Le chemin après le domaine</li>
+<li>[ ] Les paramètres après <code>?</code></li>
+</ul>
+<p><strong>Q3. Quel protocole garantit le chiffrement des données entre le navigateur et le serveur ?</strong></p>
+<ul>
+<li>[ ] HTTP (port 80)</li>
+<li>[x] HTTPS (TLS) ✓</li>
+<li>[ ] FTP</li>
+<li>[ ] SMTP</li>
+</ul>
+<p><strong>Q4. Parmi les balises HTML suivantes, laquelle permet de créer un lien hypertexte ?</strong></p>
+<ul>
+<li>[ ] <code>&lt;img&gt;</code></li>
+<li>[ ] <code>&lt;p&gt;</code></li>
+<li>[x] <code>&lt;a href=""&gt;</code> ✓</li>
+<li>[ ] <code>&lt;h1&gt;</code></li>
+</ul>
+<p><strong>Q5. Que permet de faire l'outil Inspecter (F12) dans un navigateur ?</strong></p>
+<ul>
+<li>[ ] Modifier définitivement le site Web</li>
+<li>[x] Visualiser et analyser le code source HTML/CSS de la page ✓</li>
+<li>[ ] Accélérer le chargement de la page</li>
+<li>[ ] Traduire automatiquement la page en arabe</li>
+</ul>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Le cours sur le Web est conçu selon une <strong>approche de transposition progressive</strong> adaptée aux étudiants de lettres :</p>
+<ol>
+<li><strong>Du concret à l'abstrait</strong> : le cours part d'URLs réelles (Moodle USTO, Mostaganem) que les étudiants manipulent quotidiennement, puis remonte vers les concepts (protocole, DNS, HTML).</li>
+<li><strong>Analogies littéraires</strong> : la structure HTML est comparée à la structure d'une dissertation (titre = <code>h1</code>, paragraphe = <code>p</code>, citation = <code>blockquote</code>). Cette analogie facilite l'appropriation par des étudiants familiers de l'analyse textuelle.</li>
+<li><strong>Esprit critique</strong> : les critères CRAP sont présentés comme une grille d'analyse documentaire — transfert direct des compétences d'analyse littéraire vers l'évaluation des sources numériques.</li>
+<li><strong>Contextualisation linguistique</strong> : les exemples HTML utilisent des contenus littéraires français (Molière, Racine, La Fontaine) pour maintenir la cohérence disciplinaire.</li>
+</ol>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li><strong>Démonstration essentielle</strong> : l'inspecteur F12 est l'outil le plus puissant de cette séance. Prévoir une démonstration en direct sur la page d'accueil Moodle de l'université.</li>
+<li><strong>Éviter l'excès technique</strong> : ne pas détailler le fonctionnement complet de HTTP (en-têtes, codes status). Se limiter à HTTP vs HTTPS.</li>
+<li><strong>Requêtes booléennes</strong> : préparer un exemple avec le groupe sur un thème littéraire (ex: « littérature algérienne d'expression française » AND « oralité » AND algérie). Montrer le résultat sur Google Scholar et Cairn.</li>
+<li><strong>Accessibilité</strong> : sensibiliser les futurs enseignants à l'importance de produire des contenus accessibles (textes alternatifs, contrastes).</li>
+<li><strong>Gestion du temps</strong> : le HTML peut être survolé si le groupe est en retard ; l'essentiel est la compréhension des URL et des critères d'évaluation.</li>
+</ul>
+<h3>Prolongements possibles</h3>
+<table>
+<thead>
+<tr>
+<th>Prolongement</th>
+<th>Description</th>
+<th>Ressource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atelier HTML</td>
+<td>Créer une page HTML simple sur un auteur français</td>
+<td>Éditeur en ligne (CodePen)</td>
+</tr>
+<tr>
+<td>Évaluation de sites</td>
+<td>Appliquer la grille CRAP à 3 sites sur le même sujet</td>
+<td>Grille fournie en TD</td>
+</tr>
+<tr>
+<td>Histoire du Web</td>
+<td>Exposé sur l'évolution du Web et impact sur la diffusion littéraire</td>
+<td>Projet de groupe</td>
+</tr>
+<tr>
+<td>RSS et veille</td>
+<td>Configurer un agrégateur RSS pour la recherche littéraire</td>
+<td>Feedly, Inoreader</td>
+</tr>
+<tr>
+<td>Accessibilité</td>
+<td>Tester une page Moodle avec un lecteur d'écran (NVDA)</td>
+<td>TD pratique</td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

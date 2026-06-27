@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD 07 — Applications réseau — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TD 07 — Applications réseau</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**b)** Placer dans l'ordre les étapes de résolution récursive de `www.google.com` :</li><li>**d)** `nslookup` retourne : `www.univ-mosta.dz canonical name = server.univ-mosta.dz` puis `server.univ-mosta.dz address = 41.107.50.10`. Quels types d'enregistrements ?</li><li>**a)** Décoder cette requête HTTP :</li><li>**b)** Associer chaque code HTTP à sa signification :</li></ul></div>
+    <h1>TD 07 — Applications réseau</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>2 h</td>
+</tr>
+<tr>
+<td><strong>Chapitres associés</strong></td>
+<td>Ch. 07</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — DNS (6 pts)</h2>
+<p><strong>a)</strong> Quelle est la différence entre un enregistrement <strong>A</strong> et un enregistrement <strong>CNAME</strong> ?</p>
+<p><strong>b)</strong> Placer dans l'ordre les étapes de résolution récursive de <code>www.google.com</code> :
+- Interroger le TLD .com
+- Interroger le serveur racine
+- Interroger le serveur autoritaire google.com
+- Le résolveur local reçoit la requête du client</p>
+<p><strong>c)</strong> Quel port utilise DNS ? Quel protocole transport (principalement) ?</p>
+<p><strong>d)</strong> <code>nslookup</code> retourne : <code>www.univ-mosta.dz canonical name = server.univ-mosta.dz</code> puis <code>server.univ-mosta.dz address = 41.107.50.10</code>. Quels types d'enregistrements ?</p>
+<hr />
+<h2>Exercice 2 — HTTP (6 pts)</h2>
+<p><strong>a)</strong> Décoder cette requête HTTP :</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/cours/reseaux/index.html</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">www.univ-mosta.dz</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">text/html</span>
+<span class="na">User-Agent</span><span class="o">:</span> <span class="l">Mozilla/5.0</span>
+</code></pre></div>
+
+<p><strong>b)</strong> Associer chaque code HTTP à sa signification :</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>?</td>
+</tr>
+<tr>
+<td>301</td>
+<td>?</td>
+</tr>
+<tr>
+<td>404</td>
+<td>?</td>
+</tr>
+<tr>
+<td>500</td>
+<td>?</td>
+</tr>
+<tr>
+<td>403</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>c)</strong> Quelle est la différence entre HTTP et HTTPS (port, sécurité) ?</p>
+<hr />
+<h2>Exercice 3 — Protocoles applicatifs (4 pts)</h2>
+<p>Compléter le tableau :</p>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Port</th>
+<th>Transport</th>
+<th>Fonction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMTP</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 4 — Scénario complet (4 pts)</h2>
+<p>Un étudiant tape <code>https://www.univ-mosta.dz</code> dans Chrome.</p>
+<p>Numéroter dans l'ordre (1 à 8) :</p>
+<ul>
+<li>[ ] TCP three-way handshake vers port 443</li>
+<li>[ ] TLS handshake et vérification certificat</li>
+<li>[ ] DNS query pour www.univ-mosta.dz</li>
+<li>[ ] HTTP GET / via tunnel TLS</li>
+<li>[ ] Affichage de la page HTML</li>
+<li>[ ] DNS response avec l'adresse IP</li>
+<li>[ ] Encapsulation IP/Ethernet et envoi des paquets</li>
+<li>[ ] Réception et rendu HTML/CSS</li>
+</ul>
+<hr />
+<h2>Annexe — Corrigé TD 07</h2>
+<h3>Corrigé Exercice 1</h3>
+<p><strong>a)</strong> <strong>A</strong> = adresse IPv4 directe. <strong>CNAME</strong> = alias vers un autre nom de domaine.</p>
+<p><strong>b)</strong> 1. Résolveur local reçoit requête → 2. Serveur racine → 3. TLD .com → 4. Autoritaire google.com</p>
+<p><strong>c)</strong> Port <strong>53</strong>, transport <strong>UDP</strong> (principalement)</p>
+<p><strong>d)</strong> <strong>CNAME</strong> (www → server), puis <strong>A</strong> (server → 41.107.50.10)</p>
+<h3>Corrigé Exercice 2</h3>
+<p><strong>a)</strong> Méthode GET, ressource <code>/cours/reseaux/index.html</code>, version HTTP/1.1, hôte www.univ-mosta.dz</p>
+<p><strong>b)</strong> 200=OK, 301=Redirection permanente, 404=Non trouvé, 500=Erreur serveur, 403=Interdit</p>
+<p><strong>c)</strong> HTTP port <strong>80</strong> non chiffré ; HTTPS port <strong>443</strong> chiffré via <strong>TLS</strong></p>
+<h3>Corrigé Exercice 3</h3>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Port</th>
+<th>Transport</th>
+<th>Fonction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SMTP</td>
+<td>25</td>
+<td>TCP</td>
+<td>Envoi email</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>67/68</td>
+<td>UDP</td>
+<td>Config IP auto</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>21</td>
+<td>TCP</td>
+<td>Transfert fichiers</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>22</td>
+<td>TCP</td>
+<td>Terminal sécurisé</td>
+</tr>
+</tbody>
+</table>
+<h3>Corrigé Exercice 4</h3>
+<ol>
+<li>DNS query → 2. DNS response → 3. TCP handshake → 4. TLS handshake → 5. HTTP GET → 6. Encapsulation/envoi → 7. Réception HTML → 8. Affichage</li>
+</ol>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 07 — Couche Application</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP Informatique — ENS 1ère année — TP 04 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TP Informatique — ENS 1ère année — TP 04 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Créer un script `moyenne_fonction.py` qui définit une fonction `calculer_moyenne(liste)` qui prend une liste de nombres et retourne leur moyenne. Le programme principal demande 5 notes à l'utilisateur, appelle la fonction et affiche le résultat.</li><li>**Exemple attendu :**</li><li>**Corrigé :**</li><li>**Énoncé :** Créer un script `minmax.py` qui définit (sans utiliser `max()`/`min()`) :</li><li>**Corrigé :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TP_Informatique_ENS_1ère_année_FR_04.pdf</code></p>
+</blockquote>
+<h1>TP Informatique — ENS 1ère année — TP 04 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce TP, l'étudiant est capable de :
+- Définir et appeler des fonctions en Python
+- Utiliser des paramètres et des valeurs de retour
+- Comprendre la portée des variables (locale vs globale)
+- Structurer un programme en fonctions réutilisables
+- Organiser des fonctions dans un module Python</p>
+<hr />
+<h2>Plan du TP</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Contenu</th>
+<th>Durée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>Rappel sur les fonctions</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Exercice 1</td>
+<td>Fonction calculer_moyenne</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Exercice 2</td>
+<td>Fonctions max/min</td>
+<td>15 min</td>
+</tr>
+<tr>
+<td>Exercice 3</td>
+<td>Fonction palindrome</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 4</td>
+<td>Générateur d'exercices</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 5</td>
+<td>Module calculs statistiques</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Prérequis</h2>
+<ul>
+<li>TP 01-03 bouclés (variables, conditions, boucles)</li>
+<li>Notion de fonction vue en cours (<code>def</code>, <code>return</code>)</li>
+</ul>
+<hr />
+<h2>Exercice 1 — Fonction calculer_moyenne <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>moyenne_fonction.py</code> qui définit une fonction <code>calculer_moyenne(liste)</code> qui prend une liste de nombres et retourne leur moyenne. Le programme principal demande 5 notes à l'utilisateur, appelle la fonction et affiche le résultat.</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Note 1 : 12
+Note 2 : 15
+Note 3 : 10
+Note 4 : 18
+Note 5 : 14
+Moyenne : 13.80/20
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">calculer_moyenne</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retourne la moyenne des éléments d&#39;une liste.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="n">notes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Note </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> : &quot;</span><span class="p">))</span>
+    <span class="n">notes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+
+<span class="n">moyenne</span> <span class="o">=</span> <span class="n">calculer_moyenne</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne : </span><span class="si">{</span><span class="n">moyenne</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">/20&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — Fonctions max/min personnalisées <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>minmax.py</code> qui définit (sans utiliser <code>max()</code>/<code>min()</code>) :
+1. <code>trouver_max(liste)</code> — retourne la valeur maximale
+2. <code>trouver_min(liste)</code> — retourne la valeur minimale
+3. <code>trouver_extremes(liste)</code> — retourne (min, max) en une seule fonction</p>
+<p>Le programme demande 4 nombres et affiche min, max et l'étendue.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">trouver_max</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+    <span class="n">max_val</span> <span class="o">=</span> <span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="n">max_val</span><span class="p">:</span>
+            <span class="n">max_val</span> <span class="o">=</span> <span class="n">val</span>
+    <span class="k">return</span> <span class="n">max_val</span>
+
+<span class="k">def</span> <span class="nf">trouver_min</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+    <span class="n">min_val</span> <span class="o">=</span> <span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">min_val</span><span class="p">:</span>
+            <span class="n">min_val</span> <span class="o">=</span> <span class="n">val</span>
+    <span class="k">return</span> <span class="n">min_val</span>
+
+<span class="k">def</span> <span class="nf">trouver_extremes</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">trouver_min</span><span class="p">(</span><span class="n">liste</span><span class="p">),</span> <span class="n">trouver_max</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="n">nombres</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nombre </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> : &quot;</span><span class="p">))</span>
+    <span class="n">nombres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span> <span class="o">=</span> <span class="n">trouver_extremes</span><span class="p">(</span><span class="n">nombres</span><span class="p">)</span>
+<span class="n">etendue</span> <span class="o">=</span> <span class="n">max_val</span> <span class="o">-</span> <span class="n">min_val</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min : </span><span class="si">{</span><span class="n">min_val</span><span class="si">}</span><span class="s2">, Max : </span><span class="si">{</span><span class="n">max_val</span><span class="si">}</span><span class="s2">, Étendue : </span><span class="si">{</span><span class="n">etendue</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Fonction palindrome <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>palindrome.py</code> qui :
+1. Définit <code>est_palindrome(mot)</code> — retourne <code>True</code> si le mot est identique dans les deux sens (ignore casse)
+2. Définit <code>tester_phrase(phrase)</code> — teste chaque mot d'une phrase
+3. Le programme demande une phrase et affiche quels mots sont des palindromes</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">est_palindrome</span><span class="p">(</span><span class="n">mot</span><span class="p">):</span>
+    <span class="n">mot</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">mot</span> <span class="o">==</span> <span class="n">mot</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">tester_phrase</span><span class="p">(</span><span class="n">phrase</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">mot</span> <span class="ow">in</span> <span class="n">phrase</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">est_palindrome</span><span class="p">(</span><span class="n">mot</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">mot</span><span class="si">}</span><span class="s1">&quot; → Oui ✓&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">mot</span><span class="si">}</span><span class="s1">&quot; → Non&#39;</span><span class="p">)</span>
+
+<span class="n">tester_phrase</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Phrase : &quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Flux d'appel de fonction (palindrome) :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Saisir</span><span class="w"> </span><span class="n">phrase</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Appel</span><span class="w"> </span><span class="n">tester_phrase</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Découper</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">mots</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Pour</span><span class="w"> </span><span class="n">chaque</span><span class="w"> </span><span class="n">mot</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Appel</span><span class="w"> </span><span class="n">est_palindrome</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Convertir</span><span class="w"> </span><span class="n">minuscules</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">{</span><span class="n">mot</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">inverse</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="err">✓</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">Non</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Fin</span><span class="w"> </span><span class="n">boucle</span><span class="p">]</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Fin</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Générateur d'exercices aléatoires <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>generateur.py</code> qui génère des exercices de calcul mental pour des élèves. Le programme :
+1. Définit <code>generer_question()</code> qui retourne (a, op, b, reponse) aléatoirement
+2. Définit <code>poser_question(question)</code> qui pose la question et retourne True si bonne réponse
+3. Propose 5 questions avec addition, soustraction, multiplication
+4. Affiche la note sur 20 à la fin</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>=== Générateur de calcul mental ===
+12 + 7 = 19 ✓ Correct !
+15 - 8 = 7 ✓ Correct !
+6 × 9 = 54 ✓ Correct !
+...
+Note : 16/20
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">generer_question</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">op</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">poser_question</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">op</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = &quot;</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Réponse invalide.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">correct</span> <span class="o">=</span> <span class="n">generer_question</span><span class="p">()</span>
+    <span class="n">rep</span> <span class="o">=</span> <span class="n">poser_question</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">rep</span> <span class="o">==</span> <span class="n">correct</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Correct !&quot;</span><span class="p">)</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✗ Faux. Réponse : </span><span class="si">{</span><span class="n">correct</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Note : </span><span class="si">{</span><span class="n">score</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="si">}</span><span class="s2">/20&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Module de calculs statistiques <em>(10 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un fichier <code>stats_utils.py</code> contenant un module avec les fonctions :
+1. <code>moyenne(liste)</code> — calcule la moyenne
+2. <code>mediane(liste)</code> — calcule la médiane
+3. <code>ecart_type(liste)</code> — calcule l'écart-type
+4. <code>resume_statistique(liste)</code> — retourne toutes les stats en une fois</p>
+<p>Créer ensuite un script <code>test_stats.py</code> qui importe le module et teste avec une liste de notes.</p>
+<p><strong>Corrigé — <code>stats_utils.py</code> :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">moyenne</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">liste</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">mediane</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+    <span class="n">triee</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">triee</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">triee</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">triee</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">triee</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">ecart_type</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">liste</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">moyenne</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">variance</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+<span class="k">def</span> <span class="nf">resume_statistique</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">liste</span><span class="p">),</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">liste</span><span class="p">),</span>
+            <span class="s2">&quot;moyenne&quot;</span><span class="p">:</span> <span class="n">moyenne</span><span class="p">(</span><span class="n">liste</span><span class="p">),</span> <span class="s2">&quot;mediane&quot;</span><span class="p">:</span> <span class="n">mediane</span><span class="p">(</span><span class="n">liste</span><span class="p">),</span>
+            <span class="s2">&quot;ecart_type&quot;</span><span class="p">:</span> <span class="n">ecart_type</span><span class="p">(</span><span class="n">liste</span><span class="p">),</span> <span class="s2">&quot;effectif&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)}</span>
+</code></pre></div>
+
+<p><strong>Corrigé — <code>test_stats.py</code> :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">stats_utils</span>
+
+<span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">resume</span> <span class="o">=</span> <span class="n">stats_utils</span><span class="o">.</span><span class="n">resume_statistique</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">cle</span><span class="p">,</span> <span class="n">valeur</span> <span class="ow">in</span> <span class="n">resume</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">cle</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">valeur</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">cle</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">valeur</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Diagramme de module (calculs statistiques) :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="o">[</span><span class="n">&quot;stats_utils.py&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="o">[</span><span class="n">moyenne</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="o">[</span><span class="n">mediane</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="o">[</span><span class="n">ecart_type</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="o">[</span><span class="n">resume_statistique</span><span class="o">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="o">[</span><span class="n">test_stats.py</span><span class="o">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="c1">--&gt; G[Résultats]</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>Quel mot-clé permet de définir une fonction en Python ?</li>
+<li>a) <code>function</code>  </li>
+<li>b) <code>def</code> ✓  </li>
+<li>
+<p>c) <code>define</code></p>
+</li>
+<li>
+<p>Que retourne une fonction qui n'a pas de <code>return</code> explicite ?</p>
+</li>
+<li>a) <code>0</code>  </li>
+<li>b) <code>None</code> ✓  </li>
+<li>
+<p>c) <code>False</code></p>
+</li>
+<li>
+<p>Comment appelle-t-on une fonction nommée <code>calculer</code> ?</p>
+</li>
+<li>a) <code>call calculer()</code>  </li>
+<li>b) <code>calculer()</code> ✓  </li>
+<li>
+<p>c) <code>run calculer()</code></p>
+</li>
+<li>
+<p>Quelle est la portée d'une variable définie à l'intérieur d'une fonction ?</p>
+</li>
+<li>a) Globale (partout dans le programme)  </li>
+<li>b) Locale (dans la fonction uniquement) ✓  </li>
+<li>
+<p>c) Dynamique</p>
+</li>
+<li>
+<p>Un fichier <code>.py</code> contenant des fonctions importables s'appelle :</p>
+</li>
+<li>a) Une bibliothèque  </li>
+<li>b) Un module ✓  </li>
+<li>c) Un script</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation TP 04</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Définition de fonctions (<code>def</code>)</td>
+<td>20 %</td>
+<td>Ne définit pas de fonctions</td>
+<td>Syntaxe incorrecte</td>
+<td>Syntaxe correcte</td>
+</tr>
+<tr>
+<td>Paramètres et <code>return</code></td>
+<td>20 %</td>
+<td>N'utilise pas de paramètres</td>
+<td>Utilisation partielle</td>
+<td>Utilisation correcte</td>
+</tr>
+<tr>
+<td>Appels et réutilisation</td>
+<td>20 %</td>
+<td>N'appelle pas les fonctions</td>
+<td>Appels erronés</td>
+<td>Appels corrects</td>
+</tr>
+<tr>
+<td>Docstrings et documentation</td>
+<td>15 %</td>
+<td>Aucune docstring</td>
+<td>Docstrings partielles</td>
+<td>Docstrings complètes</td>
+</tr>
+<tr>
+<td>Module et import</td>
+<td>15 %</td>
+<td>Pas de module</td>
+<td>Import incorrect</td>
+<td>Import correct</td>
+</tr>
+<tr>
+<td>Structuration du code</td>
+<td>10 %</td>
+<td>Code non structuré</td>
+<td>Structure partielle</td>
+<td>Code bien organisé</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil et rappel fonctions</td>
+<td>10 min</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — calculer_moyenne</td>
+<td>15 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — max/min personnalisés</td>
+<td>15 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Palindrome</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Générateur d'exercices</td>
+<td>20 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Module statistique</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Ce TP conclusif sur les fonctions et la modularité montre comment l'abstraction (encapsuler du code) permet de construire des programmes réutilisables. Le générateur d'exercices (ex. 4) illustre comment Python crée du matériel pédagogique interactif pour le primaire et le collège. Le module statistique (ex. 5) prépare les étudiants à créer leurs propres outils d'analyse de notes. L'enseignant peut insister sur l'importance des docstrings et inviter les étudiants à adapter ces exercices pour différents niveaux scolaires (cycle 3, cycle 4, lycée).</p>
+<h3>Conseil formateur</h3>
+<p>S'assurer que les étudiants comprennent la différence entre paramètre et argument. Utiliser l'analogie : une fonction est comme une recette de cuisine (paramètres = ingrédients, corps = étapes, return = plat fini). Pour les élèves de NSI, le module statistique peut être enrichi avec la médiane, l'écart-type et les quartiles.</p>
+<h3>Prolongement</h3>
+<p>Créer un module de « Générateur de fiches d'exercices » qui produit aléatoirement des exercices de mathématiques (niveau collège) avec corrigés, exportables en PDF via la bibliothèque <code>reportlab</code>.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

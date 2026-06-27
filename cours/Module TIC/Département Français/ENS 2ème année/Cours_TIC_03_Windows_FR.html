@@ -1,0 +1,959 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 03 — Windows : Interface Graphique, Fichiers et Personnalisation — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 03 — Windows : Interface Graphique, Fichiers et Personnalisation</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** ENS 1ère et 2ème année — Département Français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** ENS 1ère et 2ème année — utilisateurs Windows en environnement universitaire</li><li>**Compétences pré-requises :** TIC 02 ; manipulation souris/clavier</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_03_Windows_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 03 — Windows : Interface Graphique, Fichiers et Personnalisation</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani
+<strong>Module :</strong> TIC
+<strong>Niveau :</strong> ENS 1ère et 2ème année — Département Français
+<strong>Durée :</strong> 1h30
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> ENS 1ère et 2ème année — utilisateurs Windows en environnement universitaire</p>
+<p><strong>Compétences pré-requises :</strong> TIC 02 ; manipulation souris/clavier</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Décrire l'interface Windows (bureau, barre des tâches, Paramètres)
+- Expliquer arborescence fichiers et extensions
+- Identifier les composants matériels et logiciels d'un poste universitaire</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Créer, renommer, déplacer des dossiers académiques
+- Personnaliser affichage et accessibilité
+- Utiliser Explorateur de fichiers et recherche Windows
+- Structurer un plan de classement pour l'année universitaire</p>
+<p><strong>En termes de savoir-être :</strong>
+- Respecter charte logicielle de l'établissement
+- Adopter une démarche organisée et méthodique dans la gestion des ressources numériques</p>
+<p><strong>Mode d'évaluation :</strong> TD 50 % + QCM 20 % + examen pratique 30 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Atelier : arborescence <code>L1_Langues/2025-2026/</code> structurée</li>
+<li>Exercice guidé : renommage par lots de fichiers PDF</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM interface Windows</li>
+<li>Évaluation pratique en binôme : classement de 20 fichiers en 5 minutes</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Guide étudiant Moodle Béjaïa — dépôt de fichiers</li>
+<li><code>support.microsoft.com/fr-fr/windows</code> — Aide Windows officielle</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<table>
+<thead>
+<tr>
+<th>Texte</th>
+<th>Objet</th>
+<th>Impact sur le cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Décret exécutif 06-155 du 15/05/2006</td>
+<td>Organisation des cycles supérieurs</td>
+<td>La maîtrise des outils numériques conditionne la validation des crédits TIC</td>
+</tr>
+<tr>
+<td>Arrêté 712 du 03/11/2011</td>
+<td>Mise en place du LMD</td>
+<td>Les TIC sont transversales à toutes les licences</td>
+</tr>
+<tr>
+<td>Circulaire MESRS 2021</td>
+<td>Généralisation des plateformes e-learning</td>
+<td>USTO impose Moodle/Canvas ; compétences Windows requises pour le dépôt de fichiers</td>
+</tr>
+<tr>
+<td>Schéma directeur SGAN 2022-2025</td>
+<td>Transformation numérique du supérieur</td>
+<td>Renforcement de la culture numérique dès la 1ère année</td>
+</tr>
+<tr>
+<td>Loi 18-05 du 10/05/2018</td>
+<td>Protection des données personnelles</td>
+<td>Sensibilisation à la sécurité des fichiers académiques</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Décret</span><span class="w"> </span><span class="mo">06</span><span class="mi">-155</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Organisation</span><span class="w"> </span><span class="n">cycles</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Cadre</span><span class="w"> </span><span class="n">LMD</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Arrêté</span><span class="w"> </span><span class="mi">712</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">TIC</span><span class="w"> </span><span class="n">transversales</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Plateformes</span><span class="w"> </span><span class="n">elearning</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Circulaire</span><span class="w"> </span><span class="n">MESRS</span><span class="w"> </span><span class="mi">2021</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Compétences</span><span class="w"> </span><span class="n">Windows</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">indispensables</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Dépôt</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">fichiers</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Navigation</span><span class="w"> </span><span class="n">explorateur</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Sécurisation</span><span class="w"> </span><span class="n">données</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Loi</span><span class="w"> </span><span class="mi">18</span><span class="mo">-05</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Étudiant</span><span class="w"> </span><span class="n">autonome</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">et</span><span class="w"> </span><span class="n">organisé</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e6f3ff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mo">0066</span><span class="n">cc</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">d9f2d9</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mo">00</span><span class="mi">8800</span>
+</code></pre></div>
+
+<hr />
+<h2>Plan du Cours</h2>
+<ol>
+<li>Introduction à Windows dans le contexte universitaire</li>
+<li>L'interface graphique complète du Bureau Windows</li>
+<li>Gestion avancée des fichiers et dossiers</li>
+<li>Extensions de fichiers et conventions de nommage</li>
+<li>Raccourcis clavier essentiels</li>
+<li>Personnalisation et organisation de l'espace de travail</li>
+<li>Sécurité de base et bonnes pratiques</li>
+<li>Conclusion et transition vers Word</li>
+</ol>
+<hr />
+<h2>1. Introduction à Windows <em>(10 min)</em></h2>
+<p>Windows est le système d'exploitation le plus utilisé dans le monde universitaire algérien. Plus de 95 % des postes des salles TIC et des bibliothèques universitaires fonctionnent sous Windows 10 ou 11.</p>
+<h3>Pourquoi Windows à l'université ?</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Avantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compatibilité</td>
+<td>Word, Excel, PowerPoint disponibles nativement</td>
+</tr>
+<tr>
+<td>Parc informatique</td>
+<td>Standard dans les universités algériennes (USTO, Mostaganem, Oran)</td>
+</tr>
+<tr>
+<td>Moodle/Canvas</td>
+<td>Interface optimisée pour le dépôt de fichiers</td>
+</tr>
+<tr>
+<td>Support technique</td>
+<td>Ressources locales et guides en français disponibles</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Salle</span><span class="w"> </span><span class="n">TIC</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Poste</span><span class="w"> </span><span class="n">Windows</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Explorateur</span><span class="w"> </span><span class="n">fichiers</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Applications</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Office</span><span class="w"> </span><span class="mi">365</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Navigateur</span><span class="w"> </span><span class="n">web</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Chrome</span><span class="o">/</span><span class="n">Firefox</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Dossier</span><span class="w"> </span><span class="n">étudiant</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">structuré</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Devoir</span><span class="w"> </span><span class="n">Word</span><span class="o">/</span><span class="n">PPT</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Moodle</span><span class="w"> </span><span class="n">USTO</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Dépôt</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">fichiers</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Compétences Windows&quot;</span>
+<span class="w">        </span><span class="n">B</span>
+<span class="w">        </span><span class="n">C</span>
+<span class="w">        </span><span class="n">D</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">ffcc80</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="n">e65100</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">90</span><span class="n">caf9</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">1565</span><span class="n">c0</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span>
+</code></pre></div>
+
+<hr />
+<h2>2. Interface Graphique <em>(15 min)</em></h2>
+<h3>Composants du Bureau Windows</h3>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Rôle</th>
+<th>Action clé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bureau (Desktop)</td>
+<td>Espace de travail principal</td>
+<td>Organiser par dossiers thématiques</td>
+</tr>
+<tr>
+<td>Icônes</td>
+<td>Raccourcis vers applications/dossiers</td>
+<td>Double-clic pour ouvrir</td>
+</tr>
+<tr>
+<td>Barre des tâches</td>
+<td>Applications en cours, Démarrer, horloge</td>
+<td>Épingler les applis favorites</td>
+</tr>
+<tr>
+<td>Menu Démarrer</td>
+<td>Programmes, paramètres, recherche</td>
+<td>Touche Windows ou clic</td>
+</tr>
+<tr>
+<td>Zone de notification</td>
+<td>Réseau, volume, mises à jour</td>
+<td>Icônes cachées paramétrables</td>
+</tr>
+<tr>
+<td>Explorateur de fichiers</td>
+<td>Gestionnaire de fichiers (Win+E)</td>
+<td>Navigation arborescente</td>
+</tr>
+</tbody>
+</table>
+<h3>Organisation recommandée du bureau</h3>
+<p>Créer 5 dossiers principaux :</p>
+<div class="codehilite"><pre><span></span><code>Bureau/
+├── 01_Cours/           → Supports de cours par matière
+├── 02_TD_TP/           → Travaux dirigés et pratiques
+├── 03_Examens/         → Sujets, corrigés, notes
+├── 04_Administratif/   → Emploi du temps, inscriptions
+└── 05_Sauvegardes/     → Archives compressées mensuelles
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Bureau Windows&quot;</span>
+<span class="w">        </span><span class="n">BA</span><span class="p">[</span><span class="n">Dossier</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mo">01</span><span class="n">_Cours</span><span class="p">]</span>
+<span class="w">        </span><span class="n">BB</span><span class="p">[</span><span class="n">Dossier</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mo">02</span><span class="n">_TD_TP</span><span class="p">]</span>
+<span class="w">        </span><span class="n">BC</span><span class="p">[</span><span class="n">Dossier</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mo">03</span><span class="n">_Examens</span><span class="p">]</span>
+<span class="w">        </span><span class="n">BD</span><span class="p">[</span><span class="n">Dossier</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mo">04</span><span class="n">_Administratif</span><span class="p">]</span>
+<span class="w">        </span><span class="n">BE</span><span class="p">[</span><span class="n">Dossier</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mo">05</span><span class="n">_Sauvegardes</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">BA</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BA1</span><span class="p">[</span><span class="n">SEM1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BA</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BA2</span><span class="p">[</span><span class="n">SEM2</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BA1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BA1a</span><span class="p">[</span><span class="n">TIC</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BA1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BA1b</span><span class="p">[</span><span class="n">Linguistique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BA1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BA1c</span><span class="p">[</span><span class="n">Littérature</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BB1</span><span class="p">[</span><span class="n">TD</span><span class="w"> </span><span class="n">TIC</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BB2</span><span class="p">[</span><span class="n">TP</span><span class="w"> </span><span class="n">TIC</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BC</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BC1</span><span class="p">[</span><span class="n">Sujets</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BC</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BC2</span><span class="p">[</span><span class="n">Corrigés</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BA</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">bbdefb</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BB</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">c8e6c9</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BC</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">ffe0b2</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BD</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e1bee7</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BE</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">ffcdd2</span>
+</code></pre></div>
+
+<hr />
+<h2>3. Fichiers et Dossiers <em>(15 min)</em></h2>
+<h3>Définitions</h3>
+<ul>
+<li><strong>Fichier</strong> : unité de stockage = nom + extension (.docx, .pdf, .pptx)</li>
+<li><strong>Dossier</strong> : conteneur logique organisant les fichiers</li>
+<li><strong>Chemin d'accès</strong> : adresse absolue (ex: <code>C:\Users\...\Fichier.docx</code>)</li>
+<li><strong>Arborescence</strong> : structure hiérarchique en arbre</li>
+</ul>
+<h3>Arborescence recommandée pour l'année universitaire</h3>
+<div class="codehilite"><pre><span></span><code>Documents/
+└── ENS_Francais_2025-2026/
+    ├── S1/
+    │   ├── TIC/
+    │   │   ├── Cours/
+    │   │   ├── TD/
+    │   │   └── Projet/
+    │   ├── Linguistique/
+    │   ├── Littérature/
+    │   └── Administration/
+    ├── S2/
+    └── Sauvegardes/
+</code></pre></div>
+
+<h3>Convention de nommage normalisée</h3>
+<p>Format : <code>AAAA-MM-JJ_Module_Type_Descripteur_Version.ext</code></p>
+<table>
+<thead>
+<tr>
+<th>Exemple</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2025-10-15_TIC_Cours_InterfaceWindows_v1.pdf</code></td>
+<td>Cours du 15/10/2025</td>
+</tr>
+<tr>
+<td><code>2025-11-20_TIC_TD_ExercicesFichiers_v2.docx</code></td>
+<td>TD corrigé, version 2</td>
+</tr>
+<tr>
+<td><code>2025-12-01_Linguistique_Examen_Sujet.pdf</code></td>
+<td>Examen de linguistique</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Créer</span><span class="w"> </span><span class="n">un</span><span class="w"> </span><span class="n">fichier</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">{</span><span class="n">Convention</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">de</span><span class="w"> </span><span class="n">nommage</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">AAAA</span><span class="o">-</span><span class="n">MM</span><span class="o">-</span><span class="n">JJ_Module_Type_Descripteur</span><span class="p">.</span><span class="n">ext</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">fichier_final_VRAI_VERSION_FINAL</span><span class="p">.</span><span class="n">docx</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Problèmes</span><span class="w"> </span><span class="o">:&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Doublons</span><span class="p">,</span><span class="w"> </span><span class="n">confusion</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Dossier</span><span class="w"> </span><span class="n">thématique</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">adapté</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Fichier</span><span class="w"> </span><span class="n">retrouvé</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">en</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">secondes</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Temps</span><span class="w"> </span><span class="n">perdu</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">à</span><span class="w"> </span><span class="n">chercher</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">c8e6c9</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mf">2e7</span><span class="n">d32</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">c8e6c9</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mf">2e7</span><span class="n">d32</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">ffcdd2</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="n">c62828</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">ffcdd2</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="n">c62828</span>
+</code></pre></div>
+
+<h3>Opérations essentielles dans l'Explorateur</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Méthode rapide</th>
+<th>Méthode souris</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Créer dossier</td>
+<td><code>Ctrl+Shift+N</code></td>
+<td>Clic droit → Nouveau → Dossier</td>
+</tr>
+<tr>
+<td>Renommer</td>
+<td><code>F2</code></td>
+<td>Clic droit → Renommer</td>
+</tr>
+<tr>
+<td>Copier</td>
+<td><code>Ctrl+C</code></td>
+<td>Clic droit → Copier</td>
+</tr>
+<tr>
+<td>Coller</td>
+<td><code>Ctrl+V</code></td>
+<td>Clic droit → Coller</td>
+</tr>
+<tr>
+<td>Couper/Déplacer</td>
+<td><code>Ctrl+X</code> puis <code>Ctrl+V</code></td>
+<td>Glisser-déposer</td>
+</tr>
+<tr>
+<td>Supprimer</td>
+<td><code>Suppr</code> (corbeille) / <code>Shift+Suppr</code> (définitif)</td>
+<td>Clic droit → Supprimer</td>
+</tr>
+<tr>
+<td>Sélection multiple</td>
+<td><code>Ctrl</code> + clic (non contigu) / <code>Shift</code> + clic (contigu)</td>
+<td>Sélection avec cadre</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Extensions Courantes <em>(10 min)</em></h2>
+<h3>Tableau des extensions universitaires</h3>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Type de document</th>
+<th>Application associée</th>
+<th>Usage type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.docx</td>
+<td>Document Word</td>
+<td>Microsoft Word</td>
+<td>Devoirs, comptes rendus</td>
+</tr>
+<tr>
+<td>.pdf</td>
+<td>Document portable</td>
+<td>Adobe Acrobat, Edge</td>
+<td>Dépôt Moodle, impression</td>
+</tr>
+<tr>
+<td>.pptx</td>
+<td>Présentation</td>
+<td>PowerPoint</td>
+<td>Exposés, soutenances</td>
+</tr>
+<tr>
+<td>.xlsx</td>
+<td>Tableur</td>
+<td>Excel</td>
+<td>Notes, statistiques</td>
+</tr>
+<tr>
+<td>.jpg/.png</td>
+<td>Image</td>
+<td>Photos, captures</td>
+<td>Illustrations rapports</td>
+</tr>
+<tr>
+<td>.mp4</td>
+<td>Vidéo</td>
+<td>VLC, Windows Media Player</td>
+<td>Projets multimédia</td>
+</tr>
+<tr>
+<td>.zip/.rar</td>
+<td>Archive compressée</td>
+<td>7-Zip, WinRAR</td>
+<td>Envoi de dossiers volumineux</td>
+</tr>
+<tr>
+<td>.txt</td>
+<td>Texte brut</td>
+<td>Bloc-notes</td>
+<td>Notes rapides</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>mindmap
+  root((Extensions&lt;br/&gt;universitaires))
+    Documents
+      .docx
+      .pdf
+      .odt
+    Présentations
+      .pptx
+      .odp
+    Données
+      .xlsx
+      .ods
+      .csv
+    Médias
+      .jpg
+      .png
+      .mp4
+      .mp3
+    Archives
+      .zip
+      .rar
+    Autres
+      .txt
+      .html
+</code></pre></div>
+
+<h3>Règle d'or</h3>
+<blockquote>
+<p><strong>Ne jamais modifier l'extension manuellement.</strong> Utiliser « Enregistrer sous » dans l'application source pour changer de format.</p>
+</blockquote>
+<hr />
+<h2>5. Raccourcis Clavier <em>(10 min)</em></h2>
+<h3>Raccourcis fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>Raccourci</th>
+<th>Action</th>
+<th>Importance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+C</code></td>
+<td>Copier</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Ctrl+X</code></td>
+<td>Couper</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Ctrl+V</code></td>
+<td>Coller</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Ctrl+Z</code></td>
+<td>Annuler</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Ctrl+Y</code></td>
+<td>Rétablir</td>
+<td>Important</td>
+</tr>
+<tr>
+<td><code>Ctrl+A</code></td>
+<td>Tout sélectionner</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Ctrl+S</code></td>
+<td>Enregistrer</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Ctrl+P</code></td>
+<td>Imprimer</td>
+<td>Important</td>
+</tr>
+<tr>
+<td><code>Windows+L</code></td>
+<td>Verrouiller session</td>
+<td>Sécurité</td>
+</tr>
+<tr>
+<td><code>Windows+S</code></td>
+<td>Rechercher</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Windows+E</code></td>
+<td>Ouvrir Explorateur</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Alt+Tab</code></td>
+<td>Changer fenêtre</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>Windows+D</code></td>
+<td>Afficher Bureau</td>
+<td>Important</td>
+</tr>
+<tr>
+<td><code>F2</code></td>
+<td>Renommer</td>
+<td>Essentiel</td>
+</tr>
+<tr>
+<td><code>F5</code></td>
+<td>Actualiser</td>
+<td>Important</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Raccourcis Windows&quot;</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">Ctrl</span><span class="o">+</span><span class="n">C</span><span class="o">/</span><span class="n">V</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Gestion</span><span class="w"> </span><span class="n">fichiers</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C</span><span class="p">[</span><span class="n">Windows</span><span class="o">+</span><span class="n">E</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span>
+<span class="w">        </span><span class="n">D</span><span class="p">[</span><span class="n">F2</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span>
+<span class="w">        </span><span class="n">E</span><span class="p">[</span><span class="n">Windows</span><span class="o">+</span><span class="n">S</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Recherche</span><span class="w"> </span><span class="n">rapide</span><span class="p">]</span>
+<span class="w">        </span><span class="n">G</span><span class="p">[</span><span class="n">Windows</span><span class="o">+</span><span class="n">L</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Sécurité</span><span class="w"> </span><span class="n">session</span><span class="p">]</span>
+<span class="w">        </span><span class="n">I</span><span class="p">[</span><span class="n">Alt</span><span class="o">+</span><span class="n">Tab</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Multitâche</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Productivité</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;+</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="o">%</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">d9f2d9</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mf">2e7</span><span class="n">d32</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span>
+</code></pre></div>
+
+<h3>Exercice rapide (2 min)</h3>
+<ol>
+<li>Ouvrir l'Explorateur avec <code>Windows+E</code></li>
+<li>Créer un dossier avec <code>Ctrl+Shift+N</code></li>
+<li>Le renommer avec <code>F2</code></li>
+<li>Copier le dossier avec <code>Ctrl+C</code> / <code>Ctrl+V</code></li>
+</ol>
+<hr />
+<h2>6. Personnalisation <em>(10 min)</em></h2>
+<h3>Paramètres recommandés pour un usage académique</h3>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Réglage conseillé</th>
+<th>Procédure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fond d'écran</td>
+<td>Couleur unie sobre ou image institutionnelle</td>
+<td>Paramètres → Personnalisation → Arrière-plan</td>
+</tr>
+<tr>
+<td>Barre des tâches</td>
+<td>Alignée à gauche (Windows 11)</td>
+<td>Paramètres → Personnalisation → Barre des tâches</td>
+</tr>
+<tr>
+<td>Applications épinglées</td>
+<td>Explorateur, Word, Chrome, Calculatrice</td>
+<td>Clic droit icône → Épingler à la barre des tâches</td>
+</tr>
+<tr>
+<td>Mode sombre/clair</td>
+<td>Clair le jour, sombre le soir</td>
+<td>Paramètres → Personnalisation → Couleurs</td>
+</tr>
+<tr>
+<td>Nettoyage bureau</td>
+<td>Zéro icône inutile</td>
+<td>Clic droit bureau → Trier par</td>
+</tr>
+</tbody>
+</table>
+<h3>Accessibilité</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Raccourci</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loupe</td>
+<td><code>Windows+Plus</code></td>
+<td>Agrandir une zone</td>
+</tr>
+<tr>
+<td>Narrateur</td>
+<td><code>Windows+Ctrl+Entrée</code></td>
+<td>Lecture voix</td>
+</tr>
+<tr>
+<td>Contraste élevé</td>
+<td><code>Alt+Shift+Impr. écran</code></td>
+<td>Lisibilité</td>
+</tr>
+<tr>
+<td>Filtre couleur</td>
+<td><code>Windows+Ctrl+C</code></td>
+<td>Daltonisme</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Personnalisation</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Esthétique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Fonctionnel</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Accessibilité</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B1</span><span class="p">[</span><span class="n">Fond</span><span class="w"> </span><span class="n">sobre</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B2</span><span class="p">[</span><span class="n">Couleur</span><span class="w"> </span><span class="n">unie</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C1</span><span class="p">[</span><span class="n">Barre</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">tâches</span><span class="w"> </span><span class="n">optimisée</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C2</span><span class="p">[</span><span class="n">Apps</span><span class="w"> </span><span class="n">épinglées</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C3</span><span class="p">[</span><span class="n">Dossiers</span><span class="w"> </span><span class="n">bureau</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D1</span><span class="p">[</span><span class="n">Loupe</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">[</span><span class="n">Contraste</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span><span class="p">[</span><span class="n">Narrateur</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Concentration</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span>
+<span class="w">    </span><span class="n">D1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Productivité</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">académique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">c8e6c9</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mf">2e7</span><span class="n">d32</span>
+</code></pre></div>
+
+<hr />
+<h2>7. Sécurité <em>(10 min)</em></h2>
+<h3>Bonnes pratiques pour l'étudiant</h3>
+<table>
+<thead>
+<tr>
+<th>Pratique</th>
+<th>Détail</th>
+<th>Fréquence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verrouiller la session</td>
+<td><code>Windows+L</code> dès qu'on quitte le poste</td>
+<td>Chaque absence</td>
+</tr>
+<tr>
+<td>Mot de passe complexe</td>
+<td>12+ caractères, lettres + chiffres + symboles</td>
+<td>Création compte</td>
+</tr>
+<tr>
+<td>Antivirus</td>
+<td>Windows Defender activé (gratuit, inclus)</td>
+<td>Vérification hebdomadaire</td>
+</tr>
+<tr>
+<td>Mises à jour</td>
+<td>Windows Update à jour</td>
+<td>Automatique recommandé</td>
+</tr>
+<tr>
+<td>Sauvegarde 3-2-1</td>
+<td>3 copies, 2 supports, 1 hors-site</td>
+<td>Hebdomadaire</td>
+</tr>
+<tr>
+<td>Clés USB</td>
+<td>Scanner avant ouverture</td>
+<td>À chaque branchement</td>
+</tr>
+</tbody>
+</table>
+<h3>Règle 3-2-1 appliquée</h3>
+<div class="codehilite"><pre><span></span><code><span class="mf">3</span><span class="w"> </span><span class="n">copies</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">fichier</span><span class="w"> </span><span class="p">:</span>
+<span class="w">  </span><span class="mf">1.</span><span class="w"> </span><span class="n">Sur</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">disque</span><span class="w"> </span><span class="n">dur</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="p">(</span><span class="n">C</span><span class="p">:)</span>
+<span class="w">  </span><span class="mf">2.</span><span class="w"> </span><span class="n">Sur</span><span class="w"> </span><span class="n">une</span><span class="w"> </span><span class="n">clé</span><span class="w"> </span><span class="n">USB</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">disque</span><span class="w"> </span><span class="n">externe</span>
+<span class="w">  </span><span class="mf">3.</span><span class="w"> </span><span class="n">Sur</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">cloud</span><span class="w"> </span><span class="p">(</span><span class="kr">On</span><span class="n">eDrive</span><span class="p">,</span><span class="w"> </span><span class="kr">Go</span><span class="n">ogle</span><span class="w"> </span><span class="n">Drive</span><span class="p">)</span>
+
+<span class="mf">2</span><span class="w"> </span><span class="n">supports</span><span class="w"> </span><span class="n">différents</span><span class="w"> </span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Local</span><span class="w"> </span><span class="p">(</span><span class="n">disque</span><span class="w"> </span><span class="n">dur</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Amovible</span><span class="w"> </span><span class="p">(</span><span class="n">USB</span><span class="p">)</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">Cloud</span>
+
+<span class="mf">1</span><span class="w"> </span><span class="n">copie</span><span class="w"> </span><span class="n">hors</span><span class="o">-</span><span class="n">site</span><span class="w"> </span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Cloud</span><span class="p">,</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">dépôt</span><span class="w"> </span><span class="n">Moodle</span><span class="p">,</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="n">PC</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Fichier</span><span class="w"> </span><span class="n">original</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Copie</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Disque</span><span class="w"> </span><span class="n">dur</span><span class="w"> </span><span class="n">C</span><span class="o">:</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Copie</span><span class="w"> </span><span class="mi">2</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Clé</span><span class="w"> </span><span class="n">USB</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Copie</span><span class="w"> </span><span class="mi">3</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Cloud</span><span class="w"> </span><span class="n">OneDrive</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="n">supports</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">différents</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="n">copie</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">hors</span><span class="o">-</span><span class="n">site</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Données</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">sécurisées</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">c8e6c9</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mf">2e7</span><span class="n">d32</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span>
+</code></pre></div>
+
+<h3>Pièges à éviter</h3>
+<ul>
+<li>❌ Enregistrer uniquement sur le Bureau (vulnérable en cas de crash)</li>
+<li>❌ Nommer <code>final.docx</code> puis <code>final2.docx</code> puis <code>final_VRAI.docx</code></li>
+<li>❌ Ouvrir une clé USB trouvée sans la scanner</li>
+<li>❌ Partager son mot de passe session Windows</li>
+</ul>
+<hr />
+<h2>8. Conclusion <em>(10 min)</em></h2>
+<h3>Synthèse des acquis</h3>
+<div class="codehilite"><pre><span></span><code>┌───────────────────────────────────────────────────┐
+│           COMPÉTENCES WINDOWS ACQUISES            │
+├───────────────────────────────────────────────────┤
+│ ✔ Navigation et organisation de l&#39;interface       │
+│ ✔ Création d&#39;une arborescence structurée          │
+│ ✔ Convention de nommage normalisée                 │
+│ ✔ Raccourcis clavier productifs                    │
+│ ✔ Personnalisation du poste de travail             │
+│ ✔ Sécurité et sauvegarde 3-2-1                     │
+└───────────────────────────────────────────────────┘
+</code></pre></div>
+
+<h3>Prochain cours</h3>
+<p><strong>Microsoft Word — Bureautique académique.</strong> Nous utiliserons les fichiers et dossiers créés aujourd'hui pour produire un document structuré avec styles, table des matières et page de garde institutionnelle.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Cours</span><span class="w"> </span><span class="mo">03</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Windows</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Cours</span><span class="w"> </span><span class="mo">04</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Word</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Cours</span><span class="w"> </span><span class="mo">05</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Excel</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Cours</span><span class="w"> </span><span class="mo">06</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">PowerPoint</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Cours</span><span class="w"> </span><span class="mo">07</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Internet</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">90</span><span class="n">caf9</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">1565</span><span class="n">c0</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">a5d6a7</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mf">2e7</span><span class="n">d32</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">ffe0b2</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="n">e65100</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">ce93d8</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">6</span><span class="n">a1b9a</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">ef9a9a</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="n">c62828</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation — Windows</h2>
+<p><em>Cochez la ou les bonne(s) réponse(s) pour chaque question.</em></p>
+<p><strong>1. Quel raccourci clavier permet de verrouiller sa session Windows ?</strong></p>
+<ul>
+<li>[ ] <code>Ctrl+Alt+Suppr</code></li>
+<li>[x] <code>Windows+L</code> ✓</li>
+<li>[ ] <code>Windows+D</code></li>
+<li>[ ] <code>Ctrl+L</code></li>
+</ul>
+<p><strong>2. Quelle extension correspond à un document Word modifiable ?</strong></p>
+<ul>
+<li>[ ] .pdf</li>
+<li>[ ] .txt</li>
+<li>[x] .docx ✓</li>
+<li>[ ] .pptx</li>
+</ul>
+<p><strong>3. Dans la règle de sauvegarde 3-2-1, que signifie le « 1 » ?</strong></p>
+<ul>
+<li>[ ] 1 copie sur le Bureau</li>
+<li>[x] 1 copie hors-site ✓</li>
+<li>[ ] 1 copie par semaine</li>
+<li>[ ] 1 seul support de stockage</li>
+</ul>
+<p><strong>4. Comment sélectionner plusieurs fichiers non contigus dans l'Explorateur ?</strong></p>
+<ul>
+<li>[ ] <code>Shift</code> + clic</li>
+<li>[x] <code>Ctrl</code> + clic ✓</li>
+<li>[ ] <code>Alt</code> + clic</li>
+<li>[ ] Glisser-déposer</li>
+</ul>
+<p><strong>5. Quelle est la convention de nommage recommandée pour un fichier de cours ?</strong></p>
+<ul>
+<li>[ ] <code>cours_final.docx</code></li>
+<li>[ ] <code>TIC.docx</code></li>
+<li>[x] <code>2025-10-15_TIC_Cours_InterfaceWindows_v1.pdf</code> ✓</li>
+<li>[ ] <code>moncours.pdf</code></li>
+</ul>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Le contenu du cours Windows est adapté du programme officiel des TIC en vigueur dans les ENS algériennes (Arrêté 712). La difficulté est progressive : on part des éléments concrets de l'interface (Bureau, icônes) pour aller vers des concepts plus abstraits (arborescence, conventions de nommage, sécurité). Chaque notion est immédiatement suivie d'une application pratique (atelier arborescence, exercice raccourcis) pour éviter l'écueil d'un cours magistral sur un outil fondamentalement pratique.</p>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li>Répartir la séance en blocs de 15-20 min alternant démonstration et pratique guidée.</li>
+<li>Utiliser un projecteur pour montrer chaque manipulation avant de la faire réaliser.</li>
+<li>Prévoir un temps de « re-démonstration » pour les étudiants en difficulté (hétérogénéité des niveaux en TIC).</li>
+<li>L'atelier arborescence est le pivot du cours : y consacrer au moins 15 min.</li>
+<li>Distribuer une fiche récapitulative des 15 raccourcis clavier (format A5 plastifié).</li>
+</ul>
+<h3>Prolongement</h3>
+<ul>
+<li><strong>Cours suivant (Word)</strong> : ouverture du document structuré à partir de l'arborescence créée.</li>
+<li><strong>Projet inter-matières</strong> : créer un dossier partagé pour un exposé collectif (TIC + Littérature).</li>
+<li><strong>Auto-formation</strong> : module « Découvrir Windows 11 » sur <code>support.microsoft.com</code> (2h).</li>
+<li><strong>Évaluation différée</strong> : QCM en ligne sur Moodle une semaine après la séance.</li>
+</ul>
+<hr />
+<h2>Déroulement séance — 90 minutes</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+<th>Support</th>
+<th>Rôle formateur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>Appel, rappel séance précédente</td>
+<td>Cahier de texte</td>
+<td>Animer la transition</td>
+</tr>
+<tr>
+<td>Introduction</td>
+<td>10 min</td>
+<td>Présentation plan, contextualisation</td>
+<td>Diaporama PPT</td>
+<td>Exposer les objectifs</td>
+</tr>
+<tr>
+<td>Interface graphique</td>
+<td>15 min</td>
+<td>Bureau, barre des tâches, Démarrer</td>
+<td>Démonstration + pratique guidée</td>
+<td>Montrer puis faire faire</td>
+</tr>
+<tr>
+<td>Fichiers et dossiers</td>
+<td>15 min</td>
+<td>Création arborescence, nommage</td>
+<td>Postes étudiants</td>
+<td>Accompagner individuellement</td>
+</tr>
+<tr>
+<td>Extensions</td>
+<td>10 min</td>
+<td>Tableau extensions, conventions</td>
+<td>Diaporama + fiche</td>
+<td>Interroger, faire deviner</td>
+</tr>
+<tr>
+<td>Raccourcis clavier</td>
+<td>10 min</td>
+<td>Quiz et exercice rapide</td>
+<td>Fiche A5 + défi chronométré</td>
+<td>Organiser concours binôme</td>
+</tr>
+<tr>
+<td>Personnalisation</td>
+<td>10 min</td>
+<td>Réglages accessibilité, barre tâches</td>
+<td>Démonstration</td>
+<td>Montrer variantes</td>
+</tr>
+<tr>
+<td>Sécurité</td>
+<td>10 min</td>
+<td>Règle 3-2-1, verrouillage</td>
+<td>Diaporama</td>
+<td>Sensibiliser, cas concrets</td>
+</tr>
+<tr>
+<td>Conclusion + QCM</td>
+<td>5 min</td>
+<td>Synthèse, annonce Word, questions</td>
+<td>QCM papier ou oral</td>
+<td>Vérifier acquis</td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

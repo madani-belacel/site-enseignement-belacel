@@ -1,0 +1,482 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 2ème année — Séance 02 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 2ème année — Séance 02 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 2ème année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</li><li>**Public visé :** Étudiants ENS 2ème année — Département Français</li><li>**Compétences pré-requises :** Python bases (ENS1 séance 09), algorithmique (ENS1 séance 05)</li><li>**Objectifs transversaux :**</li><li>**Mode d'évaluation :** TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_2ème_année_FR_02.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 2ème année — Séance 02 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 2ème année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</p>
+<p><strong>Public visé :</strong> Étudiants ENS 2ème année — Département Français</p>
+<p><strong>Compétences pré-requises :</strong> Python bases (ENS1 séance 09), algorithmique (ENS1 séance 05)</p>
+<p><strong>Objectifs transversaux :</strong>
+- Appliquer la programmation orientée objet (classes, héritage, encapsulation) en Python
+- Concevoir des algorithmes avancés (tri, recherche, récursivité) et estimer leur complexité
+- Modéliser des données avec le modèle relationnel et requêtes SQL de base
+- Comprendre l'architecture Web (HTML, CSS, JavaScript intro, HTTP)
+- Utiliser Git et méthodes de travail collaboratif (branches, merge)
+- Préparer l'enseignement de l'informatique au collège/lycée (Scratch, Python pédagogique)</p>
+<p><strong>Mode d'évaluation :</strong> TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</p>
+<p><strong>Bibliographie :</strong> Guttag — <em>Introduction to Computation and Programming Using Python</em> ; Lutz — <em>Learning Python</em></p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Définir une classe Python avec attributs et méthodes
+- Instancier des objets
+- Utiliser le constructeur <code>__init__</code>
+- Comprendre la différence entre classe et instance
+- Créer une classe simple adaptée à un contexte scolaire</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Paradigme procédural vs orienté objet</li>
+<li>Classe et objet : concepts fondamentaux</li>
+<li>Attributs et méthodes</li>
+<li>Constructeur <code>__init__</code></li>
+<li>Variables de classe vs d'instance</li>
+<li>Exemple : classe <code>Eleve</code></li>
+<li>Exemple : classe <code>Evaluation</code></li>
+</ol>
+<hr />
+<h2>1. Pourquoi la POO ? <em>(10 min)</em></h2>
+<p><strong>Programmation procédurale</strong> (ENS1) : fonctions + données séparées.
+<strong>Programmation orientée objet</strong> : regroupe données et comportement dans des <strong>objets</strong>.</p>
+<p><strong>Avantages :</strong>
+- Organisation naturelle (on pense en termes d'objets du monde réel)
+- Réutilisable (une classe = un moule à objets)
+- Maintenable (modifier une classe n'affecte pas le reste)
+- Extensible (héritage)</p>
+<p><strong>Exemple concret :</strong> dans la vie scolaire, on manipule des Élèves, des Enseignants, des Notes, des Classes — ce sont des objets.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Problème</span><span class="w"> </span><span class="n">réel</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">gestion</span><span class="w"> </span><span class="n">scolaire</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Identifier</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">objets</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="err">É</span><span class="n">lève</span><span class="p">,</span><span class="w"> </span><span class="n">Note</span><span class="p">,</span><span class="w"> </span><span class="n">Classe</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Définir</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">classes</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">attributs</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">méthodes</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Instancier</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">objets</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">{</span><span class="n">Objet</span><span class="w"> </span><span class="n">cohérent</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Réutiliser</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">dans</span><span class="w"> </span><span class="n">d</span><span class="s">&#39;autres contextes]</span>
+<span class="s">    E --&gt;|Non| B</span>
+<span class="s">    F --&gt; G[Maintenance&lt;br/&gt;et évolution]</span>
+</code></pre></div>
+
+<hr />
+<h2>2. Classe et objet <em>(15 min)</em></h2>
+<p><strong>Classe :</strong> modèle, plan de construction.
+<strong>Objet :</strong> réalisation concrète du modèle (instance).</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Définition de la classe</span>
+<span class="k">class</span> <span class="nc">Eleve</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Création d&#39;objets (instances)</span>
+<span class="n">eleve1</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">()</span>
+<span class="n">eleve2</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">eleve1</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;__main__.Eleve&#39;&gt;</span>
+</code></pre></div>
+
+<p>La classe est le moule ; l'objet est l'élément produit par ce moule.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">classDiagram</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">Eleve</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">+</span><span class="n">string</span><span class="w"> </span><span class="n">ecole</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">int</span><span class="w"> </span><span class="n">total_eleves</span>
+<span class="w">        </span><span class="o">+</span><span class="n">string</span><span class="w"> </span><span class="n">nom</span>
+<span class="w">        </span><span class="o">+</span><span class="nb nb-Type">int</span><span class="w"> </span><span class="n">age</span>
+<span class="w">        </span><span class="o">+</span><span class="n">__init__</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">)</span>
+<span class="w">        </span><span class="o">+</span><span class="n">se_presenter</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">EleveAvance</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">+</span><span class="n">list</span><span class="w"> </span><span class="n">notes</span>
+<span class="w">        </span><span class="o">+</span><span class="n">string</span><span class="w"> </span><span class="n">groupe</span>
+<span class="w">        </span><span class="o">+</span><span class="n">ajouter_note</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+<span class="w">        </span><span class="o">+</span><span class="n">moyenne</span><span class="p">()</span>
+<span class="w">        </span><span class="o">+</span><span class="n">afficher</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Eleve</span><span class="w"> </span><span class="o">&lt;|--</span><span class="w"> </span><span class="n">EleveAvance</span>
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Eleve</span><span class="w"> </span><span class="s2">&quot;Classe = plan de construction&quot;</span>
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">EleveAvance</span><span class="w"> </span><span class="s2">&quot;Objet = instance concrète&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2>3. Attributs et méthodes <em>(15 min)</em></h2>
+<p><strong>Attribut :</strong> variable attachée à un objet (son état).
+<strong>Méthode :</strong> fonction attachée à un objet (son comportement).</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Eleve</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>      <span class="c1"># Attribut d&#39;instance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">se_presenter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># Méthode</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Je m&#39;appelle </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et j&#39;ai </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> ans.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Utilisation</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">nom</span><span class="p">)</span>        <span class="c1"># Accès à l&#39;attribut</span>
+<span class="n">e</span><span class="o">.</span><span class="n">se_presenter</span><span class="p">()</span>    <span class="c1"># Appel de la méthode</span>
+</code></pre></div>
+
+<p><strong>Noter :</strong> <code>self</code> représente l'instance courante — c'est le premier paramètre de toute méthode.</p>
+<p><strong>Mini-exercice :</strong> Sans regarder la suite, ajoutez une méthode <code>est_majeur()</code> à la classe <code>Eleve</code> qui retourne <code>True</code> si l'âge est &gt;= 18 et <code>False</code> sinon. Testez-la avec <code>e = Eleve("Ali", 20)</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Solution</span>
+<span class="k">class</span> <span class="nc">Eleve</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+    <span class="k">def</span> <span class="nf">se_presenter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Je m&#39;appelle </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et j&#39;ai </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> ans.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">est_majeur</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span>
+
+<span class="c1"># Test</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">est_majeur</span><span class="p">())</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">est_majeur</span><span class="p">())</span>  <span class="c1"># False</span>
+</code></pre></div>
+
+<p><strong>Cas concret :</strong> Cette méthode <code>est_majeur()</code> correspond à une vérification que fait un enseignant pour savoir quels élèves peuvent participer à une sortie scolaire sans autorisation parentale supplémentaire.</p>
+<hr />
+<h2>4. Constructeur <code>__init__</code> <em>(15 min)</em></h2>
+<p>La méthode <code>__init__</code> est appelée automatiquement à la création de l'objet.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Evaluation</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matiere</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">coefficient</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matiere</span> <span class="o">=</span> <span class="n">matiere</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">=</span> <span class="n">note</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coefficient</span> <span class="o">=</span> <span class="n">coefficient</span>
+
+    <span class="k">def</span> <span class="nf">ponderer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">note</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefficient</span>
+
+<span class="c1"># Création</span>
+<span class="n">eval1</span> <span class="o">=</span> <span class="n">Evaluation</span><span class="p">(</span><span class="s2">&quot;Maths&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">eval2</span> <span class="o">=</span> <span class="n">Evaluation</span><span class="p">(</span><span class="s2">&quot;Français&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eval1</span><span class="o">.</span><span class="n">ponderer</span><span class="p">())</span>  <span class="c1"># 30</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eval2</span><span class="o">.</span><span class="n">ponderer</span><span class="p">())</span>  <span class="c1"># 12 (coefficient par défaut = 1)</span>
+</code></pre></div>
+
+<hr />
+<h2>5. Variables de classe <em>(10 min)</em></h2>
+<p>Attributs partagés par toutes les instances.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Eleve</span><span class="p">:</span>
+    <span class="n">ecole</span> <span class="o">=</span> <span class="s2">&quot;ENS Mostaganem&quot;</span>  <span class="c1"># Variable de classe</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>         <span class="c1"># Variable d&#39;instance</span>
+
+<span class="n">e1</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">)</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Sara&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e1</span><span class="o">.</span><span class="n">ecole</span><span class="p">)</span>   <span class="c1"># ENS Mostaganem</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e2</span><span class="o">.</span><span class="n">ecole</span><span class="p">)</span>   <span class="c1"># ENS Mostaganem</span>
+</code></pre></div>
+
+<p><strong>Utilité :</strong> constantes, compteurs, configuration partagée.</p>
+<hr />
+<h2>5bis. La méthode <code>__str__</code> pour l'affichage <em>(5 min)</em></h2>
+<p>La méthode <code>__str__</code> définit comment un objet est affiché avec <code>print()</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Eleve</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prenom</span> <span class="o">=</span> <span class="n">prenom</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Élève : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Ali&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>              <span class="c1"># Élève : Ali Belacel</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>         <span class="c1"># Idem</span>
+</code></pre></div>
+
+<p><strong>Utilité pédagogique :</strong> En classe, <code>__str__</code> permet d'afficher des objets de manière lisible — on évite le <code>&lt;__main__.Eleve object at 0x...&gt;</code> incompréhensible.</p>
+<hr />
+<h2>6. Exemple complet : classe <code>Eleve</code> <em>(20 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Eleve</span><span class="p">:</span>
+    <span class="n">ecole</span> <span class="o">=</span> <span class="s2">&quot;ENS Mostaganem&quot;</span>
+    <span class="n">total_eleves</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Compteur partagé</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">groupe</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prenom</span> <span class="o">=</span> <span class="n">prenom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">groupe</span> <span class="o">=</span> <span class="n">groupe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">Eleve</span><span class="o">.</span><span class="n">total_eleves</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">ajouter_note</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">note</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">note</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note invalide&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">moyenne</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span> <span class="nf">afficher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">groupe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Notes : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Moyenne : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">moyenne</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;ENS1-A&quot;</span><span class="p">)</span>
+<span class="n">e</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">e</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">e</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">e</span><span class="o">.</span><span class="n">afficher</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total élèves : </span><span class="si">{</span><span class="n">Eleve</span><span class="o">.</span><span class="n">total_eleves</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>6bis. Encapsulation et propriétés <em>(15 min)</em></h2>
+<p><strong>Principe :</strong> protéger les attributs en contrôlant leur accès avec des propriétés.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Note</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Attribut &quot;protégé&quot; (convention : _)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>  <span class="c1"># Passe par le setter</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">valeur</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valeur</span>
+
+    <span class="nd">@valeur</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">valeur</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_valeur</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;La note doit être entre 0 et 20&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">valeur</span><span class="p">)</span>    <span class="c1"># 15 (getter)</span>
+<span class="n">n</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="mi">18</span>      <span class="c1"># Setter</span>
+<span class="c1"># n.valeur = 25   # Déclenche ValueError</span>
+</code></pre></div>
+
+<p><strong>En contexte scolaire :</strong> L'encapsulation est comme un carnet de notes tenu par l'enseignant : on ne peut pas modifier une note sans respecter les règles (entre 0 et 20). Le décorateur <code>@property</code> est le "guichet" qui vérifie chaque modification.</p>
+<hr />
+<h2>7. Exercice guidé : classe <code>Matiere</code> <em>(10 min)</em></h2>
+<p>Créer une classe <code>Matiere</code> avec :
+- Attributs : <code>nom</code>, <code>coefficient</code>, <code>nb_heures</code>
+- Méthode <code>__init__</code> avec paramètres
+- Méthode <code>afficher()</code> qui affiche les informations
+- Méthode <code>est_importante()</code> qui retourne True si coefficient &gt; 2</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Matiere</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">coefficient</span><span class="p">,</span> <span class="n">nb_heures</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coefficient</span> <span class="o">=</span> <span class="n">coefficient</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_heures</span> <span class="o">=</span> <span class="n">nb_heures</span>
+
+    <span class="k">def</span> <span class="nf">afficher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> (coef </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">coefficient</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_heures</span><span class="si">}</span><span class="s2">h)&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">est_importante</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefficient</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</code></pre></div>
+
+<hr />
+<h2>7bis. Cas d'étude : Système de gestion de notes <em>(15 min)</em></h2>
+<p>Assemblons les concepts dans un exemple réaliste multi-classes :</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Matiere</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">coefficient</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coefficient</span> <span class="o">=</span> <span class="n">coefficient</span>
+
+<span class="k">class</span> <span class="nc">Note</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">matiere</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valeur</span> <span class="o">=</span> <span class="n">valeur</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matiere</span> <span class="o">=</span> <span class="n">matiere</span>
+
+<span class="k">class</span> <span class="nc">Eleve</span><span class="p">:</span>
+    <span class="n">ecole</span> <span class="o">=</span> <span class="s2">&quot;ENS Mostaganem&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prenom</span> <span class="o">=</span> <span class="n">prenom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">ajouter_note</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">,</span> <span class="n">matiere</span><span class="p">):</span>
+        <span class="n">note</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span> <span class="n">matiere</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">moyenne_generale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="n">total_pondere</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">valeur</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">matiere</span><span class="o">.</span><span class="n">coefficient</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">)</span>
+        <span class="n">total_coef</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">matiere</span><span class="o">.</span><span class="n">coefficient</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">total_pondere</span> <span class="o">/</span> <span class="n">total_coef</span> <span class="k">if</span> <span class="n">total_coef</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> — Moy : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">moyenne_generale</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Utilisation</span>
+<span class="n">maths</span> <span class="o">=</span> <span class="n">Matiere</span><span class="p">(</span><span class="s2">&quot;Maths&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">francais</span> <span class="o">=</span> <span class="n">Matiere</span><span class="p">(</span><span class="s2">&quot;Français&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ali</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Ali&quot;</span><span class="p">)</span>
+<span class="n">ali</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">maths</span><span class="p">)</span>
+<span class="n">ali</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">francais</span><span class="p">)</span>
+
+<span class="n">sara</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Benali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">)</span>
+<span class="n">sara</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">maths</span><span class="p">)</span>
+<span class="n">sara</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">francais</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ali</span><span class="p">)</span>   <span class="c1"># Ali Belacel — Moy : 13.80</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sara</span><span class="p">)</span>  <span class="c1"># Sara Benali — Moy : 16.40</span>
+</code></pre></div>
+
+<p><strong>Discussion :</strong> Cet exemple illustre la collaboration entre classes (<code>Eleve</code>, <code>Note</code>, <code>Matiere</code>). Chaque classe a une <strong>responsabilité unique</strong> (Single Responsibility Principle), ce qui rend le code maintenable et évolutif.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Utilisateur</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Eleve</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Note</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Matiere</span>
+
+<span class="w">    </span><span class="n">User</span><span class="o">-&gt;&gt;</span><span class="n">Eleve</span><span class="o">:</span><span class="w"> </span><span class="n">creer_eleve</span><span class="p">(</span><span class="s">&quot;Ali&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">User</span><span class="o">-&gt;&gt;</span><span class="n">Matiere</span><span class="o">:</span><span class="w"> </span><span class="n">creer_matiere</span><span class="p">(</span><span class="s">&quot;Maths&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="n">User</span><span class="o">-&gt;&gt;</span><span class="n">Eleve</span><span class="o">:</span><span class="w"> </span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">maths</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Eleve</span><span class="o">-&gt;&gt;</span><span class="n">Note</span><span class="o">:</span><span class="w"> </span><span class="n">creer</span><span class="w"> </span><span class="n">Note</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">maths</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Note</span><span class="o">--&gt;&gt;</span><span class="n">Eleve</span><span class="o">:</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="n">créée</span>
+<span class="w">    </span><span class="n">User</span><span class="o">-&gt;&gt;</span><span class="n">Eleve</span><span class="o">:</span><span class="w"> </span><span class="n">moyenne_generale</span><span class="p">()</span>
+<span class="w">    </span><span class="n">Eleve</span><span class="o">-&gt;&gt;</span><span class="n">Note</span><span class="o">:</span><span class="w"> </span><span class="n">accès</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">valeur</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">matiere</span><span class="p">.</span><span class="n">coefficient</span>
+<span class="w">    </span><span class="n">Note</span><span class="o">--&gt;&gt;</span><span class="n">Eleve</span><span class="o">:</span><span class="w"> </span><span class="n">données</span>
+<span class="w">    </span><span class="n">Eleve</span><span class="o">--&gt;&gt;</span><span class="n">User</span><span class="o">:</span><span class="w"> </span><span class="n">résultat</span><span class="w"> </span><span class="mf">15.0</span>
+</code></pre></div>
+
+<hr />
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Qu'est-ce qu'une classe en POO ?</strong>
+   a) Une variable globale  b) Un plan de construction pour créer des objets ✓  c) Une fonction spéciale</p>
+</li>
+<li>
+<p><strong>Quel mot-clé représente l'instance courante dans une méthode Python ?</strong>
+   a) this  b) self ✓  c) instance</p>
+</li>
+<li>
+<p><strong>La méthode <code>__init__</code> est :</strong>
+   a) Appelée manuellement par le programmeur  b) Appelée automatiquement à la création de l'objet ✓  c) Optionnelle pour toute classe</p>
+</li>
+<li>
+<p><strong>Quelle est la différence entre variable de classe et variable d'instance ?</strong>
+   a) La variable de classe est partagée par toutes les instances ✓  b) La variable d'instance est partagée  c) Il n'y a pas de différence</p>
+</li>
+<li>
+<p><strong>Que retourne <code>Eleve.total_eleves</code> dans l'exemple du cours ?</strong>
+   a) Le nombre de méthodes de la classe  b) Le nombre total d'instances créées ✓  c) Le nom de l'école</p>
+</li>
+<li>
+<p><strong>Quelle méthode spéciale permet d'afficher un objet avec <code>print()</code> ?</strong>
+   a) <code>__init__</code>  b) <code>__str__</code> ✓  c) <code>__repr__</code></p>
+</li>
+<li>
+<p><strong>À quoi sert le décorateur <code>@property</code> en Python ?</strong>
+   a) À définir une variable de classe  b) À créer un getter avec contrôle ✓  c) À initialiser un objet</p>
+</li>
+<li>
+<p><strong>Quel nom reçoit le principe qu'une classe ait une responsabilité unique ?</strong>
+   a) DRY  b) SRP (Single Responsibility Principle) ✓  c) KISS</p>
+</li>
+</ol>
+<hr />
+<h2>8. Conclusion <em>(5 min)</em></h2>
+<p>La POO organise le code autour d'objets qui encapsulent données et comportement. Les classes sont réutilisables et faciles à maintenir.</p>
+<p><strong>Prochain cours :</strong> Héritage et polymorphisme en Python.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> La notion d'objet peut être introduite dès le collège sans ordinateur par une activité débranchée : chaque élève reçoit une fiche "être vivant" avec des cases à remplir (nom, âge, couleur). La fiche vierge est la <strong>classe</strong>, la fiche remplie est l'<strong>objet</strong>. En NSI Première, on peut montrer que la classe <code>Eleve</code> du cours est similaire à un modèle de fiche élève qu'ils remplissent chaque année. Le parallèle avec le tableur (ligne = objet, colonne = attribut) facilite la compréhension.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Lors de la correction des TP, insistez sur la distinction classe/instance : beaucoup d'étudiants confondent <code>Eleve</code> (la classe) et <code>e</code> (l'instance). Un exercice efficace consiste à demander "Quel est le type de <code>e</code> ?" et "Quel est le type de <code>Eleve</code> ?". Proposez également un exercice où les étudiants doivent ajouter un attribut <code>date_naissance</code> et une méthode <code>age()</code> pour consolider la compréhension.</p>
+<p><strong>Évaluation formative :</strong> Proposez un défi codé en 10 minutes : "Créez une classe <code>Calculatrice</code> avec des méthodes <code>addition</code>, <code>soustraction</code>, <code>multiplication</code>, <code>division</code> (gérer la division par zéro)". Cela teste la compréhension des méthodes, des paramètres et du retour de valeur.</p>
+<p><strong>Prolongement :</strong> Les étudiants peuvent créer une classe <code>SalleDeClasse</code> qui contient une liste d'objets <code>Eleve</code> et des méthodes pour calculer la moyenne de la classe, lister les élèves par groupe, ou exporter les données au format CSV. Ce mini-projet prépare le projet intégré de fin de module.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

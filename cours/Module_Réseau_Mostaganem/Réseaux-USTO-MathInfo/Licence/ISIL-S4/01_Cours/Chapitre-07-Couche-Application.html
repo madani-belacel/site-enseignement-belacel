@@ -1,0 +1,953 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 07 — Couche Application : DNS, HTTP et services — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 07 — Couche Application : DNS, HTTP et services</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Exemple** : L'utilisateur tape `www.univ-mosta.dz` dans son navigateur.</li><li>**HTTP** (RFC 7230) : protocole de transfert de documents hypertexte (pages web).</li><li>**Scénario complet** : L'étudiant ouvre `https://www.univ-mosta.dz`</li></ul></div>
+    <h1>Chapitre 07 — Couche Application : DNS, HTTP et services</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>UEF422 — Réseaux</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM (+ 2 h TD associé)</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>07 / 08</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[KR] Ch. 2 ; [FO] Ch. 25–32 ; RFC 1035, RFC 7230</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs du chapitre</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li>Décrire le <strong>modèle client-serveur</strong> et le modèle <strong>P2P</strong>.</li>
+<li>Expliquer le fonctionnement du <strong>DNS</strong> (résolution de noms).</li>
+<li>Décrire le protocole <strong>HTTP/HTTPS</strong> et le cycle requête/réponse.</li>
+<li>Identifier les protocoles <strong>FTP, SMTP, DHCP</strong> (aperçu).</li>
+<li>Comprendre le rôle de <strong>TLS/SSL</strong> dans HTTPS.</li>
+</ol>
+<hr />
+<h2>Plan du chapitre</h2>
+<ol>
+<li>Rôle de la couche Application</li>
+<li>Modèles architecturaux</li>
+<li>DNS — Domain Name System</li>
+<li>HTTP et HTTPS</li>
+<li>Autres protocoles applicatifs</li>
+<li>Exemples concrets (Wireshark)</li>
+<li>Exercices et QCM</li>
+</ol>
+<hr />
+<h2>1. Rôle de la couche Application</h2>
+<p>La couche <strong>Application (Layer 7)</strong> est la couche la plus proche de l'<strong>utilisateur</strong>. Elle fournit des <strong>services réseau</strong> aux applications :</p>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interface utilisateur</strong></td>
+<td>Accès aux services réseau (navigateur, client email)</td>
+</tr>
+<tr>
+<td><strong>Protocoles applicatifs</strong></td>
+<td>HTTP, DNS, FTP, SMTP, SSH…</td>
+</tr>
+<tr>
+<td><strong>Format des messages</strong></td>
+<td>Structure des requêtes et réponses</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>C'est la couche visible pour l'utilisateur final.</p>
+</blockquote>
+<hr />
+<h2>2. Modèles architecturaux</h2>
+<h3>2.1 Client-Serveur</h3>
+<div class="codehilite"><pre><span></span><code>┌──────────┐                    ┌──────────┐
+│  Client  │───── Requête ─────→│  Serveur │
+│ (Browser)│←──── Réponse ──────│  (Web)   │
+└──────────┘                    └──────────┘
+   1 client                      1 serveur
+                                  N clients
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serveur</td>
+<td>Toujours actif, IP fixe, haute capacité</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>Initie les requêtes, IP dynamique</td>
+</tr>
+<tr>
+<td>Exemples</td>
+<td>Web (HTTP), Email (SMTP), FTP</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Pair-à-pair (P2P)</h3>
+<div class="codehilite"><pre><span></span><code>┌──────────┐                    ┌──────────┐
+│  Peer A  │←──────────────────→│  Peer B  │
+│(client + │                    │(client + │
+│ serveur) │←──────────────────→│ serveur) │
+└──────────┘                    └──────────┘
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scalabilité</td>
+<td>Chaque peer ajoute de la capacité</td>
+</tr>
+<tr>
+<td>Exemples</td>
+<td>BitTorrent, blockchain</td>
+</tr>
+<tr>
+<td>Inconvénient</td>
+<td>Gestion de la disponibilité</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. DNS — Domain Name System</h2>
+<h3>3.1 Problème résolu</h3>
+<p>Les humains préfèrent les <strong>noms</strong> (<code>www.univ-mosta.dz</code>), les machines utilisent les <strong>adresses IP</strong> (<code>41.107.x.x</code>). Le <strong>DNS</strong> traduit un nom de domaine en adresse IP.</p>
+<h3>3.2 Hiérarchie DNS</h3>
+<div class="codehilite"><pre><span></span><code>                    ┌─────────────┐
+                    │ Root Servers│  (. )
+                    └──────┬──────┘
+              ┌────────────┼────────────┐
+         ┌────┴────┐  ┌────┴────┐  ┌──┴──────┐
+         │  .dz    │  │  .com   │  │  .org   │  TLD
+         └────┬────┘  └────┬────┘  └─────────┘
+         ┌────┴────┐  ┌────┴────┐
+         │ univ-mosta.dz │  │google.com│             Domaine
+         └────┬────┘  └─────────┘
+    ┌─────────┼─────────┐
+ www.usto  mail.usto  ftp.usto                  Sous-domaines
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Exemple</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Root</strong> (.)</td>
+<td>13 serveurs racine</td>
+<td>Point de départ</td>
+</tr>
+<tr>
+<td><strong>TLD</strong> (Top-Level Domain)</td>
+<td>.dz, .com, .org, .edu</td>
+<td>Par pays/organisation</td>
+</tr>
+<tr>
+<td><strong>Domaine</strong></td>
+<td>univ-mosta.dz, google.com</td>
+<td>Organisation</td>
+</tr>
+<tr>
+<td><strong>Sous-domaine</strong></td>
+<td>www.univ-mosta.dz, mail.google.com</td>
+<td>Services</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Types d'enregistrements DNS</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Nom</th>
+<th>Contenu</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>Address</td>
+<td>IPv4</td>
+<td><code>www.univ-mosta.dz → 41.107.x.x</code></td>
+</tr>
+<tr>
+<td><strong>AAAA</strong></td>
+<td>Address</td>
+<td>IPv6</td>
+<td><code>www.univ-mosta.dz → 2001:db8::1</code></td>
+</tr>
+<tr>
+<td><strong>CNAME</strong></td>
+<td>Canonical Name</td>
+<td>Alias → autre nom</td>
+<td><code>ftp.univ-mosta.dz → www.univ-mosta.dz</code></td>
+</tr>
+<tr>
+<td><strong>MX</strong></td>
+<td>Mail Exchange</td>
+<td>Serveur mail + priorité</td>
+<td>Email entrant</td>
+</tr>
+<tr>
+<td><strong>NS</strong></td>
+<td>Name Server</td>
+<td>Serveur DNS autoritaire</td>
+<td>Délégation</td>
+</tr>
+<tr>
+<td><strong>TXT</strong></td>
+<td>Text</td>
+<td>Texte libre</td>
+<td>SPF, vérification</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Processus de résolution (récursive)</h3>
+<p><strong>Exemple</strong> : L'utilisateur tape <code>www.univ-mosta.dz</code> dans son navigateur.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="n">Client</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">LR</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Resolver</span><span class="w"> </span><span class="kr">local</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">RS</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Root</span><span class="w"> </span><span class="n">DNS</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">TD</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="p">.</span><span class="n">dz</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">AD</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">univ</span><span class="o">-</span><span class="n">mosta</span><span class="p">.</span><span class="n">dz</span>
+
+<span class="w">    </span><span class="n">PC</span><span class="o">-&gt;&gt;</span><span class="n">LR</span><span class="o">:</span><span class="w"> </span><span class="n">www</span><span class="p">.</span><span class="n">univ</span><span class="o">-</span><span class="n">mosta</span><span class="p">.</span><span class="n">dz</span><span class="w"> </span><span class="o">?</span>
+<span class="w">    </span><span class="n">LR</span><span class="o">-&gt;&gt;</span><span class="n">RS</span><span class="o">:</span><span class="w"> </span><span class="n">Où</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="p">.</span><span class="n">dz</span><span class="w"> </span><span class="o">?</span>
+<span class="w">    </span><span class="n">RS</span><span class="o">-&gt;&gt;</span><span class="n">LR</span><span class="o">:</span><span class="w"> </span><span class="n">Demandez</span><span class="w"> </span><span class="n">au</span><span class="w"> </span><span class="n">TLD</span><span class="w"> </span><span class="p">.</span><span class="n">dz</span>
+<span class="w">    </span><span class="n">LR</span><span class="o">-&gt;&gt;</span><span class="n">TD</span><span class="o">:</span><span class="w"> </span><span class="n">Où</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">univ</span><span class="o">-</span><span class="n">mosta</span><span class="p">.</span><span class="n">dz</span><span class="w"> </span><span class="o">?</span>
+<span class="w">    </span><span class="n">TD</span><span class="o">-&gt;&gt;</span><span class="n">LR</span><span class="o">:</span><span class="w"> </span><span class="n">Demandez</span><span class="w"> </span><span class="n">au</span><span class="w"> </span><span class="n">NS</span><span class="w"> </span><span class="n">univ</span><span class="o">-</span><span class="n">mosta</span><span class="p">.</span><span class="n">dz</span>
+<span class="w">    </span><span class="n">LR</span><span class="o">-&gt;&gt;</span><span class="n">AD</span><span class="o">:</span><span class="w"> </span><span class="n">Où</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">www</span><span class="p">.</span><span class="n">univ</span><span class="o">-</span><span class="n">mosta</span><span class="p">.</span><span class="n">dz</span><span class="w"> </span><span class="o">?</span>
+<span class="w">    </span><span class="n">AD</span><span class="o">-&gt;&gt;</span><span class="n">LR</span><span class="o">:</span><span class="w"> </span><span class="mf">41.107</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">x</span>
+<span class="w">    </span><span class="n">LR</span><span class="o">-&gt;&gt;</span><span class="n">PC</span><span class="o">:</span><span class="w"> </span><span class="mf">41.107</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">x</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Le PC consulte son <strong>résolveur local</strong> (configuré via DHCP ou manuellement : 8.8.8.8, DNS FAI)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Le résolveur interroge un <strong>serveur racine</strong> → renvoie vers le TLD <code>.dz</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Interroge le TLD <code>.dz</code> → renvoie vers le NS de <code>univ-mosta.dz</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Interroge le serveur autoritaire <code>univ-mosta.dz</code> → obtient l'enregistrement <strong>A</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Réponse mise en <strong>cache</strong> (TTL)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.5 Commandes utiles</h3>
+<div class="codehilite"><pre><span></span><code>nslookup<span class="w"> </span>www.univ-mosta.dz<span class="w">       </span><span class="c1"># Windows/Linux — requête DNS</span>
+dig<span class="w"> </span>www.univ-mosta.dz<span class="w">            </span><span class="c1"># Linux — requête détaillée</span>
+ipconfig<span class="w"> </span>/displaydns<span class="w">       </span><span class="c1"># Windows — cache DNS local</span>
+</code></pre></div>
+
+<p><img alt="Résolution DNS" src="../../../Ressources-Communes/Images-Schemas/DNS/resolution-dns-hierarchie.png" /></p>
+<hr />
+<h2>4. HTTP et HTTPS</h2>
+<h3>4.1 HTTP — HyperText Transfer Protocol</h3>
+<p><strong>HTTP</strong> (RFC 7230) : protocole de transfert de documents hypertexte (pages web).</p>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port</td>
+<td><strong>80</strong> (TCP)</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>Client-Serveur, requête/réponse</td>
+</tr>
+<tr>
+<td>Format</td>
+<td><strong>ASCII</strong> (texte lisible)</td>
+</tr>
+<tr>
+<td>État</td>
+<td><strong>Stateless</strong> (sans état — chaque requête est indépendante)</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Format d'une requête HTTP</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/index.html</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">www.univ-mosta.dz</span>
+<span class="na">User-Agent</span><span class="o">:</span> <span class="l">Mozilla/5.0</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">text/html</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">keep-alive</span>
+
+(ligne vide = fin de l&#39;en-tête)
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Action</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GET</strong></td>
+<td>Lire une ressource</td>
+<td>Charger une page</td>
+</tr>
+<tr>
+<td><strong>POST</strong></td>
+<td>Envoyer des données</td>
+<td>Formulaire de connexion</td>
+</tr>
+<tr>
+<td><strong>PUT</strong></td>
+<td>Créer/modifier une ressource</td>
+<td>Upload API</td>
+</tr>
+<tr>
+<td><strong>DELETE</strong></td>
+<td>Supprimer une ressource</td>
+<td>Supprimer un fichier</td>
+</tr>
+<tr>
+<td><strong>HEAD</strong></td>
+<td>GET sans le corps</td>
+<td>Vérifier l'existence</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 Format d'une réponse HTTP</h3>
+<div class="codehilite"><pre><span></span><code><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/html; charset=UTF-8</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">1234</span>
+<span class="na">Date</span><span class="o">:</span> <span class="l">Mon, 06 Jun 2025 10:00:00 GMT</span>
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>...
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Signification</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>OK</td>
+<td>Succès</td>
+</tr>
+<tr>
+<td><strong>301</strong></td>
+<td>Moved Permanently</td>
+<td>Redirection permanente</td>
+</tr>
+<tr>
+<td><strong>302</strong></td>
+<td>Found</td>
+<td>Redirection temporaire</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Bad Request</td>
+<td>Requête mal formée</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Unauthorized</td>
+<td>Authentification requise</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>Forbidden</td>
+<td>Accès interdit</td>
+</tr>
+<tr>
+<td><strong>404</strong></td>
+<td>Not Found</td>
+<td>Ressource introuvable</td>
+</tr>
+<tr>
+<td><strong>500</strong></td>
+<td>Internal Server Error</td>
+<td>Erreur serveur</td>
+</tr>
+<tr>
+<td><strong>503</strong></td>
+<td>Service Unavailable</td>
+<td>Serveur surchargé</td>
+</tr>
+</tbody>
+</table>
+<h3>4.4 HTTPS — HTTP Secure</h3>
+<p><strong>HTTPS</strong> = HTTP + <strong>TLS/SSL</strong> (chiffrement)</p>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port</td>
+<td><strong>443</strong> (TCP)</td>
+</tr>
+<tr>
+<td>Sécurité</td>
+<td>Chiffrement, authentification du serveur (certificat)</td>
+</tr>
+<tr>
+<td>Certificat</td>
+<td>Émis par une <strong>Autorité de Certification</strong> (CA)</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">Client</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="p">[</span><span class="n">TLS</span><span class="w"> </span><span class="n">Handshake</span><span class="p">]</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="n">Serveur</span>
+<span class="w">         </span><span class="err">←──</span><span class="w"> </span><span class="n">Certificat</span><span class="w"> </span><span class="err">────</span>
+<span class="w">         </span><span class="err">──→</span><span class="w"> </span><span class="n">Session</span><span class="w"> </span><span class="n">chiffrée</span><span class="w"> </span><span class="err">──→</span>
+<span class="w">         </span><span class="err">←──</span><span class="w"> </span><span class="n">HTTP</span><span class="w"> </span><span class="n">chiffré</span><span class="w"> </span><span class="err">──────</span>
+</code></pre></div>
+
+<h3>4.5 HTTP/1.1 vs HTTP/2 (aperçu)</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>HTTP/1.1</th>
+<th>HTTP/2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connexions</td>
+<td>1 requête/connexion (ou keep-alive)</td>
+<td><strong>Multiplexage</strong> sur 1 connexion</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Texte ASCII</td>
+<td>Binaire</td>
+</tr>
+<tr>
+<td>Compression en-têtes</td>
+<td>Non</td>
+<td><strong>HPACK</strong></td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Bonne</td>
+<td>Meilleure</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Autres protocoles applicatifs</h2>
+<h3>5.1 FTP — File Transfer Protocol</h3>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ports</td>
+<td><strong>21</strong> (contrôle, TCP), <strong>20</strong> (données, TCP)</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>Client-Serveur</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>Transfert de fichiers (legacy, remplacé par SFTP/SCP)</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 SMTP — Simple Mail Transfer Protocol</h3>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port</td>
+<td><strong>25</strong> (TCP), <strong>587</strong> (soumission, TLS)</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td><strong>Envoi</strong> d'emails entre serveurs</td>
+</tr>
+<tr>
+<td>Complément</td>
+<td><strong>POP3</strong> (110) / <strong>IMAP</strong> (143) pour la <strong>réception</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Expéditeur ──SMTP──→ Serveur mail ──SMTP──→ Serveur destinataire
+                                              │
+Destinataire ←─POP3/IMAP──────────────────────┘
+</code></pre></div>
+
+<h3>5.3 DHCP — Dynamic Host Configuration Protocol</h3>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port</td>
+<td><strong>67</strong> (serveur, UDP), <strong>68</strong> (client, UDP)</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>Attribution <strong>automatique</strong> d'adresse IP, masque, passerelle, DNS</td>
+</tr>
+<tr>
+<td>Processus</td>
+<td><strong>DORA</strong> : Discover → Offer → Request → Acknowledge</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>PC (0.0.0.0) ──Discover (broadcast)──→ Serveur DHCP
+PC ──Request──→ Serveur DHCP
+PC ←──Ack (IP: 192.168.1.50, GW: 192.168.1.1, DNS: 8.8.8.8)── Serveur
+</code></pre></div>
+
+<h3>5.4 SSH — Secure Shell</h3>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port</td>
+<td><strong>22</strong> (TCP)</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>Accès <strong>sécurisé</strong> à distance (terminal chiffré)</td>
+</tr>
+<tr>
+<td>Remplace</td>
+<td>Telnet (23) — non chiffré, obsolète</td>
+</tr>
+</tbody>
+</table>
+<h3>5.5 Tableau récapitulatif</h3>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Port</th>
+<th>Transport</th>
+<th>Fonction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DNS</td>
+<td>53</td>
+<td>UDP/TCP</td>
+<td>Résolution de noms</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>80</td>
+<td>TCP</td>
+<td>Web</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>443</td>
+<td>TCP</td>
+<td>Web sécurisé</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>20/21</td>
+<td>TCP</td>
+<td>Transfert fichiers</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>25</td>
+<td>TCP</td>
+<td>Envoi email</td>
+</tr>
+<tr>
+<td>POP3</td>
+<td>110</td>
+<td>TCP</td>
+<td>Réception email</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>67/68</td>
+<td>UDP</td>
+<td>Configuration IP</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>22</td>
+<td>TCP</td>
+<td>Terminal sécurisé</td>
+</tr>
+<tr>
+<td>Telnet</td>
+<td>23</td>
+<td>TCP</td>
+<td>Terminal (obsolète)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Exemple concret : accès à un site web</h2>
+<p><strong>Scénario complet</strong> : L'étudiant ouvre <code>https://www.univ-mosta.dz</code></p>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Couche</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Application</td>
+<td>Navigateur parse l'URL</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Application</td>
+<td><strong>DNS</strong> : résout <code>www.univ-mosta.dz</code> → <code>41.107.x.x</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Transport</td>
+<td><strong>TCP</strong> handshake vers port <strong>443</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Présentation</td>
+<td><strong>TLS</strong> handshake, vérification certificat</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Application</td>
+<td><strong>HTTP</strong> GET <code>/</code> via tunnel TLS</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Transport</td>
+<td>Segments TCP</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Réseau</td>
+<td>Paquets IP vers <code>41.107.x.x</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Liaison</td>
+<td>Trames Ethernet</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Physique</td>
+<td>Bits sur le média</td>
+</tr>
+<tr>
+<td>10</td>
+<td>← Retour</td>
+<td>HTML/CSS/JS reçu et affiché</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Exercices et QCM</h2>
+<h3>Exercice 1</h3>
+<p>Classer par ordre chronologique les messages lors d'un accès HTTP :</p>
+<ul>
+<li>[ ] TCP SYN</li>
+<li>[ ] DNS Query</li>
+<li>[ ] HTTP GET</li>
+<li>[ ] TCP SYN-ACK</li>
+<li>[ ] DNS Response</li>
+<li>[ ] HTTP 200 OK</li>
+<li>[ ] TCP ACK</li>
+</ul>
+<details>
+<summary>Solution</summary>
+
+1. DNS Query → 2. DNS Response → 3. TCP SYN → 4. TCP SYN-ACK → 5. TCP ACK → 6. HTTP GET → 7. HTTP 200 OK
+</details>
+
+<h3>QCM</h3>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DNS traduit…</td>
+<td>IP → MAC</td>
+<td>Nom → IP</td>
+<td>IP → Port</td>
+<td>MAC → IP</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Le port HTTP est…</td>
+<td>53</td>
+<td>80</td>
+<td>443</td>
+<td>22</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>HTTP est…</td>
+<td>Stateful</td>
+<td>Stateless</td>
+<td>Sans connexion</td>
+<td>Couche 4</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Le code 404 signifie…</td>
+<td>OK</td>
+<td>Redirection</td>
+<td>Non trouvé</td>
+<td>Erreur serveur</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>HTTPS utilise le port…</td>
+<td>80</td>
+<td>443</td>
+<td>8080</td>
+<td>8443</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>SMTP sert à…</td>
+<td>Recevoir email</td>
+<td>Envoyer email</td>
+<td>Résoudre DNS</td>
+<td>Transférer fichiers</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>DHCP utilise…</td>
+<td>TCP</td>
+<td>UDP</td>
+<td>ICMP</td>
+<td>ARP</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Un enregistrement DNS de type A contient…</td>
+<td>Une adresse IPv4</td>
+<td>Un alias</td>
+<td>Un serveur mail</td>
+<td>Un texte</td>
+<td><strong>a</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Le TLD de <code>www.univ-mosta.dz</code> est…</td>
+<td>www</td>
+<td>usto</td>
+<td>dz</td>
+<td>.</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>TLS/SSL assure…</td>
+<td>Le routage</td>
+<td>Le chiffrement</td>
+<td>L'adressage MAC</td>
+<td>La commutation</td>
+<td><strong>b</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Kurose &amp; Ross</strong> [KR], Chapitre 2 — <em>Application Layer</em></li>
+<li><strong>Forouzan</strong> [FO], Chapitres 25–32 — <em>DNS, HTTP, FTP, SMTP</em></li>
+<li><strong>RFC 1035</strong> — Domain Names (DNS)</li>
+<li><strong>RFC 7230</strong> — HTTP/1.1</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : TP 5 Wireshark : capturer DNS + HTTP/HTTPS. Montrer <code>nslookup</code> et les codes HTTP avec un navigateur (F12 → Network). TD 7 : exercices DNS et HTTP.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

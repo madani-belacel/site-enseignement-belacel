@@ -1,0 +1,563 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD Informatique — ENS 1ère année — Séance 10 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TD Informatique — ENS 1ère année — Séance 10 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Créer un script `file_attente.py` qui implémente une classe `File` avec :</li><li>**Corrigé :**</li><li>**Énoncé :** Créer un script `rpn.py` qui évalue une expression en notation polonaise inversée (NPI/RPN) en utilisant une pile.</li><li>**Principe :** L'opérateur suit ses opérandes. Exemple : `3 4 +` = 3 + 4 = 7</li><li>**Exemples :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_FR_10.pdf</code></p>
+</blockquote>
+<h1>TD Informatique — ENS 1ère année — Séance 10 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de cette séance de TD, l'étudiant est capable de :
+- Implémenter une file (FIFO) en Python avec une classe
+- Résoudre des problèmes algorithmiques utilisant files et piles
+- Manipuler des dictionnaires et des structures de données imbriquées
+- Implémenter un algorithme de parcours en largeur (BFS) simple
+- Appliquer les structures de données à des problèmes concrets</p>
+<hr />
+<h2>Plan du TD</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — File d'attente</td>
+<td>20 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Expression RPN (pile)</td>
+<td>20 min</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — BFS (file + graphe)</td>
+<td>20 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Dictionnaires étudiants</td>
+<td>15 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Compression RLE</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Évaluation d'expression en notation polonaise inversée (RPN)</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Expression</span><span class="w"> </span><span class="n">RPN</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Séparer</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">éléments</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="p">[</span><span class="sc">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="p">]]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Pile</span><span class="w"> </span><span class="n">initiale</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">[]]</span>
+
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D1</span><span class="p">{</span><span class="n">Lire</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D1</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Nombre</span><span class="o">|</span><span class="w"> </span><span class="n">E1</span><span class="p">[</span><span class="n">Empiler</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">{</span><span class="n">Lire</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D2</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Nombre</span><span class="o">|</span><span class="w"> </span><span class="n">E2</span><span class="p">[</span><span class="n">Empiler</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span><span class="p">{</span><span class="n">Lire</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Nombre</span><span class="o">|</span><span class="w"> </span><span class="n">E3</span><span class="p">[</span><span class="n">Empiler</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D4</span><span class="p">{</span><span class="n">Lire</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Opérateur</span><span class="o">|</span><span class="w"> </span><span class="n">F4</span><span class="p">[</span><span class="n">Dépiler</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G4</span><span class="p">[</span><span class="n">Calculer</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H4</span><span class="p">[</span><span class="n">Empiler</span><span class="w"> </span><span class="mi">11</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D5</span><span class="p">{</span><span class="n">Lire</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D5</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Opérateur</span><span class="o">|</span><span class="w"> </span><span class="n">F5</span><span class="p">[</span><span class="n">Dépiler</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G5</span><span class="p">[</span><span class="n">Calculer</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-6</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H5</span><span class="p">[</span><span class="n">Empiler</span><span class="w"> </span><span class="mi">-6</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Résultat</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">-6</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G4</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H4</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+</code></pre></div>
+
+<h2>Parcours en largeur (BFS) d'un graphe</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">ENTREE</span><span class="p">[</span><span class="s">&quot;Entrée&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">HALL</span><span class="p">[</span><span class="s">&quot;Hall&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE1</span><span class="p">[</span><span class="s">&quot;Salle 1&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">CDI</span><span class="p">[</span><span class="s">&quot;CDI&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BUREAU</span><span class="p">[</span><span class="s">&quot;Bureau&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">CDI</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE2</span><span class="p">[</span><span class="s">&quot;Salle 2&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BUREAU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE3</span><span class="p">[</span><span class="s">&quot;Salle 3&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">SALLE1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE2</span>
+<span class="w">    </span><span class="n">SALLE2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE3</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ENTREE</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HALL</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">SALLE1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CDI</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BUREAU</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">SALLE2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">SALLE3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 1 — Classe File d'attente <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>file_attente.py</code> qui implémente une classe <code>File</code> avec :
+1. Les méthodes <code>enfiler()</code>, <code>defiler()</code>, <code>tete()</code>, <code>est_vide()</code>, <code>taille()</code>
+2. Une méthode <code>afficher()</code> qui montre l'état de la file
+3. Un test avec une simulation de guichet : des clients arrivent et sont servis</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">class</span> <span class="nc">File</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Implémentation d&#39;une file FIFO.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">enfiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">defiler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">tete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">taille</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">afficher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File : </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span><span class="si">}</span><span class="s2"> (tête → </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tete</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">taille</span><span class="p">()</span><span class="si">}</span><span class="s2"> client(s))&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simulation de guichet</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Simulation de guichet ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="p">()</span>
+
+<span class="c1"># Arrivée des clients</span>
+<span class="k">for</span> <span class="n">nom</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;Mohamed&quot;</span><span class="p">,</span> <span class="s2">&quot;Leila&quot;</span><span class="p">,</span> <span class="s2">&quot;Ahmed&quot;</span><span class="p">]:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">enfiler</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✓ </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2"> arrive dans la file.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">État initial :&quot;</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">afficher</span><span class="p">()</span>
+
+<span class="c1"># Service</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Service en cours :&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">defiler</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;→ Service de </span><span class="si">{</span><span class="n">client</span><span class="si">}</span><span class="s2"> terminé.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Prochain client : </span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">tete</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✓ Tous les clients ont été servis.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — Évaluation d'expression postfixée (RPN) <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>rpn.py</code> qui évalue une expression en notation polonaise inversée (NPI/RPN) en utilisant une pile.</p>
+<p><strong>Principe :</strong> L'opérateur suit ses opérandes. Exemple : <code>3 4 +</code> = 3 + 4 = 7</p>
+<p><strong>Exemples :</strong>
+- <code>3 4 +</code> → 7
+- <code>5 3 8 + -</code> → 5 - (3 + 8) = -6
+- <code>10 4 2 + *</code> → 10 × (4 + 2) = 60</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluer_rpn</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Évalue une expression en notation polonaise inversée.&quot;&quot;&quot;</span>
+    <span class="n">pile</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">operateurs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;+&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span>
+        <span class="s2">&quot;-&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span>
+        <span class="s2">&quot;*&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span>
+        <span class="s2">&quot;/&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span> <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">}</span>
+
+    <span class="n">elements</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">operateurs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pile</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Erreur : pas assez d&#39;opérandes&quot;</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">pile</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">pile</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">resultat</span> <span class="o">=</span> <span class="n">operateurs</span><span class="p">[</span><span class="n">elem</span><span class="p">](</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">resultat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Erreur : division par zéro&quot;</span>
+            <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resultat</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Erreur : élément invalide &#39;</span><span class="si">{</span><span class="n">elem</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pile</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Erreur : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">pile</span><span class="p">)</span><span class="si">}</span><span class="s2"> résultats au lieu de 1&quot;</span>
+    <span class="k">return</span> <span class="n">pile</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Tests</span>
+<span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;3 4 +&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5 3 8 + -&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10 4 2 + *&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;15 7 1 1 + - / 3 * 2 1 1 + + -&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4 0 /&quot;</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">expressions</span><span class="p">:</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="n">evaluer_rpn</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">expr</span><span class="si">:</span><span class="s2">30s</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">resultat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Parcours en largeur d'un graphe (BFS) <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>bfs.py</code> qui implémente un parcours en largeur (Breadth-First Search) en utilisant une file. Le graphe représente le plan d'une école : chaque pièce est reliée à d'autres par des couloirs.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">ENTREE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">HALL</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE1</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">CDI</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BUREAU</span>
+<span class="w">    </span><span class="n">CDI</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE2</span>
+<span class="w">    </span><span class="n">BUREAU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE3</span>
+<span class="w">    </span><span class="n">SALLE1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE2</span>
+<span class="w">    </span><span class="n">SALLE2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SALLE3</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">graphe</span><span class="p">,</span> <span class="n">depart</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parcours en largeur à partir d&#39;un nœud.&quot;&quot;&quot;</span>
+    <span class="n">visites</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+    <span class="n">ordre</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">depart</span><span class="p">)</span>
+    <span class="n">visites</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">depart</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parcours en largeur depuis &#39;</span><span class="si">{</span><span class="n">depart</span><span class="si">}</span><span class="s2">&#39; :&quot;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">courant</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="n">ordre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">courant</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Visite : </span><span class="si">{</span><span class="n">courant</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">voisin</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">graphe</span><span class="p">[</span><span class="n">courant</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">voisin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visites</span><span class="p">:</span>
+                <span class="n">visites</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">voisin</span><span class="p">)</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">voisin</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ordre</span>
+
+<span class="c1"># Graphe : plan de l&#39;école</span>
+<span class="n">ecole</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Entrée&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hall&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Hall&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Entrée&quot;</span><span class="p">,</span> <span class="s2">&quot;Salle1&quot;</span><span class="p">,</span> <span class="s2">&quot;CDI&quot;</span><span class="p">,</span> <span class="s2">&quot;Bureau&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Salle1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hall&quot;</span><span class="p">,</span> <span class="s2">&quot;Salle2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Salle2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CDI&quot;</span><span class="p">,</span> <span class="s2">&quot;Salle1&quot;</span><span class="p">,</span> <span class="s2">&quot;Salle3&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Salle3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Bureau&quot;</span><span class="p">,</span> <span class="s2">&quot;Salle2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;CDI&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hall&quot;</span><span class="p">,</span> <span class="s2">&quot;Salle2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Bureau&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hall&quot;</span><span class="p">,</span> <span class="s2">&quot;Salle3&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">ordre_visite</span> <span class="o">=</span> <span class="n">bfs</span><span class="p">(</span><span class="n">ecole</span><span class="p">,</span> <span class="s2">&quot;Entrée&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ordre de visite : </span><span class="si">{</span><span class="s1">&#39; → &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ordre_visite</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Question : quelle est la distance (nombre de portes) entre l&#39;entrée et la salle 3 ?</span>
+<span class="c1"># Réponse : Entrée → Hall → Bureau → Salle3 (3 portes)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Dictionnaire d'étudiants avec recherche multicritère <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>etudiants.py</code> qui gère une base de données d'étudiants (liste de dictionnaires). Le programme :
+1. Crée une liste d'au moins 5 étudiants avec : nom, notes (liste), groupe, filière
+2. Calcule la moyenne de chaque étudiant
+3. Propose des fonctions de recherche par groupe, par filière, par moyenne
+4. Trie les étudiants par moyenne décroissante</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">creer_etudiant</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">groupe</span><span class="p">,</span> <span class="n">filiere</span><span class="p">,</span> <span class="n">notes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Crée un dictionnaire étudiant.&quot;&quot;&quot;</span>
+    <span class="n">moyenne</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="k">if</span> <span class="n">notes</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;nom&quot;</span><span class="p">:</span> <span class="n">nom</span><span class="p">,</span>
+        <span class="s2">&quot;groupe&quot;</span><span class="p">:</span> <span class="n">groupe</span><span class="p">,</span>
+        <span class="s2">&quot;filiere&quot;</span><span class="p">:</span> <span class="n">filiere</span><span class="p">,</span>
+        <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="n">notes</span><span class="p">,</span>
+        <span class="s2">&quot;moyenne&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">moyenne</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">rechercher_par_groupe</span><span class="p">(</span><span class="n">etudiants</span><span class="p">,</span> <span class="n">groupe</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recherche les étudiants d&#39;un groupe.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">etudiants</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;groupe&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">groupe</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">rechercher_par_filiere</span><span class="p">(</span><span class="n">etudiants</span><span class="p">,</span> <span class="n">filiere</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recherche les étudiants d&#39;une filière.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">etudiants</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;filiere&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">filiere</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">rechercher_par_moyenne</span><span class="p">(</span><span class="n">etudiants</span><span class="p">,</span> <span class="n">seuil</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recherche les étudiants avec moyenne ≥ seuil.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">etudiants</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;moyenne&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">seuil</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">trier_par_moyenne</span><span class="p">(</span><span class="n">etudiants</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trie par moyenne décroissante.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">etudiants</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;moyenne&quot;</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Création de la base</span>
+<span class="n">etudiants</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">creer_etudiant</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="s2">&quot;Français&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">]),</span>
+    <span class="n">creer_etudiant</span><span class="p">(</span><span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="s2">&quot;Français&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">]),</span>
+    <span class="n">creer_etudiant</span><span class="p">(</span><span class="s2">&quot;Mohamed&quot;</span><span class="p">,</span> <span class="s2">&quot;G2&quot;</span><span class="p">,</span> <span class="s2">&quot;Anglais&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span>
+    <span class="n">creer_etudiant</span><span class="p">(</span><span class="s2">&quot;Leila&quot;</span><span class="p">,</span> <span class="s2">&quot;G2&quot;</span><span class="p">,</span> <span class="s2">&quot;Français&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">]),</span>
+    <span class="n">creer_etudiant</span><span class="p">(</span><span class="s2">&quot;Ahmed&quot;</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="s2">&quot;Anglais&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]),</span>
+    <span class="n">creer_etudiant</span><span class="p">(</span><span class="s2">&quot;Fatima&quot;</span><span class="p">,</span> <span class="s2">&quot;G2&quot;</span><span class="p">,</span> <span class="s2">&quot;Anglais&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">])</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Tous les étudiants ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">etudiants</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;groupe&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;filiere&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> Notes : </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;notes&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> Moy : </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;moyenne&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Groupe G1 ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">rechercher_par_groupe</span><span class="p">(</span><span class="n">etudiants</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;filiere&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> — Moy : </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;moyenne&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Moyenne ≥ 14 ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">rechercher_par_moyenne</span><span class="p">(</span><span class="n">etudiants</span><span class="p">,</span> <span class="mi">14</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;moyenne&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Classement général ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trier_par_moyenne</span><span class="p">(</span><span class="n">etudiants</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;moyenne&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Compression par dictionnaire (run-length encoding) <em>(10 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>rle.py</code> qui implémente un algorithme simple de compression :
+- Le codage RLE (Run-Length Encoding) remplace les répétitions par (valeur, nombre)
+- Exemple : <code>AAABBBCCDAA</code> → <code>[('A',3), ('B',3), ('C',2), ('D',1), ('A',2)]</code>
+- Implémenter <code>compresser(chaine)</code> et <code>decompresser(donnees)</code></p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">compresser</span><span class="p">(</span><span class="n">chaine</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compresse une chaîne avec RLE.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">chaine</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">resultat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">courant</span> <span class="o">=</span> <span class="n">chaine</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chaine</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">courant</span><span class="p">:</span>
+            <span class="n">compteur</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">courant</span><span class="p">,</span> <span class="n">compteur</span><span class="p">))</span>
+            <span class="n">courant</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="n">compteur</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">courant</span><span class="p">,</span> <span class="n">compteur</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">resultat</span>
+
+<span class="k">def</span> <span class="nf">decompresser</span><span class="p">(</span><span class="n">donnees</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Décompresse des données RLE.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">donnees</span><span class="p">)</span>
+
+<span class="c1"># Tests</span>
+<span class="n">exemple</span> <span class="o">=</span> <span class="s2">&quot;AAABBBCCDAA&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Originale   : </span><span class="si">{</span><span class="n">exemple</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">compresse</span> <span class="o">=</span> <span class="n">compresser</span><span class="p">(</span><span class="n">exemple</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compressée  : </span><span class="si">{</span><span class="n">compresse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Taux : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">compresse</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">exemple</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% de la taille originale&quot;</span><span class="p">)</span>
+<span class="n">decompresse</span> <span class="o">=</span> <span class="n">decompresser</span><span class="p">(</span><span class="n">compresse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Décompressée : </span><span class="si">{</span><span class="n">decompresse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Identique ? </span><span class="si">{</span><span class="n">exemple</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">decompresse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Autre test</span>
+<span class="n">texte</span> <span class="o">=</span> <span class="s2">&quot;WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB&quot;</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">compresser</span><span class="p">(</span><span class="n">texte</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Texte original : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">texte</span><span class="p">)</span><span class="si">}</span><span class="s2"> caractères&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Texte compressé : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span><span class="si">}</span><span class="s2"> paires&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Taux de compression : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">texte</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Une file (FIFO) utilise le principe :</strong>
+   a) Dernier entré, premier sorti  b) Premier entré, premier sorti ✓  c) Accès aléatoire</p>
+</li>
+<li>
+<p><strong>En notation polonaise inversée, l'expression <code>5 3 -</code> vaut :</strong>
+   a) 2 ✓  b) -2  c) 8</p>
+</li>
+<li>
+<p><strong>Le parcours en largeur (BFS) utilise une structure de :</strong>
+   a) Pile  b) File ✓  c) Tableau</p>
+</li>
+<li>
+<p><strong>En Python, un dictionnaire est une structure de données qui :</strong>
+   a) Stocke des éléments indicés par des entiers  b) Associe des clés à des valeurs ✓  c) Stocke des éléments dans l'ordre d'insertion</p>
+</li>
+<li>
+<p><strong>Le codage RLE (Run-Length Encoding) est utile pour compresser :</strong>
+   a) Des données avec beaucoup de répétitions ✓  b) Des données aléatoires  c) Des fichiers déjà compressés</p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classe Pile/File</td>
+<td>20 %</td>
+<td>Implémentation absente</td>
+<td>Implémentation partielle</td>
+<td>Implémentation correcte</td>
+</tr>
+<tr>
+<td>Notation polonaise inversée</td>
+<td>20 %</td>
+<td>Algorithme incorrect</td>
+<td>Algorithme partiel</td>
+<td>Algorithme correct</td>
+</tr>
+<tr>
+<td>Parcours en largeur</td>
+<td>20 %</td>
+<td>Parcours incorrect</td>
+<td>Parcours partiel</td>
+<td>Parcours correct</td>
+</tr>
+<tr>
+<td>Compression RLE</td>
+<td>20 %</td>
+<td>Compression incorrecte</td>
+<td>Compression partielle</td>
+<td>Compression correcte</td>
+</tr>
+<tr>
+<td>Interface utilisateur</td>
+<td>20 %</td>
+<td>Pas d'interface</td>
+<td>Interface partielle</td>
+<td>Interface fonctionnelle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Ce TD de synthèse mobilise toutes les compétences acquises : classes, piles, files, dictionnaires, algorithmes. La notation polonaise inversée (exercice 2) est un excellent exemple de l'utilité des piles en informatique. Le parcours en largeur (exercice 3) introduit les graphes, concept fondamental pour l'enseignement de NSI Terminale. La compression RLE (exercice 5) est intuitive et visuelle : les élèves comprennent vite le principe.</p>
+<h3>Conseil pour l'enseignant formateur</h3>
+<p>L'exercice 2 (RPN) est souvent source de confusion car les élèves doivent lire l'expression différemment. Faire calculer « à la main » plusieurs expressions RPN au tableau avant de coder. Pour l'exercice 3 (BFS), utiliser un grand papier ou le tableau pour simuler physiquement le parcours : placer des post-its représentant les salles et les relier par des fils, puis déplacer un pion. L'exercice 5 (RLE) est ludique : demander aux étudiants de trouver des exemples de répétitions dans leur propre nom ou dans des phrases.</p>
+<h3>Prolongement</h3>
+<p>Proposer un mini-projet de synthèse : créer un jeu du pendu en Python qui utilise une classe <code>MotSecret</code> avec les notions de dictionnaire, de liste et d'algorithmes de recherche vues dans ce TD. Le jeu doit tirer un mot aléatoire, masquer les lettres, et permettre à l'utilisateur de proposer des lettres jusqu'à ce qu'il ait trouvé ou perdu.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

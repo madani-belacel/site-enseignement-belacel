@@ -1,0 +1,471 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Course — ENS Year 1 — Session 06 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Course — ENS Year 1 — Session 06 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 1 — English Department</li><li>**Duration:** 1h30</li><li>**Academic Year:** 2025-2026</li><li>**Selection criteria:** access type (direct/sequential), dynamism (fixed/variable size), type of frequent operations.</li><li>**Fundamental complexities:**</li><li>- **Index access: O(1)** — direct memory address calculation: `addr = base + i × element_size`</li><li>- **Sequential traversal: O(n)** — each element must be visited</li><li>- **Insertion in the middle: O(n)** — shifting subsequent elements</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_1ère_année_AN_06.pdf</code></p>
+</blockquote>
+<h1>Computer Science Course — ENS Year 1 — Session 06 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Specific Learning Objectives</h2>
+<p>At the end of this session, the student is able to:
+- Define a data structure and explain its algorithmic role
+- Distinguish between direct access (O(1)) and sequential access (O(n)) in an array
+- Implement push, pop, peek operations for a stack (LIFO) and enqueue, dequeue for a queue (FIFO)
+- Model a linked list with nodes and pointers
+- Choose the appropriate structure (array, stack, queue, linked list) based on the problem</p>
+<hr />
+<h2>Algerian Regulatory Context</h2>
+<p>This course falls within the Algerian regulatory framework for teacher training:</p>
+<ul>
+<li><strong>Ministerial decree establishing ENS (Bachelor's/Master's cycle)</strong> — defines the institutional framework of the Écoles Normales Supérieures and their mission of teacher training.</li>
+<li><strong>National Computer Science curriculum for Algerian ENS</strong> — sets the objectives, content and hourly volumes of the Computer Science module in initial teacher training.</li>
+<li><strong>Decree 712 setting the ENS competition syllabus</strong> — determines the tests and programs for ENS entrance competitions, consistent with the taught content.</li>
+<li><strong>Algerian digital competency framework</strong> — national framework (under development) defining the digital competencies expected of teachers.</li>
+<li><strong>Benchmark of 10 Algerian universities</strong> — comparative study of computer science teaching practices, consulted to align this course with national standards.</li>
+</ul>
+<hr />
+<h2>Course Plan</h2>
+<ol>
+<li>Concept of a data structure — 5 min</li>
+<li>Arrays — 15 min</li>
+<li>LIFO Stacks — 20 min</li>
+<li>FIFO Queues — 20 min</li>
+<li>Linked lists — 15 min</li>
+<li>Array vs linked list comparison — 10 min</li>
+<li>MCQ and conclusion — 5 min</li>
+</ol>
+<hr />
+<h2>1. Concept of a data structure <em>(5 min)</em></h2>
+<p>A <strong>data structure</strong> is a logical organization of data in memory enabling efficient operations (addition, deletion, search, traversal).</p>
+<p><strong>Selection criteria:</strong> access type (direct/sequential), dynamism (fixed/variable size), type of frequent operations.</p>
+<hr />
+<h2>2. Arrays <em>(15 min)</em></h2>
+<p>An <strong>array</strong> is a contiguous memory area containing elements of the same type, each identified by an index.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">//</span><span class="w"> </span><span class="nl">Pseudocode</span><span class="p">:</span><span class="w"> </span><span class="n">declaration</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">access</span>
+<span class="nl">notes</span><span class="p">:</span><span class="w"> </span><span class="k">ARRAY</span><span class="o">[</span><span class="n">10</span><span class="o">]</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">INTEGERS</span>
+<span class="n">notes</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="mi">15</span>
+<span class="n">notes</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="mi">12</span>
+<span class="n">notes</span><span class="o">[</span><span class="n">2</span><span class="o">]</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="mi">18</span>
+
+<span class="o">//</span><span class="w"> </span><span class="n">Traversal</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="nf">sum</span>
+<span class="nf">sum</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="mi">0</span>
+<span class="k">FOR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="n">DO</span>
+<span class="w">    </span><span class="nf">sum</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="nf">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">notes</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<span class="k">END</span><span class="w"> </span><span class="k">FOR</span>
+</code></pre></div>
+
+<p><strong>Fundamental complexities:</strong>
+- <strong>Index access: O(1)</strong> — direct memory address calculation: <code>addr = base + i × element_size</code>
+- <strong>Sequential traversal: O(n)</strong> — each element must be visited
+- <strong>Insertion in the middle: O(n)</strong> — shifting subsequent elements</p>
+<p><strong>Properties:</strong> fixed size (static), contiguous in memory, instant random access.</p>
+<p><strong>Pedagogical example (NSI):</strong> an array of 30 grades for a class. Calculating the average in O(n). Finding the maximum in O(n).</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Array notes[5] in memory&quot;</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;Index 0&lt;br/&gt;15&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Index 1&lt;br/&gt;12&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Index 2&lt;br/&gt;18&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;Index 3&lt;br/&gt;10&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">E</span><span class="p">[</span><span class="s">&quot;Index 4&lt;br/&gt;14&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">ACCESS</span><span class="p">[</span><span class="s">&quot;Access notes[2] → O(1)&lt;br/&gt;Address = base + 2×4 bytes&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ACCESS</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>3. Stacks — LIFO <em>(20 min)</em></h2>
+<p><strong>Principle:</strong> <em>Last In, First Out</em> — the last element added is the first one removed.</p>
+<p><strong>Analogy:</strong> a stack of plates. You place the new plate on top; you always take the one from the top.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Stack operations</span>
+<span class="n">STACK</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span>←<span class="w"> </span><span class="n">EMPTY</span>
+
+<span class="n">push</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">    </span><span class="c1">// [10]</span>
+<span class="n">push</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w">    </span><span class="c1">// [10, 20]</span>
+<span class="n">push</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w">    </span><span class="c1">// [10, 20, 30]</span>
+<span class="n">x</span><span class="w"> </span>←<span class="w"> </span><span class="n">pop</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="w">     </span><span class="c1">// x = 30, stack = [10, 20]</span>
+<span class="n">y</span><span class="w"> </span>←<span class="w"> </span><span class="n">pop</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="w">     </span><span class="c1">// y = 20, stack = [10]</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Role</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>push(v)</code></td>
+<td>Add to the top</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td><code>pop()</code></td>
+<td>Remove and return the top</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td><code>peek()</code></td>
+<td>View the top without removing</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td><code>is_empty()</code></td>
+<td>Check if the stack is empty</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;LIFO Stack — State after push(10), push(20), push(30)&quot;</span>
+<span class="w">        </span><span class="n">S3</span><span class="p">[</span><span class="s">&quot;30 ← TOP (push / pop)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S2</span><span class="p">[</span><span class="s">&quot;20&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S1</span><span class="p">[</span><span class="s">&quot;10 ← BOTTOM&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Operations&quot;</span>
+<span class="w">        </span><span class="n">P1</span><span class="p">[</span><span class="s">&quot;push(40) → [10, 20, 30, 40]&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">P2</span><span class="p">[</span><span class="s">&quot;pop() → returns 30 → [10, 20]&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">P3</span><span class="p">[</span><span class="s">&quot;peek() → returns 30 (without removing)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">S3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P1</span>
+<span class="w">    </span><span class="n">S3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P2</span>
+<span class="w">    </span><span class="n">S3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P3</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">P1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">P2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">P3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Real-world examples:</strong>
+- <strong>Ctrl+Z</strong> (undo): each action is pushed, Ctrl+Z pops
+- <strong>Browser history</strong>: the "Back" button pops visited URLs
+- <strong>Call stack</strong>: the system pushes function calls</p>
+<p><strong>NSI Teaching:</strong> the call stack explains recursion. Each recursive call pushes a new frame; the return pops it.</p>
+<hr />
+<h2>4. Queues — FIFO <em>(20 min)</em></h2>
+<p><strong>Principle:</strong> <em>First In, First Out</em> — the first element added is the first one removed.</p>
+<p><strong>Analogy:</strong> a queue at the cafeteria. The first person in line is the first served.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Queue operations</span>
+<span class="n">QUEUE</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span>←<span class="w"> </span><span class="n">EMPTY</span>
+
+<span class="n">enqueue</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">    </span><span class="c1">// [10]</span>
+<span class="n">enqueue</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w">    </span><span class="c1">// [10, 20]</span>
+<span class="n">enqueue</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w">    </span><span class="c1">// [10, 20, 30]</span>
+<span class="n">x</span><span class="w"> </span>←<span class="w"> </span><span class="n">dequeue</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span><span class="w">    </span><span class="c1">// x = 10, queue = [20, 30]</span>
+<span class="n">y</span><span class="w"> </span>←<span class="w"> </span><span class="n">dequeue</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span><span class="w">    </span><span class="c1">// y = 20, queue = [30]</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Role</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enqueue(v)</code></td>
+<td>Add to the end (tail)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td><code>dequeue()</code></td>
+<td>Remove and return the front (head)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td><code>front()</code></td>
+<td>View the head without removing</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td><code>is_empty()</code></td>
+<td>Check if the queue is empty</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;FIFO Queue&quot;</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">        </span><span class="n">HEAD</span><span class="p">[</span><span class="s">&quot;HEAD&lt;br/&gt;(dequeue)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Q1</span><span class="p">[</span><span class="s">&quot;10&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Q2</span><span class="p">[</span><span class="s">&quot;20&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Q3</span><span class="p">[</span><span class="s">&quot;30&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">TAIL</span><span class="p">[</span><span class="s">&quot;TAIL&lt;br/&gt;(enqueue)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">HEAD</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Q1</span>
+<span class="w">    </span><span class="n">Q1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Q2</span>
+<span class="w">    </span><span class="n">Q2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Q3</span>
+<span class="w">    </span><span class="n">Q3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TAIL</span>
+
+<span class="w">    </span><span class="n">ENTRY</span><span class="p">[</span><span class="s">&quot;enqueue(40) → [10, 20, 30, 40]&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">TAIL</span>
+<span class="w">    </span><span class="n">HEAD</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">EXIT</span><span class="p">[</span><span class="s">&quot;dequeue() → 10 → [20, 30]&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Q1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Q2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Q3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HEAD</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">TAIL</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ENTRY</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Real-world examples:</strong>
+- <strong>Print queue</strong>: documents are printed in the order they are sent
+- <strong>Keyboard buffer</strong>: keystrokes are processed in typing order
+- <strong>Task scheduler</strong>: CPU process queues</p>
+<p><strong>SNT Teaching:</strong> simulate a waiting queue with students (role play). Each student receives a numbered ticket.</p>
+<hr />
+<h2>5. Linked Lists <em>(15 min)</em></h2>
+<p>A <strong>linked list</strong> is a dynamic structure where each element (node) contains a value and a pointer to the next node.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Node structure</span>
+<span class="n">Node</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="n">INTEGER</span>
+<span class="w">    </span><span class="n">next</span><span class="p">:</span><span class="w"> </span><span class="n">POINTER_TO_Node</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span> <span class="n">LR</span>
+    <span class="n">subgraph</span> <span class="s">&quot;Singly linked list&quot;</span>
+        <span class="n">N1</span><span class="p">[</span><span class="s">&quot;Node 1&lt;br/&gt;value: 10&lt;br/&gt;next: *&quot;</span><span class="p">]</span>
+        <span class="n">N2</span><span class="p">[</span><span class="s">&quot;Node 2&lt;br/&gt;value: 20&lt;br/&gt;next: *&quot;</span><span class="p">]</span>
+        <span class="n">N3</span><span class="p">[</span><span class="s">&quot;Node 3&lt;br/&gt;value: 30&lt;br/&gt;next: null&quot;</span><span class="p">]</span>
+    <span class="n">end</span>
+
+    <span class="n">HEAD</span><span class="p">[</span><span class="s">&quot;HEAD&quot;</span><span class="p">]</span> <span class="o">--&gt;</span> <span class="n">N1</span>
+    <span class="n">N1</span> <span class="o">--&gt;</span><span class="p">|</span><span class="s">&quot;pointer&quot;</span><span class="p">|</span> <span class="n">N2</span>
+    <span class="n">N2</span> <span class="o">--&gt;</span><span class="p">|</span><span class="s">&quot;pointer&quot;</span><span class="p">|</span> <span class="n">N3</span>
+    <span class="n">N3</span> <span class="o">--&gt;</span> <span class="kr">END</span><span class="p">[</span><span class="s">&quot;null (end)&quot;</span><span class="p">]</span>
+
+    <span class="n">style</span> <span class="n">N1</span> <span class="n">fill</span><span class="p">:</span><span class="o">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="p">:</span><span class="o">#</span><span class="n">fff</span>
+    <span class="n">style</span> <span class="n">N2</span> <span class="n">fill</span><span class="p">:</span><span class="o">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="p">:</span><span class="o">#</span><span class="n">fff</span>
+    <span class="n">style</span> <span class="n">N3</span> <span class="n">fill</span><span class="p">:</span><span class="o">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="p">:</span><span class="o">#</span><span class="n">fff</span>
+    <span class="n">style</span> <span class="n">HEAD</span> <span class="n">fill</span><span class="p">:</span><span class="o">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="p">:</span><span class="o">#</span><span class="n">fff</span>
+    <span class="n">style</span> <span class="kr">END</span> <span class="n">fill</span><span class="p">:</span><span class="o">#</span><span class="mi">95</span><span class="n">a5a6</span><span class="p">,</span><span class="n">color</span><span class="p">:</span><span class="o">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Characteristics:</strong>
+- <strong>Dynamic size</strong>: no fixed limit, memory is allocated as needed
+- <strong>Insertion at the beginning: O(1)</strong> — just change the head pointer
+- <strong>Insertion in the middle: O(1)</strong> — if you have the pointer to the previous node
+- <strong>Index access: O(n)</strong> — must traverse from the head
+- <strong>Search: O(n)</strong> — sequential traversal required</p>
+<p><strong>Pseudocode for insertion at the beginning:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Insert a value at the beginning of a linked list</span>
+<span class="n">FUNCTION</span><span class="w"> </span><span class="n">insert_beginning</span><span class="p">(</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+<span class="w">    </span><span class="n">new</span><span class="w"> </span>←<span class="w"> </span><span class="n">NEW_Node</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="w">    </span><span class="n">new</span><span class="p">.</span><span class="n">next</span><span class="w"> </span>←<span class="w"> </span><span class="n">head</span>
+<span class="w">    </span><span class="n">RETURN</span><span class="w"> </span><span class="n">new</span><span class="w">  </span><span class="c1">// new head</span>
+<span class="n">END</span><span class="w"> </span><span class="n">FUNCTION</span>
+</code></pre></div>
+
+<hr />
+<h2>6. Comparison and choice <em>(10 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">graph</span><span class="w"> </span><span class="nv">TB</span>
+<span class="w">    </span><span class="nv">subgraph</span><span class="w"> </span><span class="s2">&quot;Comparison Array vs Linked List&quot;</span>
+<span class="w">        </span><span class="nv">subgraph</span><span class="w"> </span><span class="s2">&quot;Array&quot;</span>
+<span class="w">            </span><span class="nv">T1</span>[<span class="s2">&quot;✔ Access O(1)&lt;br/&gt;✔ Contiguous memory&lt;br/&gt;✘ Beginning insertion O(n)&lt;br/&gt;✘ Fixed size&quot;</span>]
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="nv">subgraph</span><span class="w"> </span><span class="s2">&quot;Linked List&quot;</span>
+<span class="w">            </span><span class="nv">L1</span>[<span class="s2">&quot;✔ Insertion O(1)&lt;br/&gt;✔ Dynamic size&lt;br/&gt;✘ Access O(n)&lt;br/&gt;✘ Dispersed memory&quot;</span>]
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">T1</span><span class="w"> </span><span class="nv">fill</span>:<span class="sc">#3498</span><span class="nv">db</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">L1</span><span class="w"> </span><span class="nv">fill</span>:<span class="sc">#2</span><span class="nv">ecc71</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Array</th>
+<th>Linked List</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index access</td>
+<td><strong>O(1)</strong> — direct</td>
+<td>O(n) — sequential</td>
+</tr>
+<tr>
+<td>Beginning insertion</td>
+<td>O(n) — shifting</td>
+<td><strong>O(1)</strong> — pointer</td>
+</tr>
+<tr>
+<td>End insertion</td>
+<td>O(1) — if space</td>
+<td>O(1) — if tail known</td>
+</tr>
+<tr>
+<td>Deletion</td>
+<td>O(n) — shifting</td>
+<td>O(1) — pointer</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>O(n)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Fixed, contiguous</td>
+<td>Dynamic, dispersed</td>
+</tr>
+<tr>
+<td>CPU Cache</td>
+<td>Favorable (locality)</td>
+<td>Unfavorable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Selection guide:</strong>
+- <strong>Frequent positional access</strong> → Array (e.g., indexed grade list)
+- <strong>Frequent insertions/deletions at the beginning or middle</strong> → Linked list
+- <strong>LIFO operations</strong> → Stack (e.g., history, undo)
+- <strong>FIFO operations</strong> → Queue (e.g., waiting line, buffer)
+- <strong>Unknown size in advance</strong> → Linked list</p>
+<hr />
+<h2>MCQ Self-Assessment</h2>
+<ol>
+<li>
+<p><strong>What is the complexity of accessing an element in an array by its index?</strong>
+   a) O(n)  b) O(1) ✓  c) O(n²)</p>
+</li>
+<li>
+<p><strong>In a LIFO stack, which element is removed with pop()?</strong>
+   a) The first added  b) The last added ✓  c) The element in the middle</p>
+</li>
+<li>
+<p><strong>Which analogy best represents a FIFO queue?</strong>
+   a) A stack of plates  b) A waiting line at a counter ✓  c) A display board</p>
+</li>
+<li>
+<p><strong>In a linked list, what is the cost of an insertion at the beginning?</strong>
+   a) O(1) ✓  b) O(n)  c) O(n²)</p>
+</li>
+<li>
+<p><strong>Which data structure does the browser's "Back" button use?</strong>
+   a) Queue  b) Stack ✓  c) Linked list</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<p>Data structures are essential algorithmic tools. An array favors fast access (O(1)). A linked list favors dynamic insertion (O(1)). The stack implements "last arrived, first served" (LIFO); the queue implements "first arrived, first served" (FIFO). Choosing the right structure determines the program's efficiency.</p>
+<p><strong>Next class:</strong> Networks and the Internet — understanding how computers communicate.</p>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<p><strong>Teaching transposition for secondary school:</strong>
+- <strong>SNT Year 10 (age 15-16)</strong>: use unplugged activities for stacks (plates, books) and queues (physical waiting line)
+- <strong>NSI Year 11 (age 16-17)</strong>: implement a stack in Python with a list; visualize the recursive call stack
+- <strong>Cross-curricular link</strong>: in mathematics, stacks are used to evaluate arithmetic expressions (Reverse Polish Notation)</p>
+<p><strong>Trainer advice:</strong> have students trace the evolution of the stack and queue on the board step by step. Each student manipulates sticky notes representing nodes.</p>
+<p><strong>Extension:</strong> Students can go further by discovering advanced data structures: binary search trees, graphs, hash tables. Propose a complementary NSI activity: implement a simple spell checker using a hash table to verify words in an English text.</p>
+<hr />
+<h2>Bibliography</h2>
+<ul>
+<li>Cormen, Leiserson, Rivest &amp; Stein — <em>Introduction to Algorithms</em> (ch. 10: Elementary Data Structures)  </li>
+<li>Aho, Ullman — <em>Data Structures and Algorithms</em>  </li>
+<li>Downey — <em>Think Python</em> (ch. 17: Stacks and Queues)  </li>
+<li>Python documentation: <code>queue</code> module (thread-safe implementations)</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

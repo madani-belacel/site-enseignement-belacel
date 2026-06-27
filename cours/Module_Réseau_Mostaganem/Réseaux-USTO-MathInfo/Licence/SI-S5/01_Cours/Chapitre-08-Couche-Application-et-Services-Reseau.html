@@ -1,0 +1,564 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 08 — Couche Application et services réseau — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 08 — Couche Application et services réseau</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Fichier zone (extrait BIND)** :</li><li>- **Confidentialité** : FAI ne voit pas les requêtes DNS en clair.</li><li>- **Head-of-line blocking** : une requête lente bloque les suivantes (même connexion keep-alive).</li><li>**Exercice** : Ordre résolution `https://mail.univ-mosta.dz` — numéroter DNS, TCP, TLS, HTTP.</li></ul></div>
+    <h1>Chapitre 08 — Couche Application et services réseau</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence SI — L3</td>
+</tr>
+<tr>
+<td><strong>Semestre</strong></td>
+<td>S5</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM (+ TD 08)</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>08 / 09</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[KR] Ch. 2 ; RFC 1035, RFC 7540</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs du chapitre</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li><strong>Configurer</strong> et <strong>analyser</strong> un serveur <strong>DNS</strong> (zones, enregistrements, résolution récursive).</li>
+<li><strong>Comparer</strong> HTTP/1.1, <strong>HTTP/2</strong> et <strong>HTTPS/TLS 1.3</strong>.</li>
+<li><strong>Expliquer</strong> le fonctionnement de <strong>DHCP</strong> (DORA, relay, options).</li>
+<li><strong>Sécuriser</strong> les services réseau de base (DNSSEC, DoH — aperçu).</li>
+</ol>
+<hr />
+<h2>Plan du chapitre</h2>
+<ol>
+<li>DNS avancé</li>
+<li>HTTP/2 et HTTPS/TLS</li>
+<li>DHCP et options avancées</li>
+<li>Autres services (SMTP, FTP, NTP — synthèse)</li>
+<li>Sécurité des services</li>
+<li>QCM</li>
+</ol>
+<hr />
+<h2>1. DNS avancé</h2>
+<h3>1.1 Architecture rappel</h3>
+<p>Résolveur → Racine → TLD → Autoritaire → réponse.</p>
+<h3>1.2 Types d'enregistrements (approfondi)</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Contenu</th>
+<th>Exemple SI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>IPv4</td>
+<td><code>www.univ-mosta.dz → 41.107.x.x</code></td>
+</tr>
+<tr>
+<td><strong>AAAA</strong></td>
+<td>IPv6</td>
+<td><code>www.univ-mosta.dz → 2001:db8::1</code></td>
+</tr>
+<tr>
+<td><strong>CNAME</strong></td>
+<td>Alias</td>
+<td><code>ftp → www</code></td>
+</tr>
+<tr>
+<td><strong>MX</strong></td>
+<td>Mail + priorité</td>
+<td><code>10 mail.univ-mosta.dz</code></td>
+</tr>
+<tr>
+<td><strong>NS</strong></td>
+<td>Serveur autoritaire</td>
+<td><code>ns1.univ-mosta.dz</code></td>
+</tr>
+<tr>
+<td><strong>PTR</strong></td>
+<td>Reverse DNS</td>
+<td>IP → nom</td>
+</tr>
+<tr>
+<td><strong>SOA</strong></td>
+<td>Autorité zone</td>
+<td>Serial, refresh, TTL</td>
+</tr>
+<tr>
+<td><strong>TXT</strong></td>
+<td>Texte</td>
+<td>SPF, DKIM, vérification</td>
+</tr>
+<tr>
+<td><strong>SRV</strong></td>
+<td>Service + port</td>
+<td><code>_ldap._tcp</code></td>
+</tr>
+</tbody>
+</table>
+<h3>1.3 Zone DNS</h3>
+<p><strong>Fichier zone (extrait BIND)</strong> :</p>
+<div class="codehilite"><pre><span></span><code>$TTL 86400
+@   IN  SOA ns1.univ-mosta.dz. admin.univ-mosta.dz. (
+        2025060601  ; Serial
+        3600        ; Refresh
+        900         ; Retry
+        604800      ; Expire
+        86400 )     ; Negative TTL
+    IN  NS  ns1.univ-mosta.dz.
+    IN  A   41.107.50.10
+www IN  A   41.107.50.10
+    IN  AAAA 2001:db8:acad::10
+</code></pre></div>
+
+<h3>1.4 DNS caching et TTL</h3>
+<ul>
+<li>Chaque enregistrement a un <strong>TTL</strong> (Time To Live).</li>
+<li>Résolveur met en cache jusqu'à expiration → réduit charge serveurs.</li>
+</ul>
+<h3>1.5 DNS over HTTPS (DoH) — aperçu</h3>
+<ul>
+<li>Requêtes DNS encapsulées dans <strong>HTTPS</strong> (port 443).</li>
+<li><strong>Confidentialité</strong> : FAI ne voit pas les requêtes DNS en clair.</li>
+<li>Débat : centralisation vs sécurité.</li>
+</ul>
+<p><img alt="DNS hiérarchie SI-S5" src="../../../Ressources-Communes/Images-Schemas/DNS/dns-zones-records.png" /></p>
+<hr />
+<h2>2. HTTP/2 et HTTPS/TLS</h2>
+<h3>2.1 HTTP/1.1 — limites</h3>
+<ul>
+<li><strong>Head-of-line blocking</strong> : une requête lente bloque les suivantes (même connexion keep-alive).</li>
+<li>Multiples connexions TCP parallèles (6 par domaine) → overhead.</li>
+</ul>
+<h3>2.2 HTTP/2 (RFC 7540)</h3>
+<table>
+<thead>
+<tr>
+<th>Amélioration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Multiplexage</strong></td>
+<td>Plusieurs requêtes/réponses sur <strong>1 connexion TCP</strong></td>
+</tr>
+<tr>
+<td><strong>Compression en-têtes</strong></td>
+<td>HPACK</td>
+</tr>
+<tr>
+<td><strong>Priorisation</strong></td>
+<td>Streams prioritaires</td>
+</tr>
+<tr>
+<td><strong>Server Push</strong></td>
+<td>Serveur envoie ressources anticipées (usage déclinant)</td>
+</tr>
+<tr>
+<td>Format binaire</td>
+<td>Plus efficace que texte HTTP/1.1</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 TLS 1.3 (HTTPS)</h3>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ClientHello</td>
+<td>Cipher suites, key share</td>
+</tr>
+<tr>
+<td>ServerHello</td>
+<td>Certificat, paramètres</td>
+</tr>
+<tr>
+<td>Handshake</td>
+<td><strong>1-RTT</strong> (vs 2-RTT TLS 1.2)</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>HTTP chiffré (AES-GCM, ChaCha20)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Port 443</strong> — certificat X.509 signé par <strong>CA</strong> (Autorité de Certification).</p>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Certificat</td>
+<td>Lie domaine ↔ clé publique</td>
+</tr>
+<tr>
+<td>CA</td>
+<td>Signe le certificat (Let's Encrypt, DigiCert…)</td>
+</tr>
+<tr>
+<td>Clé privée</td>
+<td>Serveur — <strong>jamais exposée</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. DHCP avancé</h2>
+<h3>3.1 Processus DORA (rappel)</h3>
+<p>Discover → Offer → Request → Acknowledge.</p>
+<h3>3.2 Options DHCP importantes</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Code</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subnet Mask</td>
+<td>1</td>
+<td>Masque réseau</td>
+</tr>
+<tr>
+<td>Router</td>
+<td>3</td>
+<td>Passerelle par défaut</td>
+</tr>
+<tr>
+<td>DNS Servers</td>
+<td>6</td>
+<td>Serveurs DNS</td>
+</tr>
+<tr>
+<td>Domain Name</td>
+<td>15</td>
+<td>Nom de domaine</td>
+</tr>
+<tr>
+<td>Lease Time</td>
+<td>51</td>
+<td>Durée bail (secondes)</td>
+</tr>
+<tr>
+<td>Server Identifier</td>
+<td>54</td>
+<td>IP serveur DHCP</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 DHCP Relay (Agent)</h3>
+<p>Quand client et serveur DHCP sont sur <strong>VLAN/réseaux différents</strong> :</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[Client VLAN 10] ── broadcast DHCP ── [Routeur relay] ── unicast ── [Serveur DHCP VLAN 99]</span>
+<span class="w">                      </span><span class="na">Option 82              ip helper-address</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Vlan10</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">helper</span><span class="o">-</span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.99.5</span>
+</code></pre></div>
+
+<h3>3.4 DHCPv6 (lien Ch. 06)</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Flags RA</th>
+<th>Comportement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLAAC</td>
+<td>M=0, O=0</td>
+<td>Adresse auto</td>
+</tr>
+<tr>
+<td>Stateful</td>
+<td>M=1</td>
+<td>DHCPv6 attribue adresse</td>
+</tr>
+<tr>
+<td>Stateless</td>
+<td>O=1</td>
+<td>SLAAC + DNS via DHCPv6</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Synthèse services</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>Transport</th>
+<th>Rôle SI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DNS</td>
+<td>53</td>
+<td>UDP/TCP</td>
+<td>Résolution noms</td>
+</tr>
+<tr>
+<td>HTTP/2</td>
+<td>80</td>
+<td>TCP</td>
+<td>Web</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>443</td>
+<td>TCP+TLS</td>
+<td>Web sécurisé</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>67/68</td>
+<td>UDP</td>
+<td>Config IP</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>25/587</td>
+<td>TCP</td>
+<td>Email sortant</td>
+</tr>
+<tr>
+<td>IMAP</td>
+<td>143/993</td>
+<td>TCP</td>
+<td>Email entrant</td>
+</tr>
+<tr>
+<td>NTP</td>
+<td>123</td>
+<td>UDP</td>
+<td>Synchronisation horaire</td>
+</tr>
+<tr>
+<td>SNMP</td>
+<td>161</td>
+<td>UDP</td>
+<td>Supervision (aperçu)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Sécurité des services (aperçu)</h2>
+<table>
+<thead>
+<tr>
+<th>Menace</th>
+<th>Service</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DNS spoofing</td>
+<td>DNS</td>
+<td>DNSSEC, DoT/DoH</td>
+</tr>
+<tr>
+<td>MITM HTTP</td>
+<td>HTTP</td>
+<td><strong>HTTPS obligatoire</strong></td>
+</tr>
+<tr>
+<td>Rogue DHCP</td>
+<td>DHCP</td>
+<td>DHCP snooping (switch)</td>
+</tr>
+<tr>
+<td>Certificat expiré</td>
+<td>TLS</td>
+<td>Monitoring, ACME (Let's Encrypt)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Exercices et QCM</h2>
+<p><strong>Exercice</strong> : Ordre résolution <code>https://mail.univ-mosta.dz</code> — numéroter DNS, TCP, TLS, HTTP.</p>
+<details>
+<summary>Solution</summary>
+
+1. DNS A/AAAA mail.univ-mosta.dz → 2. TCP :443 → 3. TLS handshake → 4. HTTP GET
+</details>
+
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>QCM</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HTTP/2 multiplexe sur…</td>
+<td><strong>1 TCP</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>MX enregistre…</td>
+<td><strong>Serveur mail</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>ip helper-address = …</td>
+<td><strong>DHCP relay</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>TLS 1.3 handshake ≈ … RTT</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Option DHCP GW = code …</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>AAAA = adresse …</td>
+<td><strong>IPv6</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>TTL DNS = durée …</td>
+<td><strong>Cache</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Port NTP …</td>
+<td><strong>123</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>HPACK compresse …</td>
+<td><strong>En-têtes HTTP/2</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>DoH encapsule DNS dans …</td>
+<td><strong>HTTPS</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Kurose &amp; Ross</strong> [KR], Ch. 2</li>
+<li><strong>RFC 1035</strong> — DNS</li>
+<li><strong>RFC 7540</strong> — HTTP/2</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : TD 08 — lecture zone DNS, codes HTTP. TP 05 complément.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

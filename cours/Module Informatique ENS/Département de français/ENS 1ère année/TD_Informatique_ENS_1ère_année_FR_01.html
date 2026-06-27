@@ -1,0 +1,894 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD Informatique — ENS 1ère année — Séance 01 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TD Informatique — ENS 1ère année — Séance 01 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Conseil d'animation :** Corrigez collectivement après chaque exercice. Alternez temps individuel (5 min) et mise en commun (3 min). Pour l'exercice 5 (Python), projetez le script et faitez-le exécuter en direct si possible.</li><li>**Scénario enseignant :** Vous devez vérifier que vos étudiants comprennent le rôle des composants élémentaires d'un ordinateur. Cet exercice permet de sonder leurs connaissances sur l'architecture von Neumann.</li><li>**Énoncé :** Expliquer le rôle de l'ALU, de l'unité de contrôle et de la mémoire centrale. Convertir `13` en binaire.</li><li>**Corrigé détaillé :**</li><li>- **ALU** (Arithmetic Logic Unit) : effectue les opérations arithmétiques (addition, soustraction) et logiques (ET, OU, NON).</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_FR_01.pdf</code></p>
+</blockquote>
+<h1>TD Informatique — ENS 1ère année — Séance 01 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>Ce TD de synthèse permet de réviser les notions fondamentales du module avant d'aborder les séances approfondies. À l'issue de ce TD, l'étudiant est capable de :
+- Situer les différents thèmes du module (architecture, OS, algorithmique, réseaux, sécurité, Python)
+- Appliquer les concepts de base vus en introduction
+- Établir des liens entre les différentes parties du programme</p>
+<hr />
+<h2>Contexte pédagogique — Scénario enseignant</h2>
+<p>Vous êtes enseignant en 1ère année ENS et devez faire une <strong>évaluation diagnostique</strong> de vos étudiants sur les fondamentaux de l'informatique. Ce TD synthétique couvre 4 thématiques clés en 90 min. Vous disposez d'une <strong>grille d'évaluation</strong> (page 2) pour mesurer le niveau initial de chaque étudiant. Utilisez les <strong>pictogrammes</strong> suivants pour guider la différenciation :</p>
+<table>
+<thead>
+<tr>
+<th>Symbole</th>
+<th>Niveau</th>
+<th>Attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✓</td>
+<td>Débutant</td>
+<td>Questions de base — tous les étudiants doivent répondre</td>
+</tr>
+<tr>
+<td>★</td>
+<td>Intermédiaire</td>
+<td>Approfondissement — à traiter si le temps le permet</td>
+</tr>
+<tr>
+<td>★★</td>
+<td>Avancé</td>
+<td>Défi — pour les plus rapides, peut faire l'objet d'un bonus</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conseil d'animation :</strong> Corrigez collectivement après chaque exercice. Alternez temps individuel (5 min) et mise en commun (3 min). Pour l'exercice 5 (Python), projetez le script et faitez-le exécuter en direct si possible.</p>
+<hr />
+<h2>Plan du TD</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Architecture</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Processus</td>
+<td>18 min</td>
+<td>38 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Algorithme</td>
+<td>18 min</td>
+<td>56 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Réseaux</td>
+<td>18 min</td>
+<td>74 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Python</td>
+<td>16 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Schéma conceptuel du module</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">mindmap</span>
+<span class="w">  </span><span class="nx">root</span><span class="p">((</span><span class="nx">Module</span><span class="w"> </span><span class="nx">Informatique</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">Architecture</span>
+<span class="w">      </span><span class="nx">Von</span><span class="w"> </span><span class="nx">Neumann</span>
+<span class="w">      </span><span class="nx">CPU</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">ALU</span>
+<span class="w">      </span><span class="nx">Hiérarchie</span><span class="w"> </span><span class="nx">mémoire</span>
+<span class="w">    </span><span class="nx">Systèmes</span><span class="w"> </span><span class="nx">d</span><span class="err">&#39;</span><span class="nx">exploitation</span>
+<span class="w">      </span><span class="nx">Processus</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">threads</span>
+<span class="w">      </span><span class="nx">Gestion</span><span class="w"> </span><span class="nx">mémoire</span>
+<span class="w">      </span><span class="nx">Système</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">fichiers</span>
+<span class="w">    </span><span class="nx">Algorithmique</span>
+<span class="w">      </span><span class="nx">Variables</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">types</span>
+<span class="w">      </span><span class="nx">Conditions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">boucles</span>
+<span class="w">      </span><span class="nx">Complexité</span>
+<span class="w">    </span><span class="nx">Structures</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">données</span>
+<span class="w">      </span><span class="nx">Tableaux</span>
+<span class="w">      </span><span class="nx">Piles</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">files</span>
+<span class="w">      </span><span class="nx">Listes</span><span class="w"> </span><span class="nx">chaînées</span>
+<span class="w">    </span><span class="nx">Réseaux</span>
+<span class="w">      </span><span class="nx">LAN</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">WAN</span>
+<span class="w">      </span><span class="nx">IP</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">DNS</span>
+<span class="w">      </span><span class="nx">Client</span><span class="o">-</span><span class="nx">serveur</span>
+<span class="w">    </span><span class="nx">Sécurité</span>
+<span class="w">      </span><span class="nx">CID</span>
+<span class="w">      </span><span class="nx">Mots</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">passe</span>
+<span class="w">      </span><span class="nx">RGPD</span>
+<span class="w">    </span><span class="nx">Python</span>
+<span class="w">      </span><span class="nx">Recherche</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">tri</span>
+<span class="w">      </span><span class="nx">Classes</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">objets</span>
+<span class="w">      </span><span class="nx">Dictionnaires</span>
+</code></pre></div>
+
+<hr />
+<h2>Vue d'ensemble des exercices</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;TD01 — Synthèse&quot;</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">Exercice</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Architecture</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Exercice</span><span class="w"> </span><span class="mi">2</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Processus</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Exercice</span><span class="w"> </span><span class="mi">3</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Algorithme</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Exercice</span><span class="w"> </span><span class="mi">4</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Réseaux</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Exercice</span><span class="w"> </span><span class="mi">5</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Python</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Sécurité</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 1 — Architecture et codage <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Vous devez vérifier que vos étudiants comprennent le rôle des composants élémentaires d'un ordinateur. Cet exercice permet de sonder leurs connaissances sur l'architecture von Neumann.</p>
+<hr />
+<h3>✓ Question de base (5 min)</h3>
+<p><strong>Énoncé :</strong> Expliquer le rôle de l'ALU, de l'unité de contrôle et de la mémoire centrale. Convertir <code>13</code> en binaire.</p>
+<p><strong>Corrigé détaillé :</strong></p>
+<ul>
+<li><strong>ALU</strong> (Arithmetic Logic Unit) : effectue les opérations arithmétiques (addition, soustraction) et logiques (ET, OU, NON).  </li>
+<li><strong>UC</strong> (Unité de Contrôle) : orchestre le cycle fetch-decode-execute, séquence le déroulement des instructions.  </li>
+<li><strong>Mémoire centrale (RAM)</strong> : stocke temporairement les instructions et les données en cours d'utilisation. Volatile.  </li>
+<li><code>13₁₀ = 1101₂</code> — méthode : divisions successives par 2 :</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="mf">13</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span><span class="err">↑</span>
+<span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span><span class="w">  </span><span class="err">|</span>
+<span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span><span class="err">|</span>
+<span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span><span class="err">|</span>
+<span class="w"> </span><span class="n">Lecture</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">restes</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">bas</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">haut</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">1101</span>
+</code></pre></div>
+
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Associer chaque composant à sa catégorie (entrée, sortie, traitement, contrôle, mémoire) :</p>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+<th>Catégorie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clavier</td>
+<td>Saisie de texte</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Écran</td>
+<td>Affichage visuel</td>
+<td>?</td>
+</tr>
+<tr>
+<td>ALU</td>
+<td>Calculs arithmétiques</td>
+<td>?</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>Stockage temporaire</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Disque dur</td>
+<td>Stockage permanent</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corrigé :</strong> Clavier → Entrée, Écran → Sortie, ALU → Traitement, RAM → Mémoire centrale, Disque dur → Mémoire de masse (stockage permanent).</p>
+<hr />
+<h3>★★ Question avancée (5 min)</h3>
+<p><strong>Énoncé :</strong> On vous donne le schéma simplifié suivant. Complétez les flèches (nom du bus) et indiquez le sens de circulation des données.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">CPU</span><span class="p">[</span><span class="s">&quot;CPU&lt;br/&gt;(UC + ALU)&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|?|</span><span class="w"> </span><span class="n">RAM</span><span class="p">[</span><span class="s">&quot;RAM&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">RAM</span><span class="w"> </span><span class="o">--&gt;|?|</span><span class="w"> </span><span class="n">CPU</span>
+<span class="w">    </span><span class="n">CPU</span><span class="w"> </span><span class="o">--&gt;|?|</span><span class="w"> </span><span class="n">ENTREE</span><span class="p">[</span><span class="s">&quot;Clavier&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">CPU</span><span class="w"> </span><span class="o">--&gt;|?|</span><span class="w"> </span><span class="n">SORTIE</span><span class="p">[</span><span class="s">&quot;Écran&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">HDD</span><span class="p">[</span><span class="s">&quot;Disque dur&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|?|</span><span class="w"> </span><span class="n">RAM</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">RAM</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HDD</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong> 
+- CPU ↔ RAM : bus de données (bidirectionnel)
+- CPU → Clavier : bus de contrôle (lecture)
+- CPU → Écran : bus de contrôle (écriture)
+- HDD → RAM : bus de données via DMA (accès direct mémoire)
+- Tous partagent le bus système (adresses + données + contrôle)</p>
+<hr />
+<h3>Schéma récapitulatif — Architecture simplifiée</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="ss">&quot;Unité Centrale (CPU)&quot;</span>
+<span class="w">        </span><span class="n">UC</span><span class="o">[</span><span class="n">Unité de Contrôle</span><span class="o">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ALU</span><span class="o">[</span><span class="n">ALU</span><span class="o">]</span>
+<span class="w">        </span><span class="n">ALU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">REG</span><span class="o">[</span><span class="n">Registres</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="ss">&quot;Mémoire&quot;</span>
+<span class="w">        </span><span class="n">RAM</span><span class="o">[</span><span class="n">RAM</span><span class="o">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">CACHE</span><span class="o">[</span><span class="n">Cache</span><span class="o">]</span>
+<span class="w">        </span><span class="n">CACHE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">REG</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="ss">&quot;Entrées / Sorties&quot;</span>
+<span class="w">        </span><span class="n">ENTREE</span><span class="o">[</span><span class="n">Périphériques d&#39;entrée</span><span class="o">]</span>
+<span class="w">        </span><span class="n">SORTIE</span><span class="o">[</span><span class="n">Périphériques de sortie</span><span class="o">]</span>
+<span class="w">        </span><span class="n">STOCKAGE</span><span class="o">[</span><span class="n">Stockage de masse</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">UC</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ENTREE</span>
+<span class="w">    </span><span class="n">UC</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SORTIE</span>
+<span class="w">    </span><span class="n">RAM</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">STOCKAGE</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">UC</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#4a90d9</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ALU</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e67e22</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">REG</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#9b59b6</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">RAM</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CACHE</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — Processus et threads <em>(18 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Vos étudiants confondent souvent processus et thread. Utilisez l'exemple concret du navigateur web pour ancrer la différence. Proposez des analogies (usine/ouvrier, cuisine/chef).</p>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> Distinguer processus et thread. Donner un exemple concret avec un navigateur web.</p>
+<p><strong>Corrigé détaillé :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Processus</th>
+<th>Thread</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Espace mémoire</td>
+<td>Indépendant (propre espace d'adressage)</td>
+<td>Partagé avec le processus parent</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Complexe (IPC : pipes, sockets, signaux)</td>
+<td>Directe (variables globales)</td>
+</tr>
+<tr>
+<td>Création</td>
+<td>Lourde (copie du contexte)</td>
+<td>Légère (simple fil d'exécution)</td>
+</tr>
+<tr>
+<td>Isolation</td>
+<td>Forte (un crash n'affecte pas les autres)</td>
+<td>Faible (un bug peut tout corrompre)</td>
+</tr>
+<tr>
+<td>Commutation</td>
+<td>Coûteuse (changement de contexte)</td>
+<td>Rapide (même espace d'adressage)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analogies pédagogiques :</strong></p>
+<ul>
+<li><strong>Processus = usine</strong> (chaque usine a ses propres ressources, équipements, stocks)</li>
+<li><strong>Thread = ouvrier</strong> (les ouvriers d'une même usine partagent les mêmes outils et locaux)</li>
+</ul>
+<p><strong>Exemple navigateur web :</strong>
+- 1 <strong>processus</strong> pour l'ensemble du navigateur
+- Plusieurs <strong>threads</strong> : UI (interface), rendu (affichage des pages), réseau (téléchargement), extensions (plugins)</p>
+<hr />
+<h3>★ Question intermédiaire (6 min)</h3>
+<p><strong>Énoncé :</strong> Cochez la bonne colonne pour chaque situation.</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Processus</th>
+<th>Thread</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deux onglets Chrome isolés (site A et site B)</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Vérification orthographique dans un traitement de texte</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Un serveur web qui traite 100 requêtes simultanées</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Un programme malveillant qui fait planter tout le système</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corrigé :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Processus</th>
+<th>Thread</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deux onglets Chrome isolés</td>
+<td>✓ (isolation de sécurité)</td>
+<td></td>
+</tr>
+<tr>
+<td>Vérification orthographique</td>
+<td></td>
+<td>✓ (léger, partage le document)</td>
+</tr>
+<tr>
+<td>Serveur web 100 requêtes</td>
+<td></td>
+<td>✓ (pool de threads pour performance)</td>
+</tr>
+<tr>
+<td>Programme malveillant plante tout</td>
+<td>✓ (si un processus accède au noyau)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>★★ Question avancée (6 min)</h3>
+<p><strong>Énoncé :</strong> Sous Linux, la commande <code>ps aux</code> liste les processus. Interpréter les lignes suivantes :</p>
+<div class="codehilite"><pre><span></span><code>USER       PID  %CPU %MEM    VSZ   RSS COMMAND
+madani    1234  12.5  2.3 250000 45000 firefox
+madani    5678   0.1  0.1  12000  2500 bash
+root      9012   0.0  0.5  80000 10000 systemd-journald
+</code></pre></div>
+
+<ol>
+<li>Quel processus consomme le plus de CPU ?</li>
+<li>Lequel utilise le plus de mémoire RAM ?</li>
+<li>Pourquoi <code>bash</code> a-t-il un PID plus grand que <code>firefox</code> alors qu'il a été lancé avant ?</li>
+</ol>
+<p><strong>Corrigé :</strong>
+1. <code>firefox</code> (PID 1234, 12,5 % CPU) — c'est le navigateur avec rendu et scripts.
+2. <code>firefox</code> (RSS 45 000 Ko = 45 Mo) — un navigateur moderne est gourmand en mémoire.
+3. Les PID ne sont pas strictement croissants dans l'ordre de lancement : recyclage des PID, fork, etc. Le shell (<code>bash</code>) peut avoir été lancé avant Firefox mais avoir un PID plus grand si Firefox a hérité d'un PID libéré.</p>
+<hr />
+<h3>Diagramme comparatif</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Processus A&quot;</span>
+<span class="w">        </span><span class="n">TH_A1</span><span class="p">[</span><span class="n">Thread</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MEM_A</span><span class="p">[</span><span class="n">Mémoire</span><span class="w"> </span><span class="n">A</span><span class="p">]</span>
+<span class="w">        </span><span class="n">TH_A2</span><span class="p">[</span><span class="n">Thread</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MEM_A</span>
+<span class="w">        </span><span class="n">TH_A3</span><span class="p">[</span><span class="n">Thread</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MEM_A</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Processus B&quot;</span>
+<span class="w">        </span><span class="n">TH_B1</span><span class="p">[</span><span class="n">Thread</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MEM_B</span><span class="p">[</span><span class="n">Mémoire</span><span class="w"> </span><span class="n">B</span><span class="p">]</span>
+<span class="w">        </span><span class="n">TH_B2</span><span class="p">[</span><span class="n">Thread</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MEM_B</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">CPU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TH_A1</span>
+<span class="w">    </span><span class="n">CPU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TH_A2</span>
+<span class="w">    </span><span class="n">CPU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TH_A3</span>
+<span class="w">    </span><span class="n">CPU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TH_B1</span>
+<span class="w">    </span><span class="n">CPU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TH_B2</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Processus</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Processus</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Algorithme maximum <em>(18 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> L'algorithmique est le cœur de la pensée informatique. Cet exercice simple (recherche du maximum) permet de vérifier la maîtrise des boucles, conditions, indices de tableau, et de la notion de complexité.</p>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> Écrire en pseudo-code l'algorithme qui trouve le maximum dans un tableau de <code>n</code> entiers. Quelle est sa complexité temporelle ?</p>
+<p><strong>Corrigé détaillé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">ALGORITHME</span><span class="w"> </span><span class="n">Maximum</span><span class="p">(</span><span class="n">T</span><span class="o">[</span><span class="n">0..n-1</span><span class="o">]</span><span class="p">)</span>
+<span class="w">  </span><span class="n">ENTRÉE</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">tableau</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">entiers</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">taille</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="err">≥</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="n">SORTIE</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">valeur</span><span class="w"> </span><span class="n">maximale</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">tableau</span>
+
+<span class="w">  </span><span class="nf">max</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w">             </span><span class="o">//</span><span class="w"> </span><span class="n">Initialisation</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">suppose</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">premier</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="nf">max</span>
+<span class="w">  </span><span class="n">POUR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">DE</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">À</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">FAIRE</span><span class="w">   </span><span class="o">//</span><span class="w"> </span><span class="k">On</span><span class="w"> </span><span class="n">parcourt</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">éléments</span><span class="w"> </span><span class="n">restants</span>
+<span class="w">    </span><span class="n">SI</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">max</span><span class="w"> </span><span class="n">ALORS</span><span class="w">     </span><span class="o">//</span><span class="w"> </span><span class="n">Si</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">trouve</span><span class="w"> </span><span class="n">un</span><span class="w"> </span><span class="n">élément</span><span class="w"> </span><span class="n">plus</span><span class="w"> </span><span class="n">grand</span>
+<span class="w">      </span><span class="nf">max</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w">            </span><span class="o">//</span><span class="w"> </span><span class="k">On</span><span class="w"> </span><span class="n">met</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">jour</span><span class="w"> </span><span class="nf">max</span>
+<span class="w">    </span><span class="n">FIN</span><span class="w"> </span><span class="n">SI</span>
+<span class="w">  </span><span class="n">FIN</span><span class="w"> </span><span class="n">POUR</span>
+
+<span class="w">  </span><span class="n">RETOURNER</span><span class="w"> </span><span class="nf">max</span>
+<span class="n">FIN</span><span class="w"> </span><span class="n">ALGORITHME</span>
+</code></pre></div>
+
+<p><strong>Complexité :</strong> O(n) — un seul parcours linéaire du tableau. C'est la complexité optimale car il faut examiner chaque élément au moins une fois.</p>
+<p><strong>Preuve de correction (élémentaire) :</strong>
+- <em>Initialisation</em> : max = T[0] est bien le maximum du sous-tableau T[0..0]
+- <em>Conservation</em> : à chaque itération i, max est le maximum de T[0..i]
+- <em>Terminaison</em> : quand i = n-1, max est le maximum de tout le tableau</p>
+<hr />
+<h3>★ Question intermédiaire (6 min)</h3>
+<p><strong>Énoncé :</strong> Adapter l'algorithme pour retourner <strong>l'indice</strong> de la première occurrence du maximum (et non sa valeur).</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">ALGORITHME</span><span class="w"> </span><span class="n">IndiceMaximum</span><span class="p">(</span><span class="n">T</span><span class="o">[</span><span class="n">0..n-1</span><span class="o">]</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">max</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">0</span><span class="o">]</span>
+<span class="w">  </span><span class="n">indice</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="n">POUR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">DE</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">À</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">FAIRE</span>
+<span class="w">    </span><span class="n">SI</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">max</span><span class="w"> </span><span class="n">ALORS</span>
+<span class="w">      </span><span class="nf">max</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<span class="w">      </span><span class="n">indice</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">i</span><span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="k">On</span><span class="w"> </span><span class="n">mémorise</span><span class="w"> </span><span class="n">l</span><span class="err">&#39;</span><span class="n">indice</span>
+<span class="w">    </span><span class="n">FIN</span><span class="w"> </span><span class="n">SI</span>
+<span class="w">  </span><span class="n">FIN</span><span class="w"> </span><span class="n">POUR</span>
+<span class="w">  </span><span class="n">RETOURNER</span><span class="w"> </span><span class="n">indice</span><span class="w">       </span><span class="o">//</span><span class="w"> </span><span class="n">Indice</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">première</span><span class="w"> </span><span class="n">occurrence</span>
+<span class="n">FIN</span><span class="w"> </span><span class="n">ALGORITHME</span>
+</code></pre></div>
+
+<p><strong>Variante :</strong> Pour obtenir l'indice de la <em>dernière</em> occurrence, remplacer <code>&gt;</code> par <code>&gt;=</code>.</p>
+<hr />
+<h3>★★ Question avancée (6 min)</h3>
+<p><strong>Énoncé :</strong> Écrire un algorithme qui trouve <strong>les deux plus grandes valeurs</strong> d'un tableau en <strong>un seul parcours</strong> (complexité O(n)).<br />
+<em>Indice :</em> maintenez deux variables <code>max1</code> et <code>max2</code>.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">ALGORITHME</span><span class="w"> </span><span class="n">DeuxMax</span><span class="p">(</span><span class="n">T</span><span class="o">[</span><span class="n">0..n-1</span><span class="o">]</span><span class="p">)</span>
+<span class="w">  </span><span class="n">max1</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">La</span><span class="w"> </span><span class="n">plus</span><span class="w"> </span><span class="n">grande</span>
+<span class="w">  </span><span class="n">max2</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="n">La</span><span class="w"> </span><span class="n">deuxième</span><span class="w"> </span><span class="n">plus</span><span class="w"> </span><span class="n">grande</span>
+
+<span class="w">  </span><span class="n">SI</span><span class="w"> </span><span class="n">max2</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max1</span><span class="w"> </span><span class="n">ALORS</span><span class="w">   </span><span class="o">//</span><span class="w"> </span><span class="k">On</span><span class="w"> </span><span class="n">s</span><span class="err">&#39;</span><span class="n">assure</span><span class="w"> </span><span class="n">que</span><span class="w"> </span><span class="n">max1</span><span class="w"> </span><span class="err">≥</span><span class="w"> </span><span class="n">max2</span>
+<span class="w">    </span><span class="n">ÉCHANGER</span><span class="w"> </span><span class="n">max1</span><span class="w"> </span><span class="n">ET</span><span class="w"> </span><span class="n">max2</span>
+<span class="w">  </span><span class="n">FIN</span><span class="w"> </span><span class="n">SI</span>
+
+<span class="w">  </span><span class="n">POUR</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">DE</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">À</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="n">FAIRE</span>
+<span class="w">    </span><span class="n">SI</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max1</span><span class="w"> </span><span class="n">ALORS</span>
+<span class="w">      </span><span class="n">max2</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">max1</span>
+<span class="w">      </span><span class="n">max1</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<span class="w">    </span><span class="n">SINON</span><span class="w"> </span><span class="n">SI</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max2</span><span class="w"> </span><span class="n">ALORS</span>
+<span class="w">      </span><span class="n">max2</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="n">T</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<span class="w">    </span><span class="n">FIN</span><span class="w"> </span><span class="n">SI</span>
+<span class="w">  </span><span class="n">FIN</span><span class="w"> </span><span class="n">POUR</span>
+
+<span class="w">  </span><span class="n">RETOURNER</span><span class="w"> </span><span class="p">(</span><span class="n">max1</span><span class="p">,</span><span class="w"> </span><span class="n">max2</span><span class="p">)</span>
+<span class="n">FIN</span><span class="w"> </span><span class="n">ALGORITHME</span>
+</code></pre></div>
+
+<p><strong>Complexité :</strong> toujours O(n), mais avec un peu plus d'opérations par itération.</p>
+<hr />
+<h3>Illustration — Parcours du tableau</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Tableau T&quot;</span>
+<span class="w">        </span><span class="n">T0</span><span class="p">[</span><span class="s">&quot;T[0] = 3&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T1</span><span class="p">[</span><span class="s">&quot;T[1] = 7&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T2</span><span class="p">[</span><span class="s">&quot;T[2] = 2&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T3</span><span class="p">[</span><span class="s">&quot;T[3] = 9&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T4</span><span class="p">[</span><span class="s">&quot;T[4] = 1&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Évolution de max&quot;</span>
+<span class="w">        </span><span class="n">M0</span><span class="p">[</span><span class="s">&quot;max = 3&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M1</span><span class="p">[</span><span class="s">&quot;max = 7&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">M1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M2</span><span class="p">[</span><span class="s">&quot;max = 7&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">M2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M3</span><span class="p">[</span><span class="s">&quot;max = 9&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">M3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M4</span><span class="p">[</span><span class="s">&quot;max = 9&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">T0</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M0</span>
+<span class="w">    </span><span class="n">T1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M1</span>
+<span class="w">    </span><span class="n">T2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M2</span>
+<span class="w">    </span><span class="n">T3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M3</span>
+<span class="w">    </span><span class="n">T4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M4</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">T0</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">T3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">M0</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">M3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Réseaux <em>(18 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Les notions de base du réseau (IP, masque, passerelle, DNS) sont essentielles pour comprendre comment les machines communiquent. Utilisez une analogie postale (adresse = IP, code postal = masque, bureau de poste = passerelle, annuaire = DNS).</p>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> Différencier IP, masque de sous-réseau et passerelle par défaut. Expliquer le rôle du DNS.</p>
+<p><strong>Corrigé détaillé :</strong></p>
+<ul>
+<li><strong>Adresse IP</strong> (Internet Protocol) : identifiant unique d'une machine sur le réseau (ex: <code>192.168.1.10</code>). Comme une adresse postale.</li>
+<li><strong>Masque de sous-réseau</strong> : sépare la partie réseau de la partie hôte dans l'adresse IP (ex: <code>255.255.255.0</code> = /24). Comme le code postal.</li>
+<li><strong>Passerelle par défaut</strong> (default gateway) : adresse IP du routeur qui permet de sortir du réseau local pour accéder à Internet (ex: <code>192.168.1.1</code>). Comme le bureau de poste central.</li>
+<li><strong>DNS</strong> (Domain Name System) : traduit un nom de domaine (<code>google.com</code>) en adresse IP (<code>142.250.178.4</code>). Comme l'annuaire téléphonique.</li>
+</ul>
+<p><strong>Exemple concret :</strong> Quand vous tapez <code>www.ens.dz</code> dans un navigateur :
+1. Le navigateur demande au DNS : « quelle est l'IP de <code>www.ens.dz</code> ? »
+2. Le DNS répond : <code>193.194.xxx.xxx</code>
+3. Le navigateur envoie une requête HTTP à cette IP via la passerelle
+4. Le serveur web répond avec la page HTML</p>
+<hr />
+<h3>★ Question intermédiaire (6 min)</h3>
+<p><strong>Énoncé :</strong> Une machine a l'IP <code>192.168.1.35</code> avec un masque <code>255.255.255.0</code>.</p>
+<ol>
+<li>Quelle est l'adresse du réseau ?</li>
+<li>Combien de machines peuvent être connectées sur ce réseau ?</li>
+<li>La machine <code>192.168.1.200</code> est-elle sur le même réseau ?</li>
+<li>Et la machine <code>192.168.2.10</code> ?</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<ol>
+<li><strong>Adresse réseau</strong> : <code>192.168.1.0</code> (partie réseau = 192.168.1, partie hôte = 0).<br />
+   Calcul : <code>IP ∧ Masque</code> = <code>192.168.1.35 ∧ 255.255.255.0</code> = <code>192.168.1.0</code></li>
+<li><strong>Nombre de machines</strong> : 2⁸ - 2 = 254 machines (car 8 bits pour la partie hôte, on exclut l'adresse réseau <code>.0</code> et le broadcast <code>.255</code>).</li>
+<li><strong>Oui</strong>, <code>192.168.1.200</code> a la même partie réseau (192.168.1). Elle est sur le même réseau local.</li>
+<li><strong>Non</strong>, <code>192.168.2.10</code> a une partie réseau différente (192.168.2). Elle nécessite un routage via la passerelle.</li>
+</ol>
+<hr />
+<h3>★★ Question avancée (6 min)</h3>
+<p><strong>Énoncé :</strong> On considère le réseau <code>172.16.0.0/16</code>. On veut créer 4 sous-réseaux de taille égale.</p>
+<ol>
+<li>Quel nouveau masque faut-il utiliser ?</li>
+<li>Quelles sont les adresses de chaque sous-réseau ?</li>
+<li>Combien de machines par sous-réseau ?</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<ol>
+<li>Masque <code>/16</code> → <code>/18</code> (on emprunte 2 bits pour le sous-réseage). Soit <code>255.255.192.0</code>.</li>
+<li>Les 4 sous-réseaux :</li>
+<li><code>172.16.0.0/18</code> (hôtes : 172.16.0.1 → 172.16.63.254)</li>
+<li><code>172.16.64.0/18</code> (hôtes : 172.16.64.1 → 172.16.127.254)</li>
+<li><code>172.16.128.0/18</code> (hôtes : 172.16.128.1 → 172.16.191.254)</li>
+<li><code>172.16.192.0/18</code> (hôtes : 172.16.192.1 → 172.16.255.254)</li>
+<li>2¹⁴ - 2 = 16 382 machines par sous-réseau.</li>
+</ol>
+<hr />
+<h3>Illustration — Échange client-serveur</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Client</span><span class="w"> </span><span class="p">(</span><span class="n">Navigateur</span><span class="p">)</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Serveur</span><span class="w"> </span><span class="n">DNS</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Passerelle</span><span class="w"> </span><span class="p">(</span><span class="n">Routeur</span><span class="p">)</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Serveur</span><span class="w"> </span><span class="n">Web</span>
+
+<span class="w">    </span><span class="n">C</span><span class="o">-&gt;&gt;</span><span class="n">DNS</span><span class="o">:</span><span class="w"> </span><span class="n">Quelle</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">l</span><span class="s">&#39;IP de www.ens.dz ?</span>
+<span class="s">    DNS--&gt;&gt;C: Réponse : 193.194.x.x</span>
+<span class="s">    C-&gt;&gt;G: Requête HTTP GET /index.html</span>
+<span class="s">    G-&gt;&gt;S: Transmission via Internet</span>
+<span class="s">    S--&gt;&gt;G: Réponse HTTP 200 + page HTML</span>
+<span class="s">    G--&gt;&gt;C: Transmission de la page</span>
+<span class="s">    Note over C,S: Le DNS n&#39;</span><span class="n">intervient</span><span class="w"> </span><span class="n">qu</span><span class="s">&#39;une fois&lt;br/&gt;(résolution initiale)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Python et sécurité <em>(16 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Vos étudiants débutent en Python. Proposez un script simple (moyenne de notes) pour vérifier les bases. Ajoutez une dimension sécurité pour sensibiliser dès la 1ère séance.</p>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> Écrire un script Python qui calcule la moyenne de 5 notes. Lister 3 bonnes pratiques en sécurité informatique.</p>
+<p><strong>Corrigé détaillé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Script : calcul_moyenne.py</span>
+<span class="c1"># Auteur : Étudiant ENS</span>
+<span class="c1"># Date : 2025</span>
+
+<span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>       <span class="c1"># Liste des 5 notes</span>
+<span class="n">moyenne</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>   <span class="c1"># Calcul de la moyenne</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne : </span><span class="si">{</span><span class="n">moyenne</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Affichage formaté à 2 décimales</span>
+</code></pre></div>
+
+<p><strong>Explication pas à pas :</strong>
+1. <code>notes = [...]</code> : création d'une liste Python (tableau dynamique)
+2. <code>sum(notes)</code> : fonction intégrée qui additionne tous les éléments
+3. <code>len(notes)</code> : retourne la taille de la liste (ici 5)
+4. <code>moyenne = ...</code> : affectation du résultat
+5. <code>print(f"...")</code> : f-string pour formater l'affichage</p>
+<p><strong>Bonnes pratiques de sécurité :</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pratique</th>
+<th>Pourquoi ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Authentification multifacteur (MFA)</td>
+<td>Ajoute une couche de sécurité au-delà du mot de passe</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mises à jour régulières</td>
+<td>Corrigent les vulnérabilités connues (zero-day, failles)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Sauvegardes automatiques</td>
+<td>Permettent de restaurer les données en cas d'attaque (ransomware)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mots de passe uniques et complexes</td>
+<td>Empêchent le credential stuffing (réutilisation sur plusieurs sites)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Principe du moindre privilège</td>
+<td>Chaque utilisateur/programme n'a que les droits strictement nécessaires</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Modifier le script Python pour qu'il :
+1. Demande les notes à l'utilisateur via <code>input()</code> (5 notes)
+2. Vérifie que chaque note est comprise entre 0 et 20
+3. Affiche un message d'erreur si une note est invalide</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">notes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">note</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entrez la note </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> (0-20) : &quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">note</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="n">notes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : la note doit être entre 0 et 20.&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur : veuillez entrer un nombre valide.&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">moyenne</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne : </span><span class="si">{</span><span class="n">moyenne</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calcul impossible : notes incomplètes.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Concepts Python utilisés :</strong>
+- <code>input()</code> : saisie utilisateur (retourne une chaîne)
+- <code>float()</code> : conversion en nombre décimal
+- <code>try/except</code> : gestion d'exceptions (si l'utilisateur entre du texte)
+- <code>break</code> : sortie anticipée de la boucle</p>
+<hr />
+<h3>★★ Question avancée (5 min)</h3>
+<p><strong>Énoncé :</strong> En une ligne de Python (compréhension de liste), calculer la moyenne d'un nombre variable de notes passées en argument via <code>sys.argv</code>.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne : </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">notes</span> <span class="k">else</span> <span class="s2">&quot;Aucune note fournie.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Exécution :</strong> <code>python moyenne.py 12 14 11 15 13</code><br />
+<strong>Résultat :</strong> <code>Moyenne : 13.00</code></p>
+<hr />
+<h3>Diagramme — Sécurité en couches</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">BT</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Couches de sécurité&quot;</span>
+<span class="w">        </span><span class="n">MFA</span><span class="p">[</span><span class="s">&quot;MFA&lt;br/&gt;Authentification&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MDP</span><span class="p">[</span><span class="s">&quot;Mots de passe&lt;br/&gt;forts et uniques&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">MDP</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MAJ</span><span class="p">[</span><span class="s">&quot;Mises à jour&lt;br/&gt;régulières&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">MAJ</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SAUV</span><span class="p">[</span><span class="s">&quot;Sauvegardes&lt;br/&gt;automatiques&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">SAUV</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">PRIV</span><span class="p">[</span><span class="s">&quot;Principe du&lt;br/&gt;moindre privilège&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Menaces&quot;</span>
+<span class="w">        </span><span class="n">RAN</span><span class="p">[</span><span class="s">&quot;Ransomware&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">SAUV</span>
+<span class="w">        </span><span class="n">CRED</span><span class="p">[</span><span class="s">&quot;Credential stuffing&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">MDP</span>
+<span class="w">        </span><span class="n">VULN</span><span class="p">[</span><span class="s">&quot;Exploitation de failles&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">MAJ</span>
+<span class="w">        </span><span class="n">PHISH</span><span class="p">[</span><span class="s">&quot;Phishing&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;</span><span class="w"> </span><span class="n">MFA</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">MFA</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">MDP</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">MAJ</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">SAUV</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">PRIV</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Le cycle d'exécution du CPU commence par :</strong>
+   a) Execute  b) Fetch ✓  c) Decode</p>
+</li>
+<li>
+<p><strong>Un thread partage la mémoire de :</strong>
+   a) Un autre thread  b) Son processus parent ✓  c) Tous les processus</p>
+</li>
+<li>
+<p><strong>Quel algorithme de tri a une complexité O(n²) ?</strong>
+   a) Tri fusion  b) Tri à bulles ✓  c) Recherche dichotomique</p>
+</li>
+<li>
+<p><strong>Le DNS traduit :</strong>
+   a) Une IP en MAC  b) Un nom en IP ✓  c) Une URL en HTML</p>
+</li>
+<li>
+<p><strong>Quel mot-clé définit une fonction en Python ?</strong>
+   a) function  b) def ✓  c) define</p>
+</li>
+<li>
+<p><strong>★★ Quel est le rôle du masque de sous-réseau ?</strong>
+   a) Chiffrer les données  b) Séparer réseau et hôte ✓  c) Accélérer la connexion</p>
+</li>
+<li>
+<p><strong>★★ Un processus à l'état « élu » signifie que :</strong>
+   a) Il attend une ressource  b) Il est exécuté par le CPU ✓  c) Il vient d'être créé</p>
+</li>
+<li>
+<p><strong>★★ En Python, <code>len([1,2,3])</code> retourne :</strong>
+   a) 2  b) 3 ✓  c) 4</p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture machine</td>
+<td>20 %</td>
+<td>Ne distingue pas les composants</td>
+<td>Composants partiellement identifiés</td>
+<td>Composants correctement identifiés</td>
+</tr>
+<tr>
+<td>Processus et OS</td>
+<td>20 %</td>
+<td>Ne différencie pas processus/programme</td>
+<td>Concepts partiellement maîtrisés</td>
+<td>Concepts bien maîtrisés</td>
+</tr>
+<tr>
+<td>Algorithmique</td>
+<td>20 %</td>
+<td>Aucun algorithme correct</td>
+<td>Algorithmes partiellement corrects</td>
+<td>Algorithmes corrects</td>
+</tr>
+<tr>
+<td>Réseaux</td>
+<td>20 %</td>
+<td>Ne comprend pas le modèle client-serveur</td>
+<td>Concepts réseau partiellement compris</td>
+<td>Concepts réseau bien compris</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>20 %</td>
+<td>Aucun script fonctionnel</td>
+<td>Script partiellement fonctionnel</td>
+<td>Script complet et fonctionnel</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Ce TD de synthèse montre l'interconnexion des thèmes du module. En classe de Seconde (SNT), on peut proposer un TD similaire mais avec des exercices simplifiés : conversion binaire sur de petits nombres, reconnaissance des périphériques, utilisation d'un navigateur pour illustrer le client-serveur. L'objectif est de donner une vision d'ensemble sans entrer dans les détails techniques.</p>
+<h3>Conseil pour l'enseignant formateur</h3>
+<p>Utiliser ce TD comme évaluation diagnostique en début de module. Demander aux étudiants de répondre sans préparation, puis corriger collectivement pour mesurer le niveau initial. Les résultats permettront d'adapter la progression des séances suivantes. Les pictogrammes ✓/★/★★ permettent une <strong>différenciation pédagogique</strong> : les étudiants rapides peuvent avancer sur les ★★★ pendant que les autres terminent les ✓.</p>
+<h3>Prolongement</h3>
+<p>Réaliser une carte mentale collective (sur papier ou avec un outil comme XMind) qui relie tous les thèmes abordés. Chaque étudiant ajoute une notion ou un exemple vu dans le TD. Cette carte servira de fil conducteur tout au long du module.</p>
+<h3>Pour aller plus loin</h3>
+<ul>
+<li><strong>Architecture</strong> : Simuler le cycle d'exécution avec un jeu de rôle (un étudiant = chaque composant)</li>
+<li><strong>Processus</strong> : Utiliser le Gestionnaire de tâches Windows (<code>Ctrl+Maj+Échap</code>) pour observer les processus en direct</li>
+<li><strong>Algorithme</strong> : Implémenter le maximum en Python et tester sur des tableaux aléatoires de taille croissante (mesurer le temps d'exécution avec <code>time</code>)</li>
+<li><strong>Réseaux</strong> : Utiliser <code>ping</code>, <code>tracert</code>, <code>nslookup</code> en ligne de commande pour observer le DNS et le routage</li>
+<li><strong>Python</strong> : Proposer un mini-projet « calculatrice de moyenne avec notes pondérées » qui réinvestit les listes, boucles et conditions</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

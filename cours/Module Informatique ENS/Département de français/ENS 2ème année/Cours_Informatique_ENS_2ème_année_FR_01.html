@@ -1,0 +1,579 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 2ème année (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 2ème année (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Établissement :** École Normale Supérieure de Mostaganem</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 2ème année</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</li><li>**Public visé :** Étudiants ENS 1ère et 2ème année — Départements Français et Anglais</li><li>**Compétences pré-requises :** Baccalauréat ; TIC niveau Licence 1 recommandé</li><li>**Objectifs transversaux :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_2ème_année_FR_01.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 2ème année (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Établissement :</strong> École Normale Supérieure de Mostaganem<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 2ème année<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</p>
+<p><strong>Public visé :</strong> Étudiants ENS 1ère et 2ème année — Départements Français et Anglais</p>
+<p><strong>Compétences pré-requises :</strong> Baccalauréat ; TIC niveau Licence 1 recommandé</p>
+<p><strong>Objectifs transversaux :</strong>
+- Comprendre l'architecture machine et les systèmes d'exploitation
+- Concevoir des algorithmes et structures de données élémentaires
+- Maîtriser les principes réseau et la sécurité informatique de base
+- S'initier à Python pour l'enseignement</p>
+<p><strong>Mode d'évaluation :</strong> TD 40 % + TP Python 35 % + QCM 25 %</p>
+<p><strong>Bibliographie :</strong> Structure Machine 1 — Univ. Biskra ; Sécurité Informatique S6 — Univ. M'sila ; Goupille — Technologie des ordinateurs</p>
+<hr />
+<h2>Activité de mise en train <em>(5 min)</em></h2>
+<p><strong>Mini-exercice : Carte mentale de vos acquis ENS1</strong></p>
+<p>Prenez 3 minutes pour répondre individuellement à ces questions :</p>
+<ol>
+<li>Citez trois types de données en Python (ex. <code>int</code>, <code>str</code>...).</li>
+<li>Quelle est la différence entre une liste et un tuple ?</li>
+<li>Écrivez la définition d'une fonction Python qui prend un nombre et retourne son carré.</li>
+</ol>
+<p><em>Discussion en binôme (2 min) :</em> Comparez vos réponses. Quelles difficultés avez-vous rencontrées ? Ces notions seront consolidées dans les séances à venir.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Vérification rapide</span>
+<span class="k">def</span> <span class="nf">carre</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">carre</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># 25</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>   <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mf">3.14</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;float&#39;&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>1) Objectifs pédagogiques</h2>
+<p>À l'issue de ce module, l'étudiant en ENS 2ème année est capable de :</p>
+<ul>
+<li>Appliquer la <strong>programmation orientée objet</strong> (classes, héritage, encapsulation) en Python.</li>
+<li>Concevoir des <strong>algorithmes avancés</strong> (tri, recherche, récursivité) et estimer leur complexité.</li>
+<li>Modéliser des données avec le <strong>modèle relationnel</strong> et requêtes SQL de base.</li>
+<li>Comprendre l'architecture <strong>Web</strong> (HTML, CSS, JavaScript intro, HTTP).</li>
+<li>Utiliser <strong>Git</strong> et méthodes de travail collaboratif (branches, merge).</li>
+<li>Préparer l'<strong>enseignement de l'informatique</strong> au collège/lycée (Scratch, Python pédagogique).</li>
+<li>Articuler informatique, <strong>stage</strong> et <strong>portfolio numérique</strong> enseignant.</li>
+</ul>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>2) Plan du cours</h2>
+<ol>
+<li>Rappel ENS1 et montée en compétence  </li>
+<li>Programmation orientée objet  </li>
+<li>Algorithmes avancés et récursivité  </li>
+<li>Bases de données et SQL  </li>
+<li>Développement Web fondamental  </li>
+<li>Git et ingénierie logicielle intro  </li>
+<li>Didactique de l'informatique à l'école  </li>
+<li>Projet ENS2 intégré  </li>
+</ol>
+<hr />
+<h2>3) Contenu détaillé</h2>
+<div class="codehilite"><pre><span></span><code>timeline
+    title Parcours Module Informatique ENS 2ème année
+    Séance 01 : Présentation du module : Objectifs et plan
+    Séances 02-03 : POO Python : Classes, héritage, polymorphisme
+    Séance 04 : Algorithmes avancés : Récursivité, tris, complexité
+    Séance 05 : Bases de données : Modèle relationnel, SQL
+    Séance 06 : Développement Web : HTML, CSS, JavaScript
+    Séance 07 : Git : Versions, branches, collaboration
+    Séance 08 : Didactique : Enseigner l&#39;informatique
+    Séances 09-10 : Projet intégré : Application complète + soutenance
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>mindmap
+  root((Module Informatique ENS2))
+    Programmation
+      POO Python
+      Classes &amp; Objets
+      Héritage
+    Algorithmique
+      Récursivité
+      Tris (bulle, fusion)
+      Recherche dichotomique
+    Données
+      Modèle relationnel
+      SQLite
+      Requêtes SQL
+    Web
+      HTML5
+      CSS3
+      JavaScript
+    Outils
+      Git &amp; GitHub
+      Flask
+      Débogage
+    Pédagogie
+      Didactique
+      Scratch
+      Fiche de séance
+</code></pre></div>
+
+<hr />
+<h2>Révision ENS1 : les fondamentaux <em>(10 min)</em></h2>
+<p>Avant d'aborder les nouveaux concepts, rappelons les acquis essentiels de l'ENS 1ère année :</p>
+<table>
+<thead>
+<tr>
+<th>Concept ENS1</th>
+<th>Description</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variables</td>
+<td>Stockage de données typées</td>
+<td><code>age = 20</code></td>
+</tr>
+<tr>
+<td>Structures conditionnelles</td>
+<td><code>if</code>, <code>elif</code>, <code>else</code></td>
+<td><code>if note &gt;= 10: print("Admis")</code></td>
+</tr>
+<tr>
+<td>Boucles</td>
+<td><code>for</code>, <code>while</code> pour itérer</td>
+<td><code>for i in range(10):</code></td>
+</tr>
+<tr>
+<td>Fonctions</td>
+<td>Bloc de code réutilisable</td>
+<td><code>def carre(x): return x**2</code></td>
+</tr>
+<tr>
+<td>Listes</td>
+<td>Collection ordonnée et mutable</td>
+<td><code>notes = [12, 15, 8]</code></td>
+</tr>
+<tr>
+<td>Tuples</td>
+<td>Collection ordonnée et immuable</td>
+<td><code>coords = (3, 5)</code></td>
+</tr>
+<tr>
+<td>Dictionnaires</td>
+<td>Paires clé-valeur</td>
+<td><code>eleve = {"nom": "Ali", "age": 20}</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Exemple de révision : calcul de moyenne avec une fonction</span>
+<span class="k">def</span> <span class="nf">moyenne</span><span class="p">(</span><span class="n">notes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calcule la moyenne d&#39;une liste de notes.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">notes</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+
+<span class="c1"># Test</span>
+<span class="n">notes_eleve</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne : </span><span class="si">{</span><span class="n">moyenne</span><span class="p">(</span><span class="n">notes_eleve</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Moyenne : 13.75</span>
+</code></pre></div>
+
+<p><strong>Transition ENS1 → ENS2 :</strong> En 1ère année, vous avez appris à écrire des scripts isolés. En 2ème année, nous passons à la <strong>programmation structurée</strong> : projets multi-fichiers, classes, bases de données, travail collaboratif. Chaque nouveau concept sera relié à vos acquis antérieurs.</p>
+<hr />
+<h3>Chapitre 1 — Bilan et enjeux ENS2 <em>(10 min)</em></h3>
+<p><strong>Bilan ENS1 :</strong> Vous avez acquis les bases de l'algorithmique (variables, boucles, fonctions), de l'architecture machine et de la programmation Python. Vous êtes capables d'écrire un script de 50-100 lignes résolvant un problème simple.</p>
+<p><strong>Passage au niveau supérieur :</strong> ENS2 marque le passage du script isolé au <strong>projet logiciel structuré</strong>. Vous allez apprendre à organiser votre code en classes (POO) pour des programmes plus complexes, manipuler des données volumineuses avec SQL, collaborer avec Git comme dans une équipe de développement, et préparer votre future pratique d'enseignant en informatique.</p>
+<p><strong>Compétences futures de l'enseignant :</strong> L'enseignant d'informatique du XXIe siècle doit maîtriser l'algorithmique, la programmation, la culture numérique, et les enjeux éthiques de l'IA. Ce module construit ces compétences de manière intégrée.</p>
+<h3>Chapitre 2 — POO <em>(20 min)</em></h3>
+<p><strong>Concepts :</strong> Classe, objet, attribut, méthode. Constructeur <code>__init__</code>. Encapsulation, héritage simple.</p>
+<p><strong>Exemple concret — contexte scolaire :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Eleve</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">niveau</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prenom</span> <span class="o">=</span> <span class="n">prenom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">niveau</span> <span class="o">=</span> <span class="n">niveau</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">ajouter_note</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">matiere</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;matiere&quot;</span><span class="p">:</span> <span class="n">matiere</span><span class="p">,</span> <span class="s2">&quot;note&quot;</span><span class="p">:</span> <span class="n">note</span><span class="p">})</span>
+
+<span class="k">class</span> <span class="nc">Enseignant</span><span class="p">(</span><span class="n">Eleve</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">matiere</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="s2">&quot;Enseignant&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matiere_principale</span> <span class="o">=</span> <span class="n">matiere</span>
+</code></pre></div>
+
+<p><strong>Lien avec l'enseignement :</strong> En collège, la POO peut être introduite via Scratch (les lutins sont des objets avec attributs et scripts). Ce parallèle sera développé en séance 7 (Didactique).</p>
+<p><strong>Mini-exercice :</strong> Identifiez 3 objets du monde scolaire et listez leurs attributs et méthodes (ex. : <code>SalleDeClasse</code> → attributs : <code>numero</code>, <code>capacite</code>, <code>etage</code> ; méthodes : <code>afficher_info()</code>, <code>est_disponible()</code>).</p>
+<h3>Chapitre 3 — Algorithmes avancés <em>(15 min)</em></h3>
+<p><strong>Algorithmes abordés :</strong>
+- <strong>Tri bulle :</strong> comparaisons successives d'éléments adjacents — simple mais lent (O(n²))
+- <strong>Tri fusion :</strong> algorithme récursif divisant le tableau en deux — efficace (O(n log n))
+- <strong>Recherche dichotomique :</strong> recherche dans un tableau trié en éliminant la moitié à chaque étape (O(log n))
+- <strong>Récursivité :</strong> factorielle, Fibonacci — une fonction qui s'appelle elle-même</p>
+<p><strong>Exemple concret : tri des notes d'une classe</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">notes_triees</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Notes triées : </span><span class="si">{</span><span class="n">notes_triees</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Lien avec l'enseignement secondaire :</strong> Au collège, les élèves comparent des nombres sans stratégie explicite — l'algorithme de tri formalise cette intuition. En NSI, les algorithmes de tri sont au programme de Première et Terminale.</p>
+<h3>Chapitre 4 — Bases de données <em>(15 min)</em></h3>
+<p><strong>Concepts fondamentaux :</strong>
+- <strong>Modèle relationnel :</strong> organisation des données en tables reliées par des clés
+- <strong>SQL :</strong> langage de requêtes structurées
+- <strong>Intégrité :</strong> contraintes (clé primaire, clé étrangère, types)
+- <strong>Normalisation :</strong> 1ère forme normale (éviter les répétitions)</p>
+<p><strong>Exemple — gestion des notes d'une école :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Eleve</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_eleve</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nom</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">prenom</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">classe</span><span class="w"> </span><span class="nb">TEXT</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Note</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_note</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">valeur</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="k">CHECK</span><span class="p">(</span><span class="n">valeur</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">valeur</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span>
+<span class="w">    </span><span class="n">matiere</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">id_eleve</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id_eleve</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Eleve</span><span class="p">(</span><span class="n">id_eleve</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<p><strong>Lien avec l'enseignement :</strong> Le tableur (Excel, LibreOffice Calc) est une introduction concrète aux bases de données — chaque ligne est un enregistrement, chaque colonne un champ. La transition tableur → SQL est naturelle en SNT (Thème "Données structurées").</p>
+<h3>Chapitre 5 — Web <em>(15 min)</em></h3>
+<p><strong>Architecture :</strong>
+- <strong>Client-serveur :</strong> le navigateur (client) envoie des requêtes HTTP au serveur qui répond
+- <strong>Frontend :</strong> HTML (structure), CSS (style), JavaScript (interactivité)
+- <strong>Backend :</strong> Flask (Python) pour créer des applications Web simples
+- <strong>API REST :</strong> interface standard pour échanger des données entre applications</p>
+<p><strong>Exemple — carnet de notes en ligne :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Carnet de notes<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Notes de la classe ENS2<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Nom<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Note<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Ali<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>15<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Sara<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>18<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Accessibilité Web :</strong> Utilisez des balises sémantiques (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>), des textes alternatifs pour les images (<code>alt</code>), un contraste suffisant. Ces bonnes pratiques sont essentielles pour l'enseignement inclusif.</p>
+<h3>Chapitre 6 — Git et qualité <em>(10 min)</em></h3>
+<p><strong>Commandes essentielles :</strong> <code>git init</code>, <code>git add</code>, <code>git commit</code>, <code>git branch</code>, <code>git merge</code></p>
+<p><strong>Qualité logicielle :</strong> Documentation (README, docstrings), tests unitaires (<code>assert</code>), <code>.gitignore</code></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Exemple de test unitaire</span>
+<span class="k">def</span> <span class="nf">moyenne</span><span class="p">(</span><span class="n">notes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="k">if</span> <span class="n">notes</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="k">assert</span> <span class="n">moyenne</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span> <span class="o">==</span> <span class="mf">15.0</span>
+<span class="k">assert</span> <span class="n">moyenne</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tous les tests passent ✓&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Lien avec l'enseignement :</strong> Git est un excellent outil pour enseigner la collaboration : les branches sont comme des groupes d'élèves qui travaillent sur des parties différentes d'un projet, puis fusionnent leurs travaux.</p>
+<h3>Chapitre 7 — Didactique informatique <em>(10 min)</em></h3>
+<p><strong>Contenus abordés :</strong>
+- <strong>Programmes officiels :</strong> SNT Seconde (1h30/sem), NSI Première/Terminale (4h/sem)
+- <strong>Démarche projet :</strong> les élèves construisent un projet sur plusieurs séances
+- <strong>Scratch → Python :</strong> transition de la programmation visuelle au code textuel
+- <strong>Différenciation :</strong> adapter les exercices selon le niveau des élèves
+- <strong>Évaluation par compétences :</strong> grilles critériées, auto-évaluation</p>
+<p><strong>Charte usage IA en classe :</strong> L'IA générative (ChatGPT, etc.) peut être un outil d'apprentissage si son usage est encadré. Propositions : demander aux élèves d'analyser/critiquer le code généré par IA plutôt que de le recopier.</p>
+<p><strong>Exemple de fiche de séance type :</strong>
+| Phase | Durée | Activité |
+|-------|-------|----------|
+| Mise en train | 5 min | Question rapide en binôme |
+| Découverte | 15 min | Démonstration par l'enseignant |
+| Pratique guidée | 15 min | Exercice en autonomie |
+| Bilan | 5 min | Synthèse collective |</p>
+<h3>Chapitre 8 — Projet ENS2 <em>(5 min)</em></h3>
+<p><strong>Livrable attendu :</strong> Application Web légère ou module Python POO + base SQLite + dépôt Git + fiche séance pédagogique 45 min pour cycle collège.</p>
+<p><strong>Exemples de sujets :</strong>
+1. <strong>Carnet de notes interactif</strong> — classes Python + base SQLite + interface Flask
+2. <strong>Quiz pédagogique</strong> — POO (Question, Quiz) + SQL (banque de questions) + Web (interface)
+3. <strong>Gestion de bibliothèque scolaire</strong> — classes (Livre, Adherent, Emprunt) + SQL + Git</p>
+<p><strong>Calendrier prévisionnel :</strong>
+- Semaines 2-4 : conception POO et prototypage
+- Semaines 5-6 : intégration base de données
+- Semaines 7-8 : interface Web et finalisation
+- Semaine 9 : rédaction fiche pédagogique
+- Semaine 10 : soutenance et démonstration</p>
+<hr />
+<h2>Cas d'étude intégrateur : Gestion d'une bibliothèque scolaire</h2>
+<p>Ce cas relie tous les chapitres du module et servira de fil conducteur.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Application au cas Bibliothèque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POO (Ch.2)</td>
+<td>Classes <code>Livre</code>, <code>Adherent</code>, <code>Emprunt</code> avec attributs et méthodes</td>
+</tr>
+<tr>
+<td>Algorithmes (Ch.3)</td>
+<td>Recherche dichotomique d'un livre par titre, tri des emprunts par date</td>
+</tr>
+<tr>
+<td>BDD (Ch.4)</td>
+<td>Schéma relationnel : tables Livre, Adherent, Emprunt avec clés étrangères</td>
+</tr>
+<tr>
+<td>Web (Ch.5)</td>
+<td>Interface HTML pour rechercher/emprunter des livres</td>
+</tr>
+<tr>
+<td>Git (Ch.6)</td>
+<td>Dépôt partagé avec branches par fonctionnalité</td>
+</tr>
+<tr>
+<td>Didactique (Ch.7)</td>
+<td>Fiche séance pour enseigner la POO via ce projet en collège</td>
+</tr>
+<tr>
+<td>Projet (Ch.8)</td>
+<td>Application complète livrée avec documentation et tests</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Synthèse transversale</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Révision</span><span class="w"> </span><span class="n">ENS1</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">POO</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Algorithmes</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Base</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">données</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Web</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Git</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Didactique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Projet</span><span class="w"> </span><span class="n">ENS2</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span>
+</code></pre></div>
+
+<p><strong>Questions de révision transversale :</strong>
+1. Comment modéliseriez-vous un système de gestion des notes avec les concepts POO ?
+2. Quel algorithme de tri utiliseriez-vous pour classer 100 000 élèves par moyenne ? Justifiez.
+3. Comment relieriez-vous une table <code>Eleve</code> et une table <code>Note</code> en SQL ?
+4. Quels sont les avantages de Git pour un projet pédagogique en groupe ?
+5. Comment adapteriez-vous le contenu de ce module pour une classe de 4ème au collège ?</p>
+<hr />
+<h2>Repères historiques en informatique</h2>
+<table>
+<thead>
+<tr>
+<th>Année</th>
+<th>Événement</th>
+<th>Lien avec le cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1967</td>
+<td>Simula — premier langage POO</td>
+<td>Origine des classes et objets (Ch.2)</td>
+</tr>
+<tr>
+<td>1989</td>
+<td>Tim Berners-Lee invente le Web</td>
+<td>Naissance d'HTML (Ch.5)</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>Guido van Rossum crée Python</td>
+<td>Le langage utilisé dans ce module</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>Création de Git par Linus Torvalds</td>
+<td>Gestion de versions (Ch.6)</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>Scratch 2.0 en ligne</td>
+<td>Programmation visuelle pour l'éducation (Ch.7)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4) Modalités d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Composante</th>
+<th>Poids</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TP POO + SQL</td>
+<td>35 %</td>
+</tr>
+<tr>
+<td>Projet intégré (code + Git)</td>
+<td>40 %</td>
+</tr>
+<tr>
+<td>Fiche séance pédagogique</td>
+<td>25 %</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5) Bibliographie</h2>
+<ul>
+<li>Guttag — <em>Introduction to Computation and Programming Using Python</em>.  </li>
+<li>Connolly &amp; Begg — <em>Database Systems</em> (chapitres introductifs).  </li>
+<li>MDN Web Docs — HTML, CSS, JavaScript.  </li>
+<li>Eduscol — Enseignement de l'informatique au lycée.</li>
+<li>Downey — <em>Think Python</em> (disponible gratuitement en ligne).  </li>
+<li>Chacon &amp; Straub — <em>Pro Git</em> (livre gratuit en ligne).</li>
+</ul>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Quel est le poids du projet intégré dans l'évaluation finale ?</strong>
+   a) 25 %  b) 40 % ✓  c) 35 %</p>
+</li>
+<li>
+<p><strong>Quelle séance introduit la programmation orientée objet ?</strong>
+   a) Séance 01  b) Séance 02 ✓  c) Séance 04</p>
+</li>
+<li>
+<p><strong>Le module NSI au lycée a un volume horaire de :</strong>
+   a) 1h30/semaine  b) 4h/semaine ✓  c) 2h/semaine</p>
+</li>
+<li>
+<p><strong>Quel outil de versionnement est enseigné dans ce module ?</strong>
+   a) SVN  b) Git ✓  c) Mercurial</p>
+</li>
+<li>
+<p><strong>Quel langage est utilisé pour la transition pédagogique Scratch → texte ?</strong>
+   a) Java  b) Python ✓  c) C++</p>
+</li>
+<li>
+<p><strong>Quel est l'ordre de complexité de la recherche dichotomique ?</strong>
+   a) O(n)  b) O(log n) ✓  c) O(n²)</p>
+</li>
+<li>
+<p><strong>En SQL, quelle clause permet de filtrer les résultats ?</strong>
+   a) ORDER BY  b) WHERE ✓  c) JOIN</p>
+</li>
+<li>
+<p><strong>Quelle commande Git crée une nouvelle branche ?</strong>
+   a) <code>git branch &lt;nom&gt;</code> ✓  b) <code>git checkout &lt;nom&gt;</code>  c) <code>git merge &lt;nom&gt;</code></p>
+</li>
+<li>
+<p><strong>Quel langage est utilisé pour structurer le contenu d'une page Web ?</strong>
+   a) CSS  b) JavaScript  c) HTML ✓</p>
+</li>
+<li>
+<p><strong>Quelle stratégie pédagogique consiste à passer de Scratch au code textuel ?</strong>
+    a) L'apprentissage par projet  b) La transition visuel → texte ✓  c) La classe inversée</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion</h2>
+<p>Ce module vous accompagne de la maîtrise technique (POO, algorithmes, bases de données, Web, Git) jusqu'à la transposition didactique pour l'enseignement secondaire. Chaque séance construit une brique du projet intégré qui viendra consolider l'ensemble des compétences visées.</p>
+<p><strong>Prochain cours :</strong> Programmation orientée objet — classes, objets et méthodes en Python.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> La vue d'ensemble du module peut être présentée aux élèves de collège/lycée sous forme de carte mentale. Dès la classe de 3ème, on peut illustrer le lien entre les blocs Scratch (programmation visuelle) et le code Python (programmation textuelle) pour montrer la progressivité des apprentissages. En SNT Seconde, le thème "Internet" peut être relié à la séance Web ; le thème "Données structurées" à la séance SQL.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Utilisez ce plan de cours comme outil de communication avec vos étudiants. Distribuez-le en début de module pour qu'ils visualisent la cohérence d'ensemble. Proposez-leur de cocher les séances au fur et à mesure, ce qui renforce le sentiment de progression. N'hésitez pas à revenir sur ce plan à chaque début de séance pour contextualiser.</p>
+<p><strong>Section de révision :</strong> En fin de module, organisez une séance de révision collaborative. Chaque étudiant prépare une fiche de synthèse sur un chapitre, puis les groupes échangent leurs fiches. Cette activité, appelée "classe puzzle" (Jigsaw classroom), renforce l'apprentissage actif et la responsabilisation.</p>
+<p><strong>Prolongement :</strong> Les étudiants peuvent créer une carte mentale numérique (XMind, FreeMind) de leur propre progression dans le module, en y ajoutant des ressources personnelles (liens, notes, exercices) — cela deviendra une base pour leur portfolio enseignant.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

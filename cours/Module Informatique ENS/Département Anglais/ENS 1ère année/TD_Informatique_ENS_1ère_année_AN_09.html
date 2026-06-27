@@ -1,0 +1,535 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 1 — Session 09 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 1 — Session 09 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 1 — English Department</li><li>**Duration:** 1h30</li><li>**Academic Year:** 2025-2026</li><li>**Problem statement:** Create a script `recherche.py` that implements two search algorithms:</li><li>**Answer:**</li><li>**Pedagogical question:** On a list of 1,000,000 elements, how many comparisons at most for each method? *(Answer: sequential = 1,000,000, binary = log₂(1,000,000) ≈ 20)*</li><li>**Problem statement:** Create a script `selection_sort.py` that implements selection sort. The program must:</li><li>**Principle reminder:** At each iteration, look for the minimum in the unsorted part and place it at the beginning of that part.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_AN_09.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 1 — Session 09 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Learning Objectives</h2>
+<p>By the end of this tutorial session, the student is able to:
+- Implement search algorithms (sequential, binary) in Python
+- Implement simple sorting algorithms (selection sort, bubble sort)
+- Advanced Python list manipulation (list comprehension, slicing, filtering)
+- Analyze the algorithmic complexity of Python code
+- Solve algorithmic problems using the data structures seen in class</p>
+<hr />
+<h2>Tutorial Plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome and algorithmic reminders</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — Search</td>
+<td>20 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — Selection sort</td>
+<td>20 min</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — Stack and parentheses</td>
+<td>20 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — Lists and filtering</td>
+<td>15 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — Merge sort</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Comparison of search algorithms</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Sequential search&quot;</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">        </span><span class="n">S1</span><span class="p">[</span><span class="n">Start</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S2</span><span class="p">[</span><span class="n">Browse</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">element</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">element</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S3</span><span class="p">{</span><span class="n">Found</span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">S3</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">S4</span><span class="p">[</span><span class="n">Return</span><span class="w"> </span><span class="n">index</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S3</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">S5</span><span class="p">[</span><span class="n">End</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">array</span><span class="o">?</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S5</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">S2</span>
+<span class="w">        </span><span class="n">S5</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">S6</span><span class="p">[</span><span class="n">Return</span><span class="w"> </span><span class="mi">-1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Binary search&quot;</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">        </span><span class="n">D1</span><span class="p">[</span><span class="n">Start</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">[</span><span class="n">Sorted</span><span class="w"> </span><span class="n">array</span><span class="o">?</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span><span class="p">[</span><span class="n">Look</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">middle</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D4</span><span class="p">{</span><span class="n">Found</span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">D5</span><span class="p">[</span><span class="n">Return</span><span class="w"> </span><span class="n">index</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">D6</span><span class="p">{</span><span class="n">Greater</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">or</span><span class="w"> </span><span class="n">smaller</span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">D6</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Greater</span><span class="o">|</span><span class="w"> </span><span class="n">D7</span><span class="p">[</span><span class="n">Search</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">right</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D6</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Smaller</span><span class="o">|</span><span class="w"> </span><span class="n">D8</span><span class="p">[</span><span class="n">Search</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">left</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D7</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span>
+<span class="w">        </span><span class="n">D8</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">S6</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Comp</span><span class="p">[</span><span class="n">Comparison</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Sequential</span><span class="o">:</span><span class="w"> </span><span class="n">O</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Binary</span><span class="o">:</span><span class="w"> </span><span class="n">O</span><span class="p">(</span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="p">)]</span>
+<span class="w">    </span><span class="n">D5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Comp</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S4</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S6</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Comp</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h2>Complexity of sorting algorithms</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">graph</span><span class="w"> </span><span class="nx">LR</span>
+<span class="w">    </span><span class="nx">subgraph</span><span class="w"> </span><span class="s">&quot;Sorting algorithms&quot;</span>
+<span class="w">        </span><span class="nx">TS</span><span class="p">[</span><span class="nx">Selection</span><span class="w"> </span><span class="nx">sort</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">O</span><span class="p">(</span><span class="nx">n²</span><span class="p">)]</span>
+<span class="w">        </span><span class="nx">TB</span><span class="p">[</span><span class="nx">Bubble</span><span class="w"> </span><span class="nx">sort</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">O</span><span class="p">(</span><span class="nx">n²</span><span class="p">)]</span>
+<span class="w">        </span><span class="nx">TF</span><span class="p">[</span><span class="nx">Merge</span><span class="w"> </span><span class="nx">sort</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">O</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="nx">n</span><span class="p">)]</span>
+<span class="w">        </span><span class="nx">TQ</span><span class="p">[</span><span class="nx">Quicksort</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">O</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="nx">n</span><span class="p">)]</span>
+<span class="w">    </span><span class="nx">end</span>
+
+<span class="w">    </span><span class="nx">subgraph</span><span class="w"> </span><span class="s">&quot;Performance (n = 1000)&quot;</span>
+<span class="w">        </span><span class="nx">TS</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">T1</span><span class="p">[</span><span class="s">&quot;~500,000 comparisons&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">TB</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">T2</span><span class="p">[</span><span class="s">&quot;~500,000 comparisons&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">TF</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">T3</span><span class="p">[</span><span class="s">&quot;~10,000 comparisons&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">TQ</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">T4</span><span class="p">[</span><span class="s">&quot;~10,000 comparisons&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">end</span>
+
+<span class="w">    </span><span class="nx">TS</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;|</span><span class="s">&quot;Simple to implement&lt;br/&gt;But slow&quot;</span><span class="o">|</span><span class="w"> </span><span class="nx">Note1</span>
+<span class="w">    </span><span class="nx">TF</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;|</span><span class="s">&quot;More complex&lt;br/&gt;But fast&quot;</span><span class="o">|</span><span class="w"> </span><span class="nx">Note2</span>
+
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">TS</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e74c3c</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="nx">fff</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">TB</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e74c3c</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="nx">fff</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">TF</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="mi">2</span><span class="nx">ecc71</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="nx">fff</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">TQ</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="mi">2</span><span class="nx">ecc71</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="nx">fff</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">T1</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e67e22</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="mi">000</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">T2</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e67e22</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="mi">000</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">T3</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e67e22</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="mi">000</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">T4</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e67e22</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="mi">000</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 1 — Sequential and binary search <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>recherche.py</code> that implements two search algorithms:</p>
+<ol>
+<li><code>sequential_search(list, value)</code> — traverses the list and returns the index or -1</li>
+<li><code>binary_search(list, value)</code> — searches in a sorted list (divide and conquer)</li>
+</ol>
+<p>For each algorithm, count the number of comparisons made and compare them.</p>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">sequential_search</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sequential search. Returns the index or -1.&quot;&quot;&quot;</span>
+    <span class="n">comparisons</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+        <span class="n">comparisons</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sequential: </span><span class="si">{</span><span class="n">comparisons</span><span class="si">}</span><span class="s2"> comparison(s)&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Sequential: </span><span class="si">{</span><span class="n">comparisons</span><span class="si">}</span><span class="s2"> comparison(s)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Binary search (sorted list). Returns the index or -1.&quot;&quot;&quot;</span>
+    <span class="n">comparisons</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+        <span class="n">comparisons</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">end</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="nb">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Binary: </span><span class="si">{</span><span class="n">comparisons</span><span class="si">}</span><span class="s2"> comparison(s)&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">mid</span>
+        <span class="k">elif</span> <span class="nb">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">:</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Binary: </span><span class="si">{</span><span class="n">comparisons</span><span class="si">}</span><span class="s2"> comparison(s)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># Test</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">101</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;List: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Search for 67:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Index found: </span><span class="si">{</span><span class="n">sequential_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">67</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Index found: </span><span class="si">{</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">67</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Search for 3 (not found):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Index found: </span><span class="si">{</span><span class="n">sequential_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Index found: </span><span class="si">{</span><span class="n">binary_search</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Pedagogical question:</strong> On a list of 1,000,000 elements, how many comparisons at most for each method? <em>(Answer: sequential = 1,000,000, binary = log₂(1,000,000) ≈ 20)</em></p>
+<hr />
+<h2>Exercise 2 — Selection sort <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>selection_sort.py</code> that implements selection sort. The program must:
+1. Implement <code>selection_sort(list)</code> that sorts the list in place
+2. Display the list before and after sorting
+3. Count the number of swaps and comparisons
+4. Test on a randomly generated list of 10 integers</p>
+<p><strong>Principle reminder:</strong> At each iteration, look for the minimum in the unsorted part and place it at the beginning of that part.</p>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">selection_sort</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Selection sort. Returns the number of swaps and comparisons.&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">swaps</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">comparisons</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">min_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">comparisons</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="nb">list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]:</span>
+                <span class="n">min_idx</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="k">if</span> <span class="n">min_idx</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
+            <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">min_idx</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">swaps</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">swaps</span><span class="p">,</span> <span class="n">comparisons</span>
+
+<span class="c1"># Test</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original list: </span><span class="si">{</span><span class="nb">list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">sw</span><span class="p">,</span> <span class="n">comp</span> <span class="o">=</span> <span class="n">selection_sort</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorted list  : </span><span class="si">{</span><span class="nb">list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Swaps: </span><span class="si">{</span><span class="n">sw</span><span class="si">}</span><span class="s2">, Comparisons: </span><span class="si">{</span><span class="n">comp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Complexity: O(n²) with n = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="si">}</span><span class="s2"> → ~</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s2"> comparisons&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 3 — Stack with parentheses validation <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>parentheses.py</code> that extends the parentheses validation algorithm seen in class. The program must:</p>
+<ol>
+<li>Implement a <code>Stack</code> class with methods <code>push()</code>, <code>pop()</code>, <code>is_empty()</code>, <code>size()</code></li>
+<li>Use this class to validate expressions with <code>()</code>, <code>[]</code>, <code>{}</code></li>
+<li>In case of error, indicate precisely where the problem is (character position)</li>
+</ol>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Stack</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Implementation of a LIFO stack.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">validate_parentheses</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validates parentheses and returns (valid, error_position, message).&quot;&quot;&quot;</span>
+    <span class="n">matching</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;)&quot;</span><span class="p">:</span> <span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;]&quot;</span><span class="p">:</span> <span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="s2">&quot;}&quot;</span><span class="p">:</span> <span class="s2">&quot;{&quot;</span><span class="p">}</span>
+    <span class="n">opening</span> <span class="o">=</span> <span class="s2">&quot;([{&quot;</span>
+    <span class="n">closing</span> <span class="o">=</span> <span class="s2">&quot;)]}&quot;</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">opening</span><span class="p">:</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">closing</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">stack</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+                <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Closing bracket &#39;</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">&#39; without opening at position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">top</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">top</span> <span class="o">!=</span> <span class="n">matching</span><span class="p">[</span><span class="n">char</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Mismatch: &#39;</span><span class="si">{</span><span class="n">top</span><span class="si">}</span><span class="s2">&#39; opened but &#39;</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">&#39; closed at position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">stack</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Missing </span><span class="si">{</span><span class="n">stack</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s2"> closing bracket(s)&quot;</span>
+
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expression is correct&quot;</span>
+
+<span class="c1"># Tests</span>
+<span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;(3 + 2) × [5 - {1 + 2}]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(3 + 2] × [5 - {1 + 2})&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;((1 + 2) × 3)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;({[)]}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(((</span><span class="si">{}</span><span class="s2">))&quot;</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">expressions</span><span class="p">:</span>
+    <span class="n">valid</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">validate_parentheses</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;✓&quot;</span> <span class="k">if</span> <span class="n">valid</span> <span class="k">else</span> <span class="s2">&quot;✗&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">expr</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="si">:</span><span class="s2">50s</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 4 — List algorithms (filtering and transformation) <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>filtering.py</code> that, from a list of random grades (20 grades between 0 and 20):</p>
+<ol>
+<li>Computes the mean, median, and standard deviation manually (without the statistics module)</li>
+<li>Filters to get grades ≥ 10 (passing)</li>
+<li>Creates a new list with grades increased by 1 point (bonus, capped at 20)</li>
+<li>Uses list comprehensions</li>
+</ol>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original grades: </span><span class="si">{</span><span class="n">grades</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Manual statistics</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>
+<span class="n">sorted_grades</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_grades</span><span class="p">)</span>
+<span class="n">median</span> <span class="o">=</span> <span class="p">(</span><span class="n">sorted_grades</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">sorted_grades</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">sorted_grades</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">variance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">std_dev</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean        : </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median      : </span><span class="si">{</span><span class="n">median</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Std. Dev.   : </span><span class="si">{</span><span class="n">std_dev</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Grades ≥ 10</span>
+<span class="n">passing</span> <span class="o">=</span> <span class="p">[</span><span class="n">g</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span> <span class="k">if</span> <span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Passing (≥10): </span><span class="si">{</span><span class="n">passing</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">passing</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3. Capped bonus</span>
+<span class="n">bonus</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">g</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;With bonus  : </span><span class="si">{</span><span class="n">bonus</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 5 — Merge sort algorithm (recursive) <em>(10 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>merge_sort.py</code> that implements merge sort, a recursive algorithm of complexity O(n log n).</p>
+<p><strong>Principle:</strong> divide the list in two, recursively sort each half, then merge the two sorted halves.</p>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recursive merge sort.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span>
+
+    <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="nb">list</span><span class="p">[:</span><span class="n">mid</span><span class="p">])</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">mid</span><span class="p">:])</span>
+
+    <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merges two sorted lists.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Test</span>
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="nb">list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">sorted_list</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sorted  : </span><span class="si">{</span><span class="n">sorted_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Complexity: O(n log n) with n = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Self-assessment Quiz</h2>
+<ol>
+<li>
+<p><strong>Binary search requires the list to be:</strong>
+   a) Unsorted  b) Sorted ✓  c) Of fixed size</p>
+</li>
+<li>
+<p><strong>The complexity of selection sort is:</strong>
+   a) O(n)  b) O(n log n)  c) O(n²) ✓</p>
+</li>
+<li>
+<p><strong>In Python, the syntax <code>[x*2 for x in range(5)]</code> is:</strong>
+   a) A for loop  b) A list comprehension ✓  c) A lambda function</p>
+</li>
+<li>
+<p><strong>Merge sort has a complexity of:</strong>
+   a) O(n²)  b) O(n log n) ✓  c) O(log n)</p>
+</li>
+<li>
+<p><strong>Which stack method returns the top element without removing it?</strong>
+   a) <code>push()</code>  b) <code>pop()</code>  c) <code>peek()</code> ✓</p>
+</li>
+</ol>
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sequential search</td>
+<td>15%</td>
+<td>Incorrect algorithm</td>
+<td>Partial algorithm</td>
+<td>Correct algorithm</td>
+</tr>
+<tr>
+<td>Binary search</td>
+<td>15%</td>
+<td>Incorrect algorithm</td>
+<td>Partial algorithm</td>
+<td>Correct algorithm</td>
+</tr>
+<tr>
+<td>Selection sort</td>
+<td>20%</td>
+<td>Incorrect sort</td>
+<td>Partially correct sort</td>
+<td>Correct sort</td>
+</tr>
+<tr>
+<td>Stack — parentheses</td>
+<td>20%</td>
+<td>Incorrect algorithm</td>
+<td>Partial algorithm</td>
+<td>Correct algorithm</td>
+</tr>
+<tr>
+<td>Merge sort</td>
+<td>20%</td>
+<td>Incorrect sort</td>
+<td>Partially correct sort</td>
+<td>Correct sort</td>
+</tr>
+<tr>
+<td>Notion of complexity</td>
+<td>10%</td>
+<td>Complexity not identified</td>
+<td>1-2 correct complexities</td>
+<td>3+ correct complexities</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<h3>Teaching transposition</h3>
+<p>This tutorial shows how algorithmic concepts (search, sort) and data structures (stack) seen in class are concretely implemented in Python. These algorithms are part of the NSI Terminale curriculum. Comparing complexities (O(n) vs O(log n) vs O(n²) vs O(n log n)) is a key objective of the curriculum. In NSI Première, one can start with sequential search and selection sort before tackling binary search and merge sort.</p>
+<h3>Trainer advice</h3>
+<p>Exercise 1 is fundamental: have students mentally execute both algorithms on a small dataset before coding. For exercise 2, ask students to trace the array evolution at each iteration on paper. Exercise 3 (parentheses) is an excellent example of the usefulness of stacks. Exercise 5 (merge sort) introduces recursion: mastering it is difficult but crucial for the rest of the curriculum.</p>
+<h3>Extension</h3>
+<p>Propose a challenge: implement quicksort in Python and compare its performance with merge sort on a list of 10,000 elements using the <code>time</code> module. Create a comparison table of execution times for different sorting algorithms and different data sizes.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

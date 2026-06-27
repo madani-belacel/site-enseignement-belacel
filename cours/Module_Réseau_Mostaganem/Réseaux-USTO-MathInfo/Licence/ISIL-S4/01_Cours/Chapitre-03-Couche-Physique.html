@@ -1,0 +1,746 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 03 — Couche Physique — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 03 — Couche Physique</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Standards Ethernet sur paire torsadée :**</li><li>- **Bande passante (B)** : étendue de fréquences du canal (Hz).</li><li>- **Théorème de Nyquist** (canal sans bruit) :</li><li>- **Théorème de Shannon** (canal avec bruit) :</li><li>- **Atténuation** : Affaiblissement du signal avec la distance (dB/km).</li><li>- **Répéteur** (L1) : Régénère le signal (bit par bit).</li><li>- **Amplificateur** : Amplifie le signal analogique (amplifie aussi le bruit).</li><li>**Besoin** : Câbler 24 postes à 1 Gbps, distance max 80 m du switch.</li><li>**Solution** : Câble **Cat 6 UTP**, connecteurs **RJ-45**, standard **1000Base-T**.</li><li>**Énoncé** : Canal de bande passante B = 4 kHz, SNR = 31 (linéaire). Débit max ?</li></ul></div>
+    <h1>Chapitre 03 — Couche Physique</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>UEF422 — Réseaux</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM (+ 2 h TD associé)</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>03 / 08</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[FO] Ch. 3–4 ; [TA] Ch. 2 ; [ST] Ch. 3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs du chapitre</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li>Identifier les <strong>supports de transmission</strong> guidés et non guidés.</li>
+<li>Expliquer les principes de la <strong>représentation numérique des signaux</strong>.</li>
+<li>Décrire les techniques de <strong>codage</strong> et de <strong>modulation</strong>.</li>
+<li>Comprendre les méthodes de <strong>multiplexage</strong> (FDM, TDM, WDM).</li>
+<li>Calculer le <strong>débit maximum</strong> théorique d'un canal (théorème de Shannon/Nyquist — notions).</li>
+</ol>
+<hr />
+<h2>Plan du chapitre</h2>
+<ol>
+<li>Rôle de la couche Physique</li>
+<li>Supports de transmission guidés</li>
+<li>Supports de transmission non guidés</li>
+<li>Représentation et codage des données</li>
+<li>Multiplexage</li>
+<li>Caractéristiques des canaux</li>
+<li>Exemples et exercices</li>
+<li>QCM</li>
+</ol>
+<hr />
+<h2>1. Rôle de la couche Physique</h2>
+<p>La couche <strong>Physique (Layer 1)</strong> du modèle OSI assure :</p>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transmission des bits</strong></td>
+<td>Convertir les données numériques en signal physique</td>
+</tr>
+<tr>
+<td><strong>Spécification mécanique</strong></td>
+<td>Connecteurs, broches (RJ-45, fibre LC/SC)</td>
+</tr>
+<tr>
+<td><strong>Spécification électrique/optique</strong></td>
+<td>Tensions, niveaux lumineux, fréquences</td>
+</tr>
+<tr>
+<td><strong>Spécification fonctionnelle</strong></td>
+<td>Quand émettre, quand recevoir</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>La couche Physique ne connaît <strong>ni adresses, ni protocoles</strong> : elle transmet des <strong>0 et 1</strong>.</p>
+</blockquote>
+<p><img alt="Couche Physique — vue d'ensemble" src="../../../Ressources-Communes/Images-Schemas/Physique/couche-physique-overview.png" /></p>
+<hr />
+<h2>2. Supports de transmission guidés</h2>
+<p>Les signaux se propagent le long d'un <strong>média physique</strong> :</p>
+<h3>2.1 Paire torsadée (Twisted Pair)</h3>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Composition</strong></td>
+<td>Deux fils de cuivre isolés, torsadés par paires</td>
+</tr>
+<tr>
+<td><strong>Catégories</strong></td>
+<td>Cat 5e (1 Gbps/100m), Cat 6 (1 Gbps/100m), Cat 6a (10 Gbps/100m), Cat 7 (10 Gbps)</td>
+</tr>
+<tr>
+<td><strong>Connecteur</strong></td>
+<td><strong>RJ-45</strong> (8 broches)</td>
+</tr>
+<tr>
+<td><strong>Types</strong></td>
+<td><strong>UTP</strong> (Unshielded) — le plus courant ; <strong>STP</strong> (Shielded) — environnements bruyants</td>
+</tr>
+<tr>
+<td><strong>Usage</strong></td>
+<td>LAN Ethernet, téléphonie, câblage bâtiment</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Standards Ethernet sur paire torsadée :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Débit</th>
+<th>Câble</th>
+<th>Distance max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10Base-T</td>
+<td>10 Mbps</td>
+<td>Cat 3+</td>
+<td>100 m</td>
+</tr>
+<tr>
+<td>100Base-TX</td>
+<td>100 Mbps</td>
+<td>Cat 5+</td>
+<td>100 m</td>
+</tr>
+<tr>
+<td>1000Base-T</td>
+<td>1 Gbps</td>
+<td>Cat 5e+</td>
+<td>100 m</td>
+</tr>
+<tr>
+<td>10GBase-T</td>
+<td>10 Gbps</td>
+<td>Cat 6a+</td>
+<td>100 m</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Pourquoi torsader ?</strong> Réduit les <strong>interférences électromagnétiques</strong> (diaphonie / crosstalk).</p>
+</blockquote>
+<h3>2.2 Câble coaxial</h3>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Structure</strong></td>
+<td>Conducteur central + blindage + gaine extérieure</td>
+</tr>
+<tr>
+<td><strong>Usage historique</strong></td>
+<td>Ethernet 10Base2 (fine), 10Base5 (épaisse), TV câble</td>
+</tr>
+<tr>
+<td><strong>Usage actuel</strong></td>
+<td>Fournisseurs d'accès (DOCSIS — Internet par câble), antennes</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 Fibre optique</h3>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Principe</strong></td>
+<td>Transmission par <strong>impulsions lumineuses</strong> (LED ou laser)</td>
+</tr>
+<tr>
+<td><strong>Types</strong></td>
+<td><strong>Monomode</strong> (SMF) — longues distances, haut débit ; <strong>Multimode</strong> (MMF) — courtes distances</td>
+</tr>
+<tr>
+<td><strong>Connecteurs</strong></td>
+<td>SC, LC, ST</td>
+</tr>
+<tr>
+<td><strong>Avantages</strong></td>
+<td>Très haut débit (Tbps), faible atténuation, immunité EMI, sécurité</td>
+</tr>
+<tr>
+<td><strong>Inconvénients</strong></td>
+<td>Coût, fragilité, expertise d'installation</td>
+</tr>
+<tr>
+<td><strong>Usage</strong></td>
+<td>Backbone WAN, inter-datacenters, FTTH (fibre jusqu'au domicile)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Comparaison</th>
+<th>Paire torsadée</th>
+<th>Fibre optique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Débit max</td>
+<td>10 Gbps (Cat 6a)</td>
+<td>100+ Tbps (WDM)</td>
+</tr>
+<tr>
+<td>Distance</td>
+<td>100 m</td>
+<td>Kilomètres</td>
+</tr>
+<tr>
+<td>Coût</td>
+<td>Faible</td>
+<td>Élevé</td>
+</tr>
+<tr>
+<td>Interférences EMI</td>
+<td>Sensible</td>
+<td>Insensible</td>
+</tr>
+<tr>
+<td>Sécurité (écoute)</td>
+<td>Possible</td>
+<td>Difficile</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Supports guidés — paire torsadée, coaxial, fibre" src="../../../Ressources-Communes/Images-Schemas/Physique/supports-guidés.png" /></p>
+<hr />
+<h2>3. Supports de transmission non guidés</h2>
+<p>Le signal se propage dans l'<strong>atmosphère</strong> ou le <strong>vide</strong> (ondes électromagnétiques) :</p>
+<table>
+<thead>
+<tr>
+<th>Média</th>
+<th>Fréquence</th>
+<th>Portée</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ondes radio</strong></td>
+<td>3 kHz – 1 GHz</td>
+<td>km</td>
+<td>Radio AM/FM, 4G/5G</td>
+</tr>
+<tr>
+<td><strong>Micro-ondes</strong></td>
+<td>1 – 300 GHz</td>
+<td>km (ligne de vue)</td>
+<td>Liaisons point-à-point, satellite</td>
+</tr>
+<tr>
+<td><strong>Infrarouge</strong></td>
+<td>300 GHz – 400 THz</td>
+<td>Quelques mètres</td>
+<td>Télécommandes, IrDA (obsolète)</td>
+</tr>
+<tr>
+<td><strong>Wi-Fi (802.11)</strong></td>
+<td>2,4 / 5 / 6 GHz</td>
+<td>~50–100 m</td>
+<td>LAN sans fil</td>
+</tr>
+<tr>
+<td><strong>Bluetooth</strong></td>
+<td>2,4 GHz</td>
+<td>~10 m</td>
+<td>PAN</td>
+</tr>
+</tbody>
+</table>
+<h3>3.1 Wi-Fi (IEEE 802.11) — aperçu</h3>
+<table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Bande</th>
+<th>Débit théorique max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>802.11b</td>
+<td>2,4 GHz</td>
+<td>11 Mbps</td>
+</tr>
+<tr>
+<td>802.11g</td>
+<td>2,4 GHz</td>
+<td>54 Mbps</td>
+</tr>
+<tr>
+<td>802.11n (Wi-Fi 4)</td>
+<td>2,4/5 GHz</td>
+<td>600 Mbps</td>
+</tr>
+<tr>
+<td>802.11ac (Wi-Fi 5)</td>
+<td>5 GHz</td>
+<td>6,9 Gbps</td>
+</tr>
+<tr>
+<td>802.11ax (Wi-Fi 6)</td>
+<td>2,4/5/6 GHz</td>
+<td>9,6 Gbps</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Le Wi-Fi sera approfondi en Ingénieur (S8). Ici, retenir qu'il appartient à la <strong>couche Physique + Liaison</strong> (802.11 couvre L1 et L2).</p>
+</blockquote>
+<hr />
+<h2>4. Représentation et codage des données</h2>
+<h3>4.1 Types de données</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Analogique</strong></td>
+<td>Signal continu, amplitude variable</td>
+<td>Voix, vidéo analogique</td>
+</tr>
+<tr>
+<td><strong>Numérique</strong></td>
+<td>Signal discret (0 et 1)</td>
+<td>Données informatiques</td>
+</tr>
+</tbody>
+</table>
+<p>La couche Physique transmet des <strong>données numériques</strong> sous forme de <strong>signaux numériques</strong> ou <strong>analogiques modulés</strong>.</p>
+<h3>4.2 Techniques de codage en bande de base</h3>
+<p>Le codage définit comment représenter les <strong>bits sur le média</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Codage</th>
+<th>Principe</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NRZ</strong> (Non-Return to Zero)</td>
+<td>0 = bas, 1 = haut</td>
+<td>Simple, mais problème de synchronisation</td>
+</tr>
+<tr>
+<td><strong>Manchester</strong></td>
+<td>Transition au milieu du bit (0 = ↑, 1 = ↓)</td>
+<td>Ethernet 10Base-T, auto-synchronisation</td>
+</tr>
+<tr>
+<td><strong>4B/5B</strong></td>
+<td>4 bits → 5 bits (équilibrage)</td>
+<td>Fast Ethernet 100Base-TX</td>
+</tr>
+<tr>
+<td><strong>8B/10B</strong></td>
+<td>8 bits → 10 bits</td>
+<td>Gigabit Ethernet, Fibre Channel</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>NRZ :        ───┐   ┌───────┐
+                 └───┘       └───
+
+Manchester :  ┌─┐ ┌─┐ ┌─┐ ┌─┐
+              │ └─┘ └─┘ └─┘ └─  (transitions = bits)
+</code></pre></div>
+
+<h3>4.3 Modulation (transmission analogique)</h3>
+<p>Pour transmettre sur des canaux analogiques (radio, câble TV), on <strong>module</strong> un signal porteur :</p>
+<table>
+<thead>
+<tr>
+<th>Modulation</th>
+<th>Principe</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ASK</strong> (Amplitude)</td>
+<td>Amplitude varie selon le bit</td>
+<td>RFID, anciens modems</td>
+</tr>
+<tr>
+<td><strong>FSK</strong> (Fréquence)</td>
+<td>Fréquence varie selon le bit</td>
+<td>Modems téléphoniques</td>
+</tr>
+<tr>
+<td><strong>PSK</strong> (Phase)</td>
+<td>Phase varie selon le bit</td>
+<td>Wi-Fi, DSL, satellite</td>
+</tr>
+<tr>
+<td><strong>QAM</strong> (Amplitude + Phase)</td>
+<td>Combinaison</td>
+<td>Wi-Fi, 4G/5G, câble</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Multiplexage</h2>
+<p>Le <strong>multiplexage</strong> permet de partager un même canal entre plusieurs communications :</p>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Sigle</th>
+<th>Principe</th>
+<th>Analogie</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fréquence</strong></td>
+<td><strong>FDM</strong></td>
+<td>Chaque signal sur une bande de fréquence différente</td>
+<td>Radios sur fréquences différentes</td>
+<td>Radio, TV analogique, ADSL</td>
+</tr>
+<tr>
+<td><strong>Temporel</strong></td>
+<td><strong>TDM</strong></td>
+<td>Chaque signal a un créneau temporel</td>
+<td>Tour de parole</td>
+<td>Téléphonie numérique, E1/T1</td>
+</tr>
+<tr>
+<td><strong>Longueur d'onde</strong></td>
+<td><strong>WDM</strong></td>
+<td>Plusieurs longueurs d'onde sur une fibre</td>
+<td>—</td>
+<td>Fibre optique (DWDM)</td>
+</tr>
+<tr>
+<td><strong>Code</strong></td>
+<td><strong>CDM</strong></td>
+<td>Code unique par utilisateur</td>
+<td>—</td>
+<td>CDMA (3G)</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">FDM</span><span class="w"> </span><span class="err">:</span><span class="w">  </span><span class="err">──</span><span class="o">[</span><span class="n">f1</span><span class="o">]</span><span class="err">──</span><span class="o">[</span><span class="n">f2</span><span class="o">]</span><span class="err">──</span><span class="o">[</span><span class="n">f3</span><span class="o">]</span><span class="err">──</span><span class="w">  </span><span class="err">→</span><span class="w">  </span><span class="n">Un</span><span class="w"> </span><span class="n">canal</span><span class="p">,</span><span class="w"> </span><span class="n">fréquences</span><span class="w"> </span><span class="n">séparées</span>
+
+<span class="n">TDM</span><span class="w"> </span><span class="err">:</span><span class="w">  </span><span class="err">──</span><span class="o">[</span><span class="n">A</span><span class="o">][</span><span class="n">B</span><span class="o">][</span><span class="n">A</span><span class="o">][</span><span class="n">B</span><span class="o">][</span><span class="n">A</span><span class="o">][</span><span class="n">B</span><span class="o">]</span><span class="err">──</span><span class="w">  </span><span class="err">→</span><span class="w">  </span><span class="n">Un</span><span class="w"> </span><span class="n">canal</span><span class="p">,</span><span class="w"> </span><span class="n">créneaux</span><span class="w"> </span><span class="n">alternés</span>
+</code></pre></div>
+
+<hr />
+<h2>6. Caractéristiques des canaux</h2>
+<h3>6.1 Bande passante et débit</h3>
+<ul>
+<li><strong>Bande passante (B)</strong> : étendue de fréquences du canal (Hz).</li>
+<li><strong>Théorème de Nyquist</strong> (canal sans bruit) :</li>
+</ul>
+<p>$$C_{max} = 2B \log_2(V) \text{ bps}$$</p>
+<p>où V = nombre de niveaux de signal.</p>
+<ul>
+<li><strong>Théorème de Shannon</strong> (canal avec bruit) :</li>
+</ul>
+<p>$$C_{max} = B \log_2(1 + SNR) \text{ bps}$$</p>
+<p>où SNR = rapport signal/bruit (linéaire, pas en dB).</p>
+<h3>6.2 Atténuation et amplification</h3>
+<ul>
+<li><strong>Atténuation</strong> : Affaiblissement du signal avec la distance (dB/km).</li>
+<li><strong>Répéteur</strong> (L1) : Régénère le signal (bit par bit).</li>
+<li><strong>Amplificateur</strong> : Amplifie le signal analogique (amplifie aussi le bruit).</li>
+</ul>
+<h3>6.3 Débit vs distance</h3>
+<table>
+<thead>
+<tr>
+<th>Média</th>
+<th>Débit ↑ → Distance…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paire torsadée</td>
+<td>↓ diminue</td>
+</tr>
+<tr>
+<td>Fibre optique</td>
+<td>Peu affectée sur des centaines de km</td>
+</tr>
+<tr>
+<td>Wi-Fi</td>
+<td>↓ diminue fortement</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Exemples concrets</h2>
+<h3>Exemple 1 — Choix du câble pour un laboratoire Université de Mostaganem</h3>
+<p><strong>Besoin</strong> : Câbler 24 postes à 1 Gbps, distance max 80 m du switch.</p>
+<p><strong>Solution</strong> : Câble <strong>Cat 6 UTP</strong>, connecteurs <strong>RJ-45</strong>, standard <strong>1000Base-T</strong>.</p>
+<h3>Exemple 2 — Calcul Shannon simplifié</h3>
+<p><strong>Énoncé</strong> : Canal de bande passante B = 4 kHz, SNR = 31 (linéaire). Débit max ?</p>
+<p><strong>Solution</strong> :
+$$C = 4000 \times \log_2(1 + 31) = 4000 \times \log_2(32) = 4000 \times 5 = 20\,000 \text{ bps} = 20 \text{ kbps}$$</p>
+<hr />
+<h2>8. Questions de révision et QCM</h2>
+<h3>Questions ouvertes</h3>
+<ol>
+<li>Quelle est la différence entre UTP et STP ?</li>
+<li>Pourquoi la fibre optique est-elle préférée pour les longues distances ?</li>
+<li>Expliquez la différence entre FDM et TDM.</li>
+<li>Quel connecteur est utilisé pour Ethernet sur paire torsadée ?</li>
+<li>Quelle est la distance maximale standard pour Ethernet sur cuivre ?</li>
+</ol>
+<h3>QCM</h3>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>La couche Physique transmet…</td>
+<td>Des paquets IP</td>
+<td>Des trames</td>
+<td>Des bits</td>
+<td>Des segments</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cat 6 UTP supporte jusqu'à…</td>
+<td>10 Mbps</td>
+<td>100 Mbps</td>
+<td>1 Gbps</td>
+<td>100 Tbps</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>La fibre optique utilise…</td>
+<td>Des signaux électriques</td>
+<td>Des impulsions lumineuses</td>
+<td>Des ondes radio</td>
+<td>Du coaxial</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Le multiplexage FDM sépare les signaux par…</td>
+<td>Le temps</td>
+<td>La fréquence</td>
+<td>La longueur d'onde</td>
+<td>Le code</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Le connecteur RJ-45 a…</td>
+<td>4 broches</td>
+<td>6 broches</td>
+<td>8 broches</td>
+<td>12 broches</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Le codage Manchester est utilisé pour…</td>
+<td>La synchronisation</td>
+<td>La compression</td>
+<td>Le chiffrement</td>
+<td>Le routage</td>
+<td><strong>a</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Un répéteur fonctionne en couche…</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td><strong>a</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Le Wi-Fi appartient aux ondes…</td>
+<td>Infrarouges</td>
+<td>Radio (2,4/5 GHz)</td>
+<td>Micro-ondes satellite</td>
+<td>Ultraviolets</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>WDM est utilisé avec…</td>
+<td>Paire torsadée</td>
+<td>Coaxial</td>
+<td>Fibre optique</td>
+<td>Bluetooth</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>La distance max Ethernet cuivre est…</td>
+<td>10 m</td>
+<td>100 m</td>
+<td>1 km</td>
+<td>10 km</td>
+<td><strong>b</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Forouzan</strong> [FO], Chapitres 3–4 — <em>Physical Layer, Digital Transmission</em></li>
+<li><strong>Tanenbaum</strong> [TA], Chapitre 2 — <em>The Physical Layer</em></li>
+<li><strong>Stallings</strong> [ST], Chapitre 3 — <em>Data Transmission</em></li>
+<li><strong>IEEE 802.3</strong> — Standard Ethernet</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Apporter un câble RJ-45 coupé pour montrer les paires torsadées. Démonstration : calcul Shannon sur tableau. Lien TD 3 (supports, codage, multiplexage).</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

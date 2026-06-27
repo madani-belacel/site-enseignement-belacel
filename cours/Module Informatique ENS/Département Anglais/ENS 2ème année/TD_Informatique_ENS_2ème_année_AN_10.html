@@ -1,0 +1,470 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 2 — Session 10 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Lecturer:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 2 — Session 10 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Lecturer:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 2 — English Department</li><li>**Duration:** 1h30</li><li>**Academic Year:** 2025-2026</li><li>**Finalization Checklist:**</li><li>**Self-assessment questions:**</li><li>**Problem statement:** For each group (except yours), fill in the evaluation rubric below.</li><li>**Evaluation Form:**</li><li>**Problem statement:** In pairs, write a retrospective (format "Keep, Problem, Try") of 10 lines maximum.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_2ème_année_AN_10.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 2 — Session 10 (EN)</h1>
+<p><strong>Lecturer:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 2 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Session Objective</h2>
+<p>Finalize the grade management project started in the previous session:
+- <strong>Presentation by each group</strong> (5 min)
+- <strong>Functional demonstration</strong> (3 min)
+- <strong>Questions and peer evaluation</strong> (2 min)
+- <strong>Source code and documentation submission</strong></p>
+<hr />
+<h2>Exercise 1 — Code Finalization (20 min)</h2>
+<p>Each pair has 20 minutes to finalize their application before the presentation.</p>
+<p><strong>Finalization Checklist:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Done</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional CRUD students (create, read)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Grade entry with coefficients</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Average calculation (simple + weighted)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>At least 3 students + 2 subjects in database</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Responsive interface (CSS)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Error handling (grade &gt; 20, empty fields)</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Self-assessment questions:</strong>
+- Does my application handle edge cases (negative grade, student without grades)?
+- Do data persist between sessions?
+- Is the interface usable on mobile?</p>
+<hr />
+<h2>Exercise 2 — Oral Presentation (25 min)</h2>
+<h3>Presentation Schedule</h3>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Group 1 — Benali/Ziani</td>
+<td>00:00 → 05:00</td>
+</tr>
+<tr>
+<td>Group 2 — Kaci/Mokhtar</td>
+<td>05:00 → 10:00</td>
+</tr>
+<tr>
+<td>Group 3 — Amine/Fatima</td>
+<td>10:00 → 15:00</td>
+</tr>
+<tr>
+<td>Group 4 — Youcef/Leila</td>
+<td>15:00 → 20:00</td>
+</tr>
+<tr>
+<td>Group 5 — Hocine/Nadia</td>
+<td>20:00 → 25:00</td>
+</tr>
+</tbody>
+</table>
+<h3>Presentation Structure (5 min)</h3>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="nb">int</span><span class="n">roduction</span><span class="w"> </span><span class="p">(</span><span class="mf">30</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="s">&quot;Our application allows...&quot;</span>
+
+<span class="mf">2.</span><span class="w"> </span><span class="n">Architecture</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">technical</span><span class="w"> </span><span class="n">choices</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="w"> </span><span class="n">min</span><span class="p">)</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Language</span><span class="p">,</span><span class="w"> </span><span class="n">framework</span><span class="p">,</span><span class="w"> </span><span class="kd">data</span><span class="n">base</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="s">&quot;We chose Django because...&quot;</span>
+
+<span class="mf">3.</span><span class="w"> </span><span class="n">Demonstration</span><span class="w"> </span><span class="p">(</span><span class="mf">2</span><span class="w"> </span><span class="n">min</span><span class="p">)</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">student</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Enter</span><span class="w"> </span><span class="n">grades</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">average</span>
+
+<span class="mf">4.</span><span class="w"> </span><span class="n">Difficulties</span><span class="w"> </span><span class="n">encountered</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="w"> </span><span class="n">min</span><span class="p">)</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="s">&quot;The hardest part was...&quot;</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="s">&quot;We solved it by...&quot;</span>
+
+<span class="mf">5.</span><span class="w"> </span><span class="n">Conclusion</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">perspectives</span><span class="w"> </span><span class="p">(</span><span class="mf">30</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span>
+<span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="s">&quot;If we had more time, we would add...&quot;</span>
+</code></pre></div>
+
+<h3>Peer Evaluation Rubric</h3>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional application</td>
+<td>No demo</td>
+<td>Partial</td>
+<td>Complete</td>
+</tr>
+<tr>
+<td>Structured code</td>
+<td>Messy</td>
+<td>Readable</td>
+<td>Clean + commented</td>
+</tr>
+<tr>
+<td>Oral presentation</td>
+<td>Inaudible</td>
+<td>Clear</td>
+<td>Captivating</td>
+</tr>
+<tr>
+<td>Error handling</td>
+<td>None</td>
+<td>Partial</td>
+<td>Complete</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercise 3 — Peer Evaluation (15 min)</h2>
+<p><strong>Problem statement:</strong> For each group (except yours), fill in the evaluation rubric below.</p>
+<p><strong>Evaluation Form:</strong></p>
+<div class="codehilite"><pre><span></span><code>GROUP EVALUATED: _______________
+
+Criteria (1-4):
+  <span class="k">-</span> Functionality: ___ /4
+  <span class="k">-</span> User interface: ___ /4
+  <span class="k">-</span> Code quality: ___ /4
+  <span class="k">-</span> Presentation: ___ /4
+
+Strengths:
+  <span class="k">-</span> ________________________________
+  <span class="k">-</span> ________________________________
+
+Areas for improvement:
+  <span class="k">-</span> ________________________________
+  <span class="k">-</span> ________________________________
+
+Final grade: ___ /20
+</code></pre></div>
+
+<hr />
+<h2>Exercise 4 — Project Retrospective (15 min)</h2>
+<p><strong>Problem statement:</strong> In pairs, write a retrospective (format "Keep, Problem, Try") of 10 lines maximum.</p>
+<p><strong>Keep</strong> — What went well:
+- <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_
+- </em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_
+- <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Problem</strong> — Difficulties encountered:
+- <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_
+- </em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_
+- <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Try</strong> — What you would do differently:
+- <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_
+- </em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_
+- <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____</p>
+<p><strong>Example retrospective:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nv">KEEP</span>:
+<span class="o">-</span><span class="w"> </span><span class="nv">Pair</span><span class="w"> </span><span class="nv">work</span><span class="w"> </span><span class="nv">allowed</span><span class="w"> </span><span class="nv">task</span><span class="w"> </span><span class="nv">division</span><span class="w"> </span><span class="ss">(</span><span class="nv">front</span><span class="o">-</span><span class="k">end</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">back</span><span class="o">-</span><span class="k">end</span><span class="ss">)</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">Django</span><span class="w"> </span><span class="nv">makes</span><span class="w"> </span><span class="nv">CRUD</span><span class="w"> </span><span class="nv">easy</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">models</span>
+
+<span class="nv">PROBLEM</span>:
+<span class="o">-</span><span class="w"> </span><span class="nv">Grade</span><span class="w"> </span><span class="nv">management</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">coefficients</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">complex</span><span class="w"> </span><span class="ss">(</span><span class="nv">average</span><span class="w"> </span><span class="nv">calculation</span><span class="ss">)</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">We</span><span class="w"> </span><span class="nv">underestimated</span><span class="w"> </span><span class="nv">deployment</span><span class="w"> </span><span class="nv">time</span>
+
+<span class="nv">TRY</span>:
+<span class="o">-</span><span class="w"> </span><span class="nv">Create</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">class</span><span class="w"> </span><span class="nv">diagram</span><span class="w"> </span><span class="nv">before</span><span class="w"> </span><span class="nv">coding</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">Allow</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">user</span><span class="w"> </span><span class="nv">testing</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 5 — Submission and Documentation (15 min)</h2>
+<p><strong>Problem statement:</strong> Create a <code>README.md</code> file for the project. It must contain:</p>
+<ol>
+<li>Project title</li>
+<li>Description (2-3 lines)</li>
+<li>Prerequisites (Python, dependencies)</li>
+<li>Installation and execution (3-4 commands)</li>
+<li>Project structure (file tree)</li>
+<li>Authors</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="gh"># GradeManageENS</span>
+
+Web application for grade management for the English
+department of ENS Mostaganem.
+
+<span class="gu">## Prerequisites</span>
+
+<span class="k">-</span><span class="w"> </span>Python 3.10+
+<span class="k">-</span><span class="w"> </span>Django 4.2+
+<span class="k">-</span><span class="w"> </span>PostgreSQL 14+
+
+<span class="gu">## Installation</span>
+
+```bash
+git clone https://github.com/username/grade-manage-ens.git
+cd grade-manage-ens
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+</code></pre></div>
+
+<h2>Structure</h2>
+<div class="codehilite"><pre><span></span><code>grade-manage-ens/
+├── manage.py
+├── requirements.txt
+├── README.md
+├── app/
+│   ├── models.py        # Classes: User, Student, Subject, Grade
+│   ├── views.py         # Routes and controllers
+│   ├── urls.py          # URL configuration
+│   ├── templates/       # HTML (base, login, dashboard, entry, transcript)
+│   └── static/          # CSS, JS
+├── notes/
+│   ├── admin.py
+│   └── tests.py
+└── db.sqlite3
+</code></pre></div>
+
+<h2>Authors</h2>
+<ul>
+<li>BENALI Sara — ENS Mostaganem</li>
+<li>ZIANI Ahmed — ENS Mostaganem</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="o">---</span>
+
+<span class="c1">## Project Grading Scale</span>
+
+<span class="o">|</span><span class="w"> </span><span class="n">Criterion</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Weight</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Points</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|-----------|--------|--------|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Functionality</span><span class="w"> </span><span class="p">(</span><span class="n">CRUD</span><span class="p">,</span><span class="w"> </span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="mi">8</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Code</span><span class="w"> </span><span class="n">quality</span><span class="w"> </span><span class="p">(</span><span class="n">structure</span><span class="p">,</span><span class="w"> </span><span class="n">naming</span><span class="p">,</span><span class="w"> </span><span class="n">readability</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="mi">4</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="p">(</span><span class="n">HTML</span><span class="o">/</span><span class="n">CSS</span><span class="p">,</span><span class="w"> </span><span class="n">responsive</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Oral</span><span class="w"> </span><span class="n">presentation</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">demo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="mi">3</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Documentation</span><span class="w"> </span><span class="p">(</span><span class="n">README</span><span class="p">,</span><span class="w"> </span><span class="n">retrospective</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="mi">2</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="o">**</span><span class="n">Total</span><span class="o">**</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">**</span><span class="mi">100</span><span class="w"> </span><span class="o">%**</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">**/</span><span class="mi">20</span><span class="o">**</span><span class="w"> </span><span class="o">|</span>
+
+<span class="o">---</span>
+
+<span class="c1">## Grading Rubric</span>
+
+<span class="o">|</span><span class="w"> </span><span class="n">Criterion</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Weight</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Not</span><span class="w"> </span><span class="n">acquired</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Partial</span><span class="w"> </span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Acquired</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|-----------|--------|------------------|----------------|--------------|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Code</span><span class="w"> </span><span class="n">finalization</span><span class="w"> </span><span class="p">(</span><span class="n">CRUD</span><span class="p">,</span><span class="w"> </span><span class="n">grades</span><span class="p">,</span><span class="w"> </span><span class="n">averages</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">functional</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Partial</span><span class="w"> </span><span class="n">features</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">CRUD</span><span class="p">,</span><span class="w"> </span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="n">working</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Oral</span><span class="w"> </span><span class="n">presentation</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">demo</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Absent</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">incoherent</span><span class="w"> </span><span class="n">presentation</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Partial</span><span class="w"> </span><span class="n">presentation</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Clear</span><span class="w"> </span><span class="n">structure</span><span class="p">,</span><span class="w"> </span><span class="n">working</span><span class="w"> </span><span class="n">demo</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Peer</span><span class="w"> </span><span class="n">evaluation</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">evaluation</span><span class="w"> </span><span class="n">submitted</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Incomplete</span><span class="w"> </span><span class="n">evaluations</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Grids</span><span class="w"> </span><span class="n">filled</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">relevant</span><span class="w"> </span><span class="n">arguments</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="n">retrospective</span><span class="w"> </span><span class="p">(</span><span class="n">KPT</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Absent</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">superficial</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Partially</span><span class="w"> </span><span class="n">written</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Relevant</span><span class="w"> </span><span class="n">analysis</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">improvement</span><span class="w"> </span><span class="n">ideas</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Documentation</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">README</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Missing</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">incomplete</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Partial</span><span class="w"> </span><span class="n">README</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Complete</span><span class="w"> </span><span class="n">README</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">structure</span><span class="w"> </span><span class="o">|</span>
+
+<span class="c1">## Pedagogical Note ENS</span>
+
+<span class="o">**</span><span class="n">Teaching</span><span class="w"> </span><span class="n">transposition</span><span class="p">:</span><span class="o">**</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="n">defense</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">transposable</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="n">school</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">oral</span><span class="w"> </span><span class="n">presentation</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="n">present</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">Scratch</span><span class="w"> </span><span class="n">game</span><span class="o">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">develops</span><span class="w"> </span><span class="n">transversal</span><span class="w"> </span><span class="n">skills</span><span class="w"> </span><span class="p">(</span><span class="n">communication</span><span class="p">,</span><span class="w"> </span><span class="n">critical</span><span class="w"> </span><span class="n">thinking</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">-</span><span class="n">assessment</span><span class="p">)</span><span class="o">.</span>
+
+<span class="o">**</span><span class="n">Trainer</span><span class="w"> </span><span class="n">advice</span><span class="p">:</span><span class="o">**</span><span class="w"> </span><span class="n">Structure</span><span class="w"> </span><span class="n">presentations</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">limited</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">professional</span><span class="w"> </span><span class="n">constraints</span><span class="o">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">peer</span><span class="w"> </span><span class="n">evaluation</span><span class="w"> </span><span class="n">rubric</span><span class="w"> </span><span class="n">builds</span><span class="w"> </span><span class="n">responsibility</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">develops</span><span class="w"> </span><span class="n">critical</span><span class="w"> </span><span class="n">thinking</span><span class="o">.</span>
+
+<span class="o">**</span><span class="n">Extension</span><span class="p">:</span><span class="o">**</span><span class="w"> </span><span class="n">Organize</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s2">&quot;mini-competition&quot;</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">external</span><span class="w"> </span><span class="n">jury</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="n">teachers</span><span class="p">,</span><span class="w"> </span><span class="n">professionals</span><span class="p">)</span><span class="w"> </span><span class="n">evaluates</span><span class="w"> </span><span class="n">projects</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">awards</span><span class="w"> </span><span class="n">prizes</span><span class="o">.</span>
+
+<span class="c1">### Conceptual Diagrams</span>
+
+<span class="c1">#### Diagram 1 — Presentation Flow</span>
+
+<span class="err">```</span><span class="n">mermaid</span>
+<span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="mi">5</span><span class="w"> </span><span class="nb">min</span><span class="w"> </span><span class="n">Defense</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="mf">1.</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="n">Introduction</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="mf">2.</span><span class="w"> </span><span class="n">Architecture</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Technical</span><span class="w"> </span><span class="n">Choices</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="mf">3.</span><span class="w"> </span><span class="n">Demonstration</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="mf">4.</span><span class="w"> </span><span class="n">Difficulties</span><span class="w"> </span><span class="n">Encountered</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="mf">5.</span><span class="w"> </span><span class="n">Conclusion</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Perspectives</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="s2">&quot;30 sec&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="s2">&quot;1 min&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="s2">&quot;2 min&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="s2">&quot;1 min&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="s2">&quot;30 sec&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#4a90d9,color:#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#2ecc71,color:#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#e67e22,color:#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#e74c3c,color:#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#9b59b6,color:#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#4a90d9,color:#fff</span>
+</code></pre></div>
+
+<h4>Diagram 2 — Project Evaluation</h4>
+<div class="codehilite"><pre><span></span><code>mindmap
+  root((Project Evaluation))
+    Functionality
+      CRUD
+      Grade entry
+      Average calculation
+      Error handling
+    Code Quality
+      Structure
+      Naming
+      Readability
+    User Interface
+      HTML/CSS
+      Responsive
+      Accessibility
+    Presentation
+      Clarity
+      Demonstration
+      Time management
+    Documentation
+      README
+      Retrospective
+      Commented code
+</code></pre></div>
+
+<hr />
+<h2>Session Schedule — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome + instructions</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — Finalization</td>
+<td>20 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — Presentations (5 groups × 5 min)</td>
+<td>25 min</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — Peer Evaluation</td>
+<td>15 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — Retrospective</td>
+<td>15 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — README + submission</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

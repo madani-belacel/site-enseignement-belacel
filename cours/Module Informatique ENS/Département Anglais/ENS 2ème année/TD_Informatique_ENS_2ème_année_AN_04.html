@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 2 — Session 04 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 2 — Session 04 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 2 — English Department</li><li>**Duration:** 1h30</li><li>**Academic year:** 2025-2026</li><li>**Problem statement:** Write a recursive function `factorial(n)` and trace its execution for n=4.</li><li>**Solution:**</li><li>**Trace for n = 4:**</li><li>**Problem statement:** Write a recursive function `fibonacci(n)` that returns the n-th Fibonacci term (F₀=0, F₁=1, Fₙ=Fₙ₋₁+Fₙ₋₂).</li><li>**Solution:**</li></ul></div>
+    <blockquote>
+<p><strong>Templates:</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-en.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF:</strong> <code>TD_Informatique_ENS_2ème_année_AN_04.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 2 — Session 04 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 2 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic year:</strong> 2025-2026</p>
+<hr />
+<h2>Exercise 1 — Recursion: Factorial <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Write a recursive function <code>factorial(n)</code> and trace its execution for n=4.</p>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>          <span class="c1"># Base case</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Recursive call</span>
+</code></pre></div>
+
+<p><strong>Trace for n = 4:</strong></p>
+<div class="codehilite"><pre><span></span><code>factorial(4)
+  → 4 <span class="gs">* factorial(3)</span>
+<span class="gs">    → 4 *</span> (3 <span class="gs">* factorial(2))</span>
+<span class="gs">      → 4 *</span> (3 <span class="gs">* (2 *</span> factorial(1)))
+        → 4 <span class="gs">* (3 *</span> (2 <span class="gs">* 1))</span>
+<span class="gs">        → 4 *</span> (3 <span class="gs">* 2)</span>
+<span class="gs">        → 4 *</span> 6
+        → 24
+</code></pre></div>
+
+<hr />
+<h2>Exercise 2 — Recursion: Fibonacci <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Write a recursive function <code>fibonacci(n)</code> that returns the n-th Fibonacci term (F₀=0, F₁=1, Fₙ=Fₙ₋₁+Fₙ₋₂).</p>
+<p>Compute <code>fibonacci(7)</code> by hand.</p>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>          <span class="c1"># Base case: F₀=0, F₁=1</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Double call</span>
+</code></pre></div>
+
+<p><strong>Values:</strong></p>
+<div class="codehilite"><pre><span></span><code>fibonacci(0) = 0
+fibonacci(1) = 1
+fibonacci(2) = 1
+fibonacci(3) = 2
+fibonacci(4) = 3
+fibonacci(5) = 5
+fibonacci(6) = 8
+fibonacci(7) = 13
+</code></pre></div>
+
+<p><strong>Limitation:</strong> this recursive version is very slow (O(2ⁿ)). For n=40, it makes billions of calls.</p>
+<hr />
+<h2>Exercise 3 — Binary Search <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Write a function <code>binary_search(array, target)</code> that searches for an element in a sorted array.</p>
+<p>Apply to: <code>grades = [5, 8, 10, 12, 15, 18, 20]</code> to find 15.</p>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mid</span>
+        <span class="k">elif</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>    <span class="c1"># Search right</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>   <span class="c1"># Search left</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># Not found</span>
+
+<span class="c1"># Test</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">grades</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;15 found at index </span><span class="si">{</span><span class="n">pos</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 4</span>
+
+<span class="c1"># Comparison: linear search O(n) vs binary search O(log n)</span>
+<span class="c1"># n = 1,000,000: linear = 1M operations, binary = ~20 operations</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 4 — Bubble Sort <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Write a function <code>bubble_sort(array)</code> that sorts an array in ascending order.</p>
+<p>Trace the execution on: <code>[15, 8, 12, 20, 5]</code></p>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">bubble_sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">swapped</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">swapped</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">swapped</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">array</span>
+</code></pre></div>
+
+<p><strong>Trace:</strong></p>
+<div class="codehilite"><pre><span></span><code>Start: [15, 8, 12, 20, 5]
+Pass 1: [8, 12, 15, 5, 20]   (15 sinks to bottom)
+Pass 2: [8, 12, 5, 15, 20]   (12 rises)
+Pass 3: [8, 5, 12, 15, 20]   (8 rises)
+Pass 4: [5, 8, 12, 15, 20]   (sorted)
+</code></pre></div>
+
+<p><strong>Complexity:</strong> O(n²) in worst case (reversed array), O(n) if already sorted.</p>
+<hr />
+<h2>Exercise 5 — Merge Sort <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Write the functions <code>merge_sort(array)</code> and <code>merge(left, right)</code>.</p>
+<p>Sort <code>[15, 8, 12, 20, 5, 10, 18]</code> using merge sort.</p>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span>
+
+    <span class="n">mid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">array</span><span class="p">[:</span><span class="n">mid</span><span class="p">])</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">:])</span>
+
+    <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">j</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Test</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Before: </span><span class="si">{</span><span class="n">grades</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">sorted_grades</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After: </span><span class="si">{</span><span class="n">sorted_grades</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Split trace:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">[15, 8, 12, 20, 5, 10, 18]</span>
+<span class="w">  </span><span class="na">├── [15, 8, 12, 20]</span>
+<span class="w">  </span><span class="na">│   ├── [15, 8]</span>
+<span class="w">  </span><span class="na">│   │   ├── [15]</span>
+<span class="w">  </span><span class="na">│   │   └── [8] → merge → [8, 15]</span>
+<span class="w">  </span><span class="na">│   └── [12, 20]</span>
+<span class="w">  </span><span class="na">│       ├── [12]</span>
+<span class="w">  </span><span class="na">│       └── [20] → merge → [12, 20]</span>
+<span class="w">  </span><span class="na">│   → merge → [8, 12, 15, 20]</span>
+<span class="w">  </span><span class="na">└── [5, 10, 18]</span>
+<span class="w">      </span><span class="na">├── [5]</span>
+<span class="w">      </span><span class="na">└── [10, 18]</span>
+<span class="w">          </span><span class="na">├── [10]</span>
+<span class="w">          </span><span class="na">└── [18] → merge → [10, 18]</span>
+<span class="w">      </span><span class="na">→ merge → [5, 10, 18]</span>
+<span class="w">  </span><span class="na">→ merge → [5, 8, 10, 12, 15, 18, 20]</span>
+</code></pre></div>
+
+<p><strong>Complexity:</strong> O(n log n) in all cases. More efficient than bubble sort for large arrays.</p>
+<hr />
+<h2>Session Plan — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — Factorial</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — Fibonacci</td>
+<td>20 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — Binary Search</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — Bubble Sort</td>
+<td>20 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — Merge Sort</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Conceptual Diagrams</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="o">[</span><span class="n">Search and Sort Algorithms</span><span class="o">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="o">[</span><span class="n">Recursion</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="o">[</span><span class="n">Search</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="o">[</span><span class="n">Sorting</span><span class="o">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="o">[</span><span class="n">Factorial&lt;br/&gt;recursive</span><span class="o">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="o">[</span><span class="n">Fibonacci&lt;br/&gt;recursive</span><span class="o">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="o">[</span><span class="n">Binary search&lt;br/&gt;O(log n)</span><span class="o">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="o">[</span><span class="n">Bubble sort&lt;br/&gt;O(n²)</span><span class="o">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="o">[</span><span class="n">Merge sort&lt;br/&gt;O(n log n)</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#4a90d9</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e67e22</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e74c3c</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#9b59b6</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Recursion</span>
+<span class="w">        </span><span class="n">F1</span><span class="p">[</span><span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F2</span><span class="p">[</span><span class="mi">4</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">F2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F3</span><span class="p">[</span><span class="mi">3</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">F3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F4</span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">F4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F5</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Comparison</span>
+<span class="w">        </span><span class="n">B1</span><span class="p">[</span><span class="n">Bubble</span><span class="w"> </span><span class="nf">sort</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">O</span><span class="p">(</span><span class="n">n²</span><span class="p">)]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B2</span><span class="p">[</span><span class="s">&quot;n=100: 10,000 ops&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">M1</span><span class="p">[</span><span class="nf">Merge</span><span class="w"> </span><span class="nf">sort</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">O</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="nf">log</span><span class="w"> </span><span class="n">n</span><span class="p">)]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M2</span><span class="p">[</span><span class="s">&quot;n=100: ~460 ops&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">M1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recursion: factorial</td>
+<td>20 %</td>
+<td>Function not recursive</td>
+<td>Base case poorly defined</td>
+<td>Correct recursion with trace</td>
+</tr>
+<tr>
+<td>Recursion: Fibonacci</td>
+<td>20 %</td>
+<td>Double call not understood</td>
+<td>Partial results</td>
+<td>Correct implementation and complexity awareness</td>
+</tr>
+<tr>
+<td>Binary search</td>
+<td>20 %</td>
+<td>Algorithm not working</td>
+<td>Partial logic (infinite loop)</td>
+<td>Correct search with indices</td>
+</tr>
+<tr>
+<td>Bubble sort</td>
+<td>20 %</td>
+<td>Sort not working</td>
+<td>Algorithm without optimization</td>
+<td>Sort with optimization (flag) and trace</td>
+</tr>
+<tr>
+<td>Merge sort</td>
+<td>20 %</td>
+<td>Merge not implemented</td>
+<td>Recursive split only</td>
+<td>Complete merge sort with complexity</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<p><strong>Teaching transposition:</strong> Recursion can be introduced in middle school through the image of "Russian dolls" or the repetition of a pattern within a pattern (fractals). Sorting algorithms (bubble, merge) can be simulated with numbered cards that students move on the table, enabling kinesthetic understanding of the mechanisms.</p>
+<p><strong>Trainer advice:</strong> After each algorithm, ask students to run it "by hand" on a small dataset before coding. Emphasize time complexity comparisons to develop a culture of algorithmic efficiency from initial training.</p>
+<p><strong>Extension:</strong> Offer an optimization challenge: implement an iterative version of Fibonacci (dynamic programming) and compare execution times with the naive recursive version for n=30, 35, 40.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

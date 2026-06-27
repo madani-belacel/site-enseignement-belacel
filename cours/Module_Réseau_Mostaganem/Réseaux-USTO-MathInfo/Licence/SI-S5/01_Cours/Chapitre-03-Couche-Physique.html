@@ -1,0 +1,569 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 03 — Couche Physique — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 03 — Couche Physique</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Types de câbles cuivre :**</li><li>- **Radio microwave** : liaison inter-bâtiments (line-of-sight).</li><li>**Exercice 1** : Un lien Cat 5e affiche 100 Mbps au lieu de 1 Gbps. Citez 3 causes possibles couche 1–2.</li><li>**Exercice 2** : Calculer le temps de transmission d'un paquet de 1500 octets sur un lien 1 Gbps (couche 1 uniquement).</li></ul></div>
+    <h1>Chapitre 03 — Couche Physique</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence SI — L3</td>
+</tr>
+<tr>
+<td><strong>Semestre</strong></td>
+<td>S5</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM (+ TD 03)</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>03 / 09</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[FO] Ch. 3–4 ; [TA] Ch. 2 ; [ST] Ch. 3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs du chapitre</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li><strong>Comparer</strong> les supports de transmission (cuivre, fibre, sans fil) pour un cahier des charges.</li>
+<li><strong>Expliquer</strong> les mécanismes de <strong>détection et correction d'erreurs</strong> (CRC, FEC).</li>
+<li><strong>Appliquer</strong> les normes de <strong>câblage structuré</strong> (TIA/EIA-568).</li>
+<li><strong>Diagnostiquer</strong> des problèmes physiques (diaphonie, atténuation, mauvais câble).</li>
+</ol>
+<hr />
+<h2>Plan du chapitre</h2>
+<ol>
+<li>Supports guidés — normes et choix</li>
+<li>Supports non guidés — Wi-Fi en contexte SI</li>
+<li>Erreurs, bruit et intégrité des données</li>
+<li>Câblage structuré en entreprise</li>
+<li>Exercices et QCM</li>
+</ol>
+<hr />
+<h2>1. Supports guidés</h2>
+<h3>1.1 Paire torsadée — normes SI</h3>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Bande passante</th>
+<th>Distance</th>
+<th>Application SI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cat 5e</td>
+<td>1 Gbps</td>
+<td>100 m</td>
+<td>Postes bureautiques</td>
+</tr>
+<tr>
+<td>Cat 6</td>
+<td>1 Gbps</td>
+<td>100 m</td>
+<td>Standard actuel labos</td>
+</tr>
+<tr>
+<td>Cat 6A</td>
+<td>10 Gbps</td>
+<td>100 m</td>
+<td>Serveurs, uplinks</td>
+</tr>
+<tr>
+<td>Cat 7/7A</td>
+<td>10 Gbps+</td>
+<td>100 m</td>
+<td>Environnements bruyants</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Types de câbles cuivre :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Straight-through</strong></td>
+<td>PC → Switch, Switch → Routeur</td>
+</tr>
+<tr>
+<td><strong>Crossover</strong></td>
+<td>Switch ↔ Switch (legacy), rare avec Auto-MDIX</td>
+</tr>
+<tr>
+<td><strong>Console</strong></td>
+<td>PC → port console routeur (RJ-45 ou USB)</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Fibre optique — choix SI</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Cœur</th>
+<th>Distance</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MMF</strong> (multimode)</td>
+<td>50/62,5 μm</td>
+<td>300 m – 2 km</td>
+<td>Inter-baies, bâtiment</td>
+</tr>
+<tr>
+<td><strong>SMF</strong> (monomode)</td>
+<td>9 μm</td>
+<td>10–100+ km</td>
+<td>Backbone campus, WAN</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Connecteur</th>
+<th>Usage courant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LC</strong></td>
+<td>SFP/SFP+ switch, routeur</td>
+</tr>
+<tr>
+<td><strong>SC</strong></td>
+<td>Panneaux de brassage</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Supports transmission SI-S5" src="../../../Ressources-Communes/Images-Schemas/Physique/si-s5-supports-guidés.png" /></p>
+<h3>1.3 Tableau décisionnel</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Cuivre Cat 6</th>
+<th>Fibre MMF</th>
+<th>Wi-Fi 6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Débit max poste</td>
+<td>1 Gbps</td>
+<td>10 Gbps+</td>
+<td>~1 Gbps théorique</td>
+</tr>
+<tr>
+<td>Latence</td>
+<td>Faible</td>
+<td>Très faible</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Sécurité physique</td>
+<td>Moyenne</td>
+<td>Bonne</td>
+<td>Faible</td>
+</tr>
+<tr>
+<td>Coût installation</td>
+<td><strong>Faible</strong></td>
+<td>Élevé</td>
+<td>Moyen</td>
+</tr>
+<tr>
+<td>Mobilité</td>
+<td>Non</td>
+<td>Non</td>
+<td><strong>Oui</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Supports non guidés</h2>
+<h3>2.1 Wi-Fi 6 (802.11ax) — rappels SI</h3>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bandes</td>
+<td>2,4 GHz (portée) / 5 GHz (débit) / 6 GHz (Wi-Fi 6E)</td>
+</tr>
+<tr>
+<td>Canaux</td>
+<td>Chevauchement 2,4 GHz → planification</td>
+</tr>
+<tr>
+<td>Sécurité</td>
+<td><strong>WPA3</strong> (Ch. 09 / Ingénieur)</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Liens point-à-point (aperçu)</h3>
+<ul>
+<li><strong>Radio microwave</strong> : liaison inter-bâtiments (line-of-sight).</li>
+<li>Usage campus quand la fibre est impossible.</li>
+</ul>
+<hr />
+<h2>3. Erreurs, bruit et intégrité</h2>
+<h3>3.1 Types d'erreurs</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Cause</th>
+<th>Couche concernée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Atténuation</strong></td>
+<td>Distance, fréquence</td>
+<td>L1</td>
+</tr>
+<tr>
+<td><strong>Diaphonie (NEXT/FEXT)</strong></td>
+<td>Paires adjacentes</td>
+<td>L1</td>
+</tr>
+<tr>
+<td><strong>EMI/RFI</strong></td>
+<td>Interférences extérieures</td>
+<td>L1</td>
+</tr>
+<tr>
+<td><strong>Collisions</strong></td>
+<td>Half-duplex (legacy)</td>
+<td>L2</td>
+</tr>
+<tr>
+<td><strong>Erreurs de trame</strong></td>
+<td>Bruit, mauvais câble</td>
+<td>L2 (FCS/CRC)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Détection vs correction</h3>
+<table>
+<thead>
+<tr>
+<th>Mécanisme</th>
+<th>Couche</th>
+<th>Principe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parité</strong></td>
+<td>L2 (legacy)</td>
+<td>Bit de parité</td>
+</tr>
+<tr>
+<td><strong>CRC-32 (FCS)</strong></td>
+<td>L2 Ethernet</td>
+<td>Polynôme — <strong>détection</strong> uniquement</td>
+</tr>
+<tr>
+<td><strong>FEC</strong></td>
+<td>L1 (Wi-Fi, 5G)</td>
+<td>Correction sans retransmission</td>
+</tr>
+<tr>
+<td><strong>Retransmission TCP</strong></td>
+<td>L4</td>
+<td>Si perte détectée (L2/L3)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Trame Ethernet corrompue</strong> → switch/NIC <strong>silencieusement discard</strong> → TCP retransmet.</p>
+<h3>3.3 Taux d'erreur (BER)</h3>
+<p>$$\text{BER} = \frac{\text{bits erronés}}{\text{bits transmis}}$$</p>
+<table>
+<thead>
+<tr>
+<th>BER</th>
+<th>Qualité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10⁻⁹</td>
+<td>Acceptable cuivre Ethernet</td>
+</tr>
+<tr>
+<td>10⁻¹²</td>
+<td>Fibre optique typique</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Outils de test couche 1</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Fonction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Testeur de câble</td>
+<td>Continuité, paires, longueur</td>
+</tr>
+<tr>
+<td>Certifier (Fluke)</td>
+<td>Conformité Cat 6/6A</td>
+</tr>
+<tr>
+<td><code>ethtool</code> (Linux)</td>
+<td>Erreurs interface, duplex</td>
+</tr>
+<tr>
+<td>Compteur erreurs switch</td>
+<td>CRC, runts, giants</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Câblage structuré (TIA/EIA-568)</h2>
+<h3>4.1 Sous-systèmes</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">[Poste] ── cordon ── [Prise murale] ── câble horizontal ── [ Brassage ] ── [ Switch ]</span>
+<span class="w">                              </span><span class="na">│</span>
+<span class="w">                    </span><span class="na">Zone de télécommunications (TR)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Norme / distance max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Câble horizontal</td>
+<td>90 m (cuivre)</td>
+</tr>
+<tr>
+<td>Cordons patch</td>
+<td>5 m + 5 m</td>
+</tr>
+<tr>
+<td><strong>Total channel</strong></td>
+<td><strong>100 m max</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Schémas T568A vs T568B</h3>
+<table>
+<thead>
+<tr>
+<th>Broche</th>
+<th>T568A</th>
+<th>T568B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Usage</td>
+<td>Standard US gouvernement</td>
+<td><strong>Standard le plus courant</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Les deux extrémités d'un câble droit doivent utiliser le <strong>même</strong> schéma (A ou B).</p>
+</blockquote>
+<hr />
+<h2>5. Exercices</h2>
+<p><strong>Exercice 1</strong> : Un lien Cat 5e affiche 100 Mbps au lieu de 1 Gbps. Citez 3 causes possibles couche 1–2.</p>
+<details>
+<summary>Solution</summary>
+
+1. Câble Cat 5 (pas 5e) ou câble endommagé
+2. Port configuré en 100 Mbps forcé
+3. Mauvaise terminaison / paire coupée
+4. Auto-négociation échouée (half-duplex)
+</details>
+
+<p><strong>Exercice 2</strong> : Calculer le temps de transmission d'un paquet de 1500 octets sur un lien 1 Gbps (couche 1 uniquement).</p>
+<details>
+<summary>Solution</summary>
+
+1500 × 8 = 12 000 bits → 12 000 / 10⁹ = **12 μs**
+</details>
+
+<hr />
+<h2>6. QCM</h2>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>FCS Ethernet utilise…</td>
+<td><strong>CRC-32</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Distance max channel cuivre…</td>
+<td><strong>100 m</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fibre SMF pour…</td>
+<td><strong>Longues distances</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Cat 6A supporte…</td>
+<td><strong>10 Gbps</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>CRC corrige ou détecte ?</td>
+<td><strong>Détecte</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Straight-through : PC → …</td>
+<td><strong>Switch</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>NEXT est une forme de…</td>
+<td><strong>Diaphonie</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>BER = bits erronés / …</td>
+<td><strong>Bits transmis</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>WPA3 concerne couche…</td>
+<td><strong>L2 (802.11)</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Auto-MDIX évite besoin de…</td>
+<td><strong>Câble croisé</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Forouzan</strong> [FO], Ch. 3–4</li>
+<li><strong>Tanenbaum</strong> [TA], Ch. 2</li>
+<li><strong>TIA/EIA-568-D</strong> — Commercial Building Telecommunications Cabling</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : TD 03 — calculs BER, choix média pour scénario PME.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

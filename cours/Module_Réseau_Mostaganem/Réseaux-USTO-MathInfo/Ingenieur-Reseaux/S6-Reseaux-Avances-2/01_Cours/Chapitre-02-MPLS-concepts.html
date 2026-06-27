@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 02 — MPLS — concepts — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 02 — MPLS — concepts</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**MPLS** (*Multiprotocol Label Switching*) : forwarding rapide par **label** (20 bits) au lieu lookup IP longest-prefix complet à chaque hop.</li><li>**Université de Mostaganem** : MAN historique type MPLS/Ethernet ; étude migration hybride en Master.</li></ul></div>
+    <h1>Chapitre 02 — MPLS — concepts</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Ingénieur RI</td>
+</tr>
+<tr>
+<td><strong>Semestre</strong></td>
+<td>S6</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>02</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li><strong>Expliquer</strong> commutation par labels vs routage IP classique.</li>
+<li><strong>Décrire</strong> LSP, LDP, push/swap/pop.</li>
+<li><strong>Présenter</strong> VPN MPLS L3 (APEX — vue Ingénieur).</li>
+<li><strong>Relier</strong> MPLS aux offres opérateur WAN entreprise.</li>
+<li><strong>Comparer</strong> MPLS et SD-WAN (transition S7/M1).</li>
+</ol>
+<h2>Plan du chapitre</h2>
+<ol>
+<li>Motivation MPLS</li>
+<li>Labels et LSP</li>
+<li>LDP</li>
+<li>VPN MPLS L3</li>
+<li>MPLS vs alternatives</li>
+</ol>
+<hr />
+<h2>1. Motivation</h2>
+<p><strong>MPLS</strong> (<em>Multiprotocol Label Switching</em>) : forwarding rapide par <strong>label</strong> (20 bits) au lieu lookup IP longest-prefix complet à chaque hop.</p>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Nom</th>
+<th>Fonction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Control</td>
+<td>LDP/RSVP-TE</td>
+<td>Distribution labels</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>LFIB</td>
+<td>Commutation label</td>
+</tr>
+</tbody>
+</table>
+<p>Utilisations : <strong>VPN opérateur</strong>, <strong>Traffic Engineering</strong>, backbone ISP.</p>
+<hr />
+<h2>2. Label Switch Path</h2>
+<p><strong>Push</strong> (ingress PE) → <strong>Swap</strong> (P routers) → <strong>Pop</strong> (egress PE).</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[CE]--[PE1]===MPLS cloud===[PE2]--[CE distant]</span>
+<span class="w">      </span><span class="na">push L</span><span class="o">=</span><span class="s">100      swap      pop</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Équipement</th>
+<th>Rôle MPLS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CE</td>
+<td>Client edge — routes IP classiques</td>
+</tr>
+<tr>
+<td>PE</td>
+<td>Provider edge — VRF, labels</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Provider core — swap only</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. VPN MPLS L3 (aperçu)</h2>
+<p>Séparation clients via <strong>VRF</strong> + route-target import/export.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VRF</td>
+<td>Table routage virtuelle par client</td>
+</tr>
+<tr>
+<td>RD</td>
+<td>Route Distinguisher — unicite BGP</td>
+</tr>
+<tr>
+<td>RT</td>
+<td>Import/export entre VRF</td>
+</tr>
+</tbody>
+</table>
+<p>Le CE voit un lien IP simple ; le cœur MPLS transporte labels.</p>
+<hr />
+<h2>4. MPLS et SD-WAN</h2>
+<p>Offres entreprise : liaisons <strong>MPLS</strong> garanties QoS vs <strong>Internet + overlay</strong> SD-WAN.</p>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>MPLS</th>
+<th>SD-WAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QoS</td>
+<td>Contractuelle</td>
+<td>Policy-based multi-lien</td>
+</tr>
+<tr>
+<td>Coût</td>
+<td>Élevé</td>
+<td>Variable</td>
+</tr>
+<tr>
+<td>Déploiement</td>
+<td>Semaines</td>
+<td>Jours</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Université de Mostaganem</strong> : MAN historique type MPLS/Ethernet ; étude migration hybride en Master.</p>
+<hr />
+<h2>Questions de révision et QCM</h2>
+<ol>
+<li>Push vs swap vs pop ?</li>
+<li>Différence CE et PE ?</li>
+<li>Rôle Route Target ?</li>
+<li>MPLS fonctionne sur quelle couche OSI (2.5) ?</li>
+<li>Pourquoi LDP ?</li>
+</ol>
+<h3>QCM rapide</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Voir questions ci-dessus</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Voir corrigé oral</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Relier théorie et TD/TP associés</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Justifier avec schéma ou commande</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Kurose &amp; Ross, ch. 5.8 — MPLS</li>
+<li>RFC 3031 — MPLS architecture</li>
+<li>Tanenbaum, ch. 5</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Complément S6 WAN Ch. 05.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

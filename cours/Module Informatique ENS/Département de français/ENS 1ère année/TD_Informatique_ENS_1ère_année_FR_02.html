@@ -1,0 +1,947 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD Informatique — ENS 1ère année — Séance 02 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TD Informatique — ENS 1ère année — Séance 02 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Scénario enseignant :** Commencez par la méthode des divisions successives. Distribuez la table des puissances de 2 (ci-dessus). Pour chaque nombre, demandez aux étudiants de décomposer en sommes de puissances de 2, puis de passer à la méthode posée.</li><li>**Énoncé :** Convertir les nombres suivants en binaire par la méthode des **divisions successives par 2**.</li><li>**Corrigé détaillé :**</li><li>**1. 13₁₀ :**</li><li>**2. 25₁₀ :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_FR_02.pdf</code></p>
+</blockquote>
+<h1>TD Informatique — ENS 1ère année — Séance 02 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de cette séance de TD, l'étudiant est capable de :
+- Convertir un nombre décimal en binaire et inversement
+- Convertir entre les bases binaire, décimale et hexadécimale
+- Décoder des caractères ASCII à partir d'une séquence binaire
+- Estimer la taille de différents types de fichiers (texte, image, audio)
+- Utiliser les préfixes d'unités (Ko, Mo, Go) et calculer des rapports de compression</p>
+<hr />
+<h2>Contexte pédagogique — Scénario enseignant</h2>
+<p>Vous êtes enseignant et devez faire découvrir à vos étudiants <strong>le monde des conversions numériques et du codage de l'information</strong>. Ce TD alterne exercices de conversion (binaire, décimal, hexadécimal) et applications concrètes (codage ASCII, taille des fichiers). Prévoyez des <strong>cartes des puissances de 2</strong> (1, 2, 4, 8, 16, 32, 64, 128, 256) pour que les étudiants manipulent physiquement les conversions.</p>
+<table>
+<thead>
+<tr>
+<th>Symbole</th>
+<th>Niveau</th>
+<th>Attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✓</td>
+<td>Débutant</td>
+<td>Questions de base — tous les étudiants doivent répondre</td>
+</tr>
+<tr>
+<td>★</td>
+<td>Intermédiaire</td>
+<td>Approfondissement — à traiter si le temps le permet</td>
+</tr>
+<tr>
+<td>★★</td>
+<td>Avancé</td>
+<td>Défi — pour les plus rapides, peut faire l'objet d'un bonus</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Plan du TD</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Conversions binaires</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Conversions décimales</td>
+<td>15 min</td>
+<td>35 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Hexadécimal</td>
+<td>15 min</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Codage des caractères</td>
+<td>15 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Taille des fichiers</td>
+<td>20 min</td>
+<td>85 min</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>5 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Conversion décimal → binaire</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Nombre</span><span class="w"> </span><span class="n">décimal</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">42</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">{</span><span class="n">Diviser</span><span class="w"> </span><span class="n">par</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Reste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Reste</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Noter</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">reste</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">{</span><span class="n">Quotient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Lire</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">restes</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="err">à</span><span class="w"> </span><span class="n">l</span><span class="s">&#39;envers]</span>
+<span class="s">    G --&gt; H[Résultat binaire : 101010]</span>
+
+<span class="s">    style A fill:#4a90d9,color:#fff</span>
+<span class="s">    style H fill:#2ecc71,color:#fff</span>
+<span class="s">    style B fill:#e67e22,color:#000</span>
+<span class="s">    style G fill:#9b59b6,color:#fff</span>
+</code></pre></div>
+
+<h2>Tableau des puissances de 2 (référence)</h2>
+<table>
+<thead>
+<tr>
+<th>2^n</th>
+<th>Valeur</th>
+<th>Binaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2⁰</td>
+<td>1</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>2¹</td>
+<td>2</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td>2²</td>
+<td>4</td>
+<td><code>100</code></td>
+</tr>
+<tr>
+<td>2³</td>
+<td>8</td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td>2⁴</td>
+<td>16</td>
+<td><code>1 0000</code></td>
+</tr>
+<tr>
+<td>2⁵</td>
+<td>32</td>
+<td><code>10 0000</code></td>
+</tr>
+<tr>
+<td>2⁶</td>
+<td>64</td>
+<td><code>100 0000</code></td>
+</tr>
+<tr>
+<td>2⁷</td>
+<td>128</td>
+<td><code>1 000 0000</code></td>
+</tr>
+<tr>
+<td>2⁸</td>
+<td>256</td>
+<td><code>1 0000 0000</code></td>
+</tr>
+<tr>
+<td>2⁹</td>
+<td>512</td>
+<td><code>10 0000 0000</code></td>
+</tr>
+<tr>
+<td>2¹⁰</td>
+<td>1024</td>
+<td><code>100 0000 0000</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Hiérarchie des unités de stockage</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="ss">&quot;Unités de stockage&quot;</span>
+<span class="w">        </span><span class="nc">bit</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Octet</span><span class="o">[</span><span class="n">1 octet = 8 bits</span><span class="o">]</span>
+<span class="w">        </span><span class="n">Octet</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ko</span><span class="o">[</span><span class="n">1 Ko = 1024 octets</span><span class="o">]</span>
+<span class="w">        </span><span class="n">Ko</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Mo</span><span class="o">[</span><span class="n">1 Mo = 1024 Ko</span><span class="o">]</span>
+<span class="w">        </span><span class="n">Mo</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="k">Go</span><span class="o">[</span><span class="n">1 Go = 1024 Mo</span><span class="o">]</span>
+<span class="w">        </span><span class="k">Go</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="k">To</span><span class="o">[</span><span class="n">1 To = 1024 Go</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="ss">&quot;Exemples&quot;</span>
+<span class="w">        </span><span class="n">Texte</span><span class="o">[</span><span class="n">&quot;Texte 5000 car.&lt;br/&gt;~ 5 Ko&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="n">ImageNB</span><span class="o">[</span><span class="n">&quot;Image NB 200×150&lt;br/&gt;~ 3,7 Ko&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="n">ImageC</span><span class="o">[</span><span class="n">&quot;Image 24 bits 200×150&lt;br/&gt;~ 88 Ko&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="n">Photo</span><span class="o">[</span><span class="n">&quot;Photo 4000×3000&lt;br/&gt;~ 34,3 Mo&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">Ko</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Texte</span>
+<span class="w">    </span><span class="n">Ko</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ImageNB</span>
+<span class="w">    </span><span class="n">Mo</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ImageC</span>
+<span class="w">    </span><span class="n">Mo</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Photo</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="nc">bit</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#4a90d9</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="k">To</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e74c3c</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Texte</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ImageNB</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ImageC</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Photo</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 1 — Conversions binaires <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Commencez par la méthode des divisions successives. Distribuez la table des puissances de 2 (ci-dessus). Pour chaque nombre, demandez aux étudiants de décomposer en sommes de puissances de 2, puis de passer à la méthode posée.</p>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> Convertir les nombres suivants en binaire par la méthode des <strong>divisions successives par 2</strong>.</p>
+<ol>
+<li>13 (décimal) → binaire</li>
+<li>25 (décimal) → binaire</li>
+<li>42 (décimal) → binaire</li>
+<li>100 (décimal) → binaire</li>
+</ol>
+<p><strong>Corrigé détaillé :</strong></p>
+<p><strong>1. 13₁₀ :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">13</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span><span class="err">↑</span><span class="w">  </span><span class="p">(</span><span class="n">poids</span><span class="w"> </span><span class="n">faible</span><span class="p">)</span>
+<span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span><span class="w">  </span><span class="err">|</span>
+<span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span><span class="err">|</span>
+<span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span><span class="err">|</span><span class="w">  </span><span class="p">(</span><span class="n">poids</span><span class="w"> </span><span class="kr">for</span><span class="n">t</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Lecture des restes de bas en haut : <strong>1101₂</strong><br />
+Vérification : 8 + 4 + 1 = 13 ✓</p>
+<p><strong>2. 25₁₀ :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">25</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+<span class="mf">12</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">6</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">3</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">1</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+<span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">0</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+</code></pre></div>
+
+<p>→ <strong>11001₂</strong> (16 + 8 + 1 = 25 ✓)</p>
+<p><strong>3. 42₁₀ :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">42</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">21</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="mf">21</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+<span class="mf">10</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">5</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">2</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+<span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">1</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">0</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+</code></pre></div>
+
+<p>→ <strong>101010₂</strong> (32 + 8 + 2 = 42 ✓)</p>
+<p><strong>4. 100₁₀ :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">100</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">25</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="w"> </span><span class="mf">25</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+<span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">6</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">  </span><span class="mf">6</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">3</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">  </span><span class="mf">3</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">1</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">  </span><span class="mf">1</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">0</span><span class="w"> </span><span class="n">reste</span><span class="w"> </span><span class="mf">1</span>
+</code></pre></div>
+
+<p>→ <strong>1100100₂</strong> (64 + 32 + 4 = 100 ✓)</p>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Convertir en binaire <strong>sans poser les divisions</strong>, en utilisant uniquement les puissances de 2.</p>
+<ol>
+<li>31</li>
+<li>64</li>
+<li>255</li>
+</ol>
+<p><strong>Corrigé :</strong>
+1. 31 = 16 + 8 + 4 + 2 + 1 = <strong>11111₂</strong> (5 bits à 1 = 2⁵ - 1)
+2. 64 = <strong>1000000₂</strong> (1 suivi de 6 zéros = 2⁶)
+3. 255 = 256 - 1 = 2⁸ - 1 = <strong>11111111₂</strong> (8 bits à 1)</p>
+<p><strong>Astuce :</strong> 2ⁿ - 1 en binaire = n bits à 1. Exemple : 2⁵ - 1 = 31 = <code>11111₂</code>.</p>
+<hr />
+<h3>★★ Question avancée (4 min)</h3>
+<p><strong>Énoncé :</strong> Convertir <code>255.255.255.0</code> (masque de sous-réseau en notation décimale pointée) en binaire.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">255</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">11111111</span><span class="n">₂</span>
+<span class="mf">255</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">11111111</span><span class="n">₂</span>
+<span class="mf">255</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">11111111</span><span class="n">₂</span>
+<span class="w">  </span><span class="mf">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">00000000</span><span class="n">₂</span>
+</code></pre></div>
+
+<p>Soit : <code>11111111.11111111.11111111.00000000₂</code> (masque /24)</p>
+<hr />
+<h3>Tableau à compléter (auto-entraînement)</h3>
+<table>
+<thead>
+<tr>
+<th>Décimal</th>
+<th>Décomposition en puissances de 2</th>
+<th>Binaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>4+2+1</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>37</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>200</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corrigé :</strong> 7 = <code>111₂</code>, 12 = <code>1100₂</code>, 37 = <code>100101₂</code>, 200 = <code>11001000₂</code>.</p>
+<hr />
+<h2>Exercice 2 — Conversions décimales <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> L'opération inverse (binaire → décimal) est plus intuitive : il suffit d'additionner les puissances de 2. Montrez la correspondance entre la position du bit et la puissance de 2.</p>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> Convertir les nombres binaires suivants en décimal (additionner les puissances de 2).</p>
+<ol>
+<li><code>1010₂</code></li>
+<li><code>1111₂</code></li>
+<li><code>100000₂</code></li>
+<li><code>110011₂</code></li>
+</ol>
+<p><strong>Corrigé détaillé :</strong></p>
+<ol>
+<li><code>1010₂</code> = 1×8 + 0×4 + 1×2 + 0×1 = 8 + 2 = <strong>10</strong></li>
+<li><code>1111₂</code> = 1×8 + 1×4 + 1×2 + 1×1 = 8 + 4 + 2 + 1 = <strong>15</strong></li>
+<li><code>100000₂</code> = 1×32 + 0×16 + 0×8 + 0×4 + 0×2 + 0×1 = <strong>32</strong></li>
+<li><code>110011₂</code> = 1×32 + 1×16 + 0×8 + 0×4 + 1×2 + 1×1 = 32 + 16 + 2 + 1 = <strong>51</strong></li>
+</ol>
+<p><strong>Méthode du doublement (alternative) :</strong><br />
+Partir de 0, pour chaque bit de gauche à droite : doubler le résultat et ajouter le bit.
+- <code>1010₂</code> : 0 → 0×2+1=1 → 1×2+0=2 → 2×2+1=5 → 5×2+0=10 ✓</p>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Quel est le plus grand nombre décimal qu'on peut coder avec :</p>
+<ol>
+<li>4 bits ?</li>
+<li>8 bits ?</li>
+<li>16 bits ?</li>
+</ol>
+<p><strong>Corrigé :</strong>
+1. 4 bits : <code>1111₂</code> = 2⁴ - 1 = <strong>15</strong>
+2. 8 bits : <code>1111 1111₂</code> = 2⁸ - 1 = <strong>255</strong>
+3. 16 bits : 2¹⁶ - 1 = <strong>65535</strong></p>
+<p><strong>Règle générale :</strong> Avec <code>n</code> bits, on peut coder les nombres de 0 à 2ⁿ - 1, soit 2ⁿ valeurs différentes.</p>
+<hr />
+<h3>★★ Question avancée (4 min)</h3>
+<p><strong>Énoncé :</strong> Le nombre binaire <code>1010 1100 0011 1110₂</code> est trop long. Proposez une méthode pour le convertir plus rapidement en passant par une base intermédiaire. Combien vaut-il en décimal ?</p>
+<p><strong>Indice :</strong> Groupez par 4 bits de la droite vers la gauche.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1010</span><span class="w"> </span><span class="mf">1100</span><span class="w"> </span><span class="mf">0011</span><span class="w"> </span><span class="mf">1110</span><span class="n">₂</span>
+<span class="w">  </span><span class="n">A</span><span class="w">    </span><span class="n">C</span><span class="w">    </span><span class="mf">3</span><span class="w">    </span><span class="n">E₁₆</span><span class="w"> </span><span class="p">(</span><span class="n">hexadécimal</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>AC3E₁₆</code> = 10×4096 + 12×256 + 3×16 + 14 = 40960 + 3072 + 48 + 14 = <strong>44094₁₀</strong></p>
+<hr />
+<h3>Tableau d'entraînement (binaire → décimal)</h3>
+<table>
+<thead>
+<tr>
+<th>Binaire</th>
+<th>Poids forts → faibles</th>
+<th>Décimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0011</td>
+<td>0+0+2+1</td>
+<td></td>
+</tr>
+<tr>
+<td>1011</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1110 0101</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0010 0000 0001</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corrigé :</strong> 0011 = 3, 1011 = 11, 1110 0101 = 229, 0010 0000 0001 = 513.</p>
+<hr />
+<h2>Exercice 3 — Hexadécimal <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> L'hexadécimal (base 16) est omniprésent en informatique (couleurs HTML, adresses MAC, mémoire). La clé est le passage par le binaire : 1 chiffre hexa = 4 bits. Distribuez la table de correspondance.</p>
+<h3>Table de correspondance binaire ↔ hexadécimal</h3>
+<table>
+<thead>
+<tr>
+<th>Décimal</th>
+<th>Binaire</th>
+<th>Hexa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0001</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0010</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0011</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0100</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0101</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0110</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0111</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1000</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1001</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1010</td>
+<td>A</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1011</td>
+<td>B</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1100</td>
+<td>C</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1101</td>
+<td>D</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1110</td>
+<td>E</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1111</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> Convertir en hexadécimal.</p>
+<ol>
+<li>255 (décimal) → hexa</li>
+<li>16 (décimal) → hexa</li>
+<li><code>1101 1010₂</code> → hexa</li>
+<li><code>A3₁₆</code> → décimal</li>
+</ol>
+<p><strong>Corrigé détaillé :</strong></p>
+<ol>
+<li>
+<p><strong>255₁₀ → hexa :</strong><br />
+<code>255 ÷ 16 = 15 reste 15</code> → <code>FF₁₆</code> (15 = F en hexa).<br />
+   Soit <code>FF₁₆ = 15×16 + 15 = 255 ✓</code></p>
+</li>
+<li>
+<p><strong>16₁₀ → hexa :</strong><br />
+<code>16 ÷ 16 = 1 reste 0</code> → <code>10₁₆</code> (attention : « 10 » en hexa = 16, pas 10 !)</p>
+</li>
+<li>
+<p><strong><code>1101 1010₂</code> → hexa :</strong><br />
+   Grouper par 4 bits : <code>1101₂ = D₁₆</code>, <code>1010₂ = A₁₆</code>.<br />
+   Soit <code>DA₁₆</code></p>
+</li>
+<li>
+<p><strong><code>A3₁₆</code> → décimal :</strong><br />
+<code>A</code> = 10, donc <code>A3₁₆</code> = 10×16 + 3 = 160 + 3 = <strong>163</strong></p>
+</li>
+</ol>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Les couleurs HTML sont codées en hexadécimal sur 3 octets (R, V, B). Par exemple, <code>#FF0000</code> = rouge pur. Décoder :</p>
+<ol>
+<li><code>#00FF00</code></li>
+<li><code>#0000FF</code></li>
+<li><code>#FFFFFF</code></li>
+<li><code>#000000</code></li>
+</ol>
+<p><strong>Corrigé :</strong>
+1. <code>#00FF00</code> → R=0, V=255, B=0 → <strong>Vert pur</strong>
+2. <code>#0000FF</code> → R=0, V=0, B=255 → <strong>Bleu pur</strong>
+3. <code>#FFFFFF</code> → R=255, V=255, B=255 → <strong>Blanc</strong>
+4. <code>#000000</code> → R=0, V=0, B=0 → <strong>Noir</strong></p>
+<hr />
+<h3>★★ Question avancée (4 min)</h3>
+<p><strong>Énoncé :</strong> Adresse MAC : <code>3A:1B:7E:00:FF:4D</code>. Convertir chaque octet en binaire.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">3</span><span class="n">A₁₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0011</span><span class="w"> </span><span class="mf">1010</span><span class="n">₂</span>
+<span class="mf">1</span><span class="n">B₁₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0001</span><span class="w"> </span><span class="mf">1011</span><span class="n">₂</span>
+<span class="mf">7</span><span class="n">E₁₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0111</span><span class="w"> </span><span class="mf">1110</span><span class="n">₂</span>
+<span class="mf">00</span><span class="n">₁₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0000</span><span class="w"> </span><span class="mf">0000</span><span class="n">₂</span>
+<span class="n">FF₁₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1111</span><span class="w"> </span><span class="mf">1111</span><span class="n">₂</span>
+<span class="mf">4</span><span class="n">D₁₆</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0100</span><span class="w"> </span><span class="mf">1101</span><span class="n">₂</span>
+</code></pre></div>
+
+<p>Soit : <code>00111010 00011011 01111110 00000000 11111111 01001101₂</code></p>
+<hr />
+<h2>Exercice 4 — Codage des caractères <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Les étudiants utilisent quotidiennement du texte sans savoir comment les caractères sont stockés. Montrez la table ASCII (7 bits) et son extension sur 8 bits. Cet exercice concret décode un message caché.</p>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> En ASCII (7 bits), <code>A</code> = 65, <code>a</code> = 97, espace = 32. Décoder la séquence binaire suivante :</p>
+<p><code>01000001 00100000 01000010 01001111 01001110</code></p>
+<p><strong>Indice :</strong> Chaque groupe de 8 bits = 1 caractère.</p>
+<p><strong>Corrigé détaillé :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Binaire (8 bits)</th>
+<th>Décimal</th>
+<th>Caractère ASCII</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>01000001₂</code></td>
+<td>65</td>
+<td><code>A</code></td>
+</tr>
+<tr>
+<td><code>00100000₂</code></td>
+<td>32</td>
+<td><code></code> (espace)</td>
+</tr>
+<tr>
+<td><code>01000010₂</code></td>
+<td>66</td>
+<td><code>B</code></td>
+</tr>
+<tr>
+<td><code>01001111₂</code></td>
+<td>79</td>
+<td><code>O</code></td>
+</tr>
+<tr>
+<td><code>01001110₂</code></td>
+<td>78</td>
+<td><code>N</code></td>
+</tr>
+</tbody>
+</table>
+<p>Résultat : <strong><code>A BON</code></strong></p>
+<p><strong>Méthode :</strong> Pour chaque octet, lire la valeur binaire → chercher dans la table ASCII (ou calculer : <code>A</code>=65 donc <code>B</code>=66, <code>O</code>=79, <code>N</code>=78).</p>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Coder votre prénom en binaire ASCII (8 bits par caractère).<br />
+<em>Exemple :</em> <code>MADANI</code> = ?</p>
+<p><strong>Corrigé pour MADANI :</strong></p>
+<div class="codehilite"><pre><span></span><code>M = 77₁₀ = 01001101₂
+A = 65₁₀ = 01000001₂
+D = 68₁₀ = 01000100₂
+A = 65₁₀ = 01000001₂
+N = 78₁₀ = 01001110₂
+I = 73₁₀ = 01001001₂
+</code></pre></div>
+
+<p>Soit : <code>01001101 01000001 01000100 01000001 01001110 01001001</code></p>
+<hr />
+<h3>★★ Question avancée (4 min)</h3>
+<p><strong>Énoncé :</strong> Décoder le message suivant (il utilise ASCII 7 bits, mais le bit de poids fort est utilisé comme bit de parité paire — ignorable) :</p>
+<p><code>11000010 11100101 11100100 11100101 11101110 11100101</code></p>
+<p><strong>Attention :</strong> Ne garder que les 7 bits de poids faible.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="mf">11000010</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">1000010</span><span class="n">₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">66</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">B</span><span class="err">&#39;</span>
+<span class="mf">11100101</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">1100101</span><span class="n">₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">101</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">e</span><span class="err">&#39;</span>
+<span class="mf">11100100</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">1100100</span><span class="n">₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">d</span><span class="err">&#39;</span>
+<span class="mf">11100101</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">1100101</span><span class="n">₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">101</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">e</span><span class="err">&#39;</span>
+<span class="mf">11101110</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">1101110</span><span class="n">₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">110</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">n</span><span class="err">&#39;</span>
+<span class="mf">11100101</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">1100101</span><span class="n">₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">101</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">e</span><span class="err">&#39;</span>
+</code></pre></div>
+
+<p>Résultat : <strong><code>Bedene</code></strong></p>
+<hr />
+<h2>Exercice 5 — Taille des fichiers <em>(20 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Exercice très concret : les étudiants pourront vérifier les résultats en ouvrant les propriétés de leurs propres fichiers. Expliquez la différence entre <strong>taille non compressée</strong> (calcul théorique) et <strong>taille réelle</strong> (après compression : JPEG, MP3, etc.).</p>
+<hr />
+<h3>✓ Question de base (8 min)</h3>
+<p><strong>Énoncé :</strong> Calculer la taille estimée des fichiers suivants.</p>
+<ol>
+<li>Un texte de 5000 caractères ASCII (sans mise en forme).</li>
+<li>Une image 200×150 pixels en noir et blanc (1 bit/pixel).</li>
+<li>Une image 200×150 pixels en 24 bits (TrueColor).</li>
+<li>Une photo 4000×3000 pixels en 24 bits compressée JPEG (ratio 10:1).</li>
+</ol>
+<p><strong>Corrigé détaillé :</strong></p>
+<ol>
+<li>
+<p><strong>Texte :</strong> 5000 × 1 octet = <strong>5000 octets</strong><br />
+   Soit 5000 ÷ 1024 ≈ <strong>4,9 Ko</strong></p>
+</li>
+<li>
+<p><strong>Image NB 200×150 :</strong>  </p>
+</li>
+<li>Nombre de pixels = 200 × 150 = 30 000 pixels  </li>
+<li>1 bit/pixel → 30 000 bits = 30 000 ÷ 8 = <strong>3750 octets</strong>  </li>
+<li>
+<p>Soit 3750 ÷ 1024 ≈ <strong>3,7 Ko</strong></p>
+</li>
+<li>
+<p><strong>Image couleur 200×150 (24 bits) :</strong>  </p>
+</li>
+<li>30 000 pixels × 24 bits = 720 000 bits  </li>
+<li>720 000 ÷ 8 = <strong>90 000 octets</strong>  </li>
+<li>
+<p>Soit 90 000 ÷ 1024 ≈ <strong>87,9 Ko</strong><br />
+<em>Remarque :</em> une icône typique (32×32) en 24 bits = 32×32×3 = 3072 octets ≈ 3 Ko.</p>
+</li>
+<li>
+<p><strong>Photo 4000×3000 (24 bits) compressée JPEG :</strong>  </p>
+</li>
+<li>4000 × 3000 = 12 000 000 pixels  </li>
+<li>12 000 000 × 3 = 36 000 000 octets ≈ <strong>34,3 Mo</strong>  </li>
+<li>Compression JPEG (10:1) → 36 000 000 ÷ 10 = <strong>3 600 000 octets ≈ 3,4 Mo</strong></li>
+</ol>
+<p><strong>Formules essentielles à retenir :</strong>
+- Taille (octets) = Largeur × Hauteur × (bits/pixel) ÷ 8
+- Taille compressée = Taille non compressée ÷ ratio de compression</p>
+<hr />
+<h3>★ Question intermédiaire (6 min)</h3>
+<p><strong>Énoncé :</strong> Une chanson au format CD audio (44,1 kHz, 16 bits, stéréo) dure 3 minutes. Calculer :</p>
+<ol>
+<li>Le débit audio en bits par seconde (bitrate).</li>
+<li>La taille totale du fichier non compressé.</li>
+<li>La taille compressée en MP3 (bitrate 128 kbps — kilo bits par seconde).</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<ol>
+<li><strong>Débit audio :</strong>  </li>
+<li>44 100 échantillons/s × 16 bits/échantillon × 2 canaux = <strong>1 411 200 bits/s</strong>  </li>
+<li>
+<p>Soit ≈ <strong>1,41 Mbps</strong> (Mega bits par seconde)</p>
+</li>
+<li>
+<p><strong>Taille non compressée :</strong>  </p>
+</li>
+<li>1 411 200 bits/s × 180 s = 254 016 000 bits  </li>
+<li>÷ 8 = 31 752 000 octets  </li>
+<li>
+<p>÷ 1024 ≈ <strong>31 008 Ko ≈ 30,3 Mo</strong></p>
+</li>
+<li>
+<p><strong>Taille compressée MP3 (128 kbps) :</strong>  </p>
+</li>
+<li>128 000 bits/s × 180 s = 23 040 000 bits  </li>
+<li>÷ 8 = 2 880 000 octets  </li>
+<li>÷ 1024 ≈ <strong>2812 Ko ≈ 2,75 Mo</strong></li>
+</ol>
+<p><strong>Ratio de compression :</strong> 30,3 / 2,75 ≈ <strong>11:1</strong> — impressionnant !</p>
+<hr />
+<h3>★★ Question avancée (6 min)</h3>
+<p><strong>Énoncé :</strong> Un vidéoprojecteur affiche en 1920×1080 pixels, 24 bits, 60 images par seconde (ips). Pendant une présentation de 1 heure :</p>
+<ol>
+<li>Quel est le débit vidéo non compressé ?</li>
+<li>Quelle serait la taille totale non compressée ?</li>
+<li>Avec un codec H.264 (ratio 100:1), quelle est la taille finale ?</li>
+<li>Cela tient-il sur une clé USB de 32 Go ?</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<ol>
+<li><strong>Débit vidéo :</strong>  </li>
+<li>1920 × 1080 = 2 073 600 pixels/image  </li>
+<li>2 073 600 × 24 bits = 49 766 400 bits/image  </li>
+<li>
+<p>× 60 ips = 2 985 984 000 bits/s ≈ <strong>2,99 Gbps</strong></p>
+</li>
+<li>
+<p><strong>Taille non compressée pour 1 h :</strong>  </p>
+</li>
+<li>2 985 984 000 × 3600 = 10 749 542 400 000 bits  </li>
+<li>
+<p>÷ 8 = 1 343 692 800 000 octets ≈ <strong>1,34 To</strong></p>
+</li>
+<li>
+<p><strong>Avec H.264 (100:1) :</strong>  </p>
+</li>
+<li>
+<p>1,34 To ÷ 100 ≈ <strong>13,4 Go</strong></p>
+</li>
+<li>
+<p><strong>Oui</strong>, 13,4 Go &lt; 32 Go, cela tient sur la clé USB.<br />
+<em>Remarque :</em> sans compression, il faudrait plusieurs disques durs !</p>
+</li>
+</ol>
+<hr />
+<h3>Synthèse visuelle — Comparaison des tailles</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">BT</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="ss">&quot;Ordres de grandeur&quot;</span>
+<span class="w">        </span><span class="n">CHANSON</span><span class="o">[</span><span class="n">&quot;Chanson 3 min MP3&lt;br/&gt;~ 3 Mo&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">PHOTO_JPEG</span><span class="o">[</span><span class="n">&quot;Photo 12 MP JPEG&lt;br/&gt;~ 4 Mo&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="n">PHOTO_JPEG</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DOC</span><span class="o">[</span><span class="n">&quot;Document Word&lt;br/&gt;~ 50 Ko&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="n">DOC</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MAIL</span><span class="o">[</span><span class="n">&quot;Email texte&lt;br/&gt;~ 5 Ko&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="n">MAIL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TEXTE</span><span class="o">[</span><span class="n">&quot;1 page ASCII&lt;br/&gt;~ 3 Ko&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="ss">&quot;Supports de stockage&quot;</span>
+<span class="w">        </span><span class="n">CLE</span><span class="o">[</span><span class="n">&quot;Clé USB 32 Go&quot;</span><span class="o">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DVD</span><span class="o">[</span><span class="n">&quot;DVD 4,7 Go&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="n">DVD</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">CD</span><span class="o">[</span><span class="n">&quot;CD 700 Mo&quot;</span><span class="o">]</span>
+<span class="w">        </span><span class="n">CD</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DISQUETTE</span><span class="o">[</span><span class="n">&quot;Disquette 1,44 Mo&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CLE</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#4a90d9</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">DVD</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CD</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e67e22</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">DISQUETTE</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e74c3c</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Quelle est la valeur décimale de <code>1010₂</code> ?</strong>
+   a) 8  b) 10 ✓  c) 12</p>
+</li>
+<li>
+<p><strong>Combien de bits faut-il pour coder le nombre 256 en binaire ?</strong>
+   a) 8  b) 9 ✓  c) 10</p>
+</li>
+<li>
+<p><strong>Le nombre hexadécimal <code>FF₁₆</code> vaut :</strong>
+   a) 240  b) 255 ✓  c) 256</p>
+</li>
+<li>
+<p><strong>En ASCII, le caractère <code>A</code> est codé par :</strong>
+   a) 65 ✓  b) 97  c) 32</p>
+</li>
+<li>
+<p><strong>Un Go (gigaoctet) vaut :</strong>
+   a) 1000 Mo  b) 1024 Mo ✓  c) 1024 Ko</p>
+</li>
+<li>
+<p><strong>★★ 1 kibioctet (Kio) vaut :</strong>
+   a) 1000 octets  b) 1024 octets ✓  c) 1000 bits</p>
+</li>
+<li>
+<p><strong>★★ Une image 100×100 pixels en 24 bits pèse environ :</strong>
+   a) 10 Ko  b) 30 Ko ✓  c) 100 Ko</p>
+</li>
+<li>
+<p><strong>★★ Le nombre hexadécimal <code>1F₁₆</code> vaut en décimal :</strong>
+   a) 16  b) 31 ✓  c) 21</p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversion binaire ↔ décimal</td>
+<td>20 %</td>
+<td>Conversions incorrectes</td>
+<td>Conversions partiellement correctes</td>
+<td>Conversions correctes</td>
+</tr>
+<tr>
+<td>Conversion hexadécimale</td>
+<td>20 %</td>
+<td>Conversions incorrectes</td>
+<td>Conversions partiellement correctes</td>
+<td>Conversions correctes</td>
+</tr>
+<tr>
+<td>Codage ASCII/UTF-8</td>
+<td>20 %</td>
+<td>Ne comprend pas le principe</td>
+<td>Compréhension partielle</td>
+<td>Compréhension complète</td>
+</tr>
+<tr>
+<td>Calcul de taille fichier</td>
+<td>20 %</td>
+<td>Calculs incorrects</td>
+<td>Calculs partiellement corrects</td>
+<td>Calculs corrects</td>
+</tr>
+<tr>
+<td>Image bitmap</td>
+<td>20 %</td>
+<td>Ne comprend pas le codage pixel</td>
+<td>Compréhension partielle</td>
+<td>Compréhension complète</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Les conversions binaires et hexadécimales sont abordables dès la classe de Seconde (SNT) en utilisant la méthode des divisions successives ou des puissances de 2. On peut introduire le binaire avec des jeux de cartes (cartes valant 1, 2, 4, 8, 16...) et faire deviner un nombre choisi par un élève. Pour les tailles de fichiers, utiliser des exemples concrets (photo du téléphone, document Word) que les étudiants manipulent quotidiennement.</p>
+<h3>Conseil pour l'enseignant formateur</h3>
+<p>Prévoir des exercices progressifs : commencer par des petits nombres (0-15) faciles à vérifier mentalement, puis augmenter graduellement. Pour l'hexadécimal, insister sur le passage par le binaire (grouper par 4 bits). L'exercice 5 (tailles) est très concret : demander aux étudiants d'ouvrir les propriétés de leurs propres fichiers pour vérifier les calculs. Les exercices sur l'audio et la vidéo (★★) peuvent être traités en fin de séance ou reportés en séance suivante si le temps manque.</p>
+<h3>Prolongement</h3>
+<p>Proposer un mini-projet : créer un petit script Python qui convertit automatiquement un nombre décimal vers les bases 2, 10 et 16, et affiche les étapes de calcul. Cela réinvestit les notions de boucles et conditions vues en algorithmique tout en consolidant les conversions de bases.</p>
+<h3>Pour aller plus loin</h3>
+<ul>
+<li><strong>Binaire</strong> : Jouer au « binaire humain » — 5 étudiants tiennent des pancartes 16, 8, 4, 2, 1 ; l'enseignant annonce un nombre, les étudiants lèvent ou baissent leur pancarte.</li>
+<li><strong>Hexadécimal</strong> : Décoder l'adresse MAC de son propre ordinateur (commande <code>ipconfig /all</code> sur Windows).</li>
+<li><strong>Taille des fichiers</strong> : Télécharger une image en différentes résolutions et comparer les tailles réelles avec les calculs théoriques.</li>
+<li><strong>Conversion Python</strong> : Implémenter un convertisseur universel (base 2, 10, 16) avec interface texte.</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

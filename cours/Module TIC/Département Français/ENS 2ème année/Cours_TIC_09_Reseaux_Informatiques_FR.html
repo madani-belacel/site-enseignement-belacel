@@ -1,0 +1,845 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 09 — Réseaux informatiques — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 09 — Réseaux informatiques</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** ENS 1ère et 2ème année — Département Français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** ENS 1ère et 2ème année — introduction réseaux (préparation ISIL)</li><li>**Compétences pré-requises :** TIC 07–08 ; notions IP</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code><br />
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_09_Reseaux_Informatiques_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 09 — Réseaux informatiques</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> ENS 1ère et 2ème année — Département Français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026  </p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> ENS 1ère et 2ème année — introduction réseaux (préparation ISIL)</p>
+<p><strong>Compétences pré-requises :</strong> TIC 07–08 ; notions IP</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Classer PAN/LAN/MAN/WAN
+- Comparer topologies bus, étoile, maillée
+- Nommer switch, routeur, NIC</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Dessiner topologie étoile d'une salle info
+- Lire configuration IP simple (IP, masque, passerelle)</p>
+<p><strong>En termes de savoir-être :</strong>
+- Sécuriser identifiants réseau institutionnel</p>
+<p><strong>Mode d'évaluation :</strong> TD 45 % + QCM 25 % + schéma noté 30 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>TP papier : câblage logique 8 PC + switch + routeur</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM topologies et équipements (aligné USTO ISIL-S4 ch.01)</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>USTO UEF422 ch.01 ; Kurose &amp; Ross ; Cisco Networking Basics</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<h3>Textes de référence</h3>
+<table>
+<thead>
+<tr>
+<th>Texte</th>
+<th>Date</th>
+<th>Objet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arrêté n° 932</td>
+<td>28 juillet 2016</td>
+<td>Socle TIC — introduction aux réseaux en L1</td>
+</tr>
+<tr>
+<td>Décision DGRSDT n° 2022-89</td>
+<td>14 juin 2022</td>
+<td>Infrastructure réseau des campus universitaires</td>
+</tr>
+<tr>
+<td>Note n° 2023-112</td>
+<td>8 mars 2023</td>
+<td>Sécurisation du réseau Wi-Fi dans les universités</td>
+</tr>
+<tr>
+<td>Décret exécutif n° 21-49</td>
+<td>7 février 2021</td>
+<td>Stratégie nationale du numérique</td>
+</tr>
+<tr>
+<td>Instruction n° 2025-001</td>
+<td>5 janvier 2025</td>
+<td>Interopérabilité des systèmes d'information universitaires</td>
+</tr>
+</tbody>
+</table>
+<h3>Réseau académique algérien</h3>
+<p>Le système universitaire algérien dispose d'une infrastructure réseau interconnectée :</p>
+<table>
+<thead>
+<tr>
+<th>Composante</th>
+<th>Description</th>
+<th>Détails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RNR</td>
+<td>Réseau National de la Recherche</td>
+<td>Géré par l'ANPT — fibre optique</td>
+</tr>
+<tr>
+<td>Campus REN</td>
+<td>Réseau d'établissement</td>
+<td>LAN + Wi-Fi dans chaque université</td>
+</tr>
+<tr>
+<td>Inter-universitaire</td>
+<td>Liaisons MAN/WAN</td>
+<td>Connexion entre universités d'une même wilaya</td>
+</tr>
+<tr>
+<td>International</td>
+<td>Accès Internet mondial</td>
+<td>Liaisons sous-marines (SEA-ME-WE 5, Alger)</td>
+</tr>
+</tbody>
+</table>
+<h3>Infrastructure réseau typique d'une université algérienne</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;Routeur principal&lt;br/&gt;Université&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Switch cœur&lt;br/&gt;(réseau campus)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Switch bâtiment A&lt;br/&gt;(Faculté des Lettres)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;Switch bâtiment B&lt;br/&gt;(Faculté des Sciences)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="s">&quot;Serveurs&lt;br/&gt;(Moodle, DNS, DHCP)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="s">&quot;Switch étage 1&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="s">&quot;Switch étage 2&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="s">&quot;Salle info 101&lt;br/&gt;24 postes&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="s">&quot;Salle info 202&lt;br/&gt;24 postes&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="s">&quot;Réseau ANPT/RNR&lt;br/&gt;→ Internet&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">E91E63</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196F</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FF9800</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">J</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">C27B0</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction aux réseaux</li>
+<li>Types de réseaux (LAN, MAN, WAN)</li>
+<li>Topologies : bus, anneau, étoile</li>
+<li>Topologies : maillé et arborescente</li>
+<li>Composants d'un réseau</li>
+<li>Adressage IP et DHCP</li>
+<li>Réseau universitaire et Wi-Fi</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<h2>Introduction aux réseaux <em>(10 min)</em></h2>
+<p>Un <strong>réseau informatique</strong> relie des équipements pour échanger des données. Alignement USTO ISIL-S4 UEF422 — chapitre 01 « Introduction et topologies ».</p>
+<p><strong>Définition</strong> : ensemble de <strong>nœuds</strong> (hôtes) + <strong>liens</strong> + <strong>protocoles</strong> (TCP/IP, Ethernet).</p>
+<h3>Pourquoi ce cours pour un futur enseignant de français ?</h3>
+<table>
+<thead>
+<tr>
+<th>Contexte</th>
+<th>Application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Salle informatique</td>
+<td>Comprendre la topologie de la salle où vous enseignerez</td>
+</tr>
+<tr>
+<td>Moodle</td>
+<td>Savoir pourquoi le réseau peut ralentir (bande passante partagée)</td>
+</tr>
+<tr>
+<td>Wi-Fi campus</td>
+<td>Sécuriser sa connexion et ses identifiants</td>
+</tr>
+<tr>
+<td>Visioconférence</td>
+<td>Comprendre les contraintes réseau (latence, débit)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Types de réseaux (LAN, MAN, WAN) <em>(15 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Sigle</th>
+<th>Portée</th>
+<th>Débit typique</th>
+<th>Exemple en Algérie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personnel</td>
+<td>PAN</td>
+<td>~10 m</td>
+<td>1–50 Mbps</td>
+<td>Bluetooth téléphone ↔ PC</td>
+</tr>
+<tr>
+<td>Local</td>
+<td>LAN</td>
+<td>Bâtiment/campus</td>
+<td>100 Mbps – 10 Gbps</td>
+<td>Réseau faculté des lettres</td>
+</tr>
+<tr>
+<td>Métropolitain</td>
+<td>MAN</td>
+<td>Ville</td>
+<td>1–10 Gbps</td>
+<td>Réseau universitaire d'Oran</td>
+</tr>
+<tr>
+<td>Étendu</td>
+<td>WAN</td>
+<td>Pays/monde</td>
+<td>Variable</td>
+<td>Inter-universités Algérie</td>
+</tr>
+</tbody>
+</table>
+<p><strong>USTO</strong> : LAN campus + WAN vers autres universités (RNR).</p>
+<h3>Classification par taille — schéma</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;PAN&lt;br/&gt;10 m&lt;br/&gt;Bluetooth&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;LAN&lt;br/&gt;1 km&lt;br/&gt;Campus&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;MAN&lt;br/&gt;50 km&lt;br/&gt;Ville&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;WAN&lt;br/&gt;Monde&lt;br/&gt;Internet&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FF9800</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196F</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">E91E63</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Topologies : bus, anneau, étoile <em>(15 min)</em></h2>
+<ul>
+<li><strong>Bus</strong> : câble partagé (obsolète,ThickNet années 80)</li>
+<li><strong>Anneau</strong> : Token Ring (IBM, historique)</li>
+<li><strong>Étoile</strong> : nœuds vers <strong>switch</strong> central — standard LAN actuel</li>
+</ul>
+<h3>Comparaison des topologies</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Bus</th>
+<th>Anneau</th>
+<th>Étoile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Câblage</td>
+<td>Économique</td>
+<td>Moyen</td>
+<td>Plus long (au switch)</td>
+</tr>
+<tr>
+<td>Panne</td>
+<td>Tout le réseau tombe</td>
+<td>Boucle cassée</td>
+<td>Un seul nœud affecté</td>
+</tr>
+<tr>
+<td>Ajout d'un nœud</td>
+<td>Difficile</td>
+<td>Interruption</td>
+<td>Simple (prise libre sur switch)</td>
+</tr>
+<tr>
+<td>Débit</td>
+<td>Partagé (collisions)</td>
+<td>Partagé</td>
+<td>Dédié (full duplex)</td>
+</tr>
+<tr>
+<td>Usage aujourd'hui</td>
+<td>Historique</td>
+<td>Historique</td>
+<td><strong>Standard université</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="nv">graph</span><span class="w"> </span><span class="nv">TD</span>
+<span class="w">    </span><span class="nv">subgraph</span><span class="w"> </span><span class="s2">&quot;Topologie en étoile&quot;</span>
+<span class="w">        </span><span class="nv">S</span>[<span class="s2">&quot;Switch central&quot;</span>]<span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="nv">PC1</span>[<span class="s2">&quot;PC 1&quot;</span>]
+<span class="w">        </span><span class="nv">S</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="nv">PC2</span>[<span class="s2">&quot;PC 2&quot;</span>]
+<span class="w">        </span><span class="nv">S</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="nv">PC3</span>[<span class="s2">&quot;PC 3&quot;</span>]
+<span class="w">        </span><span class="nv">S</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="nv">PC4</span>[<span class="s2">&quot;PC 4&quot;</span>]
+<span class="w">        </span><span class="nv">S</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="nv">R</span>[<span class="s2">&quot;Routeur&quot;</span>]
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">S</span><span class="w"> </span><span class="nv">fill</span>:<span class="sc">#2196</span><span class="nv">F3</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+<span class="w">    </span><span class="nv">style</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="nv">fill</span>:#<span class="nv">FF9800</span>,<span class="nv">color</span>:#<span class="nv">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Topologies : maillée et arborescente <em>(10 min)</em></h2>
+<ul>
+<li><strong>Maillée</strong> : plusieurs chemins — <strong>Internet</strong>, routage dynamique (USTO ch. 6)</li>
+<li><strong>Arborescente</strong> : hiérarchie switch → switch (déploiement campus)</li>
+</ul>
+<p><strong>Spanning Tree Protocol (STP)</strong> : évite les boucles en topologie redondante.</p>
+<h3>Comparaison topologies étendues</h3>
+<table>
+<thead>
+<tr>
+<th>Topologie</th>
+<th>Redondance</th>
+<th>Coût</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maillée complète</td>
+<td>Maximale</td>
+<td>Très élevé</td>
+<td>Cœur Internet (routeurs)</td>
+</tr>
+<tr>
+<td>Maillée partielle</td>
+<td>Bonne</td>
+<td>Élevé</td>
+<td>Réseau inter-campus</td>
+</tr>
+<tr>
+<td>Arborescente</td>
+<td>Faible</td>
+<td>Modéré</td>
+<td>Salle informatique</td>
+</tr>
+<tr>
+<td>Hybride (étoile + maillée)</td>
+<td>Bonne</td>
+<td>Moyen</td>
+<td>Campus universitaire typique</td>
+</tr>
+</tbody>
+</table>
+<h3>Topologie arborescente d'un campus</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;Routeur principal&lt;br/&gt;(campus)&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Switch bâtiment A&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Switch bâtiment B&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;Switch salle 101&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="s">&quot;Switch salle 102&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="s">&quot;Switch salle 201&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="s">&quot;Switch salle 202&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="s">&quot;PC 1-24&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="s">&quot;PC 25-48&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">E91E63</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196F</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196F</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Composants d'un réseau <em>(10 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Équipement</th>
+<th>Couche OSI</th>
+<th>Rôle</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carte réseau (NIC)</td>
+<td>1–2</td>
+<td>Interface hôte avec le réseau</td>
+<td>Intel Ethernet, Wi-Fi</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>2 (Liaison)</td>
+<td>Commutation LAN, VLAN</td>
+<td>Cisco Catalyst, HP ProCurve</td>
+</tr>
+<tr>
+<td>Routeur</td>
+<td>3 (Réseau)</td>
+<td>Routage inter-réseaux</td>
+<td>Cisco ISR, MikroTik</td>
+</tr>
+<tr>
+<td>Point d'accès (AP)</td>
+<td>2</td>
+<td>Extension Wi-Fi</td>
+<td>Ubiquiti UniFi, TP-Link</td>
+</tr>
+<tr>
+<td>Modem</td>
+<td>1</td>
+<td>Modulation/démodulation signal</td>
+<td>Box ADSL/fibre</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td>3–4</td>
+<td>Filtrage sécurité</td>
+<td>PfSense, FortiGate</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Serveur</strong> : héberge Moodle, DNS, DHCP, messagerie.</p>
+<h3>Rôle des équipements — analogie simple</h3>
+<table>
+<thead>
+<tr>
+<th>Équipement réseau</th>
+<th>Analogie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Switch</td>
+<td>Standardiste qui connecte les appels dans un bâtiment</td>
+</tr>
+<tr>
+<td>Routeur</td>
+<td>Facteur qui achemine le courrier entre villes</td>
+</tr>
+<tr>
+<td>Point d'accès Wi-Fi</td>
+<td>Antenne relais téléphonique (sans fil)</td>
+</tr>
+<tr>
+<td>Firewall</td>
+<td>Agent de sécurité à l'entrée du bâtiment</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Adressage IP et DHCP <em>(10 min)</em></h2>
+<ul>
+<li><strong>IP</strong> + <strong>masque</strong> + <strong>passerelle</strong> + <strong>DNS</strong></li>
+<li><strong>DHCP</strong> : serveur attribue automatiquement (campus, box)</li>
+<li><strong>NAT</strong> : routeur traduit IP privées → IP publique</li>
+</ul>
+<h3>Exemple de configuration IP</h3>
+<div class="codehilite"><pre><span></span><code>Adresse IP      : 192.168.1.50
+Masque          : 255.255.255.0 (/24)
+Passerelle      : 192.168.1.1
+DNS principal   : 8.8.8.8
+DNS secondaire  : 8.8.4.4
+</code></pre></div>
+
+<h3>Interprétation</h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Valeur</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.50</td>
+<td>IP privée</td>
+<td>Attribuée par DHCP dans le LAN</td>
+</tr>
+<tr>
+<td>255.255.255.0</td>
+<td>Masque /24</td>
+<td>254 adresses disponibles sur ce réseau</td>
+</tr>
+<tr>
+<td>192.168.1.1</td>
+<td>Passerelle</td>
+<td>Adresse du routeur/box</td>
+</tr>
+<tr>
+<td>8.8.8.8</td>
+<td>DNS</td>
+<td>Serveur DNS Google (résolution noms)</td>
+</tr>
+</tbody>
+</table>
+<h3>DHCP — fonctionnement simplifié</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="err">é</span><span class="n">tudiant</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">DHCP</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Serveur</span><span class="w"> </span><span class="n">DHCP</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">Box</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Routeur</span><span class="o">/</span><span class="n">Box</span>
+
+<span class="w">    </span><span class="n">PC</span><span class="o">-&gt;&gt;</span><span class="n">DHCP</span><span class="o">:</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="n">Découverte</span><span class="w"> </span><span class="n">DHCP</span><span class="w"> </span><span class="p">(</span><span class="n">broadcast</span><span class="p">)</span>
+<span class="w">    </span><span class="n">DHCP</span><span class="o">-&gt;&gt;</span><span class="n">PC</span><span class="o">:</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="n">Offre</span><span class="w"> </span><span class="n">DHCP</span><span class="w"> </span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">proposée</span><span class="p">)</span>
+<span class="w">    </span><span class="n">PC</span><span class="o">-&gt;&gt;</span><span class="n">DHCP</span><span class="o">:</span><span class="w"> </span><span class="mf">3.</span><span class="w"> </span><span class="n">Requête</span><span class="w"> </span><span class="n">DHCP</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="s">&#39;accepte l&#39;</span><span class="n">IP</span><span class="p">)</span>
+<span class="w">    </span><span class="n">DHCP</span><span class="o">-&gt;&gt;</span><span class="n">PC</span><span class="o">:</span><span class="w"> </span><span class="mf">4.</span><span class="w"> </span><span class="n">Accusé</span><span class="w"> </span><span class="n">DHCP</span><span class="w"> </span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="mf">192.168.1.50</span><span class="w"> </span><span class="n">confirmée</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Note</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">PC</span><span class="p">,</span><span class="n">Box</span><span class="o">:</span><span class="w"> </span><span class="n">Connexion</span><span class="w"> </span><span class="err">é</span><span class="n">tablie</span>
+<span class="w">    </span><span class="n">PC</span><span class="o">-&gt;&gt;</span><span class="n">Box</span><span class="o">:</span><span class="w"> </span><span class="n">Accès</span><span class="w"> </span><span class="n">Internet</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">NAT</span>
+</code></pre></div>
+
+<hr />
+<h2>Réseau universitaire et Wi-Fi <em>(10 min)</em></h2>
+<ul>
+<li><strong>Authentification</strong> : login @etu.univ-*.dz (modèle USTO, M'sila, Béjaïa)</li>
+<li><strong>Wi-Fi</strong> : SSID institutionnel, WPA2/WPA3</li>
+<li><strong>Plateforme Moodle</strong> : accessible via réseau campus ou VPN</li>
+</ul>
+<p><strong>Sécurité</strong> : ne pas partager identifiants ; éviter Wi-Fi public pour notes personnelles.</p>
+<h3>Normes Wi-Fi et débits</h3>
+<table>
+<thead>
+<tr>
+<th>Norme</th>
+<th>Bande</th>
+<th>Débit max</th>
+<th>Année</th>
+<th>Usage campus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wi-Fi 4 (802.11n)</td>
+<td>2,4 / 5 GHz</td>
+<td>600 Mbps</td>
+<td>2009</td>
+<td>Obsolète</td>
+</tr>
+<tr>
+<td>Wi-Fi 5 (802.11ac)</td>
+<td>5 GHz</td>
+<td>3,5 Gbps</td>
+<td>2014</td>
+<td>Encore déployé</td>
+</tr>
+<tr>
+<td>Wi-Fi 6 (802.11ax)</td>
+<td>2,4 / 5 / 6 GHz</td>
+<td>9,6 Gbps</td>
+<td>2019</td>
+<td>Standard nouveau matériel</td>
+</tr>
+<tr>
+<td>Wi-Fi 7 (802.11be)</td>
+<td>2,4 / 5 / 6 GHz</td>
+<td>46 Gbps</td>
+<td>2024</td>
+<td>Émergent</td>
+</tr>
+</tbody>
+</table>
+<h3>Conseils pour la connexion Wi-Fi campus</h3>
+<ol>
+<li><strong>SSID officiel</strong> : se connecter uniquement au réseau de l'université (ex: <code>UNIV-MOSTA-WIFI</code>)</li>
+<li><strong>Mot de passe</strong> : utiliser le mot de passe institutionnel, ne pas le partager</li>
+<li><strong>VPN</strong> : si disponible, utiliser le VPN pour les connexions sensibles (notes, examens)</li>
+<li><strong>Antivirus</strong> : garder l'antivirus à jour sur son poste personnel</li>
+<li><strong>Déconnexion</strong> : se déconnecter après chaque session sur les postes partagés</li>
+</ol>
+<hr />
+<h2>Conclusion <em>(10 min)</em></h2>
+<p>LAN étoile + IP + équipements = base du module Réseaux.
+<strong>TD 09</strong> : dessiner topologie étoile d'une salle informatique (8 PC + switch + routeur).
+<strong>Prochain cours</strong> : Services Internet (TIC 10).</p>
+<h3>Synthèse concepts clés</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Définition</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAN</td>
+<td>Réseau local</td>
+<td>Salle informatique faculté</td>
+</tr>
+<tr>
+<td>Topologie étoile</td>
+<td>Nœuds vers switch central</td>
+<td>Standard campus</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>Commutation au sein du LAN</td>
+<td>Cisco Catalyst</td>
+</tr>
+<tr>
+<td>Routeur</td>
+<td>Routage entre réseaux</td>
+<td>Connexion faculté ↔ Internet</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>Attribution automatique d'IP</td>
+<td>Box domestique</td>
+</tr>
+<tr>
+<td>NAT</td>
+<td>Traduction IP privée ↔ publique</td>
+<td>Accès Internet LAN</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+<th>Support</th>
+<th>Modalité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduction</td>
+<td>10 min</td>
+<td>Rappel TIC 08 + annonce plan + contexte</td>
+<td>Diapos 1–3</td>
+<td>Magistral interactif</td>
+</tr>
+<tr>
+<td>Types de réseaux</td>
+<td>15 min</td>
+<td>Classification PAN/LAN/MAN/WAN + exemples</td>
+<td>Diapos 4–8</td>
+<td>Exposé + QCM</td>
+</tr>
+<tr>
+<td>Topologies base</td>
+<td>15 min</td>
+<td>Bus, anneau, étoile — schémas + avantages</td>
+<td>Diapos 9–14</td>
+<td>Démonstration</td>
+</tr>
+<tr>
+<td>Topologies avancées</td>
+<td>10 min</td>
+<td>Maillée, arborescente — cas campus</td>
+<td>Diapos 15–18</td>
+<td>Exercice guidé</td>
+</tr>
+<tr>
+<td>Composants</td>
+<td>10 min</td>
+<td>Switch, routeur, AP, NIC — rôles</td>
+<td>Diapos 19–22</td>
+<td>Brainstorming</td>
+</tr>
+<tr>
+<td>IP et DHCP</td>
+<td>10 min</td>
+<td>Exemple config + schéma DHCP</td>
+<td>Diapos 23–27</td>
+<td>Exercice tableaux</td>
+</tr>
+<tr>
+<td>Wi-Fi campus</td>
+<td>10 min</td>
+<td>Sécurité + bonnes pratiques</td>
+<td>Diapos 28–30</td>
+<td>Discussion groupe</td>
+</tr>
+<tr>
+<td>Conclusion</td>
+<td>10 min</td>
+<td>QCM rapide + annonce TD 09</td>
+<td>Diapos 31–32</td>
+<td>Évaluation formative</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<p><em>Cochez la ou les bonne(s) réponse(s).</em></p>
+<p><strong>Q1. Quelle topologie de réseau est standard dans les salles informatiques d'université ?</strong></p>
+<ul>
+<li>[ ] Topologie bus</li>
+<li>[ ] Topologie anneau</li>
+<li>[x] Topologie étoile ✓</li>
+<li>[ ] Topologie maillée complète</li>
+</ul>
+<p><strong>Q2. Quel équipement réseau permet de relier plusieurs réseaux entre eux (ex: LAN ↔ Internet) ?</strong></p>
+<ul>
+<li>[ ] Switch</li>
+<li>[x] Routeur ✓</li>
+<li>[ ] Point d'accès Wi-Fi</li>
+<li>[ ] Hub</li>
+</ul>
+<p><strong>Q3. Quelle est la portée approximative d'un réseau LAN ?</strong></p>
+<ul>
+<li>[ ] 10 mètres</li>
+<li>[x] 1 km (bâtiment/campus) ✓</li>
+<li>[ ] 50 km (ville)</li>
+<li>[ ] Illimitée (monde)</li>
+</ul>
+<p><strong>Q4. Que signifie l'acronyme DHCP et quel est son rôle principal ?</strong></p>
+<ul>
+<li>[ ] Digital Host Connection Protocol — sécuriser les connexions</li>
+<li>[x] Dynamic Host Configuration Protocol — attribuer automatiquement les adresses IP ✓</li>
+<li>[ ] Domain Host Control Protocol — gérer les noms de domaine</li>
+<li>[ ] Data Handling Control Protocol — contrôler le trafic</li>
+</ul>
+<p><strong>Q5. Dans une salle informatique en topologie étoile, que se passe-t-il si le câble d'un PC est débranché ?</strong></p>
+<ul>
+<li>[ ] Tout le réseau tombe</li>
+<li>[ ] La moitié des PC perdent la connexion</li>
+<li>[x] Seul ce PC est déconnecté ✓</li>
+<li>[ ] Le switch redémarre</li>
+</ul>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Les concepts de réseaux sont transposés pour des étudiants de lettres selon plusieurs axes :</p>
+<ol>
+<li><strong>Du connu vers l'inconnu</strong> : les étudiants utilisent le Wi-Fi campus quotidiennement mais n'en connaissent pas l'infrastructure. Le cours part de l'expérience utilisateur (connexion Moodle) vers la modélisation technique (topologie, équipements).</li>
+<li><strong>Analogies spatiales</strong> : la topologie est expliquée par analogie avec l'organisation spatiale d'un campus — le switch = le bâtiment central, les câbles = les couloirs, le routeur = la porte d'entrée vers l'extérieur.</li>
+<li><strong>Éviter la complexité inutile</strong> : le modèle OSI n'est pas détaillé (7 couches) — on se limite aux équipements et à leur rôle perçu. Les adresses IP sont présentées sans sous-réseau ni CIDR pour ce niveau.</li>
+<li><strong>Contextualisation professionnelle</strong> : le futur enseignant doit comprendre le réseau de son établissement pour mieux utiliser les ressources numériques pédagogiques.</li>
+</ol>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li><strong>Schémas</strong> : privilégier les schémas dessinés en direct (ou animés) pour montrer la différence entre topologies. Un volontaire peut venir dessiner au tableau.</li>
+<li><strong>Exercice salle info</strong> : si possible, faire le cours ou une partie en salle informatique pour montrer les équipements réels (switch, câbles RJ45, baie de brassage).</li>
+<li><strong>Configuration IP</strong> : demander aux étudiants de lancer <code>ipconfig</code> (Windows) ou <code>ifconfig</code> (Mac/Linux) sur leur poste. C'est concret et immédiat.</li>
+<li><strong>Éviter les détails de routage</strong> : ne pas aborder les protocoles de routage (OSPF, BGP). Se limiter à l'idée que le routeur trouve le chemin.</li>
+<li><strong>Vidéo démo</strong> : une animation de 2 min sur le fonctionnement d'un switch est plus efficace qu'un long exposé.</li>
+</ul>
+<h3>Prolongements possibles</h3>
+<table>
+<thead>
+<tr>
+<th>Prolongement</th>
+<th>Description</th>
+<th>Ressource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simulation Cisco Packet Tracer</td>
+<td>Simuler une topologie étoile avec 8 PC + switch</td>
+<td>Cisco Networking Academy</td>
+</tr>
+<tr>
+<td>TP câblage</td>
+<td>Réaliser un câble RJ45 droit/croisé</td>
+<td>Kit atelier réseau</td>
+</tr>
+<tr>
+<td>Mesure débit Wi-Fi</td>
+<td>Comparer débit Wi-Fi vs Ethernet filaire sur le campus</td>
+<td>Speedtest</td>
+</tr>
+<tr>
+<td>Sécurité Wi-Fi</td>
+<td>Configurer un point d'accès personnel (box)</td>
+<td>Guide pratique</td>
+</tr>
+<tr>
+<td>Histoire des réseaux</td>
+<td>Mini-exposé sur ARPANET → Internet → Wi-Fi</td>
+<td>Projet étudiant</td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 09 — Réseaux informatiques — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 09 — Réseaux informatiques</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 1 — Langue et Culture</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 1 Langue et Culture</li><li>**Compétences pré-requises :** TIC 07–08 ; notions d'adressage IP et de protocoles</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_09_Reseaux_Informatiques_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 09 — Réseaux informatiques</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> Master 1 — Langue et Culture<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 1 Langue et Culture</p>
+<p><strong>Compétences pré-requises :</strong> TIC 07–08 ; notions d'adressage IP et de protocoles</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Comprendre les concepts de réseau social et de capital social (Bourdieu, Granovetter)
+- Appliquer la théorie des réseaux à l'analyse des communautés linguistiques
+- Situer l'analyse des réseaux dans le champ de l'ethnographie numérique</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Utiliser un outil de visualisation de réseaux (Gephi, NodeXL) sur un petit corpus
+- Interpréter des mesures de centralité, densité, modularité
+- Cartographier un réseau de relations (Twitter, courriels, co-publications)</p>
+<p><strong>En termes de savoir-être :</strong>
+- Réflexivité sur la position du chercheur dans le réseau observé
+- Éthique de la collecte de données relationnelles</p>
+<p><strong>Mode d'évaluation :</strong> TD 25 % + Analyse de réseau (mini-mémoire graphique) 50 % + QCM 25 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Cartographie d'un réseau : communauté WhatsApp d'étude ou réseau Twitter/X</li>
+<li>Lecture dirigée : Granovetter (1973) — « The Strength of Weak Ties »</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>Rapport d'analyse de réseau (5 pages incluant visualisation)</li>
+<li>QCM réseaux, topologies, SNA</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Granovetter, M. (1973). « The Strength of Weak Ties ». <em>American Journal of Sociology</em>, 78(6), 1360–1380.</li>
+<li>Milroy, L. (1980). <em>Language and Social Networks</em>. Blackwell.</li>
+<li>Barabási, A.-L. (2016). <em>Network Science</em>. Cambridge University Press.</li>
+<li>Latour, B. (2005). <em>Reassembling the Social: An Introduction to Actor-Network-Theory</em>. Oxford University Press.</li>
+<li>Kurose, J., &amp; Ross, K. (2020). <em>Computer Networking: A Top-Down Approach</em> (8th ed.). Pearson.</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p><strong>Arrêté 933 (2016)</strong> : Le Master Langue et Culture inclut l'étude des réseaux comme objet social et communicationnel. <strong>Arrêté 129 (2019)</strong> : Recommandation d'intégrer les méthodes numériques (dont l'analyse de réseaux) dans les travaux de Master.</p>
+<p><strong>Contexte algérien</strong> : Les communautés linguistiques en Algérie (arabophones, francophones, berbérophones) sont structurées en réseaux complexes. L'étude de ces réseaux (en ligne et hors ligne) éclaire les dynamiques de diglossie et de changement linguistique. La <strong>loi 08-15 (2008)</strong> encadre la collecte de données personnelles, y compris dans les réseaux sociaux.</p>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction — Des réseaux techniques aux réseaux sociaux</li>
+<li>Types de réseaux informatiques (PAN, LAN, MAN, WAN)</li>
+<li>Topologies physiques et logiques</li>
+<li>Équipements réseau</li>
+<li>Social Network Analysis (SNA) — fondements</li>
+<li>Réseaux sociaux et communautés linguistiques</li>
+<li>Mesures et visualisation de réseaux (Gephi)</li>
+<li>Actor-Network Theory (ANT)</li>
+<li>Réseau universitaire et identité numérique</li>
+<li>Éthique et perspectives</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Réseaux</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Techniques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Humains</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Sociaux</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">LAN</span><span class="p">,</span><span class="w"> </span><span class="n">WAN</span><span class="p">,</span><span class="w"> </span><span class="n">PAN</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Topologies</span><span class="o">:</span><span class="w"> </span><span class="n">étoile</span><span class="p">,</span><span class="w"> </span><span class="n">maillée</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Équipements</span><span class="o">:</span><span class="w"> </span><span class="k">switch</span><span class="p">,</span><span class="w"> </span><span class="n">routeur</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">SNA</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Social</span><span class="w"> </span><span class="n">Network</span><span class="w"> </span><span class="n">Analysis</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">ANT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Actor</span><span class="o">-</span><span class="n">Network</span><span class="w"> </span><span class="n">Theory</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Communautés</span><span class="w"> </span><span class="n">linguistiques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Centralité</span><span class="p">,</span><span class="w"> </span><span class="n">densité</span><span class="p">,</span><span class="w"> </span><span class="n">ponts</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Actants</span><span class="w"> </span><span class="n">humains</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">humains</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Réseaux</span><span class="w"> </span><span class="n">socio</span><span class="o">-</span><span class="n">techniques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">8e44</span><span class="n">ad</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Introduction — Des réseaux techniques aux réseaux sociaux <em>(10 min)</em></h2>
+<p>Le terme <strong>réseau</strong> désigne à la fois des infrastructures techniques (réseaux informatiques) et des structures relationnelles (réseaux sociaux). En Master Langue et Culture, nous explorons ces deux dimensions :</p>
+<ul>
+<li><strong>Réseau technique</strong> : comment les données circulent (LAN, Wi-Fi, TCP/IP)</li>
+<li><strong>Réseau social</strong> : comment les humains (et leurs langues) sont connectés</li>
+</ul>
+<p><strong>Prolongement Master</strong> : l'analyse des réseaux (<em>Social Network Analysis</em>, SNA) est une méthode puissante pour étudier les communautés linguistiques, les interactions en ligne, et la diffusion des innovations linguistiques. Elle s'inscrit dans les <strong>Digital Humanities</strong> computationnelles.</p>
+<hr />
+<h2>Types de réseaux informatiques <em>(10 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Sigle</th>
+<th>Portée</th>
+<th>Exemple académique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Personnel</td>
+<td>PAN</td>
+<td>~10 m</td>
+<td>Bluetooth, smartphone</td>
+</tr>
+<tr>
+<td>Local</td>
+<td>LAN</td>
+<td>Bâtiment/campus</td>
+<td>Salle info université</td>
+</tr>
+<tr>
+<td>Métropolitain</td>
+<td>MAN</td>
+<td>Ville</td>
+<td>Réseau des campus d'Oran</td>
+</tr>
+<tr>
+<td>Étendu</td>
+<td>WAN</td>
+<td>Pays/monde</td>
+<td>Internet, RENATER</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Réseau académique algérien</strong> : les universités algériennes sont interconnectées via le réseau de l'<strong>ANPT</strong> (Agence Nationale des Points Télégraphiques). Chaque campus dispose d'un LAN avec connexion fibre au WAN national. Le réseau Algérie → Europe passe par les câbles sous-marins (SeaMeWe-4).</p>
+<hr />
+<h2>Topologies physiques et logiques <em>(10 min)</em></h2>
+<p><strong>Topologies physiques :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Topologie</th>
+<th>Principe</th>
+<th>Usage actuel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bus</strong></td>
+<td>Câble partagé, terminateurs</td>
+<td>Obsolète</td>
+</tr>
+<tr>
+<td><strong>Anneau</strong></td>
+<td>Jeton (Token Ring)</td>
+<td>Historique</td>
+</tr>
+<tr>
+<td><strong>Étoile</strong></td>
+<td>Nœuds connectés à un switch central</td>
+<td>Standard LAN</td>
+</tr>
+<tr>
+<td><strong>Maillée</strong></td>
+<td>Connexions multiples entre nœuds</td>
+<td>Internet (routage)</td>
+</tr>
+<tr>
+<td><strong>Arborescente</strong></td>
+<td>Hiérarchie de switches</td>
+<td>Déploiement campus</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Topologie étoile</strong> : la plus courante en milieu universitaire. Chaque poste est relié à un switch central. Avantage : panne d'un seul câble n'isole qu'une machine.</p>
+<p><strong>Topologie logique</strong> : comment les données circulent (indépendamment de la disposition physique). Exemple : bus logique sur une topologie physique en étoile (Ethernet = CSMA/CD).</p>
+<hr />
+<h2>Équipements réseau <em>(10 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Équipement</th>
+<th>Couche OSI (approx.)</th>
+<th>Rôle dans le réseau</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Carte réseau (NIC)</strong></td>
+<td>1–2</td>
+<td>Interface entre l'hôte et le support</td>
+</tr>
+<tr>
+<td><strong>Switch</strong></td>
+<td>2</td>
+<td>Commutation Ethernet, VLAN, segmentation</td>
+</tr>
+<tr>
+<td><strong>Routeur</strong></td>
+<td>3</td>
+<td>Routage IP, NAT, passerelle</td>
+</tr>
+<tr>
+<td><strong>Point d'accès (AP)</strong></td>
+<td>2</td>
+<td>Wi-Fi WPA2/WPA3</td>
+</tr>
+<tr>
+<td><strong>Modem / ONT</strong></td>
+<td>1</td>
+<td>Modulation fibre/ADSL</td>
+</tr>
+<tr>
+<td><strong>Serveur</strong></td>
+<td>7</td>
+<td>Hébergement Moodle, DNS, DHCP</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analogie</strong> : le switch est le répartiteur téléphonique d'un immeuble ; le routeur est le standardiste qui achemine les appels vers l'extérieur.</p>
+<hr />
+<h2>Social Network Analysis (SNA) — fondements <em>(15 min)</em></h2>
+<p><strong>Social Network Analysis</strong> (Wasserman &amp; Faust 1994) : méthode d'analyse des structures relationnelles qui modélise les acteurs comme des <strong>nœuds</strong> (nodes) et leurs relations comme des <strong>liens</strong> (edges/ties).</p>
+<p><strong>Concepts fondamentaux :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Définition</th>
+<th>Application linguistique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nœud</strong></td>
+<td>Acteur individuel ou collectif</td>
+<td>Personne, groupe, institution</td>
+</tr>
+<tr>
+<td><strong>Lien</strong></td>
+<td>Relation entre deux nœuds</td>
+<td>Amitié, échange langagier, co-publication</td>
+</tr>
+<tr>
+<td><strong>Centralité</strong></td>
+<td>Importance d'un nœud</td>
+<td>Leader d'opinion linguistique</td>
+</tr>
+<tr>
+<td><strong>Densité</strong></td>
+<td>Proportion de liens existants</td>
+<td>Cohésion d'une communauté</td>
+</tr>
+<tr>
+<td><strong>Pont</strong></td>
+<td>Lien entre deux groupes</td>
+<td>Bilingue comme intermédiaire</td>
+</tr>
+<tr>
+<td><strong>Modularité</strong></td>
+<td>Sous-structures du réseau</td>
+<td>Groupes dialectaux</td>
+</tr>
+<tr>
+<td><strong>Homophilie</strong></td>
+<td>Tendance à se lier à des semblables</td>
+<td>Communautés linguistiques</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Strength of Weak Ties</strong> (Granovetter 1973) : les liens faibles (connaissances) sont souvent plus importants pour la diffusion d'informations que les liens forts (amis proches). Application : comment une innovation linguistique se propage via des liens faibles.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="o">[</span><span class="n">A</span><span class="o">]</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">B</span><span class="o">[</span><span class="n">B</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">C</span><span class="o">[</span><span class="n">C</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">D</span><span class="o">[</span><span class="n">D</span><span class="o">]</span>
+<span class="w">    </span><span class="n">E</span><span class="o">[</span><span class="n">E</span><span class="o">]</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">A</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">F</span><span class="o">[</span><span class="n">F</span><span class="o">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">G</span><span class="o">[</span><span class="n">G</span><span class="o">]</span>
+<span class="w">    </span><span class="n">H</span><span class="o">[</span><span class="n">H</span><span class="o">]</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">E</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">I</span><span class="o">[</span><span class="n">I</span><span class="o">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">J</span><span class="o">[</span><span class="n">J</span><span class="o">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2980b9</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2980b9</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2980b9</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">linkStyle</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="w"> </span><span class="nl">stroke</span><span class="p">:</span><span class="n">#555</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="nl">width</span><span class="p">:</span><span class="mi">2</span>
+</code></pre></div>
+
+<hr />
+<h2>Réseaux sociaux et communautés linguistiques <em>(15 min)</em></h2>
+<p><strong>Les Milroy (1980)</strong> — <em>Language and Social Networks</em> : pionnier de l'application de la SNA à la sociolinguistique. Les réseaux sociaux des locuteurs expliquent la variation et le changement linguistique.</p>
+<h3>Applications en contexte algérien</h3>
+<p><strong>1. Diglossie et réseaux</strong>
+- Locuteurs arabophones : réseau familial (arabe algérien/darija) vs. réseau professionnel (français/arabe standard)
+- Les bilingues agissent comme <strong>ponts</strong> entre communautés</p>
+<p><strong>2. Berbérophonie et revitalisation</strong>
+- Réseaux en ligne (Facebook, YouTube) pour la diffusion du tamazight
+- Densité des liens entre militants linguistiques</p>
+<p><strong>3. Diaspora algérienne</strong>
+- Réseaux transnationaux : algériens d'Europe, Canada, monde arabe
+- Maintien / transformation de la langue via les réseaux numériques</p>
+<p><strong>4. Communautés en ligne</strong>
+- SNA sur Twitter/X : hashtags linguistiques (#Darija, #Tamazight)
+- Analyse des communautés de pratique linguistique (forums, groupes WhatsApp)</p>
+<hr />
+<h2>Mesures et visualisation de réseaux (Gephi) <em>(10 min)</em></h2>
+<p><strong>Gephi</strong> (gephi.org) : logiciel open source de visualisation et d'analyse de réseaux.</p>
+<p><strong>Workflow type :</strong>
+1. <strong>Collecte</strong> : extraire les relations d'un réseau Twitter (via API) ou d'un corpus d'interactions
+2. <strong>Import</strong> : format CSV (liste d'arêtes : source, cible, poids)
+3. <strong>Filtrage</strong> : supprimer les nœuds isolés ou à faible degré
+4. <strong>Visualisation</strong> : layout Force Atlas 2 (répulsion/attraction = lecture des communautés)
+5. <strong>Analyse</strong> : calculer centralité, modularité, diamètre</p>
+<p><strong>Interprétation :</strong>
+- Nœuds larges = forte centralité = acteurs influents
+- Couleurs = communautés/modularité
+- Liens épais = relations fréquentes</p>
+<p><strong>Outils alternatifs</strong> : NodeXL (Excel-based), NetworkX (Python), Cytoscape (biologie, adaptable SHS).</p>
+<hr />
+<h2>Actor-Network Theory (ANT) <em>(10 min)</em></h2>
+<p><strong>Actor-Network Theory</strong> (Latour 2005, Callon 1986) : théorie sociologique qui considère que les acteurs humains et non-humains (objets techniques, institutions, concepts) forment des réseaux hétérogènes.</p>
+<h3>Pour l'analyse en Langue et Culture</h3>
+<p><strong>Principes clés :</strong>
+- <strong>Symétrie généralisée</strong> : humains et non-humains (ex. un dictionnaire, un algorithme de traduction) sont des <em>actants</em>
+- <strong>Traduction</strong> : comment les acteurs transforment et font circuler des énoncés
+- <strong>Réseau socio-technique</strong> : une langue n'est pas qu'un système abstrait, mais un réseau d'acteurs (locuteurs, institutions, médias, technologies)</p>
+<p><strong>Exemple d'application :</strong>
+La standardisation du tamazight en Algérie comme réseau socio-technique :
+- Actants humains : linguistes, militants, enseignants, ministère
+- Actants non-humains : alphabet Tifinagh, manuels scolaires, décrets ministériels, claviers Unicode
+- Traduction : des revendications → politique linguistique → supports pédagogiques</p>
+<hr />
+<h2>Réseau universitaire et identité numérique <em>(5 min)</em></h2>
+<p><strong>Réseau physique</strong> : le campus universitaire est un réseau LAN avec accès Wi-Fi (eduroam ou SSID local), serveurs Moodle, DNS, DHCP, et proxy.</p>
+<p><strong>Réseau social académique</strong> :
+- <strong>Identité numérique</strong> : profil Google Scholar, ORCID, HAL
+- <strong>Réseaux académiques</strong> : ResearchGate, Academia.edu (critiques : modèle économique)
+- <strong>Collaboration</strong> : co-encadrement, co-publication — réseau de co-auteurs visualisable</p>
+<p><strong>Analyser son propre réseau</strong> : les étudiants peuvent cartographier leur réseau de collaboration (groupe TD, promotion, encadrants) avec Gephi — exercice réflexif.</p>
+<hr />
+<h2>Éthique de l'analyse de réseaux <em>(5 min)</em></h2>
+<p><strong>Enjeux déontologiques spécifiques à la SNA :</strong>
+- <strong>Consentement</strong> : les relations ne sont pas toujours explicites ; informer les participants
+- <strong>Anonymisation</strong> : ne pas révéler les identités dans les visualisations
+- <strong>Déduction</strong> : même anonymisé, un réseau peut permettre d'identifier des acteurs
+- <strong>Données publiques</strong> : Twitter/X est public, mais les utilisateurs n'ont pas toujours conscience de l'usage qui en est fait</p>
+<p><strong>Charte algérienne</strong> : la collecte de données sur les réseaux sociaux doit respecter la loi 18-07 (2018) sur la protection des données personnelles.</p>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<ul>
+<li>Réseaux = infrastructure technique + structure sociale</li>
+<li>SNA = méthode quantitative et qualitative pour l'étude des communautés linguistiques</li>
+<li>ANT = cadre théorique pour penser le rôle des objets techniques dans les dynamiques langagières</li>
+<li>Outils : Gephi, NetworkX — à la portée d'un Master</li>
+<li><strong>TD 09</strong> : cartographier un petit réseau social (groupe WhatsApp, Twitter/X, ou réseau de co-auteurs) avec Gephi — rendre visualisation + interprétation</li>
+<li><strong>Prochain cours</strong> : Services Internet et outils de recherche (TIC 10)</li>
+</ul>
+<hr />
+<h2>Déroulement séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Activité</th>
+<th>Modalité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–10 min</td>
+<td>Introduction : réseaux techniques → réseaux sociaux</td>
+<td>Exposé + analogies</td>
+<td>Diapos 1–3</td>
+</tr>
+<tr>
+<td>10–20 min</td>
+<td>Types de réseaux et topologies (LAN, WAN, étoile, maillé)</td>
+<td>Schémas au tableau</td>
+<td>Diapos 4–7</td>
+</tr>
+<tr>
+<td>20–30 min</td>
+<td>Équipements : switch, routeur, serveur</td>
+<td>Démo : <code>ipconfig</code>, <code>tracert</code></td>
+<td>CMD / Terminal</td>
+</tr>
+<tr>
+<td>30–45 min</td>
+<td>SNA : concepts fondamentaux + Granovetter</td>
+<td>Exposé + exemple</td>
+<td>Diapos 8–12</td>
+</tr>
+<tr>
+<td>45–55 min</td>
+<td>Réseaux et communautés linguistiques</td>
+<td>Étude de cas : diglossie algérienne</td>
+<td>Corpus / article</td>
+</tr>
+<tr>
+<td>55–70 min</td>
+<td>TP Gephi : visualiser un réseau Twitter</td>
+<td>Atelier guidé</td>
+<td>Gephi + données</td>
+</tr>
+<tr>
+<td>70–80 min</td>
+<td>ANT et éthique</td>
+<td>Discussion dirigée</td>
+<td>Diapos 13–15</td>
+</tr>
+<tr>
+<td>80–90 min</td>
+<td>Conclusion + consignes TD</td>
+<td>Q&amp;A</td>
+<td>Diapo TD</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation (5 questions)</h2>
+<p><strong>1. Que signifie le concept de « pont » (bridge) dans la Social Network Analysis ?</strong>
+- a) Un nœud connecté à lui-même
+- b) Un lien qui relie deux groupes distincts ✓
+- c) Un serveur qui connecte deux réseaux
+- d) Un type de topologie réseau</p>
+<p><strong>2. Selon Granovetter (1973), pourquoi les « liens faibles » sont-ils importants ?</strong>
+- a) Ils sont plus nombreux que les liens forts
+- b) Ils permettent la diffusion d'informations entre groupes différents ✓
+- c) Ils sont plus faciles à mesurer
+- d) Ils augmentent la densité du réseau</p>
+<p><strong>3. Quel concept de l'Actor-Network Theory (Latour) désigne le processus par lequel les acteurs transforment et font circuler des énoncés ?</strong>
+- a) Symétrie
+- b) Traduction ✓
+- c) Médiation
+- d) Inscription</p>
+<p><strong>4. Dans Gephi, quel algorithme de layout est couramment utilisé pour visualiser les communautés d'un réseau ?</strong>
+- a) Fruchterman-Reingold
+- b) Force Atlas 2 ✓
+- c) Hierarchical Clustering
+- d) Circular Layout</p>
+<p><strong>5. Quel type de réseau couvre typiquement un campus universitaire ?</strong>
+- a) PAN
+- b) LAN ✓
+- c) WAN
+- d) MAN</p>
+<hr />
+<h2>Note pédagogique Master</h2>
+<p><strong>Transposition didactique :</strong> Le cours opère un glissement délibéré des réseaux informatiques (technique) vers les réseaux sociaux (méthode SHS). Cette approche est inhabituelle dans un module TIC mais répond aux besoins des étudiants de Langue et Culture. L'objectif n'est pas de former des ingénieurs réseau mais des chercheurs capables d'utiliser les concepts de réseau pour analyser des phénomènes langagiers.</p>
+<p><strong>Conseil pour le formateur :</strong> Le cours peut sembler abstrait pour des étudiants littéraires. Utiliser des analogies concrètes (le réseau WhatsApp de la classe = exemple de densité, centralité). Le TP Gephi est crucial : préparer les fichiers de données à l'avance. ANT peut être difficile — se limiter aux concepts de symétrie et traduction, illustrés par un exemple algérien (standardisation tamazight).</p>
+<p><strong>Prolongement recherche :</strong> Les étudiants intéressés peuvent approfondir l'analyse de réseaux avec les <em>Digital Methods</em> (Rogers 2013) ou explorer l'ethnographie numérique des communautés en ligne (Hine 2015). Un mémoire pourrait porter sur les réseaux d'écrivains algériens francophones sur Twitter/X.</p>
+<hr />
+<h2>Références académiques</h2>
+<ul>
+<li>Barabási, A.-L. (2016). <em>Network Science</em>. Cambridge University Press.</li>
+<li>Callon, M. (1986). « Some Elements of a Sociology of Translation: Domestication of the Scallops and the Fishermen of St Brieuc Bay ». In J. Law (ed.), <em>Power, Action and Belief</em>. Routledge.</li>
+<li>Granovetter, M. (1973). « The Strength of Weak Ties ». <em>American Journal of Sociology</em>, 78(6), 1360–1380.</li>
+<li>Hine, C. (2015). <em>Ethnography for the Internet: Embedded, Embodied and Everyday</em>. Bloomsbury.</li>
+<li>Latour, B. (2005). <em>Reassembling the Social: An Introduction to Actor-Network-Theory</em>. Oxford University Press.</li>
+<li>Milroy, L. (1980). <em>Language and Social Networks</em>. Blackwell.</li>
+<li>Rogers, R. (2013). <em>Digital Methods</em>. MIT Press.</li>
+<li>Wasserman, S., &amp; Faust, K. (1994). <em>Social Network Analysis: Methods and Applications</em>. Cambridge University Press.</li>
+<li>Kurose, J., &amp; Ross, K. (2020). <em>Computer Networking: A Top-Down Approach</em> (8th ed.). Pearson.</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,970 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD Informatique — ENS 1ère année — Séance 04 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TD Informatique — ENS 1ère année — Séance 04 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Structure :** `-rwxr-xr--` se décompose en :</li><li>**Scénario enseignant :** L'objectif est de faire comprendre que l'OS est un **intermédiaire obligatoire** entre les applications et le matériel. Sans OS, chaque application devrait gérer elle-même les pilotes, l'ordonnancement, etc.</li><li>**Énoncé :** Associer chaque fonction à sa description.</li><li>**Corrigé :**</li><li>**Énoncé :** Classer les actions suivantes selon qu'elles relèvent du **noyau** (mode noyau) ou d'une **application** (mode utilisateur) :</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_FR_04.pdf</code></p>
+</blockquote>
+<h1>TD Informatique — ENS 1ère année — Séance 04 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de cette séance de TD, l'étudiant est capable de :
+- Expliquer le rôle du système d'exploitation et de ses composants (noyau, pilotes)
+- Décrire les états d'un processus et leur cycle de vie
+- Naviguer dans une arborescence de fichiers et construire des chemins absolus
+- Exécuter des commandes PowerShell pour manipuler fichiers et dossiers
+- Distinguer les privilèges noyau/mode utilisateur via les appels système</p>
+<hr />
+<h2>Contexte pédagogique — Scénario enseignant</h2>
+<p>Vous êtes enseignant et devez initier vos étudiants au <strong>rôle central du système d'exploitation</strong>. Ce TD explore les couches internes d'un OS (noyau, pilotes, syscalls), le cycle de vie des processus, l'arborescence des fichiers et la ligne de commande PowerShell. Utilisez l'<strong>analogie du chef d'orchestre</strong> (OS) qui dirige les musiciens (processus) et distribue les partitions (ressources).</p>
+<table>
+<thead>
+<tr>
+<th>Symbole</th>
+<th>Niveau</th>
+<th>Attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✓</td>
+<td>Débutant</td>
+<td>Questions de base — tous les étudiants doivent répondre</td>
+</tr>
+<tr>
+<td>★</td>
+<td>Intermédiaire</td>
+<td>Approfondissement — à traiter si le temps le permet</td>
+</tr>
+<tr>
+<td>★★</td>
+<td>Avancé</td>
+<td>Défi — pour les plus rapides, peut faire l'objet d'un bonus</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Plan du TD</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Rôle de l'OS</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Processus</td>
+<td>15 min</td>
+<td>35 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Arborescence</td>
+<td>20 min</td>
+<td>55 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — PowerShell</td>
+<td>15 min</td>
+<td>70 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Syscalls</td>
+<td>15 min</td>
+<td>85 min</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>5 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Architecture d'un système d'exploitation</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Utilisateur&quot;</span>
+<span class="w">        </span><span class="n">APP1</span><span class="p">[</span><span class="n">Application</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span>
+<span class="w">        </span><span class="n">APP2</span><span class="p">[</span><span class="n">Application</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+<span class="w">        </span><span class="n">APP3</span><span class="p">[</span><span class="n">Application</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Mode Utilisateur&quot;</span>
+<span class="w">        </span><span class="n">APP1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">API</span><span class="p">[</span><span class="n">API</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Appels</span><span class="w"> </span><span class="n">système</span><span class="p">]</span>
+<span class="w">        </span><span class="n">APP2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">API</span>
+<span class="w">        </span><span class="n">APP3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">API</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Mode Noyau&quot;</span>
+<span class="w">        </span><span class="n">API</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Noyau</span><span class="p">[</span><span class="n">Noyau</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Kernel</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Noyau</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">GProc</span><span class="p">[</span><span class="n">Gestion</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">processus</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Noyau</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">GMem</span><span class="p">[</span><span class="n">Gestion</span><span class="w"> </span><span class="n">mémoire</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Noyau</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">GFich</span><span class="p">[</span><span class="n">Gestion</span><span class="w"> </span><span class="n">fichiers</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Noyau</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">GPilotes</span><span class="p">[</span><span class="n">Pilotes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Drivers</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Matériel&quot;</span>
+<span class="w">        </span><span class="n">GPilotes</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">CPU</span>
+<span class="w">        </span><span class="n">GPilotes</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">RAM</span>
+<span class="w">        </span><span class="n">GPilotes</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DD</span><span class="p">[</span><span class="n">Disque</span><span class="w"> </span><span class="n">dur</span><span class="p">]</span>
+<span class="w">        </span><span class="n">GPilotes</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Res</span><span class="p">[</span><span class="n">Réseau</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">APP1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">APP2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">APP3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Noyau</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">GProc</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">GMem</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">GFich</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">GPilotes</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">RAM</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">DD</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Res</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+</code></pre></div>
+
+<h2>Cycle de vie d'un processus</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">stateDiagram</span><span class="o">-</span><span class="n">v2</span>
+<span class="w">    </span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Prêt</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Création</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Chargement</span>
+<span class="w">    </span><span class="n">Prêt</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="err">É</span><span class="n">lu</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Ordonnancement</span><span class="w"> </span><span class="p">(</span><span class="n">scheduler</span><span class="p">)</span>
+<span class="w">    </span><span class="err">É</span><span class="n">lu</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Prêt</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Interruption</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Fin</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">quantum</span>
+<span class="w">    </span><span class="err">É</span><span class="n">lu</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Bloqué</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Appel</span><span class="w"> </span><span class="n">système</span><span class="w"> </span><span class="n">bloquant</span><span class="w"> </span><span class="p">(</span><span class="n">E</span><span class="o">/</span><span class="n">S</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Bloqué</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Prêt</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Fin</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">l</span><span class="s">&#39;attente (E/S terminée)</span>
+<span class="s">    Élu --&gt; [*] : Terminaison</span>
+
+<span class="s">    note right of Prêt</span>
+<span class="s">        File d&#39;</span><span class="n">attente</span><span class="w"> </span><span class="n">des</span>
+<span class="w">        </span><span class="n">processus</span><span class="w"> </span><span class="n">prêts</span>
+<span class="w">    </span><span class="kd">end </span><span class="n">note</span>
+
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="kr">right</span><span class="w"> </span><span class="kr">of</span><span class="w"> </span><span class="err">É</span><span class="n">lu</span>
+<span class="w">        </span><span class="n">Le</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">exécute</span>
+<span class="w">        </span><span class="n">les</span><span class="w"> </span><span class="n">instructions</span>
+<span class="w">    </span><span class="kd">end </span><span class="n">note</span>
+
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="kr">right</span><span class="w"> </span><span class="kr">of</span><span class="w"> </span><span class="n">Bloqué</span>
+<span class="w">        </span><span class="n">Attente</span><span class="w"> </span><span class="n">d</span><span class="s">&#39;une ressource</span>
+<span class="s">        (disque, réseau, clavier...)</span>
+<span class="s">    end note</span>
+</code></pre></div>
+
+<h2>Tableau des permissions Unix (référence)</h2>
+<table>
+<thead>
+<tr>
+<th>Symbole</th>
+<th>Permission</th>
+<th>Valeur</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>---</code></td>
+<td>Aucune</td>
+<td>0</td>
+<td>Pas de droit</td>
+</tr>
+<tr>
+<td><code>--x</code></td>
+<td>Exécution</td>
+<td>1</td>
+<td>Droit d'exécuter (fichier) ou traverser (dossier)</td>
+</tr>
+<tr>
+<td><code>-w-</code></td>
+<td>Écriture</td>
+<td>2</td>
+<td>Droit de modifier</td>
+</tr>
+<tr>
+<td><code>-wx</code></td>
+<td>Écriture + Exécution</td>
+<td>3</td>
+<td>Modifier + exécuter</td>
+</tr>
+<tr>
+<td><code>r--</code></td>
+<td>Lecture</td>
+<td>4</td>
+<td>Droit de lire</td>
+</tr>
+<tr>
+<td><code>r-x</code></td>
+<td>Lecture + Exécution</td>
+<td>5</td>
+<td>Lire + exécuter</td>
+</tr>
+<tr>
+<td><code>rw-</code></td>
+<td>Lecture + Écriture</td>
+<td>6</td>
+<td>Lire + modifier</td>
+</tr>
+<tr>
+<td><code>rwx</code></td>
+<td>Tous les droits</td>
+<td>7</td>
+<td>Lecture, écriture, exécution</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Structure :</strong> <code>-rwxr-xr--</code> se décompose en :
+- <code>-</code> : type (fichier normal, <code>d</code> = dossier)
+- <code>rwx</code> : droits du propriétaire (user)
+- <code>r-x</code> : droits du groupe (group)
+- <code>r--</code> : droits des autres (others)</p>
+<hr />
+<h2>Exercice 1 — Rôle de l'OS <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> L'objectif est de faire comprendre que l'OS est un <strong>intermédiaire obligatoire</strong> entre les applications et le matériel. Sans OS, chaque application devrait gérer elle-même les pilotes, l'ordonnancement, etc.</p>
+<hr />
+<h3>✓ Question de base (6 min)</h3>
+<p><strong>Énoncé :</strong> Associer chaque fonction à sa description.</p>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gestion des processus</td>
+<td>A. Organiser les fichiers en arborescence</td>
+</tr>
+<tr>
+<td>Gestion de la mémoire</td>
+<td>B. Traduire les appels système vers le matériel</td>
+</tr>
+<tr>
+<td>Gestion des fichiers</td>
+<td>C. Allouer la RAM aux applications</td>
+</tr>
+<tr>
+<td>Noyau</td>
+<td>D. Ordonnancer l'exécution des programmes</td>
+</tr>
+<tr>
+<td>Pilote (driver)</td>
+<td>E. Interface entre l'OS et un périphérique</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corrigé :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gestion des processus</td>
+<td>D — Ordonnancer l'exécution des programmes</td>
+</tr>
+<tr>
+<td>Gestion de la mémoire</td>
+<td>C — Allouer la RAM aux applications</td>
+</tr>
+<tr>
+<td>Gestion des fichiers</td>
+<td>A — Organiser les fichiers en arborescence</td>
+</tr>
+<tr>
+<td>Noyau</td>
+<td>B (partiellement) — Cœur du système, gère tout</td>
+</tr>
+<tr>
+<td>Pilote (driver)</td>
+<td>E — Interface entre l'OS et un périphérique</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Classer les actions suivantes selon qu'elles relèvent du <strong>noyau</strong> (mode noyau) ou d'une <strong>application</strong> (mode utilisateur) :</p>
+<ol>
+<li>Un calcul dans un tableur Excel</li>
+<li>L'écriture d'un fichier sur le disque dur</li>
+<li>L'affichage d'une image à l'écran (via le pilote graphique)</li>
+<li>La lecture d'une touche du clavier</li>
+<li>L'ordonnancement du prochain processus à exécuter</li>
+<li>La navigation dans un navigateur web</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calcul dans Excel</td>
+<td>Utilisateur (purement applicatif)</td>
+</tr>
+<tr>
+<td>Écriture sur disque</td>
+<td>Noyau (via syscall <code>write</code>)</td>
+</tr>
+<tr>
+<td>Affichage via pilote graphique</td>
+<td>Noyau (le pilote est dans l'OS)</td>
+</tr>
+<tr>
+<td>Lecture clavier</td>
+<td>Noyau (interruption matérielle gérée par l'OS)</td>
+</tr>
+<tr>
+<td>Ordonnancement</td>
+<td>Noyau (c'est le scheduler)</td>
+</tr>
+<tr>
+<td>Navigation web</td>
+<td>Utilisateur (le navigateur fait des syscalls mais reste en mode utilisateur)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>★★ Question avancée (4 min)</h3>
+<p><strong>Énoncé :</strong> Lister 3 différences entre un noyau <strong>monolithique</strong> (Linux) et un noyau <strong>hybride</strong> (Windows). Donner un avantage et un inconvénient pour chaque approche.</p>
+<p><strong>Corrigé :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Monolithique (Linux)</th>
+<th>Hybride (Windows)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture</td>
+<td>Tout le noyau dans un seul espace d'adressage</td>
+<td>Noyau minimal + services en mode utilisateur</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Meilleure (moins de changements de contexte)</td>
+<td>Légèrement moins bonne (IPC entre modules)</td>
+</tr>
+<tr>
+<td>Stabilité / Sécurité</td>
+<td>Moins stable (un pilote crash tout le noyau)</td>
+<td>Plus stable (un pilote crash peut être isolé)</td>
+</tr>
+<tr>
+<td>Modularité</td>
+<td>Chargeable via modules (<code>.ko</code>)</td>
+<td>Services séparés</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Avantage monolithique :</strong> performances élevées. <strong>Inconvénient :</strong> risque de planter tout le système.</p>
+<p><strong>Avantage hybride :</strong> meilleure isolation (un pilote qui plante ne bloque pas tout). <strong>Inconvénient :</strong> surcoût de communication entre les couches.</p>
+<hr />
+<h2>Exercice 2 — Processus et états <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Le diagramme d'états d'un processus est central en OS. Faites-le reproduire de mémoire par les étudiants (d'abord avec les 3 états, puis les transitions). Utilisez un jeu de rôle : 3 chaises = Prêt, Élu, Bloqué ; des étudiants mimant les transitions.</p>
+<hr />
+<h3>✓ Question de base (5 min)</h3>
+<p><strong>Énoncé :</strong> Un processus passe par 3 états : Prêt, Élu, Bloqué. Associer chaque situation à l'état correspondant.</p>
+<ol>
+<li>Un processus attend que l'utilisateur clique sur un bouton.</li>
+<li>Le CPU exécute les instructions du processus.</li>
+<li>Le processus est dans la file d'attente, prêt à être exécuté.</li>
+<li>Un processus lit un fichier sur le disque dur.</li>
+<li>Le système d'exploitation vient de charger le processus en mémoire.</li>
+</ol>
+<p><strong>Corrigé :</strong>
+1. <strong>Bloqué</strong> — attente d'une interaction utilisateur (E/S)
+2. <strong>Élu</strong> — le CPU exécute activement le processus
+3. <strong>Prêt</strong> — en attente dans la file d'ordonnancement
+4. <strong>Bloqué</strong> — attente de la fin de l'opération disque (E/S bloquante)
+5. <strong>Prêt</strong> — le processus est chargé mais pas encore élu</p>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> On observe un système avec 3 processus (P1, P2, P3). L'ordonnanceur utilise le <strong>Round Robin</strong> avec un quantum de 2 unités de temps. Compléter le diagramme de Gantt sachant que les processus arrivent tous à t = 0 et qu'aucun ne fait d'E/S :</p>
+<table>
+<thead>
+<tr>
+<th>Temps</th>
+<th>0-2</th>
+<th>2-4</th>
+<th>4-6</th>
+<th>6-8</th>
+<th>8-10</th>
+<th>10-12</th>
+<th>12-14</th>
+<th>14-16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corrigé :</strong></p>
+<p>Round Robin : P1 → P2 → P3 → P1 → P2 → P3 → P1 → ...</p>
+<table>
+<thead>
+<tr>
+<th>Temps</th>
+<th>0-2</th>
+<th>2-4</th>
+<th>4-6</th>
+<th>6-8</th>
+<th>8-10</th>
+<th>10-12</th>
+<th>12-14</th>
+<th>14-16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>P1</td>
+<td>P2</td>
+<td>P3</td>
+<td>P1</td>
+<td>P2</td>
+<td>P3</td>
+<td>P1</td>
+<td>P2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Explication :</strong> Chaque processus reçoit 2 unités de temps. Le cycle P1→P2→P3 se répète. L'ordre d'arrivée détermine l'ordre initial.</p>
+<hr />
+<h3>★★ Question avancée (5 min)</h3>
+<p><strong>Énoncé :</strong> On reprend le même système mais P2 fait une E/S bloquante au temps t=3 (durée : 3 unités). Décrire l'état de chaque processus aux instants t=0, t=2, t=4, t=6, t=8.</p>
+<p><strong>Corrigé :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Temps</th>
+<th>P1</th>
+<th>P2</th>
+<th>P3</th>
+<th>Exécuté par CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t=0</td>
+<td>Prêt</td>
+<td>Prêt</td>
+<td>Prêt</td>
+<td>—</td>
+</tr>
+<tr>
+<td>t=2</td>
+<td><strong>Élu</strong> (0-2)</td>
+<td>Prêt</td>
+<td>Prêt</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>t=3</td>
+<td>Prêt</td>
+<td><strong>Élu</strong> (2-3) puis <strong>Bloqué</strong></td>
+<td>Prêt</td>
+<td>P2 (puis E/S)</td>
+</tr>
+<tr>
+<td>t=4</td>
+<td>Prêt</td>
+<td>Bloqué</td>
+<td><strong>Élu</strong> (3-4, fin de quantum)</td>
+<td>P3</td>
+</tr>
+<tr>
+<td>t=6</td>
+<td><strong>Élu</strong> (4-6)</td>
+<td>Bloqué</td>
+<td>Prêt</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>t=8</td>
+<td>Prêt</td>
+<td><strong>Prêt</strong> (E/S terminée à t=6, repasse en file)</td>
+<td><strong>Élu</strong> (6-8)</td>
+<td>P3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observation :</strong> Quand P2 est bloqué, l'ordre Round Robin continue entre P1 et P3 jusqu'au retour de P2.</p>
+<hr />
+<h2>Exercice 3 — Arborescence des fichiers <em>(20 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> L'arborescence est le modèle standard d'organisation des fichiers. Les étudiants doivent maîtriser les chemins absolus et relatifs, la notion de dossier parent/enfant, et savoir construire une arborescence à partir d'une description textuelle.</p>
+<hr />
+<h3>✓ Question de base (8 min)</h3>
+<p><strong>Énoncé :</strong> Dessiner l'arborescence correspondant au chemin suivant :</p>
+<div class="codehilite"><pre><span></span><code>C:\
+├── Utilisateurs\
+│   └── Madani\
+│       ├── Documents\
+│       │   ├── Cours_ENS1\
+│       │   └── TD_Info.txt
+│       ├── Images\
+│       └── Bureau\
+│           └── Projet_Python\
+├── Program Files\
+│   └── Python3\
+└── Windows\
+    └── System32\
+</code></pre></div>
+
+<p><strong>Questions :</strong>
+1. Quel est le chemin absolu vers <code>TD_Info.txt</code> ?
+2. Quel est le dossier parent de <code>Projet_Python</code> ?
+3. Combien de dossiers contient directement <code>C:\</code> (dossiers de premier niveau) ?
+4. Quel est le chemin relatif de <code>TD_Info.txt</code> vers <code>Projet_Python</code> ?</p>
+<p><strong>Corrigé :</strong>
+1. <code>C:\Utilisateurs\Madani\Documents\TD_Info.txt</code>
+2. <code>Bureau</code> (car Bureau\Projet_Python)
+3. 3 dossiers : Utilisateurs, Program Files, Windows
+4. <code>..\..\Bureau\Projet_Python</code> (remonter de Documents vers Madani, puis vers Utilisateurs, puis descendre dans Bureau\Projet_Python... en fait : <code>../../Bureau/Projet_Python</code>)</p>
+<hr />
+<h3>★ Question intermédiaire (6 min)</h3>
+<p><strong>Énoncé :</strong> Construire l'arborescence qui correspond aux spécifications suivantes :</p>
+<ul>
+<li>Racine : <code>D:\Scolarite</code></li>
+<li>Sous <code>Scolarite</code> : 2 dossiers <code>Cours</code> et <code>Examens</code></li>
+<li><code>Cours</code> contient : <code>Informatique</code> (sous-dossier) + <code>Mathematiques</code> (sous-dossier) + <code>EmploiDuTemps.txt</code></li>
+<li><code>Informatique</code> contient : <code>TDs</code> (sous-dossier) + <code>Projets</code> (sous-dossier)</li>
+<li><code>TDs</code> contient : <code>TD01.pdf</code> et <code>TD02.pdf</code></li>
+<li><code>Projets</code> contient : <code>Projet_Python.zip</code></li>
+<li><code>Examens</code> contient : <code>Partiel_Info.pdf</code></li>
+</ul>
+<p><strong>Dessiner l'arborescence et donner le chemin absolu de <code>Projet_Python.zip</code>.</strong></p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code>D:\Scolarite\
+├── Cours\
+│   ├── Informatique\
+│   │   ├── TDs\
+│   │   │   ├── TD01.pdf
+│   │   │   └── TD02.pdf
+│   │   └── Projets\
+│   │       └── Projet_Python.zip
+│   ├── Mathematiques\
+│   └── EmploiDuTemps.txt
+└── Examens\
+    └── Partiel_Info.pdf
+</code></pre></div>
+
+<p><strong>Chemin absolu de <code>Projet_Python.zip</code> :</strong> <code>D:\Scolarite\Cours\Informatique\Projets\Projet_Python.zip</code></p>
+<hr />
+<h3>★★ Question avancée (6 min)</h3>
+<p><strong>Énoncé :</strong> On se place dans le dossier <code>Cours</code>. Pour chaque chemin relatif, donner le chemin absolu correspondant :</p>
+<ol>
+<li><code>..\Examens\Partiel_Info.pdf</code></li>
+<li><code>Informatique\..\Mathematiques</code></li>
+<li><code>Informatique\TDs\..\..\..\Examens\Partiel_Info.pdf</code></li>
+<li><code>.</code> (point seul)</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<ol>
+<li><code>D:\Scolarite\Examens\Partiel_Info.pdf</code> (remonter de Cours → Scolarite → descendre dans Examens)</li>
+<li><code>D:\Scolarite\Cours\Mathematiques</code> (Informatique puis <code>..</code> remonte dans Cours, puis Mathematiques)</li>
+<li><code>D:\Scolarite\Examens\Partiel_Info.pdf</code> (Informatique → TDs → <code>..</code> = Informatique → <code>..</code> = Cours → <code>..</code> = Scolarite → Examens)</li>
+<li><code>D:\Scolarite\Cours</code> (le point représente le dossier courant)</li>
+</ol>
+<hr />
+<h3>Tableau d'entraînement — Chemins absolus et relatifs</h3>
+<table>
+<thead>
+<tr>
+<th>Position actuelle</th>
+<th>Cible</th>
+<th>Chemin relatif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C:\Users\Madani\Docs</code></td>
+<td><code>C:\Users\Madani\Images\photo.jpg</code></td>
+<td><code>..\Images\photo.jpg</code></td>
+</tr>
+<tr>
+<td><code>C:\Windows\System32</code></td>
+<td><code>C:\Windows\notepad.exe</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>D:\Projets\Python</code></td>
+<td><code>D:\Data\cours.pdf</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>C:\</code></td>
+<td><code>C:\Users\Public\Desktop\readme.txt</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corrigé :</strong>
+- <code>..\Images\photo.jpg</code> (remonter dans Madani, descendre dans Images)
+- <code>..\notepad.exe</code> (remonter dans Windows)
+- <code>..\..\Data\cours.pdf</code> (remonter dans Projets, puis D:\, descendre dans Data)
+- <code>Users\Public\Desktop\readme.txt</code></p>
+<hr />
+<h2>Exercice 4 — Commandes PowerShell <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> Les commandes PowerShell sont essentielles pour la maintenance système. Si possible, ouvrez PowerShell en direct et faites exécuter les commandes par les étudiants. Sinon, faites-les « exécuter mentalement » en décrivant le résultat.</p>
+<hr />
+<h3>✓ Question de base (5 min)</h3>
+<p><strong>Énoncé :</strong> Exécuter mentalement la séquence de commandes suivante et décrire le résultat.</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Name</span> <span class="s2">&quot;Stage&quot;</span>
+<span class="nb">Set-Location</span> <span class="s2">&quot;Stage&quot;</span>
+<span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">File</span> <span class="n">-Name</span> <span class="s2">&quot;Rapport.txt&quot;</span>
+<span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s2">&quot;Rapport.txt&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;Mon rapport de stage&quot;</span>
+<span class="nb">Get-ChildItem</span>
+<span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="s2">&quot;Rapport.txt&quot;</span>
+<span class="nb">Get-Location</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong>
+1. Crée le dossier <code>Stage</code>
+2. Se place dans <code>Stage</code>
+3. Crée le fichier <code>Rapport.txt</code> (vide)
+4. Écrit « Mon rapport de stage » dans le fichier (remplace le contenu)
+5. Liste le contenu du dossier (affiche <code>Rapport.txt</code>)
+6. Supprime le fichier <code>Rapport.txt</code>
+7. Affiche le chemin courant (<code>...\Stage</code>)</p>
+<p><strong>Résultat final :</strong> Le dossier <code>Stage</code> existe mais est vide. Le terminal est positionné dans <code>Stage</code>.</p>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Écrire une séquence PowerShell qui réalise les opérations suivantes dans l'ordre :</p>
+<ol>
+<li>Depuis <code>C:\</code>, créer la structure <code>C:\ENS\TD\OS</code></li>
+<li>Créer un fichier <code>reponses.txt</code> dans <code>OS</code></li>
+<li>Ajouter (sans effacer) la ligne « Exercice 1 terminé » dans <code>reponses.txt</code></li>
+<li>Afficher le contenu du fichier</li>
+<li>Copier <code>reponses.txt</code> vers <code>C:\ENS\reponses_backup.txt</code></li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="s2">&quot;C:\ENS\TD\OS&quot;</span> <span class="n">-Force</span>   <span class="c"># -Force crée toute la chaîne</span>
+<span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s2">&quot;C:\ENS\TD\OS\reponses.txt&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;Exercice 1 terminé&quot;</span>
+<span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;C:\ENS\TD\OS\reponses.txt&quot;</span>
+<span class="nb">Copy-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\ENS\TD\OS\reponses.txt&quot;</span> <span class="n">-Destination</span> <span class="s2">&quot;C:\ENS\reponses_backup.txt&quot;</span>
+</code></pre></div>
+
+<p><strong>Astuce :</strong> <code>Add-Content</code> permet d'ajouter (append) au lieu d'écraser.<br />
+Exemple : <code>Add-Content -Path "fichier.txt" -Value "Nouvelle ligne"</code></p>
+<hr />
+<h3>★★ Question avancée (5 min)</h3>
+<p><strong>Énoncé :</strong> Écrire un script PowerShell qui parcourt récursivement un dossier donné en argument et affiche pour chaque fichier :</p>
+<ul>
+<li>Son nom</li>
+<li>Sa taille en Ko</li>
+<li>Sa date de dernière modification</li>
+<li>L'extension</li>
+</ul>
+<p>Trier les résultats par taille décroissante et n'afficher que les 10 plus gros fichiers.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">param</span><span class="p">(</span><span class="nv">$Dossier</span> <span class="p">=</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="nv">$Dossier</span> <span class="n">-Recurse</span> <span class="o">-File</span> <span class="p">|</span> 
+    <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="p">@{</span><span class="n">N</span><span class="p">=</span><span class="s2">&quot;TailleKo&quot;</span><span class="p">;</span><span class="n">E</span><span class="p">={</span><span class="no">[math]</span><span class="p">::</span><span class="n">Round</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Length</span><span class="p">/</span><span class="n">1KB</span><span class="p">,</span> <span class="n">2</span><span class="p">)}},</span> 
+                  <span class="n">LastWriteTime</span><span class="p">,</span> <span class="n">Extension</span> <span class="p">|</span>
+    <span class="nb">Sort-Object</span> <span class="n">-Property</span> <span class="n">TailleKo</span> <span class="n">-Descending</span> <span class="p">|</span>
+    <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">10</span>
+</code></pre></div>
+
+<p><strong>Explication :</strong>
+- <code>param($Dossier = ".")</code> : paramètre avec valeur par défaut (dossier courant)
+- <code>-Recurse -File</code> : parcourt récursivement, ne garde que les fichiers
+- <code>Select-Object</code> avec <code>@{...}</code> : crée une propriété calculée <code>TailleKo</code>
+- <code>[math]::Round(...)</code> : arrondit à 2 décimales
+- <code>Sort-Object -Descending</code> : tri décroissant
+- <code>-First 10</code> : top 10</p>
+<hr />
+<h2>Exercice 5 — Syscalls et permissions <em>(15 min)</em></h2>
+<p><strong>Scénario enseignant :</strong> La distinction mode utilisateur / mode noyau est fondamentale pour la sécurité et la stabilité du système. Un programme applicatif ne peut rien faire sans passer par l'OS.</p>
+<hr />
+<h3>✓ Question de base (5 min)</h3>
+<p><strong>Énoncé :</strong> Vrai ou Faux ? Justifier.</p>
+<ol>
+<li>Un logiciel applicatif peut accéder directement au disque dur sans passer par l'OS.</li>
+<li>Le noyau Linux et le noyau Windows sont identiques.</li>
+<li>Un appel système (syscall) permet à une application de demander un service au noyau.</li>
+<li>La mémoire virtuelle permet à un processus d'utiliser plus de mémoire que la RAM disponible.</li>
+<li>Un processus bloqué consomme du temps CPU.</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<ol>
+<li><strong>Faux</strong> — toute opération matérielle passe obligatoirement par l'OS (sécurité, abstraction, isolation). L'accès direct serait un trou de sécurité critique.</li>
+<li><strong>Faux</strong> — architectures différentes (Linux : monolithique avec modules chargeables ; Windows : hybride avec micro-noyau + services). Les API (syscalls) sont également différentes.</li>
+<li><strong>Vrai</strong> — c'est le mécanisme standard. L'application exécute une instruction spéciale (ex: <code>int 0x80</code> ou <code>syscall</code>) qui passe en mode noyau.</li>
+<li><strong>Vrai</strong> — via le swap (espace d'échange sur disque) et la pagination. Les pages rarement utilisées sont déplacées sur le disque pour libérer de la RAM.</li>
+<li><strong>Faux</strong> — un processus bloqué est en attente d'une ressource (E/S, clavier, etc.). Il n'est pas dans la file des prêts et ne reçoit pas de temps CPU.</li>
+</ol>
+<hr />
+<h3>★ Question intermédiaire (5 min)</h3>
+<p><strong>Énoncé :</strong> Tableau de permissions. Soit le fichier <code>script.sh</code> avec les permissions <code>-rwxr-xr--</code> :</p>
+<ol>
+<li>Que peut faire le propriétaire ?</li>
+<li>Que peut faire un membre du groupe ?</li>
+<li>Que peut faire un autre utilisateur ?</li>
+<li>Quelle est la valeur numérique (en octal) de ces permissions ?</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code>- rwx r-x r--
+  ↑  ↑   ↑   ↑
+  |  |   |   └── Others (autres) : r-- = 4 (lecture seule)
+  |  |   └────── Group (groupe) : r-x = 5 (lecture + exécution)
+  |  └────────── User (propriétaire) : rwx = 7 (tous les droits)
+  └───────────── Type : fichier normal (-), dossier (d)
+</code></pre></div>
+
+<ol>
+<li><strong>Propriétaire</strong> : peut lire, écrire et exécuter le script.</li>
+<li><strong>Groupe</strong> : peut lire et exécuter (mais pas modifier).</li>
+<li><strong>Autres</strong> : peut seulement lire (pas exécuter, pas modifier).</li>
+<li><strong>Valeur octale : 754</strong> (<code>rwx</code>=7, <code>r-x</code>=5, <code>r--</code>=4).</li>
+</ol>
+<hr />
+<h3>★★ Question avancée (5 min)</h3>
+<p><strong>Énoncé :</strong> Scénario pratique. Un étudiant A crée un script <code>evaluation.py</code> dans son dossier personnel avec les permissions <code>-rw-------</code>. Un étudiant B veut l'exécuter.</p>
+<ol>
+<li>Pourquoi B ne peut-il pas exécuter le script ?</li>
+<li>Que doit faire A pour que B puisse l'exécuter (sans pouvoir le modifier) ?</li>
+<li>Et pour que tout le monde puisse le lire ET l'exécuter ?</li>
+<li>Quelle commande PowerShell (sous Windows) permet de gérer les permissions ? Quelle commande Linux fait la même chose ?</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<ol>
+<li><strong>Permissions :</strong> <code>-rw-------</code> = 600. Le propriétaire (A) a lecture+écriture. Personne d'autre n'a aucun droit. B ne peut ni lire, ni exécuter.</li>
+<li><strong>Donner l'exécution au groupe :</strong> <code>chmod 710 evaluation.py</code> (ou <code>chmod g+rx evaluation.py</code>). → <code>-rwx--x---</code> (propriétaire : tout, groupe : exécution uniquement). B peut exécuter mais pas lire le code source.</li>
+<li><strong>Lecture + exécution pour tous :</strong> <code>chmod 755 evaluation.py</code> → <code>-rwxr-xr-x</code>. Tout le monde peut lire et exécuter. La valeur 755 est le standard pour les scripts publics.</li>
+<li><strong>Windows (PowerShell) :</strong> <code>Get-Acl</code> / <code>Set-Acl</code> pour lire/modifier les permissions (ACL).<br />
+<strong>Linux :</strong> <code>chmod</code>, <code>chown</code>, <code>chgrp</code> pour gérer les permissions.</li>
+</ol>
+<hr />
+<h3>Synthèse visuelle — Appel système (syscall)</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">sequenceDiagram</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">App</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Application</span><span class="w"> </span><span class="p">(</span><span class="n">mode</span><span class="w"> </span><span class="n">utilisateur</span><span class="p">)</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">OS</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Noyau</span><span class="w"> </span><span class="p">(</span><span class="n">mode</span><span class="w"> </span><span class="n">noyau</span><span class="p">)</span>
+<span class="w">    </span><span class="n">participant</span><span class="w"> </span><span class="n">HW</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="n">Matériel</span>
+
+<span class="w">    </span><span class="n">App</span><span class="o">-&gt;&gt;</span><span class="n">App</span><span class="o">:</span><span class="w"> </span><span class="n">Calcul</span><span class="w"> </span><span class="n">interne</span><span class="w"> </span><span class="p">(</span><span class="n">pas</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">syscall</span><span class="p">)</span>
+<span class="w">    </span><span class="n">App</span><span class="o">-&gt;&gt;</span><span class="n">OS</span><span class="o">:</span><span class="w"> </span><span class="n">syscall</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;fichier.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Note</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="n">OS</span><span class="o">:</span><span class="w"> </span><span class="n">Changement</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">contexte</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">utilisateur</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">noyau</span>
+<span class="w">    </span><span class="n">OS</span><span class="o">-&gt;&gt;</span><span class="n">HW</span><span class="o">:</span><span class="w"> </span><span class="n">Lecture</span><span class="w"> </span><span class="n">secteur</span><span class="w"> </span><span class="n">disque</span>
+<span class="w">    </span><span class="n">HW</span><span class="o">--&gt;&gt;</span><span class="n">OS</span><span class="o">:</span><span class="w"> </span><span class="n">Données</span><span class="w"> </span><span class="n">brutes</span>
+<span class="w">    </span><span class="n">OS</span><span class="o">--&gt;&gt;</span><span class="n">App</span><span class="o">:</span><span class="w"> </span><span class="n">Descripteur</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">fichier</span><span class="w"> </span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Note</span><span class="w"> </span><span class="n">over</span><span class="w"> </span><span class="n">App</span><span class="p">,</span><span class="n">OS</span><span class="o">:</span><span class="w"> </span><span class="n">Retour</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">mode</span><span class="w"> </span><span class="n">utilisateur</span>
+<span class="w">    </span><span class="n">App</span><span class="o">-&gt;&gt;</span><span class="n">App</span><span class="o">:</span><span class="w"> </span><span class="n">Traitement</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">données</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Le noyau d'un système d'exploitation est :</strong>
+   a) Un logiciel applicatif  b) Le cœur du système qui gère les ressources ✓  c) Un pilote de périphérique</p>
+</li>
+<li>
+<p><strong>Un processus à l'état « Bloqué » attend :</strong>
+   a) Que le CPU soit libre  b) Une ressource (E/S, clavier...) ✓  c) La fin du quantum de temps</p>
+</li>
+<li>
+<p><strong>Dans un chemin <code>C:\Users\Nom\Doc\fichier.txt</code>, le dossier parent de <code>Doc</code> est :</strong>
+   a) <code>C:\</code>  b) <code>Nom</code> ✓  c) <code>Users</code></p>
+</li>
+<li>
+<p><strong>Un appel système (syscall) permet de :</strong>
+   a) Redémarrer l'ordinateur  b) Passer du mode utilisateur au mode noyau ✓  c) Installer un logiciel</p>
+</li>
+<li>
+<p><strong>La commande PowerShell <code>Remove-Item</code> permet de :</strong>
+   a) Créer un fichier  b) Supprimer un fichier ✓  c) Déplacer un fichier</p>
+</li>
+<li>
+<p><strong>★★ Les permissions <code>-rwxr-----</code> correspondent à la valeur octale :</strong>
+   a) 740 ✓  b) 750  c) 700</p>
+</li>
+<li>
+<p><strong>★★ Dans l'ordonnancement Round Robin, le quantum de temps est :</strong>
+   a) Le temps total d'exécution  b) La durée maximale allouée à chaque processus avant bascule ✓  c) La durée d'une E/S</p>
+</li>
+<li>
+<p><strong>★★ Un chemin commençant par <code>..\..\Dossier\</code> signifie :</strong>
+   a) Remonter de 2 niveaux puis descendre dans Dossier ✓  b) Descendre de 2 niveaux  c) Aller à la racine</p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rôle du noyau</td>
+<td>20 %</td>
+<td>Ne connaît pas le rôle</td>
+<td>Rôle partiellement compris</td>
+<td>Rôle bien compris</td>
+</tr>
+<tr>
+<td>États d'un processus</td>
+<td>20 %</td>
+<td>États dans le désordre</td>
+<td>2-3 états corrects</td>
+<td>5 états corrects</td>
+</tr>
+<tr>
+<td>Ordonnancement Round Robin</td>
+<td>20 %</td>
+<td>Ne comprend pas le principe</td>
+<td>Principe partiellement compris</td>
+<td>Principe bien compris</td>
+</tr>
+<tr>
+<td>Arborescence fichiers</td>
+<td>20 %</td>
+<td>Structure incorrecte</td>
+<td>Structure partiellement correcte</td>
+<td>Structure correcte</td>
+</tr>
+<tr>
+<td>Ligne de commande</td>
+<td>20 %</td>
+<td>Aucune commande correcte</td>
+<td>2-3 commandes correctes</td>
+<td>5+ commandes correctes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>La notion de système d'exploitation peut être introduite en SNT Seconde avec l'analogie du chef d'orchestre (OS) qui dirige les musiciens (applications) et distribue les partitions (ressources). L'arborescence des fichiers est un concept très concret : les étudiants peuvent explorer l'explorateur Windows pour retrouver les dossiers vus en TD. Pour les commandes PowerShell, organiser un défi « course aux commandes » où chaque groupe doit accomplir une série de tâches le plus rapidement possible.</p>
+<h3>Conseil pour l'enseignant formateur</h3>
+<p>L'exercice 3 (arborescence) est un bon support pour vérifier que les étudiants maîtrisent la différence entre chemin absolu et relatif. Proposer des exercices supplémentaires où les étudiants doivent écrire le chemin relatif entre deux points de l'arborescence. Pour les états du processus, le diagramme en machine à états est à faire reproduire par les étudiants de mémoire. L'ordonnancement Round Robin (★★) peut faire l'objet d'une activité physique où les étudiants se passent un ballon (le CPU) à tour de rôle.</p>
+<h3>Prolongement</h3>
+<p>Demander aux étudiants d'installer une machine virtuelle Linux (Ubuntu) sous VirtualBox et de reproduire les mêmes commandes en terminal bash : <code>ls</code>, <code>mkdir</code>, <code>cd</code>, <code>touch</code>, <code>cat</code>, <code>rm</code>, <code>pwd</code>. Comparer les syntaxes PowerShell/Linux et discuter des différences philosophiques entre les deux OS.</p>
+<h3>Pour aller plus loin</h3>
+<ul>
+<li><strong>États de processus</strong> : Faire un jeu de rôle avec 3 chaises (Prêt, Élu, Bloqué) et des étudiants qui jouent les processus.</li>
+<li><strong>Permissions</strong> : Sur une machine Linux, faire <code>ls -l</code> dans <code>/usr/bin</code> et interpréter les permissions de 3 fichiers.</li>
+<li><strong>Arborescence</strong> : Dessiner l'arborescence de son propre <code>C:\Users</code> (sans entrer dans les sous-dossiers systèmes).</li>
+<li><strong>PowerShell</strong> : Demander aux étudiants d'écrire un script qui crée automatiquement leur arborescence de fichiers personnelle.</li>
+<li><strong>Syscalls</strong> : Sur Linux, utiliser <code>strace ls</code> pour voir les appels système émis par une commande simple.</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

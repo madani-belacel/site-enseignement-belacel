@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 01 — Introduction aux TIC (ENS) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 01 — Introduction aux TIC (ENS)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** ENS 1ère et 2ème année — Département Français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Public visé :** Étudiants ENS — futurs enseignants de langues</li><li>**Compétences pré-requises :** Notions de base en informatique (L1 validée)</li><li>**Savoir :**</li><li>**Savoir-faire :**</li><li>**Savoir-être :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code><br />
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_01_Introduction_aux_TIC_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 01 — Introduction aux TIC (ENS)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> ENS 1ère et 2ème année — Département Français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Public visé :</strong> Étudiants ENS — futurs enseignants de langues</p>
+<p><strong>Compétences pré-requises :</strong> Notions de base en informatique (L1 validée)</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>Savoir :</strong>
+- Définir les TIC, leur évolution et leurs trois dimensions constitutive
+- Distinguer les notions de technique, information et communication
+- Comprendre l'intégration pédagogique des TIC en didactique des langues
+- Connaître le modèle SAMR et la taxonomie de Bloom numérique</p>
+<p><strong>Savoir-faire :</strong>
+- Utiliser les outils TIC pour concevoir des séquences pédagogiques
+- Évaluer et sélectionner des ressources numériques adaptées à la classe de langues
+- Créer des supports de cours interactifs avec les outils disponibles
+- Analyser une situation pédagogique selon le modèle SAMR</p>
+<p><strong>Savoir-être :</strong>
+- Adopter une posture critique face aux outils numériques
+- Intégrer les TIC de manière éthique et responsable dans sa pratique
+- Développer une veille professionnelle sur les innovations EdTech</p>
+<p><strong>Mode d'évaluation :</strong> TD 40 % + Projet pédagogique TIC 30 % + Examen 30 %</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de la formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Programme national de TIC pour les filières de langues étrangères</strong> — fixe les objectifs, contenus et volumes horaires du module TIC dans la formation initiale des enseignants.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants et des étudiants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement des TIC, consultée pour aligner ce cours sur les standards nationaux (BENCHMARK_10_UNIVERSITES_ELEARNING.md).</li>
+</ul>
+<hr />
+<h3>Plan du Cours</h3>
+<ol>
+<li>Définition et évolution des TIC <em>(15 min)</em></li>
+<li>Les trois dimensions des TIC <em>(10 min)</em></li>
+<li>TIC et pédagogie : intégration en classe de langues <em>(20 min)</em></li>
+<li>Modèle SAMR et Taxonomie de Bloom numérique <em>(15 min)</em></li>
+<li>Outils TIC pour l'enseignant de langues <em>(15 min)</em></li>
+<li>Compétences numériques du référentiel enseignant <em>(10 min)</em></li>
+<li>Éthique et sécurité en contexte pédagogique <em>(5 min)</em></li>
+</ol>
+<hr />
+<h2>1. Définition et Évolution des TIC <em>(15 min)</em></h2>
+<div class="codehilite"><pre><span></span><code>mindmap
+  root((TIC))
+    Informatique
+      Ordinateurs
+      Logiciels
+      Réseaux
+      Stockage
+    Télécommunications
+      Téléphonie mobile
+      Visioconférence
+      Messagerie électronique
+      Internet
+    Multimédia
+      Audio / Podcast
+      Vidéo / Streaming
+      Images / Graphiques
+      Contenus interactifs
+    Applications pédagogiques
+      LMS (Moodle, Classroom)
+      Exerciseurs (Quizlet, Kahoot)
+      Outils collaboratifs (Padlet)
+      IA générative (ChatGPT)
+</code></pre></div>
+
+<p>Les Technologies de l'Information et de la Communication (TIC) regroupent l'ensemble des technologies issues de la convergence de l'informatique, des télécommunications et du multimédia. Leur évolution rapide transforme en profondeur les pratiques d'enseignement et d'apprentissage, en particulier dans le domaine des langues étrangères.</p>
+<p><strong>Évolution historique des TIC en contexte pédagogique :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Période</th>
+<th>Technologies clés</th>
+<th>Usage en classe de langues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Années 1980</td>
+<td>Magnétophone, laboratoire de langues</td>
+<td>Compréhension orale, répétition</td>
+</tr>
+<tr>
+<td>Années 1990</td>
+<td>CD-ROM, exerciseurs, dictées interactives</td>
+<td>Grammaire, vocabulaire, auto-apprentissage</td>
+</tr>
+<tr>
+<td>Années 2000</td>
+<td>Internet, Moodle, blogs, wikis</td>
+<td>Recherche documentaire, publication</td>
+</tr>
+<tr>
+<td>Années 2010</td>
+<td>Smartphones, applis, réseaux sociaux</td>
+<td>Apprentissage nomade, interaction</td>
+</tr>
+<tr>
+<td>Années 2020</td>
+<td>IA générative, VR/AR, adaptative learning</td>
+<td>Personnalisation, immersion, feedback</td>
+</tr>
+</tbody>
+</table>
+<p>Pour le futur enseignant de langues, les TIC ne sont pas seulement des outils personnels mais des instruments pédagogiques à intégrer dans sa pratique quotidienne. La maîtrise de ces technologies est devenue une compétence professionnelle fondamentale, au même titre que la didactique ou la linguistique.</p>
+<hr />
+<h2>2. Les Trois Dimensions des TIC <em>(10 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Dimension</span><span class="w"> </span><span class="n">Technique</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">TIC</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="p">[</span><span class="n">Dimension</span><span class="w"> </span><span class="n">Information</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">C</span><span class="p">[</span><span class="n">Dimension</span><span class="w"> </span><span class="n">Communication</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Applications</span><span class="w"> </span><span class="n">pédagogiques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Enseignement</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Apprentissage</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">langues</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Les TIC se décomposent en trois dimensions interdépendantes :</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Définition</th>
+<th>Exemples pour l'enseignant de langues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technique</td>
+<td>Matériel, logiciels, infrastructures</td>
+<td>TBI, tablette, Moodle, ENT, connexion Internet</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>Contenu créé, manipulé et diffusé</td>
+<td>Ressources PDF, vidéos authentiques, podcasts, corpus</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Échange entre personnes via les réseaux</td>
+<td>Forum de discussion, visioconférence, classe virtuelle</td>
+</tr>
+</tbody>
+</table>
+<p>L'enseignant de langues doit maîtriser ces trois dimensions pour concevoir des séquences pédagogiques efficaces. La dimension communication est particulièrement importante en didactique des langues car elle permet l'interaction authentique entre apprenants et avec des locuteurs natifs.</p>
+<hr />
+<h2>3. TIC et Pédagogie : Intégration en Classe de Langues <em>(20 min)</em></h2>
+<p><strong>Pourquoi intégrer les TIC en classe de langues ?</strong></p>
+<ol>
+<li><strong>Motivation et engagement</strong> des apprenants : les outils numériques captent l'attention et rendent l'apprentissage plus ludique</li>
+<li><strong>Accès à des ressources authentiques</strong> : vidéos, articles de presse, podcasts, contenus natifs en langue cible</li>
+<li><strong>Individualisation des parcours</strong> : chaque apprenant progresse à son rythme avec des exercices adaptés</li>
+<li><strong>Développement de l'autonomie</strong> : l'apprenant devient acteur de son apprentissage</li>
+<li><strong>Interaction élargie</strong> : communication avec d'autres apprenants ou locuteurs natifs via les outils de visioconférence</li>
+</ol>
+<p><strong>Domaines d'application en didactique des langues :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Compétence langagière</th>
+<th>Outils TIC</th>
+<th>Activités possibles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compréhension orale</td>
+<td>Podcasts, YouTube, RFI, TV5 Monde</td>
+<td>Écoute active, transcription, quiz</td>
+</tr>
+<tr>
+<td>Production orale</td>
+<td>Audacity, Vocaroo, Flipgrid</td>
+<td>Enregistrement, lecture à voix haute, débat</td>
+</tr>
+<tr>
+<td>Compréhension écrite</td>
+<td>Sites web, blogs, articles en ligne</td>
+<td>Lecture analytique, questionnaire</td>
+</tr>
+<tr>
+<td>Production écrite</td>
+<td>Google Docs, Etherpad, blogs</td>
+<td>Écriture collaborative, commentaires</td>
+</tr>
+<tr>
+<td>Grammaire / Vocabulaire</td>
+<td>Quizlet, LearningApps, Kahoot</td>
+<td>Exercices interactifs, mémorisation</td>
+</tr>
+<tr>
+<td>Interaction</td>
+<td>Zoom, BigBlueButton, WhatsApp</td>
+<td>Classe virtuelle, tandem linguistique</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Modèle SAMR et Taxonomie de Bloom Numérique <em>(15 min)</em></h2>
+<p>Le modèle SAMR (Puentedura, 2006) décrit quatre niveaux d'intégration technologique :</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Transformation&quot;</span>
+<span class="w">        </span><span class="n">R</span><span class="p">[</span><span class="n">Redéfinition</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Créer</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">nouveau</span><span class="p">]</span>
+<span class="w">        </span><span class="n">M</span><span class="p">[</span><span class="n">Modification</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Transformer</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">tâche</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Amélioration&quot;</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">Augmentation</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Améliorer</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">tâche</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S</span><span class="p">[</span><span class="n">Substitution</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Remplacer</span><span class="w"> </span><span class="n">sans</span><span class="w"> </span><span class="n">changement</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">S</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Signification</th>
+<th>Exemple en classe de langues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Substitution</strong></td>
+<td>La tech remplace sans changement fonctionnel</td>
+<td>Texte papier dans un manuel → PDF du même texte</td>
+</tr>
+<tr>
+<td><strong>Augmentation</strong></td>
+<td>La tech améliore la tâche sans la transformer</td>
+<td>PDF avec hyperliens vers dictionnaire en ligne</td>
+</tr>
+<tr>
+<td><strong>Modification</strong></td>
+<td>La tech transforme significativement la tâche</td>
+<td>Document collaboratif Google Docs avec commentaires</td>
+</tr>
+<tr>
+<td><strong>Redéfinition</strong></td>
+<td>La tech permet de créer des tâches impossibles sans elle</td>
+<td>Projet d'échange virtuel avec une classe partenaire étrangère</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Objectif pour l'enseignant :</strong> viser au moins les niveaux <strong>Modification</strong> et <strong>Redéfinition</strong> dans la conception de ses séquences pédagogiques. Le niveau de Redéfinition est particulièrement pertinent en didactique des langues car il permet des interactions authentiques impossibles à réaliser dans une classe traditionnelle.</p>
+<hr />
+<h2>5. Outils TIC pour l'Enseignant de Langues <em>(15 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Usage pédagogique</th>
+<th>Type</th>
+<th>Public cible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Moodle</strong></td>
+<td>Plateforme d'apprentissage complète</td>
+<td>LMS</td>
+<td>Tous niveaux</td>
+</tr>
+<tr>
+<td><strong>Quizlet</strong></td>
+<td>Flashcards et jeux de vocabulaire</td>
+<td>Exerciseur</td>
+<td>Collège / Lycée</td>
+</tr>
+<tr>
+<td><strong>Kahoot</strong></td>
+<td>Quiz ludique en classe</td>
+<td>Exerciseur</td>
+<td>Tous niveaux</td>
+</tr>
+<tr>
+<td><strong>Padlet</strong></td>
+<td>Mur collaboratif pour brainstormings</td>
+<td>Outil collaboratif</td>
+<td>Tous niveaux</td>
+</tr>
+<tr>
+<td><strong>Audacity</strong></td>
+<td>Enregistrement et montage audio</td>
+<td>Audio</td>
+<td>Lycée / Université</td>
+</tr>
+<tr>
+<td><strong>LearningApps</strong></td>
+<td>Exercices interactifs personnalisables</td>
+<td>Création</td>
+<td>Collège / Lycée</td>
+</tr>
+<tr>
+<td><strong>Google Classroom</strong></td>
+<td>Gestion de classe et distribution de travaux</td>
+<td>LMS</td>
+<td>Tous niveaux</td>
+</tr>
+<tr>
+<td><strong>WordReference</strong></td>
+<td>Dictionnaire bilingue en ligne</td>
+<td>Référence</td>
+<td>Tous niveaux</td>
+</tr>
+<tr>
+<td><strong>Linguee / Reverso</strong></td>
+<td>Dictionnaire contextuel et traduction</td>
+<td>Référence</td>
+<td>Lycée / Université</td>
+</tr>
+<tr>
+<td><strong>BigBlueButton</strong></td>
+<td>Visioconférence intégrée à Moodle</td>
+<td>Communication</td>
+<td>Université</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Compétences Numériques de l'Enseignant <em>(10 min)</em></h2>
+<p><strong>Référentiel de compétences numériques pour l'enseignement (C2i2e / PIX) :</strong></p>
+<ol>
+<li>Concevoir des séquences pédagogiques intégrant le numérique de manière cohérente</li>
+<li>Mettre en œuvre des activités collaboratives en ligne avec les apprenants</li>
+<li>Évaluer les apprentissages à l'aide d'outils numériques (QCM, quiz, portfolios)</li>
+<li>Assurer la sécurité des données et l'éthique du numérique éducatif</li>
+<li>Développer une veille professionnelle continue sur les innovations EdTech</li>
+<li>Accompagner les apprenants dans le développement de leurs propres compétences numériques</li>
+<li>Utiliser les outils de communication institutionnelle (ENT, messagerie, cahier de textes numérique)</li>
+</ol>
+<hr />
+<h2>7. Éthique et Sécurité en Contexte Pédagogique <em>(5 min)</em></h2>
+<ul>
+<li><strong>Protection des données (RGPD)</strong> : les données des élèves doivent être protégées et utilisées uniquement dans un cadre pédagogique</li>
+<li><strong>Droit d'auteur et licences</strong> : privilégier les ressources sous licence libre (Creative Commons) et citer ses sources</li>
+<li><strong>Cyberharcèlement</strong> : prévenir et détecter les situations de harcèlement en ligne en classe</li>
+<li><strong>Identité numérique</strong> : l'enseignant est un modèle de comportement numérique responsable pour ses élèves</li>
+<li><strong>Fracture numérique</strong> : prendre en compte les inégalités d'accès aux outils numériques entre les apprenants</li>
+</ul>
+<hr />
+<h2>Conclusion</h2>
+<p>Les TIC sont un levier pédagogique puissant pour l'enseignant de langues, à condition que leur intégration soit réfléchie et alignée sur les objectifs d'apprentissage. Le modèle SAMR fournit un cadre pour évaluer la qualité de cette intégration. Le futur enseignant doit développer ses compétences numériques de manière continue pour répondre aux exigences du métier et aux besoins de ses élèves.</p>
+<p><strong>TD 01</strong> (1h30) — analyse d'outils TIC pour la classe de langues.<br />
+<strong>Prochain cours :</strong> Matériel informatique et architecture des ordinateurs.</p>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Que signifie l'acronyme TIC ?</strong>
+   a) Techniques d'Information et de Communication  b) Technologies de l'Information et de la Communication ✓  c) Traitement de l'Information et des Connaissances</p>
+</li>
+<li>
+<p><strong>Selon le modèle SAMR, quel niveau correspond à une transformation pédagogique profonde ?</strong>
+   a) Substitution  b) Modification  c) Redéfinition ✓</p>
+</li>
+<li>
+<p><strong>Quel outil est un LMS (Learning Management System) utilisé dans les universités algériennes ?</strong>
+   a) Audacity  b) Moodle ✓  c) Kahoot</p>
+</li>
+<li>
+<p><strong>Combien de dimensions composent les TIC selon le cours ?</strong>
+   a) 2 (Technique et Communication)  b) 3 (Technique, Information, Communication) ✓  c) 4</p>
+</li>
+<li>
+<p><strong>Quel texte officiel algérien fixe le programme des concours d'accès aux ENS ?</strong>
+   a) Arrêté 712 ✓  b) CRCN  c) RGPD</p>
+</li>
+</ol>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> Ce cours d'introduction aux TIC peut être adapté pour une séquence en classe de langues au collège ou au lycée. L'enseignant stagiaire peut proposer à ses élèves une activité de découverte des outils numériques pour l'apprentissage des langues : applications mobiles, sites web éducatifs, dictionnaires en ligne, correcteurs orthographiques.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Inviter les étudiants ENS à créer un compte sur la plateforme Moodle de l'ENS et à explorer les fonctionnalités de base en tant qu'utilisateur : consultation de cours, dépôt de devoir, participation à un forum, passage d'un QCM. Cette expérience pratique est essentielle avant d'envisager une utilisation en tant qu'enseignant.</p>
+<p><strong>Prolongement :</strong> Demander aux étudiants de préparer une fiche récapitulative des 5 outils TIC qu'ils estiment les plus utiles pour l'enseignement des langues, avec pour chaque outil : nom, usage pédagogique, public cible, avantages et limites. Cette fiche pourra être partagée et discutée lors de la séance suivante.</p>
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Activité</th>
+<th>Durée</th>
+<th>Cumul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>Présentation, rappel des objectifs du module</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Définition et évolution</td>
+<td>Exposé interactif + mindmap</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Trois dimensions</td>
+<td>Tableau + schéma</td>
+<td>10 min</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>TIC et pédagogie</td>
+<td>Exemples concrets, questions</td>
+<td>20 min</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>Modèle SAMR</td>
+<td>Présentation + analyse d'exemples</td>
+<td>15 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Outils et compétences</td>
+<td>Démonstration rapide d'outils</td>
+<td>15 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Éthique et conclusion</td>
+<td>Synthèse, annonce du TD</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

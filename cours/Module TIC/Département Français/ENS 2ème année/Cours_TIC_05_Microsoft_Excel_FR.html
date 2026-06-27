@@ -1,0 +1,777 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 05 — Microsoft Excel : Bases et Usages Académiques — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 05 — Microsoft Excel : Bases et Usages Académiques</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** ENS 1ère et 2ème année — Département Français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** ENS 1ère et 2ème année — tableaux et données simples, préparation aux mémoires de fin d'études</li><li>**Compétences pré-requises :** TIC 04 (traitement de texte) ; notions de base en calcul numérique</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code><br />
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_05_Microsoft_Excel_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 05 — Microsoft Excel : Bases et Usages Académiques</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> ENS 1ère et 2ème année — Département Français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026  </p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> ENS 1ère et 2ème année — tableaux et données simples, préparation aux mémoires de fin d'études</p>
+<p><strong>Compétences pré-requises :</strong> TIC 04 (traitement de texte) ; notions de base en calcul numérique</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Comprendre cellule, ligne, colonne, feuille, classeur
+- Utiliser formules SOMME, MOYENNE, SI, RECHERCHEV
+- Distinguer référence relative, absolue et mixte</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Créer un tableau de notes avec calcul automatique
+- Mettre en forme et produire un graphique simple
+- Exporter vers PowerPoint ou PDF
+- Appliquer un filtre et un tri sur des données</p>
+<p><strong>En termes de savoir-être :</strong>
+- Vérifier cohérence des données saisies
+- Adopter une démarche structurée face à un tableau de données</p>
+<p><strong>Mode d'évaluation :</strong> TD 45 % + fichier Excel noté 35 % + QCM 20 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Tableau de suivi vocabulaire ou notes de TD</li>
+<li>Exercice dirigé : notes d'étudiants avec moyenne, mention, classement</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM formules Excel (Moodle)</li>
+<li>Rendu d'un fichier .xlsx avec 3 onglets : données, calculs, graphique</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Guides Microsoft Learn — Excel fondamentaux</li>
+<li>OpenOffice Calc (alternative libre)</li>
+<li>Tutoriels YouTube : chaîne « Excel-Pratique » (français)</li>
+<li>Livre : <em>Excel 2021 pour les Nuls</em> — Greg Harvey (First Interactive)</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p><strong>Arrêté ministériel n° 932 du 28 juillet 2016</strong> fixant les programmes de TIC dans les ENS et départements de français :</p>
+<ul>
+<li><strong>Objectif national :</strong> maîtrise des outils bureautiques (Word, Excel, PowerPoint) comme compétence transversale obligatoire — arrêté n° 932 § 4.2.</li>
+<li><strong>Volume horaire :</strong> 15 h CM + 30 h TD par année pour le bloc TIC.</li>
+<li><strong>Articulation avec le référentiel de compétences ENS :</strong> les futurs enseignants de français doivent être capables de produire des supports pédagogiques numériques (bulletins de notes, statistiques de classe, tableaux de bord).</li>
+<li><strong>Lien avec le programme de français :</strong> Excel permet de gérer des grilles d'évaluation, des relevés de notes, des enquêtes sociolinguistiques (mémoire Master).</li>
+<li><strong>Cadre LMD :</strong> arrêté n° 129 du 04 juin 2018 — l'évaluation par compétences inclut la production de documents numériques.</li>
+</ul>
+<blockquote>
+<p><strong>Référence :</strong> Arrêté n° 932 du 28 juillet 2016 — JO N° 50, programmes de TIC pour les ENS ; consultation : <code>www.mesrs.dz</code>.</p>
+</blockquote>
+<hr />
+<h2>Plan du Cours</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="mf">1.</span><span class="w"> </span><span class="n">Introduction</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Excel</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="n">l</span><span class="s">&#39;université] --&gt; B[2. Interface et concepts]</span>
+<span class="s">    B --&gt; C[3. Saisie et mise en forme]</span>
+<span class="s">    C --&gt; D[4. Formules et fonctions]</span>
+<span class="s">    D --&gt; E[5. Références relatives / absolues]</span>
+<span class="s">    E --&gt; F[6. Graphiques]</span>
+<span class="s">    F --&gt; G[7. Tri, filtres et bonnes pratiques]</span>
+<span class="s">    G --&gt; H[8. Conclusion et transition PPT]</span>
+<span class="s">    style A fill:#4472C4,color:#fff</span>
+<span class="s">    style H fill:#548235,color:#fff</span>
+</code></pre></div>
+
+<hr />
+<h2>1. Introduction <em>(10 min)</em></h2>
+<p>Excel est le tableur de la suite Microsoft Office, standard dans l'administration universitaire algérienne (notes, PV de délibérations, statistiques).</p>
+<p><strong>Usages académiques concrets pour un étudiant en français :</strong>
+- Relevé de vocabulaire et fréquence lexicale (petits corpus)
+- Tableau de notes de classe (moyenne, écart-type, rang)
+- Planification de projet (mémoire, stage)
+- Données d'enquête sociolinguistique (questionnaire)</p>
+<p><strong>Alternatives libres :</strong> Google Sheets (collaboratif), LibreOffice Calc (gratuit, utilisable sur postes ENS).</p>
+<hr />
+<h2>2. Interface et Concepts de Base <em>(15 min)</em></h2>
+<h3>Éléments du classeur</h3>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Description</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classeur</td>
+<td>Fichier Excel (.xlsx)</td>
+<td><code>Notes_TD1.xlsx</code></td>
+</tr>
+<tr>
+<td>Feuille</td>
+<td>Onglet en bas</td>
+<td>Feuil1, Feuil2</td>
+</tr>
+<tr>
+<td>Cellule</td>
+<td>Intersection ligne/colonne</td>
+<td>B5</td>
+</tr>
+<tr>
+<td>Plage</td>
+<td>Groupe de cellules</td>
+<td>A1:D10</td>
+</tr>
+<tr>
+<td>Barre de formule</td>
+<td>Saisie et édition</td>
+<td><code>=SOMME(A1:A10)</code></td>
+</tr>
+<tr>
+<td>Nom de cellule</td>
+<td>Zone nom (gauche)</td>
+<td><code>Total</code> ou <code>B5</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Types de données</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Exemple</th>
+<th>Alignement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texte</td>
+<td><code>Madani</code></td>
+<td>Gauche</td>
+</tr>
+<tr>
+<td>Nombre</td>
+<td><code>15.5</code></td>
+<td>Droite</td>
+</tr>
+<tr>
+<td>Date</td>
+<td><code>01/09/2025</code></td>
+<td>Droite</td>
+</tr>
+<tr>
+<td>Formule</td>
+<td><code>=A1+B1</code></td>
+<td>Résultat</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Raccourci clavier :</strong> <kbd>Ctrl</kbd>+<kbd>→</kbd> fin de ligne, <kbd>F2</kbd> éditer cellule, <kbd>F4</kbd> basculer référence absolue.</p>
+</blockquote>
+<hr />
+<h2>3. Saisie, Mise en Forme et Organisation <em>(15 min)</em></h2>
+<h3>Bonnes pratiques de saisie</h3>
+<ul>
+<li><strong>Ligne 1 :</strong> en-têtes en gras (Nom, Prénom, Note1, Note2, Moyenne)</li>
+<li><strong>Pas de lignes vides</strong> à l'intérieur du tableau</li>
+<li><strong>Un seul tableau par feuille</strong></li>
+<li><strong>Format cohérent</strong> : même décimales pour les notes (ex. 14,50)</li>
+</ul>
+<h3>Mise en forme utile</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Emplacement</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bordures</td>
+<td>Accueil &gt; Police</td>
+<td>Cadrer le tableau</td>
+</tr>
+<tr>
+<td>Format nombre</td>
+<td>Accueil &gt; Nombre</td>
+<td>Décimales, pourcentage</td>
+</tr>
+<tr>
+<td>Mise en forme conditionnelle</td>
+<td>Accueil &gt; Styles</td>
+<td>Couleur si note &lt; 10</td>
+</tr>
+<tr>
+<td>Ajuster texte</td>
+<td>Accueil &gt; Alignement</td>
+<td>En-têtes longs</td>
+</tr>
+<tr>
+<td>Figer les volets</td>
+<td>Affichage &gt; Figer</td>
+<td>Ligne 1 toujours visible</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Données</span><span class="w"> </span><span class="n">brutes</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">En</span><span class="o">-</span><span class="n">têtes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bordures</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Format</span><span class="w"> </span><span class="n">nombre</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">MEF</span><span class="w"> </span><span class="n">conditionnelle</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Tableau</span><span class="w"> </span><span class="n">prêt</span><span class="w"> </span><span class="n">pour</span><span class="w"> </span><span class="n">formules</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FFC000</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">548235</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h3>Exemple : Tableau de notes</h3>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Nom</th>
+<th>Note1 (/20)</th>
+<th>Note2 (/20)</th>
+<th>Moyenne</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ahmed</td>
+<td>14</td>
+<td>16</td>
+<td>=MOYENNE(C2:D2)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Leïla</td>
+<td>12</td>
+<td>15</td>
+<td>=MOYENNE(C3:D3)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Sofiane</td>
+<td>8</td>
+<td>11</td>
+<td>=MOYENNE(C4:D4)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Formules et Fonctions Essentielles <em>(20 min)</em></h2>
+<h3>Syntaxe d'une formule</h3>
+<p>Toute formule commence par <code>=</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">=</span><span class="nt">SOMME</span><span class="o">(</span><span class="nt">A1</span><span class="p">:</span><span class="nd">A10</span><span class="o">)</span><span class="w">   </span><span class="err">→</span><span class="w"> </span><span class="nt">somme</span><span class="w"> </span><span class="nt">des</span><span class="w"> </span><span class="nt">valeurs</span>
+<span class="o">=</span><span class="nt">MOYENNE</span><span class="o">(</span><span class="nt">B2</span><span class="p">:</span><span class="nd">B20</span><span class="o">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nt">moyenne</span><span class="w"> </span><span class="nt">arithmétique</span>
+<span class="o">=</span><span class="nt">MIN</span><span class="o">(</span><span class="nt">C3</span><span class="p">:</span><span class="nd">C15</span><span class="o">)</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="nt">valeur</span><span class="w"> </span><span class="nt">minimale</span>
+<span class="o">=</span><span class="nt">MAX</span><span class="o">(</span><span class="nt">C3</span><span class="p">:</span><span class="nd">C15</span><span class="o">)</span><span class="w">     </span><span class="err">→</span><span class="w"> </span><span class="nt">valeur</span><span class="w"> </span><span class="nt">maximale</span>
+<span class="o">=</span><span class="nt">NB</span><span class="o">(</span><span class="nt">D1</span><span class="p">:</span><span class="nd">D30</span><span class="o">)</span><span class="w">      </span><span class="err">→</span><span class="w"> </span><span class="nt">nombre</span><span class="w"> </span><span class="nt">de</span><span class="w"> </span><span class="nt">cellules</span><span class="w"> </span><span class="nt">numériques</span>
+<span class="o">=</span><span class="nt">SI</span><span class="o">(</span><span class="nt">E2</span><span class="o">&gt;=</span><span class="nt">10</span><span class="o">;</span><span class="s2">&quot;Admis&quot;</span><span class="o">;</span><span class="s2">&quot;Ajourné&quot;</span><span class="o">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nt">condition</span>
+</code></pre></div>
+
+<h3>Exemple détaillé : calcul de mention</h3>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Formule</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moyenne</td>
+<td><code>=MOYENNE(C2:D2)</code></td>
+<td>15,0</td>
+</tr>
+<tr>
+<td>Mention</td>
+<td><code>=SI(E2&gt;=16;"TB";SI(E2&gt;=14;"B";SI(E2&gt;=12;"AB";SI(E2&gt;=10;"P";"A"))))</code></td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+<h3>Tableau des fonctions courantes</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Syntaxe</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SOMME</td>
+<td><code>=SOMME(plage)</code></td>
+<td>Additionne</td>
+</tr>
+<tr>
+<td>MOYENNE</td>
+<td><code>=MOYENNE(plage)</code></td>
+<td>Moyenne</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td><code>=MIN(plage)</code></td>
+<td>Minimum</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td><code>=MAX(plage)</code></td>
+<td>Maximum</td>
+</tr>
+<tr>
+<td>NB</td>
+<td><code>=NB(plage)</code></td>
+<td>Compte nombres</td>
+</tr>
+<tr>
+<td>NB.SI</td>
+<td><code>=NB.SI(plage;"critère")</code></td>
+<td>Compte selon critère</td>
+</tr>
+<tr>
+<td>SI</td>
+<td><code>=SI(test;vrai;faux)</code></td>
+<td>Conditionnelle</td>
+</tr>
+<tr>
+<td>RECHERCHEV</td>
+<td><code>=RECHERCHEV(valeur;table;col;0)</code></td>
+<td>Recherche verticale</td>
+</tr>
+<tr>
+<td>STXT</td>
+<td><code>=STXT(texte;début;nbr)</code></td>
+<td>Extrait chaîne</td>
+</tr>
+</tbody>
+</table>
+<h3>Impact pédagogique (ENS)</h3>
+<p>En département de français, <code>NB.SI</code> et <code>RECHERCHEV</code> sont utiles pour l'analyse de corpus textuels et la gestion des relevés de notes par lot.</p>
+<hr />
+<h2>5. Références Relatives et Absolues <em>(15 min)</em></h2>
+<h3>Référence relative</h3>
+<div class="codehilite"><pre><span></span><code>B2 → en recopiant vers le bas → B3, B4, B5...
+</code></pre></div>
+
+<p>La référence s'ajuste automatiquement.</p>
+<h3>Référence absolue</h3>
+<div class="codehilite"><pre><span></span><code>$B$2 → en recopiant → reste $B$2
+</code></pre></div>
+
+<p>Ne change jamais. Utile pour un seuil (ex. 10/20).</p>
+<h3>Référence mixte</h3>
+<div class="codehilite"><pre><span></span><code><span class="o">$</span><span class="n">B2</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">colonne</span><span class="w"> </span><span class="n">fixe</span><span class="p">,</span><span class="w"> </span><span class="n">ligne</span><span class="w"> </span><span class="n">variable</span>
+<span class="n">B</span><span class="o">$</span><span class="mi">2</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">ligne</span><span class="w"> </span><span class="n">fixe</span><span class="p">,</span><span class="w"> </span><span class="n">colonne</span><span class="w"> </span><span class="n">variable</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Formule</th>
+<th>Copiée en C3</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=B2</td>
+<td>=C3</td>
+<td>Relative</td>
+</tr>
+<tr>
+<td>=$B$2</td>
+<td>=$B$2</td>
+<td>Absolue (seuil)</td>
+</tr>
+<tr>
+<td>=$B2</td>
+<td>=$B3</td>
+<td>Mixte colonne fixe</td>
+</tr>
+<tr>
+<td>=B$2</td>
+<td>=C$2</td>
+<td>Mixte ligne fixe</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Raccourci F4</strong> : basculer entre les modes (relatif → absolu → mixte → relatif).</p>
+</blockquote>
+<hr />
+<h2>6. Création et Personnalisation de Graphiques <em>(10 min)</em></h2>
+<h3>Types de graphiques</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Usage</th>
+<th>Exemple académique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Histogramme</td>
+<td>Comparer des valeurs</td>
+<td>Notes par étudiant</td>
+</tr>
+<tr>
+<td>Courbe</td>
+<td>Évolution dans le temps</td>
+<td>Progression semestrielle</td>
+</tr>
+<tr>
+<td>Secteurs</td>
+<td>Répartition</td>
+<td>% mentions obtenues</td>
+</tr>
+<tr>
+<td>Barres</td>
+<td>Comparaison horizontale</td>
+<td>Classement</td>
+</tr>
+</tbody>
+</table>
+<h3>Étapes (Excel)</h3>
+<ol>
+<li>Sélectionner les données (en-têtes inclus)</li>
+<li>Insérer &gt; Graphique &gt; choisir type</li>
+<li>Ajouter titre, légendes, étiquettes</li>
+<li>Mise en forme sobre (couleurs sobres, pas d'effet 3D inutile)</li>
+</ol>
+<h3>Conseils ENS</h3>
+<ul>
+<li>Titre explicite : <em>Moyennes du TD Groupe A — Semestre 1</em></li>
+<li>Légende si plusieurs séries</li>
+<li>Police lisible (≥ 10 pt)</li>
+<li>Exporter en image pour rapport Word</li>
+</ul>
+<hr />
+<h2>7. Tri, Filtres et Bonnes Pratiques <em>(10 min)</em></h2>
+<h3>Tri</h3>
+<ul>
+<li>Sélectionner le tableau &gt; Données &gt; Trier</li>
+<li>Trier par une ou plusieurs colonnes (ex. moyenne décroissante)</li>
+</ul>
+<h3>Filtre automatique</h3>
+<ul>
+<li>Sélectionner &gt; Données &gt; Filtrer</li>
+<li>Filtrer par valeur, couleur, condition</li>
+</ul>
+<h3>Bonnes pratiques</h3>
+<table>
+<thead>
+<tr>
+<th>Pratique</th>
+<th>Pourquoi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nommer les onglets (Notes, Graphique)</td>
+<td>Clarté</td>
+</tr>
+<tr>
+<td>Ctrl+S toutes les 5 min</td>
+<td>Éviter perte de données</td>
+</tr>
+<tr>
+<td>Vérifier formules avec <code>Ctrl+~</code></td>
+<td>Débogage</td>
+</tr>
+<tr>
+<td>Ne pas fusionner les cellules inutilement</td>
+<td>Problèmes de tri</td>
+</tr>
+<tr>
+<td>Exporter en PDF pour Moodle</td>
+<td>Compatibilité</td>
+</tr>
+<tr>
+<td>Sauvegarder version .xlsx + .pdf</td>
+<td>Archivage</td>
+</tr>
+</tbody>
+</table>
+<h3>Raccourcis essentiels</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Raccourci</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nouveau classeur</td>
+<td><kbd>Ctrl</kbd>+<kbd>N</kbd></td>
+</tr>
+<tr>
+<td>Enregistrer</td>
+<td><kbd>Ctrl</kbd>+<kbd>S</kbd></td>
+</tr>
+<tr>
+<td>Afficher formules</td>
+<td><kbd>Ctrl</kbd>+<kbd>ù</kbd> (ou `)</td>
+</tr>
+<tr>
+<td>Sélectionner ligne</td>
+<td><kbd>Shift</kbd>+<kbd>Espace</kbd></td>
+</tr>
+<tr>
+<td>Sélectionner colonne</td>
+<td><kbd>Ctrl</kbd>+<kbd>Espace</kbd></td>
+</tr>
+<tr>
+<td>Graphique rapide</td>
+<td><kbd>Alt</kbd>+<kbd>F1</kbd></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>8. Conclusion <em>(5 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Point clé</th>
+<th>À retenir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structure</td>
+<td>Classeur → Feuille → Cellule</td>
+</tr>
+<tr>
+<td>Formule</td>
+<td>Commence par <code>=</code></td>
+</tr>
+<tr>
+<td>Référence</td>
+<td>F4 pour absolu</td>
+</tr>
+<tr>
+<td>Graphique</td>
+<td>Données sélectionnées → Insérer</td>
+</tr>
+<tr>
+<td>Export</td>
+<td>.xlsx pour édition, .pdf pour diffusion</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prochain cours :</strong> Cours TIC 06 — Microsoft PowerPoint : Présentations universitaires.</p>
+<hr />
+<h2>Déroulement détaillé de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Temps</th>
+<th>Durée</th>
+<th>Phase</th>
+<th>Activité</th>
+<th>Support</th>
+<th>Interaction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00:00 – 00:10</td>
+<td>10 min</td>
+<td>Accueil &amp; Introduction</td>
+<td>Présentation des objectifs, quiz diagnostic (5 questions orales)</td>
+<td>Diapos 1–3</td>
+<td>Interrogation orale</td>
+</tr>
+<tr>
+<td>00:10 – 00:25</td>
+<td>15 min</td>
+<td>Interface</td>
+<td>Découverte du classeur, navigation, types de données</td>
+<td>Excel en direct + diapo 4</td>
+<td>Démonstration + essai libre</td>
+</tr>
+<tr>
+<td>00:25 – 00:40</td>
+<td>15 min</td>
+<td>Saisie &amp; Format</td>
+<td>Création tableau notes, bordures, MEF conditionnelle</td>
+<td>Fichier exercice</td>
+<td>Guidé, pas à pas</td>
+</tr>
+<tr>
+<td>00:40 – 01:00</td>
+<td>20 min</td>
+<td>Formules</td>
+<td>SOMME, MOYENNE, MIN, MAX, SI — exercice notes</td>
+<td>Fichier + diapos 5–7</td>
+<td>Individuel + correction collective</td>
+</tr>
+<tr>
+<td>01:00 – 01:15</td>
+<td>15 min</td>
+<td>Références</td>
+<td>Absolue vs relative, F4, exemple seuil éliminatoire</td>
+<td>Diapo 8</td>
+<td>Démonstration + exercice court</td>
+</tr>
+<tr>
+<td>01:15 – 01:25</td>
+<td>10 min</td>
+<td>Graphique</td>
+<td>Histogramme des moyennes, personnalisation</td>
+<td>Diapo 9</td>
+<td>Guidé</td>
+</tr>
+<tr>
+<td>01:25 – 01:35</td>
+<td>10 min</td>
+<td>Tri &amp; Filtre + Bonnes pratiques</td>
+<td>Filtrer par mention, trier par moyenne, export PDF</td>
+<td>Diapo 10</td>
+<td>Démonstration</td>
+</tr>
+<tr>
+<td>01:35 – 01:45</td>
+<td>10 min</td>
+<td>Conclusion &amp; Évaluation</td>
+<td>Récapitulatif, annonce TD noté, quiz rapide</td>
+<td>Diapo 11</td>
+<td>Oral participatif</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Total :</strong> 90 min — transitions et installation incluses.</p>
+</blockquote>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<p><em>Cochez la ou les bonne(s) réponse(s).</em></p>
+<p><strong>1. Quelle est la syntaxe correcte d'une formule Excel ?</strong>
+- [ ] <code>=A1+B1</code> ✓
+- [ ] <code>A1+B1</code>
+- [ ] <code>=SOMME A1:A10</code>
+- [x] <code>=SOMME(A1:A10)</code> ✓</p>
+<p><strong>2. Que fait la touche F4 ?</strong>
+- [ ] Calcule la somme
+- [x] Bascule entre références relative, absolue et mixte ✓
+- [ ] Insère un graphique
+- [ ] Ferme le classeur</p>
+<p><strong>3. La fonction <code>=SI(E2&gt;=10;"Admis";"Ajourné")</code> renvoie « Admis » si :</strong>
+- [x] E2 est supérieur ou égal à 10 ✓
+- [ ] E2 est inférieur à 10
+- [ ] E2 contient du texte
+- [ ] E2 est vide</p>
+<p><strong>4. Pour figer la première ligne d'un tableau, on utilise :</strong>
+- [ ] Affichage &gt; Zoom
+- [x] Affichage &gt; Figer les volets ✓
+- [ ] Données &gt; Filtrer
+- [ ] Mise en forme conditionnelle</p>
+<p><strong>5. Une référence absolue s'écrit :</strong>
+- [ ] A1
+- [x] $A$1 ✓
+- [ ] A$1
+- [ ] [A1]</p>
+<hr />
+<h2>Note pédagogique ENS — Transposition didactique</h2>
+<h3>Transposition didactique</h3>
+<ul>
+<li><strong>Du savoir savant au savoir enseigné :</strong> Le tableur est un outil issu de l'informatique de gestion. Pour des étudiants de français, on le transpose en outil de gestion de données académiques (notes, bibliographies, enquêtes).</li>
+<li><strong>Réduction de la complexité :</strong> on limite le champ aux 6 fonctions de base + RECHERCHEV (utile en master). On évite les macros, TCD et formules matricielles.</li>
+<li><strong>Médiation sémiotique :</strong> usage de la métaphore du « cahier de notes papier » pour introduire le classeur / feuille / cellule.</li>
+</ul>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li><strong>Prérequis vérifiés :</strong> s'assurer que les étudiants maîtrisent la souris, le clavier alpha-numérique, la sauvegarde de fichier (vu en TIC 04).</li>
+<li><strong>Rythme :</strong> alterner 10 min de démonstration → 10 min d'exercice guidé → 5 min de vérification.</li>
+<li><strong>Erreurs fréquentes :</strong></li>
+<li>oublier le <code>=</code> devant une formule</li>
+<li>confusion entre la référence relative et absolue</li>
+<li>cellules fusionnées qui bloquent le tri</li>
+<li><strong>Remédiation :</strong> prévoir une fiche « 5 erreurs Excel et comment les corriger » distribuée en séance.</li>
+</ul>
+<h3>Prolongements</h3>
+<ul>
+<li><strong>TIC 06 (PowerPoint) :</strong> copier-coller le graphique Excel dans le diaporama.</li>
+<li><strong>TIC 07 (Internet) :</strong> chercher des données ouvertes (ONS, World Bank) et les importer dans Excel.</li>
+<li><strong>Projet interdisciplinaire :</strong> avec le module de Linguistique, analyser la fréquence des mots dans un corpus texte avec <code>NB.SI</code> et <code>STXT</code>.</li>
+<li><strong>Mémoire de Master :</strong> utiliser Excel pour les tableaux de dépouillement de questionnaires d'enquête sociolinguistique.</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD 02 — Modèle OSI / TCP-IP — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TD 02 — Modèle OSI / TCP-IP</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    
+    <h1>TD 02 — Modèle OSI / TCP-IP</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>2 h</td>
+</tr>
+<tr>
+<td><strong>Chapitres associés</strong></td>
+<td>Ch. 02</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — Couches OSI (4 pts)</h2>
+<p>Associer chaque protocole/équipement à sa couche OSI :</p>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Couche OSI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>?</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Câble RJ-45</td>
+<td>?</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Routeur</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Adresse MAC</td>
+<td>?</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 2 — Encapsulation (6 pts)</h2>
+<p>Un étudiant envoie la requête HTTP <code>GET /cours/reseaux HTTP/1.1</code> depuis son PC (IP: 192.168.1.10, port 49152) vers un serveur (IP: 10.0.0.5, port 80).</p>
+<p><strong>a)</strong> Nommer la PDU à chaque couche lors de l'encapsulation.</p>
+<p><strong>b)</strong> Quels champs d'en-tête sont ajoutés à chaque couche ? (indiquer les adresses/ports)</p>
+<p><strong>c)</strong> Dans quel ordre les en-têtes sont-ils retirés à la réception ?</p>
+<hr />
+<h2>Exercice 3 — Comparaison OSI / TCP/IP (5 pts)</h2>
+<p>Compléter le tableau :</p>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>OSI</th>
+<th>TCP/IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre de couches</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Couche Transport</td>
+<td>Couche n° ?</td>
+<td>Couche nommée ?</td>
+</tr>
+<tr>
+<td>Protocole couche 3</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Modèle théorique ou implémenté ?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Usage principal aujourd'hui</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 4 — Scénario de dépannage par couche (5 pts)</h2>
+<p>Un PC ne peut pas accéder à un site web. Pour chaque symptôme, identifier la couche OSI probablement en cause :</p>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>Couche OSI</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a) LED du port réseau éteinte</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>b) <code>ping 192.168.1.1</code> échoue</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>c) <code>ping 8.8.8.8</code> échoue mais ping passerelle OK</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>d) <code>ping 8.8.8.8</code> OK mais <code>nslookup google.com</code> échoue</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>e) DNS OK mais navigateur affiche erreur 404</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Annexe — Corrigé TD 02</h2>
+<h3>Corrigé Exercice 1</h3>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Couche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>7 — Application</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>2 — Liaison</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>3 — Réseau</td>
+</tr>
+<tr>
+<td>Câble RJ-45</td>
+<td>1 — Physique</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>4 — Transport</td>
+</tr>
+<tr>
+<td>Routeur</td>
+<td>3 — Réseau</td>
+</tr>
+<tr>
+<td>Adresse MAC</td>
+<td>2 — Liaison</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>7 — Application</td>
+</tr>
+</tbody>
+</table>
+<h3>Corrigé Exercice 2</h3>
+<p><strong>a)</strong> Data → Segment → Paquet → Trame → Bits</p>
+<p><strong>b)</strong>
+- Transport : src port 49152, dest port 80
+- Réseau : src IP 192.168.1.10, dest IP 10.0.0.5
+- Liaison : MAC src (PC), MAC dest (passerelle ou serveur si même LAN)</p>
+<p><strong>c)</strong> Bits → Trame → Paquet → Segment → Data (L1 → L7)</p>
+<h3>Corrigé Exercice 3</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>OSI</th>
+<th>TCP/IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Couches</td>
+<td>7</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>4</td>
+<td>Transport</td>
+</tr>
+<tr>
+<td>Couche 3</td>
+<td>IP (dans modèle)</td>
+<td>Internet (IP)</td>
+</tr>
+<tr>
+<td>Nature</td>
+<td>Théorique</td>
+<td>Implémenté</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>Pédagogique, diagnostic</td>
+<td>Production Internet</td>
+</tr>
+</tbody>
+</table>
+<h3>Corrigé Exercice 4</h3>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>Couche</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a) LED éteinte</td>
+<td>L1 Physique</td>
+<td>Pas de signal sur le média</td>
+</tr>
+<tr>
+<td>b) ping GW échoue</td>
+<td>L2/L3</td>
+<td>Problème local MAC/IP/masque</td>
+</tr>
+<tr>
+<td>c) ping Internet échoue</td>
+<td>L3</td>
+<td>Routage, NAT, pare-feu</td>
+</tr>
+<tr>
+<td>d) DNS échoue</td>
+<td>L7</td>
+<td>Service DNS inaccessible</td>
+</tr>
+<tr>
+<td>e) Erreur 404</td>
+<td>L7</td>
+<td>Serveur répond mais ressource absente</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 02 — Modèle OSI et TCP/IP</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

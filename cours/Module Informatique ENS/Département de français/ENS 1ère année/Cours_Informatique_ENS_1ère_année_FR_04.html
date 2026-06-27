@@ -1,0 +1,485 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 1ère année — Séance 04 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 1ère année — Séance 04 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Définition :** Un système d'exploitation (OS) est un logiciel qui fait l'interface entre le matériel et les applications. Il gère les ressources de l'ordinateur et fournit des services aux programmes.</li><li>**Rôles principaux :**</li><li>**Exemples d'OS :** Windows 10/11 (Microsoft), Linux (Ubuntu, Debian, Fedora), macOS (Apple), Android (Google), iOS (Apple).</li><li>**Noyau (Kernel) :** cœur de l'OS, chargé de la gestion des ressources. Il s'exécute en **mode noyau** (accès total au matériel). Les applications s'exécutent en **mode utilisateur** (accès restreint). Les appels système (syscalls) permettent de passer du mode utilisateur au mode noyau.</li><li>**Processus :** un programme en cours d'exécution, avec son propre espace mémoire (code, données, pile, tas), ses fichiers ouverts, et son contexte d'exécution.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_1ère_année_FR_04.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 1ère année — Séance 04 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Expliquer le rôle d'un système d'exploitation et la distinction noyau/espace utilisateur
+- Définir un processus et le distinguer d'un thread
+- Décrire les 3 états d'un processus (ready, running, waiting)
+- Expliquer le principe de l'ordonnancement CPU (FIFO, Round Robin)
+- Naviguer dans une arborescence de fichiers et comprendre les permissions Unix
+- Adapter ces connaissances pour des activités SNT et des situations d'enseignement</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction : qu'est-ce qu'un système d'exploitation ? <em>(5 min)</em></li>
+<li>Architecture de l'OS : noyau, espace noyau, espace utilisateur <em>(15 min)</em></li>
+<li>Processus et threads : définitions, états, cycles de vie <em>(20 min)</em></li>
+<li>Ordonnancement CPU : FIFO, Round Robin, priorités <em>(20 min)</em></li>
+<li>Système de fichiers : arborescence, répertoires, permissions <em>(20 min)</em></li>
+<li>Applications pédagogiques et ligne de commande <em>(10 min)</em></li>
+</ol>
+<hr />
+<h2>1. Rôle du système d'exploitation</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">USER</span><span class="p">[</span><span class="s">&quot;Utilisateur&lt;br/&gt;(applications)&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">UI</span><span class="p">[</span><span class="s">&quot;Interface Utilisateur&lt;br/&gt;(GUI / CLI)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">UI</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">OS</span><span class="p">[</span><span class="s">&quot;Système d&#39;</span><span class="n">exploitation</span><span class="s">&quot;]</span>
+<span class="s">    OS --&gt; KERNEL[&quot;</span><span class="n">Noyau</span><span class="w"> </span><span class="p">(</span><span class="n">Kernel</span><span class="p">)</span><span class="s">&quot;]</span>
+
+<span class="s">    subgraph &quot;</span><span class="n">Services</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">noyau</span><span class="s">&quot;</span>
+<span class="s">        PROC[&quot;</span><span class="n">Gestion</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">processus</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Ordonnancement</span><span class="s">&quot;]</span>
+<span class="s">        MEM[&quot;</span><span class="n">Gestion</span><span class="w"> </span><span class="n">mémoire</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Mémoire</span><span class="w"> </span><span class="n">virtuelle</span><span class="s">&quot;]</span>
+<span class="s">        FS[&quot;</span><span class="n">Système</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">fichiers</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Stockage</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permissions</span><span class="s">&quot;]</span>
+<span class="s">        DEV[&quot;</span><span class="n">Gestion</span><span class="w"> </span><span class="n">périphériques</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Pilotes</span><span class="w"> </span><span class="p">(</span><span class="n">drivers</span><span class="p">)</span><span class="s">&quot;]</span>
+<span class="s">        NET[&quot;</span><span class="n">Réseau</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">TCP</span><span class="o">/</span><span class="n">IP</span><span class="w"> </span><span class="n">stack</span><span class="s">&quot;]</span>
+<span class="s">    end</span>
+
+<span class="s">    KERNEL --&gt; PROC</span>
+<span class="s">    KERNEL --&gt; MEM</span>
+<span class="s">    KERNEL --&gt; FS</span>
+<span class="s">    KERNEL --&gt; DEV</span>
+<span class="s">    KERNEL --&gt; NET</span>
+
+<span class="s">    PROC --&gt; HW[&quot;</span><span class="n">Matériel</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="p">(</span><span class="n">CPU</span><span class="p">,</span><span class="w"> </span><span class="n">RAM</span><span class="p">,</span><span class="w"> </span><span class="n">disques</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="s">&quot;]</span>
+<span class="s">    MEM --&gt; HW</span>
+<span class="s">    FS --&gt; HW</span>
+<span class="s">    DEV --&gt; HW</span>
+<span class="s">    NET --&gt; HW</span>
+
+<span class="s">    style OS fill:#e74c3c,color:#fff</span>
+<span class="s">    style KERNEL fill:#3498db,color:#fff</span>
+<span class="s">    style HW fill:#95a5a6,color:#fff</span>
+</code></pre></div>
+
+<p><strong>Définition :</strong> Un système d'exploitation (OS) est un logiciel qui fait l'interface entre le matériel et les applications. Il gère les ressources de l'ordinateur et fournit des services aux programmes.</p>
+<p><strong>Rôles principaux :</strong>
+1. <strong>Abstraction matérielle</strong> : cacher la complexité du matériel aux applications
+2. <strong>Multiplexage des ressources</strong> : partager le CPU, la mémoire, les disques entre plusieurs programmes
+3. <strong>Isolation et protection</strong> : empêcher un programme d'accéder aux données d'un autre
+4. <strong>Gestion des entrées/sorties</strong> : communiquer avec les périphériques via des pilotes (drivers)</p>
+<p><strong>Exemples d'OS :</strong> Windows 10/11 (Microsoft), Linux (Ubuntu, Debian, Fedora), macOS (Apple), Android (Google), iOS (Apple).</p>
+<p><strong>Noyau (Kernel) :</strong> cœur de l'OS, chargé de la gestion des ressources. Il s'exécute en <strong>mode noyau</strong> (accès total au matériel). Les applications s'exécutent en <strong>mode utilisateur</strong> (accès restreint). Les appels système (syscalls) permettent de passer du mode utilisateur au mode noyau.</p>
+<hr />
+<h2>2. Processus et threads</h2>
+<h3>2.1 Définition d'un processus</h3>
+<p><strong>Processus :</strong> un programme en cours d'exécution, avec son propre espace mémoire (code, données, pile, tas), ses fichiers ouverts, et son contexte d'exécution.</p>
+<p>Chaque processus possède :
+- Un <strong>PID</strong> (Process IDentifier) — numéro unique
+- Un <strong>état</strong> (ready, running, waiting)
+- Un <strong>compteur ordinal</strong> (PC) — prochaine instruction à exécuter
+- Des <strong>registres</strong> (contexte CPU)
+- Une <strong>table des fichiers ouverts</strong>
+- Un <strong>espace mémoire</strong> privé</p>
+<h3>2.2 Threads</h3>
+<p><strong>Thread (fil d'exécution) :</strong> unité d'exécution plus légère qu'un processus. Un processus peut contenir plusieurs threads qui partagent le même espace mémoire.</p>
+<p><strong>Différence processus vs thread :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Processus</th>
+<th>Thread</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Espace mémoire</td>
+<td>Indépendant (isolé)</td>
+<td>Partagé avec les threads du même processus</td>
+</tr>
+<tr>
+<td>Création</td>
+<td>Plus lourde (copie des ressources)</td>
+<td>Plus légère</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>IPC (pipes, sockets, signaux)</td>
+<td>Mémoire partagée directe</td>
+</tr>
+<tr>
+<td>Isolation</td>
+<td>Forte (un crash n'affecte pas les autres)</td>
+<td>Faible (un crash peut tout détruire)</td>
+</tr>
+<tr>
+<td>Commutation</td>
+<td>Plus coûteuse</td>
+<td>Plus rapide</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 Les 3 états d'un processus</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">stateDiagram</span><span class="o">-</span><span class="n">v2</span>
+<span class="w">    </span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">NOUVEAU</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Création</span><span class="w"> </span><span class="p">(</span><span class="n">fork</span><span class="p">)</span>
+<span class="w">    </span><span class="n">NOUVEAU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">READY</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Prêt</span><span class="w"> </span><span class="p">(</span><span class="n">chargé</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">mémoire</span><span class="p">)</span>
+<span class="w">    </span><span class="n">READY</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">RUNNING</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="err">É</span><span class="n">lu</span><span class="w"> </span><span class="n">par</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">l</span><span class="s">&#39;ordonnanceur</span>
+<span class="s">    RUNNING --&gt; READY : Interruption&lt;br/&gt;(temps écoulé)</span>
+<span class="s">    RUNNING --&gt; WAITING : Attente d&#39;</span><span class="n">une</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">ressource</span><span class="w"> </span><span class="p">(</span><span class="n">E</span><span class="o">/</span><span class="n">S</span><span class="p">)</span>
+<span class="w">    </span><span class="n">WAITING</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">READY</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Ressource</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">disponible</span>
+<span class="w">    </span><span class="n">RUNNING</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TERMINE</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Fin</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">processus</span><span class="w"> </span><span class="p">(</span><span class="n">exit</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TERMINE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="p">[</span><span class="o">*</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="kr">right</span><span class="w"> </span><span class="kr">of</span><span class="w"> </span><span class="n">READY</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">En</span><span class="w"> </span><span class="n">attente</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">CPU</span>
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="kr">right</span><span class="w"> </span><span class="kr">of</span><span class="w"> </span><span class="n">RUNNING</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">En</span><span class="w"> </span><span class="n">cours</span><span class="w"> </span><span class="n">d</span><span class="s">&#39;exécution</span>
+<span class="s">    note right of WAITING : Bloqué (I/O, sleep)</span>
+</code></pre></div>
+
+<p><strong>Transitions d'états :</strong></p>
+<ul>
+<li><strong>Nouveau → Prêt (Ready) :</strong> le processus est créé et placé dans la file des prêts</li>
+<li><strong>Prêt → Élu (Running) :</strong> l'ordonnanceur sélectionne un processus prêt et lui alloue le CPU</li>
+<li><strong>Élu → Prêt :</strong> le quantum de temps est écoulé, le processus est remis dans la file des prêts</li>
+<li><strong>Élu → Bloqué (Waiting) :</strong> le processus demande une opération d'E/S (lecture disque, attente réseau)</li>
+<li><strong>Bloqué → Prêt :</strong> l'opération d'E/S est terminée, le processus retourne dans la file des prêts</li>
+<li><strong>Élu → Terminé :</strong> le processus a fini son exécution (appel à <code>exit()</code>)</li>
+</ul>
+<p><strong>Changement de contexte (context switch) :</strong> Lorsque le CPU passe d'un processus à un autre, il doit sauvegarder le contexte du processus sortant (registres, PC) et restaurer celui du processus entrant. Cette opération a un coût (quelques microsecondes).</p>
+<hr />
+<h2>3. Ordonnancement CPU</h2>
+<p>L'<strong>ordonnanceur (scheduler)</strong> décide quel processus prêt obtient le CPU. Objectifs : équité, efficacité, temps de réponse minimal.</p>
+<h3>3.1 FIFO (First In, First Out)</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;File des processus prêts (FIFO)&quot;</span>
+<span class="w">        </span><span class="n">P1</span><span class="p">[</span><span class="s">&quot;P1&lt;br/&gt;Arrivé à t=0&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P2</span><span class="p">[</span><span class="s">&quot;P2&lt;br/&gt;Arrivé à t=2&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">P2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P3</span><span class="p">[</span><span class="s">&quot;P3&lt;br/&gt;Arrivé à t=4&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">P3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P4</span><span class="p">[</span><span class="s">&quot;P4&lt;br/&gt;Arrivé à t=6&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Exécution sur le CPU&quot;</span>
+<span class="w">        </span><span class="n">EXEC</span><span class="p">[</span><span class="s">&quot;P1 (0-5) | P2 (5-8) | P3 (8-10) | P4 (10-12)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">P1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">EXEC</span>
+</code></pre></div>
+
+<p><strong>Principe :</strong> Le premier processus arrivé est le premier servi. Pas de préemption (non préemptif). Une fois qu'un processus a le CPU, il le garde jusqu'à ce qu'il se termine ou se bloque.</p>
+<p><strong>Avantages :</strong> Simple à implémenter, équitable pour les processus longs.
+<strong>Inconvénients :</strong> Temps d'attente moyen élevé pour les processus courts (effet de convoi).</p>
+<h3>3.2 Round Robin (RR)</h3>
+<div class="codehilite"><pre><span></span><code>gantt
+    title Ordonnancement Round Robin (quantum = 2 unités)
+    dateFormat X
+    axisFormat %s
+
+    section P1 (durée 6)
+    Tour 1 : 0, 2
+    Tour 2 : 6, 2
+    Tour 3 : 10, 2
+
+    section P2 (durée 4)
+    Tour 1 : 2, 2
+    Tour 2 : 8, 2
+
+    section P3 (durée 2)
+    Tour 1 : 4, 2
+
+    section P4 (durée 2)
+    Tour 1 : 12, 2
+</code></pre></div>
+
+<p><strong>Principe :</strong> Chaque processus reçoit un <strong>quantum de temps</strong> fixe (ex: 10 ms). Si le processus ne se termine pas dans son quantum, il est remis dans la file des prêts et le suivant est exécuté.</p>
+<p><strong>Avantages :</strong> Équitable, temps de réponse court pour les processus interactifs.
+<strong>Inconvénient :</strong> Le choix du quantum est crucial — trop court → changement de contexte trop fréquent, trop long → dégradation du temps de réponse.</p>
+<p><strong>Exemple de calcul (Round Robin, quantum = 2) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Processus</th>
+<th>Durée</th>
+<th>Début</th>
+<th>Fin</th>
+<th>Temps d'attente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>6</td>
+<td>0</td>
+<td>12</td>
+<td>6</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>4</td>
+<td>2</td>
+<td>10</td>
+<td>4</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>2</td>
+<td>12</td>
+<td>14</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Temps d'attente moyen :</strong> (6 + 4 + 2 + 10) / 4 = 5,5 unités de temps.</p>
+<hr />
+<h2>4. Système de fichiers</h2>
+<h3>4.1 Arborescence des fichiers</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">ROOT</span><span class="p">[</span><span class="s2">&quot;/ (racine)&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BIN</span><span class="p">[</span><span class="s2">&quot;/bin&lt;br/&gt;commandes essentielles&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">ROOT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">HOME</span><span class="p">[</span><span class="s2">&quot;/home&lt;br/&gt;répertoires utilisateurs&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">ROOT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ETC</span><span class="p">[</span><span class="s2">&quot;/etc&lt;br/&gt;configuration système&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">ROOT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">USR</span><span class="p">[</span><span class="s2">&quot;/usr&lt;br/&gt;programmes installés&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">ROOT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">VAR</span><span class="p">[</span><span class="s2">&quot;/var&lt;br/&gt;données variables (logs)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">ROOT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TMP</span><span class="p">[</span><span class="s2">&quot;/tmp&lt;br/&gt;fichiers temporaires&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">ROOT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DEV</span><span class="p">[</span><span class="s2">&quot;/dev&lt;br/&gt;périphériques&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">HOME</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">USER1</span><span class="p">[</span><span class="s2">&quot;/home/madani&lt;br/&gt;(votre répertoire)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">USER1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DOC</span><span class="p">[</span><span class="s2">&quot;Documents&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">USER1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TEL</span><span class="p">[</span><span class="s2">&quot;Téléchargements&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">USER1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BUR</span><span class="p">[</span><span class="s2">&quot;Bureau&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">USER1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MUSIC</span><span class="p">[</span><span class="s2">&quot;Musique&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">USER1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">IMG</span><span class="p">[</span><span class="s2">&quot;Images&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ROOT</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#e74c3c,color:#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HOME</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#3498db,color:#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">USER1</span><span class="w"> </span><span class="n">fill</span><span class="p">:</span><span class="c1">#2ecc71,color:#fff</span>
+</code></pre></div>
+
+<p><strong>Structure :</strong> Arborescence enracinée (Unix/Linux) ou avec lettres de lecteurs (Windows).</p>
+<p><strong>Chemin absolu :</strong> commence par <code>/</code> (racine). Ex: <code>/home/madani/Documents/cours.md</code>
+<strong>Chemin relatif :</strong> par rapport au répertoire courant. Ex: <code>../Documents/cours.md</code></p>
+<p><strong>Raccourcis :</strong>
+- <code>.</code> : répertoire courant
+- <code>..</code> : répertoire parent
+- <code>~</code> : répertoire personnel de l'utilisateur</p>
+<h3>4.2 Commandes de base (terminal Linux)</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Rôle</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwd</code></td>
+<td>Afficher le répertoire courant</td>
+<td><code>pwd</code> → <code>/home/madani</code></td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>Lister les fichiers</td>
+<td><code>ls -la</code> (détaillé, cachés)</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>Changer de répertoire</td>
+<td><code>cd Documents/cours</code></td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>Créer un répertoire</td>
+<td><code>mkdir nouveau_dossier</code></td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>Copier un fichier</td>
+<td><code>cp source.txt dest.txt</code></td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>Déplacer/renommer</td>
+<td><code>mv ancien.txt nouveau.txt</code></td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>Supprimer</td>
+<td><code>rm fichier.txt</code> (attention !)</td>
+</tr>
+<tr>
+<td><code>cat</code></td>
+<td>Afficher le contenu</td>
+<td><code>cat fichier.txt</code></td>
+</tr>
+<tr>
+<td><code>chmod</code></td>
+<td>Modifier les permissions</td>
+<td><code>chmod 755 script.sh</code></td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 Permissions (Unix)</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Permissions d&#39;</span><span class="n">un</span><span class="w"> </span><span class="n">fichier</span><span class="s">&quot;</span>
+<span class="s">        PERM[&quot;</span><span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">--</span><span class="s">&quot;]</span>
+<span class="s">        TYP[&quot;</span><span class="kr">Type</span><span class="w"> </span><span class="o">:&lt;</span><span class="n">br</span><span class="o">/&gt;-</span><span class="w"> </span><span class="n">fichier</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">d</span><span class="w"> </span><span class="n">répertoire</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">l</span><span class="w"> </span><span class="n">lien</span><span class="s">&quot;]</span>
+<span class="s">        U[&quot;</span><span class="n">User</span><span class="w"> </span><span class="p">(</span><span class="n">owner</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">rwx</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="p">(</span><span class="n">lecture</span><span class="p">,</span><span class="w"> </span><span class="err">é</span><span class="n">criture</span><span class="p">,</span><span class="w"> </span><span class="n">exécution</span><span class="p">)</span><span class="s">&quot;]</span>
+<span class="s">        G[&quot;</span><span class="kr">Group</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">r</span><span class="o">-</span><span class="n">x</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="p">(</span><span class="n">lecture</span><span class="p">,</span><span class="w"> </span><span class="n">exécution</span><span class="p">)</span><span class="s">&quot;]</span>
+<span class="s">        O[&quot;</span><span class="n">Others</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">r</span><span class="o">--&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="p">(</span><span class="n">lecture</span><span class="w"> </span><span class="n">seule</span><span class="p">)</span><span class="s">&quot;]</span>
+<span class="s">    end</span>
+
+<span class="s">    TYP --&gt; PERM</span>
+<span class="s">    PERM --&gt; U --&gt; G --&gt; O</span>
+</code></pre></div>
+
+<p><strong>Représentation symbolique :</strong> <code>-rwxr-xr--</code>
+- Position 1 : type (<code>-</code> fichier, <code>d</code> répertoire, <code>l</code> lien symbolique)
+- Positions 2-4 : droits du <strong>propriétaire</strong> (r=read, w=write, x=execute)
+- Positions 5-7 : droits du <strong>groupe</strong>
+- Positions 8-10 : droits des <strong>autres</strong></p>
+<p><strong>Représentation octale :</strong>
+- <code>r</code> = 4, <code>w</code> = 2, <code>x</code> = 1
+- <code>chmod 755</code> → <code>rwxr-xr-x</code>
+- <code>chmod 644</code> → <code>rw-r--r--</code></p>
+<p><strong>Exemple pour l'enseignement :</strong> Protéger un fichier de notes confidentiel :</p>
+<div class="codehilite"><pre><span></span><code>chmod 600 notes_eleves.txt  # seul le propriétaire peut lire/écrire
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Quel est le rôle principal du noyau (kernel) d'un OS ?</strong>
+   a) Afficher une interface graphique  b) Gérer les ressources matérielles ✓  c) Naviguer sur Internet</p>
+</li>
+<li>
+<p><strong>Dans quel état un processus attend-il que le CPU lui soit alloué ?</strong>
+   a) Running  b) Waiting  c) Ready ✓</p>
+</li>
+<li>
+<p><strong>Quel algorithme d'ordonnancement utilise un quantum de temps fixe ?</strong>
+   a) FIFO  b) Round Robin ✓  c) SJF</p>
+</li>
+<li>
+<p><strong>Que signifie le droit <code>x</code> sur un répertoire ?</strong>
+   a) Pouvoir le supprimer  b) Pouvoir le traverser (y accéder) ✓  c) Pouvoir le renommer</p>
+</li>
+<li>
+<p><strong>Quelle commande permet d'afficher le répertoire courant sous Linux ?</strong>
+   a) <code>cd</code>  b) <code>ls</code>  c) <code>pwd</code> ✓</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion</h2>
+<p>Le système d'exploitation est un logiciel fondamental qui gère toutes les ressources de l'ordinateur. La distinction noyau/espace utilisateur garantit la stabilité et la sécurité. Les processus et threads sont les unités d'exécution de base ; leur ordonnancement (FIFO, Round Robin) détermine la réactivité du système. Le système de fichiers organise les données dans une arborescence et les permissions Unix permettent de contrôler les accès.</p>
+<p><strong>Prochaine séance :</strong> Algorithmique fondamentale — variables, conditions, boucles et complexité.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> En classe de SNT Seconde (thème « Systèmes d'exploitation ») :
+- Simuler l'ordonnancement Round Robin en faisant jouer les processus par des élèves. Un élève est l'ordonnanceur et distribue un « quantum » (ex: 30 secondes) à chaque processus.
+- Activité : créer une arborescence de répertoires pour un projet de classe (avec <code>mkdir</code> en ligne de commande)
+- Expliquer les permissions avec l'analogie d'une salle de classe (propriétaire = enseignant, groupe = élèves)</p>
+<p><strong>Lien avec les langues :</strong> Le concept d'arborescence de fichiers peut être comparé à la structure grammaticale (arbres syntaxiques). Les threads (exécution légère) peuvent être comparés aux conversations parallèles dans une classe.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Insister sur la différence entre processus et programme (concept souvent confondu par les débutants). Montrer le gestionnaire de tâches (Windows) ou le moniteur système (Linux) en direct pendant le cours pour illustrer les processus actifs. Proposer aux étudiants de créer un petit script Python qui liste les processus système avec la bibliothèque <code>psutil</code>.
+<strong>Prolongement :</strong> Les étudiants peuvent explorer les conteneurs Docker comme évolution des machines virtuelles, ou étudier le noyau Linux et la gestion des processus en ligne de commande avec les outils <code>ps</code>, <code>top</code>, <code>htop</code>, <code>kill</code>. Proposer une réflexion sur l'impact des systèmes d'exploitation dans l'éducation (choix entre Windows, macOS, Linux, ChromeOS dans les établissements scolaires).</p>
+<hr />
+<h2>Bibliographie</h2>
+<ul>
+<li>Tanenbaum, A. &amp; Bos, H. (2015). <em>Systèmes d'exploitation : Modern Operating Systems</em> (4e éd.). Pearson.</li>
+<li>Silberschatz, A., Galvin, P. &amp; Gagne, G. (2018). <em>Operating System Concepts</em> (10e éd.). Wiley.</li>
+<li>Le livre du système Linux : https://linuxcommand.org/</li>
+<li>Dowek, G. et al. (2019). <em>SNT Seconde</em>. Hachette (chapitre « Systèmes d'exploitation »).</li>
+<li>Documentation Ubuntu : https://doc.ubuntu-fr.org/</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

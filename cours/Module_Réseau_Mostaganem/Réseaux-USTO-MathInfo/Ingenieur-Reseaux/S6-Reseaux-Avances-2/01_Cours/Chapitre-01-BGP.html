@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 01 — Inter-domain routing — BGP — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 01 — Inter-domain routing — BGP</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**BGP-4** (*Border Gateway Protocol*) échange de préfixes entre systèmes autonomes (AS). Path-vector : évite boucles via **AS-PATH**.</li><li>**eBGP** : voisins AS différents (souvent directement connectés ou multihop).</li><li>**iBGP** : même AS — nécessite full-mesh ou route reflectors.</li><li>**Bonnes pratiques** : prefix-lists strictes, max-prefix, TTL security, MD5 TCP, RPKI (aperçu).</li><li>**Convergence** : plus lente qu'IGP — acceptable à l'échelle Internet.</li></ul></div>
+    <h1>Chapitre 01 — Inter-domain routing — BGP</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Ingénieur RI</td>
+</tr>
+<tr>
+<td><strong>Semestre</strong></td>
+<td>S6</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>4 h CM</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>01</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li><strong>Distinguer</strong> eBGP et iBGP, AS et numéros ASN.</li>
+<li><strong>Analyser</strong> attributs BGP (AS-PATH, LOCAL_PREF, MED, ORIGIN).</li>
+<li><strong>Appliquer</strong> politiques route-map et filtrage de préfixes.</li>
+<li><strong>Comprendre</strong> scalabilité Internet et hiérarchie Tier-1/2/3.</li>
+<li><strong>Configurer</strong> session BGP simplifiée entre deux AS lab.</li>
+</ol>
+<h2>Plan du chapitre</h2>
+<ol>
+<li>Pourquoi BGP ?</li>
+<li>eBGP vs iBGP</li>
+<li>Attributs et best-path</li>
+<li>Politiques</li>
+<li>Lab et dépannage</li>
+</ol>
+<hr />
+<h2>1. BGP — protocole inter-AS</h2>
+<p><strong>BGP-4</strong> (<em>Border Gateway Protocol</em>) échange de préfixes entre systèmes autonomes (AS). Path-vector : évite boucles via <strong>AS-PATH</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>BGP</th>
+<th>OSPF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Portée</td>
+<td>Inter-domaine</td>
+<td>Intra-domaine</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>TCP 179</td>
+<td>IP proto 89</td>
+</tr>
+<tr>
+<td>Métrique</td>
+<td>Politique + attributs</td>
+<td>Coût lien</td>
+</tr>
+<tr>
+<td>Table Internet</td>
+<td>~900k+ préfixes</td>
+<td>N/A campus</td>
+</tr>
+</tbody>
+</table>
+<p><strong>eBGP</strong> : voisins AS différents (souvent directement connectés ou multihop).
+<strong>iBGP</strong> : même AS — nécessite full-mesh ou route reflectors.</p>
+<hr />
+<h2>2. Attributs de décision</h2>
+<p>Ordre simplifié Cisco <strong>best-path</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Priorité</th>
+<th>Attribut</th>
+<th>Sens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Weight (local Cisco)</td>
+<td>Plus haut gagne</td>
+</tr>
+<tr>
+<td>2</td>
+<td>LOCAL_PREF</td>
+<td>Plus haut (iBGP in)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AS-PATH</td>
+<td>Plus court souvent préféré</td>
+</tr>
+<tr>
+<td>4</td>
+<td>MED</td>
+<td>Plus bas (influence entrée)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>eBGP &gt; iBGP</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>R1# show ip bgp
+*&gt; 203.0.113.0/24  10.0.0.2   65002 65003 i
+</code></pre></div>
+
+<hr />
+<h2>3. Politiques et sécurité</h2>
+<p>Filtrer annonces entrantes/sortantes — <strong>route-map</strong> :</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">route</span><span class="o">-</span><span class="nx">map</span><span class="w"> </span><span class="nx">FILTER</span><span class="o">-</span><span class="nx">IN</span><span class="w"> </span><span class="nx">permit</span><span class="w"> </span><span class="mi">10</span>
+<span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="nx">prefix</span><span class="o">-</span><span class="nx">list</span><span class="w"> </span><span class="nx">ALLOW</span><span class="o">-</span><span class="nx">ONLY</span>
+<span class="nx">route</span><span class="o">-</span><span class="nx">map</span><span class="w"> </span><span class="nx">FILTER</span><span class="o">-</span><span class="nx">IN</span><span class="w"> </span><span class="nx">deny</span><span class="w"> </span><span class="mi">100</span>
+<span class="p">!</span>
+<span class="nx">neighbor</span><span class="w"> </span><span class="m m-Double">10.0.0.2</span><span class="w"> </span><span class="nx">route</span><span class="o">-</span><span class="nx">map</span><span class="w"> </span><span class="nx">FILTER</span><span class="o">-</span><span class="nx">IN</span><span class="w"> </span><span class="k">in</span>
+</code></pre></div>
+
+<p><strong>Bonnes pratiques</strong> : prefix-lists strictes, max-prefix, TTL security, MD5 TCP, RPKI (aperçu).</p>
+<p>Cas <strong>Université de Mostaganem</strong> : peering MAN avec opérateur local — n'annoncer que agrégats publics autorisés.</p>
+<hr />
+<h2>4. Configuration eBGP minimale</h2>
+<div class="codehilite"><pre><span></span><code>R-AS65001(config)# router bgp 65001
+R-AS65001(config-router)# neighbor 10.0.0.2 remote-as 65002
+R-AS65001(config-router)# network 198.51.100.0 mask 255.255.255.0
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>show ip bgp summary</code></td>
+<td>État sessions</td>
+</tr>
+<tr>
+<td><code>clear ip bgp * soft</code></td>
+<td>Renégociation policies</td>
+</tr>
+<tr>
+<td><code>debug ip bgp updates</code></td>
+<td>Analyse annonces</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Convergence</strong> : plus lente qu'IGP — acceptable à l'échelle Internet.</p>
+<hr />
+<h2>Questions de révision et QCM</h2>
+<ol>
+<li>Différence eBGP et iBGP ?</li>
+<li>Rôle AS-PATH ?</li>
+<li>Pourquoi filtrer annonces BGP entrantes ?</li>
+<li>Port TCP BGP ?</li>
+<li>BGP remplace-t-il OSPF dans un campus ? (Non — pourquoi)</li>
+</ol>
+<h3>QCM rapide</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Voir questions ci-dessus</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Voir corrigé oral</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Relier théorie et TD/TP associés</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Justifier avec schéma ou commande</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Kurose &amp; Ross, ch. 5.7 — BGP</li>
+<li>RFC 4271 — BGP-4</li>
+<li>Halabi — <em>Internet Routing Architectures</em></li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : TP 01 BGP lab. TD 01 attributs.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

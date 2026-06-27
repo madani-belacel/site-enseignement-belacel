@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD Informatique — ENS 2ème année — Séance 05 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TD Informatique — ENS 2ème année — Séance 05 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 2ème année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Soit le schéma relationnel d'une bibliothèque :</li><li>**Corrigé :**</li><li>**Énoncé :** Sur la table `Livre` ci-dessus, écrire les requêtes suivantes :</li><li>**Corrigé :**</li><li>**Énoncé :** Enrichir la base avec une table `Emprunt (id_emprunt INT PRIMARY KEY, id_livre INT REFERENCES Livre, date_emprunt DATE, nom_emprunteur VARCHAR(50))`.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_2ème_année_FR_05.pdf</code></p>
+</blockquote>
+<h1>TD Informatique — ENS 2ème année — Séance 05 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 2ème année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Exercice 1 — CREATE TABLE et INSERT <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Soit le schéma relationnel d'une bibliothèque :
+- <code>Auteur (id_auteur INT PRIMARY KEY, nom VARCHAR(50), prenom VARCHAR(50), annee_naissance INT)</code>
+- <code>Livre (id_livre INT PRIMARY KEY, titre VARCHAR(100), annee_publication INT, id_auteur INT REFERENCES Auteur(id_auteur))</code></p>
+<ol>
+<li>Écrire les instructions CREATE TABLE</li>
+<li>Insérer 3 auteurs et 4 livres</li>
+<li>Afficher tous les livres</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_auteur</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">annee_naissance</span><span class="w"> </span><span class="nb">INT</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Livre</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_livre</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">titre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">    </span><span class="n">annee_publication</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">id_auteur</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Auteur</span><span class="p">(</span><span class="n">id_auteur</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Dijkstra&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Edsger&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1930</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Knuth&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Donald&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1938</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Turing&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Alan&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1912</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Livre</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;The Art of Computer Programming&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1968</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A Discipline of Programming&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1976</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Computing Machinery and Intelligence&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1950</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Selected Writings on Computing&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1982</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Livre</span><span class="p">;</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — SELECT et WHERE <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Sur la table <code>Livre</code> ci-dessus, écrire les requêtes suivantes :</p>
+<ol>
+<li>Titres des livres publiés après 1970</li>
+<li>Livres de l'auteur id_auteur = 1 (Dijkstra)</li>
+<li>Livres dont le titre contient "Programming"</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- 1. Livres après 1970</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">titre</span><span class="p">,</span><span class="w"> </span><span class="n">annee_publication</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Livre</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">annee_publication</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1970</span><span class="p">;</span>
+
+<span class="c1">-- 2. Livres de Dijkstra</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">titre</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Livre</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id_auteur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">-- 3. Titre contient &quot;Programming&quot;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">titre</span><span class="p">,</span><span class="w"> </span><span class="n">annee_publication</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Livre</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">titre</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Programming%&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Jointure avec INNER JOIN <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Enrichir la base avec une table <code>Emprunt (id_emprunt INT PRIMARY KEY, id_livre INT REFERENCES Livre, date_emprunt DATE, nom_emprunteur VARCHAR(50))</code>.</p>
+<p>Insérer 5 emprunts puis écrire les requêtes :</p>
+<ol>
+<li>Afficher chaque emprunt avec le titre du livre et le nom de l'auteur</li>
+<li>Compter le nombre d'emprunts par auteur</li>
+<li>Trouver le(s) livre(s) jamais emprunté(s)</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Emprunt</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_emprunt</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">id_livre</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Livre</span><span class="p">(</span><span class="n">id_livre</span><span class="p">),</span>
+<span class="w">    </span><span class="n">date_emprunt</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nom_emprunteur</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Emprunt</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-01-15&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ali&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-02-10&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-03-05&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Mohamed&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-03-12&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ali&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-04-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara&#39;</span><span class="p">);</span>
+
+<span class="c1">-- 1. Emprunts avec titre et auteur</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nom_emprunteur</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">titre</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">nom</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">prenom</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">auteur</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">date_emprunt</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Emprunt</span><span class="w"> </span><span class="n">e</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Livre</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id_livre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">id_livre</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">id_auteur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">id_auteur</span><span class="p">;</span>
+
+<span class="c1">-- 2. Nombre d&#39;emprunts par auteur</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">nom</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">prenom</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">auteur</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">id_emprunt</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">nb_emprunts</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Auteur</span><span class="w"> </span><span class="n">a</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Livre</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">id_auteur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">id_auteur</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Emprunt</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">id_livre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id_livre</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">id_auteur</span><span class="p">,</span><span class="w"> </span><span class="n">auteur</span><span class="p">;</span>
+
+<span class="c1">-- 3. Livres jamais empruntés</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">titre</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Livre</span><span class="w"> </span><span class="n">l</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Emprunt</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">id_livre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id_livre</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id_emprunt</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Mise à jour et suppression <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Écrire les requêtes SQL pour :</p>
+<ol>
+<li>Ajouter une colonne <code>disponible BOOLEAN</code> à Livre</li>
+<li>Mettre à jour la colonne : TRUE si le livre n'a aucun emprunt en cours</li>
+<li>Supprimer un auteur et ses livres (CASCADE)</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- 1. Ajouter colonne</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Livre</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">disponible</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">TRUE</span><span class="p">;</span>
+
+<span class="c1">-- 2. Mettre à jour (livres ayant des emprunts = non disponibles)</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">Livre</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">disponible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id_livre</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">id_livre</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Emprunt</span><span class="p">);</span>
+
+<span class="c1">-- Vérification</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">titre</span><span class="p">,</span><span class="w"> </span><span class="n">disponible</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Livre</span><span class="p">;</span>
+
+<span class="c1">-- 3. Supprimer avec CASCADE (si contrainte déclarée ON DELETE CASCADE)</span>
+<span class="c1">-- ALTER TABLE Livre ADD CONSTRAINT fk_auteur</span>
+<span class="c1">--   FOREIGN KEY (id_auteur) REFERENCES Auteur(id_auteur) ON DELETE CASCADE;</span>
+<span class="c1">-- DELETE FROM Auteur WHERE id_auteur = 3;  -- supprime aussi ses livres</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Modélisation complète <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Concevoir le schéma relationnel pour une gestion d'étudiants et de leurs inscriptions aux cours avec notes :</p>
+<ol>
+<li>Créer les tables <code>Etudiant</code>, <code>Cours</code>, <code>Inscription</code></li>
+<li>Insérer 3 étudiants, 2 cours, 5 inscriptions</li>
+<li>Afficher pour chaque étudiant : son nom, les cours suivis et la note</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Etudiant</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_etudiant</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">prenom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Cours</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_cours</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">intitule</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">    </span><span class="n">credit</span><span class="w"> </span><span class="nb">INT</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Inscription</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id_etudiant</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Etudiant</span><span class="p">(</span><span class="n">id_etudiant</span><span class="p">),</span>
+<span class="w">    </span><span class="n">id_cours</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Cours</span><span class="p">(</span><span class="n">id_cours</span><span class="p">),</span>
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id_etudiant</span><span class="p">,</span><span class="w"> </span><span class="n">id_cours</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Etudiant</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Benali&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;s.benali@ens.dz&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ziani&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ahmed&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;a.ziani@ens.dz&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Kaci&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Leila&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;l.kaci@ens.dz&#39;</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Cours</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;POO&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;BD&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Inscription</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">.</span><span class="mi">50</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="mi">50</span><span class="p">);</span>
+
+<span class="c1">-- Relevé complet</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nom</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">prenom</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">etudiant</span><span class="p">,</span>
+<span class="w">       </span><span class="k">c</span><span class="p">.</span><span class="n">intitule</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cours</span><span class="p">,</span>
+<span class="w">       </span><span class="n">i</span><span class="p">.</span><span class="n">note</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Inscription</span><span class="w"> </span><span class="n">i</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">Etudiant</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_etudiant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id_etudiant</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">Cours</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_cours</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">id_cours</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">etudiant</span><span class="p">,</span><span class="w"> </span><span class="n">cours</span><span class="p">;</span>
+
+<span class="c1">-- Moyenne par étudiant</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nom</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">prenom</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">etudiant</span><span class="p">,</span>
+<span class="w">       </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">note</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">moyenne</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Inscription</span><span class="w"> </span><span class="n">i</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">Etudiant</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">id_etudiant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id_etudiant</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">id_etudiant</span><span class="p">,</span><span class="w"> </span><span class="n">etudiant</span><span class="p">;</span>
+</code></pre></div>
+
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — CREATE / INSERT</td>
+<td>20 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — SELECT / WHERE</td>
+<td>15 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Jointures</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — UPDATE / DELETE</td>
+<td>15 min</td>
+<td>75 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Modélisation</td>
+<td>15 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Diagrammes conceptuels</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Base</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">données</span><span class="w"> </span><span class="n">relationnelle</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Création</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">CREATE</span><span class="w"> </span><span class="nf">TABLE</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Insertion</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">INSERT</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Interrogation</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">SELECT</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Mise</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="n">jour</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">UPDATE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ALTER</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Suppression</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">DELETE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">CASCADE</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Jointures</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">INNER</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kr">LEFT</span><span class="w"> </span><span class="nf">JOIN</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Filtrage</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">WHERE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">LIKE</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Aggrégation</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="kr">GROUP</span><span class="w"> </span><span class="n">BY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">COUNT</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>erDiagram
+    Auteur ||--o{ Livre : écrit
+    Livre ||--o{ Emprunt : concerne
+    Etudiant ||--o{ Inscription : effectue
+    Cours ||--o{ Inscription : contient
+
+    Auteur {
+        int id_auteur PK
+        string nom
+        string prenom
+        int annee_naissance
+    }
+    Livre {
+        int id_livre PK
+        string titre
+        int annee_publication
+        int id_auteur FK
+    }
+    Emprunt {
+        int id_emprunt PK
+        int id_livre FK
+        date date_emprunt
+        string nom_emprunteur
+    }
+    Etudiant {
+        int id_etudiant PK
+        string nom
+        string prenom
+        string email
+    }
+    Cours {
+        int id_cours PK
+        string intitule
+        int credit
+    }
+    Inscription {
+        int id_etudiant FK
+        int id_cours FK
+        decimal note
+    }
+
+    style Auteur fill:#4a90d9,color:#fff
+    style Livre fill:#2ecc71,color:#fff
+    style Emprunt fill:#e67e22,color:#fff
+    style Etudiant fill:#9b59b6,color:#fff
+    style Cours fill:#e74c3c,color:#fff
+    style Inscription fill:#4a90d9,color:#fff
+</code></pre></div>
+
+<hr />
+<h2>Grille d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Création de tables et insertion</td>
+<td>20 %</td>
+<td>Tables non créées</td>
+<td>INSERT incomplet</td>
+<td>Création et insertion correctes</td>
+</tr>
+<tr>
+<td>SELECT et filtrage WHERE</td>
+<td>20 %</td>
+<td>Syntaxe SELECT inconnue</td>
+<td>Filtrage partiel</td>
+<td>Requêtes avec WHERE et LIKE correctes</td>
+</tr>
+<tr>
+<td>Jointures (INNER / LEFT JOIN)</td>
+<td>20 %</td>
+<td>Jointure non comprise</td>
+<td>INNER JOIN seul</td>
+<td>Jointures multiples correctes avec agrégation</td>
+</tr>
+<tr>
+<td>Mise à jour et suppression</td>
+<td>20 %</td>
+<td>ALTER / UPDATE inconnus</td>
+<td>UPDATE sans sous-requête</td>
+<td>UPDATE, ALTER et DELETE CASCADE maîtrisés</td>
+</tr>
+<tr>
+<td>Modélisation complète</td>
+<td>20 %</td>
+<td>Schéma non normalisé</td>
+<td>Tables sans clés étrangères</td>
+<td>Schéma complet avec clés, insertions et requêtes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> La modélisation relationnelle peut être introduite au collège par la création de tableaux à double entrée (lignes = enregistrements, colonnes = attributs), ce que les élèves manipulent déjà en mathématiques. Les jointures s'illustrent par le « jeu des mots croisés » où l'on relie deux grilles par une information commune.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Commencez par un exercice « papier-crayon » de modélisation avant de passer au SQL. Demandez aux étudiants de dessiner le schéma entité-association au tableau et de vérifier les cardinalités. Insistez sur la différence entre WHERE (filtrage sur ligne) et HAVING (filtrage sur groupe).</p>
+<p><strong>Prolongement :</strong> Proposer un projet de création d'une petite base de données pour la bibliothèque de l'établissement avec une interface Web simple en PHP ou Python Flask permettant de lister, ajouter et rechercher des livres.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

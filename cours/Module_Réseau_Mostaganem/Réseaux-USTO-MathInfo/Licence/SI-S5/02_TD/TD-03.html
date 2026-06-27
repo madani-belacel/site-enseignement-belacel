@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD 03 — Couche Physique — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TD 03 — Couche Physique</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**a)** Cat6 certifié 1 Gbps full-duplex : débit agrégé bidirectionnel théorique ?</li></ul></div>
+    <h1>TD 03 — Couche Physique</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence SI — S5</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>2 h</td>
+</tr>
+<tr>
+<td><strong>Chapitres associés</strong></td>
+<td>Ch. 03</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs</h2>
+<ul>
+<li>Choisir un média guidé/non guidé selon contraintes</li>
+<li>Calculer débit théorique et impact des erreurs (CRC)</li>
+<li>Lire un plan de câblage structuré TIA/EIA</li>
+</ul>
+<hr />
+<h2>Exercice 1 — Choix de média (5 pts)</h2>
+<p>Pour chaque scénario, choisir le média le plus adapté (<strong>UTP Cat6</strong>, <strong>Fibre monomode</strong>, <strong>Fibre multimode</strong>, <strong>Wi-Fi 6</strong>, <strong>Satellite</strong>) et justifier.</p>
+<table>
+<thead>
+<tr>
+<th>Scénario</th>
+<th>Média</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a) Liaison inter-bâtiments campus 800 m</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>b) Poste fixe salle TP Université de Mostaganem</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>c) Zone nomade amphithéâtre 200 places</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>d) Site isolé sans fibre terrestre</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 2 — Débit et signal (4 pts)</h2>
+<p><strong>a)</strong> Cat6 certifié 1 Gbps full-duplex : débit agrégé bidirectionnel théorique ?</p>
+<p><strong>b)</strong> Un lien a BER = 10⁻⁶. Sur 1 Go transféré, combien de bits erronés en moyenne ?</p>
+<p><strong>c)</strong> Rôle du <strong>CRC</strong> en couche Liaison — pourquoi ne remplace-t-il pas un contrôle L1 ?</p>
+<hr />
+<h2>Exercice 3 — Câblage structuré (6 pts)</h2>
+<p>Un bâtiment SI comporte : <strong>Salle serveurs</strong> (MDF), <strong>Étage 1</strong> (IDF, 48 prises), <strong>Étage 2</strong> (IDF, 32 prises).</p>
+<ol>
+<li>Définir MDF et IDF.</li>
+<li>Longueur max channel horizontal TIA-568 (sans patch) ?</li>
+<li>Pourquoi séparer <strong>câble horizontal</strong> et <strong>backbone</strong> ?</li>
+<li>Schéma : MDF ↔ IDF1 ↔ prises ; indiquer zones <strong>horizontal</strong> et <strong>vertical</strong>.</li>
+</ol>
+<hr />
+<h2>Exercice 4 — Dépannage L1 (5 pts)</h2>
+<p>Symptômes : lien 100 Mbps au lieu de 1 Gbps ; LED orange clignotante.</p>
+<ol>
+<li>Lister <strong>4 causes</strong> possibles couche Physique.</li>
+<li>Quel outil utiliser pour tester continuité paires ?</li>
+<li>Différence câble <strong>straight</strong> vs <strong>crossover</strong> (contexte Gigabit auto-MDIX).</li>
+</ol>
+<hr />
+<h2>Annexe — Corrigé TD 03</h2>
+<h3>Exercice 1</h3>
+<p>a) <strong>Fibre monomode</strong> — distance, faible atténuation. b) <strong>UTP Cat6</strong> — coût, 1 Gbps. c) <strong>Wi-Fi 6</strong> — mobilité. d) <strong>Satellite</strong> — absence fibre.</p>
+<h3>Exercice 2</h3>
+<p><strong>a)</strong> 1 + 1 = <strong>2 Gbps</strong> agrégé. <strong>b)</strong> 8×10⁹ × 10⁻⁶ = <strong>8000 bits</strong>. <strong>c)</strong> CRC détecte erreurs trame ; L1 (BER) concerne signal/bruit.</p>
+<h3>Exercice 3</h3>
+<ol>
+<li>MDF = point central principal ; IDF = distribution étage.</li>
+<li><strong>90 m</strong> (horizontal permanent link typique 90 m).</li>
+<li>Backbone = capacité agrégée ; horizontal = accès utilisateur.</li>
+<li>Schéma avec backbone vertical fibre MDF→IDF.</li>
+</ol>
+<h3>Exercice 4</h3>
+<ol>
+<li>Câble Cat5e, connecteur mal serti, auto-négociation, port défectueux.</li>
+<li><strong>Testeur de câble</strong> / certifier.</li>
+<li>Straight PC↔Switch ; crossover legacy PC↔PC (auto-MDIX compense souvent).</li>
+</ol>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 03 — Couche Physique</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

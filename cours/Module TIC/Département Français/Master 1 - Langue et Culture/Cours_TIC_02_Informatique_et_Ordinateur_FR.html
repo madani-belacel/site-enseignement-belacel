@@ -1,0 +1,579 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 02 — Informatique et Architecture de l'Ordinateur — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 02 — Informatique et Architecture de l'Ordinateur</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 1 — Langue et Culture</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 1 Langue et Culture</li><li>**Compétences pré-requises :** TIC 01 ; notions de fichiers et dossiers ; utilisation courante d'un navigateur et d'une suite bureautique</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_02_Informatique_et_Ordinateur_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 02 — Informatique et Architecture de l'Ordinateur</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani
+<strong>Module :</strong> TIC
+<strong>Niveau :</strong> Master 1 — Langue et Culture
+<strong>Durée :</strong> 1h30
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 1 Langue et Culture</p>
+<p><strong>Compétences pré-requises :</strong> TIC 01 ; notions de fichiers et dossiers ; utilisation courante d'un navigateur et d'une suite bureautique</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Situer l'informatique dans le champ des Humanités Numériques (Digital Humanities)
+- Décrire le modèle de von Neumann et comprendre son rôle dans l'infrastructure de la recherche en langues
+- Expliquer les besoins spécifiques en puissance de calcul pour le TAL (Traitement Automatique des Langues)
+- Distinguer hardware, software, et leur articulation dans un environnement de recherche</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Identifier les composants critiques d'une station de travail pour chercheur en langues (RAM, SSD, GPU)
+- Évaluer ses besoins matériels pour des projets de corpus, TAL ou analyse de données textuelles
+- Diagnostiquer un problème simple et utiliser les outils de monitoring système</p>
+<p><strong>En termes de savoir-être :</strong>
+- Adopter une posture réflexive sur les choix technologiques dans la recherche en sciences humaines
+- Organiser son environnement numérique de travail selon les standards de la recherche académique</p>
+<p><strong>Mode d'évaluation :</strong> TD 30 % + QCM 20 % + Projet « Analyse d'infrastructure numérique pour un projet de recherche » 30 % + Examen 20 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Devoir : schéma annoté de l'infrastructure informatique nécessaire à un projet de recherche en linguistique de corpus</li>
+<li>Atelier : évaluation des besoins matériels pour un mémoire utilisant des outils de TAL</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM architecture et humanités numériques</li>
+<li>Mini-projet : concevoir la fiche technique d'une station de travail pour chercheur en langues</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Moretti, F. (2013). <em>Distant Reading</em>. Verso.</li>
+<li>Berry, D. M. (2012). <em>Understanding Digital Humanities</em>. Palgrave Macmillan.</li>
+<li>Schreibman, S., Siemens, R., &amp; Unsworth, J. (2004). <em>A Companion to Digital Humanities</em>. Blackwell.</li>
+<li>Bird, S., Klein, E., &amp; Loper, E. (2009). <em>Natural Language Processing with Python</em>. O'Reilly.</li>
+<li>Goupille — Technologie des ordinateurs</li>
+<li>Infrastructure Machine 1 — Univ. Biskra (elearning.univ-biskra.dz)</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p><strong>Arrêté ministériel 933</strong> du 28 juillet 2016 fixant les règles d'organisation et de gestion des enseignements de master :
+- Les enseignements de TIC s'inscrivent dans l'unité d'enseignement <strong>UEM 1.1 (Méthodologie)</strong> — coefficient 2, crédits 4.
+- L'objectif est de doter l'étudiant des <strong>compétences numériques nécessaires à la recherche académique</strong> : collecte, traitement et présentation de données scientifiques.
+- Conformément au <strong>Référentiel des Compétences Numériques</strong> (PIX Algérie / Référentiel CNE), les compétences visées couvrent les domaines 1 (Information et données), 3 (Création de contenu) et 5 (Environnement numérique).
+- Arrêté <strong>1275</strong> du 21 septembre 2022 relatif à l'habilitation des établissements d'enseignement supérieur à ouvrir des formations master : la maîtrise des outils TIC est une compétence transversale obligatoire.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Arrêté</span><span class="w"> </span><span class="mi">933</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2016</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Unité</span><span class="w"> </span><span class="n">UEM</span><span class="w"> </span><span class="mf">1.1</span><span class="w"> </span><span class="n">Méthodologie</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Compétences</span><span class="w"> </span><span class="n">Numériques</span><span class="w"> </span><span class="n">Master</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">TIC</span><span class="w"> </span><span class="n">pour</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">Recherche</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Méthodologie</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Analyse</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">PIX</span><span class="w"> </span><span class="n">Algérie</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">CNE</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Domaine</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">Information</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Données</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Domaine</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="w"> </span><span class="n">Création</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Contenu</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Domaine</span><span class="w"> </span><span class="mi">5</span><span class="o">:</span><span class="w"> </span><span class="n">Environnement</span><span class="w"> </span><span class="n">Numérique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Collecte</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">données</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Traitement</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">corpus</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Présentation</span><span class="w"> </span><span class="n">scientifique</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>Plan du Cours</h2>
+<ol>
+<li>Introduction : L'informatique dans les Humanités Numériques</li>
+<li>Définition de l'informatique et épistémologie</li>
+<li>Architecture matérielle pour la recherche en langues</li>
+<li>Composants critiques pour le TAL et l'analyse de corpus</li>
+<li>Logiciels et écosystème numérique du chercheur</li>
+<li>Infrastructures de calcul : Cloud, GPU, serveurs</li>
+<li>Bonnes pratiques pour un chercheur en Master</li>
+<li>Conclusion et transition vers Windows</li>
+</ol>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Phase</th>
+<th>Activité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-10 min</td>
+<td>Introduction</td>
+<td>Présentation du cadre Master : TIC et Humanités Numériques. Questions aux étudiants sur leurs usages numériques</td>
+<td>Diapos 1-4</td>
+</tr>
+<tr>
+<td>10-25 min</td>
+<td>Exposé</td>
+<td>Qu'est-ce que l'informatique ? Épistémologie : du calcul à l'intelligence artificielle. Débat : l'ordinateur change-t-il notre rapport au langage ?</td>
+<td>Diapos 5-10</td>
+</tr>
+<tr>
+<td>25-45 min</td>
+<td>Démonstration</td>
+<td>Architecture von Neumann revisitée pour les DH : RAM pour corpus volumineux, GPU pour embeddings, SSD pour accès rapide. Schéma au tableau</td>
+<td>Diapos 11-18</td>
+</tr>
+<tr>
+<td>45-55 min</td>
+<td>Atelier guidé</td>
+<td>Étudiants identifient les specs de leur propre machine et comparent avec les besoins d'un projet type (ex : analyse de 10 000 pages de roman)</td>
+<td>Fiche pratique</td>
+</tr>
+<tr>
+<td>55-75 min</td>
+<td>Exposé participatif</td>
+<td>Logiciels du chercheur en langues : Python, NLTK, AntConc, TXM, Zotero. Infrastructures : Google Colab, HPC, cloud</td>
+<td>Diapos 19-25</td>
+</tr>
+<tr>
+<td>75-85 min</td>
+<td>Synthèse</td>
+<td>Bonnes pratiques, discussion sur les besoins matériels pour le mémoire</td>
+<td>Diapos 26-28</td>
+</tr>
+<tr>
+<td>85-90 min</td>
+<td>Conclusion</td>
+<td>QCM rapide, annonce du prochain cours, distribution du mini-projet</td>
+<td>Diapos 29-30</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>1. Introduction : L'informatique dans les Humanités Numériques <em>(10 min)</em></h2>
+<h3>1.1 Pourquoi ce cours est différent au niveau Master</h3>
+<p>En Licence, l'informatique se limitait à l'utilisation des outils bureautiques. En Master 1 — Langue et Culture, l'ordinateur devient un <strong>instrument de recherche à part entière</strong> au même titre qu'un dictionnaire ou une bibliothèque.</p>
+<p><strong>Humanités Numériques (Digital Humanities)</strong> : champ interdisciplinaire qui applique les méthodes computationnelles aux sciences humaines et sociales. Ce paradigme transforme profondément la recherche en langues :</p>
+<ul>
+<li><strong>Distant Reading</strong> (Moretti, 2013) : lire des milliers de textes non pas un par un mais par l'analyse statistique de motifs, de thèmes, de styles</li>
+<li><strong>Corpus Linguistics</strong> : analyser des gigantesques corpus textuels (des millions de mots) avec des outils automatisés</li>
+<li><strong>Natural Language Processing (NLP/TAL)</strong> : appliquer des modèles computationnels pour analyser la syntaxe, la sémantique, la pragmatique</li>
+<li><strong>Digital Archiving</strong> : numérisation, annotation et préservation des données linguistiques et culturelles</li>
+</ul>
+<h3>1.2 Exemples concrets pour le Master Langue et Culture</h3>
+<ul>
+<li>Analyse stylométrique d'un corpus de 50 romans algériens francophones via l'outil <strong>Stylo</strong> (R studio)</li>
+<li>Construction d'un lexique de spécialité à partir d'un corpus de presse avec <strong>AntConc</strong></li>
+<li>Annotation morphosyntaxique automatique d'un corpus de tweets en arabe dialectal avec <strong>CAMeL Tools</strong></li>
+<li>Visualisation de réseaux de personnages dans une œuvre littéraire avec <strong>Gephi</strong></li>
+<li>Analyse sentimentale d'un corpus de discours politiques avec <strong>Python (NLTK / spaCy)</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Corpus</span><span class="w"> </span><span class="n">textuel</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Numérisation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Annotation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Traitement</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Analyse</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Visualisation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Interprétation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Publication</span><span class="w"> </span><span class="n">scientifique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A</span>
+</code></pre></div>
+
+<hr />
+<h2>2. Qu'est-ce que l'Informatique ? Épistémologie <em>(10 min)</em></h2>
+<h3>2.1 Définition élargie</h3>
+<p>L'<strong>informatique</strong> est la science du <strong>traitement automatique et systématique de l'information</strong> à l'aide d'algorithmes exécutés par des machines programmables.</p>
+<p>Au-delà de la définition technique, trois dimensions sont cruciales pour le chercheur en langues :</p>
+<ol>
+<li><strong>Dimension technique</strong> : le fonctionnement interne de la machine (hardware, software, algorithmes)</li>
+<li><strong>Dimension méthodologique</strong> : comment l'informatique transforme les méthodes de recherche en sciences humaines</li>
+<li><strong>Dimension critique</strong> : quels biais et limites dans l'utilisation des outils computationnels pour l'étude du langage</li>
+</ol>
+<h3>2.2 De l'algorithmique au traitement du langage</h3>
+<p>Un <strong>algorithme</strong> est une suite finie d'instructions permettant de résoudre un problème. En TAL, les algorithmes permettent de :
+- Segmenter un texte en mots (tokenization)
+- Analyser la structure grammaticale (parsing)
+- Identifier les entités nommées (NER)
+- Classifier des textes par genre, auteur, sentiment</p>
+<h3>2.3 Enjeux épistémologiques</h3>
+<ul>
+<li><strong>L'ordinateur change-t-il notre rapport au langage ?</strong> La quantification du langage (fréquences, probabilités) offre des perspectives nouvelles mais aussi des risques de réduction</li>
+<li><strong>Biais algorithmiques</strong> : les modèles de langage (comme les LLMs) sont entraînés sur des corpus majoritairement anglophones et standardisés — qu'en est-il des langues minoritaires, des dialectes, des variétés régionales ?</li>
+<li><strong>Reproductibilité</strong> : en humanités numériques, un résultat de recherche doit pouvoir être reproduit — d'où l'importance de documenter ses données et ses scripts</li>
+</ul>
+<hr />
+<h2>3. Architecture Matérielle pour la Recherche en Langues <em>(15 min)</em></h2>
+<h3>3.1 Le modèle de von Neumann revisitée</h3>
+<p>Le <strong>modèle de von Neumann</strong> (1945) décrit l'architecture fondamentale de tout ordinateur moderne. Sa connaissance est indispensable pour comprendre les contraintes matérielles du traitement de corpus.</p>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────────────────────┐
+│                    UNITÉ CENTRALE                     │
+│  ┌──────────┐    ┌──────────┐    ┌────────────────┐  │
+│  │  Entrée  │───▶│   CPU    │───▶│   Sortie       │  │
+│  │(clavier, │    │(traitement)│   │(écran, fichier)│  │
+│  │ fichier) │    └────┬─────┘    └────────────────┘  │
+│  └──────────┘         │                              │
+│                       ▼                              │
+│              ┌────────────────┐                      │
+│              │   Mémoire      │                      │
+│              │  ┌──────────┐  │                      │
+│              │  │   RAM    │  │                      │
+│              │  │(volatile)│  │                      │
+│              │  ├──────────┤  │                      │
+│              │  │  Stockage│  │                      │
+│              │  │(SSD/HDD) │  │                      │
+│              │  └──────────┘  │                      │
+│              └────────────────┘                      │
+└─────────────────────────────────────────────────────┘
+</code></pre></div>
+
+<h3>3.2 Composants critiques pour le chercheur en langues</h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Fonction</th>
+<th>Importance pour la recherche en langues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CPU</strong> (Processeur)</td>
+<td>Exécute les instructions</td>
+<td>Essentiel pour le traitement batch de corpus. Multi-cœurs recommandé pour paralléliser les analyses</td>
+</tr>
+<tr>
+<td><strong>RAM</strong></td>
+<td>Mémoire vive temporaire</td>
+<td>Critique : un corpus de 1 million de mots en mémoire peut nécessiter 4-8 Go RAM. Pour le TAL avec Python, 16 Go RAM est un minimum</td>
+</tr>
+<tr>
+<td><strong>Stockage SSD</strong></td>
+<td>Conservation permanente</td>
+<td>NVMe SSD recommandé. Un corpus brut de 10 000 documents peut peser 10-50 Go. Base de données linguistiques : jusqu'à 200 Go</td>
+</tr>
+<tr>
+<td><strong>GPU</strong> (Carte graphique)</td>
+<td>Calcul parallèle</td>
+<td>Indispensable pour Deep Learning (transformers, BERT, GPT). Un GPU NVIDIA avec 8+ Go VRAM permet d'entraîner des modèles de langage</td>
+</tr>
+<tr>
+<td><strong>Réseau</strong></td>
+<td>Connectivité</td>
+<td>Essentiel pour accès aux clouds, bases de données en ligne, dépôts de corpus (Hugging Face, Ortolang)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Station de travail recommandée pour un Master en Langue et Culture</h3>
+<p><strong>Configuration minimale :</strong>
+- CPU : Intel i5 / AMD Ryzen 5 (4+ cœurs)
+- RAM : 16 Go DDR4
+- Stockage : 512 Go SSD NVMe
+- GPU : intégré (pour de l'analyse textuelle sans Deep Learning)</p>
+<p><strong>Configuration recommandée (si TAL / analyse quantitative lourde) :</strong>
+- CPU : Intel i7 / AMD Ryzen 7 (8 cœurs)
+- RAM : 32 Go DDR5
+- Stockage : 1 To SSD NVMe
+- GPU : NVIDIA RTX 3060+ (8 Go VRAM)
+- Connexion : Fibre optique (téléchargement de corpus volumineux)</p>
+<hr />
+<h2>4. Composants Détaillés pour le TAL et l'Analyse de Corpus <em>(15 min)</em></h2>
+<h3>4.1 Le Processeur (CPU) et le traitement linguistique</h3>
+<p>Le CPU exécute les algorithmes de traitement du langage. Deux facteurs clés :
+- <strong>Fréquence (GHz)</strong> : vitesse d'exécution des instructions séquentielles
+- <strong>Nombre de cœurs</strong> : capacité à traiter plusieurs documents en parallèle</p>
+<p><strong>Exemple concret</strong> : analyser la fréquence des mots dans un corpus de 500 romans (environ 50 millions de mots) avec AntConc :
+- CPU 2 cœurs / 2 GHz : ~45 minutes
+- CPU 8 cœurs / 3.5 GHz : ~8 minutes</p>
+<h3>4.2 La RAM et la taille des corpus</h3>
+<p>La RAM détermine la taille maximale du corpus qui peut être chargée en mémoire vive. Règles empiriques :
+- Corpus texte brut (TXT) : 1 million de mots ≈ 6-8 Mo en mémoire
+- Corpus XML annoté : 1 million de mots ≈ 50-100 Mo
+- Matrices de cooccurrences : peuvent exploser à plusieurs Go</p>
+<p><strong>Règle d'or</strong> : votre RAM doit être au moins 2 fois la taille du plus gros fichier que vous devez charger en mémoire.</p>
+<h3>4.3 Le GPU et l'intelligence Artificielle</h3>
+<p>Les modèles de langage modernes (BERT, GPT, LLaMA) utilisent des <strong>transformers</strong> — architectures de Deep Learning qui exigent une puissance de calcul considérable.</p>
+<ul>
+<li><strong>Training</strong> : nécessite des GPU professionnels (A100, V100) — indisponible sur PC standard</li>
+<li><strong>Inférence</strong> (utilisation du modèle) : possible avec un GPU grand public (RTX 3060 — 12 Go VRAM)</li>
+<li><strong>Alternatives cloud</strong> : Google Colab (GPU gratuit T4), Kaggle Notebooks, Hugging Face Spaces</li>
+</ul>
+<h3>4.4 Stockage et gestion des données de recherche</h3>
+<table>
+<thead>
+<tr>
+<th>Type de stockage</th>
+<th>Usage</th>
+<th>Capacité typique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSD local</td>
+<td>OS, logiciels, projet en cours</td>
+<td>256 Go - 1 To</td>
+</tr>
+<tr>
+<td>HDD externe</td>
+<td>Sauvegarde corpus bruts</td>
+<td>1 - 4 To</td>
+</tr>
+<tr>
+<td>Cloud (OneDrive, Google Drive)</td>
+<td>Collaboration et sauvegarde</td>
+<td>100 Go - 1 To</td>
+</tr>
+<tr>
+<td>NAS / Serveur institutionnel</td>
+<td>Archivage pérenne</td>
+<td>4 - 20 To</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Logiciels et Écosystème Numérique du Chercheur <em>(15 min)</em></h2>
+<h3>5.1 Systèmes d'exploitation</h3>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>Avantages pour la recherche en langues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Windows 11</strong></td>
+<td>Compatibilité outils bureautiques, AntConc, TXM, Zotero</td>
+</tr>
+<tr>
+<td><strong>Linux (Ubuntu)</strong></td>
+<td>Écosystème Python/TAL natif, serveurs, HPC</td>
+</tr>
+<tr>
+<td><strong>macOS</strong></td>
+<td>Terminal Unix, outils DH stables, bon écosystème</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Logiciels essentiels pour le Master Langue et Culture</h3>
+<p><strong>Analyse de corpus et TAL :</strong>
+- <strong>AntConc</strong> (Windows/Mac) : concordance, mots-clés, n-grammes, collocations
+- <strong>TXM</strong> (cross-platform) : plateforme complète d'analyse textométrique
+- <strong>Python</strong> (avec NLTK, spaCy, Stanza) : le couteau suisse du TAL
+- <strong>R / RStudio</strong> : statistiques textuelles, stylométrie (package <code>stylo</code>)
+- <strong>CQPweb / Sketch Engine</strong> (en ligne) : analyse de corpus web</p>
+<p><strong>Gestion bibliographique :</strong>
+- <strong>Zotero</strong> : gestion de références, citations automatiques dans Word
+- <strong>EndNote</strong> / <strong>Mendeley</strong> : alternatives institutionnelles</p>
+<p><strong>Édition et publication :</strong>
+- <strong>Microsoft Word</strong> : rédaction mémoire avec styles et TDM
+- <strong>LaTeX / Overleaf</strong> : publication scientifique avancée
+- <strong>Pandoc</strong> : conversion entre formats (Markdown → DOCX → PDF)</p>
+<h3>5.3 Plateformes cloud et collaboratives</h3>
+<ul>
+<li><strong>Google Colab</strong> : notebooks Python avec GPU gratuit</li>
+<li><strong>Hugging Face</strong> : modèles de langage pré-entraînés, datasets</li>
+<li><strong>Ortolang</strong> : ressources linguistiques françaises</li>
+<li><strong>CLARIN</strong> : infrastructure européenne pour les ressources langagières</li>
+<li><strong>GitHub</strong> : versionnement de code et de données de recherche</li>
+</ul>
+<hr />
+<h2>6. Infrastructures de Calcul pour la Recherche <em>(15 min)</em></h2>
+<h3>6.1 Cloud Computing</h3>
+<p>Le <strong>cloud computing</strong> permet d'accéder à des ressources de calcul à la demande sans investissement matériel lourd.</p>
+<ul>
+<li><strong>IaaS</strong> (Infrastructure as a Service) : AWS, Azure, Google Cloud — machines virtuelles configurables</li>
+<li><strong>PaaS</strong> (Platform as a Service) : Google Colab, Kaggle — environnements prêts à l'emploi</li>
+<li><strong>SaaS</strong> (Software as a Service) : Sketch Engine, TXM Cloud — logiciels en ligne</li>
+</ul>
+<h3>6.2 GPU pour le TAL</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Besoins</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">calcul</span><span class="w"> </span><span class="n">TAL</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">{</span><span class="n">Taille</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">corpus</span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Petit</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="n">M</span><span class="w"> </span><span class="n">mots</span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">CPU</span><span class="w"> </span><span class="n">suffit</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Moyen</span><span class="w"> </span><span class="mi">1-10</span><span class="n">M</span><span class="w"> </span><span class="n">mots</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">CPU</span><span class="w"> </span><span class="n">multicœur</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Grand</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="n">M</span><span class="w"> </span><span class="n">mots</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">{</span><span class="n">Modèle</span><span class="w"> </span><span class="n">utilisé</span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">TF</span><span class="o">-</span><span class="n">IDF</span><span class="p">,</span><span class="w"> </span><span class="n">fréquences</span><span class="o">|</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Word2Vec</span><span class="p">,</span><span class="w"> </span><span class="n">GloVe</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">GPU</span><span class="w"> </span><span class="n">recommandé</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">BERT</span><span class="p">,</span><span class="w"> </span><span class="n">transformers</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">GPU</span><span class="w"> </span><span class="n">indispensable</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Cloud</span><span class="w"> </span><span class="n">GPU</span><span class="o">:</span><span class="w"> </span><span class="n">Colab</span><span class="p">,</span><span class="w"> </span><span class="n">AWS</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">GPU</span><span class="w"> </span><span class="n">local</span><span class="o">:</span><span class="w"> </span><span class="n">RTX</span><span class="w"> </span><span class="mi">3060</span><span class="o">+</span><span class="p">]</span>
+</code></pre></div>
+
+<h3>6.3 Bonnes pratiques pour le choix d'infrastructure</h3>
+<ol>
+<li><strong>Commencez petit</strong> : testez vos scripts sur un échantillon avant de lancer sur le corpus complet</li>
+<li><strong>Utilisez le cloud</strong> : pour les calculs ponctuels lourds, Google Colab est gratuit et suffisant pour un Master</li>
+<li><strong>Versionnez vos données</strong> : utilisez Git LFS ou des plateformes dédiées (Hugging Face Datasets)</li>
+<li><strong>Documentez votre environnement</strong> : notez les versions des logiciels utilisés (reproductibilité)</li>
+</ol>
+<hr />
+<h2>7. Bonnes Pratiques pour un Chercheur en Master <em>(10 min)</em></h2>
+<h3>7.1 Organisation du poste de travail</h3>
+<ul>
+<li>Partitionner le SSD : <code>C:</code> système + <code>D:</code> données de recherche</li>
+<li>Structurer <code>D:/Recherche/</code> : <code>Corpus/</code>, <code>Scripts/</code>, <code>Resultats/</code>, <code>Bibliographie/</code>, <code>Redaction/</code></li>
+<li>Synchroniser avec le cloud (OneDrive USTO, Google Drive)</li>
+<li>Sauvegarde 3-2-1 : 3 copies, 2 supports différents, 1 hors site</li>
+</ul>
+<h3>7.2 Sécurité et intégrité des données</h3>
+<ul>
+<li>Toujours garder une copie brute (raw data) des corpus, non modifiée</li>
+<li>Utiliser des checksums (MD5/SHA256) pour vérifier l'intégrité des fichiers</li>
+<li>Chiffrer les données sensibles (enquêtes, entretiens) avec VeraCrypt</li>
+<li>Mettre à jour régulièrement OS et logiciels</li>
+</ul>
+<h3>7.3 Éthique et recherche</h3>
+<ul>
+<li>Respecter les droits d'auteur sur les corpus (textes, enregistrements)</li>
+<li>Obtenir les autorisations nécessaires pour l'utilisation de données collectées</li>
+<li>Citer systématiquement les sources des données et des outils utilisés</li>
+<li>Documenter les biais potentiels de vos données et méthodes</li>
+</ul>
+<hr />
+<h2>8. Conclusion <em>(5 min)</em></h2>
+<p>L'informatique n'est plus un simple outil bureautique au niveau Master. Elle devient un <strong>partenaire épistémologique</strong> qui transforme notre manière de faire de la recherche en langues et cultures.</p>
+<p><strong>Points clés à retenir :</strong>
+1. L'architecture de l'ordinateur détermine les possibilités de votre recherche
+2. Le choix du matériel doit être adapté à vos besoins spécifiques (corpus, méthodes)
+3. Les humanités numériques offrent des perspectives nouvelles mais exigent une posture critique
+4. La reproductibilité et la documentation sont les piliers d'une recherche numérique rigoureuse</p>
+<p><strong>Prochain cours :</strong> Windows — Organisation numérique avancée pour la recherche.</p>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li><strong>Quel composant est le plus critique pour charger un grand corpus textuel en mémoire ?</strong></li>
+<li>a) Le processeur (CPU)</li>
+<li>b) La RAM ✓</li>
+<li>c) Le disque dur</li>
+<li>
+<p>d) La carte réseau</p>
+</li>
+<li>
+<p><strong>Que signifie l'acronyme TAL ?</strong></p>
+</li>
+<li>a) Traitement Automatique des Langues ✓</li>
+<li>b) Traduction Assistée par Logiciel</li>
+<li>c) Technique d'Analyse Linguistique</li>
+<li>
+<p>d) Théorie des Actes de Langage</p>
+</li>
+<li>
+<p><strong>Dans le cadre des Humanités Numériques, le "Distant Reading" désigne…</strong></p>
+</li>
+<li>a) La lecture à distance sur écran</li>
+<li>b) L'analyse computationnelle de grands corpus textuels ✓</li>
+<li>c) La numérisation de livres anciens</li>
+<li>
+<p>d) L'enseignement des langues en ligne</p>
+</li>
+<li>
+<p><strong>Quel outil est spécifiquement conçu pour l'analyse de corpus textuels ?</strong></p>
+</li>
+<li>a) Microsoft Excel</li>
+<li>b) AntConc ✓</li>
+<li>c) Adobe Photoshop</li>
+<li>
+<p>d) Mozilla Firefox</p>
+</li>
+<li>
+<p><strong>Quelle infrastructure est recommandée pour utiliser des modèles de type BERT sans GPU local ?</strong></p>
+</li>
+<li>a) Un NAS personnel</li>
+<li>b) Google Colab ✓</li>
+<li>c) Un disque dur externe</li>
+<li>d) Un routeur WiFi</li>
+</ol>
+<hr />
+<h2>Note pédagogique Master</h2>
+<h3>Transposition didactique pour le Master</h3>
+<p>Ce cours opère un changement de paradigme par rapport à la Licence : il ne s'agit plus d'« apprendre à utiliser l'ordinateur » mais de <strong>comprendre comment l'ordinateur structure et transforme la recherche en langues</strong>. La transposition didactique s'appuie sur trois piliers :</p>
+<ol>
+<li><strong>L'ordinateur comme instrument épistémique</strong> : l'étudiant doit comprendre que les choix matériels et logiciels ne sont pas neutres — ils conditionnent les questions de recherche possibles et les résultats obtenus.</li>
+<li><strong>La pensée computationnelle appliquée aux SHS</strong> : décomposer un problème de recherche en étapes algorithmiques (collecte → nettoyage → traitement → analyse → visualisation → interprétation).</li>
+<li><strong>L'écosystème numérique du chercheur</strong> : l'ordinateur n'est pas isolé — il s'inscrit dans un réseau d'outils, de plateformes, de communautés et de normes (FAIR data, open science).</li>
+</ol>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li><strong>Avant la séance</strong> : demander aux étudiants de venir avec les spécifications techniques de leur ordinateur personnel (via Paramètres → Système → Informations système). Préparer un sondage sur leurs usages numériques actuels.</li>
+<li><strong>Pendant la séance</strong> : alterner les phases magistrales (10-15 min max) avec des moments d'interaction. L'atelier d'identification des composants sur leur propre machine est un moment clé d'apprentissage actif.</li>
+<li><strong>Après la séance</strong> : proposer un exercice de reflexion écrite : « Quels besoins matériels pour mon projet de mémoire ? » à rendre sur Moodle.</li>
+</ul>
+<h3>Prolongement recherche</h3>
+<p>Ce cours constitue la base pour les enseignements suivants du Master :
+- <strong>Cours 03 (Windows)</strong> : organisation numérique avancée
+- <strong>Cours 06 (PowerPoint)</strong> : communication scientifique
+- <strong>Séminaire TAL</strong> (Semestre 2) : initiation au traitement automatique des langues avec Python
+- <strong>Projet de recherche</strong> : utilisation des outils présentés pour l'analyse de corpus dans le cadre du mémoire</p>
+<p>Les étudiants intéressés par une poursuite en Doctorat en Humanités Numériques peuvent consulter :
+- Le master DH à l'INALCO (Paris)
+- Le programme Erasmus Mundus « Language and Communication Technologies »
+- Les écoles d'été CLARIN / DARIAH
+- Le réseau DH@BU (Digital Humanities at Biskra University)</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

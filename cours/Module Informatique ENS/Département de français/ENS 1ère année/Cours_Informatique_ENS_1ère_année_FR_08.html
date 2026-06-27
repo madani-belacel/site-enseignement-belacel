@@ -1,0 +1,528 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 1ère année — Séance 08 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 1ère année — Séance 08 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Confidentialité :** garantir que seules les personnes autorisées accèdent à l'information.</li><li>**Intégrité :** garantir que les données n'ont pas été altérées.</li><li>**Disponibilité :** garantir l'accès aux données et services quand nécessaire.</li><li>**Exemple pédagogique :** un carnet de notes en ligne. La **confidentialité** garantit que seuls l'enseignant et l'administration y accèdent. L'**intégrité** empêche un élève de modifier sa note. La **disponibilité** assure qu'on peut y accéder le jour du conseil de classe.</li><li>**Exemples :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_1ère_année_FR_08.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 1ère année — Séance 08 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Expliquer la triade CID (Confidentialité, Intégrité, Disponibilité)
+- Créer un mot de passe robuste et comprendre le principe du MFA
+- Identifier les signes d'une tentative de phishing
+- Appliquer la règle de sauvegarde 3-2-1
+- Connaître les principes du RGPD applicables en milieu scolaire
+- Adopter une éthique numérique responsable (cyberharcèlement, droit d'auteur, IA générative)</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Triade CID (Confidentialité, Intégrité, Disponibilité) — 15 min</li>
+<li>Mots de passe robustes et authentification multi-facteurs — 15 min</li>
+<li>Menaces numériques (phishing, malware, ransomware) — 15 min</li>
+<li>Règle de sauvegarde 3-2-1 — 10 min</li>
+<li>RGPD et protection des données des élèves — 15 min</li>
+<li>Éthique numérique pour l'enseignant — 15 min</li>
+<li>QCM et conclusion — 5 min</li>
+</ol>
+<hr />
+<h2>1. Triade CID <em>(15 min)</em></h2>
+<p>La <strong>sécurité informatique</strong> repose sur trois piliers fondamentaux, souvent représentés par le triangle CIA (Confidentiality, Integrity, Availability).</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">CIA</span><span class="p">((</span><span class="n">SÉCURITÉ</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">INFORMATIQUE</span><span class="p">))</span>
+
+<span class="w">    </span><span class="n">CIA</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">CONF</span><span class="p">[</span><span class="n">Confidentialité</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Données</span><span class="w"> </span><span class="n">accessibles</span><span class="w"> </span><span class="n">aux</span><span class="w"> </span><span class="n">seuls</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">utilisateurs</span><span class="w"> </span><span class="n">autorisés</span><span class="p">]</span>
+<span class="w">    </span><span class="n">CIA</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">INT</span><span class="p">[</span><span class="n">Intégrité</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Données</span><span class="w"> </span><span class="n">non</span><span class="w"> </span><span class="n">modifiées</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">de</span><span class="w"> </span><span class="n">façon</span><span class="w"> </span><span class="n">non</span><span class="w"> </span><span class="n">autorisée</span><span class="p">]</span>
+<span class="w">    </span><span class="n">CIA</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DISPO</span><span class="p">[</span><span class="n">Disponibilité</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Données</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">services</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">accessibles</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">temps</span><span class="w"> </span><span class="n">voulu</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">CONF</span><span class="w"> </span><span class="o">&lt;--&gt;|</span><span class="n">Dépendance</span><span class="o">|</span><span class="w"> </span><span class="n">INT</span>
+<span class="w">    </span><span class="n">INT</span><span class="w"> </span><span class="o">&lt;--&gt;|</span><span class="n">Dépendance</span><span class="o">|</span><span class="w"> </span><span class="n">DISPO</span>
+<span class="w">    </span><span class="n">DISPO</span><span class="w"> </span><span class="o">&lt;--&gt;|</span><span class="n">Dépendance</span><span class="o">|</span><span class="w"> </span><span class="n">CONF</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CIA</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CONF</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">INT</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">DISPO</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Confidentialité :</strong> garantir que seules les personnes autorisées accèdent à l'information.</p>
+<table>
+<thead>
+<tr>
+<th>Mécanisme</th>
+<th>Exemple concret</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chiffrement</td>
+<td>HTTPS, disque dur chiffré (BitLocker)</td>
+</tr>
+<tr>
+<td>Contrôle d'accès</td>
+<td>Mot de passe, badge RFID</td>
+</tr>
+<tr>
+<td>Authentification</td>
+<td>MFA, biométrie</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Intégrité :</strong> garantir que les données n'ont pas été altérées.</p>
+<table>
+<thead>
+<tr>
+<th>Mécanisme</th>
+<th>Exemple concret</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Somme de contrôle (hash)</td>
+<td>MD5, SHA-256 (téléchargements)</td>
+</tr>
+<tr>
+<td>Signature numérique</td>
+<td>Email signé, certificats SSL</td>
+</tr>
+<tr>
+<td>Journalisation</td>
+<td>Audit trail, historique des modifications</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Disponibilité :</strong> garantir l'accès aux données et services quand nécessaire.</p>
+<table>
+<thead>
+<tr>
+<th>Mécanisme</th>
+<th>Exemple concret</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Redondance</td>
+<td>Serveurs miroirs, RAID</td>
+</tr>
+<tr>
+<td>Sauvegarde</td>
+<td>Règle 3-2-1</td>
+</tr>
+<tr>
+<td>Plan de reprise</td>
+<td>PRA (Plan de Reprise d'Activité)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemple pédagogique :</strong> un carnet de notes en ligne. La <strong>confidentialité</strong> garantit que seuls l'enseignant et l'administration y accèdent. L'<strong>intégrité</strong> empêche un élève de modifier sa note. La <strong>disponibilité</strong> assure qu'on peut y accéder le jour du conseil de classe.</p>
+<hr />
+<h2>2. Mots de passe et authentification <em>(15 min)</em></h2>
+<h3>Caractéristiques d'un mot de passe robuste</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Faible</th>
+<th>Robuste</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Longueur</td>
+<td>6-8 caractères</td>
+<td><strong>≥ 12 caractères</strong></td>
+</tr>
+<tr>
+<td>Complexité</td>
+<td>minuscules uniquement</td>
+<td>Maj + min + chiffres + symboles</td>
+</tr>
+<tr>
+<td>Dictionnaire</td>
+<td><code>password</code>, <code>123456</code>, <code>azerty</code></td>
+<td>Aucun mot connu</td>
+</tr>
+<tr>
+<td>Personnel</td>
+<td>Date naissance, prénom</td>
+<td>Aucune info personnelle</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exemples :</strong>
+- <code>soleil2025</code> → FAIBLE (mot du dictionnaire + année simple)
+- <code>ENS.M0st@g4nem_2026!</code> → ROBUSTE (≥12 car., mélange de types, caractères spéciaux)</p>
+<h3>Authentification Multi-Facteurs (MFA)</h3>
+<p>Combinaison de plusieurs <strong>facteurs</strong> d'authentification :</p>
+<div class="codehilite"><pre><span></span><code>FACTEUR 1 : Ce que je sais    → Mot de passe, code PIN
+          +
+FACTEUR 2 : Ce que j&#39;ai       → SMS, application (Google Auth), clé USB
+          +
+FACTEUR 3 : Ce que je suis    → Empreinte digitale, reconnaissance faciale
+</code></pre></div>
+
+<p><strong>MFA en milieu scolaire :</strong> activer la double authentification sur Moodle, l'email institutionnel, et les services académiques.</p>
+<h3>Gestionnaire de mots de passe</h3>
+<ul>
+<li><strong>Principe :</strong> un seul mot de passe maître pour déverrouiller un coffre-fort numérique</li>
+<li><strong>Outils :</strong> Bitwarden (gratuit, open source), KeePass, Apple Passwords</li>
+<li><strong>Avantage :</strong> génération de mots de passe uniques et complexes pour chaque service</li>
+</ul>
+<hr />
+<h2>3. Menaces numériques <em>(15 min)</em></h2>
+<h3>Phishing (hameçonnage)</h3>
+<p>Technique d'ingénierie sociale où l'attaquant se fait passer pour une entité légitime afin de voler des identifiants.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="ss">&quot;Cycle d&#39;une attaque phishing&quot;</span>
+<span class="w">        </span><span class="n">E</span><span class="o">[</span><span class="n">Étape 1&lt;br/&gt;Création d&#39;un email&lt;br/&gt;frauduleux</span><span class="o">]</span><span class="w"> </span><span class="o">--&gt;|</span><span class="ss">&quot;Expéditeur :&lt;br/&gt;support@g00gle.com&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="o">[</span><span class="n">Étape 2&lt;br/&gt;Envoi massif&lt;br/&gt;à des victimes</span><span class="o">]</span>
+<span class="w">        </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="ss">&quot;Objet :&lt;br/&gt;&#39;Compte bloqué&#39;&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="o">[</span><span class="n">Étape 3&lt;br/&gt;La victime clique&lt;br/&gt;sur le lien</span><span class="o">]</span>
+<span class="w">        </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="ss">&quot;Lien :&lt;br/&gt;http://fake.com&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">S</span><span class="o">[</span><span class="n">Étape 4&lt;br/&gt;Saisie des identifiants&lt;br/&gt;sur page piégée</span><span class="o">]</span>
+<span class="w">        </span><span class="n">S</span><span class="w"> </span><span class="o">--&gt;|</span><span class="ss">&quot;Vol du mot de passe&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="o">[</span><span class="n">Étape 5&lt;br/&gt;Utilisation frauduleuse&lt;br/&gt;du compte</span><span class="o">]</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e74c3c</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#f39c12</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#3498db</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#9b59b6</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e74c3c</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+</code></pre></div>
+
+<p><strong>Signes d'alerte :</strong>
+1. Adresse expéditeur suspecte (ex: <code>support@g00gle.com</code> avec deux zéros)
+2. Fautes d'orthographe et de grammaire
+3. Message urgent (« votre compte sera fermé sous 24h »)
+4. Lien frauduleux (survoler le lien sans cliquer pour voir l'URL réelle)
+5. Pièce jointe inattendue (<code>.zip</code>, <code>.exe</code>, <code>.docm</code>)</p>
+<h3>Malware (logiciel malveillant)</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Propagation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Virus</strong></td>
+<td>S'attache à un fichier légitime</td>
+<td>Pièces jointes, téléchargements</td>
+</tr>
+<tr>
+<td><strong>Ver (worm)</strong></td>
+<td>Se propage seul sur le réseau</td>
+<td>Email, vulnérabilités réseau</td>
+</tr>
+<tr>
+<td><strong>Cheval de Troie</strong></td>
+<td>Se fait passer pour un logiciel légitime</td>
+<td>Téléchargement piégé</td>
+</tr>
+<tr>
+<td><strong>Spyware</strong></td>
+<td>Espionne l'activité de l'utilisateur</td>
+<td>Sites web, logiciels gratuits</td>
+</tr>
+<tr>
+<td><strong>Ransomware</strong></td>
+<td>Chiffre les fichiers et demande rançon</td>
+<td>Phishing, clés USB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ransomware en détail :</strong>
+1. Infection via pièce jointe malveillante ou clé USB
+2. Chiffrement des fichiers (documents, photos, bases de données)
+3. Affichage d'une demande de rançon (souvent en Bitcoin)
+4. La victime perd ses données si elle ne paie pas (et même en payant)</p>
+<p><strong>Protection antivirale :</strong> Windows Defender (intégré à Windows), solutions libres (ClamAV), audits réguliers.</p>
+<hr />
+<h2>4. Règle de sauvegarde 3-2-1 <em>(10 min)</em></h2>
+<p>La <strong>règle 3-2-1</strong> est la stratégie minimale de sauvegarde recommandée par les experts en sécurité.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Stratégie de sauvegarde 3-2-1&quot;</span>
+<span class="w">        </span><span class="n">ORIG</span><span class="p">[</span><span class="s">&quot;Copie originale&lt;br/&gt;PC / Serveur&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="kr">LOCALE</span><span class="p">[</span><span class="s">&quot;Copie locale&lt;br/&gt;Disque externe / NAS&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">DISTANTE</span><span class="p">[</span><span class="s">&quot;Copie distante&lt;br/&gt;Cloud / Site différent&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">ORIG</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;2. Sauvegarde locale&quot;</span><span class="o">|</span><span class="w"> </span><span class="kr">LOCALE</span>
+<span class="w">    </span><span class="n">ORIG</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;3. Sauvegarde distante&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">DISTANTE</span>
+
+<span class="w">    </span><span class="n">NB</span><span class="p">[</span><span class="s">&quot;3 copies · 2 supports différents · 1 copie hors site&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ORIG</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="kr">LOCALE</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">DISTANTE</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">NB</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">dasharray</span><span class="o">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span>
+</code></pre></div>
+
+<p><strong>Application concrète pour l'enseignant :</strong></p>
+<div class="codehilite"><pre><span></span><code>Données originales (PC portable)
+       │
+       ├── Copie 1 : Disque dur externe USB (même lieu)
+       │
+       └── Copie 2 : Cloud institutionnel OneDrive (hors site)
+</code></pre></div>
+
+<p><strong>Planification de sauvegarde :</strong>
+- <strong>Quotidienne</strong> : documents de cours modifiés dans la journée
+- <strong>Hebdomadaire</strong> : sauvegarde complète des dossiers pédagogiques
+- <strong>Mensuelle</strong> : sauvegarde archivée (début et fin de mois)</p>
+<p><strong>Pièges à éviter :</strong>
+- Ne pas tester ses sauvegardes (une sauvegarde non testée n'existe pas)
+- Ne garder qu'une seule copie (au même endroit)
+- Stocker les données sur une clé USB non chiffrée</p>
+<hr />
+<h2>5. RGPD et protection des données <em>(15 min)</em></h2>
+<p><strong>RGPD</strong> (Règlement Général sur la Protection des Données) — Règlement européen 2016/679, applicable depuis mai 2018.</p>
+<h3>Principes fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>Principe</th>
+<th>Application en milieu scolaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Minimisation</strong></td>
+<td>Ne collecter que les données strictement nécessaires (nom, classe, pas de données médicales sans nécessité)</td>
+</tr>
+<tr>
+<td><strong>Transparence</strong></td>
+<td>Informer les élèves et leurs parents de l'utilisation des données</td>
+</tr>
+<tr>
+<td><strong>Consentement</strong></td>
+<td>Recueillir l'autorisation pour les photos, les publications</td>
+</tr>
+<tr>
+<td><strong>Droit d'accès</strong></td>
+<td>L'élève ou ses parents peuvent demander à voir leurs données</td>
+</tr>
+<tr>
+<td><strong>Droit à l'effacement</strong></td>
+<td>Supprimer les données quand elles ne sont plus utiles (fin d'année)</td>
+</tr>
+<tr>
+<td><strong>Sécurité</strong></td>
+<td>Protéger les listes d'élèves, notes et appréciations</td>
+</tr>
+</tbody>
+</table>
+<h3>Données particulièrement sensibles à protéger</h3>
+<div class="codehilite"><pre><span></span><code>Liste des élèves (nom, prénom, date de naissance)
+Notes, appréciations, bulletins
+Adresse, téléphone des parents
+Photos des élèves
+Aménagements spécifiques (PPS, PAP, notifications médicales)
+</code></pre></div>
+
+<h3>Bonnes pratiques pour l'enseignant</h3>
+<ul>
+<li>Utiliser exclusivement les <strong>outils institutionnels</strong> (Moodle, email universitaire, OneDrive académique)</li>
+<li><strong>Ne pas stocker</strong> les données des élèves sur des services personnels (Google Drive perso, Dropbox)</li>
+<li><strong>Anonymiser</strong> les données dans les publications et recherches</li>
+<li><strong>Durée de conservation</strong> limitée à l'année scolaire en cours</li>
+<li><strong>Chiffrer</strong> les fichiers sensibles (Word/Excel avec mot de passe, disque dur chiffré)</li>
+</ul>
+<p><strong>Référence :</strong> CNIL — <em>Guide de la protection des données dans l'Éducation nationale</em></p>
+<hr />
+<h2>6. Éthique numérique pour l'enseignant <em>(15 min)</em></h2>
+<h3>Cyberharcèlement</h3>
+<ul>
+<li>Formes : insultes, rumeurs, usurpation d'identité, diffusion de photos intimes</li>
+<li>Statistiques : 1 jeune sur 5 déclare avoir été victime (source : UNICEF)</li>
+<li><strong>Rôle de l'enseignant :</strong> détecter, signaler (3018 en France, plateforme cybersignalement), accompagner</li>
+<li><strong>Prévention :</strong> séances EMC, charte numérique de l'établissement</li>
+</ul>
+<h3>Droit d'auteur et licences</h3>
+<ul>
+<li><strong>Images :</strong> utiliser des banques libres de droit (Unsplash, Pixabay, Wikimedia Commons)</li>
+<li><strong>Licences Creative Commons (CC) :</strong> CC0 (domaine public), CC BY (attribution obligatoire), CC BY-NC (pas d'usage commercial)</li>
+<li><strong>Citation des sources :</strong> obligatoire dans tout document pédagogique</li>
+<li><strong>Textes :</strong> domaine public (loi 70 ans après la mort de l'auteur) ou accord de l'éditeur</li>
+</ul>
+<h3>Intelligence Artificielle générative</h3>
+<p>Enjeux pour l'enseignement (2024-2026) :</p>
+<table>
+<thead>
+<tr>
+<th>Opportunité</th>
+<th>Risque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assistant de rédaction de cours</td>
+<td>Plagiat par les élèves</td>
+</tr>
+<tr>
+<td>Génération d'exercices personnalisés</td>
+<td>Contournement des évaluations</td>
+</tr>
+<tr>
+<td>Traduction automatique des consignes</td>
+<td>Hallucinations et inexactitudes</td>
+</tr>
+<tr>
+<td>Aide à la correction</td>
+<td>Biais et discrimination</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommandations :</strong>
+- <strong>Définir une politique</strong> explicite sur l'usage de l'IA dans la classe
+- <strong>Former les élèves</strong> à l'usage critique de l'IA
+- <strong>Adapter les évaluations</strong> : plus d'oral, d'analyse, de production en classe
+- <strong>Citer systématiquement</strong> quand l'IA est utilisée pour produire un document</p>
+<h3>Empreinte numérique</h3>
+<ul>
+<li>Tout ce qui est publié en ligne laisse une trace (posts, photos, commentaires)</li>
+<li><strong>Conseil pour les futurs enseignants :</strong> paramétrer la confidentialité des comptes personnels, séparer vie professionnelle et personnelle, ne rien publier qui pourrait nuire à votre image professionnelle</li>
+</ul>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Que signifie le « C » dans la triade CID ?</strong>
+   a) Connexion  b) Confidentialité ✓  c) Certification</p>
+</li>
+<li>
+<p><strong>Quelle est la longueur minimale recommandée pour un mot de passe robuste ?</strong>
+   a) 8 caractères  b) 12 caractères ✓  c) 6 caractères</p>
+</li>
+<li>
+<p><strong>Qu'est-ce qu'un ransomware ?</strong>
+   a) Un logiciel antivirus  b) Un logiciel qui chiffre les fichiers et demande une rançon ✓  c) Un pare-feu</p>
+</li>
+<li>
+<p><strong>Quelle est la règle 3-2-1 ?</strong>
+   a) 3 mots de passe, 2 emails, 1 navigateur  b) 3 copies, 2 supports, 1 copie hors site ✓  c) 3 utilisateurs, 2 serveurs, 1 sauvegarde</p>
+</li>
+<li>
+<p><strong>Selon le RGPD, les données des élèves doivent être :</strong>
+   a) Conservées indéfiniment  b) Supprimées après l'année scolaire ✓  c) Publiées en ligne</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<p>La sécurité informatique est l'affaire de tous. Connaître la triade CID, créer des mots de passe robustes, reconnaître un phishing, appliquer la règle 3-2-1 et respecter le RGPD sont des compétences essentielles pour tout enseignant du XXIe siècle. L'éthique numérique (cyberharcèlement, droit d'auteur, IA) doit être intégrée dans votre pratique pédagogique quotidienne.</p>
+<p><strong>Prochain cours :</strong> Initiation à Python pour l'enseignement.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong>
+- <strong>SNT Seconde</strong> (thème « Données personnelles ») : analyser les paramètres de confidentialité des réseaux sociaux, créer une charte numérique de classe
+- <strong>NSI Première</strong> : chiffrement symétrique/asymétrique, signature numérique, certificats SSL
+- <strong>EMC</strong> : débat sur le cyberharcèlement, la liberté d'expression en ligne, les deepfakes</p>
+<p><strong>Activités recommandées :</strong>
+1. Analyser collectivement 3 emails (1 légitime, 1 phishing évident, 1 phishing sophistiqué)
+2. Simuler une attaque ransomware sur un dossier factice
+3. Calculer le temps nécessaire pour casser un mot de passe de 6 vs 12 caractères
+4. Rédiger une charte RGPD simplifiée pour la classe</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Aborder la cybersécurité avec des exemples concrets tirés de la vie scolaire (mot de passe Pronote, phishing sur la messagerie académique, données personnelles sur les réseaux sociaux). Insister sur le rôle de l'enseignant comme premier rempart contre les cybermenaces en milieu scolaire. Utiliser des serious games comme « CyberEngage » ou « HackApp » pour sensibiliser sans anxiété.</p>
+<p><strong>Prolongement :</strong> Les étudiants peuvent explorer la cryptographie moderne (RSA, AES) et la messagerie chiffrée (Signal, ProtonMail). Proposer une activité complémentaire : implémenter un chiffrement par décalage (César) en Python, puis un chiffrement par substitution, et enfin discuter des limites de ces méthodes face à l'analyse fréquentielle.</p>
+<hr />
+<h2>Bibliographie</h2>
+<ul>
+<li>Stallings &amp; Brown — <em>Computer Security: Principles and Practice</em> (4th ed.)  </li>
+<li>ANSSI — <em>Guide de sélection des algorithmes de chiffrement</em> (ssi.gouv.fr)  </li>
+<li>CNIL — <em>Protéger les données personnelles des élèves</em> (cnil.fr)  </li>
+<li>RGPD — Règlement (UE) 2016/679 du Parlement européen (eur-lex.europa.eu)  </li>
+<li>Hadopi / Arcom — <em>Guide du droit d'auteur pour les enseignants</em>  </li>
+<li>MIT — <em>Cybersecurity for Everyone</em> (cours en ligne)</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

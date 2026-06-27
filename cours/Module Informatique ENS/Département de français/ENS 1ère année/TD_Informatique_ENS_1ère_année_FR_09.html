@@ -1,0 +1,535 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD Informatique — ENS 1ère année — Séance 09 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TD Informatique — ENS 1ère année — Séance 09 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Créer un script `recherche.py` qui implémente deux algorithmes de recherche :</li><li>**Corrigé :**</li><li>**Question pédagogique :** Sur une liste de 1 000 000 éléments, combien de comparaisons au maximum pour chaque méthode ? *(Réponse : séquentielle = 1 000 000, dichotomique = log₂(1 000 000) ≈ 20)*</li><li>**Énoncé :** Créer un script `tri_selection.py` qui implémente le tri par sélection. Le programme doit :</li><li>**Rappel du principe :** À chaque itération, on cherche le minimum dans la partie non triée et on le place en début de cette partie.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_FR_09.pdf</code></p>
+</blockquote>
+<h1>TD Informatique — ENS 1ère année — Séance 09 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de cette séance de TD, l'étudiant est capable de :
+- Implémenter des algorithmes de recherche (séquentielle, dichotomique) en Python
+- Implémenter des algorithmes de tri simples (tri par sélection, tri à bulles)
+- Manipuler avancée des listes Python (list comprehension, slicing, filtrage)
+- Analyser la complexité algorithmique d'un code Python
+- Résoudre des problèmes algorithmiques en utilisant les structures de données vues en cours</p>
+<hr />
+<h2>Plan du TD</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil et rappels algorithmique</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Recherche</td>
+<td>20 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Tri par sélection</td>
+<td>20 min</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Pile et parenthésage</td>
+<td>20 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Listes et filtrage</td>
+<td>15 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Tri fusion</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Comparaison des algorithmes de recherche</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Recherche séquentielle&quot;</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">        </span><span class="n">S1</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S2</span><span class="p">[</span><span class="n">Parcourir</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">élément</span><span class="w"> </span><span class="n">par</span><span class="w"> </span><span class="n">élément</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S3</span><span class="p">{</span><span class="n">Trouvé</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">S3</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">S4</span><span class="p">[</span><span class="n">Retourner</span><span class="w"> </span><span class="n">indice</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S3</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">S5</span><span class="p">[</span><span class="n">Fin</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">tableau</span><span class="w"> </span><span class="o">?</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S5</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">S2</span>
+<span class="w">        </span><span class="n">S5</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">S6</span><span class="p">[</span><span class="n">Retourner</span><span class="w"> </span><span class="mi">-1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Recherche dichotomique&quot;</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">        </span><span class="n">D1</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">[</span><span class="n">Tableau</span><span class="w"> </span><span class="n">trié</span><span class="w"> </span><span class="o">?</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span><span class="p">[</span><span class="n">Regarder</span><span class="w"> </span><span class="n">au</span><span class="w"> </span><span class="n">milieu</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D4</span><span class="p">{</span><span class="n">Trouvé</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">D5</span><span class="p">[</span><span class="n">Retourner</span><span class="w"> </span><span class="n">indice</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">D6</span><span class="p">{</span><span class="n">Plus</span><span class="w"> </span><span class="n">grand</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">ou</span><span class="w"> </span><span class="n">plus</span><span class="w"> </span><span class="n">petit</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">D6</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Plus</span><span class="w"> </span><span class="n">grand</span><span class="o">|</span><span class="w"> </span><span class="n">D7</span><span class="p">[</span><span class="n">Chercher</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">droite</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D6</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Plus</span><span class="w"> </span><span class="n">petit</span><span class="o">|</span><span class="w"> </span><span class="n">D8</span><span class="p">[</span><span class="n">Chercher</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">gauche</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D7</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span>
+<span class="w">        </span><span class="n">D8</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">S6</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Comp</span><span class="p">[</span><span class="n">Comparaison</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Séquentielle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">O</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Dichotomique</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">O</span><span class="p">(</span><span class="n">log</span><span class="w"> </span><span class="n">n</span><span class="p">)]</span>
+<span class="w">    </span><span class="n">D5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Comp</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S4</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">S6</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Comp</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h2>Complexité des algorithmes de tri</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">graph</span><span class="w"> </span><span class="nx">LR</span>
+<span class="w">    </span><span class="nx">subgraph</span><span class="w"> </span><span class="s">&quot;Algorithmes de tri&quot;</span>
+<span class="w">        </span><span class="nx">TS</span><span class="p">[</span><span class="nx">Tri</span><span class="w"> </span><span class="nx">par</span><span class="w"> </span><span class="nx">sélection</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">O</span><span class="p">(</span><span class="nx">n²</span><span class="p">)]</span>
+<span class="w">        </span><span class="nx">TB</span><span class="p">[</span><span class="nx">Tri</span><span class="w"> </span><span class="nx">à</span><span class="w"> </span><span class="nx">bulles</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">O</span><span class="p">(</span><span class="nx">n²</span><span class="p">)]</span>
+<span class="w">        </span><span class="nx">TF</span><span class="p">[</span><span class="nx">Tri</span><span class="w"> </span><span class="nx">fusion</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">O</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="nx">n</span><span class="p">)]</span>
+<span class="w">        </span><span class="nx">TR</span><span class="p">[</span><span class="nx">Tri</span><span class="w"> </span><span class="nx">rapide</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">O</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="nx">n</span><span class="p">)]</span>
+<span class="w">    </span><span class="nx">end</span>
+
+<span class="w">    </span><span class="nx">subgraph</span><span class="w"> </span><span class="s">&quot;Performance (n = 1000)&quot;</span>
+<span class="w">        </span><span class="nx">TS</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">T1</span><span class="p">[</span><span class="s">&quot;~500 000 comparaisons&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">TB</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">T2</span><span class="p">[</span><span class="s">&quot;~500 000 comparaisons&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">TF</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">T3</span><span class="p">[</span><span class="s">&quot;~10 000 comparaisons&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">TR</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">T4</span><span class="p">[</span><span class="s">&quot;~10 000 comparaisons&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">end</span>
+
+<span class="w">    </span><span class="nx">TS</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;|</span><span class="s">&quot;Simple à implémenter&lt;br/&gt;Mais lent&quot;</span><span class="o">|</span><span class="w"> </span><span class="nx">Note1</span>
+<span class="w">    </span><span class="nx">TF</span><span class="w"> </span><span class="o">-</span><span class="p">.</span><span class="o">-&gt;|</span><span class="s">&quot;Plus complexe&lt;br/&gt;Mais rapide&quot;</span><span class="o">|</span><span class="w"> </span><span class="nx">Note2</span>
+
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">TS</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e74c3c</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="nx">fff</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">TB</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e74c3c</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="nx">fff</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">TF</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="mi">2</span><span class="nx">ecc71</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="nx">fff</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">TR</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="mi">2</span><span class="nx">ecc71</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="nx">fff</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">T1</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e67e22</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="mi">000</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">T2</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e67e22</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="mi">000</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">T3</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e67e22</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="mi">000</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">T4</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e67e22</span><span class="p">,</span><span class="nx">color</span><span class="p">:</span><span class="err">#</span><span class="mi">000</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 1 — Recherche séquentielle et dichotomique <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>recherche.py</code> qui implémente deux algorithmes de recherche :</p>
+<ol>
+<li><code>recherche_sequentielle(liste, valeur)</code> — parcourt la liste et retourne l'indice ou -1</li>
+<li><code>recherche_dichotomique(liste, valeur)</code> — recherche dans une liste triée (diviser pour régner)</li>
+</ol>
+<p>Pour chaque algorithme, compter le nombre de comparaisons effectuées et les comparer.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">recherche_sequentielle</span><span class="p">(</span><span class="n">liste</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recherche séquentielle. Retourne l&#39;indice ou -1.&quot;&quot;&quot;</span>
+    <span class="n">comparaisons</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+        <span class="n">comparaisons</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Séquentielle : </span><span class="si">{</span><span class="n">comparaisons</span><span class="si">}</span><span class="s2"> comparaison(s)&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Séquentielle : </span><span class="si">{</span><span class="n">comparaisons</span><span class="si">}</span><span class="s2"> comparaison(s)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">recherche_dichotomique</span><span class="p">(</span><span class="n">liste</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recherche dichotomique (liste triée). Retourne l&#39;indice ou -1.&quot;&quot;&quot;</span>
+    <span class="n">comparaisons</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">debut</span><span class="p">,</span> <span class="n">fin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">debut</span> <span class="o">&lt;=</span> <span class="n">fin</span><span class="p">:</span>
+        <span class="n">comparaisons</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">milieu</span> <span class="o">=</span> <span class="p">(</span><span class="n">debut</span> <span class="o">+</span> <span class="n">fin</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">liste</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span> <span class="o">==</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Dichotomique : </span><span class="si">{</span><span class="n">comparaisons</span><span class="si">}</span><span class="s2"> comparaison(s)&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">milieu</span>
+        <span class="k">elif</span> <span class="n">liste</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">valeur</span><span class="p">:</span>
+            <span class="n">debut</span> <span class="o">=</span> <span class="n">milieu</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fin</span> <span class="o">=</span> <span class="n">milieu</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Dichotomique : </span><span class="si">{</span><span class="n">comparaisons</span><span class="si">}</span><span class="s2"> comparaison(s)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># Test</span>
+<span class="n">donnees</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">101</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste : </span><span class="si">{</span><span class="n">donnees</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recherche de 67 :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Indice trouvé : </span><span class="si">{</span><span class="n">recherche_sequentielle</span><span class="p">(</span><span class="n">donnees</span><span class="p">,</span><span class="w"> </span><span class="mi">67</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Indice trouvé : </span><span class="si">{</span><span class="n">recherche_dichotomique</span><span class="p">(</span><span class="n">donnees</span><span class="p">,</span><span class="w"> </span><span class="mi">67</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Recherche de 3 (inexistant) :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Indice trouvé : </span><span class="si">{</span><span class="n">recherche_sequentielle</span><span class="p">(</span><span class="n">donnees</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Indice trouvé : </span><span class="si">{</span><span class="n">recherche_dichotomique</span><span class="p">(</span><span class="n">donnees</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Question pédagogique :</strong> Sur une liste de 1 000 000 éléments, combien de comparaisons au maximum pour chaque méthode ? <em>(Réponse : séquentielle = 1 000 000, dichotomique = log₂(1 000 000) ≈ 20)</em></p>
+<hr />
+<h2>Exercice 2 — Tri par sélection <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>tri_selection.py</code> qui implémente le tri par sélection. Le programme doit :
+1. Implémenter <code>tri_selection(liste)</code> qui trie la liste en place
+2. Afficher la liste avant et après le tri
+3. Compter le nombre d'échanges et de comparaisons
+4. Tester sur une liste générée aléatoirement de 10 entiers</p>
+<p><strong>Rappel du principe :</strong> À chaque itération, on cherche le minimum dans la partie non triée et on le place en début de cette partie.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">tri_selection</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tri par sélection. Retourne le nombre d&#39;échanges et comparaisons.&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+    <span class="n">echanges</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">comparaisons</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">min_idx</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">comparaisons</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">liste</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">liste</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]:</span>
+                <span class="n">min_idx</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="k">if</span> <span class="n">min_idx</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
+            <span class="n">liste</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">liste</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">liste</span><span class="p">[</span><span class="n">min_idx</span><span class="p">],</span> <span class="n">liste</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">echanges</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">echanges</span><span class="p">,</span> <span class="n">comparaisons</span>
+
+<span class="c1"># Test</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste originale : </span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ech</span><span class="p">,</span> <span class="n">comp</span> <span class="o">=</span> <span class="n">tri_selection</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Liste triée      : </span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Échanges : </span><span class="si">{</span><span class="n">ech</span><span class="si">}</span><span class="s2">, Comparaisons : </span><span class="si">{</span><span class="n">comp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Complexité : O(n²) avec n = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span><span class="si">}</span><span class="s2"> → ~</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s2"> comparaisons&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Pile avec validation de parenthèses <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>parentheses.py</code> qui étend l'algorithme de validation de parenthèses vu en cours. Le programme doit :</p>
+<ol>
+<li>Implémenter une classe <code>Pile</code> avec les méthodes <code>empiler()</code>, <code>depiler()</code>, <code>est_vide()</code>, <code>taille()</code></li>
+<li>Utiliser cette classe pour valider des expressions avec <code>()</code>, <code>[]</code>, <code>{}</code></li>
+<li>En cas d'erreur, indiquer précisément où se trouve le problème (position du caractère)</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Pile</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Implémentation d&#39;une pile LIFO.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">empiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depiler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">sommet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">taille</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">valider_parentheses</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Valide le parenthésage et retourne (valide, erreur_position, message).&quot;&quot;&quot;</span>
+    <span class="n">correspondance</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;)&quot;</span><span class="p">:</span> <span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;]&quot;</span><span class="p">:</span> <span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="s2">&quot;}&quot;</span><span class="p">:</span> <span class="s2">&quot;{&quot;</span><span class="p">}</span>
+    <span class="n">ouvrantes</span> <span class="o">=</span> <span class="s2">&quot;([{&quot;</span>
+    <span class="n">fermantes</span> <span class="o">=</span> <span class="s2">&quot;)]}&quot;</span>
+    <span class="n">pile</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">ouvrantes</span><span class="p">:</span>
+            <span class="n">pile</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">fermantes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pile</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+                <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Parenthèse fermante &#39;</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">&#39; sans ouvrante à la position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">sommet</span> <span class="o">=</span> <span class="n">pile</span><span class="o">.</span><span class="n">depiler</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">sommet</span> <span class="o">!=</span> <span class="n">correspondance</span><span class="p">[</span><span class="n">char</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Non concordance : &#39;</span><span class="si">{</span><span class="n">sommet</span><span class="si">}</span><span class="s2">&#39; ouvert mais &#39;</span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s2">&#39; fermé à la position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pile</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Il manque </span><span class="si">{</span><span class="n">pile</span><span class="o">.</span><span class="n">taille</span><span class="p">()</span><span class="si">}</span><span class="s2"> parenthèse(s) fermante(s)&quot;</span>
+
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expression correcte&quot;</span>
+
+<span class="c1"># Tests</span>
+<span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;(3 + 2) × [5 - {1 + 2}]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(3 + 2] × [5 - {1 + 2})&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;((1 + 2) × 3)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;({[)]}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(((</span><span class="si">{}</span><span class="s2">))&quot;</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">expressions</span><span class="p">:</span>
+    <span class="n">valide</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">valider_parentheses</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="n">etat</span> <span class="o">=</span> <span class="s2">&quot;✓&quot;</span> <span class="k">if</span> <span class="n">valide</span> <span class="k">else</span> <span class="s2">&quot;✗&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">etat</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">expr</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="si">:</span><span class="s2">50s</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Algorithmes sur les listes (filtrage et transformation) <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>filtrage.py</code> qui, à partir d'une liste de notes aléatoires (20 notes entre 0 et 20) :</p>
+<ol>
+<li>Calcule la moyenne, la médiane et l'écart-type manuellement (sans statistics module)</li>
+<li>Filtre pour obtenir les notes ≥ 10 (admis)</li>
+<li>Crée une nouvelle liste avec les notes augmentées de 1 point (bonus, plafonné à 20)</li>
+<li>Utilise des listes en compréhension (list comprehension)</li>
+</ol>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Notes originales : </span><span class="si">{</span><span class="n">notes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Statistiques manuelles</span>
+<span class="n">moyenne</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+<span class="n">notes_triees</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes_triees</span><span class="p">)</span>
+<span class="n">mediane</span> <span class="o">=</span> <span class="p">(</span><span class="n">notes_triees</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">notes_triees</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">notes_triees</span><span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">variance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">moyenne</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">ecart_type</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne  : </span><span class="si">{</span><span class="n">moyenne</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Médiane  : </span><span class="si">{</span><span class="n">mediane</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Écart-type : </span><span class="si">{</span><span class="n">ecart_type</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Notes ≥ 10</span>
+<span class="n">admis</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">notes</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Admis (≥10) : </span><span class="si">{</span><span class="n">admis</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">admis</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3. Bonus plafonné</span>
+<span class="n">bonus</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">notes</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Avec bonus : </span><span class="si">{</span><span class="n">bonus</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Algorithme de tri fusion (récursif) <em>(10 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>tri_fusion.py</code> qui implémente le tri fusion (merge sort), un algorithme récursif de complexité O(n log n).</p>
+<p><strong>Principe :</strong> diviser la liste en deux, trier chaque moitié récursivement, puis fusionner les deux moitiés triées.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">tri_fusion</span><span class="p">(</span><span class="n">liste</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tri fusion récursif.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">liste</span>
+
+    <span class="n">milieu</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">gauche</span> <span class="o">=</span> <span class="n">tri_fusion</span><span class="p">(</span><span class="n">liste</span><span class="p">[:</span><span class="n">milieu</span><span class="p">])</span>
+    <span class="n">droite</span> <span class="o">=</span> <span class="n">tri_fusion</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="n">milieu</span><span class="p">:])</span>
+
+    <span class="k">return</span> <span class="n">fusionner</span><span class="p">(</span><span class="n">gauche</span><span class="p">,</span> <span class="n">droite</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fusionner</span><span class="p">(</span><span class="n">gauche</span><span class="p">,</span> <span class="n">droite</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fusionne deux listes triées.&quot;&quot;&quot;</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">gauche</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">droite</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">gauche</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">droite</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gauche</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">droite</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">resultat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">gauche</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+    <span class="n">resultat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">droite</span><span class="p">[</span><span class="n">j</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">resultat</span>
+
+<span class="c1"># Test</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Originale : </span><span class="si">{</span><span class="n">liste</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">triee</span> <span class="o">=</span> <span class="n">tri_fusion</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Triée      : </span><span class="si">{</span><span class="n">triee</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Complexité : O(n log n) avec n = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>La recherche dichotomique nécessite que la liste soit :</strong>
+   a) Non triée  b) Triée ✓  c) De taille fixe</p>
+</li>
+<li>
+<p><strong>La complexité du tri par sélection est :</strong>
+   a) O(n)  b) O(n log n)  c) O(n²) ✓</p>
+</li>
+<li>
+<p><strong>En Python, la syntaxe <code>[x*2 for x in range(5)]</code> est :</strong>
+   a) Une boucle for  b) Une liste en compréhension ✓  c) Une fonction lambda</p>
+</li>
+<li>
+<p><strong>Le tri fusion a une complexité de :</strong>
+   a) O(n²)  b) O(n log n) ✓  c) O(log n)</p>
+</li>
+<li>
+<p><strong>Quelle méthode de pile retourne l'élément du dessus sans le retirer ?</strong>
+   a) <code>empiler()</code>  b) <code>depiler()</code>  c) <code>sommet()</code> ✓</p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recherche séquentielle</td>
+<td>15 %</td>
+<td>Algorithme incorrect</td>
+<td>Algorithme partiel</td>
+<td>Algorithme correct</td>
+</tr>
+<tr>
+<td>Recherche dichotomique</td>
+<td>15 %</td>
+<td>Algorithme incorrect</td>
+<td>Algorithme partiel</td>
+<td>Algorithme correct</td>
+</tr>
+<tr>
+<td>Tri par sélection</td>
+<td>20 %</td>
+<td>Tri incorrect</td>
+<td>Tri partiellement correct</td>
+<td>Tri correct</td>
+</tr>
+<tr>
+<td>Pile — parenthésage</td>
+<td>20 %</td>
+<td>Algorithme incorrect</td>
+<td>Algorithme partiel</td>
+<td>Algorithme correct</td>
+</tr>
+<tr>
+<td>Tri fusion</td>
+<td>20 %</td>
+<td>Tri incorrect</td>
+<td>Tri partiellement correct</td>
+<td>Tri correct</td>
+</tr>
+<tr>
+<td>Notion de complexité</td>
+<td>10 %</td>
+<td>Complexité non identifiée</td>
+<td>1-2 complexités correctes</td>
+<td>3+ complexités correctes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Ce TD montre comment les concepts d'algorithmique (recherche, tri) et structures de données (pile) vus en cours s'implémentent concrètement en Python. Ces algorithmes sont au programme de NSI Terminale. La comparaison des complexités (O(n) vs O(log n) vs O(n²) vs O(n log n)) est un objectif clé du programme. En classe de Première NSI, on peut commencer par la recherche séquentielle et le tri par sélection avant d'aborder la dichotomique et le tri fusion.</p>
+<h3>Conseil pour l'enseignant formateur</h3>
+<p>L'exercice 1 est fondamental : faire exécuter mentalement les deux algorithmes sur un petit jeu de données avant de les coder. Pour l'exercice 2, demander aux étudiants de tracer l'évolution du tableau à chaque itération sur une feuille. L'exercice 3 (parenthésage) est un excellent exemple de l'utilité des piles. L'exercice 5 (tri fusion) introduit la récursivité : la maîtriser est difficile mais cruciale pour la suite du programme.</p>
+<h3>Prolongement</h3>
+<p>Proposer un défi : implémenter le tri rapide (quicksort) en Python et comparer ses performances avec le tri fusion sur une liste de 10 000 éléments en utilisant le module <code>time</code>. Créer un tableau comparatif des temps d'exécution pour différents algorithmes de tri et différentes tailles de données.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

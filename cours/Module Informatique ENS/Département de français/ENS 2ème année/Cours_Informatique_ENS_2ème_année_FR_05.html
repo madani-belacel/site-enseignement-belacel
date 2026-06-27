@@ -1,0 +1,400 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 2ème année — Séance 05 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 2ème année — Séance 05 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 2ème année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</li><li>**Public visé :** Étudiants ENS 2ème année — Département Français</li><li>**Compétences pré-requises :** Algorithmique (séance 04), POO Python (séances 02-03)</li><li>**Objectifs transversaux :**</li><li>**Mode d'évaluation :** TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_2ème_année_FR_05.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 2ème année — Séance 05 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 2ème année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</p>
+<p><strong>Public visé :</strong> Étudiants ENS 2ème année — Département Français</p>
+<p><strong>Compétences pré-requises :</strong> Algorithmique (séance 04), POO Python (séances 02-03)</p>
+<p><strong>Objectifs transversaux :</strong>
+- Appliquer la programmation orientée objet (classes, héritage, encapsulation) en Python
+- Concevoir des algorithmes avancés (tri, recherche, récursivité) et estimer leur complexité
+- Modéliser des données avec le modèle relationnel et requêtes SQL de base
+- Comprendre l'architecture Web (HTML, CSS, JavaScript intro, HTTP)
+- Utiliser Git et méthodes de travail collaboratif (branches, merge)
+- Préparer l'enseignement de l'informatique au collège/lycée (Scratch, Python pédagogique)</p>
+<p><strong>Mode d'évaluation :</strong> TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</p>
+<p><strong>Bibliographie :</strong> Connolly &amp; Begg — <em>Database Systems</em> ; Beaulieu — <em>Learning SQL</em> (O'Reilly)</p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Expliquer le modèle relationnel (tables, lignes, colonnes)
+- Créer une table avec SQLite
+- Écrire des requêtes SELECT, WHERE, JOIN
+- Insérer et mettre à jour des données
+- Comprendre la notion de clé primaire et étrangère</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Pourquoi une base de données ?</li>
+<li>Modèle relationnel</li>
+<li>SQLite et Python</li>
+<li>CREATE TABLE</li>
+<li>INSERT, SELECT, WHERE</li>
+<li>Mise à jour et suppression</li>
+<li>Clés étrangères et JOIN</li>
+<li>Exemple : gestion de notes</li>
+</ol>
+<hr />
+<h2>1. Pourquoi une base de données ? <em>(10 min)</em></h2>
+<p><strong>Limites d'un fichier CSV :</strong>
+- Pas de structure stricte
+- Pas de validation (notes &gt; 20 possibles)
+- Difficile de faire des liens entre tables
+- Pas de concurrence (deux personnes ne peuvent pas écrire en même temps)</p>
+<p><strong>Base de données relationnelle :</strong>
+- Structure rigide (schéma)
+- Contraintes (clés, types, valeurs)
+- Requêtes puissantes (langage SQL)
+- Intégrité des données</p>
+<hr />
+<h2>2. Modèle relationnel <em>(10 min)</em></h2>
+<p><strong>Table :</strong> ensemble de lignes (enregistrements) et colonnes (champs).</p>
+<div class="codehilite"><pre><span></span><code>Table Eleves
+┌────┬──────────┬─────────┬─────────┐
+│ id │ nom      │ prenom  │ groupe  │
+├────┼──────────┼─────────┼─────────┤
+│ 1  │ Belacel  │ Ali     │ ENS2-A  │
+│ 2  │ Benali   │ Sara    │ ENS2-A  │
+│ 3  │ Cherif   │ Mohamed │ ENS2-B  │
+└────┴──────────┴─────────┴─────────┘
+</code></pre></div>
+
+<p><strong>Vocabulaire :</strong>
+- <strong>Clé primaire</strong> : colonne (ou combinaison) qui identifie chaque ligne de façon unique
+- <strong>Clé étrangère</strong> : colonne qui référence la clé primaire d'une autre table</p>
+<div class="codehilite"><pre><span></span><code>erDiagram
+    ELEVES {
+        int id PK
+        string nom
+        string prenom
+        string groupe
+    }
+    MATIERES {
+        int id PK
+        string nom
+        float coefficient
+    }
+    NOTES {
+        int id PK
+        int eleve_id FK
+        int matiere_id FK
+        float valeur
+    }
+    ELEVES ||--o{ NOTES : possede
+    MATIERES ||--o{ NOTES : concerne
+</code></pre></div>
+
+<hr />
+<h2>3. SQLite et Python <em>(10 min)</em></h2>
+<p>SQLite est une base de données légère, intégrée à Python (pas d'installation serveur).</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="c1"># Connexion (crée le fichier .db)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;ecole.db&quot;</span><span class="p">)</span>
+<span class="n">curseur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Exécuter une requête</span>
+<span class="n">curseur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS eleves (</span>
+<span class="s2">        id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s2">        nom TEXT NOT NULL,</span>
+<span class="s2">        prenom TEXT NOT NULL,</span>
+<span class="s2">        groupe TEXT</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>  <span class="c1"># Valider</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>   <span class="c1"># Fermer</span>
+</code></pre></div>
+
+<hr />
+<h2>4. CREATE TABLE <em>(10 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;ecole.db&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS matieres (</span>
+<span class="s2">        id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s2">        nom TEXT NOT NULL,</span>
+<span class="s2">        coefficient REAL DEFAULT 1.0</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS notes (</span>
+<span class="s2">        id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s2">        eleve_id INTEGER NOT NULL,</span>
+<span class="s2">        matiere_id INTEGER NOT NULL,</span>
+<span class="s2">        valeur REAL NOT NULL CHECK(valeur &gt;= 0 AND valeur &lt;= 20),</span>
+<span class="s2">        FOREIGN KEY (eleve_id) REFERENCES eleves(id),</span>
+<span class="s2">        FOREIGN KEY (matiere_id) REFERENCES matieres(id)</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</code></pre></div>
+
+<hr />
+<h2>5. INSERT, SELECT, WHERE <em>(15 min)</em></h2>
+<h3>INSERT</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO eleves (nom, prenom, groupe) VALUES (?, ?, ?)&quot;</span><span class="p">,</span>
+          <span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;ENS2-A&quot;</span><span class="p">))</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO matieres (nom, coefficient) VALUES (?, ?)&quot;</span><span class="p">,</span>
+          <span class="p">(</span><span class="s2">&quot;Informatique&quot;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">))</span>
+</code></pre></div>
+
+<h3>SELECT</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Tous les élèves</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM eleves&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ligne</span><span class="p">)</span>
+
+<span class="c1"># Avec condition</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM eleves WHERE groupe = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;ENS2-A&quot;</span><span class="p">,))</span>
+</code></pre></div>
+
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Client</span><span class="w"> </span><span class="n">Python</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Connexion</span><span class="w"> </span><span class="n">SQLite</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Curseur</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">execute</span><span class="w"> </span><span class="n">SQL</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">{</span><span class="n">Type</span><span class="w"> </span><span class="n">requete</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">SELECT</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">fetchall</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fetchone</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">INSERT</span><span class="o">/</span><span class="n">UPDATE</span><span class="o">/</span><span class="n">DELETE</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">commit</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Traitement</span><span class="w"> </span><span class="n">resultats</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">close</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>6. Mise à jour et suppression <em>(10 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># UPDATE</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE eleves SET groupe = ? WHERE nom = ?&quot;</span><span class="p">,</span>
+          <span class="p">(</span><span class="s2">&quot;ENS2-B&quot;</span><span class="p">,</span> <span class="s2">&quot;Belacel&quot;</span><span class="p">))</span>
+
+<span class="c1"># DELETE</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM notes WHERE valeur &lt; ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,))</span>  <span class="c1"># Aucun effet</span>
+
+<span class="c1"># Attention : DELETE sans WHERE supprime TOUT</span>
+</code></pre></div>
+
+<hr />
+<h2>7. Clés étrangères et JOIN <em>(15 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Insérer une note</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    INSERT INTO notes (eleve_id, matiere_id, valeur)</span>
+<span class="s2">    VALUES (?, ?, ?)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="c1"># Jointure : notes + noms des élèves + noms des matières</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT e.nom, e.prenom, m.nom, n.valeur</span>
+<span class="s2">    FROM notes n</span>
+<span class="s2">    JOIN eleves e ON n.eleve_id = e.id</span>
+<span class="s2">    JOIN matieres m ON n.matiere_id = m.id</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Résultat :</p>
+<div class="codehilite"><pre><span></span><code>Belacel Ali — Informatique : 15.0
+</code></pre></div>
+
+<hr />
+<h2>8. Exemple complet : relevé de notes <em>(15 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;ecole.db&quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Création des tables</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS eleves (</span>
+<span class="s2">        id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s2">        nom TEXT, prenom TEXT, groupe TEXT</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS matieres (</span>
+<span class="s2">        id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s2">        nom TEXT, coefficient REAL</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS notes (</span>
+<span class="s2">        id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s2">        eleve_id INTEGER, matiere_id INTEGER, valeur REAL,</span>
+<span class="s2">        FOREIGN KEY(eleve_id) REFERENCES eleves(id),</span>
+<span class="s2">        FOREIGN KEY(matiere_id) REFERENCES matieres(id)</span>
+<span class="s2">    )</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Insertion des données</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO eleves VALUES (1, &#39;Ali&#39;, &#39;Belacel&#39;, &#39;ENS2-A&#39;)&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO matieres VALUES (1, &#39;Informatique&#39;, 3.0)&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO matieres VALUES (2, &#39;Français&#39;, 2.0)&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO notes VALUES (NULL, 1, 1, 15)&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO notes VALUES (NULL, 1, 2, 12)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Relevé de notes avec moyenne</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT e.nom, e.prenom, m.nom, n.valeur, m.coefficient</span>
+<span class="s2">    FROM notes n</span>
+<span class="s2">    JOIN eleves e ON n.eleve_id = e.id</span>
+<span class="s2">    JOIN matieres m ON n.matiere_id = m.id</span>
+<span class="s2">    WHERE e.id = 1</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Relevé de notes ===&quot;</span><span class="p">)</span>
+<span class="n">total_pondere</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_coef</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> (coef </span><span class="si">{</span><span class="n">ligne</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">total_pondere</span> <span class="o">+=</span> <span class="n">ligne</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">ligne</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">total_coef</span> <span class="o">+=</span> <span class="n">ligne</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">moyenne</span> <span class="o">=</span> <span class="n">total_pondere</span> <span class="o">/</span> <span class="n">total_coef</span> <span class="k">if</span> <span class="n">total_coef</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne générale : </span><span class="si">{</span><span class="n">moyenne</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+<hr />
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Quel langage permet d'interroger une base de données relationnelle ?</strong>
+   a) HTML  b) SQL ✓  c) Python</p>
+</li>
+<li>
+<p><strong>Une clé primaire doit être :</strong>
+   a) Unique et non nulle ✓  b) Optionnelle  c) Toujours de type texte</p>
+</li>
+<li>
+<p><strong>Quelle clause SQL filtre les résultats ?</strong>
+   a) SELECT  b) WHERE ✓  c) JOIN</p>
+</li>
+<li>
+<p><strong>Que fait <code>DELETE FROM eleves</code> ?</strong>
+   a) Supprime la table  b) Supprime toutes les lignes ✓  c) Supprime une colonne</p>
+</li>
+<li>
+<p><strong>Une jointure (JOIN) permet de :</strong>
+   a) Combiner deux tables ✓  b) Trier les résultats  c) Créer une nouvelle base</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion</h2>
+<p>Les bases de données relationnelles et SQL sont au cœur de la gestion des données structurées. SQLite, intégré à Python, permet de prototyper rapidement une solution complète (création, insertion, interrogation, jointure) sans installation serveur. Les concepts de clé primaire, clé étrangère et jointure sont universels et se retrouvent dans tous les SGBD (MySQL, PostgreSQL, Oracle).</p>
+<p><strong>Prochain cours :</strong> Développement Web — HTML, CSS et JavaScript.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> Les bases de données peuvent être enseignées au collège et au lycée sans ordinateur, par des activités débranchées :
+- <strong>Fichier papier</strong> : chaque élève reçoit une fiche (table) avec des champs à remplir (nom, prénom, date de naissance). On simule une requête SELECT en triant les fiches.
+- <strong>Jeu de cartes</strong> : des cartes "élève" et des cartes "note" sont reliées par un trombone (clé étrangère). Les élèves doivent apparier les cartes (JOIN).
+- <strong>En SNT Seconde</strong> (thème "Données structurées") : faire réfléchir les élèves sur la différence entre un fichier texte non structuré et un tableau structuré (feuille de calcul). Le parallèle avec un tableur (Excel, LibreOffice Calc) est immédiat.
+- <strong>En NSI Première</strong> : SQL fait partie intégrante du programme. L'exemple du relevé de notes (section 8) peut être directement repris en classe.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Demander aux étudiants ENS de préparer une fiche pédagogique de 45 minutes sur les bases de données pour une classe de 4e ou de Seconde, en intégrant une activité débranchée et une activité numérique. Cela favorise la transposition didactique, compétence clé du métier d'enseignant.</p>
+<p><strong>Prolongement :</strong> Les étudiants peuvent créer une mini-application de gestion de bibliothèque (livres, auteurs, emprunts) avec SQLite et Python, et réfléchir aux requêtes utiles pour un enseignant (gestion des notes, des absences, des groupes).</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

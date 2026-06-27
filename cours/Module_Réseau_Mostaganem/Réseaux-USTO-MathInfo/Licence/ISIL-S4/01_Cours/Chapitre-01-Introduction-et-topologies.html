@@ -1,0 +1,849 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 01 — Introduction aux réseaux et topologies — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 01 — Introduction aux réseaux et topologies</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Composants essentiels :**</li><li>- **Définition** : Capacité maximale théorique d'un lien, exprimée en **bits par seconde (bps)**.</li><li>- **Définition** : Quantité de données **effectivement transmises** par unité de temps.</li><li>- **Définition** : Temps nécessaire pour qu'un bit traverse le réseau (de la source à la destination).</li><li>- **Délai de propagation** : temps de parcours du signal dans le média</li><li>- **Délai de transmission** : temps pour placer tous les bits sur le lien</li><li>- **Délai de traitement** : temps de traitement dans les équipements</li><li>- **Délai de mise en file (queuing)** : attente dans les buffers</li><li>**RTT (Round-Trip Time)** : temps aller-retour d'un paquet (mesuré par `ping`).</li><li>- **Définition** : Variation de la latence entre paquets consécutifs.</li></ul></div>
+    <h1>Chapitre 01 — Introduction aux réseaux et topologies</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>UEF422 — Réseaux</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM (+ 2 h TD associé)</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>01 / 08</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[KR] Ch. 1 ; [FO] Ch. 1 ; [TA] Ch. 1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs du chapitre</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li>Définir un <strong>réseau informatique</strong> et en identifier les composants (hôtes, liens, équipements).</li>
+<li>Distinguer les types de réseaux : <strong>PAN, LAN, MAN, WAN</strong>.</li>
+<li>Décrire et comparer les <strong>topologies</strong> physiques et logiques (bus, étoile, anneau, maillée).</li>
+<li>Expliquer les <strong>métriques de performance</strong> : débit, bande passante, latence, gigue, perte de paquets.</li>
+<li>Situer le rôle de l'<strong>Internet</strong> et des <strong>FAI</strong> (Fournisseurs d'Accès Internet) dans l'architecture globale.</li>
+</ol>
+<hr />
+<h2>Plan du chapitre</h2>
+<ol>
+<li>Qu'est-ce qu'un réseau informatique ?</li>
+<li>Types de réseaux</li>
+<li>Topologies physiques et logiques</li>
+<li>Métriques de performance</li>
+<li>Architecture Internet et modèle de service</li>
+<li>Exemples concrets</li>
+<li>Questions de révision et QCM</li>
+</ol>
+<hr />
+<h2>1. Qu'est-ce qu'un réseau informatique ?</h2>
+<h3>1.1 Définition</h3>
+<p>Un <strong>réseau informatique</strong> est un ensemble d'<strong>équipements informatiques</strong> (appelés <strong>nœuds</strong> ou <strong>hôtes</strong>) interconnectés par des <strong>liens de communication</strong>, permettant l'<strong>échange de données</strong> sous forme de messages numériques.</p>
+<div class="codehilite"><pre><span></span><code>┌─────────┐         ┌─────────┐         ┌─────────┐
+│  Hôte A │─────────│ Switch  │─────────│  Hôte B │
+│ (PC)    │  Lien   │         │  Lien   │ (Serveur│
+└─────────┘         └─────────┘         └─────────┘
+</code></pre></div>
+
+<p><strong>Composants essentiels :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hôte (Host)</strong></td>
+<td>Émetteur ou récepteur de données</td>
+<td>PC, smartphone, serveur</td>
+</tr>
+<tr>
+<td><strong>Lien (Link)</strong></td>
+<td>Support de transmission</td>
+<td>Câble cuivre, fibre, onde radio</td>
+</tr>
+<tr>
+<td><strong>Équipement intermédiaire</strong></td>
+<td>Relais, commutation, routage</td>
+<td>Switch, routeur, point d'accès Wi-Fi</td>
+</tr>
+<tr>
+<td><strong>Protocole</strong></td>
+<td>Règles de communication</td>
+<td>TCP/IP, Ethernet, HTTP</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Pourquoi mettre en réseau ?</h3>
+<table>
+<thead>
+<tr>
+<th>Objectif</th>
+<th>Bénéfice</th>
+<th>Exemple Université de Mostaganem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Partage de ressources</strong></td>
+<td>Imprimante, stockage centralisé</td>
+<td>Salles informatiques MathInfo</td>
+</tr>
+<tr>
+<td><strong>Communication</strong></td>
+<td>Email, messagerie, visioconférence</td>
+<td>Plateforme pédagogique</td>
+</tr>
+<tr>
+<td><strong>Accès à l'information</strong></td>
+<td>Bases de données, bibliothèque en ligne</td>
+<td>Portail étudiant Université de Mostaganem</td>
+</tr>
+<tr>
+<td><strong>Fiabilité</strong></td>
+<td>Redondance, sauvegarde distante</td>
+<td>Serveurs miroirs</td>
+</tr>
+<tr>
+<td><strong>Évolutivité</strong></td>
+<td>Ajout de nœuds sans refonte totale</td>
+<td>Extension d'un laboratoire</td>
+</tr>
+</tbody>
+</table>
+<h3>1.3 Historique (rappels)</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Événement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1969</td>
+<td>ARPANET — premier réseau à commutation de paquets (États-Unis)</td>
+</tr>
+<tr>
+<td>1974</td>
+<td>Proposition du protocole TCP/IP (Cerf &amp; Kahn)</td>
+</tr>
+<tr>
+<td>1983</td>
+<td>ARPANET adopte TCP/IP comme standard</td>
+</tr>
+<tr>
+<td>1989</td>
+<td>WWW inventé par Tim Berners-Lee au CERN</td>
+</tr>
+<tr>
+<td>1990s</td>
+<td>Explosion commerciale d'Internet</td>
+</tr>
+<tr>
+<td>2000s–aujourd'hui</td>
+<td>Mobile, cloud, IoT, très haut débit</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Chronologie des réseaux" src="../../../Ressources-Communes/Images-Schemas/Topologies/histoire-reseaux-timeline.png" /></p>
+<hr />
+<h2>2. Types de réseaux</h2>
+<p>Les réseaux se classent généralement par <strong>étendue géographique</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Sigle</th>
+<th>Portée</th>
+<th>Débit typique</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Personal Area Network</strong></td>
+<td>PAN</td>
+<td>~10 m</td>
+<td>Bluetooth, USB</td>
+<td>Montre ↔ smartphone</td>
+</tr>
+<tr>
+<td><strong>Local Area Network</strong></td>
+<td>LAN</td>
+<td>Bâtiment / campus</td>
+<td>100 Mbps – 10 Gbps</td>
+<td>Réseau faculté MathInfo</td>
+</tr>
+<tr>
+<td><strong>Metropolitan Area Network</strong></td>
+<td>MAN</td>
+<td>Ville</td>
+<td>1 – 10 Gbps</td>
+<td>Réseau métropolitain d'Oran</td>
+</tr>
+<tr>
+<td><strong>Wide Area Network</strong></td>
+<td>WAN</td>
+<td>Pays / monde</td>
+<td>Variable (Mbps – Tbps)</td>
+<td>Internet, liaisons opérateurs</td>
+</tr>
+</tbody>
+</table>
+<h3>2.1 LAN — Local Area Network</h3>
+<ul>
+<li>Couvre une <strong>zone géographique limitée</strong> (bureau, campus universitaire).</li>
+<li>Propriété généralement <strong>privée</strong> (entreprise, université).</li>
+<li>Technologies courantes : <strong>Ethernet</strong> (cuivre/fibre), <strong>Wi-Fi</strong> (IEEE 802.11).</li>
+</ul>
+<h3>2.2 WAN — Wide Area Network</h3>
+<ul>
+<li>Interconnecte des LAN <strong>distants</strong> sur de longues distances.</li>
+<li>Utilise des liens d'<strong>opérateurs télécom</strong> (fibre longue distance, MPLS, satellite).</li>
+<li><strong>Internet</strong> est le plus grand WAN public au monde.</li>
+</ul>
+<h3>2.3 Intranet, Extranet, Internet</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Description</th>
+<th>Accès</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intranet</strong></td>
+<td>Réseau privé interne utilisant les protocoles Internet</td>
+<td>Employés / étudiants uniquement</td>
+</tr>
+<tr>
+<td><strong>Extranet</strong></td>
+<td>Extension de l'intranet à des partenaires externes</td>
+<td>Partenaires autorisés</td>
+</tr>
+<tr>
+<td><strong>Internet</strong></td>
+<td>Réseau public mondial interconnecté</td>
+<td>Public (avec FAI)</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">LAN_Université</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">Mostaganem</span><span class="p">[</span><span class="s">&quot;LAN Université de Mostaganem — Faculté MathInfo&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">PC1</span><span class="p">[</span><span class="n">PC</span><span class="w"> </span><span class="n">Étudiant</span><span class="p">]</span>
+<span class="w">        </span><span class="n">PC2</span><span class="p">[</span><span class="n">PC</span><span class="w"> </span><span class="n">Enseignant</span><span class="p">]</span>
+<span class="w">        </span><span class="n">SW</span><span class="p">[</span><span class="n">Switch</span><span class="p">]</span>
+<span class="w">        </span><span class="n">PC1</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">SW</span>
+<span class="w">        </span><span class="n">PC2</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">SW</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">WAN</span><span class="p">[</span><span class="s">&quot;WAN — Internet&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R</span><span class="p">[</span><span class="n">Routeur</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Box</span><span class="w"> </span><span class="n">FAI</span><span class="p">]</span>
+<span class="w">        </span><span class="n">ISP</span><span class="p">[</span><span class="n">Fournisseur</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">Accès</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">SW</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">R</span>
+<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">ISP</span>
+<span class="w">    </span><span class="n">ISP</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">CLOUD</span><span class="p">[</span><span class="n">Services</span><span class="w"> </span><span class="n">Cloud</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>3. Topologies physiques et logiques</h2>
+<h3>3.1 Distinction physique / logique</h3>
+<table>
+<thead>
+<tr>
+<th>Topologie</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Physique</strong></td>
+<td>Disposition réelle des câbles et équipements</td>
+</tr>
+<tr>
+<td><strong>Logique</strong></td>
+<td>Chemin que suivent les données (peut différer de la physique)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Topologies physiques classiques</h3>
+<h4>a) Topologie Bus</h4>
+<div class="codehilite"><pre><span></span><code>PC1 ─── PC2 ─── PC3 ─── PC4
+         │
+    ═════╧═════  ← câble coaxial (bus partagé)
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Avantage</th>
+<th>Inconvénient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple, peu de câble</td>
+<td><strong>Point unique de défaillance</strong> (câble principal)</td>
+</tr>
+<tr>
+<td>Facile à étendre</td>
+<td>Collisions si trafic élevé (half-duplex)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Historique</strong> : Utilisée avec Ethernet 10Base2/10Base5. <strong>Obsolète</strong> aujourd'hui.</p>
+</blockquote>
+<h4>b) Topologie Étoile (Star) ⭐ <strong>La plus courante</strong></h4>
+<div class="codehilite"><pre><span></span><code>        PC1
+         │
+PC2 ─── Switch ─── PC3
+         │
+        PC4
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Avantage</th>
+<th>Inconvénient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Panne d'un lien n'affecte qu'<strong>un seul hôte</strong></td>
+<td><strong>Point central</strong> (switch) critique</td>
+</tr>
+<tr>
+<td>Performances élevées (full-duplex)</td>
+<td>Plus de câblage</td>
+</tr>
+<tr>
+<td>Facile à administrer</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>C'est la topologie standard des <strong>LAN Ethernet modernes</strong>.</p>
+</blockquote>
+<h4>c) Topologie Anneau (Ring)</h4>
+<div class="codehilite"><pre><span></span><code>PC1 ── PC2
+ │       │
+PC4 ── PC3
+</code></pre></div>
+
+<ul>
+<li>Chaque nœud est connecté à <strong>deux voisins</strong> formant un cercle.</li>
+<li>Token Ring (IBM) : obsolète. <strong>FDDI</strong> (fibre) encore mentionné historiquement.</li>
+</ul>
+<h4>d) Topologie Maillée (Mesh)</h4>
+<div class="codehilite"><pre><span></span><code>PC1 ─────── PC2
+ │ ╲      ╱ │
+ │   ╲  ╱   │
+ │    ╳     │
+ │  ╱  ╲    │
+ │╱     ╲   │
+PC4 ─────── PC3
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Maillée totale</strong></td>
+<td>Chaque nœud connecté à tous les autres</td>
+<td>Coûteux ; réservé aux nœuds critiques</td>
+</tr>
+<tr>
+<td><strong>Maillée partielle</strong></td>
+<td>Plusieurs chemins redondants</td>
+<td><strong>Internet</strong>, réseaux opérateurs</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Comparaison des topologies" src="../../../Ressources-Communes/Images-Schemas/Topologies/topologies-bus-etoile-anneau-maille.png" /></p>
+<h3>3.3 Tableau comparatif des topologies</h3>
+<table>
+<thead>
+<tr>
+<th>Topologie</th>
+<th>Fiabilité</th>
+<th>Coût</th>
+<th>Scalabilité</th>
+<th>Usage actuel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bus</td>
+<td>Faible</td>
+<td>Faible</td>
+<td>Moyenne</td>
+<td>❌ Obsolète</td>
+</tr>
+<tr>
+<td>Étoile</td>
+<td>Bonne</td>
+<td>Moyen</td>
+<td>Excellente</td>
+<td>✅ LAN standard</td>
+</tr>
+<tr>
+<td>Anneau</td>
+<td>Moyenne</td>
+<td>Moyen</td>
+<td>Limitée</td>
+<td>⚠️ Rare</td>
+</tr>
+<tr>
+<td>Maillée</td>
+<td>Excellente</td>
+<td>Élevé</td>
+<td>Excellente</td>
+<td>✅ WAN / cœur réseau</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Métriques de performance</h2>
+<h3>4.1 Bande passante (Bandwidth)</h3>
+<ul>
+<li><strong>Définition</strong> : Capacité maximale théorique d'un lien, exprimée en <strong>bits par seconde (bps)</strong>.</li>
+<li>Exemples : 100 Mbps (Fast Ethernet), 1 Gbps (Gigabit Ethernet), 10 Gbps.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Unité</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Kbps</td>
+<td>10³ bits/s</td>
+</tr>
+<tr>
+<td>1 Mbps</td>
+<td>10⁶ bits/s</td>
+</tr>
+<tr>
+<td>1 Gbps</td>
+<td>10⁹ bits/s</td>
+</tr>
+<tr>
+<td>1 Tbps</td>
+<td>10¹² bits/s</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Attention</strong> : En informatique réseau, on utilise le <strong>bit</strong> (b minuscule), pas l'octet (B majuscule).
+100 Mbps = 100 × 10⁶ <strong>bits</strong>/s ≈ 12,5 Mo/s (octets/s).</p>
+</blockquote>
+<h3>4.2 Débit (Throughput)</h3>
+<ul>
+<li><strong>Définition</strong> : Quantité de données <strong>effectivement transmises</strong> par unité de temps.</li>
+<li>Le débit réel est <strong>toujours ≤ bande passante</strong> (overhead des en-têtes, collisions, congestion).</li>
+</ul>
+<p>$$\text{Débit utile} = \text{Bande passante} \times \text{Efficacité du protocole}$$</p>
+<h3>4.3 Latence (Delay / RTT)</h3>
+<ul>
+<li><strong>Définition</strong> : Temps nécessaire pour qu'un bit traverse le réseau (de la source à la destination).</li>
+<li>Composantes :</li>
+<li><strong>Délai de propagation</strong> : temps de parcours du signal dans le média</li>
+<li><strong>Délai de transmission</strong> : temps pour placer tous les bits sur le lien</li>
+<li><strong>Délai de traitement</strong> : temps de traitement dans les équipements</li>
+<li><strong>Délai de mise en file (queuing)</strong> : attente dans les buffers</li>
+</ul>
+<p>$$\text{Latence totale} = t_{prop} + t_{trans} + t_{proc} + t_{file}$$</p>
+<p><strong>RTT (Round-Trip Time)</strong> : temps aller-retour d'un paquet (mesuré par <code>ping</code>).</p>
+<h3>4.4 Gigue (Jitter)</h3>
+<ul>
+<li><strong>Définition</strong> : Variation de la latence entre paquets consécutifs.</li>
+<li>Critique pour la <strong>VoIP</strong> (Voix sur IP) et le <strong>streaming vidéo</strong>.</li>
+</ul>
+<h3>4.5 Perte de paquets (Packet Loss)</h3>
+<ul>
+<li>Pourcentage de paquets <strong>non livrés</strong> à destination.</li>
+<li>Causes : congestion, erreurs de transmission, buffer overflow.</li>
+<li>Mesurée par des outils comme <code>ping</code> (statistiques) ou Wireshark.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Métrique</th>
+<th>Impact sur…</th>
+<th>Outil de mesure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bande passante</td>
+<td>Transfert de gros fichiers</td>
+<td>iperf, speedtest</td>
+</tr>
+<tr>
+<td>Latence</td>
+<td>Jeux en ligne, requêtes web</td>
+<td>ping</td>
+</tr>
+<tr>
+<td>Gigue</td>
+<td>VoIP, visioconférence</td>
+<td>Wireshark</td>
+</tr>
+<tr>
+<td>Perte</td>
+<td>Qualité streaming, TCP</td>
+<td>ping, netstat</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Architecture Internet et modèle de service</h2>
+<h3>5.1 Structure en « réseau de réseaux »</h3>
+<p>Internet n'est pas un réseau unique mais un <strong>internetwork</strong> : interconnexion de milliers de réseaux autonomes (<strong>AS — Autonomous Systems</strong>) opérés par des FAI, universités, entreprises, gouvernements.</p>
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Acteur</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 1</strong></td>
+<td>Grands opérateurs internationaux</td>
+<td>Interconnexion mondiale, peering</td>
+</tr>
+<tr>
+<td><strong>Tier 2</strong></td>
+<td>Opérateurs régionaux/nationaux</td>
+<td>Agrégation, transit</td>
+</tr>
+<tr>
+<td><strong>Tier 3 / FAI local</strong></td>
+<td>FAI accès (Algérie Télécom, etc.)</td>
+<td>Connexion des abonnés</td>
+</tr>
+<tr>
+<td><strong>Client final</strong></td>
+<td>Entreprise, université, particulier</td>
+<td>LAN, utilisateurs</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Modèle client-serveur vs pair-à-pair (P2P)</h3>
+<table>
+<thead>
+<tr>
+<th>Modèle</th>
+<th>Principe</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Client-Serveur</strong></td>
+<td>Serveur central fournit un service à de nombreux clients</td>
+<td>Web (HTTP), email (SMTP)</td>
+</tr>
+<tr>
+<td><strong>Pair-à-pair (P2P)</strong></td>
+<td>Chaque nœud est client ET serveur</td>
+<td>BitTorrent, certaines applications de partage</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Exemples concrets</h2>
+<h3>Exemple 1 — Réseau d'une salle informatique Université de Mostaganem</h3>
+<p><strong>Contexte</strong> : Salle de TP MathInfo avec 20 PC, 1 imprimante réseau, connexion Internet.</p>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topologie</td>
+<td>Étoile (switch central 24 ports)</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>LAN Ethernet 1 Gbps</td>
+</tr>
+<tr>
+<td>Accès Internet</td>
+<td>Routeur/pare-feu → FAI universitaire</td>
+</tr>
+<tr>
+<td>Adressage</td>
+<td>IPv4 privées (192.168.x.x) + NAT vers Internet</td>
+</tr>
+</tbody>
+</table>
+<h3>Exemple 2 — Connexion domicile à Internet</h3>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="n">PC/Smartphone</span><span class="o">]</span><span class="w"> </span><span class="err">──</span><span class="n">Wi</span><span class="o">-</span><span class="n">Fi</span><span class="err">──</span><span class="w"> </span><span class="o">[</span><span class="n">Box/Routeur</span><span class="o">]</span><span class="w"> </span><span class="err">──</span><span class="n">DSL</span><span class="o">/</span><span class="n">Fibre</span><span class="err">──</span><span class="w"> </span><span class="o">[</span><span class="n">FAI</span><span class="o">]</span><span class="w"> </span><span class="err">──</span><span class="w"> </span><span class="n">Internet</span>
+</code></pre></div>
+
+<ol>
+<li>Le PC obtient une adresse IP via <strong>DHCP</strong> (attribuée par la box).</li>
+<li>La box effectue du <strong>NAT</strong> (Network Address Translation) pour accéder à Internet avec une seule IP publique.</li>
+<li>Le FAI route les paquets vers le reste d'Internet.</li>
+</ol>
+<h3>Exemple 3 — Calcul de temps de transfert</h3>
+<p><strong>Énoncé</strong> : Transférer un fichier de <strong>50 Mo</strong> sur un lien de <strong>100 Mbps</strong>. Quel est le temps de transmission minimum ?</p>
+<p><strong>Solution</strong> :
+- Taille = 50 Mo = 50 × 8 = <strong>400 Mbits</strong>
+- Bande passante = 100 Mbps
+- Temps minimum = 400 / 100 = <strong>4 secondes</strong> (sans tenir compte du overhead TCP/IP)</p>
+<hr />
+<h2>7. Questions de révision</h2>
+<h3>Questions ouvertes</h3>
+<ol>
+<li>Quelle est la différence entre <strong>bande passante</strong> et <strong>débit</strong> ?</li>
+<li>Pourquoi la topologie <strong>étoile</strong> a-t-elle remplacé la topologie <strong>bus</strong> ?</li>
+<li>Citez trois composants d'un réseau et leur rôle.</li>
+<li>Quelle est la différence entre un <strong>LAN</strong> et un <strong>WAN</strong> ?</li>
+<li>Expliquez ce qu'est le <strong>RTT</strong> et comment le mesurer.</li>
+</ol>
+<h3>Exercices d'application</h3>
+<p><strong>Exercice 1</strong> : Un réseau a une bande passante de 1 Gbps. Quel est le temps minimum pour transmettre 2 Go de données ?</p>
+<details>
+<summary>Solution</summary>
+
+2 Go = 2 × 8 = 16 Gbits = 16 000 Mbits
+Temps = 16 000 / 1 000 = **16 secondes**
+</details>
+
+<p><strong>Exercice 2</strong> : Dessinez la topologie logique d'un réseau composé de 4 PC, 1 switch, 1 routeur et 1 serveur.</p>
+<hr />
+<h2>8. QCM — Auto-évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Un réseau LAN couvre…</td>
+<td>Un pays</td>
+<td>Un bâtiment</td>
+<td>Le monde</td>
+<td>Une ville</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>La topologie la plus utilisée en LAN est…</td>
+<td>Bus</td>
+<td>Étoile</td>
+<td>Anneau</td>
+<td>Maillée</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>La bande passante s'exprime en…</td>
+<td>Octets/s</td>
+<td>Bits/s</td>
+<td>Hertz</td>
+<td>Watts</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Le RTT mesure…</td>
+<td>Le débit</td>
+<td>Le temps aller-retour</td>
+<td>La perte</td>
+<td>La gigue</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Un switch est un équipement de couche…</td>
+<td>Physique</td>
+<td>Liaison (L2)</td>
+<td>Réseau (L3)</td>
+<td>Application</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Internet est principalement un…</td>
+<td>LAN</td>
+<td>MAN</td>
+<td>WAN</td>
+<td>PAN</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>1 Gbps équivaut à…</td>
+<td>10⁶ bits/s</td>
+<td>10⁹ bits/s</td>
+<td>10¹² bits/s</td>
+<td>10³ bits/s</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>La gigue affecte surtout…</td>
+<td>FTP</td>
+<td>VoIP</td>
+<td>Email</td>
+<td>Ping</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Un FAI est…</td>
+<td>Un protocole</td>
+<td>Un fournisseur d'accès</td>
+<td>Un type de câble</td>
+<td>Un serveur DNS</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>En topologie étoile, la panne du switch central…</td>
+<td>N'a aucun effet</td>
+<td>Isole tous les hôtes</td>
+<td>N'affecte qu'un PC</td>
+<td>Double le débit</td>
+<td><strong>b</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Kurose &amp; Ross</strong> [KR], Chapitre 1 — <em>Computer Networking: A Top-Down Approach</em></li>
+<li><strong>Forouzan</strong> [FO], Chapitre 1 — <em>Data Communications and Networking</em></li>
+<li><strong>Tanenbaum</strong> [TA], Chapitre 1 — <em>Computer Networks</em></li>
+<li><strong>Cisco CCNA</strong> — Introduction to Networks, Module 1</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Insister sur la distinction bit/octet (source d'erreurs fréquentes en examen). Faire un schéma au tableau du réseau de la faculté. Lien direct avec TP 1 (Packet Tracer — première topologie étoile).</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

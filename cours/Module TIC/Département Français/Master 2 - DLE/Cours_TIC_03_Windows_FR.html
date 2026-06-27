@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 03 — Windows : Gestion de Données pour la Recherche en Didactique — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 03 — Windows : Gestion de Données pour la Recherche en Didactique</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 2 — DLE</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 2 DLE</li><li>**Compétences pré-requises :** TIC 02 ; manipulations avancées souris/clavier</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_03_Windows_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 03 — Windows : Gestion de Données pour la Recherche en Didactique</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> Master 2 — DLE<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 2 DLE</p>
+<p><strong>Compétences pré-requises :</strong> TIC 02 ; manipulations avancées souris/clavier</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Décrire l'architecture d'un OS et son rôle dans la recherche (dual boot, VM, cloud)
+- Expliquer les principes de gestion systématique des données de recherche (FAIR)
+- Identifier les formats pérennes et normes de nommage pour un mémoire de MA</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Configurer un environnement de travail pour la rédaction de mémoire
+- Organiser une arborescence thèse/mémoire selon les principes FAIR
+- Utiliser Git pour le versionnement de documents académiques
+- Planifier une stratégie de sauvegarde professionnelle (règle 3-2-1)</p>
+<p><strong>En termes de savoir-être :</strong>
+- Adopter une culture de reproductibilité et d'intégrité scientifique
+- Respecter les normes de sécurité des données institutionnelles (CNIL-algérienne)</p>
+<p><strong>Mode d'évaluation :</strong> TD 30 % + QCM 20 % + Projet organisation données 50 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Atelier : construction arborescence <code>M2_DLE_2025-2026/[Recherche | Memoire | Donnees | Biblio]</code></li>
+<li>TP : installation portable Zotero, création premiers dossiers Zotero</li>
+<li>TP : initiation Git (clone, add, commit via GitHub Desktop)</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM systèmes et organisation de fichiers</li>
+<li>Rendu : arborescence complète du mémoire + capture screenshot</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Belacel, M. (2024). <em>Guide TIC du Masterant</em>. USTO-MB.</li>
+<li>Wilkinson, M. et al. (2016). The FAIR Guiding Principles. <em>Scientific Data</em>, 3:160018.</li>
+<li>Lamy, M.-N. (2019). <em>Learning Analytics for Language Teachers</em>. Routledge.</li>
+<li>Guide étudiant Moodle Béjaïa — dépôt de fichiers</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>La transformation numérique du système universitaire algérien s'inscrit dans le cadre de :
+- <strong>Arrêté 932 du 28/07/2016</strong> : organisation de la formation de Master
+- <strong>Circulaire SG/2020</strong> : généralisation des plateformes e-learning (Moodle) dans toutes les universités
+- <strong>Décret exécutif 21-481</strong> : gouvernance du numérique dans l'ESRS
+- <strong>Projet NUM-ESRS 2025</strong> : standardisation des dépôts de mémoires via la plateforme DSpace-CRIS (CERIST)
+- <strong>Arrêté 127/2022</strong> : dépôt numérique obligatoire du mémoire pour soutenance</p>
+<p>Le module TIC en Master 2 DLE est conforme au référentiel national et prépare les étudiants aux exigences du dépôt sur la <strong>Bibliothèque Numérique Algérienne</strong> (DSpace).</p>
+<hr />
+<h2>Plan du Cours</h2>
+<ol>
+<li>Introduction à Windows dans le contexte de la recherche en didactique</li>
+<li>L'interface graphique et l'environnement de travail du chercheur</li>
+<li>Gestion systématique des données de recherche (FAIR)</li>
+<li>Arborescence pour le mémoire de Master 2</li>
+<li>Zotero et gestion bibliographique pour la recherche</li>
+<li>Git pour chercheurs : versionnement de documents académiques</li>
+<li>Stratégies de sauvegarde et sécurité des données</li>
+<li>Dual boot et machines virtuelles pour la recherche</li>
+<li>Conclusion et transition vers Word</li>
+</ol>
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Cours</span><span class="w"> </span><span class="mo">03</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Windows</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Organisation</span><span class="w"> </span><span class="n">fichiers</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Zotero</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Biblio</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Git</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Versionnement</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Sauvegarde</span><span class="w"> </span><span class="mi">3-2-1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">VM</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Dual</span><span class="w"> </span><span class="n">Boot</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Arborescence</span><span class="w"> </span><span class="n">M2</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Zotero</span><span class="w"> </span><span class="n">Groups</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">GitHub</span><span class="w"> </span><span class="n">Desktop</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Cloud</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">HDD</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">NAS</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Linux</span><span class="w"> </span><span class="n">pour</span><span class="w"> </span><span class="n">NLP</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Données</span><span class="w"> </span><span class="n">brutes</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Nettoyage</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Analyse</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Rédaction</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Soutenance</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Dépôt</span><span class="w"> </span><span class="n">DSpace</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Sauvegarde</span><span class="w"> </span><span class="n">chiffrée</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">R</span><span class="w"> </span><span class="n">Markdown</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Jupyter</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Zotero</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">BibTeX</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">PDF</span><span class="o">/</span><span class="n">A</span><span class="w"> </span><span class="n">archivage</span><span class="p">]</span>
+</code></pre></div>
+
+<hr />
+<h2>1. Introduction à Windows <em>(10 min)</em></h2>
+<p>Windows reste le système d'exploitation dominant dans le paysage universitaire algérien (≈ 95 % des postes). En Master 2 DLE, sa maîtrise va bien au-delà de l'usage bureautique : elle conditionne la qualité de la gestion des données de recherche, la fluidité du travail de rédaction et la pérennité des fichiers.</p>
+<p>Pour un étudiant-chercheur, Windows est l'interface entre la pensée scientifique et sa matérialisation numérique. Savoir organiser ses fichiers, maîtriser les formats, sécuriser ses données et automatiser les tâches répétitives sont des compétences fondamentales — souvent implicites mais décisives dans le parcours de master.</p>
+<hr />
+<h2>2. Interface Graphique pour le Chercheur <em>(15 min)</em></h2>
+<ul>
+<li><strong>Explorateur de fichiers</strong> : panneau de navigation rapide, dossiers épinglés, bibliothèque Documents</li>
+<li><strong>Recherche Windows</strong> : syntaxe <code>kind:docx author:belacel</code> pour retrouver un fichier par métadonnée</li>
+<li><strong>OneDrive / iCloud / Google Drive</strong> : synchronisation entre postes de travail</li>
+<li><strong>Outils intégrés</strong> : Capture (Shift+S), Sticky Notes, Quick Assist</li>
+</ul>
+<p>Organiser le bureau par dossiers thématiques : <code>[Recherche]</code>, <code>[M2-Memoire]</code>, <code>[Donnees]</code>, <code>[Biblio]</code>, <code>[Admin]</code>.</p>
+<hr />
+<h2>3. Gestion Systématique des Données de Recherche <em>(15 min)</em></h2>
+<p>Les principes <strong>FAIR</strong> (Findable, Accessible, Interoperable, Reusable) s'appliquent dès le Master :</p>
+<table>
+<thead>
+<tr>
+<th>Principe</th>
+<th>Application M2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F</strong>indable</td>
+<td>Nommage systématique <code>AAAA-MM-JJ_Type_Sujet_vX.ext</code></td>
+</tr>
+<tr>
+<td><strong>A</strong>ccessible</td>
+<td>Dossiers structurés + README.md dans chaque niveau</td>
+</tr>
+<tr>
+<td><strong>I</strong>nteroperable</td>
+<td>Formats ouverts (.csv, .txt, .md, .pdf)</td>
+</tr>
+<tr>
+<td><strong>R</strong>eusable</td>
+<td>Documentation des protocoles et métadonnées</td>
+</tr>
+</tbody>
+</table>
+<p>Convention recommandée pour le mémoire :
+<code>2025-10-01_Article_RevueDidactique_v1.docx</code></p>
+<hr />
+<h2>4. Arborescence pour le Mémoire de Master 2 <em>(10 min)</em></h2>
+<p>Structure type :</p>
+<div class="codehilite"><pre><span></span><code>M2_DLE_2025-2026/
+├── 00_Administratif/
+├── 01_Recherche/
+│   ├── Articles/
+│   ├── Corpus/
+│   ├── Notes_Lecture/
+│   └── Methodologie/
+├── 02_Memoire/
+│   ├── Chapitres/
+│   ├── Annexes/
+│   └── Soutenance/
+├── 03_Donnees/
+│   ├── Brutes/
+│   ├── Analysees/
+│   └── Scripts/
+├── 04_Bibliographie/
+│   ├── Zotero_Export/
+│   └── BibTeX/
+├── 05_Sauvegardes/
+├── 06_Publications/
+└── README.md
+</code></pre></div>
+
+<hr />
+<h2>5. Zotero et Gestion Bibliographique <em>(10 min)</em></h2>
+<p>Zotero est l'outil de référence pour le Master 2 :</p>
+<ul>
+<li><strong>Installation</strong> et extension navigateur (Chrome/Firefox)</li>
+<li><strong>Création de collections</strong> : par chapitre, par thématique (Didactique, TIC, Learning Analytics, Corpus)</li>
+<li><strong>Export BibTeX</strong> : intégration avec Word et Overleaf</li>
+<li><strong>Groupes Zotero</strong> : travail collaboratif entre masterants sous la direction du promoteur</li>
+<li><strong>Styles</strong> : adapter APA 7, MLA, Normes USTO</li>
+</ul>
+<hr />
+<h2>6. Git pour Chercheurs <em>(10 min)</em></h2>
+<p>Git n'est pas réservé aux informaticiens. En Master 2 DLE, il permet de :</p>
+<ul>
+<li>Versionner le mémoire (<code>v1</code>, <code>v2</code>, ..., <code>v_finale_soutenance</code>)</li>
+<li>Travailler à plusieurs sur un chapitre (GitHub / GitLab)</li>
+<li>Revenir à une version antérieure en cas d'erreur</li>
+<li>Préparer le terrain pour des publications ultérieures (articles, chapitres)</li>
+</ul>
+<p><strong>Workflow :</strong></p>
+<div class="codehilite"><pre><span></span><code>git init m2_memoire
+git add chapitre1.docx
+git commit -m &quot;Premiere version Chapitre 1&quot;
+git push origin main
+</code></pre></div>
+
+<hr />
+<h2>7. Stratégies de Sauvegarde <em>(10 min)</em></h2>
+<p>Règle <strong>3-2-1</strong> :
+- <strong>3</strong> copies du fichier
+- <strong>2</strong> supports différents (HDD local + cloud)
+- <strong>1</strong> copie hors site (NAS, Cloud, clé chiffrée)</p>
+<p>Pour le Master 2 :
+- Sauvegarde quotidienne automatique (OneDrive ou Google Drive)
+- Sauvegarde hebdomadaire sur HDD externe
+- Archive mensuelle sur NAS universitaire
+- Chiffrement : BitLocker (Windows Pro) ou VeraCrypt</p>
+<hr />
+<h2>8. Dual Boot et Machines Virtuelles pour la Recherche <em>(10 min)</em></h2>
+<p>En didactique des langues, certains outils sont plus performants sous Linux (Python NLP, LanceBox, TXM). Configurations possibles :</p>
+<ul>
+<li><strong>Dual Boot</strong> : Windows + Ubuntu pour Linux natif</li>
+<li><strong>Machine Virtuelle</strong> : VirtualBox + Ubuntu (sans modifier le système hôte)</li>
+<li><strong>WSL2</strong> : Windows Subsystem for Linux → terminal Linux dans Windows</li>
+</ul>
+<p>Utile pour : traitement de corpus (Python + NLTK/spaCy), analyses statistiques (R Studio), transcription audio (Praat).</p>
+<hr />
+<h2>9. Conclusion <em>(10 min)</em></h2>
+<p>La maîtrise de Windows en Master 2 DLE dépasse la bureautique : c'est un levier pour l'organisation de la recherche, l'intégrité des données et la production scientifique. Un chercheur bien outillé est un chercheur plus efficace.</p>
+<p><strong>Prochain cours :</strong> Microsoft Word — Mise en page du mémoire et normes institutionnelles.</p>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Phase</th>
+<th>Activité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 min</td>
+<td>Introduction</td>
+<td>Enjeux M2 : organisation, pérennité, FIAR</td>
+<td>Diapos 1-4</td>
+</tr>
+<tr>
+<td>15 min</td>
+<td>Interface &amp; ENV</td>
+<td>Explorateur, recherche, cloud, OneDrive</td>
+<td>TP guidé</td>
+</tr>
+<tr>
+<td>15 min</td>
+<td>Données FAIR</td>
+<td>Nommage, formats, README</td>
+<td>Fiche méthode</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Arborescence</td>
+<td>Construction arbre M2 pas à pas</td>
+<td>Atelier machine</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Zotero</td>
+<td>Installation, collection, export</td>
+<td>TP guidé</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Git</td>
+<td>Init, add, commit via GitHub Desktop</td>
+<td>TP guidé</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Sauvegarde</td>
+<td>3-2-1, BitLocker, cloud</td>
+<td>Démo + discussion</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Machine Virtuelle</td>
+<td>Dual boot, WSL2, VirtualBox</td>
+<td>Démonstration</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>Conclusion + QCM</td>
+<td>Synthèse et auto-évaluation</td>
+<td>QCM papier/Moodle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>Que signifie l'acronyme FAIR ?</li>
+<li>a) Fast, Accessible, Integrated, Reliable</li>
+<li>b) Findable, Accessible, Interoperable, Reusable ✓</li>
+<li>
+<p>c) Formal, Accurate, Iterative, Random</p>
+</li>
+<li>
+<p>Quelle commande Git permet d'enregistrer une version ?</p>
+</li>
+<li>a) <code>git push</code></li>
+<li>b) <code>git commit</code> ✓</li>
+<li>
+<p>c) <code>git clone</code></p>
+</li>
+<li>
+<p>Dans la règle 3-2-1, le "1" représente :</p>
+</li>
+<li>a) 1 seul fichier</li>
+<li>b) 1 copie sur support différent ✓</li>
+<li>
+<p>c) 1 utilisateur</p>
+</li>
+<li>
+<p>Quel outil est recommandé pour la gestion bibliographique en Master 2 DLE ?</p>
+</li>
+<li>a) Mendeley</li>
+<li>b) Zotero ✓</li>
+<li>
+<p>c) EndNote</p>
+</li>
+<li>
+<p>Quel format est recommandé pour l'archivage pérenne des mémoires ?</p>
+</li>
+<li>a) .docx</li>
+<li>b) .pdf</li>
+<li>c) PDF/A ✓</li>
+</ol>
+<hr />
+<h2>Note pédagogique Master 2</h2>
+<p><strong>Transposition recherche :</strong> Ce cours s'appuie sur les principes FAIR (Wilkinson et al., 2016) et les recommandations du RDA (Research Data Alliance). L'organisation FAIR des données est aujourd'hui exigée par les revues scientifiques et les financeurs (ANR, H2020). En Algérie, le déploiement de DSpace-CRIS dans les universités (CERIST, 2024) rend cette compétence indispensable.</p>
+<p><strong>Conseil au formateur :</strong> Privilégier l'atelier pratique à la démonstration magistrale. Les étudiants de M2 DLE ont des profils variés (linguistique, didactique) : adapter le rythme et prévoir une fiche d'aide pas-à-pas. Insister sur les conséquences d'une perte de données à ce stade du parcours.</p>
+<p><strong>Prolongement :</strong> Ce cours prépare le terrain pour l'UE "Méthodologie de la recherche" et le séminaire "Learning Analytics et TICE". Les étudiants peuvent être invités à suivre le MOOC "Gestion des données de la recherche" (Fun-MOOC, Inria).</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

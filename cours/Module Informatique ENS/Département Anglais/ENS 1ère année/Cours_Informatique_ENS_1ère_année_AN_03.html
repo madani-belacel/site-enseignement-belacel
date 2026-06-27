@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Course — ENS Year 1 — Session 03 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Course — ENS Year 1 — Session 03 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 1 — English Department</li><li>**Duration:** 1h30</li><li>**Academic Year:** 2025-2026</li><li>**The von Neumann model** (proposed by John von Neumann in 1945) is the fundamental architecture of almost all modern computers. Its 5 units are:</li><li>- **Input:** keyboard, mouse, microphone, camera, scanner, network</li><li>- **Output:** screen, speakers, printer, network</li><li>- **Data bus:** carries data between units (bidirectional)</li><li>- **Address bus:** carries the memory address to read/write (unidirectional CPU → memory)</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_1ère_année_AN_03.pdf</code></p>
+</blockquote>
+<h1>Computer Science Course — ENS Year 1 — Session 03 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Specific Learning Objectives</h2>
+<p>By the end of this session, the student will be able to:
+- Describe the von Neumann model and its 5 functional units
+- Explain how the fetch-decode-execute cycle works
+- Distinguish the different levels of the memory hierarchy (registers, cache, RAM, SSD, HDD)
+- Calculate an average access time and compare performance
+- Relate these concepts to SNT (architecture) and NSI (performance) programs</p>
+<hr />
+<h2>Algerian Regulatory Context</h2>
+<p>This course falls within the Algerian regulatory framework for teacher training:</p>
+<ul>
+<li><strong>Ministerial decree establishing ENS (Bachelor's/Master's cycle)</strong> — defines the institutional framework of the Écoles Normales Supérieures and their mission of teacher training.</li>
+<li><strong>National Computer Science curriculum for Algerian ENS</strong> — sets the objectives, content and hourly volumes of the Computer Science module in initial teacher training.</li>
+<li><strong>Decree 712 setting the ENS competition syllabus</strong> — determines the tests and programs for ENS entrance competitions, consistent with the taught content.</li>
+<li><strong>Algerian digital competency framework</strong> — national framework (under development) defining the digital competencies expected of teachers.</li>
+<li><strong>Benchmark of 10 Algerian universities</strong> — comparative study of computer science teaching practices, consulted to align this course with national standards.</li>
+</ul>
+<hr />
+<h2>Course Plan</h2>
+<ol>
+<li>Introduction: what is a computer? <em>(5 min)</em></li>
+<li>The von Neumann model — the 5 units <em>(20 min)</em></li>
+<li>The fetch-decode-execute cycle <em>(20 min)</em></li>
+<li>The memory hierarchy — memory pyramid <em>(20 min)</em></li>
+<li>Performance comparison and practical calculations <em>(15 min)</em></li>
+<li>Pedagogical applications for SNT/NSI <em>(10 min)</em></li>
+</ol>
+<hr />
+<h2>1. The von Neumann Model</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">UC</span><span class="p">[</span><span class="s">&quot;Control Unit&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">UAL</span><span class="p">[</span><span class="s">&quot;ALU&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">UC</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MEM</span><span class="p">[</span><span class="s">&quot;Memory&lt;br/&gt;(RAM)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">UC</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E_S</span><span class="p">[</span><span class="s">&quot;Input / Output&lt;br/&gt;(I/O)&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">REG</span><span class="p">[</span><span class="s">&quot;Registers&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">UAL</span>
+<span class="w">    </span><span class="n">REG</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">UC</span>
+
+<span class="w">    </span><span class="n">MEM</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">BUS</span><span class="p">[</span><span class="s">&quot;Data bus&lt;br/&gt;Address bus&lt;br/&gt;Control bus&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">BUS</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">UC</span>
+<span class="w">    </span><span class="n">BUS</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">UAL</span>
+<span class="w">    </span><span class="n">BUS</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E_S</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;The 5 functional units&quot;</span>
+<span class="w">        </span><span class="n">U1</span><span class="p">[</span><span class="s">&quot;1. Control Unit&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">U2</span><span class="p">[</span><span class="s">&quot;2. ALU (Arithmetic &amp; Logic)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">U3</span><span class="p">[</span><span class="s">&quot;3. Memory (data + program)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">U4</span><span class="p">[</span><span class="s">&quot;4. Input&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">U5</span><span class="p">[</span><span class="s">&quot;5. Output&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">UC</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">UAL</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">MEM</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E_S</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">REG</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">BUS</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">95</span><span class="n">a5a6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>The von Neumann model</strong> (proposed by John von Neumann in 1945) is the fundamental architecture of almost all modern computers. Its 5 units are:</p>
+<h3>1.1 Control Unit</h3>
+<ul>
+<li>Directs and coordinates all computer actions</li>
+<li>Reads instructions from memory and interprets them</li>
+<li>Generates control signals for other units</li>
+<li>Contains the <strong>Program Counter</strong> (PC) which points to the next instruction</li>
+<li>Contains the <strong>Instruction Register</strong> (IR) which stores the current instruction</li>
+</ul>
+<h3>1.2 Arithmetic and Logic Unit (ALU)</h3>
+<ul>
+<li>Performs arithmetic operations: addition, subtraction, multiplication, division</li>
+<li>Performs logical operations: AND, OR, NOT, XOR</li>
+<li>Performs comparisons: equality, greater than, less than</li>
+<li>Uses <strong>registers</strong> (accumulators) to store operands and results</li>
+</ul>
+<h3>1.3 Memory (storage unit)</h3>
+<ul>
+<li>Stores <strong>both</strong> data and programs (= von Neumann principle)</li>
+<li>Organized into addressable cells, each cell containing a memory word (8, 16, 32, or 64 bits)</li>
+<li>Two operations: <strong>read</strong> and <strong>write</strong></li>
+</ul>
+<h3>1.4 Input / Output (I/O)</h3>
+<ul>
+<li><strong>Input:</strong> keyboard, mouse, microphone, camera, scanner, network</li>
+<li><strong>Output:</strong> screen, speakers, printer, network</li>
+<li>Communication via <strong>buses</strong> (data, address, control)</li>
+</ul>
+<h3>1.5 Buses</h3>
+<ul>
+<li><strong>Data bus:</strong> carries data between units (bidirectional)</li>
+<li><strong>Address bus:</strong> carries the memory address to read/write (unidirectional CPU → memory)</li>
+<li><strong>Control bus:</strong> carries synchronization signals (read/write, clock)</li>
+</ul>
+<p><strong>Bus width:</strong> A 32-bit address bus can address 2³² = 4 GB of memory. A 64-bit bus can address 2⁶⁴ = 16 EB (exabytes).</p>
+<hr />
+<h2>2. The Fetch-Decode-Execute Cycle</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">sequenceDiagram</span>
+<span class="w">    </span><span class="nx">participant</span><span class="w"> </span><span class="nx">PC</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">Program</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Counter</span><span class="w"> </span><span class="p">(</span><span class="nx">PC</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">participant</span><span class="w"> </span><span class="nx">MEM</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">Memory</span><span class="w"> </span><span class="p">(</span><span class="nx">RAM</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">participant</span><span class="w"> </span><span class="nx">IR</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">Instruction</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Register</span>
+<span class="w">    </span><span class="nx">participant</span><span class="w"> </span><span class="nx">UC</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">Control</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Unit</span>
+<span class="w">    </span><span class="nx">participant</span><span class="w"> </span><span class="nx">UAL</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">ALU</span>
+
+<span class="w">    </span><span class="nx">Note</span><span class="w"> </span><span class="nx">over</span><span class="w"> </span><span class="nx">PC</span><span class="p">,</span><span class="nx">UAL</span><span class="p">:</span><span class="w"> </span><span class="nx">Instruction</span><span class="w"> </span><span class="nx">execution</span><span class="w"> </span><span class="nx">cycle</span>
+
+<span class="w">    </span><span class="nx">UC</span><span class="o">-&gt;</span><span class="p">&gt;</span><span class="nx">MEM</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="nx">FETCH</span><span class="p">:</span><span class="w"> </span><span class="nx">Send</span><span class="w"> </span><span class="p">(</span><span class="nx">PC</span><span class="p">)</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="nx">bus</span>
+<span class="w">    </span><span class="nx">MEM</span><span class="o">--&gt;&gt;</span><span class="nx">UC</span><span class="p">:</span><span class="w"> </span><span class="nx">Read</span><span class="w"> </span><span class="nx">instruction</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">PC</span><span class="w"> </span><span class="nx">address</span>
+<span class="w">    </span><span class="nx">UC</span><span class="o">-&gt;</span><span class="p">&gt;</span><span class="nx">IR</span><span class="p">:</span><span class="w"> </span><span class="nx">Store</span><span class="w"> </span><span class="nx">instruction</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">IR</span>
+<span class="w">    </span><span class="nx">UC</span><span class="o">-&gt;</span><span class="p">&gt;</span><span class="nx">PC</span><span class="p">:</span><span class="w"> </span><span class="nx">PC</span><span class="w"> </span><span class="err">←</span><span class="w"> </span><span class="nx">PC</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nx">increment</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">UC</span><span class="o">-&gt;</span><span class="p">&gt;</span><span class="nx">IR</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="nx">DECODE</span><span class="p">:</span><span class="w"> </span><span class="nx">Analyze</span><span class="w"> </span><span class="nx">opcode</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">g</span><span class="p">.,</span><span class="w"> </span><span class="nx">ADD</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">UC</span><span class="o">-&gt;</span><span class="p">&gt;</span><span class="nx">UC</span><span class="p">:</span><span class="w"> </span><span class="nx">Identify</span><span class="w"> </span><span class="nx">required</span><span class="w"> </span><span class="nx">operands</span>
+
+<span class="w">    </span><span class="nx">UC</span><span class="o">-&gt;</span><span class="p">&gt;</span><span class="nx">MEM</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">.</span><span class="w"> </span><span class="nx">FETCH</span><span class="w"> </span><span class="nx">Operands</span><span class="p">:</span><span class="w"> </span><span class="nx">Read</span><span class="w"> </span><span class="nx">operands</span>
+<span class="w">    </span><span class="nx">MEM</span><span class="o">--&gt;&gt;</span><span class="nx">UAL</span><span class="p">:</span><span class="w"> </span><span class="nx">Transmit</span><span class="w"> </span><span class="nx">operands</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">ALU</span>
+
+<span class="w">    </span><span class="nx">UAL</span><span class="o">-&gt;</span><span class="p">&gt;</span><span class="nx">UAL</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="w"> </span><span class="nx">EXECUTE</span><span class="p">:</span><span class="w"> </span><span class="nx">Perform</span><span class="w"> </span><span class="nx">operation</span>
+<span class="w">    </span><span class="nx">UAL</span><span class="o">--&gt;&gt;</span><span class="nx">MEM</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="w"> </span><span class="nx">STORE</span><span class="p">:</span><span class="w"> </span><span class="nx">Write</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">memory</span>
+</code></pre></div>
+
+<h3>Detailed Steps</h3>
+<p><strong>Step 1 — Fetch:</strong>
+- The control unit places the content of the <strong>PC</strong> (program counter) on the address bus
+- Memory returns the instruction located at that address
+- The instruction is loaded into the <strong>IR</strong> (instruction register)
+- The PC is incremented to point to the next instruction</p>
+<p><strong>Step 2 — Decode:</strong>
+- The control unit decodes the <strong>opcode</strong> (operation code) to determine the operation to perform
+- It identifies the <strong>operands</strong> (registers or memory addresses involved)
+- It activates the appropriate circuits in the ALU</p>
+<p><strong>Step 3 — Execute:</strong>
+- The ALU performs the operation (addition, subtraction, comparison, etc.)
+- The result is temporarily stored in an accumulator register</p>
+<p><strong>Step 4 — Store:</strong>
+- The result is written to a register or memory (RAM)
+- The cycle repeats with the next instruction (pointed to by PC)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">DEBUT</span><span class="p">(</span><span class="s">&quot;Start&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">FETCH</span><span class="p">[</span><span class="s">&quot;FETCH&lt;br/&gt;Load instruction&lt;br/&gt;from RAM to IR&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">FETCH</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">DECODE</span><span class="p">[</span><span class="s">&quot;DECODE&lt;br/&gt;Analyze opcode&lt;br/&gt;in control unit&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">DECODE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">EXECUTE</span><span class="p">[</span><span class="s">&quot;EXECUTE&lt;br/&gt;Perform operation&lt;br/&gt;in ALU&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">EXECUTE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">STORE</span><span class="p">[</span><span class="s">&quot;STORE&lt;br/&gt;Write result&lt;br/&gt;to memory/register&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">STORE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">FETCH</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">DEBUT</span><span class="w"> </span><span class="nl">fill:</span><span class="p">#</span><span class="mh">2</span><span class="n">ecc71</span><span class="p">,</span><span class="nl">color:</span><span class="p">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">FETCH</span><span class="w"> </span><span class="nl">fill:</span><span class="p">#</span><span class="mh">3498</span><span class="n">db</span><span class="p">,</span><span class="nl">color:</span><span class="p">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">DECODE</span><span class="w"> </span><span class="nl">fill:</span><span class="p">#</span><span class="n">e67e22</span><span class="p">,</span><span class="nl">color:</span><span class="p">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">EXECUTE</span><span class="w"> </span><span class="nl">fill:</span><span class="p">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="nl">color:</span><span class="p">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">STORE</span><span class="w"> </span><span class="nl">fill:</span><span class="p">#</span><span class="mh">9</span><span class="n">b59b6</span><span class="p">,</span><span class="nl">color:</span><span class="p">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Clock frequency:</strong> Each cycle is clocked by the processor's clock. A 3 GHz CPU performs 3 × 10⁹ cycles per second. A simple instruction (ADD) may take 1 cycle, a complex instruction (DIV) may take several.</p>
+<hr />
+<h2>3. The Memory Hierarchy</h2>
+<h3>Memory Pyramid</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Memory hierarchy (decreasing speed, increasing capacity)&quot;</span>
+<span class="w">        </span><span class="n">R1</span><span class="p">[</span><span class="s">&quot;Registers&lt;br/&gt;~ 1 KB&lt;br/&gt;~ 0.3 ns&lt;br/&gt;&lt; 1 cycle&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R2</span><span class="p">[</span><span class="s">&quot;Cache L1&lt;br/&gt;~ 32-64 KB&lt;br/&gt;~ 1 ns&lt;br/&gt;3-4 cycles&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R3</span><span class="p">[</span><span class="s">&quot;Cache L2&lt;br/&gt;~ 256-512 KB&lt;br/&gt;~ 3 ns&lt;br/&gt;~ 10 cycles&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R4</span><span class="p">[</span><span class="s">&quot;Cache L3&lt;br/&gt;~ 8-16 MB&lt;br/&gt;~ 10 ns&lt;br/&gt;~ 30 cycles&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R5</span><span class="p">[</span><span class="s">&quot;RAM (DDR4/5)&lt;br/&gt;~ 8-64 GB&lt;br/&gt;~ 50-100 ns&lt;br/&gt;~ 150 cycles&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R6</span><span class="p">[</span><span class="s">&quot;SSD (NVMe)&lt;br/&gt;~ 256 GB - 2 TB&lt;br/&gt;~ 10,000 ns&lt;br/&gt;~ 30,000 cycles&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">R7</span><span class="p">[</span><span class="s">&quot;HDD&lt;br/&gt;~ 500 GB - 10 TB&lt;br/&gt;~ 10,000,000 ns&lt;br/&gt;~ 30 M cycles&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">R1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R6</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R7</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f1c40f</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R4</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R6</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R7</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">34495</span><span class="n">e</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h3>The Different Memories</h3>
+<p><strong>1. Registers:</strong>
+- Integrated into the processor
+- Capacity: a few dozen to a few hundred bytes
+- Access time: ~ 0.3 ns (1 clock cycle)
+- Usage: storing operands and immediate results of the ALU</p>
+<p><strong>2. Cache memory (L1, L2, L3):</strong>
+- Fast and expensive memory, close to the CPU
+- Stores frequently used data and instructions (principle of <strong>spatial and temporal locality</strong>)
+- L1: fastest, dedicated per core
+- L2: shared or per core, less fast
+- L3: shared among all cores</p>
+<p><strong>3. RAM (Random Access Memory):</strong>
+- Volatile memory (lost on power off)
+- Capacity: 8 to 64 GB (depending on configuration)
+- Access time: ~ 50 ns (DDR4)
+- Organization: DIMM/SO-DIMM modules</p>
+<p><strong>4. SSD (Solid State Drive):</strong>
+- Non-volatile memory (NAND Flash)
+- Capacity: 256 GB to 2 TB
+- Access time: ~ 10,000 ns (10 µs)
+- Advantages: fast, silent, shock-resistant
+- Drawback: limited write cycles</p>
+<p><strong>5. HDD (Hard Disk Drive):</strong>
+- Non-volatile magnetic memory
+- Capacity: 500 GB to 10+ TB
+- Access time: ~ 10,000,000 ns (10 ms)
+- Advantage: very low cost per GB
+- Drawback: slow, mechanical, noisy</p>
+<h3>Principle of Locality</h3>
+<ul>
+<li><strong>Temporal locality:</strong> recently accessed data will likely be reused soon (loops)</li>
+<li><strong>Spatial locality:</strong> data near accessed data will likely be accessed soon (arrays)</li>
+</ul>
+<p>These principles explain cache efficiency: the CPU automatically copies frequently used data to cache, significantly speeding up execution.</p>
+<h3>Calculating Average Access Time</h3>
+<p><strong>Example:</strong> cache hit rate = 95%, cache time = 1 ns, RAM time = 50 ns.</p>
+<div class="codehilite"><pre><span></span><code>Average time = 0.95 × 1 ns + 0.05 × 50 ns = 0.95 + 2.5 = 3.45 ns
+</code></pre></div>
+
+<p>Without cache, the access time would be 50 ns. With a 95% hit rate cache, we gain a factor of 14.</p>
+<hr />
+<h2>MCQ Self-Assessment</h2>
+<ol>
+<li>
+<p><strong>How many functional units make up the von Neumann architecture?</strong>
+   a) 3 units  b) 5 units ✓  c) 7 units</p>
+</li>
+<li>
+<p><strong>What does the acronym ALU stand for?</strong>
+   a) Arithmetic and Logic Unit ✓  b) Application Linear Unit  c) Access Local Unit</p>
+</li>
+<li>
+<p><strong>In the fetch-decode-execute cycle, what happens at the FETCH step?</strong>
+   a) The instruction is executed by the ALU  b) The instruction is loaded from RAM ✓  c) The result is stored in memory</p>
+</li>
+<li>
+<p><strong>What is the fastest memory in the hierarchy?</strong>
+   a) Cache L3  b) RAM  c) Registers ✓</p>
+</li>
+<li>
+<p><strong>An SSD is approximately how many times faster than an HDD?</strong>
+   a) 2 times  b) 100 times ✓  c) 10,000 times</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion</h2>
+<p>The von Neumann architecture is the universal model of all modern computers. The 5 units (control, ALU, memory, input, output) work in synergy through the fetch-decode-execute cycle. The memory hierarchy (registers → cache → RAM → SSD → HDD) is designed to balance speed and capacity: the further from the CPU, the slower and larger the memory. These concepts are fundamental to understanding the performance of a computer system.</p>
+<p><strong>Next session:</strong> Operating systems — processes, threads, scheduling, and files.</p>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<p><strong>Teaching transposition:</strong> For teaching architecture in SNT Seconde (theme "Machine Architecture"):
+- Unplugged activity: simulate the fetch-decode-execute cycle with students playing roles (control unit, memory, ALU)
+- Build a physical memory pyramid with cups or boxes to visualize the hierarchy
+- Compare access times with analogies: register = your brain (1 sec), cache = desk (3 sec), RAM = library (5 min), SSD = neighboring city (2h), HDD = distant country (weeks)</p>
+<p><strong>Link with languages:</strong> Draw a parallel between cache memory (temporary storage of frequent data) and active/passive vocabulary in language learning.</p>
+<p><strong>Trainer advice:</strong> Be careful not to overwhelm students with technical architecture details. The goal is for them to understand the path of an instruction (from click to display) and not the specific features of microprocessors. Use animated videos of the execution cycle (e.g., "How a CPU works" from the CrashCourse YouTube channel) to reinforce visual understanding.
+<strong>Extension:</strong> Students can explore MIPS or RISC-V assembly using the online simulator "MARS" to visualize instruction-by-instruction execution. Propose a complementary activity: compare CISC (Intel) and RISC (ARM) architectures and their implications in mobile devices used in educational settings (tablets, smartphones).</p>
+<hr />
+<h2>Bibliography</h2>
+<ul>
+<li>von Neumann, J. (1945). <em>First Draft of a Report on the EDVAC</em>. Contract W-670-ORD-4926.</li>
+<li>Tanenbaum, A. &amp; Austin, T. (2012). <em>Architecture de l'ordinateur</em> (6th ed.). Pearson.</li>
+<li>Tanenbaum, A. &amp; Austin, T. (2012). <em>Structured Computer Organization</em> (6th ed.). Pearson.</li>
+<li>Hennessy, J. &amp; Patterson, D. (2017). <em>Computer Architecture: A Quantitative Approach</em> (6th ed.). Morgan Kaufmann.</li>
+<li>Goupille, P. (2014). <em>Technologie des ordinateurs</em>. Dunod.</li>
+<li>Dowek, G. et al. (2019). <em>SNT Seconde</em>. Hachette (chapter "Machine Architecture").</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

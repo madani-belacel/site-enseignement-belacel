@@ -1,0 +1,563 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 1 — Session 10 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 1 — Session 10 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 1 — English Department</li><li>**Duration:** 1h30</li><li>**Academic Year:** 2025-2026</li><li>**Problem statement:** Create a script `queue.py` that implements a `Queue` class with:</li><li>**Answer:**</li><li>**Problem statement:** Create a script `rpn.py` that evaluates an expression in Reverse Polish Notation (RPN) using a stack.</li><li>**Principle:** The operator follows its operands. Example: `3 4 +` = 3 + 4 = 7</li><li>**Examples:**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_AN_10.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 1 — Session 10 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Learning Objectives</h2>
+<p>By the end of this tutorial session, the student is able to:
+- Implement a queue (FIFO) in Python with a class
+- Solve algorithmic problems using queues and stacks
+- Manipulate dictionaries and nested data structures
+- Implement a simple breadth-first search (BFS) algorithm
+- Apply data structures to concrete problems</p>
+<hr />
+<h2>Tutorial Plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — Queue</td>
+<td>20 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — RPN expression (stack)</td>
+<td>20 min</td>
+<td>45 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — BFS (queue + graph)</td>
+<td>20 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — Student dictionaries</td>
+<td>15 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — RLE compression</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Evaluating an expression in Reverse Polish Notation (RPN)</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">RPN</span><span class="w"> </span><span class="n">expression</span><span class="o">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">-</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Split</span><span class="w"> </span><span class="n">elements</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="p">[</span><span class="sc">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="p">]]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Initial</span><span class="w"> </span><span class="n">stack</span><span class="o">:</span><span class="w"> </span><span class="p">[]]</span>
+
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D1</span><span class="p">{</span><span class="n">Read</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D1</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Number</span><span class="o">|</span><span class="w"> </span><span class="n">E1</span><span class="p">[</span><span class="n">Push</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">{</span><span class="n">Read</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D2</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Number</span><span class="o">|</span><span class="w"> </span><span class="n">E2</span><span class="p">[</span><span class="n">Push</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span><span class="p">{</span><span class="n">Read</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Number</span><span class="o">|</span><span class="w"> </span><span class="n">E3</span><span class="p">[</span><span class="n">Push</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D4</span><span class="p">{</span><span class="n">Read</span><span class="w"> </span><span class="sc">&#39;+&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Operator</span><span class="o">|</span><span class="w"> </span><span class="n">F4</span><span class="p">[</span><span class="n">Pop</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G4</span><span class="p">[</span><span class="n">Compute</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H4</span><span class="p">[</span><span class="n">Push</span><span class="w"> </span><span class="mi">11</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D5</span><span class="p">{</span><span class="n">Read</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D5</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Operator</span><span class="o">|</span><span class="w"> </span><span class="n">F5</span><span class="p">[</span><span class="n">Pop</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G5</span><span class="p">[</span><span class="n">Compute</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-6</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H5</span><span class="p">[</span><span class="n">Push</span><span class="w"> </span><span class="mi">-6</span><span class="p">]</span>
+<span class="w">    </span><span class="n">H5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Result</span><span class="o">:</span><span class="w"> </span><span class="mi">-6</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G4</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H4</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+</code></pre></div>
+
+<h2>Breadth-First Search (BFS) of a graph</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">ENTRANCE</span><span class="p">[</span><span class="s">&quot;Entrance&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">HALL</span><span class="p">[</span><span class="s">&quot;Hall&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM1</span><span class="p">[</span><span class="s">&quot;Room 1&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="nf">LIBRARY</span><span class="p">[</span><span class="s">&quot;Library&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">OFFICE</span><span class="p">[</span><span class="s">&quot;Office&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nf">LIBRARY</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM2</span><span class="p">[</span><span class="s">&quot;Room 2&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">OFFICE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM3</span><span class="p">[</span><span class="s">&quot;Room 3&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">ROOM1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM2</span>
+<span class="w">    </span><span class="n">ROOM2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM3</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ENTRANCE</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HALL</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ROOM1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="nf">LIBRARY</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">OFFICE</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ROOM2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ROOM3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 1 — Queue class <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>queue.py</code> that implements a <code>Queue</code> class with:
+1. Methods <code>enqueue()</code>, <code>dequeue()</code>, <code>peek()</code>, <code>is_empty()</code>, <code>size()</code>
+2. A <code>display()</code> method that shows the queue state
+3. A test with a counter simulation: clients arrive and are served</p>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">class</span> <span class="nc">Queue</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Implementation of a FIFO queue.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">enqueue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dequeue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Queue: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">)</span><span class="si">}</span><span class="s2"> (head → </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="si">}</span><span class="s2"> client(s))&quot;</span><span class="p">)</span>
+
+<span class="c1"># Counter simulation</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Counter simulation ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+
+<span class="c1"># Client arrival</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;Mohamed&quot;</span><span class="p">,</span> <span class="s2">&quot;Leila&quot;</span><span class="p">,</span> <span class="s2">&quot;Ahmed&quot;</span><span class="p">]:</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✓ </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> joins the queue.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Initial state:&quot;</span><span class="p">)</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="c1"># Service</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Service in progress:&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">queue</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">dequeue</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;→ Service for </span><span class="si">{</span><span class="n">client</span><span class="si">}</span><span class="s2"> completed.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">queue</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Next client: </span><span class="si">{</span><span class="n">queue</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✓ All clients have been served.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 2 — Postfix expression evaluation (RPN) <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>rpn.py</code> that evaluates an expression in Reverse Polish Notation (RPN) using a stack.</p>
+<p><strong>Principle:</strong> The operator follows its operands. Example: <code>3 4 +</code> = 3 + 4 = 7</p>
+<p><strong>Examples:</strong>
+- <code>3 4 +</code> → 7
+- <code>5 3 8 + -</code> → 5 - (3 + 8) = -6
+- <code>10 4 2 + *</code> → 10 × (4 + 2) = 60</p>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluate_rpn</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluates an expression in Reverse Polish Notation.&quot;&quot;&quot;</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">operators</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;+&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span>
+        <span class="s2">&quot;-&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span>
+        <span class="s2">&quot;*&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span>
+        <span class="s2">&quot;/&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span> <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">}</span>
+
+    <span class="n">elements</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">operators</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Error: not enough operands&quot;</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">operators</span><span class="p">[</span><span class="n">elem</span><span class="p">](</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Error: division by zero&quot;</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Error: invalid element &#39;</span><span class="si">{</span><span class="n">elem</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="si">}</span><span class="s2"> results instead of 1&quot;</span>
+    <span class="k">return</span> <span class="n">stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Tests</span>
+<span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;3 4 +&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5 3 8 + -&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10 4 2 + *&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;15 7 1 1 + - / 3 * 2 1 1 + + -&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4 0 /&quot;</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">expressions</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">evaluate_rpn</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">expr</span><span class="si">:</span><span class="s2">30s</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 3 — Breadth-First Search of a graph (BFS) <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>bfs.py</code> that implements a Breadth-First Search using a queue. The graph represents a school floor plan: each room is connected to others by hallways.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">ENTRANCE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">HALL</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM1</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="nf">LIBRARY</span>
+<span class="w">    </span><span class="n">HALL</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">OFFICE</span>
+<span class="w">    </span><span class="nf">LIBRARY</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM2</span>
+<span class="w">    </span><span class="n">OFFICE</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM3</span>
+<span class="w">    </span><span class="n">ROOM1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM2</span>
+<span class="w">    </span><span class="n">ROOM2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ROOM3</span>
+</code></pre></div>
+
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Breadth-First Search from a node.&quot;&quot;&quot;</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Breadth-First Search from &#39;</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">&#39;:&quot;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Visiting: </span><span class="si">{</span><span class="n">current</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">graph</span><span class="p">[</span><span class="n">current</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">order</span>
+
+<span class="c1"># Graph: school floor plan</span>
+<span class="n">school</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Entrance&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hall&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Hall&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Entrance&quot;</span><span class="p">,</span> <span class="s2">&quot;Room1&quot;</span><span class="p">,</span> <span class="s2">&quot;Library&quot;</span><span class="p">,</span> <span class="s2">&quot;Office&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Room1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hall&quot;</span><span class="p">,</span> <span class="s2">&quot;Room2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Room2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Library&quot;</span><span class="p">,</span> <span class="s2">&quot;Room1&quot;</span><span class="p">,</span> <span class="s2">&quot;Room3&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Room3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Office&quot;</span><span class="p">,</span> <span class="s2">&quot;Room2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Library&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hall&quot;</span><span class="p">,</span> <span class="s2">&quot;Room2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Office&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hall&quot;</span><span class="p">,</span> <span class="s2">&quot;Room3&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">visit_order</span> <span class="o">=</span> <span class="n">bfs</span><span class="p">(</span><span class="n">school</span><span class="p">,</span> <span class="s2">&quot;Entrance&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Visit order: </span><span class="si">{</span><span class="s1">&#39; → &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">visit_order</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Question: what is the distance (number of doors) between the entrance and room 3?</span>
+<span class="c1"># Answer: Entrance → Hall → Office → Room3 (3 doors)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 4 — Student dictionary with multi-criteria search <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>students.py</code> that manages a student database (list of dictionaries). The program:
+1. Creates a list of at least 5 students with: name, grades (list), group, major
+2. Computes the average for each student
+3. Provides search functions by group, by major, by average
+4. Sorts students by descending average</p>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_student</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">major</span><span class="p">,</span> <span class="n">grades</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a student dictionary.&quot;&quot;&quot;</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span> <span class="k">if</span> <span class="n">grades</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span>
+        <span class="s2">&quot;major&quot;</span><span class="p">:</span> <span class="n">major</span><span class="p">,</span>
+        <span class="s2">&quot;grades&quot;</span><span class="p">:</span> <span class="n">grades</span><span class="p">,</span>
+        <span class="s2">&quot;average&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">average</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">search_by_group</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Searches for students in a group.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span> <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">group</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">search_by_major</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">major</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Searches for students in a major.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span> <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;major&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">major</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">search_by_average</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Searches for students with average ≥ threshold.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span> <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;average&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">sort_by_average</span><span class="p">(</span><span class="n">students</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sorts by descending average.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;average&quot;</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Create database</span>
+<span class="n">students</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">create_student</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">]),</span>
+    <span class="n">create_student</span><span class="p">(</span><span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">]),</span>
+    <span class="n">create_student</span><span class="p">(</span><span class="s2">&quot;Mohamed&quot;</span><span class="p">,</span> <span class="s2">&quot;G2&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span>
+    <span class="n">create_student</span><span class="p">(</span><span class="s2">&quot;Leila&quot;</span><span class="p">,</span> <span class="s2">&quot;G2&quot;</span><span class="p">,</span> <span class="s2">&quot;French&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">]),</span>
+    <span class="n">create_student</span><span class="p">(</span><span class="s2">&quot;Ahmed&quot;</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]),</span>
+    <span class="n">create_student</span><span class="p">(</span><span class="s2">&quot;Fatima&quot;</span><span class="p">,</span> <span class="s2">&quot;G2&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">])</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== All students ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;major&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> Grades: </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;grades&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> Avg: </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;average&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Group G1 ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">search_by_group</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="s2">&quot;G1&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;major&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> — Avg: </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;average&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Average ≥ 14 ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">search_by_average</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="mi">14</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;average&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Overall ranking ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sort_by_average</span><span class="p">(</span><span class="n">students</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;average&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 5 — Dictionary compression (run-length encoding) <em>(10 min)</em></h2>
+<p><strong>Problem statement:</strong> Create a script <code>rle.py</code> that implements a simple compression algorithm:
+- RLE (Run-Length Encoding) replaces repetitions with (value, count)
+- Example: <code>AAABBBCCDAA</code> → <code>[('A',3), ('B',3), ('C',2), ('D',1), ('A',2)]</code>
+- Implement <code>compress(string)</code> and <code>decompress(data)</code></p>
+<p><strong>Answer:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">compress</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compresses a string with RLE.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">string</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current</span> <span class="o">=</span> <span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">string</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">current</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">current</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">current</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">decompress</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decompresses RLE data.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Tests</span>
+<span class="n">example</span> <span class="o">=</span> <span class="s2">&quot;AAABBBCCDAA&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original     : </span><span class="si">{</span><span class="n">example</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">compressed</span> <span class="o">=</span> <span class="n">compress</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compressed   : </span><span class="si">{</span><span class="n">compressed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ratio: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">compressed</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">example</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% of original size&quot;</span><span class="p">)</span>
+<span class="n">decompressed</span> <span class="o">=</span> <span class="n">decompress</span><span class="p">(</span><span class="n">compressed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decompressed : </span><span class="si">{</span><span class="n">decompressed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Identical? </span><span class="si">{</span><span class="n">example</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">decompressed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Another test</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB&quot;</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">compress</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Original text: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="si">}</span><span class="s2"> characters&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compressed text: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span><span class="si">}</span><span class="s2"> pairs&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Compression ratio: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Self-assessment Quiz</h2>
+<ol>
+<li>
+<p><strong>A queue (FIFO) uses the principle:</strong>
+   a) Last in, first out  b) First in, first out ✓  c) Random access</p>
+</li>
+<li>
+<p><strong>In Reverse Polish Notation, the expression <code>5 3 -</code> equals:</strong>
+   a) 2 ✓  b) -2  c) 8</p>
+</li>
+<li>
+<p><strong>Breadth-First Search (BFS) uses a structure of:</strong>
+   a) Stack  b) Queue ✓  c) Array</p>
+</li>
+<li>
+<p><strong>In Python, a dictionary is a data structure that:</strong>
+   a) Stores elements indexed by integers  b) Associates keys with values ✓  c) Stores elements in insertion order</p>
+</li>
+<li>
+<p><strong>RLE (Run-Length Encoding) is useful for compressing:</strong>
+   a) Data with many repetitions ✓  b) Random data  c) Already compressed files</p>
+</li>
+</ol>
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stack/Queue class</td>
+<td>20%</td>
+<td>Missing implementation</td>
+<td>Partial implementation</td>
+<td>Correct implementation</td>
+</tr>
+<tr>
+<td>Reverse Polish Notation</td>
+<td>20%</td>
+<td>Incorrect algorithm</td>
+<td>Partial algorithm</td>
+<td>Correct algorithm</td>
+</tr>
+<tr>
+<td>Breadth-First Search</td>
+<td>20%</td>
+<td>Incorrect traversal</td>
+<td>Partial traversal</td>
+<td>Correct traversal</td>
+</tr>
+<tr>
+<td>RLE compression</td>
+<td>20%</td>
+<td>Incorrect compression</td>
+<td>Partial compression</td>
+<td>Correct compression</td>
+</tr>
+<tr>
+<td>User interface</td>
+<td>20%</td>
+<td>No interface</td>
+<td>Partial interface</td>
+<td>Functional interface</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<h3>Teaching transposition</h3>
+<p>This synthesis tutorial mobilizes all acquired skills: classes, stacks, queues, dictionaries, algorithms. Reverse Polish Notation (exercise 2) is an excellent example of the usefulness of stacks in computing. Breadth-First Search (exercise 3) introduces graphs, a fundamental concept for teaching NSI Terminale. RLE compression (exercise 5) is intuitive and visual: students quickly understand the principle.</p>
+<h3>Trainer advice</h3>
+<p>Exercise 2 (RPN) is often a source of confusion because students must read the expression differently. Have students compute several RPN expressions "by hand" on the board before coding. For exercise 3 (BFS), use a large sheet of paper or the board to physically simulate the traversal: place sticky notes representing rooms and connect them with strings, then move a marker. Exercise 5 (RLE) is fun: ask students to find examples of repetitions in their own name or in sentences.</p>
+<h3>Extension</h3>
+<p>Propose a synthesis mini-project: create a Hangman game in Python that uses a <code>SecretWord</code> class with the notions of dictionary, list, and search algorithms seen in this tutorial. The game must draw a random word, hide the letters, and allow the user to propose letters until they have won or lost.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

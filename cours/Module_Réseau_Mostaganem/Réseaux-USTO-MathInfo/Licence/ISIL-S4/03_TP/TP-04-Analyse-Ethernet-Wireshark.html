@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 04 — Analyse trames Ethernet (Wireshark) — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TP 04 — Analyse trames Ethernet (Wireshark)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Questions :**</li></ul></div>
+    <h1>TP 04 — Analyse trames Ethernet (Wireshark)</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h</td>
+</tr>
+<tr>
+<td><strong>Outil</strong></td>
+<td>Wireshark</td>
+</tr>
+<tr>
+<td><strong>Prérequis</strong></td>
+<td>Ch. 04, TP 01</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs</h2>
+<ul>
+<li>Capturer du trafic réseau local</li>
+<li>Analyser les trames Ethernet, paquets ARP et ICMP</li>
+<li>Identifier les champs des en-têtes L2/L3</li>
+</ul>
+<hr />
+<h2>Partie 1 — Préparation</h2>
+<h3>Topologie (réseau réel ou Packet Tracer + capture locale)</h3>
+<p>Utiliser votre PC connecté au réseau du laboratoire ou une topologie Packet Tracer avec un PC hôte capturant.</p>
+<p><img alt="Capture Wireshark TP04" src="../../../Ressources-Communes/Images-Schemas/Ethernet/tp04-wireshark-capture.png" /></p>
+<hr />
+<h2>Partie 2 — Consignes</h2>
+<h3>Étape 1 — Installation et capture (30 min)</h3>
+<ol>
+<li>Lancer <strong>Wireshark</strong> (interface réseau active : Wi-Fi ou Ethernet).</li>
+<li>Démarrer la capture.</li>
+<li>Depuis un terminal, exécuter :</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>ping<span class="w"> </span><span class="m">192</span>.168.1.1
+arp<span class="w"> </span>-a
+ping<span class="w"> </span><span class="o">[</span>IP_d<span class="err">&#39;</span>un_autre_PC_du_laboratoire<span class="o">]</span>
+</code></pre></div>
+
+<ol>
+<li>Arrêter la capture après ~30 secondes.</li>
+</ol>
+<h3>Étape 2 — Filtres d'affichage (20 min)</h3>
+<p>Appliquer successivement :</p>
+<table>
+<thead>
+<tr>
+<th>Filtre</th>
+<th>Objectif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arp</code></td>
+<td>Trames ARP uniquement</td>
+</tr>
+<tr>
+<td><code>icmp</code></td>
+<td>Paquets ping</td>
+</tr>
+<tr>
+<td><code>eth.addr == xx:xx:xx:xx:xx:xx</code></td>
+<td>Trafic d'une MAC spécifique</td>
+</tr>
+<tr>
+<td><code>ip.addr == 192.168.1.10</code></td>
+<td>Trafic d'une IP spécifique</td>
+</tr>
+</tbody>
+</table>
+<h3>Étape 3 — Analyse trame Ethernet (40 min)</h3>
+<p>Sélectionner un paquet <strong>ICMP Echo Request</strong> et remplir :</p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Valeur observée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adresse MAC destination</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Adresse MAC source</td>
+<td>?</td>
+</tr>
+<tr>
+<td>EtherType</td>
+<td>? (0x????)</td>
+</tr>
+<tr>
+<td>Taille trame</td>
+<td>? octets</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Questions :</strong>
+- La MAC destination est-elle unicast ou broadcast ?
+- Quel protocole L3 est encapsulé (d'après EtherType) ?</p>
+<h3>Étape 4 — Analyse ARP (40 min)</h3>
+<p>Sélectionner une paire <strong>ARP Request / Reply</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Champ ARP Request</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opcode</td>
+<td>1 (request)</td>
+</tr>
+<tr>
+<td>Sender MAC</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Sender IP</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Target IP</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Target MAC</td>
+<td>00:00:00:00:00:00 (inconnu)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Champ ARP Reply</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opcode</td>
+<td>2 (reply)</td>
+</tr>
+<tr>
+<td>Sender MAC</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Sender IP</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p>Dessiner le schéma temporel : Request (broadcast) → Reply (unicast).</p>
+<h3>Étape 5 — Analyse ICMP (30 min)</h3>
+<p>Comparer <strong>Echo Request</strong> et <strong>Echo Reply</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Request</th>
+<th>Reply</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type ICMP</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>IP source</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>IP destination</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>TTL</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<h3>Étape 6 — Vue OSI (20 min)</h3>
+<p>Utiliser le panneau <strong>Packet Details</strong> pour identifier les 4 couches visibles :
+- Frame (L2) → IP (L3) → ICMP (L3+) → Data</p>
+<hr />
+<h2>Partie 3 — Vérifications</h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Critère</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capture ARP</td>
+<td>Au moins 1 requête + 1 réponse identifiées</td>
+</tr>
+<tr>
+<td>Capture ICMP</td>
+<td>Echo Request + Reply appariés</td>
+</tr>
+<tr>
+<td>EtherType</td>
+<td>0x0800 identifié pour IPv4</td>
+</tr>
+<tr>
+<td>Filtres</td>
+<td>4 filtres appliqués avec succès</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Partie 4 — Questions de bilan</h2>
+<ol>
+<li>Pourquoi ARP envoie-t-il en broadcast ?</li>
+<li>L'adresse IP change-t-elle entre Echo Request et Echo Reply ?</li>
+<li>Que se passe-t-il si on filtre <code>not arp and not icmp</code> ?</li>
+<li>Quelle est la taille de l'en-tête Ethernet II (sans VLAN) ?</li>
+<li>Comment Wireshark obtient-il les noms de fabricants (Intel, Cisco…) à partir des MAC ?</li>
+</ol>
+<hr />
+<h2>Annexe — Corrigé</h2>
+<ol>
+<li><strong>Broadcast</strong> car la MAC du destinataire est inconnue — tous les hôtes du LAN reçoivent la requête.</li>
+<li><strong>Non</strong> — IP source et dest sont inversées entre request et reply, mais chaque paquet conserve ses IP.</li>
+<li>Affiche tout le trafic <strong>sauf</strong> ARP et ICMP (HTTP, DNS, etc.).</li>
+<li><strong>14 octets</strong> (6+6+2).</li>
+<li>Les <strong>3 premiers octets</strong> (OUI) sont résolus via une base IEEE (Wireshark l'intègre).</li>
+</ol>
+<hr />
+<h2>Livrables</h2>
+<ul>
+<li>Fichier <code>.pcapng</code> (ou captures PNG)</li>
+<li>Compte-rendu avec tableaux remplis</li>
+</ul>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><a href="../../../Ressources-Communes/Outils/Wireshark.md">Wireshark Guide</a></li>
+<li>Ch. 04</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

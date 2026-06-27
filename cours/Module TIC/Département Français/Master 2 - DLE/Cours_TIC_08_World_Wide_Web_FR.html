@@ -1,0 +1,533 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 08 — World Wide Web et recherche en didactique des langues — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 08 — World Wide Web et recherche en didactique des langues</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 2 — DLE</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 2 DLE</li><li>**Compétences pré-requises :** TIC 07 ; notions de recherche documentaire en ligne</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_08_World_Wide_Web_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 08 — World Wide Web et recherche en didactique des langues</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani
+<strong>Module :</strong> TIC
+<strong>Niveau :</strong> Master 2 — DLE
+<strong>Durée :</strong> 1h30
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 2 DLE</p>
+<p><strong>Compétences pré-requises :</strong> TIC 07 ; notions de recherche documentaire en ligne</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Décomposer une URL et comprendre le fonctionnement HTTP/HTTPS
+- Décrire la structure HTML d'une page Web en lien avec l'extraction de contenu
+- Appliquer une grille d'évaluation de ressources en ligne pour l'enseignement (CRAP test, grille MERLOT)
+- Définir l'ethnographie numérique et la virtual ethnography (Hine, 2000)</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Effectuer une requête booléenne avancée pour la recherche documentaire
+- Utiliser des outils de web scraping simple pour la constitution de corpus textuels (Python/BeautifulSoup ou outils sans code)
+- Concevoir et diffuser un questionnaire en ligne (LimeSurvey / Google Forms) pour une enquête en didactique
+- Évaluer une ressource Web pour l'enseignement du FLE selon des critères académiques</p>
+<p><strong>En termes de savoir-être :</strong>
+- Adopter une posture éthique dans la collecte de données sur le Web
+- Développer un esprit critique face aux ressources pédagogiques en ligne</p>
+<p><strong>Mode d'évaluation :</strong> TD 30 % + QCM 20 % + mini-enquête en ligne 50 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Atelier web scraping : extraire un corpus de commentaires de forums FLE pour analyse</li>
+<li>Conception d'un questionnaire en ligne sur les pratiques numériques des apprenants de FLE</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM Web / HTTP / recherche sur le Web</li>
+<li>Projet : mener une mini-enquête par questionnaire en ligne (n = 20+) et présenter les résultats</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Hine, C. (2000). <em>Virtual Ethnography</em>. Sage.</li>
+<li>Kozinets, R. (2010). <em>Netnography</em>. Sage.</li>
+<li>Hubbard, P. &amp; Levy, M. (2006). <em>Teacher Education in CALL</em>. John Benjamins.</li>
+<li>MDN Web Docs — HTML / HTTP</li>
+<li>Guide MERLOT (merlot.org) pour l'évaluation de ressources pédagogiques numériques</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction : le Web comme terrain de recherche en didactique des langues</li>
+<li>Navigateurs et structure du Web</li>
+<li>URL, HTTP et HTTPS — dimensions techniques</li>
+<li>HTML et extraction de contenu pour la recherche</li>
+<li>Recherche d'information avancée</li>
+<li>Évaluation des ressources pédagogiques en ligne</li>
+<li>Enquêtes en ligne et questionnaires pour la recherche</li>
+<li>Web scraping pour la constitution de corpus</li>
+<li>Digital ethnography / Virtual ethnography (Hine, Kozinets)</li>
+<li>Web 2.0 et apprentissage des langues</li>
+<li>Contexte réglementaire algérien</li>
+<li>Déroulement séance (90 min)</li>
+<li>Note pédagogique Master 2</li>
+<li>QCM d'auto-évaluation</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<h2>Introduction : le Web comme terrain de recherche <em>(10 min)</em></h2>
+<p>Le <strong>World Wide Web</strong> n'est pas seulement un réservoir d'informations : il constitue un <strong>terrain de recherche</strong> à part entière pour le didacticien des langues. On y trouve :</p>
+<ul>
+<li>Des <strong>interactions langagières</strong> authentiques (forums, commentaires, chats pédagogiques)</li>
+<li>Des <strong>dispositifs d'apprentissage</strong> (plateformes Moodle, MOOCs, sites de télécollaboration)</li>
+<li>Des <strong>données d'enquête</strong> potentielles (questionnaires, entretiens synchrones)</li>
+<li>Des <strong>ressources pédagogiques</strong> à évaluer et intégrer dans un scénario didactique</li>
+</ul>
+<p>Ce cours outille le chercheur M2-DLE pour <strong>faire du Web un objet et un instrument de recherche</strong>.</p>
+<h2>Navigateurs et structure du Web <em>(5 min)</em></h2>
+<p>Navigateurs courants : <strong>Chrome</strong>, <strong>Firefox</strong>, <strong>Edge</strong>, <strong>Safari</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moteur de rendu</td>
+<td>Affiche HTML/CSS</td>
+</tr>
+<tr>
+<td>Moteur JS</td>
+<td>Exécute scripts (interactivité)</td>
+</tr>
+<tr>
+<td>Outils développeur (F12)</td>
+<td>Inspecter le code source, le réseau, les cookies</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mettre à jour</strong> le navigateur pour la sécurité (correctifs).</p>
+<h2>URL, HTTP et HTTPS <em>(10 min)</em></h2>
+<p>Exemple : <code>https://elearning.univ-usto.dz/course/view.php?id=2094</code></p>
+<table>
+<thead>
+<tr>
+<th>Partie</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://</td>
+<td>Protocole sécurisé</td>
+</tr>
+<tr>
+<td>elearning.univ-usto.dz</td>
+<td>Nom de domaine (DNS)</td>
+</tr>
+<tr>
+<td>/course/view.php</td>
+<td>Chemin ressource</td>
+</tr>
+<tr>
+<td>?id=2094</td>
+<td>Paramètre (identifiant cours)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>HTTP</strong> (non chiffré) vs <strong>HTTPS</strong> (TLS — cadenas). Pour la recherche : privilégier les sites HTTPS pour la collecte éthique de données.</p>
+<h2>HTML et extraction de contenu <em>(10 min)</em></h2>
+<p>Comprendre le HTML permet d'extraire du contenu pour l'analyse :</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Forum FLE<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;message&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;auteur&quot;</span><span class="p">&gt;</span>Étudiant 1<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;contenu&quot;</span><span class="p">&gt;</span>Je pense que l&#39;activité était...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;date&quot;</span><span class="p">&gt;</span>2025-10-15<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Outils d'extraction</strong> :
+- <strong>Sans code</strong> : Web Scraper (extension Chrome), ParseHub, Octoparse
+- <strong>Avec code</strong> : Python + BeautifulSoup / Scrapy</p>
+<h2>Recherche d'information avancée <em>(10 min)</em></h2>
+<p><strong>Opérateurs booléens avancés :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Opérateur</th>
+<th>Exemple</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>" "</code></td>
+<td><code>"apprentissage des langues assisté par ordinateur"</code></td>
+<td>Expression exacte</td>
+</tr>
+<tr>
+<td><code>AND</code></td>
+<td><code>"TICE" AND "FLE" AND "Algérie"</code></td>
+<td>Intersection</td>
+</tr>
+<tr>
+<td><code>OR</code></td>
+<td><code>"MOOC" OR "CLOM"</code></td>
+<td>Union</td>
+</tr>
+<tr>
+<td><code>NOT</code></td>
+<td><code>"anglais" NOT "business"</code></td>
+<td>Exclusion</td>
+</tr>
+<tr>
+<td><code>site:</code></td>
+<td><code>site:cairn.info "didactique des langues"</code></td>
+<td>Restriction domaine</td>
+</tr>
+<tr>
+<td><code>filetype:</code></td>
+<td><code>filetype:pdf "enquête" "FLE"</code></td>
+<td>Type de fichier</td>
+</tr>
+<tr>
+<td><code>intitle:</code></td>
+<td><code>intitle:"auto-évaluation" langues</code></td>
+<td>Titre de page</td>
+</tr>
+</tbody>
+</table>
+<h2>Évaluation des ressources pédagogiques en ligne <em>(10 min)</em></h2>
+<p><strong>Grille CRAP</strong> : Currency, Reliability, Authority, Purpose</p>
+<p><strong>Grille MERLOT</strong> (adaptée) :</p>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Questions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qualité du contenu</td>
+<td>Le contenu est-il exact et pertinent pour l'objectif d'apprentissage ?</td>
+</tr>
+<tr>
+<td>Potentiel pédagogique</td>
+<td>La ressource favorise-t-elle l'interaction et l'autonomie ?</td>
+</tr>
+<tr>
+<td>Facilité d'utilisation</td>
+<td>L'interface est-elle intuitive pour l'apprenant FLE ?</td>
+</tr>
+<tr>
+<td>Interactivité</td>
+<td>Y a-t-il des exercices, des quiz, des feedbacks ?</td>
+</tr>
+<tr>
+<td>Accessibilité</td>
+<td>La ressource respecte-t-elle les normes WCAG ?</td>
+</tr>
+</tbody>
+</table>
+<h2>Enquêtes en ligne et questionnaires <em>(10 min)</em></h2>
+<p><strong>Étapes de conception :</strong>
+1. Définir la question de recherche (ex. « Quelles sont les stratégies d'apprentissage lexical des étudiants algériens en FLE ? »)
+2. Choisir l'outil : <strong>LimeSurvey</strong> (recommandé, RGPD-compatible, hébergement institutionnel) ou <strong>Google Forms</strong> (simple mais limites RGPD)
+3. Structure du questionnaire : consentement éclairé → données démographiques → échelle de Likert → questions ouvertes
+4. Test pilote (n = 3-5) avant diffusion
+5. Diffusion : lien Moodle, courriel, réseaux sociaux académiques</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Question</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">recherche</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Conception</span><span class="w"> </span><span class="n">questionnaire</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Test</span><span class="w"> </span><span class="n">pilote</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">{</span><span class="n">Ajustements</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Diffusion</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Collecte</span><span class="w"> </span><span class="n">données</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="n">statistique</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">thématique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Rédaction</span><span class="w"> </span><span class="n">mémoire</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e3f2fd</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">c8e6c9</span>
+</code></pre></div>
+
+<h2>Web scraping pour la constitution de corpus <em>(10 min)</em></h2>
+<p><strong>Applications en didactique des langues :</strong>
+- Constitution d'un corpus d'interactions pédagogiques depuis des forums Moodle
+- Extraction de commentaires d'apprenants sur des sites d'évaluation de cours
+- Collecte de pages Web pour analyse de contenu (manuels numériques, ressources FLE)</p>
+<p><strong>Méthode simplifiée (sans code) :</strong>
+1. Identifier l'URL cible (forum, site de ressources)
+2. Utiliser Web Scraper Chrome → sélectionner les éléments par CSS selectors
+3. Exporter en CSV/JSON
+4. Nettoyage des données (OpenRefine / Excel)</p>
+<p><strong>Éthique</strong> : toujours vérifier les conditions d'utilisation du site (robots.txt) ; ne pas collecter de données personnelles sans consentement.</p>
+<h2>Digital ethnography / Virtual ethnography <em>(10 min)</em></h2>
+<p><strong>Hine (2000)</strong> — <em>Virtual Ethnography</em> : observer et analyser les pratiques sociales en ligne comme on le ferait sur un terrain physique.</p>
+<p><strong>Kozinets (2010)</strong> — <em>Netnography</em> : adaptation de l'ethnographie aux communautés en ligne (forums, réseaux sociaux, mondes virtuels).</p>
+<p><strong>Application M2-DLE :</strong>
+- Observation participante d'une communauté d'apprentissage de langues en ligne (ex. groupe Facebook « Apprendre le français »)
+- Analyse des interactions dans un tandem linguistique via Skype/Zoom
+- Étude des échanges sur un forum dédié à la formation des enseignants de FLE</p>
+<p><strong>Méthode</strong> : immersion → collecte de traces → entretiens avec les participants → analyse thématique.</p>
+<h2>Web 2.0 et apprentissage des langues <em>(5 min)</em></h2>
+<p><strong>Web 2.0</strong> (O'Reilly, 2005) : passage du Web statique (lecture) au Web participatif (écriture et collaboration).</p>
+<table>
+<thead>
+<tr>
+<th>Outil Web 2.0</th>
+<th>Potentiel didactique</th>
+<th>Recherche associée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blog</td>
+<td>Production écrite, portfolio</td>
+<td>Richardson, 2010</td>
+</tr>
+<tr>
+<td>Wiki</td>
+<td>Écriture collaborative</td>
+<td>Lundin, 2008</td>
+</tr>
+<tr>
+<td>Podcast</td>
+<td>Compréhension orale, production</td>
+<td>Rosell-Aguilar, 2007</td>
+</tr>
+<tr>
+<td>Réseau social</td>
+<td>Interaction authentique</td>
+<td>Reinhardt &amp; Zander, 2011</td>
+</tr>
+<tr>
+<td>Padlet / Framapad</td>
+<td>Brainstorming, mur collaboratif</td>
+<td>Fuchs, 2014</td>
+</tr>
+</tbody>
+</table>
+<h2>Contexte réglementaire algérien <em>(5 min)</em></h2>
+<ul>
+<li><strong>Décret exécutif 18-179</strong> relatif à l'ANPT et à l'aménagement des parcs technologiques — socle du développement numérique universitaire</li>
+<li><strong>Instruction n° 329 du 14 juillet 2021</strong> : généralisation des ENT (Environnements Numériques de Travail) et des plateformes pédagogiques (Moodle) dans toutes les universités</li>
+<li><strong>Guide des bonnes pratiques du numérique éducatif</strong> (Ministère de l'Enseignement Supérieur, 2022) : critères de qualité pour les ressources pédagogiques numériques</li>
+<li><strong>Loi 18-05 du 10 mai 2018</strong> relative aux droits d'auteur et aux droits voisins — protection des productions numériques académiques</li>
+</ul>
+<p>Incidence pour le M2-DLE : les ressources Web utilisées dans un dispositif pédagogique doivent respecter le droit d'auteur ; l'ENT institutionnel est l'environnement privilégié pour l'expérimentation.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Textes</span><span class="w"> </span><span class="n">réglementaires</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Décret</span><span class="w"> </span><span class="mi">18-179</span><span class="w"> </span><span class="n">ANPT</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Instruction</span><span class="w"> </span><span class="mi">329</span><span class="w"> </span><span class="n">ENT</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Loi</span><span class="w"> </span><span class="mi">18</span><span class="mo">-05</span><span class="w"> </span><span class="n">droit</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">auteur</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Guide</span><span class="w"> </span><span class="n">ministériel</span><span class="w"> </span><span class="mi">2022</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Parcs</span><span class="w"> </span><span class="n">technologiques</span><span class="w"> </span><span class="n">universitaires</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Plateformes</span><span class="w"> </span><span class="n">Moodle</span><span class="w"> </span><span class="n">institutionnelles</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Protection</span><span class="w"> </span><span class="n">ressources</span><span class="w"> </span><span class="n">pédagogiques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Critères</span><span class="w"> </span><span class="n">qualité</span><span class="w"> </span><span class="n">numérique</span><span class="w"> </span><span class="n">éducatif</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f3e5f5</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e1f5fe</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e1f5fe</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e1f5fe</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e1f5fe</span>
+</code></pre></div>
+
+<hr />
+<h2>Déroulement séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Phase</th>
+<th>Activité</th>
+<th>Modalité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-10 min</td>
+<td>Introduction</td>
+<td>Web comme terrain de recherche ; objectifs M2-DLE</td>
+<td>Magistral + diapos</td>
+</tr>
+<tr>
+<td>10-20 min</td>
+<td>HTTP / HTML / URL</td>
+<td>Structure d'une URL, HTTP vs HTTPS, F12</td>
+<td>Démo en direct</td>
+</tr>
+<tr>
+<td>20-30 min</td>
+<td>Recherche avancée</td>
+<td>Opérateurs booléens, site:, filetype:</td>
+<td>Atelier guidé</td>
+</tr>
+<tr>
+<td>30-40 min</td>
+<td>Évaluation ressources</td>
+<td>Grille CRAP / MERLOT sur un site FLE</td>
+<td>Binômes</td>
+</tr>
+<tr>
+<td>40-50 min</td>
+<td>Questionnaires en ligne</td>
+<td>Conception LimeSurvey / Google Forms</td>
+<td>Démo + pratique</td>
+</tr>
+<tr>
+<td>50-60 min</td>
+<td>Web scraping</td>
+<td>Extraction de commentaires forum FLE (Web Scraper)</td>
+<td>Atelier pratique</td>
+</tr>
+<tr>
+<td>60-70 min</td>
+<td>Ethnographie numérique</td>
+<td>Présentation méthode Hine / Kozinets ; cas concret</td>
+<td>Magistral + discussion</td>
+</tr>
+<tr>
+<td>70-75 min</td>
+<td>Web 2.0 et langues</td>
+<td>Panorama outils collaboratifs</td>
+<td>Interactif</td>
+</tr>
+<tr>
+<td>75-85 min</td>
+<td>QCM d'auto-évaluation</td>
+<td>5 questions à choix multiples</td>
+<td>Individuel</td>
+</tr>
+<tr>
+<td>85-90 min</td>
+<td>Conclusion &amp; TD</td>
+<td>Synthèse, consignes TD 08</td>
+<td>Magistral</td>
+</tr>
+</tbody>
+</table>
+<h2>Note pédagogique Master 2</h2>
+<p><strong>Transposition recherche :</strong> Ce cours transpose les travaux fondateurs de Hine (2000) sur l'ethnographie virtuelle et de Kozinets (2010) sur la netnographie. Il s'appuie également sur les apports de Hubbard &amp; Levy (2006) pour l'évaluation des ressources en CALL (Computer-Assisted Language Learning). Les étudiants sont invités à confronter ces cadres avec les spécificités du terrain algérien dans leur mémoire.</p>
+<p><strong>Conseil au formateur :</strong> Organiser une séance en salle informatique avec connexion Internet. Préparer un corpus test de 3-4 sites FLE aux qualités contrastées pour l'exercice d'évaluation. Pour le web scraping, utiliser Web Scraper Chrome (extension) qui ne nécessite pas de compétences en programmation. Prévoir un temps pour la discussion éthique : qu'est-ce qu'une collecte de données acceptable en ligne ?</p>
+<p><strong>Prolongement :</strong> Ce cours prépare directement au TIC 09 (Réseaux) pour l'analyse des réseaux sociaux d'apprentissage, et au TIC 10 (Services Internet) pour les outils bibliographiques et la publication. Les étudiants peuvent dès cette séance prototyper leur questionnaire et commencer une observation ethnographique exploratoire.</p>
+<h2>QCM d'auto-évaluation</h2>
+<p><strong>1. Que signifie le « S » de HTTPS ?</strong>
+A) Secure (sécurisé par TLS/SSL) ✓
+B) Simple
+C) Standard
+D) Social</p>
+<p><strong>2. Quel outil permet d'extraire des données d'une page Web sans code ?</strong>
+A) Python + BeautifulSoup
+B) Web Scraper (extension Chrome) ✓
+C) Microsoft Word
+D) Adobe Acrobat</p>
+<p><strong>3. Le CRAP test évalue :</strong>
+A) La vitesse de chargement d'une page
+B) La qualité du code HTML
+C) La fiabilité d'une ressource Web (Currency, Reliability, Authority, Purpose) ✓
+D) Le nombre de visiteurs d'un site</p>
+<p><strong>4. Quelle est la première étape d'une enquête par questionnaire en ligne ?</strong>
+A) Diffuser le lien sur Facebook
+B) Définir la question de recherche ✓
+C) Analyser les résultats
+D) Supprimer les données incomplètes</p>
+<p><strong>5. Selon Hine (2000), l'ethnographie virtuelle consiste à :</strong>
+A) Étudier les virus informatiques
+B) Observer et analyser les pratiques sociales en ligne comme sur un terrain physique ✓
+C) Programmer des sites Web
+D) Traduire des textes ethnographiques en ligne</p>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<p>Le Web est un terrain de recherche fécond pour le didacticien des langues : il permet la collecte de données authentiques, l'observation de communautés d'apprentissage et l'évaluation de ressources pédagogiques. Le chercheur M2-DLE doit maîtriser les outils techniques et éthiques pour y mener des investigations rigoureuses.</p>
+<p><strong>TD 08</strong> : choisir un site FLE, l'évaluer selon la grille CRAP/MERLOT (1 page) et proposer un scénario d'intégration pédagogique.</p>
+<p><strong>Prochain cours</strong> : Réseaux informatiques et analyse des communautés d'apprentissage (TIC 09) — SNA, connectivisme, télécollaboration.</p>
+<hr />
+<h2>Références citées</h2>
+<ul>
+<li>Hine, C. (2000). <em>Virtual Ethnography</em>. Sage.</li>
+<li>Kozinets, R. (2010). <em>Netnography: Doing Ethnographic Research Online</em>. Sage.</li>
+<li>Hubbard, P. &amp; Levy, M. (2006). <em>Teacher Education in CALL</em>. John Benjamins.</li>
+<li>O'Reilly, T. (2005). What Is Web 2.0. <em>O'Reilly Media</em>.</li>
+<li>Reinhardt, J. &amp; Zander, V. (2011). Social Networking in an Intensive English Program Classroom. <em>CALICO Journal</em>.</li>
+<li>Décret exécutif 18-179 ; Instruction n° 329 du 14 juillet 2021 ; Loi 18-05 du 10 mai 2018.</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD Informatique — ENS 2ème année — Séance 04 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TD Informatique — ENS 2ème année — Séance 04 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 2ème année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Public cible :** Futurs enseignants de collège/lycée</li><li>**Prérequis :** Notions de base en Python, boucles, fonctions</li><li>**Notions abordées :** Récursivité, factorielle, Fibonacci, dichotomie, tri bulle, tri fusion</li><li>**Mise en situation :** La factorielle (n! = 1×2×...×n) apparaît en combinatoire. Sa définition récursive (n! = n×(n-1)!) est l'exemple canonique pour introduire la récursivité.</li><li>**Objectif spécifique :** Comprendre le mécanisme d'appel récursif — cas de base et appel récursif — et savoir tracer la pile d'exécution.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_2ème_année_FR_04.pdf</code></p>
+</blockquote>
+<h1>TD Informatique — ENS 2ème année — Séance 04 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 2ème année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026
+<strong>Public cible :</strong> Futurs enseignants de collège/lycée<br />
+<strong>Prérequis :</strong> Notions de base en Python, boucles, fonctions<br />
+<strong>Notions abordées :</strong> Récursivité, factorielle, Fibonacci, dichotomie, tri bulle, tri fusion</p>
+<hr />
+<h2>Exercice 1 — Récursivité : factorielle <em>(15 min)</em></h2>
+<p><strong>Mise en situation :</strong> La factorielle (n! = 1×2×...×n) apparaît en combinatoire. Sa définition récursive (n! = n×(n-1)!) est l'exemple canonique pour introduire la récursivité.</p>
+<p><strong>Objectif spécifique :</strong> Comprendre le mécanisme d'appel récursif — cas de base et appel récursif — et savoir tracer la pile d'exécution.</p>
+<p><strong>Énoncé :</strong> Écrire une fonction récursive <code>factorielle(n)</code> et tracer son exécution pour n=4.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">factorielle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>          <span class="c1"># Cas de base</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorielle</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Appel récursif</span>
+</code></pre></div>
+
+<p><strong>Tracé pour n = 4 :</strong></p>
+<div class="codehilite"><pre><span></span><code>factorielle(4)
+  → 4 <span class="gs">* factorielle(3)</span>
+<span class="gs">    → 4 *</span> (3 <span class="gs">* factorielle(2))</span>
+<span class="gs">      → 4 *</span> (3 <span class="gs">* (2 *</span> factorielle(1)))
+        → 4 <span class="gs">* (3 *</span> (2 <span class="gs">* 1)) → 4 *</span> (3 <span class="gs">* 2) → 4 *</span> 6 → 24
+</code></pre></div>
+
+<p><strong>Table de traçage (pile d'appels) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Appel</th>
+<th>n</th>
+<th>Retour</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>factorielle(4)</code></td>
+<td>4</td>
+<td>?</td>
+<td>Lancement</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>factorielle(3)</code></td>
+<td>3</td>
+<td>?</td>
+<td>Appel (n-1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>factorielle(2)</code></td>
+<td>2</td>
+<td>?</td>
+<td>Appel (n-1)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>factorielle(1)</code></td>
+<td>1</td>
+<td>1</td>
+<td>Cas de base</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>factorielle(2)</code></td>
+<td>2</td>
+<td>2×1=2</td>
+<td>Retour</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>factorielle(3)</code></td>
+<td>3</td>
+<td>3×2=6</td>
+<td>Retour</td>
+</tr>
+<tr>
+<td>0</td>
+<td><code>factorielle(4)</code></td>
+<td>4</td>
+<td>4×6=24</td>
+<td>Résultat</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sous-questions :</strong> 1. Tracer pour n=5 ? 2. <code>factorielle(-1)</code> — protection ? 3. Version itérative ? 4. Complexité temporelle/spatiale ? 5. Arbre d'appels pour n=4 ?</p>
+<p><strong>Variantes :</strong> ★☆☆ <code>somme_recursive(n)</code> — ★★☆ <code>lru_cache</code> — ★★★ Sans multiplication explicite.</p>
+<p><strong>Différenciation :</strong> N1 : squelette fourni. N2 : tracer puis implémenter. N3 : <code>sys.setrecursionlimit</code> et stack overflow.</p>
+<p><strong>Complexité :</strong> Temps O(n), Espace O(n). Version itérative : O(n) temps, O(1) espace.</p>
+<hr />
+<h2>Exercice 2 — Récursivité : Fibonacci <em>(20 min)</em></h2>
+<p><strong>Mise en situation :</strong> La suite de Fibonacci illustre le danger de la récursivité naïve : le double appel récursif cause une explosion exponentielle.</p>
+<p><strong>Objectif spécifique :</strong> Analyser la complexité exponentielle et découvrir les optimisations (itératif, mémoïsation).</p>
+<p><strong>Énoncé :</strong> Écrire une fonction récursive <code>fibonacci(n)</code> (F₀=0, F₁=1, Fₙ=Fₙ₋₁+Fₙ₋₂). Calculer <code>fibonacci(7)</code> à la main.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Valeurs :</strong></p>
+<div class="codehilite"><pre><span></span><code>fib(0)=0  fib(1)=1  fib(2)=1  fib(3)=2  fib(4)=3  fib(5)=5  fib(6)=8  fib(7)=13
+</code></pre></div>
+
+<p><strong>Arbre d'appels pour fibonacci(5) — 15 appels :</strong></p>
+<div class="codehilite"><pre><span></span><code>                  fib(5)
+                 /       \
+            fib(4)       fib(3)
+           /      \      /    \
+        fib(3)  fib(2) fib(2) fib(1)
+        /   \    /  \
+     fib(2) fib(1) ... (15 appels)
+</code></pre></div>
+
+<p>Soit 15 appels pour fib(5), 41 pour fib(7), 331M pour fib(40) !</p>
+<p><strong>Comparaison :</strong> Naïve O(2ⁿ), Itérative O(n), Mémoïsée O(n). Pour n=30 : 2,6M vs 29 vs 30 opérations.</p>
+<p><strong>Sous-questions :</strong> 1. Nombre d'appels pour fib(10) ? 2. Version itérative ? 3. Version avec dictionnaire <code>memo</code>. 4. Pour n=100, version naïve impossible ? 5. <code>@lru_cache</code>.</p>
+<p><strong>Variantes :</strong> ★☆☆ Itératif simple — ★★☆ <code>@functools.lru_cache</code> — ★★★ Exponentiation de matrice O(log n).</p>
+<p><strong>Différenciation :</strong> N1 : tracer pour n=4. N2 : analyser complexité et comparer. N3 : chronométrer les 3 versions.</p>
+<hr />
+<h2>Exercice 3 — Recherche dichotomique <em>(20 min)</em></h2>
+<p><strong>Mise en situation :</strong> Avec des données triées, on peut éliminer la moitié des données à chaque étape : complexité O(log n).</p>
+<p><strong>Objectif spécifique :</strong> Implémenter la recherche dichotomique et analyser sa complexité logarithmique.</p>
+<p><strong>Énoncé :</strong> Fonction <code>dichotomie(tableau, cible)</code>. Appliquer à <code>notes = [5, 8, 10, 12, 15, 18, 20]</code> pour trouver 15.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">dichotomie</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">cible</span><span class="p">):</span>
+    <span class="n">debut</span><span class="p">,</span> <span class="n">fin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">debut</span> <span class="o">&lt;=</span> <span class="n">fin</span><span class="p">:</span>
+        <span class="n">milieu</span> <span class="o">=</span> <span class="p">(</span><span class="n">debut</span> <span class="o">+</span> <span class="n">fin</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">tableau</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span> <span class="o">==</span> <span class="n">cible</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">milieu</span>
+        <span class="k">elif</span> <span class="n">tableau</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">cible</span><span class="p">:</span>
+            <span class="n">debut</span> <span class="o">=</span> <span class="n">milieu</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fin</span> <span class="o">=</span> <span class="n">milieu</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dichotomie</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>  <span class="c1"># 4</span>
+</code></pre></div>
+
+<p><strong>Table de traçage — cible = 15 (trouvé) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Itér.</th>
+<th>debut</th>
+<th>fin</th>
+<th>milieu</th>
+<th>tab[milieu]</th>
+<th>Comparaison</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>6</td>
+<td>3</td>
+<td>12</td>
+<td>12 &lt; 15</td>
+<td>debut = 4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>6</td>
+<td>5</td>
+<td>18</td>
+<td>18 &gt; 15</td>
+<td>fin = 4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>15</td>
+<td>15 == 15</td>
+<td>Trouvé !</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table — cible = 7 (non trouvé) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Itér.</th>
+<th>debut</th>
+<th>fin</th>
+<th>milieu</th>
+<th>tab[milieu]</th>
+<th>Comparaison</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>6</td>
+<td>3</td>
+<td>12</td>
+<td>12 &gt; 7</td>
+<td>fin = 2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>8</td>
+<td>8 &gt; 7</td>
+<td>fin = 0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>5 &lt; 7</td>
+<td>debut = 1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+<td>debut &gt; fin</td>
+<td>Retour -1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sous-questions :</strong> 1. Tracer pour 18. Combien d'itérations ? 2. Que se passe-t-il en cas de doublons ? 3. Version récursive ? 4. Pour n=1024, nombre max d'itérations ? 5. Version générique (str, float...).</p>
+<p><strong>Variantes :</strong> ★☆☆ Retourner indice d'insertion — ★★☆ Recherche par interpolation — ★★★ Recherche avec fonction key.</p>
+<p><strong>Différenciation :</strong> N1 : pseudo-code uniquement. N2 : implémentation Python complète. N3 : comparer expérimentalement avec la recherche linéaire.</p>
+<p><strong>Gabarit à compléter :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">dichotomie</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="n">cible</span><span class="p">):</span>
+    <span class="n">debut</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fin</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">debut</span> <span class="o">...</span> <span class="n">fin</span><span class="p">:</span>
+        <span class="n">milieu</span> <span class="o">=</span> <span class="p">(</span><span class="n">debut</span> <span class="o">+</span> <span class="n">fin</span><span class="p">)</span> <span class="o">//</span> <span class="o">...</span>
+        <span class="k">if</span> <span class="n">tableau</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span> <span class="o">==</span> <span class="n">cible</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">...</span>
+        <span class="k">elif</span> <span class="n">tableau</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span> <span class="o">...</span> <span class="n">cible</span><span class="p">:</span>
+            <span class="n">debut</span> <span class="o">=</span> <span class="n">milieu</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fin</span> <span class="o">=</span> <span class="o">...</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="o">...</span>
+</code></pre></div>
+
+<p><strong>Complexité :</strong> O(log₂ n). Chaque étape divise la taille par 2.</p>
+<hr />
+<h2>Exercice 4 — Tri bulle <em>(20 min)</em></h2>
+<p><strong>Mise en situation :</strong> Le tri bulle compare les éléments adjacents et les échange si nécessaire. Les plus grands « remontent » vers la fin comme des bulles.</p>
+<p><strong>Objectif spécifique :</strong> Comprendre le tri par échanges successifs et analyser sa complexité O(n²).</p>
+<p><strong>Énoncé :</strong> Fonction <code>tri_bulle(tableau)</code>. Tracer sur <code>[15, 8, 12, 20, 5]</code>.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">tri_bulle</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">trie</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">tableau</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">trie</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">trie</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">tableau</span>
+</code></pre></div>
+
+<p><strong>Tracé :</strong></p>
+<div class="codehilite"><pre><span></span><code>Départ : [15, 8, 12, 20, 5]
+Pass 1 : [8, 12, 15, 5, 20]   Pass 2 : [8, 12, 5, 15, 20]
+Pass 3 : [8, 5, 12, 15, 20]   Pass 4 : [5, 8, 12, 15, 20]
+</code></pre></div>
+
+<p><strong>Table de traçage :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pass</th>
+<th>Comparaisons</th>
+<th>Échanges</th>
+<th>Tableau</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>15&gt;8, 15&gt;12, 15&gt;20?, 20&gt;5</td>
+<td>3</td>
+<td>[8, 12, 15, 5, 20]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8&gt;12?, 12&gt;15?, 15&gt;5</td>
+<td>1</td>
+<td>[8, 12, 5, 15, 20]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8&gt;12?, 12&gt;5</td>
+<td>1</td>
+<td>[8, 5, 12, 15, 20]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8&gt;5</td>
+<td>1</td>
+<td>[5, 8, 12, 15, 20]</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>trie=True</code> → break</td>
+<td>0</td>
+<td>Trié</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sous-questions :</strong> 1. Combien de comparaisons dans le pire cas ? 2. Rôle du drapeau <code>trie</code> ? 3. Tracer sur <code>[1,2,3,4,5]</code> (déjà trié). 4. Adapter en ordre décroissant. 5. Version sans <code>trie</code> — différence ?</p>
+<p><strong>Variantes :</strong> ★☆☆ Sans optimisation — ★★☆ Tri cocktail — ★★★ Sur liste chaînée.</p>
+<p><strong>Différenciation :</strong> N1 : code fourni, tracer manuellement. N2 : implémenter avec optimisation. N3 : compter les comparaisons expérimentalement.</p>
+<p><strong>Gabarit à compléter :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">tri_bulle</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">trie</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">tableau</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">tableau</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">trie</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="k">if</span> <span class="n">trie</span><span class="p">:</span>
+            <span class="o">...</span>
+    <span class="k">return</span> <span class="n">tableau</span>
+</code></pre></div>
+
+<p><strong>Complexité :</strong> Pire O(n²), Meilleur O(n) (déjà trié). En moyenne O(n²).</p>
+<hr />
+<h2>Exercice 5 — Tri fusion <em>(15 min)</em></h2>
+<p><strong>Mise en situation :</strong> Le tri fusion illustre « diviser pour régner » : découper récursivement en deux, puis fusionner les paires triées. Complexité O(n log n).</p>
+<p><strong>Objectif spécifique :</strong> Maîtriser la conception d'un algorithme récursif et analyser sa complexité.</p>
+<p><strong>Énoncé :</strong> Écrire <code>tri_fusion(tableau)</code> et <code>fusionner(gauche, droite)</code>. Trier <code>[15, 8, 12, 20, 5, 10, 18]</code>.</p>
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">tri_fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tableau</span>
+    <span class="n">milieu</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">gauche</span> <span class="o">=</span> <span class="n">tri_fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">[:</span><span class="n">milieu</span><span class="p">])</span>
+    <span class="n">droite</span> <span class="o">=</span> <span class="n">tri_fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">[</span><span class="n">milieu</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">fusionner</span><span class="p">(</span><span class="n">gauche</span><span class="p">,</span> <span class="n">droite</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fusionner</span><span class="p">(</span><span class="n">gauche</span><span class="p">,</span> <span class="n">droite</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">gauche</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">droite</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">gauche</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">droite</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gauche</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">droite</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">resultat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">gauche</span><span class="p">[</span><span class="n">i</span><span class="p">:]);</span> <span class="n">resultat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">droite</span><span class="p">[</span><span class="n">j</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">resultat</span>
+
+<span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tri_fusion</span><span class="p">(</span><span class="n">notes</span><span class="p">))</span>
+</code></pre></div>
+
+<p><strong>Tracé du découpage :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">[15, 8, 12, 20, 5, 10, 18]</span>
+<span class="w">  </span><span class="na">├── [15, 8, 12, 20]</span>
+<span class="w">  </span><span class="na">│   ├── [15, 8] → [15]─[8] → [8, 15]</span>
+<span class="w">  </span><span class="na">│   └── [12, 20] → [12]─[20] → [12, 20]</span>
+<span class="w">  </span><span class="na">│   → [8, 12, 15, 20]</span>
+<span class="w">  </span><span class="na">└── [5, 10, 18]</span>
+<span class="w">      </span><span class="na">├── [5]</span>
+<span class="w">      </span><span class="na">└── [10, 18] → [10]─[18] → [10, 18]</span>
+<span class="w">      </span><span class="na">→ [5, 10, 18]</span>
+<span class="w">  </span><span class="na">→ [5, 8, 10, 12, 15, 18, 20]</span>
+</code></pre></div>
+
+<p><strong>Table des fusions :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Gauche</th>
+<th>Droite</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>[15]</td>
+<td>[8]</td>
+<td>[8, 15]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>[12]</td>
+<td>[20]</td>
+<td>[12, 20]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>[8, 15]</td>
+<td>[12, 20]</td>
+<td>[8, 12, 15, 20]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>[5]</td>
+<td>[10]</td>
+<td>[5, 10]</td>
+</tr>
+<tr>
+<td>5</td>
+<td>[5, 10]</td>
+<td>[18]</td>
+<td>[5, 10, 18]</td>
+</tr>
+<tr>
+<td>6</td>
+<td>[8, 12, 15, 20]</td>
+<td>[5, 10, 18]</td>
+<td>[5, 8, 10, 12, 15, 18, 20]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sous-questions :</strong> 1. Nombre de niveaux de récursion pour n ? 2. Pourquoi le tri fusion est-il stable ? 3. Modifier pour ordre décroissant. 4. Comparer comparaisons tri fusion vs tri bulle pour n=10, 100, 1000. 5. Mémoire utilisée par le tri fusion ?</p>
+<p><strong>Variantes :</strong> ★☆☆ Tracer sur 4 éléments — ★★☆ Sur liste chaînée — ★★★ Version itérative bottom-up.</p>
+<p><strong>Différenciation :</strong> N1 : fournir <code>fusionner()</code>, demander <code>tri_fusion()</code>. N2 : les deux fonctions. N3 : compteur de comparaisons.</p>
+<p><strong>Gabarit à compléter :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">tri_fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="o">...</span>
+    <span class="n">milieu</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tableau</span><span class="p">)</span> <span class="o">//</span> <span class="o">...</span>
+    <span class="n">gauche</span> <span class="o">=</span> <span class="n">tri_fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">[</span><span class="o">...</span><span class="p">:</span><span class="o">...</span><span class="p">])</span>
+    <span class="n">droite</span> <span class="o">=</span> <span class="n">tri_fusion</span><span class="p">(</span><span class="n">tableau</span><span class="p">[</span><span class="o">...</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">fusionner</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fusionner</span><span class="p">(</span><span class="n">gauche</span><span class="p">,</span> <span class="n">droite</span><span class="p">):</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">gauche</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">droite</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">gauche</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">droite</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">...</span><span class="p">);</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">resultat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">...</span><span class="p">);</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">resultat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">gauche</span><span class="p">[</span><span class="o">...</span><span class="p">:]);</span> <span class="n">resultat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">droite</span><span class="p">[</span><span class="o">...</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">resultat</span>
+</code></pre></div>
+
+<p><strong>Complexité :</strong> O(n log n) dans tous les cas. Espace O(n). Plus efficace que le tri bulle.</p>
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Factorielle</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Fibonacci</td>
+<td>20 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Dichotomie</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Tri bulle</td>
+<td>20 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Tri fusion</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Diagrammes conceptuels</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="o">[</span><span class="n">Algorithmes de recherche et tri</span><span class="o">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="o">[</span><span class="n">Récursivité</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="o">[</span><span class="n">Recherche</span><span class="o">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="o">[</span><span class="n">Tri</span><span class="o">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="o">[</span><span class="n">Factorielle&lt;br/&gt;récursive</span><span class="o">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="o">[</span><span class="n">Fibonacci&lt;br/&gt;récursif</span><span class="o">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="o">[</span><span class="n">Dichotomie&lt;br/&gt;O(log n)</span><span class="o">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="o">[</span><span class="n">Tri bulle&lt;br/&gt;O(n²)</span><span class="o">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="o">[</span><span class="n">Tri fusion&lt;br/&gt;O(n log n)</span><span class="o">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#4a90d9</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#2ecc71</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e67e22</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#e74c3c</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="nl">fill</span><span class="p">:</span><span class="n">#9b59b6</span><span class="p">,</span><span class="nl">color</span><span class="p">:</span><span class="n">#fff</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Récursivité</span>
+<span class="w">        </span><span class="n">F1</span><span class="p">[</span><span class="n">factorielle</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F2</span><span class="p">[</span><span class="mi">4</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">factorielle</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">F2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F3</span><span class="p">[</span><span class="mi">3</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">factorielle</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">F3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F4</span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="n">factorielle</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">F4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F5</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Comparaison</span>
+<span class="w">        </span><span class="n">B1</span><span class="p">[</span><span class="n">Tri</span><span class="w"> </span><span class="n">bulle</span><span class="w"> </span><span class="n">O</span><span class="p">(</span><span class="n">n²</span><span class="p">)]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B2</span><span class="p">[</span><span class="s">&quot;n=100 : 10 000 op&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">M1</span><span class="p">[</span><span class="n">Tri</span><span class="w"> </span><span class="n">fusion</span><span class="w"> </span><span class="n">O</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="nf">log</span><span class="w"> </span><span class="n">n</span><span class="p">)]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M2</span><span class="p">[</span><span class="s">&quot;n=100 : ~460 op&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">M1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Factorielle</span>
+<span class="w">        </span><span class="n">A1</span><span class="p">[</span><span class="n">factorielle</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A2</span><span class="p">[</span><span class="n">factorielle</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">A2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A3</span><span class="p">[</span><span class="n">factorielle</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">A3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A4</span><span class="p">[</span><span class="n">factorielle</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+<span class="w">        </span><span class="n">A4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A5</span><span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A6</span><span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A7</span><span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">A8</span><span class="p">[</span><span class="n">R</span><span class="o">=</span><span class="mi">24</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Dichotomie</span>
+<span class="w">        </span><span class="n">D1</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">{</span><span class="n">debut</span><span class="w"> </span><span class="err">≤</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">D2</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">D3</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D4</span><span class="p">{</span><span class="n">tab</span><span class="p">[</span><span class="n">milieu</span><span class="p">]</span><span class="o">=</span><span class="n">cible</span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">D5</span><span class="p">[</span><span class="n">Retour</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D4</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">D6</span><span class="p">{</span><span class="o">&lt;</span><span class="w"> </span><span class="n">cible</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">D6</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">D7</span><span class="p">[</span><span class="n">debut</span><span class="o">=</span><span class="n">milieu</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D6</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">D8</span><span class="p">[</span><span class="n">fin</span><span class="o">=</span><span class="n">milieu</span><span class="mi">-1</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D7</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">;</span><span class="w"> </span><span class="n">D8</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span>
+<span class="w">        </span><span class="n">D2</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">D9</span><span class="p">[</span><span class="mi">-1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Tri_fusion</span>
+<span class="w">        </span><span class="n">T1</span><span class="p">[</span><span class="n">tab</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T2</span><span class="p">{</span><span class="n">len</span><span class="w"> </span><span class="err">≤</span><span class="w"> </span><span class="mi">1</span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">T2</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">T3</span><span class="p">[</span><span class="n">Retour</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T2</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">T4</span><span class="p">[</span><span class="n">Découper</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T5</span><span class="p">[</span><span class="n">tri_fusion</span><span class="w"> </span><span class="n">gauche</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T6</span><span class="p">[</span><span class="n">tri_fusion</span><span class="w"> </span><span class="n">droite</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T5</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T7</span><span class="p">[</span><span class="n">fusionner</span><span class="p">];</span><span class="w"> </span><span class="n">T6</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T7</span>
+<span class="w">        </span><span class="n">T7</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T8</span><span class="p">[</span><span class="n">Retour</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A8</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D5</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">T8</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Tri_bulle</span>
+<span class="w">        </span><span class="n">B1</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B2</span><span class="p">[</span><span class="n">Pour</span><span class="w"> </span><span class="n">i</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B3</span><span class="p">[</span><span class="n">trie</span><span class="o">=</span><span class="n">True</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B4</span><span class="p">[</span><span class="n">Pour</span><span class="w"> </span><span class="n">j</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B5</span><span class="p">{</span><span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">tab</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">B5</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">B6</span><span class="p">[</span><span class="n">Échanger</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B6</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B7</span><span class="p">[</span><span class="n">trie</span><span class="o">=</span><span class="n">False</span><span class="p">];</span><span class="w"> </span><span class="n">B7</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B4</span>
+<span class="w">        </span><span class="n">B5</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">B4</span>
+<span class="w">        </span><span class="n">B4</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B8</span><span class="p">{</span><span class="n">trie</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">True</span><span class="o">?</span><span class="p">}</span>
+<span class="w">        </span><span class="n">B8</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">B9</span><span class="p">[</span><span class="n">Break</span><span class="p">];</span><span class="w"> </span><span class="n">B8</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">B2</span>
+<span class="w">        </span><span class="n">B9</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B10</span><span class="p">[</span><span class="n">Retour</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B10</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Grille d'évaluation</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Factorielle</td>
+<td>20 %</td>
+<td>Non récursif</td>
+<td>Cas de base mal défini</td>
+<td>Récursivité correcte avec tracé</td>
+</tr>
+<tr>
+<td>Fibonacci</td>
+<td>20 %</td>
+<td>Double appel non compris</td>
+<td>Résultats partiels</td>
+<td>Implémentation et conscience complexité</td>
+</tr>
+<tr>
+<td>Dichotomie</td>
+<td>20 %</td>
+<td>Non fonctionnel</td>
+<td>Logique partielle</td>
+<td>Correcte avec indices</td>
+</tr>
+<tr>
+<td>Tri bulle</td>
+<td>20 %</td>
+<td>Non fonctionnel</td>
+<td>Sans optimisation</td>
+<td>Avec drapeau et tracé</td>
+</tr>
+<tr>
+<td>Tri fusion</td>
+<td>20 %</td>
+<td>Fusion non implémentée</td>
+<td>Découpage seul</td>
+<td>Complet avec complexité</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Barème :</strong> 0-2/5 Insuffisant — 2-3/5 Partiel — 3-4/5 Satisfaisant — 4-5/5 Excellent</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> La récursivité peut être introduite au collège par les poupées russes ou les fractales. Les algorithmes de tri peuvent être simulés avec des cartes numérotées déplacées sur la table (approche kinesthésique).</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Après chaque algorithme, demandez aux étudiants de l'exécuter à la main sur un petit jeu de données avant de le coder. Insistez sur la comparaison des complexités.</p>
+<p><strong>Activités débranchées (CS Unplugged) :</strong>
+- Factorielle : combien de façons de ranger 4 élèves dans une file ?
+- Dichotomie : jeu « Devine le nombre » entre 1 et 100
+- Tri bulle : élèves avec des pancartes numérotées se déplacent
+- Tri fusion : diviser la classe en deux groupes, chaque groupe trie ses cartes</p>
+<p><strong>Prolongement :</strong> Défi d'optimisation — implémenter Fibonacci itératif (programmation dynamique) et comparer les temps avec la version récursive naïve pour n=30, 35, 40.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

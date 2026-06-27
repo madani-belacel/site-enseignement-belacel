@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 2ème année — Séance 03 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 2ème année — Séance 03 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 2ème année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</li><li>**Public visé :** Étudiants ENS 2ème année — Département Français</li><li>**Compétences pré-requises :** POO Python — classes, objets, méthodes (séance 02)</li><li>**Objectifs transversaux :**</li><li>**Mode d'évaluation :** TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_2ème_année_FR_03.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 2ème année — Séance 03 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 2ème année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</p>
+<p><strong>Public visé :</strong> Étudiants ENS 2ème année — Département Français</p>
+<p><strong>Compétences pré-requises :</strong> POO Python — classes, objets, méthodes (séance 02)</p>
+<p><strong>Objectifs transversaux :</strong>
+- Appliquer la programmation orientée objet (classes, héritage, encapsulation) en Python
+- Concevoir des algorithmes avancés (tri, recherche, récursivité) et estimer leur complexité
+- Modéliser des données avec le modèle relationnel et requêtes SQL de base
+- Comprendre l'architecture Web (HTML, CSS, JavaScript intro, HTTP)
+- Utiliser Git et méthodes de travail collaboratif (branches, merge)
+- Préparer l'enseignement de l'informatique au collège/lycée (Scratch, Python pédagogique)</p>
+<p><strong>Mode d'évaluation :</strong> TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</p>
+<p><strong>Bibliographie :</strong> Guttag — <em>Introduction to Computation and Programming Using Python</em> ; Lutz — <em>Learning Python</em></p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Faire hériter une classe d'une autre classe
+- Surcharger une méthode
+- Utiliser <code>super()</code> pour appeler la classe parente
+- Protéger des attributs avec l'encapsulation
+- Expliquer le polymorphisme avec un exemple concret</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Héritage : principe</li>
+<li>Classe parente et classe fille</li>
+<li>Surcharge de méthodes</li>
+<li>La fonction <code>super()</code></li>
+<li>Héritage multiple (notion)</li>
+<li>Encapsulation et propriétés</li>
+<li>Polymorphisme</li>
+<li>Exemple complet : hiérarchie scolaire</li>
+</ol>
+<hr />
+<h2>1. Héritage <em>(15 min)</em></h2>
+<p><strong>Principe :</strong> une classe peut hériter des attributs et méthodes d'une autre classe.</p>
+<p><strong>Vocabulaire :</strong>
+- <strong>Classe parente</strong> (super-classe) : classe de base
+- <strong>Classe fille</strong> (sous-classe) : hérite et peut ajouter/modifier</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Personne</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prenom</span> <span class="o">=</span> <span class="n">prenom</span>
+
+    <span class="k">def</span> <span class="nf">se_presenter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">class</span> <span class="nc">Eleve</span><span class="p">(</span><span class="n">Personne</span><span class="p">):</span>   <span class="c1"># Eleve hérite de Personne</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">groupe</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">)</span>  <span class="c1"># Appel du constructeur parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">groupe</span> <span class="o">=</span> <span class="n">groupe</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Benali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;ENS2-A&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">se_presenter</span><span class="p">())</span>  <span class="c1"># Hérité ! → &quot;Sara Benali&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">groupe</span><span class="p">)</span>          <span class="c1"># Propre à Eleve → &quot;ENS2-A&quot;</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">classDiagram</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">Personne</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="o">+</span><span class="kt">string</span><span class="w"> </span><span class="n">nom</span>
+<span class="w">        </span><span class="o">+</span><span class="kt">string</span><span class="w"> </span><span class="n">prenom</span>
+<span class="w">        </span><span class="o">+__</span><span class="n">init__</span><span class="o">(</span><span class="n">nom</span><span class="o">,</span><span class="w"> </span><span class="n">prenom</span><span class="o">)</span>
+<span class="w">        </span><span class="o">+</span><span class="n">se_presenter</span><span class="bp">()</span>
+<span class="w">        </span><span class="o">+</span><span class="n">description</span><span class="bp">()</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">Eleve</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="o">+</span><span class="kt">string</span><span class="w"> </span><span class="n">groupe</span>
+<span class="w">        </span><span class="o">+</span><span class="kt">list</span><span class="w"> </span><span class="n">notes</span>
+<span class="w">        </span><span class="o">+__</span><span class="n">init__</span><span class="o">(</span><span class="n">nom</span><span class="o">,</span><span class="w"> </span><span class="n">prenom</span><span class="o">,</span><span class="w"> </span><span class="n">groupe</span><span class="o">)</span>
+<span class="w">        </span><span class="o">+</span><span class="n">ajouter_note</span><span class="o">(</span><span class="n">note</span><span class="o">,</span><span class="w"> </span><span class="n">matiere</span><span class="o">)</span>
+<span class="w">        </span><span class="o">+</span><span class="n">moyenne_generale</span><span class="bp">()</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">Enseignant</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="o">+</span><span class="kt">string</span><span class="w"> </span><span class="n">matiere</span>
+<span class="w">        </span><span class="o">+__</span><span class="n">init__</span><span class="o">(</span><span class="n">nom</span><span class="o">,</span><span class="w"> </span><span class="n">prenom</span><span class="o">,</span><span class="w"> </span><span class="n">email</span><span class="o">,</span><span class="w"> </span><span class="n">matiere</span><span class="o">)</span>
+<span class="w">        </span><span class="o">+</span><span class="n">se_presenter</span><span class="bp">()</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="n">IntervenantExterne</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="o">+</span><span class="n">se_presenter</span><span class="bp">()</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">    </span><span class="n">Personne</span><span class="w"> </span><span class="o">&lt;|--</span><span class="w"> </span><span class="n">Eleve</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">hérite</span>
+<span class="w">    </span><span class="n">Personne</span><span class="w"> </span><span class="o">&lt;|--</span><span class="w"> </span><span class="n">Enseignant</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">hérite</span>
+<span class="w">    </span><span class="n">Personne</span><span class="w"> </span><span class="o">&lt;|--</span><span class="w"> </span><span class="n">IntervenantExterne</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">hérite</span>
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Personne</span><span class="w"> </span><span class="s">&quot;Super-classe&quot;</span>
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Eleve</span><span class="w"> </span><span class="s">&quot;Sous-classe&quot;</span>
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Enseignant</span><span class="w"> </span><span class="s">&quot;Surcharge se_presenter()&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2>2. Surcharge (override) <em>(10 min)</em></h2>
+<p>Une classe fille peut redéfinir une méthode de la classe parente.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Personne</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Une personne&quot;</span>
+
+<span class="k">class</span> <span class="nc">Enseignant</span><span class="p">(</span><span class="n">Personne</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">matiere</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matiere</span> <span class="o">=</span> <span class="n">matiere</span>
+
+    <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># Surcharge</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Enseignant de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">matiere</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Personne</span><span class="p">()</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Enseignant</span><span class="p">(</span><span class="s2">&quot;M. Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Informatique&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">description</span><span class="p">())</span>  <span class="c1"># &quot;Une personne&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">description</span><span class="p">())</span>  <span class="c1"># &quot;Enseignant de Informatique&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2>3. La fonction <code>super()</code> <em>(10 min)</em></h2>
+<p><code>super()</code> permet d'appeler une méthode de la classe parente.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Enseignant</span><span class="p">(</span><span class="n">Personne</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">matiere</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">)</span>  <span class="c1"># Appelle Personne.__init__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matiere</span> <span class="o">=</span> <span class="n">matiere</span>
+
+    <span class="k">def</span> <span class="nf">se_presenter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Étend la méthode parente</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">se_presenter</span><span class="p">()</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2"> — Enseignant de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">matiere</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2>4. Héritage multiple <em>(10 min)</em></h2>
+<p>Python permet d'hériter de plusieurs classes (attention aux conflits).</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Sportif</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">discipline</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Sport&quot;</span>
+
+<span class="k">class</span> <span class="nc">Musicien</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">instrument</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Piano&quot;</span>
+
+<span class="k">class</span> <span class="nc">EleveSportifMusicien</span><span class="p">(</span><span class="n">Personne</span><span class="p">,</span> <span class="n">Sportif</span><span class="p">,</span> <span class="n">Musicien</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">EleveSportifMusicien</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">se_presenter</span><span class="p">())</span>   <span class="c1"># De Personne</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">discipline</span><span class="p">())</span>     <span class="c1"># De Sportif</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">instrument</span><span class="p">())</span>     <span class="c1"># De Musicien</span>
+</code></pre></div>
+
+<hr />
+<h2>5. Encapsulation <em>(15 min)</em></h2>
+<p><strong>Encapsulation :</strong> protéger l'accès aux attributs pour garantir l'intégrité.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">CompteBancaire</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">titulaire</span><span class="p">,</span> <span class="n">solde</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">titulaire</span> <span class="o">=</span> <span class="n">titulaire</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solde</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># Protégé (convention : _)</span>
+        <span class="k">if</span> <span class="n">solde</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solde</span> <span class="o">=</span> <span class="n">solde</span>
+
+    <span class="k">def</span> <span class="nf">deposer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">montant</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solde</span> <span class="o">+=</span> <span class="n">montant</span>
+
+    <span class="k">def</span> <span class="nf">retirer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">montant</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">montant</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solde</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solde</span> <span class="o">-=</span> <span class="n">montant</span>
+            <span class="k">return</span> <span class="n">montant</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>           <span class="c1"># Getter</span>
+    <span class="k">def</span> <span class="nf">solde</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solde</span>
+
+    <span class="nd">@solde</span><span class="o">.</span><span class="n">setter</span>       <span class="c1"># Setter</span>
+    <span class="k">def</span> <span class="nf">solde</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">valeur</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solde</span> <span class="o">=</span> <span class="n">valeur</span>
+
+<span class="c1"># Utilisation</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">CompteBancaire</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">deposer</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cb</span><span class="o">.</span><span class="n">solde</span><span class="p">)</span>        <span class="c1"># 1500 (via le getter)</span>
+<span class="c1"># cb._solde = 999999    # Techniquement possible mais déconseillé</span>
+</code></pre></div>
+
+<p><strong>Convention Python :</strong> <code>_attribut</code> = protégé, <code>__attribut</code> = privé (name mangling).</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Encapsulation</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">Attribut</span><span class="w"> </span><span class="n">privé</span><span class="w"> </span><span class="n">_solde</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Getteur</span><span class="w"> </span><span class="k">@property</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Setteur</span><span class="w"> </span><span class="p">@</span><span class="n">solde</span><span class="p">.</span><span class="k">setter</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Lecture</span><span class="w"> </span><span class="n">contrôlée</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Écriture</span><span class="w"> </span><span class="n">avec</span><span class="w"> </span><span class="n">validation</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Polymorphisme</span>
+<span class="w">        </span><span class="n">F</span><span class="p">[</span><span class="n">Fonction</span><span class="w"> </span><span class="n">faire_cours</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Enseignant</span><span class="p">.</span><span class="n">se_presenter</span><span class="p">]</span>
+<span class="w">        </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">IntervenantExterne</span><span class="p">.</span><span class="n">se_presenter</span><span class="p">]</span>
+<span class="w">        </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Même</span><span class="w"> </span><span class="n">interface</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">comportements</span><span class="w"> </span><span class="n">différents</span><span class="p">]</span>
+<span class="w">        </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span>
+<span class="w">    </span><span class="n">end</span>
+</code></pre></div>
+
+<hr />
+<h2>6. Polymorphisme <em>(10 min)</em></h2>
+<p><strong>Polymorphisme :</strong> la même interface peut avoir des comportements différents selon le type d'objet.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">faire_cours</span><span class="p">(</span><span class="n">intervenant</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fonction polymorphe&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">intervenant</span><span class="o">.</span><span class="n">se_presenter</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; va faire cours.&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Enseignant</span><span class="p">(</span><span class="n">Personne</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">se_presenter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> (enseignant)&quot;</span>
+
+<span class="k">class</span> <span class="nc">IntervenantExterne</span><span class="p">(</span><span class="n">Personne</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">se_presenter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> (intervenant externe)&quot;</span>
+
+<span class="c1"># Même fonction, comportements différents</span>
+<span class="n">faire_cours</span><span class="p">(</span><span class="n">Enseignant</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Madani&quot;</span><span class="p">))</span>
+<span class="n">faire_cours</span><span class="p">(</span><span class="n">IntervenantExterne</span><span class="p">(</span><span class="s2">&quot;Dupont&quot;</span><span class="p">,</span> <span class="s2">&quot;Jean&quot;</span><span class="p">))</span>
+</code></pre></div>
+
+<hr />
+<h2>7. Exemple complet : système scolaire <em>(15 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Personne</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prenom</span> <span class="o">=</span> <span class="n">prenom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">class</span> <span class="nc">Eleve</span><span class="p">(</span><span class="n">Personne</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">groupe</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">groupe</span> <span class="o">=</span> <span class="n">groupe</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">ajouter_note</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">matiere</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;matiere&quot;</span><span class="p">:</span> <span class="n">matiere</span><span class="p">,</span> <span class="s2">&quot;note&quot;</span><span class="p">:</span> <span class="n">note</span><span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">moyenne_generale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="s2">&quot;note&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">notes</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Enseignant</span><span class="p">(</span><span class="n">Personne</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">matiere</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matiere</span> <span class="o">=</span> <span class="n">matiere</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">matiere</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Test</span>
+<span class="n">eleve</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Benali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;s.benali@etu.ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;ENS2-A&quot;</span><span class="p">)</span>
+<span class="n">eleve</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">)</span>
+<span class="n">eleve</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;Français&quot;</span><span class="p">)</span>
+<span class="n">prof</span> <span class="o">=</span> <span class="n">Enseignant</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Madani&quot;</span><span class="p">,</span> <span class="s2">&quot;m.belacel@ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;Informatique&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eleve</span><span class="p">)</span>                 <span class="c1"># &quot;Sara Benali&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prof</span><span class="p">)</span>                  <span class="c1"># &quot;Madani Belacel — Informatique&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne : </span><span class="si">{</span><span class="n">eleve</span><span class="o">.</span><span class="n">moyenne_generale</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Que permet l'héritage en POO ?</strong>
+   a) Créer une classe à partir d'une autre classe ✓  b) Effacer des attributs  c) Empêcher la modification du code</p>
+</li>
+<li>
+<p><strong>Quel mot-clé permet d'appeler le constructeur de la classe parente ?</strong>
+   a) <code>parent()</code>  b) <code>super()</code> ✓  c) <code>base()</code></p>
+</li>
+<li>
+<p><strong>L'encapsulation permet de :</strong>
+   a) Rendre le code plus rapide  b) Protéger l'accès aux attributs ✓  c) Supprimer les méthodes</p>
+</li>
+<li>
+<p><strong>Que signifie le polymorphisme ?</strong>
+   a) Une classe peut avoir plusieurs parents  b) La même interface peut avoir différents comportements selon l'objet ✓  c) Le code s'exécute plus lentement</p>
+</li>
+<li>
+<p><strong>Quelle convention Python pour un attribut protégé ?</strong>
+   a) <code>_attribut</code> ✓  b) <code>__attribut__</code>  c) <code>attribut_</code></p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion</h2>
+<p>Héritage, encapsulation et polymorphisme sont les trois piliers de la POO. Ils permettent d'écrire du code structuré, réutilisable et extensible.</p>
+<p><strong>Prochain cours :</strong> Algorithmes avancés et récursivité.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> L'héritage peut être expliqué au collège avec un exemple simple : "Un carré est un rectangle particulier" — le carré hérite des propriétés du rectangle (4 côtés, angles droits) mais ajoute la contrainte d'égalité des côtés. En NSI Terminale, la hiérarchie <code>Personne → Eleve/Enseignant</code> illustre parfaitement le concept. L'encapsulation se traduit pédagogiquement par la métaphore de la boîte noire : on utilise un objet sans connaître son fonctionnement interne.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> L'héritage multiple est souvent source de confusion. Insistez d'abord sur l'héritage simple avec des exemples concrets du monde scolaire. Pour l'encapsulation, l'exemple du <code>CompteBancaire</code> est efficace car les étudiants comprennent intuitivement qu'on ne doit pas pouvoir modifier un solde directement. Proposez un mini-TP où les étudiants doivent ajouter une classe <code>ProfesseurPrincipal(Enseignant)</code> qui hérite d'<code>Enseignant</code> et ajoute un attribut <code>classe</code>.</p>
+<p><strong>Prolongement :</strong> Les étudiants peuvent modéliser un système complet de gestion d'établissement scolaire avec une hiérarchie de classes : <code>Personne</code> → <code>Eleve</code>, <code>Enseignant</code>, <code>PersonnelAdministratif</code>. Chaque sous-classe ajoute des attributs et méthodes spécifiques. Ce modèle POO sera réutilisé dans le projet ENS2 et la base de données SQL.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

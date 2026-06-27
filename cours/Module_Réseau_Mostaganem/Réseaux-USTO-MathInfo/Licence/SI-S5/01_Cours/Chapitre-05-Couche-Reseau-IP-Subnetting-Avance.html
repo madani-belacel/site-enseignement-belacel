@@ -1,0 +1,578 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 05 — Couche Réseau : IP et subnetting avancé — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 05 — Couche Réseau : IP et subnetting avancé</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**FLSM** (*Fixed Length Subnet Mask*) : même masque pour tous les sous-réseaux → **gaspillage d'adresses**.</li><li>**Exemple** : besoin de 3 réseaux de 30, 30 et 60 hôtes avec /26 partout → 3 × 62 = 186 adresses pour 120 hôtes.</li><li>**Bloc** : `192.168.100.0/24`</li><li>**Vérification** : blocs contigus sans overlap ✓</li><li>**Configuration Cisco (aperçu)** :</li><li>**Règle** : agréger uniquement des préfixes **contigus** alignés sur une frontière de bits.</li><li>**Bénéfice** : tables de routage plus **petites**, convergence plus **rapide**.</li><li>**Topologie** : Siège + 2 agences + lien Internet</li><li>**Exercice 1** : VLSM pour 192.168.50.0/24 — besoins : 120, 60, 30, 2 (P2P), 2 (P2P) hôtes.</li></ul></div>
+    <h1>Chapitre 05 — Couche Réseau : IP et subnetting avancé</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence SI — L3</td>
+</tr>
+<tr>
+<td><strong>Semestre</strong></td>
+<td>S5</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>6 h CM (+ TD 05, TP 02)</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>05 / 09</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[KR] Ch. 4 ; RFC 1918, RFC 3022</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs du chapitre</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li><strong>Concevoir</strong> un plan d'adressage <strong>VLSM</strong> optimisé pour une topologie multi-réseaux.</li>
+<li><strong>Calculer</strong> rapidement réseau, broadcast, plage hôtes pour tout masque CIDR.</li>
+<li><strong>Configurer</strong> et <strong>expliquer</strong> <strong>NAT</strong> et <strong>PAT</strong> (overload).</li>
+<li><strong>Agréger</strong> des routes (route summarization) pour simplifier les tables de routage.</li>
+<li><strong>Configurer</strong> le routage statique avancé et la passerelle par défaut.</li>
+</ol>
+<hr />
+<h2>Plan du chapitre</h2>
+<ol>
+<li>CIDR et VLSM — principes</li>
+<li>Méthode de calcul VLSM</li>
+<li>NAT et PAT</li>
+<li>Agrégation de routes (supernetting)</li>
+<li>Routage statique avancé</li>
+<li>Cas pratique complet</li>
+<li>Exercices et QCM</li>
+</ol>
+<hr />
+<h2>1. CIDR et VLSM</h2>
+<h3>1.1 Limite du subnetting classique (FLSM)</h3>
+<p><strong>FLSM</strong> (<em>Fixed Length Subnet Mask</em>) : même masque pour tous les sous-réseaux → <strong>gaspillage d'adresses</strong>.</p>
+<p><strong>Exemple</strong> : besoin de 3 réseaux de 30, 30 et 60 hôtes avec /26 partout → 3 × 62 = 186 adresses pour 120 hôtes.</p>
+<h3>1.2 VLSM (<em>Variable Length Subnet Mask</em>)</h3>
+<p>Attribuer un masque <strong>adapté</strong> à chaque sous-réseau :</p>
+<table>
+<thead>
+<tr>
+<th>Réseau</th>
+<th>Hôtes requis</th>
+<th>Masque optimal</th>
+<th>Capacité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAN A</td>
+<td>60</td>
+<td>/26</td>
+<td>62</td>
+</tr>
+<tr>
+<td>LAN B</td>
+<td>30</td>
+<td>/27</td>
+<td>30</td>
+</tr>
+<tr>
+<td>LAN C</td>
+<td>14</td>
+<td>/28</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Lien P2P</td>
+<td>2</td>
+<td>/30</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="VLSM schéma" src="../../../Ressources-Communes/Images-Schemas/IPv4-IPv6/vlsm-plan-adressage.png" /></p>
+<h3>1.3 Table de référence CIDR (à connaître)</h3>
+<table>
+<thead>
+<tr>
+<th>CIDR</th>
+<th>Masque</th>
+<th>Hôtes</th>
+<th>CIDR</th>
+<th>Masque</th>
+<th>Hôtes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/24</td>
+<td>255.255.255.0</td>
+<td>254</td>
+<td>/28</td>
+<td>255.255.255.240</td>
+<td>14</td>
+</tr>
+<tr>
+<td>/25</td>
+<td>255.255.255.128</td>
+<td>126</td>
+<td>/29</td>
+<td>255.255.255.248</td>
+<td>6</td>
+</tr>
+<tr>
+<td>/26</td>
+<td>255.255.255.192</td>
+<td>62</td>
+<td>/30</td>
+<td>255.255.255.252</td>
+<td>2</td>
+</tr>
+<tr>
+<td>/27</td>
+<td>255.255.255.224</td>
+<td>30</td>
+<td>/32</td>
+<td>255.255.255.255</td>
+<td>1 (hôte)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Méthode de calcul VLSM</h2>
+<h3>Algorithme (ordre décroissant des besoins)</h3>
+<ol>
+<li>Lister les réseaux par <strong>taille décroissante</strong> (plus gros d'abord).</li>
+<li>Partir du bloc principal (ex. 192.168.1.0/24).</li>
+<li>Allouer le <strong>plus grand</strong> sous-réseau en premier.</li>
+<li>Continuer avec la <strong>prochaine adresse réseau disponible</strong>.</li>
+<li>Vérifier qu'il n'y a <strong>pas de chevauchement</strong>.</li>
+</ol>
+<h3>Exemple complet</h3>
+<p><strong>Bloc</strong> : <code>192.168.100.0/24</code></p>
+<table>
+<thead>
+<tr>
+<th>Réseau</th>
+<th>Hôtes</th>
+<th>Masque</th>
+<th>Réseau alloué</th>
+<th>Broadcast</th>
+<th>Plage hôtes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Siège</td>
+<td>100</td>
+<td>/25</td>
+<td>192.168.100.0/25</td>
+<td>.127</td>
+<td>.1 – .126</td>
+</tr>
+<tr>
+<td>Agence</td>
+<td>50</td>
+<td>/26</td>
+<td>192.168.100.128/26</td>
+<td>.191</td>
+<td>.129 – .190</td>
+</tr>
+<tr>
+<td>Lien R1-R2</td>
+<td>2</td>
+<td>/30</td>
+<td>192.168.100.192/30</td>
+<td>.195</td>
+<td>.193 – .194</td>
+</tr>
+<tr>
+<td>Wi-Fi</td>
+<td>20</td>
+<td>/27</td>
+<td>192.168.100.224/27</td>
+<td>.255</td>
+<td>.225 – .254</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vérification</strong> : blocs contigus sans overlap ✓</p>
+<h3>Méthode binaire (rappel)</h3>
+<p>Pour <code>10.20.30.45/27</code> :
+- /27 → masque 255.255.255.224 → incrément 32
+- 45 ∈ [32–63] → réseau <strong>10.20.30.32/27</strong></p>
+<hr />
+<h2>3. NAT et PAT</h2>
+<h3>3.1 Problème</h3>
+<p>RFC 1918 — adresses <strong>privées</strong> non routables sur Internet.</p>
+<h3>3.2 NAT statique</h3>
+<table>
+<thead>
+<tr>
+<th>Privée</th>
+<th>Publique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.10</td>
+<td>41.105.x.x</td>
+</tr>
+</tbody>
+</table>
+<p>Mapping <strong>1:1</strong> — serveurs accessibles depuis Internet.</p>
+<h3>3.3 PAT / NAT overload</h3>
+<p>Plusieurs hôtes privés → <strong>une seule IP publique</strong> via <strong>numéros de port</strong> :</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">192.168.1.10</span><span class="err">:</span><span class="mi">52341</span><span class="w"> </span><span class="err">──┐</span>
+<span class="mf">192.168.1.20</span><span class="err">:</span><span class="mi">49152</span><span class="w"> </span><span class="err">──┼──→</span><span class="w"> </span><span class="o">[</span><span class="n">NAT</span><span class="o">]</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="mf">41.105.1.1</span><span class="err">:</span><span class="n">port</span><span class="w"> </span><span class="k">unique</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="n">Internet</span>
+<span class="mf">192.168.1.30</span><span class="err">:</span><span class="mi">50100</span><span class="w"> </span><span class="err">──┘</span>
+</code></pre></div>
+
+<p><strong>Configuration Cisco (aperçu)</strong> :</p>
+<div class="codehilite"><pre><span></span><code><span class="n">ip</span><span class="w"> </span><span class="n">nat</span><span class="w"> </span><span class="n">inside</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">Gig0</span><span class="o">/</span><span class="mi">0</span><span class="w"> </span><span class="n">overload</span>
+<span class="n">access</span><span class="o">-</span><span class="n">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">permit</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="w"> </span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.255</span>
+<span class="n">interface</span><span class="w"> </span><span class="n">Gig0</span><span class="o">/</span><span class="mi">0</span>
+<span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="n">nat</span><span class="w"> </span><span class="n">outside</span>
+<span class="n">interface</span><span class="w"> </span><span class="n">Gig0</span><span class="o">/</span><span class="mi">1</span>
+<span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="n">nat</span><span class="w"> </span><span class="n">inside</span>
+</code></pre></div>
+
+<h3>3.4 Types NAT</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Mapping</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Statique</td>
+<td>1 privée ↔ 1 publique</td>
+<td>Serveur web interne</td>
+</tr>
+<tr>
+<td>Dynamique</td>
+<td>Pool d'IP publiques</td>
+<td>Rare</td>
+</tr>
+<tr>
+<td><strong>PAT (overload)</strong></td>
+<td>N privées ↔ 1 publique + ports</td>
+<td><strong>Box, routeur entreprise</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>3.5 Limites NAT</h3>
+<ul>
+<li>Casse le modèle <strong>bout-à-bout</strong> (certaines apps : FTP, VoIP, IPsec).</li>
+<li>Épuisement ports (~64 000 par IP publique).</li>
+<li><strong>IPv6</strong> réduit le besoin de NAT (Ch. 06).</li>
+</ul>
+<hr />
+<h2>4. Agrégation de routes (Supernetting)</h2>
+<p>Résumer plusieurs réseaux contigus en <strong>une route</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Routes détaillées</th>
+<th>Route agrégée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.0.0/24</td>
+<td></td>
+</tr>
+<tr>
+<td>192.168.1.0/24</td>
+<td>→ <strong>192.168.0.0/23</strong></td>
+</tr>
+<tr>
+<td>(192.168.2.0/24 non inclus si pas contigu)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Règle</strong> : agréger uniquement des préfixes <strong>contigus</strong> alignés sur une frontière de bits.</p>
+<p><strong>Bénéfice</strong> : tables de routage plus <strong>petites</strong>, convergence plus <strong>rapide</strong>.</p>
+<hr />
+<h2>5. Routage statique avancé</h2>
+<h3>5.1 Route par défaut</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">ip</span><span class="w"> </span><span class="nv">route</span><span class="w"> </span><span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="w"> </span><span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="w"> </span>[<span class="k">next</span><span class="o">-</span><span class="nv">hop</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">interface</span><span class="w"> </span><span class="nv">sortie</span>]
+</code></pre></div>
+
+<h3>5.2 Route flottante (floating static — aperçu)</h3>
+<p>Route de secours avec <strong>distance administrative</strong> plus élevée :</p>
+<div class="codehilite"><pre><span></span><code>ip route 0.0.0.0 0.0.0.0 10.0.0.2 200   ! backup si lien principal down
+ip route 0.0.0.0 0.0.0.0 10.0.0.1 1     ! principal
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Source route</th>
+<th>Distance admin (Cisco)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connecté (C)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Statique</td>
+<td>1</td>
+</tr>
+<tr>
+<td>OSPF</td>
+<td>110</td>
+</tr>
+<tr>
+<td>BGP externe</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 Longest prefix match (rappel approfondi)</h3>
+<p>Paquet vers <code>192.168.100.50</code> — table :</p>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Match ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.0.0/16</td>
+<td>Oui (général)</td>
+</tr>
+<tr>
+<td>192.168.100.0/24</td>
+<td><strong>Oui (plus spécifique) ← choisie</strong></td>
+</tr>
+<tr>
+<td>0.0.0.0/0</td>
+<td>Oui (défaut)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Cas pratique — PME Oran</h2>
+<p><strong>Topologie</strong> : Siège + 2 agences + lien Internet</p>
+<table>
+<thead>
+<tr>
+<th>Site</th>
+<th>VLAN</th>
+<th>Hôtes</th>
+<th>Réseau VLSM (depuis 10.10.0.0/16)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Siège</td>
+<td>10</td>
+<td>200</td>
+<td>10.10.0.0/24</td>
+</tr>
+<tr>
+<td>Agence 1</td>
+<td>20</td>
+<td>50</td>
+<td>10.10.1.0/26</td>
+</tr>
+<tr>
+<td>Agence 2</td>
+<td>30</td>
+<td>50</td>
+<td>10.10.1.64/26</td>
+</tr>
+<tr>
+<td>Lien WAN 1</td>
+<td>—</td>
+<td>2</td>
+<td>10.10.255.0/30</td>
+</tr>
+<tr>
+<td>Lien WAN 2</td>
+<td>—</td>
+<td>2</td>
+<td>10.10.255.4/30</td>
+</tr>
+</tbody>
+</table>
+<p>Routeur siège : NAT PAT vers Internet + routes statiques vers agences.</p>
+<hr />
+<h2>7. Exercices</h2>
+<p><strong>Exercice 1</strong> : VLSM pour 192.168.50.0/24 — besoins : 120, 60, 30, 2 (P2P), 2 (P2P) hôtes.</p>
+<details>
+<summary>Solution</summary>
+
+| Besoin | Masque | Réseau |
+|--------|--------|--------|
+| 120 | /25 | 192.168.50.0/25 |
+| 60 | /26 | 192.168.50.128/26 |
+| 30 | /27 | 192.168.50.192/27 |
+| P2P | /30 | 192.168.50.224/30 |
+| P2P | /30 | 192.168.50.228/30 |
+</details>
+
+<hr />
+<h2>8. QCM</h2>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>VLSM signifie…</td>
+<td><strong>Masque variable par sous-réseau</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>/30 hôtes utilisables…</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>PAT = NAT + …</td>
+<td><strong>Ports (overload)</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>RFC 1918 = adresses…</td>
+<td><strong>Privées</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Supernetting réduit…</td>
+<td><strong>Taille table routage</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Longest prefix = route la plus…</td>
+<td><strong>Spécifique</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>NAT place typique…</td>
+<td><strong>Routeur frontière</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>FLSM = même masque → …</td>
+<td><strong>Gaspillage possible</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>/28 = … hôtes</td>
+<td><strong>14</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Distance admin statique Cisco…</td>
+<td><strong>1</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Kurose &amp; Ross</strong> [KR], Ch. 4 — <em>Network Layer</em></li>
+<li><strong>RFC 1918</strong> — Private Address Space</li>
+<li><strong>RFC 3022</strong> — Traditional IP NAT</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : <strong>Compétence clé examen SI-S5</strong>. TD 05 + TP 02 obligatoires. Minimum 4 exercices VLSM en TD.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

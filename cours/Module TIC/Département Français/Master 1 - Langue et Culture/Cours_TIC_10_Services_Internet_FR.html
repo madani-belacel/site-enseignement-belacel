@@ -1,0 +1,553 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 10 — Services Internet — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 10 — Services Internet</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 1 — Langue et Culture</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 1 Langue et Culture</li><li>**Compétences pré-requises :** TIC 01–09 ; maîtrise de la navigation Web et de la recherche documentaire</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_10_Services_Internet_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 10 — Services Internet</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> Master 1 — Langue et Culture<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 1 Langue et Culture</p>
+<p><strong>Compétences pré-requises :</strong> TIC 01–09 ; maîtrise de la navigation Web et de la recherche documentaire</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Identifier les services Internet essentiels à la recherche académique (HAL, ORCID, Zotero, Google Scholar)
+- Expliquer le mouvement Open Science et ses implications pour le chercheur
+- Distinguer les outils de gestion bibliographique et leurs protocoles</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Configurer Zotero et l'interopérabilité avec le traitement de texte
+- Déposer un document sur HAL avec les métadonnées complètes
+- Réaliser une veille bibliographique automatisée (alertes, flux RSS)
+- Utiliser Overleaf pour la rédaction collaborative</p>
+<p><strong>En termes de savoir-être :</strong>
+- Culture de la science ouverte et du partage des données
+- Netiquette académique et identité numérique responsable</p>
+<p><strong>Mode d'évaluation :</strong> TD 20 % + Portfolio numérique (HAL + Zotero + ORCID) 50 % + QCM final 30 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Création d'un compte ORCID + dépôt d'un document fictif sur HAL</li>
+<li>Configuration Zotero : bibliographie collaborative sur un thème commun</li>
+<li>Rédaction d'un court article sur Overleaf (modèle template)</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>Portfolio : profil ORCID, groupe Zotero partagé, document Overleaf exporté</li>
+<li>QCM final récapitulatif du module TIC (20 questions)</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>DigComp 2.2 (Union Européenne, 2022) — cadre de compétences numériques</li>
+<li>Guides étudiant Moodle (USTO, Boumerdès, Béjaïa)</li>
+<li>HAL — https://hal.science ; Zotero — https://zotero.org ; Overleaf — https://overleaf.com</li>
+<li>ORCID — https://orcid.org</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p><strong>Arrêté 933 (2016)</strong> : Le Master Langue et Culture intègre l'UE « Méthodologie de la recherche et TIC ». La maîtrise des outils bibliographiques et des archives ouvertes est une compétence évaluée. <strong>Arrêté 129 (2019)</strong> : Diffusion en accès ouvert des mémoires de Master via les plateformes institutionnelles.</p>
+<p><strong>Loi 18-07 (2018)</strong> sur la protection des données personnelles : les plateformes académiques (ORCID, HAL) collectent des données d'identification ; le chercheur doit être informé de leurs usages.</p>
+<p><strong>PNDES 2025-2030</strong> : L'Algérie s'engage dans la <strong>Science Ouverte</strong> via le portail national des revues (SJD) et le dépôt systématique des thèses. La bibliothèque numérique du CERIST (biblio.cerist.dz) donne accès aux ressources souscrites.</p>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction — Panorama des services Internet pour la recherche</li>
+<li>Identité numérique du chercheur : ORCID, IdHAL</li>
+<li>Google Scholar avancé et Google Alerts</li>
+<li>HAL : dépôt et consultation</li>
+<li>Zotero : gestion bibliographique collaborative</li>
+<li>Overleaf et rédaction académique collaborative</li>
+<li>Research Data Management (RDM)</li>
+<li>Open Science et Science Ouverte</li>
+<li>Veille et flux RSS académiques</li>
+<li>Synthèse module TIC 01–10</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Services</span><span class="w"> </span><span class="n">Internet</span><span class="w"> </span><span class="n">pour</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">recherche</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Identité</span><span class="w"> </span><span class="n">numérique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Recherche</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Veille</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Écriture</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Publication</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Données</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Archivage</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">ORCID</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Google</span><span class="w"> </span><span class="n">Scholar</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">HAL</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">IdHAL</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Google</span><span class="w"> </span><span class="n">Scholar</span><span class="w"> </span><span class="n">avancé</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Alertes</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RSS</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Cairn</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">OpenEdition</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Overleaf</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">LaTeX</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">Zotero</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">N</span><span class="p">[</span><span class="n">Collaboration</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">O</span><span class="p">[</span><span class="n">RDM</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Plan</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">gestion</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P</span><span class="p">[</span><span class="n">HAL</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Zenodo</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Q</span><span class="p">[</span><span class="n">Licences</span><span class="w"> </span><span class="n">CC</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">16</span><span class="n">a085</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Introduction — Panorama des services Internet pour la recherche <em>(10 min)</em></h2>
+<p>Ce dernier cours du module TIC synthétise l'ensemble des apprentissages en les orientant vers les <strong>pratiques concrètes de recherche en Master</strong>. Les services Internet ne sont plus seulement des outils quotidiens (courriel, stockage) : ils deviennent des <strong>instruments de production scientifique</strong>.</p>
+<p><strong>Les trois piliers du chercheur numérique :</strong>
+1. <strong>Identité</strong> : qui êtes-vous scientifiquement ? (ORCID, Google Scholar, HAL)
+2. <strong>Instruments</strong> : quels outils pour lire, écrire, publier ? (Zotero, Overleaf, HAL)
+3. <strong>Impact</strong> : comment diffuser et mesurer votre recherche ? (Open Access, citations, altmetrics)</p>
+<p><strong>Contexte algérien</strong> : la généralisation des plateformes académiques (HAL Mostaganem, SJD) et l'obligation de dépôt des mémoires de Master dans les bibliothèques numériques institutionnelles imposent une maîtrise minimale de ces outils.</p>
+<hr />
+<h2>Identité numérique du chercheur : ORCID, IdHAL <em>(10 min)</em></h2>
+<p><strong>ORCID</strong> (Open Researcher and Contributor ID) — <code>orcid.org</code></p>
+<ul>
+<li>Identifiant unique et pérenne (16 chiffres) pour chaque chercheur</li>
+<li>Obligatoire dans la plupart des revues et appels d'offres internationaux</li>
+<li>Synchronisation avec HAL, Crossref, Scopus, WoS</li>
+</ul>
+<p><strong>Configuration :</strong>
+1. Créer un compte ORCID (gratuit)
+2. Renseigner : affiliation, publications, formation
+3. Connecter à HAL (IdHAL) et Google Scholar</p>
+<p><strong>IdHAL</strong> : identifiant dédié à la plateforme HAL. Format : <code>prenom-nom</code>. Permet de regrouper toutes vos productions.</p>
+<p><strong>Pourquoi en Master ?</strong> Publier un mémoire ou un article de synthèse = attribution d'un ORCID dès le Master. C'est une pratique de plus en plus courante (recommandée par le MESRS algérien).</p>
+<hr />
+<h2>Google Scholar avancé et Google Alerts <em>(10 min)</em></h2>
+<p><strong>Google Scholar</strong> (scholar.google.com) : index de publications académiques (articles, thèses, livres, actes).</p>
+<p><strong>Fonctionnalités avancées :</strong>
+- <strong>Recherche booléenne</strong> : <code>"linguistique algérienne" AND corpus</code>
+- <strong>Filtres</strong> : date (depuis 2020), tri par pertinence/date
+- <strong>Citations</strong> : « Cited by » pour remonter aux travaux postérieurs
+- <strong>Export</strong> : format BibTeX vers Zotero
+- <strong>Profil</strong> : suivre ses propres citations</p>
+<p><strong>Google Alerts</strong> : alerte mail automatique sur un mot-clé. Exemple : alerte <code>"Master Langue et Culture" Algérie</code>.</p>
+<p><strong>Limites de Google Scholar</strong> : indexe aussi des articles non évalués (predatory journals). Toujours vérifier la source via Cairn, HAL, ou le site de l'éditeur.</p>
+<hr />
+<h2>HAL : dépôt et consultation <em>(10 min)</em></h2>
+<p><strong>HAL</strong> (Hyper Article en Ligne) — archive ouverte pluridisciplinaire gérée par le CCSD (CNRS).</p>
+<p><strong>Pourquoi HAL ?</strong>
+- Visibilité internationale de vos travaux
+- Pérennité (archivage PDF/A)
+- Métadonnées riches (mot-clés, résumé, financement)
+- Interopérabilité avec ORCID, Zotero
+- <strong>HAL Mostaganem</strong> : archive institutionnelle de l'Université d'Oran 2 / Mostaganem</p>
+<p><strong>Déposer sur HAL :</strong>
+1. Créer un compte + IdHAL
+2. Choisir le type de document (article, communication, thèse, mémoire)
+3. Renseigner les métadonnées (titre, résumé, mots-clés, auteurs, date)
+4. Déposer le fichier PDF (respect des droits d'auteur)
+5. Choisir la licence (CC-BY recommandée)
+6. Valider (modération par l'administrateur de la collection)</p>
+<p><strong>Exercice</strong> : déposer un document fictif (fiche de lecture) sur HAL Mostaganem.</p>
+<hr />
+<h2>Zotero : gestion bibliographique collaborative <em>(15 min)</em></h2>
+<p><strong>Zotero</strong> (zotero.org) : logiciel libre de gestion de références bibliographiques.</p>
+<h3>Fonctionnalités clés</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Utilité pour le Master</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capture Web</td>
+<td>Ajouter une référence en un clic depuis Cairn, HAL, Google Scholar</td>
+</tr>
+<tr>
+<td>Organisation</td>
+<td>Dossiers thématiques + sous-collections + tags</td>
+</tr>
+<tr>
+<td>Groupes collaboratifs</td>
+<td>Bibliographie partagée entre étudiants d'un même séminaire</td>
+</tr>
+<tr>
+<td>Export</td>
+<td>BibTeX, RIS, PDF (format de thèse)</td>
+</tr>
+<tr>
+<td>Intégration Word/LibreOffice</td>
+<td>Insérer des citations automatiquement, générer la bibliographie</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Annotations sur les PDF importés</td>
+</tr>
+</tbody>
+</table>
+<h3>Workflow pour un mémoire</h3>
+<ol>
+<li>Créer une collection « Mémoire M1 »</li>
+<li>Ajouter des références via le connecteur Zotero (extension navigateur)</li>
+<li>Organiser par parties du plan</li>
+<li>Insérer les citations dans Word (plugin Zotero)</li>
+<li>Générer la bibliographie finale (style APA 7e, Chicago, ou autre)</li>
+</ol>
+<p><strong>Alternative</strong> : Mendeley (Elsevier, propriétaire), EndNote (payant).</p>
+<p><strong>Format d'échange</strong> : <strong>BibTeX</strong> (pour LaTeX/Overleaf), <strong>RIS</strong> (standard inter-logiciel).</p>
+<hr />
+<h2>Overleaf et rédaction académique collaborative <em>(10 min)</em></h2>
+<p><strong>Overleaf</strong> (overleaf.com) : éditeur LaTeX collaboratif en ligne.</p>
+<p><strong>Avantages pour le Master :</strong>
+- Modèles prêts à l'emploi (thèses, articles, mémoires)
+- Collaboration en temps réel (commentaires, track changes)
+- Export PDF intégré
+- Intégration Zotero (via connexion BibTeX)
+- Version gratuite suffisante pour un mémoire</p>
+<p><strong>Pas de panique pour les non-initiés :</strong> LaTeX peut sembler complexe, mais Overleaf propose des templates avec structure pré-remplie. Les étudiants peuvent commencer par écrire en mode « visual editor » (WYSIWYG approché).</p>
+<p><strong>Exemple de template</strong> : template « Mémoire de Master » en français disponible dans la galerie Overleaf.</p>
+<p><strong>Alternative</strong> : Google Docs (collaboratif mais limité pour les longs documents), Word + OneDrive (versioning).</p>
+<hr />
+<h2>Research Data Management (RDM) <em>(10 min)</em></h2>
+<p><strong>Gestion des données de recherche</strong> : ensemble des pratiques de collecte, stockage, documentation et partage des données produites par la recherche.</p>
+<h3>Plan de Gestion des Données (PGD)</h3>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Question</th>
+<th>Exemple pour Master Langue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Collecte</td>
+<td>Quelles données ?</td>
+<td>Corpus textuel, enquêtes, entretiens</td>
+</tr>
+<tr>
+<td>Stockage</td>
+<td>Où et comment ?</td>
+<td>Drive + backup local + archive</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>Quels métadonnées ?</td>
+<td>Fiche descriptive du corpus</td>
+</tr>
+<tr>
+<td>Partage</td>
+<td>Accès libre ou restreint ?</td>
+<td>HAL / Zenodo / corpus restreint</td>
+</tr>
+<tr>
+<td>Préservation</td>
+<td>Format pérenne ?</td>
+<td>TXT, CSV, PDF/A</td>
+</tr>
+</tbody>
+</table>
+<h3>Règle 3-2-1 pour la sauvegarde</h3>
+<ul>
+<li><strong>3</strong> copies de chaque fichier</li>
+<li><strong>2</strong> supports différents (disque dur + cloud)</li>
+<li><strong>1</strong> copie hors site</li>
+</ul>
+<p><strong>Outils recommandés</strong> : OneDrive institutionnel, Google Drive, GitHub (pour corpus textuels), Zenodo (archivage avec DOI).</p>
+<hr />
+<h2>Open Science et Science Ouverte <em>(10 min)</em></h2>
+<p><strong>Open Science</strong> : mouvement mondial pour rendre la recherche accessible à tous (publications, données, méthodes).</p>
+<h3>Les piliers de la Science Ouverte</h3>
+<p><strong>1. Accès ouvert (Open Access)</strong>
+- <strong>Voie dorée</strong> : publication dans une revue OA (article processing charges)
+- <strong>Voie verte</strong> : dépôt dans une archive ouverte (HAL) — gratuit
+- <strong>Voie diamant</strong> : revue OA sans frais ni pour l'auteur ni pour le lecteur</p>
+<p><strong>2. Données ouvertes (Open Data)</strong>
+- Dépôt des corpus dans une plateforme dédiée (Zenodo, Nakala)
+- Standardisation des formats (XML-TEI, CSV)
+- Licences CC0 ou CC-BY</p>
+<p><strong>3. Science citoyenne (Citizen Science)</strong>
+- Participation du public à la collecte de données
+- Exemple : Zooniverse pour des projets de transcription de manuscrits</p>
+<h3>Enjeux pour le Master</h3>
+<ul>
+<li>Droit de déposer le mémoire sur HAL (vérifier avec le directeur)</li>
+<li>Choix de la licence de diffusion</li>
+<li>Connaissance des revues prédatrices (éviter Beall's List)</li>
+</ul>
+<hr />
+<h2>Veille et flux RSS académiques <em>(5 min)</em></h2>
+<p><strong>Veille informationnelle</strong> : processus de surveillance active d'un domaine de recherche.</p>
+<p><strong>Outils :</strong>
+- <strong>Google Alerts</strong> : alerte sur mot-clé
+- <strong>Feedly</strong> : agrégateur RSS (s'abonner à des revues, blogs de recherche)
+- <strong>Cairn / OpenEdition</strong> : alertes nouvelles publications
+- <strong>Twitter/X</strong> : suivre des comptes académiques (#DH #linguistique)
+- <strong>ResearchGate</strong> : suggestions de publications (algorithme propriétaire)</p>
+<p><strong>Constitution d'une veille pour le mémoire :</strong>
+1. Lister 5–10 revues clés (ex. <em>Langage et Société</em>, <em>Revue Algérienne des Sciences du Langage</em>)
+2. S'abonner à leur flux RSS via Feedly
+3. Configurer des alertes Google Scholar sur le sujet
+4. Suivre 2–3 chercheurs spécialistes sur Twitter / Academia.edu</p>
+<hr />
+<h2>Synthèse module TIC 01–10 <em>(5 min)</em></h2>
+<p><strong>Parcours complet :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Cours</th>
+<th>Thème</th>
+<th>Compétence clé Master</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>Culture TIC</td>
+<td>Culture numérique académique</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Environnement PC</td>
+<td>Gestion fichiers, sauvegarde</td>
+</tr>
+<tr>
+<td>03</td>
+<td>Word</td>
+<td>Rédaction mémoire (structure, styles)</td>
+</tr>
+<tr>
+<td>04</td>
+<td>Word avancé</td>
+<td>Publipostage, tableaux, révisions</td>
+</tr>
+<tr>
+<td>05</td>
+<td>Excel</td>
+<td>Traitement données enquête</td>
+</tr>
+<tr>
+<td>06</td>
+<td>PowerPoint</td>
+<td>Soutenance et communication</td>
+</tr>
+<tr>
+<td>07</td>
+<td>Internet</td>
+<td>Infrastructure de recherche</td>
+</tr>
+<tr>
+<td>08</td>
+<td>WWW</td>
+<td>Web corpus et scaping</td>
+</tr>
+<tr>
+<td>09</td>
+<td>Réseaux</td>
+<td>SNA et communautés</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Services</td>
+<td>Science ouverte, identité numérique</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Compétences DigComp 2.2</strong> (niveau intermédiaire → avancé) : information et données, communication, création de contenu, sécurité, résolution de problèmes.</p>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<ul>
+<li>Les services Internet sont les <strong>outils du chercheur</strong> au quotidien</li>
+<li>Identité numérique (ORCID, HAL) + veille (alertes, RSS) + outils d'écriture (Zotero, Overleaf)</li>
+<li>La Science Ouverte est un mouvement incontournable pour la recherche francophone et algérienne</li>
+<li><strong>TD 10</strong> : créer votre portfolio académique numérique (ORCID + 1 dépôt HAL + 1 groupe Zotero partagé)</li>
+<li><strong>QCM final</strong> : 20 questions récapitulatives sur l'ensemble du module TIC</li>
+</ul>
+<hr />
+<h2>Déroulement séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Activité</th>
+<th>Modalité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–10 min</td>
+<td>Introduction : panorama des services de recherche</td>
+<td>Exposé</td>
+<td>Diapos 1–3</td>
+</tr>
+<tr>
+<td>10–20 min</td>
+<td>ORCID et identité numérique</td>
+<td>Atelier : création compte ORCID</td>
+<td>Ordinateurs</td>
+</tr>
+<tr>
+<td>20–30 min</td>
+<td>Google Scholar avancé et alertes</td>
+<td>Démo + exercice config alerte</td>
+<td>Navigateur</td>
+</tr>
+<tr>
+<td>30–40 min</td>
+<td>HAL : dépôt et consultation</td>
+<td>Démo dépôt document fictif</td>
+<td>HAL Mostaganem</td>
+</tr>
+<tr>
+<td>40–55 min</td>
+<td>Zotero : capture, organisation, export</td>
+<td>Atelier guidé (groupe de 2)</td>
+<td>Zotero + Word</td>
+</tr>
+<tr>
+<td>55–65 min</td>
+<td>Overleaf et rédaction collaborative</td>
+<td>Démo : modifier un template</td>
+<td>Overleaf</td>
+</tr>
+<tr>
+<td>65–75 min</td>
+<td>RDM et Science Ouverte</td>
+<td>Exposé + discussion</td>
+<td>Diapos 10–14</td>
+</tr>
+<tr>
+<td>75–85 min</td>
+<td>Veille et synthèse module</td>
+<td>Exercice : configurer alerte + RSS</td>
+<td>Google Alerts, Feedly</td>
+</tr>
+<tr>
+<td>85–90 min</td>
+<td>Conclusion + consignes TD final</td>
+<td>Q&amp;A</td>
+<td>Diapo TD</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation (5 questions)</h2>
+<p><strong>1. Quel identifiant permet de lier de manière pérenne l'ensemble des publications d'un chercheur ?</strong>
+- a) DOI
+- b) ORCID ✓
+- c) ISSN
+- d) ISBN</p>
+<p><strong>2. Dans le contexte de l'Open Access, que désigne la « voie verte » ?</strong>
+- a) Publication dans une revue avec abonnement
+- b) Dépôt du document dans une archive ouverte (comme HAL) ✓
+- c) Publication dans une revue sans comité de lecture
+- d) Impression sur papier recyclé</p>
+<p><strong>3. Quel logiciel de gestion bibliographique est libre, open source, et permet la collaboration en groupe ?</strong>
+- a) Mendeley
+- b) EndNote
+- c) Zotero ✓
+- d) Papers</p>
+<p><strong>4. Que permet Overleaf ?</strong>
+- a) Stocker des fichiers dans le cloud
+- b) Rédiger des documents académiques en LaTeX de manière collaborative ✓
+- c) Gérer des références bibliographiques
+- d) Créer des présentations PowerPoint</p>
+<p><strong>5. Dans la règle de sauvegarde 3-2-1, que signifie le « 1 » ?</strong>
+- a) 1 seul fichier maître
+- b) 1 copie hors site ✓
+- c) 1 copie sur le cloud
+- d) 1 copie physique</p>
+<hr />
+<h2>Note pédagogique Master</h2>
+<p><strong>Transposition didactique :</strong> Ce cours final opère la synthèse du module TIC en orientant toutes les compétences acquises vers la recherche en Master. L'accent n'est plus sur « comment utiliser un outil » mais sur « comment intégrer les outils dans une démarche de recherche rigoureuse et ouverte ».</p>
+<p><strong>Conseil pour le formateur :</strong>
+- Privilégier les ateliers pratiques : créer un ORCID, déposer sur HAL, capturer une référence Zotero
+- Les étudiants doivent repartir avec un « kit de démarrage » : compte ORCID créé, extension Zotero installée, alerte Google Scholar configurée
+- Insister sur les licences Creative Commons et le droit de dépôt des mémoires
+- Mentionner les ressources d'accompagnement locales (bibliothèque universitaire, service TICE)</p>
+<p><strong>Prolongement recherche :</strong> Les étudiants peuvent approfondir la question de la Science Ouverte en Algérie (étude des dépôts HAL Algérie, analyse des politiques institutionnelles). La construction d'une identité numérique de chercheur peut faire l'objet d'une réflexion critique dans le cadre du mémoire (auto-ethnographie numérique).</p>
+<hr />
+<h2>Références académiques</h2>
+<ul>
+<li>Bernal, J. D. (1939). <em>The Social Function of Science</em>. Routledge. (Précurseur de l'Open Science)</li>
+<li>Chanier, T., &amp; Ciekanski, M. (2014). « L'archive ouverte HAL comme outil de valorisation de la recherche en didactique des langues ». <em>ALSIC</em>, 17.</li>
+<li>European Commission (2022). <em>DigComp 2.2: The Digital Competence Framework for Citizens</em>. Publications Office of the European Union.</li>
+<li>MESRS Algérie (2020). <em>Guide de la Science Ouverte dans l'Enseignement Supérieur Algérien</em>. Direction de la Recherche.</li>
+<li>Suber, P. (2012). <em>Open Access</em>. MIT Press.</li>
+<li>Vandersande, J.-P. (2018). « Zotero et Overleaf pour les humanités numériques : retour d'expérience ». <em>Humanités Numériques</em>, 1.</li>
+</ul>
+<hr />
+<p><strong>Fin du module TIC — Master 1 Langue et Culture</strong></p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

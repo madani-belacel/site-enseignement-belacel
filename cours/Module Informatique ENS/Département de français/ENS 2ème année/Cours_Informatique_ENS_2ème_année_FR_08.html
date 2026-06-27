@@ -1,0 +1,352 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours Informatique — ENS 2ème année — Séance 08 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Cours Informatique — ENS 2ème année — Séance 08 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 2ème année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</li><li>**Public visé :** Étudiants ENS 2ème année — Département Français</li><li>**Compétences pré-requises :** Toutes les séances précédentes (synthèse du module)</li><li>**Objectifs transversaux :**</li><li>**Mode d'évaluation :** TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_2ème_année_FR_08.pdf</code></p>
+</blockquote>
+<h1>Cours Informatique — ENS 2ème année — Séance 08 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 2ème année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> benchmark 10 universités algériennes + pratiques USTO/Biskra/M'sila.</p>
+<p><strong>Public visé :</strong> Étudiants ENS 2ème année — Département Français</p>
+<p><strong>Compétences pré-requises :</strong> Toutes les séances précédentes (synthèse du module)</p>
+<p><strong>Objectifs transversaux :</strong>
+- Appliquer la programmation orientée objet (classes, héritage, encapsulation) en Python
+- Concevoir des algorithmes avancés (tri, recherche, récursivité) et estimer leur complexité
+- Modéliser des données avec le modèle relationnel et requêtes SQL de base
+- Comprendre l'architecture Web (HTML, CSS, JavaScript intro, HTTP)
+- Utiliser Git et méthodes de travail collaboratif (branches, merge)
+- Préparer l'enseignement de l'informatique au collège/lycée (Scratch, Python pédagogique)</p>
+<p><strong>Mode d'évaluation :</strong> TP POO + SQL 35 % — Projet intégré 40 % — Fiche séance pédagogique 25 %</p>
+<p><strong>Bibliographie :</strong> Eduscol — Programmes d'enseignement ; Scratch MIT ; Guide de l'enseignant — SNT</p>
+<hr />
+<h2>Objectifs pédagogiques spécifiques</h2>
+<p>À l'issue de cette séance, l'étudiant est capable de :
+- Connaître les programmes officiels d'informatique au collège/lycée
+- Concevoir une séance Scratch pour des élèves de collège
+- Utiliser Python comme outil pédagogique
+- Évaluer les compétences numériques (PIX/C2i)
+- Rédiger une fiche de séance pédagogique</p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p>Ce cours s'inscrit dans le cadre réglementaire algérien de formation des enseignants :</p>
+<ul>
+<li><strong>Arrêté ministériel portant création des ENS (cycle Licence/Master)</strong> — définit le cadre institutionnel des Écoles Normales Supérieures et leur mission de formation des enseignants.</li>
+<li><strong>Programme national d'Informatique des ENS algériennes</strong> — fixe les objectifs, contenus et volumes horaires du module Informatique dans la formation initiale des enseignants.</li>
+<li><strong>Arrêté 712 fixant le programme des concours ENS</strong> — détermine les épreuves et les programmes des concours d'accès aux ENS, en cohérence avec les contenus enseignés.</li>
+<li><strong>Référentiel des compétences numériques algérien</strong> — cadre national (en cours d'élaboration) définissant les compétences numériques attendues des enseignants.</li>
+<li><strong>Benchmark des 10 universités algériennes</strong> — étude comparative des pratiques d'enseignement de l'informatique, consultée pour aligner ce cours sur les standards nationaux.</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Programmes officiels (collège, lycée, SNT, NSI)</li>
+<li>Scratch comme introduction</li>
+<li>Python pédagogique</li>
+<li>Évaluation des compétences numériques</li>
+<li>Fiche de séance : modèle</li>
+<li>Intelligence artificielle en classe</li>
+<li>Charte d'usage du numérique</li>
+</ol>
+<hr />
+<h2>1. Programmes officiels <em>(15 min)</em></h2>
+<h3>Collège (Cycle 4)</h3>
+<ul>
+<li>Algorithmique et programmation (Scratch)</li>
+<li>Internet et données</li>
+<li>Objets connectés</li>
+<li><strong>Volume :</strong> ~15h en 3ème</li>
+</ul>
+<h3>Lycée — SNT (Seconde)</h3>
+<ul>
+<li>Sciences Numériques et Technologie</li>
+<li>Internet, Web, données, IA, géolocalisation</li>
+<li><strong>Volume :</strong> 1h30/semaine</li>
+</ul>
+<h3>Lycée — NSI (Première/Terminale)</h3>
+<ul>
+<li>Programmation Python (approfondie)</li>
+<li>Architecture, réseau, base de données</li>
+<li><strong>Volume :</strong> 4h/semaine</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>mindmap
+  root((Programmes&lt;br/&gt;Informatique))
+    Collège Cycle 4
+      Algorithmique Scratch
+      Internet
+      Données
+      Objets connectés
+      Volume: 15h 3ème
+    Lycée SNT Seconde
+      Internet &amp; Web
+      Données structurées
+      Intelligence Artificielle
+      Géolocalisation
+      Volume: 1h30/sem
+    Lycée NSI
+      1ère: Python, Web, Architecture
+      Tale: Récursivité, BD, Projet
+      Volume: 4h/sem
+    Compétences transversales
+      PIX (France)
+      C2i (Algérie)
+      Éthique numérique
+      Charte d&#39;usage
+</code></pre></div>
+
+<hr />
+<h2>2. Scratch <em>(20 min)</em></h2>
+<p><strong>Scratch</strong> (scratch.mit.edu) : programmation visuelle par blocs — idéal pour collège.</p>
+<p><strong>Concepts enseignés :</strong>
+- Blocs de mouvement, apparence, son
+- Boucles (répéter, toujours)
+- Conditions (si, si… alors)
+- Variables et listes
+- Événements (quand drapeau cliqué, quand touche pressée)</p>
+<p><strong>Exemple d'exercice :</strong> chat qui marche
+1. Quand drapeau cliqué → avancer de 10 pas
+2. Si touche espace pressée → dire "Bonjour !" pendant 2 secondes
+3. Rebondir si bord atteint</p>
+<p><strong>Progression recommandée :</strong>
+1. Blocs simples (déplacement)
+2. Boucles et conditions
+3. Variables (score, timer)
+4. Projet final (jeu de pong, quiz)</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">flowchart</span><span class="w"> </span><span class="nx">LR</span>
+<span class="w">    </span><span class="nx">subgraph</span><span class="w"> </span><span class="nx">College</span>
+<span class="w">        </span><span class="nx">A</span><span class="p">[</span><span class="mi">6</span><span class="nx">e</span><span class="o">-</span><span class="mi">5</span><span class="nx">e</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Découverte</span><span class="w"> </span><span class="nx">Scratch</span><span class="p">]</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">B</span><span class="p">[</span><span class="mi">4</span><span class="nx">e</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Blocs</span><span class="w"> </span><span class="nx">avancés</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">B</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">C</span><span class="p">[</span><span class="mi">3</span><span class="nx">e</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Introduction</span><span class="w"> </span><span class="nx">Python</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">end</span>
+<span class="w">    </span><span class="nx">subgraph</span><span class="w"> </span><span class="nx">Lycee</span>
+<span class="w">        </span><span class="nx">C</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">D</span><span class="p">[</span><span class="mi">2</span><span class="nx">de</span><span class="w"> </span><span class="nx">SNT</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Python</span><span class="w"> </span><span class="nx">simple</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">D</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">E</span><span class="p">[</span><span class="mi">1</span><span class="nx">ère</span><span class="w"> </span><span class="nx">NSI</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Python</span><span class="w"> </span><span class="nx">approfondi</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">E</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">F</span><span class="p">[</span><span class="nx">Tale</span><span class="w"> </span><span class="nx">NSI</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Projets</span><span class="w"> </span><span class="nx">complexes</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">end</span>
+<span class="w">    </span><span class="nx">subgraph</span><span class="w"> </span><span class="nx">ENS</span>
+<span class="w">        </span><span class="nx">F</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">G</span><span class="p">[</span><span class="nx">ENS1</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">Rappels</span><span class="w"> </span><span class="nx">Python</span><span class="p">]</span>
+<span class="w">        </span><span class="nx">G</span><span class="w"> </span><span class="o">--</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">H</span><span class="p">[</span><span class="nx">ENS2</span><span class="p">&lt;</span><span class="nx">br</span><span class="o">/</span><span class="p">&gt;</span><span class="nx">POO</span><span class="p">,</span><span class="w"> </span><span class="nx">SQL</span><span class="p">,</span><span class="w"> </span><span class="nx">Web</span><span class="p">,</span><span class="w"> </span><span class="nx">Git</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">end</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">College</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e8f5e9</span><span class="p">,</span><span class="nx">stroke</span><span class="p">:</span><span class="err">#</span><span class="mi">2</span><span class="nx">e7d32</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">Lycee</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">e3f2fd</span><span class="p">,</span><span class="nx">stroke</span><span class="p">:</span><span class="err">#</span><span class="mi">1565</span><span class="nx">c0</span>
+<span class="w">    </span><span class="nx">style</span><span class="w"> </span><span class="nx">ENS</span><span class="w"> </span><span class="nx">fill</span><span class="p">:</span><span class="err">#</span><span class="nx">fff3e0</span><span class="p">,</span><span class="nx">stroke</span><span class="p">:</span><span class="err">#</span><span class="nx">e65100</span>
+</code></pre></div>
+
+<hr />
+<h2>3. Python pédagogique <em>(15 min)</em></h2>
+<p><strong>Quand passer de Scratch à Python ?</strong>
+- Scratch : 6e-4e (découverte, logique)
+- Python : 3e-2de (première programmation textuelle)</p>
+<p><strong>Approche :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Version Python d&#39;un exercice Scratch</span>
+<span class="c1"># Dire &quot;Bonjour&quot; quand on clique sur le drapeau</span>
+
+<span class="kn">import</span> <span class="nn">turtle</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">turtle</span><span class="o">.</span><span class="n">Turtle</span><span class="p">()</span>
+
+<span class="c1"># Avancer de 50 pas</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Tourner à droite</span>
+<span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">turtle</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+</code></pre></div>
+
+<p><strong>Bibliothèques pédagogiques :</strong>
+- <code>turtle</code> : dessin, déplacement (transition Scratch)
+- <code>random</code> : jeux, simulations
+- <code>tkinter</code> : interfaces graphiques simples</p>
+<hr />
+<h2>4. Évaluation des compétences <em>(10 min)</em></h2>
+<h3>PIX (France)</h3>
+<p>Plateforme d'évaluation des compétences numériques (16 compétences).
+- Moteur de recherche, email, fichiers, tableur, programmation
+- Certification officielle</p>
+<h3>C2i (Algérie)</h3>
+<p>Certificat Informatique et Internet — niveau 1 (Licence).</p>
+<p><strong>Compétences évaluées :</strong>
+- B1 : Recherche et veille informationnelle
+- B2 : Identité numérique et RGPD
+- B3 : Production de documents
+- B4 : Collaboration à distance</p>
+<hr />
+<h2>5. Fiche de séance pédagogique <em>(15 min)</em></h2>
+<p>Modèle pour concevoir une séance d'informatique au collège :</p>
+<div class="codehilite"><pre><span></span><code><span class="gh"># Fiche de séance — Informatique Collège</span>
+
+<span class="gs">**Niveau :**</span> 3ème
+<span class="gs">**Thème :**</span> Algorithmique et programmation
+<span class="gs">**Durée :**</span> 45 minutes
+
+<span class="gu">## Objectifs</span>
+<span class="k">-</span><span class="w"> </span>Comprendre la notion de boucle
+<span class="k">-</span><span class="w"> </span>Utiliser une boucle &quot;répéter&quot; en Scratch
+
+<span class="gu">## Prérequis</span>
+<span class="k">-</span><span class="w"> </span>Savoir déplacer un lutin
+<span class="k">-</span><span class="w"> </span>Connaître les blocs &quot;avancer&quot; et &quot;tourner&quot;
+
+<span class="gu">## Déroulement</span>
+| Phase | Durée | Activité |
+|-------|-------|----------|
+| Découverte | 10 min | Présentation du carré magique |
+| Recherche | 15 min | Réaliser un carré par répétition |
+| Mise en commun | 10 min | Comparer les solutions |
+| Synthèse | 5 min | Trace écrite : &quot;répéter 4 fois&quot; |
+| Évaluation | 5 min | Quiz Kahoot sur les boucles |
+
+<span class="gu">## Ressources</span>
+<span class="k">-</span><span class="w"> </span>Fiche élève
+<span class="k">-</span><span class="w"> </span>Projet Scratch de départ
+<span class="k">-</span><span class="w"> </span>Grille d&#39;évaluation
+
+<span class="gu">## Bilan</span>
+<span class="k">-</span><span class="w"> </span>Points forts :
+<span class="k">-</span><span class="w"> </span>Difficultés rencontrées :
+<span class="k">-</span><span class="w"> </span>Remédiation :
+</code></pre></div>
+
+<hr />
+<h2>6. IA en classe <em>(10 min)</em></h2>
+<p><strong>Opportunités :</strong>
+- Assistant de correction (gagner du temps)
+- Génération d'exercices personnalisés
+- Traduction et adaptation
+- Aide à la rédaction de fiches</p>
+<p><strong>Limites et précautions :</strong>
+- Vérifier les résultats (IA peut se tromper)
+- Ne pas saisir de données personnelles d'élèves
+- Sensibiliser les élèves au plagiat
+- Citer l'utilisation de l'IA</p>
+<p><strong>Règle d'or :</strong> l'IA est un outil, pas un substitut au jugement de l'enseignant.</p>
+<hr />
+<h2>7. Charte d'usage du numérique <em>(5 min)</em></h2>
+<p>Éléments à inclure dans une charte pour la classe :</p>
+<ol>
+<li>Utiliser son compte institutionnel uniquement</li>
+<li>Ne pas partager ses mots de passe</li>
+<li>Respecter la vie privée des camarades</li>
+<li>Signaler tout contenu inapproprié</li>
+<li>Citer ses sources (images, textes)</li>
+<li>Éteindre son téléphone en cours (sauf usage pédagogique)</li>
+<li>Demander l'autorisation avant d'enregistrer/filmer</li>
+</ol>
+<hr />
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>À quel niveau Scratch est-il principalement enseigné ?</strong>
+   a) Lycée  b) Collège (Cycle 4) ✓  c) Université</p>
+</li>
+<li>
+<p><strong>Quel est le volume horaire de l'option NSI en Première ?</strong>
+   a) 1h30/semaine  b) 4h/semaine ✓  c) 6h/semaine</p>
+</li>
+<li>
+<p><strong>Quelle bibliothèque Python permet une transition pédagogique depuis Scratch ?</strong>
+   a) <code>numpy</code>  b) <code>turtle</code> ✓  c) <code>django</code></p>
+</li>
+<li>
+<p><strong>PIX est une plateforme d'évaluation :</strong>
+   a) Des compétences en programmation uniquement  b) Des compétences numériques globales ✓  c) Des langues étrangères</p>
+</li>
+<li>
+<p><strong>Quelle est la règle d'or concernant l'IA en classe ?</strong>
+   a) L'IA remplace l'enseignant  b) L'IA est un outil, pas un substitut au jugement de l'enseignant ✓  c) L'IA est interdite dans l'éducation</p>
+</li>
+</ol>
+<hr />
+<h2>8. Conclusion <em>(5 min)</em></h2>
+<p>En tant que futur enseignant, vous devez maîtriser à la fois les concepts informatiques et leur didactique. Scratch pour le collège, Python pour le lycée, et une éthique numérique solide pour tous.</p>
+<p><strong>Prochain cours :</strong> Conception du projet ENS2 — application Web ou module Python POO.</p>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<p><strong>Transposition didactique :</strong> Cette séance est elle-même un exemple de transposition didactique : les concepts informatiques avancés (POO, SQL, Web) sont "transposés" en activités accessibles pour le secondaire. La progression Scratch → Python (section 3) est au cœur des programmes actuels. Le modèle de fiche de séance proposé peut être utilisé pour n'importe quel niveau. Les étudiants-enseignants doivent comprendre que la difficulté n'est pas de maîtriser l'informatique, mais de l'enseigner à des débutants — c'est tout l'enjeu de la didactique.</p>
+<p><strong>Conseil pour l'enseignant formateur :</strong> Organisez un micro-enseignement : chaque étudiant prépare et anime une séquence de 10 minutes sur un concept informatique (boucle, condition, variable) devant le groupe. Filmez les prestations pour un retour constructif. L'évaluation par les pairs (grille critériée) renforce la professionnalisation. N'oubliez pas de sensibiliser à la gestion de classe : que faire quand un élève bloque sur un exercice ? Comment différencier ?</p>
+<p><strong>Prolongement :</strong> Les étudiants peuvent concevoir une séquence complète de 3 séances sur un thème informatique (création d'un jeu Scratch, initiation à Python avec Turtle, découverte du Web avec HTML) incluant fiches élèves, grilles d'évaluation, et traces écrites. Ces productions seront réinvesties pendant le stage pratique.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

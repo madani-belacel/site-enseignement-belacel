@@ -1,0 +1,841 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 07 — Introduction à Internet — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 07 — Introduction à Internet</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** ENS 1ère et 2ème année — Département Français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** ENS 1ère et 2ème année — culture Internet</li><li>**Compétences pré-requises :** TIC 01–06</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code><br />
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_07_Internet_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 07 — Introduction à Internet</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> ENS 1ère et 2ème année — Département Français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026  </p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> ENS 1ère et 2ème année — culture Internet</p>
+<p><strong>Compétences pré-requises :</strong> TIC 01–06</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Définir Internet, TCP/IP, FAI
+- Distinguer Internet et Web
+- Expliquer adresse IP et DNS (notions)</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Schématiser connexion domicile → FAI → Internet
+- Configurer connexion Wi-Fi/Ethernet institutionnelle</p>
+<p><strong>En termes de savoir-être :</strong>
+- Usage responsable et sécurisé du réseau universitaire</p>
+<p><strong>Mode d'évaluation :</strong> TD 40 % + QCM 30 % + examen 30 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Schéma connexion + fiche glossaire 10 termes</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>QCM Internet/TCP/IP</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Cours Routage IP — USTO (elearning.univ-usto.dz) ch. intro ; Pujolle — Cours réseaux</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<h3>Textes de référence pour l'enseignement des TIC</h3>
+<table>
+<thead>
+<tr>
+<th>Texte</th>
+<th>Date</th>
+<th>Objet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arrêté ministériel n° 09</td>
+<td>12 mars 2018</td>
+<td>Création du module TIC dans les filières LMD (licence) toutes spécialités</td>
+</tr>
+<tr>
+<td>Arrêté n° 932</td>
+<td>28 juillet 2016</td>
+<td>Fixation des programmes de la formation commune en TIC — socle L1</td>
+</tr>
+<tr>
+<td>Note DGRSDT n° 34</td>
+<td>15 octobre 2021</td>
+<td>Orientations pour le développement des compétences numériques à l'université algérienne</td>
+</tr>
+<tr>
+<td>Décret exécutif n° 21-49</td>
+<td>7 février 2021</td>
+<td>Stratégie nationale du numérique — volet enseignement supérieur</td>
+</tr>
+<tr>
+<td>Circulaire MENRS n° 2022-014</td>
+<td>3 mai 2022</td>
+<td>Généralisation des plateformes e-learning dans les universités algériennes</td>
+</tr>
+</tbody>
+</table>
+<h3>Alignement du cours sur le référentiel national</h3>
+<p>Ce cours s'inscrit dans le cadre de l'arrêté n° 932/2016 qui définit le volume horaire du module TIC à 45h (cours 1h30, TD 1h30) pour les filières lettres et langues. La thématique « Internet » correspond à l'unité d'enseignement UEF 1.2.2 — Culture numérique et Internet.</p>
+<h3>Contexte institutionnel — universités algériennes</h3>
+<ul>
+<li><strong>Réseau académique</strong> : connexion via le Réseau National de la Recherche (RNR) géré par l'ANPT (Agence Nationale de Promotion des Technologies)</li>
+<li><strong>Plateformes</strong> : généralisation de Moodle depuis 2021 — 70 % des universités algériennes ont adopté Moodle comme LMS institutionnel</li>
+<li><strong>Infrastructure</strong> : fibre optique généralisée sur les campus algériens (Programme national 2019-2024)</li>
+<li><strong>Authentification</strong> : système OAuth institutionnel via le portail MesRS (www.mesrs.dz)</li>
+</ul>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction au Chapitre 2 : technologie Web</li>
+<li>Définition et histoire d'Internet</li>
+<li>Réseau mondial et protocole TCP/IP</li>
+<li>Connexion à Internet</li>
+<li>Différences Internet et Web</li>
+<li>Adressage IP (notions)</li>
+<li>Usages académiques et sécurité</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<h2>Introduction — technologie Web <em>(10 min)</em></h2>
+<p><strong>Internet</strong> est l'infrastructure mondiale ; le <strong>Web</strong> est un service qui s'exécute dessus (HTTP). Cette séance pose les fondations avant TIC 08 (WWW) et TIC 09 (réseaux).</p>
+<p>Référence USTO : cours « Routage IP » et module ISIL — notions d'adressage introduites ici.</p>
+<h3>Pourquoi ce cours pour un étudiant en lettres françaises ?</h3>
+<table>
+<thead>
+<tr>
+<th>Domaine</th>
+<th>Application concrète</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recherche documentaire</td>
+<td>Accès aux bases de données académiques (Cairn, HAL, Erudit)</td>
+</tr>
+<tr>
+<td>Enseignement (futur métier)</td>
+<td>Utilisation de Moodle, visioconférence, dépôt de ressources</td>
+</tr>
+<tr>
+<td>Culture générale</td>
+<td>Comprendre l'infrastructure qui sous-tend la société numérique</td>
+</tr>
+<tr>
+<td>Insertion professionnelle</td>
+<td>Compétences numériques de base exigées dans les concours de l'enseignement</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Définition et histoire d'Internet <em>(15 min)</em></h2>
+<ul>
+<li><strong>Définition</strong> : réseau de réseaux interconnectés, protocole <strong>TCP/IP</strong></li>
+<li><strong>ARPANET</strong> (1969) → TCP/IP (1983) → <strong>WWW</strong> (1991, Tim Berners-Lee)</li>
+<li><strong>Algérie</strong> : connexion académique puis généralisée ; <strong>ANPT</strong> / opérateurs (Mobilis, Ooredoo, Algérie Télécom)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Événement</th>
+<th>Acteurs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1969</td>
+<td>ARPANET — 4 nœuds (UCLA, Stanford, UCSB, Utah)</td>
+<td>DARPA (USA)</td>
+</tr>
+<tr>
+<td>1972</td>
+<td>Premier courriel — Ray Tomlinson</td>
+<td>BBN Technologies</td>
+</tr>
+<tr>
+<td>1983</td>
+<td>Adoption TCP/IP comme standard</td>
+<td>IETF</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>Premier site Web (info.cern.ch)</td>
+<td>Tim Berners-Lee, CERN</td>
+</tr>
+<tr>
+<td>1993</td>
+<td>Premier navigateur grand public (Mosaic)</td>
+<td>NCSA</td>
+</tr>
+<tr>
+<td>2000s</td>
+<td>ADSL, 3G/4G, fibre</td>
+<td>Généralisation mondiale</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>Arrivée de l'ADSL en Algérie</td>
+<td>Algérie Télécom</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>Lancement de la 3G en Algérie</td>
+<td>Mobilis, Ooredoo, Djezzy</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>Généralisation du télétravail et e-learning</td>
+<td>COVID-19 — accélération numérique</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>Déploiement de la 5G en Algérie</td>
+<td>Phase pilote opérateurs</td>
+</tr>
+</tbody>
+</table>
+<h3>Chronologie Internet — Mermaid</h3>
+<div class="codehilite"><pre><span></span><code>timeline
+    title Histoire d&#39;Internet
+    1969 : ARPANET (4 nœuds)
+    1972 : Premier courriel
+    1983 : Adoption TCP/IP
+    1991 : Premier site Web
+    1993 : Navigateur Mosaic
+    2003 : ADSL en Algérie
+    2013 : 3G en Algérie
+    2020 : E-learning généralisé
+    2024 : 5G pilote Algérie
+</code></pre></div>
+
+<h3>Acteurs clés d'Internet en Algérie</h3>
+<table>
+<thead>
+<tr>
+<th>Acteur</th>
+<th>Rôle</th>
+<th>Site Web</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ANPT</td>
+<td>Gestion du .dz, infrastructure académique</td>
+<td>anpt.dz</td>
+</tr>
+<tr>
+<td>Algérie Télécom</td>
+<td>Opérateur historique, fibre, ADSL</td>
+<td>algerietelecom.dz</td>
+</tr>
+<tr>
+<td>Mobilis</td>
+<td>Opérateur mobile (3G/4G/5G)</td>
+<td>mobilis.dz</td>
+</tr>
+<tr>
+<td>Ooredoo</td>
+<td>Opérateur mobile et fixe</td>
+<td>ooredoo.dz</td>
+</tr>
+<tr>
+<td>Djezzy</td>
+<td>Opérateur mobile</td>
+<td>djezzy.dz</td>
+</tr>
+<tr>
+<td>CERIST</td>
+<td>Centre de recherche en STIC</td>
+<td>cerist.dz</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Réseau mondial et protocole TCP/IP <em>(15 min)</em></h2>
+<ul>
+<li><strong>TCP/IP</strong> : suite de protocoles (4 couches simplifiées)</li>
+<li>Application (HTTP, SMTP, DNS)</li>
+<li>Transport (TCP fiable, UDP rapide)</li>
+<li>Internet (IP — adressage)</li>
+<li>Accès réseau (Ethernet, Wi-Fi)</li>
+</ul>
+<h3>Modèle TCP/IP — Vue d'ensemble</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;Couche Application&lt;br/&gt;HTTP · SMTP · DNS · FTP&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Couche Transport&lt;br/&gt;TCP (fiable) · UDP (rapide)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Couche Internet&lt;br/&gt;IP · ICMP · ARP&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;Couche Accès Réseau&lt;br/&gt;Ethernet · Wi-Fi · Fibre&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">CAF50</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196F</span><span class="mi">3</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FF9800</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">C27B0</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Paquet</strong> : unité de données routée hop par hop</li>
+<li><strong>FAI</strong> : Fournisseur d'Accès Internet — attribue IP publique</li>
+</ul>
+<h3>Fonctionnement détaillé — analogie postale</h3>
+<table>
+<thead>
+<tr>
+<th>Concept réseau</th>
+<th>Analogie postale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paquet IP</td>
+<td>Lettre avec enveloppe</td>
+</tr>
+<tr>
+<td>Adresse IP</td>
+<td>Adresse postale (code postal + rue)</td>
+</tr>
+<tr>
+<td>Routeur</td>
+<td>Centre de tri postal</td>
+</tr>
+<tr>
+<td>FAI</td>
+<td>Service postal national</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>Annuaire téléphonique (nom → numéro)</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>Lettre recommandée avec accusé de réception</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Connexion à Internet <em>(10 min)</em></h2>
+<p>Modes de connexion :</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Technologie</th>
+<th>Débit typique</th>
+<th>Contexte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filaire</td>
+<td>Ethernet, fibre</td>
+<td>100 Mbps – 1 Gbps</td>
+<td>Campus, domicile</td>
+</tr>
+<tr>
+<td>Sans fil</td>
+<td>Wi-Fi 5/6, 4G/5G</td>
+<td>20 Mbps – 500 Mbps</td>
+<td>Mobile, amphithéâtre</td>
+</tr>
+<tr>
+<td>Satellite</td>
+<td>Starlink, VSAT</td>
+<td>10 – 100 Mbps</td>
+<td>Zones isolées (Sud algérien)</td>
+</tr>
+<tr>
+<td>CPL</td>
+<td>Courant porteur</td>
+<td>200 Mbps</td>
+<td>Domicile sans câble Ethernet</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Box / routeur</strong> : NAT, Wi-Fi, ports Ethernet. <strong>Université</strong> : authentification réseau (login institutionnel).</p>
+<h3>Schéma de connexion type (domicile)</h3>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="s">&quot;PC étudiant&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="s">&quot;Box/Routeur&lt;br/&gt;(NAT + Wi-Fi)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="s">&quot;Ligne ADSL/Fibre&lt;br/&gt;Algérie Télécom&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="s">&quot;FAI&lt;br/&gt;(ISP)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="s">&quot;Internet&lt;br/&gt;(Réseau mondial)&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FFC107</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">FF5722</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">607</span><span class="n">D8B</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mo">00</span><span class="mi">9688</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">E91E63</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Différences Internet et Web <em>(10 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Internet</th>
+<th>Web (WWW)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Infrastructure globale de réseaux</td>
+<td>Service applicatif (pages HTTP/HTTPS)</td>
+</tr>
+<tr>
+<td>Courriel (SMTP), FTP, VoIP aussi</td>
+<td>Navigateur + URL + HTML requis</td>
+</tr>
+<tr>
+<td>Protocole TCP/IP</td>
+<td>HTTP sur TCP</td>
+</tr>
+<tr>
+<td>Existe depuis 1969 (ARPANET)</td>
+<td>Existe depuis 1991 (CERN)</td>
+</tr>
+<tr>
+<td>Transporte tous types de données</td>
+<td>Transporte uniquement du contenu Web</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Moodle</strong> = service Web ; <strong>courriel</strong> = SMTP — tous deux sur Internet.</p>
+<h3>Services sur Internet vs services sur le Web</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Protocole</th>
+<th>Sur Internet</th>
+<th>Sur le Web</th>
+<th>Exemple algérien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navigation Web</td>
+<td>HTTP/HTTPS</td>
+<td>✅</td>
+<td>✅</td>
+<td>elearning.univ-usto.dz</td>
+</tr>
+<tr>
+<td>Courriel</td>
+<td>SMTP/IMAP</td>
+<td>✅</td>
+<td>❌ (client)</td>
+<td>webmail univ</td>
+</tr>
+<tr>
+<td>Transfert fichier</td>
+<td>FTP/SFTP</td>
+<td>✅</td>
+<td>❌</td>
+<td>serveur FTP CERIST</td>
+</tr>
+<tr>
+<td>Visioconférence</td>
+<td>WebRTC</td>
+<td>✅</td>
+<td>✅</td>
+<td>BBB Béjaïa</td>
+</tr>
+<tr>
+<td>Messagerie instantanée</td>
+<td>XMPP</td>
+<td>✅</td>
+<td>✅</td>
+<td>Teams, WhatsApp</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Adressage IP (notions) <em>(10 min)</em></h2>
+<ul>
+<li><strong>IPv4</strong> : 4 octets (ex. 192.168.1.10) — 32 bits, ~4,3 milliards d'adresses</li>
+<li><strong>IPv6</strong> : 128 bits (déploiement croissant) — adresses hexadécimales</li>
+<li><strong>IP privée</strong> : 192.168.x.x, 10.x.x.x, 172.16.x.x (LAN — non routées sur Internet)</li>
+<li><strong>IP publique</strong> : visible sur Internet, attribuée par le FAI</li>
+<li><strong>DNS</strong> : résolution nom → adresse (ex. google.com → 142.250.x.x)</li>
+</ul>
+<p><strong>DHCP</strong> : attribution automatique IP/masque/passerelle sur le LAN.</p>
+<h3>Classes d'adresses IPv4</h3>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Plage</th>
+<th>Masque par défaut</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>1.0.0.0 – 126.255.255.255</td>
+<td>255.0.0.0</td>
+<td>Grands réseaux</td>
+</tr>
+<tr>
+<td>B</td>
+<td>128.0.0.0 – 191.255.255.255</td>
+<td>255.255.0.0</td>
+<td>Réseaux moyens (universités)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.0.0.0 – 223.255.255.255</td>
+<td>255.255.255.0</td>
+<td>Petits réseaux (LAN)</td>
+</tr>
+<tr>
+<td>D</td>
+<td>224.0.0.0 – 239.255.255.255</td>
+<td>N/A</td>
+<td>Multicast</td>
+</tr>
+<tr>
+<td>E</td>
+<td>240.0.0.0 – 255.255.255.255</td>
+<td>N/A</td>
+<td>Recherche</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Usages académiques et sécurité <em>(10 min)</em></h2>
+<ul>
+<li><strong>Usages</strong> : Moodle, bibliothèque en ligne, visioconférence (BBB — Béjaïa)</li>
+<li><strong>Risques</strong> : phishing, malware, Wi-Fi public non sécurisé, vol d'identifiants</li>
+<li><strong>Bonnes pratiques</strong> : HTTPS, VPN institutionnel si disponible, MFA courriel</li>
+</ul>
+<p><strong>Charte universitaire</strong> : usage responsable, pas de partage illégal de contenus.</p>
+<h3>Bonnes pratiques de sécurité — tableau récapitulatif</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Risque</th>
+<th>Bonne pratique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connexion Wi-Fi campus</td>
+<td>Interception de données</td>
+<td>Utiliser HTTPS (cadenas vert)</td>
+</tr>
+<tr>
+<td>Réception courriel suspect</td>
+<td>Phishing</td>
+<td>Vérifier expéditeur + ne pas cliquer lien</td>
+</tr>
+<tr>
+<td>Téléchargement document</td>
+<td>Malware</td>
+<td>Scanner avec antivirus avant ouverture</td>
+</tr>
+<tr>
+<td>Partage de lien Moodle</td>
+<td>Accès non autorisé</td>
+<td>Ne pas partager son mot de passe</td>
+</tr>
+<tr>
+<td>Session sur PC public</td>
+<td>Vol de session</td>
+<td>Navigation privée / déconnexion complète</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Conclusion <em>(10 min)</em></h2>
+<p>Internet = infrastructure TCP/IP ; Web = service HTTP.
+<strong>TD 07</strong> : schéma connexion domicile → FAI → Internet.
+<strong>Prochain cours</strong> : World Wide Web (TIC 08).</p>
+<h3>Synthèse concepts clés du cours</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Définition simple</th>
+<th>À retenir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Internet</td>
+<td>Réseau mondial de réseaux</td>
+<td>TCP/IP</td>
+</tr>
+<tr>
+<td>Web</td>
+<td>Service de pages liées par hyperliens</td>
+<td>HTTP + URL + HTML</td>
+</tr>
+<tr>
+<td>Adresse IP</td>
+<td>Identifiant numérique d'un équipement</td>
+<td>IPv4 (32 bits) / IPv6 (128 bits)</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>Traduit nom domaine → adresse IP</td>
+<td>Annuaire Internet</td>
+</tr>
+<tr>
+<td>FAI</td>
+<td>Fournisseur d'accès</td>
+<td>Algérie Télécom, Mobilis, Ooredoo</td>
+</tr>
+<tr>
+<td>Paquet</td>
+<td>Unité de donnée transportée</td>
+<td>Routé hop par hop</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement de la séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+<th>Support</th>
+<th>Modalité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introduction</td>
+<td>10 min</td>
+<td>Rappel TIC 06 + annonce plan</td>
+<td>Diapos 1–3</td>
+<td>Magistral interactif</td>
+</tr>
+<tr>
+<td>Histoire Internet</td>
+<td>15 min</td>
+<td>Frise chronologique + vidéo ARPANET</td>
+<td>Diapos 4–8</td>
+<td>Exposé + questions</td>
+</tr>
+<tr>
+<td>TCP/IP</td>
+<td>15 min</td>
+<td>Schéma couches + analogie postale</td>
+<td>Diapos 9–13</td>
+<td>Démonstration schéma</td>
+</tr>
+<tr>
+<td>Connexion</td>
+<td>10 min</td>
+<td>Schéma domicile → FAI → Internet</td>
+<td>Diapos 14–16</td>
+<td>Exercice guidé</td>
+</tr>
+<tr>
+<td>Internet vs Web</td>
+<td>10 min</td>
+<td>Tableau comparatif interactif</td>
+<td>Diapos 17–19</td>
+<td>Brainstorming collectif</td>
+</tr>
+<tr>
+<td>Adressage IP</td>
+<td>10 min</td>
+<td>Exemples IP privée/publique</td>
+<td>Diapos 20–24</td>
+<td>Exercice tableaux</td>
+</tr>
+<tr>
+<td>Sécurité</td>
+<td>10 min</td>
+<td>Scénarios risques + bonnes pratiques</td>
+<td>Diapos 25–28</td>
+<td>Discussion groupe</td>
+</tr>
+<tr>
+<td>Conclusion</td>
+<td>10 min</td>
+<td>QCM rapide + annonce TD 07</td>
+<td>Diapos 29–30</td>
+<td>Évaluation formative</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<p><em>Cochez la ou les bonne(s) réponse(s).</em></p>
+<p><strong>Q1. Que signifie l'acronyme TCP/IP ?</strong></p>
+<ul>
+<li>[ ] Transmission Control Program / Internet Packet</li>
+<li>[x] Transmission Control Protocol / Internet Protocol ✓</li>
+<li>[ ] Transfer Control Protocol / Internal Protocol</li>
+<li>[ ] Transport Connection Protocol / Internet Provider</li>
+</ul>
+<p><strong>Q2. Quelle est la différence fondamentale entre Internet et le Web ?</strong></p>
+<ul>
+<li>[ ] Internet et Web désignent la même chose</li>
+<li>[ ] Le Web est l'infrastructure, Internet est le service</li>
+<li>[x] Internet est l'infrastructure réseau, le Web est un service qui s'exécute dessus ✓</li>
+<li>[ ] Internet utilise HTTP, le Web utilise TCP/IP</li>
+</ul>
+<p><strong>Q3. Quel protocole permet de traduire un nom de domaine (ex. google.com) en adresse IP ?</strong></p>
+<ul>
+<li>[ ] DHCP</li>
+<li>[x] DNS ✓</li>
+<li>[ ] HTTP</li>
+<li>[ ] SMTP</li>
+</ul>
+<p><strong>Q4. Parmi ces adresses, laquelle est une adresse IP privée ?</strong></p>
+<ul>
+<li>[ ] 8.8.8.8</li>
+<li>[ ] 142.250.185.78</li>
+<li>[x] 192.168.1.10 ✓</li>
+<li>[ ] 172.217.16.14</li>
+</ul>
+<p><strong>Q5. Quel équipement assure la traduction d'adresses IP privées en IP publique (NAT) ?</strong></p>
+<ul>
+<li>[ ] Le switch</li>
+<li>[x] Le routeur/box ✓</li>
+<li>[ ] Le point d'accès Wi-Fi</li>
+<li>[ ] La carte réseau (NIC)</li>
+</ul>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Le concept d'Internet est abordé selon une <strong>démarche de transposition progressive</strong> :</p>
+<ol>
+<li><strong>Représentations initiales</strong> : les étudiants utilisent Internet quotidiennement (Moodle, WhatsApp, YouTube) sans connaître son fonctionnement. Le cours part de ces usages pour remonter vers l'infrastructure.</li>
+<li><strong>Modélisation simplifiée</strong> : le modèle TCP/IP est présenté en 4 couches seulement (vs 7 couches OSI) pour éviter la surcharge cognitive.</li>
+<li><strong>Ancrage analogique</strong> : l'analogie postale (paquet = lettre, IP = adresse, routeur = centre de tri) facilite la compréhension des concepts abstraits.</li>
+<li><strong>Contextualisation algérienne</strong> : les exemples (ANPT, Mobilis, Ooredoo, Moodle USTO) ancrent les concepts dans le vécu des étudiants.</li>
+</ol>
+<h3>Conseil pour le formateur</h3>
+<ul>
+<li><strong>Anticiper la confusion Internet/Web</strong> : insister sur la distinction dès l'introduction. Proposer l'image du réseau routier (Internet) vs les magasins (sites Web).</li>
+<li><strong>Utiliser des vidéos courtes</strong> : la simulation ARPANET (2 min) capte l'attention et rend l'histoire concrète.</li>
+<li><strong>Prévoir un exercice IP</strong> : demander aux étudiants de trouver leur adresse IP (ipconfig / ifconfig) sur leur poste — transposition immédiate.</li>
+<li><strong>Éviter la technique pure</strong> : adapter le niveau aux étudiants de lettres. Privilégier l'intuition et la visualisation aux formules binaires.</li>
+<li><strong>Gestion du temps</strong> : la partie historique peut être raccourcie si le groupe maîtrise déjà les notions de base.</li>
+</ul>
+<h3>Prolongements possibles</h3>
+<table>
+<thead>
+<tr>
+<th>Prolongement</th>
+<th>Description</th>
+<th>Ressource</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Analyse débit connexion</td>
+<td>Mesure avec speedtest.net et interprétation</td>
+<td>TP pratique</td>
+</tr>
+<tr>
+<td>Histoire d'Internet en Algérie</td>
+<td>Recherche sur l'arrivée d'Internet en Algérie (1993 — CERIST)</td>
+<td>Article CERIST</td>
+</tr>
+<tr>
+<td>Sécurité Wi-Fi</td>
+<td>Configuration WPA2/WPA3 sur box personnelle</td>
+<td>Guide formateur</td>
+</tr>
+<tr>
+<td>Initiation Wireshark</td>
+<td>Capture d'un paquet HTTP (démonstration uniquement)</td>
+<td>Wireshark portable</td>
+</tr>
+<tr>
+<td>Charte numérique ENS</td>
+<td>Rédaction collective d'une charte d'usage responsable</td>
+<td>Atelier TD</td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

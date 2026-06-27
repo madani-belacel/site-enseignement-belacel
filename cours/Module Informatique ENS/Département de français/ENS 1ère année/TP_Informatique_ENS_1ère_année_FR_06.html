@@ -1,0 +1,553 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP Informatique — ENS 1ère année — TP 06 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TP Informatique — ENS 1ère année — TP 06 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Créer un script `pile.py` qui implémente une pile avec une liste Python. Définir les fonctions :</li><li>**Corrigé :**</li><li>**Énoncé :** Créer un script `file.py` qui implémente une file avec `collections.deque`. Définir les fonctions :</li><li>**Corrigé :**</li><li>**Énoncé :** Créer un script `parentheses.py` qui vérifie si une expression mathématique est correctement parenthésée. Le programme doit gérer `()`, `[]`, `{}`.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TP_Informatique_ENS_1ère_année_FR_06.pdf</code></p>
+</blockquote>
+<h1>TP Informatique — ENS 1ère année — TP 06 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce TP, l'étudiant est capable de :
+- Implémenter une pile (LIFO) en Python avec une liste
+- Implémenter une file (FIFO) en Python avec <code>collections.deque</code>
+- Utiliser les opérations push/pop et enqueue/dequeue
+- Résoudre des problèmes classiques avec piles et files
+- Comprendre l'utilité des structures de données en algorithmique
+- Implémenter une calculatrice en notation polonaise inverse (NPI)</p>
+<hr />
+<h2>Plan du TP</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil et révision</td>
+<td>5 min</td>
+<td>Analogies LIFO/FIFO</td>
+</tr>
+<tr>
+<td>Exercice 1</td>
+<td>15 min</td>
+<td>Implémentation d'une pile</td>
+</tr>
+<tr>
+<td>Exercice 2</td>
+<td>10 min</td>
+<td>Implémentation d'une file</td>
+</tr>
+<tr>
+<td>Exercice 3</td>
+<td>20 min</td>
+<td>Vérification de parenthèses</td>
+</tr>
+<tr>
+<td>Exercice 4</td>
+<td>20 min</td>
+<td>File d'impression</td>
+</tr>
+<tr>
+<td>Exercice 5</td>
+<td>20 min</td>
+<td>Notation polonaise inverse</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — Implémentation d'une pile (LIFO) <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>pile.py</code> qui implémente une pile avec une liste Python. Définir les fonctions :
+1. <code>empiler(pile, element)</code> — ajoute au sommet
+2. <code>depiler(pile)</code> — retire et retourne le sommet
+3. <code>sommet(pile)</code> — retourne le sommet sans retirer
+4. <code>taille(pile)</code> — retourne le nombre d'éléments
+5. <code>afficher(pile)</code> — affiche le contenu</p>
+<p>Tester avec : empiler 10, 20, 30, dépiler une fois, empiler 40, afficher.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Pile</span><span class="p">[</span><span class="n">Pile</span><span class="w"> </span><span class="n">LIFO</span><span class="p">]</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">        </span><span class="n">S1</span><span class="p">[</span><span class="s">&quot;30 ← SOMMET&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S2</span><span class="p">[</span><span class="s">&quot;20&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S3</span><span class="p">[</span><span class="s">&quot;10&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">S3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">S4</span><span class="p">[</span><span class="s">&quot;FOND&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">E</span><span class="p">[</span><span class="n">empiler</span><span class="w"> </span><span class="mi">40</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">P2</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">P2</span><span class="p">[</span><span class="n">Pile</span><span class="w"> </span><span class="n">après</span><span class="w"> </span><span class="n">empiler</span><span class="w"> </span><span class="mi">40</span><span class="p">]</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">        </span><span class="n">T1</span><span class="p">[</span><span class="s">&quot;40 ← SOMMET&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T2</span><span class="p">[</span><span class="s">&quot;20&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T3</span><span class="p">[</span><span class="s">&quot;10&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">T3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">T4</span><span class="p">[</span><span class="s">&quot;FOND&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">empiler</span><span class="p">(</span><span class="n">pile</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+    <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">depiler</span><span class="p">(</span><span class="n">pile</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pile</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pile</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">sommet</span><span class="p">(</span><span class="n">pile</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pile</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pile</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">taille</span><span class="p">(</span><span class="n">pile</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">pile</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">afficher</span><span class="p">(</span><span class="n">pile</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pile : </span><span class="si">{</span><span class="n">pile</span><span class="si">}</span><span class="s2"> (sommet → </span><span class="si">{</span><span class="n">sommet</span><span class="p">(</span><span class="n">pile</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">empiler</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">empiler</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">empiler</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Avant dépilement : </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">depiler</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dépilé : </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">empiler</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">afficher</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Taille : </span><span class="si">{</span><span class="n">taille</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — Implémentation d'une file (FIFO) <em>(10 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>file.py</code> qui implémente une file avec <code>collections.deque</code>. Définir les fonctions :
+1. <code>enfiler(file, element)</code> — ajoute à la fin
+2. <code>defiler(file)</code> — retire et retourne le début
+3. <code>tete(file)</code> — retourne le début sans retirer
+4. <code>afficher(file)</code> — affiche le contenu</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">File</span><span class="p">[</span><span class="n">File</span><span class="w"> </span><span class="n">FIFO</span><span class="p">]</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">        </span><span class="n">D1</span><span class="p">[</span><span class="s">&quot;TÊTE → A&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D2</span><span class="p">[</span><span class="s">&quot;B&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D3</span><span class="p">[</span><span class="s">&quot;C&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D4</span><span class="p">[</span><span class="s">&quot;QUEUE&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">action</span><span class="p">[</span><span class="s">&quot;defiler → A sort&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F2</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">F2</span><span class="p">[</span><span class="n">File</span><span class="w"> </span><span class="n">après</span><span class="w"> </span><span class="n">défiler</span><span class="p">]</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">        </span><span class="n">E1</span><span class="p">[</span><span class="s">&quot;TÊTE → B&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E2</span><span class="p">[</span><span class="s">&quot;C&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E3</span><span class="p">[</span><span class="s">&quot;QUEUE&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">def</span> <span class="nf">enfiler</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">defiler</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">file</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">tete</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">file</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">afficher</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File : </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="si">}</span><span class="s2"> (tête → </span><span class="si">{</span><span class="n">tete</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+<span class="n">enfiler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="n">enfiler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">)</span>
+<span class="n">enfiler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Avant défiler : </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">defiler</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Défilé : </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">enfiler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">)</span>
+<span class="n">afficher</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Vérificateur de parenthèses équilibrées <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>parentheses.py</code> qui vérifie si une expression mathématique est correctement parenthésée. Le programme doit gérer <code>()</code>, <code>[]</code>, <code>{}</code>.</p>
+<p><strong>Exemples :</strong>
+- <code>(3 + 2) × [5 - {1 + 2}]</code> → Correct
+- <code>(3 + 2] × [5 - {1 + 2})</code> → Incorrect
+- <code>({[)]}</code> → Incorrect</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Expression</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Initialiser</span><span class="w"> </span><span class="n">pile</span><span class="w"> </span><span class="n">vide</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Parcourir</span><span class="w"> </span><span class="n">chaque</span><span class="w"> </span><span class="n">caractère</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">{</span><span class="n">Caractère</span><span class="w"> </span><span class="n">ouvrant</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Empiler</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">F</span><span class="p">{</span><span class="n">Caractère</span><span class="w"> </span><span class="n">fermant</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">C</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">{</span><span class="n">Pile</span><span class="w"> </span><span class="n">vide</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Incorrect</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="w"> </span><span class="n">Dépiler</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">comparer</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">{</span><span class="n">Correspond</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">H</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">C</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Fin</span><span class="w"> </span><span class="n">parcours</span><span class="p">]</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">{</span><span class="n">Pile</span><span class="w"> </span><span class="n">vide</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">L</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">Correct</span><span class="w"> </span><span class="err">✓</span><span class="p">]</span>
+<span class="w">    </span><span class="n">L</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">H</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">est_correcte</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vérifie le parenthésage d&#39;une expression.&quot;&quot;&quot;</span>
+    <span class="n">correspondance</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;)&quot;</span><span class="p">:</span> <span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="s2">&quot;]&quot;</span><span class="p">:</span> <span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="s2">&quot;}&quot;</span><span class="p">:</span> <span class="s2">&quot;{&quot;</span><span class="p">}</span>
+    <span class="n">pile</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">expression</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="s2">&quot;([{&quot;</span><span class="p">:</span>
+            <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="s2">&quot;)]}&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">pile</span> <span class="ow">or</span> <span class="n">pile</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="o">!=</span> <span class="n">correspondance</span><span class="p">[</span><span class="n">char</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">pile</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;(3 + 2) × [5 - {1 + 2}]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;(3 + 2] × [5 - {1 + 2})&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;((1 + 2) × 3)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;({[)]}&quot;</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">expressions</span><span class="p">:</span>
+    <span class="n">etat</span> <span class="o">=</span> <span class="s2">&quot;✓ Correct&quot;</span> <span class="k">if</span> <span class="n">est_correcte</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;✗ Incorrect&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">etat</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">expr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Gestion de file d'impression <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>file_impression.py</code> qui simule une file d'impression. Chaque document a un nom et un nombre de pages. Le programme :
+1. Ajoute des documents à la file
+2. « Imprime » chaque document (affiche le nom + pages)
+3. Affiche le temps d'attente total et par document (1 page = 2 secondes)</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Ajouté</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Rapport_TP5</span><span class="o">.</span><span class="na">pdf</span><span class="w"> </span><span class="o">(</span><span class="mi">15</span><span class="w"> </span><span class="n">pages</span><span class="o">)</span>
+<span class="n">Ajouté</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Cours_Architecture</span><span class="o">.</span><span class="na">pdf</span><span class="w"> </span><span class="o">(</span><span class="mi">42</span><span class="w"> </span><span class="n">pages</span><span class="o">)</span>
+<span class="n">Ajouté</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Devoir_Maison</span><span class="o">.</span><span class="na">docx</span><span class="w"> </span><span class="o">(</span><span class="mi">8</span><span class="w"> </span><span class="n">pages</span><span class="o">)</span>
+
+<span class="n">Document</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Rapport_TP5</span><span class="o">.</span><span class="na">pdf</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="o">(</span><span class="n">temps</span><span class="w"> </span><span class="n">d</span><span class="s1">&#39;impression : 30s, attente cumulée : 30s)</span>
+<span class="s1">Document 2 : Cours_Architecture.pdf — 42 pages (temps d&#39;</span><span class="n">impression</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">84</span><span class="n">s</span><span class="o">,</span><span class="w"> </span><span class="n">attente</span><span class="w"> </span><span class="n">cumulée</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">114</span><span class="n">s</span><span class="o">)</span>
+<span class="n">Document</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Devoir_Maison</span><span class="o">.</span><span class="na">docx</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="o">(</span><span class="n">temps</span><span class="w"> </span><span class="n">d</span><span class="s1">&#39;impression : 16s, attente cumulée : 130s)</span>
+
+<span class="s1">Temps total d&#39;</span><span class="n">impression</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">130</span><span class="n">s</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="n">file_impression</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">ajouter_document</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">pages</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ajoute un document à la file d&#39;impression.&quot;&quot;&quot;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;nom&quot;</span><span class="p">:</span> <span class="n">nom</span><span class="p">,</span> <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="n">pages</span><span class="p">}</span>
+    <span class="n">file_impression</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ajouté : </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">pages</span><span class="si">}</span><span class="s2"> pages)&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">imprimer</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simule l&#39;impression de tous les documents.&quot;&quot;&quot;</span>
+    <span class="n">temps_total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">numero</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">file_impression</span><span class="p">:</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">file_impression</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="n">temps</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&quot;pages&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="n">temps_total</span> <span class="o">+=</span> <span class="n">temps</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Document </span><span class="si">{</span><span class="n">numero</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;pages&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> pages &quot;</span>
+              <span class="sa">f</span><span class="s2">&quot;(temps d&#39;impression : </span><span class="si">{</span><span class="n">temps</span><span class="si">}</span><span class="s2">s, attente cumulée : </span><span class="si">{</span><span class="n">temps_total</span><span class="si">}</span><span class="s2">s)&quot;</span><span class="p">)</span>
+        <span class="n">numero</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Temps total d&#39;impression : </span><span class="si">{</span><span class="n">temps_total</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+<span class="n">ajouter_document</span><span class="p">(</span><span class="s2">&quot;Rapport_TP5.pdf&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">ajouter_document</span><span class="p">(</span><span class="s2">&quot;Cours_Architecture.pdf&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">ajouter_document</span><span class="p">(</span><span class="s2">&quot;Devoir_Maison.docx&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">imprimer</span><span class="p">()</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Notation polonaise inverse (calculatrice) <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>npi.py</code> qui implémente une calculatrice en notation polonaise inverse (NPI). En NPI, l'opérateur vient après les opérandes : <code>3 4 +</code> signifie <code>3 + 4</code>. Utiliser une pile pour évaluer l'expression.</p>
+<p><strong>Fonctionnalités :</strong>
+1. Lire une expression NPI (opérandes et opérateurs séparés par des espaces)
+2. Utiliser une pile : empiler les nombres, dépiler pour les opérations
+3. Gérer <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>
+4. Gérer les erreurs (division par zéro, expression invalide)</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Expression NPI : 3 4 + 2 <span class="gs">*</span>
+<span class="gs">Résultat : 14.0</span>
+
+<span class="gs">Explication : 3 4 + → 7, puis 7 2 *</span> → 14
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluer_npi</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Évalue une expression en notation polonaise inverse.&quot;&quot;&quot;</span>
+    <span class="n">pile</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">elements</span> <span class="o">=</span> <span class="n">expression</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">elem</span> <span class="ow">in</span> <span class="s2">&quot;+-*/&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pile</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Erreur : expression invalide&quot;</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">pile</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">pile</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">elem</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+                <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">elem</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+                <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">elem</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+                <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">elem</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s2">&quot;Erreur : division par zéro&quot;</span>
+                <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">pile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Erreur : élément inconnu &#39;</span><span class="si">{</span><span class="n">elem</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pile</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pile</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s2">&quot;Erreur : expression invalide&quot;</span>
+
+<span class="c1"># Tests</span>
+<span class="n">expressions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;3 4 + 2 *&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;10 5 /&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5 1 2 + 4 * + 3 -&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4 0 /&quot;</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">expressions</span><span class="p">:</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="n">evaluer_npi</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">expr</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">resultat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Que signifie LIFO ?</strong>
+   a) Last In, First Out ✓
+   b) Large In, Fast Out
+   c) Last Input, Fast Operation</p>
+</li>
+<li>
+<p><strong>Quelle structure de données utiliser pour une file d'attente à la cantine ?</strong>
+   a) Une pile
+   b) Une file ✓
+   c) Un dictionnaire</p>
+</li>
+<li>
+<p><strong>En Python, comment implémenter une pile simplement ?</strong>
+   a) Avec un dictionnaire
+   b) Avec une liste et les méthodes <code>append()</code>/<code>pop()</code> ✓
+   c) Avec un tuple</p>
+</li>
+<li>
+<p><strong>Que retourne <code>pop()</code> sur une liste vide ?</strong>
+   a) Une erreur (IndexError) ✓
+   b) <code>None</code>
+   c) <code>0</code></p>
+</li>
+<li>
+<p><strong>Dans la NPI, que vaut <code>5 2 - 3 *</code> ?</strong>
+   a) -1
+   b) 9 ✓
+   c) 21</p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation TP 06</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implémentation pile (LIFO)</td>
+<td>20 %</td>
+<td>Ne sait pas implémenter</td>
+<td>Opérations partiellement correctes</td>
+<td>Implémentation correcte</td>
+</tr>
+<tr>
+<td>Implémentation file (FIFO)</td>
+<td>20 %</td>
+<td>Ne sait pas implémenter</td>
+<td>Opérations partiellement correctes</td>
+<td>Implémentation correcte</td>
+</tr>
+<tr>
+<td>Algorithme de parenthésage</td>
+<td>20 %</td>
+<td>Pas d'algorithme</td>
+<td>Algorithme partiel</td>
+<td>Algorithme correct</td>
+</tr>
+<tr>
+<td>Simulation file d'impression</td>
+<td>20 %</td>
+<td>Pas de simulation</td>
+<td>Simulation partielle</td>
+<td>Simulation complète</td>
+</tr>
+<tr>
+<td>Calculatrice NPI</td>
+<td>20 %</td>
+<td>Pas de calculatrice</td>
+<td>NPI partiellement implémentée</td>
+<td>NPI fonctionnelle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Pile</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — File</td>
+<td>10 min</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Parenthésage</td>
+<td>20 min</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — File d'impression</td>
+<td>20 min</td>
+<td>70 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Calculatrice NPI</td>
+<td>20 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Les piles et les files sont des structures de données fondamentales en informatique. Ce TP les aborde de manière progressive :
+- <strong>Analogies concrètes</strong> : Avant de coder, utiliser des objets physiques. Une pile d'assiettes (LIFO) — on pose et on reprend par le dessus. Une file de cantine (FIFO) — le premier arrivé est le premier servi.
+- <strong>Exercice 3 (parenthésage)</strong> : C'est un classique des épreuves de NSI au bac. Montrer comment une simple pile peut résoudre un problème complexe de validation syntaxique.</p>
+<h3>Conseil formateur</h3>
+<p>Faire jouer les simulations physiquement en classe avant de coder. Un groupe d'élèves forme une file, un autre une pile. Les opérations sont mimées. Cette approche débranchée est recommandée pour tous les niveaux du collège au lycée. Pour les élèves de NSI, ajouter la gestion des trois types de parenthèses <code>()</code>, <code>[]</code>, <code>{}</code>.</p>
+<h3>Prolongement</h3>
+<p>Implémenter une calculatrice en notation polonaise inversée (RPN) qui utilise une pile pour évaluer des expressions comme <code>3 4 + 2 *</code> (résultat : 14). Ce prolongement prépare la séance 10 du module.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 2 — Session 05 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 2 — Session 05 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 2 — English Department</li><li>**Duration:** 1h30</li><li>**Academic year:** 2025-2026</li><li>**Problem statement:** Consider the relational schema for a library:</li><li>**Solution:**</li><li>**Problem statement:** On the `Book` table above, write the following queries:</li><li>**Solution:**</li><li>**Problem statement:** Enrich the database with a `Loan` table `(loan_id INT PRIMARY KEY, book_id INT REFERENCES Book, loan_date DATE, borrower_name VARCHAR(50))`.</li></ul></div>
+    <blockquote>
+<p><strong>Templates:</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-en.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF:</strong> <code>TD_Informatique_ENS_2ème_année_AN_05.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 2 — Session 05 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 2 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic year:</strong> 2025-2026</p>
+<hr />
+<h2>Exercise 1 — CREATE TABLE and INSERT <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Consider the relational schema for a library:
+- <code>Author (author_id INT PRIMARY KEY, last_name VARCHAR(50), first_name VARCHAR(50), birth_year INT)</code>
+- <code>Book (book_id INT PRIMARY KEY, title VARCHAR(100), publication_year INT, author_id INT REFERENCES Author(author_id))</code></p>
+<ol>
+<li>Write the CREATE TABLE statements</li>
+<li>Insert 3 authors and 4 books</li>
+<li>Display all books</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">author_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">last_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">first_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">birth_year</span><span class="w"> </span><span class="nb">INT</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">book_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">    </span><span class="n">publication_year</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">author_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Author</span><span class="p">(</span><span class="n">author_id</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Dijkstra&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Edsger&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1930</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Knuth&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Donald&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1938</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Turing&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Alan&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1912</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;The Art of Computer Programming&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1968</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A Discipline of Programming&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1976</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Computing Machinery and Intelligence&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1950</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Selected Writings on Computing&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1982</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Book</span><span class="p">;</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 2 — SELECT and WHERE <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> On the <code>Book</code> table above, write the following queries:</p>
+<ol>
+<li>Titles of books published after 1970</li>
+<li>Books by author_id = 1 (Dijkstra)</li>
+<li>Books whose title contains "Programming"</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- 1. Books after 1970</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">publication_year</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Book</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">publication_year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1970</span><span class="p">;</span>
+
+<span class="c1">-- 2. Books by Dijkstra</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">title</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Book</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">-- 3. Title contains &quot;Programming&quot;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">publication_year</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Book</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Programming%&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 3 — JOIN with INNER JOIN <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Enrich the database with a <code>Loan</code> table <code>(loan_id INT PRIMARY KEY, book_id INT REFERENCES Book, loan_date DATE, borrower_name VARCHAR(50))</code>.</p>
+<p>Insert 5 loans then write the queries:</p>
+<ol>
+<li>Display each loan with the book title and the author's name</li>
+<li>Count the number of loans per author</li>
+<li>Find the book(s) never loaned</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Loan</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">loan_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">book_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Book</span><span class="p">(</span><span class="n">book_id</span><span class="p">),</span>
+<span class="w">    </span><span class="n">loan_date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">borrower_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Loan</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-01-15&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ali&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-02-10&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-03-05&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Mohamed&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-03-12&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ali&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-04-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara&#39;</span><span class="p">);</span>
+
+<span class="c1">-- 1. Loans with title and author</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">borrower_name</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">last_name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">first_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">loan_date</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Loan</span><span class="w"> </span><span class="n">l</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span><span class="p">;</span>
+
+<span class="c1">-- 2. Number of loans per author</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">last_name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">first_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">author</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">l</span><span class="p">.</span><span class="n">loan_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">loan_count</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="n">a</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">author_id</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Loan</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">book_id</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">author_id</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p">;</span>
+
+<span class="c1">-- 3. Books never loaned</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">title</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="n">b</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Loan</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">book_id</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">loan_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 4 — Update and Delete <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Write SQL queries to:</p>
+<ol>
+<li>Add a <code>available BOOLEAN</code> column to Book</li>
+<li>Update the column: TRUE if the book has no current loan</li>
+<li>Delete an author and their books (CASCADE)</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- 1. Add column</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">TRUE</span><span class="p">;</span>
+
+<span class="c1">-- 2. Update (books with loans = not available)</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">book_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">book_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Loan</span><span class="p">);</span>
+
+<span class="c1">-- Verification</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Book</span><span class="p">;</span>
+
+<span class="c1">-- 3. Delete with CASCADE (if constraint declared ON DELETE CASCADE)</span>
+<span class="c1">-- ALTER TABLE Book ADD CONSTRAINT fk_author</span>
+<span class="c1">--   FOREIGN KEY (author_id) REFERENCES Author(author_id) ON DELETE CASCADE;</span>
+<span class="c1">-- DELETE FROM Author WHERE author_id = 3;</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 5 — Complete Modeling <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Design the relational schema for managing students and their course enrollments with grades:</p>
+<ol>
+<li>Create tables <code>Student</code>, <code>Course</code>, <code>Enrollment</code></li>
+<li>Insert 3 students, 2 courses, 5 enrollments</li>
+<li>For each student display: name, courses taken, and grade</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">last_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">first_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Course</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">course_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">    </span><span class="n">credits</span><span class="w"> </span><span class="nb">INT</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Enrollment</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">student_id</span><span class="p">),</span>
+<span class="w">    </span><span class="n">course_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Course</span><span class="p">(</span><span class="n">course_id</span><span class="p">),</span>
+<span class="w">    </span><span class="n">grade</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">course_id</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Benali&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;s.benali@ens.dz&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ziani&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ahmed&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;a.ziani@ens.dz&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Kaci&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Leila&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;l.kaci@ens.dz&#39;</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Course</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;OOP&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;DB&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Enrollment</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">.</span><span class="mi">50</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="mi">50</span><span class="p">);</span>
+
+<span class="c1">-- Full report</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">last_name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">first_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">student</span><span class="p">,</span>
+<span class="w">       </span><span class="k">c</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">course</span><span class="p">,</span>
+<span class="w">       </span><span class="n">e</span><span class="p">.</span><span class="n">grade</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Enrollment</span><span class="w"> </span><span class="n">e</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">Course</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">course_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">course_id</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">student</span><span class="p">,</span><span class="w"> </span><span class="n">course</span><span class="p">;</span>
+
+<span class="c1">-- Average per student</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">last_name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">first_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">student</span><span class="p">,</span>
+<span class="w">       </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">grade</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">average</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Enrollment</span><span class="w"> </span><span class="n">e</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">student_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">student</span><span class="p">;</span>
+</code></pre></div>
+
+<hr />
+<h2>Session Plan — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — CREATE / INSERT</td>
+<td>20 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — SELECT / WHERE</td>
+<td>15 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — Joins</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — UPDATE / DELETE</td>
+<td>15 min</td>
+<td>75 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — Modeling</td>
+<td>15 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Conceptual Diagrams</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Relational</span><span class="w"> </span><span class="n">Database</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Creation</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">CREATE</span><span class="w"> </span><span class="n">TABLE</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Insertion</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">INSERT</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Querying</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">SELECT</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Update</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">UPDATE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ALTER</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Deletion</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">DELETE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">CASCADE</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Joins</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">INNER</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">LEFT</span><span class="w"> </span><span class="n">JOIN</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Filtering</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">WHERE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">LIKE</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Aggregation</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">GROUP</span><span class="w"> </span><span class="n">BY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">COUNT</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>erDiagram
+    Author ||--o{ Book : writes
+    Book ||--o{ Loan : concerns
+    Student ||--o{ Enrollment : performs
+    Course ||--o{ Enrollment : contains
+
+    Author {
+        int author_id PK
+        string last_name
+        string first_name
+        int birth_year
+    }
+    Book {
+        int book_id PK
+        string title
+        int publication_year
+        int author_id FK
+    }
+    Loan {
+        int loan_id PK
+        int book_id FK
+        date loan_date
+        string borrower_name
+    }
+    Student {
+        int student_id PK
+        string last_name
+        string first_name
+        string email
+    }
+    Course {
+        int course_id PK
+        string title
+        int credits
+    }
+    Enrollment {
+        int student_id FK
+        int course_id FK
+        decimal grade
+    }
+
+    style Author fill:#4a90d9,color:#fff
+    style Book fill:#2ecc71,color:#fff
+    style Loan fill:#e67e22,color:#fff
+    style Student fill:#9b59b6,color:#fff
+    style Course fill:#e74c3c,color:#fff
+    style Enrollment fill:#4a90d9,color:#fff
+</code></pre></div>
+
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Table creation and insertion</td>
+<td>20 %</td>
+<td>Tables not created</td>
+<td>INSERT incomplete</td>
+<td>Correct creation and insertion</td>
+</tr>
+<tr>
+<td>SELECT and WHERE filtering</td>
+<td>20 %</td>
+<td>SELECT syntax unknown</td>
+<td>Partial filtering</td>
+<td>Correct queries with WHERE and LIKE</td>
+</tr>
+<tr>
+<td>Joins (INNER / LEFT JOIN)</td>
+<td>20 %</td>
+<td>JOIN not understood</td>
+<td>INNER JOIN only</td>
+<td>Correct multiple joins with aggregation</td>
+</tr>
+<tr>
+<td>Update and deletion</td>
+<td>20 %</td>
+<td>ALTER / UPDATE unknown</td>
+<td>UPDATE without subquery</td>
+<td>UPDATE, ALTER and DELETE CASCADE mastered</td>
+</tr>
+<tr>
+<td>Complete modeling</td>
+<td>20 %</td>
+<td>Schema not normalized</td>
+<td>Tables without foreign keys</td>
+<td>Full schema with keys, inserts and queries</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<p><strong>Teaching transposition:</strong> Relational modeling can be introduced in middle school by creating two-way tables (rows = records, columns = attributes), which students already use in mathematics. Joins can be illustrated by a "crossword puzzle" game where two grids are linked by a common piece of information.</p>
+<p><strong>Trainer advice:</strong> Start with a "paper-and-pencil" modeling exercise before moving to SQL. Ask students to draw the entity-relationship diagram on the board and verify cardinalities. Emphasize the difference between WHERE (row filtering) and HAVING (group filtering).</p>
+<p><strong>Extension:</strong> Propose a project to create a small database for the school library with a simple Web interface in PHP or Python Flask allowing users to list, add, and search for books.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

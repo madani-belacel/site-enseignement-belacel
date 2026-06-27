@@ -1,0 +1,338 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Course — ENS Year 2 — Session 07 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Course — ENS Year 2 — Session 07 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor :** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level :** ENS — Year 2 — English Department</li><li>**Duration :** 1h30</li><li>**Academic year :** 2025-2026</li><li>**Reference framework :** benchmark of 10 Algerian universities + practices USTO/Biskra/M'sila.</li><li>**Target audience :** ENS Year 2 Students — English Department</li><li>**Prerequisite skills :** Basic terminal usage (ENS1 session 03), Python projects</li><li>**Cross-curricular objectives :**</li><li>**Assessment method :** OOP Lab + SQL 35 % — Integrated Project 40 % — Pedagogical Session Sheet 25 %</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_2ème_année_AN_07.pdf</code></p>
+</blockquote>
+<h1>Computer Science Course — ENS Year 2 — Session 07 (EN)</h1>
+<p><strong>Instructor :</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level :</strong> ENS — Year 2 — English Department<br />
+<strong>Duration :</strong> 1h30<br />
+<strong>Academic year :</strong> 2025-2026</p>
+<hr />
+<h2>Course Sheet — E-learning Platform (Moodle)</h2>
+<p><strong>Reference framework :</strong> benchmark of 10 Algerian universities + practices USTO/Biskra/M'sila.</p>
+<p><strong>Target audience :</strong> ENS Year 2 Students — English Department</p>
+<p><strong>Prerequisite skills :</strong> Basic terminal usage (ENS1 session 03), Python projects</p>
+<p><strong>Cross-curricular objectives :</strong>
+- Apply object-oriented programming (classes, inheritance, encapsulation) in Python
+- Design advanced algorithms (sorting, searching, recursion) and estimate their complexity
+- Model data with the relational model and basic SQL queries
+- Understand Web architecture (HTML, CSS, JavaScript intro, HTTP)
+- Use Git and collaborative work methods (branches, merge)
+- Prepare the teaching of computer science in middle/high school (Scratch, pedagogical Python)</p>
+<p><strong>Assessment method :</strong> OOP Lab + SQL 35 % — Integrated Project 40 % — Pedagogical Session Sheet 25 %</p>
+<p><strong>Bibliography :</strong> Chacon &amp; Straub — <em>Pro Git</em> (git-scm.com) ; Atlassian — Git Tutorials</p>
+<hr />
+<h2>Specific Learning Objectives</h2>
+<p>At the end of this session, the student is able to :
+- Initialize a Git repository
+- Add and commit files
+- Create and merge branches
+- Push/pull to GitHub
+- Write a professional README
+- Use .gitignore</p>
+<hr />
+<h2>Course Plan</h2>
+<ol>
+<li>Why Git ?</li>
+<li>Installation and configuration</li>
+<li>Basic commands (init, add, commit, status)</li>
+<li>Branches (branch, merge)</li>
+<li>GitHub: remote, push, pull</li>
+<li>README and documentation</li>
+<li>Best practices for teachers</li>
+</ol>
+<hr />
+<h2>1. Why Git ? <em>(10 min)</em></h2>
+<p><strong>Problem :</strong> "TD_final.docx", "TD_final2.docx", "TD_version_final.docx"…</p>
+<p><strong>Solution :</strong> Git — version control system.</p>
+<p><strong>Advantages :</strong>
+- Complete history of modifications
+- Teamwork without conflicts
+- Error rollback possible
+- Cloud backup (GitHub)
+- Code portfolio for teachers</p>
+<hr />
+<h2>2. Installation and configuration <em>(10 min)</em></h2>
+<h3>Installation</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Check if Git is installed</span>
+git<span class="w"> </span>--version
+
+<span class="c1"># Download: git-scm.com</span>
+</code></pre></div>
+
+<h3>Initial configuration</h3>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Madani BELACEL&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;m.belacel@ens-mostaganem.dz&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">&quot;code --wait&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2>3. Basic commands <em>(20 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Initialize a repository in the project folder</span>
+<span class="nb">cd</span><span class="w"> </span>projet-ens2
+git<span class="w"> </span>init
+
+<span class="c1"># View status</span>
+git<span class="w"> </span>status
+
+<span class="c1"># Add a file to tracking (stage)</span>
+git<span class="w"> </span>add<span class="w"> </span>cours_web.html
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w">  </span><span class="c1"># Add entire folder</span>
+
+<span class="c1"># Save a version (commit)</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add ENS2 web course page&quot;</span>
+
+<span class="c1"># View history</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline
+</code></pre></div>
+
+<p><strong>File lifecycle :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Working</span><span class="w"> </span><span class="n">Directory</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Modified</span><span class="w"> </span><span class="n">files</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">git</span><span class="w"> </span><span class="n">add</span><span class="o">|</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Staging</span><span class="w"> </span><span class="n">Area</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Indexed</span><span class="w"> </span><span class="n">files</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">git</span><span class="w"> </span><span class="n">commit</span><span class="o">|</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Repository</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Saved</span><span class="w"> </span><span class="n">version</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">git</span><span class="w"> </span><span class="n">checkout</span><span class="o">|</span><span class="w"> </span><span class="n">A</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">git</span><span class="w"> </span><span class="n">push</span><span class="o">|</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Remote</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">GitHub</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">git</span><span class="w"> </span><span class="n">pull</span><span class="o">|</span><span class="w"> </span><span class="n">C</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="o">|</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Other</span><span class="w"> </span><span class="n">machine</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f9d71c</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f9a825</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">caf50</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2196f</span><span class="mi">3</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span>
+</code></pre></div>
+
+<hr />
+<h2>4. Branches <em>(20 min)</em></h2>
+<p><strong>Branch :</strong> parallel version of the project. Allows working on a feature without affecting the main branch.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># List branches</span>
+git<span class="w"> </span>branch
+
+<span class="c1"># Create a branch</span>
+git<span class="w"> </span>branch<span class="w"> </span>quiz-feature
+
+<span class="c1"># Switch branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>quiz-feature
+
+<span class="c1"># Create and switch (in one command)</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>new-feature
+</code></pre></div>
+
+<h3>Merge</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Switch back to main</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+
+<span class="c1"># Merge the working branch</span>
+git<span class="w"> </span>merge<span class="w"> </span>quiz-feature
+
+<span class="c1"># Delete the branch after merging</span>
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>quiz-feature
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>gitGraph
+    commit id: &quot;Initial commit&quot;
+    commit id: &quot;HTML Structure&quot;
+    branch quiz-feature
+    checkout quiz-feature
+    commit id: &quot;Add HTML quiz&quot;
+    commit id: &quot;CSS quiz style&quot;
+    checkout main
+    commit id: &quot;Navbar fix&quot;
+    merge quiz-feature id: &quot;Merge quiz&quot;
+    commit id: &quot;README&quot;
+    branch unit-test
+    checkout unit-test
+    commit id: &quot;Test model.py&quot;
+    checkout main
+    merge unit-test id: &quot;Merge tests&quot;
+    commit id: &quot;v1.0&quot;
+</code></pre></div>
+
+<p><strong>Conflicts :</strong> when two branches modify the same line. Git shows both versions, the user must choose.</p>
+<hr />
+<h2>5. GitHub <em>(15 min)</em></h2>
+<h3>Create a remote repository</h3>
+<ol>
+<li>Create an account on <a href="https://github.com">github.com</a></li>
+<li>Click on <strong>New repository</strong></li>
+<li>Copy the URL : <code>https://github.com/user/projet.git</code></li>
+</ol>
+<h3>Link local → remote repository</h3>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/user/projet.git
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<h3>Update</h3>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>push<span class="w">          </span><span class="c1"># Send your commits</span>
+git<span class="w"> </span>pull<span class="w">          </span><span class="c1"># Fetch others&#39; commits</span>
+</code></pre></div>
+
+<p><strong>GitHub Pages :</strong> <code>Settings → Pages → branch: main</code> → free website.</p>
+<hr />
+<h2>6. README and documentation <em>(10 min)</em></h2>
+<p>The <code>README.md</code> file is the repository's home page (Markdown).</p>
+<div class="codehilite"><pre><span></span><code><span class="gh"># ENS2 Project — Grade Management</span>
+
+<span class="gu">## Description</span>
+Web application for managing student grades.
+Developed as part of the ENS Year 2 Computer Science module.
+
+<span class="gu">## Features</span>
+<span class="k">-</span><span class="w"> </span>Add/modify/delete students
+<span class="k">-</span><span class="w"> </span>Grade entry with validation (0-20)
+<span class="k">-</span><span class="w"> </span>Automatic average calculation
+<span class="k">-</span><span class="w"> </span>CSV export
+
+<span class="gu">## Technologies</span>
+<span class="k">-</span><span class="w"> </span>Python 3 + SQLite
+<span class="k">-</span><span class="w"> </span>HTML/CSS/JavaScript
+<span class="k">-</span><span class="w"> </span>Git + GitHub
+
+<span class="gu">## Installation</span>
+```bash
+git clone https://github.com/user/projet-ens2.git
+cd projet-ens2
+python main.py
+</code></pre></div>
+
+<h2>Author</h2>
+<p>BELACEL Madani — ENS Mostaganem</p>
+<div class="codehilite"><pre><span></span><code>---
+
+<span class="gu">##</span> 7. .gitignore *(5 min)*
+
+<span class="sb">`.gitignore`</span> file : ignores files that should not be versioned.
+</code></pre></div>
+
+<p><strong>pycache</strong>/
+<em>.pyc
+</em>.db
+.vscode/
+.env
+.DS_Store
+node_modules/
+```</p>
+<hr />
+<h2>8. Best practices <em>(5 min)</em></h2>
+<ol>
+<li>Frequent and atomic commits (one modification = one commit)</li>
+<li>Clear commit messages : <code>git commit -m "Add average calculation function"</code></li>
+<li>Never commit : passwords, API keys, student data</li>
+<li>Always <code>pull</code> before starting to work</li>
+<li>Use branches for experiments</li>
+<li>Add a README from the start</li>
+</ol>
+<hr />
+<hr />
+<h2>MCQ Self-Assessment</h2>
+<ol>
+<li>
+<p><strong>Which Git command initializes a new repository ?</strong>
+   a) <code>git start</code>  b) <code>git init</code> ✓  c) <code>git new</code></p>
+</li>
+<li>
+<p><strong>Which command adds a file to the staging area ?</strong>
+   a) <code>git commit</code>  b) <code>git add</code> ✓  c) <code>git push</code></p>
+</li>
+<li>
+<p><strong>A Git branch allows you to :</strong>
+   a) Permanently delete files  b) Work in parallel without affecting the main branch ✓  c) Speed up commits</p>
+</li>
+<li>
+<p><strong>Which command sends commits to GitHub ?</strong>
+   a) <code>git push</code> ✓  b) <code>git pull</code>  c) <code>git clone</code></p>
+</li>
+<li>
+<p><strong>What does the <code>.gitignore</code> file contain ?</strong>
+   a) The list of contributors  b) Files not to be versioned ✓  c) The last commit message</p>
+</li>
+</ol>
+<hr />
+<h2>9. Conclusion <em>(5 min)</em></h2>
+<p>Git is the standard tool of modern development. It allows you to keep a history, collaborate, and showcase your work (GitHub portfolio).</p>
+<p><strong>Next course :</strong> Didactics of computer science — teaching in middle/high school.</p>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<p><strong>Teaching transposition :</strong> Git can be introduced as early as 9th grade through an unplugged activity: each student receives a sheet (file) and must go through "commits" at each significant modification. Branches are represented by different colored sheets, and merging by a stapler that binds the sheets together. In NSI Première, versioning is part of the curriculum and can be presented as a development logbook. The parallel with the "versions" of an assignment submitted by a student is revealing.</p>
+<p><strong>Trainer advice :</strong> Students often struggle with the concepts of branches and merging. Start with a simple scenario: "You work on the project alone, you create a branch for a feature, you merge it." Once this cycle is mastered, move on to collaborative work with two people on the same repository. Emphasize the importance of clear commit messages — this is a professional skill.</p>
+<p><strong>Extension :</strong> Students can create a Git repository from scratch for their teacher portfolio, using GitHub Pages to publish it. They can also intentionally experiment with merge conflicts (two students modify the same file) and learn to resolve them — this skill is highly valued in the professional environment.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

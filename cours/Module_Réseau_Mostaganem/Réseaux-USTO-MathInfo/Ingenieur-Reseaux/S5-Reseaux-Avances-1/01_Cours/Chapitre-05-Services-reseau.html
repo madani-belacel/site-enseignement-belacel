@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 05 — Services réseau — DHCP et DNS — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 05 — Services réseau — DHCP et DNS</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**DORA** : Discover → Offer → Request → Acknowledge.</li><li>**NTP** : synchronisation horaire critique pour logs, certificats, corrélation SIEM.</li><li>**SNMP** v2c/v3 : polling OID (`IF-MIB`, `IP-MIB`), traps vers NMS (Zabbix, LibreNMS).</li></ul></div>
+    <h1>Chapitre 05 — Services réseau — DHCP et DNS</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Ingénieur RI</td>
+</tr>
+<tr>
+<td><strong>Semestre</strong></td>
+<td>S5</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h CM</td>
+</tr>
+<tr>
+<td><strong>Chapitre</strong></td>
+<td>05</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce chapitre, l'étudiant sera capable de :</p>
+<ol>
+<li><strong>Expliquer</strong> le cycle DORA du DHCP et les options courantes (3, 6, 51, 66).</li>
+<li><strong>Configurer</strong> serveur DHCP Cisco IOS et relais DHCP (<code>ip helper-address</code>).</li>
+<li><strong>Décrire</strong> résolution DNS récursive vs itérative, enregistrements A/AAAA/CNAME/MX.</li>
+<li><strong>Déployer</strong> DNS interne split-horizon pour intranet Université de Mostaganem.</li>
+<li><strong>Superviser</strong> NTP/SNMP pour synchronisation et inventaire (aperçu).</li>
+</ol>
+<h2>Plan du chapitre</h2>
+<ol>
+<li>DHCP — principes et options</li>
+<li>Relais et redondance DHCP</li>
+<li>DNS — architecture et zones</li>
+<li>Split DNS et sécurité</li>
+<li>NTP/SNMP — introduction</li>
+</ol>
+<hr />
+<h2>1. DHCP</h2>
+<p><strong>DORA</strong> : Discover → Offer → Request → Acknowledge.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Nom</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Subnet mask</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Default router</td>
+<td>10.10.10.1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>DNS servers</td>
+<td>10.20.1.53, 10.20.1.54</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Lease time</td>
+<td>86400 s</td>
+</tr>
+<tr>
+<td>66</td>
+<td>TFTP server</td>
+<td>VoIP (aperçu)</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>R-DHCP(config)# ip dhcp pool VLAN10
+R-DHCP(dhcp-config)# network 10.10.10.0 255.255.255.0
+R-DHCP(dhcp-config)# default-router 10.10.10.1
+R-DHCP(dhcp-config)# dns-server 10.20.1.53
+R-DHCP(dhcp-config)# lease 0 12 0
+</code></pre></div>
+
+<hr />
+<h2>2. Relais DHCP</h2>
+<p>Sans serveur sur chaque subnet, le <strong>DHCP relay</strong> forward les broadcasts :</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Vlan20</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">10.10.20.1</span><span class="w"> </span><span class="m m-Double">255.255.255.255.0</span>
+<span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">helper</span><span class="o">-</span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">10.20.1.100</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Problème</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single point of failure</td>
+<td>2 serveurs, scopes split 80/20</td>
+</tr>
+<tr>
+<td>Exhaustion pool</td>
+<td>réduire lease, monitoring</td>
+</tr>
+<tr>
+<td>Rogue DHCP</td>
+<td>DHCP snooping (switch)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. DNS</h2>
+<p>Hiérarchie : root → TLD → domaine autoritaire.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A / AAAA</td>
+<td>Nom → IPv4 / IPv6</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>Alias</td>
+</tr>
+<tr>
+<td>MX</td>
+<td>Messagerie</td>
+</tr>
+<tr>
+<td>PTR</td>
+<td>Reverse (in-addr.arpa)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Résolution récursive</strong> (client → résolveur) vs <strong>itérative</strong> (résolveur → root chain).</p>
+<div class="codehilite"><pre><span></span><code><span class="n">$</span><span class="w"> </span><span class="n">dig</span><span class="w"> </span><span class="mf">@10.20.1.53</span><span class="w"> </span><span class="n">portail</span><span class="p">.</span><span class="n">fac</span><span class="o">-</span><span class="n">mi</span><span class="p">.</span><span class="n">univ</span><span class="o">-</span><span class="n">mosta</span><span class="p">.</span><span class="n">dz</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="kt">short</span>
+<span class="n">$</span><span class="w"> </span><span class="n">nslookup</span><span class="w"> </span><span class="o">-</span><span class="n">type</span><span class="o">=</span><span class="n">mx</span><span class="w"> </span><span class="n">univ</span><span class="o">-</span><span class="n">mosta</span><span class="p">.</span><span class="n">dz</span>
+</code></pre></div>
+
+<hr />
+<h2>4. NTP et SNMP (aperçu)</h2>
+<p><strong>NTP</strong> : synchronisation horaire critique pour logs, certificats, corrélation SIEM.</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">ntp</span><span class="w"> </span><span class="nv">server</span><span class="w"> </span><span class="mi">10</span>.<span class="mi">20</span>.<span class="mi">1</span>.<span class="mi">1</span>
+<span class="k">show</span><span class="w"> </span><span class="nv">ntp</span><span class="w"> </span><span class="nv">status</span>
+</code></pre></div>
+
+<p><strong>SNMP</strong> v2c/v3 : polling OID (<code>IF-MIB</code>, <code>IP-MIB</code>), traps vers NMS (Zabbix, LibreNMS).</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Sécurité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1/v2c</td>
+<td>community string (faible)</td>
+</tr>
+<tr>
+<td>v3</td>
+<td>authPriv recommandé</td>
+</tr>
+</tbody>
+</table>
+<p>Intégration future : monitoring S9, automation Master.</p>
+<hr />
+<h2>Questions de révision et QCM</h2>
+<ol>
+<li>Quelles options DHCP configure GW et DNS ?</li>
+<li>Rôle de <code>ip helper-address</code> ?</li>
+<li>Différence enregistrement A et CNAME ?</li>
+<li>Pourquoi NTP sur équipements réseau ?</li>
+<li>QCM : DHCP utilise le port 53 ? (Faux — 67/68 UDP)</li>
+</ol>
+<h3>QCM rapide</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Voir questions ci-dessus</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Voir corrigé oral</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Relier théorie et TD/TP associés</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Justifier avec schéma ou commande</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Kurose &amp; Ross, ch. 2 — Application layer (DNS, DHCP)</li>
+<li>RFC 2131 — DHCP</li>
+<li>RFC 1035 — Domain names</li>
+<li>Tanenbaum, ch. 7 — Application layer</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : TP 03 serveur DHCP/DNS. TD 04 exercices DORA et zones DNS.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

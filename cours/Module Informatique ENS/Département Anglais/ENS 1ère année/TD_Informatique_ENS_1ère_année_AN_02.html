@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 1 — Session 02 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Instructor:** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 1 — Session 02 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Instructor:** BELACEL Madani</li><li>**Module:** Computer Science</li><li>**Level:** ENS — Year 1 — English Department</li><li>**Duration:** 1h30</li><li>**Academic Year:** 2025-2026</li><li>**Problem statement:** Convert the following numbers to binary.</li><li>**Answer:**</li><li>**Problem statement:** Convert the following binary numbers to decimal.</li><li>**Answer:**</li><li>**Problem statement:** Convert to hexadecimal.</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_AN_02.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 1 — Session 02 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Learning Objectives</h2>
+<p>By the end of this tutorial session, the student will be able to:
+- Convert a decimal number to binary and vice versa
+- Convert between binary, decimal, and hexadecimal bases
+- Decode ASCII characters from a binary sequence
+- Estimate the size of different file types (text, image, audio)
+- Use unit prefixes (KB, MB, GB) and calculate compression ratios</p>
+<hr />
+<h2>Tutorial Plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — Binary conversions</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — Decimal conversions</td>
+<td>15 min</td>
+<td>35 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — Hexadecimal</td>
+<td>15 min</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — Character encoding</td>
+<td>15 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — File sizes</td>
+<td>20 min</td>
+<td>85 min</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>5 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Decimal → Binary conversion</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Decimal</span><span class="w"> </span><span class="n">number</span><span class="o">:</span><span class="w"> </span><span class="mi">42</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">{</span><span class="n">Divide</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="mi">2</span><span class="p">}</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Remainder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Remainder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Write</span><span class="w"> </span><span class="n">down</span><span class="w"> </span><span class="n">remainder</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">{</span><span class="n">Quotient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Read</span><span class="w"> </span><span class="n">remainders</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">backwards</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Binary</span><span class="w"> </span><span class="n">result</span><span class="o">:</span><span class="w"> </span><span class="mi">101010</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h2>Storage unit hierarchy</h2>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Storage units&quot;</span>
+<span class="w">        </span><span class="n">bit</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Byte</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="n">bits</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Byte</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">KB</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="n">KB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="n">bytes</span><span class="p">]</span>
+<span class="w">        </span><span class="n">KB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MB</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="n">MB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="n">KB</span><span class="p">]</span>
+<span class="w">        </span><span class="n">MB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">GB</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="n">GB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="n">MB</span><span class="p">]</span>
+<span class="w">        </span><span class="n">GB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">TB</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="n">TB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="n">GB</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Examples&quot;</span>
+<span class="w">        </span><span class="n">Text</span><span class="p">[</span><span class="s">&quot;Text 5000 char.&lt;br/&gt;~ 5 KB&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">ImageBW</span><span class="p">[</span><span class="s">&quot;BW Image 200×150&lt;br/&gt;~ 3.7 KB&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">ImageC</span><span class="p">[</span><span class="s">&quot;24-bit Image 200×150&lt;br/&gt;~ 88 KB&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Photo</span><span class="p">[</span><span class="s">&quot;Photo 4000×3000&lt;br/&gt;~ 34.3 MB&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">KB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Text</span>
+<span class="w">    </span><span class="n">KB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ImageBW</span>
+<span class="w">    </span><span class="n">MB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ImageC</span>
+<span class="w">    </span><span class="n">MB</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Photo</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">TB</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Text</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ImageBW</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ImageC</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Photo</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 1 — Binary conversions <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Convert the following numbers to binary.</p>
+<ol>
+<li>13 (decimal) → binary</li>
+<li>25 (decimal) → binary</li>
+<li>42 (decimal) → binary</li>
+<li>100 (decimal) → binary</li>
+</ol>
+<p><strong>Answer:</strong>
+1. 13 = 8+4+1 = <code>1101₂</code>
+2. 25 = 16+8+1 = <code>11001₂</code>
+3. 42 = 32+8+2 = <code>101010₂</code>
+4. 100 = 64+32+4 = <code>1100100₂</code></p>
+<p>Method: successive divisions by 2, read remainders backwards.</p>
+<hr />
+<h2>Exercise 2 — Decimal conversions <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Convert the following binary numbers to decimal.</p>
+<ol>
+<li><code>1010₂</code></li>
+<li><code>1111₂</code></li>
+<li><code>100000₂</code></li>
+<li><code>110011₂</code></li>
+</ol>
+<p><strong>Answer:</strong>
+1. 1×8 + 0×4 + 1×2 + 0×1 = 10
+2. 1×8 + 1×4 + 1×2 + 1×1 = 15
+3. 1×32 + 0×16 + 0×8 + 0×4 + 0×2 + 0×1 = 32
+4. 1×32 + 1×16 + 0×8 + 0×4 + 1×2 + 1×1 = 51</p>
+<hr />
+<h2>Exercise 3 — Hexadecimal <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Convert to hexadecimal.</p>
+<ol>
+<li>255 (decimal) → hex</li>
+<li>16 (decimal) → hex</li>
+<li><code>1101 1010₂</code> → hex</li>
+<li><code>A3₁₆</code> → decimal</li>
+</ol>
+<p><strong>Answer:</strong>
+1. 255 = 15×16 + 15 = <code>FF₁₆</code>
+2. 16 = 1×16 + 0 = <code>10₁₆</code>
+3. <code>1101 1010₂</code> = <code>DA₁₆</code>
+4. <code>A3₁₆</code> = 10×16 + 3 = 163</p>
+<hr />
+<h2>Exercise 4 — Character encoding <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> In ASCII (7 bits), <code>A</code> = 65, <code>a</code> = 97, space = 32. Decode the following binary sequence:</p>
+<p><code>01000001 00100000 01000010 01001111 01001110</code></p>
+<p><strong>Hint:</strong> Each group of 8 bits = 1 character.</p>
+<p><strong>Answer:</strong>
+- <code>01000001₂</code> = 65 = <code>A</code>
+- <code>00100000₂</code> = 32 = space
+- <code>01000010₂</code> = 66 = <code>B</code>
+- <code>01001111₂</code> = 79 = <code>O</code>
+- <code>01001110₂</code> = 78 = <code>N</code></p>
+<p>Result: <code>A BON</code></p>
+<hr />
+<h2>Exercise 5 — File sizes <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Calculate the estimated size of the following files:</p>
+<ol>
+<li>A text of 5000 ASCII characters (no formatting).</li>
+<li>A 200×150 pixel black and white image (1 bit/pixel).</li>
+<li>A 200×150 pixel 24-bit image (TrueColor).</li>
+<li>A 4000×3000 pixel 24-bit photo compressed JPEG (10:1 ratio).</li>
+</ol>
+<p><strong>Answer:</strong>
+1. 5000 × 1 byte = 5000 bytes ≈ 4.9 KB
+2. 200 × 150 × 1 bit = 30,000 bits = 3750 bytes ≈ 3.7 KB
+3. 200 × 150 × 24 bits = 720,000 bits = 90,000 bytes ≈ 87.9 KB
+4. 4000 × 3000 × 3 bytes = 36,000,000 bytes ≈ 34.3 MB. JPEG compression (10:1) → ~3.4 MB</p>
+<hr />
+<h2>Self-assessment quiz</h2>
+<ol>
+<li>
+<p><strong>What is the decimal value of <code>1010₂</code>?</strong>
+   a) 8  b) 10 ✓  c) 12</p>
+</li>
+<li>
+<p><strong>How many bits are needed to encode the number 256 in binary?</strong>
+   a) 8  b) 9 ✓  c) 10</p>
+</li>
+<li>
+<p><strong>The hexadecimal number <code>FF₁₆</code> equals:</strong>
+   a) 240  b) 255 ✓  c) 256</p>
+</li>
+<li>
+<p><strong>In ASCII, the character <code>A</code> is encoded as:</strong>
+   a) 65 ✓  b) 97  c) 32</p>
+</li>
+<li>
+<p><strong>One GB (gigabyte) equals:</strong>
+   a) 1000 MB  b) 1024 MB ✓  c) 1024 KB</p>
+</li>
+</ol>
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binary ↔ decimal conversion</td>
+<td>20 %</td>
+<td>Incorrect conversions</td>
+<td>Partially correct conversions</td>
+<td>Correct conversions</td>
+</tr>
+<tr>
+<td>Hexadecimal conversion</td>
+<td>20 %</td>
+<td>Incorrect conversions</td>
+<td>Partially correct conversions</td>
+<td>Correct conversions</td>
+</tr>
+<tr>
+<td>ASCII/UTF-8 encoding</td>
+<td>20 %</td>
+<td>Does not understand the principle</td>
+<td>Partial understanding</td>
+<td>Complete understanding</td>
+</tr>
+<tr>
+<td>File size calculation</td>
+<td>20 %</td>
+<td>Incorrect calculations</td>
+<td>Partially correct calculations</td>
+<td>Correct calculations</td>
+</tr>
+<tr>
+<td>Bitmap image</td>
+<td>20 %</td>
+<td>Does not understand pixel encoding</td>
+<td>Partial understanding</td>
+<td>Complete understanding</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<h3>Teaching transposition</h3>
+<p>Binary and hexadecimal conversions are approachable from Year 10 (SNT) using successive division or powers of 2. Binary can be introduced with card games (cards worth 1, 2, 4, 8, 16...) and having students guess a number chosen by a classmate. For file sizes, use concrete examples (phone photos, Word documents) that students handle daily.</p>
+<h3>Trainer advice</h3>
+<p>Plan progressive exercises: start with small numbers (0-15) that are easy to verify mentally, then gradually increase. For hexadecimal, emphasize going through binary (grouping by 4 bits). Exercise 5 (sizes) is very practical: ask students to open the properties of their own files to verify calculations.</p>
+<h3>Extension</h3>
+<p>Propose a mini-project: create a small Python script that automatically converts a decimal number to bases 2, 10, and 16, and displays the calculation steps. This reinvests the notions of loops and conditions seen in algorithms while consolidating base conversions.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

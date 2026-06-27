@@ -1,0 +1,546 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP Informatique — ENS 1ère année — TP 07 (FR) — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">TP Informatique — ENS 1ère année — TP 07 (FR)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** Informatique</li><li>**Niveau :** ENS — 1ère année — Département de français</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Énoncé :** Créer un script `journal.py` qui :</li><li>**Exemple attendu :**</li><li>**Corrigé :**</li><li>**Énoncé :** Créer un script `creer_notes.py` qui :</li><li>**Corrigé :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TP_Informatique_ENS_1ère_année_FR_07.pdf</code></p>
+</blockquote>
+<h1>TP Informatique — ENS 1ère année — TP 07 (FR)</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> Informatique<br />
+<strong>Niveau :</strong> ENS — 1ère année — Département de français<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<hr />
+<h2>Objectifs pédagogiques</h2>
+<p>À l'issue de ce TP, l'étudiant est capable de :
+- Lire et écrire des fichiers texte en Python
+- Manipuler le format CSV (lecture, écriture, analyse)
+- Utiliser le module <code>csv</code> de Python
+- Traiter des données réelles (notes d'élèves, résultats)
+- Générer des rapports automatisés
+- Créer des outils pédagogiques réutilisables (fiches de révision, journal de bord)</p>
+<hr />
+<h2>Plan du TP</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Activité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil et révision</td>
+<td>5 min</td>
+<td>Rappel sur les fichiers</td>
+</tr>
+<tr>
+<td>Exercice 1</td>
+<td>15 min</td>
+<td>Lecture et écriture de fichiers texte</td>
+</tr>
+<tr>
+<td>Exercice 2</td>
+<td>20 min</td>
+<td>Création d'un fichier CSV de notes</td>
+</tr>
+<tr>
+<td>Exercice 3</td>
+<td>20 min</td>
+<td>Analyse de données CSV</td>
+</tr>
+<tr>
+<td>Exercice 4</td>
+<td>20 min</td>
+<td>Générateur de fiches de révision</td>
+</tr>
+<tr>
+<td>Exercice 5</td>
+<td>10 min</td>
+<td>Journal des séances</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — Lecture et écriture de fichiers texte <em>(15 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>journal.py</code> qui :
+1. Demande à l'utilisateur d'entrer 3 phrases (son journal du jour)
+2. Sauvegarde chaque phrase dans un fichier <code>journal.txt</code> (une phrase par ligne)
+3. Lit le fichier et affiche son contenu numéroté</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Phrase 1 : Aujourd&#39;hui j&#39;ai appris les fichiers en Python.
+Phrase 2 : C&#39;est utile pour sauvegarder des données.
+Phrase 3 : Je vais créer un projet de quiz.
+
+=== Mon journal ===
+1. Aujourd&#39;hui j&#39;ai appris les fichiers en Python.
+2. C&#39;est utile pour sauvegarder des données.
+3. Je vais créer un projet de quiz.
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;journal.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">phrase</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Phrase </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> : &quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">phrase</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Mon journal ===&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;journal.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">ligne</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 2 — Création d'un fichier CSV de notes <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>creer_notes.py</code> qui :
+1. Demande le nombre d'élèves
+2. Pour chaque élève, demande nom, note1, note2, note3
+3. Sauvegarde dans <code>notes.csv</code> avec en-tête
+4. Affiche un récapitulatif des données enregistrées</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Saisie</span><span class="w"> </span><span class="n">utilisateur</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">notes</span><span class="p">.</span><span class="n">csv</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Lecture</span><span class="w"> </span><span class="n">par</span><span class="w"> </span><span class="n">analyse_notes</span><span class="p">.</span><span class="n">py</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Calcul</span><span class="w"> </span><span class="n">moyennes</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">resultats</span><span class="p">.</span><span class="n">csv</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f9f</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">cf</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">nb</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nombre d&#39;élèves : &quot;</span><span class="p">))</span>
+<span class="n">eleves</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Élève </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ---&quot;</span><span class="p">)</span>
+    <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nom : &quot;</span><span class="p">)</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Note 1 : &quot;</span><span class="p">))</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Note 2 : &quot;</span><span class="p">))</span>
+    <span class="n">n3</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Note 3 : &quot;</span><span class="p">))</span>
+    <span class="n">eleves</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">nom</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">n3</span><span class="p">])</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;notes.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Nom&quot;</span><span class="p">,</span> <span class="s2">&quot;Note1&quot;</span><span class="p">,</span> <span class="s2">&quot;Note2&quot;</span><span class="p">,</span> <span class="s2">&quot;Note3&quot;</span><span class="p">])</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">eleves</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✓ </span><span class="si">{</span><span class="n">nb</span><span class="si">}</span><span class="s2"> élèves enregistrés dans notes.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 3 — Analyse de données CSV <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>analyse_notes.py</code> qui lit <code>notes.csv</code> et calcule :
+1. La moyenne de chaque élève
+2. La moyenne de la classe
+3. Le nombre d'élèves admis (moyenne ≥ 10)
+4. Exporte les résultats dans <code>resultats.csv</code></p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">===</span><span class="w"> </span><span class="n">Analyse</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">notes</span><span class="w"> </span><span class="o">===</span>
+<span class="n">Ali</span><span class="w">        </span><span class="err">→</span><span class="w"> </span><span class="n">Moyenne</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">14.00</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">✓</span><span class="w"> </span><span class="n">Admis</span>
+<span class="n">Sara</span><span class="w">       </span><span class="err">→</span><span class="w"> </span><span class="n">Moyenne</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">16.67</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">✓</span><span class="w"> </span><span class="n">Admis</span>
+<span class="n">Mohamed</span><span class="w">    </span><span class="err">→</span><span class="w"> </span><span class="n">Moyenne</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">9.00</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="n">Ajourné</span>
+<span class="n">Leila</span><span class="w">      </span><span class="err">→</span><span class="w"> </span><span class="n">Moyenne</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">16.00</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">✓</span><span class="w"> </span><span class="n">Admis</span>
+<span class="n">Ahmed</span><span class="w">      </span><span class="err">→</span><span class="w"> </span><span class="n">Moyenne</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">9.33</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="n">Ajourné</span>
+
+<span class="n">Moyenne</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">classe</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">13.00</span>
+<span class="err">É</span><span class="n">lèves</span><span class="w"> </span><span class="n">admis</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span>
+<span class="n">Résultats</span><span class="w"> </span><span class="n">exportés</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">resultats</span><span class="o">.</span><span class="n">csv</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;notes.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">pass</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;notes.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Nom&quot;</span><span class="p">,</span> <span class="s2">&quot;Note1&quot;</span><span class="p">,</span> <span class="s2">&quot;Note2&quot;</span><span class="p">,</span> <span class="s2">&quot;Note3&quot;</span><span class="p">])</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">])</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Mohamed&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Leila&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">])</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Ahmed&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+
+<span class="n">eleves</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;notes.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">notes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Note1&quot;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Note2&quot;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Note3&quot;</span><span class="p">])]</span>
+        <span class="n">moyenne</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
+        <span class="n">eleves</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;nom&quot;</span><span class="p">:</span> <span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Nom&quot;</span><span class="p">],</span> <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="n">notes</span><span class="p">,</span> <span class="s2">&quot;moyenne&quot;</span><span class="p">:</span> <span class="n">moyenne</span><span class="p">})</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;resultats.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Nom&quot;</span><span class="p">,</span> <span class="s2">&quot;Note1&quot;</span><span class="p">,</span> <span class="s2">&quot;Note2&quot;</span><span class="p">,</span> <span class="s2">&quot;Note3&quot;</span><span class="p">,</span> <span class="s2">&quot;Moyenne&quot;</span><span class="p">,</span> <span class="s2">&quot;Admis&quot;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">eleves</span><span class="p">:</span>
+        <span class="n">admis</span> <span class="o">=</span> <span class="s2">&quot;Oui&quot;</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;moyenne&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="k">else</span> <span class="s2">&quot;Non&quot;</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;nom&quot;</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;notes&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;notes&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="n">e</span><span class="p">[</span><span class="s2">&quot;notes&quot;</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;moyenne&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">admis</span><span class="p">])</span>
+
+<span class="n">moyennes</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="s2">&quot;moyenne&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">eleves</span><span class="p">]</span>
+<span class="n">moyenne_classe</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">moyennes</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">moyennes</span><span class="p">)</span>
+<span class="n">admis</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">moyennes</span> <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Analyse des notes ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">eleves</span><span class="p">:</span>
+    <span class="n">etat</span> <span class="o">=</span> <span class="s2">&quot;✓ Admis&quot;</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s2">&quot;moyenne&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">10</span> <span class="k">else</span> <span class="s2">&quot;✗ Ajourné&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> → Moyenne : </span><span class="si">{</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;moyenne&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="n">etat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Moyenne de la classe : </span><span class="si">{</span><span class="n">moyenne_classe</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Élèves admis : </span><span class="si">{</span><span class="n">admis</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">eleves</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Résultats exportés dans resultats.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 4 — Générateur de fiches de révision <em>(20 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>fiches_revision.py</code> qui permet de créer et d'utiliser des fiches de révision. Le programme :
+1. Charge les fiches depuis un CSV (concept, définition)
+2. Lance un quiz : affiche le concept, l'utilisateur donne la définition
+3. Marque comme correcte ou non
+4. Affiche le score final</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Début</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Créer</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">charger</span><span class="w"> </span><span class="n">fiches</span><span class="w"> </span><span class="n">CSV</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Mélanger</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">fiches</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">concept</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Utilisateur</span><span class="w"> </span><span class="n">saisit</span><span class="w"> </span><span class="n">définition</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">définition</span><span class="w"> </span><span class="n">attendue</span><span class="p">]</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Auto</span><span class="o">-</span><span class="n">évaluation</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Correct</span><span class="w"> </span><span class="o">?</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">{</span><span class="n">Plus</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">fiches</span><span class="w"> </span><span class="o">?</span><span class="p">}</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Oui</span><span class="o">|</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">H</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Non</span><span class="o">|</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Afficher</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="n">final</span><span class="p">]</span>
+<span class="w">    </span><span class="n">I</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Fin</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f9f</span><span class="p">,</span><span class="n">stroke</span><span class="o">:</span><span class="err">#</span><span class="mi">333</span><span class="p">,</span><span class="n">stroke</span><span class="o">-</span><span class="n">width</span><span class="o">:</span><span class="mi">2</span><span class="n">px</span>
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">creer_fiches</span><span class="p">(</span><span class="n">nom_fichier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Crée un fichier CSV de fiches de révision.&quot;&quot;&quot;</span>
+    <span class="n">concepts</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;Variable&quot;</span><span class="p">,</span> <span class="s2">&quot;Boîte qui stocke une valeur&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Fonction&quot;</span><span class="p">,</span> <span class="s2">&quot;Bloc de code réutilisable qui effectue une tâche&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Boucle&quot;</span><span class="p">,</span> <span class="s2">&quot;Structure qui répète une instruction&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Condition&quot;</span><span class="p">,</span> <span class="s2">&quot;Structure qui exécute selon qu&#39;une condition est vraie&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Tableau&quot;</span><span class="p">,</span> <span class="s2">&quot;Collection d&#39;éléments accessibles par indice&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Pile&quot;</span><span class="p">,</span> <span class="s2">&quot;Structure LIFO — dernier entré, premier sorti&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;File&quot;</span><span class="p">,</span> <span class="s2">&quot;Structure FIFO — premier entré, premier sorti&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Algorithme&quot;</span><span class="p">,</span> <span class="s2">&quot;Suite finie d&#39;instructions pour résoudre un problème&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nom_fichier</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Concept&quot;</span><span class="p">,</span> <span class="s2">&quot;Definition&quot;</span><span class="p">])</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">concepts</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">concepts</span><span class="p">)</span><span class="si">}</span><span class="s2"> fiches créées dans </span><span class="si">{</span><span class="n">nom_fichier</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">charger_fiches</span><span class="p">(</span><span class="n">nom_fichier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Charge les fiches depuis un fichier CSV.&quot;&quot;&quot;</span>
+    <span class="n">fiches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nom_fichier</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">fiches</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Concept&quot;</span><span class="p">],</span> <span class="n">ligne</span><span class="p">[</span><span class="s2">&quot;Definition&quot;</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">fiches</span>
+
+<span class="k">def</span> <span class="nf">lancer_quiz</span><span class="p">(</span><span class="n">fiches</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lance un quiz de révision.&quot;&quot;&quot;</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">fiches</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Quiz de révision ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">concept</span><span class="p">,</span> <span class="n">definition</span> <span class="ow">in</span> <span class="n">fiches</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Concept : </span><span class="si">{</span><span class="n">concept</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">reponse</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Votre définition : &quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Définition attendue : </span><span class="si">{</span><span class="n">definition</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">correct</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Correct ? (o/n) : &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">correct</span> <span class="o">==</span> <span class="s2">&quot;o&quot;</span><span class="p">:</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Score final : </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fiches</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">fichier</span> <span class="o">=</span> <span class="s2">&quot;fiches_revision.csv&quot;</span>
+<span class="n">creer_fiches</span><span class="p">(</span><span class="n">fichier</span><span class="p">)</span>
+<span class="n">fiches</span> <span class="o">=</span> <span class="n">charger_fiches</span><span class="p">(</span><span class="n">fichier</span><span class="p">)</span>
+<span class="n">lancer_quiz</span><span class="p">(</span><span class="n">fiches</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercice 5 — Journal des séances <em>(10 min)</em></h2>
+<p><strong>Énoncé :</strong> Créer un script <code>journal_bord.py</code> qui enregistre un journal de travail horodaté. Le programme :
+1. Demande le nom de l'étudiant
+2. Demande les matières étudiées et le temps passé
+3. Sauvegarde dans un CSV avec horodatage automatique
+4. Affiche un résumé de la session</p>
+<p><strong>Exemple attendu :</strong></p>
+<div class="codehilite"><pre><span></span><code>Nom de l&#39;étudiant : Sara
+Matière étudiée (ou &#39;fin&#39;) : Maths
+  Temps passé sur &#39;Maths&#39; (min) : 45
+Matière étudiée (ou &#39;fin&#39;) : Python
+  Temps passé sur &#39;Python&#39; (min) : 60
+Matière étudiée (ou &#39;fin&#39;) : fin
+
+=== Résumé de la session du 2026-06-25 ===
+Étudiant : Sara
+Nombre de matières : 2
+  • Maths : 45 minutes
+  • Python : 60 minutes
+Temps d&#39;étude total : 105 minutes (1.8 heures)
+Données sauvegardées dans journal_bord.csv
+</code></pre></div>
+
+<p><strong>Corrigé :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nom de l&#39;étudiant : &quot;</span><span class="p">)</span>
+<span class="n">date_jour</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+
+<span class="n">matieres</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">matiere</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Matière étudiée (ou &#39;fin&#39;) : &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">matiere</span> <span class="o">==</span> <span class="s2">&quot;fin&quot;</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">temps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Temps passé sur &#39;</span><span class="si">{</span><span class="n">matiere</span><span class="si">}</span><span class="s2">&#39; (min) : &quot;</span><span class="p">))</span>
+    <span class="n">matieres</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">matiere</span><span class="p">,</span> <span class="n">temps</span><span class="p">))</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;journal_bord.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Nom&quot;</span><span class="p">,</span> <span class="s2">&quot;Matiere&quot;</span><span class="p">,</span> <span class="s2">&quot;Temps_min&quot;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">matiere</span><span class="p">,</span> <span class="n">temps</span> <span class="ow">in</span> <span class="n">matieres</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">date_jour</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">matiere</span><span class="p">,</span> <span class="n">temps</span><span class="p">])</span>
+
+<span class="n">temps_total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">matieres</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Résumé de la session du </span><span class="si">{</span><span class="n">date_jour</span><span class="si">}</span><span class="s2"> ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Étudiant : </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nombre de matières : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">matieres</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">matieres</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  • </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temps d&#39;étude total : </span><span class="si">{</span><span class="n">temps_total</span><span class="si">}</span><span class="s2"> minutes (</span><span class="si">{</span><span class="n">temps_total</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> heures)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Données sauvegardées dans journal_bord.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>QCM d'auto-évaluation</h2>
+<ol>
+<li>
+<p><strong>Quelle fonction Python permet d'ouvrir un fichier ?</strong>
+   a) <code>open()</code> ✓
+   b) <code>file()</code>
+   c) <code>read()</code></p>
+</li>
+<li>
+<p><strong>Que signifie CSV ?</strong>
+   a) Comma-Separated Values ✓
+   b) Computer System Validation
+   c) Common Source Variables</p>
+</li>
+<li>
+<p><strong>Quel mode d'ouverture permet d'écrire à la fin d'un fichier existant ?</strong>
+   a) <code>"w"</code>
+   b) <code>"a"</code> ✓
+   c) <code>"r"</code></p>
+</li>
+<li>
+<p><strong>Quelle méthode lit toutes les lignes d'un fichier CSV sous forme de dictionnaires ?</strong>
+   a) <code>csv.reader()</code>
+   b) <code>csv.DictReader()</code> ✓
+   c) <code>csv.writer()</code></p>
+</li>
+<li>
+<p><strong>Pourquoi utilise-t-on <code>newline=""</code> avec <code>csv.writer()</code> ?</strong>
+   a) Pour éviter les lignes vides entre les rangées ✓
+   b) Pour supprimer les caractères spéciaux
+   c) Ce n'est pas nécessaire</p>
+</li>
+</ol>
+<hr />
+<h2>Grille d'évaluation TP 07</h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Poids</th>
+<th>Non acquis (0)</th>
+<th>Partiel (0.5)</th>
+<th>Acquis (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lecture/écriture fichiers texte</td>
+<td>20 %</td>
+<td>Ne maîtrise pas <code>open()</code></td>
+<td>Utilisation de base</td>
+<td>Maîtrise complète</td>
+</tr>
+<tr>
+<td>Module CSV (lecture)</td>
+<td>20 %</td>
+<td>Ne sait pas lire un CSV</td>
+<td>Lecture avec erreurs</td>
+<td>Lecture correcte</td>
+</tr>
+<tr>
+<td>Module CSV (écriture)</td>
+<td>20 %</td>
+<td>Ne sait pas écrire un CSV</td>
+<td>Écriture partielle</td>
+<td>Écriture correcte</td>
+</tr>
+<tr>
+<td>Traitement de données</td>
+<td>20 %</td>
+<td>Aucun traitement</td>
+<td>Traitement partiel</td>
+<td>Traitement complet</td>
+</tr>
+<tr>
+<td>Export de résultats</td>
+<td>20 %</td>
+<td>Pas d'export</td>
+<td>Export partiel</td>
+<td>Export fonctionnel</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Déroulement séance — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Total cumulé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accueil</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercice 1 — Journal texte</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercice 2 — Création CSV notes</td>
+<td>20 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>Exercice 3 — Analyse CSV</td>
+<td>20 min</td>
+<td>60 min</td>
+</tr>
+<tr>
+<td>Exercice 4 — Fiches révision</td>
+<td>20 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercice 5 — Journal de bord</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Note pédagogique ENS</h2>
+<h3>Transposition didactique</h3>
+<p>Ce TP est le plus concret des huit séances : il manipule des données réelles qui parlent aux futurs enseignants.
+- <strong>Exercices 2 et 3 (notes CSV)</strong> : Ces exercices simulent le travail quotidien d'un enseignant : saisir des notes, calculer des moyennes, exporter des résultats. Les étudiants réalisent qu'un script Python peut remplacer un tableur pour des tâches répétitives.
+- <strong>Exercice 4 (fiches de révision)</strong> : C'est l'exercice le plus directement réutilisable. Les futurs enseignants peuvent adapter ce programme pour n'importe quelle discipline.</p>
+<h3>Conseil formateur</h3>
+<p>Vérifier que les étudiants comprennent le format CSV (séparateur virgule, guillemets pour les chaînes). Montrer comment ouvrir un CSV avec un tableur (LibreOffice Calc ou Excel) pour visualiser le résultat. Pour les élèves de collège, simplifier en proposant un fichier CSV pré-rempli et ne demander que la lecture et l'affichage.</p>
+<h3>Prolongement</h3>
+<p>Créer un système complet de « Gestion de notes de classe » qui lit un CSV d'élèves, calcule les moyennes par matière, génère un bulletin individuel au format texte, et exporte les résultats dans un nouveau CSV avec les appréciations.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

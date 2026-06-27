@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD 04 — VLAN et Ethernet — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TD 04 — VLAN et Ethernet</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**c)** PC VLAN 10 (192.168.10.5/26) ping PC VLAN 20 (192.168.20.5/26) : chemin L2/L3 ?</li><li>**b)** Router-on-a-stick : une interface physique, sous-interfaces par VLAN.</li></ul></div>
+    <h1>TD 04 — VLAN et Ethernet</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence SI — S5</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>2 h</td>
+</tr>
+<tr>
+<td><strong>Chapitres associés</strong></td>
+<td>Ch. 04</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs</h2>
+<ul>
+<li>Concevoir un plan VLAN 802.1Q pour une PME</li>
+<li>Distinguer ports access et trunk</li>
+<li>Expliquer routage inter-VLAN (router-on-a-stick vs switch L3)</li>
+</ul>
+<hr />
+<h2>Exercice 1 — Concepts VLAN (4 pts)</h2>
+<p>Vrai/Faux + justification :</p>
+<ol>
+<li>Un broadcast ARP VLAN 10 ne sort pas des ports VLAN 10.</li>
+<li>Le tag 802.1Q est présent sur les trames des ports access.</li>
+<li>Le VLAN natif transporte des trames non taguées sur un trunk.</li>
+<li>4094 VLANs maximum utilisables (VID 12 bits).</li>
+</ol>
+<hr />
+<h2>Exercice 2 — Plan VLAN PME (6 pts)</h2>
+<p>Besoins : <strong>Admin</strong> (20 postes), <strong>Invités</strong> (10), <strong>Serveurs</strong> (8), <strong>IoT</strong> (15).</p>
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>VID</th>
+<th>Sous-réseau proposé</th>
+<th>Justification sécurité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Admin</td>
+<td>10</td>
+<td>192.168.10.0/26</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Invités</td>
+<td>20</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Serveurs</td>
+<td>30</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>IoT</td>
+<td>40</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Compléter les sous-réseaux (/26 ou /27 selon besoin).</li>
+<li>Quel VLAN doit être <strong>isolé</strong> de Admin ?</li>
+</ol>
+<hr />
+<h2>Exercice 3 — Trunk et inter-VLAN (6 pts)</h2>
+<div class="codehilite"><pre><span></span><code>SW1 (VLAN 10,20) ---- trunk ---- R1 (subinterfaces .10, .20)
+                                      |
+                                   Internet
+</code></pre></div>
+
+<p><strong>a)</strong> Commande IOS trunk sur SW1 port Fa0/24 (VLAN natif 1, allowed 10,20).</p>
+<p><strong>b)</strong> Pourquoi créer <code>interface GigabitEthernet0/0.10</code> sur R1 ?</p>
+<p><strong>c)</strong> PC VLAN 10 (192.168.10.5/26) ping PC VLAN 20 (192.168.20.5/26) : chemin L2/L3 ?</p>
+<hr />
+<h2>Exercice 4 — Dépannage VLAN (4 pts)</h2>
+<p>Symptôme : PC Admin ne reçoit pas DHCP (serveur VLAN 30).</p>
+<ol>
+<li><strong>3 vérifications</strong> sur switch (VLAN port, trunk allowed, SVI).</li>
+<li>Impact d'un <strong>VLAN natif mismatch</strong> entre deux switches.</li>
+</ol>
+<hr />
+<h2>Annexe — Corrigé TD 04</h2>
+<h3>Exercice 1</h3>
+<ol>
+<li>Vrai — domaine broadcast VLAN. 2. Faux — access = untagged. 3. Vrai. 4. Vrai (1 et 4095 réservés).</li>
+</ol>
+<h3>Exercice 2</h3>
+<p>Invités 192.168.20.0/28 ; Serveurs 192.168.30.0/28 ; IoT 192.168.40.0/27. <strong>Invités et IoT</strong> isolés d'Admin.</p>
+<h3>Exercice 3</h3>
+<p><strong>a)</strong> <code>switchport mode trunk</code> ; <code>switchport trunk allowed vlan 10,20</code>.</p>
+<p><strong>b)</strong> Router-on-a-stick : une interface physique, sous-interfaces par VLAN.</p>
+<p><strong>c)</strong> L2 intra-VLAN impossible ; L3 via R1 subinterfaces (ARP GW, routage).</p>
+<h3>Exercice 4</h3>
+<ol>
+<li><code>show vlan brief</code> ; <code>show interfaces trunk</code> ; <code>show ip helper-address</code> / relay DHCP.</li>
+<li>Trames natif mal interprétées → perte connectivité trunk.</li>
+</ol>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 04 — Ethernet et VLAN</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

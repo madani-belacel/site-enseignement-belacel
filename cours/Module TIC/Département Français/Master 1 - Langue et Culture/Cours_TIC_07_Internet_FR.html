@@ -1,0 +1,616 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours TIC 07 — Introduction à Internet — Dr. Madani BELACEL</title>
+<meta name="description" content="**Enseignant :** BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../tic.html">Module TIC</a></li>
+    <li class="current">Cours TIC 07 — Introduction à Internet</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Enseignant :** BELACEL Madani</li><li>**Module :** TIC</li><li>**Niveau :** Master 1 — Langue et Culture</li><li>**Durée :** 1h30</li><li>**Année universitaire :** 2025-2026</li><li>**Référentiel :** titres et structure alignés sur Canvas USTO (`elearning.univ-usto.dz`) ; bonnes pratiques benchmark 10 universités algériennes (voir `BENCHMARK_10_UNIVERSITES_ELEARNING.md`).</li><li>**Public visé :** Master 1 Langue et Culture</li><li>**Compétences pré-requises :** TIC 01–06 ; notions de base en recherche documentaire</li><li>**En termes de savoir :**</li><li>**En termes de savoir-faire :**</li></ul></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/PG-fr.docx</code> | <code>C:/Users/madan/Desktop/Supports de Cours 250626/Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>Durée :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_07_Internet_FR.pdf</code></p>
+</blockquote>
+<hr />
+<h1>Cours TIC 07 — Introduction à Internet</h1>
+<p><strong>Enseignant :</strong> BELACEL Madani<br />
+<strong>Module :</strong> TIC<br />
+<strong>Niveau :</strong> Master 1 — Langue et Culture<br />
+<strong>Durée :</strong> 1h30<br />
+<strong>Année universitaire :</strong> 2025-2026</p>
+<p><em>(Email et déroulement détaillé de la séance : voir page de garde du PDF.)</em></p>
+<hr />
+<h2>Fiche cours — Plateforme e-learning (Moodle)</h2>
+<p><strong>Référentiel :</strong> titres et structure alignés sur Canvas USTO (<code>elearning.univ-usto.dz</code>) ; bonnes pratiques benchmark 10 universités algériennes (voir <code>BENCHMARK_10_UNIVERSITES_ELEARNING.md</code>).</p>
+<p><strong>Public visé :</strong> Master 1 Langue et Culture</p>
+<p><strong>Compétences pré-requises :</strong> TIC 01–06 ; notions de base en recherche documentaire</p>
+<h3>Objectifs de l'enseignement</h3>
+<p><strong>En termes de savoir :</strong>
+- Définir Internet, TCP/IP, DNS, FAI dans une perspective d'infrastructure de recherche
+- Distinguer Internet et Web comme strates technique et applicative
+- Expliquer le fonctionnement des bibliothèques numériques et archives ouvertes</p>
+<p><strong>En termes de savoir-faire :</strong>
+- Accéder aux ressources académiques via le réseau universitaire (proxy, VPN)
+- Utiliser les moteurs de recherche académiques (Google Scholar, HAL, Cairn) via Internet
+- Configurer un profil ORCID et identifier son identité numérique de chercheur</p>
+<p><strong>En termes de savoir-être :</strong>
+- Usage éthique et responsable des ressources numériques académiques
+- Respect du droit d'auteur et des licences Creative Commons</p>
+<p><strong>Mode d'évaluation :</strong> TD 30 % + Fiche de lecture sur article Internet Linguistics 40 % + QCM 30 %</p>
+<h3>Activités d'apprentissage</h3>
+<ul>
+<li>Analyse d'un article scientifique sur Internet Linguistics (Crystal 2011 ou équivalent)</li>
+<li>Cartographie des ressources numériques pour la recherche en langue (bibliothèques, archives, corpus)</li>
+</ul>
+<h3>Activités d'évaluation</h3>
+<ul>
+<li>Fiche de lecture critique (2 pages) intégrant bibliographie numérique</li>
+<li>QCM Internet / TCP/IP / ressources académiques</li>
+</ul>
+<h3>Bibliographie et ressources externes</h3>
+<ul>
+<li>Pujolle, G. (2020). <em>Les Réseaux</em> (8e éd.). Eyrolles.</li>
+<li>Crystal, D. (2011). <em>Internet Linguistics: A Student Guide</em>. Routledge.</li>
+<li>Barats, C. (2013). <em>Manuel d'analyse du web en sciences humaines et sociales</em>. Armand Colin.</li>
+<li>ANPT — https://www.anpt.dz (connexion Algérie)</li>
+<li>HAL Université de Mostaganem — https://hal-univ-mosta.archives-ouvertes.fr</li>
+</ul>
+<p><strong>Contact enseignant :</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<hr />
+<h2>Contexte réglementaire algérien</h2>
+<p><strong>Arrêté 933 (2016)</strong> — Le Master Langue et Culture inclut l'UE « TIC et Recherche » qui vise à former les étudiants aux outils numériques académiques. <strong>Arrêté 129 (2019)</strong> — Renforcement des compétences numériques dans les formations de lettres et langues.</p>
+<p><strong>Plan National de Développement de l'Enseignement Supérieur (PNDES 2025-2030)</strong> : L'accès aux ressources numériques et aux archives ouvertes est une priorité. Le <strong>CERIST</strong> (Centre de Recherche sur l'Information Scientifique et Technique) met à disposition des bibliothèques numériques via le réseau académique algérien.</p>
+<hr />
+<h2>Plan du cours</h2>
+<ol>
+<li>Introduction — Internet comme infrastructure de recherche</li>
+<li>Définition et histoire d'Internet</li>
+<li>Réseau mondial et protocole TCP/IP</li>
+<li>Connexion à Internet — spécificité universitaire algérienne</li>
+<li>Internet ≠ Web : clarification conceptuelle</li>
+<li>Adressage IP et DNS</li>
+<li>Bibliothèques numériques et archives ouvertes</li>
+<li>Internet Linguistics : langues et communautés en ligne</li>
+<li>Identité numérique du chercheur</li>
+<li>Sécurité académique et éthique</li>
+<li>Conclusion</li>
+</ol>
+<hr />
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Internet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Infrastructure</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Services</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Web</span><span class="w"> </span><span class="n">HTTP</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Courriel</span><span class="w"> </span><span class="n">SMTP</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">FTP</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">SFTP</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">VoIP</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Bibliothèques</span><span class="w"> </span><span class="n">numériques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">HAL</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Cairn</span><span class="p">]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Google</span><span class="w"> </span><span class="n">Scholar</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Réseau</span><span class="w"> </span><span class="n">académique</span><span class="w"> </span><span class="n">algérien</span><span class="p">]</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">ANPT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">CERIST</span><span class="p">]</span>
+<span class="w">    </span><span class="n">K</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">VPN</span><span class="w"> </span><span class="n">universitaire</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2e86</span><span class="n">c1</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mf">2e86</span><span class="n">c1</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Introduction — Internet comme infrastructure de recherche <em>(10 min)</em></h2>
+<p><strong>Internet</strong> n'est pas une simple technologie : c'est l'infrastructure mondiale qui permet la communication scientifique, l'accès aux ressources documentaires, et la diffusion des résultats de recherche.</p>
+<p><strong>En Master Langue et Culture</strong>, Internet est :
+- Un <strong>objet d'étude</strong> (la communication en ligne, les communautés virtuelles)
+- Un <strong>outil de recherche</strong> (corpus numériques, bibliothèques en ligne)
+- Un <strong>vecteur de diffusion</strong> (publication en accès ouvert, réseaux académiques)</p>
+<p><strong>Spécificité algérienne</strong> : Le réseau académique (via <strong>ANPT</strong> et <strong>CERIST</strong>) relie les universités algériennes entre elles et au réseau mondial (Internet2 / GÉANT). L'accès aux ressources payantes (Cairn, OpenEdition, Taylor &amp; Francis) se fait via le proxy institutionnel.</p>
+<hr />
+<h2>Définition et histoire d'Internet <em>(15 min)</em></h2>
+<p><strong>Définition</strong> : réseau de réseaux interconnectés utilisant le protocole <strong>TCP/IP</strong> pour acheminer des paquets de données.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Événement</th>
+<th>Portée scientifique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1969</td>
+<td>ARPANET — 4 nœuds (UCLA, Stanford, UCSB, Utah)</td>
+<td>Prémices de la collaboration à distance</td>
+</tr>
+<tr>
+<td>1972</td>
+<td>Premier courriel (Ray Tomlinson)</td>
+<td>Naissance de la communication académique asynchrone</td>
+</tr>
+<tr>
+<td>1983</td>
+<td>Adoption obligatoire de TCP/IP</td>
+<td>Standardisation = interopérabilité mondiale</td>
+</tr>
+<tr>
+<td>1989</td>
+<td>Proposition du Web (Tim Berners-Lee, CERN)</td>
+<td>Partager des documents de recherche</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>Premier site Web</td>
+<td>Accès public à l'information scientifique</td>
+</tr>
+<tr>
+<td>1998</td>
+<td>Google</td>
+<td>Révolution de la recherche d'information</td>
+</tr>
+<tr>
+<td>2000s</td>
+<td>ADSL, Wi-Fi, 3G/4G</td>
+<td>Démocratisation de l'accès</td>
+</tr>
+<tr>
+<td>2010s</td>
+<td>Open Access, Science ouverte</td>
+<td>Mouvement pour la libre circulation des savoirs</td>
+</tr>
+<tr>
+<td>2020s</td>
+<td>Fibre optique, 5G, IA générative</td>
+<td>Nouveaux paradigmes de recherche</td>
+</tr>
+</tbody>
+</table>
+<p><strong>En Algérie</strong> : Introduction d'Internet au milieu des années 1990 (CERIST). Généralisation dans les universités à partir de 2005. Aujourd'hui : fibre optique dans les campus, connexion via le réseau RENATER-like algérien.</p>
+<hr />
+<h2>Réseau mondial et protocole TCP/IP <em>(10 min)</em></h2>
+<p><strong>Modèle TCP/IP</strong> en 4 couches :</p>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Protocoles</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td>HTTP, SMTP, DNS, FTP, SSH</td>
+<td>Services accessibles au chercheur</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>TCP (fiable), UDP (rapide)</td>
+<td>Contrôle de flux, segmentation</td>
+</tr>
+<tr>
+<td>Internet</td>
+<td>IP, ICMP</td>
+<td>Routage, adressage logique</td>
+</tr>
+<tr>
+<td>Accès réseau</td>
+<td>Ethernet, Wi-Fi, fibre</td>
+<td>Transmission physique</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Paquet</strong> : unité de données routée indépendamment (commutation de paquets). Chaque paquet emprunte un chemin potentiellement différent.</p>
+<p><strong>Pour la recherche</strong> : comprendre TCP/IP permet de comprendre comment circulent les données de corpus (Big Data linguistique), pourquoi certaines ressources sont lentes selon la localisation, et comment le chiffrement (TLS) protège les échanges académiques.</p>
+<hr />
+<h2>Connexion à Internet — spécificité universitaire algérienne <em>(10 min)</em></h2>
+<p><strong>Connexion universitaire</strong> :
+- <strong>Réseau filaire</strong> (fibre / Ethernet) dans les salles informatiques
+- <strong>Wi-Fi</strong> (eduroam ou SSID institutionnel WPA2/WPA3)
+- <strong>Proxy</strong> : configurer le navigateur pour accéder aux ressources payantes (Cairn, OpenEdition, Cambridge UP)
+- <strong>VPN</strong> : accès aux ressources depuis le domicile</p>
+<table>
+<thead>
+<tr>
+<th>Contexte</th>
+<th>Technologie</th>
+<th>Authentification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campus</td>
+<td>Fibre + Wi-Fi</td>
+<td>Login institutionnel</td>
+</tr>
+<tr>
+<td>Domicile</td>
+<td>ADSL / Fibre / 4G</td>
+<td>FAI privé + VPN</td>
+</tr>
+<tr>
+<td>Bibliothèque</td>
+<td>Wi-Fi</td>
+<td>Proxy ou accès libre</td>
+</tr>
+<tr>
+<td>Mobilité</td>
+<td>4G/5G</td>
+<td>Forfait mobile + data</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problématique algérienne</strong> : débit variable selon les régions, coupures électriques ponctuelles, coût de la data mobile. Le formateur doit prévoir des alternatives hors ligne.</p>
+<hr />
+<h2>Internet ≠ Web : clarification conceptuelle <em>(5 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Internet</th>
+<th>Web (WWW)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Infrastructure physique et protocolaire</td>
+<td>Service applicatif (pages HTTP)</td>
+</tr>
+<tr>
+<td>Date de naissance : 1969 (ARPANET)</td>
+<td>Date de naissance : 1991</td>
+</tr>
+<tr>
+<td>TCP/IP</td>
+<td>HTTP/HTTPS sur TCP</td>
+</tr>
+<tr>
+<td>Services : courriel, FTP, VoIP, Web</td>
+<td>Contenu : pages, médias, applications</td>
+</tr>
+<tr>
+<td>Analogie : réseau routier</td>
+<td>Analogie : les commerces et services</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implication Master</strong> : ne pas confondre les couches dans un travail de recherche. Quand on parle de « données Web », on parle d'un service sur Internet.</p>
+<hr />
+<h2>Adressage IP et DNS <em>(10 min)</em></h2>
+<p><strong>IPv4</strong> : 32 bits (ex. <code>193.194.87.10</code> — adresse CERIST).
+<strong>IPv6</strong> : 128 bits (déploiement progressif).</p>
+<table>
+<thead>
+<tr>
+<th>Notion</th>
+<th>Définition</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP privée</td>
+<td>Adresse LAN non routée sur Internet</td>
+<td>192.168.1.x, 10.x.x.x</td>
+</tr>
+<tr>
+<td>IP publique</td>
+<td>Adresse unique sur Internet</td>
+<td>193.194.87.10</td>
+</tr>
+<tr>
+<td>Masque</td>
+<td>Délimite réseau / hôte</td>
+<td>255.255.255.0 (/24)</td>
+</tr>
+<tr>
+<td>Passerelle</td>
+<td>Routeur sortant du LAN</td>
+<td>192.168.1.1</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>Résolution nom → IP</td>
+<td><code>hal.univ-mosta.dz</code> → IP</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DNS académique</strong> : le DNS universitaire peut bloquer certains sites (conformément à la charte algérienne). Les chercheurs peuvent utiliser un DNS alternatif (Cloudflare 1.1.1.1, Google 8.8.8.8) en dernier recours.</p>
+<p><strong>Application recherche</strong> : comprendre l'adressage permet de localiser des corpus hébergés, configurer un serveur pour l'analyse de données, et comprendre les restrictions géographiques d'accès aux ressources.</p>
+<hr />
+<h2>Bibliothèques numériques et archives ouvertes <em>(15 min)</em></h2>
+<h3>Accès via le réseau universitaire algérien</h3>
+<table>
+<thead>
+<tr>
+<th>Ressource</th>
+<th>Type</th>
+<th>Accès</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HAL</strong> (hal.science)</td>
+<td>Archive ouverte pluridisciplinaire</td>
+<td>Libre</td>
+</tr>
+<tr>
+<td><strong>Cairn.info</strong></td>
+<td>Revues françaises en SHS</td>
+<td>Via proxy université</td>
+</tr>
+<tr>
+<td><strong>OpenEdition</strong></td>
+<td>Revues, livres, carnets de recherche</td>
+<td>Freemium (accès campus)</td>
+</tr>
+<tr>
+<td><strong>Google Scholar</strong></td>
+<td>Moteur de recherche académique</td>
+<td>Libre</td>
+</tr>
+<tr>
+<td><strong>SJD</strong> (Scholar Journals Database)</td>
+<td>Périodiques algériens</td>
+<td>Libre</td>
+</tr>
+<tr>
+<td><strong>CERIST / BIBLIOTHÈQUE NUMÉRIQUE</strong></td>
+<td>Thèses algériennes</td>
+<td>Accès institutionnel</td>
+</tr>
+<tr>
+<td><strong>PubMed / MLA</strong></td>
+<td>Spécialisé langues / littérature</td>
+<td>Abonnement</td>
+</tr>
+<tr>
+<td><strong>DOAJ</strong> (Directory of Open Access Journals)</td>
+<td>Revues en accès ouvert</td>
+<td>Libre</td>
+</tr>
+<tr>
+<td><strong>OpenThesis</strong></td>
+<td>Thèses en ligne</td>
+<td>Libre</td>
+</tr>
+</tbody>
+</table>
+<h3>Comment configurer l'accès (proxy / VPN)</h3>
+<ol>
+<li>Paramètres proxy du navigateur : <code>proxy.univ-mosta.dz:3128</code></li>
+<li>VPN institutionnel : télécharger le client depuis la page SIU</li>
+<li>Google Scholar : paramètres → Bibliothèque → lier votre université</li>
+</ol>
+<hr />
+<h2>Internet Linguistics <em>(15 min)</em></h2>
+<p><strong>David Crystal (2011)</strong> — <em>Internet Linguistics</em> propose d'étudier le langage sur Internet comme un objet linguistique à part entière.</p>
+<h3>Domaines d'étude</h3>
+<p><strong>1. Communication synchrone / asynchrone</strong>
+- Chat, messagerie instantanée (synchrone)
+- Forums, courriels, réseaux sociaux (asynchrone)</p>
+<p><strong>2. Nouvelles variétés linguistiques</strong>
+- <strong>Netspeak</strong> : abréviations, acronymes, émoticônes
+- Alternance codique (code-switching) dans les communications multilingues
+- Création lexicale : « troller », « liker », « googler »</p>
+<p><strong>3. Communautés virtuelles et langues</strong>
+- Français algérien en ligne (Darija sur Facebook/YouTube)
+- Communautés berbérophones : revitalisation via Internet (IRC, réseaux sociaux)
+- Arabe algérien dans les commentaires en ligne</p>
+<p><strong>4. Méthodologie de recherche en Internet Linguistics</strong>
+- Constitution de corpus Web (web scraping, API Twitter)
+- Analyse des conversations en ligne (analyse du discours numérique)
+- Éthique de la recherche sur les données publiques en ligne</p>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">Internet</span><span class="w"> </span><span class="n">Linguistics</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Communication</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">ligne</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Variétés</span><span class="w"> </span><span class="n">linguistiques</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Méthodologie</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Synchrone</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">chat</span><span class="p">,</span><span class="w"> </span><span class="n">messagerie</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Asynchrone</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">forum</span><span class="p">,</span><span class="w"> </span><span class="n">courriel</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">Netspeak</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">abréviations</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Code</span><span class="o">-</span><span class="n">switching</span><span class="w"> </span><span class="n">multilingue</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Néologie</span><span class="w"> </span><span class="n">numérique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Corpus</span><span class="w"> </span><span class="n">Web</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Analyse</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">discours</span><span class="w"> </span><span class="n">numérique</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Éthique</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">la</span><span class="w"> </span><span class="n">recherche</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Identité numérique du chercheur <em>(5 min)</em></h2>
+<p>En Master, il est temps de construire une <strong>identité numérique académique</strong> :</p>
+<ul>
+<li><strong>ORCID</strong> (orcid.org) : identifiant chercheur unique, obligatoire pour toute publication</li>
+<li><strong>Google Scholar</strong> : profil avec vos publications et citations</li>
+<li><strong>ResearchGate / Academia.edu</strong> : réseaux sociaux académiques (attention : conditions d'utilisation)</li>
+<li><strong>HAL</strong> : dépôt systématique de vos productions</li>
+</ul>
+<p><strong>Stratégie</strong> : choisir un même nom d'affichage sur toutes les plateformes pour la cohérence.</p>
+<hr />
+<h2>Sécurité académique et éthique <em>(5 min)</em></h2>
+<p><strong>Risques</strong> : phishing (courriels usurpant l'identité du professeur), malware (téléchargement non sécurisé), vol d'identité académique.</p>
+<p><strong>Bonnes pratiques</strong> :
+- Vérifier l'URL des sites de dépôt avant de saisir ses identifiants
+- Utiliser HTTPS systématiquement (extension HTTPS Everywhere)
+- Charte universitaire : droit d'auteur, citation des sources
+- <strong>Licences Creative Commons</strong> : comprendre CC-BY, CC-BY-SA, CC-BY-NC</p>
+<p><strong>Spécificité Algérie</strong> : la loi 08-15 (2008) régit le droit d'auteur. Les ressources numériques sont soumises à cette législation. La contrefaçon numérique est passible de poursuites.</p>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<ul>
+<li>Internet = infrastructure TCP/IP ; ressource essentielle pour la recherche</li>
+<li>Bibliothèques numériques, archives ouvertes, Internet Linguistics</li>
+<li>Compétence clé : savoir naviguer entre les ressources et construire son identité numérique</li>
+<li><strong>TD 07</strong> : fiche de lecture critique d'un article sur Internet Linguistics (Crystal 2011, ch. 1–3) + cartographie de 5 ressources numériques pour votre mémoire</li>
+<li><strong>Prochain cours</strong> : Le Web comme objet de recherche (TIC 08)</li>
+</ul>
+<hr />
+<h2>Déroulement séance (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Activité</th>
+<th>Modalité</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–10 min</td>
+<td>Introduction : Internet comme infrastructure de recherche</td>
+<td>Exposé magistral + questions</td>
+<td>Diapos 1–3</td>
+</tr>
+<tr>
+<td>10–25 min</td>
+<td>Histoire et TCP/IP : de l'ARPANET à l'Open Access</td>
+<td>Exposé + frise chronologique</td>
+<td>Diapos 4–8</td>
+</tr>
+<tr>
+<td>25–35 min</td>
+<td>Connexion — spécificité universitaire algérienne</td>
+<td>Démo configuration proxy/VPN</td>
+<td>Navigateur, proxy</td>
+</tr>
+<tr>
+<td>35–40 min</td>
+<td>Internet ≠ Web</td>
+<td>Schéma collaboratif au tableau</td>
+<td>Tableau blanc</td>
+</tr>
+<tr>
+<td>40–50 min</td>
+<td>Adressage IP et DNS</td>
+<td>Exercice : traceroute vers HAL</td>
+<td><code>tracert</code> invite</td>
+</tr>
+<tr>
+<td>50–65 min</td>
+<td>Bibliothèques numériques et archives</td>
+<td>Atelier : chercher article dans 3 bases</td>
+<td>Ordinateurs individuels</td>
+</tr>
+<tr>
+<td>65–80 min</td>
+<td>Internet Linguistics</td>
+<td>Étude de cas : analyser un commentaire en ligne</td>
+<td>Corpus en ligne</td>
+</tr>
+<tr>
+<td>80–90 min</td>
+<td>Identité numérique, sécurité, conclusion</td>
+<td>Discussion + TD</td>
+<td>Diapos 15–18</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>QCM d'auto-évaluation (5 questions)</h2>
+<p><strong>1. Quelle est la principale différence entre Internet et le Web ?</strong>
+- a) Internet est plus rapide que le Web
+- b) Internet est l'infrastructure ; le Web est un service applicatif (HTTP) ✓
+- c) Le Web a été inventé avant Internet
+- d) Internet ne permet que le courriel</p>
+<p><strong>2. Quel protocole est responsable de la résolution nom de domaine → adresse IP ?</strong>
+- a) HTTP
+- b) SMTP
+- c) DNS ✓
+- d) TCP</p>
+<p><strong>3. Que signifie ORCID pour un chercheur ?</strong>
+- a) Un réseau social
+- b) Un identifiant unique et pérenne de chercheur ✓
+- c) Un moteur de recherche
+- d) Un logiciel de gestion bibliographique</p>
+<p><strong>4. D'après Crystal (2011), que désigne le terme « Netspeak » ?</strong>
+- a) Le langage parlé au téléphone
+- b) Les variétés linguistiques spécifiques à la communication en ligne ✓
+- c) Un logiciel de traduction automatique
+- d) La vitesse de connexion Internet</p>
+<p><strong>5. Quelle archive ouverte est libre d'accès et pluridisciplinaire, née en France ?</strong>
+- a) Cairn
+- b) HAL ✓
+- c) Google Scholar
+- d) ResearchGate</p>
+<hr />
+<h2>Note pédagogique Master</h2>
+<p><strong>Transposition didactique :</strong> Ce cours ne se limite pas à une description technique d'Internet. Il aborde Internet comme infrastructure de recherche, objet d'étude linguistique, et espace de publication académique. La distinction Internet/Web est cruciale pour les futurs cours (TIC 08, 09, 10).</p>
+<p><strong>Conseil pour le formateur :</strong> Privilégier les démonstrations en direct (configuration proxy, recherche dans HAL, analyse d'un commentaire YouTube). Insister sur les ressources numériques réellement accessibles depuis l'Algérie. Le cours Internet Linguistics suscite généralement l'intérêt des étudiants : prévoir des exemples concrets (Darija sur Facebook, tamazight sur YouTube).</p>
+<p><strong>Prolongement recherche :</strong> Les étudiants peuvent approfondir la <em>Computer-Mediated Communication (CMC)</em> et ses implications pour l'analyse du discours (Herring 2007, Thurlow &amp; Mroczek 2011). Un mémoire sur l'évolution du français algérien dans les commentaires Facebook est envisageable.</p>
+<hr />
+<h2>Références académiques</h2>
+<ul>
+<li>Barats, C. (dir.) (2013). <em>Manuel d'analyse du web en sciences humaines et sociales</em>. Armand Colin.</li>
+<li>Crystal, D. (2011). <em>Internet Linguistics: A Student Guide</em>. Routledge.</li>
+<li>Herring, S. C. (2007). « A Faceted Classification Scheme for Computer-Mediated Discourse ». <em>Language@Internet</em>, 4, article 1.</li>
+<li>Pujolle, G. (2020). <em>Les Réseaux</em> (8e éd.). Eyrolles.</li>
+<li>Thurlow, C., &amp; Mroczek, K. (2011). <em>Digital Discourse: Language in the New Media</em>. Oxford University Press.</li>
+<li>Androutsopoulos, J. (2006). « Sociolinguistics and Computer-Mediated Communication ». <em>Journal of Sociolinguistics</em>, 10(4), 419–438.</li>
+<li>Hocine, N. (2020). « L'impact des nouvelles technologies sur la langue française en Algérie ». <em>Revue Akofena</em>, 3, 151–162.</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

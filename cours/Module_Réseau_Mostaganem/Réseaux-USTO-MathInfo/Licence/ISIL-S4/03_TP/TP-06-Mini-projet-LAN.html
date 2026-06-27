@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 06 — Mini-projet réseau local — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribut | Valeur |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <a href="../../../../../../index.html" class="header-logo">
+      <span style="font-size:2rem;color:var(--primary);">🎓</span>
+      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+    </a>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TP 06 — Mini-projet réseau local</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>**Contexte** : Le département ISIL de l'Université de Mostaganem ouvre un **nouveau laboratoire** de 12 postes étudiants, 1 poste enseignant, 1 serveur de fichiers, 1 imprimante réseau, avec accès Internet.</li><li>**Équipements minimum :**</li><li>**Adressage proposé :**</li></ul></div>
+    <h1>TP 06 — Mini-projet réseau local</h1>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Niveau</strong></td>
+<td>Licence ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Durée estimée</strong></td>
+<td>3 h</td>
+</tr>
+<tr>
+<td><strong>Outil</strong></td>
+<td>Cisco Packet Tracer</td>
+</tr>
+<tr>
+<td><strong>Prérequis</strong></td>
+<td>Tous les chapitres, TP 01–03</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs</h2>
+<ul>
+<li>Concevoir et déployer un réseau LAN complet</li>
+<li>Intégrer switch, routeur, serveur, DHCP, DNS simulé</li>
+<li>Produire un document de conception professionnel</li>
+</ul>
+<hr />
+<h2>Partie 1 — Cahier des charges</h2>
+<p><strong>Contexte</strong> : Le département ISIL de l'Université de Mostaganem ouvre un <strong>nouveau laboratoire</strong> de 12 postes étudiants, 1 poste enseignant, 1 serveur de fichiers, 1 imprimante réseau, avec accès Internet.</p>
+<p><img alt="Topologie mini-projet" src="../../../Ressources-Communes/Images-Schemas/Equipements/tp06-mini-projet-lan.png" /></p>
+<h3>Exigences</h3>
+<table>
+<thead>
+<tr>
+<th>Exigence</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topologie</td>
+<td>Étoile, 1 switch principal</td>
+</tr>
+<tr>
+<td>Réseau étudiants</td>
+<td>192.168.50.0/26 (62 hôtes max)</td>
+</tr>
+<tr>
+<td>Réseau serveurs</td>
+<td>192.168.51.0/28 (14 hôtes max)</td>
+</tr>
+<tr>
+<td>Internet</td>
+<td>Via routeur avec NAT</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>DHCP sur le routeur, serveur fichier statique</td>
+</tr>
+<tr>
+<td>Sécurité</td>
+<td>Imprimante accessible depuis les deux réseaux</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Partie 2 — Consignes</h2>
+<h3>Étape 1 — Document de conception (45 min)</h3>
+<p>Rédiger (dans le compte-rendu) :</p>
+<ol>
+<li><strong>Schéma de topologie</strong> (draw.io, Packet Tracer ou à la main scanné)</li>
+<li><strong>Tableau d'adressage IP</strong> complet</li>
+<li><strong>Liste des équipements</strong> (modèle, quantité)</li>
+<li><strong>Justification</strong> des choix (masques, segmentation)</li>
+</ol>
+<h3>Étape 2 — Construction Packet Tracer (60 min)</h3>
+<p><strong>Équipements minimum :</strong>
+- 1 Routeur 4321 (2 interfaces LAN + 1 WAN simulée)
+- 1 Switch 2960-24TT
+- 12 PC « Étudiant » (regrouper 2-3 suffisent pour le test)
+- 1 PC Enseignant
+- 1 Server-PT (serveur fichiers)
+- 1 Imprimante (optionnel)</p>
+<p><strong>Adressage proposé :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Équipement</th>
+<th>IP</th>
+<th>Masque</th>
+<th>GW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1 G0/0 (LAN étudiants)</td>
+<td>192.168.50.1</td>
+<td>255.255.255.192</td>
+<td>—</td>
+</tr>
+<tr>
+<td>R1 G0/1 (LAN serveurs)</td>
+<td>192.168.51.1</td>
+<td>255.255.255.240</td>
+<td>—</td>
+</tr>
+<tr>
+<td>PC Enseignant</td>
+<td>192.168.50.10</td>
+<td>255.255.255.192</td>
+<td>192.168.50.1</td>
+</tr>
+<tr>
+<td>PC Étudiant-1</td>
+<td>192.168.50.20</td>
+<td>255.255.255.192</td>
+<td>192.168.50.1</td>
+</tr>
+<tr>
+<td>Serveur fichiers</td>
+<td>192.168.51.5</td>
+<td>255.255.255.240</td>
+<td>192.168.51.1</td>
+</tr>
+<tr>
+<td>R1 G0/2 (WAN)</td>
+<td>203.0.113.1</td>
+<td>255.255.255.252</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3>Étape 3 — Configuration routeur (45 min)</h3>
+<div class="codehilite"><pre><span></span><code>! <span class="n">Interfaces</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+ <span class="n">ip</span> <span class="n">address</span> <span class="mf">192.168.50.1</span> <span class="mf">255.255.255.192</span>
+ <span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+ <span class="n">ip</span> <span class="n">address</span> <span class="mf">192.168.51.1</span> <span class="mf">255.255.255.240</span>
+ <span class="n">no</span> <span class="n">shutdown</span>
+
+! <span class="n">Routes</span> <span class="n">inter-réseaux</span> (<span class="n">si</span> <span class="n">nécessaire</span> — <span class="n">directement</span> <span class="n">connectées</span>)
+! <span class="n">NAT</span> <span class="n">pour</span> <span class="n">Internet</span> (<span class="n">optionnel</span>)
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">0.0.0.0</span> <span class="mf">0.0.0.0</span> [<span class="n">interface_WAN</span>]
+
+! <span class="n">DHCP</span> <span class="n">pool</span> <span class="n">étudiants</span> (<span class="n">optionnel</span>)
+<span class="n">ip</span> <span class="n">dhcp</span> <span class="n">pool</span> <span class="n">ETUDIANTS</span>
+ <span class="n">network</span> <span class="mf">192.168.50.0</span> <span class="mf">255.255.255.192</span>
+ <span class="n">default-router</span> <span class="mf">192.168.50.1</span>
+ <span class="n">dns-server</span> <span class="mf">8.8.8.8</span>
+</code></pre></div>
+
+<h3>Étape 4 — Tests de validation (30 min)</h3>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Commande</th>
+<th>Attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ping intra-réseau</td>
+<td>PC-Etu → PC-Ens</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Ping inter-réseau</td>
+<td>PC-Etu → Serveur</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Ping passerelle</td>
+<td>PC → 192.168.50.1</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Accès serveur</td>
+<td>ping 192.168.51.5</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Simulation trafic</td>
+<td>Mode Simulation ping</td>
+<td>Traversée routeur visible</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Partie 3 — Livrables obligatoires</h2>
+<table>
+<thead>
+<tr>
+<th>Livrable</th>
+<th>Format</th>
+<th>Poids</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Document de conception</td>
+<td>PDF (3-5 pages)</td>
+<td>40 %</td>
+</tr>
+<tr>
+<td>Fichier Packet Tracer</td>
+<td>.pkt</td>
+<td>30 %</td>
+</tr>
+<tr>
+<td>Tests et captures</td>
+<td>PDF (captures ping, show ip route)</td>
+<td>20 %</td>
+</tr>
+<tr>
+<td>Présentation orale (2 min)</td>
+<td>Oral</td>
+<td>10 %</td>
+</tr>
+</tbody>
+</table>
+<h3>Structure du document de conception</h3>
+<ol>
+<li>Introduction et contexte</li>
+<li>Schéma de topologie</li>
+<li>Plan d'adressage IP</li>
+<li>Liste des équipements</li>
+<li>Configuration clé (extraits CLI)</li>
+<li>Résultats des tests</li>
+<li>Conclusion et améliorations possibles</li>
+</ol>
+<hr />
+<h2>Partie 4 — Questions de bilan</h2>
+<ol>
+<li>Pourquoi séparer le réseau serveurs (192.168.51.0/28) du réseau étudiants ?</li>
+<li>Quel masque choisi pour le réseau étudiants (/26) et combien d'hôtes reste-t-il ?</li>
+<li>Quel équipement relierait-on en DMZ si le serveur web devait être public ?</li>
+<li>Comment ajouteriez-vous un point d'accès Wi-Fi ?</li>
+<li>Quelles failles de sécurité ce réseau présente-t-il (niveau ISIL-S4) ?</li>
+</ol>
+<hr />
+<h2>Annexe — Corrigé (éléments clés)</h2>
+<ol>
+<li><strong>Sécurité</strong> — isoler les serveurs des postes étudiants.</li>
+<li><strong>/26</strong> = 62 hôtes ; 12+1+1 = 14 utilisés → marge suffisante.</li>
+<li><strong>Serveur web</strong> en DMZ derrière pare-feu, pas avec les fichiers internes.</li>
+<li>AP connecté au switch, même VLAN ou VLAN dédié invités.</li>
+<li>Pas de pare-feu L7, pas de segmentation avancée, mots de passe par défaut, pas de chiffrement interne.</li>
+</ol>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 08 — Architecture LAN</li>
+<li>TP 01, 02, 03</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>
