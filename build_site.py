@@ -55,10 +55,16 @@ HEADER_HTML = """<!DOCTYPE html><html lang="fr" data-theme="light"><head>
 
 <header class="header" role="banner">
   <div class="header-inner">
-    <a href="{root_path}index.html" class="header-logo">
-      <img src="{root_path}images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
-      <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
-    </a>
+    <div class="header-left">
+      <a href="{root_path}index.html" class="header-logo">
+        <img src="{root_path}images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="{root_path}images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="{root_path}images/alg_drap.gif" alt="Algérie" class="flag-corner">
     <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
@@ -78,7 +84,6 @@ FOOTER_HTML = """<footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
       <img src="{root_path}images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-      <img src="{root_path}images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts" class="footer-logo">
       <img src="{root_path}images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">
