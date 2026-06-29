@@ -1,10 +1,32 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="dns-prefetch" href="//madani-belacel.github.io">
+<link rel="preconnect" href="https://madani-belacel.github.io">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Contact — Dr. Madani BELACEL</title>
 <meta name="description" content="Contactez Dr. Madani BELACEL — Université de Mostaganem.">
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="images/Université_de_Mostaganem.png">
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/Université_de_Mostaganem.png">
+<meta property="og:locale" content="fr_FR">
+<link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/contact.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Madani BELACEL",
+  "jobTitle": "Maître de Conférences B",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Université de Mostaganem"
+  },
+  "url": "https://madani-belacel.github.io/site-enseignement-belacel/",
+  "email": "madani.belacel@univ-mosta.dz"
+}
+</script>
 </head><body>
+
+<a href="#main-content" class="skip-link" style="position:absolute;top:-100px;left:0;background:var(--primary);color:#fff;padding:0.5rem 1rem;z-index:9999;transition:top 0.2s;">Aller au contenu principal</a>
 
 <header class="header" role="banner">
   <div class="header-inner">
@@ -44,7 +66,7 @@
   </ol>
 </nav>
 
-<main class="page-content">
+<main class="page-content" id="main-content">
   <div class="container">
     <div style="max-width:700px;margin:0 auto;">
       <div class="about-grid" style="margin-bottom:2rem;">
@@ -70,16 +92,17 @@
       </div>
 
       <h3 class="section-title" style="font-size:1.2rem;">✉️ Formulaire de contact</h3>
-      <p class="section-subtitle">Envoyez-moi un message (simulé — fonctionnel avec un backend)</p>
-      <form class="contact-form" onsubmit="event.preventDefault();alert('Message envoyé (simulation). Dans un déploiement réel, ce formulaire serait connecté à un service email.');">
+      <p class="section-subtitle">Envoyez-moi un message via Formspree</p>
+      <!-- Remplacez 'your-form-id' par votre ID Formspree → https://formspree.io -->
+      <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
         <label for="name">Nom complet</label>
-        <input type="text" id="name" required placeholder="Votre nom">
+        <input type="text" id="name" name="name" required placeholder="Votre nom">
         <label for="email">Email</label>
-        <input type="email" id="email" required placeholder="votre@email.com">
+        <input type="email" id="email" name="email" required placeholder="votre@email.com">
         <label for="subject">Sujet</label>
-        <input type="text" id="subject" required placeholder="Sujet du message">
+        <input type="text" id="subject" name="subject" required placeholder="Sujet du message">
         <label for="message">Message</label>
-        <textarea id="message" required placeholder="Votre message…"></textarea>
+        <textarea id="message" name="message" required placeholder="Votre message…"></textarea>
         <button type="submit" class="btn btn-primary" style="background:var(--primary);color:#fff;">📨 Envoyer le message</button>
       </form>
     </div>
