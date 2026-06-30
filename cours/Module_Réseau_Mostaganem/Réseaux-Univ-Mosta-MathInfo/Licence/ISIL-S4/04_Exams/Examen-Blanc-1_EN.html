@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Examen Blanc 1 — Réseaux ISIL S4 — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribute | Value |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="../../../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../../../index.html" class="header-logo">
+        <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Examen Blanc 1 — Réseaux ISIL S4</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>B.1</strong> (2 pts) Pour l'adresse `192.168.100.75/26`, déterminer :</li><li><strong>D.1</strong> (2 pts) Comparez TCP et UDP (tableau : connexion, fiabilité, en-tête, usage).</li><li><strong>D.1</strong> TCP : connexion, fiable, 20+ octets, web/email. UDP : sans connexion, non fiable, 8 octets, DNS/VoIP.</li></ul></div>
+    
+    <h1>Examen Blanc 1 — Réseaux ISIL S4</h1>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Bachelor ISIL — S4 (UEF422)</td>
+</tr>
+<tr>
+<td><strong>Durée</strong></td>
+<td>1 h 30</td>
+</tr>
+<tr>
+<td><strong>Documents autorisés</strong></td>
+<td>1 feuille A4 manuscrite (autorisée/non — à préciser)</td>
+</tr>
+<tr>
+<td><strong>Calculatrice</strong></td>
+<td>Non programmable autorisée</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Instructions</h2>
+<ul>
+<li>Répondre sur <strong>copie séparée</strong> pour chaque exercice.</li>
+<li>Justifier les calculs d'adressage IP.</li>
+<li>Les schémas doivent être clairs et légendés.</li>
+</ul>
+<hr />
+<h2>Partie A — QCM (6 points)</h2>
+<p><em>Cochez la bonne réponse. Une seule bonne réponse par question. -0,5 pt par mauvaise réponse.</em></p>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Un réseau LAN couvre…</td>
+<td>Un pays</td>
+<td>Un bâtiment</td>
+<td>Le monde</td>
+<td>Une ville</td>
+</tr>
+<tr>
+<td>2</td>
+<td>La couche Transport OSI est la couche…</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>7</td>
+</tr>
+<tr>
+<td>3</td>
+<td>L'adresse MAC fait…</td>
+<td>32 bits</td>
+<td>48 bits</td>
+<td>64 bits</td>
+<td>128 bits</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Le masque 255.255.255.0 correspond à…</td>
+<td>/8</td>
+<td>/16</td>
+<td>/24</td>
+<td>/26</td>
+</tr>
+<tr>
+<td>5</td>
+<td>TCP est…</td>
+<td>Sans connexion</td>
+<td>Orienté connexion</td>
+<td>Couche 3</td>
+<td>Sans port</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Le port DNS est…</td>
+<td>22</td>
+<td>53</td>
+<td>80</td>
+<td>443</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Un switch fonctionne en couche…</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ICMP est utilisé par…</td>
+<td>HTTP</td>
+<td>ping</td>
+<td>SMTP</td>
+<td>FTP</td>
+</tr>
+<tr>
+<td>9</td>
+<td>L'EtherType 0x0800 indique…</td>
+<td>ARP</td>
+<td>IPv4</td>
+<td>TCP</td>
+<td>HTTP</td>
+</tr>
+<tr>
+<td>10</td>
+<td>La topologie la plus courante en LAN est…</td>
+<td>Bus</td>
+<td>Étoile</td>
+<td>Anneau</td>
+<td>Maillée totale</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1 Gbps = … bits/s</td>
+<td>10⁶</td>
+<td>10⁸</td>
+<td>10⁹</td>
+<td>10¹²</td>
+</tr>
+<tr>
+<td>12</td>
+<td>HTTPS utilise le port…</td>
+<td>80</td>
+<td>443</td>
+<td>8080</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Partie B — Adressage IP (5 points)</h2>
+<p><strong>B.1</strong> (2 pts) Pour l'adresse <code>192.168.100.75/26</code>, déterminer :
+- a) L'adresse réseau
+- b) L'adresse broadcast
+- c) La plage d'hôtes utilisables
+- d) Le nombre d'hôtes</p>
+<p><strong>B.2</strong> (3 pts) Une entreprise a le réseau <code>172.16.0.0/16</code>. Elle veut créer <strong>8 sous-réseaux</strong> égaux.
+- a) Quel masque de sous-réseau utiliser ?
+- b) Donner le 3ᵉ sous-réseau (réseau, broadcast, plage)
+- c) L'hôte <code>172.16.5.200</code> appartient-il au 3ᵉ sous-réseau ? Justifier.</p>
+<hr />
+<h2>Partie C — Routage (4 points)</h2>
+<p>Topologie :</p>
+<div class="codehilite"><pre><span></span><code>PC1 (192.168.1.10/24, GW 192.168.1.1) ── R1 ── R2 ── PC2 (192.168.2.10/24, GW 192.168.2.1)
+              R1: Fa0/0=192.168.1.1, Fa0/1=10.0.0.1/30
+              R2: Fa0/0=10.0.0.2/30, Fa0/1=192.168.2.1
+</code></pre></div>
+
+<p><strong>C.1</strong> (2 pts) PC1 envoie un ping à PC2. Décrire le chemin du paquet (équipements traversés, adresses IP src/dest).</p>
+<p><strong>C.2</strong> (2 pts) Écrire les commandes de route statique sur R1 et R2.</p>
+<hr />
+<h2>Partie D — Questions de cours (5 points)</h2>
+<p><strong>D.1</strong> (2 pts) Comparez TCP et UDP (tableau : connexion, fiabilité, en-tête, usage).</p>
+<p><strong>D.2</strong> (1,5 pts) Expliquez l'encapsulation en 4 lignes avec les noms des PDU.</p>
+<p><strong>D.3</strong> (1,5 pts) Décrire le rôle du DNS et le processus de résolution de <code>www.univ-mosta.dz</code>.</p>
+<hr />
+<h2>Barème indicatif</h2>
+<table>
+<thead>
+<tr>
+<th>Partie</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A — QCM</td>
+<td>6</td>
+</tr>
+<tr>
+<td>B — Adressage</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C — Routage</td>
+<td>4</td>
+</tr>
+<tr>
+<td>D — Cours</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>20</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Corrigé (enseignant)</h2>
+<h3>Partie A — QCM</h3>
+<p>1-b, 2-c, 3-b, 4-c, 5-b, 6-b, 7-b, 8-b, 9-b, 10-b, 11-c, 12-b</p>
+<h3>Partie B</h3>
+<p><strong>B.1</strong> /26 → blocs de 64. 75 ∈ [64–127]
+- Réseau : <strong>192.168.100.64/26</strong>
+- Broadcast : <strong>192.168.100.127</strong>
+- Hôtes : <strong>192.168.100.65 – 192.168.100.126</strong>
+- Nombre : <strong>62</strong></p>
+<p><strong>B.2</strong> 8 sous-réseaux → emprunt 3 bits → <strong>/19</strong> (255.255.224.0)
+Blocs de 8192 : 172.16.0.0, 172.16.8.0, 172.16.16.0…
+- 3ᵉ sous-réseau : <strong>172.16.16.0/19</strong>, broadcast 172.16.23.255, hôtes 172.16.16.1–172.16.23.254
+- 172.16.5.200 ∈ [172.16.0.0 – 172.16.7.255] = 1er sous-réseau → <strong>Non</strong>, pas le 3ᵉ</p>
+<h3>Partie C</h3>
+<p><strong>C.1</strong> PC1 → R1 (IP src 192.168.1.10, dest 192.168.2.10) → R2 → PC2. 2 routeurs.</p>
+<p><strong>C.2</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">R1</span><span class="o">:</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">2.0</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span><span class="w"> </span><span class="mf">10.0</span><span class="o">.</span><span class="mf">0.2</span>
+<span class="n">R2</span><span class="o">:</span><span class="w"> </span><span class="n">ip</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span><span class="w"> </span><span class="mf">10.0</span><span class="o">.</span><span class="mf">0.1</span>
+</code></pre></div>
+
+<h3>Partie D</h3>
+<p><strong>D.1</strong> TCP : connexion, fiable, 20+ octets, web/email. UDP : sans connexion, non fiable, 8 octets, DNS/VoIP.</p>
+<p><strong>D.2</strong> Data → Segment (TCP) → Paquet (IP) → Trame (Eth) → Bits</p>
+<p><strong>D.3</strong> DNS traduit nom → IP. Résolveur → racine → TLD .dz → autoritaire univ-mosta.dz → IP retournée.</p>
+<hr />
+<blockquote>
+<p><strong>Usage</strong> : Examen blanc semaine 11 — correction en séance de révision.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

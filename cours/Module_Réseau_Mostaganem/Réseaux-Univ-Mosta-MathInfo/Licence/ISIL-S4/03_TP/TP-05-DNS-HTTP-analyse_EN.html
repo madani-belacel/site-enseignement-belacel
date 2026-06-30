@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 05 — DNS et HTTP : capture et analyse — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribute | Value |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="../../../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../../../index.html" class="header-logo">
+        <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TP 05 — DNS et HTTP : capture et analyse</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Analyser une requête DNS :</strong></li><li><strong>Analyser la réponse :</strong></li><li><strong>Analyser la requête GET :</strong></li><li><strong>Analyser la réponse :</strong></li></ul></div>
+    
+    <h1>TP 05 — DNS et HTTP : capture et analyse</h1>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Bachelor ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Estimated duration</strong></td>
+<td>3 h</td>
+</tr>
+<tr>
+<td><strong>Outil</strong></td>
+<td>Wireshark</td>
+</tr>
+<tr>
+<td><strong>Prérequis</strong></td>
+<td>Ch. 06–07, TP 04</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Objectifs</h2>
+<ul>
+<li>Capturer et analyser des requêtes DNS</li>
+<li>Observer le three-way handshake TCP</li>
+<li>Analyser une requête/réponse HTTP ou HTTPS (en-têtes)</li>
+</ul>
+<hr />
+<h2>Partie 2 — Consignes</h2>
+<h3>Étape 1 — Capture DNS (45 min)</h3>
+<ol>
+<li>Vider le cache DNS :</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>ipconfig<span class="w"> </span>/flushdns<span class="w">        </span><span class="c1"># Windows</span>
+</code></pre></div>
+
+<ol>
+<li>Démarrer capture Wireshark.</li>
+<li>Exécuter :</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>nslookup<span class="w"> </span>www.univ-mosta.dz
+nslookup<span class="w"> </span>www.google.com
+</code></pre></div>
+
+<ol>
+<li>Filtrer : <code>dns</code></li>
+</ol>
+<p><strong>Analyser une requête DNS :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transaction ID</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Question (nom demandé)</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Type de requête (A, AAAA)</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Transport (UDP/TCP)</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Port source</td>
+<td>? (éphémère)</td>
+</tr>
+<tr>
+<td>Port destination</td>
+<td>53</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analyser la réponse :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre de réponses</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Adresse IP retournée</td>
+<td>?</td>
+</tr>
+<tr>
+<td>TTL DNS</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<h3>Étape 2 — Capture HTTP (45 min)</h3>
+<ol>
+<li>Nouvelle capture.</li>
+<li>Visiter <code>http://neverssl.com</code> (site HTTP volontairement non-SSL) ou un serveur local HTTP.</li>
+<li>Filtrer : <code>http</code></li>
+</ol>
+<p><strong>Analyser la requête GET :</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">neverssl.com</span>
+<span class="err">...</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur observée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Méthode</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>URI</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Version HTTP</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Host header</td>
+<td>?</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analyser la réponse :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code status</td>
+<td>? (200, 301…)</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<h3>Étape 3 — Capture TCP Handshake (30 min)</h3>
+<ol>
+<li>Filtrer : <code>tcp.flags.syn == 1</code></li>
+<li>Identifier une connexion complète : SYN → SYN-ACK → ACK</li>
+<li>Noter les numéros de port source/dest et les flags</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Flag</th>
+<th>Seq</th>
+<th>Ack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SYN</td>
+<td>?</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SYN-ACK</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ACK</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<h3>Étape 4 — HTTPS (30 min)</h3>
+<ol>
+<li>Visiter <code>https://www.univ-mosta.dz</code> ou <code>https://www.google.com</code></li>
+<li>Filtrer : <code>tls</code> ou <code>ssl</code></li>
+<li>Observer que le contenu HTTP est <strong>chiffré</strong> (Application Data)</li>
+<li>Expliquer pourquoi on ne voit pas le GET en clair</li>
+</ol>
+<h3>Étape 5 — Chronologie complète (30 min)</h3>
+<p>Reconstituer l'ordre pour un accès web :</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">Query</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">2.</span><span class="w"> </span><span class="n">DNS</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">3.</span><span class="w"> </span><span class="n">TCP</span><span class="w"> </span><span class="n">SYN</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">4.</span><span class="w"> </span><span class="n">SYN</span><span class="o">-</span><span class="n">ACK</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">5.</span><span class="w"> </span><span class="n">ACK</span>
+<span class="err">→</span><span class="w"> </span><span class="mf">6.</span><span class="w"> </span><span class="n">TLS</span><span class="w"> </span><span class="n">Client</span><span class="w"> </span><span class="n">Hello</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">7.</span><span class="w"> </span><span class="n">TLS</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="n">Hello</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">8.</span><span class="w"> </span><span class="n">HTTP</span><span class="w"> </span><span class="p">(</span><span class="n">chiffré</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>Partie 3 — Vérifications</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Critère</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DNS capturé</td>
+<td>Query + Response visibles</td>
+</tr>
+<tr>
+<td>HTTP en clair</td>
+<td>GET et code 200 visibles</td>
+</tr>
+<tr>
+<td>TCP handshake</td>
+<td>3 segments identifiés</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>Contenu chiffré confirmé</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Partie 4 — Questions de bilan</h2>
+<ol>
+<li>DNS utilise-t-il TCP ou UDP ? Dans quels cas TCP est-il utilisé ?</li>
+<li>Quel port utilise le client pour une connexion HTTPS ?</li>
+<li>Pourquoi le three-way handshake est-il nécessaire avant HTTP ?</li>
+<li>Que signifie le code HTTP 301 ?</li>
+<li>Comment différencier une trame DNS d'une trame HTTP dans Wireshark ?</li>
+</ol>
+<hr />
+<h2>Annexe — Corrigé</h2>
+<ol>
+<li><strong>UDP</strong> principalement ; <strong>TCP</strong> pour transferts de zone (zone transfer) ou messages &gt; 512 octets.</li>
+<li>Port <strong>éphémère</strong> (ex: 52341) vers port <strong>443</strong>.</li>
+<li>TCP établit une connexion <strong>fiable</strong> avant d'échanger des données applicatives.</li>
+<li><strong>301</strong> = redirection permanente vers une autre URL.</li>
+<li>Filtre <code>dns</code> vs <code>http</code> ; port 53 vs port 80/443 ; protocole visible dans la colonne Protocol.</li>
+</ol>
+<hr />
+<h2>Livrables</h2>
+<ul>
+<li><code>.pcapng</code> + compte-rendu PDF</li>
+</ul>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 06, 07 — TD 07</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

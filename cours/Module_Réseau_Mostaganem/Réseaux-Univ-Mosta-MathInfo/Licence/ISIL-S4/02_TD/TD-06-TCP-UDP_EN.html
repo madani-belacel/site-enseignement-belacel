@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TD 06 — TCP / UDP — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribute | Value |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="../../../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../../../index.html" class="header-logo">
+        <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">TD 06 — TCP / UDP</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>b)</strong> Donner le port par défaut de : HTTP, HTTPS, DNS, SSH, FTP (contrôle).</li></ul></div>
+    
+    <h1>TD 06 — TCP / UDP</h1>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Bachelor ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Estimated duration</strong></td>
+<td>2 h</td>
+</tr>
+<tr>
+<td><strong>Chapitres associés</strong></td>
+<td>Ch. 06</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 1 — Ports et sockets (4 pts)</h2>
+<p><strong>a)</strong> Quelle est la plage des ports well-known ?</p>
+<p><strong>b)</strong> Donner le port par défaut de : HTTP, HTTPS, DNS, SSH, FTP (contrôle).</p>
+<p><strong>c)</strong> Une connexion entre (192.168.1.10, 52341) et (142.250.80.68, 443) — quel est le protocole transport probable ? Quelle application ?</p>
+<hr />
+<h2>Exercice 2 — TCP vs UDP (6 pts)</h2>
+<p>Compléter le tableau et choisir TCP ou UDP pour chaque application :</p>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connexion préalable</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Fiabilité</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Taille en-tête</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Ordre garanti</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>TCP ou UDP ?</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Téléchargement fichier</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Streaming vidéo live</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Requête DNS</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Email (SMTP)</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Jeu en ligne FPS</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Exercice 3 — Three-way handshake (6 pts)</h2>
+<p><strong>a)</strong> Dessiner le three-way handshake en indiquant les flags et numéros de séquence (seq/ack).</p>
+<p><strong>b)</strong> Combien de segments sont échangés avant l'envoi de données ?</p>
+<p><strong>c)</strong> Que se passe-t-il si le 3ᵉ segment (ACK) est perdu ?</p>
+<hr />
+<h2>Exercice 4 — Analyse de capture (4 pts)</h2>
+<p>Extrait Wireshark :</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Frame</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="n">TCP</span><span class="w"> </span><span class="mf">192.168.1.10</span><span class="err">:</span><span class="mi">52341</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">93.184.216.34</span><span class="err">:</span><span class="mi">443</span><span class="w"> </span><span class="o">[</span><span class="n">SYN</span><span class="o">]</span><span class="w"> </span><span class="n">Seq</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">Frame</span><span class="w"> </span><span class="mi">2</span><span class="err">:</span><span class="w"> </span><span class="n">TCP</span><span class="w"> </span><span class="mf">93.184.216.34</span><span class="err">:</span><span class="mi">443</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">192.168.1.10</span><span class="err">:</span><span class="mi">52341</span><span class="w"> </span><span class="o">[</span><span class="n">SYN, ACK</span><span class="o">]</span><span class="w"> </span><span class="n">Seq</span><span class="o">=</span><span class="mi">0</span><span class="w"> </span><span class="n">Ack</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">Frame</span><span class="w"> </span><span class="mi">3</span><span class="err">:</span><span class="w"> </span><span class="n">TCP</span><span class="w"> </span><span class="mf">192.168.1.10</span><span class="err">:</span><span class="mi">52341</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">93.184.216.34</span><span class="err">:</span><span class="mi">443</span><span class="w"> </span><span class="o">[</span><span class="n">ACK</span><span class="o">]</span><span class="w"> </span><span class="n">Seq</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="n">Ack</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">Frame</span><span class="w"> </span><span class="mi">4</span><span class="err">:</span><span class="w"> </span><span class="n">TCP</span><span class="w"> </span><span class="mf">192.168.1.10</span><span class="err">:</span><span class="mi">52341</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">93.184.216.34</span><span class="err">:</span><span class="mi">443</span><span class="w"> </span><span class="o">[</span><span class="n">PSH, ACK</span><span class="o">]</span><span class="w"> </span><span class="nf">Len</span><span class="o">=</span><span class="mi">517</span>
+</code></pre></div>
+
+<p><strong>a)</strong> Quel type de connexion est établi (frames 1-3) ?</p>
+<p><strong>b)</strong> Quel service est utilisé (port destination) ?</p>
+<p><strong>c)</strong> Que signifie le flag PSH dans la frame 4 ?</p>
+<hr />
+<h2>Annexe — Corrigé TD 06</h2>
+<h3>Corrigé Exercice 1</h3>
+<p><strong>a)</strong> <strong>0 – 1023</strong></p>
+<p><strong>b)</strong> HTTP=80, HTTPS=443, DNS=53, SSH=22, FTP=21</p>
+<p><strong>c)</strong> <strong>TCP</strong> (connexion établie), <strong>HTTPS</strong> (port 443)</p>
+<h3>Corrigé Exercice 2</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connexion</td>
+<td>Oui (handshake)</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Fiabilité</td>
+<td>Oui</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>En-tête</td>
+<td>20+ octets</td>
+<td>8 octets</td>
+</tr>
+<tr>
+<td>Ordre</td>
+<td>Oui</td>
+<td>Non</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Protocole</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fichier</td>
+<td>TCP</td>
+<td>Intégrité</td>
+</tr>
+<tr>
+<td>Streaming</td>
+<td>UDP</td>
+<td>Latence faible</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>UDP</td>
+<td>Requête simple</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>TCP</td>
+<td>Fiabilité email</td>
+</tr>
+<tr>
+<td>Jeu FPS</td>
+<td>UDP</td>
+<td>Rapidité</td>
+</tr>
+</tbody>
+</table>
+<h3>Corrigé Exercice 3</h3>
+<p><strong>a)</strong> SYN (seq=x) → SYN-ACK (seq=y, ack=x+1) → ACK (ack=y+1)</p>
+<p><strong>b)</strong> <strong>3 segments</strong> (handshake seul)</p>
+<p><strong>c)</strong> Le serveur <strong>retransmet SYN-ACK</strong> (timeout)</p>
+<h3>Corrigé Exercice 4</h3>
+<p><strong>a)</strong> <strong>Three-way handshake</strong> (connexion TCP)
+<strong>b)</strong> <strong>HTTPS</strong> (port 443)
+<strong>c)</strong> <strong>Push</strong> — demande la livraison immédiate des données à l'application</p>
+<hr />
+<h2>Références</h2>
+<ul>
+<li>Ch. 06 — Couche Transport TCP et UDP</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

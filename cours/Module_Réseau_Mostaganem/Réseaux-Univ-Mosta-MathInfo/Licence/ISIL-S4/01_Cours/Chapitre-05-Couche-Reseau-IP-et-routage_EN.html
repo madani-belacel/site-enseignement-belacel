@@ -1,0 +1,786 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 05 — Couche Réseau : IP et routage — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribute | Value |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="../../../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../../../index.html" class="header-logo">
+        <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 05 — Couche Réseau : IP et routage</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>CIDR</strong> (*Classless Inter-Domain Routing*) : `adresse/masque`</li><li><strong>Exemple</strong> : Réseau `192.168.1.0/24` → diviser en 4 sous-réseaux `/26`</li><li><strong>Énoncé</strong> : IP = `192.168.10.45/26`. Trouver réseau, broadcast, plage hôtes.</li><li><strong>Solution</strong> :</li><li><strong>NAT</strong> (*Network Address Translation*) : traduit des adresses <strong>privées</strong> en adresse <strong>publique</strong> pour accéder à Internet.</li><li><strong>Configuration statique R1 (Cisco IOS — aperçu)</strong> :</li><li><strong>ICMP</strong> (*Internet Control Message Protocol*) — RFC 792 : messages de <strong>contrôle</strong> et de <strong>diagnostic</strong> pour IP.</li><li>- <strong>Réseau</strong> : 172.16.5.128/25</li><li>- <strong>Broadcast</strong> : 172.16.5.255</li><li>- <strong>Hôtes</strong> : 172.16.5.129 – 172.16.5.254 (126 hôtes)</li></ul></div>
+    
+    <h1>Chapitre 05 — Couche Réseau : IP et routage</h1>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Bachelor ISIL — S4</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>UEF422 — Networks</td>
+</tr>
+<tr>
+<td><strong>Estimated duration</strong></td>
+<td>6 h CM (+ 2 h TD associé)</td>
+</tr>
+<tr>
+<td><strong>Chapter</strong></td>
+<td>05 / 08</td>
+</tr>
+<tr>
+<td><strong>Références</strong></td>
+<td>[KR] Ch. 4 ; [FO] Ch. 18–20 ; RFC 791</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Chapter Objectives</h2>
+<p>After completing this chapter, the student will be able to:</p>
+<ol>
+<li>Décrire le <strong>protocole IP (IPv4)</strong> et le format du datagramme.</li>
+<li>Comprendre l'<strong>adressage IPv4</strong>, les classes et la notation <strong>CIDR</strong>.</li>
+<li>Calculer un <strong>masque de sous-réseau</strong>, l'adresse réseau et les adresses hôtes.</li>
+<li>Expliquer le <strong>routage statique</strong> et lire une table de routage.</li>
+<li>Utiliser <strong>ICMP</strong> (ping, traceroute) pour le diagnostic réseau.</li>
+</ol>
+<hr />
+<h2>Chapter Outline</h2>
+<ol>
+<li>Rôle de la couche Réseau</li>
+<li>Protocole IP (IPv4)</li>
+<li>Adressage IPv4 et masque</li>
+<li>Sous-réseaux (subnetting)</li>
+<li>Adresses privées et NAT (aperçu)</li>
+<li>Routage statique</li>
+<li>ICMP</li>
+<li>Exemples, exercices, QCM</li>
+</ol>
+<hr />
+<h2>1. Rôle de la couche Réseau</h2>
+<p>La couche <strong>Réseau (Layer 3)</strong> assure :</p>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Adressage logique</strong></td>
+<td>Adresses IP uniques (globalement routables)</td>
+</tr>
+<tr>
+<td><strong>Routage</strong></td>
+<td>Déterminer le <strong>meilleur chemin</strong> vers la destination</td>
+</tr>
+<tr>
+<td><strong>Fragmentation</strong></td>
+<td>Diviser les paquets si nécessaire (MTU)</td>
+</tr>
+<tr>
+<td><strong>Interconnexion</strong></td>
+<td>Relier des réseaux hétérogènes (LAN, WAN)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Le <strong>routeur</strong> est l'équipement emblématique de la couche 3.</p>
+</blockquote>
+<p><img alt="Couche Réseau — routage inter-réseaux" src="../../../Ressources-Communes/Images-Schemas/IPv4-IPv6/routage-inter-reseaux.png" /></p>
+<hr />
+<h2>2. Protocole IP (IPv4)</h2>
+<h3>2.1 Caractéristiques</h3>
+<table>
+<thead>
+<tr>
+<th>Propriété</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protocole</td>
+<td><strong>IP</strong> — Internet Protocol</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>IPv4 (32 bits), IPv6 (128 bits — voir SI-S5)</td>
+</tr>
+<tr>
+<td>Mode de service</td>
+<td><strong>Best effort</strong> (pas de garantie de livraison)</td>
+</tr>
+<tr>
+<td>Adressage</td>
+<td>Logique, hiérarchique</td>
+</tr>
+<tr>
+<td>RFC</td>
+<td>RFC 791 (IPv4)</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Format du datagramme IPv4</h3>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="mi">0</span><span class="w">                   </span><span class="mi">1</span><span class="w">                   </span><span class="mi">2</span><span class="w">                   </span><span class="mi">3</span>
+<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span>
+<span class="err">├─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┤</span>
+<span class="err">│</span><span class="n">Version</span><span class="err">│</span><span class="w">  </span><span class="n">IHL</span><span class="w">  </span><span class="err">│</span><span class="w">   </span><span class="n">DSCP</span><span class="o">/</span><span class="n">ToS</span><span class="w">     </span><span class="err">│</span><span class="w">         </span><span class="n">Total</span><span class="w"> </span><span class="n">Length</span><span class="w">          </span><span class="err">│</span>
+<span class="err">├───────────────────────────────┼───────────────────────────────┤</span>
+<span class="err">│</span><span class="w">         </span><span class="n">Identification</span><span class="w">         </span><span class="err">│</span><span class="n">Flags</span><span class="err">│</span><span class="w">   </span><span class="n">Fragment</span><span class="w"> </span><span class="n">Offset</span><span class="w">      </span><span class="err">│</span>
+<span class="err">├───────────────────────────────┼───────────────────────────────┤</span>
+<span class="err">│</span><span class="w">   </span><span class="n">TTL</span><span class="w"> </span><span class="p">(</span><span class="mi">8</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="n">Protocol</span><span class="w"> </span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="err">│</span><span class="w">       </span><span class="n">Header</span><span class="w"> </span><span class="n">Checksum</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├───────────────────────────────┴───────────────────────────────┤</span>
+<span class="err">│</span><span class="w">                    </span><span class="n">Source</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w">                 </span><span class="err">│</span>
+<span class="err">├───────────────────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w">                  </span><span class="n">Destination</span><span class="w"> </span><span class="n">IP</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├───────────────────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w">                    </span><span class="n">Options</span><span class="w"> </span><span class="p">(</span><span class="n">si</span><span class="w"> </span><span class="n">IHL</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">                        </span><span class="err">│</span>
+<span class="err">├───────────────────────────────────────────────────────────────┤</span>
+<span class="err">│</span><span class="w">                         </span><span class="n">Payload</span><span class="w"> </span><span class="p">(</span><span class="n">Data</span><span class="p">)</span><span class="w">                         </span><span class="err">│</span>
+<span class="err">└───────────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Version</strong></td>
+<td>4 pour IPv4</td>
+</tr>
+<tr>
+<td><strong>IHL</strong></td>
+<td>Longueur de l'en-tête (20 octets min.)</td>
+</tr>
+<tr>
+<td><strong>Total Length</strong></td>
+<td>Taille totale du datagramme</td>
+</tr>
+<tr>
+<td><strong>TTL</strong> (Time To Live)</td>
+<td>Compteur décrémenté à chaque routeur ; paquet détruit si TTL=0</td>
+</tr>
+<tr>
+<td><strong>Protocol</strong></td>
+<td>Protocole L4 (6=TCP, 17=UDP, 1=ICMP)</td>
+</tr>
+<tr>
+<td><strong>IP Source / Destination</strong></td>
+<td>Adresses de l'émetteur et du destinataire</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Adressage IPv4</h2>
+<h3>3.1 Format</h3>
+<ul>
+<li>Adresse IPv4 = <strong>32 bits</strong> = 4 octets, notée en <strong>décimal pointé</strong> : <code>192.168.1.10</code></li>
+<li>Chaque octet : 0–255 (8 bits)</li>
+</ul>
+<h3>3.2 Classes historiques (à connaître)</h3>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>1ers bits</th>
+<th>Plage</th>
+<th>Masque par défaut</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>0</td>
+<td>1.0.0.0 – 126.255.255.255</td>
+<td>255.0.0.0 (/8)</td>
+<td>Grands réseaux</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>10</td>
+<td>128.0.0.0 – 191.255.255.255</td>
+<td>255.255.0.0 (/16)</td>
+<td>Réseaux moyens</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>110</td>
+<td>192.0.0.0 – 223.255.255.255</td>
+<td>255.255.255.0 (/24)</td>
+<td>Petits réseaux</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>1110</td>
+<td>224.0.0.0 – 239.255.255.255</td>
+<td>—</td>
+<td><strong>Multicast</strong></td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>1111</td>
+<td>240.0.0.0 – 255.255.255.255</td>
+<td>—</td>
+<td>Réservé</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Aujourd'hui</strong> : On utilise la notation <strong>CIDR</strong> (Classless), les classes strictes sont obsolètes.</p>
+</blockquote>
+<h3>3.3 Notation CIDR</h3>
+<p><strong>CIDR</strong> (<em>Classless Inter-Domain Routing</em>) : <code>adresse/masque</code></p>
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Masque</th>
+<th>Nombre de bits réseau</th>
+<th>Hôtes possibles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/24</td>
+<td>255.255.255.0</td>
+<td>24</td>
+<td>2⁸ − 2 = <strong>254</strong></td>
+</tr>
+<tr>
+<td>/25</td>
+<td>255.255.255.128</td>
+<td>25</td>
+<td>2⁷ − 2 = <strong>126</strong></td>
+</tr>
+<tr>
+<td>/26</td>
+<td>255.255.255.192</td>
+<td>26</td>
+<td>2⁶ − 2 = <strong>62</strong></td>
+</tr>
+<tr>
+<td>/30</td>
+<td>255.255.255.252</td>
+<td>30</td>
+<td>2² − 2 = <strong>2</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>On soustrait 2 car l'adresse <strong>réseau</strong> (tous bits hôte à 0) et l'adresse <strong>broadcast</strong> (tous bits hôte à 1) ne sont pas utilisables.</p>
+</blockquote>
+<h3>3.4 Adresses spéciales</h3>
+<table>
+<thead>
+<tr>
+<th>Adresse</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.0.0.0/0</code></td>
+<td>Route par défaut (default route)</td>
+</tr>
+<tr>
+<td><code>127.0.0.0/8</code></td>
+<td><strong>Loopback</strong> (localhost) — 127.0.0.1</td>
+</tr>
+<tr>
+<td><code>255.255.255.255</code></td>
+<td>Broadcast limité</td>
+</tr>
+<tr>
+<td><code>169.254.0.0/16</code></td>
+<td><strong>APIPA</strong> — auto-attribution si pas de DHCP</td>
+</tr>
+</tbody>
+</table>
+<h3>3.5 Adresses privées (RFC 1918)</h3>
+<table>
+<thead>
+<tr>
+<th>Plage</th>
+<th>Classe d'origine</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10.0.0.0/8</code></td>
+<td>A</td>
+<td>Grandes entreprises</td>
+</tr>
+<tr>
+<td><code>172.16.0.0/12</code></td>
+<td>B</td>
+<td>Réseaux moyens</td>
+</tr>
+<tr>
+<td><code>192.168.0.0/16</code></td>
+<td>C</td>
+<td><strong>Box, LAN domestique, TP</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Ces adresses <strong>ne sont pas routées sur Internet</strong> → nécessité du <strong>NAT</strong>.</p>
+</blockquote>
+<hr />
+<h2>4. Sous-réseaux (Subnetting)</h2>
+<h3>4.1 Principe</h3>
+<p>Diviser un réseau en <strong>sous-réseaux</strong> plus petits en empruntant des bits de la partie hôte :</p>
+<p><strong>Exemple</strong> : Réseau <code>192.168.1.0/24</code> → diviser en 4 sous-réseaux <code>/26</code></p>
+<table>
+<thead>
+<tr>
+<th>Sous-réseau</th>
+<th>Adresse réseau</th>
+<th>Plage hôtes</th>
+<th>Broadcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>192.168.1.0/26</td>
+<td>.1 – .62</td>
+<td>192.168.1.63</td>
+</tr>
+<tr>
+<td>2</td>
+<td>192.168.1.64/26</td>
+<td>.65 – .126</td>
+<td>192.168.1.127</td>
+</tr>
+<tr>
+<td>3</td>
+<td>192.168.1.128/26</td>
+<td>.129 – .190</td>
+<td>192.168.1.191</td>
+</tr>
+<tr>
+<td>4</td>
+<td>192.168.1.192/26</td>
+<td>.193 – .254</td>
+<td>192.168.1.255</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 Méthode de calcul</h3>
+<p><strong>Énoncé</strong> : IP = <code>192.168.10.45/26</code>. Trouver réseau, broadcast, plage hôtes.</p>
+<p><strong>Solution</strong> :
+1. /26 → masque = 255.255.255.192 → 256 − 192 = <strong>64</strong> (taille du bloc)
+2. Multiples de 64 : 0, 64, 128, 192 → 45 est dans le bloc <strong>0–63</strong>
+3. <strong>Réseau</strong> = 192.168.10.0/26
+4. <strong>Broadcast</strong> = 192.168.10.63
+5. <strong>Hôtes</strong> = 192.168.10.1 – 192.168.10.62</p>
+<h3>4.3 Masque et opération AND</h3>
+<p>$$\text{Adresse réseau} = \text{IP} \ AND \ \text{Masque}$$</p>
+<div class="codehilite"><pre><span></span><code><span class="n">IP</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">10.45</span><span class="w">  </span><span class="err">→</span><span class="w">  </span><span class="mf">11000000.10101000</span><span class="o">.</span><span class="mf">00001010.00101101</span>
+<span class="n">Masque</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.192</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="mf">11111111.11111111</span><span class="o">.</span><span class="mf">11111111.11000000</span>
+<span class="n">AND</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="mf">192.168</span><span class="o">.</span><span class="mf">10.0</span><span class="w">   </span><span class="err">→</span><span class="w">  </span><span class="mf">11000000.10101000</span><span class="o">.</span><span class="mf">00001010.00000000</span>
+</code></pre></div>
+
+<hr />
+<h2>5. NAT — aperçu</h2>
+<p><strong>NAT</strong> (<em>Network Address Translation</em>) : traduit des adresses <strong>privées</strong> en adresse <strong>publique</strong> pour accéder à Internet.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">LAN</span><span class="w"> </span><span class="p">(</span><span class="mf">192.168.1</span><span class="p">.</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="p">[</span><span class="n">Routeur</span><span class="w"> </span><span class="n">NAT</span><span class="p">]</span><span class="w"> </span><span class="err">──→</span><span class="w"> </span><span class="n">Internet</span><span class="w"> </span><span class="p">(</span><span class="n">IP</span><span class="w"> </span><span class="n">publique</span><span class="w"> </span><span class="mf">41.</span><span class="n">x</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NAT statique</strong></td>
+<td>1 IP privée ↔ 1 IP publique</td>
+</tr>
+<tr>
+<td><strong>PAT/NAT overload</strong></td>
+<td>N IP privées ↔ 1 IP publique (via ports)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Approfondi en SI-S5 et Ingénieur.</p>
+</blockquote>
+<hr />
+<h2>6. Routage statique</h2>
+<h3>6.1 Principe</h3>
+<p>Chaque routeur contient une <strong>table de routage</strong> qui indique comment atteindre les réseaux distants :</p>
+<table>
+<thead>
+<tr>
+<th>Réseau destination</th>
+<th>Masque</th>
+<th>Next-hop (passerelle)</th>
+<th>Interface</th>
+<th>Métrique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.1.0</td>
+<td>/24</td>
+<td>Direct</td>
+<td>Fa0/0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>192.168.2.0</td>
+<td>/24</td>
+<td>Direct</td>
+<td>Fa0/1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>0.0.0.0</td>
+<td>/0</td>
+<td>10.0.0.2</td>
+<td>Fa0/0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Routage statique vs dynamique</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Statique</th>
+<th>Dynamique (OSPF, BGP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuration</td>
+<td>Manuelle</td>
+<td>Automatique</td>
+</tr>
+<tr>
+<td>Taille réseau</td>
+<td>Petit</td>
+<td>Grand</td>
+</tr>
+<tr>
+<td>Adaptation pannes</td>
+<td>Non</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Niveau ISIL-S4</td>
+<td>✅</td>
+<td>Aperçu seulement</td>
+</tr>
+</tbody>
+</table>
+<h3>6.3 Exemple de topologie</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">graph</span><span class="w"> </span><span class="nv">LR</span>
+<span class="w">    </span><span class="nv">subgraph</span><span class="w"> </span><span class="nv">ResA</span>[<span class="s2">&quot;192.168.1.0/24&quot;</span>]
+<span class="w">        </span><span class="nv">PCA</span>[<span class="nv">PC</span><span class="o">-</span><span class="nv">A</span><span class="o">&lt;</span><span class="nv">br</span><span class="o">/&gt;</span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">10</span>]
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="nv">subgraph</span><span class="w"> </span><span class="nv">ResB</span>[<span class="s2">&quot;192.168.2.0/24&quot;</span>]
+<span class="w">        </span><span class="nv">PCB</span>[<span class="nv">PC</span><span class="o">-</span><span class="nv">B</span><span class="o">&lt;</span><span class="nv">br</span><span class="o">/&gt;</span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">2</span>.<span class="mi">10</span>]
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="nv">PCA</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="nv">R1</span>[<span class="s2">&quot;R1&lt;br/&gt;Fa0/0: 192.168.1.1&lt;br/&gt;Fa0/1: 10.0.0.1&quot;</span>]
+<span class="w">    </span><span class="nv">R1</span><span class="w"> </span><span class="o">---|</span><span class="s2">&quot;10.0.0.0/30&quot;</span><span class="o">|</span><span class="w"> </span><span class="nv">R2</span>[<span class="s2">&quot;R2&lt;br/&gt;Fa0/0: 10.0.0.2&lt;br/&gt;Fa0/1: 192.168.2.1&quot;</span>]
+<span class="w">    </span><span class="nv">R2</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="nv">PCB</span>
+</code></pre></div>
+
+<p><strong>Configuration statique R1 (Cisco IOS — aperçu)</strong> :</p>
+<div class="codehilite"><pre><span></span><code>ip route 192.168.2.0 255.255.255.0 10.0.0.2
+ip route 0.0.0.0 0.0.0.0 10.0.0.2    ! route par défaut
+</code></pre></div>
+
+<h3>6.4 Algorithme de routage (simplifié)</h3>
+<p>Pour chaque paquet reçu :
+1. Extraire l'<strong>IP destination</strong>.
+2. Chercher la <strong>correspondance la plus spécifique</strong> (longest prefix match) dans la table.
+3. Si trouvé → forwarder vers le next-hop ou interface directe.
+4. Si non trouvé → utiliser la <strong>route par défaut</strong> (0.0.0.0/0) ou dropper.</p>
+<hr />
+<h2>7. ICMP</h2>
+<p><strong>ICMP</strong> (<em>Internet Control Message Protocol</em>) — RFC 792 : messages de <strong>contrôle</strong> et de <strong>diagnostic</strong> pour IP.</p>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Type ICMP</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Echo Request</strong></td>
+<td>Type 8</td>
+<td><code>ping</code> — demande de réponse</td>
+</tr>
+<tr>
+<td><strong>Echo Reply</strong></td>
+<td>Type 0</td>
+<td><code>ping</code> — réponse</td>
+</tr>
+<tr>
+<td><strong>Destination Unreachable</strong></td>
+<td>Type 3</td>
+<td>Réseau/hôte/port inaccessible</td>
+</tr>
+<tr>
+<td><strong>Time Exceeded</strong></td>
+<td>Type 11</td>
+<td>TTL expiré (<code>traceroute</code>)</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>ping<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w">          </span><span class="c1"># Test connectivité</span>
+ping<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span>.8.8.8<span class="w">         </span><span class="c1"># Windows — 4 requêtes</span>
+traceroute<span class="w"> </span>www.univ-mosta.dz<span class="w">    </span><span class="c1"># Linux — chemin des routeurs</span>
+tracert<span class="w"> </span>www.univ-mosta.dz<span class="w">       </span><span class="c1"># Windows</span>
+</code></pre></div>
+
+<hr />
+<h2>8. Examples et exercices</h2>
+<h3>Exercice 1 — Adressage</h3>
+<p>IP : <code>172.16.5.130/25</code>. Déterminer réseau, broadcast, plage hôtes, nombre d'hôtes.</p>
+<details>
+<summary>Solution</summary>
+
+/25 → masque 255.255.255.128 → blocs de 128
+130 est dans le bloc 128–255
+- **Réseau** : 172.16.5.128/25
+- **Broadcast** : 172.16.5.255
+- **Hôtes** : 172.16.5.129 – 172.16.5.254 (126 hôtes)
+</details>
+
+<h3>Exercice 2 — Routage</h3>
+<p>PC-A (192.168.1.10) envoie un paquet à PC-B (192.168.2.10). Décrire le chemin en indiquant les adresses IP et MAC à chaque étape (premier saut).</p>
+<details>
+<summary>Solution</summary>
+
+1. PC-A voit que 192.168.2.10 n'est pas dans son réseau → envoie au **passerelle par défaut** (192.168.1.1)
+2. Trame L2 : Dest MAC = MAC de R1, Dest IP = 192.168.2.10
+3. R1 route vers R2 via 10.0.0.0/30
+4. R2 livre à PC-B sur 192.168.2.0/24
+</details>
+
+<hr />
+<h2>9. QCM</h2>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IPv4 utilise des adresses de…</td>
+<td>32 bits</td>
+<td>48 bits</td>
+<td>64 bits</td>
+<td>128 bits</td>
+<td><strong>a</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Le masque /24 correspond à…</td>
+<td>255.0.0.0</td>
+<td>255.255.0.0</td>
+<td>255.255.255.0</td>
+<td>255.255.255.128</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>L'adresse 127.0.0.1 est…</td>
+<td>Broadcast</td>
+<td>Loopback</td>
+<td>Privée RFC1918</td>
+<td>Multicast</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Un réseau /26 contient…</td>
+<td>254 hôtes</td>
+<td>126 hôtes</td>
+<td>62 hôtes</td>
+<td>30 hôtes</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Le TTL est décrémenté par…</td>
+<td>Le switch</td>
+<td>Le routeur</td>
+<td>Le serveur DNS</td>
+<td>Le PC source</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>ICMP est utilisé par…</td>
+<td>HTTP</td>
+<td>ping</td>
+<td>DNS</td>
+<td>DHCP</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>192.168.0.0/16 est une adresse…</td>
+<td>Publique</td>
+<td>Privée RFC1918</td>
+<td>Multicast</td>
+<td>Loopback</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>La route 0.0.0.0/0 est…</td>
+<td>Une route multicast</td>
+<td>La route par défaut</td>
+<td>Une adresse loopback</td>
+<td>Un broadcast</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Le protocole IP est…</td>
+<td>Fiable</td>
+<td>Connexion-oriented</td>
+<td>Best effort</td>
+<td>Sans adressage</td>
+<td><strong>c</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Le longest prefix match signifie…</td>
+<td>Choisir la route la plus générale</td>
+<td>Choisir la route la plus spécifique</td>
+<td>Ignorer la table</td>
+<td>Utiliser uniquement ARP</td>
+<td><strong>b</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Références</h2>
+<ul>
+<li><strong>Kurose &amp; Ross</strong> [KR], Chapitre 4 — <em>The Network Layer</em></li>
+<li><strong>Forouzan</strong> [FO], Chapitres 18–20 — <em>IPv4, Routing</em></li>
+<li><strong>RFC 791</strong> — Internet Protocol</li>
+<li><strong>RFC 1918</strong> — Private Address Space</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Le subnetting est LA compétence clé de l'examen. Prévoir 30 min de calculs au TD 5. TP 2 et TP 3 en Packet Tracer.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>
