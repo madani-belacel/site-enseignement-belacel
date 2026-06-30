@@ -263,6 +263,7 @@ def scan_and_convert(source_dir, site_dir):
     converted = 0
     copied_pdf = 0
     copied_pptx = 0
+    copied_images = 0
 
     # Module dirs to scan
     module_dirs = [
@@ -278,9 +279,10 @@ def scan_and_convert(source_dir, site_dir):
 
     # Build total file list
     all_files = list(root_mds)
+    image_exts = ('*.png', '*.svg', '*.jpg', '*.jpeg', '*.gif')
     for md_dir in module_dirs:
         if md_dir.exists():
-            for ext in ('*.md', '*.pdf', '*.pptx'):
+            for ext in ('*.md', '*.pdf', '*.pptx') + image_exts:
                 all_files.extend(md_dir.rglob(ext))
 
     print(f"📦 Scanning {len(all_files)} files...")
@@ -330,6 +332,8 @@ def scan_and_convert(source_dir, site_dir):
                     copied_pdf += 1
                 elif ext == '.pptx':
                     copied_pptx += 1
+                elif ext in ('.png', '.svg', '.jpg', '.jpeg', '.gif'):
+                    copied_images += 1
                 doc_path = str(target_rel) if ext == '.md' else str(rel)
             except Exception as e:
                 print(f"  ❌ {rel}: {e}")
@@ -356,6 +360,7 @@ def scan_and_convert(source_dir, site_dir):
     print(f"   • {converted} MD → HTML")
     print(f"   • {copied_pdf} PDF copied")
     print(f"   • {copied_pptx} PPTX copied")
+    print(f"   • {copied_images} images copied")
     print(f"   • {len(all_docs)} total entries in generated_courses.json")
     return all_docs
 
