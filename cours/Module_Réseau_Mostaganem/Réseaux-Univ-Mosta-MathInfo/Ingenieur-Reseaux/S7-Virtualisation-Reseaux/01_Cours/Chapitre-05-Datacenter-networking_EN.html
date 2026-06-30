@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 05 — Datacenter Networking — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribute | Value |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="../../../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../../../index.html" class="header-logo">
+        <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 05 — Datacenter Networking</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    
+    
+    <h1>Chapitre 05 — Datacenter Networking</h1>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Engineer RI</td>
+</tr>
+<tr>
+<td><strong>Semester</strong></td>
+<td>S7</td>
+</tr>
+<tr>
+<td><strong>Estimated duration</strong></td>
+<td>3 h CM</td>
+</tr>
+<tr>
+<td><strong>Chapter</strong></td>
+<td>05</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Learning Objectives</h2>
+<p>After completing this chapter, the student will be able to:</p>
+<ol>
+<li><strong>Concevoir</strong> topologie spine-leaf Clos non-blocking.</li>
+<li><strong>Expliquer</strong> ECMP et equal-cost multipath L3.</li>
+<li><strong>Dimensionner</strong> oversubscription ratio.</li>
+<li><strong>Automatiser</strong> déploiement (Ansible aperçu).</li>
+<li><strong>Relier</strong> design moderne cloud et University of Mostaganem DC.</li>
+</ol>
+<h2>Chapter Outline</h2>
+<ol>
+<li>Spine-leaf</li>
+<li>ECMP</li>
+<li>Oversubscription</li>
+<li>Automation</li>
+<li>Design</li>
+</ol>
+<hr />
+<h2>1. Spine-leaf</h2>
+<p>Chaque leaf uplink tous spines — 2 hops max, latence prévisible.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[Leaf]---[Spine]---[Leaf]</span>
+<span class="w">   </span><span class="na">|                  |</span>
+<span class="w">  </span><span class="na">ToR              ToR</span>
+</code></pre></div>
+
+<hr />
+<h2>2. ECMP</h2>
+<p>Plusieurs chemins égaux cost — hash 5-tuple flow.</p>
+<hr />
+<h2>3. Oversubscription</h2>
+<p>Ratio uplink/downlink 1:3 typique ToR — calcul bande passante agrégée.</p>
+<hr />
+<h2>4. Automation</h2>
+<p>Ansible playbook : config interfaces, BGP underlay, EVPN overlay.</p>
+<hr />
+<h2>Review Questions and Quiz</h2>
+<ol>
+<li>Question clé ch.05 — relier théorie TD/TP</li>
+<li>QCM : comparer avec solution précédente</li>
+<li>Schéma architecture à reproduire de mémoire</li>
+<li>Limites et cas d'usage University of Mostaganem</li>
+<li>Lien avec module suivant S8/S9</li>
+</ol>
+<h3>QCM rapide</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Voir questions ci-dessus</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Voir corrigé oral</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Relier théorie et TD/TP associés</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Justifier avec schéma ou commande</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>References</h2>
+<ul>
+<li>Kurose &amp; Ross, ch. 4–5</li>
+<li>RFC 7348 — VXLAN</li>
+<li>ONF SDN Architecture</li>
+<li>Tanenbaum, ch. 3</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Module S7 — Datacenter Networking — spine-leaf. TP associé voir dossier 03_TP.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

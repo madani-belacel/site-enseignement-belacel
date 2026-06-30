@@ -1,0 +1,691 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 09 — Équipements, dépannage et best practices — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribute | Value |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="../../../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../../../index.html" class="header-logo">
+        <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 09 — Équipements, dépannage et best practices</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Livrables</strong> :</li><li><strong>Critères d'évaluation</strong> : fonctionnalité (40 %), documentation (30 %), sécurité/bonnes pratiques (20 %), oral (10 %).</li></ul></div>
+    
+    <h1>Chapitre 09 — Équipements, dépannage et best practices</h1>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Bachelor SI — L3</td>
+</tr>
+<tr>
+<td><strong>Semester</strong></td>
+<td>S5</td>
+</tr>
+<tr>
+<td><strong>Estimated duration</strong></td>
+<td>3 h CM (+ TD 09, TP 06–07)</td>
+</tr>
+<tr>
+<td><strong>Chapter</strong></td>
+<td>09 / 09</td>
+</tr>
+<tr>
+<td><strong>References</strong></td>
+<td>[CI] CCNA ; [KR] § 4.3, 5.6</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Chapter Objectives</h2>
+<p>After completing this chapter, the student will be able to:</p>
+<ol>
+<li><strong>Concevoir</strong> une architecture réseau <strong>campus</strong> (3 tiers, segmentation VLAN).</li>
+<li><strong>Appliquer</strong> une <strong>méthodologie de dépannage</strong> structurée et documentée.</li>
+<li><strong>Utiliser</strong> les outils CLI et Wireshark pour isoler une panne.</li>
+<li><strong>Appliquer</strong> les <strong>bonnes pratiques</strong> de sécurité et d'exploitation réseau.</li>
+</ol>
+<hr />
+<h2>Chapter Outline</h2>
+<ol>
+<li>Architecture campus SI</li>
+<li>Équipements — rôles et critères de choix</li>
+<li>Methodology de dépannage</li>
+<li>Outils et commandes essentielles</li>
+<li>Scénarios de pannes types</li>
+<li>Best practices sécurité et exploitation</li>
+<li>Projet TP 07 — cahier des charges</li>
+<li>QCM</li>
+</ol>
+<hr />
+<h2>1. Architecture campus SI</h2>
+<h3>1.1 Modèle three-tier</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Core</span><span class="p">[</span><span class="s">&quot;Cœur (Core)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">CORE</span><span class="p">[</span><span class="n">Switch</span><span class="o">/</span><span class="n">Router</span><span class="w"> </span><span class="n">Core</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Dist</span><span class="p">[</span><span class="s">&quot;Distribution&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D1</span><span class="p">[</span><span class="n">Dist</span><span class="w"> </span><span class="n">Bât</span><span class="p">.</span><span class="w"> </span><span class="n">A</span><span class="p">]</span>
+<span class="w">        </span><span class="n">D2</span><span class="p">[</span><span class="n">Dist</span><span class="w"> </span><span class="n">Bât</span><span class="p">.</span><span class="w"> </span><span class="n">B</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="n">Access</span><span class="p">[</span><span class="s">&quot;Accès&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A1</span><span class="p">[</span><span class="n">SW</span><span class="w"> </span><span class="n">TP1</span><span class="p">]</span>
+<span class="w">        </span><span class="n">A2</span><span class="p">[</span><span class="n">SW</span><span class="w"> </span><span class="n">TP2</span><span class="p">]</span>
+<span class="w">        </span><span class="n">AP</span><span class="p">[</span><span class="n">AP</span><span class="w"> </span><span class="n">Wi</span><span class="o">-</span><span class="n">Fi</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+<span class="w">    </span><span class="n">Internet</span><span class="p">[</span><span class="n">Internet</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">WAN</span><span class="p">]</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">CORE</span>
+<span class="w">    </span><span class="n">CORE</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">D1</span>
+<span class="w">    </span><span class="n">CORE</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">D2</span>
+<span class="w">    </span><span class="n">D1</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">A1</span>
+<span class="w">    </span><span class="n">D1</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">AP</span>
+<span class="w">    </span><span class="n">D2</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">A2</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Fonctions</th>
+<th>Équipements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core</strong></td>
+<td>Commutation rapide, agrégation</td>
+<td>Switch L3 haut débit, redondance</td>
+</tr>
+<tr>
+<td><strong>Distribution</strong></td>
+<td>Routage inter-VLAN, politiques, QoS</td>
+<td>Switch L3 manageable</td>
+</tr>
+<tr>
+<td><strong>Access</strong></td>
+<td>Connexion postes, PoE pour AP</td>
+<td>Switch L2, AP Wi-Fi</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Example University of Mostaganem — Faculty of MathInfo</h3>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>VLAN</th>
+<th>Sous-réseau</th>
+<th>Accès</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Salles TP</td>
+<td>20</td>
+<td>10.20.20.0/24</td>
+<td>Étudiants</td>
+</tr>
+<tr>
+<td>Enseignants</td>
+<td>10</td>
+<td>10.20.10.0/24</td>
+<td>Staff</td>
+</tr>
+<tr>
+<td>Serveurs</td>
+<td>30</td>
+<td>10.20.30.0/28</td>
+<td>Restreint</td>
+</tr>
+<tr>
+<td>Wi-Fi invités</td>
+<td>40</td>
+<td>10.20.40.0/24</td>
+<td>Internet seul</td>
+</tr>
+<tr>
+<td>Management</td>
+<td>99</td>
+<td>10.20.99.0/24</td>
+<td>Admin switch</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Architecture campus" src="../../../Ressources-Communes/Images-Schemas/Equipements/campus-three-tier-si-s5.png" /></p>
+<hr />
+<h2>2. Équipements — choix SI</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Équipement</th>
+<th>Critère</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interconnexion postes</td>
+<td>Switch L2 manageable</td>
+<td>Ports PoE si AP</td>
+</tr>
+<tr>
+<td>Routage inter-VLAN</td>
+<td>Switch L3 ou router</td>
+<td>Débit, ACL</td>
+</tr>
+<tr>
+<td>Accès Internet</td>
+<td>Routeur + firewall</td>
+<td>NAT, VPN (aperçu)</td>
+</tr>
+<tr>
+<td>Wi-Fi</td>
+<td>Contrôleur + AP</td>
+<td>Couverture, WPA3</td>
+</tr>
+<tr>
+<td>Supervision</td>
+<td>Serveur NMS / SNMP</td>
+<td>Alertes (aperçu)</td>
+</tr>
+</tbody>
+</table>
+<h3>Comparison router vs switch L3 vs firewall</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Routeur</th>
+<th>Switch L3</th>
+<th>Firewall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Routage IP</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅ (policy-based)</td>
+</tr>
+<tr>
+<td>Commutation L2</td>
+<td>❌</td>
+<td>✅</td>
+<td>Parfois</td>
+</tr>
+<tr>
+<td>NAT</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Filtrage sécurité</td>
+<td>Basique (ACL)</td>
+<td>ACL L3/L4</td>
+<td><strong>Avancé (L7 NGFW)</strong></td>
+</tr>
+<tr>
+<td>Débit switching</td>
+<td>—</td>
+<td><strong>Très élevé</strong></td>
+<td>Variable</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Methodology de dépannage</h2>
+<h3>3.1 Processus en 8 étapes</h3>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Définir</strong> le problème (qui, quoi, quand, où)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Collecter</strong> informations (changements récents, logs)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Reproduire</strong> ou confirmer le symptôme</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Isoler</strong> la couche (OSI bottom-up ou top-down)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Hypothèse</strong> — cause probable</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Tester</strong> la correction</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Vérifier</strong> solution complète</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Documenter</strong> (ticket, runbook)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Arbre de décision</h3>
+<div class="codehilite"><pre><span></span><code>Pas d&#39;accès réseau ?
+├─ ping 127.0.0.1 FAIL → Stack TCP/IP / driver NIC
+├─ ping GW FAIL → L1/L2/L3 local (câble, IP, masque, VLAN, switch)
+├─ ping 8.8.8.8 FAIL → Routage, NAT, firewall sortie, FAI
+├─ ping nom FAIL → DNS
+└─ ping OK, app FAIL → L7 (proxy, certificat, service down)
+</code></pre></div>
+
+<h3>3.3 Documentation incident (modèle)</h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>INC-2025-0142</td>
+</tr>
+<tr>
+<td>Symptôme</td>
+<td>« Pas Internet salle TP2 »</td>
+</tr>
+<tr>
+<td>Couche identifiée</td>
+<td>L3 — route par défaut absente</td>
+</tr>
+<tr>
+<td>Cause racine</td>
+<td>Mise à jour efface config router</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td><code>ip route 0.0.0.0 0.0.0.0 Gi0/0</code></td>
+</tr>
+<tr>
+<td>Prévention</td>
+<td>Backup config, change management</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Outils essentiels</h2>
+<h3>4.1 Windows / Linux</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Connectivité</span>
+ping<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span>.8.8.8
+tracert<span class="w"> </span>www.univ-mosta.dz
+pathping<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w">          </span><span class="c1"># Windows — combinaison ping/traceroute</span>
+
+<span class="c1"># Configuration</span>
+ipconfig<span class="w"> </span>/all<span class="w">             </span><span class="c1"># Windows</span>
+ip<span class="w"> </span>addr<span class="w"> </span>show<span class="w">              </span><span class="c1"># Linux</span>
+ip<span class="w"> </span>route<span class="w"> </span>show<span class="w">             </span><span class="c1"># Linux</span>
+
+<span class="c1"># DNS</span>
+nslookup<span class="w"> </span>www.univ-mosta.dz
+Resolve-DnsName<span class="w"> </span>www.univ-mosta.dz<span class="w">   </span><span class="c1"># PowerShell</span>
+
+<span class="c1"># Ports / connexions</span>
+netstat<span class="w"> </span>-an
+Test-NetConnection<span class="w"> </span>-ComputerName<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w"> </span>-Port<span class="w"> </span><span class="m">443</span><span class="w">   </span><span class="c1"># PowerShell</span>
+ss<span class="w"> </span>-tulnp<span class="w">                 </span><span class="c1"># Linux</span>
+
+<span class="c1"># Couche 2</span>
+arp<span class="w"> </span>-a
+getmac<span class="w">                    </span><span class="c1"># Windows</span>
+</code></pre></div>
+
+<h3>4.2 Cisco IOS (Packet Tracer / équipement)</h3>
+<div class="codehilite"><pre><span></span><code><span class="nx">show</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">brief</span>
+<span class="nx">show</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">route</span>
+<span class="nx">show</span><span class="w"> </span><span class="nx">vlan</span><span class="w"> </span><span class="nx">brief</span>
+<span class="nx">show</span><span class="w"> </span><span class="nx">interfaces</span><span class="w"> </span><span class="nx">status</span>
+<span class="nx">show</span><span class="w"> </span><span class="nx">mac</span><span class="w"> </span><span class="nx">address</span><span class="o">-</span><span class="nx">table</span>
+<span class="nx">show</span><span class="w"> </span><span class="nx">running</span><span class="o">-</span><span class="nx">config</span>
+<span class="nx">ping</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">traceroute</span>
+<span class="nx">debug</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">icmp</span><span class="w">    </span><span class="p">!</span><span class="w"> </span><span class="nx">prudence</span><span class="w"> </span><span class="nx">en</span><span class="w"> </span><span class="nx">production</span>
+</code></pre></div>
+
+<h3>4.3 Wireshark — filtres dépannage</h3>
+<table>
+<thead>
+<tr>
+<th>Filtre</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arp</code></td>
+<td>Problèmes résolution L2</td>
+</tr>
+<tr>
+<td><code>icmp</code></td>
+<td>Ping, unreachable</td>
+</tr>
+<tr>
+<td><code>dns</code></td>
+<td>Résolution noms</td>
+</tr>
+<tr>
+<td><code>tcp.port == 443</code></td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td><code>http.response.code &gt;= 400</code></td>
+<td>Erreurs HTTP</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Scénarios types (TP 06)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Symptôme</th>
+<th>Cause</th>
+<th>Couche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Un seul PC isolé</td>
+<td>Mauvais VLAN port access</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tout un VLAN down</td>
+<td>Trunk down / native VLAN mismatch</td>
+<td>L2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Inter-VLAN échoue</td>
+<td>Pas de routage L3 / ACL</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Internet partiel</td>
+<td>NAT mal configuré</td>
+<td>L3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Site lent</td>
+<td>Duplex mismatch / errors L1</td>
+<td>L1/L2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Certificat erreur</td>
+<td>Date système / CA</td>
+<td>L7</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. Best practices</h2>
+<h3>6.1 Security</h3>
+<table>
+<thead>
+<tr>
+<th>Pratique</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Segmentation VLAN</td>
+<td>Invités ≠ serveurs ≠ admin</td>
+</tr>
+<tr>
+<td>Désactiver ports inutilisés</td>
+<td><code>shutdown</code> sur interfaces</td>
+</tr>
+<tr>
+<td>SSH, pas Telnet</td>
+<td>Chiffrement management</td>
+</tr>
+<tr>
+<td>Mots de passe forts</td>
+<td>Enable secret, console</td>
+</tr>
+<tr>
+<td>Sauvegarde configs</td>
+<td><code>copy run start</code>, versioning</td>
+</tr>
+<tr>
+<td>VLAN 1 non utilisé</td>
+<td>Native VLAN dédié (99)</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 Exploitation</h3>
+<table>
+<thead>
+<tr>
+<th>Pratique</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nommage cohérent</td>
+<td><code>SW-TP1-Oran</code>, <code>R-GW-Core</code></td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>Schéma à jour, plan IP</td>
+</tr>
+<tr>
+<td>Monitoring</td>
+<td>Logs, SNMP traps (aperçu)</td>
+</tr>
+<tr>
+<td>Change management</td>
+<td>Tester avant production</td>
+</tr>
+<tr>
+<td>Redondance</td>
+<td>Double uplink distribution-core</td>
+</tr>
+</tbody>
+</table>
+<h3>6.3 Checklist mise en service</h3>
+<ul>
+<li>[ ] Plan IP validé (VLSM)</li>
+<li>[ ] VLANs créés et documentés</li>
+<li>[ ] Routage inter-VLAN testé</li>
+<li>[ ] NAT/DHCP fonctionnels</li>
+<li>[ ] Sauvegarde config initiale</li>
+<li>[ ] Tests ping/traceroute depuis chaque VLAN</li>
+<li>[ ] Accès management sécurisé</li>
+</ul>
+<hr />
+<h2>7. Projet TP 07 — cahier des charges (résumé)</h2>
+<p><strong>Livrables</strong> :
+1. Schéma architecture 3 tiers
+2. Plan VLSM + VLAN
+3. Configuration Packet Tracer (.pkt)
+4. Rapport tests + procédure dépannage simulée
+5. Présentation orale 5 min</p>
+<p><strong>Critères d'évaluation</strong> : fonctionnalité (40 %), documentation (30 %), sécurité/bonnes pratiques (20 %), oral (10 %).</p>
+<hr />
+<h2>8. QCM</h2>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Couche access connecte…</td>
+<td><strong>Postes finaux</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Inter-VLAN sur switch L3 via…</td>
+<td><strong>SVI / ip routing</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Première étape dépannage…</td>
+<td><strong>Définir le problème</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>show ip route</code> affiche…</td>
+<td><strong>Table routage</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Native VLAN mismatch cause…</td>
+<td><strong>Fuite/isolation VLAN</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Telnet est…</td>
+<td><strong>Non chiffré (éviter)</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>VLAN invités sans accès serveurs = …</td>
+<td><strong>Segmentation sécurité</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>pathping combine…</td>
+<td><strong>Ping + traceroute</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Backup config Cisco…</td>
+<td><strong>copy running-config startup-config</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Three-tier a … couches</td>
+<td><strong>3 (access, dist, core)</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>References</h2>
+<ul>
+<li><strong>Cisco CCNA</strong> — Network Management and Security</li>
+<li><strong>Kurose &amp; Ross</strong> [KR] — Architecture et dépannage</li>
+<li><a href="../../ISIL-S4/01_Cours/Chapter-08-Equipements-reseaux.md">ISIL-S4 Ch. 08</a></li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : TP 06 (pannes injectées) puis TP 07 (projet). Clôture module SI-S5 — examen porte sur l'ensemble avec poids VLSM/IPv6/VLAN.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

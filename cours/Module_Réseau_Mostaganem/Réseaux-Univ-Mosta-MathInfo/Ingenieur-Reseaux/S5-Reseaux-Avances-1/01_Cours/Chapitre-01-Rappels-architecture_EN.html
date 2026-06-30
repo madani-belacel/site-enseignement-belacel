@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 01 — Rappels et architecture avancée — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribute | Value |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="../../../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../../../index.html" class="header-logo">
+        <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 01 — Rappels et architecture avancée</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Piège fréquent</strong> : confondre domaine de broadcast (VLAN) et domaine de routage (subnet IP). Un VLAN unique peut héberger plusieurs subnets si on route entre eux ; inversement, un subnet ne doit pas être étendu sur deux VLAN sans pontage L3 explicite.</li><li><strong>Bonnes pratiques</strong> :</li><li><strong>Livrables minimaux</strong> :</li><li><strong>Context</strong> : la faculté MathInfo compte 4 bâtiments, 1200 étudiants, 1 datacenter (virtualisation), liaison MAN vers le rectorat.</li><li><strong>Analyse SPOF</strong> : doublement du switch cœur, HSRP/VRRP sur la passerelle par VLAN, sauvegarde configs sur serveur Git interne.</li><li><strong>Questions de conception</strong> :</li></ul></div>
+    
+    <h1>Chapitre 01 — Rappels et architecture avancée</h1>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Engineer RI</td>
+</tr>
+<tr>
+<td><strong>Semester</strong></td>
+<td>S5</td>
+</tr>
+<tr>
+<td><strong>Estimated duration</strong></td>
+<td>3 h CM</td>
+</tr>
+<tr>
+<td><strong>Chapter</strong></td>
+<td>01</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Learning Objectives</h2>
+<p>After completing this chapter, the student will be able to:</p>
+<ol>
+<li><strong>Consolider</strong> les acquis License (modèle TCP/IP, VLAN, routage statique).</li>
+<li><strong>Concevoir</strong> une architecture campus à trois niveaux (accès, distribution, cœur).</li>
+<li><strong>Documenter</strong> un plan d'adressage, un schéma logique et un dossier d'exploitation.</li>
+<li><strong>Identifier</strong> les points de défaillance et proposer de la redondance L2/L3.</li>
+<li><strong>Relier</strong> conception et services (DHCP, DNS) avant le routage dynamique.</li>
+</ol>
+<h2>Chapter Outline</h2>
+<ol>
+<li>Révision ciblée License → Engineer</li>
+<li>Modèle hiérarchique campus / entreprise</li>
+<li>Plan d'adressage et documentation</li>
+<li>Étude de cas {UNIV}</li>
+</ol>
+<hr />
+<h2>1. Révision ciblée — de la License à l'Engineer</h2>
+<p>Le passage au semestre S5 suppose une maîtrise opérationnelle des fondamentaux vus en License à <strong>University of Mostaganem</strong> : encapsulation TCP/IP, commutation Ethernet, VLAN 802.1Q, adressage IPv4/VLSM et routage statique.</p>
+<table>
+<thead>
+<tr>
+<th>Notion License</th>
+<th>Rappel</th>
+<th>Approfondissement S5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modèle OSI/TCP-IP</td>
+<td>7 vs 4 couches</td>
+<td>Diagnostic par couche, SLA</td>
+</tr>
+<tr>
+<td>VLAN</td>
+<td>Segmentation L2</td>
+<td>Inter-VLAN routing, ACL</td>
+</tr>
+<tr>
+<td>Static Routing</td>
+<td>Tables manuelles</td>
+<td>Limite → OSPF (Ch. 03)</td>
+</tr>
+<tr>
+<td>NAT/PAT</td>
+<td>Translation adresses</td>
+<td>Combiné avec ACL (Ch. 04)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Piège fréquent</strong> : confondre domaine de broadcast (VLAN) et domaine de routage (subnet IP). Un VLAN unique peut héberger plusieurs subnets si on route entre eux ; inversement, un subnet ne doit pas être étendu sur deux VLAN sans pontage L3 explicite.</p>
+<hr />
+<h2>2. Architecture hiérarchique à trois niveaux</h2>
+<p>Le modèle <strong>accès — distribution — cœur</strong> structure la majorité des campus universitaires et PME :</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Role</th>
+<th>Équipements typiques</th>
+<th>Fonctions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accès</td>
+<td>Connexion utilisateurs</td>
+<td>Switch L2 PoE, AP Wi-Fi</td>
+<td>VLAN, 802.1X, QoS edge</td>
+</tr>
+<tr>
+<td>Distribution</td>
+<td>Agrégation, politiques</td>
+<td>Switch L3, firewall interne</td>
+<td>Routage inter-VLAN, ACL</td>
+</tr>
+<tr>
+<td>Cœur</td>
+<td>Haut débit, redondance</td>
+<td>Switch/router cœur</td>
+<td>ECMP, agrégation, peering</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>[PC/Serveurs] → Switch Accès → Switch Distribution → Routeur Cœur → WAN/MAN
+                     ↑ VLAN 10,20,30              ↑ SVI / routed links
+</code></pre></div>
+
+<p><strong>Bonnes pratiques</strong> :
+- Limiter la taille des domaines de broadcast (≤ /24 par VLAN utilisateur).
+- Documenter chaque uplink (débit, STP root, PoE budget).
+- Prévoir un <strong>plan de nommage</strong> (<code>SW-ACC-BAT-A</code>, <code>RT-CORE-01</code>).</p>
+<hr />
+<h2>3. Plan d'adressage et documentation réseau</h2>
+<p>Un plan d'adressage professionnel comprend :</p>
+<table>
+<thead>
+<tr>
+<th>Bloc</th>
+<th>Usage</th>
+<th>Example RFC 1918</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Utilisateurs</td>
+<td>Postes, Wi-Fi</td>
+<td>10.10.0.0/16 par site</td>
+</tr>
+<tr>
+<td>Serveurs</td>
+<td>DMZ, infra</td>
+<td>10.20.0.0/16</td>
+</tr>
+<tr>
+<td>Management</td>
+<td>Loopbacks, OOB</td>
+<td>10.255.0.0/24</td>
+</tr>
+<tr>
+<td>Interconnexions</td>
+<td>Liens P2P</td>
+<td>10.254.0.0/16 (/30 ou /31)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Livrables minimaux</strong> :
+1. Tableau IP/VLAN/GW par site.
+2. Schéma logique (Visio, draw.io).
+3. Matrice de flux (source → destination → port → action).
+4. Procédures de sauvegarde (<code>show run</code>, export DHCP/DNS).</p>
+<div class="codehilite"><pre><span></span><code>Example entrée documentation :
+Site: Faculté MI | VLAN 30 | 10.10.30.0/24 | GW 10.10.30.1 | DNS 10.20.1.53
+</code></pre></div>
+
+<hr />
+<h2>4. Cas pratique — campus University of Mostaganem</h2>
+<p><strong>Context</strong> : la faculté MathInfo compte 4 bâtiments, 1200 étudiants, 1 datacenter (virtualisation), liaison MAN vers le rectorat.</p>
+<table>
+<thead>
+<tr>
+<th>Bâtiment</th>
+<th>Besoin</th>
+<th>VLAN</th>
+<th>Subnet proposé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A — Amphithéâtres</td>
+<td>200 postes</td>
+<td>10</td>
+<td>10.10.10.0/24</td>
+</tr>
+<tr>
+<td>B — TP réseau</td>
+<td>60 postes + serveurs lab</td>
+<td>20</td>
+<td>10.10.20.0/25</td>
+</tr>
+<tr>
+<td>C — Administration</td>
+<td>40 postes</td>
+<td>30</td>
+<td>10.10.30.0/26</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>Serveurs</td>
+<td>100</td>
+<td>10.20.100.0/24</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Analyse SPOF</strong> : doublement du switch cœur, HSRP/VRRP sur la passerelle par VLAN, sauvegarde configs sur serveur Git interne.</p>
+<p><strong>Questions de conception</strong> :
+- Où placer le serveur DHCP central vs relais par site ?
+- Quelle segmentation pour isoler le lab étudiant du réseau admin ?</p>
+<hr />
+<h2>Review Questions and Quiz</h2>
+<ol>
+<li>Quelle différence entre topologie physique et logique sur un campus VLAN ?</li>
+<li>Citer trois éléments obligatoires d'un dossier d'architecture réseau.</li>
+<li>Pourquoi réserver un bloc /24 dédié au management out-of-band ?</li>
+<li>Quel est le rôle du niveau distribution dans une architecture à trois tiers ?</li>
+<li>QCM : Le routage statique suffit-il toujours sur un campus &gt; 500 hôtes ? (Non — justifier)</li>
+</ol>
+<h3>QCM rapide</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Voir questions ci-dessus</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>Voir corrigé oral</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Relier théorie et TD/TP associés</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Justifier avec schéma ou commande</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>References</h2>
+<ul>
+<li>Kurose &amp; Ross — <em>Computer Networking</em>, ch. 1 et 4</li>
+<li>Tanenbaum &amp; Wetherall — <em>Computer Networks</em>, ch. 1</li>
+<li>Cisco — <em>Campus LAN and Wireless Design Guide</em></li>
+<li>RFC 1918 — Adressage privé</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Lien TD 01 (conception adressage). Préparer OSPF Ch. 03. Cas University of Mostaganem.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>

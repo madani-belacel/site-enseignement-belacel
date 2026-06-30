@@ -1,0 +1,625 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chapitre 01 — Introduction and Topologys — Dr. Madani BELACEL</title>
+<meta name="description" content="| Attribute | Value |">
+<link rel="stylesheet" href="../../../../../../css/style.css">
+<link rel="icon" href="../../../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../../../index.html" class="header-logo">
+        <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../../../enseignement.html">Enseignement</a></li>
+    <li class="current">Chapitre 01 — Introduction and Topologys</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li>- <strong>Redondance</strong> : si un lien tombe, chemin alternatif.</li><li>- <strong>Coût</strong> : plus élevé qu'une étoile pure.</li><li><strong>Loi de Bandwidth-Delay Product (BDP)</strong> :</li><li><strong>Example</strong> : Lien 100 Mbps, RTT = 50 ms</li><li><strong>Besoin</strong> : 24 postes, 1 serveur, Internet, impression réseau.</li><li><strong>Métrique clé</strong> : RTT Oran–Alger ~ 30–80 ms → impact sur applications synchrones.</li><li><strong>Énoncé</strong> : Transfert de 4 Go sur un lien 500 Mbps, RTT 40 ms. Temps de transmission minimum ? BDP ?</li></ul></div>
+    
+    <h1>Chapitre 01 — Introduction and Topologys</h1>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Bachelor SI — L3</td>
+</tr>
+<tr>
+<td><strong>Semester</strong></td>
+<td>S5</td>
+</tr>
+<tr>
+<td><strong>Estimated duration</strong></td>
+<td>3 h CM (+ TD 01)</td>
+</tr>
+<tr>
+<td><strong>Chapter</strong></td>
+<td>01 / 09</td>
+</tr>
+<tr>
+<td><strong>Prerequisites</strong></td>
+<td><a href="../../ISIL-S4/01_Cours/Chapter-01-Introduction-et-topologies.md">ISIL-S4 Ch. 01</a></td>
+</tr>
+<tr>
+<td><strong>References</strong></td>
+<td>[KR] Ch. 1 ; [TA] Ch. 1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Chapter Objectives</h2>
+<p>After completing this chapter, the student will be able to:</p>
+<ol>
+<li><strong>Consolider</strong> les acquis ISIL-S4 (types de networks, topologies, métriques).</li>
+<li><strong>Analyser</strong> des topologies hybrides et des architectures multi-sites.</li>
+<li><strong>Évaluer</strong> les performances réseau via des métriques avancées (SLA, disponibilité).</li>
+<li><strong>Dimensionner</strong> grossièrement un lien en fonction du débit et de la latence requis.</li>
+</ol>
+<hr />
+<h2>Chapter Outline</h2>
+<ol>
+<li>Révision ciblée ISIL-S4</li>
+<li>Topologys avancées et hybrides</li>
+<li>Metrics de performance approfondies</li>
+<li>SLA et qualité de service (aperçu)</li>
+<li>Études de cas SI</li>
+<li>QCM et exercices</li>
+</ol>
+<hr />
+<h2>1. Révision ciblée ISIL-S4</h2>
+<h3>1.1 Rappels essentiels</h3>
+<table>
+<thead>
+<tr>
+<th>Notion ISIL-S4</th>
+<th>Rappel</th>
+<th>Approfondissement SI-S5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAN / WAN / MAN</td>
+<td>Classification par étendue</td>
+<td>Architecture multi-site, SD-WAN (aperçu)</td>
+</tr>
+<tr>
+<td>Topology étoile</td>
+<td>Switch central</td>
+<td>Étoile hiérarchique, redondance</td>
+</tr>
+<tr>
+<td>Bande passante vs débit</td>
+<td>Capacité vs débit effectif</td>
+<td>Dimensionnement, goulots</td>
+</tr>
+<tr>
+<td>Modèle client-serveur</td>
+<td>HTTP, DNS</td>
+<td>Services distribués, cloud</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 Auto-diagnostic (check-list étudiant SI)</h3>
+<p>Avant d'approfondir, vérifiez que vous maîtrisez :</p>
+<ul>
+<li>[ ] Conversion bits/octets et calculs de temps de transfert</li>
+<li>[ ] Différence hub / switch / router</li>
+<li>[ ] Encapsulation OSI (Data → Segment → Paquet → Trame)</li>
+<li>[ ] Adressage IPv4 /24 et masque</li>
+<li>[ ] Commandes <code>ping</code>, <code>ipconfig</code>, <code>tracert</code></li>
+</ul>
+<blockquote>
+<p><strong>Lien</strong> : tout écart → réviser le dossier <a href="../../ISIL-S4/">ISIL-S4</a>.</p>
+</blockquote>
+<p><img alt="Révision topologies" src="../../../Ressources-Communes/Images-Schemas/Topologys/si-s5-revision-topologies.png" /></p>
+<hr />
+<h2>2. Topologys avancées et hybrides</h2>
+<h3>2.1 Topology étoile étendue (Extended Star)</h3>
+<div class="codehilite"><pre><span></span><code><span class="w">                    </span><span class="p">[</span><span class="n">Routeur</span><span class="w"> </span><span class="n">cœur</span><span class="p">]</span>
+<span class="w">                   </span><span class="o">/</span><span class="w">      </span><span class="o">|</span><span class="w">       </span>\
+<span class="w">            </span><span class="p">[</span><span class="n">Switch</span><span class="w"> </span><span class="n">A</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">Switch</span><span class="w"> </span><span class="n">B</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">Switch</span><span class="w"> </span><span class="n">C</span><span class="p">]</span>
+<span class="w">              </span><span class="o">/|</span><span class="err">\</span><span class="w">       </span><span class="o">/|</span><span class="err">\</span><span class="w">        </span><span class="o">/|</span>\
+<span class="w">            </span><span class="n">PC</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="n">PC</span><span class="w">  </span><span class="n">PC</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="n">PC</span><span class="w">   </span><span class="n">PC</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="n">PC</span>
+<span class="w">         </span><span class="p">(</span><span class="n">Bât</span><span class="p">.</span><span class="w"> </span><span class="n">Admin</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">Bât</span><span class="p">.</span><span class="w"> </span><span class="n">TP</span><span class="p">)</span><span class="w">  </span><span class="p">(</span><span class="n">Bât</span><span class="p">.</span><span class="w"> </span><span class="n">Labo</span><span class="p">)</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Avantage</th>
+<th>Limite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Centralisation, gestion par bâtiment</td>
+<td>Dépendance au router/switch cœur</td>
+</tr>
+<tr>
+<td>Isolation des pannes par branche</td>
+<td>Câblage vertical (backbone) critique</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Topology maillée partielle (Partial Mesh)</h3>
+<p>Utilisée entre <strong>routers de campus</strong> ou <strong>sites distants</strong> :</p>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">R1</span><span class="p">[</span><span class="n">R1</span><span class="w"> </span><span class="n">Oran</span><span class="p">]</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">R2</span><span class="p">[</span><span class="n">R2</span><span class="w"> </span><span class="n">Site</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+<span class="w">    </span><span class="n">R1</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">R3</span><span class="p">[</span><span class="n">R3</span><span class="w"> </span><span class="n">Site</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="n">R2</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">R3</span>
+<span class="w">    </span><span class="n">R1</span><span class="w"> </span><span class="o">---</span><span class="w"> </span><span class="n">Internet</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Redondance</strong> : si un lien tombe, chemin alternatif.</li>
+<li><strong>Coût</strong> : plus élevé qu'une étoile pure.</li>
+</ul>
+<h3>2.3 Topology hiérarchique ( trois tiers )</h3>
+<p>Modèle <strong>Core — Distribution — Access</strong> (standard campus / entreprise) :</p>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Role</th>
+<th>Équipement type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Access</strong></td>
+<td>Connexion postes, AP Wi-Fi</td>
+<td>Switch L2 accès</td>
+</tr>
+<tr>
+<td><strong>Distribution</strong></td>
+<td>Agrégation, politiques VLAN</td>
+<td>Switch L3</td>
+</tr>
+<tr>
+<td><strong>Core</strong></td>
+<td>Commutation rapide inter-bâtiments</td>
+<td>Switch/router haut débit</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Approfondi en <strong>Ch. 09</strong> — ce modèle structure le TP 07 (campus University of Mostaganem).</p>
+</blockquote>
+<h3>2.4 Comparison des topologies pour un projet SI</h3>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Étoile simple</th>
+<th>Hiérarchique</th>
+<th>Maillée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coût</td>
+<td>Faible</td>
+<td>Moyen</td>
+<td>Élevé</td>
+</tr>
+<tr>
+<td>Fiabilité</td>
+<td>Moyenne</td>
+<td>Bonne</td>
+<td>Excellente</td>
+</tr>
+<tr>
+<td>Scalabilité</td>
+<td>Limitée</td>
+<td><strong>Excellente</strong></td>
+<td>Excellente</td>
+</tr>
+<tr>
+<td>Complexité admin</td>
+<td>Faible</td>
+<td>Moyenne</td>
+<td>Élevée</td>
+</tr>
+<tr>
+<td>Usage University of Mostaganem</td>
+<td>Petite salle TP</td>
+<td><strong>Campus</strong></td>
+<td>Liens inter-sites</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Metrics de performance approfondies</h2>
+<h3>3.1 Bande passante, débit et goodput</h3>
+<table>
+<thead>
+<tr>
+<th>Métrique</th>
+<th>Formule / définition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bande passante</strong></td>
+<td>Capacité max du lien (bps)</td>
+<td>Fibre 1 Gbps</td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>Débit mesuré en conditions réelles</td>
+<td>850 Mbps (iperf)</td>
+</tr>
+<tr>
+<td><strong>Goodput</strong></td>
+<td>Données <strong>utiles</strong> applicatives / temps</td>
+<td>Exclut en-têtes, retransmissions</td>
+</tr>
+</tbody>
+</table>
+<p>$$\text{Goodput} = \frac{\text{Données applicatives reçues}}{\text{Temps total}}$$</p>
+<h3>3.2 Latence et composantes</h3>
+<table>
+<thead>
+<tr>
+<th>Composante</th>
+<th>Cause</th>
+<th>Ordre de grandeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Propagation</td>
+<td>Distance, média</td>
+<td>Fibre : ~5 μs/km</td>
+</tr>
+<tr>
+<td>Transmission</td>
+<td>Taille paquet / débit lien</td>
+<td>1,2 ms pour 1500 o @ 10 Mbps</td>
+</tr>
+<tr>
+<td>Traitement</td>
+<td>Routeur, firewall</td>
+<td>100 μs – 1 ms</td>
+</tr>
+<tr>
+<td>File d'attente</td>
+<td>Congestion</td>
+<td>Variable (jitter)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Loi de Bandwidth-Delay Product (BDP)</strong> :</p>
+<p>$$\text{BDP} = \text{Bande passante} \times \text{RTT}$$</p>
+<blockquote>
+<p>Quantité de données « en vol » sur le réseau. Critique pour le <strong>dimensionnement des buffers TCP</strong>.</p>
+</blockquote>
+<p><strong>Example</strong> : Lien 100 Mbps, RTT = 50 ms
+$$\text{BDP} = 100 \times 10^6 \times 0{,}05 = 5 \times 10^6 \text{ bits} \approx 625 \text{ Ko}$$</p>
+<h3>3.3 Disponibilité (Availability)</h3>
+<p>$$\text{Disponibilité} = \frac{\text{Temps de fonctionnement}}{\text{Temps total}} \times 100\%$$</p>
+<table>
+<thead>
+<tr>
+<th>SLA « nines »</th>
+<th>Disponibilité</th>
+<th>Downtime max / an</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>99 % (2 nines)</td>
+<td>99 %</td>
+<td>~3,65 jours</td>
+</tr>
+<tr>
+<td>99,9 % (3 nines)</td>
+<td>99,9 %</td>
+<td>~8,76 h</td>
+</tr>
+<tr>
+<td>99,99 % (4 nines)</td>
+<td>99,99 %</td>
+<td>~52 min</td>
+</tr>
+<tr>
+<td>99,999 % (5 nines)</td>
+<td>99,999 %</td>
+<td>~5 min</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Outils de mesure</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Métrique mesurée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ping</code></td>
+<td>RTT, perte</td>
+</tr>
+<tr>
+<td><code>iperf3</code></td>
+<td>Throughput TCP/UDP</td>
+</tr>
+<tr>
+<td><code>traceroute</code> / <code>tracert</code></td>
+<td>Chemin, latence par saut</td>
+</tr>
+<tr>
+<td>SNMP (aperçu)</td>
+<td>Charge interfaces, erreurs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. SLA et qualité de service (aperçu)</h2>
+<p>Un <strong>SLA</strong> (<em>Service Level Agreement</em>) définit des engagements mesurables entre un <strong>fournisseur</strong> (FAI, hébergeur) et un <strong>client</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Paramètre SLA</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disponibilité</td>
+<td>99,9 % mensuel</td>
+</tr>
+<tr>
+<td>Latence max</td>
+<td>&lt; 50 ms vers point de référence</td>
+</tr>
+<tr>
+<td>Jitter max</td>
+<td>&lt; 10 ms (VoIP)</td>
+</tr>
+<tr>
+<td>Temps de réparation</td>
+<td>&lt; 4 h (heures ouvrées)</td>
+</tr>
+<tr>
+<td>Pénalités</td>
+<td>Crédit si SLA non respecté</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Le <strong>QoS</strong> (Quality of Service) — priorisation du trafic — sera traité en Engineer (S6/S9).</p>
+</blockquote>
+<hr />
+<h2>5. Études de cas SI</h2>
+<h3>Cas 1 — Laboratoire MathInfo University of Mostaganem</h3>
+<p><strong>Besoin</strong> : 24 postes, 1 serveur, Internet, impression réseau.</p>
+<table>
+<thead>
+<tr>
+<th>Décision</th>
+<th>Choix</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topology</td>
+<td>Étoile</td>
+<td>Standard, simple</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>24–48 ports Gbps</td>
+<td>Marge de ports</td>
+</tr>
+<tr>
+<td>Lien Internet</td>
+<td>Via réseau universitaire</td>
+<td>Pas de FAI dédié</td>
+</tr>
+<tr>
+<td>Adressage</td>
+<td>192.168.x.0/24</td>
+<td>Révision ; VLSM en Ch. 05</td>
+</tr>
+</tbody>
+</table>
+<h3>Cas 2 — PME multi-sites (Oran + Alger)</h3>
+<table>
+<thead>
+<tr>
+<th>Site</th>
+<th>Topology locale</th>
+<th>Interconnexion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oran (siège)</td>
+<td>Hiérarchique 3 tiers</td>
+<td>VPN site-à-site</td>
+</tr>
+<tr>
+<td>Alger (agence)</td>
+<td>Étoile</td>
+<td>VPN via Internet</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Métrique clé</strong> : RTT Oran–Alger ~ 30–80 ms → impact sur applications synchrones.</p>
+<h3>Exercice guidé</h3>
+<p><strong>Énoncé</strong> : Transfert de 4 Go sur un lien 500 Mbps, RTT 40 ms. Temps de transmission minimum ? BDP ?</p>
+<details>
+<summary>Solution</summary>
+
+- Taille = 4 × 8 = 32 Gbits = 32 000 Mbits
+- Temps min = 32 000 / 500 = **64 secondes** (sans overhead TCP)
+- BDP = 500 × 10⁶ × 0,04 = **20 Mbits ≈ 2,5 Mo**
+</details>
+
+<hr />
+<h2>6. Review Questions and Quiz</h2>
+<h3>Questions ouvertes</h3>
+<ol>
+<li>Quelle topologie recommanderiez-vous pour un campus universitaire et pourquoi ?</li>
+<li>Expliquez la différence entre throughput et goodput.</li>
+<li>Que signifie un SLA 99,9 % en temps d'indisponibilité par mois (~43 min) ?</li>
+</ol>
+<h3>QCM</h3>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Question</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>BDP = BW × …</td>
+<td>MTU</td>
+<td>RTT</td>
+<td>TTL</td>
+<td>MSS</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Topology campus type</td>
+<td>Bus</td>
+<td>Hiérarchique 3 tiers</td>
+<td>Anneau</td>
+<td>PAN</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>99,99 % ≈ … downtime/an</td>
+<td>3 jours</td>
+<td>52 min</td>
+<td>8 h</td>
+<td>5 min</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>iperf mesure surtout</td>
+<td>Latence</td>
+<td>Throughput</td>
+<td>DNS</td>
+<td>ARP</td>
+<td><strong>b</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Maillée partielle vise</td>
+<td>Réduire coût</td>
+<td>Redondance</td>
+<td>Supprimer switch</td>
+<td>Wi-Fi only</td>
+<td><strong>b</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>References</h2>
+<ul>
+<li><strong>Kurose &amp; Ross</strong> [KR], Ch. 1 — <em>Computer Networking</em></li>
+<li><strong>Tanenbaum</strong> [TA], Ch. 1 — <em>Computer Networks</em></li>
+<li><a href="../../ISIL-S4/01_Cours/Chapter-01-Introduction-et-topologies.md">ISIL-S4 Ch. 01</a></li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>Note enseignant</strong> : Séance de révision active (QCM rapide ISIL-S4) en début de CM. Lien TD 01.</p>
+</blockquote>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../../../js/data.js"></script>
+<script src="../../../../../../js/main.js"></script>
+</body></html>
