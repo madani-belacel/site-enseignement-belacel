@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 03 — Simulation RPL-AER avec 40 nœuds — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 03 : lancer la simulation RPL-AER avec 40 nœuds dans Cooja, observer les logs MCS et comprendre la topologie.">
+<title>TP 03 : Simulation RPL-AER avec 40 nœuds — Dr. Madani BELACEL</title>
+<meta name="description" content="Générer un scénario Cooja de 40 nœuds, lancer la simulation, collecter les logs.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,75 +90,68 @@
 
     <h1>TP 03 : Simulation RPL-AER avec 40 nœuds</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 03 — Simulation RPL-AER avec 40 nœuds</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h30</li>
-        <li><strong>Objectifs :</strong> Lancer la simulation, observer les logs MCS, comprendre la topologie RPL-AER</li>
+        <li><strong>Durée estimée :</strong> 1h00</li>
+        <li><strong>Objectifs :</strong> Simuler RPL-AER avec 40 nœuds et collecter les logs</li>
       </ul>
     </div>
 
-    <h2>1. Ouvrir la simulation dans Cooja</h2>
-    <p>Lancez Cooja et ouvrez le fichier de simulation :</p>
-    <pre><code># Depuis le répertoire Contiki-NG
-cd contiki-ng
-ant run  # ou ./tools/cooja/runcooja.sh
-
-# Dans Cooja : File -> Open ->
-# RPL-AER/simulation/rpl-aer-simulation.csc</code></pre>
-
-    <h2>2. Examiner la configuration de la simulation</h2>
-    <p>La simulation comprend :</p>
+    <h2>1. Génération du scénario de simulation</h2>
+    <p>Générez un fichier de simulation Cooja avec 40 nœuds :</p>
+    <pre><code>./build_and_test.sh -g</code></pre>
+    <p>Alternativement :</p>
+    <pre><code>python3 generate_csc.py -n 39 -s 0.3 -m 0.3 -o rpl-aer-simulation.csc</code></pre>
+    <p>Où : <code>-n 39</code> = 39 clients + 1 sink = 40 nœuds, <code>-s 0.3</code> = 30% solaires, <code>-m 0.3</code> = 30% mobiles.</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Générer un scénario de simulation Cooja avec des paramètres configurables</li>
+        <li>Lancer une simulation avec 40 nœuds (39 clients + 1 sink)</li>
+        <li>Observer les logs MCS, énergie et sécurité en temps réel</li>
+        <li>Collecter les logs pour analyse ultérieure</li>
+      </ul>
+    </div>
+    <h2>2. Lancement de la simulation</h2>
+    <pre><code>cooja rpl-aer-simulation.csc</code></pre>
+    <p>Dans Cooja :</p>
     <ul>
-      <li><strong>40 nœuds</strong> déployés dans une zone de 500x500 m</li>
-      <li><strong>1 sink</strong> (nœud 1) au centre de la zone</li>
-      <li><strong>Nœuds Battery :</strong> 60% (24 nœuds) — batteries seules</li>
-      <li><strong>Nœuds Solar :</strong> 30% (12 nœuds) — avec panneaux solaires</li>
-      <li><strong>Nœuds Mobile :</strong> 10% (4 nœuds) — mobiles avec panneaux solaires</li>
+      <li>Vérifiez que les 40 nœuds sont déployés dans la zone de simulation</li>
+      <li>Cliquez sur "Start" pour démarrer la simulation</li>
+      <li>Observez les logs dans la console "Mote output"</li>
+      <li>Laissez la simulation tourner pendant 10 minutes (temps simulé)</li>
     </ul>
 
-    <h2>3. Lancer la simulation</h2>
-    <p>Dans Cooja, cliquez sur le bouton <strong>Start</strong>. Laissez tourner pendant 10 minutes de temps simulé.</p>
-    <p>Observez :</p>
-    <ul>
-      <li>La construction du DODAG (flèches entre les nœuds)</li>
-      <li>Les messages de contrôle RPL (DIO, DAO, DIS)</li>
-      <li>Les logs dans la console Cooja</li>
-    </ul>
+    <h2>3. Observation des logs</h2>
+    <p>Pendant la simulation, vous devriez voir des logs comme :</p>
+    <pre><code>RPL-AER: MCS=0.723 (NRE=0.850, PEC=0.600, ECS=0.800)
+RPL-AER: Energy=3200 mWh, Solar=780.5 lux
+RPL-AER: Attack=0, Anomaly=0
+RPL-AER: Performance - PDR=94.8%, Attacks=0</code></pre>
 
-    <h2>4. Observer les logs MCS</h2>
-    <p>Dans la console Cooja, cherchez les lignes contenant <code>[MCS]</code> :</p>
-    <pre><code>[MCS] Node 12: NRE=0.950 PEC=0.723 ECS=0.512 MCS=0.788
-[MCS] Node 15: NRE=0.342 PEC=0.821 ECS=0.634 MCS=0.554</code></pre>
-    <p>Notez comment le NRE varie entre les nœuds (élevé pour les nœuds neufs, faible pour les nœuds actifs).</p>
-
-    <h2>5. Analyser l'évolution temporelle</h2>
-    <p>Laissez tourner la simulation plus longtemps et observez l'évolution des logs :</p>
-    <pre><code>[MCS] Node 12: NRE=0.821 PEC=0.745 ECS=0.523 MCS=0.742  (t=500s)
-[MCS] Node 12: NRE=0.698 PEC=0.712 ECS=0.498 MCS=0.680  (t=1000s)
-[MCS] Node 12: NRE=0.523 PEC=0.689 ECS=0.472 MCS=0.587  (t=1500s)</code></pre>
-
-    <h2>6. Observer les types de nœuds</h2>
-    <p>Identifiez les différences de comportement entre :</p>
-    <ul>
-      <li><strong>Nœuds Battery :</strong> NRE diminue régulièrement, pas de récolte</li>
-      <li><strong>Nœuds Solar :</strong> NRE varie avec le cycle jour/nuit (récolte le jour, consommation la nuit)</li>
-      <li><strong>Nœuds Mobile :</strong> Changements fréquents de parent, MCS fluctuant</li>
-    </ul>
-
-    <h2>7. Sauvegarder les logs</h2>
-    <p>Dans Cooja : <strong>Tools -> Serial Socket (SERVER)</strong>. Connectez-vous avec :</p>
-    <pre><code>nc localhost 6000 > simulation_logs.txt</code></pre>
-
-    <h2>8. Questions</h2>
-    <ol>
-      <li>Combien de temps faut-il au DODAG pour se stabiliser après le démarrage ?</li>
-      <li>Quel nœud a le MCS le plus élevé après 500 secondes ? Le plus bas ?</li>
-      <li>Observez-vous des changements de parent pendant la simulation ? À quelle fréquence ?</li>
-      <li>Comment le MCS des nœuds solaires varie-t-il avec le cycle jour/nuit ?</li>
-    </ol>
-
+    <h2>4. Sauvegarde des logs</h2>
+    <p>Dans Cooja, allez dans "Tools" → "Serial Socket" → "Log to file" et sauvegardez dans <code>cooja_results/rpl-aer-output.log</code>.</p>
+    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Vérifiez que le fichier de log a été créé avec une taille non nulle : <code>ls -la cooja_results/rpl-aer-output.log</code>.</p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Cooja ne s'affiche pas : assurez-vous d'avoir un serveur X (X11 forwarding si SSH). Si generate_csc.py est introuvable, utilisez le chemin absolu.</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Pourquoi utilise-t-on 39 clients et 1 sink (40 nœuds au total) ?</li>
+      <li>Quel est l'impact de l'option -s 0.3 (30% solaire) sur le réseau ?</li>
+      <li>Que se passe-t-il si on augmente la mobilité à 50% (-m 0.5) ?</li>
+      <li>Combien de temps simulé faut-il pour observer des variations significatives du MCS ?</li>
+      <li>Comment les logs sont-ils structurés ? Quels champs contiennent-ils ?</li>
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Fichier <code>cooja_results/rpl-aer-output.log</code> contenant au moins 5 minutes de simulation avec logs MCS, énergie et performance.</p>
+    </div>
   </div>
 </main>
 

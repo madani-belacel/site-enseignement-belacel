@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 07 — Trust Score basé sur ETX — AER-MQoS</title>
+<title>Trust Score basé sur ETX — AER-MQoS</title>
 <meta name="description" content="Score de confiance (Trust Score) basé sur ETX dans AER-MQoS : calcul, conversion ETX vers confiance, détection d'anomalies, impact sur le routage.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,72 +76,46 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">Cours 07 — Trust Score basé sur ETX</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>Cours 07 — Trust Score basé sur ETX</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h00<br>
-      <strong>Objectif :</strong> Comprendre le calcul du Trust Score à partir de l'ETX, son rôle dans la sécurité du routage et son intégration dans la métrique MCS<br>
-      <strong>Prérequis :</strong> Cours 03 (MCS), notions d'ETX
+      <strong>Objectif :</strong> Comprendre le calcul du Trust Score à partir de l'ETX, son rôle dans la sécurité du routage et son intégration dans la métrique MCS<br><strong>Prérequis :</strong> Cours 03 (MCS), notions d'ETX
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Définition de l'ETX</h2>
-    <p>L'ETX (Expected Transmission Count) est une métrique qui estime le nombre de transmissions nécessaires pour qu'un paquet soit reçu avec succès. Il est calculé comme :</p>
+    <p>L'ETX (Expected Transmission Count) est une métrique qui estime le nombre de transmissions nécessaires pour qu'un paquet soit reçu avec succès :</p>
     <pre><code>ETX = 1 / (PDR_forward * PDR_backward)</code></pre>
-    <p>Où :</p>
-    <ul>
-      <li><code>PDR_forward</code> — probabilité de livraison dans le sens direct (mesurée via les paquets de données ou de contrôle)</li>
-      <li><code>PDR_backward</code> — probabilité de livraison dans le sens retour (mesurée via les acquittements)</li>
-    </ul>
-    <p>Un ETX de 1.0 indique un lien parfait, un ETX de 3.0 signifie qu'en moyenne 3 transmissions sont nécessaires.</p>
 
     <h2>2. De l'ETX au Trust Score</h2>
-    <p>Le Trust Score transforme l'ETX en une mesure de confiance dans [0, 1] via une fonction de mappage :</p>
+    <p>Le Trust Score transforme l'ETX en une mesure de confiance dans [0, 1] :</p>
     <pre><code>TrustScore = max(0, 1 - (ETX - 1) / (ETX_max - 1))</code></pre>
-    <p>Où <code>ETX_max</code> est une valeur seuil au-delà de laquelle le lien est considéré comme non fiable (typiquement 5.0).</p>
-    <p>Ainsi :</p>
-    <ul>
-      <li>ETX = 1.0 → TrustScore = 1.0 (confiance parfaite)</li>
-      <li>ETX = 2.0 → TrustScore = 0.75</li>
-      <li>ETX = 3.0 → TrustScore = 0.50</li>
-      <li>ETX ≥ 5.0 → TrustScore = 0.0 (lien jugé non fiable)</li>
-    </ul>
+    <p>Ainsi : ETX = 1.0 → TrustScore = 1.0, ETX = 3.0 → TrustScore = 0.50, ETX ≥ 5.0 → TrustScore = 0.0.</p>
 
     <h2>3. Prise en compte des anomalies</h2>
-    <p>Le Trust Score intègre également la détection d'anomalies de routage. Si un nœud détecte :</p>
-    <ul>
-      <li>Un <strong>rank anomaly</strong> : un parent annonce un rank anormalement bas (attaque de type <em>sinkhole</em>)</li>
-      <li>Un <strong>selective forwarding</strong> : un nœud ne transmet pas les paquets qu'il devrait transmettre</li>
-      <li>Des <strong>incohérences de version DODAG</strong></li>
-    </ul>
-    <p>Le Trust Score du nœud suspect est réduit d'un facteur de pénalité (par exemple, divisé par 2). Cette pénalité est appliquée progressivement pour éviter les faux positifs.</p>
+    <p>Le Trust Score intègre également la détection d'anomalies de routage : rank anomaly, selective forwarding, incohérences de version DODAG. Le Trust Score du nœud suspect est réduit d'un facteur de pénalité.</p>
 
     <h2>4. Implémentation dans aer_rpl_trust.c</h2>
-    <p>Le module <code>aer_rpl_trust.c</code> gère le calcul et la mise à jour du Trust Score :</p>
     <pre><code>/* Structure de confiance pour un voisin */
 struct trust_entry {
     rpl_nbr_t *neighbor;
-    double etx;           // ETX actuel
-    double trust_score;   // Score de confiance dans [0,1]
-    uint8_t anomaly_count; // Nombre d'anomalies détectées
+    double etx;
+    double trust_score;
+    uint8_t anomaly_count;
     clock_time_t last_update;
 };
 
@@ -133,31 +123,18 @@ struct trust_entry {
 void aer_rpl_trust_update(rpl_nbr_t *nbr, double etx) {
     struct trust_entry *entry = find_entry(nbr);
     entry->etx = etx;
-    // Mise à jour exponentielle lissée
     entry->trust_score = (1 - ALPHA) * entry->trust_score
                          + ALPHA * calculate_base_trust(etx);
-    // Appliquer pénalités si anomalies
     if (entry->anomaly_count > 0) {
         entry->trust_score /= (1 + entry->anomaly_count * PENALTY_FACTOR);
     }
 }</code></pre>
 
-    <h2>5. Élagage des voisins non fiables</h2>
-    <p>Un seuil de confiance minimum (<code>AER_TRUST_THRESHOLD</code>, typiquement 0.3) permet d'élaguer les candidats parents dont le Trust Score est trop bas. Ces nœuds ne sont pas considérés lors de la sélection du parent, ce qui protège le DODAG contre les nœuds compromiseés ou défaillants.</p>
-
-    <h2>6. Rôle du Trust Score dans la métrique MCS</h2>
+    <h2>5. Rôle du Trust Score dans la métrique MCS</h2>
     <p>Dans la métrique MCS, le Trust Score est multiplié par le poids gamma. Lorsque gamma est élevé (contexte d'attaque suspectée), les nœuds avec un Trust Score faible sont fortement pénalisés dans le score MCS, ce qui les exclut du routage.</p>
-    <p>L'agent Q-learning peut également augmenter gamma en réponse à une dégradation des performances, renforçant ainsi l'importance de la confiance dans la décision de routage.</p>
 
-    <h2>7. Exemple de fonctionnement sous attaque</h2>
-    <p>Considérons un nœud attaquant qui annonce un rank très bas pour attirer le trafic (<em>sinkhole</em>). Les voisins détectent l'anomalie (rank trop bas par rapport à l'ETX) et réduisent son Trust Score à 0.1. Avec gamma = 0.7, la contribution du Trust Score au MCS est de 0.7 × 0.1 = 0.07, même avec un NRE parfait (0.9) et un ETX normalisé bas (0.2), le MCS total serait :</p>
-    <pre><code>MCS = 0.15 * 0.9 + 0.15 * (1 - 0.2) + 0.7 * 0.1 = 0.135 + 0.12 + 0.07 = 0.325</code></pre>
-    <p>Un nœud honnête voisin avec NRE=0.7, ETX_norm=0.15, TrustScore=0.95 obtiendrait :</p>
-    <pre><code>MCS = 0.15 * 0.7 + 0.15 * 0.85 + 0.7 * 0.95 = 0.105 + 0.1275 + 0.665 = 0.8975</code></pre>
-    <p>Le nœud honnête est nettement préféré, démontrant l'efficacité de la défense.</p>
-
-    <h2>8. Résumé</h2>
-    <p>Le Trust Score transforme l'ETX et la détection d'anomalies en une mesure de confiance exploitable par la métrique MCS. Il constitue la première ligne de défense d'AER-MQoS contre les attaques de routage, en pénalisant les nœuds suspects et en protégeant l'intégrité du DODAG.</p>
+    <h2>6. Résumé</h2>
+    <p>Le Trust Score transforme l'ETX et la détection d'anomalies en une mesure de confiance exploitable par la métrique MCS. Il constitue la première ligne de défense d'AER-MQoS contre les attaques de routage.</p>
 
   </div>
 </main>

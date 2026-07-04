@@ -1,81 +1,55 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 04 — Génération de scénarios Cooja — IDS-IOT</title>
-<meta name="description" content="Générer des scénarios de simulation Cooja avec generate_campaign_csc.py, topologie en grille, scénarios 50 nœuds, configuration d'attaque.">
+<title>TP 04 — Génération de scénarios Cooja avec scripts Python — IDS-IOT</title>
+<meta name="description" content="Utiliser les scripts Python pour générer des scénarios Cooja multi-variants.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
-<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+<style>
+.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}
+.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}
+.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}
+.md-content p{margin:0.5rem 0;line-height:1.8}
+.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}
+.md-content li{margin:0.25rem 0;line-height:1.7}
+.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}
+.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}
+.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}
+.md-content pre code{background:none;padding:0}
+.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}
+.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}
+.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}
+.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}
+.box-obj{background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-verif{background:#e3f2fd;border-left:4px solid #1565c0;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-trouble{background:#fff3e0;border-left:4px solid #e65100;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-question{background:#f3e5f5;border-left:4px solid #7b1fa2;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-cmd{background:#263238;color:#eceff1;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto}
+.box-cmd code{color:#a5d6a7}
+.box-output{background:#1b2631;color:#d4d4d4;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto;font-size:0.88em}
+</style>
 </head><body>
-
 <header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
-
-<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 04 — Génération scénarios Cooja</li></ol></nav>
-
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 04 — Génération Scénarios</li></ol></nav>
 <main class="page-content" id="main-content"><div class="md-content">
-
-<h1>TP 04 — Génération de scénarios Cooja</h1>
-
-<div class="md-meta"><strong>TP 04 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Durée :</strong> 1 séance</li><li><strong>Script :</strong> <code>generate_campaign_csc.py</code></li></ul></div>
-
-<h2>Objectif</h2>
-<p>Utiliser le script <code>generate_campaign_csc.py</code> pour générer les scénarios de simulation Cooja (.csc) de la campagne. Comprendre la topologie en grille (grid), la configuration des nœuds malveillants et les paramètres de simulation.</p>
-
-<h2>1. Localiser le script</h2>
-<pre><code>ls SIMULATION_CAMPAIGN_READY/
-# Cherchez generate_campaign_csc.py</code></pre>
-
-<h2>2. Syntaxe du script</h2>
-<pre><code>python3 generate_campaign_csc.py --help</code></pre>
-<p>Paramètres principaux :</p>
-<ul>
-  <li><code>--variant</code> — B1, B2, B3, MAIN, NOCLUS, NOCTX, NOENR, NOML</li>
-  <li><code>--nodes</code> — Nombre de nœuds total (ex: 50)</li>
-  <li><code>--attack</code> — Type d'attaque (rank, sel_fwd, wormhole, dao_flood, mixed)</li>
-  <li><code>--malicious</code> — Nombre de nœuds malveillants</li>
-  <li><code>--seed</code> — Seed aléatoire pour la génération</li>
-  <li><code>--output</code> — Répertoire de sortie</li>
-</ul>
-
-<h2>3. Générer un scénario simple</h2>
-<pre><code>python3 generate_campaign_csc.py \
-  --variant MAIN \
-  --nodes 50 \
-  --attack rank \
-  --malicious 5 \
-  --seed 1 \
-  --output ./scenarios/</code></pre>
-
-<h2>4. Comprendre la topologie en grille</h2>
-<p>La topologie par défaut est une grille régulière (5×10 pour 50 nœuds). Les nœuds sont espacés de 60-80m pour assurer une connectivité RPL. La racine (node ID 1) est placée au centre. Les nœuds malveillants sont placés aléatoirement dans la grille.</p>
-
-<h2>5. Examiner le fichier CSC généré</h2>
-<pre><code>cat scenarios/MAIN_rank_50_1.csc</code></pre>
-<p>Identifiez les sections :</p>
-<ul>
-  <li><code>&lt;simulation&gt;</code> — Paramètres généraux (durée, seed, etc.)</li>
-  <li><code>&lt;field&gt;</code> — Dimensions du terrain</li>
-  <li><code>&lt;mote&gt;</code> — Définition de chaque nœud (position, firmware, variables)</li>
-  <li><code>&lt;plugin&gt;</code> — Plugins Cooja (collecte, logging, etc.)</li>
-</ul>
-
-<h2>6. Générer tous les scénarios d'une campagne</h2>
-<p>Le script peut générer l'ensemble des combinaisons variant × attaque × seed :</p>
-<pre><code>python3 generate_campaign_csc.py --campaign --output ./campaign_scenarios/</code></pre>
-<p>Cela produit les fichiers organisés par répertoire : <code>campaign_scenarios/{VARIANT}_{ATTACK}/</code></p>
-
-<h2>7. Visualiser la topologie</h2>
-<p>Le script génère optionnellement un fichier SVG de la topologie :</p>
-<pre><code>python3 generate_campaign_csc.py \
-  --variant MAIN --nodes 50 --attack mixed --malicious 5 --seed 1 \
-  --visualize --output ./scenarios/</code></pre>
-
-<h2>Rendu attendu</h2>
-<p>Générez 5 scénarios (rank, sel_fwd, wormhole, dao_flood, mixed) pour le variant MAIN et notez dans un fichier <code>scenarios_log.txt</code> les chemins des fichiers générés, le nombre de nœuds, et la position des nœuds malveillants.</p>
-
-</div></main>
-
+<h1>TP 04 — Génération de scénarios Cooja avec scripts Python</h1>
+<div class="md-meta"><strong>TP 04 — Module IDS-IOT / RPL-ClusterIDS</strong><ul>
+<li><strong>Durée :</strong> 2 séances</li>
+<li><strong>Prérequis :</strong> Python 3, TP 03, scripts/ disponibles</li>
+</ul></div>
+<div class="box-obj"><strong>Objectif pédagogique :</strong> Générer automatiquement des fichiers .csc Cooja avec 8 variants × 6 scénarios × 10 seeds.</div>
+<h2>1. Explorer les scripts</h2>
+<div class="box-cmd"><code>cd /home/madani/contiki-ng/examples/IDS_IOT<br>ls scripts/</code></div>
+<h2>2. Générer un scénario test (5 nœuds)</h2>
+<div class="box-cmd"><code>python3 scripts/generer_scenarios_cooja.py \<br>    --output sim/test/ --variants MAIN --scenarios mixed --nodes 5 --seed 1</code></div>
+<h2>3. Examiner le .csc</h2>
+<div class="box-cmd"><code>cat sim/test/MAIN_mixed_seed1.csc | head -30</code></div>
+<h2>4. Générer la campagne complète</h2>
+<div class="box-cmd"><code>python3 scripts/generer_scenarios_cooja.py \<br>    --output sim/campaign/ \<br>    --variants MAIN B1 B2 B3 NOCLUS NOCTX NOENR NOML \<br>    --scenarios none rank sel_fwd dao_flood wormhole mixed \<br>    --nodes 50 --seeds 1 2 3 4 5 6 7 8 9 10</code></div>
+<div class="box-verif"><strong>Vérification :</strong> Vérifiez la présence des variables dans le .csc : grep 'IDS_CAMPAIGN_' sim/test/MAIN_mixed_seed1.csc</div>
+<div class="box-trouble"><strong>Dépannage :</strong> Si ModuleNotFoundError, installez les dépendances : pip install -r scripts/requirements.txt</div>
+<div class="box-question"><strong>Question réflexive :</strong> Pourquoi est-il important de varier les seeds aléatoires ? Impact d'une seule seed sur les conclusions ?</div></div></main>
 <footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
-
 <script src="../../../js/data.js"></script>
 <script src="../../../js/main.js"></script>
 </body></html>

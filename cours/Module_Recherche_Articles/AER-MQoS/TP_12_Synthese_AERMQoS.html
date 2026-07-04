@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 12 — Synthèse AER-MQoS — AER-MQoS</title>
+<title>TP de synthèse AER-MQoS — AER-MQoS</title>
 <meta name="description" content="TP de synthèse : workflow complet AER-MQoS de la compilation à l'analyse, production d'un mini-rapport d'évaluation comparative.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,144 +76,77 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
-    <li class="current">TP 12 — Synthèse AER-MQoS</li>
+    <li class="current">TP 12 — TP de synthèse AER-MQoS</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 12 — TP de synthèse AER-MQoS</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 3h00 (hors temps de calcul)<br>
-      <strong>Objectif :</strong> Réaliser le workflow complet AER-MQoS : compilation → simulation → parsing → analyse → publication de figures. Produire un mini-rapport d'évaluation comparative.<br>
-      <strong>Prérequis :</strong> Tous les cours et TP précédents
+      <strong>Objectif :</strong> Réaliser le workflow complet AER-MQoS : compilation → simulation → parsing → analyse → publication de figures. Produire un mini-rapport d'évaluation comparative.<br><strong>Prérequis :</strong> Tous les cours et TP précédents
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Présentation du TP de synthèse</h2>
-    <p>Ce TP final vous demande de réaliser l'ensemble du workflow d'évaluation d'AER-MQoS, de la compilation des firmwares à la production de figures comparatives exploitables pour un article. Vous travaillerez de manière autonome en suivant les étapes ci-dessous, et produirez un mini-rapport synthétisant vos résultats et conclusions.</p>
+    <p>Ce TP final vous demande de réaliser l'ensemble du workflow d'évaluation d'AER-MQoS, de la compilation des firmwares à la production de figures comparatives exploitables pour un article.</p>
 
     <h2>2. Étape 1 : Compilation (TP 02)</h2>
-    <p>Compilez les 4 variantes du protocole :</p>
     <pre><code>cd /home/madani/contiki-ng/examples/AER-MQoS
 git checkout v1.1
 ./scripts/build_variant.sh
-# Vérification
 find code_source_AER_MQoS -name "*.cooja" -exec ls -lh {} \;</code></pre>
 
     <h2>3. Étape 2 : Simulation test (TP 03)</h2>
-    <p>Lancez une simulation de validation avec 3 nœuds pour vérifier que tout fonctionne :</p>
     <pre><code>./tools/cooja/cooja -nogui -contiki=.. \
-  -simulation=simulations/AER-MQoS-3nodes-template.csc \
-  > test_3nodes.log 2>&1
+  -simulation=simulations/AER-MQoS-3nodes-template.csc > test_3nodes.log 2>&1
 grep "\[METRIC\]" test_3nodes.log</code></pre>
 
     <h2>4. Étape 3 : Campagne multi-seed (TP 08)</h2>
-    <p>Lancez la campagne complète (16 simulations) :</p>
     <pre><code>nohup ./scripts/run_multi_seed_campaign.sh > campagne_synthese.log 2>&1 &
 echo "Campagne lancée, PID: $!"</code></pre>
 
     <h2>5. Étape 4 : Parsing (TP 09)</h2>
-    <p>Pendant ou après la campagne, préparez le parsing :</p>
-    <pre><code># Vérifier l'avancement
-tail -5 campagne_synthese.log
-# Une fois terminée :
-python3 scripts/parse_cooja_metrics.py --dir logs/ \
-  --output synthese_metrics.csv
-echo "Parsing terminé : $(wc -l synthese_metrics.csv) lignes"</code></pre>
+    <pre><code>python3 scripts/parse_cooja_metrics.py --dir logs/ --output synthese_metrics.csv</code></pre>
 
-    <h2>6. Étape 5 : Analyse des queues et MCS (TP 05, TP 06)</h2>
-    <p>Analysez les logs d'une simulation pour observer le comportement du WRR et du MCS :</p>
-    <pre><code># Analyse WRR
-grep "\[QUEUE\] WRR schedule" logs/aer_mqos/20260601.log | head -10
-# Analyse MCS
-grep "\[MCS\]" logs/aer_mqos/20260601.log | head -10</code></pre>
-
-    <h2>7. Étape 6 : Génération de figures (TP 10)</h2>
-    <p>Produisez les 3 figures principales :</p>
+    <h2>6. Étape 5 : Génération de figures (TP 10)</h2>
     <pre><code>python3 << 'EOF'
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import pandas as pd, matplotlib.pyplot as plt, seaborn as sns
 sns.set_style('whitegrid')
 df = pd.read_csv('synthese_metrics.csv')
-
 fig, axes = plt.subplots(1, 3, figsize=(16, 5))
-
-# PDR
 sns.barplot(data=df, x='variant', y='PDR', ax=axes[0], capsize=0.1)
 axes[0].set_title('PDR global')
-axes[0].tick_params(axis='x', rotation=15)
-
-# Latence
 sns.barplot(data=df, x='variant', y='Latence_avg', ax=axes[1], capsize=0.1)
 axes[1].set_title('Latence moyenne (ms)')
-axes[1].tick_params(axis='x', rotation=15)
-
-# Énergie
 sns.barplot(data=df, x='variant', y='Energie_consommee', ax=axes[2], capsize=0.1)
-axes[2].set_title('Énergie consommée (mAh)')
-axes[2].tick_params(axis='x', rotation=15)
-
+axes[2].set_title('Energie consommée (mAh)')
 plt.tight_layout()
 plt.savefig('synthese_figures.png', dpi=200)
 print("Figures de synthèse sauvegardées")
 EOF</code></pre>
 
-    <h2>8. Étape 7 : Analyse statistique</h2>
-    <p>Effectuez les tests de significativité :</p>
-    <pre><code>python3 << 'EOF'
-import pandas as pd
-from scipy import stats
-df = pd.read_csv('synthese_metrics.csv')
-aer = df[df['variant']=='AER-MQoS']
-for v in ['RPL-MRHOF', 'RPL-MQoS-style', 'RPL-AER-style']:
-    other = df[df['variant']==v]
-    t, p = stats.ttest_ind(aer['PDR'], other['PDR'])
-    print(f"AER-MQoS vs {v} (PDR): t={t:.3f} p={p:.4f} {'***' if p<0.001 else '**' if p<0.01 else '*' if p<0.05 else 'ns'}")
-EOF</code></pre>
+    <h2>7. Mini-rapport de synthèse</h2>
+    <p>Rédigez un mini-rapport (2-3 pages) contenant : introduction, méthodologie, résultats, analyse, figures et conclusion.</p>
 
-    <h2>9. Mini-rapport de synthèse</h2>
-    <p>Rédigez un mini-rapport (2-3 pages) contenant :</p>
-    <ol>
-      <li><strong>Introduction</strong> : rappel du contexte et des objectifs d'AER-MQoS (5 lignes)</li>
-      <li><strong>Méthodologie</strong> : variantes comparées, topologie, seeds, métriques (10 lignes)</li>
-      <li><strong>Résultats</strong> : tableau comparatif des métriques par variante</li>
-      <li><strong>Analyse</strong> : interprétation des résultats, compromis QoS vs énergie</li>
-      <li><strong>Figures</strong> : les 3 graphiques générés (PDR, latence, énergie)</li>
-      <li><strong>Conclusion</strong> : AER-MQoS est-il supérieur ? Dans quelles conditions ? (5 lignes)</li>
-    </ol>
-
-    <h2>10. Critères d'évaluation</h2>
+    <h2>8. Critères d'évaluation</h2>
     <table>
-      <tr><th>Critère</th><th>Description</th><th>Points</th></tr>
-      <tr><td>Compilation</td><td>Les 4 variantes compilent sans erreur</td><td>20%</td></tr>
-      <tr><td>Campagne</td><td>16 simulations terminées avec succès</td><td>20%</td></tr>
-      <tr><td>Parsing</td><td>Fichier CSV correctement généré</td><td>15%</td></tr>
-      <tr><td>Figures</td><td>3 figures claires et exploitables</td><td>20%</td></tr>
-      <tr><td>Rapport</td><td>Analyse complète et conclusions justifiées</td><td>25%</td></tr>
+      <tr><th>Critère</th><th>Points</th></tr>
+      <tr><td>Compilation (4 variantes sans erreur)</td><td>20%</td></tr>
+      <tr><td>Campagne (16 simulations terminées)</td><td>20%</td></tr>
+      <tr><td>Parsing (fichier CSV correct)</td><td>15%</td></tr>
+      <tr><td>Figures (3 graphiques clairs)</td><td>20%</td></tr>
+      <tr><td>Rapport (analyse complète)</td><td>25%</td></tr>
     </table>
-
-    <h2>11. Ressources</h2>
-    <ul>
-      <li>Dépôt AER-MQoS : <a href="https://github.com/madani-belacel/AER-MQoS" target="_blank">github.com/madani-belacel/AER-MQoS</a></li>
-      <li>Release v1.1 : <a href="https://github.com/madani-belacel/AER-MQoS/releases/tag/v1.1" target="_blank">v1.1</a></li>
-      <li>Scripts : <code>scripts/</code> (build, campagne, parsing, figures)</li>
-      <li>Documentation : <code>README.md</code> et ce parcours pédagogique</li>
-    </ul>
 
     <blockquote><strong>Félicitations !</strong> Vous avez complété le parcours complet AER-MQoS, de la théorie à la pratique, en passant par la simulation, l'analyse et la reproduction de résultats scientifiques.</blockquote>
 

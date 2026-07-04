@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 10 — Collecte des métriques de performance — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 10 : collecter les métriques de performance RPL-AER (PDR, latence, throughput, énergie) et générer metrics_summary.txt.">
+<title>TP 10 : Collecte des métriques de performance — Dr. Madani BELACEL</title>
+<meta name="description" content="Collecter automatiquement les métriques PDR, latence, énergie sur plusieurs scénarios.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,110 +90,91 @@
 
     <h1>TP 10 : Collecte des métriques de performance</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 10 — Collecte des métriques de performance</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Collecter et organiser les métriques de performance RPL-AER</li>
+        <li><strong>Durée estimée :</strong> 1h00</li>
+        <li><strong>Objectifs :</strong> Collecter et agréger les métriques de performance pour comparer les scénarios</li>
       </ul>
     </div>
 
-    <h2>1. Extraire les logs PERF</h2>
-    <p>Les logs de performance sont générés par le sink sous le format [PERF] :</p>
-    <pre><code>grep "\[PERF\]" simulation_logs.txt > perf_logs.txt</code></pre>
-
-    <h2>2. Format des logs PERF</h2>
-    <pre><code>[PERF] Time=360s Nodes=40 PDR=97.5% Latency=18.3ms Throughput=312bps Power=4.2mW
-[PERF] Time=720s Nodes=40 PDR=96.8% Latency=21.5ms Throughput=298bps Power=4.1mW</code></pre>
-
-    <h2>3. Parser et structurer</h2>
-    <pre><code>import re
-import csv
-
-perf_data = []
-with open('perf_logs.txt') as f:
-    for line in f:
-        m = re.search(r'Time=(\d+)s.*PDR=([\d.]+)% Latency=([\d.]+)ms Throughput=(\d+)bps Power=([\d.]+)mW', line)
-        if m:
-            perf_data.append({
-                'time': int(m.group(1)),
-                'pdr': float(m.group(2)),
-                'latency': float(m.group(3)),
-                'throughput': int(m.group(4)),
-                'power': float(m.group(5))
-            })
-
-# Calculer les statistiques globales
-pdr_values = [d['pdr'] for d in perf_data]
-lat_values = [d['latency'] for d in perf_data]
-thr_values = [d['throughput'] for d in perf_data]
-
-print(f"PDR: min={min(pdr_values):.1f}% avg={sum(pdr_values)/len(pdr_values):.1f}% max={max(pdr_values):.1f}%")
-print(f"Latence: min={min(lat_values):.1f}ms avg={sum(lat_values)/len(lat_values):.1f}ms")
-print(f"Throughput: min={min(thr_values)}bps avg={sum(thr_values)/len(thr_values):.0f}bps")</code></pre>
-
-    <h2>4. Créer metrics_summary.txt</h2>
-    <p>Générez un fichier de résumé structuré :</p>
-    <pre><code># metrics_summary.txt
-========================================
-RPL-AER — Résumé des métriques
-Simulation: rpl-aer-simulation.csc
-Date: 2025-XX-XX
-========================================
-
-MÉTRIQUES DE QUALITÉ DE SERVICE
-  PDR moyen:            97.2 %
-  Latence moyenne:      19.8 ms
-  Throughput moyen:     305 bps
-  Surcharge RPL:        12.5 %
-
-MÉTRIQUES ÉNERGÉTIQUES
-  Consommation moyenne: 4.2 mW
-  Énergie résiduelle moyenne: 0.68 (NRE)
-  MAE prédiction LSTM:  0.12 mW
-  ECS moyen:            0.45
-
-MÉTRIQUES DE SÉCURITÉ
-  Trust score moyen:    0.82
-  Attaques détectées:   3
-  Faux positifs:        0
-
-MOBILITÉ
-  Nœuds mobiles:        4 (10%)
-  Changements parent:   127
-  Temps convergence:    45 s
-========================================</code></pre>
-
-    <h2>5. Créer un fichier CSV</h2>
-    <pre><code>with open('performance_metrics.csv', 'w', newline='') as f:
-    writer = csv.DictWriter(f, fieldnames=['time','pdr','latency','throughput','power'])
-    writer.writeheader()
-    writer.writerows(perf_data)</code></pre>
-
-    <h2>6. Visualiser les métriques</h2>
-    <pre><code>import matplotlib.pyplot as plt
-
-times = [d['time'] for d in perf_data]
-pdr = [d['pdr'] for d in perf_data]
-
-plt.plot(times, pdr, 'b-', marker='s')
-plt.xlabel('Temps (s)')
-plt.ylabel('PDR (%)')
-plt.ylim(90, 100)
-plt.grid(True)
-plt.title('Évolution du PDR au fil du temps')
-plt.savefig('pdr_evolution.png')
-plt.show()</code></pre>
-
-    <h2>7. Questions</h2>
-    <ol>
-      <li>Quel est le PDR moyen de RPL-AER ? Est-il acceptable pour une application agricole ?</li>
-      <li>Comment la latence évolue-t-elle avec le nombre de nœuds actifs ?</li>
-      <li>Y a-t-il une corrélation entre la consommation d'énergie et le PDR ?</li>
-      <li>Comparez les métriques avec RPL standard (sans MCS). Que constatez-vous ?</li>
-    </ol>
-
+    <h2>1. Collecte des métriques de performance</h2>
+    <p>Ce TP vise à collecter systématiquement les métriques de performance pour évaluer RPL-AER.</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Collecter les métriques clés : PDR, latence, throughput, énergie</li>
+        <li>Automatiser la collecte sur plusieurs simulations</li>
+        <li>Calculer des statistiques agrégées</li>
+        <li>Préparer les données pour l'analyse scientifique</li>
+      </ul>
+    </div>
+    <h2>2. Script de collecte automatisée</h2>
+    <div class="code-block"><span class="ln">  1</span> #!/usr/bin/env python3
+<span class="ln">  2</span> import subprocess
+<span class="ln">  3</span> import re
+<span class="ln">  4</span> import json
+<span class="ln">  5</span> import os
+<span class="ln">  6</span> 
+<span class="ln">  7</span> def extract_metrics(log_file):
+<span class="ln">  8</span>     with open(log_file) as f:
+<span class="ln">  9</span>         logs = f.read()
+<span class="ln"> 10</span>     metrics = {}
+<span class="ln"> 11</span>     pdr = re.findall(r"PDR = ([0-9.]+)", logs)
+<span class="ln"> 12</span>     metrics["pdr"] = {
+<span class="ln"> 13</span>         "mean": sum(float(p) for p in pdr) / len(pdr),
+<span class="ln"> 14</span>     } if pdr else None
+<span class="ln"> 15</span>     latency = re.findall(r"Avg Latency = ([0-9.]+) ms", logs)
+<span class="ln"> 16</span>     metrics["latency"] = {
+<span class="ln"> 17</span>         "mean": sum(float(l) for l in latency) / len(latency)
+<span class="ln"> 18</span>     } if latency else None
+<span class="ln"> 19</span>     energy = re.findall(r"Energy=([0-9]+) mWh", logs)
+<span class="ln"> 20</span>     metrics["energy"] = {
+<span class="ln"> 21</span>         "initial": int(energy[0]), "final": int(energy[-1])
+<span class="ln"> 22</span>     } if energy else None
+<span class="ln"> 23</span>     return metrics
+<span class="ln"> 24</span> 
+<span class="ln"> 25</span> scenarios = ["scenario_20_static.csc", "scenario_40_mixed.csc"]
+<span class="ln"> 26</span> all_metrics = {}
+<span class="ln"> 27</span> for s in scenarios:
+<span class="ln"> 28</span>     log = f"cooja_results/{s.replace('.csc', '.log')}"
+<span class="ln"> 29</span>     if os.path.exists(log):
+<span class="ln"> 30</span>         all_metrics[s] = extract_metrics(log)
+<span class="ln"> 31</span> 
+<span class="ln"> 32</span> with open("cooja_results/all_metrics.json", "w") as f:
+<span class="ln"> 33</span>     json.dump(all_metrics, f, indent=2)</div>
+    <h2>3. Tableau récapitulatif</h2>
+    <div class="code-block"><span class="ln">  1</span> import json
+<span class="ln">  2</span> 
+<span class="ln">  3</span> with open("cooja_results/all_metrics.json") as f:
+<span class="ln">  4</span>     data = json.load(f)
+<span class="ln">  5</span> 
+<span class="ln">  6</span> print(f"{'Scénario':<30} {'PDR(%)':<10} {'Latence(ms)':<12} {'Énergie':<12} {'Attaques':<10}")
+<span class="ln">  7</span> print("-" * 74)
+<span class="ln">  8</span> for scenario, metrics in data.items():
+<span class="ln">  9</span>     pdr = f"{metrics['pdr']['mean']:.1f}" if metrics["pdr"] else "N/A"
+<span class="ln"> 10</span>     lat = f"{metrics['latency']['mean']:.1f}" if metrics["latency"] else "N/A"
+<span class="ln"> 11</span>     eng = f"{metrics['energy']['final']}" if metrics["energy"] else "N/A"
+<span class="ln"> 12</span>     print(f"{scenario:<30} {pdr:<10} {lat:<12} {eng:<12}")</div>    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Vérifiez que le fichier all_metrics.json contient les données pour chaque scénario. Les valeurs de PDR doivent être comprises entre 0 et 100%.</p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Aucune métrique extraite : vérifiez le format des logs. Les logs doivent contenir les motifs 'PDR =', 'Avg Latency =', 'Energy='.</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Quel scénario donne le meilleur PDR ? Pourquoi ?</li>
+      <li>Quel est l'impact du nombre de nœuds sur la latence moyenne ?</li>
+      <li>Comment l'énergie finale varie-t-elle entre les scénarios ?</li>
+      <li>Quelle métrique est la plus impactée par la mobilité ?</li>
+      <li>Proposer une méthodologie pour comparer RPL-AER avec RPL standard.</li>
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Scripts <code>collect_metrics.py</code>, fichier <code>all_metrics.json</code>, tableau dans <code>metrics_summary.txt</code>.</p>
+    </div>
   </div>
 </main>
 

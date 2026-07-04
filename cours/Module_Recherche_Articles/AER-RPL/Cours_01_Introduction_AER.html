@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 01 — Introduction au protocole RPL-AER — Dr. Madani BELACEL</title>
-<meta name="description" content="Introduction au protocole RPL-AER : contexte IoT agricole, limites du RPL standard, contributions de RPL-AER.">
+<title>Cours 01 : Introduction au protocole RPL-AER — Dr. Madani BELACEL</title>
+<meta name="description" content="Introduction au protocole RPL-AER : contexte IoT agricole, limites du RPL standard, contributions.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,7 +90,7 @@
 
     <h1>Cours 01 : Introduction au protocole RPL-AER</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 01 — Introduction au protocole RPL-AER</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
@@ -87,8 +101,15 @@
 
     <h2>1. Contexte : IoT et agriculture de précision</h2>
     <p>L'Internet des Objets (IoT) transforme l'agriculture de précision en permettant le déploiement de réseaux de capteurs sans fil (WSN) pour surveiller en temps réel les paramètres culturaux : humidité du sol, température, luminosité, etc. Ces réseaux fonctionnent avec des nœuds contraints en énergie, souvent alimentés par batteries ou panneaux solaires.</p>
-    <p>Dans ce contexte, le protocole de routage RPL (IPv6 Routing Protocol for Low-Power and Lossy Networks), défini par la RFC 6550, est la norme dominante. Cependant, RPL standard utilise des métriques simples comme l'ETX (Expected Transmission Count) qui ne tiennent pas compte de l'état énergétique des nœuds.</p>
-
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre le contexte applicatif de l'agriculture de précision IoT</li>
+        <li>Identifier les limitations du protocole RPL standard</li>
+        <li>Découvrir les contributions innovantes de RPL-AER</li>
+        <li>Appréhender l'architecture modulaire du protocole</li>
+      </ul>
+    </div>
     <h2>2. Limitations de RPL standard</h2>
     <ul>
       <li><strong>Métrique ETX uniquement :</strong> L'ETX mesure la qualité du lien mais ignore l'énergie résiduelle, ce qui conduit à la sur-utilisation des nœuds les mieux connectés.</li>
@@ -101,7 +122,7 @@
     <h2>3. Contributions de RPL-AER</h2>
     <p>RPL-AER (Adaptive Energy-Responsive RPL) est une extension du protocole RPL développée dans le cadre des travaux de recherche de Dr. BELACEL. Il introduit les innovations suivantes :</p>
     <ul>
-      <li><strong>MCS — Multi-Criteria Score :</strong> Métrique composite qui remplace l'ETX pour la sélection du parent préféré. Formule : MCS = &alpha;&times;NRE + &beta;&times;PEC + &gamma;&times;ECS.</li>
+      <li><strong>MCS — Multi-Criteria Score :</strong> Métrique composite qui remplace l'ETX pour la sélection du parent préféré. Formule : MCS = α×NRE + β×PEC + γ×ECS.</li>
       <li><strong>NRE — Normalized Residual Energy :</strong> Énergie résiduelle normalisée du nœud, reflétant la capacité restante de la batterie.</li>
       <li><strong>PEC — Predictive Energy Consumption :</strong> Prédiction de la consommation future via un réseau de neurones LSTM (Long Short-Term Memory).</li>
       <li><strong>ECS — Environmental Context Score :</strong> Score contextuel basé sur la récolte d'énergie solaire et les facteurs environnementaux.</li>
@@ -113,7 +134,6 @@
     <p>RPL-AER est implémenté comme une couche au-dessus de RPL dans Contiki-NG. Il modifie la fonction objective (<em>Objective Function</em>) de RPL pour utiliser le MCS au lieu de l'ETX. Le code source est structuré en modules indépendants :</p>
     <ul>
       <li><code>rpl-aer.c / rpl-aer.h</code> — Logique principale du protocole</li>
-      <li><code>rpl-aer-sink.c</code> — Comportement spécifique du nœud puits (sink)</li>
       <li><code>mcs_calculator.c / .h</code> — Calcul du Multi-Criteria Score</li>
       <li><code>lstm_predictor.c / .h</code> — Prédiction LSTM de consommation</li>
       <li><code>trust_module.c / .h</code> — Module de confiance et sécurité</li>
@@ -122,14 +142,22 @@
     </ul>
 
     <h2>5. Scénarios d'application</h2>
-    <p>RPL-AER est conçu pour les environnements agricoles exigeants :</p>
     <ul>
       <li><strong>Grandes cultures :</strong> Champs de blé, maïs, oliviers avec des nœuds espacés de 50-200 m.</li>
       <li><strong>Serres intelligentes :</strong> Environnements contrôlés avec forte densité de capteurs.</li>
       <li><strong>Périmètres irrigués :</strong> Surveillance de l'humidité du sol et contrôle automatisé de l'irrigation.</li>
       <li><strong>Zones à mobilité :</strong> Présence de drones ou robots agricoles qui se déplacent dans le champ.</li>
     </ul>
-
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Quelle est la principale limitation de l'ETX comme métrique de routage ?</li>
+      <li>Pourquoi la prédiction LSTM est-elle utile dans un contexte agricole ?</li>
+      <li>Quels sont les trois composants du MCS et que représentent-ils ?</li>
+      <li>En quoi la mobilité des nœuds complique-t-elle le routage RPL ?</li>
+      <li>Citez deux types d'attaques que RPL-AER peut détecter.</li>
+      </ol>
+    </div>
     <h2>6. Références</h2>
     <ul>
       <li><a href="https://github.com/madani-belacel/RPL-AER" target="_blank">Dépôt GitHub RPL-AER</a></li>

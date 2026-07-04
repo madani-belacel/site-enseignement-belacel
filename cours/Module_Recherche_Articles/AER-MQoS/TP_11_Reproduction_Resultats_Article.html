@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 11 — Reproduction des résultats de l'article — AER-MQoS</title>
+<title>Reproduction des résultats de l'article — AER-MQoS</title>
 <meta name="description" content="Reproduire les résultats de l'article AER-MQoS en utilisant la release v1.1, vérifier les données et figures.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,134 +76,71 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">TP 11 — Reproduction des résultats de l'article</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 11 — Reproduction des résultats de l'article</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 2h00 (hors temps de calcul)<br>
-      <strong>Objectif :</strong> Reproduire les résultats expérimentaux de l'article AER-MQoS en utilisant la release v1.1, en suivant pas à pas le protocole de reproduction<br>
-      <strong>Prérequis :</strong> Tous les TP précédents
+      <strong>Objectif :</strong> Reproduire les résultats expérimentaux de l'article AER-MQoS en utilisant la release v1.1<br><strong>Prérequis :</strong> Tous les TP précédents
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Utiliser la release v1.1</h2>
-    <p>Pour garantir la reproductibilité exacte, utilisez la release v1.1 taguée sur GitHub :</p>
-    <pre><code># Les codes sont déjà présents localement
-# Si nécessaire, cloner depuis GitHub:
-# git clone https://github.com/madani-belacel/AER-MQoS.git
-cd /home/madani/contiki-ng/examples/AER-MQoS
+    <pre><code>cd /home/madani/contiki-ng/examples/AER-MQoS
 git checkout v1.1
 git log --oneline -1</code></pre>
 
     <h2>2. Compiler les 4 variantes</h2>
-    <p>Compilez les firmwares comme au TP 02 :</p>
-    <pre><code>./scripts/build_variant.sh</code></pre>
-    <p>Vérifiez que tous les binaires sont présents :</p>
-    <pre><code>ls -lh code_source_AER_MQoS/*.cooja 2>/dev/null
-# ou chercher les binaires
+    <pre><code>./scripts/build_variant.sh
 find code_source_AER_MQoS -name "*.cooja" -o -name "*.sky"</code></pre>
 
     <h2>3. Lancer la campagne multi-seed complète</h2>
-    <p>C'est l'étape la plus longue. Lancez les 16 simulations :</p>
-    <pre><code>nohup ./scripts/run_multi_seed_campaign.sh > \
-  reproduction_v1.1.log 2>&1 &</code></pre>
-    <p>Pendant que les simulations tournent, notez les temps de début et de fin.</p>
+    <pre><code>nohup ./scripts/run_multi_seed_campaign.sh > reproduction_v1.1.log 2>&1 &</code></pre>
 
     <h2>4. Extraire les métriques</h2>
-    <p>Une fois la campagne terminée, extrayez les résultats :</p>
-    <pre><code>python3 scripts/parse_cooja_metrics.py --dir logs/ \
-  --output reproduction_metrics.csv</code></pre>
+    <pre><code>python3 scripts/parse_cooja_metrics.py --dir logs/ --output reproduction_metrics.csv</code></pre>
 
     <h2>5. Comparer avec les résultats de l'article</h2>
-    <p>L'article présente des tableaux de résultats et des figures. Comparez :</p>
     <pre><code>python3 << 'EOF'
 import pandas as pd
-# Résultats reproduits
 df = pd.read_csv('reproduction_metrics.csv')
-# Résultats de l'article (valeurs de référence)
 reference = {
-    'RPL-MRHOF':  {'PDR': 0.78, 'Latence_avg': 67.2},
-    'RPL-MQoS-style': {'PDR': 0.85, 'Latence_avg': 52.1},
-    'RPL-AER-style':  {'PDR': 0.76, 'Latence_avg': 71.8},
-    'AER-MQoS':   {'PDR': 0.92, 'Latence_avg': 45.3},
+    'RPL-MRHOF':     {'PDR': 0.78, 'Latence_avg': 67.2},
+    'RPL-MQoS-style':{'PDR': 0.85, 'Latence_avg': 52.1},
+    'RPL-AER-style': {'PDR': 0.76, 'Latence_avg': 71.8},
+    'AER-MQoS':      {'PDR': 0.92, 'Latence_avg': 45.3},
 }
 for variant in df['variant'].unique():
     vdata = df[df['variant'] == variant]
     pdr_mean = vdata['PDR'].mean()
     lat_mean = vdata['Latence_avg'].mean()
     ref = reference.get(variant, {})
-    print(f"\n{variant}:")
-    print(f"  PDR: reproduit={pdr_mean:.3f} article={ref.get('PDR','N/A')}")
-    print(f"  Latence: reproduit={lat_mean:.1f} article={ref.get('Latence_avg','N/A')}")
+    print(f"{variant}: PDR={pdr_mean:.3f} (art:{ref.get('PDR','N/A')}) Lat={lat_mean:.1f} (art:{ref.get('Latence_avg','N/A')})")
     if ref:
-        pdr_err = abs(pdr_mean - ref['PDR']) / ref['PDR'] * 100
-        print(f"  Écart PDR: {pdr_err:.1f}%")
+        print(f"  Ecart PDR: {abs(pdr_mean-ref['PDR'])/ref['PDR']*100:.1f}%")
 EOF</code></pre>
 
-    <h2>6. Générer les figures de l'article</h2>
-    <p>Utilisez les scripts de génération de figures fournis :</p>
-    <pre><code>python3 scripts/generate_figures.py --input reproduction_metrics.csv \
-  --output figures/</code></pre>
-    <p>Comparez les figures générées avec celles de l'article (mêmes axes, mêmes échelles).</p>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Les écarts entre résultats reproduits et ceux de l'article doivent être inférieurs à 5%.</div>
 
-    <h2>7. Vérifier l'analyse statistique</h2>
-    <p>Effectuez les tests statistiques :</p>
-    <pre><code>python3 << 'EOF'
-from scipy import stats
-import pandas as pd
-df = pd.read_csv('reproduction_metrics.csv')
-# ANOVA pour comparer les 4 variantes
-variants_groups = [df[df['variant'] == v]['PDR'] 
-                   for v in df['variant'].unique()]
-f_stat, p_value = stats.f_oneway(*variants_groups)
-print(f"ANOVA: F={f_stat:.4f} p={p_value:.6f}")
-if p_value < 0.001:
-    print("Différence hautement significative (p<0.001)")
-# Post-hoc : comparer AER-MQoS à chaque variante
-aer = df[df['variant'] == 'AER-MQoS']['PDR']
-for v in df['variant'].unique():
-    if v == 'AER-MQoS':
-        continue
-    other = df[df['variant'] == v]['PDR']
-    t, p = stats.ttest_ind(aer, other)
-    print(f"AER-MQoS vs {v}: t={t:.4f} p={p:.6f}")
-EOF</code></pre>
-
-    <h2>8. Documenter la reproduction</h2>
-    <p>Créez un rapport de reproduction contenant :</p>
-    <ol>
-      <li>Les informations sur l'environnement (OS, version Contiki-NG, version Cooja, Java)</li>
-      <li>Le hash du commit utilisé (<code>git rev-parse HEAD</code>)</li>
-      <li>Les résultats reproduits sous forme de tableau</li>
-      <li>Les figures reproduites</li>
-      <li>Les tests statistiques et leur interprétation</li>
-      <li>Les éventuels écarts par rapport à l'article et leur explication</li>
-    </ol>
-
-    <h2>9. Questions</h2>
-    <ol>
-      <li>Les résultats reproduits sont-ils cohérents avec ceux de l'article ?</li>
-      <li>Y a-t-il des écarts significatifs ? Si oui, pourquoi ?</li>
-      <li>Les figures générées sont-elles visuellement similaires à celles de l'article ?</li>
-      <li>Que peut-on conclure sur la reproductibilité des résultats ?</li>
-    </ol>
+    <div class="question-box">
+      <ol>
+        <li>Les résultats reproduits sont-ils cohérents avec ceux de l'article ?</li>
+        <li>Y a-t-il des écarts significatifs ? Si oui, pourquoi ?</li>
+        <li>Que peut-on conclure sur la reproductibilité des résultats ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 02 — La métrique Multi-Criteria Score (MCS) — Dr. Madani BELACEL</title>
-<meta name="description" content="La métrique Multi-Criteria Score (MCS) de RPL-AER : formule, composantes NRE, PEC, ECS et configuration des poids.">
+<title>Cours 02 : La métrique Multi-Criteria Score (MCS) — Dr. Madani BELACEL</title>
+<meta name="description" content="La métrique MCS de RPL-AER : formule, pondération alpha/beta/gamma, implémentation dans rpl-aer.c.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,80 +90,85 @@
 
     <h1>Cours 02 : La métrique Multi-Criteria Score (MCS)</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 02 — La métrique Multi-Criteria Score (MCS)</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
         <li><strong>Durée estimée :</strong> 1h30</li>
-        <li><strong>Objectifs :</strong> Comprendre la formule MCS, le rôle de chaque composante et la configuration des poids</li>
+        <li><strong>Objectifs :</strong> Comprendre la formule MCS, les poids α/β/γ et leur implémentation</li>
       </ul>
     </div>
 
-    <h2>1. Principe général</h2>
-    <p>Le Multi-Criteria Score (MCS) est la métrique centrale de RPL-AER. Contrairement à l'ETX qui ne considère que la qualité du lien, le MCS intègre trois dimensions critiques pour l'agriculture de précision : l'énergie disponible, la consommation prévue et le contexte environnemental.</p>
-    <p>Le MCS remplace l'ETX dans la fonction objective de RPL pour la sélection du parent préféré (<em>Preferred Parent</em>). Un score MCS élevé indique un nœud mieux adapté pour servir de parent.</p>
-
-    <h2>2. Formule mathématique</h2>
-    <p>Le MCS est calculé comme une somme pondérée :</p>
-    <pre><code>MCS = &alpha; &times; NRE + &beta; &times; PEC + &gamma; &times; ECS</code></pre>
-    <p>Avec :</p>
+    <h2>1. Définition du MCS</h2>
+    <p>Le <strong>Multi-Criteria Score (MCS)</strong> est une métrique composite qui fusionne trois critères pondérés pour évaluer la qualité d'un parent potentiel dans le DODAG RPL :</p>
+    <blockquote><strong>MCS = α × NRE + β × PEC + γ × ECS</strong></blockquote>
+    <p>Où :</p>
     <ul>
-      <li><strong>NRE</strong> (Normalized Residual Energy) : Énergie résiduelle normalisée entre 0 et 1</li>
-      <li><strong>PEC</strong> (Predictive Energy Consumption) : Score de prédiction de consommation entre 0 et 1</li>
-      <li><strong>ECS</strong> (Environmental Context Score) : Score contextuel environnemental entre 0 et 1</li>
-      <li><strong>&alpha;, &beta;, &gamma;</strong> : Poids de chaque composante, avec &alpha; + &beta; + &gamma; = 1</li>
+      <li><strong>α</strong> (MCS_ALPHA) — Poids de l'énergie résiduelle (NRE), typiquement 0.5</li>
+      <li><strong>β</strong> (MCS_BETA) — Poids de la prédiction de consommation (PEC), typiquement 0.3</li>
+      <li><strong>γ</strong> (MCS_GAMMA) — Poids du score contextuel (ECS), typiquement 0.2</li>
     </ul>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre la formule du MCS et le rôle de chaque composant</li>
+        <li>Analyser l'impact des poids α, β, γ sur la sélection du parent</li>
+        <li>Étudier l'implémentation du calcul du MCS dans le code source</li>
+        <li>Interpréter les logs MCS générés par la simulation</li>
+      </ul>
+    </div>
+    <h2>2. Implémentation dans rpl-aer.c</h2>
+    <p>La fonction <code>rpl_aer_calculate_mcs()</code> dans <code>rpl-aer.c:77</code> implémente le calcul :</p>
+    <div class="code-block"><span class="ln">  1</span> float rpl_aer_calculate_mcs(void) {
+<span class="ln">  2</span>   float nre = rpl_aer_calculate_nre();
+<span class="ln">  3</span>   float pec = rpl_aer_calculate_pec();
+<span class="ln">  4</span>   float ecs = rpl_aer_calculate_ecs();
+<span class="ln">  5</span> 
+<span class="ln">  6</span>   rpl_aer_ctx.mcs.mcs = (NRE_WEIGHT * nre) +
+<span class="ln">  7</span>                         (PEC_WEIGHT * pec) +
+<span class="ln">  8</span>                         (ECS_WEIGHT * ecs);
+<span class="ln">  9</span> 
+<span class="ln"> 10</span>   return rpl_aer_ctx.mcs.mcs;
+<span class="ln"> 11</span> }</div>    <p>Les constantes <code>NRE_WEIGHT</code>, <code>PEC_WEIGHT</code> et <code>ECS_WEIGHT</code> sont définies dans <code>project-conf.h</code> ou <code>rpl-aer.h</code>.</p>
 
-    <h2>3. Composantes détaillées</h2>
+    <h2>3. La fonction mcs_calculator_compute</h2>
+    <p>Le fichier <code>mcs_calculator.h:14</code> déclare la fonction de calcul alternative :</p>
+    <div class="code-block"><span class="ln">  1</span> float mcs_calculator_compute(
+<span class="ln">  2</span>   float nre, float etx_norm, float trustscore,
+<span class="ln">  3</span>   float alpha, float beta, float gamma
+<span class="ln">  4</span> );</div>    <p>Cette version inclut également l'ETX normalisé et le Trust Score en plus du NRE, avec une flexibilité de paramétrage via α, β, γ passés en arguments.</p>
 
-    <h3>NRE — Normalized Residual Energy</h3>
-    <p>Le NRE représente la fraction d'énergie restante dans la batterie du nœud :</p>
-    <pre><code>NRE = E_residuelle / E_maximale</code></pre>
-    <p>Un nœud avec une batterie pleine a NRE = 1. Un nœud presque épuisé a NRE proche de 0. Cette composante favorise les nœuds ayant le plus d'énergie disponible.</p>
+    <h2>4. Pondération et impact</h2>
+    <table>
+      <tr>      <th>Poids</th>      <th>Valeur typique</th>      <th>Impact</th></tr>
+      <tr><td>α (NRE)</td><td>0.5</td><td>Favorise les nœuds avec beaucoup d'énergie résiduelle</td></tr>
+      <tr><td>β (PEC)</td><td>0.3</td><td>Favorise les nœuds avec une faible consommation prédite</td></tr>
+      <tr><td>γ (ECS)</td><td>0.2</td><td>Favorise les nœuds dans un environnement favorable (solaire, stable)</td></tr>
+    </table>
+    <p>La somme des poids est normalisée à 1.0 (α + β + γ = 1.0).</p>
 
-    <h3>PEC — Predictive Energy Consumption</h3>
-    <p>Le PEC est issu d'une prédiction LSTM de la consommation future. Un PEC élevé signifie que le nœud prévoit une faible consommation dans le futur immédiat, le rendant plus fiable comme parent. Le calcul détaillé est présenté dans le Cours 04.</p>
-
-    <h3>ECS — Environmental Context Score</h3>
-    <p>L'ECS intègre les conditions environnementales : présence de récolte solaire, luminosité, température. Un nœud avec panneau solaire exposé au soleil aura un ECS élevé. Le calcul détaillé est présenté dans le Cours 05.</p>
-
-    <h2>4. Configuration des poids &alpha;, &beta;, &gamma;</h2>
-    <p>Les poids sont configurables dans le fichier <code>project-conf.h</code> :</p>
-    <pre><code>#define MCS_ALPHA 0.5
-#define MCS_BETA  0.3
-#define MCS_GAMMA 0.2</code></pre>
-    <p>La configuration par défaut (&alpha;=0.5, &beta;=0.3, &gamma;=0.2) donne la priorité à l'énergie résiduelle, suivie de la prédiction de consommation et du contexte environnemental. Ces poids peuvent être adaptés selon l'application :</p>
+    <h2>5. Logging du MCS</h2>
+    <p>La fonction <code>rpl_aer_log_mcs()</code> à la ligne 297 de <code>rpl-aer.c</code> génère les logs :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_log_mcs(void) {
+<span class="ln">  2</span>   LOG_INFO("RPL-AER: MCS=%.3f (NRE=%.3f, PEC=%.3f, ECS=%.3f)\n",
+<span class="ln">  3</span>            rpl_aer_ctx.mcs.mcs, rpl_aer_ctx.mcs.nre,
+<span class="ln">  4</span>            rpl_aer_ctx.mcs.pec, rpl_aer_ctx.mcs.ecs);
+<span class="ln">  5</span> }</div>    <p>Exemple de sortie dans les logs :</p>
+    <pre><code>RPL-AER: MCS=0.723 (NRE=0.850, PEC=0.600, ECS=0.800)</code></pre>
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Si α=0.5, β=0.3, γ=0.2, quel est le MCS pour NRE=0.8, PEC=0.6, ECS=0.7 ? (Calculer)</li>
+      <li>Que se passe-t-il si un nœud a NRE=0.1 mais ECS=0.9 ? Sera-t-il choisi comme parent ?</li>
+      <li>Pourquoi la somme α+β+γ doit-elle être égale à 1.0 ?</li>
+      <li>Proposer une autre combinaison de poids pour un scénario avec forte mobilité.</li>
+      <li>Comment le trust module peut-il modifier le MCS final ?</li>
+      </ol>
+    </div>    <h2>Références</h2>
     <ul>
-      <li><strong>Agriculture en plein champ :</strong> &alpha;=0.4, &beta;=0.3, &gamma;=0.3 (plus d'importance à l'environnement)</li>
-      <li><strong>Serre avec éclairage artificiel :</strong> &alpha;=0.5, &beta;=0.4, &gamma;=0.1 (moins d'importance à l'environnement)</li>
-      <li><strong>Réseau à forte mobilité :</strong> &alpha;=0.6, &beta;=0.3, &gamma;=0.1 (priorité à l'énergie stable)</li>
+      <li>Code : <code>rpl-aer.c:77-87</code> — <code>rpl_aer_calculate_mcs()</code></li>
+      <li>Code : <code>mcs_calculator.h:14</code> — Déclaration de la fonction de calcul</li>
     </ul>
-
-    <h2>5. Impact sur la sélection du parent</h2>
-    <p>Dans RPL standard, chaque nœud choisit son parent préféré comme celui ayant le plus petit ETX (meilleure qualité de lien). Avec RPL-AER, le nœud calcule le MCS pour chaque parent potentiel et sélectionne celui ayant le MCS le plus élevé.</p>
-    <p>Exemple de calcul :</p>
-    <pre><code>Parent A : NRE=0.9, PEC=0.7, ECS=0.5
-MCS_A = 0.5&times;0.9 + 0.3&times;0.7 + 0.2&times;0.5 = 0.76
-
-Parent B : NRE=0.4, PEC=0.8, ECS=0.9
-MCS_B = 0.5&times;0.4 + 0.3&times;0.8 + 0.2&times;0.9 = 0.62
-
-Parent C : NRE=0.7, PEC=0.6, ECS=0.7
-MCS_C = 0.5&times;0.7 + 0.3&times;0.6 + 0.2&times;0.7 = 0.67
-
-Le parent A (MCS=0.76) est sélectionné.</code></pre>
-    <p>Même si le Parent B a une meilleure prédiction (PEC) et un meilleur contexte (ECS), son énergie résiduelle faible (NRE=0.4) le rend moins fiable. Le Parent A, avec une énergie abondante, est préféré.</p>
-
-    <h2>6. Implémentation dans mcs_calculator.c</h2>
-    <p>Le fichier <code>mcs_calculator.c</code> implémente le calcul du MCS :</p>
-    <pre><code>// Extrait simplifié du calcul MCS
-float compute_mcs(float nre, float pec, float ecs) {
-    float alpha = MCS_ALPHA;
-    float beta  = MCS_BETA;
-    float gamma = MCS_GAMMA;
-    return alpha * nre + beta * pec + gamma * ecs;
-}</code></pre>
-    <p>Le module mcs_calculator reçoit les valeurs NRE, PEC et ECS des modules respectifs et retourne le score MCS utilisé par la fonction objective.</p>
 
   </div>
 </main>

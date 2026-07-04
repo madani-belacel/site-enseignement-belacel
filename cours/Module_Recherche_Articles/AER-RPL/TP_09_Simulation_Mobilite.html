@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 09 — Simulation avec mobilité — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 09 : simuler la mobilité avec RPL-AER, observer la reconstruction du DODAG, analyser le PDR et le temps de convergence.">
+<title>TP 09 : Simulation avec mobilité — Dr. Madani BELACEL</title>
+<meta name="description" content="Simuler avec mobilité Random Waypoint, analyser les changements de parent.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,77 +90,70 @@
 
     <h1>TP 09 : Simulation avec mobilité</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 09 — Simulation avec mobilité</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h30</li>
-        <li><strong>Objectifs :</strong> Observer l'impact de la mobilité sur RPL-AER, mesurer le temps de convergence et le PDR</li>
+        <li><strong>Durée estimée :</strong> 1h00</li>
+        <li><strong>Objectifs :</strong> Configurer la mobilité et analyser son impact sur le routage</li>
       </ul>
     </div>
 
-    <h2>1. Configurer la mobilité</h2>
-    <p>Dans <code>project-conf.h</code>, vérifiez que la mobilité est activée (par défaut 28% de nœuds mobiles).</p>
-    <p>Générez un scénario avec 28% de mobilité :</p>
-    <pre><code>python3 tools/generate_csc.py -n 50 -s 500 -m 28 -d 3600 -r 77</code></pre>
+    <h2>1. Simulation avec mobilité</h2>
+    <pre><code>grep "MOBILITY\|WAYPOINT" Makefile</code></pre>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Configurer la mobilité Random Waypoint dans la simulation</li>
+        <li>Observer l'impact des déplacements sur le routage</li>
+        <li>Analyser les changements de parent induits par la mobilité</li>
+        <li>Comparer les performances avec et sans mobilité</li>
+      </ul>
+    </div>
+    <h2>2. Génération d'un scénario avec mobilité</h2>
+    <pre><code>python3 generate_csc.py -n 19 -s 0.3 -m 0.5 -o scenario_mobility.csc</code></pre>
 
-    <h2>2. Lancer la simulation</h2>
-    <p>Ouvrez le fichier .csc généré dans Cooja. Observez le mouvement des nœuds mobiles (marqués avec une icône différente).</p>
-
-    <h2>3. Observer les changements de parent</h2>
-    <p>Les nœuds mobiles changent fréquemment de parent. Cherchez ces événements dans les logs :</p>
-    <pre><code>grep "new parent" simulation_logs.txt | head -20</code></pre>
-
-    <h2>4. Mesurer le temps de convergence</h2>
-    <p>Le temps de convergence est le temps nécessaire au DODAG pour se stabiliser après un changement :</p>
-    <pre><code>import re
-import matplotlib.pyplot as plt
-
-# Extraire les événements de changement de parent
-parent_changes = []
-with open('simulation_logs.txt') as f:
-    for line in f:
-        m = re.search(r'Node (\d+): new parent Node (\d+) .*old parent Node (\d+)', line)
-        if m:
-            parent_changes.append({
-                'node': int(m.group(1)),
-                'new_parent': int(m.group(2)),
-                'old_parent': int(m.group(3))
-            })
-
-print(f"Nombre total de changements de parent: {len(parent_changes)}")
-mobile_nodes = [x for x in parent_changes if x['node'] > 37]  # ex: mobiles > 37
-print(f"Changements (mobiles): {len(mobile_nodes)}")
-fixed_nodes = [x for x in parent_changes if x['node'] <= 37]
-print(f"Changements (fixes): {len(fixed_nodes)}")</code></pre>
-
-    <h2>5. Analyser le PDR avec mobilité</h2>
-    <pre><code>grep "PDR" simulation_logs.txt
-# Format: [PERF] PDR=94.2% Latency=45ms</code></pre>
-
-    <h2>6. Comparer avec topologie statique</h2>
-    <p>Relancez la même simulation sans mobilité (générez un nouveau scénario avec -m 0). Comparez :</p>
-    <table>
-      <tr><th>Métrique</th><th>Avec mobilité (28%)</th><th>Sans mobilité</th></tr>
-      <tr><td>PDR moyen</td><td>?</td><td>?</td></tr>
-      <tr><td>Latence moyenne</td><td>?</td><td>?</td></tr>
-      <tr><td>Changements de parent</td><td>?</td><td>0</td></tr>
-    </table>
-
-    <h2>7. Analyser l'impact sur le MCS</h2>
-    <p>Comparez le MCS des nœuds mobiles vs fixes en extrayant les logs MCS :</p>
-    <pre><code>grep "\[MCS\]" simulation_logs.txt | grep "Node 3[89]\|Node 4[01]" > mcs_mobile.txt
-grep "\[MCS\]" simulation_logs.txt | grep "Node [2-9]" > mcs_fixed.txt
-wc -l mcs_mobile.txt mcs_fixed.txt</code></pre>
-
-    <h2>8. Questions</h2>
-    <ol>
-      <li>Combien de changements de parent les nœuds mobiles effectuent-ils en moyenne par minute ?</li>
-      <li>Quel est l'impact de la mobilité sur le PDR (perte de paquets pendant les transitions) ?</li>
-      <li>Le temps de convergence du DODAG est-il affecté par le nombre de nœuds mobiles ?</li>
-      <li>Comment le MCS des nœuds mobiles varie-t-il avec leur position ?</li>
-    </ol>
-
+    <h2>3. Analyse des changements de parent</h2>
+    <div class="code-block"><span class="ln">  1</span> import re
+<span class="ln">  2</span> 
+<span class="ln">  3</span> with open("cooja_results/rpl-aer-output.log") as f:
+<span class="ln">  4</span>     logs = f.read()
+<span class="ln">  5</span> 
+<span class="ln">  6</span> parent_changes = re.findall(
+<span class="ln">  7</span>   r"Parent change detected, new parent=(\d+)", logs
+<span class="ln">  8</span> )
+<span class="ln">  9</span> print(f"Changements de parent: {len(parent_changes)}")
+<span class="ln"> 10</span> for i, p in enumerate(parent_changes[:10]):
+<span class="ln"> 11</span>     print(f"  Changement {i+1}: nouveau parent = {p}")
+<span class="ln"> 12</span> 
+<span class="ln"> 13</span> mobility = re.findall(
+<span class="ln"> 14</span>   r"Mobility state changed to (\w+)", logs
+<span class="ln"> 15</span> )
+<span class="ln"> 16</span> print(f"\nChangements d'état de mobilité: {len(mobility)}")</div>
+    <h2>4. Impact sur le PDR et la latence</h2>
+    <pre><code># Sans mobilité
+grep "PDR" cooja_results/simulation_static.log
+# Avec mobilité
+grep "PDR" cooja_results/simulation_mobile.log</code></pre>
+    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Le nombre de changements de parent doit être significativement plus élevé dans le scénario avec mobilité.</p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Aucun mouvement observé : vérifiez <code>-DMOBILITY_SUPPORT=1</code> et <code>-DRANDOM_WAYPOINT=1</code> dans le Makefile.</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Combien de changements de parent sont observés avec 50% de nœuds mobiles ?</li>
+      <li>Quel est l'impact de la mobilité sur le PDR ?</li>
+      <li>Les nœuds mobiles sont-ils souvent choisis comme parents ? Pourquoi ?</li>
+      <li>Comment la mobilité affecte-t-elle la consommation d'énergie ?</li>
+      <li>Quel serait l'impact d'une mobilité groupée (plusieurs nœuds se déplaçant ensemble) ?</li>
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Script <code>analyze_mobility.py</code>, fichiers de logs avec et sans mobilité, fichier <code>mobility_comparison.txt</code>.</p>
+    </div>
   </div>
 </main>
 

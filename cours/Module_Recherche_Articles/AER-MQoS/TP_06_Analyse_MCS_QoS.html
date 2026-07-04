@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 06 — Analyse des scores MCS — AER-MQoS</title>
+<title>Analyse des scores MCS — AER-MQoS</title>
 <meta name="description" content="Analyser les logs [MCS] d'AER-MQoS : extraire gamma/alpha/beta, observer la variation contextuelle des poids, corréler avec les conditions réseau.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,70 +76,50 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">TP 06 — Analyse des scores MCS</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 06 — Analyse des scores MCS</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 1h00<br>
-      <strong>Objectif :</strong> Analyser les logs [MCS] pour extraire les poids alpha/beta/gamma, observer leur variation contextuelle et corréler avec les conditions réseau<br>
-      <strong>Prérequis :</strong> TP 04, notions de la métrique MCS (Cours 03)
+      <strong>Objectif :</strong> Analyser les logs [MCS] pour extraire les poids alpha/beta/gamma, observer leur variation contextuelle et corréler avec les conditions réseau<br><strong>Prérequis :</strong> TP 04, notions de la métrique MCS (Cours 03)
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Extraire les logs [MCS]</h2>
-    <p>Les logs [MCS] contiennent les scores calculés pour chaque parent candidat. Extrayez-les :</p>
     <pre><code>grep "\[MCS\]" campagne_grid_30.log > mcs_logs.txt
 wc -l mcs_logs.txt</code></pre>
 
     <h2>2. Structure des logs [MCS]</h2>
-    <p>Chaque ligne [MCS] a le format suivant :</p>
     <pre><code>[MCS] Timestamp:120500 Node:1.1.1.5 Parent:1.1.1.2 score=0.8475 (alpha=0.30 beta=0.35 gamma=0.35)
 [MCS] Timestamp:120500 Node:1.1.1.5 Parent:1.1.1.3 score=0.7231 (alpha=0.30 beta=0.35 gamma=0.35)</code></pre>
-    <p>On y trouve :</p>
-    <ul>
-      <li>Le timestamp et le nœud qui calcule</li>
-      <li>L'adresse du parent candidat</li>
-      <li>Le score MCS calculé</li>
-      <li>Les poids alpha, beta, gamma utilisés</li>
-    </ul>
 
     <h2>3. Analyser la distribution des poids</h2>
-    <p>Extrayez les poids uniques utilisés :</p>
     <pre><code>grep -oP 'alpha=\K[0-9.]+' mcs_logs.txt | sort | uniq -c
 grep -oP 'beta=\K[0-9.]+' mcs_logs.txt | sort | uniq -c
 grep -oP 'gamma=\K[0-9.]+' mcs_logs.txt | sort | uniq -c</code></pre>
-    <p>Comparez avec les poids contextuels théoriques du Cours 03.</p>
 
     <h2>4. Suivre l'évolution temporelle de gamma</h2>
-    <p>Si le Q-learning est actif, gamma peut varier. Tracez son évolution :</p>
     <pre><code>python3 << 'EOF'
 import re
 with open('mcs_logs.txt') as f:
     lines = f.readlines()
-# Extraire timestamps et gamma
 data = []
 for line in lines:
     m = re.search(r'Timestamp:(\d+).*gamma=([0-9.]+)', line)
     if m:
         data.append((int(m.group(1)), float(m.group(2))))
-# Afficher les points de changement
 prev = None
 for ts, g in data:
     if g != prev:
@@ -131,57 +127,15 @@ for ts, g in data:
         prev = g
 EOF</code></pre>
 
-    <h2>5. Corréler MCS avec ETX et NRE</h2>
-    <p>Comparez les scores MCS avec les valeurs d'ETX et de NRE pour vérifier la cohérence :</p>
-    <pre><code>python3 << 'EOF'
-import re
-# Lire les logs MCS et ENERGY
-with open('mcs_logs.txt') as f:
-    mcs_lines = f.readlines()
-# Extraire quelques échantillons
-for line in mcs_lines[:20]:
-    m = re.search(r'Node:(\S+) Parent:(\S+) score=([0-9.]+)'
-                  r' alpha=([0-9.]+) beta=([0-9.]+) gamma=([0-9.]+)', line)
-    if m:
-        node, parent, score, a, b, g = m.groups()
-        print(f"Node {node} -> Parent {parent}: MCS={score} "
-              f"(a={a} b={b} g={g})")
-EOF</code></pre>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Comparez avec les poids contextuels théoriques du Cours 03. Vérifiez que les poids correspondent aux conditions du réseau.</div>
 
-    <h2>6. Vérifier la sélection du parent</h2>
-    <p>Pour un nœud donné, vérifiez que le parent avec le score MCS le plus élevé est choisi :</p>
-    <pre><code>python3 << 'EOF'
-import re
-from collections import defaultdict
-with open('mcs_logs.txt') as f:
-    lines = f.readlines()
-# Pour chaque nœud et timestamp, trouver le meilleur parent
-candidates = defaultdict(list)
-for line in lines:
-    m = re.search(r'Timestamp:(\d+) Node:(\S+) Parent:(\S+) score=([0-9.]+)', line)
-    if m:
-        ts, node, parent, score = m.groups()
-        candidates[(ts, node)].append((float(score), parent))
-for key in sorted(candidates.keys())[:5]:
-    ts, node = key
-    best = max(candidates[key], key=lambda x: x[0])
-    print(f"T{ts} {node}: best={best[1]} score={best[0]}")
-EOF</code></pre>
-
-    <h2>7. Corrélation avec les conditions réseau</h2>
-    <p>Croisez les logs MCS avec les logs de performance (PDR, énergie) pour observer comment les poids s'adaptent :</p>
-    <pre><code># Extraire les PDR par intervalle
-grep "PDR" campagne_grid_30.log | head -5
-# Comparer avec les poids MCS au même moment</code></pre>
-    <p>Quand le PDR est bas, beta devrait augmenter. Quand l'énergie est faible, alpha devrait augmenter.</p>
-
-    <h2>8. Questions</h2>
-    <ol>
-      <li>Quels poids alpha/beta/gamma sont principalement utilisés ?</li>
-      <li>Observez-vous des variations de gamma ? À quels moments ?</li>
-      <li>La sélection du parent est-elle cohérente avec le score MCS ?</li>
-      <li>Y a-t-il une corrélation entre PDR et variation des poids ?</li>
-    </ol>
+    <div class="question-box">
+      <ol>
+        <li>Quels poids alpha/beta/gamma sont principalement utilisés ?</li>
+        <li>Observez-vous des variations de gamma ? À quels moments ?</li>
+        <li>La sélection du parent est-elle cohérente avec le score MCS ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

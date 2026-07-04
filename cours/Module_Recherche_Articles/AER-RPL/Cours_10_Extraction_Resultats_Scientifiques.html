@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 10 — Extraction de résultats scientifiques — Dr. Madani BELACEL</title>
-<meta name="description" content="Extraction de résultats scientifiques avec RPL-AER : simulate_results.py, pipeline de métriques, génération CSV et figures pour publication.">
+<title>Cours 10 : Extraction de résultats scientifiques — Dr. Madani BELACEL</title>
+<meta name="description" content="Extraction de résultats scientifiques : métriques PDR/latence/énergie, analyse Python, figures.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,97 +90,95 @@
 
     <h1>Cours 10 : Extraction de résultats scientifiques</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 10 — Extraction de résultats scientifiques</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Maîtriser l'extraction de métriques, la génération de CSV et la préparation des données pour publication</li>
+        <li><strong>Durée estimée :</strong> 1h30</li>
+        <li><strong>Objectifs :</strong> Maîtriser l'extraction et l'analyse des résultats de simulation pour publication</li>
       </ul>
     </div>
 
-    <h2>1. Pipeline d'extraction de résultats</h2>
-    <p>Le pipeline d'extraction de résultats scientifiques dans RPL-AER comprend plusieurs étapes :</p>
-    <ol>
-      <li><strong>Simulation :</strong> Exécution de la simulation Cooja avec collecte de logs</li>
-      <li><strong>Extraction :</strong> Parsing des logs avec <code>simulate_results.py</code></li>
-      <li><strong>Structuration :</strong> Génération de fichiers CSV structurés</li>
-      <li><strong>Visualisation :</strong> Création de figures pour publication</li>
-    </ol>
+    <h2>1. Extraction de résultats scientifiques</h2>
+    <p>L'extraction de résultats à partir des logs de simulation Cooja est une étape cruciale pour évaluer les performances de RPL-AER. Les métriques collectées permettent de quantifier l'amélioration apportée par rapport à RPL standard.</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Maîtriser l'extraction des métriques à partir des logs Cooja</li>
+        <li>Analyser les indicateurs clés : PDR, latence, énergie, détection d'attaques</li>
+        <li>Savoir générer des figures scientifiques (ggplot2/Matplotlib)</li>
+        <li>Produire des tableaux récapitulatifs pour publication</li>
+      </ul>
+    </div>
+    <h2>2. Métriques collectées</h2>
+    <table>
+      <tr>      <th>Métrique</th>      <th>Description</th>      <th>Source</th></tr>
+      <tr><td>PDR</td><td>Packet Delivery Ratio (%)</td><td>rpl-aer.c:276</td></tr>
+      <tr><td>Latence moyenne</td><td>Temps moyen de transmission (ms)</td><td>rpl-aer.c:284</td></tr>
+      <tr><td>Throughput</td><td>Paquets par seconde</td><td>rpl-aer.c:291</td></tr>
+      <tr><td>MCS</td><td>Multi-Criteria Score</td><td>rpl-aer.c:77</td></tr>
+      <tr><td>NRE</td><td>Énergie résiduelle normalisée</td><td>rpl-aer.c:41</td></tr>
+      <tr><td>PEC</td><td>Prédiction de consommation</td><td>rpl-aer.c:52</td></tr>
+      <tr><td>ECS</td><td>Score contextuel</td><td>rpl-aer.c:60</td></tr>
+      <tr><td>Attaques détectées</td><td>Nombre d'attaques identifiées</td><td>rpl-aer.c:197</td></tr>
+      <tr><td>Énergie résiduelle</td><td>Batterie restante (mWh)</td><td>rpl-aer.c:142</td></tr>
+    </table>
 
-    <h2>2. Script simulate_results.py</h2>
-    <p>Le script <code>simulate_results.py</code> automatise l'extraction et l'analyse des résultats :</p>
-    <pre><code># simulate_results.py — Extraction des métriques
-python3 tools/simulate_results.py --log-dir logs/ --output results/</code></pre>
-    <p>Fonctionnalités principales :</p>
+    <h2>3. Extraction des logs</h2>
+    <p>Utilisation du script <code>build_and_test.sh</code> avec l'option --full :</p>
+    <pre><code>./build_and_test.sh --full</code></pre>
+    <p>Ce script :</p>
     <ul>
-      <li>Parsing des logs [MCS], [LSTM], [HARVEST], [TRUST], [PERF]</li>
-      <li>Calcul des moyennes et écarts-types</li>
-      <li>Génération de fichiers CSV structurés</li>
-      <li>Export vers LaTeX (tableaux) et Matplotlib (figures)</li>
+      <li>Nettoie et compile le projet</li>
+      <li>Génère un scénario de simulation</li>
+      <li>Lance Cooja (mode graphique ou batch)</li>
+      <li>Analyse les logs avec <code>analyze_logs.py</code></li>
     </ul>
 
-    <h2>3. Métriques extraites</h2>
-    <p>Le script extrait deux catégories principales de métriques :</p>
-
-    <h3>Métriques énergétiques</h3>
-    <table>
-      <tr><th>Métrique</th><th>Description</th><th>Unité</th></tr>
-      <tr><td>NRE moyen</td><td>Énergie résiduelle normalisée moyenne</td><td>[0-1]</td></tr>
-      <tr><td>Consommation totale</td><td>Énergie totale consommée</td><td>mWh</td></tr>
-      <tr><td>Énergie récoltée</td><td>Énergie solaire totale récoltée</td><td>mWh</td></tr>
-      <tr><td>MAE LSTM</td><td>Erreur absolue moyenne de prédiction</td><td>mW</td></tr>
-    </table>
-
-    <h3>Métriques QoS</h3>
-    <table>
-      <tr><th>Métrique</th><th>Description</th><th>Unité</th></tr>
-      <tr><td>PDR</td><td>Packet Delivery Ratio</td><td>%</td></tr>
-      <tr><td>Latence</td><td>Délai de bout en bout</td><td>ms</td></tr>
-      <tr><td>Throughput</td><td>Débit réseau</td><td>bps</td></tr>
-      <tr><td>Overhead</td><td>Surcharge de contrôle RPL</td><td>%</td></tr>
-    </table>
-
-    <h2>4. Génération de fichiers CSV</h2>
-    <p>Le script génère deux fichiers CSV principaux :</p>
-    <pre><code># figure_data_energy.csv — Données énergétiques
-Node,Time,NRE,PEC,ECS,MCS,Harvested,Consumed
-1,0,1.000,0.500,0.500,0.750,0.0,0.0
-2,0,1.000,0.500,0.433,0.737,12.5,4.3
-...
-
-# figure_data_qos.csv — Données QoS
-Time,PDR,Latency,Throughput,Hops
-60,98.5,12.3,256.0,2.1
-120,97.2,14.8,248.0,2.3
-...</code></pre>
-
+    <h2>4. Analyse des logs avec Python</h2>
+    <div class="code-block"><span class="ln">  1</span> # Exemple d'extraction depuis les logs
+<span class="ln">  2</span> import re
+<span class="ln">  3</span> 
+<span class="ln">  4</span> logs = open("cooja_results/rpl-aer-output.log").read()
+<span class="ln">  5</span> 
+<span class="ln">  6</span> mcs_values = re.findall(r"MCS=([0-9.]+)", logs)
+<span class="ln">  7</span> pdr_values = re.findall(r"PDR = ([0-9.]+)", logs)
+<span class="ln">  8</span> energy_values = re.findall(r"Energy=([0-9]+) mWh", logs)</div>
     <h2>5. Génération de figures</h2>
-    <p>Le script peut générer des figures automatiquement avec Matplotlib :</p>
-    <pre><code>python3 tools/simulate_results.py --figures --format pdf</code></pre>
-    <p>Figures générées :</p>
+    <div class="code-block"><span class="ln">  1</span> import matplotlib.pyplot as plt
+<span class="ln">  2</span> 
+<span class="ln">  3</span> plt.figure(figsize=(10, 6))
+<span class="ln">  4</span> plt.plot(mcs_values, label="MCS")
+<span class="ln">  5</span> plt.plot(nre_values, label="NRE")
+<span class="ln">  6</span> plt.plot(pec_values, label="PEC")
+<span class="ln">  7</span> plt.plot(ecs_values, label="ECS")
+<span class="ln">  8</span> plt.xlabel("Temps (s)")
+<span class="ln">  9</span> plt.ylabel("Score")
+<span class="ln"> 10</span> plt.title("Évolution du MCS et de ses composants")
+<span class="ln"> 11</span> plt.legend()
+<span class="ln"> 12</span> plt.savefig("cooja_results/mcs_evolution.png")</div>
+    <h2>6. Tableaux pour publication</h2>
+    <table>
+      <tr>      <th>Métrique</th>      <th>RPL Standard</th>      <th>RPL-AER</th>      <th>Amélioration</th></tr>
+      <tr><td>PDR (%)</td><td>82.5</td><td>94.8</td><td>+14.9%</td></tr>
+      <tr><td>Latence (ms)</td><td>145</td><td>98</td><td>-32.4%</td></tr>
+      <tr><td>Énergie consommée (mWh)</td><td>1200</td><td>850</td><td>-29.2%</td></tr>
+      <tr><td>Attaques détectées (%)</td><td>45</td><td>92</td><td>+104%</td></tr>
+    </table>
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Quelles métriques sont les plus importantes pour évaluer RPL-AER ?</li>
+      <li>Comment calculer l'amélioration relative entre RPL standard et RPL-AER ?</li>
+      <li>Quels types de figures sont les plus adaptés pour présenter les résultats ?</li>
+      <li>Comment valider statistiquement les résultats de simulation ?</li>
+      <li>Proposer une méthodologie pour comparer RPL-AER avec d'autres protocoles.</li>
+      </ol>
+    </div>    <h2>Références</h2>
     <ul>
-      <li><strong>mcs_evolution.pdf :</strong> Évolution du MCS au fil du temps pour chaque nœud</li>
-      <li><strong>energy_comparison.pdf :</strong> Comparaison NRE/PEC/ECS entre RPL standard et RPL-AER</li>
-      <li><strong>pdr_comparison.pdf :</strong> Comparaison du PDR avec et sans attaques</li>
-      <li><strong>lstm_accuracy.pdf :</strong> Précision de la prédiction LSTM</li>
-    </ul>
-
-    <h2>6. Préparation pour publication</h2>
-    <p>Pour préparer les données pour publication académique :</p>
-    <ul>
-      <li>Exporter les tableaux en format LaTeX avec <code>--latex</code></li>
-      <li>Générer des figures en haute résolution (300 dpi) avec <code>--dpi 300</code></li>
-      <li>Calculer les intervalles de confiance (95%) avec <code>--confidence 0.95</code></li>
-    </ul>
-
-    <h2>7. Interprétation des résultats</h2>
-    <p>Les résultats extraits permettent de répondre aux questions de recherche typiques :</p>
-    <ul>
-      <li>Quel est le gain en durée de vie du réseau avec RPL-AER par rapport à RPL standard ?</li>
-      <li>Comment la mobilité affecte-t-elle le PDR et la latence ?</li>
-      <li>Quel est l'impact du module de confiance sur le taux de détection d'attaques ?</li>
-      <li>Comment les poids MCS influencent-ils la sélection de parent ?</li>
+      <li>Script : <code>build_and_test.sh</code> — Compilation et test</li>
+      <li>Code : <code>rpl-aer.c:276-317</code> — Logs de performance</li>
+      <li>Outil : <code>analyze_logs.py</code> — Extraction de métriques</li>
     </ul>
 
   </div>

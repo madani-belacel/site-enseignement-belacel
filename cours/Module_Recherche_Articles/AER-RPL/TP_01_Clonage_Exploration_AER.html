@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 01 — Cloner et explorer le dépôt RPL-AER — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 01 : cloner le dépôt GitHub RPL-AER, explorer la structure du code source et comprendre chaque module.">
+<title>TP 01 : Cloner et explorer le dépôt RPL-AER — Dr. Madani BELACEL</title>
+<meta name="description" content="Cloner le dépôt GitHub RPL-AER, explorer la structure du code source et comprendre chaque module.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,7 +90,7 @@
 
     <h1>TP 01 : Cloner et explorer le dépôt RPL-AER</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 01 — Cloner et explorer le dépôt RPL-AER</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
@@ -86,89 +100,60 @@
     </div>
 
     <h2>1. Cloner le dépôt GitHub</h2>
-    <p>Commencez par cloner le dépôt RPL-AER depuis GitHub :</p>
     <pre><code># Les codes sont déjà présents localement
 # Si nécessaire, cloner depuis GitHub:
 # git clone https://github.com/madani-belacel/RPL-AER.git
 cd /home/madani/contiki-ng/examples/projet_madani/RPL-AER-main</code></pre>
-
-<p class="note-local" style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0;"><strong>📂 Codes sources disponibles localement :</strong> Ces codes sont déjà présents sur votre machine dans le dossier <code>/home/madani/contiki-ng/examples/projet_madani/RPL-AER-main</code>. Vous pouvez également les cloner depuis GitHub si nécessaire.</p>
-
-
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Cloner le dépôt RPL-AER depuis GitHub</li>
+        <li>Explorer la structure du projet et ses fichiers</li>
+        <li>Comprendre le rôle de chaque module</li>
+        <li>Se familiariser avec les outils de développement</li>
+      </ul>
+    </div>
     <h2>2. Explorer la structure</h2>
-    <p>Affichez l'arborescence du projet :</p>
     <pre><code>ls -la
-ls examples/rpl-aer/
-ls tools/
-ls simulation/</code></pre>
+ls -R | head -40</code></pre>
 
     <h2>3. Examiner les fichiers principaux</h2>
-    <p>Pour chaque fichier, ouvrez-le et notez son rôle :</p>
-
     <h3>3.1. rpl-aer.c et rpl-aer.h</h3>
-    <p>Ces fichiers contiennent la logique principale. Cherchez les fonctions suivantes :</p>
-    <pre><code>grep -n "best_parent\|compute_mcs\|update_rpl_aer" examples/rpl-aer/rpl-aer.c</code></pre>
-
-    <h3>3.2. mcs_calculator.c</h3>
-    <p>Examinez le calcul du MCS :</p>
-    <pre><code>cat examples/rpl-aer/mcs_calculator.c</code></pre>
-    <p>Identifiez :</p>
-    <ul>
-      <li>La fonction <code>compute_mcs()</code></li>
-      <li>Les constantes MCS_ALPHA, MCS_BETA, MCS_GAMMA</li>
-      <li>Comment NRE, PEC et ECS sont combinés</li>
-    </ul>
-
-    <h3>3.3. lstm_predictor.c</h3>
-    <p>Examinez le prédicteur LSTM :</p>
-    <pre><code>cat examples/rpl-aer/lstm_predictor.c</code></pre>
-    <p>Identifiez :</p>
-    <ul>
-      <li>La taille de la fenêtre LSTM</li>
-      <li>La fonction de prédiction</li>
-      <li>Comment la prédiction est convertie en PEC</li>
-    </ul>
-
-    <h3>3.4. trust_module.c</h3>
-    <p>Examinez le module de confiance :</p>
-    <pre><code>cat examples/rpl-aer/trust_module.c</code></pre>
-    <p>Identifiez les mécanismes de détection d'anomalies.</p>
-
-    <h3>3.5. harvest_module.c</h3>
-    <p>Examinez le module de récolte solaire :</p>
-    <pre><code>cat examples/rpl-aer/harvest_module.c</code></pre>
-
-    <h3>3.6. attack_detector.c</h3>
-    <p>Examinez le détecteur d'attaques :</p>
-    <pre><code>cat examples/rpl-aer/attack_detector.c</code></pre>
+    <pre><code>grep -n "rpl_aer_calculate_mcs\|rpl_aer_init\|rpl_aer_log_mcs" examples/rpl-aer/rpl-aer.c</code></pre>
+    <p>Résultat attendu :</p>
+    <pre><code>77: float rpl_aer_calculate_mcs(void)
+297: void rpl_aer_log_mcs(void)
+321: void rpl_aer_init(void)</code></pre>
+    <h3>3.2. mcs_calculator.h</h3>
+    <pre><code>cat examples/rpl-aer/mcs_calculator.h</code></pre>
+    <h3>3.3. lstm_predictor.h</h3>
+    <pre><code>cat examples/rpl-aer/lstm_predictor.h</code></pre>
 
     <h2>4. Examiner les fichiers de configuration</h2>
-    <p>Lisez les fichiers de configuration :</p>
     <pre><code>cat examples/rpl-aer/project-conf.h
 cat examples/rpl-aer/Makefile</code></pre>
 
     <h2>5. Examiner les scripts</h2>
-    <pre><code>cat tools/build_and_test.sh
-cat tools/simulate_results.py
-cat tools/generate_csc.py</code></pre>
-
-    <h2>6. Questions</h2>
-    <ol>
+    <pre><code>cat tools/build_and_test.sh</code></pre>
+    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Vérifiez que tous les fichiers listés ci-dessus existent et sont lisibles. Utilisez `ls -la` pour confirmer la présence des 15+ fichiers sources.</p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Si le dépôt n'est pas trouvé, vérifiez le chemin : `ls /home/madani/contiki-ng/examples/projet_madani/`. Si le dossier RPL-AER-main n'existe pas, lancez : `git clone https://github.com/madani-belacel/RPL-AER.git`</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
       <li>Combien de fichiers sources C contient le projet ?</li>
-      <li>Quelle est la valeur par défaut de MCS_ALPHA ?</li>
-      <li>Quelle taille de fenêtre utilise le LSTM ?</li>
-      <li>Quels types d'attaques attack_detector.c peut-il détecter ?</li>
+      <li>Quels paramètres prend la fonction mcs_calculator_compute() ?</li>
+      <li>Quelle est la taille de la fenêtre LSTM (LSTM_WINDOW_SIZE) ?</li>
+      <li>Quels types d'attaques sont définis dans attack_detector.h ?</li>
       <li>Comment le harvest_module simule-t-il le cycle jour/nuit ?</li>
-    </ol>
-
-    <h2>7. Rapport</h2>
-    <p>Créez un fichier <code>exploration.txt</code> contenant :</p>
-    <ul>
-      <li>La liste complète des fichiers avec leur rôle</li>
-      <li>Les réponses aux questions ci-dessus</li>
-      <li>Un diagramme textuel de l'architecture (modules et leurs interactions)</li>
-    </ul>
-
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Fichier <code>exploration.txt</code> contenant : la liste complète des fichiers avec leur rôle, les réponses aux questions ci-dessus, et un diagramme textuel de l'architecture (modules et leurs interactions).</p>
+    </div>
   </div>
 </main>
 

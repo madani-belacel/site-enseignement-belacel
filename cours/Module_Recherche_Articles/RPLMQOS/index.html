@@ -1,11 +1,10 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>RPLMQOS — Protocole RPLCB — Module Recherche & Articles — Dr. Madani BELACEL</title>
-<meta name="description" content="Parcours complet sur le protocole RPLCB (RPL Control Bit) : cours théoriques et travaux pratiques pour la recherche sur l'extension QoS du protocole RPL.">
+<title>RPLMQoS — Module Recherche &amp; Articles — RPL-MQoS — Dr. Madani BELACEL</title>
+<meta name="description" content="RPL-MQoS — Module Recherche &amp; Articles — Dr. Madani BELACEL">
 <link rel="stylesheet" href="../../../css/style.css">
-<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
-<style>
-  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+<link rel="icon" href="../../../images/Universit\u00e9_de_Mostaganem.png">
+<style>  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
   .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
   .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
   .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
@@ -13,7 +12,6 @@
   .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
   .md-content li { margin: 0.25rem 0; line-height: 1.7; }
   .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
-  .md-content blockquote p { margin: 0.2rem 0; }
   .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
   .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
   .md-content pre code { background: none; padding: 0; }
@@ -26,35 +24,21 @@
   .md-content strong { font-weight: 700; }
   .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
   .md-meta strong { font-family: var(--font-heading); }
-  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
-  .download-link:hover { opacity: 0.85; }
-  .download-pdf { background: #e74c3c; color: #fff; }
-  .download-pptx { background: #d24726; color: #fff; }
-  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
-  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
-  .session-list li:hover { transform: translateX(3px); }
-  .session-list a { text-decoration: none; font-weight: 500; }
-  .session-list a:hover { text-decoration: underline; }
-  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
-  .tag-cours { background: #e8f5e9; color: #2e7d32; }
-  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
-
 <header class="header" role="banner">
   <div class="header-inner">
     <div class="header-left">
       <a href="../../../index.html" class="header-logo">
-        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
-        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+        <img src="../../../images/Universit\u00e9_de_Mostaganem.png" alt="Universit\u00e9 de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Universit\u00e9 de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
-        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Facult\u00e9 des Lettres et des Arts">
       </div>
     </div>
-    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <img src="../../../images/alg_drap.gif" alt="Alg\u00e9rie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">\u2630</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
         <li><a href="../../../index.html">Accueil</a></li>
@@ -63,108 +47,30 @@
         <li><a href="../../../habilitation.html">Habilitation</a></li>
         <li><a href="../../../ressources.html">Ressources</a></li>
         <li><a href="../../../contact.html">Contact</a></li>
-        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le th\u00e8me">\u263e</button></li>
       </ul>
     </nav>
   </div>
-</header>
-
-<nav aria-label="Fil d'Ariane">
+</header><nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
-    <li class="current">RPLMQOS — Protocole RPLCB</li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>    <li class="current">RPLMQOS</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
-  <div class="md-content">
-
-    <h1>RPLMQOS — Protocole RPLCB</h1>
-
-    <div class="md-meta">
-      <strong>Module : Recherche & Articles — RPLMQOS / RPLCB</strong>
-      <ul>
-        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Objectif :</strong> Étudier, implémenter et évaluer le protocole RPLCB (RPL Control Bit), une extension QoS de RPL pour les réseaux de capteurs sans fil</li>
-        <li><strong>Nombre de sessions :</strong> 9 cours théoriques + 13 travaux pratiques (22 sessions)</li>
-        <li><strong>Prérequis :</strong> Notions en réseaux IoT, protocole RPL, Contiki-NG, programmation C et Python</li>
-        <li><strong>Dépôt :</strong> <a href="file:///home/madani/contiki-ng/examples/projet_madani/RPLMQoS_BELACEL" target="_blank">github.com/madani-belacel/RPLCB</a></li>
-        <li><strong>Année :</strong> 2025-2026</li>
-      </ul>
-    </div>
-
-    <h2>Présentation</h2>
-    <p>RPLCB (RPL Control Bit) est un protocole de routage proposé pour les réseaux de capteurs sans fil (WSN) basé sur RPL (IPv6 Routing Protocol for Low-Power and Lossy Networks). L'idée principale est d'ajouter un <strong>bit de contrôle (Control Bit)</strong> dans les messages de routage pour permettre une sélection de parent basée sur des métriques multiples (PDR, latence, énergie résiduelle) au lieu de la métrique unique ETX utilisée par RPL standard. Ce module de 22 sessions couvre la théorie, l'implémentation et l'évaluation complète de RPLCB par simulation sur Contiki-NG/Cooja.</p>
-
-    <h2>Cours théoriques</h2>
-    <ul class="session-list">
-      <li><span class="session-tag tag-cours">Cours 01</span> <a href="Cours_01_Introduction_RPLCB.html">Introduction au protocole RPLCB</a></li>
-      <li><span class="session-tag tag-cours">Cours 02</span> <a href="Cours_02_Architecture_RPLCB.html">Architecture et mécanisme CB</a></li>
-      <li><span class="session-tag tag-cours">Cours 03</span> <a href="Cours_03_Differences_RPL_vs_RPLCB.html">Différences entre RPL standard et RPLCB</a></li>
-      <li><span class="session-tag tag-cours">Cours 04</span> <a href="Cours_04_Metriques_Evaluees.html">Métriques d'évaluation</a></li>
-      <li><span class="session-tag tag-cours">Cours 05</span> <a href="Cours_05_Topologies_Simulation.html">Topologies et scénarios de simulation</a></li>
-      <li><span class="session-tag tag-cours">Cours 06</span> <a href="Cours_06_Analyse_Comparaison.html">Analyse comparative RPL vs RPLCB</a></li>
-      <li><span class="session-tag tag-cours">Cours 07</span> <a href="Cours_07_Duree_Vie_Reseau.html">Estimation de la durée de vie du réseau</a></li>
-      <li><span class="session-tag tag-cours">Cours 08</span> <a href="Cours_08_Overhead_Routage.html">Analyse de l'overhead de routage</a></li>
-      <li><span class="session-tag tag-cours">Cours 09</span> <a href="Cours_09_Interpretation_Resultats.html">Interprétation des résultats</a></li>
-    </ul>
-
-    <h2>Travaux pratiques</h2>
-    <ul class="session-list">
-      <li><span class="session-tag tag-tp">TP 01</span> <a href="TP_01_Clonage_Exploration_RPLCB.html">Cloner et explorer le dépôt RPLCB</a></li>
-      <li><span class="session-tag tag-tp">TP 02</span> <a href="TP_02_Compilation_Firmware_RPL.html">Compilation du firmware RPL standard</a></li>
-      <li><span class="session-tag tag-tp">TP 03</span> <a href="TP_03_Compilation_Firmware_RPLCB.html">Compilation du firmware RPLCB</a></li>
-      <li><span class="session-tag tag-tp">TP 04</span> <a href="TP_04_Simulation_RPL_25_noeuds.html">Simulation scénario RPL 25 nœuds</a></li>
-      <li><span class="session-tag tag-tp">TP 05</span> <a href="TP_05_Simulation_RPLCB_25_noeuds.html">Simulation scénario RPLCB 25 nœuds</a></li>
-      <li><span class="session-tag tag-tp">TP 06</span> <a href="TP_06_Collecte_Donnees_Comparatives.html">Collecte données comparatives</a></li>
-      <li><span class="session-tag tag-tp">TP 07</span> <a href="TP_07_Analyse_Energie.html">Analyse de la consommation d'énergie</a></li>
-      <li><span class="session-tag tag-tp">TP 08</span> <a href="TP_08_Analyse_Latence_PDR.html">Analyse de la latence et du PDR</a></li>
-      <li><span class="session-tag tag-tp">TP 09</span> <a href="TP_09_Analyse_Duree_Vie.html">Analyse de la durée de vie</a></li>
-      <li><span class="session-tag tag-tp">TP 10</span> <a href="TP_10_Scripts_Python_RPLCB.html">Scripts Python d'analyse</a></li>
-      <li><span class="session-tag tag-tp">TP 11</span> <a href="TP_11_Simulation_Densite_Variable.html">Simulations à densité variable</a></li>
-      <li><span class="session-tag tag-tp">TP 12</span> <a href="TP_12_Generation_Figures_Publication.html">Génération de figures pour publication</a></li>
-      <li><span class="session-tag tag-tp">TP 13</span> <a href="TP_13_Synthese_RPLCB.html">TP de synthèse — Évaluation complète</a></li>
-    </ul>
-
-    <h2>Organisation recommandée</h2>
-    <ol>
-      <li><strong>Phase 1 (Cours 01-03 + TP 01-03) :</strong> Découvrez RPLCB, son architecture, et mettez en place l'environnement de compilation</li>
-      <li><strong>Phase 2 (Cours 04-05 + TP 04-05) :</strong> Lancez les premières simulations et observez le comportement des protocoles</li>
-      <li><strong>Phase 3 (Cours 06 + TP 06-09) :</strong> Collectez et analysez les données comparatives (énergie, latence, PDR, durée de vie)</li>
-      <li><strong>Phase 4 (Cours 07-09 + TP 10-13) :</strong> Exploitez les scripts Python, générez des figures, menez l'évaluation complète</li>
-    </ol>
-
-    <div class="md-meta" style="margin-top:2rem;">
-      <strong>Ressources complémentaires</strong>
-      <ul>
-        <li><a href="file:///home/madani/contiki-ng/examples/projet_madani/RPLMQoS_BELACEL" target="_blank">Dépôt RPLCB GitHub</a> — Code source et simulateurs</li>
-        <li><a href="https://github.com/contiki-ng/contiki-ng" target="_blank">Contiki-NG GitHub</a> — Système d'exploitation pour IoT</li>
-        <li><a href="https://tools.ietf.org/html/rfc6550" target="_blank">RFC 6550 — RPL</a></li>
-        <li><a href="https://anrg.usc.edu/contiki/index.php/Cooja_Simulator" target="_blank">Documentation Cooja</a></li>
-        <li><strong>🗺️ Parcours :</strong> <a href="../Base_Cooja_RPL_IOT/index.html">Base Cooja/RPL</a> (prérequis) → <a href="../AER-RPL/index.html">AER-RPL</a> → <a href="../AER-MQoS/index.html">AER-MQoS</a> → <a href="../IDS-IOT/index.html">IDS-IOT</a></li>
-      </ul>
-    </div>
-
-  </div>
-</main>
-
-<footer class="footer" role="contentinfo">
+</nav><main class="page-content"><div class="md-content"><h1>RPLMQoS — Protocole RPL avec Multi-path Quality of Service</h1><div class="md-meta"><strong>Recherche &amp; Articles — RPLMQoS</strong><ul><li><strong>Module :</strong> Recherche &amp; Articles — RPLMQoS</li><li><strong>Auteur :</strong> Dr. Madani BELACEL</li><li><strong>Objectif :</strong> Étudier, implémenter et évaluer RPL-MQoS, une extension QoS multi-chemins de RPL pour les réseaux IoT</li><li><strong>Nombre de sessions :</strong> 10 cours théoriques + 12 travaux pratiques + 1 projet de synthèse (23 sessions)</li><li><strong>Prérequis :</strong> Notions en réseaux IoT, protocole RPL, Contiki-NG, programmation C et Python</li><li><strong>Dépôt :</strong> <a href="file:///home/madani/contiki-ng/examples/projet_madani/RPLMQoS_BELACEL" target="_blank">RPLMQoS_BELACEL</a></li><li><strong>Année :</strong> 2025-2026</li></ul></div><h2>Présentation</h2><p>RPL-MQoS (Multi-path Quality of Service) est une extension du protocole RPL (RFC 6550) qui introduit un mécanisme de sélection de parents basé sur des métriques multiples pondérées (ETX, délai, gigue, fiabilité, bande passante) avec quatre classes de trafic (Critique, Priorité, Normal, Background). Le code source est organisé autour de deux modules principaux : <code>rpl-mqos.c</code> (528 lignes) pour le cœur du protocole et <code>rpl-mqos-metrics.c</code> (391 lignes) pour les fonctions de calcul de métriques.</p><h2>Cours théoriques</h2><ul class="session-list"><li><span class="session-tag tag-cours">Cours 01</span> <a href="Cours_01_Introduction_RPLMQoS.html">Introduction à RPL-MQoS</a></li><li><span class="session-tag tag-cours">Cours 02</span> <a href="Cours_02_Architecture_Classes.html">Architecture et classes de trafic</a></li><li><span class="session-tag tag-cours">Cours 03</span> <a href="Cours_03_Metriques_QoS.html">Métriques QoS : ETX, Délai, Gigue</a></li><li><span class="session-tag tag-cours">Cours 04</span> <a href="Cours_04_Ponderation_Rang.html">Fonctions de pondération et calcul de rang</a></li><li><span class="session-tag tag-cours">Cours 05</span> <a href="Cours_05_Voisins_Recuperation.html">Gestion des voisins et récupération</a></li><li><span class="session-tag tag-cours">Cours 06</span> <a href="Cours_06_Cache_Optimisation.html">Cache de métriques et optimisation</a></li><li><span class="session-tag tag-cours">Cours 07</span> <a href="Cours_07_Integration_Contiki.html">Intégration dans le stack RPL de Contiki-NG</a></li><li><span class="session-tag tag-cours">Cours 08</span> <a href="Cours_08_Overhead_Protocole.html">Analyse de l'overhead protocolaire</a></li><li><span class="session-tag tag-cours">Cours 09</span> <a href="Cours_09_Simulation_Donnees.html">Simulation et collecte de données</a></li><li><span class="session-tag tag-cours">Cours 10</span> <a href="Cours_10_Extensions_Avancees.html">Extensions avancées et perspectives</a></li></ul><h2>Travaux pratiques</h2><ul class="session-list"><li><span class="session-tag tag-tp">TP 01</span> <a href="TP_01_Exploration_Code.html">Exploration du code source RPL-MQoS</a></li><li><span class="session-tag tag-tp">TP 02</span> <a href="TP_02_Compilation_Firmware.html">Compilation du firmware RPL-MQoS</a></li><li><span class="session-tag tag-tp">TP 03</span> <a href="TP_03_Analyse_Configuration.html">Analyse du fichier project-conf.h</a></li><li><span class="session-tag tag-tp">TP 04</span> <a href="TP_04_Analyse_Coeur.html">Analyse du fichier rpl-mqos.c (cœur)</a></li><li><span class="session-tag tag-tp">TP 05</span> <a href="TP_05_Analyse_Metriques.html">Analyse du fichier rpl-mqos-metrics.c</a></li><li><span class="session-tag tag-tp">TP 06</span> <a href="TP_06_Analyse_Exemple.html">Analyse du fichier rpl-mqos-example.c</a></li><li><span class="session-tag tag-tp">TP 07</span> <a href="TP_07_Manipulation_Structures.html">Manipulation des structures de données</a></li><li><span class="session-tag tag-tp">TP 08</span> <a href="TP_08_Compilation_Croisee.html">Tests de compilation croisée</a></li><li><span class="session-tag tag-tp">TP 09</span> <a href="TP_09_Callbacks_Voisinage.html">Analyse des callbacks voisinage</a></li><li><span class="session-tag tag-tp">TP 10</span> <a href="TP_10_Simulation_Cooja.html">Simulation avec Cooja</a></li><li><span class="session-tag tag-tp">TP 11</span> <a href="TP_11_Analyse_Performances.html">Analyse des performances</a></li><li><span class="session-tag tag-tp">TP 12</span> <a href="TP_12_Projet_Synthese.html">Projet de synthèse</a></li></ul><h2>Organisation recommandée</h2><ol><li><strong>Phase 1 (Cours 01-03 + TP 01-03) :</strong> Découvrez RPL-MQoS, les classes de trafic, les métriques et explorez le code source</li><li><strong>Phase 2 (Cours 04-06 + TP 04-07) :</strong> Analysez en profondeur le calcul de rang, les callbacks voisinage et le cache de métriques</li><li><strong>Phase 3 (Cours 07-08 + TP 08-10) :</strong> Étudiez l'intégration Contiki-NG, compilez et simulez</li><li><strong>Phase 4 (Cours 09-10 + TP 11-12) :</strong> Analysez les performances, explorez les extensions et réalisez le projet de synthèse</li></ol><div class="md-meta" style="margin-top:2rem;"><strong>Ressources complémentaires</strong><ul><li><a href="file:///home/madani/contiki-ng/examples/projet_madani/RPLMQoS_BELACEL" target="_blank">Dépôt RPLMQoS_BELACEL</a> — Code source complet</li><li><a href="https://github.com/contiki-ng/contiki-ng" target="_blank">Contiki-NG GitHub</a> — OS pour IoT</li><li><a href="https://tools.ietf.org/html/rfc6550" target="_blank">RFC 6550 — RPL</a></li><li><a href="https://anrg.usc.edu/contiki/index.php/Cooja_Simulator" target="_blank">Documentation Cooja</a></li></ul></div></div></main><footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+      <img src="../../../images/Universit\u00e9_de_Mostaganem.png" alt="Universit\u00e9 de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Alg\u00e9rie" class="footer-logo">
     </div>
     <div class="footer-infos">
       <span>madani.belacel@univ-mosta.dz</span>
       <span> Universit de Mostaganem</span>
       <span> 2025-2026</span>
     </div>
-    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+    <p> 2026 Dr. Madani BELACEL \u2014 Tous droits r\u00e9serv\u00e9s.</p>
   </div>
 </footer>
-
 <script src="../../../js/data.js"></script>
 <script src="../../../js/main.js"></script>
 </body></html>

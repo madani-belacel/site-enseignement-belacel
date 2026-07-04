@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 05 — Analyse des files d'attente QoS — AER-MQoS</title>
+<title>Analyse des files d'attente QoS — AER-MQoS</title>
 <meta name="description" content="Analyser les logs [QUEUE] d'AER-MQoS pour observer les longueurs de files par classe, le comportement du WRR et vérifier le ratio 6:3:2:1.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,68 +76,44 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">TP 05 — Analyse des files d'attente QoS</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 05 — Analyse des files d'attente QoS</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 1h00<br>
-      <strong>Objectif :</strong> Analyser les logs [QUEUE] pour observer les files d'attente QoS, le comportement du WRR et vérifier le ratio 6:3:2:1<br>
-      <strong>Prérequis :</strong> TP 04 (logs de campagne grille 30 nœuds)
+      <strong>Objectif :</strong> Analyser les logs [QUEUE] pour observer les files d'attente QoS, le comportement du WRR et vérifier le ratio 6:3:2:1<br><strong>Prérequis :</strong> TP 04 (logs de campagne grille 30 nœuds)
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Extraire les logs [QUEUE]</h2>
-    <p>Les logs de la simulation contiennent des lignes [QUEUE] qui tracent chaque opération sur les files. Extrayez-les :</p>
     <pre><code>grep "\[QUEUE\]" campagne_grid_30.log > queue_logs.txt
 wc -l queue_logs.txt</code></pre>
 
     <h2>2. Structure des logs [QUEUE]</h2>
-    <p>Chaque ligne [QUEUE] a le format suivant :</p>
     <pre><code>[QUEUE] Timestamp:102030 Node:1.1.1.2 Enqueue pkt=0x100 class=C0 len=3
 [QUEUE] Timestamp:102050 Node:1.1.1.2 Dequeue pkt=0x100 class=C0 len=2
 [QUEUE] Timestamp:102100 Node:1.1.1.2 WRR schedule: C0(5/6) C1(2/3) C2(1/2) C3(0/1)</code></pre>
-    <p>Les trois types d'événements sont :</p>
-    <ul>
-      <li><strong>Enqueue</strong> — un paquet est ajouté à une file</li>
-      <li><strong>Dequeue</strong> — un paquet est extrait pour transmission</li>
-      <li><strong>WRR schedule</strong> — état de l'ordonnanceur à un instant donné</li>
-    </ul>
 
     <h2>3. Analyser les enqueuements par classe</h2>
-    <p>Comptez le nombre de paquets enfilés par classe :</p>
     <pre><code>grep "class=C0" queue_logs.txt | grep "Enqueue" | wc -l
 grep "class=C1" queue_logs.txt | grep "Enqueue" | wc -l
 grep "class=C2" queue_logs.txt | grep "Enqueue" | wc -l
 grep "class=C3" queue_logs.txt | grep "Enqueue" | wc -l</code></pre>
 
-    <h2>4. Analyser les déqueuements par classe</h2>
-    <p>De même pour les déqueuements :</p>
-    <pre><code>grep "class=C0" queue_logs.txt | grep "Dequeue" | wc -l
-grep "class=C1" queue_logs.txt | grep "Dequeue" | wc -l
-grep "class=C2" queue_logs.txt | grep "Dequeue" | wc -l
-grep "class=C3" queue_logs.txt | grep "Dequeue" | wc -l</code></pre>
-
-    <h2>5. Vérifier le ratio WRR 6:3:2:1</h2>
-    <p>Calculez le ratio observé entre les classes :</p>
-    <pre><code># Exemple avec Python
-python3 -c "
+    <h2>4. Vérifier le ratio WRR 6:3:2:1</h2>
+    <pre><code>python3 -c "
 c0 = $(grep 'class=C0' queue_logs.txt | grep 'Dequeue' | wc -l)
 c1 = $(grep 'class=C1' queue_logs.txt | grep 'Dequeue' | wc -l)
 c2 = $(grep 'class=C2' queue_logs.txt | grep 'Dequeue' | wc -l)
@@ -130,47 +122,21 @@ print(f'C0={c0} C1={c1} C2={c2} C3={c3}')
 if c3 > 0:
     print(f'Ratio approx: {c0/c3:.1f}:{c1/c3:.1f}:{c2/c3:.1f}:1')
 "</code></pre>
-    <p>Le ratio doit être proche de 6:3:2:1. Des écarts sont normaux si certaines files étaient vides.</p>
 
-    <h2>6. Observer l'évolution temporelle</h2>
-    <p>Analysez comment les longueurs de files évoluent au cours du temps. Cherchez les lignes "WRR schedule" :</p>
-    <pre><code>grep "WRR schedule" queue_logs.txt | head -20</code></pre>
-    <p>Chaque ligne montre les déficits restants pour chaque classe. Vous pouvez ainsi suivre la progression du cycle WRR.</p>
-
-    <h2>7. Détecter les congestions</h2>
-    <p>Repérez les situations où une file atteint sa limite :</p>
+    <h2>5. Détecter les congestions</h2>
     <pre><code>grep -i "drop\|overflow\|full" queue_logs.txt</code></pre>
-    <p>Quelle classe est la plus touchée par les drops ? Est-ce conforme à la politique de drop sélectif ?</p>
 
-    <h2>8. Visualisation</h2>
-    <p>Utilisez Python pour tracer l'évolution des files :</p>
-    <pre><code>python3 << 'EOF'
-import matplotlib.pyplot as plt
-# Exemple : extraire les timestamps et longueurs de C0
-with open('queue_logs.txt') as f:
-    lines = [l.strip() for l in f if 'WRR schedule' in l]
-# Parser les timestamps et les déficits
-timestamps = []
-c0_deficits = []
-for line in lines[:100]:
-    parts = line.split()
-    ts = int(parts[1].split(':')[1])
-    c0 = int(parts[5].split('(')[1].split('/')[0])
-    timestamps.append(ts)
-    c0_deficits.append(c0)
-plt.plot(timestamps, c0_deficits)
-plt.xlabel('Timestamp')
-plt.ylabel('C0 deficit')
-plt.savefig('c0_deficit_evolution.png')
-EOF</code></pre>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Le ratio doit être proche de 6:3:2:1. Des écarts sont normaux si certaines files étaient vides.</div>
 
-    <h2>9. Questions</h2>
-    <ol>
-      <li>Le ratio WRR observé est-il conforme à 6:3:2:1 ?</li>
-      <li>Quelle classe a eu le plus de drops ? Pourquoi ?</li>
-      <li>Y a-t-il eu des situations de famine pour C3 ?</li>
-      <li>Comment évoluent les files en cas de rafale de trafic C0 ?</li>
-    </ol>
+    <div class="trouble-box"><strong>⚠️ Dépannage :</strong> Si <code>queue_logs.txt</code> est vide, vérifiez que le fichier de log contient bien des lignes [QUEUE] avec <code>head -50 campagne_grid_30.log</code>.</div>
+
+    <div class="question-box">
+      <ol>
+        <li>Le ratio WRR observé est-il conforme à 6:3:2:1 ?</li>
+        <li>Quelle classe a eu le plus de drops ? Pourquoi ?</li>
+        <li>Y a-t-il eu des situations de famine pour C3 ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

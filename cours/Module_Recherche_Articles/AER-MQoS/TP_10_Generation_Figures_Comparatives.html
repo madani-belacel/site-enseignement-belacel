@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 10 — Génération de figures comparatives — AER-MQoS</title>
+<title>Génération de figures comparatives — AER-MQoS</title>
 <meta name="description" content="Générer des figures comparatives entre les 4 variantes AER-MQoS : PDR, latence, énergie, barres d'erreur, analyse statistique.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,35 +76,28 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">TP 10 — Génération de figures comparatives</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 10 — Génération de figures comparatives</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 1h30<br>
-      <strong>Objectif :</strong> Créer des graphiques comparatifs entre les 4 variantes (PDR, latence, énergie) avec barres d'erreur, exploitables pour publication<br>
-      <strong>Prérequis :</strong> TP 09 (fichier CSV), matplotlib, seaborn, pandas
+      <strong>Objectif :</strong> Créer des graphiques comparatifs entre les 4 variantes (PDR, latence, énergie) avec barres d'erreur, exploitables pour publication<br><strong>Prérequis :</strong> TP 09 (fichier CSV), matplotlib, seaborn, pandas
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Préparation des données</h2>
-    <p>Assurez-vous d'avoir le fichier <code>campaign_results.csv</code> généré au TP 09. Vérifiez sa structure :</p>
     <pre><code>python3 -c "
 import pandas as pd
 df = pd.read_csv('campaign_results.csv')
@@ -97,90 +106,26 @@ print(df.groupby('variant').mean())
 "</code></pre>
 
     <h2>2. Diagramme comparatif PDR</h2>
-    <p>Générez un diagramme à barres du PDR par variante :</p>
     <pre><code>python3 << 'EOF'
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-df = pd.read_csv('campaign_results.csv')
 sns.set_style('whitegrid')
-
+df = pd.read_csv('campaign_results.csv')
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.barplot(data=df, x='variant', y='PDR', capsize=0.1, ax=ax)
 ax.set_title('PDR comparatif par variante', fontsize=14)
-ax.set_xlabel('Variante')
-ax.set_ylabel('PDR (%)')
-
-# Ajouter les valeurs sur les barres
 for p in ax.patches:
-    ax.annotate(f'{p.get_height():.2f}', 
-                (p.get_x() + p.get_width()/2., p.get_height()),
-                ha='center', va='bottom')
-
+    ax.annotate(f'{p.get_height():.2f}', (p.get_x() + p.get_width()/2., p.get_height()), ha='center', va='bottom')
 plt.tight_layout()
 plt.savefig('pdr_comparison.png', dpi=150)
-print("Figure sauvegardée: pdr_comparison.png")
+print("Figure sauvegardée")
 EOF</code></pre>
 
-    <h2>3. Comparatif PDR par classe</h2>
-    <p>Créez un graphique montrant le PDR par classe (C0 à C3) pour chaque variante :</p>
-    <pre><code>python3 << 'EOF'
-import pandas as pd
-import matplotlib.pyplot as plt
-
-df = pd.read_csv('campaign_results.csv')
-classes = ['C0_PDR', 'C1_PDR', 'C2_PDR', 'C3_PDR']
-fig, axes = plt.subplots(2, 2, figsize=(12, 10))
-axes = axes.flatten()
-
-for i, variant in enumerate(df['variant'].unique()):
-    ax = axes[i]
-    vdata = df[df['variant'] == variant]
-    means = [vdata[c].mean() for c in classes]
-    stds = [vdata[c].std() for c in classes]
-    ax.bar(classes, means, yerr=stds, capsize=5)
-    ax.set_title(f'PDR par classe - {variant}')
-    ax.set_ylabel('PDR (%)')
-    ax.set_ylim(0, 1)
-
-plt.tight_layout()
-plt.savefig('pdr_by_class.png', dpi=150)
-print("Figure sauvegardée: pdr_by_class.png")
-EOF</code></pre>
-
-    <h2>4. Comparatif latence et énergie</h2>
-    <p>Générez un graphique combiné latence + énergie :</p>
-    <pre><code>python3 << 'EOF'
-import pandas as pd
-import matplotlib.pyplot as plt
-
-df = pd.read_csv('campaign_results.csv')
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
-
-# Latence
-variants = df.groupby('variant')['Latence_avg'].agg(['mean', 'std'])
-ax1.bar(variants.index, variants['mean'], yerr=variants['std'], capsize=5)
-ax1.set_title('Latence moyenne par variante')
-ax1.set_ylabel('Latence (ms)')
-
-# Energie
-variants_e = df.groupby('variant')['Energie_consommee'].agg(['mean', 'std'])
-ax2.bar(variants_e.index, variants_e['mean'], yerr=variants_e['std'], capsize=5)
-ax2.set_title('Consommation énergétique par variante')
-ax2.set_ylabel('Énergie (mAh)')
-
-plt.tight_layout()
-plt.savefig('latency_energy_comparison.png', dpi=150)
-print("Figure sauvegardée: latency_energy_comparison.png")
-EOF</code></pre>
-
-    <h2>5. Analyse statistique (test de Student)</h2>
-    <p>Vérifiez si les différences entre AER-MQoS et RPL-MRHOF sont statistiquement significatives :</p>
+    <h2>3. Analyse statistique (test de Student)</h2>
     <pre><code>python3 << 'EOF'
 from scipy import stats
 import pandas as pd
-
 df = pd.read_csv('campaign_results.csv')
 aer = df[df['variant'] == 'AER-MQoS']['PDR']
 mrhof = df[df['variant'] == 'RPL-MRHOF']['PDR']
@@ -190,50 +135,17 @@ print(f"  t-statistique = {t_stat:.4f}")
 print(f"  p-value = {p_value:.4f}")
 if p_value < 0.05:
     print("  -> Différence significative (p < 0.05)")
-else:
-    print("  -> Pas de différence significative")
 EOF</code></pre>
 
-    <h2>6. Figure publication-ready</h2>
-    <p>Pour une figure exploitable dans un article, personnalisez le style :</p>
-    <pre><code>python3 << 'EOF'
-import pandas as pd
-import matplotlib.pyplot as plt
-# Style pour publication
-plt.rcParams.update({
-    'font.family': 'serif',
-    'font.size': 11,
-    'axes.labelsize': 12,
-    'axes.titlesize': 13,
-    'legend.fontsize': 10,
-})
-df = pd.read_csv('campaign_results.csv')
-fig, ax = plt.subplots(figsize=(8, 5))
-colors = ['#2ecc71', '#3498db', '#e74c3c', '#f39c12']
-variants = ['RPL-MRHOF', 'RPL-MQoS-style', 'RPL-AER-style', 'AER-MQoS']
-for i, v in enumerate(variants):
-    vdata = df[df['variant'] == v]
-    ax.errorbar(i, vdata['PDR'].mean(), yerr=vdata['PDR'].std(),
-                fmt='o', color=colors[i], capsize=6, capthick=2,
-                markersize=10, label=v)
-ax.set_xticks(range(4))
-ax.set_xticklabels(variants, rotation=15, ha='right')
-ax.set_ylabel('PDR')
-ax.set_title('Comparaison PDR global')
-ax.legend()
-ax.grid(axis='y', alpha=0.3)
-plt.tight_layout()
-plt.savefig('pdr_publication_figure.png', dpi=300)
-print("Figure publication-ready sauvegardée")
-EOF</code></pre>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Les barres d'erreur doivent être présentes sur les graphiques. Les différences entre AER-MQoS et RPL-MRHOF doivent être statistiquement significatives.</div>
 
-    <h2>7. Questions</h2>
-    <ol>
-      <li>Quelle variante offre le meilleur PDR ? La plus faible latence ?</li>
-      <li>Les différences entre AER-MQoS et les autres variantes sont-elles significatives ?</li>
-      <li>Quel graphique serait le plus adapté pour un article scientifique ?</li>
-      <li>Y a-t-il un compromis entre performance QoS et consommation énergétique ?</li>
-    </ol>
+    <div class="question-box">
+      <ol>
+        <li>Quelle variante offre le meilleur PDR ? La plus faible latence ?</li>
+        <li>Les différences entre AER-MQoS et les autres variantes sont-elles significatives ?</li>
+        <li>Y a-t-il un compromis entre performance QoS et consommation énergétique ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

@@ -1,76 +1,102 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Cours 02 — Architecture distribuée de RPL-ClusterIDS — IDS-IOT</title>
-<meta name="description" content="Architecture à deux niveaux de RPL-ClusterIDS : nœuds membres et Cluster Heads, communication, formation des clusters, élection CH.">
+<meta name="description" content="Architecture distribuée de RPL-ClusterIDS : organisation à deux niveaux, modules du firmware Contiki-NG.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
-<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content blockquote p{margin:0.2rem 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}.md-content hr{border:none;border-top:1px solid var(--border);margin:1.5rem 0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+<style>
+.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}
+.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}
+.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}
+.md-content p{margin:0.5rem 0;line-height:1.8}
+.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}
+.md-content li{margin:0.25rem 0;line-height:1.7}
+.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}
+.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}
+.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}
+.md-content pre code{background:none;padding:0}
+.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}
+.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}
+.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}
+.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}
+.box-obj{background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-verif{background:#e3f2fd;border-left:4px solid #1565c0;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-trouble{background:#fff3e0;border-left:4px solid #e65100;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-question{background:#f3e5f5;border-left:4px solid #7b1fa2;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-cmd{background:#263238;color:#eceff1;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto}
+.box-cmd code{color:#a5d6a7}
+.box-output{background:#1b2631;color:#d4d4d4;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto;font-size:0.88em}
+</style>
 </head><body>
-
 <header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
-
-<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 02 — Architecture ClusterIDS</li></ol></nav>
-
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 02 — Architecture ClusterIDS</li></ol></nav>
 <main class="page-content" id="main-content"><div class="md-content">
-
 <h1>Architecture distribuée de RPL-ClusterIDS</h1>
+<div class="md-meta"><strong>Cours 02 — Module IDS-IOT / RPL-ClusterIDS</strong><ul>
+<li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+<li><strong>Durée :</strong> 2 séances</li>
+<li><strong>Objectif :</strong> Comprendre l'architecture modulaire de RPL-ClusterIDS dans Contiki-NG</li>
+</ul></div>
+<div class="box-obj"><strong>Objectif pédagogique :</strong> Comprendre l'organisation modulaire du firmware (8 modules C), le rôle de chaque module, et leur assemblage dans clusterids-node.c.</div>
+<h2>1. Vue d'ensemble des modules</h2>
+<table>
+<tr><th>Fichier</th><th>Rôle</th><th>Lignes</th></tr>
+<tr><td>clusterids-node.c</td><td>Processus principal Contiki-NG</td><td>267</td></tr>
+<tr><td>clus_form.c/h</td><td>Formation des clusters (Eq. 1-2)</td><td>51+11</td></tr>
+<tr><td>ch_elect.c/h</td><td>Élection CH (Eq. 3)</td><td>98+13</td></tr>
+<tr><td>ids_member.c/h</td><td>Détection membre (R1-R4, LAS, EWMA)</td><td>97+12</td></tr>
+<tr><td>ids_ch.c/h</td><td>Agrégation CH et confirmation</td><td>63+11</td></tr>
+<tr><td>ctx_policy.c/h</td><td>Politiques Full/Balanced/Eco</td><td>53+17</td></tr>
+<tr><td>ids_attack.c/h</td><td>Générateurs de signaux d'attaque</td><td>80+14</td></tr>
+<tr><td>ids_campaign_log.c/h</td><td>Log structuré METRIC</td><td>164+20</td></tr>
+<tr><td>ids_conf.h</td><td>Configuration centrale (seuils, durées)</td><td>38</td></tr>
+<tr><td>Makefile</td><td>Build système avec variants</td><td>97</td></tr>
+</table>
+<h2>2. Diagramme de flux du processus principal</h2>
+<pre><code>PROCESS_THREAD(clusterids_node_process, ev, data) {
+  PROCESS_BEGIN();
+  // Initialisation
+  clus_form_init(); ch_elect_init(); ids_member_init();
+  ids_ch_init(); ctx_policy_init(); ids_attack_init();
+  if(node_id == 1) NETSTACK_ROUTING.root_start();
 
-<div class="md-meta"><strong>Cours 02 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Auteur :</strong> Dr. Madani BELACEL</li><li><strong>Durée :</strong> 2 séances</li><li><strong>Objectif :</strong> Comprendre l'architecture à deux niveaux du système DIDS</li></ul></div>
-
-<h2>1. Vue d'ensemble de l'architecture</h2>
-<p>RPL-ClusterIDS adopte une architecture hiérarchique à deux niveaux qui répartit les responsabilités de détection entre les nœuds membres et les Cluster Heads (CH). Cette séparation permet d'équilibrer la charge de calcul et de communication tout en maintenant une détection efficace.</p>
-
-<p>Les composants logiciels sont organisés en modules C dans le répertoire <code>code_source_RPL_ClusterIDS/</code> :</p>
-<ul>
-  <li><code>clusterids-node.c</code> — Point d'entrée : trafic UDP (classes C0-C3), racine RPL, orchestration de la couche IDS</li>
-  <li><code>clus_form.c</code> / <code>.h</code> — Formation des clusters et fonction d'affinité</li>
-  <li><code>ch_elect.c</code> / <code>.h</code> — Élection des Cluster Heads et rotation</li>
-  <li><code>ids_member.c</code> / <code>.h</code> — Détection locale (règles R1-R4) et calcul LAS</li>
-  <li><code>ids_ch.c</code> / <code>.h</code> — Agrégation des LAS au niveau CH</li>
-  <li><code>ctx_policy.c</code> / <code>.h</code> — Politiques contextuelles Full/Balanced/Eco</li>
-  <li><code>ids_attack.c</code> / <code>.h</code> — Génération d'attaques RPL simulées</li>
-  <li><code>ids_campaign_log.c</code> / <code>.h</code> — Log structuré pour le pipeline d'analyse</li>
-</ul>
-
-<h2>2. Niveau 1 : Nœuds membres</h2>
-<p>Chaque nœud membre (non-CH) exécute les tâches suivantes :</p>
-<ul>
-  <li>Surveillance locale du trafic entrant et sortant</li>
-  <li>Application des 4 règles de détection (R1-R4)</li>
-  <li>Calcul du score d'anomalie local (LAS, Eq. 4)</li>
-  <li>Transmission périodique du LAS au Cluster Head</li>
-  <li>Participation au processus d'élection du CH</li>
-</ul>
-
-<h2>3. Niveau 2 : Cluster Heads (CH)</h2>
-<p>Les Cluster Heads ont des responsabilités supplémentaires :</p>
-<ul>
-  <li>Collecte des LAS provenant des membres du cluster</li>
-  <li>Agrégation et confirmation croisée des anomalies</li>
-  <li>Prise de décision consolidée (alerte confirmée ou rejetée)</li>
-  <li>Génération d'alertes vers la racine RPL (sink)</li>
-  <li>Gestion du re-clustering et rotation du rôle CH</li>
-</ul>
-
-<h2>4. Communication entre niveaux</h2>
-<p>Les échanges suivants structurent la communication :</p>
+  while(1) {
+    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&periodic)
+                          || etimer_expired(&ids_tick)
+                          || etimer_expired(&metrics_tick));
+    if(etimer_expired(&ids_tick)) {  // Toutes les 5s
+      sim_seconds += 5;
+      run_ids_overlay(pick_traffic_class());
+    }
+    if(etimer_expired(&metrics_tick)) {  // Toutes les 60s
+      emit_campaign_metrics();
+    }
+    if(etimer_expired(&periodic)) {  // ~30s ajusté par profil C0-C3
+      simple_udp_sendto(&udp_conn, payload, len, NULL);
+    }
+  }
+  PROCESS_END();
+}</code></pre>
+<h2>3. Cheminement des données de détection</h2>
 <ol>
-  <li><strong>Phase de formation :</strong> messages de découverte, calcul d'affinité, attribution des membres aux CH</li>
-  <li><strong>Phase d'élection :</strong>广播 des valeurs de fitness, vote, annonce du nouveau CH</li>
-  <li><strong>Phase de monitoring :</strong> rapports LAS périodiques des membres vers le CH</li>
-  <li><strong>Phase d'alerte :</strong> décision CH → message d'alerte vers la racine</li>
-  <li><strong>Phase de re-clustering :</strong> déclenché périodiquement ou si la qualité du cluster se dégrade (Eq. 2)</li>
+<li><code>ids_attack_tick()</code> active/désactive les signaux selon sim_seconds</li>
+<li><code>ids_member_tick()</code> lit 4 signaux, applique masque (policy), EWMA, calcule LAS</li>
+<li>Si LAS > 50 → alarme membre = 1</li>
+<li><code>ids_ch_tick()</code> confirme si alarme ET LAS > 50</li>
+<li><code>emit_campaign_metrics()</code> log toutes les 60s</li>
 </ol>
-
-<h2>5. Fichier de coordination : clusterids-node.c</h2>
-<p>Le fichier <code>clusterids-node.c</code> est le point d'entrée du firmware. Il initialise la pile RPL, configure le trafic UDP selon 4 classes (C0-C3), démarre le module IDS selon le variant choisi, et orchestre les phases de clustering et de détection. La racine RPL (DAG root) joue un rôle particulier : elle reçoit les alertes des CH et peut déclencher des actions de mitigation.</p>
-
-<blockquote><strong>Note :</strong> L'architecture est conçue pour minimiser l'overhead de communication. Les rapports LAS sont compressés et envoyés périodiquement, pas à chaque paquet. Les CH n'agrègent que les scores dépassant un seuil configurable.</blockquote>
-
-</div></main>
-
+<h2>4. Configuration ids_conf.h</h2>
+<pre><code>#define IDS_THRESHOLD_LAS     50
+#define IDS_THRESHOLD_CH      50
+#define IDS_THRESHOLD_LOW     25
+#define IDS_THRESHOLD_CH_ELIG 40
+#define IDS_ATTACK_START_S    1800
+#define IDS_ATTACK_DURATION_S 1800
+#define IDS_SIM_DURATION_S    10800
+#define IDS_UDP_PORT          8765</code></pre>
+<div class="box-question"><strong>Question réflexive :</strong> Pourquoi la fonction d'affinité utilise-t-elle des poids (topologie ×3, énergie ×2, trafic ×1) ? Comment ces poids influencent-ils la stabilité du cluster ?</div></div></main>
 <footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
-
 <script src="../../../js/data.js"></script>
 <script src="../../../js/main.js"></script>
 </body></html>

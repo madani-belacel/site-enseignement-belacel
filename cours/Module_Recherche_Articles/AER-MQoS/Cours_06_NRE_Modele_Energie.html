@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 06 — Modèle d'énergie NRE — AER-MQoS</title>
+<title>Modèle d'énergie NRE (Normalized Residual Energy) — AER-MQoS</title>
 <meta name="description" content="Modèle d'énergie NRE (Normalized Residual Energy) dans AER-MQoS : capacité de batterie, consommation résiduelle, normalisation, rôle dans la métrique MCS.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,59 +76,35 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
-    <li class="current">Cours 06 — Modèle d'énergie NRE</li>
+    <li class="current">Cours 06 — Modèle d'énergie NRE (Normalized Residual Energy)</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>Cours 06 — Modèle d'énergie NRE (Normalized Residual Energy)</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h00<br>
-      <strong>Objectif :</strong> Comprendre le modèle d'énergie NRE étendu de RPL-AER, son implémentation et son rôle dans la métrique MCS<br>
-      <strong>Prérequis :</strong> Cours 01, Cours 03, notions de consommation énergétique IoT
+      <strong>Objectif :</strong> Comprendre le modèle d'énergie NRE étendu de RPL-AER, son implémentation et son rôle dans la métrique MCS<br><strong>Prérequis :</strong> Cours 01, Cours 03, notions de consommation énergétique IoT
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Importance de l'énergie dans les LLN</h2>
     <p>Les nœuds IoT sont généralement alimentés par batterie avec une capacité limitée. La durée de vie du réseau dépend directement de la gestion de l'énergie. Un protocole de routage qui ignore l'énergie résiduelle risque d'épuiser prématurément certains nœuds, fragmentant le réseau et réduisant sa couverture.</p>
-    <p>AER-MQoS intègre un modèle énergétique complet, hérité et étendu du protocole RPL-AER, qui suit en continu la charge de la batterie et normalise l'énergie résiduelle pour l'inclure dans la métrique de routage.</p>
 
     <h2>2. Le modèle NRE</h2>
     <p>Le NRE (Normalized Residual Energy) représente l'énergie résiduelle d'un nœud normalisée dans [0, 1] :</p>
     <pre><code>NRE = énergie_résiduelle / capacité_totale_de_la_batterie</code></pre>
-    <p>Où :</p>
-    <ul>
-      <li><code>énergie_résiduelle</code> = capacité_initial − énergie_consommée</li>
-      <li><code>capacité_totale</code> = énergie totale de la batterie en mAh (paramétrable)</li>
-    </ul>
-    <p>Un NRE = 1 signifie batterie pleinement chargée, NRE ≈ 0 signifie batterie épuisée.</p>
 
-    <h2>3. Suivi de la consommation</h2>
-    <p>Le module <code>aer_rpl_energy.c</code> met à jour la consommation énergétique à chaque opération :</p>
-    <ul>
-      <li><strong>Transmission radio</strong> : coût en fonction de la puissance d'émission (TX)</li>
-      <li><strong>Réception radio</strong> : coût en écoute (RX)</li>
-      <li><strong>Écoute de canal (CCA)</strong> : coût de <em>clear channel assessment</em></li>
-      <li><strong>Traitement CPU</strong> : consommation du microcontrôleur</li>
-      <li><strong>Veille (sleep)</strong> : consommation minimale en mode basse consommation</li>
-    </ul>
-
-    <h2>4. Paramétrage de la batterie</h2>
-    <p>Le modèle est configurable via des constantes dans <code>project-conf.h</code> :</p>
+    <h2>3. Paramétrage de la batterie</h2>
     <pre><code>/* Configuration typique pour une simulation Cooja */
 #define AER_BATTERY_CAPACITY    3000    // 3000 mAh
 #define AER_TX_CURRENT_MA       17.4    // mA en transmission
@@ -120,20 +112,17 @@
 #define AER_CPU_CURRENT_MA      1.8     // mA en actif
 #define AER_SLEEP_CURRENT_MA    0.001   // mA en veille</code></pre>
 
-    <h2>5. Implémentation dans aer_rpl_energy.c</h2>
-    <p>Les fonctions clés du module sont :</p>
+    <h2>4. Implémentation dans aer_rpl_energy.c</h2>
     <pre><code>/* Initialisation du modèle */
 void aer_rpl_energy_init(void) {
     battery_capacity = AER_BATTERY_CAPACITY;
     energy_consumed = 0;
 }
-
 /* Mise à jour après émission d'un paquet */
 void aer_rpl_energy_tx_packet(uint8_t len) {
     double time_ms = (len * 8.0) / BITRATE_KBPS;
     energy_consumed += (AER_TX_CURRENT_MA * time_ms) / 3600000.0;
 }
-
 /* Obtention du NRE */
 double aer_rpl_energy_get_nre(void) {
     double residual = battery_capacity - energy_consumed;
@@ -141,29 +130,7 @@ double aer_rpl_energy_get_nre(void) {
     return residual / battery_capacity;
 }</code></pre>
 
-    <h2>6. NRE dans la métrique MCS</h2>
-    <p>Le NRE est l'une des trois composantes de la métrique MCS (Cours 03). Multiplié par le poids alpha, il influence le choix du parent. Lorsque alpha est élevé (contexte d'énergie faible), les nœuds avec une batterie bien chargée sont favorisés comme parents, répartissant ainsi la charge énergétique et prolongeant la durée de vie du réseau.</p>
-
-    <p>L'extrait suivant montre comment le NRE est obtenu pour un parent candidat :</p>
-    <pre><code>/* Dans la fonction de sélection de parent */
-double nre = aer_rpl_energy_get_nre_for_parent(parent);
-double mcs = alpha * nre + beta * (1 - etx_norm) + gamma * trust;</code></pre>
-
-    <h2>7. Comparaison avec le modèle énergétique de Contiki-NG</h2>
-    <p>Contiki-NG intègre un module <code>energest</code> qui estime la consommation par échantillonnage de l'activité radio. Le modèle NRE d'AER-MQoS est plus précis car il calcule la consommation réelle à chaque transmission/réception plutôt que par échantillonnage statistique.</p>
-
-    <table>
-      <tr><th>Caractéristique</th><th>Energest (Contiki-NG)</th><th>NRE (AER-MQoS)</th></tr>
-      <tr><td>Méthode</td><td>Échantillonnage temporel</td><td>Comptage exact par opération</td></tr>
-      <tr><td>Précision</td><td>Moyenne (dépend de la fréquence d'échantillonnage)</td><td>Élevée (par paquet)</td></tr>
-      <tr><td>Normalisation</td><td>Non</td><td>Oui (NRE dans [0,1])</td></tr>
-      <tr><td>Paramétrage batterie</td><td>Non</td><td>Oui (capacité configurable)</td></tr>
-    </table>
-
-    <h2>8. Visualisation de l'énergie dans Cooja</h2>
-    <p>Le plugin <em>Energest</em> de Cooja peut visualiser la consommation énergétique des nœuds. Combiné aux logs [ENERGY] produits par AER-MQoS, il permet d'analyser l'évolution du NRE au cours du temps et de vérifier l'équité de la répartition énergétique entre les nœuds.</p>
-
-    <h2>9. Résumé</h2>
+    <h2>5. Résumé</h2>
     <p>Le modèle NRE fournit à AER-MQoS une mesure précise et normalisée de l'énergie résiduelle, essentielle pour un routage équilibré en énergie. Il s'intègre naturellement dans la métrique MCS via le poids alpha, contribuant à prolonger la durée de vie du réseau tout en maintenant la QoS.</p>
 
   </div>

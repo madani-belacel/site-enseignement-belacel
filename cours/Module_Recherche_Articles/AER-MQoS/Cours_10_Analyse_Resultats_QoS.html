@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 10 — Analyse des résultats QoS — AER-MQoS</title>
+<title>Analyse des résultats QoS — AER-MQoS</title>
 <meta name="description" content="Analyse des performances QoS d'AER-MQoS : quand surpasse-t-il les autres variantes, compromis QoS vs énergie, performance par classe.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,96 +76,53 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">Cours 10 — Analyse des résultats QoS</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>Cours 10 — Analyse des résultats QoS</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h30<br>
-      <strong>Objectif :</strong> Analyser et interpréter les résultats comparatifs d'AER-MQoS face aux autres variantes, comprendre les compromis et les conditions de supériorité<br>
-      <strong>Prérequis :</strong> Cours 08, Cours 09, TP 09, TP 10
+      <strong>Objectif :</strong> Analyser et interpréter les résultats comparatifs d'AER-MQoS face aux autres variantes, comprendre les compromis et les conditions de supériorité<br><strong>Prérequis :</strong> Cours 08, Cours 09
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Résultats attendus</h2>
-    <p>Sur la base de la conception d'AER-MQoS, voici les résultats attendus par métrique :</p>
-
     <table>
       <tr><th>Métrique</th><th>RPL-MRHOF</th><th>RPL-MQoS-style</th><th>RPL-AER-style</th><th>AER-MQoS</th></tr>
       <tr><td>PDR global</td><td>Moyen</td><td>Bon</td><td>Moyen</td><td><strong>Très bon</strong></td></tr>
       <tr><td>PDR C0</td><td>Identique à C3</td><td>Excellent</td><td>Identique à C3</td><td><strong>Excellent</strong></td></tr>
-      <tr><td>PDR C3</td><td>Identique à C0</td><td>Faible</td><td>Identique à C0</td><td>Moyen</td></tr>
       <tr><td>Latence</td><td>Moyenne</td><td>Bonne (C0)</td><td>Élevée</td><td><strong>Bonne</strong></td></tr>
       <tr><td>Énergie</td><td>Moyenne</td><td>Élevée</td><td>Faible</td><td>Moyenne</td></tr>
-      <tr><td>Équité</td><td>Faible</td><td>Bonne</td><td>Moyenne</td><td><strong>Très bonne</strong></td></tr>
       <tr><td>Résilience attaques</td><td>Faible</td><td>Moyenne</td><td>Faible</td><td><strong>Élevée</strong></td></tr>
     </table>
 
-    <h2>2. Analyse PDR : quand AER-MQoS domine</h2>
-    <p>AER-MQoS surpasse les autres variantes dans plusieurs scénarios :</p>
-    <ul>
-      <li><strong>Trafic hétérogène</strong> : avec des flux mixtes C0–C3, le WRR garantit que les paquets critiques sont livrés prioritairement, ce que RPL-MRHOF et RPL-AER-style ne font pas.</li>
-      <li><strong>Réseau à forte perte</strong> : la pondération contextuelle augmente beta (ETX) quand les pertes sont élevées, ce qui améliore le choix du parent par rapport à RPL-MRHOF (ETX fixe) et RPL-MQoS-style (poids fixes).</li>
-      <li><strong>Réseau sous attaque</strong> : le Trust Score avec pénalité d'anomalie permet d'exclure les nœuds malveillants, là où les autres variantes continuent de les utiliser.</li>
-    </ul>
+    <h2>2. Analyse PDR</h2>
+    <p>AER-MQoS surpasse les autres variantes dans plusieurs scénarios : trafic hétérogène (WRR garantit la priorité C0), réseau à forte perte (pondération contextuelle augmente beta) et réseau sous attaque (Trust Score exclut les nœuds malveillants).</p>
 
     <h2>3. Compromis QoS vs Énergie</h2>
-    <p>L'analyse des résultats doit tenir compte des compromis fondamentaux :</p>
-    <ul>
-      <li><strong>AER-MQoS vs RPL-AER-style</strong> : AER-MQoS offre un meilleur PDR et une meilleure QoS, mais consomme légèrement plus d'énergie (overhead du calcul MCS, WRR, Q-learning). Ce compromis est acceptable pour des applications nécessitant de la QoS.</li>
-      <li><strong>AER-MQoS vs RPL-MQoS-style</strong> : L'ajout du Q-learning et de la pondération contextuelle améliore les performances sans surcoût énergétique significatif (l'apprentissage est local et léger).</li>
-      <li><strong>AER-MQoS vs RPL-MRHOF</strong> : La différence est la plus marquée, surtout pour les classes prioritaires. RPL-MRHOF peut être préféré si l'énergie est la seule préoccupation et que la QoS n'est pas requise.</li>
-    </ul>
+    <p>AER-MQoS offre un meilleur PDR et une meilleure QoS que RPL-AER-style, mais consomme légèrement plus d'énergie (overhead du calcul MCS, WRR, Q-learning). Ce compromis est acceptable pour des applications nécessitant de la QoS.</p>
 
     <h2>4. Performance par classe de trafic</h2>
-    <p>L'un des résultats les plus importants est la différenciation par classe :</p>
     <ul>
-      <li><strong>C0</strong> : AER-MQoS obtient un PDR proche de 99% même sous contention, grâce au WRR.</li>
-      <li><strong>C1</strong> : bon PDR (~95%), légèrement inférieur à C0.</li>
-      <li><strong>C2</strong> : PDR correct (~88%), peut baisser en cas de congestion.</li>
-      <li><strong>C3</strong> : PDR plus faible (~75-80%), les paquets C3 sont dropés en premier.</li>
-    </ul>
-    <p>Cette hiérarchie C0 > C1 > C2 > C3 est exactement ce que le design vise. Chez RPL-MRHOF, les 4 classes auraient le même PDR (pas de différenciation).</p>
-
-    <h2>5. Impact du Q-learning</h2>
-    <p>L'analyse de l'évolution de gamma au cours du temps est instructive :</p>
-    <ul>
-      <li>En début de simulation, gamma explore différentes valeurs (phase d'exploration)</li>
-      <li>Progressivement, gamma se stabilise autour d'une valeur optimale (exploitation)</li>
-      <li>Si les conditions réseau changent (pertes, énergie), l'agent ré-explore et converge vers une nouvelle valeur</li>
-      <li>La valeur de convergence dépend du contexte : gamma élevé si confiance importante, gamma faible si ETX prédomine</li>
+      <li><strong>C0</strong> : PDR proche de 99% même sous contention</li>
+      <li><strong>C1</strong> : bon PDR (~95%)</li>
+      <li><strong>C2</strong> : PDR correct (~88%)</li>
+      <li><strong>C3</strong> : PDR plus faible (~75-80%)</li>
     </ul>
 
-    <h2>6. Résilience aux attaques</h2>
-    <p>Sous attaque rank anomaly, le Trust Score des attaquants chute rapidement en dessous du seuil d'éligibilité (<code>AER_TRUST_THRESHOLD</code>). Les nœuds honnêtes les excluent du DODAG, maintenant un PDR élevé. Sans ce mécanisme (RPL-MRHOF, RPL-MQoS-style), le PDR peut chuter de 30 à 50%.</p>
-
-    <h2>7. Limites et travaux futurs</h2>
-    <p>Quelques limites identifiées :</p>
-    <ul>
-      <li>L'overhead de calcul MCS et WRR est négligeable sur les plateformes récentes mais pourrait être significatif sur des nœuds très contraints</li>
-      <li>Le Q-learning nécessite une phase de convergence (quelques minutes simulées)</li>
-      <li>Le modèle NRE suppose une connaissance précise de la capacité de la batterie</li>
-      <li>Les attaques non couvertes (wormhole, sybil) ne sont pas détectées par le Trust Score actuel</li>
-    </ul>
-
-    <h2>8. Résumé</h2>
-    <p>AER-MQoS démontre sa supériorité pour les applications IoT nécessitant de la QoS, particulièrement dans les environnements à pertes ou sous attaque. Le prix à payer est une légère augmentation de la complexité et de la consommation énergétique, justifiée par les gains en fiabilité et en différenciation de service.</p>
+    <h2>5. Résumé</h2>
+    <p>AER-MQoS démontre sa supériorité pour les applications IoT nécessitant de la QoS, particulièrement dans les environnements à pertes ou sous attaque. Le prix à payer est une légère augmentation de la complexité et de la consommation énergétique.</p>
 
   </div>
 </main>

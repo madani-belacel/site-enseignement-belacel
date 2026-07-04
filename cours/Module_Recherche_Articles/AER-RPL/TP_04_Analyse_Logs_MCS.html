@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 04 — Analyse des logs MCS — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 04 : analyser les logs MCS pour extraire NRE, PEC, ECS et comprendre l'évolution temporelle du score.">
+<title>TP 04 : Analyse des logs MCS — Dr. Madani BELACEL</title>
+<meta name="description" content="Analyser les logs MCS : extraction, statistiques, visualisation et corrélation.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,92 +90,85 @@
 
     <h1>TP 04 : Analyse des logs MCS</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 04 — Analyse des logs MCS</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Analyser les logs MCS, extraire NRE/PEC/ECS, comprendre l'évolution temporelle</li>
+        <li><strong>Durée estimée :</strong> 1h00</li>
+        <li><strong>Objectifs :</strong> Extraire et analyser les logs MCS avec Python</li>
       </ul>
     </div>
 
-    <h2>1. Extraire les logs MCS</h2>
-    <p>Après avoir lancé la simulation, extrayez les lignes MCS des logs :</p>
-    <pre><code>grep "\[MCS\]" simulation_logs.txt > mcs_logs.txt</code></pre>
+    <h2>1. Analyse des logs MCS</h2>
+    <pre><code>grep "RPL-AER: MCS" cooja_results/rpl-aer-output.log | head -20</code></pre>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Extraire les logs MCS des fichiers de simulation</li>
+        <li>Calculer des statistiques descriptives (moyenne, min, max, écart-type)</li>
+        <li>Visualiser l'évolution temporelle du MCS et de ses composants</li>
+        <li>Corréler les variations du MCS avec les événements réseau</li>
+      </ul>
+    </div>
+    <h2>2. Extraction avec Python</h2>
+    <div class="code-block"><span class="ln">  1</span> import re
+<span class="ln">  2</span> import statistics
+<span class="ln">  3</span> 
+<span class="ln">  4</span> with open("cooja_results/rpl-aer-output.log") as f:
+<span class="ln">  5</span>     logs = f.read()
+<span class="ln">  6</span> 
+<span class="ln">  7</span> pattern = r"MCS=([0-9.]+).*NRE=([0-9.]+).*PEC=([0-9.]+).*ECS=([0-9.]+)"
+<span class="ln">  8</span> matches = re.findall(pattern, logs)
+<span class="ln">  9</span> 
+<span class="ln"> 10</span> mcs_vals = [float(m[0]) for m in matches]
+<span class="ln"> 11</span> nre_vals = [float(m[1]) for m in matches]
+<span class="ln"> 12</span> pec_vals = [float(m[2]) for m in matches]
+<span class="ln"> 13</span> ecs_vals = [float(m[3]) for m in matches]
+<span class="ln"> 14</span> 
+<span class="ln"> 15</span> print(f"Statistiques MCS:")
+<span class="ln"> 16</span> print(f"  Moyenne: {statistics.mean(mcs_vals):.3f}")
+<span class="ln"> 17</span> print(f"  Min:     {min(mcs_vals):.3f}")
+<span class="ln"> 18</span> print(f"  Max:     {max(mcs_vals):.3f}")
+<span class="ln"> 19</span> print(f"  Écart-type: {statistics.stdev(mcs_vals):.3f}")</div>
+    <h2>3. Analyse par nœud</h2>
+    <pre><code>grep "RPL-AER: MCS" cooja_results/rpl-aer-output.log | grep "Node 5"</code></pre>
 
-    <h2>2. Analyser le format des logs</h2>
-    <p>Chaque ligne MCS a le format :</p>
-    <pre><code>[MCS] Node XX: NRE=X.XXX PEC=X.XXX ECS=X.XXX MCS=X.XXX</code></pre>
-    <p>Utilisez Python pour parser ces lignes :</p>
-    <pre><code>import re
-
-logs = []
-with open('mcs_logs.txt') as f:
-    for line in f:
-        m = re.search(r'Node (\d+): NRE=([\d.]+) PEC=([\d.]+) ECS=([\d.]+) MCS=([\d.]+)', line)
-        if m:
-            logs.append({
-                'node': int(m.group(1)),
-                'nre': float(m.group(2)),
-                'pec': float(m.group(3)),
-                'ecs': float(m.group(4)),
-                'mcs': float(m.group(5))
-            })</code></pre>
-
-    <h2>3. Analyser les statistiques</h2>
-    <p>Pour chaque nœud, calculez :</p>
-    <pre><code>import statistics
-
-for node_id in set(l['node'] for l in logs):
-    node_logs = [l for l in logs if l['node'] == node_id]
-    avg_nre = statistics.mean(l['nre'] for l in node_logs)
-    avg_mcs = statistics.mean(l['mcs'] for l in node_logs)
-    min_nre = min(l['nre'] for l in node_logs)
-    print(f"Node {node_id}: avg_NRE={avg_nre:.3f} avg_MCS={avg_mcs:.3f} min_NRE={min_nre:.3f}")</code></pre>
-
-    <h2>4. Évolution temporelle du MCS</h2>
-    <p>Créez un graphique de l'évolution du MCS pour plusieurs nœuds :</p>
-    <pre><code>import matplotlib.pyplot as plt
-
-# Grouper par intervalle de temps (toutes les 10 entrées)
-for node_id in [2, 5, 10, 15]:
-    node_logs = [l for l in logs if l['node'] == node_id]
-    mcs_values = [l['mcs'] for l in node_logs]
-    plt.plot(mcs_values, label=f'Node {node_id}')
-
-plt.xlabel('Échantillon')
-plt.ylabel('MCS')
-plt.legend()
-plt.title('Évolution du MCS au fil du temps')
-plt.savefig('mcs_evolution.png')
-plt.show()</code></pre>
-
-    <h2>5. Corrélation NRE vs MCS</h2>
-    <p>Analysez la corrélation entre NRE et MCS pour vérifier que le NRE est bien le facteur dominant :</p>
-    <pre><code>nre_values = [l['nre'] for l in logs]
-mcs_values = [l['mcs'] for l in logs]
-correlation = statistics.correlation(nre_values, mcs_values)
-print(f"Corrélation NRE-MCS: {correlation:.3f}")</code></pre>
-
-    <h2>6. Comparer les types de nœuds</h2>
-    <p>Si vous avez identifié les types de nœuds dans la simulation, comparez leurs MCS :</p>
-    <pre><code># Nœuds Battery: 2-25, Solar: 26-37, Mobile: 38-41 (exemple)
-battery_mcs = [l['mcs'] for l in logs if 2 <= l['node'] <= 25]
-solar_mcs = [l['mcs'] for l in logs if 26 <= l['node'] <= 37]
-mobile_mcs = [l['mcs'] for l in logs if 38 <= l['node'] <= 41]
-
-print(f"Battery avg MCS: {statistics.mean(battery_mcs):.3f}")
-print(f"Solar avg MCS:   {statistics.mean(solar_mcs):.3f}")
-print(f"Mobile avg MCS:  {statistics.mean(mobile_mcs):.3f}")</code></pre>
-
-    <h2>7. Questions</h2>
-    <ol>
-      <li>Quel est le MCS moyen pour chaque type de nœud (Battery, Solar, Mobile) ?</li>
-      <li>Le NRE est-il toujours le facteur dominant du MCS ? Dans quels cas le PEC ou l'ECS deviennent-ils déterminants ?</li>
-      <li>Observez-vous une corrélation entre le nombre de changements de parent et le MCS ?</li>
-      <li>Comment le MCS évolue-t-il pour un nœud solaire pendant la nuit ?</li>
-    </ol>
-
+    <h2>4. Visualisation</h2>
+    <div class="code-block"><span class="ln">  1</span> import matplotlib.pyplot as plt
+<span class="ln">  2</span> import numpy as np
+<span class="ln">  3</span> 
+<span class="ln">  4</span> time = np.arange(len(mcs_vals)) * 10
+<span class="ln">  5</span> 
+<span class="ln">  6</span> plt.figure(figsize=(12, 6))
+<span class="ln">  7</span> plt.plot(time, mcs_vals, 'b-', label="MCS", linewidth=2)
+<span class="ln">  8</span> plt.plot(time, nre_vals, 'g--', label="NRE", alpha=0.7)
+<span class="ln">  9</span> plt.plot(time, pec_vals, 'r--', label="PEC", alpha=0.7)
+<span class="ln"> 10</span> plt.plot(time, ecs_vals, 'y--', label="ECS", alpha=0.7)
+<span class="ln"> 11</span> plt.xlabel("Temps (s)")
+<span class="ln"> 12</span> plt.ylabel("Score")
+<span class="ln"> 13</span> plt.title("Évolution du MCS et de ses composants")
+<span class="ln"> 14</span> plt.legend()
+<span class="ln"> 15</span> plt.grid(True, alpha=0.3)
+<span class="ln"> 16</span> plt.savefig("cooja_results/mcs_components.png", dpi=150)
+<span class="ln"> 17</span> plt.close()</div>    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Vérifiez que les valeurs extraites sont cohérentes (MCS entre 0 et 1). Le graphique généré doit montrer une tendance claire.</p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Aucun log MCS trouvé : vérifiez que la simulation a bien tourné avec les logs activés. Le flag <code>-DMCS_METRIC=1</code> doit être présent dans le Makefile.</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Quel composant (NRE, PEC, ECS) varie le plus au cours du temps ?</li>
+      <li>Les nœuds solaires ont-ils un MCS plus élevé en moyenne ?</li>
+      <li>Y a-t-il une corrélation entre le MCS et le PDR ?</li>
+      <li>Comment évolue le NRE d'un nœud mobile par rapport à un nœud statique ?</li>
+      <li>Quelle est la signification d'un écart-type élevé sur le MCS ?</li>
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Script Python <code>extract_mcs.py</code> fonctionnel, fichier <code>mcs_statistics.txt</code> avec les stats, et graphique <code>mcs_components.png</code>.</p>
+    </div>
   </div>
 </main>
 

@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 12 — Projet de synthèse — RPL-MQoS — Dr. Madani BELACEL</title>
+<meta name="description" content="RPL-MQoS — Module Recherche &amp; Articles — Dr. Madani BELACEL">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Universit\u00e9_de_Mostaganem.png">
+<style>  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+</style>
+</head><body>
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Universit\u00e9_de_Mostaganem.png" alt="Universit\u00e9 de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Universit\u00e9 de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Facult\u00e9 des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Alg\u00e9rie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">\u2630</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le th\u00e8me">\u263e</button></li>
+      </ul>
+    </nav>
+  </div>
+</header><nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>    <li><a href="index.html">RPLMQOS</a></li>\n    <li class="current"></li>
+  </ol>
+</nav><main class="page-content"><div class="md-content"><h1>TP 12 — Projet de synthèse</h1><div class="md-meta"><strong>4h TP</strong><ul><li><strong>Durée :</strong> 4h TP</li><li><strong>Objectif :</strong> Réaliser une évaluation complète de RPL-MQoS</li></ul></div><h2>1. Objectifs</h2><ol><li>Compiler le firmware pour Sky et Zoul</li><li>Simuler avec Cooja (25, 50, 80 nœuds)</li><li>Collecter les logs de simulation</li><li>Analyser PDR, latence, ETX moyen</li><li>Comparer avec RPL standard</li><li>Rédiger un rapport d'analyse</li></ol><h2>2. Grille d'évaluation</h2><table><tr><th>Critère</th><th>Points</th></tr><tr><td>Compilation réussie (2 plateformes)</td><td>2 pts</td></tr><tr><td>Simulation 25 nœuds + logs</td><td>3 pts</td></tr><tr><td>Analyse PDR et ETX</td><td>3 pts</td></tr><tr><td>Analyse énergétique</td><td>2 pts</td></tr><tr><td>Comparaison RPL vs RPL-MQoS</td><td>3 pts</td></tr><tr><td>Rapport et conclusions</td><td>2 pts</td></tr><tr><td><strong>Total</strong></td><td><strong>15 pts</strong></td></tr></table><h2>3. Livrables</h2><ul><li>Code source compilé (.sky, .zoul)</li><li>Logs de simulation (3 scénarios)</li><li>Script d'analyse Python</li><li>Rapport (PDF, 4-6 pages)</li></ul><h2>4. Questions de synthèse</h2><div class="question-box" style="background:#f3e5f5;border-left:4px solid #7b1fa2;padding:1rem;border-radius:4px;margin:1rem 0"><strong>Questions</strong><ol><li>Quels sont les avantages mesurables de RPL-MQoS par rapport à RPL standard ?</li><li>Comment les poids des métriques influencent-ils la sélection de parent ?</li><li>Quel est l'impact du nombre de nœuds sur le PDR et la latence ?</li><li>Proposez une extension à RPL-MQoS et justifiez son intérêt.</li><li>Quelles limites avez-vous identifiées dans l'implémentation actuelle ?</li></ol></div></div></main><footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Universit\u00e9_de_Mostaganem.png" alt="Universit\u00e9 de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Alg\u00e9rie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span> Universit de Mostaganem</span>
+      <span> 2025-2026</span>
+    </div>
+    <p> 2026 Dr. Madani BELACEL \u2014 Tous droits r\u00e9serv\u00e9s.</p>
+  </div>
+</footer>
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 11 — Génération de figures et CSV — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 11 : utiliser simulate_results.py pour générer les fichiers CSV et figures à partir des logs RPL-AER.">
+<title>TP 11 : Génération de figures et CSV — Dr. Madani BELACEL</title>
+<meta name="description" content="Générer des figures scientifiques et exporter les métriques au format CSV.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -67,7 +81,7 @@
     <li><a href="../../../enseignement.html">Enseignement</a></li>
     <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
     <li><a href="index.html">AER-RPL</a></li>
-    <li class="current">TP 11 — Figures</li>
+    <li class="current">TP 11 — Figures CSV</li>
   </ol>
 </nav>
 
@@ -76,105 +90,103 @@
 
     <h1>TP 11 : Génération de figures et CSV</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 11 — Génération de figures et CSV</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Générer les fichiers CSV de résultats et les figures pour publication</li>
+        <li><strong>Durée estimée :</strong> 1h00</li>
+        <li><strong>Objectifs :</strong> Produire des graphiques de qualité scientifique et des données CSV</li>
       </ul>
     </div>
 
-    <h2>1. Utiliser simulate_results.py</h2>
-    <p>Le script <code>simulate_results.py</code> automatise l'extraction des métriques et la génération de CSV et figures :</p>
-    <pre><code># Extraire les résultats avec génération de CSV
-python3 tools/simulate_results.py \
-    --log-file simulation_logs.txt \
-    --output-dir results/ \
-    --csv
-
-# Générer les figures
-python3 tools/simulate_results.py \
-    --log-file simulation_logs.txt \
-    --output-dir results/ \
-    --figures</code></pre>
-
-    <h2>2. Examiner les fichiers CSV générés</h2>
-    <pre><code>ls results/
-cat results/figure_data_energy.csv
-cat results/figure_data_qos.csv</code></pre>
-
-    <h2>3. Analyser figure_data_energy.csv</h2>
-    <p>Ce fichier contient les données énergétiques structurées par nœud et par intervalle de temps :</p>
-    <pre><code>import pandas as pd
-import matplotlib.pyplot as plt
-
-df_energy = pd.read_csv('results/figure_data_energy.csv')
-print(df_energy.describe())
-
-# Évolution du MCS pour les 5 premiers nœuds
-for node in df_energy['Node'].unique()[:5]:
-    node_data = df_energy[df_energy['Node'] == node]
-    plt.plot(node_data['Time'], node_data['MCS'], label=f'Node {node}')
-
-plt.xlabel('Temps (s)')
-plt.ylabel('MCS')
-plt.legend()
-plt.title('Évolution du MCS par nœud')
-plt.savefig('results/mcs_per_node.png')
-plt.show()</code></pre>
-
-    <h2>4. Analyser figure_data_qos.csv</h2>
-    <pre><code>df_qos = pd.read_csv('results/figure_data_qos.csv')
-print(df_qos.head())
-
-plt.figure(figsize=(10, 6))
-plt.subplot(2, 1, 1)
-plt.plot(df_qos['Time'], df_qos['PDR'], 'b-')
-plt.ylabel('PDR (%)')
-plt.ylim(90, 100)
-
-plt.subplot(2, 1, 2)
-plt.plot(df_qos['Time'], df_qos['Latency'], 'r-')
-plt.xlabel('Temps (s)')
-plt.ylabel('Latence (ms)')
-
-plt.savefig('results/qos_evolution.png')
-plt.show()</code></pre>
-
-    <h2>5. Générer des figures personnalisées</h2>
-    <p>Créez une figure comparant RPL-AER avec RPL standard (si vous avez les deux jeux de logs) :</p>
-    <pre><code># Comparaison RPL standard vs RPL-AER
-plt.figure(figsize=(8, 5))
-categories = ['PDR (%)', 'Latence (ms)', 'Énergie (mW)']
-rpl_std = [94.2, 25.3, 5.1]
-rpl_aer = [97.5, 18.2, 4.2]
-
-x = range(len(categories))
-plt.bar(x, rpl_std, width=0.35, label='RPL standard', color='#e74c3c')
-plt.bar([i + 0.35 for i in x], rpl_aer, width=0.35, label='RPL-AER', color='#2ecc71')
-plt.xticks([i + 0.175 for i in x], categories)
-plt.ylabel('Valeur')
-plt.legend()
-plt.title('Comparaison RPL standard vs RPL-AER')
-plt.savefig('results/comparison.png')
-plt.show()</code></pre>
-
-    <h2>6. Exporter pour publication</h2>
-    <pre><code># Générer des figures en haute résolution
-python3 tools/simulate_results.py \
-    --log-file simulation_logs.txt \
-    --output-dir results/ \
-    --figures --dpi 300 --format pdf</code></pre>
-
-    <h2>7. Questions</h2>
-    <ol>
-      <li>Quels sont les avantages de RPL-AER par rapport à RPL standard en termes de PDR et d'énergie ?</li>
-      <li>Comment les figures générées peuvent-elles être utilisées dans une publication académique ?</li>
-      <li>Quelles informations supplémentaires pourraient être extraites des logs pour enrichir l'analyse ?</li>
-      <li>Générez un graphique comparant la durée de vie du réseau avec et sans RPL-AER.</li>
-    </ol>
-
+    <h2>1. Génération de figures et CSV</h2>
+    <p>Ce TP se concentre sur la production de graphiques de qualité scientifique et de données tabulaires au format CSV.</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Générer des graphiques de qualité scientifique avec Matplotlib</li>
+        <li>Exporter les métriques au format CSV pour analyse externe</li>
+        <li>Créer des figures comparatives (boxplots, barplots, courbes)</li>
+        <li>Préparer des figures prêtes pour publication</li>
+      </ul>
+    </div>
+    <h2>2. Export CSV des métriques</h2>
+    <div class="code-block"><span class="ln">  1</span> import csv
+<span class="ln">  2</span> import re
+<span class="ln">  3</span> 
+<span class="ln">  4</span> with open("cooja_results/rpl-aer-output.log") as f:
+<span class="ln">  5</span>     logs = f.readlines()
+<span class="ln">  6</span> 
+<span class="ln">  7</span> with open("cooja_results/metrics.csv", "w", newline="") as csvfile:
+<span class="ln">  8</span>     writer = csv.writer(csvfile)
+<span class="ln">  9</span>     writer.writerow([
+<span class="ln"> 10</span>         "MCS", "NRE", "PEC", "ECS",
+<span class="ln"> 11</span>         "Energy_mWh", "Solar_lux", "Attack", "PDR"
+<span class="ln"> 12</span>     ])
+<span class="ln"> 13</span> 
+<span class="ln"> 14</span>     for line in logs:
+<span class="ln"> 15</span>         row = {}
+<span class="ln"> 16</span>         m = re.search(r"MCS=([0-9.]+)", line)
+<span class="ln"> 17</span>         if m: row["mcs"] = m.group(1)
+<span class="ln"> 18</span>         m = re.search(r"Energy=(\d+) mWh", line)
+<span class="ln"> 19</span>         if m: row["energy"] = m.group(1)
+<span class="ln"> 20</span>         m = re.search(r"Attack=(\d)", line)
+<span class="ln"> 21</span>         if m: row["attack"] = m.group(1)
+<span class="ln"> 22</span>         if row:
+<span class="ln"> 23</span>             writer.writerow(row.values())
+<span class="ln"> 24</span> 
+<span class="ln"> 25</span> print("CSV généré: cooja_results/metrics.csv")</div>
+    <h2>3. Figures scientifiques</h2>
+    <div class="code-block"><span class="ln">  1</span> import matplotlib.pyplot as plt
+<span class="ln">  2</span> import pandas as pd
+<span class="ln">  3</span> 
+<span class="ln">  4</span> plt.style.use('seaborn-v0_8-whitegrid')
+<span class="ln">  5</span> df = pd.read_csv("cooja_results/metrics.csv")
+<span class="ln">  6</span> 
+<span class="ln">  7</span> # Figure 1: Évolution du MCS
+<span class="ln">  8</span> fig, ax = plt.subplots(figsize=(10, 5))
+<span class="ln">  9</span> ax.plot(df["MCS"].dropna(), 'b-', linewidth=1.5)
+<span class="ln"> 10</span> ax.fill_between(range(len(df["MCS"].dropna())),
+<span class="ln"> 11</span>                 0, df["MCS"].dropna(),
+<span class="ln"> 12</span>                 alpha=0.15, color='blue')
+<span class="ln"> 13</span> ax.set_xlabel("Temps (échantillons)", fontsize=12)
+<span class="ln"> 14</span> ax.set_ylabel("MCS", fontsize=12)
+<span class="ln"> 15</span> ax.set_title("Évolution du Multi-Criteria Score", fontsize=14)
+<span class="ln"> 16</span> ax.grid(True, alpha=0.3)
+<span class="ln"> 17</span> plt.tight_layout()
+<span class="ln"> 18</span> plt.savefig("cooja_results/fig1_mcs_evolution.png", dpi=200)
+<span class="ln"> 19</span> 
+<span class="ln"> 20</span> # Figure 2: Comparaison PDR
+<span class="ln"> 21</span> pdr_data = df["PDR"].dropna()
+<span class="ln"> 22</span> plt.figure(figsize=(8, 5))
+<span class="ln"> 23</span> plt.bar(["RPL-AER"], [pdr_data.mean()], yerr=[pdr_data.std()],
+<span class="ln"> 24</span>         capsize=10, color='#2ecc71', alpha=0.8)
+<span class="ln"> 25</span> plt.ylabel("PDR (%)")
+<span class="ln"> 26</span> plt.title("PDR moyen de RPL-AER")
+<span class="ln"> 27</span> plt.grid(True, axis='y', alpha=0.3)
+<span class="ln"> 28</span> plt.tight_layout()
+<span class="ln"> 29</span> plt.savefig("cooja_results/fig2_pdr_comparison.png", dpi=200)</div>
+    <h2>4. Export pour publication</h2>
+    <p>Les figures générées sont prêtes pour inclusion dans un article scientifique. Utilisez le format PNG avec DPI ≥ 200.</p>
+    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Vérifiez que le CSV contient les colonnes attendues et que les figures sont lisibles avec des titres et labels.</p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Erreur pandas : <code>pip install pandas</code>. Si seaborn n'est pas disponible, utilisez <code>plt.style.use('ggplot')</code>.</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Quel type de graphique est le plus adapté pour montrer l'évolution du MCS ?</li>
+      <li>Comment améliorer la lisibilité des figures pour publication ?</li>
+      <li>Quelles statistiques ajouter au CSV pour une analyse plus poussée ?</li>
+      <li>Comment intégrer ces figures dans un article LaTeX ?</li>
+      <li>Proposer une figure combinant plusieurs métriques sur un même graphique.</li>
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Script <code>export_csv.py</code>, fichier <code>metrics.csv</code>, script <code>generate_figures.py</code>, et au moins 2 figures PNG.</p>
+    </div>
   </div>
 </main>
 

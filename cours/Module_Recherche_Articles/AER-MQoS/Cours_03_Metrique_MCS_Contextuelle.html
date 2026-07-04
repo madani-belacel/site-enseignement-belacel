@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 03 — Métrique MCS contextuelle — AER-MQoS</title>
+<title>Métrique MCS contextuelle — AER-MQoS</title>
 <meta name="description" content="Métrique composite MCS d'AER-MQoS : NRE, ETX normalisé, Trust Score, pondération contextuelle alpha/beta/gamma, adaptation par Q-learning.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,33 +76,27 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">Cours 03 — Métrique MCS contextuelle</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>Cours 03 — Métrique MCS contextuelle</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h30<br>
-      <strong>Objectif :</strong> Maîtriser la métrique composite MCS, sa formule, ses composantes et le mécanisme d'ajustement contextuel des poids<br>
-      <strong>Prérequis :</strong> Cours 01, Cours 02
+      <strong>Objectif :</strong> Maîtriser la métrique composite MCS, sa formule, ses composantes et le mécanisme d'ajustement contextuel des poids<br><strong>Prérequis :</strong> Cours 01, Cours 02
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Définition de la métrique MCS</h2>
     <p>La métrique MCS (Multi-Objective Composite Score) est une métrique de routage composite qui agrège trois indicateurs de performance :</p>
     <ul>
@@ -105,11 +115,9 @@
       <li><code>ETX_norm(parent)</code> ∈ [0, 1] — ETX normalisé par rapport à une valeur maximale de référence</li>
       <li><code>TrustScore(parent)</code> ∈ [0, 1] — 1 = totalement fiable, 0 = suspect</li>
     </ul>
-    <p>Un score MCS élevé indique un parent de meilleure qualité. Le parent avec le MCS le plus élevé est choisi comme parent préféré dans le DODAG.</p>
 
     <h2>3. Pondération contextuelle</h2>
     <p>Les poids alpha, beta, gamma ne sont pas fixes. Ils s'adaptent aux conditions du réseau selon des règles contextuelles :</p>
-
     <table>
       <tr><th>Condition réseau</th><th>alpha (NRE)</th><th>beta (ETX)</th><th>gamma (Trust)</th><th>Comportement</th></tr>
       <tr><td>Énergie faible (&lt; 20%)</td><td>0.6</td><td>0.2</td><td>0.2</td><td>Favorise l'économie d'énergie</td></tr>
@@ -118,21 +126,7 @@
       <tr><td>Normal</td><td>0.3</td><td>0.35</td><td>0.35</td><td>Équilibre</td></tr>
     </table>
 
-    <p>Ces poids sont définis dans <code>aer_rpl_plus.c</code> via la fonction <code>aer_rpl_calculate_contextual_weights()</code>.</p>
-
-    <h2>4. Adaptation par Q-learning du poids gamma</h2>
-    <p>En plus de l'ajustement contextuel statique, le poids gamma (confiance) est dynamiquement adapté par un agent Q-learning. L'agent observe l'état du réseau (PDR, énergie moyenne, taux d'anomalies) et sélectionne des actions qui modifient gamma pour maximiser une récompense combinée (PDR &times; Énergie &times; Confiance).</p>
-    <p>Ce mécanisme est détaillé dans le Cours 05. Il permet à AER-MQoS de s'adapter en continu aux conditions changeantes du réseau sans intervention humaine.</p>
-
-    <h2>5. Implémentation dans aer_rpl_plus.c</h2>
-    <p>Le module principal <code>aer_rpl_plus.c</code> contient les fonctions clés :</p>
-    <ul>
-      <li><code>mcs_calculate(parent)</code> — calcule le score MCS d'un parent candidat</li>
-      <li><code>aer_rpl_calculate_contextual_weights()</code> — détermine alpha/beta/gamma selon le contexte</li>
-      <li><code>aer_rpl_update_metrics()</code> — met à jour NRE, ETX_norm et TrustScore périodiquement</li>
-      <li><code>aer_rpl_parent_select()</code> — sélectionne le meilleur parent via MCS</li>
-    </ul>
-
+    <h2>4. Implémentation dans aer_rpl_plus.c</h2>
     <pre><code>/* Extrait simplifié du calcul MCS */
 double mcs_calculate(const rpl_parent_t *parent) {
     double nre = aer_rpl_energy_get_nre(parent);
@@ -143,24 +137,15 @@ double mcs_calculate(const rpl_parent_t *parent) {
     return alpha * nre + beta * (1.0 - etx) + gamma * trust;
 }</code></pre>
 
-    <h2>6. Exemple de calcul</h2>
+    <h2>5. Exemple de calcul</h2>
     <p>Considérons un parent avec NRE = 0.9, ETX_norm = 0.3, TrustScore = 0.95, dans un contexte normal (alpha=0.3, beta=0.35, gamma=0.35) :</p>
     <pre><code>MCS = 0.3 * 0.9 + 0.35 * (1 - 0.3) + 0.35 * 0.95
    = 0.27 + 0.35 * 0.7 + 0.3325
    = 0.27 + 0.245 + 0.3325
    = 0.8475</code></pre>
-    <p>Un second parent avec NRE = 0.4, ETX_norm = 0.1, TrustScore = 0.5 donnerait MCS = 0.4575. Le premier parent est donc préféré.</p>
 
-    <h2>7. Avantages de l'approche composite</h2>
-    <ul>
-      <li><strong>Holistique</strong> : intègre énergie, fiabilité ETX et confiance en une seule métrique</li>
-      <li><strong>Contextuelle</strong> : les poids s'adaptent aux conditions réseau</li>
-      <li><strong>Apprentissage</strong> : gamma affine par Q-learning pour des performances optimales</li>
-      <li><strong>Résiliente</strong> : le TrustScore protège contre les anomalies et attaques</li>
-    </ul>
-
-    <h2>8. Résumé</h2>
-    <p>La métrique MCS est le coeur d'AER-MQoS. Elle synthétise trois dimensions essentielles du routage IoT en une note composite, pondérée contextuellement et adaptée par apprentissage. Les cours suivants détaillent chaque composante : WRR pour l'ordonnancement, Q-learning pour l'adaptation, modèle NRE pour l'énergie et Trust Score pour la confiance.</p>
+    <h2>6. Résumé</h2>
+    <p>La métrique MCS est le coeur d'AER-MQoS. Elle synthétise trois dimensions essentielles du routage IoT en une note composite, pondérée contextuellement et adaptée par apprentissage.</p>
 
   </div>
 </main>

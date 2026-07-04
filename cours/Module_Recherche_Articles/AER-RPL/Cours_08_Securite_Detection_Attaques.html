@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 08 — Sécurité et détection d'attaques — Dr. Madani BELACEL</title>
-<meta name="description" content="Sécurité dans RPL-AER : attaques sinkhole, selective forwarding, détection par attack_detector.c, gestion des faux positifs.">
+<title>Cours 08 : Sécurité et détection d'attaques — Dr. Madani BELACEL</title>
+<meta name="description" content="Sécurité RPL-AER : attaques sinkhole, selective forwarding, indicateurs RSSI/ACK, logs.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -74,95 +88,94 @@
 <main class="page-content" id="main-content">
   <div class="md-content">
 
-    <h1>Cours 08 : Sécurité et détection d'attaques dans RPL-AER</h1>
+    <h1>Cours 08 : Sécurité et détection d'attaques</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 08 — Sécurité et détection d'attaques</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
         <li><strong>Durée estimée :</strong> 1h30</li>
-        <li><strong>Objectifs :</strong> Comprendre les types d'attaques, leur détection par attack_detector.c, et la gestion des faux positifs</li>
+        <li><strong>Objectifs :</strong> Comprendre les mécanismes de détection d'attaques et leur impact sur les métriques</li>
       </ul>
     </div>
 
-    <h2>1. Vulnérabilités du protocole RPL</h2>
-    <p>RPL standard présente plusieurs vulnérabilités de sécurité :</p>
+    <h2>1. Types d'attaques ciblées</h2>
+    <p>RPL-AER intègre un mécanisme de détection d'attaques spécifiques aux réseaux RPL :</p>
     <ul>
-      <li>Absence d'authentification des messages de contrôle (DIO, DAO, DIS)</li>
-      <li>Topologie prévisible facilitant les attaques ciblées</li>
-      <li>Mécanismes de routage exploitables par des nœuds malveillants</li>
+      <li><strong>Attaque Sinkhole :</strong> Un nœud malveillant attire tout le trafic en prétendant avoir le meilleur chemin vers le sink, puis droppe les paquets.</li>
+      <li><strong>Attaque Selective Forwarding :</strong> Un nœud malveillant transmet sélectivement certains paquets et en droppe d'autres.</li>
     </ul>
-    <p>RPL-AER adresse ces vulnérabilités via le module <code>attack_detector.c</code> qui surveille en continu le comportement des nœuds.</p>
-
-    <h2>2. Attaque Sinkhole</h2>
-    <p>L'attaque sinkhole (ou <em>trou noir</em>) consiste pour un nœud malveillant à annoncer un chemin de très haute qualité (MCS très élevé) pour attirer tout le trafic vers lui, puis à dropper les paquets.</p>
-    <p>Mécanisme de détection dans RPL-AER :</p>
-    <pre><code>// attack_detector.c — Détection sinkhole
-int detect_sinkhole(uint16_t node_id, float mcs, float nre) {
-    if (mcs > SINKHOLE_MCS_THRESHOLD && nre < SINKHOLE_NRE_THRESHOLD) {
-        // MCS anormalement élevé pour un nœud avec peu d'énergie
-        LOG_WARN("Sinkhole suspect sur nœud %u\n", node_id);
-        return 1;
-    }
-    return 0;
-}</code></pre>
-    <p>Le seuil SINKHOLE_MCS_THRESHOLD est défini à 0.95 et SINKHOLE_NRE_THRESHOLD à 0.3. Un nœud annonçant MCS &gt; 0.95 avec NRE &lt; 0.3 est très suspect.</p>
-
-    <h2>3. Attaque Selective Forwarding</h2>
-    <p>Le selective forwarding consiste à transmettre certains paquets et en supprimer d'autres, de manière à perturber le réseau sans être détecté comme complètement défaillant.</p>
-    <p>Détection par analyse du taux de livraison :</p>
-    <pre><code>int detect_selective_forwarding(uint16_t node_id) {
-    float delivery_ratio = get_delivery_ratio(node_id, 300);  // 5 min
-    if (delivery_ratio < SF_LOW_THRESHOLD) {
-        LOG_WARN("Selective forwarding: nœud %u ratio=%f\n",
-                 node_id, delivery_ratio);
-        return 1;
-    }
-    return 0;
-}</code></pre>
-
-    <h2>4. Implémentation de attack_detector.c</h2>
-    <p>Le module attack_detector fonctionne en arrière-plan :</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre les mécanismes des attaques sinkhole et selective forwarding</li>
+        <li>Analyser l'implémentation de la détection d'attaques</li>
+        <li>Étudier les indicateurs de compromission (RSSI, ACK)</li>
+        <li>Interpréter les logs d'attaques</li>
+      </ul>
+    </div>
+    <h2>2. Configuration des attaques</h2>
+    <p>Les constantes dans <code>rpl-aer.h:138-140</code> :</p>
+    <div class="code-block"><span class="ln">  1</span> #define RPL_AER_ATTACK_NONE 0
+<span class="ln">  2</span> #define RPL_AER_ATTACK_SINKHOLE 1
+<span class="ln">  3</span> #define RPL_AER_ATTACK_SELECTIVE_FORWARDING 2</div>
+    <h2>3. Simulation d'attaques</h2>
+    <p>Dans <code>rpl-aer.c:197-210</code>, la fonction <code>rpl_aer_detect_attacks()</code> :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_detect_attacks(void) {
+<span class="ln">  2</span>   uint8_t rand_val = random_rand() % 100;
+<span class="ln">  3</span>   if (rand_val < (ATTACK_PROBABILITY * 100)) {
+<span class="ln">  4</span>     rpl_aer_ctx.attack_state = RPL_AER_ATTACK_SINKHOLE;
+<span class="ln">  5</span>     rpl_aer_attack_count++;
+<span class="ln">  6</span>   } else if (rand_val < ((ATTACK_PROBABILITY + SELECTIVE_FORWARDING_PROBABILITY) * 100)) {
+<span class="ln">  7</span>     rpl_aer_ctx.attack_state = RPL_AER_ATTACK_SELECTIVE_FORWARDING;
+<span class="ln">  8</span>     rpl_aer_attack_count++;
+<span class="ln">  9</span>   } else {
+<span class="ln"> 10</span>     rpl_aer_ctx.attack_state = RPL_AER_ATTACK_NONE;
+<span class="ln"> 11</span>   }
+<span class="ln"> 12</span> }</div>
+    <h2>4. Détection RSSI</h2>
     <ul>
-      <li>Analyse périodique (toutes les 60 secondes) des logs de chaque voisin</li>
-      <li>Maintient une matrice de confiance pour chaque paire de nœuds</li>
-      <li>Déclenche des alertes lorsque des anomalies sont détectées</li>
-      <li>Communique avec <code>trust_module.c</code> pour ajuster les scores de confiance</li>
-    </ul>
-    <pre><code>void attack_detector_init(void) {
-    ctimer_set(&detect_timer, DETECT_INTERVAL,
-               attack_detector_check, NULL);
-}
-
-void attack_detector_check(void *ptr) {
-    for each neighbor in neighbor_table {
-        if (detect_sinkhole(neighbor.id, neighbor.mcs, neighbor.nre))
-            trust_module_adjust_score(neighbor.id, -0.3);
-        if (detect_selective_forwarding(neighbor.id))
-            trust_module_adjust_score(neighbor.id, -0.2);
-    }
-}</code></pre>
-
-    <h2>5. Gestion des faux positifs</h2>
-    <p>Un faux positif se produit quand un nœud honnête est identifié comme malveillant. RPL-AER utilise plusieurs mécanismes pour minimiser ce risque :</p>
-    <ul>
-      <li><strong>Seuils progressifs :</strong> Une seule anomalie ne suffit pas à exclure un nœud. Plusieurs détections consécutives sont nécessaires.</li>
-      <li><strong>Période d'observation :</strong> Avant de déclarer un nœud comme malveillant, attack_detector observe son comportement pendant 5 minutes.</li>
-      <li><strong>Réhabilitation :</strong> Un nœud exclu peut être réhabilité si son comportement redevient normal.</li>
+      <li>Un RSSI anormalement bas peut indiquer un nœud malveillant</li>
+      <li>Le seuil <code>RSSI_THRESHOLD</code> est configurable dans <code>project-conf.h</code></li>
     </ul>
 
-    <h2>6. Logs de détection</h2>
-    <pre><code>[ATTACK] Sinkhole suspect: Node 22 MCS=0.98 NRE=0.15
-[ATTACK] Selective forwarding: Node 22 delivery_ratio=0.35
-[TRUST] Node 22 Trust=0.12 FLAGGED MALICIOUS
-[NET] Node 5: removing Node 22 from parent set (Trust too low)</code></pre>
+    <h2>5. Logs de performance avec attaques</h2>
+    <p>La fonction <code>rpl_aer_log_performance()</code> (<code>rpl-aer.c:313-317</code>) :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_log_performance(void) {
+<span class="ln">  2</span>   LOG_INFO("RPL-AER: Performance - PDR=%.1f%%, Attacks=%lu\n",
+<span class="ln">  3</span>            (float)rpl_aer_delivered_count / (float)rpl_aer_packet_count * 100,
+<span class="ln">  4</span>            rpl_aer_attack_count);
+<span class="ln">  5</span> }</div>    <p>Exemple de sortie avec attaques :</p>
+    <pre><code>RPL-AER: Performance - PDR=72.3%, Attacks=5
+RPL-AER: Securite: Attack=1 (SINKHOLE), Anomaly=1</code></pre>
 
-    <h2>7. Métriques de sécurité</h2>
-    <p>Les performances du module de sécurité sont évaluées avec :</p>
+    <h2>6. Indicateurs de performance</h2>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_calculate_pdr(void) {
+<span class="ln">  2</span>   if (rpl_aer_packet_count > 0) {
+<span class="ln">  3</span>     float pdr = (float)rpl_aer_delivered_count / (float)rpl_aer_packet_count;
+<span class="ln">  4</span>     LOG_INFO("RPL-AER: PDR = %.2f%% (%lu/%lu)\n", pdr * 100, rpl_aer_delivered_count, rpl_aer_packet_count);
+<span class="ln">  5</span>   }
+<span class="ln">  6</span> }
+<span class="ln">  7</span> 
+<span class="ln">  8</span> void rpl_aer_calculate_latency(void) {
+<span class="ln">  9</span>   if (rpl_aer_delivered_count > 0) {
+<span class="ln"> 10</span>     float avg_latency = (float)rpl_aer_total_latency / (float)rpl_aer_delivered_count;
+<span class="ln"> 11</span>     LOG_INFO("RPL-AER: Avg Latency = %.2f ms\n", avg_latency);
+<span class="ln"> 12</span>   }
+<span class="ln"> 13</span> }</div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Comment une attaque sinkhole affecte-t-elle le PDR ?</li>
+      <li>Quel est l'effet d'une attaque selective forwarding sur la latence ?</li>
+      <li>Pourquoi le RSSI est-il un indicateur utile pour détecter les attaques ?</li>
+      <li>Comment RPL-AER distingue-t-il une attaque d'une perte de paquet légitime ?</li>
+      <li>Proposer un scénario où une attaque n'est pas détectée par le système actuel.</li>
+      </ol>
+    </div>    <h2>Références</h2>
     <ul>
-      <li><strong>Taux de détection (DR) :</strong> Pourcentage d'attaques effectivement détectées</li>
-      <li><strong>Taux de faux positifs (FPR) :</strong> Pourcentage de nœuds honnêtes classés comme malveillants</li>
-      <li><strong>Temps de détection :</strong> Temps moyen entre le début de l'attaque et sa détection</li>
+      <li>Code : <code>rpl-aer.h:138-140</code> — Types d'attaques</li>
+      <li>Code : <code>rpl-aer.c:197-210</code> — Détection d'attaques</li>
+      <li>Code : <code>rpl-aer.c:276-293</code> — Métriques de performance</li>
     </ul>
 
   </div>

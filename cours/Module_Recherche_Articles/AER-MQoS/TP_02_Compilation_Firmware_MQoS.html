@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 02 — Compilation du firmware AER-MQoS — AER-MQoS</title>
+<title>Compilation du firmware AER-MQoS — AER-MQoS</title>
 <meta name="description" content="Compilation du firmware AER-MQoS pour les 4 variantes de protocole avec make TARGET=cooja et build_variant.sh.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,103 +76,76 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">TP 02 — Compilation du firmware AER-MQoS</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 02 — Compilation du firmware AER-MQoS</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 1h00<br>
-      <strong>Objectif :</strong> Compiler les 4 variantes du firmware AER-MQoS pour la plateforme Cooja et vérifier les binaires produits<br>
-      <strong>Prérequis :</strong> TP 01, environnement Contiki-NG avec chaîne de compilation MSP430 ou native
+      <strong>Objectif :</strong> Compiler les 4 variantes du firmware AER-MQoS pour la plateforme Cooja et vérifier les binaires produits<br><strong>Prérequis :</strong> TP 01, environnement Contiki-NG avec chaîne de compilation MSP430 ou native
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Prérequis : environnement de compilation</h2>
-    <p>Assurez-vous que Contiki-NG est installé et que la chaîne de compilation est fonctionnelle :</p>
-    <pre><code># Vérifier la présence de make et des outils
-make --version
+    <pre><code>make --version
 msp430-gcc --version   # pour cible z1
-# ou
 gcc --version          # pour cible native</code></pre>
-    <p>Si vous utilisez Cooja, la cible <code>cooja</code> compile le firmware pour l'exécution dans le simulateur.</p>
 
     <h2>2. Compiler la variante AER-MQoS (complète)</h2>
-    <p>Placez-vous dans le répertoire du code source et compilez :</p>
     <pre><code>cd code_source_AER_MQoS
 make TARGET=cooja</code></pre>
-    <p>Cette commande compile la variante par défaut (AER-MQoS). Vérifiez la sortie : cherchez le fichier <code>.cooja</code> ou <code>.sky</code> généré.</p>
 
     <h2>3. Utiliser le script build_variant.sh</h2>
-    <p>Le dépôt fournit un script <code>build_variant.sh</code> qui automatise la compilation des 4 variantes :</p>
-    <pre><code># Depuis la racine du dépôt
-./scripts/build_variant.sh</code></pre>
-    <p>Examinez le script pour comprendre comment il sélectionne les variantes :</p>
-    <pre><code>cat scripts/build_variant.sh</code></pre>
+    <pre><code>./scripts/build_variant.sh</code></pre>
 
     <h2>4. Compiler chaque variante manuellement</h2>
-    <p>Si le script n'est pas disponible, compilez chaque variante en définissant la macro appropriée :</p>
     <pre><code># RPL-MRHOF (baseline)
 make TARGET=cooja DEFINES=RPL_MRHOF clean
 make TARGET=cooja DEFINES=RPL_MRHOF
-
 # RPL-MQoS-style
 make TARGET=cooja DEFINES=RPL_MQOS_STYLE clean
 make TARGET=cooja DEFINES=RPL_MQOS_STYLE
-
 # RPL-AER-style
 make TARGET=cooja DEFINES=RPL_AER_STYLE clean
 make TARGET=cooja DEFINES=RPL_AER_STYLE
-
 # AER-MQoS (full)
 make TARGET=cooja DEFINES=AER_MQOS clean
 make TARGET=cooja DEFINES=AER_MQOS</code></pre>
 
     <h2>5. Vérification des binaires</h2>
-    <p>Après compilation, vérifiez que les fichiers binaires ont été créés :</p>
     <pre><code>ls -lh *.cooja 2>/dev/null || ls -lh *.sky 2>/dev/null || find . -name "*.cooja" -o -name "*.sky"</code></pre>
-    <p>Notez la taille de chaque binaire. Comparez les tailles entre les variantes.</p>
 
-    <h2>6. Nettoyage et reproductibilité</h2>
-    <p>Pour garantir une compilation propre, nettoyez avant chaque variante :</p>
-    <pre><code>make TARGET=cooja clean
-make TARGET=cooja distclean   # nettoyage complet</code></pre>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Comparez les tailles des binaires entre les variantes. La variante AER-MQoS devrait être la plus volumineuse.</div>
 
-    <h2>7. Journal de compilation</h2>
-    <p>Redirigez la sortie de compilation dans un fichier journal :</p>
+    <h2>6. Journal de compilation</h2>
     <pre><code>make TARGET=cooja 2>&1 | tee build_aer_mqos.log</code></pre>
-    <p>Ce journal sera utile pour diagnostiquer d'éventuelles erreurs.</p>
 
-    <h2>8. Questions et vérifications</h2>
-    <ol>
-      <li>Quelle est la taille du binaire pour chaque variante ?</li>
-      <li>Y a-t-il des avertissements (<em>warnings</em>) à la compilation ?</li>
-      <li>Les macros <code>RPL_MRHOF</code>, <code>RPL_MQOS_STYLE</code>, <code>RPL_AER_STYLE</code>, <code>AER_MQOS</code> sont-elles correctement transmises au compilateur ?</li>
-      <li>Combien de temps prend la compilation de chaque variante ?</li>
-    </ol>
-
-    <h2>9. Dépannage</h2>
+    <h2>7. Dépannage</h2>
     <table>
       <tr><th>Erreur</th><th>Cause probable</th><th>Solution</th></tr>
       <tr><td><code>make: command not found</code></td><td>make non installé</td><td><code>sudo apt install build-essential</code></td></tr>
       <tr><td><code>msp430-gcc: not found</code></td><td>Chaîne croisée manquante</td><td>Installer <code>gcc-msp430</code> ou utiliser TARGET=native</td></tr>
       <tr><td><code>undefined reference</code></td><td>Macro mal définie</td><td>Vérifier l'orthographe : <code>AER_MQOS</code> vs <code>AER_MQOS_STYLE</code></td></tr>
     </table>
+
+    <div class="question-box">
+      <ol>
+        <li>Quelle est la taille du binaire pour chaque variante ?</li>
+        <li>Y a-t-il des avertissements (<em>warnings</em>) à la compilation ?</li>
+        <li>Les macros sont-elles correctement transmises au compilateur ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

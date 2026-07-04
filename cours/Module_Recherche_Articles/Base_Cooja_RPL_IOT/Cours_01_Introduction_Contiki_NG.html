@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 01 — Introduction à Contiki-NG et à l'écosystème IoT — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Introduction à Contiki-NG, système d'exploitation pour l'IoT.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+  .box-obj { background: #e8f5e9; border: 1px solid #2e7d32; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-obj strong { color: #2e7d32; }
+  .box-verif { background: #e3f2fd; border: 1px solid #1565c0; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-verif strong { color: #1565c0; }
+  .box-trouble { background: #fff3e0; border: 1px solid #e65100; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-trouble strong { color: #e65100; }
+  .box-question { background: #f3e5f5; border: 1px solid #7b1fa2; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-question strong { color: #7b1fa2; }
+  .box-livrable { background: #fffde7; border: 1px solid #f9a825; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-livrable strong { color: #f57f17; }
+  .box-info { background: #e0f7fa; border: 1px solid #00838f; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-info strong { color: #00838f; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">Cours 01 — Introduction à Contiki-NG</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>Cours 01 — Introduction à Contiki-NG et à l'écosystème IoT</h1>
+    <div class="md-meta"><strong>Cours 01</strong> — Durée estimée : 2h — Chapitre introductif</div>
+    <div class="box-obj"><strong>🎯 Objectifs d'apprentissage</strong>
+    <ul>
+      <li>Comprendre ce qu'est Contiki-NG et son rôle dans l'IoT</li>
+      <li>Connaître l'architecture générale de Contiki-NG</li>
+      <li>Identifier les composants de l'écosystème IoT (WSN, RPL, 6LoWPAN, CoAP)</li>
+      <li>Comprendre le rôle du simulateur Cooja</li>
+      <li>Savoir naviguer dans l'arborescence du code source</li>
+    </ul>
+    </div>
+    <h2>1. Qu'est-ce que Contiki-NG ?</h2>
+    <p><strong>Contiki-NG</strong> (Contiki Next Generation) est un système d'exploitation open-source pour l'Internet des Objets (IoT), successeur de Contiki OS développé initialement par Adam Dunkels à SICS (Suède).</p>
+    <p>Contiki-NG supporte de nombreuses plateformes matérielles (Zolertia Z1, CC2538DK, TI CC2650, nRF52840) et implémente les protocoles standards : 6LoWPAN (RFC 4944), RPL (RFC 6550), CoAP (RFC 7252), MQTT-SN.</p>
+    <h2>2. Architecture de Contiki-NG</h2>
+    <pre><code>contiki-ng/
+├── arch/          # Code spécifique aux plateformes
+├── examples/      # Exemples (hello-world, rpl-udp, etc.)
+├── os/            # Noyau, protocoles réseau, services
+│   ├── net/       # Pile réseau (IPv6, 6LoWPAN, RPL, UDP)
+│   ├── sys/       # Services système (processus, timers)
+│   └── lib/       # Bibliothèques (coap, mqtt, json)
+├── tools/         # Cooja, serialdump, tunslip6
+└── tests/         # Tests automatisés</code></pre>
+    <div class="box-verif"><strong>✅ Vérification : structure du code</strong>
+    <pre><code>$ ls -d /home/madani/contiki-ng/os/net/*/</code></pre>
+    <samp>/home/madani/contiki-ng/os/net/ipv6/  /home/madani/contiki-ng/os/net/mac/  /home/madani/contiki-ng/os/net/routing/</samp>
+    <p>Si vous voyez ces répertoires, la structure est correcte.</p>
+    </div>
+    <h2>3. Le modèle de processus protothreads</h2>
+    <p>Contiki-NG utilise des <strong>protothreads</strong> : des threads coopératifs légers avec une seule pile.</p>
+    <pre><code>PROCESS(mon_processus, "Description");
+AUTOSTART_PROCESSES(&amp;mon_processus);
+
+PROCESS_THREAD(mon_processus, ev, data)
+{
+  PROCESS_BEGIN();
+
+  while(1) {
+    PROCESS_WAIT_EVENT();
+    /* Traitement */
+  }
+
+  PROCESS_END();
+}</code></pre>
+    <h2>4. Le simulateur Cooja</h2>
+    <p>Cooja est un simulateur de réseau pour Contiki-NG, écrit en Java. Il permet d'exécuter du code réellement compilé, de visualiser les échanges radio, de mesurer l'énergie, et d'analyser avec des plugins.</p>
+    <h2>5. Écosystème IoT : les protocoles clés</h2>
+    <table><tr><th>Couche</th><th>Protocole</th><th>Rôle</th></tr>
+    <tr><td>Physique/MAC</td><td>IEEE 802.15.4</td><td>Communication radio basse consommation</td></tr>
+    <tr><td>Adaptation</td><td>6LoWPAN</td><td>Compression IPv6 pour trames 127 octets</td></tr>
+    <tr><td>Réseau</td><td>RPL</td><td>Routage LLN</td></tr>
+    <tr><td>Transport</td><td>UDP</td><td>Transport léger non fiable</td></tr>
+    <tr><td>Application</td><td>CoAP / MQTT-SN</td><td>Données pour contraintes</td></tr>
+    </table>
+    <h2>6. Exemple : Hello World</h2>
+    <pre><code>#include "contiki.h"
+#include &lt;stdio.h&gt;
+
+PROCESS(hello_world_process, "Hello world");
+AUTOSTART_PROCESSES(&amp;hello_world_process);
+
+PROCESS_THREAD(hello_world_process, ev, data)
+{
+  PROCESS_BEGIN();
+  printf("Hello, world!\n");
+  PROCESS_END();
+}</code></pre>
+    <div class="box-question"><strong>❓ Questions de réflexion</strong>
+    <ol>
+      <li>Quels sont les avantages des protothreads par rapport aux threads classiques ?</li>
+      <li>Pourquoi 6LoWPAN est-il nécessaire dans les réseaux IEEE 802.15.4 ?</li>
+      <li>Quelle est la différence entre émulation et simulation dans Cooja ?</li>
+      <li>Citez trois protocoles de la couche application utilisables avec Contiki-NG.</li>
+    </ol>
+    </div>
+
+    <hr>
+    <p><a href="index.html">← Session précédente</a> | <a href="Cours_02_Installation_Environnement.html">Session suivante →</a></p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

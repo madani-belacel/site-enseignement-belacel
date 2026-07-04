@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 08 — Lancement campagne complète — AER-MQoS</title>
+<title>Lancement campagne complète automatisée — AER-MQoS</title>
 <meta name="description" content="Lancer une campagne complète automatisée avec les scripts run_campaigns.sh, run_comprehensive_campaign.sh, run_multi_seed_campaign.sh.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,98 +76,64 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
-    <li class="current">TP 08 — Lancement campagne complète</li>
+    <li class="current">TP 08 — Lancement campagne complète automatisée</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 08 — Lancement campagne complète automatisée</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 2h00 (dont temps de calcul)<br>
-      <strong>Objectif :</strong> Lancer la campagne complète multi-seed en utilisant les scripts fournis, automatiser les 16 simulations<br>
-      <strong>Prérequis :</strong> Cours 09, TP 02 (firmware compilé), TP 04
+      <strong>Objectif :</strong> Lancer la campagne complète multi-seed en utilisant les scripts fournis, automatiser les 16 simulations<br><strong>Prérequis :</strong> Cours 09, TP 02 (firmware compilé), TP 04
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Examiner les scripts de campagne</h2>
-    <p>Commencez par examiner le répertoire des scripts :</p>
     <pre><code>ls -la scripts/
 cat scripts/run_campaigns.sh</code></pre>
 
     <h2>2. Lancer une campagne simple (1 variante)</h2>
-    <p>Testez d'abord avec une seule variante :</p>
-    <pre><code># Usage: run_campaigns.sh <variant> <seed>
-./scripts/run_campaigns.sh aer_mqos 20260601</code></pre>
-    <p>Observez la sortie pour vérifier le bon déroulement.</p>
+    <pre><code>./scripts/run_campaigns.sh aer_mqos 20260601</code></pre>
 
     <h2>3. Lancer la campagne complète (4 variantes)</h2>
-    <p>Une fois le test réussi, lancez la campagne complète :</p>
     <pre><code>./scripts/run_comprehensive_campaign.sh</code></pre>
-    <p>Ce script lance séquentiellement les 4 variantes avec la seed 20260601.</p>
 
     <h2>4. Lancer la campagne multi-seed</h2>
-    <p>Pour des résultats robustes, lancez la campagne multi-seed :</p>
-    <pre><code># En arrière-plan pour libérer le terminal
-nohup ./scripts/run_multi_seed_campaign.sh > campagne_complete.log 2>&1 &
+    <pre><code>nohup ./scripts/run_multi_seed_campaign.sh > campagne_complete.log 2>&1 &
 tail -f campagne_complete.log</code></pre>
     <p>Cette campagne lancera 16 simulations (4 variantes × 4 seeds).</p>
 
     <h2>5. Structure des résultats</h2>
-    <p>Pendant l'exécution, les logs sont organisés ainsi :</p>
     <pre><code>logs/
-  aer_mqos/
-    20260601.log
-    20260602.log
-    20260603.log
-    20260604.log
-  rpl_mrhof/
-    20260601.log
-    ...
-  rpl_mqos_style/
-    ...
-  rpl_aer_style/
-    ...</code></pre>
+  aer_mqos/     20260601.log 20260602.log 20260603.log 20260604.log
+  rpl_mrhof/    20260601.log ...
+  rpl_mqos_style/  ...
+  rpl_aer_style/  ...</code></pre>
 
     <h2>6. Surveiller l'avancement</h2>
-    <p>Vérifiez l'état des processus et les logs générés :</p>
     <pre><code>ps aux | grep cooja
 ls -lh logs/*/</code></pre>
 
-    <h2>7. Vérifier les résultats [METRIC]</h2>
-    <p>Même pendant l'exécution, vous pouvez inspecter les métriques déjà collectées :</p>
-    <pre><code>grep "\[METRIC\]" logs/aer_mqos/20260601.log</code></pre>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Vérifiez que les 16 logs sont générés et contiennent la ligne [METRIC].</div>
 
-    <h2>8. En cas d'échec</h2>
-    <p>Si une simulation échoue, consultez les logs d'erreur :</p>
-    <pre><code>grep -i "error\|failed\|exception" logs/aer_mqos/20260601.log</code></pre>
-    <p>Les causes fréquentes :</p>
-    <ul>
-      <li>Firmware non compilé pour la variante</li>
-      <li>Chemin de simulation incorrect</li>
-      <li>Mémoire insuffisante</li>
-    </ul>
+    <div class="trouble-box"><strong>⚠️ Dépannage :</strong> Si une simulation échoue, consultez les logs d'erreur : <code>grep -i "error\|failed\|exception" logs/aer_mqos/20260601.log</code>.</div>
 
-    <h2>9. Questions</h2>
-    <ol>
-      <li>Combien de temps prend la campagne multi-seed complète ?</li>
-      <li>Combien de logs sont générés ?</li>
-      <li>Toutes les simulations se sont-elles terminées avec succès ?</li>
-      <li>Quelles sont les premières tendances observées dans les métriques ?</li>
-    </ol>
+    <div class="question-box">
+      <ol>
+        <li>Combien de temps prend la campagne multi-seed complète ?</li>
+        <li>Combien de logs sont générés ?</li>
+        <li>Toutes les simulations se sont-elles terminées avec succès ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

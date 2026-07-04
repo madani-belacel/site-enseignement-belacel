@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 06 — Module de confiance et sécurité — Dr. Madani BELACEL</title>
-<meta name="description" content="Module de confiance (Trust) de RPL-AER : calcul du score de confiance, détection d'anomalies RSSI, simulation d'attaques sinkhole et selective forwarding.">
+<title>Cours 06 : Module de confiance et sécurité — Dr. Madani BELACEL</title>
+<meta name="description" content="Module de confiance Trust : sécurité, détection RSSI, validation ACK, logs de sécurité.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,70 +90,86 @@
 
     <h1>Cours 06 : Module de confiance et sécurité</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 06 — Module de confiance et sécurité</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
         <li><strong>Durée estimée :</strong> 1h30</li>
-        <li><strong>Objectifs :</strong> Comprendre le module de confiance Trust, le calcul du score, et la détection d'attaques</li>
+        <li><strong>Objectifs :</strong> Comprendre le module de confiance et les mécanismes de sécurité de RPL-AER</li>
       </ul>
     </div>
 
-    <h2>1. Pourquoi un module de confiance ?</h2>
-    <p>Les réseaux IoT agricoles sont vulnérables à diverses attaques. Un nœud compromis peut perturber le routage en attirant le trafic (sinkhole) ou en supprimant sélectivement des paquets (selective forwarding). Le module Trust de RPL-AER surveille en continu le comportement des voisins et calcule un score de confiance pour chaque nœud.</p>
-
-    <h2>2. Calcul du Trust Score</h2>
-    <p>Le Trust Score combine trois indicateurs :</p>
-    <pre><code>Trust = w_rssi &times; S_rssi + w_ack &times; S_ack + w_mcs &times; S_mcs_coherence</code></pre>
+    <h2>1. Module de confiance (Trust)</h2>
+    <p>Le module de confiance (<strong>Trust Module</strong>) est un composant essentiel de RPL-AER qui évalue la fiabilité des nœuds voisins. Il calcule un score de confiance basé sur :</p>
     <ul>
-      <li><strong>S_rssi</strong> : Cohérence du RSSI — si le RSSI d'un voisin change de mani&egrave;re brutale et inattendue, c'est un signe d'anomalie</li>
-      <li><strong>S_ack</strong> : Taux d'acquittement — un faible taux d'ACK (paquets non acquittés) peut indiquer un nœud malveillant qui droppe les paquets</li>
-      <li><strong>S_mcs_coherence</strong> : Cohérence du MCS — si le MCS annoncé par un nœud est incohérent avec son état réel (ex: MCS élevé mais NRE bas)</li>
+      <li>Le RSSI (Received Signal Strength Indicator) des paquets reçus</li>
+      <li>Le taux d'acquittement (ACK) des transmissions</li>
+      <li>La détection d'anomalies comportementales</li>
     </ul>
-
-    <h2>3. Détection basée sur le RSSI</h2>
-    <p>L'attaque sinkhole se caractérise par un nœud qui annonce un très bon chemin (faux) pour attirer tout le trafic. Le module Trust détecte cette anomalie en analysant le RSSI :</p>
-    <pre><code>// trust_module.c — analyse du RSSI
-float check_rssi_anomaly(uint16_t neighbor_id, int16_t rssi) {
-    // Comparer avec la moyenne historique
-    int16_t avg_rssi = get_historical_rssi(neighbor_id);
-    int16_t delta = abs(rssi - avg_rssi);
-    if (delta > RSSI_ANOMALY_THRESHOLD) {
-        return 0.3;  // Faible score — anomalie détectée
-    }
-    return 0.9;  // Score normal
-}</code></pre>
-
-    <h2>4. Détection des attaques Selective Forwarding</h2>
-    <p>Le selective forwarding (ou <em>gray hole</em>) est une attaque où le nœud malveillant transmet certains paquets et en supprime d'autres. Le module Trust détecte cette attaque en surveillant le ratio paquets reçus / paquets attendus :</p>
-    <pre><code>float check_forwarding_rate(uint16_t neighbor_id) {
-    uint32_t expected = get_expected_packets(neighbor_id);
-    uint32_t forwarded = get_forwarded_packets(neighbor_id);
-    float rate = (expected > 0) ? (float)forwarded / expected : 1.0;
-    if (rate < FORWARDING_THRESHOLD) {
-        return 0.2;  // Attaque probable
-    }
-    return 0.8 + 0.2 * rate;  // Score normal
-}</code></pre>
-
-    <h2>5. Gestion des faux positifs</h2>
-    <p>Un défi majeur des systèmes de détection est le taux de faux positifs (un nœud honnête classé comme malveillant). RPL-AER utilise un mécanisme de <strong>seuil progressif</strong> :</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre le rôle du module de confiance dans la sécurité du routage</li>
+        <li>Analyser les mécanismes de détection comportementale</li>
+        <li>Étudier l'interaction entre Trust et MCS</li>
+        <li>Interpréter les logs de sécurité</li>
+      </ul>
+    </div>
+    <h2>2. Structure de sécurité</h2>
+    <p>Dans <code>rpl-aer.h:47-52</code> :</p>
+    <div class="code-block"><span class="ln">  1</span> typedef struct {
+<span class="ln">  2</span>   int16_t rssi_threshold;
+<span class="ln">  3</span>   uint8_t ack_received;
+<span class="ln">  4</span>   uint8_t anomaly_detected;
+<span class="ln">  5</span>   uint8_t attack_probability;
+<span class="ln">  6</span> } rpl_aer_security_t;</div>
+    <h2>3. Initialisation et vérification RSSI</h2>
+    <p>Dans <code>rpl-aer.c:176-191</code> :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_security_init(void) {
+<span class="ln">  2</span>   rpl_aer_ctx.security.rssi_threshold = RSSI_THRESHOLD;
+<span class="ln">  3</span>   rpl_aer_ctx.security.ack_received = 0;
+<span class="ln">  4</span>   rpl_aer_ctx.security.anomaly_detected = 0;
+<span class="ln">  5</span>   rpl_aer_ctx.security.attack_probability = 0;
+<span class="ln">  6</span>   LOG_INFO("RPL-AER: Security initialized\n");
+<span class="ln">  7</span> }
+<span class="ln">  8</span> 
+<span class="ln">  9</span> uint8_t rpl_aer_check_rssi_anomaly(int16_t rssi) {
+<span class="ln"> 10</span>   if (rssi < rpl_aer_ctx.security.rssi_threshold) {
+<span class="ln"> 11</span>     rpl_aer_ctx.security.anomaly_detected = 1;
+<span class="ln"> 12</span>     return 1;
+<span class="ln"> 13</span>   }
+<span class="ln"> 14</span>   return 0;
+<span class="ln"> 15</span> }</div>
+    <h2>4. Validation ACK</h2>
+    <p>La fonction <code>rpl_aer_validate_ack()</code> (<code>rpl-aer.c:193-195</code>) :</p>
+    <div class="code-block"><span class="ln">  1</span> uint8_t rpl_aer_validate_ack(void) {
+<span class="ln">  2</span>   return rpl_aer_ctx.security.ack_received;
+<span class="ln">  3</span> }</div>
+    <h2>5. Logs de sécurité</h2>
+    <p>La fonction <code>rpl_aer_log_security()</code> (<code>rpl-aer.c:308-311</code>) :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_log_security(void) {
+<span class="ln">  2</span>   LOG_INFO("RPL-AER: Attack=%d, Anomaly=%d\n",
+<span class="ln">  3</span>            rpl_aer_ctx.attack_state,
+<span class="ln">  4</span>            rpl_aer_ctx.security.anomaly_detected);
+<span class="ln">  5</span> }</div>    <p>Exemple de sortie :</p>
+    <pre><code>RPL-AER: Attack=0, Anomaly=0
+RPL-AER: Attack=1, Anomaly=1</code></pre>
+    <p>Où Attack=0 = AUCUNE attaque, Attack=1 = SINKHOLE, Attack=2 = SELECTIVE_FORWARDING.</p>
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Comment le RSSI peut-il indiquer une anomalie de sécurité ?</li>
+      <li>Quel est le rôle du taux d'ACK dans la détection d'attaques selective forwarding ?</li>
+      <li>Comment le trust module interagit-il avec le MCS ?</li>
+      <li>Que signifie anomaly_detected=1 dans un log ?</li>
+      <li>Proposer une amélioration pour renforcer la détection d'attaques.</li>
+      </ol>
+    </div>    <h2>Références</h2>
     <ul>
-      <li>Un Trust &lt; 0.3 déclenche une alerte et l'exclusion temporaire du nœud</li>
-      <li>Un Trust entre 0.3 et 0.6 déclenche une surveillance renforcée</li>
-      <li>Un Trust &gt; 0.6 est considéré comme normal</li>
+      <li>Code : <code>rpl-aer.h:47-52</code> — Structure de sécurité</li>
+      <li>Code : <code>rpl-aer.c:176-210</code> — Fonctions de sécurité</li>
+      <li>Code : <code>rpl-aer.c:308-311</code> — Logs de sécurité</li>
     </ul>
-
-    <h2>6. Logs du module Trust</h2>
-    <pre><code>[TRUST] Node 12: Neighbor 7 Trust=0.85 RSSI=0.9 ACK=0.8 MCS=0.85
-[TRUST] Node 12: Neighbor 15 Trust=0.32 RSSI=0.3 ACK=0.4 MCS=0.25 ALERT
-[TRUST] Node 15: Flagged as malicious by Node 12 (Trust=0.32)</code></pre>
-    <p>Le nœud 15 est identifié comme suspect avec un Trust score bas. Le nœud 12 évitera de choisir le nœud 15 comme parent.</p>
-
-    <h2>7. Intégration avec le MCS</h2>
-    <p>Le Trust Score peut également influencer le MCS pour pénaliser les nœuds suspects :</p>
-    <pre><code>MCS_final = MCS &times; Trust</code></pre>
-    <p>Cette pondération garantit qu'un nœud avec un faible score de confiance (même avec un bon MCS) ne sera pas choisi comme parent, renforçant ainsi la sécurité globale du réseau.</p>
 
   </div>
 </main>

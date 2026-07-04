@@ -1,71 +1,85 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 04 — Élection des Cluster Heads — IDS-IOT</title>
-<meta name="description" content="Élection des Cluster Heads dans RPL-ClusterIDS : fonction de fitness (Eq. 3), rotation, équité, analyse de l'overhead.">
+<title>Cours 04 — Élection des Cluster Heads — Fitness (Eq. 3) — IDS-IOT</title>
+<meta name="description" content="Élection des Cluster Heads : fonction de fitness multi-critères (Eq. 3), rotation, tenure.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
-<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+<style>
+.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}
+.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}
+.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}
+.md-content p{margin:0.5rem 0;line-height:1.8}
+.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}
+.md-content li{margin:0.25rem 0;line-height:1.7}
+.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}
+.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}
+.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}
+.md-content pre code{background:none;padding:0}
+.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}
+.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}
+.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}
+.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}
+.box-obj{background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-verif{background:#e3f2fd;border-left:4px solid #1565c0;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-trouble{background:#fff3e0;border-left:4px solid #e65100;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-question{background:#f3e5f5;border-left:4px solid #7b1fa2;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-cmd{background:#263238;color:#eceff1;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto}
+.box-cmd code{color:#a5d6a7}
+.box-output{background:#1b2631;color:#d4d4d4;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto;font-size:0.88em}
+</style>
 </head><body>
-
 <header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
-
-<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 04 — Élection CH</li></ol></nav>
-
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 04 — Élection CH Fitness</li></ol></nav>
 <main class="page-content" id="main-content"><div class="md-content">
-
-<h1>Élection des Cluster Heads — Fonction de Fitness</h1>
-
-<div class="md-meta"><strong>Cours 04 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Auteur :</strong> Dr. Madani BELACEL</li><li><strong>Code source :</strong> <code>ch_elect.c</code> / <code>ch_elect.h</code></li></ul></div>
-
-<h2>1. Rôle du Cluster Head</h2>
-<p>Le Cluster Head (CH) est le nœud responsable de la coordination de la détection d'intrusion au sein d'un cluster. Ses tâches incluent la collecte des LAS, l'agrégation des scores, la confirmation des alertes et la communication avec la racine RPL. Le choix du CH est critique car il impacte directement l'efficacité énergétique et la qualité de la détection.</p>
-
+<h1>Élection des Cluster Heads — Fitness (Eq. 3)</h1>
+<div class="md-meta"><strong>Cours 04 — Module IDS-IOT / RPL-ClusterIDS</strong><ul>
+<li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+<li><strong>Durée :</strong> 1 séance</li>
+<li><strong>Objectif :</strong> Comprendre l'élection des CH basée sur la fonction de fitness (Eq. 3)</li>
+</ul></div>
+<div class="box-obj"><strong>Objectif pédagogique :</strong> Analyser ch_elect.c : fonction de fitness, critères d'élection, rotation, tenure.</div>
+<h2>1. Initialisation</h2>
+<pre><code>void ch_elect_init(void) {
+#if IDS_ABLATION_NOCLUS
+    is_head = 1;  // Chaque nœud est son propre CH
+#else
+    is_head = (node_id % 8u) == 0 ? 1 : 0;  // 1 CH / 8 nœuds
+#endif
+    head_tenure_s = 0;  rotation_counter = 0;
+    recluster_events = 0;  my_fitness = 0;
+}</code></pre>
 <h2>2. Fonction de fitness (Eq. 3)</h2>
-<p>La fitness d'un nœud <em>i</em> pour être CH est calculée par :</p>
-<pre><strong>F(i) = w₁ · E_res(i) + w₂ · (1 - 1/deg(i)) + w₃ · LQI_avg(i)</strong></pre>
-<p>Où :</p>
+<pre><code>fitness = NRE × 2 + max(0, 100 - ETX_var × 5)
+threshold = 140 + (node_id % 8) × 12 + (node_id / 8) × 4</code></pre>
+<h2>3. Logique de rotation</h2>
+<pre><code>void ch_elect_tick(uint8_t nre_x100, uint8_t etx_var_x10) {
+    int16_t etx_term = 100 - (int16_t)etx_var_x10 * 5;
+    if(etx_term < 0) etx_term = 0;
+    uint32_t fitness = (uint32_t)nre_x100 * 2u + (uint32_t)etx_term;
+    my_fitness = (uint16_t)fitness;
+    if(is_head) { head_tenure_s++; rotation_counter++; }
+    else if(fitness > 180) { rotation_counter++; }
+    if(clus_form_should_recluster() && rotation_counter > 10) {
+        clus_form_recluster();  ch_elect_rotate();
+    }
+}
+
+void ch_elect_rotate(void) {
+    uint16_t threshold = 140 + (uint16_t)(node_id % 8u) * 12
+                        + (uint16_t)(node_id / 8u) * 4;
+    is_head = my_fitness > threshold ? 1 : 0;
+    rotation_counter = 0;  head_tenure_s = 0;  recluster_events++;
+}</code></pre>
+<h2>4. Métriques exposées</h2>
 <ul>
-  <li><strong>E_res(i)</strong> — Énergie résiduelle du nœud i (normalisée [0,1])</li>
-  <li><strong>deg(i)</strong> — Degré du nœud (nombre de voisins) — plus le degré est élevé, meilleur est le score</li>
-  <li><strong>LQI_avg(i)</strong> — Qualité de lien moyenne (Link Quality Indicator) normalisée</li>
-  <li><strong>w₁, w₂, w₃</strong> — Poids configurables (w₁ + w₂ + w₃ = 1, par défaut w₁ = 0.5, w₂ = 0.3, w₃ = 0.2)</li>
+<li><code>ch_elect_is_head()</code> : 1 si CH</li>
+<li><code>ch_elect_tenure_s()</code> : temps de tenure (secondes)</li>
+<li><code>ch_elect_recluster_events()</code> : nombre de re-clusterings</li>
 </ul>
-
-<h2>3. Processus d'élection</h2>
-<ol>
-  <li><strong>Annonce :</strong> chaque nœud calcule sa fitness F(i) et broadcast un message <em>CH_ELECT</em> contenant sa valeur</li>
-  <li><strong>Comparaison :</strong> chaque nœud compare sa fitness avec celles reçues des voisins</li>
-  <li><strong>Décision :</strong> le nœud avec la plus haute fitness dans le voisinage se déclare CH et envoie <em>CH_ANNOUNCE</em></li>
-  <li><strong>Affiliation :</strong> les autres nœuds rejoignent le CH avec la plus haute affinité (Eq. 1)</li>
-  <li><strong>Confirmation :</strong> si deux CH sont trop proches, un arbitrage basé sur la fitness départage</li>
-</ol>
-
-<h2>4. Mécanisme de rotation</h2>
-<p>Pour éviter l'épuisement des nœuds CH, une rotation périodique est effectuée tous les <em>T_rotation</em> (par défaut 600 secondes simulées). Le processus de rotation :</p>
-<ul>
-  <li>Le CH actuel initie une nouvelle élection en broadcastant <em>CH_ROTATE</em></li>
-  <li>Tous les nœuds du cluster recalculent leur fitness</li>
-  <li>Le nœud avec la fitness maximale devient le nouveau CH</li>
-  <li>Le transfert de rôle inclut la table des membres et l'état de détection courant</li>
-</ul>
-
-<h2>5. Équité et équilibrage de charge</h2>
-<p>Pour garantir l'équité, les mécanismes suivants sont implémentés :</p>
-<ul>
-  <li><strong>Anti-biais :</strong> un facteur de pénalité réduit la fitness des nœuds ayant déjà été CH récemment</li>
-  <li><strong>Taille de cluster :</strong> les CH avec trop de membres voient leur fitness réduite pour encourager la scission</li>
-  <li><strong>Seuil d'énergie :</strong> un nœud avec E_res < 10% ne peut pas être élu CH</li>
-</ul>
-
-<h2>6. Analyse de l'overhead</h2>
-<p>L'overhead de l'élection CH est mesuré en nombre de messages échangés : O(N) messages par cycle d'élection, où N est le nombre de nœuds. Avec une rotation typique toutes les 10 minutes, l'overhead est négligeable (quelques paquets par heure par nœud).</p>
-
-<blockquote><strong>Implémentation :</strong> <code>ch_elect.c</code> — fonctions <code>compute_fitness()</code>, <code>elect_ch()</code>, <code>rotate_ch()</code>. Les poids sont définis dans <code>project-conf.h</code> via <code>CH_FITNESS_W1</code>, <code>CH_FITNESS_W2</code>, <code>CH_FITNESS_W3</code>.</blockquote>
-
-</div></main>
-
+<div class="box-trouble"><strong>Dépannage :</strong> Si la rotation des CH ne se produit jamais, vérifiez que clus_form_should_recluster() retourne 1 ET rotation_counter > 10.</div>
+<div class="box-question"><strong>Question réflexive :</strong> Comment le mécanisme de rotation périodique équilibre-t-il la charge énergétique ? Impact d'un seuil trop bas ou trop haut ?</div></div></main>
 <footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
-
 <script src="../../../js/data.js"></script>
 <script src="../../../js/main.js"></script>
 </body></html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 01 — Introduction à AER-MQoS — AER-MQoS</title>
+<title>Introduction à AER-MQoS — AER-MQoS</title>
 <meta name="description" content="Introduction au protocole AER-MQoS : contexte IoT, limitations de RPL, contributions multi-objectifs, vue d'ensemble de l'architecture.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,33 +76,27 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">Cours 01 — Introduction à AER-MQoS</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>Cours 01 — Introduction à AER-MQoS</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h30<br>
-      <strong>Objectif :</strong> Comprendre le contexte, la problématique et les contributions du protocole AER-MQoS<br>
-      <strong>Prérequis :</strong> Connaissances de base en RPL (RFC 6550), IoT, réseaux de capteurs sans fil
+      <strong>Objectif :</strong> Comprendre le contexte, la problématique et les contributions du protocole AER-MQoS<br><strong>Prérequis :</strong> Connaissances de base en RPL (RFC 6550), IoT, réseaux de capteurs sans fil
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Contexte : l'IoT et les réseaux de capteurs sans fil</h2>
     <p>L'Internet des Objets (IoT) connecte des milliards d'objets physiques &mdash; capteurs, actionneurs, dispositifs intelligents &mdash; capables de collecter, traiter et échanger des données via Internet. Dans ce contexte, les réseaux de capteurs sans fil (WSN) forment l'infrastructure de base : des nœuds contraints en énergie, mémoire et puissance de calcul communiquent sans fil pour acheminer des données vers un point de collecte (puits).</p>
     <p>Le protocole RPL (Routing Protocol for Low-Power and Lossy Networks, RFC 6550) est le standard IETF pour le routage dans les LLN. Il construit un DODAG (Destination-Oriented Directed Acyclic Graph) orienté vers un puits en utilisant des <em>fonctions objectives</em> (OF) qui définissent la métrique de routage.</p>

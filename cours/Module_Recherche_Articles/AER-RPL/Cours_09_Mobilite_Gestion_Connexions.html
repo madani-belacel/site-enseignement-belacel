@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 09 — Mobilité et gestion des connexions — Dr. Madani BELACEL</title>
-<meta name="description" content="Mobilité dans RPL-AER : modèle Random Waypoint, topologie dynamique, impact sur le MCS et stabilité des routes.">
+<title>Cours 09 : Mobilité et gestion des connexions — Dr. Madani BELACEL</title>
+<meta name="description" content="Mobilité dans RPL-AER : Random Waypoint, impact sur l'ECS et le routage, défis.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,79 +90,69 @@
 
     <h1>Cours 09 : Mobilité et gestion des connexions</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 09 — Mobilité et gestion des connexions</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Comprendre la gestion de la mobilité dans RPL-AER, le modèle Random Waypoint et son impact sur les performances</li>
+        <li><strong>Durée estimée :</strong> 1h30</li>
+        <li><strong>Objectifs :</strong> Comprendre la gestion de la mobilité et son impact sur le protocole RPL-AER</li>
       </ul>
     </div>
 
-    <h2>1. Mobilité dans les réseaux IoT agricoles</h2>
-    <p>Dans les scénarios agricoles, la mobilité peut provenir de plusieurs sources :</p>
+    <h2>1. Gestion de la mobilité dans RPL-AER</h2>
+    <p>RPL-AER supporte les nœuds mobiles grâce à un modèle de mobilité <strong>Random Waypoint</strong>. Ce modèle permet de simuler des scénarios agricoles avec des drones ou robots se déplaçant dans le champ.</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre le modèle Random Waypoint pour la mobilité</li>
+        <li>Analyser l'impact de la mobilité sur le routage RPL</li>
+        <li>Étudier la gestion des changements de parent</li>
+        <li>Interpréter l'effet de la mobilité sur le MCS</li>
+      </ul>
+    </div>
+    <h2>2. Configuration de la mobilité</h2>
+    <p>Les constantes dans <code>rpl-aer.h:142-143</code> :</p>
+    <div class="code-block"><span class="ln">  1</span> #define RPL_AER_MOBILITY_STATIC 0
+<span class="ln">  2</span> #define RPL_AER_MOBILITY_MOBILE 1</div>
+    <h2>3. Mise à jour de la mobilité</h2>
+    <p>Le Makefile active le support mobilité via :</p>
+    <div class="code-block"><span class="ln">  1</span> CFLAGS += -DMOBILITY_SUPPORT=1
+<span class="ln">  2</span> CFLAGS += -DRANDOM_WAYPOINT=1</div>
+    <h2>4. Impact de la mobilité sur l'ECS</h2>
+    <p>Comme vu dans le Cours 05, la mobilité réduit le facteur de mobilité de l'ECS :</p>
+    <div class="code-block"><span class="ln">  1</span> if (rpl_aer_ctx.mobility_state == RPL_AER_MOBILITY_MOBILE) {
+<span class="ln">  2</span>   mobility_factor = 0.6f; // Reduce score for mobile nodes
+<span class="ln">  3</span> }</div>    <p>Un nœud mobile voit son ECS réduit de 40%, ce qui le rend moins attractif comme parent.</p>
+
+    <h2>5. Défis du routage avec mobilité</h2>
     <ul>
-      <li><strong>Drones de surveillance :</strong> survolent les champs pour collecter des données</li>
-      <li><strong>Robots agricoles :</strong> se déplacent pour l'irrigation, la fertilisation ou la récolte</li>
-      <li><strong>Capteurs mobiles :</strong> montés sur du bétail ou des véhicules</li>
-    </ul>
-    <p>Ces nœuds mobiles doivent rester connectés au réseau tout en se déplaçant, ce qui pose des défis pour le routage RPL.</p>
-
-    <h2>2. Modèle Random Waypoint</h2>
-    <p>RPL-AER utilise le modèle de mobilité Random Waypoint (RWP) implémenté dans Cooja. Dans ce modèle :</p>
-    <ul>
-      <li>Chaque nœud choisit une destination aléatoire dans la zone de simulation</li>
-      <li>Il se déplace vers cette destination à une vitesse aléatoire (typiquement 0.5-2 m/s)</li>
-      <li>Arrivé à destination, il marque une pause (10-30 secondes)</li>
-      <li>Le cycle recommence avec une nouvelle destination</li>
-    </ul>
-
-    <h2>3. Impact sur le routage RPL</h2>
-    <p>La mobilité affecte le routage RPL de plusieurs manières :</p>
-    <ul>
-      <li><strong>Reconstruction du DODAG :</strong> Un nœud mobile change fréquemment de parent, provoquant des mises à jour du DODAG</li>
-      <li><strong>Fluctuation du MCS :</strong> Le NRE du nœud mobile est moins affecté (panneau solaire), mais le PEC et l'ECS varient avec la position</li>
-      <li><strong>Pertes de paquets :</strong> Les changements de parent peuvent entraîner des pertes temporaires</li>
-    </ul>
-
-    <h2>4. Gestion de la mobilité dans RPL-AER</h2>
-    <p>RPL-AER implémente plusieurs mécanismes pour gérer la mobilité :</p>
-    <pre><code>// Configuration de la mobilité
-#define MOBILITY_SPEED_MIN  0.5   // m/s
-#define MOBILITY_SPEED_MAX  2.0   // m/s
-#define MOBILITY_PAUSE_MIN  10    // secondes
-#define MOBILITY_PAUSE_MAX  30    // secondes
-#define MOBILITY_NODES_PCT  28    // % de nœuds mobiles</code></pre>
-
-    <h3>4.1 Détection de la mobilité</h3>
-    <p>Un nœud détecte qu'il est en mouvement via les variations du RSSI de ses voisins fixes :</p>
-    <pre><code>int is_node_mobile(void) {
-    float rssi_variance = get_rssi_variance(NEIGHBOR_WINDOW);
-    return (rssi_variance > MOBILITY_RSSI_THRESHOLD);
-}</code></pre>
-
-    <h3>4.2 Ajustement du MCS pour la mobilité</h3>
-    <p>Quand un nœud est détecté comme mobile, son MCS est ajusté pour éviter les changements fréquents de parent :</p>
-    <pre><code>float adjust_mcs_for_mobility(float mcs, int is_mobile) {
-    if (is_mobile) {
-        return mcs * MOBILITY_PENALTY;  // Pénalité de 0.85
-    }
-    return mcs;
-}</code></pre>
-
-    <h2>5. Métriques de performance avec mobilité</h2>
-    <p>Les performances du réseau avec mobilité sont évaluées via :</p>
-    <ul>
-      <li><strong>PDR (Packet Delivery Ratio) :</strong> Ratio de paquets reçus avec/sans mobilité</li>
-      <li><strong>Temps de convergence :</strong> Temps nécessaire au DODAG pour se stabiliser après un changement</li>
-      <li><strong>Nombre de changements de parent :</strong> Reflète la stabilité du routage</li>
+      <li><strong>Changements de parent fréquents :</strong> Un nœud mobile change régulièrement de parent, ce qui augmente la signalisation RPL (DIS, DIO)</li>
+      <li><strong>Ruptures de lien :</strong> Les liens avec les nœuds mobiles sont moins stables, augmentant le taux de perte</li>
+      <li><strong>Mise à jour du DODAG :</strong> Le DODAG doit être mis à jour fréquemment pour refléter la topologie changeante</li>
+      <li><strong>Consommation énergétique :</strong> Les mises à jour fréquentes consomment plus d'énergie</li>
     </ul>
 
     <h2>6. Logs de mobilité</h2>
-    <pre><code>[MOB] Node 18: moving to (320.5, 150.2) speed=1.2m/s
-[MOB] Node 18: arrived at destination, pause=15s
-[RPL] Node 18: new parent Node 5 (MCS=0.72) old parent Node 12 (MCS=0.68)
-[PERF] Node 18: PDR=94.2% Latency=45ms Hops=3</code></pre>
+    <p>Exemple de logs montrant la mobilité :</p>
+    <pre><code>RPL-AER: Mobility state changed to MOBILE
+RPL-AER: Parent change detected, new parent=6
+RPL-AER: MCS=0.523 (NRE=0.750, PEC=0.500, ECS=0.480)</code></pre>
+    <p>Notez l'ECS réduit à 0.480 à cause du facteur de mobilité (0.6).</p>
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Pourquoi un nœud mobile reçoit-il un ECS réduit ?</li>
+      <li>Quel est l'impact de la mobilité sur le nombre de changements de parent ?</li>
+      <li>Comment le modèle Random Waypoint simule-t-il des déplacements réalistes ?</li>
+      <li>Quels sont les compromis entre mobilité et performance du routage ?</li>
+      <li>Proposer une amélioration pour mieux gérer les nœuds mobiles.</li>
+      </ol>
+    </div>    <h2>Références</h2>
+    <ul>
+      <li>Code : <code>rpl-aer.h:142-143</code> — États de mobilité</li>
+      <li>Code : <code>rpl-aer.c:113-114</code> — Fonctions de mobilité</li>
+      <li>Makefile : flags de mobilité</li>
+    </ul>
 
   </div>
 </main>

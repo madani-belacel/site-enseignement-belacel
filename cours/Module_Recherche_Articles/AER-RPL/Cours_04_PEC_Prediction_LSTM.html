@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 04 — PEC — Prédiction LSTM de consommation — Dr. Madani BELACEL</title>
-<meta name="description" content="PEC — Predictive Energy Consumption : réseau LSTM pour la prédiction de consommation énergétique, architecture, entraînement et intégration dans RPL-AER.">
+<title>Cours 04 : PEC — Prédiction LSTM de consommation — Dr. Madani BELACEL</title>
+<meta name="description" content="Predictive Energy Consumption : structure LSTM, API lstm_predictor, apprentissage et logs.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -67,7 +81,7 @@
     <li><a href="../../../enseignement.html">Enseignement</a></li>
     <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
     <li><a href="index.html">AER-RPL</a></li>
-    <li class="current">Cours 04 — PEC / LSTM</li>
+    <li class="current">Cours 04 — PEC</li>
   </ol>
 </nav>
 
@@ -76,73 +90,82 @@
 
     <h1>Cours 04 : PEC — Prédiction LSTM de consommation</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 04 — PEC — Prédiction LSTM de consommation</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
         <li><strong>Durée estimée :</strong> 1h30</li>
-        <li><strong>Objectifs :</strong> Comprendre l'architecture LSTM, son rôle dans la prédiction de consommation et son intégration dans RPL-AER</li>
+        <li><strong>Objectifs :</strong> Comprendre le PEC basé sur la prédiction LSTM de consommation énergétique</li>
       </ul>
     </div>
 
-    <h2>1. Pourquoi un LSTM pour la prédiction énergétique ?</h2>
-    <p>La consommation énergétique des nœuds IoT n'est pas constante. Elle varie selon le trafic réseau, les cycles d'émission/réception, et les événements capteurs. Un réseau de neurones LSTM (Long Short-Term Memory) est particulièrement adapté car il peut capturer les dépendances temporelles dans les séquences de consommation.</p>
-    <p>Contrairement à un réseau feedforward classique, le LSTM possède une mémoire interne (<em>cell state</em>) qui lui permet de retenir des informations sur le long terme.</p>
+    <h2>1. Prédiction LSTM dans RPL-AER</h2>
+    <p>Le <strong>PEC</strong> (Predictive Energy Consumption) utilise un réseau de neurones LSTM (Long Short-Term Memory) pour prédire la consommation future d'énergie d'un nœud. Cette prédiction permet d'anticiper l'épuisement des batteries avant qu'il ne se produise.</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre le rôle de la prédiction LSTM dans le routage</li>
+        <li>Analyser les structures de données LSTM dans le code</li>
+        <li>Étudier le processus d'inférence et d'apprentissage</li>
+        <li>Interpréter la conversion prédiction → PEC</li>
+      </ul>
+    </div>
+    <h2>2. Structure LSTM</h2>
+    <p>Dans <code>rpl-aer.h:39-44</code> :</p>
+    <div class="code-block"><span class="ln">  1</span> typedef struct {
+<span class="ln">  2</span>   float history[LSTM_WINDOW_SIZE];
+<span class="ln">  3</span>   float prediction;
+<span class="ln">  4</span>   float weights[LSTM_WINDOW_SIZE];
+<span class="ln">  5</span>   uint8_t window_index;
+<span class="ln">  6</span> } rpl_aer_lstm_t;</div>    <p>Le LSTM maintient un historique des <code>LSTM_WINDOW_SIZE</code> dernières valeurs d'énergie, des poids pour l'apprentissage, et un index circulaire.</p>
 
-    <h2>2. Architecture du LSTM dans RPL-AER</h2>
-    <p>Le prédicteur LSTM implémenté dans <code>lstm_predictor.c</code> est une version légère adaptée aux contraintes mémoire des nœuds IoT :</p>
+    <h2>3. API du LSTM Predictor</h2>
+    <p>Le fichier <code>lstm_predictor.h:14-18</code> déclare l'API :</p>
+    <div class="code-block"><span class="ln">  1</span> void lstm_predictor_init(void);
+<span class="ln">  2</span> void lstm_predictor_update(float value);
+<span class="ln">  3</span> float lstm_predictor_predict(void);
+<span class="ln">  4</span> float lstm_predictor_mae(void);
+<span class="ln">  5</span> void lstm_predictor_log(void);</div>
+    <h2>4. Calcul du PEC</h2>
+    <p>Dans <code>rpl-aer.c:52-58</code>, le PEC est calculé à partir de la prédiction LSTM :</p>
+    <div class="code-block"><span class="ln">  1</span> float rpl_aer_calculate_pec(void) {
+<span class="ln">  2</span>   float prediction = lstm_model_predict();
+<span class="ln">  3</span>   rpl_aer_ctx.mcs.pec = 1.0f - prediction;
+<span class="ln">  4</span>   return rpl_aer_ctx.mcs.pec;
+<span class="ln">  5</span> }</div>    <p>La prédiction LSTM est inversée (1 - prediction) pour que :</p>
     <ul>
-      <li><strong>Couche d'entrée :</strong> Séquence de 5 pas de temps (window_size = 5) de consommation énergétique normalisée</li>
-      <li><strong>Couche LSTM :</strong> 4 cellules LSTM (taille réduite pour l'embarqué)</li>
-      <li><strong>Couche de sortie :</strong> Un neurone avec activation sigmoïde produisant la prédiction normalisée</li>
+      <li>Une faible consommation prédite → PEC élevé → Meilleur score</li>
+      <li>Une forte consommation prédite → PEC faible → Moins attractif</li>
     </ul>
-    <pre><code>// Architecture simplifiée du LSTM
-#define LSTM_WINDOW_SIZE  5   // Séquence d'entrée
-#define LSTM_HIDDEN_SIZE  4   // Nombre de cellules cachées
-#define LSTM_OUTPUT_SIZE  1   // Sortie : consommation prédite</code></pre>
 
-    <h2>3. Fonctionnement du prédicteur</h2>
-    <p>Le module <code>lstm_predictor.c</code> fonctionne en trois étapes :</p>
-    <ol>
-      <li><strong>Collecte :</strong> À chaque intervalle (30s), la consommation est enregistrée dans un buffer circulaire</li>
-      <li><strong>Prédiction :</strong> Toutes les 5 minutes, le LSTM prédit la consommation pour les 5 prochains intervalles</li>
-      <li><strong>Mise à jour du PEC :</strong> La prédiction est convertie en score PEC entre 0 et 1</li>
-    </ol>
-
-    <h2>4. Conversion en score PEC</h2>
-    <p>La prédiction brute du LSTM (consommation en mW) est convertie en PEC normalisé :</p>
-    <pre><code>float predict_to_pec(float predicted_consumption) {
-    // Plus la consommation prédite est faible, plus le PEC est élevé
-    float pec = 1.0 - (predicted_consumption / MAX_CONSUMPTION);
-    if (pec < 0) pec = 0;
-    if (pec > 1) pec = 1;
-    return pec;
-}</code></pre>
-    <p>Un PEC élevé signifie que le nœud prévoit une faible consommation future, ce qui le rend plus fiable comme parent.</p>
-
-    <h2>5. Implémentation du stub LSTM dans Cooja</h2>
-    <p>Dans la simulation Cooja, le LSTM est implémenté comme un <em>stub</em> qui émule le comportement du réseau de neurones sans nécessiter de framework ML lourd :</p>
-    <pre><code>// lstm_predictor.c — stub de prédiction
-float lstm_predict(float *window, int len) {
-    // Modèle pré-entraîné : combinaison linéaire simplifiée
-    float weights[] = {0.1, 0.15, 0.2, 0.25, 0.3};
-    float prediction = 0;
-    for (int i = 0; i < len; i++) {
-        prediction += weights[i] * window[i];
-    }
-    return prediction;
-}</code></pre>
-    <p>Pour une utilisation réelle, les poids seraient obtenus par entraînement sur Keras/TensorFlow puis exportés vers le firmware.</p>
-
-    <h2>6. Logs de prédiction</h2>
-    <p>Les logs LSTM permettent d'évaluer la qualité de la prédiction :</p>
-    <pre><code>[LSTM] Node 12: Pred=4.32mW Actual=4.18mW Error=0.14mW MAE=0.12
-[LSTM] Node 12: Pred=4.45mW Actual=4.51mW Error=0.06mW MAE=0.11
-[LSTM] Node 12: Pred=4.10mW Actual=5.02mW Error=0.92mW MAE=0.38</code></pre>
-    <p>La Mean Absolute Error (MAE) est calculée en continu pour évaluer la dérive du modèle. Une MAE &lt; 0.5 mW est considérée comme acceptable.</p>
-
-    <h2>7. Impact sur le routage</h2>
-    <p>La prédiction LSTM permet d'anticiper l'épuisement d'un nœud avant qu'il ne se produise. Par exemple, si le LSTM prédit une consommation élevée (PEC faible) pour un nœud dans les 5 prochaines minutes, RPL-AER peut progressivement rediriger le trafic vers d'autres parents avant que le nœud ne s'éteigne, assurant ainsi une continuité de service.</p>
+    <h2>5. Apprentissage LSTM (Training)</h2>
+    <p>La fonction <code>rpl_aer_lstm_train()</code> (<code>rpl-aer.c:162-172</code>) effectue l'apprentissage :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_lstm_train(void) {
+<span class="ln">  2</span>   float target = lstm_model_predict();
+<span class="ln">  3</span>   float error = target - lstm_model_predict();
+<span class="ln">  4</span>   LOG_INFO("RPL-AER: LSTM Training - Target: %.3f, "
+<span class="ln">  5</span>            "Prediction: %.3f, Error: %.3f\n",
+<span class="ln">  6</span>            target, lstm_model_predict(), error);
+<span class="ln">  7</span> }</div>
+    <h2>6. Logs LSTM</h2>
+    <p>Sortie typique dans les logs :</p>
+    <pre><code>RPL-AER: LSTM Training - Target: 0.650, Prediction: 0.620, Error: 0.030
+RPL-AER: LSTM Training - Target: 0.610, Prediction: 0.590, Error: 0.020</code></pre>
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Pourquoi utilise-t-on un LSTM plutôt qu'une simple moyenne mobile ?</li>
+      <li>Que signifie un PEC = 0.8 ? Un nœud avec ce PEC est-il attractif ?</li>
+      <li>Quel est l'impact de LSTM_WINDOW_SIZE sur la qualité de la prédiction ?</li>
+      <li>Si la prédiction LSTM est de 0.9, quel est le PEC correspondant ?</li>
+      <li>Comment l'erreur de prédiction (target - prediction) influence-t-elle l'apprentissage ?</li>
+      </ol>
+    </div>    <h2>Références</h2>
+    <ul>
+      <li>Code : <code>rpl-aer.h:39-44</code> — Structure LSTM</li>
+      <li>Code : <code>rpl-aer.c:52-58</code> — Calcul du PEC</li>
+      <li>Code : <code>lstm_predictor.h</code> — API LSTM</li>
+    </ul>
 
   </div>
 </main>

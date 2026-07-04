@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 02 — Compilation du firmware RPL-AER — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 02 : compilation du firmware RPL-AER avec build_and_test.sh, configuration Makefile et project-conf.h.">
+<title>TP 02 : Compilation du firmware RPL-AER — Dr. Madani BELACEL</title>
+<meta name="description" content="Compiler le firmware RPL-AER avec le Makefile, comprendre les flags de compilation.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,93 +90,82 @@
 
     <h1>TP 02 : Compilation du firmware RPL-AER</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 02 — Compilation du firmware RPL-AER</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Compiler le firmware RPL-AER pour Cooja, comprendre la configuration</li>
+        <li><strong>Durée estimée :</strong> 45 minutes</li>
+        <li><strong>Objectifs :</strong> Compiler le firmware RPL-AER pour la plateforme Cooja</li>
       </ul>
     </div>
 
-    <h2>1. Prérequis</h2>
-    <p>Avant de commencer, assurez-vous que Contiki-NG et les outils de compilation sont installés :</p>
-    <pre><code># Vérifier l'installation de Contiki-NG
-ls $CONTIKI_DIR
-echo $CONTIKI_DIR
-
-# Vérifier la chaîne de compilation pour Cooja
-which msp430-gcc || which arm-none-eabi-gcc</code></pre>
-
-    <h2>2. Utiliser build_and_test.sh</h2>
-    <p>Le script <code>build_and_test.sh</code> automatise la compilation :</p>
+    <h2>1. Préparation de l'environnement</h2>
+    <p>Avant de compiler, vérifiez que Contiki-NG est correctement installé :</p>
+    <pre><code>cd /home/madani/contiki-ng
+ls examples/projet_madani/RPL-AER-main/
+echo $CONTIKI</code></pre>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Compiler le firmware RPL-AER pour la plateforme Cooja</li>
+        <li>Comprendre le rôle du Makefile et des flags de compilation</li>
+        <li>Résoudre les erreurs de compilation courantes</li>
+        <li>Vérifier la production des firmwares .csc et .elf</li>
+      </ul>
+    </div>
+    <h2>2. Compilation des firmwares</h2>
+    <p>Utilisez le script <code>build_and_test.sh</code> :</p>
     <pre><code>cd /home/madani/contiki-ng/examples/projet_madani/RPL-AER-main
-./tools/build_and_test.sh</code></pre>
-    <p>Ce script effectue les opérations suivantes :</p>
-    <ul>
-      <li>Compilation du firmware pour la plateforme Cooja (native)</li>
-      <li>Vérification des erreurs de compilation</li>
-      <li>Lancement des tests unitaires (si présents)</li>
-    </ul>
+./build_and_test.sh</code></pre>
+    <p>Sortie attendue :</p>
+    <pre><code>[INFO] Vérification de l'environnement...
+[SUCCESS] Environnement vérifié
+[INFO] Compilation pour la cible cooja...
+[SUCCESS] Compilation terminée
+Build terminé avec succès!</code></pre>
 
-    <h2>3. Compilation manuelle avec make</h2>
-    <p>Vous pouvez aussi compiler manuellement :</p>
-    <pre><code>cd examples/rpl-aer
-make TARGET=cooja</code></pre>
-    <p>Les fichiers binaires générés sont :</p>
-    <ul>
-      <li><code>rpl-aer.cooja</code> — Firmware pour nœud normal</li>
-      <li><code>rpl-aer-sink.cooja</code> — Firmware pour nœud sink</li>
-      <li><code>udp-client.cooja</code> — Application cliente</li>
-      <li><code>udp-server.cooja</code> — Application serveur</li>
-    </ul>
+    <h2>3. Compilation manuelle</h2>
+    <pre><code>make TARGET=cooja
+make TARGET=cooja rpl-aer-client.csc
+make TARGET=cooja rpl-aer-sink.csc</code></pre>
 
-    <h2>4. Comprendre le Makefile</h2>
-    <p>Ouvrez le Makefile et examinez :</p>
-    <pre><code>cat examples/rpl-aer/Makefile</code></pre>
-    <p>Points clés à identifier :</p>
-    <ul>
-      <li>La variable <code>CONTIKI</code> pointant vers le répertoire racine de Contiki-NG</li>
-      <li>Les modules inclus (<code>PROJECT_SOURCEFILES</code>)</li>
-      <li>Les flags de compilation spécifiques</li>
-    </ul>
+    <h2>4. Nettoyage avant compilation</h2>
+    <pre><code>./build_and_test.sh -c</code></pre>
 
-    <h2>5. Configuration dans project-conf.h</h2>
-    <p>Le fichier <code>project-conf.h</code> contrôle les fonctionnalités activées :</p>
-    <pre><code>// Désactiver/activer des modules
-#define RPL_AER_TRUST_ENABLED   1   // Activer le module de confiance
-#define RPL_AER_HARVEST_ENABLED 1   // Activer la récolte solaire
-#define RPL_AER_MOBILITY_ENABLED 1  // Activer la mobilité
+    <h2>5. Vérification des firmwares produits</h2>
+    <pre><code>ls -la *.csc *.elf 2>/dev/null</code></pre>
 
-// Configurer les poids MCS
-#define MCS_ALPHA 0.5
-#define MCS_BETA  0.3
-#define MCS_GAMMA 0.2
-
-// Configurer le LSTM
-#define LSTM_WINDOW_SIZE 5
-#define LSTM_UPDATE_INTERVAL 300  // secondes</code></pre>
-
-    <h2>6. Modifier la configuration</h2>
-    <p>Essayez de modifier <code>project-conf.h</code> pour :</p>
-    <ol>
-      <li>Désactiver le module de confiance (<code>RPL_AER_TRUST_ENABLED 0</code>)</li>
-      <li>Changer les poids MCS (&alpha;=0.4, &beta;=0.4, &gamma;=0.2)</li>
-      <li>Recompiler avec <code>make TARGET=cooja</code></li>
-    </ol>
-
-    <h2>7. Vérification des binaires</h2>
-    <p>Vérifiez que les fichiers .cooja ont été générés :</p>
-    <pre><code>ls -la *.cooja</code></pre>
-
-    <h2>8. Questions</h2>
-    <ol>
-      <li>Quels sont les fichiers source inclus dans le Makefile ?</li>
-      <li>Quelle est la différence entre <code>rpl-aer.cooja</code> et <code>rpl-aer-sink.cooja</code> ?</li>
-      <li>Comment désactiver complètement la prédiction LSTM ?</li>
-      <li>Quelle plateforme cible est utilisée pour la simulation Cooja ?</li>
-    </ol>
-
+    <h2>6. Analyse du Makefile</h2>
+    <p>Examinez les flags de compilation :</p>
+    <pre><code>grep "CFLAGS" Makefile</code></pre>
+    <p>Résultat attendu :</p>
+    <pre><code>CFLAGS += -DRPL_AER=1
+CFLAGS += -DMCS_METRIC=1
+CFLAGS += -DLSTM_PREDICTION=1
+CFLAGS += -DSECURITY_ACK=1
+CFLAGS += -DRSSI_ANOMALY=1
+CFLAGS += -DSOLAR_ENERGY_SIM=1
+CFLAGS += -DATTACK_SIMULATION=1
+CFLAGS += -DMOBILITY_SUPPORT=1</code></pre>
+    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Vérifiez que les fichiers <code>rpl-aer-client.csc</code> et <code>rpl-aer-sink.csc</code> existent avec une taille non nulle. Utilisez : <code>ls -la *.csc</code></p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Erreur 'Contiki-NG not found' : modifiez CONTIKI_PATH dans build_and_test.sh pour pointer vers /home/madani/contiki-ng. Erreur de compilation : vérifiez que tous les fichiers sources (.c) sont présents.</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Quels sont les flags qui activent la sécurité ?</li>
+      <li>Que se passe-t-il si on enlève -DLSTM_PREDICTION=1 ?</li>
+      <li>Pourquoi compile-t-on des .csc et pas directement des .elf ?</li>
+      <li>Quel est le rôle de TARGET=cooja ?</li>
+      <li>Comment ajouter un nouveau fichier source au projet ?</li>
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Capture d'écran de la compilation réussie montrant les messages [SUCCESS]. Fichier <code>build.log</code> contenant la sortie complète de la compilation.</p>
+    </div>
   </div>
 </main>
 

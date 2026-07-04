@@ -1,104 +1,67 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 10 — Génération de figures pour l'article — IDS-IOT</title>
-<meta name="description" content="Générer les 11 figures TikZ/PGFPlots de l'article avec generate_figures.py, comprendre le workflow LaTeX/TikZ.">
+<title>TP 10 — Génération de figures LaTeX/TikZ pour l'article — IDS-IOT</title>
+<meta name="description" content="Générer 11 figures TikZ/PGFPlots avec generer_figures_article.py.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
-<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+<style>
+.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}
+.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}
+.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}
+.md-content p{margin:0.5rem 0;line-height:1.8}
+.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}
+.md-content li{margin:0.25rem 0;line-height:1.7}
+.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}
+.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}
+.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}
+.md-content pre code{background:none;padding:0}
+.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}
+.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}
+.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}
+.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}
+.box-obj{background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-verif{background:#e3f2fd;border-left:4px solid #1565c0;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-trouble{background:#fff3e0;border-left:4px solid #e65100;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-question{background:#f3e5f5;border-left:4px solid #7b1fa2;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-cmd{background:#263238;color:#eceff1;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto}
+.box-cmd code{color:#a5d6a7}
+.box-output{background:#1b2631;color:#d4d4d4;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto;font-size:0.88em}
+</style>
 </head><body>
-
 <header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
-
-<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 10 — Génération figures</li></ol></nav>
-
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 10 — Figures Article</li></ol></nav>
 <main class="page-content" id="main-content"><div class="md-content">
-
-<h1>TP 10 — Génération de figures pour l'article</h1>
-
-<div class="md-meta"><strong>TP 10 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Durée :</strong> 2 séances</li><li><strong>Script :</strong> <code>generate_figures.py</code></li></ul></div>
-
-<h2>Objectif</h2>
-<p>Utiliser le script <code>generate_figures.py</code> pour produire les 11 figures de l'article au format TikZ/PGFPlots. Comprendre le workflow de génération de figures publication-quality pour Computer Networks (Elsevier).</p>
-
-<h2>1. Localiser le script</h2>
-<pre><code>ls scripts/python/
-# generate_figures.py doit s'y trouver</code></pre>
-
-<h2>2. Afficher l'aide</h2>
-<pre><code>python3 scripts/python/generate_figures.py --help</code></pre>
-
-<h2>3. Générer toutes les figures</h2>
-<pre><code>python3 scripts/python/generate_figures.py \
-  --csv data/real/parsed/agg \
-  --out Figures/</code></pre>
-
-<h2>4. Liste des 11 figures</h2>
-<table>
-  <tr><th>Figure</th><th>Description</th></tr>
-  <tr><td>Fig01</td><td>Topologie du réseau avec clusters et CH</td></tr>
-  <tr><td>Fig02</td><td>DR par variant (barres groupées par attaque)</td></tr>
-  <tr><td>Fig03</td><td>FPR par variant</td></tr>
-  <tr><td>Fig04</td><td>F1-Score par variant</td></tr>
-  <tr><td>Fig05</td><td>Overhead énergétique par variant</td></tr>
-  <tr><td>Fig06</td><td>Latence de détection (Full vs Balanced vs Eco)</td></tr>
-  <tr><td>Fig07</td><td>Impact du nombre de nœuds malveillants sur DR</td></tr>
-  <tr><td>Fig08</td><td>DR par type d'attaque (MAIN)</td></tr>
-  <tr><td>Fig09</td><td>Comparaison ablation (MAIN vs NOCLUS vs NOCTX vs NOENR vs NOML)</td></tr>
-  <tr><td>Fig10</td><td>Courbe ROC (MAIN)</td></tr>
-  <tr><td>Fig11</td><td>Trade-off sécurité vs énergie</td></tr>
-</table>
-
-<h2>5. Examiner une figure générée</h2>
-<pre><code>ls Figures/
-cat Figures/fig02-detection-rate.tex</code></pre>
-
-<h2>6. Workflow TikZ/PGFPlots</h2>
-<p>Les figures sont générées au format TikZ/PGFPlots, un package LaTeX qui produit des graphiques vectoriels de haute qualité :</p>
-<ul>
-  <li>Le script Python lit les CSV agrégés</li>
-  <li>Il génère du code LaTeX TikZ avec les données</li>
-  <li>Les fichiers .tex sont inclus dans le manuscrit principal via <code>\input{Figures/fig02...}</code></li>
-  <li>La compilation LaTeX produit les graphiques vectoriels</li>
-</ul>
-
-<h2>7. Personnalisation des figures</h2>
-<p>Vous pouvez personnaliser les figures en modifiant les paramètres dans <code>generate_figures.py</code> :</p>
-<ul>
-  <li>Couleurs (palette Elsevier)</li>
-  <li>Épaisseur des lignes</li>
-  <li>Police et taille des labels</li>
-  <li>Dimensions (width, height)</li>
-  <li>Légendes et annotations</li>
-</ul>
-
-<h2>8. Compilation avec le manuscrit</h2>
-<p>Pour compiler le manuscrit avec les figures :</p>
-<pre><code>cd $IDS_ROOT
-pdflatex -interaction=nonstopmode main.tex
-bibtex main
-pdflatex -interaction=nonstopmode main.tex
-pdflatex -interaction=nonstopmode main.tex</code></pre>
-
-<h2>9. Alternative : export PNG</h2>
-<p>Si vous n'avez pas LaTeX complet, exportez en PNG :</p>
-<pre><code>python3 scripts/python/generate_figures.py \
-  --csv data/real/parsed/agg \
-  --out Figures/ \
-  --format png</code></pre>
-
-<h2>Rendu attendu</h2>
-<p>Produisez un fichier <code>figures_log.txt</code> avec :</p>
+<h1>TP 10 — Génération de figures LaTeX/TikZ pour l'article</h1>
+<div class="md-meta"><strong>TP 10 — Module IDS-IOT / RPL-ClusterIDS</strong><ul>
+<li><strong>Durée :</strong> 2 séances</li>
+<li><strong>Prérequis :</strong> TP 09, tables générées, LaTeX installé</li>
+</ul></div>
+<div class="box-obj"><strong>Objectif pédagogique :</strong> Générer les 11 figures TikZ/PGFPlots avec generer_figures_article.py.</div>
+<h2>1. Figures du papier</h2>
 <ol>
-  <li>La liste des 11 figures générées (chemins)</li>
-  <li>Un exemple de code TikZ généré (Fig02)</li>
-  <li>Les paramètres de personnalisation utilisés</li>
-  <li>La sortie de compilation LaTeX (succès/erreurs)</li>
+<li>fig_dr_comparison — DR par variante et scénario</li>
+<li>fig_far_comparison — FAR</li>
+<li>fig_f1_comparison — F1-Score</li>
+<li>fig_energy_ch_vs_member — Énergie CH vs membre</li>
+<li>fig_context_policy_impact — Distribution des modes</li>
+<li>fig_latency_comparison — Latence</li>
+<li>fig_cpu_ram_usage — CPU et RAM</li>
+<li>fig_cluster_stability — Stabilité des clusters</li>
+<li>fig_detection_timeline — Timeline stab/attack/recovery</li>
+<li>fig_ablation_radar — Radar d'ablation</li>
+<li>fig_roc_curve — Courbe ROC</li>
 </ol>
-
-</div></main>
-
+<h2>2. Générer toutes les figures</h2>
+<div class="box-cmd"><code>cd /home/madani/contiki-ng/examples/IDS_IOT<br>python3 scripts/generer_figures_article.py \<br>    --input results/pilot/ --output results/figures/ --format tikz</code></div>
+<h2>3. Examiner fig_dr_comparison.tex</h2>
+<div class="box-cmd"><code>cat results/figures/fig_dr_comparison.tex</code></div>
+<h2>4. Compiler le manuscrit</h2>
+<div class="box-cmd"><code>cd /home/madani/contiki-ng/examples/IDS_IOT<br>pdflatex main.tex && pdflatex main.tex</code></div>
+<div class="box-verif"><strong>Vérification :</strong> Vérifiez que les figures sont correctement incluses dans le PDF :
+<code>pdflatex main.tex  # Deux passes</code></div>
+<div class="box-question"><strong>Question réflexive :</strong> Quelle figure est la plus informative pour comparer les 8 variantes ? Pourquoi ?</div></div></main>
 <footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
-
 <script src="../../../js/data.js"></script>
 <script src="../../../js/main.js"></script>
 </body></html>

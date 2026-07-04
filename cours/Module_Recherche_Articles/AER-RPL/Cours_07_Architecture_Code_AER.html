@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 07 — Architecture détaillée du code — Dr. Madani BELACEL</title>
-<meta name="description" content="Architecture du code RPL-AER : modules rpl-aer.c, rpl-aer-sink.c, udp-client/server.c et interaction entre les composants.">
+<title>Cours 07 : Architecture détaillée du code — Dr. Madani BELACEL</title>
+<meta name="description" content="Architecture du code RPL-AER : modules, interaction, timers, configuration project-conf.h.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,7 +90,7 @@
 
     <h1>Cours 07 : Architecture détaillée du code</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 07 — Architecture détaillée du code</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
@@ -86,87 +100,98 @@
     </div>
 
     <h2>1. Structure du dépôt RPL-AER</h2>
-    <p>Le dépôt RPL-AER sur GitHub est structuré comme une application Contiki-NG :</p>
+    <p>Le dépôt RPL-AER est structuré comme une application Contiki-NG :</p>
     <pre><code>RPL-AER/
   examples/rpl-aer/
-    rpl-aer.c          — Logique principale du protocole
-    rpl-aer.h          — Déclarations et constantes
-    rpl-aer-sink.c     — Comportement du nœud puits (sink)
-    rpl-aer-sink.h
-    udp-client.c       — Application cliente UDP
-    udp-server.c       — Application serveur UDP
-    mcs_calculator.c   — Calcul du Multi-Criteria Score
-    mcs_calculator.h
-    lstm_predictor.c   — Prédiction LSTM de consommation
-    lstm_predictor.h
-    trust_module.c     — Module de confiance
-    trust_module.h
-    harvest_module.c   — Module de récolte solaire
-    harvest_module.h
-    attack_detector.c  — Détection d'attaques
-    attack_detector.h
-    project-conf.h     — Configuration du projet
-    Makefile           — Règles de compilation
+    rpl-aer.c          -- Logique principale
+    rpl-aer.h          -- Déclarations
+    rpl-aer-sink.c     -- Nœud puits
+    udp-client.c       -- Client UDP
+    udp-server.c       -- Serveur UDP
+    mcs_calculator.c/h -- Calcul MCS
+    lstm_predictor.c/h -- Prédiction LSTM
+    trust_module.c/h   -- Module confiance
+    harvest_module.c/h -- Récolte solaire
+    attack_detector.c/h-- Détection attaques
+    project-conf.h     -- Configuration
+    Makefile
   tools/
-    build_and_test.sh  — Script de compilation et test
-    simulate_results.py — Script d'extraction de résultats
-    generate_csc.py     — Script de génération de scénarios
-    metrics_summary.txt — Résumé des métriques
+    build_and_test.sh
+    simulate_results.py
+    generate_csc.py
   simulation/
-    rpl-aer-simulation.csc — Fichier de simulation Cooja</code></pre>
-
+    rpl-aer-simulation.csc</code></pre>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre l'architecture modulaire du code RPL-AER</li>
+        <li>Analyser le rôle de chaque fichier source</li>
+        <li>Étudier les interactions entre les modules</li>
+        <li>Maîtriser la configuration via project-conf.h</li>
+      </ul>
+    </div>
     <h2>2. rpl-aer.c — Logique principale</h2>
-    <p>Ce fichier est le c&#156;ur du protocole. Il implémente la fonction objective personnalisée qui utilise le MCS à la place de l'ETX :</p>
-    <pre><code>// rpl-aer.c — Fonction objective personnalisée
-static rpl_parent_t *best_parent(rpl_parent_t *p1, rpl_parent_t *p2) {
-    float mcs1 = get_parent_mcs(p1);
-    float mcs2 = get_parent_mcs(p2);
-    if (mcs1 > mcs2) return p1;
-    return p2;
-}</code></pre>
-    <p>Le fichier gère également les mises à jour périodiques du MCS et l'émission des logs.</p>
-
-    <h2>3. rpl-aer-sink.c — Nœud puits</h2>
-    <p>Le sink (nœud 1 par défaut) est le point de collecte de toutes les données. Il n'exécute pas l'algorithme de sélection de parent car il est la racine du DODAG. Ses responsabilités :</p>
+    <p>Ce fichier est le cœur du protocole (332 lignes). Il gère :</p>
     <ul>
-      <li>Initialiser le DODAG avec un instance ID RPL-AER</li>
-      <li>Collecter les métriques de tous les nœuds (PDR, latence, énergie)</li>
-      <li>Générer des logs de performance [PERF]</li>
-      <li>Recevoir et stocker les paquets UDP des clients</li>
+      <li>L'initialisation du contexte (<code>rpl_aer_init()</code>, ligne 321)</li>
+      <li>Le calcul périodique du MCS via des timers (<code>ctimer</code>, lignes 239-263)</li>
+      <li>La mise à jour de l'énergie et la simulation solaire</li>
+      <li>La détection d'attaques</li>
+      <li>Les logs de performance (PDR, latence, throughput, lignes 276-293)</li>
     </ul>
 
-    <h2>4. udp-client.c et udp-server.c</h2>
-    <p>Ces fichiers implémentent le trafic applicatif. Les clients UDP envoient périodiquement des paquets de données au serveur (sink) :</p>
-    <pre><code>// udp-client.c — Envoi périodique
-static void send_packet(void *ptr) {
-    // Créer un paquet avec un timestamp
-    packetbuf_clear();
-    struct metrics *m = get_current_metrics();
-    memcpy(packetbuf_dataptr(), m, sizeof(*m));
-    packetbuf_set_datalen(sizeof(*m));
-    // Envoyer au sink
-    udp_send(&client_conn, sizeof(*m));
-}</code></pre>
+    <h2>3. Le processus d'initialisation</h2>
+    <p>La fonction <code>rpl_aer_init()</code> (<code>rpl-aer.c:321-332</code>) :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_init(void) {
+<span class="ln">  2</span>   rpl_aer_context_init();
+<span class="ln">  3</span>   rpl_aer_performance_init();
+<span class="ln">  4</span>   ctimer_set(&mcs_timer, RPL_AER_MCS_UPDATE_INTERVAL, mcs_update_callback, NULL);
+<span class="ln">  5</span>   ctimer_set(&energy_timer, RPL_AER_ENERGY_UPDATE_INTERVAL, energy_update_callback, NULL);
+<span class="ln">  6</span>   ctimer_set(&security_timer, RPL_AER_SECURITY_UPDATE_INTERVAL, security_update_callback, NULL);
+<span class="ln">  7</span>   ctimer_set(&performance_timer, RPL_AER_PERFORMANCE_UPDATE_INTERVAL, performance_update_callback, NULL);
+<span class="ln">  8</span>   LOG_INFO("RPL-AER: Protocol initialized successfully\n");
+<span class="ln">  9</span> }</div>
+    <h2>4. Interaction entre les modules</h2>
+    <ul>
+      <li><code>rpl-aer.c</code> appelle <code>mcs_calculator_compute()</code> via <code>mcs_calculator.h</code></li>
+      <li><code>mcs_calculator</code> sollicite <code>harvest_module</code> pour l'ECS, <code>lstm_predictor</code> pour le PEC</li>
+      <li><code>trust_module</code> surveille les voisins et ajuste le MCS via un facteur de confiance</li>
+      <li><code>attack_detector</code> analyse les logs RSSI et les taux d'ACK</li>
+      <li>Le sink collecte les métriques via la structure partagée <code>rpl_aer_context_t</code></li>
+    </ul>
 
-    <h2>5. Interaction entre les modules</h2>
-    <p>Le diagramme d'interaction est le suivant :</p>
-    <ol>
-      <li><code>rpl-aer.c</code> appelle <code>mcs_calculator.c</code> pour obtenir le MCS de chaque parent potentiel</li>
-      <li><code>mcs_calculator.c</code> sollicite <code>harvest_module.c</code> pour l'ECS, <code>lstm_predictor.c</code> pour le PEC, et le module énergétique pour le NRE</li>
-      <li><code>trust_module.c</code> surveille les voisins et peut ajuster le MCS final via un facteur de confiance</li>
-      <li><code>attack_detector.c</code> analyse les logs RSSI et les taux d'ACK pour identifier les anomalies</li>
-      <li>Le sink collecte les métriques via une structure partagée dans <code>rpl-aer.h</code></li>
-    </ol>
-
-    <h2>6. Configuration dans project-conf.h</h2>
-    <p>Le fichier <code>project-conf.h</code> centralise tous les paramètres ajustables :</p>
-    <pre><code>#define RPL_AER_MCS_ALPHA       0.5
-#define RPL_AER_MCS_BETA        0.3
-#define RPL_AER_MCS_GAMMA       0.2
-#define RPL_AER_LSTM_WINDOW     5
-#define RPL_AER_TRUST_ENABLED   1
-#define RPL_AER_HARVEST_ENABLED 1
-#define RPL_AER_MOBILITY_ENABLED 1</code></pre>
+    <h2>5. Configuration dans project-conf.h</h2>
+    <p>Les paramètres ajustables sont centralisés :</p>
+    <div class="code-block"><span class="ln">  1</span> #define RPL_AER_MCS_ALPHA       0.5
+<span class="ln">  2</span> #define RPL_AER_MCS_BETA        0.3
+<span class="ln">  3</span> #define RPL_AER_MCS_GAMMA       0.2
+<span class="ln">  4</span> #define RPL_AER_LSTM_WINDOW     5
+<span class="ln">  5</span> #define RPL_AER_TRUST_ENABLED   1
+<span class="ln">  6</span> #define RPL_AER_HARVEST_ENABLED 1
+<span class="ln">  7</span> #define RPL_AER_MOBILITY_ENABLED 1</div>
+    <h2>6. Les timers périodiques</h2>
+    <table>
+      <tr>      <th>Timer</th>      <th>Intervalle</th>      <th>Callback</th>      <th>Action</th></tr>
+      <tr><td>mcs_timer</td><td>10 secondes</td><td>mcs_update_callback</td><td>Recalcule MCS et log</td></tr>
+      <tr><td>energy_timer</td><td>5 secondes</td><td>energy_update_callback</td><td>Met à jour énergie et log</td></tr>
+      <tr><td>security_timer</td><td>2 secondes</td><td>security_update_callback</td><td>Détection d'attaques et log</td></tr>
+      <tr><td>performance_timer</td><td>30 secondes</td><td>performance_update_callback</td><td>PDR, latence, throughput</td></tr>
+    </table>
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Pourquoi le timer de sécurité est-il le plus fréquent (2s) ?</li>
+      <li>Comment les quatre timers interagissent-ils dans le processus ?</li>
+      <li>Que se passe-t-il si le MCS n'est jamais recalculé ?</li>
+      <li>Quel est l'avantage d'avoir des timers séparés plutôt qu'un seul ?</li>
+      <li>Proposer un nouvel intervalle pour le timer MCS et justifier.</li>
+      </ol>
+    </div>    <h2>Références</h2>
+    <ul>
+      <li>Code : <code>rpl-aer.c</code> — 332 lignes, logique principale</li>
+      <li>Code : <code>rpl-aer.h</code> — 145 lignes, déclarations</li>
+      <li>Makefile : compilation et cibles</li>
+    </ul>
 
   </div>
 </main>

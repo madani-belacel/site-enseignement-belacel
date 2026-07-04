@@ -1,117 +1,56 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 07 — Analyse du taux de détection — IDS-IOT</title>
-<meta name="description" content="Analyser le taux de détection (DR) des 7 variantes de RPL-ClusterIDS, identifier la meilleure configuration, analyser les faux positifs.">
+<title>TP 07 — Analyse du taux de détection (DR, FAR) — IDS-IOT</title>
+<meta name="description" content="Analyser DR, FAR, F1 par variante et scénario. Produire des graphiques.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
-<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+<style>
+.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}
+.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}
+.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}
+.md-content p{margin:0.5rem 0;line-height:1.8}
+.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}
+.md-content li{margin:0.25rem 0;line-height:1.7}
+.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}
+.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}
+.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}
+.md-content pre code{background:none;padding:0}
+.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}
+.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}
+.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}
+.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}
+.box-obj{background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-verif{background:#e3f2fd;border-left:4px solid #1565c0;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-trouble{background:#fff3e0;border-left:4px solid #e65100;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-question{background:#f3e5f5;border-left:4px solid #7b1fa2;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-cmd{background:#263238;color:#eceff1;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto}
+.box-cmd code{color:#a5d6a7}
+.box-output{background:#1b2631;color:#d4d4d4;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto;font-size:0.88em}
+</style>
 </head><body>
-
 <header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
-
-<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 07 — Analyse du taux de détection</li></ol></nav>
-
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 07 — Analyse DR/FAR</li></ol></nav>
 <main class="page-content" id="main-content"><div class="md-content">
-
-<h1>TP 07 — Analyse du taux de détection</h1>
-
-<div class="md-meta"><strong>TP 07 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Durée :</strong> 2 séances</li><li><strong>Prérequis :</strong> TP 05 et TP 06 réalisés</li></ul></div>
-
-<h2>Objectif</h2>
-<p>Calculer et comparer le taux de détection (DR) des 7 variantes de RPL-ClusterIDS face aux 5 types d'attaques. Identifier la configuration offrant le meilleur compromis détection/faux positifs.</p>
-
-<h2>1. Préparation des données</h2>
-<p>Assurez-vous d'avoir les logs parsés pour toutes les variantes et tous les types d'attaques :</p>
-<pre><code>ls data/real/parsed/
-# Vérifiez la présence de fichiers pour chaque combinaison</code></pre>
-
-<h2>2. Calcul du DR avec Python</h2>
-<p>Utilisez un script Python pour calculer le DR à partir des fichiers parsés :</p>
-<pre><code>python3 &lt;&lt; 'EOF'
-import os, csv, glob
-
-results = {}
-for f in glob.glob("data/real/parsed/*.csv"):
-    variant = os.path.basename(f).split("_")[0]
-    attack = os.path.basename(f).split("_")[1]
-    tp = fp = fn = 0
-    with open(f) as fh:
-        reader = csv.DictReader(fh)
-        for row in reader:
-            if row["event_type"] == "ALERT_GENERATED":
-                if int(row["value"]) == 1:
-                    tp += 1
-                else:
-                    fp += 1
-    # Estimation des FN basée sur le ground truth (simplifié)
-    dr = tp / (tp + fn + 0.001) * 100 if (tp + fn) > 0 else 0
-    print(f"{variant} {attack}: DR={dr:.1f}% TP={tp} FP={fp}")
-EOF</code></pre>
-
-<h2>3. Comparaison par variant</h2>
-<p>Pour chaque variant, calculez le DR moyen sur tous les types d'attaques :</p>
-<table>
-  <tr><th>Variant</th><th>DR moyen (estimation)</th><th>FPR moyen (estimation)</th></tr>
-  <tr><td>B1</td><td>0% (pas d'IDS)</td><td>0%</td></tr>
-  <tr><td>B2</td><td>~75%</td><td>~15%</td></tr>
-  <tr><td>B3</td><td>0% (pas d'IDS)</td><td>0%</td></tr>
-  <tr><td>CLUSTERIDS</td><td>~94%</td><td>~5%</td></tr>
-  <tr><td>NOCLUS</td><td>~82%</td><td>~11%</td></tr>
-  <tr><td>NOCTX</td><td>~96%</td><td>~8%</td></tr>
-  <tr><td>NOENR</td><td>~90%</td><td>~7%</td></tr>
-  <tr><td>NOML</td><td>~88%</td><td>~9%</td></tr>
-</table>
-
-<h2>4. Analyse par type d'attaque</h2>
-<p>Certaines attaques sont plus difficiles à détecter que d'autres. Classez les 5 attaques par DR décroissant pour le variant MAIN :</p>
-<ol>
-  <li>DAO Flood — généralement bien détecté (R2 très sensible)</li>
-  <li>Rank Attack — bien détecté (R4 efficace)</li>
-  <li>Selective Forwarding — détection modérée (R1 dépend du taux de drop)</li>
-  <li>Wormhole — plus difficile (nécessite R3 + cross-confirmation)</li>
-  <li>Mixed Attacks — le plus difficile (combinaison de vecteurs)</li>
-</ol>
-
-<h2>5. Visualisation</h2>
-<p>Générez un graphique comparatif avec matplotlib :</p>
-<pre><code>python3 &lt;&lt; 'EOF'
-import matplotlib.pyplot as plt
-import numpy as np
-
-variants = ['B1','B2','B3','MAIN','NOCLUS','NOCTX','NOENR','NOML']
-dr = [0, 75, 0, 94, 82, 96, 90, 88]
-
-plt.figure(figsize=(10,5))
-plt.bar(variants, dr, color=['gray','skyblue','gray','green','orange','purple','brown','pink'])
-plt.axhline(y=90, color='r', linestyle='--', label='Seuil 90%')
-plt.ylabel('Detection Rate (%)')
-plt.title('DR par variant (toutes attaques confondues)')
-plt.legend()
-plt.savefig('TP07_detection_rate.png')
-EOF</code></pre>
-
-<h2>6. Analyse des faux positifs</h2>
-<p>Identifiez les causes des faux positifs :</p>
-<ul>
-  <li>Variations normales de la qualité de lien (fausse alerte R1)</li>
-  <li>Messages de contrôle légitimes mais fréquents (fausse alerte R2)</li>
-  <li>Re-clustering temporaire (fausse alerte R4)</li>
-</ul>
-
-<h2>Rendu attendu</h2>
-<p>Produisez un fichier <code>analyse_detection.txt</code> avec :</p>
-<ol>
-  <li>Tableau comparatif DR par variant et par type d'attaque</li>
-  <li>Classement des variantes par DR décroissant</li>
-  <li>Analyse des faux positifs (causes principales)</li>
-  <li>Graphique DR comparatif (TP07_detection_rate.png)</li>
-  <li>Recommandation : meilleur variant pour chaque scénario</li>
-</ol>
-
-</div></main>
-
+<h1>TP 07 — Analyse du taux de détection (DR, FAR)</h1>
+<div class="md-meta"><strong>TP 07 — Module IDS-IOT / RPL-ClusterIDS</strong><ul>
+<li><strong>Durée :</strong> 2 séances</li>
+<li><strong>Prérequis :</strong> TP 06, CSV disponible</li>
+</ul></div>
+<div class="box-obj"><strong>Objectif pédagogique :</strong> Analyser DR, FAR, F1 par variante et scénario. Produire des graphiques comparatifs.</div>
+<h2>1. Agrégation par variante</h2>
+<div class="box-cmd"><code>cd /home/madani/contiki-ng/examples/IDS_IOT<br>python3 scripts/analyse_logs_campagne.py \<br>    --input results/pilot/ --output results/analysis/ \<br>    --csv results/analysis/aggregated.csv --aggregate variant</code></div>
+<h2>2. Matrice de confusion détaillée</h2>
+<div class="box-cmd"><code>python3 -c "<br>import csv<br>from collections import defaultdict<br>stats = defaultdict(lambda: {'tp':0,'fp':0,'tn':0,'fn':0})<br>with open('results/analysis/metrics.csv') as f:<br>    for row in csv.DictReader(f):<br>        k = (row['variant'], row['scenario'])<br>        stats[k]['tp']+=int(row['tp'])<br>        stats[k]['fp']+=int(row['fp'])<br>        stats[k]['tn']+=int(row['tn'])<br>        stats[k]['fn']+=int(row['fn'])<br>for (v,s),m in sorted(stats.items()):<br>    dr = m['tp']/(m['tp']+m['fn']) if (m['tp']+m['fn']) else 0<br>    far = m['fp']/(m['fp']+m['tn']) if (m['fp']+m['tn']) else 0<br>    print(f'{v:>8} {s:>8} TP={m[tp]:>5} FP={m[fp]:>4} TN={m[tn]:>5} FN={m[fn]:>4} DR={dr:.4f} FAR={far:.4f}')<br>" </code></div>
+<h2>3. Visualisation</h2>
+<div class="box-cmd"><code>python3 scripts/analyse_logs_campagne.py \<br>    --input results/pilot/ --output results/analysis/ --plot</code></div>
+<div class="box-verif"><strong>Vérification :</strong> <ul>
+<li>DR de MAIN significativement > B1</li>
+<li>FAR de MAIN < B2</li>
+<li>Barres d'erreur (écart-type) petites</li>
+</ul></div>
+<div class="box-question"><strong>Question réflexive :</strong> Quelle variante recommander pour un réseau IoT critique à très faible tolérance aux FP ? Pourquoi ?</div></div></main>
 <footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
-
 <script src="../../../js/data.js"></script>
 <script src="../../../js/main.js"></script>
 </body></html>

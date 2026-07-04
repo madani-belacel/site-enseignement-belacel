@@ -5,169 +5,58 @@
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
-  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
-  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
-  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
-  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
-  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
-  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
-  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
-  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
-  .md-content blockquote p { margin: 0.2rem 0; }
-  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
-  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
-  .md-content pre code { background: none; padding: 0; }
-  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
-  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
-  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
-  .md-content img { max-width: 100%; border-radius: var(--radius); }
-  .md-content em { font-style: italic; }
-  .md-content strong { font-weight: 700; }
-  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
-  .md-meta strong { font-family: var(--font-heading); }
-  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
-  .download-link:hover { opacity: 0.85; }
-  .download-pdf { background: #e74c3c; color: #fff; }
-  .download-pptx { background: #d24726; color: #fff; }
-  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
-  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
-  .session-list li:hover { transform: translateX(3px); }
-  .session-list a { text-decoration: none; font-weight: 500; }
-  .session-list a:hover { text-decoration: underline; }
-  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
-  .tag-cours { background: #e8f5e9; color: #2e7d32; }
-  .tag-tp { background: #fff3e0; color: #e65100; }
+.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}
+.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}
+.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}
+.md-content p{margin:0.5rem 0;line-height:1.8}
+.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}
+.md-content li{margin:0.25rem 0;line-height:1.7}
+.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}
+.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}
+.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}
+.md-content pre code{background:none;padding:0}
+.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}
+.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}
+.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}
+.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}
+.box-obj{background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-verif{background:#e3f2fd;border-left:4px solid #1565c0;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-trouble{background:#fff3e0;border-left:4px solid #e65100;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-question{background:#f3e5f5;border-left:4px solid #7b1fa2;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-cmd{background:#263238;color:#eceff1;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto}
+.box-cmd code{color:#a5d6a7}
+.box-output{background:#1b2631;color:#d4d4d4;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto;font-size:0.88em}
 </style>
 </head><body>
-
-<header class="header" role="banner">
-  <div class="header-inner">
-    <div class="header-left">
-      <a href="../../../index.html" class="header-logo">
-        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
-        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
-      </a>
-      <div class="header-faculty">
-        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
-      </div>
-    </div>
-    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    <nav role="navigation" aria-label="Navigation principale">
-      <ul id="nav-list" class="nav-list">
-        <li><a href="../../../index.html">Accueil</a></li>
-        <li><a href="../../../enseignement.html">Enseignement</a></li>
-        <li><a href="../../../recherche.html">Recherche</a></li>
-        <li><a href="../../../habilitation.html">Habilitation</a></li>
-        <li><a href="../../../ressources.html">Ressources</a></li>
-        <li><a href="../../../contact.html">Contact</a></li>
-        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<nav aria-label="Fil d'Ariane">
-  <ol class="breadcrumb">
-    <li><a href="../../../index.html">Accueil</a></li>
-    <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
-    <li class="current">IDS-IOT — RPL-ClusterIDS</li>
-  </ol>
-</nav>
-
-<main class="page-content" id="main-content">
-  <div class="md-content">
-
-    <h1>IDS-IOT — Détection d'Intrusion RPL-ClusterIDS</h1>
-
-    <div class="md-meta">
-      <strong>Module : Recherche & Articles — RPL-ClusterIDS</strong>
-      <ul>
-        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Objectif :</strong> Étudier, implémenter et évaluer RPL-ClusterIDS, un système de détection d'intrusion distribué avec clustering adaptatif pour les réseaux IoT basés sur RPL</li>
-        <li><strong>Nombre de sessions :</strong> 11 cours théoriques + 12 travaux pratiques (23 sessions)</li>
-        <li><strong>Prérequis :</strong> Notions en réseaux IoT, protocole RPL, Contiki-NG, programmation C et Python, simulateur Cooja</li>
-        <li><strong>Dépôt :</strong> <a href="https://github.com/madani-belacel/IDS-IOT" target="_blank">github.com/madani-belacel/IDS-IOT</a></li>
-        <li><strong>Journal cible :</strong> Computer Networks (Elsevier)</li>
-        <li><strong>Année :</strong> 2025-2026</li>
-      </ul>
-    </div>
-
-    <h2>Présentation</h2>
-    <p><strong>RPL-ClusterIDS</strong> est un système de détection d'intrusion distribué (DIDS) conçu pour les réseaux IoT basés sur le protocole de routage RPL (IPv6 Routing Protocol for Low-Power and Lossy Networks). Il adopte une architecture à deux niveaux : les nœuds membres surveillent le trafic local et calculent un score d'anomalie local (LAS), tandis que les Cluster Heads (CH) agrègent ces scores pour une détection consolidée. Le clustering adaptatif repose sur une fonction d'affinité combinant puissance du signal, énergie résiduelle et confiance, avec une élection de CH basée sur une fonction de fitness multi-critères.</p>
-    <p>Le système supporte 5 types d'attaques RPL : manipulation de rang (rank attack), forwarding sélectif (selective forwarding), tunnel wormhole, inondation DAO (DAO flood) et attaques mixtes. Trois politiques contextuelles (Full, Balanced, Eco) permettent d'ajuster le niveau de surveillance en fonction de l'énergie disponible. L'évaluation comparative repose sur 7 variantes (B1, B2, B3, CLUSTERIDS, NOCLUS, NOCTX, NOENR, NOML) pour isoler l'impact de chaque composant.</p>
-
-    <h2>Cours théoriques</h2>
-    <ul class="session-list">
-      <li><span class="session-tag tag-cours">Cours 01</span> <a href="Cours_01_Introduction_IDS.html">Introduction à la détection d'intrusion pour IoT</a></li>
-      <li><span class="session-tag tag-cours">Cours 02</span> <a href="Cours_02_Architecture_ClusterIDS.html">Architecture distribuée de RPL-ClusterIDS</a></li>
-      <li><span class="session-tag tag-cours">Cours 03</span> <a href="Cours_03_Formation_Clusters.html">Formation des clusters et fonction d'affinité</a></li>
-      <li><span class="session-tag tag-cours">Cours 04</span> <a href="Cours_04_Election_CH_Fitness.html">Élection des Cluster Heads — Fitness (Eq. 3)</a></li>
-      <li><span class="session-tag tag-cours">Cours 05</span> <a href="Cours_05_Regles_Detection_Membre.html">Règles de détection au niveau membre (R1–R4)</a></li>
-      <li><span class="session-tag tag-cours">Cours 06</span> <a href="Cours_06_Aggregation_CH.html">Agrégation au niveau Cluster Head</a></li>
-      <li><span class="session-tag tag-cours">Cours 07</span> <a href="Cours_07_Politiques_Contextuelles.html">Politiques contextuelles (Full/Balanced/Eco)</a></li>
-      <li><span class="session-tag tag-cours">Cours 08</span> <a href="Cours_08_Types_Attaques_RPL.html">Types d'attaques RPL simulées</a></li>
-      <li><span class="session-tag tag-cours">Cours 09</span> <a href="Cours_09_Variants_Ablation.html">Variants et études d'ablation</a></li>
-      <li><span class="session-tag tag-cours">Cours 10</span> <a href="Cours_10_Metriques_Evaluation_IDS.html">Métriques d'évaluation IDS</a></li>
-      <li><span class="session-tag tag-cours">Cours 11</span> <a href="Cours_11_Pipeline_Reproductibilite.html">Pipeline de reproductibilité scientifique</a></li>
-    </ul>
-
-    <h2>Travaux pratiques</h2>
-    <ul class="session-list">
-      <li><span class="session-tag tag-tp">TP 01</span> <a href="TP_01_Clonage_Exploration_IDS.html">Cloner et explorer le dépôt IDS-IOT</a></li>
-      <li><span class="session-tag tag-tp">TP 02</span> <a href="TP_02_Compilation_Variants.html">Compilation des 7 variants</a></li>
-      <li><span class="session-tag tag-tp">TP 03</span> <a href="TP_03_Simulation_Test_3_noeuds.html">Simulation test avec 3 nœuds</a></li>
-      <li><span class="session-tag tag-tp">TP 04</span> <a href="TP_04_Generation_Scenarios_Cooja.html">Génération de scénarios Cooja</a></li>
-      <li><span class="session-tag tag-tp">TP 05</span> <a href="TP_05_Simulation_Campagne_Pilot.html">Simulation campagne pilote</a></li>
-      <li><span class="session-tag tag-tp">TP 06</span> <a href="TP_06_Analyse_Logs_Campagne.html">Analyse des logs de campagne</a></li>
-      <li><span class="session-tag tag-tp">TP 07</span> <a href="TP_07_Analyse_Detection_Rate.html">Analyse du taux de détection</a></li>
-      <li><span class="session-tag tag-tp">TP 08</span> <a href="TP_08_Analyse_Consommation_Energie.html">Analyse de la consommation d'énergie</a></li>
-      <li><span class="session-tag tag-tp">TP 09</span> <a href="TP_09_Statistiques_Comparatives.html">Statistiques comparatives (Tables II–IX)</a></li>
-      <li><span class="session-tag tag-tp">TP 10</span> <a href="TP_10_Generation_Figures_Article.html">Génération de figures pour l'article</a></li>
-      <li><span class="session-tag tag-tp">TP 11</span> <a href="TP_11_Reproduction_Complete.html">Reproduction complète de la campagne</a></li>
-      <li><span class="session-tag tag-tp">TP 12</span> <a href="TP_12_Synthese_IDS.html">TP de synthèse — Évaluation complète</a></li>
-    </ul>
-
-    <h2>Organisation recommandée</h2>
-    <ol>
-      <li><strong>Phase 1 (Cours 01-02 + TP 01-02) :</strong> Découvrez l'IDS distribué, son architecture, clonez le dépôt et compilez les variants</li>
-      <li><strong>Phase 2 (Cours 03-05 + TP 03-04) :</strong> Comprenez la formation des clusters, l'élection CH, les règles de détection, et les attaques RPL</li>
-      <li><strong>Phase 3 (Cours 06-08 + TP 05-06) :</strong> Agrégation CH, politiques contextuelles, lancez la campagne pilote et analysez les logs</li>
-      <li><strong>Phase 4 (Cours 09-11 + TP 07-12) :</strong> Ablations, métriques, pipeline complet, statistiques comparatives, figures et synthèse</li>
-    </ol>
-
-    <div class="md-meta" style="margin-top:2rem;">
-      <strong>Ressources complémentaires</strong>
-      <ul>
-        <li><a href="https://github.com/madani-belacel/IDS-IOT" target="_blank">Dépôt IDS-IOT GitHub</a> — Code source complet et pipeline</li>
-        <li><a href="https://github.com/contiki-ng/contiki-ng" target="_blank">Contiki-NG GitHub</a> — Système d'exploitation pour IoT</li>
-        <li><a href="https://tools.ietf.org/html/rfc6550" target="_blank">RFC 6550 — RPL</a></li>
-        <li><a href="https://anrg.usc.edu/contiki/index.php/Cooja_Simulator" target="_blank">Documentation Cooja</a></li>
-        <li><strong>🗺️ Parcours :</strong> <a href="../Base_Cooja_RPL_IOT/index.html">Base Cooja/RPL</a> ← <a href="../RPLMQOS/index.html">RPLMQOS</a> ← <a href="../AER-RPL/index.html">AER-RPL</a> ← <a href="../AER-MQoS/index.html">AER-MQoS</a> (module final)</li>
-      </ul>
-    </div>
-
-  </div>
-</main>
-
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-logos">
-      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
-    </div>
-    <div class="footer-infos">
-      <span>madani.belacel@univ-mosta.dz</span>
-      <span> Universit de Mostaganem</span>
-      <span> 2025-2026</span>
-    </div>
-    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
-  </div>
-</footer>
-
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">IDS-IOT — RPL-ClusterIDS</li></ol></nav>
+<main class="page-content" id="main-content"><div class="md-content">
+<h1>IDS-IOT — Détection d'Intrusion RPL-ClusterIDS</h1>
+<div class="md-meta"><strong>Module : Recherche &amp; Articles — RPL-ClusterIDS</strong><ul>
+<li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+<li><strong>Objectif :</strong> Étudier, implémenter et évaluer RPL-ClusterIDS</li>
+<li><strong>Nombre de sessions :</strong> 11 cours théoriques + 12 travaux pratiques (23 sessions)</li>
+<li><strong>Prérequis :</strong> Réseaux IoT, protocole RPL, Contiki-NG, C et Python, simulateur Cooja</li>
+<li><strong>Dépôt :</strong> <a href="https://github.com/madani-belacel/IDS-IOT" target="_blank">github.com/madani-belacel/IDS-IOT</a></li>
+<li><strong>Journal cible :</strong> Computer Networks (Elsevier)</li>
+<li><strong>Année :</strong> 2025-2026</li>
+</ul></div>
+<h2>Présentation</h2>
+<p><strong>RPL-ClusterIDS</strong> est un système de détection d'intrusion distribué (DIDS) conçu pour les réseaux IoT basés sur RPL. Il adopte une architecture à deux niveaux : les nœuds membres surveillent le trafic local et calculent un score LAS, tandis que les Cluster Heads (CH) agrègent ces scores. Le clustering adaptatif repose sur une fonction d'affinité combinant topologie, énergie et confiance.</p>
+<h2>Cours théoriques</h2>
+<ul class="session-list"><li><span class="session-tag tag-cours">Cours 01</span> <a href="Cours_01_Introduction_IDS_IOT.html">Introduction à la détection d'intrusion pour IoT</a></li><li><span class="session-tag tag-cours">Cours 02</span> <a href="Cours_02_Architecture_ClusterIDS.html">Architecture distribuée de RPL-ClusterIDS</a></li><li><span class="session-tag tag-cours">Cours 03</span> <a href="Cours_03_Formation_Clusters.html">Formation des clusters et fonction d'affinité</a></li><li><span class="session-tag tag-cours">Cours 04</span> <a href="Cours_04_Election_CH_Fitness.html">Élection des Cluster Heads — Fitness (Eq. 3)</a></li><li><span class="session-tag tag-cours">Cours 05</span> <a href="Cours_05_Regles_Detection_Membre.html">Règles de détection au niveau membre (R1–R4)</a></li><li><span class="session-tag tag-cours">Cours 06</span> <a href="Cours_06_Aggregation_CH.html">Agrégation au niveau Cluster Head</a></li><li><span class="session-tag tag-cours">Cours 07</span> <a href="Cours_07_Politiques_Contextuelles.html">Politiques contextuelles (Full/Balanced/Eco)</a></li><li><span class="session-tag tag-cours">Cours 08</span> <a href="Cours_08_Types_Attaques_RPL.html">Types d'attaques RPL simulées</a></li><li><span class="session-tag tag-cours">Cours 09</span> <a href="Cours_09_Variants_Ablation.html">Variants et études d'ablation</a></li><li><span class="session-tag tag-cours">Cours 10</span> <a href="Cours_10_Perspectives.html">Métriques d'évaluation et perspectives</a></li></ul>
+<h2>Travaux pratiques</h2>
+<ul class="session-list"><li><span class="session-tag tag-tp">TP 01</span> <a href="TP_01_Exploration_Code.html">Explorer le dépôt IDS-IOT et le code source</a></li><li><span class="session-tag tag-tp">TP 02</span> <a href="TP_02_Compilation_Variants.html">Compilation des 8 variants avec Makefile</a></li><li><span class="session-tag tag-tp">TP 03</span> <a href="TP_03_Simulation_Test_3_noeuds.html">Simulation test avec 3 nœuds dans Cooja</a></li><li><span class="session-tag tag-tp">TP 04</span> <a href="TP_04_Generation_Scenarios_Cooja.html">Génération de scénarios Cooja avec scripts Python</a></li><li><span class="session-tag tag-tp">TP 05</span> <a href="TP_05_Simulation_Campagne_Pilot.html">Simulation campagne pilote (50 nœuds)</a></li><li><span class="session-tag tag-tp">TP 06</span> <a href="TP_06_Analyse_Logs_Campagne.html">Analyse des logs METRIC de campagne</a></li><li><span class="session-tag tag-tp">TP 07</span> <a href="TP_07_Analyse_Detection_Rate.html">Analyse du taux de détection (DR, FAR)</a></li><li><span class="session-tag tag-tp">TP 08</span> <a href="TP_08_Analyse_Consommation_Energie.html">Analyse de la consommation d'énergie</a></li><li><span class="session-tag tag-tp">TP 09</span> <a href="TP_09_Statistiques_Comparatives.html">Statistiques comparatives (Tables II–IX)</a></li><li><span class="session-tag tag-tp">TP 10</span> <a href="TP_10_Generation_Figures_Article.html">Génération de figures LaTeX/TikZ pour l'article</a></li><li><span class="session-tag tag-tp">TP 11</span> <a href="TP_11_Reproduction_Complete.html">Reproduction complète de la campagne</a></li><li><span class="session-tag tag-tp">TP 12</span> <a href="TP_12_Projet_Synthese.html">Projet de synthèse — Évaluation complète</a></li></ul>
+<h2>Organisation recommandée</h2>
+<ol>
+<li><strong>Phase 1 (Cours 01-02 + TP 01-02) :</strong> Découvrez l'IDS distribué, son architecture, clonez le dépôt et compilez les variants</li>
+<li><strong>Phase 2 (Cours 03-05 + TP 03-04) :</strong> Formation des clusters, élection CH, règles de détection, attaques RPL</li>
+<li><strong>Phase 3 (Cours 06-08 + TP 05-06) :</strong> Agrégation CH, politiques contextuelles, campagne pilote et analyse des logs</li>
+<li><strong>Phase 4 (Cours 09-10 + TP 07-12) :</strong> Ablations, métriques, statistiques comparatives, figures et synthèse</li>
+</ol>
+</div></main>
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
 <script src="../../../js/data.js"></script>
 <script src="../../../js/main.js"></script>
 </body></html>

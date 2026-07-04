@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 04 — Simulation campagne grille 30 nœuds — AER-MQoS</title>
+<title>Simulation campagne grille 30 nœuds — AER-MQoS</title>
 <meta name="description" content="Simulation d'une campagne sur grille 30 nœuds avec aer-campaign-grid-30.csc, compréhension de la topologie, collecte de métriques.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,96 +76,62 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">TP 04 — Simulation campagne grille 30 nœuds</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 04 — Simulation campagne grille 30 nœuds</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 1h30<br>
-      <strong>Objectif :</strong> Lancer une simulation complète sur grille 30 nœuds, comprendre la topologie et collecter les métriques de campagne<br>
-      <strong>Prérequis :</strong> TP 03 réussi, firmware compilé
+      <strong>Objectif :</strong> Lancer une simulation complète sur grille 30 nœuds, comprendre la topologie et collecter les métriques de campagne<br><strong>Prérequis :</strong> TP 03 réussi, firmware compilé
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Topologie grille 30 nœuds</h2>
-    <p>Le fichier <code>aer-campaign-grid-30.csc</code> définit une topologie en grille rectangulaire de 30 nœuds (typiquement 6 lignes × 5 colonnes). Les nœuds sont espacés de 50 à 70 mètres, avec une portée radio d'environ 100 mètres. Le puits (sink) est positionné au centre ou dans un coin de la grille.</p>
-    <p>Cette topologie permet d'étudier le comportement du protocole dans un réseau multi-sauts avec des chemins alternatifs.</p>
+    <p>Le fichier <code>aer-campaign-grid-30.csc</code> définit une topologie en grille rectangulaire de 30 nœuds (6 lignes × 5 colonnes), espacement 60 mètres, portée radio ~100 mètres.</p>
 
     <h2>2. Paramètres de la campagne</h2>
     <table>
-      <tr><th>Paramètre</th><th>Valeur typique</th><th>Description</th></tr>
-      <tr><td>Nombre de nœuds</td><td>30</td><td>29 capteurs + 1 puits</td></tr>
-      <tr><td>Topologie</td><td>Grille 6×5</td><td>Espacement 60 m</td></tr>
-      <tr><td>Durée</td><td>600 s (10 min)</td><td>Temps de simulation</td></tr>
-      <tr><td>Trafic</td><td>C0–C3 mixte</td><td>Génération périodique par classe</td></tr>
-      <tr><td>Radio</td><td>UDGM avec pertes</td><td>TX range 100 m, INT range 120 m</td></tr>
-      <tr><td>Seed</td><td>20260601</td><td>Graine aléatoire</td></tr>
+      <tr><th>Paramètre</th><th>Valeur typique</th></tr>
+      <tr><td>Nombre de nœuds</td><td>30 (29 capteurs + 1 puits)</td></tr>
+      <tr><td>Topologie</td><td>Grille 6×5, espacement 60 m</td></tr>
+      <tr><td>Durée</td><td>600 s (10 min)</td></tr>
+      <tr><td>Trafic</td><td>C0–C3 mixte</td></tr>
+      <tr><td>Radio</td><td>UDGM avec pertes</td></tr>
     </table>
 
     <h2>3. Lancer la simulation sans interface graphique</h2>
-    <p>Pour les campagnes, on utilise Cooja en mode <em>nogui</em> (sans interface) :</p>
     <pre><code>cd contiki-ng
 ./tools/cooja/cooja -nogui -contiki=.. \
   -simulation=chemin/vers/aer-campaign-grid-30.csc \
   > campagne_grid_30.log 2>&1</code></pre>
 
-    <h2>4. Observer le déroulement</h2>
-    <p>Pendant la simulation, les logs affichent :</p>
-    <ul>
-      <li>La formation progressive du DODAG</li>
-      <li>Les échanges DIO/DAO entre nœuds</li>
-      <li>Les transmissions de paquets par classe [QUEUE]</li>
-      <li>Les scores MCS calculés [MCS]</li>
-      <li>Les métriques de campagne [METRIC] en fin de simulation</li>
-    </ul>
-
-    <h2>5. Résumé des métriques collectées</h2>
-    <p>En fin de simulation, le module <code>Aer_campaign_log</code> produit un résumé [METRIC] :</p>
+    <h2>4. Résumé des métriques collectées</h2>
     <pre><code>[METRIC] PDR=0.92 Latence_avg=45.3ms Latence_max=187.2ms
 [METRIC] Energie_consommee=127.5 mAh NRE_min=0.31
 [METRIC] C0_PDR=0.98 C1_PDR=0.94 C2_PDR=0.88 C3_PDR=0.79
 [METRIC] Paquets_emis=1520 Paquets_recus=1398</code></pre>
 
-    <h2>6. Analyser les résultats</h2>
-    <p>Après la simulation, analysez les métriques :</p>
-    <ul>
-      <li>PDR global et par classe (vérifiez que C0 > C1 > C2 > C3)</li>
-      <li>Latence moyenne et maximale</li>
-      <li>Consommation énergétique totale et NRE minimum</li>
-      <li>Nombre total de paquets transmis</li>
-    </ul>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Vérifiez que C0 > C1 > C2 > C3 en termes de PDR et que la hiérarchie est respectée.</div>
 
-    <h2>7. Comparaison avec la simulation 3 nœuds</h2>
-    <p>Comparez les résultats obtenus :</p>
-    <ul>
-      <li>Le PDR est-il plus faible dans un réseau de 30 nœuds ? (normal, plus de contention)</li>
-      <li>La latence est-elle plus élevée ? (plus de sauts)</li>
-      <li>La consommation est-elle répartie équitablement ?</li>
-    </ul>
-
-    <h2>8. Questions</h2>
-    <ol>
-      <li>Quel est le PDR global de la simulation ?</li>
-      <li>Quel est le PDR par classe ? Est-il conforme aux attentes ?</li>
-      <li>Combien de paquets ont été transmis et reçus ?</li>
-      <li>Quel nœud a le NRE le plus bas ? Pourquoi ?</li>
-    </ol>
+    <div class="question-box">
+      <ol>
+        <li>Quel est le PDR global de la simulation ?</li>
+        <li>Quel est le PDR par classe ? Est-il conforme aux attentes ?</li>
+        <li>Combien de paquets ont été transmis et reçus ?</li>
+        <li>Quel nœud a le NRE le plus bas ? Pourquoi ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

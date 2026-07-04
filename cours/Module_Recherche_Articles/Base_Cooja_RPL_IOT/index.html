@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Base Cooja / RPL / IoT — Module Recherche & Articles — Dr. Madani BELACEL</title>
-<meta name="description" content="Parcours d'apprentissage complet : IoT, Contiki-NG, simulateur Cooja, protocole RPL. 22 sessions de cours et TP pour débutants.">
+<meta name="description" content="Parcours d'apprentissage complet : IoT, Contiki-NG, simulateur Cooja, protocole RPL. 23 sessions.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,14 +31,18 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
-  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
-  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
-  .session-list li:hover { transform: translateX(3px); }
-  .session-list a { text-decoration: none; font-weight: 500; }
-  .session-list a:hover { text-decoration: underline; }
-  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
-  .tag-cours { background: #e8f5e9; color: #2e7d32; }
-  .tag-tp { background: #fff3e0; color: #e65100; }
+  .box-obj { background: #e8f5e9; border: 1px solid #2e7d32; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-obj strong { color: #2e7d32; }
+  .box-verif { background: #e3f2fd; border: 1px solid #1565c0; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-verif strong { color: #1565c0; }
+  .box-trouble { background: #fff3e0; border: 1px solid #e65100; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-trouble strong { color: #e65100; }
+  .box-question { background: #f3e5f5; border: 1px solid #7b1fa2; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-question strong { color: #7b1fa2; }
+  .box-livrable { background: #fffde7; border: 1px solid #f9a825; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-livrable strong { color: #f57f17; }
+  .box-info { background: #e0f7fa; border: 1px solid #00838f; border-radius: var(--radius); padding: 1rem; margin: 1rem 0; }
+  .box-info strong { color: #00838f; }
 </style>
 </head><body>
 
@@ -110,40 +114,42 @@
 </ul>
 </div>
 
-<main class="page-content" id="main-content">
+<main class="page-content">
   <div class="md-content">
 
     <h1>🌱 Base Cooja / RPL / IoT</h1>
 
     <div class="md-meta">
-      <strong>Module : Recherche & Articles — Base Cooja / RPL / IoT</strong>
+      <strong>Module : Recherche &amp; Articles — Base Cooja / RPL / IoT</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
         <li><strong>Objectif :</strong> Acquérir les fondamentaux de l'IoT, du simulateur Cooja, du système d'exploitation Contiki-NG et du protocole de routage RPL</li>
-        <li><strong>Nombre de sessions :</strong> 8 cours théoriques + 14 travaux pratiques (22 sessions)</li>
+        <li><strong>Nombre de sessions :</strong> 10 cours théoriques + 13 travaux pratiques (23 sessions)</li>
         <li><strong>Prérequis :</strong> Notions de base en réseaux informatiques, commandes Linux, programmation C élémentaire</li>
         <li><strong>Année :</strong> 2025-2026</li>
       </ul>
     </div>
 
     <h2>📋 Parcours pédagogique</h2>
-    <p>Ce parcours vous guide depuis les concepts fondamentaux de l'IoT jusqu'à la réalisation d'un projet de synthèse. Il est structuré en 22 sessions alternant cours théoriques et travaux pratiques.</p>
+    <p>Ce parcours vous guide depuis les concepts fondamentaux de l'IoT jusqu'à la réalisation d'un projet de synthèse. Chaque session inclut des objectifs clairs, des commandes avec sorties attendues, des exercices de vérification, et du dépannage détaillé.</p>
 
     <h3>📖 Cours théoriques</h3>
     <ul class="session-list">
-      <li><span class="session-tag tag-cours">Cours 01</span> <a href="Cours_01_Intro_IoT.html">Introduction à l'IoT et aux réseaux de capteurs sans fil (WSN)</a></li>
-      <li><span class="session-tag tag-cours">Cours 02</span> <a href="Cours_02_Architecture_Reseaux_IoT.html">Architecture des réseaux IoT (IEEE 802.15.4, 6LoWPAN, CoAP)</a></li>
+      <li><span class="session-tag tag-cours">Cours 01</span> <a href="Cours_01_Introduction_Contiki_NG.html">Introduction à Contiki-NG et à l'écosystème IoT</a></li>
+      <li><span class="session-tag tag-cours">Cours 02</span> <a href="Cours_02_Installation_Environnement.html">Installation et configuration de l'environnement</a></li>
       <li><span class="session-tag tag-cours">Cours 03</span> <a href="Cours_03_Protocole_RPL.html">Le protocole RPL — Principes fondamentaux</a></li>
       <li><span class="session-tag tag-cours">Cours 04</span> <a href="Cours_04_Metriques_Routage_RPL.html">Métriques de routage RPL (ETX, OF0, MRHOF)</a></li>
-      <li><span class="session-tag tag-cours">Cours 05</span> <a href="Cours_05_Collecte_Metriques.html">Collecte de métriques dans Cooja</a></li>
-      <li><span class="session-tag tag-cours">Cours 06</span> <a href="Cours_06_Personnalisation_Firmware.html">Personnalisation du firmware Contiki-NG</a></li>
-      <li><span class="session-tag tag-cours">Cours 07</span> <a href="Cours_07_Energie_Mobilite.html">Modèles de mobilité et d'énergie</a></li>
-      <li><span class="session-tag tag-cours">Cours 08</span> <a href="Cours_08_Intro_Protocoles_Recherche.html">Introduction aux protocoles de recherche (RPLCB, RPL-AER, AER-MQoS, IDS-IOT)</a></li>
+      <li><span class="session-tag tag-cours">Cours 05</span> <a href="Cours_05_Architecture_Contiki_NG.html">Architecture et programmation Contiki-NG</a></li>
+      <li><span class="session-tag tag-cours">Cours 06</span> <a href="Cours_06_Communication_UDP.html">Communication UDP dans Contiki-NG</a></li>
+      <li><span class="session-tag tag-cours">Cours 07</span> <a href="Cours_07_Collecte_Metriques.html">Collecte et analyse de métriques dans Cooja</a></li>
+      <li><span class="session-tag tag-cours">Cours 08</span> <a href="Cours_08_Energie_Mobilite.html">Modèles de mobilité et d'énergie dans Cooja</a></li>
+      <li><span class="session-tag tag-cours">Cours 09</span> <a href="Cours_09_Personnalisation_Firmware.html">Personnalisation avancée du firmware</a></li>
+      <li><span class="session-tag tag-cours">Cours 10</span> <a href="Cours_10_Bilan_Module.html">Bilan du module et perspectives recherche</a></li>
     </ul>
 
     <h3>🔧 Travaux pratiques</h3>
     <ul class="session-list">
-      <li><span class="session-tag tag-tp">TP 01</span> <a href="TP_01_Installation_ContikiNG.html">Installation de Contiki-NG et Cooja sur Ubuntu</a></li>
+      <li><span class="session-tag tag-tp">TP 01</span> <a href="TP_01_Installation_Contiki.html">Installation de Contiki-NG et Cooja</a></li>
       <li><span class="session-tag tag-tp">TP 02</span> <a href="TP_02_Premiere_Simulation_Cooja.html">Première simulation Cooja (Hello World)</a></li>
       <li><span class="session-tag tag-tp">TP 03</span> <a href="TP_03_Communication_UDP.html">Communication UDP entre deux nœuds</a></li>
       <li><span class="session-tag tag-tp">TP 04</span> <a href="TP_04_Simulation_RPL_3_noeuds.html">Simulation RPL de base avec 3 nœuds</a></li>
@@ -151,20 +157,18 @@
       <li><span class="session-tag tag-tp">TP 06</span> <a href="TP_06_Topologies_RPL.html">Création de topologies RPL (10+ nœuds)</a></li>
       <li><span class="session-tag tag-tp">TP 07</span> <a href="TP_07_Mesure_PDR_Latence_Energie.html">Mesure du PDR, latence, consommation d'énergie</a></li>
       <li><span class="session-tag tag-tp">TP 08</span> <a href="TP_08_Scripts_Python_Analyse.html">Scripts Python pour l'analyse des résultats</a></li>
-      <li><span class="session-tag tag-tp">TP 09</span> <a href="TP_09_Modification_Application_UDP.html">Modification d'une application UDP dans Contiki-NG</a></li>
-      <li><span class="session-tag tag-tp">TP 10</span> <a href="TP_10_Ajout_Capteurs_Simules.html">Ajout de capteurs simulés (température, humidité)</a></li>
+      <li><span class="session-tag tag-tp">TP 09</span> <a href="TP_09_Modification_Application_UDP.html">Modification d'une application UDP</a></li>
+      <li><span class="session-tag tag-tp">TP 10</span> <a href="TP_10_Ajout_Capteurs_Simules.html">Ajout de capteurs simulés</a></li>
       <li><span class="session-tag tag-tp">TP 11</span> <a href="TP_11_Simulation_Noeuds_Mobiles.html">Simulation avec nœuds mobiles</a></li>
       <li><span class="session-tag tag-tp">TP 12</span> <a href="TP_12_Simulation_Recolte_Solaire.html">Simulation avec récolte d'énergie solaire</a></li>
-      <li><span class="session-tag tag-tp">TP 13</span> <a href="TP_13_Outils_Analyse_Avances.html">Utilisation des plugins avancés Cooja</a></li>
-      <li><span class="session-tag tag-tp">TP 14</span> <a href="TP_14_Projet_Synthese.html">Projet de synthèse : évaluation comparative</a></li>
+      <li><span class="session-tag tag-tp">TP 13</span> <a href="TP_13_Projet_Synthese.html">Projet de synthèse : évaluation comparative RPL</a></li>
     </ul>
 
     <h2>📌 Organisation recommandée</h2>
     <ol>
-      <li><strong>Phase 1 (Cours 01-02 + TP 01-03) :</strong> Découvrez l'IoT et installez votre environnement de travail</li>
-      <li><strong>Phase 2 (Cours 03-04 + TP 04-06) :</strong> Maîtrisez le protocole RPL et ses métriques</li>
-      <li><strong>Phase 3 (Cours 05-06 + TP 07-10) :</strong> Collectez des métriques et personnalisez le firmware</li>
-      <li><strong>Phase 4 (Cours 07-08 + TP 11-14) :</strong> Modèles avancés, mobilité, énergie et projet final</li>
+      <li><strong>Phase 1 (Cours 01-04 + TP 01-03) :</strong> Découvrez l'IoT, Contiki-NG, installez votre environnement</li>
+      <li><strong>Phase 2 (Cours 05-07 + TP 04-08) :</strong> Maîtrisez le protocole RPL et la collecte de métriques</li>
+      <li><strong>Phase 3 (Cours 08-10 + TP 09-13) :</strong> Personnalisation avancée, mobilité, énergie et projet final</li>
     </ol>
 
     <div class="md-meta" style="margin-top:2rem;">

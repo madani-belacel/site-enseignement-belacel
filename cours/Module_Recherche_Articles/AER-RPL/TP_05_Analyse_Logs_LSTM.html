@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 05 — Analyse des logs LSTM — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 05 : analyser les logs LSTM de RPL-AER, calculer la MAE et évaluer la qualité de prédiction de consommation.">
+<title>TP 05 : Analyse des logs LSTM — Dr. Madani BELACEL</title>
+<meta name="description" content="Analyser les logs LSTM : MAE, prédiction vs réel, impact de la fenêtre temporelle.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -51,10 +65,24 @@
       <ul id="nav-list" class="nav-list">
         <li><a href="../../../index.html">Accueil</a></li>
         <li><a href="../../../enseignement.html">Enseignement</a></li>
-        <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
-        <li><a href="index.html">AER-RPL</a></li>
-        <li class="current">TP 05 — Logs LSTM</li>
-      </ol>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">TP 05 — Logs LSTM</li>
+  </ol>
 </nav>
 
 <main class="page-content" id="main-content">
@@ -62,89 +90,84 @@
 
     <h1>TP 05 : Analyse des logs LSTM</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 05 — Analyse des logs LSTM</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Analyser les prédictions LSTM, calculer la MAE, évaluer la qualité de prédiction</li>
+        <li><strong>Durée estimée :</strong> 1h00</li>
+        <li><strong>Objectifs :</strong> Analyser les logs de prédiction LSTM et évaluer leur précision</li>
       </ul>
     </div>
 
-    <h2>1. Extraire les logs LSTM</h2>
-    <pre><code>grep "\[LSTM\]" simulation_logs.txt > lstm_logs.txt</code></pre>
+    <h2>1. Analyse des logs LSTM</h2>
+    <pre><code>grep "LSTM Training\|LSTM Prediction" cooja_results/rpl-aer-output.log | head -20</code></pre>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Extraire les logs de prédiction LSTM</li>
+        <li>Évaluer la précision des prédictions via l'erreur (MAE)</li>
+        <li>Visualiser les prédictions vs valeurs réelles</li>
+        <li>Comprendre l'impact de la fenêtre temporelle sur la prédiction</li>
+      </ul>
+    </div>
+    <h2>2. Extraction des données LSTM</h2>
+    <pre><code>grep "RPL-AER: LSTM" cooja_results/rpl-aer-output.log > cooja_results/lstm_raw.txt
+wc -l cooja_results/lstm_raw.txt</code></pre>
 
-    <h2>2. Format des logs</h2>
-    <pre><code>[LSTM] Node 12: Pred=4.32mW Actual=4.18mW Error=0.14mW MAE=0.12</code></pre>
-    <p>Champs : Node ID, Pred (prédiction), Actual (consommation réelle), Error (différence absolue), MAE (moyenne cumulative).</p>
-
-    <h2>3. Parser les logs avec Python</h2>
-    <pre><code>import re
-import matplotlib.pyplot as plt
-
-lstm_data = []
-with open('lstm_logs.txt') as f:
-    for line in f:
-        m = re.search(r'Node (\d+): Pred=([\d.]+)mW Actual=([\d.]+)mW Error=([\d.]+)mW MAE=([\d.]+)', line)
-        if m:
-            lstm_data.append({
-                'node': int(m.group(1)),
-                'pred': float(m.group(2)),
-                'actual': float(m.group(3)),
-                'error': float(m.group(4)),
-                'mae': float(m.group(5))
-            })</code></pre>
-
-    <h2>4. Calculer la MAE globale</h2>
-    <pre><code>errors = [d['error'] for d in lstm_data]
-mae_global = sum(errors) / len(errors)
-print(f"MAE globale: {mae_global:.3f} mW")</code></pre>
-
-    <h2>5. Analyser par nœud</h2>
-    <pre><code>for node_id in sorted(set(d['node'] for d in lstm_data)):
-    node_errors = [d['error'] for d in lstm_data if d['node'] == node_id]
-    node_mae = sum(node_errors) / len(node_errors)
-    node_max_error = max(node_errors)
-    print(f"Node {node_id}: MAE={node_mae:.3f}mW MaxError={node_max_error:.3f}mW")</code></pre>
-
-    <h2>6. Visualiser prédiction vs réalité</h2>
-    <pre><code>node12 = [d for d in lstm_data if d['node'] == 12]
-timesteps = range(len(node12))
-preds = [d['pred'] for d in node12]
-actuals = [d['actual'] for d in node12]
-
-plt.plot(timesteps, preds, label='Prédiction', marker='o')
-plt.plot(timesteps, actuals, label='Réel', marker='x')
-plt.xlabel('Échantillon')
-plt.ylabel('Consommation (mW)')
-plt.legend()
-plt.title('Prédiction LSTM vs Consommation Réelle — Nœud 12')
-plt.savefig('lstm_prediction_node12.png')
-plt.show()</code></pre>
-
-    <h2>7. Détecter les dérives</h2>
-    <p>Analysez l'évolution de la MAE dans le temps pour détecter une éventuelle dérive du modèle :</p>
-    <pre><code>cumulative_mae = []
-window = 10
-for i in range(window, len(errors)+1, window):
-    window_mae = sum(errors[i-window:i]) / window
-    cumulative_mae.append(window_mae)
-
-plt.plot(cumulative_mae)
-plt.xlabel('Fenêtre (10 échantillons)')
-plt.ylabel('MAE (mW)')
-plt.title('Évolution de la MAE')
-plt.savefig('lstm_mae_evolution.png')
-plt.show()</code></pre>
-
-    <h2>8. Questions</h2>
-    <ol>
-      <li>Quelle est la MAE moyenne du prédicteur LSTM ? Est-elle acceptable (&lt; 0.5 mW) ?</li>
-      <li>Y a-t-il des nœuds avec une MAE significativement plus élevée ? Pourquoi ?</li>
-      <li>Observez-vous une dérive du modèle LSTM au fil du temps ?</li>
-      <li>Dans quels scénarios la prédiction est-elle la moins fiable ?</li>
-    </ol>
-
+    <h2>3. Calcul de l'erreur de prédiction</h2>
+    <div class="code-block"><span class="ln">  1</span> import re
+<span class="ln">  2</span> 
+<span class="ln">  3</span> with open("cooja_results/rpl-aer-output.log") as f:
+<span class="ln">  4</span>     logs = f.read()
+<span class="ln">  5</span> 
+<span class="ln">  6</span> pattern = r"Target: ([0-9.]+).*Prediction: ([0-9.]+).*Error: (-?[0-9.]+)"
+<span class="ln">  7</span> matches = re.findall(pattern, logs)
+<span class="ln">  8</span> 
+<span class="ln">  9</span> errors = [float(m[2]) for m in matches]
+<span class="ln"> 10</span> abs_errors = [abs(e) for e in errors]
+<span class="ln"> 11</span> 
+<span class="ln"> 12</span> mae = sum(abs_errors) / len(abs_errors)
+<span class="ln"> 13</span> print(f"MAE (Mean Absolute Error): {mae:.4f}")
+<span class="ln"> 14</span> print(f"Erreur moyenne: {sum(errors)/len(errors):.4f}")
+<span class="ln"> 15</span> print(f"Total d'échantillons: {len(matches)}")</div>
+    <h2>4. Visualisation prédiction vs réel</h2>
+    <div class="code-block"><span class="ln">  1</span> import matplotlib.pyplot as plt
+<span class="ln">  2</span> 
+<span class="ln">  3</span> targets = [float(m[0]) for m in matches]
+<span class="ln">  4</span> predictions = [float(m[1]) for m in matches]
+<span class="ln">  5</span> 
+<span class="ln">  6</span> plt.figure(figsize=(10, 6))
+<span class="ln">  7</span> plt.plot(targets, 'g-', label="Target (réel)", linewidth=2)
+<span class="ln">  8</span> plt.plot(predictions, 'r--', label="Prédiction", alpha=0.7)
+<span class="ln">  9</span> plt.xlabel("Échantillon")
+<span class="ln"> 10</span> plt.ylabel("Valeur")
+<span class="ln"> 11</span> plt.title("Prédiction LSTM vs Valeur réelle")
+<span class="ln"> 12</span> plt.legend()
+<span class="ln"> 13</span> plt.grid(True, alpha=0.3)
+<span class="ln"> 14</span> plt.savefig("cooja_results/lstm_prediction.png", dpi=150)</div>
+    <h2>5. Impact de la fenêtre LSTM</h2>
+    <p>Modifiez <code>LSTM_WINDOW_SIZE</code> dans <code>project-conf.h</code> et re-simulez :</p>
+    <pre><code>sed -i 's/LSTM_WINDOW_SIZE 5/LSTM_WINDOW_SIZE 10/' project-conf.h
+./build_and_test.sh -c</code></pre>
+    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Vérifiez que le MAE est inférieur à 0.1 (bonne prédiction). Comparez les graphiques avec différentes fenêtres LSTM (5, 10, 20).</p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Aucun log LSTM : vérifiez que <code>-DLSTM_PREDICTION=1</code> est présent dans le Makefile.</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Quel est le MAE obtenu avec LSTM_WINDOW_SIZE = 5 ?</li>
+      <li>L'augmentation de la fenêtre améliore-t-elle la prédiction ?</li>
+      <li>Y a-t-il des prédictions aberrantes (outliers) ?</li>
+      <li>Comment l'erreur de prédiction évolue-t-elle au fil du temps ?</li>
+      <li>Quel serait l'impact d'un LSTM bidirectionnel sur la précision ?</li>
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Script Python <code>analyze_lstm.py</code>, fichier <code>lstm_metrics.txt</code>, et graphiques de prédiction pour différentes fenêtres.</p>
+    </div>
   </div>
 </main>
 

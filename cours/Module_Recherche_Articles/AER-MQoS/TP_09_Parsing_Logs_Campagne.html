@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 09 — Parsing des logs de campagne — AER-MQoS</title>
+<title>Parsing des logs de campagne — AER-MQoS</title>
 <meta name="description" content="Parser les logs de campagne avec Aer_campaign_log et parse_cooja_metrics.py, extraire les données structurées des logs bruts.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,115 +76,61 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">TP 09 — Parsing des logs de campagne</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 09 — Parsing des logs de campagne</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 1h00<br>
-      <strong>Objectif :</strong> Extraire les données structurées des logs bruts en utilisant les scripts d'analyse, comprendre le format METRIC<br>
-      <strong>Prérequis :</strong> TP 08 (logs générés), Python 3
+      <strong>Objectif :</strong> Extraire les données structurées des logs bruts en utilisant les scripts d'analyse, comprendre le format METRIC<br><strong>Prérequis :</strong> TP 08 (logs générés), Python 3
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Structure du module Aer_campaign_log</h2>
-    <p>Le module <code>Aer_campaign_log</code> est intégré au firmware et produit en fin de simulation un résumé structuré [METRIC]. Examinez son implémentation dans le code source :</p>
     <pre><code>grep -n "METRIC" code_source_AER_MQoS/examples/aer-mqos/*.c</code></pre>
 
     <h2>2. Format des logs METRIC</h2>
-    <p>Chaque ligne [METRIC] contient les champs :</p>
     <pre><code>[METRIC] PDR=0.92
 [METRIC] Latence_avg=45.3ms
 [METRIC] Latence_max=187.2ms
 [METRIC] Energie_consommee=127.5
 [METRIC] NRE_min=0.31
-[METRIC] C0_PDR=0.98
-[METRIC] C1_PDR=0.94
-[METRIC] C2_PDR=0.88
-[METRIC] C3_PDR=0.79
-[METRIC] Paquets_emis=1520
-[METRIC] Paquets_recus=1398</code></pre>
+[METRIC] C0_PDR=0.98 C1_PDR=0.94 C2_PDR=0.88 C3_PDR=0.79
+[METRIC] Paquets_emis=1520 Paquets_recus=1398</code></pre>
 
     <h2>3. Extraire les métriques d'un log</h2>
-    <p>Utilisez la commande grep pour extraire les lignes METRIC d'un fichier de log :</p>
     <pre><code>grep "\[METRIC\]" logs/aer_mqos/20260601.log</code></pre>
 
     <h2>4. Utiliser le script parse_cooja_metrics.py</h2>
-    <p>Le dépôt fournit un script Python pour parser automatiquement les logs :</p>
     <pre><code>python3 scripts/parse_cooja_metrics.py logs/aer_mqos/20260601.log</code></pre>
-    <p>Ce script extrait toutes les métriques et les affiche dans un format structuré (JSON ou CSV).</p>
 
     <h2>5. Parser tous les logs d'une campagne</h2>
-    <p>Pour traiter l'ensemble des logs de la campagne multi-seed :</p>
     <pre><code>python3 scripts/parse_cooja_metrics.py --dir logs/ --output campaign_results.csv</code></pre>
-    <p>Le fichier CSV produit aura une ligne par simulation avec toutes les métriques.</p>
 
-    <h2>6. Vérifier les données parsées</h2>
-    <p>Inspectez le fichier CSV généré :</p>
-    <pre><code>head -5 campaign_results.csv
-wc -l campaign_results.csv</code></pre>
-    <p>Vérifiez que vous avez bien 16 lignes (4 variantes × 4 seeds) plus l'en-tête.</p>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Vérifiez que vous avez bien 16 lignes (4 variantes × 4 seeds) plus l'en-tête dans le fichier CSV.</div>
 
-    <h2>7. Parser les logs QUEUE et MCS</h2>
-    <p>Le script peut également extraire les logs détaillés :</p>
+    <h2>6. Parser les logs QUEUE et MCS</h2>
     <pre><code>python3 scripts/parse_cooja_metrics.py --parse-queue --parse-mcs \
   --dir logs/ --output detailed_results/</code></pre>
-    <p>Cette commande crée des fichiers séparés pour les données de files d'attente et de scores MCS.</p>
 
-    <h2>8. Écrire un parser personnalisé</h2>
-    <p>Pour aller plus loin, écrivez votre propre script de parsing :</p>
-    <pre><code>python3 << 'EOF'
-import csv, re, os
-logs_dir = 'logs/'
-rows = []
-for root, dirs, files in os.walk(logs_dir):
-    for fname in files:
-        if fname.endswith('.log'):
-            path = os.path.join(root, fname)
-            variant = os.path.basename(root)
-            seed = fname.replace('.log', '')
-            with open(path) as f:
-                metrics = {}
-                for line in f:
-                    m = re.search(r'\[METRIC\]\s+(\w+)=([0-9.]+)', line)
-                    if m:
-                        metrics[m.group(1)] = m.group(2)
-                if metrics:
-                    metrics['variant'] = variant
-                    metrics['seed'] = seed
-                    rows.append(metrics)
-# Sauvegarder en CSV
-with open('custom_metrics.csv', 'w', newline='') as f:
-    if rows:
-        w = csv.DictWriter(f, fieldnames=rows[0].keys())
-        w.writeheader()
-        w.writerows(rows)
-print(f"Parsed {len(rows)} simulations -> custom_metrics.csv")
-EOF</code></pre>
-
-    <h2>9. Questions</h2>
-    <ol>
-      <li>Combien de métriques sont extraites par simulation ?</li>
-      <li>Quelle variante a le meilleur PDR global ?</li>
-      <li>Quelle variante consomme le moins d'énergie ?</li>
-      <li>Y a-t-il une corrélation entre PDR et classe de trafic ?</li>
-    </ol>
+    <div class="question-box">
+      <ol>
+        <li>Combien de métriques sont extraites par simulation ?</li>
+        <li>Quelle variante a le meilleur PDR global ?</li>
+        <li>Quelle variante consomme le moins d'énergie ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

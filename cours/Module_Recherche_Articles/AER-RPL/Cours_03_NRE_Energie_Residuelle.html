@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 03 — NRE — Normalized Residual Energy — Dr. Madani BELACEL</title>
-<meta name="description" content="NRE — Normalized Residual Energy : modèle énergétique, capacité batterie, énergie résiduelle, normalisation et rôle dans le routage RPL-AER.">
+<title>Cours 03 : NRE — Normalized Residual Energy — Dr. Madani BELACEL</title>
+<meta name="description" content="Normalized Residual Energy dans RPL-AER : structure rpl_aer_energy_t, calcul du NRE, récolte solaire.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,63 +90,99 @@
 
     <h1>Cours 03 : NRE — Normalized Residual Energy</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 03 — NRE — Normalized Residual Energy</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Comprendre le modèle énergétique, le calcul du NRE et son rôle dans la métrique MCS</li>
+        <li><strong>Durée estimée :</strong> 1h30</li>
+        <li><strong>Objectifs :</strong> Comprendre le NRE, son calcul et son rôle dans la métrique MCS</li>
       </ul>
     </div>
 
-    <h2>1. Modèle énergétique dans Contiki-NG</h2>
-    <p>Contiki-NG intègre un modèle de consommation énergétique appelé <strong>Energest</strong>. Ce module trace le temps passé par le microcontrôleur dans chaque état (CPU, LPM, TX, RX) et estime la consommation totale :</p>
-    <pre><code>Energie = temps_CPU &times; courant_CPU + temps_LPM &times; courant_LPM
-         + temps_TX &times; courant_TX + temps_RX &times; courant_RX</code></pre>
-    <p>Les valeurs de courant sont paramétrées dans <code>project-conf.h</code> selon le matériel utilisé (ex: Zolertia Z1, Tmote Sky, CC2650).</p>
-
-    <h2>2. Capacité de la batterie</h2>
-    <p>Chaque nœud possède une capacité de batterie configurable :</p>
-    <pre><code>#define BATTERY_CAPACITY_MAH 2000  // 2000 mAh
-#define INITIAL_ENERGY_MWH   (BATTERY_CAPACITY_MAH * 3.0)  // 6000 mWh pour 3V</code></pre>
-    <p>L'énergie initiale est convertie en mWh. Au fur et à mesure de la simulation, l'énergie consommée est soustraite de l'énergie initiale pour obtenir l'énergie résiduelle.</p>
-
-    <h2>3. Calcul de l'énergie résiduelle</h2>
-    <p>L'énergie résiduelle est calculée périodiquement (toutes les 30 secondes par défaut) :</p>
-    <pre><code>// Dans le module énergétique de RPL-AER
-float get_residual_energy(void) {
-    float consumed = energest_get_total_energy();
-    float initial  = get_initial_energy();
-    float residual = initial - consumed;
-    if (residual < 0) residual = 0;
-    return residual;
-}</code></pre>
-
-    <h2>4. Normalisation du NRE</h2>
-    <p>Le NRE normalise l'énergie résiduelle pour obtenir une valeur entre 0 et 1 :</p>
-    <pre><code>NRE = get_residual_energy() / get_initial_energy()</code></pre>
-    <p>Cette normalisation permet de comparer équitablement des nœuds avec des capacités de batterie différentes. Un nœud avec une batterie de 2000 mAh à moitié vide (NRE=0.5) est comparable à un nœud avec une batterie de 4000 mAh à moitié vide (NRE=0.5).</p>
-
-    <h2>5. Rôle du NRE dans la décision de routage</h2>
-    <p>Le NRE influence directement la sélection du parent dans RPL-AER via le MCS :</p>
+    <h2>1. Définition du NRE</h2>
+    <p>Le <strong>NRE</strong> (Normalized Residual Energy) représente l'énergie résiduelle normalisée d'un nœud :</p>
+    <blockquote><strong>NRE = Énergie résiduelle / Énergie totale</strong></blockquote>
+    <p>Le NRE est un nombre flottant entre 0.0 (batterie épuisée) et 1.0 (batterie pleine).</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre le rôle du NRE dans la métrique MCS</li>
+        <li>Analyser l'implémentation du calcul d'énergie résiduelle</li>
+        <li>Étudier le mécanisme de récolte d'énergie solaire</li>
+        <li>Interpréter les logs d'énergie</li>
+      </ul>
+    </div>
+    <h2>2. Structures de données</h2>
+    <p>Dans <code>rpl-aer.h:30-36</code>, la structure <code>rpl_aer_energy_t</code> stocke l'état énergétique :</p>
+    <div class="code-block"><span class="ln">  1</span> typedef struct {
+<span class="ln">  2</span>   uint32_t residual_energy;  // Current energy in mWh
+<span class="ln">  3</span>   uint32_t total_energy;     // Total capacity in mWh
+<span class="ln">  4</span>   float consumption_rate;     // Energy consumption rate
+<span class="ln">  5</span>   uint8_t energy_source;     // 0: Battery, 1: Solar
+<span class="ln">  6</span>   float solar_irradiance;    // Current solar irradiance
+<span class="ln">  7</span> } rpl_aer_energy_t;</div>    <p>La structure MCS utilise le NRE comme premier composant :</p>
+    <div class="code-block"><span class="ln">  1</span> typedef struct {
+<span class="ln">  2</span>   float nre;  // Normalized Residual Energy
+<span class="ln">  3</span>   float pec;  // Predictive Energy Consumption
+<span class="ln">  4</span>   float ecs;  // Environmental Context Score
+<span class="ln">  5</span>   float mcs;  // Multi-Criteria Score
+<span class="ln">  6</span> } rpl_aer_mcs_t;</div>
+    <h2>3. Calcul du NRE</h2>
+    <p>La fonction <code>rpl_aer_calculate_nre()</code> dans <code>rpl-aer.c:41-50</code> :</p>
+    <div class="code-block"><span class="ln">  1</span> float rpl_aer_calculate_nre(void) {
+<span class="ln">  2</span>   float residual = (float)rpl_aer_ctx.energy.residual_energy;
+<span class="ln">  3</span>   float total = (float)rpl_aer_ctx.energy.total_energy;
+<span class="ln">  4</span> 
+<span class="ln">  5</span>   if (total > 0) {
+<span class="ln">  6</span>     rpl_aer_ctx.mcs.nre = residual / total;
+<span class="ln">  7</span>   }
+<span class="ln">  8</span> 
+<span class="ln">  9</span>   return rpl_aer_ctx.mcs.nre;
+<span class="ln"> 10</span> }</div>
+    <h2>4. Mise à jour de l'énergie</h2>
+    <p>La fonction <code>rpl_aer_energy_update()</code> (<code>rpl-aer.c:100-123</code>) consomme de l'énergie et simule la récolte solaire :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_energy_update(void) {
+<span class="ln">  2</span>   uint32_t consumption = (uint32_t)(rpl_aer_ctx.energy.consumption_rate * 10);
+<span class="ln">  3</span> 
+<span class="ln">  4</span>   if (rpl_aer_ctx.energy.residual_energy > consumption) {
+<span class="ln">  5</span>     rpl_aer_ctx.energy.residual_energy -= consumption;
+<span class="ln">  6</span>   }
+<span class="ln">  7</span> 
+<span class="ln">  8</span>   if (rpl_aer_ctx.energy.energy_source == RPL_AER_ENERGY_SOURCE_SOLAR) {
+<span class="ln">  9</span>     uint32_t harvested = (uint32_t)(rpl_aer_ctx.energy.solar_irradiance *
+<span class="ln"> 10</span>                                    SOLAR_PANEL_EFFICIENCY * 0.01f);
+<span class="ln"> 11</span>     rpl_aer_ctx.energy.residual_energy += harvested;
+<span class="ln"> 12</span>     if (rpl_aer_ctx.energy.residual_energy > rpl_aer_ctx.energy.total_energy) {
+<span class="ln"> 13</span>       rpl_aer_ctx.energy.residual_energy = rpl_aer_ctx.energy.total_energy;
+<span class="ln"> 14</span>     }
+<span class="ln"> 15</span>   }
+<span class="ln"> 16</span>   float energy_ratio = (float)rpl_aer_ctx.energy.residual_energy /
+<span class="ln"> 17</span>                        (float)rpl_aer_ctx.energy.total_energy;
+<span class="ln"> 18</span>   lstm_model_update(energy_ratio);
+<span class="ln"> 19</span> }</div>
+    <h2>5. Logs d'énergie</h2>
+    <p>La fonction <code>rpl_aer_log_energy()</code> (<code>rpl-aer.c:303-306</code>) :</p>
+    <div class="code-block"><span class="ln">  1</span> void rpl_aer_log_energy(void) {
+<span class="ln">  2</span>   LOG_INFO("RPL-AER: Energy=%lu mWh, Solar=%.1f lux\n",
+<span class="ln">  3</span>            rpl_aer_ctx.energy.residual_energy,
+<span class="ln">  4</span>            rpl_aer_ctx.energy.solar_irradiance);
+<span class="ln">  5</span> }</div>    <p>Exemple de sortie :</p>
+    <pre><code>RPL-AER: Energy=3200 mWh, Solar=780.5 lux</code></pre>
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Si un nœud a residual_energy=2500 et total_energy=5000, quel est son NRE ?</li>
+      <li>Comment la récolte solaire influence-t-elle le NRE au fil du temps ?</li>
+      <li>Quel est l'impact si energy_source passe de BATTERY à SOLAR ?</li>
+      <li>Que se passe-t-il si consumption_rate > residual_energy tous les cycles ?</li>
+      <li>Proposer un scénario où le NRE est avantageux par rapport à l'ETX.</li>
+      </ol>
+    </div>    <h2>Références</h2>
     <ul>
-      <li><strong>NRE élevé (&gt;0.7) :</strong> Le nœud a suffisamment d'énergie pour servir de parent. Il peut acheminer le trafic des nœuds enfants sans risque d'épuisement.</li>
-      <li><strong>NRE moyen (0.3-0.7) :</strong> Le nœud est encore capable de router, mais le MCS sera modéré. Le nœud peut être choisi si ses autres scores (PEC, ECS) sont élevés.</li>
-      <li><strong>NRE faible (&lt;0.3) :</strong> Le nœud est en risque d'épuisement. Il sera évité comme parent, même si ses autres scores sont bons.</li>
+      <li>Code : <code>rpl-aer.h:22-36</code> — Structures MCS et Énergie</li>
+      <li>Code : <code>rpl-aer.c:41-50</code> — Calcul du NRE</li>
+      <li>Code : <code>rpl-aer.c:100-123</code> — Mise à jour énergétique</li>
     </ul>
-
-    <h2>6. Seuils et alertes</h2>
-    <p>RPL-AER définit des seuils d'alerte énergétique :</p>
-    <pre><code>#define ENERGY_THRESHOLD_LOW    0.2   // Alerte basse
-#define ENERGY_THRESHOLD_CRIT   0.1   // Alerte critique</code></pre>
-    <p>Lorsque le NRE passe sous le seuil critique, le nœud envoie une notification à ses enfants pour qu'ilschangent de parent, évitant ainsi la perte de paquets suite à l'épuisement complet.</p>
-
-    <h2>7. Exemple de logs NRE</h2>
-    <p>Pendant la simulation, RPL-AER génère des logs de la forme :</p>
-    <pre><code>[MCS] Node 15: NRE=0.823, PEC=0.651, ECS=0.432, MCS=0.724
-[MCS] Node 15: NRE=0.791, PEC=0.634, ECS=0.445, MCS=0.698
-[MCS] Node 15: NRE=0.754, PEC=0.612, ECS=0.458, MCS=0.668</code></pre>
-    <p>On observe la diminution progressive du NRE à mesure que le nœud consomme son énergie, entraînant une baisse du MCS.</p>
 
   </div>
 </main>

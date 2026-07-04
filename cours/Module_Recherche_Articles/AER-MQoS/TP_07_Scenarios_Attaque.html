@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 07 — Scénarios d'attaque — AER-MQoS</title>
+<title>Scénarios d'attaque — AER-MQoS</title>
 <meta name="description" content="Exécuter des simulations d'attaque (rank anomaly, selective forwarding, mixed) avec AER-MQoS et observer la dégradation du Trust Score.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,103 +76,63 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">TP 07 — Scénarios d'attaque</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>TP 07 — Scénarios d'attaque</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 1h30<br>
-      <strong>Objectif :</strong> Exécuter des simulations avec attaques (rank anomaly, selective forwarding, mixed) et observer la résilience d'AER-MQoS via le Trust Score<br>
-      <strong>Prérequis :</strong> TP 03, Cours 07 (Trust Score)
+      <strong>Objectif :</strong> Exécuter des simulations avec attaques (rank anomaly, selective forwarding, mixed) et observer la résilience d'AER-MQoS via le Trust Score<br><strong>Prérequis :</strong> TP 03, Cours 07 (Trust Score)
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Types d'attaques simulées</h2>
-    <p>AER-MQoS inclut trois scénarios d'attaque dans les simulations :</p>
     <table>
       <tr><th>Attaque</th><th>Comportement du nœud malveillant</th><th>Impact attendu</th></tr>
-      <tr><td><strong>Rank anomaly</strong></td><td>Annonce un rank anormalement bas pour attirer le trafic (sinkhole)</td><td>Augmentation du trafic vers l'attaquant, pertes possibles</td></tr>
-      <tr><td><strong>Selective forwarding</strong></td><td>Ne transmet qu'une partie des paquets reçus</td><td>Baisse du PDR, augmentation des retransmissions</td></tr>
-      <tr><td><strong>Mixed</strong></td><td>Combine rank anomaly et selective forwarding</td><td>Effet cumulé : attracteur + pertes</td></tr>
+      <tr><td><strong>Rank anomaly</strong></td><td>Annonce un rank anormalement bas (sinkhole)</td><td>Augmentation du trafic vers l'attaquant</td></tr>
+      <tr><td><strong>Selective forwarding</strong></td><td>Ne transmet qu'une partie des paquets</td><td>Baisse du PDR</td></tr>
+      <tr><td><strong>Mixed</strong></td><td>Combine rank anomaly et selective forwarding</td><td>Effet cumulé</td></tr>
     </table>
 
-    <h2>2. Localiser les fichiers d'attaque</h2>
-    <p>Trouvez les fichiers de simulation d'attaque dans le dépôt :</p>
-    <pre><code>find . -name "*attack*" -o -name "*attaque*" -o -name "*anomaly*"</code></pre>
-    <p>Ils devraient se trouver dans <code>simulations/attack/</code> ou similaire.</p>
-
-    <h2>3. Lancer une simulation avec attaque rank anomaly</h2>
-    <pre><code># Lancer la simulation avec attaque
-./tools/cooja/cooja -nogui -contiki=.. \
+    <h2>2. Lancer une simulation avec attaque rank anomaly</h2>
+    <pre><code>./tools/cooja/cooja -nogui -contiki=.. \
   -simulation=simulations/attack/aer-attack-rank-anomaly.csc \
   > attack_rank.log 2>&1</code></pre>
 
-    <h2>4. Analyser les logs Trust Score</h2>
-    <p>Extrayez les logs [TRUST] qui montrent l'évolution du score de confiance :</p>
+    <h2>3. Analyser les logs Trust Score</h2>
     <pre><code>grep "\[TRUST\]" attack_rank.log > trust_logs.txt
 head -20 trust_logs.txt</code></pre>
-    <p>Le format typique :</p>
-    <pre><code>[TRUST] Node:1.1.1.5 Neighbor:1.1.1.2 ETX=2.3 TrustScore=0.675
-[TRUST] Node:1.1.1.5 Neighbor:1.1.1.3 ETX=1.2 TrustScore=0.950</code></pre>
 
-    <h2>5. Observer la pénalité d'anomalie</h2>
-    <p>Cherchez dans les logs la détection d'anomalie :</p>
+    <h2>4. Observer la pénalité d'anomalie</h2>
     <pre><code>grep -i "anomaly\|penalty\|suspect" attack_rank.log</code></pre>
-    <p>Vous devriez voir des messages comme :</p>
+    <p>Résultat attendu :</p>
     <pre><code>[TRUST] Anomaly detected: Node 1.1.1.3 rank_inconsistency
 [TRUST] Penalty applied to 1.1.1.3: TrustScore 0.950 -> 0.475</code></pre>
 
-    <h2>6. Comparer PDR avec et sans attaque</h2>
-    <p>Comparez les métriques de campagne :</p>
+    <h2>5. Comparer PDR avec et sans attaque</h2>
     <pre><code>grep "\[METRIC\]" attack_rank.log
-grep "\[METRIC\]" campagne_grid_30.log  # simulation sans attaque</code></pre>
-    <p>Quelle est la différence de PDR ? Comment le Trust Score a-t-il mitigé l'impact ?</p>
+grep "\[METRIC\]" campagne_grid_30.log</code></pre>
 
-    <h2>7. Attaque selective forwarding</h2>
-    <p>Répétez les étapes 3 à 6 avec le fichier d'attaque <em>selective forwarding</em> :</p>
-    <pre><code>./tools/cooja/cooja -nogui -contiki=.. \
-  -simulation=simulations/attack/aer-attack-selective-fwd.csc \
-  > attack_selective.log 2>&1</code></pre>
+    <div class="verif-box"><strong>✅ Vérification :</strong> Le Trust Score des attaquants doit chuter en dessous du seuil <code>AER_TRUST_THRESHOLD</code>, les excluant du DODAG.</div>
 
-    <h2>8. Attaque mixte</h2>
-    <p>Lancez la simulation d'attaque mixte (rank anomaly + selective forwarding) :</p>
-    <pre><code>./tools/cooja/cooja -nogui -contiki=.. \
-  -simulation=simulations/attack/aer-attack-mixed.csc \
-  > attack_mixed.log 2>&1</code></pre>
-
-    <h2>9. Tableau comparatif</h2>
-    <p>Compilez les résultats dans un tableau :</p>
-    <table>
-      <tr><th>Scénario</th><th>PDR global</th><th>PDR C0</th><th>PDR C3</th><th>Trust Score (attaquant)</th></tr>
-      <tr><td>Sans attaque</td><td></td><td></td><td></td><td>N/A</td></tr>
-      <tr><td>Rank anomaly</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Selective forwarding</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td>Mixte</td><td></td><td></td><td></td><td></td></tr>
-    </table>
-
-    <h2>10. Questions</h2>
-    <ol>
-      <li>Quel type d'attaque dégrade le plus le PDR ?</li>
-      <li>Le Trust Score a-t-il correctement pénalisé les nœuds attaquants ?</li>
-      <li>Les classes prioritaires (C0) sont-elles mieux protégées que C3 ?</li>
-      <li>Que se passerait-il avec RPL-MRHOF (sans Trust Score) sous ces attaques ?</li>
-    </ol>
+    <div class="question-box">
+      <ol>
+        <li>Quel type d'attaque dégrade le plus le PDR ?</li>
+        <li>Le Trust Score a-t-il correctement pénalisé les nœuds attaquants ?</li>
+        <li>Les classes prioritaires (C0) sont-elles mieux protégées que C3 ?</li>
+      </ol>
+    </div>
 
   </div>
 </main>

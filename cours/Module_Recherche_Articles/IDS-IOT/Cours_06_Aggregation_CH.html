@@ -1,84 +1,72 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Cours 06 — Agrégation au niveau Cluster Head — IDS-IOT</title>
-<meta name="description" content="Agrégation des LAS au niveau Cluster Head dans RPL-ClusterIDS : collecte, cross-confirmation, décision CH, réduction des faux positifs.">
+<meta name="description" content="Agrégation des scores LAS au niveau Cluster Head, confirmation, matrice de confusion centralisée.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
-<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+<style>
+.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}
+.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}
+.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}
+.md-content p{margin:0.5rem 0;line-height:1.8}
+.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}
+.md-content li{margin:0.25rem 0;line-height:1.7}
+.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}
+.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}
+.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}
+.md-content pre code{background:none;padding:0}
+.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}
+.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}
+.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}
+.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}
+.box-obj{background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-verif{background:#e3f2fd;border-left:4px solid #1565c0;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-trouble{background:#fff3e0;border-left:4px solid #e65100;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-question{background:#f3e5f5;border-left:4px solid #7b1fa2;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-cmd{background:#263238;color:#eceff1;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto}
+.box-cmd code{color:#a5d6a7}
+.box-output{background:#1b2631;color:#d4d4d4;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto;font-size:0.88em}
+</style>
 </head><body>
-
-<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Rercherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
-
-<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 06 — Agrégation CH</li></ol></nav>
-
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 06 — Agrégation CH</li></ol></nav>
 <main class="page-content" id="main-content"><div class="md-content">
-
 <h1>Agrégation au niveau Cluster Head</h1>
-
-<div class="md-meta"><strong>Cours 06 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Auteur :</strong> Dr. Madani BELACEL</li><li><strong>Code source :</strong> <code>ids_ch.c</code> / <code>ids_ch.h</code></li></ul></div>
-
-<h2>1. Rôle de l'agrégation CH</h2>
-<p>Le Cluster Head (CH) reçoit les LAS périodiques de tous les membres de son cluster. L'agrégation au niveau CH est cruciale pour :</p>
-<ul>
-  <li>Réduire les faux positifs (un seul nœud qui signale une anomalie peut être erroné)</li>
-  <li>Corroborer les anomalies par confirmation croisée entre plusieurs membres</li>
-  <li>Produire une décision consolidée avant d'alerter la racine RPL</li>
-  <li>Maintenir une vue d'ensemble de l'état de sécurité du cluster</li>
-</ul>
-
-<h2>2. Collecte des LAS</h2>
-<p>Le CH maintient une table <code>las_table[member_id]</code> qui stocke les derniers LAS reçus de chaque membre. Les LAS sont timestampés pour détecter les absences de rapport (silence prolongé pouvant indiquer un nœud compromis).</p>
-
-<p>Le CH attend les rapports pendant une fenêtre <em>T_collect</em> (par défaut 30 secondes simulées). Passé ce délai, il procède à l'agrégation sur les données disponibles.</p>
-
-<h2>3. Agrégation pondérée</h2>
-<p>Le CH calcule un score agrégé <em>AggLAS</em> pour chaque nœud cible <em>k</em> (le nœud suspecté) :</p>
-<pre><strong>AggLAS(k) = (1/N_k) · Σ_{m ∈ M_k} LAS(m → k) · w_trust(m)</strong></pre>
-<p>Où :</p>
-<ul>
-  <li><em>N_k</em> — Nombre de membres ayant rapporté un LAS sur k</li>
-  <li><em>M_k</em> — Ensemble des membres ayant surveillé k</li>
-  <li><em>w_trust(m)</em> — Poids de confiance du membre m (basé sur l'historique de fiabilité)</li>
-</ul>
-
-<h2>4. Cross-confirmation</h2>
-<p>La cross-confirmation est le mécanisme clé pour réduire les faux positifs. Une anomalie est confirmée seulement si :</p>
-<ul>
-  <li>Au moins <em>k_min</em> membres (par défaut 2) ont rapporté un LAS > θ_las pour le même nœud cible</li>
-  <li>OU un seul membre rapporte un LAS > θ_las_high (seuil haut, par défaut 0.8)</li>
-  <li>Le CH lui-même observe une anomalie directe (monitoring passif)</li>
-</ul>
-
-<h2>5. Décision CH et génération d'alerte</h2>
-<p>Si l'agrégation confirme l'anomalie, le CH génère un message d'alerte contenant :</p>
-<ul>
-  <li>ID du nœud suspect</li>
-  <li>Type d'attaque probable (déduit des règles R1-R4 dominantes)</li>
-  <li>Score agrégé AggLAS</li>
-  <li>Timestamp et durée de l'observation</li>
-  <li>Liste des membres témoins</li>
-</ul>
-<p>L'alerte est envoyée à la racine RPL (sink) via le protocole de routage standard.</p>
-
-<h2>6. Réduction des faux positifs</h2>
-<p>L'efficacité de la cross-confirmation est mesurée par le taux de réduction des faux positifs (FPR Reduction). Les résultats préliminaires montrent une réduction de 40-60% du FPR par rapport à une détection locale sans agrégation.</p>
-
+<div class="md-meta"><strong>Cours 06 — Module IDS-IOT / RPL-ClusterIDS</strong><ul>
+<li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+<li><strong>Durée :</strong> 1 séance</li>
+<li><strong>Objectif :</strong> Comprendre ids_ch.c : confirmation des alertes, agrégation LAS</li>
+</ul></div>
+<div class="box-obj"><strong>Objectif pédagogique :</strong> Analyser ids_ch.c : confirmation, matrice de confusion consolidée, différence détection membre vs CH.</div>
+<h2>1. Code de confirmation</h2>
+<pre><code>void ids_ch_tick(uint8_t member_las, uint8_t member_alarm) {
+    uint8_t attack_active = ids_attack_is_active();
+    if(!ch_elect_is_head()) { return; }  // Seuls les CH confirment
+    confirmed = 0;
+    if(member_alarm && member_las > IDS_THRESHOLD_CH) {
+        if(attack_active) { tp++; confirmed = 1; }
+        else { fp++; }
+    } else if(attack_active) { fn++; }
+    else { tn++; }
+}</code></pre>
+<h2>2. Table de décision</h2>
 <table>
-  <tr><th>Configuration</th><th>FPR (détection locale)</th><th>FPR (après agrégation CH)</th><th>Réduction</th></tr>
-  <tr><td>Full mode</td><td>12.3%</td><td>5.1%</td><td>58.5%</td></tr>
-  <tr><td>Balanced mode</td><td>15.7%</td><td>7.2%</td><td>54.1%</td></tr>
-  <tr><td>Eco mode</td><td>18.9%</td><td>9.8%</td><td>48.1%</td></tr>
+<tr><th>Alarme</th><th>LAS>50</th><th>Attaque</th><th>Résultat</th></tr>
+<tr><td>1</td><td>Oui</td><td>Oui</td><td>TP — attaque confirmée</td></tr>
+<tr><td>1</td><td>Oui</td><td>Non</td><td>FP — fausse alarme</td></tr>
+<tr><td>0</td><td>Non</td><td>Oui</td><td>FN — attaque manquée</td></tr>
+<tr><td>0</td><td>Non</td><td>Non</td><td>TN — normal</td></tr>
 </table>
-
-<h2>7. Implémentation dans ids_ch.c</h2>
-<p>Fonctions principales : <code>collect_las()</code>, <code>aggregate_las()</code>, <code>cross_confirm()</code>, <code>generate_alert()</code>. La table des LAS est une structure statique pour minimiser l'utilisation mémoire.</p>
-
-<blockquote><strong>Note :</strong> Le CH peut également détecter les nœuds qui ne rapportent jamais de LAS (comportement suspect) via le mécanisme de <em>silence detection</em> implémenté dans <code>check_absence()</code>.</blockquote>
-
-</div></main>
-
+<h2>3. Comparaison des variants</h2>
+<ul>
+<li><strong>B1 :</strong> border router uniquement</li>
+<li><strong>B2 :</strong> plat (flat), chaque nœud pour soi</li>
+<li><strong>B3 :</strong> border router vérifie (centralisé)</li>
+<li><strong>MAIN :</strong> CH vérifie (distribué hiérarchique)</li>
+</ul>
+<div class="box-question"><strong>Question réflexive :</strong> Comment l'agrégation CH réduit-elle les FP par rapport à B2 ? Quel est le surcoût en communication ?</div></div></main>
 <footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
-
 <script src="../../../js/data.js"></script>
 <script src="../../../js/main.js"></script>
 </body></html>

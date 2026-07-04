@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 05 — ECS — Environmental Context Score — Dr. Madani BELACEL</title>
-<meta name="description" content="ECS — Environmental Context Score : modèle de récolte solaire, simulation d'irradiance, facteurs environnementaux et impact sur le routage RPL-AER.">
+<title>Cours 05 : ECS — Environmental Context Score — Dr. Madani BELACEL</title>
+<meta name="description" content="Environmental Context Score : weather factor, mobility factor, implémentation et logs.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,73 +90,75 @@
 
     <h1>Cours 05 : ECS — Environmental Context Score</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>Cours 05 — ECS — Environmental Context Score</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 1h</li>
-        <li><strong>Objectifs :</strong> Comprendre le modèle de récolte solaire et le calcul du score contextuel environnemental</li>
+        <li><strong>Durée estimée :</strong> 1h30</li>
+        <li><strong>Objectifs :</strong> Comprendre l'ECS et l'impact des facteurs environnementaux sur le routage</li>
       </ul>
     </div>
 
-    <h2>1. Contexte : récolte d'énergie solaire dans les WSN</h2>
-    <p>Dans les applications agricoles, les nœuds IoT peuvent être équipés de panneaux solaires pour prolonger leur autonomie, voire fonctionner indéfiniment si la récolte excède la consommation. RPL-AER intègre un module de récolte (<code>harvest_module.c</code>) qui modélise la production solaire en fonction des conditions environnementales.</p>
-
-    <h2>2. Modèle de récolte solaire</h2>
-    <p>Le modèle utilisé est basé sur l'équation de l'irradiance solaire :</p>
-    <pre><code>P_harvest = &eta; &times; A &times; G &times; (1 + &alpha; &times; (T - 25))</code></pre>
-    <p>Avec :</p>
+    <h2>1. Définition de l'ECS</h2>
+    <p>Le <strong>ECS</strong> (Environmental Context Score) évalue le contexte environnemental d'un nœud. Il prend en compte deux facteurs principaux :</p>
     <ul>
-      <li><strong>&eta;</strong> : Rendement du panneau solaire (typiquement 15-20%)</li>
-      <li><strong>A</strong> : Surface du panneau (m&sup2;)</li>
-      <li><strong>G</strong> : Irradiance solaire (W/m&sup2;), typiquement 100-1000 W/m&sup2;</li>
-      <li><strong>&alpha;</strong> : Coefficient de température (-0.004 /&deg;C pour les panneaux silicium)</li>
-      <li><strong>T</strong> : Température ambiante (&deg;C)</li>
+      <li><strong>Weather Factor :</strong> Basé sur la source d'énergie (solaire vs batterie) et l'irradiance solaire</li>
+      <li><strong>Mobility Factor :</strong> Basé sur l'état de mobilité du nœud (statique vs mobile)</li>
     </ul>
-
-    <h2>3. Simulation d'irradiance dans Cooja</h2>
-    <p>Dans la simulation, l'irradiance est simulée selon un cycle jour/nuit :</p>
-    <pre><code>// harvest_module.c — simulation d'irradiance
-float get_solar_irradiance(uint32_t time_seconds) {
-    float hour = (time_seconds % 86400) / 3600.0;
-    if (hour < 6 || hour > 18) return 0;  // Nuit
-    float peak = 1000;  // W/m2 à midi
-    float irradiance = peak * sin(M_PI * (hour - 6) / 12);
-    if (irradiance < 0) irradiance = 0;
-    return irradiance;
-}</code></pre>
-
-    <h2>4. Calcul de l'ECS</h2>
-    <p>L'ECS combine trois sous-scores environnementaux :</p>
-    <pre><code>ECS = w_sol &times; S_solaire + w_meteo &times; S_meteo + w_temp &times; S_temperature</code></pre>
-    <ul>
-      <li><strong>S_solaire</strong> : Ratio de récolte solaire effective (énergie récoltée / énergie maximale possible)</li>
-      <li><strong>S_meteo</strong> : Indice météo (1 pour ciel clair, 0.5 pour nuageux, 0 pour pluie)</li>
-      <li><strong>S_temperature</strong> : Score de température (optimal à 25&deg;C, dégradé à 0&deg;C et 50&deg;C)</li>
-      <li><strong>w_sol, w_meteo, w_temp</strong> : Poids configurables (défaut : 0.5, 0.3, 0.2)</li>
-    </ul>
-
-    <h2>5. Impact de l'ECS sur le routage</h2>
-    <p>L'ECS permet de favoriser les nœuds bénéficiant de conditions environnementales favorables :</p>
-    <ul>
-      <li>Un nœud avec panneau solaire bien exposé (ECS &gt; 0.7) est prioritaire comme parent car il peut recharger sa batterie.</li>
-      <li>Un nœud à l'ombre ou en conditions défavorables (ECS &lt; 0.3) sera évité car sa batterie risque de s'épuiser sans pouvoir se recharger.</li>
-    </ul>
-
-    <h2>6. Types de nœuds dans RPL-AER</h2>
-    <p>La simulation RPL-AER définit trois types de nœuds avec des caractéristiques différentes :</p>
+    <blockquote><strong>ECS = WeatherFactor × MobilityFactor</strong></blockquote>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Comprendre le rôle du contexte environnemental dans le routage</li>
+        <li>Analyser le calcul de l'ECS dans le code source</li>
+        <li>Étudier l'impact des facteurs météo et mobilité</li>
+        <li>Interpréter les variations de l'ECS selon les scénarios</li>
+      </ul>
+    </div>
+    <h2>2. Implémentation de l'ECS</h2>
+    <p>Dans <code>rpl-aer.c:60-75</code> :</p>
+    <div class="code-block"><span class="ln">  1</span> float rpl_aer_calculate_ecs(void) {
+<span class="ln">  2</span>   float weather_factor = ECS_WEATHER_FACTOR;
+<span class="ln">  3</span>   float mobility_factor = ECS_MOBILITY_FACTOR;
+<span class="ln">  4</span> 
+<span class="ln">  5</span>   if (rpl_aer_ctx.mobility_state == RPL_AER_MOBILITY_MOBILE) {
+<span class="ln">  6</span>     mobility_factor = 0.6f;
+<span class="ln">  7</span>   }
+<span class="ln">  8</span>   if (rpl_aer_ctx.energy.energy_source == RPL_AER_ENERGY_SOURCE_SOLAR) {
+<span class="ln">  9</span>     weather_factor = 0.8f + (0.2f * solar_factor);
+<span class="ln"> 10</span>   }
+<span class="ln"> 11</span>   rpl_aer_ctx.mcs.ecs = weather_factor * mobility_factor;
+<span class="ln"> 12</span>   return rpl_aer_ctx.mcs.ecs;
+<span class="ln"> 13</span> }</div>
+    <h2>3. Facteurs influençant l'ECS</h2>
     <table>
-      <tr><th>Type</th><th>Batterie</th><th>Panneau solaire</th><th>ECS typique</th></tr>
-      <tr><td>Battery</td><td>2000 mAh</td><td>Non</td><td>0.0-0.2</td></tr>
-      <tr><td>Solar</td><td>2000 mAh</td><td>Oui</td><td>0.3-0.9</td></tr>
-      <tr><td>Mobile</td><td>2000 mAh</td><td>Oui</td><td>0.3-0.7</td></tr>
+      <tr>      <th>Facteur</th>      <th>Condition</th>      <th>Valeur</th>      <th>Impact</th></tr>
+      <tr><td>Weather</td><td>Batterie</td><td>ECS_WEATHER_FACTOR (≈1.0)</td><td>Neutre</td></tr>
+      <tr><td>Weather</td><td>Solaire + forte irradiance</td><td>0.8 + 0.2×solar_factor</td><td>Peut dépasser 1.0</td></tr>
+      <tr><td>Weather</td><td>Solaire + faible irradiance</td><td>Proche de 0.8</td><td>Légèrement réduit</td></tr>
+      <tr><td>Mobility</td><td>Statique</td><td>ECS_MOBILITY_FACTOR (≈1.0)</td><td>Neutre</td></tr>
+      <tr><td>Mobility</td><td>Mobile</td><td>0.6</td><td>Réduit de 40%</td></tr>
     </table>
 
-    <h2>7. Logs de récolte</h2>
-    <pre><code>[HARVEST] Node 8: Harvested=12.5mW Stored=8.2mW Consumed=4.3mW
-[HARVEST] Node 8: Harvested=0.0mW Stored=0.0mW Consumed=4.3mW  (nuit)
-[HARVEST] Node 8: Harvested=15.1mW Stored=10.8mW Consumed=4.3mW</code></pre>
-    <p>Pendant la journée, l'énergie récoltée excède la consommation, permettant le stockage. La nuit, seule la batterie alimente le nœud.</p>
+    <h2>4. Logs et interprétation</h2>
+    <p>L'ECS est inclus dans les logs MCS générés par <code>rpl_aer_log_mcs()</code> :</p>
+    <pre><code>RPL-AER: MCS=0.723 (NRE=0.850, PEC=0.600, ECS=0.800)</code></pre>
+    <p>Un ECS = 0.800 peut correspondre à un nœud solaire avec irradiance moyenne (weather ≈ 0.8) et statique (mobility ≈ 1.0).</p>
+    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Pourquoi un nœud mobile a-t-il un ECS réduit (0.6) ?</li>
+      <li>Quel est l'ECS d'un nœud solaire avec solar_factor=0.9 et mobilité statique ?</li>
+      <li>Quel est l'ECS d'un nœud batterie mobile ?</li>
+      <li>Comment l'ECS encourage-t-il les nœuds solaires à être choisis comme parents ?</li>
+      <li>Proposer un scénario où l'ECS est le facteur déterminant dans le choix du parent.</li>
+      </ol>
+    </div>    <h2>Références</h2>
+    <ul>
+      <li>Code : <code>rpl-aer.c:60-75</code> — Calcul de l'ECS</li>
+      <li>Code : <code>rpl-aer.h:142-143</code> — Constantes de mobilité</li>
+      <li>Code : <code>rpl-aer.h:34-35</code> — Source d'énergie</li>
+    </ul>
 
   </div>
 </main>

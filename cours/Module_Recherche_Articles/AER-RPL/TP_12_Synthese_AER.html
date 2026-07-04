@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TP 12 — TP de synthèse RPL-AER — Dr. Madani BELACEL</title>
-<meta name="description" content="TP 12 : TP de synthèse RPL-AER. Workflow complet du clone GitHub à l'analyse des résultats, avec mini-rapport à produire.">
+<title>TP 12 : TP de synthèse RPL-AER — Dr. Madani BELACEL</title>
+<meta name="description" content="TP de synthèse : campagne complète de simulations, analyse et rapport scientifique.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
 <style>
@@ -31,6 +31,20 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .box { padding: 1rem; border-radius: var(--radius); margin: 1rem 0; border-left: 5px solid; }
+  .box-objectifs { background: #e8f5e9; border-color: #2e7d32; }
+  .box-verification { background: #e3f2fd; border-color: #1565c0; }
+  .box-troubleshooting { background: #fff3e0; border-color: #e65100; }
+  .box-questions { background: #f3e5f5; border-color: #7b1fa2; }
+  .box-livrables { background: #fffde7; border-color: #f9a825; }
+  .box-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+  .code-block { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; font-family: 'Consolas','Monaco','Courier New',monospace; font-size: 0.85rem; line-height: 1.5; }
+  .code-block .kw { color: #569cd6; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .cm { color: #6a9955; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .ln { color: #858585; margin-right: 1rem; user-select: none; }
 </style>
 </head><body>
 
@@ -76,116 +90,102 @@
 
     <h1>TP 12 : TP de synthèse RPL-AER</h1>
 
-    <div class="md-meta">
+        <div class="md-meta">
       <strong>TP 12 — TP de synthèse RPL-AER</strong>
       <ul>
         <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
-        <li><strong>Durée estimée :</strong> 3h</li>
-        <li><strong>Objectifs :</strong> Réaliser le workflow complet de RPL-AER et produire un mini-rapport d'analyse</li>
+        <li><strong>Durée estimée :</strong> 2h00</li>
+        <li><strong>Objectifs :</strong> Réaliser une campagne complète de simulations et produire un rapport d'analyse</li>
       </ul>
     </div>
 
-    <h2>Objectif du TP de synthèse</h2>
-    <p>Ce TP de synthèse vous demande de réaliser l'ensemble du workflow RPL-AER, depuis le clonage du dépôt jusqu'à l'analyse des résultats, et de produire un mini-rapport scientifique synthétisant vos observations.</p>
-
-    <h2>Étape 1 : Cloner et compiler</h2>
-    <pre><code># Les codes sont déjà présents localement
-# Si nécessaire, cloner depuis GitHub:
-# git clone https://github.com/madani-belacel/RPL-AER.git
-cd /home/madani/contiki-ng/examples/projet_madani/RPL-AER-main/examples/rpl-aer
-make TARGET=cooja</code></pre>
-
-    <h2>Étape 2 : Générer un scénario personnalisé</h2>
-    <p>Générez un scénario avec les paramètres suivants :</p>
-    <ul>
-      <li>50 nœuds</li>
-      <li>Surface 600x600 m</li>
-      <li>20% mobiles, 30% solaires</li>
-      <li>Attaques sinkhole activées</li>
-      <li>Durée : 1 heure simulée</li>
-    </ul>
-    <pre><code>python3 ../tools/generate_csc.py -n 50 -s 600 -m 20 -w 30 -h 1 -d 3600 -r 2025</code></pre>
-
-    <h2>Étape 3 : Lancer la simulation</h2>
-    <p>Ouvrez le scénario dans Cooja, lancez la simulation et collectez les logs :</p>
-    <pre><code>nc localhost 6000 > aer_synthese_logs.txt</code></pre>
-
-    <h2>Étape 4 : Extraire les métriques</h2>
-    <pre><code>python3 ../tools/simulate_results.py --log-file aer_synthese_logs.txt --output-dir synthese_results/ --csv --figures</code></pre>
-
-    <h2>Étape 5 : Analyser les logs</h2>
-    <p>Analysez :</p>
-    <ul>
-      <li>Les logs MCS : évolution, comparaison entre types de nœuds</li>
-      <li>Les logs LSTM : MAE, qualité de prédiction</li>
-      <li>Les logs HARVEST : bilan énergétique des nœuds solaires</li>
-      <li>Les logs TRUST : détection des attaquants</li>
-      <li>Les logs PERF : PDR, latence, throughput</li>
-    </ul>
-
-    <h2>Étape 6 : Rédiger un mini-rapport</h2>
-    <p>Créez un fichier <code>rapport_synthese.md</code> structuré comme suit :</p>
-
-    <pre><code># Rapport de synthèse RPL-AER
-## Auteur: [Votre Nom]
-## Date: [Date]
-
-## 1. Configuration de la simulation
-- Nombre de nœuds: 50
-- Surface: 600x600 m
-- Mobiles: 20%, Solaires: 30%
-- Attaques: Oui (sinkhole)
-- Durée: 3600s
-
-## 2. Analyse de la métrique MCS
-- MCS moyen: X.XXX
-- Composante dominante: NRE (alpha=X.X)
-- Évolution dans le temps: [description]
-
-## 3. Prédiction LSTM
-- MAE moyenne: X.XX mW
-- Meilleur nœud: Nœud X (MAE=X.XX)
-- Pire nœud: Nœud X (MAE=X.XX)
-
-## 4. Bilan énergétique
-- Autonomie moyenne (batterie): X h
-- Autonomie moyenne (solaire): X h (estimation)
-- Gain solaire: X%
-
-## 5. Impact de la mobilité
-- Changements de parent: X
-- PDR avec mobilité: X%
-- Temps de convergence: X s
-
-## 6. Sécurité
-- Attaquants détectés: X/X
-- Trust score moyen (attaquants): X.XX
-- Trust score moyen (honnêtes): X.XX
-- Faux positifs: X
-
-## 7. Métriques QoS
-- PDR moyen: X%
-- Latence moyenne: X ms
-- Throughput moyen: X bps
-
-## 8. Conclusion
-[Synthèse des résultats et enseignements tirés]</code></pre>
-
-    <h2>Critères d'évaluation</h2>
+    <h2>1. TP de synthèse RPL-AER</h2>
+    <p>Ce TP de synthèse vise à réaliser une campagne complète de simulations et d'analyses pour évaluer RPL-AER dans différents scénarios, et produire un rapport scientifique structuré.</p>
+    <div class="box box-objectifs">
+      <div class="box-title">Objectifs pédagogiques</div>
+      <ul>
+        <li>Réaliser une campagne complète de simulations RPL-AER</li>
+        <li>Analyser l'impact des paramètres (énergie, mobilité, attaques) sur les performances</li>
+        <li>Synthétiser les résultats sous forme de rapport scientifique</li>
+        <li>Préparer une présentation des résultats</li>
+      </ul>
+    </div>
+    <h2>2. Plan de la campagne</h2>
+    <p>Réalisez les simulations suivantes (30 minutes chacune) :</p>
     <table>
-      <tr><th>Critère</th><th>Points</th></tr>
-      <tr><td>Compilation réussie et scénario correctement généré</td><td>2</td></tr>
-      <tr><td>Logs collectés et organisés</td><td>2</td></tr>
-      <tr><td>Analyse MCS complète avec graphiques</td><td>3</td></tr>
-      <tr><td>Analyse LSTM avec MAE</td><td>2</td></tr>
-      <tr><td>Analyse Harvest et bilan énergétique</td><td>2</td></tr>
-      <tr><td>Analyse Trust et détection d'attaques</td><td>3</td></tr>
-      <tr><td>Métriques QoS (PDR, latence)</td><td>2</td></tr>
-      <tr><td>Figures et CSV générés</td><td>2</td></tr>
-      <tr><td>Rapport complet et bien structuré</td><td>2</td></tr>
-      <tr><th>Total</th><th>20</th></tr>
+      <tr>      <th>Scénario</th>      <th>Nœuds</th>      <th>% Solaire</th>      <th>% Mobile</th>      <th>Attaques</th></tr>
+      <tr><td>Baseline</td><td>20</td><td>0%</td><td>0%</td><td>Non</td></tr>
+      <tr><td>Solaire</td><td>40</td><td>50%</td><td>0%</td><td>Non</td></tr>
+      <tr><td>Mobilité</td><td>40</td><td>30%</td><td>50%</td><td>Non</td></tr>
+      <tr><td>Attaques</td><td>40</td><td>30%</td><td>0%</td><td>Oui</td></tr>
+      <tr><td>Complet</td><td>60</td><td>40%</td><td>30%</td><td>Oui</td></tr>
     </table>
 
+    <h2>3. Métriques à collecter</h2>
+    <ul>
+      <li>PDR (Packet Delivery Ratio) — pour chaque scénario</li>
+      <li>Latence moyenne (ms)</li>
+      <li>Énergie résiduelle finale (mWh)</li>
+      <li>Nombre d'attaques détectées</li>
+      <li>Évolution du MCS dans le temps</li>
+      <li>Nombre de changements de parent (mobilité)</li>
+    </ul>
+
+    <h2>4. Analyse comparative</h2>
+    <div class="code-block"><span class="ln">  1</span> import json
+<span class="ln">  2</span> 
+<span class="ln">  3</span> with open("cooja_results/all_metrics.json") as f:
+<span class="ln">  4</span>     data = json.load(f)
+<span class="ln">  5</span> 
+<span class="ln">  6</span> print("=== RAPPORT DE SYNTHÈSE RPL-AER ===\n")
+<span class="ln">  7</span> for scenario, metrics in data.items():
+<span class="ln">  8</span>     print(f"Scénario: {scenario}")
+<span class="ln">  9</span>     if metrics["pdr"]:
+<span class="ln"> 10</span>         print(f"  PDR moyen: {metrics['pdr']['mean']:.1f}%")
+<span class="ln"> 11</span>     if metrics["latency"]:
+<span class="ln"> 12</span>         print(f"  Latence moyenne: {metrics['latency']['mean']:.1f} ms")
+<span class="ln"> 13</span>     if metrics["energy"]:
+<span class="ln"> 14</span>         print(f"  Énergie initiale: {metrics['energy']['initial']} mWh")
+<span class="ln"> 15</span>         print(f"  Énergie finale: {metrics['energy']['final']} mWh")
+<span class="ln"> 16</span>     print()</div>
+    <h2>5. Structure du rapport</h2>
+    <p>Le rapport doit contenir :</p>
+    <ul>
+      <li>Introduction : contexte et objectifs</li>
+      <li>Méthodologie : description des scénarios et paramètres</li>
+      <li>Résultats : tableaux et figures pour chaque métrique</li>
+      <li>Discussion : analyse des résultats et comparaisons</li>
+      <li>Conclusion : enseignements et perspectives</li>
+    </ul>
+
+    <h2>6. Grille d'évaluation</h2>
+    <table>
+      <tr>      <th>Critère</th>      <th>Points</th>      <th>Description</th></tr>
+      <tr><td>Simulations complètes</td><td>4</td><td>5 scénarios simulés avec logs</td></tr>
+      <tr><td>Extraction des métriques</td><td>3</td><td>Scripts Python fonctionnels</td></tr>
+      <tr><td>Figures</td><td>3</td><td>Au moins 3 figures de qualité</td></tr>
+      <tr><td>Analyse</td><td>5</td><td>Interprétation correcte des résultats</td></tr>
+      <tr><td>Rapport</td><td>5</td><td>Rapport structuré et clair</td></tr>
+    </table>
+    <div class="box box-verification">
+      <div class="box-title">Vérification</div>
+      <p>Vérifiez que tous les logs sont présents dans cooja_results/ et que les scripts Python produisent des sorties cohérentes.</p>
+    </div>    <div class="box box-troubleshooting">
+      <div class="box-title">Dépannage</div>
+      <p>Si une simulation échoue, vérifiez les logs d'erreur dans la console Cooja. Réduisez le nombre de nœuds si nécessaire.</p>
+    </div>    <div class="box box-questions">
+      <div class="box-title">Questions de réflexion</div>
+      <ol>
+      <li>Quel scénario donne les meilleures performances globales ?</li>
+      <li>Quel est l'impact cumulé de la mobilité et des attaques sur le PDR ?</li>
+      <li>Comment les résultats de RPL-AER se comparent-ils à RPL standard ?</li>
+      <li>Quelles sont les limitations de votre campagne de simulation ?</li>
+      <li>Proposer des améliorations pour une future version de RPL-AER.</li>
+      </ol>
+    </div>    <div class="box box-livrables">
+      <div class="box-title">Livrables</div>
+      <p>Rapport scientifique complet (PDF ou Markdown) contenant : introduction, méthodologie, résultats (tableaux + figures), discussion, conclusion. Tous les scripts Python utilisés. Fichiers de logs des 5 scénarios.</p>
+    </div>
   </div>
 </main>
 

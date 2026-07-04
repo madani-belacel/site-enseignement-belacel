@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 01 — Introduction à la détection d'intrusion pour IoT — IDS-IOT</title>
+<meta name="description" content="Introduction à la détection d'intrusion pour les réseaux IoT basés sur RPL. Motivations, limitations des IDS centralisés, approche distribuée RPL-ClusterIDS.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}
+.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}
+.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}
+.md-content p{margin:0.5rem 0;line-height:1.8}
+.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}
+.md-content li{margin:0.25rem 0;line-height:1.7}
+.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}
+.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}
+.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}
+.md-content pre code{background:none;padding:0}
+.md-content table{width:100%;border-collapse:collapse;margin:1rem 0}
+.md-content th,.md-content td{border:1px solid var(--border);padding:0.5rem;text-align:left}
+.md-content th{background:var(--bg-alt);font-family:var(--font-heading)}
+.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}
+.box-obj{background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-verif{background:#e3f2fd;border-left:4px solid #1565c0;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-trouble{background:#fff3e0;border-left:4px solid #e65100;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-question{background:#f3e5f5;border-left:4px solid #7b1fa2;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0}
+.box-cmd{background:#263238;color:#eceff1;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto}
+.box-cmd code{color:#a5d6a7}
+.box-output{background:#1b2631;color:#d4d4d4;padding:0.8rem 1rem;border-radius:4px;margin:0.75rem 0;overflow-x:auto;font-size:0.88em}
+</style>
+</head><body>
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 01 — Introduction IDS-IOT</li></ol></nav>
+<main class="page-content" id="main-content"><div class="md-content">
+<h1>Introduction à la détection d'intrusion pour IoT</h1>
+<div class="md-meta"><strong>Cours 01 — Module IDS-IOT / RPL-ClusterIDS</strong><ul>
+<li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+<li><strong>Durée :</strong> 2 séances</li>
+<li><strong>Objectif :</strong> Comprendre pourquoi les réseaux IoT RPL ont besoin d'un IDS distribué</li>
+</ul></div>
+<div class="box-obj"><strong>Objectif pédagogique :</strong> Identifier les vulnérabilités des réseaux IoT RPL, comprendre les limites des IDS centralisés, distinguer les approches DIDS, situer RPL-ClusterIDS dans la recherche.</div>
+<h2>1. Contexte : sécurité des réseaux IoT</h2>
+<p>Les réseaux de capteurs sans fil (WSN) et l'Internet des Objets (IoT) sont vulnérables à de nombreuses attaques en raison de leurs ressources limitées (énergie, mémoire, calcul), de leur nature sans fil et de leur déploiement souvent non surveillé. Le protocole de routage RPL (RFC 6550) est largement utilisé dans ces réseaux mais n'intègre aucun mécanisme de sécurité natif contre les nœuds malveillants internes.</p>
+<h3>1.1 Contraintes des nœuds IoT</h3>
+<ul>
+<li><strong>Énergie :</strong> batteries limitées (typ. 2 AA pour Zolertia RE-Mote), pas de recharge</li>
+<li><strong>Mémoire :</strong> RAM 32-64 Ko, Flash 256-512 Ko</li>
+<li><strong>CPU :</strong> ARM Cortex-M3 32 MHz, pas de FPU matériel</li>
+<li><strong>Bande passante :</strong> IEEE 802.15.4 à 250 kbps, MTU 127 octets</li>
+</ul>
+<h3>1.2 Cinq attaques RPL simulées</h3>
+<ul>
+<li><strong>Rank Attack :</strong> nœud malveillant annonce un rang artificiellement bas pour attirer le trafic. Signal : 75-85.</li>
+<li><strong>Selective Forwarding :</strong> nœud droppe sélectivement certains paquets. Plus agressif sur trafic C3 (65-75) que C0-C2 (35-45).</li>
+<li><strong>DAO Flood :</strong> inondation de messages DAO pour épuiser la mémoire du routeur frontalier. Signal : 60-70.</li>
+<li><strong>Wormhole :</strong> deux nœuds collusoires tunnelent le trafic hors bande. Signal 70-80 avec 25% de silence.</li>
+<li><strong>Mixed Attack :</strong> combinaison des quatre types simultanément.</li>
+</ul>
+<h2>2. Limites des IDS centralisés</h2>
+<ul>
+<li><strong>Point de défaillance unique :</strong> si le nœud central est compromis, tout le système est paralysé</li>
+<li><strong>Congestion du réseau :</strong> tous les nœuds envoient leurs données vers un point central</li>
+<li><strong>Latence de détection :</strong> le temps de transmission retarde la réaction</li>
+<li><strong>Consommation d'énergie :</strong> transmissions longue distance épuisent les batteries</li>
+<li><strong>Non passage à l'échelle :</strong> difficile au-delà de 50 nœuds</li>
+</ul>
+<h2>3. Approche IDS distribuée (DIDS)</h2>
+<p>Un IDS distribué (DIDS) répartit la charge de détection sur l'ensemble du réseau.</p>
+<ul>
+<li>Résilience (pas de point unique)</li>
+<li>Réduction du trafic de signalisation</li>
+<li>Détection plus rapide (traitement local)</li>
+<li>Meilleure efficacité énergétique</li>
+<li>Passage à l'échelle facilité</li>
+</ul>
+<h2>4. Contributions de RPL-ClusterIDS</h2>
+<ol>
+<li><strong>Clustering adaptatif :</strong> fonction d'affinité = topologie×3 + énergie×2 + trafic×1. Re-clustering tous les 120 ticks si score > 70.</li>
+<li><strong>Élection de CH :</strong> fitness = NRE×2 + (100 - ETX×5). Rotation basée sur seuil 140+(id%8)×12+(id/8)×4.</li>
+<li><strong>Détection à deux niveaux :</strong> règles R1-R4 avec EWMA, LAS = (R1×3+R2×2+R3+R4)/4. Seuil LAS > 50.</li>
+<li><strong>Politiques contextuelles :</strong> Full (0x0F), Balanced (0x07), Eco (0x03).</li>
+<li><strong>Pipeline reproductible :</strong> de Cooja aux figures LaTeX/TikZ.</li>
+</ol>
+<h2>5. Architecture à deux niveaux</h2>
+<ul>
+<li><strong>Niveau 1 — Membre :</strong> ids_member_tick() avec masque de règles, LAS via EWMA. Si LAS > 50, alarme.</li>
+<li><strong>Niveau 2 — CH :</strong> reçoit LAS et alarme. Si alarme ET LAS > 50, attaque confirmée.</li>
+<li><strong>Variants :</strong> B1 (border router only), B2 (flat), B3 (centralisé), MAIN (complet), ablations.</li>
+</ul>
+<div class="box-question"><strong>Question réflexive :</strong> Quels sont les avantages décisifs d'un DIDS par rapport à un IDS centralisé pour un réseau de 50 nœuds IoT avec RPL ? Comment le clustering adaptatif répond-il aux limitations des DIDS plats (flat) ?</div></div></main>
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

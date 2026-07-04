@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 08 — Variants du protocole — AER-MQoS</title>
+<title>Variants du protocole — AER-MQoS</title>
 <meta name="description" content="Les 4 variantes d'AER-MQoS : RPL-MRHOF (baseline), RPL-MQoS-style, RPL-AER-style, AER-MQoS (full), méthodologie de comparaison.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,38 +76,31 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
     <li class="current">Cours 08 — Variants du protocole</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>Cours 08 — Variants du protocole</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h00<br>
-      <strong>Objectif :</strong> Comprendre les 4 variantes d'AER-MQoS, leurs différences architecturales et la méthodologie de comparaison<br>
-      <strong>Prérequis :</strong> Cours 01 à 07
+      <strong>Objectif :</strong> Comprendre les 4 variantes d'AER-MQoS, leurs différences architecturales et la méthodologie de comparaison<br><strong>Prérequis :</strong> Cours 01 à 07
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Principe de la comparaison</h2>
-    <p>Pour évaluer l'apport d'AER-MQoS, le protocole est comparé à 3 variantes plus simples dans des conditions de simulation identiques. Chaque variante ajoute progressivement des fonctionnalités, permettant d'isoler l'impact de chaque innovation. Les 4 variantes partagent la même base de code ; seules les macros de compilation changent.</p>
+    <p>Pour évaluer l'apport d'AER-MQoS, le protocole est comparé à 3 variantes plus simples dans des conditions de simulation identiques. Chaque variante ajoute progressivement des fonctionnalités, permettant d'isoler l'impact de chaque innovation.</p>
 
     <h2>2. Les 4 variantes</h2>
-
     <table>
       <tr><th>Variante</th><th>Macro</th><th>Métrique</th><th>QoS</th><th>Trust</th><th>Q-learning</th></tr>
       <tr><td>RPL-MRHOF</td><td><code>RPL_MRHOF</code></td><td>ETX uniquement</td><td>Non</td><td>Non</td><td>Non</td></tr>
@@ -100,70 +109,23 @@
       <tr><td>AER-MQoS</td><td><code>AER_MQOS</code></td><td>MCS (NRE+ETX+Trust)</td><td>Oui (WRR)</td><td>Oui</td><td>Oui</td></tr>
     </table>
 
-    <h2>3. RPL-MRHOF (baseline)</h2>
-    <p>Cette variante implémente le comportement standard de RPL avec la fonction objective MRHOF basée sur ETX. Tous les paquets sont traités de manière identique. Elle sert de référence minimale pour évaluer l'amélioration apportée par les fonctionnalités QoS et multi-objectifs.</p>
-    <p><strong>Macro associée :</strong></p>
-    <pre><code>/* imacros-rpl-mrhof.h */
-#define RPL_MRHOF
-#undef AER_MQOS
-#undef RPL_MQOS_STYLE
-#undef RPL_AER_STYLE</code></pre>
-
-    <h2>4. RPL-MQoS-style</h2>
-    <p>Cette variante est inspirée du protocole RPLMQoS. Elle introduit une métrique composite à poids fixes (sans adaptation contextuelle ni Q-learning) et active l'ordonnanceur WRR pour la QoS. Elle permet d'isoler l'apport de la QoS par rapport à la baseline.</p>
-    <p><strong>Caractéristiques :</strong></p>
-    <ul>
-      <li>Métrique composite : NRE + ETX + Trust (poids fixes alpha=0.3, beta=0.35, gamma=0.35)</li>
-      <li>WRR actif avec poids 6:3:2:1</li>
-      <li>Pas d'adaptation contextuelle ni de Q-learning</li>
-      <li>Trust Score basique (sans pénalité d'anomalie)</li>
-    </ul>
-
-    <h2>5. RPL-AER-style</h2>
-    <p>Cette variante correspond au protocole RPL-AER antérieur. Elle utilise le modèle d'énergie NRE comme métrique principale, sans QoS ni trust. Elle permet d'évaluer l'apport du routage énergétique seul.</p>
-    <p><strong>Caractéristiques :</strong></p>
-    <ul>
-      <li>Métrique : NRE uniquement (ou NRE + ETX avec poids forts sur NRE)</li>
-      <li>Pas de WRR (file unique)</li>
-      <li>Pas de Trust Score</li>
-      <li>Optimisé pour l'équilibrage de charge énergétique</li>
-    </ul>
-
-    <h2>6. AER-MQoS (full)</h2>
-    <p>La variante complète active l'ensemble des fonctionnalités : MCS contextuelle avec Q-learning, WRR 6:3:2:1, Trust Score avec détection d'anomalies. C'est la version la plus sophistiquée, censée offrir les meilleures performances globales.</p>
+    <h2>3. AER-MQoS (full)</h2>
     <pre><code>/* imacros-aer-mqos.h */
 #define AER_MQOS
 #define AER_CONTEXTUAL_WEIGHTS
 #define AER_QLEARNING
 #define AER_TRUST_ANOMALY_PENALTY</code></pre>
 
-    <h2>7. Méthodologie de comparaison</h2>
-    <p>La campagne comparative suit ces principes :</p>
+    <h2>4. Méthodologie de comparaison</h2>
     <ul>
-      <li><strong>Mêmes scénarios</strong> : tous les variants sont exécutés sur exactement les mêmes fichiers de simulation Cooja (topologie, trafic, durée)</li>
+      <li><strong>Mêmes scénarios</strong> : tous les variants sont exécutés sur exactement les mêmes fichiers de simulation Cooja</li>
       <li><strong>Mêmes seeds</strong> : les seeds aléatoires sont identiques pour garantir la comparabilité</li>
-      <li><strong>Métriques mesurées</strong> : PDR (Packet Delivery Ratio), latence moyenne, consommation énergétique, équité de charge</li>
+      <li><strong>Métriques mesurées</strong> : PDR, latence moyenne, consommation énergétique, équité de charge</li>
       <li><strong>Répétitions</strong> : 4 seeds (20260601–20260604) pour la significativité statistique</li>
     </ul>
 
-    <h2>8. Fichiers de macros variants</h2>
-    <p>Chaque fichier dans <code>variants/</code> définit les macros appropriées :</p>
-    <pre><code># Lister les fichiers de variantes
-ls code_source_AER_MQoS/variants/
-imacros-rpl-mrhof.h
-imacros-rpl-mqos-style.h
-imacros-rpl-aer-style.h
-imacros-aer-mqos.h</code></pre>
-    <p>Le script <code>build_variant.sh</code> utilise ces fichiers pour compiler chaque variante.</p>
-
-    <h2>9. Résumé et attentes</h2>
-    <p>L'analyse comparative entre ces 4 variantes permet de quantifier l'apport de chaque fonctionnalité :</p>
-    <ul>
-      <li><strong>RPL-MRHOF vs RPL-MQoS-style</strong> → apport de la QoS (WRR)</li>
-      <li><strong>RPL-MRHOF vs RPL-AER-style</strong> → apport du routage énergétique</li>
-      <li><strong>RPL-MQoS-style vs AER-MQoS</strong> → apport de l'adaptation contextuelle et du Q-learning</li>
-      <li><strong>RPL-MRHOF vs AER-MQoS</strong> → apport global de l'approche multi-objectifs</li>
-    </ul>
+    <h2>5. Résumé</h2>
+    <p>L'analyse comparative entre ces 4 variantes permet de quantifier l'apport de chaque fonctionnalité et de démontrer la supériorité de l'approche multi-objectifs complète.</p>
 
   </div>
 </main>

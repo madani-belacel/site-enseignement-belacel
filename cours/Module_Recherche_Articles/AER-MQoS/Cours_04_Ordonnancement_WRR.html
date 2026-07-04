@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 04 — Ordonnancement WRR — AER-MQoS</title>
+<title>Ordonnancement WRR (Weighted Round Robin) — AER-MQoS</title>
 <meta name="description" content="Ordonnancement Weighted Round Robin (WRR) 6:3:2:1 d'AER-MQoS, files d'attente QoS, implémentation dans aer_qos_queue.c.">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Université_de_Mostaganem.png">
@@ -31,6 +31,22 @@
   .download-link:hover { opacity: 0.85; }
   .download-pdf { background: #e74c3c; color: #fff; }
   .download-pptx { background: #d24726; color: #fff; }
+  .objectif-box { background: #e8f5e9; border-left: 4px solid #2e7d32; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .objectif-box strong { color: #2e7d32; }
+  .verif-box { background: #e3f2fd; border-left: 4px solid #1565c0; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .verif-box strong { color: #1565c0; }
+  .trouble-box { background: #fff3e0; border-left: 4px solid #e65100; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .trouble-box strong { color: #e65100; }
+  .question-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; padding: 0.8rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .question-box strong { color: #7b1fa2; }
+  .session-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .session-list li { margin: 0.4rem 0; padding: 0.5rem 0.8rem; border-left: 3px solid var(--primary-light); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; transition: transform 0.1s; }
+  .session-list li:hover { transform: translateX(3px); }
+  .session-list a { text-decoration: none; font-weight: 500; }
+  .session-list a:hover { text-decoration: underline; }
+  .session-tag { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600; margin-right: 0.4rem; }
+  .tag-cours { background: #e8f5e9; color: #2e7d32; }
+  .tag-tp { background: #fff3e0; color: #e65100; }
 </style>
 </head><body>
 
@@ -60,49 +76,32 @@
     </nav>
   </div>
 </header>
-
 <nav aria-label="Fil d'Ariane">
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
     <li><a href="index.html">AER-MQoS</a></li>
-    <li class="current">Cours 04 — Ordonnancement WRR</li>
+    <li class="current">Cours 04 — Ordonnancement WRR (Weighted Round Robin)</li>
   </ol>
-</nav>
-
-<main class="page-content" id="main-content">
+</nav><main class="page-content" id="main-content">
   <div class="md-content">
 
     <h1>Cours 04 — Ordonnancement WRR (Weighted Round Robin)</h1>
 
     <div class="md-meta">
       <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h00<br>
-      <strong>Objectif :</strong> Comprendre l'ordonnanceur WRR, son rôle dans la différenciation QoS, son implémentation et son interaction avec la couche MAC<br>
-      <strong>Prérequis :</strong> Cours 02 (classes QoS), notions d'ordonnancement réseau
+      <strong>Objectif :</strong> Comprendre l'ordonnanceur WRR, son rôle dans la différenciation QoS, son implémentation et son interaction avec la couche MAC<br><strong>Prérequis :</strong> Cours 02 (classes QoS), notions d'ordonnancement réseau
     </div>
-
-    <div class="download-bar">
-      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
-      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+<div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Télécharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Télécharger PPTX</a>
     </div>
-
     <h2>1. Principe du Weighted Round Robin</h2>
     <p>Le Weighted Round Robin (WRR) est un algorithme d'ordonnancement qui sert les files d'attente de manière cyclique, en allouant à chaque file un nombre de paquets proportionnel à son poids. Contrairement au Round Robin pur qui sert une quantité égale de paquets par file, le WRR permet une différenciation pondérée du service.</p>
     <p>Dans AER-MQoS, le cycle WRR sert les paquets dans l'ordre C0, C1, C2, C3 selon les poids respectifs 6, 3, 2, 1. Ainsi, sur un cycle complet de 12 paquets (6+3+2+1), C0 transmet 6 paquets, C1 en transmet 3, C2 en transmet 2, et C3 en transmet 1.</p>
 
-    <h2>2. Les poids 6:3:2:1</h2>
-    <p>Ce ratio signifie que pour chaque cycle d'ordonnancement :</p>
-    <ul>
-      <li>C0 (haute priorité) reçoit 6 créneaux de transmission</li>
-      <li>C1 (moyenne priorité) reçoit 3 créneaux</li>
-      <li>C2 (basse priorité) reçoit 2 créneaux</li>
-      <li>C3 (meilleur effort) reçoit 1 créneau</li>
-    </ul>
-    <p>Si une file est vide, le créneau est redistribué à la file suivante non vide dans l'ordre de priorité, évitant ainsi le gaspillage de bande passante.</p>
-
-    <h2>3. Implémentation dans aer_qos_queue.c</h2>
-    <p>Le module <code>aer_qos_queue.c</code> gère les structures de données suivantes :</p>
+    <h2>2. Implémentation dans aer_qos_queue.c</h2>
     <pre><code>/* Structure d'une file QoS */
 struct aer_qos_queue {
     struct queue_item *head;
@@ -114,20 +113,12 @@ struct aer_qos_queue {
 
 /* Quatre files, une par classe */
 static struct aer_qos_queue queues[AER_QOS_NUM_CLASSES];</code></pre>
-    <p>Les fonctions principales sont :</p>
-    <ul>
-      <li><code>aer_qos_enqueue(header, class)</code> — ajoute un paquet à la file de sa classe</li>
-      <li><code>aer_qos_dequeue()</code> — extrait le prochain paquet selon l'ordre WRR</li>
-      <li><code>aer_qos_wrr_schedule()</code> — implémente la logique cyclique du WRR</li>
-      <li><code>aer_qos_get_queue_length(class)</code> — retourne la taille de la file</li>
-    </ul>
 
-    <h2>4. Algorithme WRR détaillé</h2>
+    <h2>3. Algorithme WRR détaillé</h2>
     <pre><code>/* Pseudo-code de l'ordonnanceur WRR */
 function aer_qos_wrr_schedule():
     for i in 0..3:  // initialiser les déficits
         queues[i].deficit = queues[i].weight
-    
     while there are packets:
         for i in 0..3:
             if queues[i].deficit > 0 AND queues[i].length > 0:
@@ -138,36 +129,14 @@ function aer_qos_wrr_schedule():
         for i in 0..3:
             queues[i].deficit = queues[i].weight</code></pre>
 
-    <h2>5. Interaction avec la couche MAC</h2>
-    <p>L'ordonnanceur WRR fonctionne au-dessus de la couche MAC (CSMA/CA dans Contiki-NG). Lorsque la couche MAC indique qu'elle est prête à transmettre (via le callback <code>mac_call_sent_callback</code>), le module QoS fournit le prochain paquet à envoyer via <code>aer_qos_dequeue()</code>. Cela garantit que la différenciation QoS est respectée même sous contention MAC.</p>
-
-    <p>Le flux de transmission est le suivant :</p>
-    <ol>
-      <li>L'application émettrice enfile un paquet via <code>aer_qos_enqueue()</code></li>
-      <li>La couche MAC sollicite un paquet via le driver radio</li>
-      <li>Le module QoS appelle <code>aer_qos_wrr_schedule()</code> qui détermine le paquet à transmettre</li>
-      <li>Le paquet est transmis physiquement</li>
-      <li>Un acquittement (ACK) est attendu ; en cas d'échec, le paquet peut être ré-enfilé selon sa classe</li>
-    </ol>
-
-    <h2>6. Gestion de la congestion</h2>
-    <p>Chaque file a une capacité maximale configurable (<code>AER_QOS_QUEUE_LIMIT</code>). Lorsqu'une file atteint sa limite :</p>
-    <ul>
-      <li>Les nouveaux paquets C3 sont dropés en premier (politique <em>tail drop</em>)</li>
-      <li>Les paquets C2 sont dropés ensuite</li>
-      <li>Les paquets C0 et C1 ne sont dropés qu'en dernier recours, avec un message d'avertissement</li>
-    </ul>
-    <p>Cette politique de drop sélectif préserve la QoS pour les classes prioritaires en cas de congestion.</p>
-
-    <h2>7. Observabilité et debug</h2>
+    <h2>4. Observabilité et debug</h2>
     <p>Le module produit des logs [QUEUE] permettant de suivre en temps réel l'état des files :</p>
     <pre><code>[QUEUE] Enqueue pkt=0x100 class=C0 len=3
 [QUEUE] Dequeue pkt=0x100 class=C0 len=2
 [QUEUE] WRR schedule: C0(6/6) C1(3/3) C2(2/2) C3(1/1)</code></pre>
-    <p>Ces logs sont essentiels pour les TP d'analyse (TP 05).</p>
 
-    <h2>8. Résumé</h2>
-    <p>L'ordonnanceur WRR avec les poids 6:3:2:1 est le mécanisme central de différenciation QoS d'AER-MQoS. Il garantit que les paquets prioritaires sont servis plus fréquemment tout en évitant la famine des classes inférieures. Son implémentation modulaire dans <code>aer_qos_queue.c</code> le rend facile à configurer et à observer.</p>
+    <h2>5. Résumé</h2>
+    <p>L'ordonnanceur WRR avec les poids 6:3:2:1 est le mécanisme central de différenciation QoS d'AER-MQoS. Il garantit que les paquets prioritaires sont servis plus fréquemment tout en évitant la famine des classes inférieures.</p>
 
   </div>
 </main>
