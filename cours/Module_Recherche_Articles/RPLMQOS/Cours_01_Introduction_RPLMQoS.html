@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cours 01 — Introduction à RPL-MQoS — RPL-MQoS — Dr. Madani BELACEL</title>
+<title>Cours 01  Introduction à RPL-MQoS — RPL-MQoS (RPLCB) — Dr. Madani BELACEL</title>
 <meta name="description" content="RPL-MQoS — Module Recherche &amp; Articles — Dr. Madani BELACEL">
 <link rel="stylesheet" href="../../../css/style.css">
 <link rel="icon" href="../../../images/Universit\u00e9_de_Mostaganem.png">
@@ -55,7 +55,7 @@
   <ol class="breadcrumb">
     <li><a href="../../../index.html">Accueil</a></li>
     <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>    <li><a href="index.html">RPLMQOS</a></li>\n    <li class="current"></li>
+    <li><a href="../../_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>    <li><a href="index.html">RPLMQOS</a></li>\n    <li class="current"></li>
   </ol>
 </nav><main class="page-content"><div class="md-content"><h1>Cours 01 — Introduction à RPL-MQoS</h1><div class="md-meta"><strong>2h CM</strong><ul><li><strong>Durée :</strong> 2h CM</li><li><strong>Objectif :</strong> Comprendre les motivations, le contexte et la contribution du protocole RPL-MQoS</li></ul></div><h2>1. Contexte : QoS dans les réseaux IoT</h2><p>Les réseaux de capteurs sans fil (WSN) et l'Internet des Objets (IoT) nécessitent une gestion fine de la Qualité de Service (QoS). Le protocole RPL (RFC 6550) est le standard de routage pour les LLN, mais il utilise principalement l'ETX comme métrique unique.</p><h2>2. Limites de RPL standard</h2><ul><li>Métrique unique ETX — pas de différenciation de trafic</li><li>Pas de garantie de délai pour les applications temps réel</li><li>Absence de gestion de priorité entre flux</li><li>Équilibrage de charge limité</li></ul><h2>3. Concept RPL-MQoS</h2><p>RPL-MQoS introduit quatre classes de trafic avec des poids distincts : Critique, Priorité, Normal, Background. Chaque classe a des pondérations différentes pour l'ETX, le délai et la gigue, permettant une sélection de parent adaptée au type de trafic.</p><h2>4. Architecture du code source</h2><pre><code>RPLMQoS_BELACEL/
 ├── Makefile                  # 31 lignes - compilation
