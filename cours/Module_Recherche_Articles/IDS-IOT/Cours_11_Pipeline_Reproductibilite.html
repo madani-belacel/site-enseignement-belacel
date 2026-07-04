@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 11 — Pipeline de reproductibilité scientifique — IDS-IOT</title>
+<meta name="description" content="Pipeline de reproductibilité scientifique de RPL-ClusterIDS : de la simulation à la publication, Docker, workflow complet.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+</head><body>
+
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 11 — Pipeline de reproductibilité</li></ol></nav>
+
+<main class="page-content" id="main-content"><div class="md-content">
+
+<h1>Pipeline de reproductibilité scientifique</h1>
+
+<div class="md-meta"><strong>Cours 11 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Auteur :</strong> Dr. Madani BELACEL</li><li><strong>Objectif :</strong> Comprendre le pipeline complet de la simulation à la publication</li></ul></div>
+
+<h2>1. Principes de la reproductibilité</h2>
+<p>La reproductibilité scientifique est un enjeu majeur pour la recherche en réseaux. RPL-ClusterIDS a été conçu selon les principes FAIR (Findable, Accessible, Interoperable, Reusable) avec un pipeline entièrement automatisé qui permet de reproduire l'intégralité des résultats, de la simulation à la génération du manuscrit.</p>
+
+<h2>2. Pipeline complet</h2>
+<ol>
+  <li><strong>Génération de scénarios</strong> (<code>generate_campaign_csc.py</code>) — Produit les fichiers .csc pour chaque combinaison variant × attaque × seed</li>
+  <li><strong>Compilation du firmware</strong> (<code>build_variant.sh</code>) — Compile les 8 variantes pour la plateforme Cooja</li>
+  <li><strong>Simulation Cooja</strong> (<code>run_ids_campaign.sh</code>) — Exécute les simulations en mode headless</li>
+  <li><strong>Parsing des logs</strong> (<code>parse_cooja_ids_metrics.py</code>) — Extrait les métriques structurées des fichiers COOJA.testlog</li>
+  <li><strong>Calcul des statistiques</strong> (<code>compute_statistics.py</code>) — Produit les Tables II-IX au format LaTeX</li>
+  <li><strong>Génération des figures</strong> (<code>generate_figures.py</code>) — Produit les 11 figures TikZ/PGFPlots</li>
+  <li><strong>Compilation du manuscrit</strong> (pdflatex + bibtex) — Assemble le document final</li>
+</ol>
+
+<h2>3. Structure des données</h2>
+<p>Les données suivent une hiérarchie claire :</p>
+<pre><code>data/
+├── estimated/        # Données estimées (placeholders)
+├── real/
+│   ├── raw/          # Logs bruts COOJA.testlog
+│   └── parsed/       # CSV parsés et agrégés</code></pre>
+
+<h2>4. Support Docker</h2>
+<p>Un environnement Docker est fourni pour garantir la reproductibilité :</p>
+<pre><code>cd docker/
+docker build -t ids-iot .
+docker run -v $(pwd)/../:/workspace ids-iot /workspace/run_pipeline.sh</code></pre>
+<p>Le Dockerfile installe toutes les dépendances nécessaires : Contiki-NG, Cooja, Python 3, pandas, matplotlib, LaTeX (texlive), TikZ/PGFPlots.</p>
+
+<h2>5. Script de pipeline unifié</h2>
+<p>Un script <code>run_pipeline.sh</code> orchestre l'ensemble des étapes :</p>
+<pre><code>#!/bin/bash
+# Pipeline RPL-ClusterIDS
+echo "1. Generating scenarios..."
+python3 scripts/generate_campaign_csc.py --campaign --output sim/scenarios/
+
+echo "2. Building firmware..."
+cd code_source_RPL_ClusterIDS && ./build_variant.sh all
+
+echo "3. Running simulations..."
+./run_ids_campaign.sh all
+
+echo "4. Parsing logs..."
+python3 scripts/parse_cooja_ids_metrics.py --input data/real/raw/ --output data/real/parsed/
+
+echo "5. Computing statistics..."
+python3 scripts/compute_statistics.py --input data/real/parsed/ --output tables/ --format latex
+
+echo "6. Generating figures..."
+python3 scripts/generate_figures.py --csv data/real/parsed/agg --out Figures/
+
+echo "7. Compiling manuscript..."
+pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+echo "Pipeline complete."</code></pre>
+
+<h2>6. Gestion des seeds aléatoires</h2>
+<p>Pour garantir la reproductibilité :</p>
+<ul>
+  <li>Chaque seed est explicitement définie dans le fichier CSC</li>
+  <li>Les seeds sont enregistrées dans un fichier <code>seeds.txt</code></li>
+  <li>Le script de campagne peut reprendre à partir d'un seed spécifique</li>
+</ul>
+
+<h2>7. Validation des résultats</h2>
+<p>Le pipeline inclut des vérifications automatiques :</p>
+<ul>
+  <li>Vérification que tous les fichiers CSC existent avant la simulation</li>
+  <li>Vérification que les logs contiennent des lignes METRIC</li>
+  <li>Comparaison avec les données estimées pour détecter les anomalies</li>
+  <li>Rapport de validation généré après chaque étape</li>
+</ul>
+
+<h2>8. Bonnes pratiques pour la recherche reproductible</h2>
+<ul>
+  <li>Versionner le code source et les scripts (Git)</li>
+  <li>Documenter toutes les dépendances et versions</li>
+  <li>Utiliser des seeds fixes et documentées</li>
+  <li>Automatiser le pipeline (pas de manipulation manuelle)</li>
+  <li>Fournir un environnement conteneurisé (Docker)</li>
+  <li>Publier les données brutes et les résultats intermédiaires</li>
+</ul>
+
+<blockquote><strong>Référence :</strong> Le dépôt IDS-IOT suit les recommandations du <em>ACM Artifact Review and Badging</em> et vise le badge "Artifacts Available" et "Results Reproduced".</blockquote>
+
+</div></main>
+
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

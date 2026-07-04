@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 11 — Génération de figures et CSV — Dr. Madani BELACEL</title>
+<meta name="description" content="TP 11 : utiliser simulate_results.py pour générer les fichiers CSV et figures à partir des logs RPL-AER.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">TP 11 — Figures</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 11 : Génération de figures et CSV</h1>
+
+    <div class="md-meta">
+      <strong>TP 11 — Génération de figures et CSV</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h</li>
+        <li><strong>Objectifs :</strong> Générer les fichiers CSV de résultats et les figures pour publication</li>
+      </ul>
+    </div>
+
+    <h2>1. Utiliser simulate_results.py</h2>
+    <p>Le script <code>simulate_results.py</code> automatise l'extraction des métriques et la génération de CSV et figures :</p>
+    <pre><code># Extraire les résultats avec génération de CSV
+python3 tools/simulate_results.py \
+    --log-file simulation_logs.txt \
+    --output-dir results/ \
+    --csv
+
+# Générer les figures
+python3 tools/simulate_results.py \
+    --log-file simulation_logs.txt \
+    --output-dir results/ \
+    --figures</code></pre>
+
+    <h2>2. Examiner les fichiers CSV générés</h2>
+    <pre><code>ls results/
+cat results/figure_data_energy.csv
+cat results/figure_data_qos.csv</code></pre>
+
+    <h2>3. Analyser figure_data_energy.csv</h2>
+    <p>Ce fichier contient les données énergétiques structurées par nœud et par intervalle de temps :</p>
+    <pre><code>import pandas as pd
+import matplotlib.pyplot as plt
+
+df_energy = pd.read_csv('results/figure_data_energy.csv')
+print(df_energy.describe())
+
+# Évolution du MCS pour les 5 premiers nœuds
+for node in df_energy['Node'].unique()[:5]:
+    node_data = df_energy[df_energy['Node'] == node]
+    plt.plot(node_data['Time'], node_data['MCS'], label=f'Node {node}')
+
+plt.xlabel('Temps (s)')
+plt.ylabel('MCS')
+plt.legend()
+plt.title('Évolution du MCS par nœud')
+plt.savefig('results/mcs_per_node.png')
+plt.show()</code></pre>
+
+    <h2>4. Analyser figure_data_qos.csv</h2>
+    <pre><code>df_qos = pd.read_csv('results/figure_data_qos.csv')
+print(df_qos.head())
+
+plt.figure(figsize=(10, 6))
+plt.subplot(2, 1, 1)
+plt.plot(df_qos['Time'], df_qos['PDR'], 'b-')
+plt.ylabel('PDR (%)')
+plt.ylim(90, 100)
+
+plt.subplot(2, 1, 2)
+plt.plot(df_qos['Time'], df_qos['Latency'], 'r-')
+plt.xlabel('Temps (s)')
+plt.ylabel('Latence (ms)')
+
+plt.savefig('results/qos_evolution.png')
+plt.show()</code></pre>
+
+    <h2>5. Générer des figures personnalisées</h2>
+    <p>Créez une figure comparant RPL-AER avec RPL standard (si vous avez les deux jeux de logs) :</p>
+    <pre><code># Comparaison RPL standard vs RPL-AER
+plt.figure(figsize=(8, 5))
+categories = ['PDR (%)', 'Latence (ms)', 'Énergie (mW)']
+rpl_std = [94.2, 25.3, 5.1]
+rpl_aer = [97.5, 18.2, 4.2]
+
+x = range(len(categories))
+plt.bar(x, rpl_std, width=0.35, label='RPL standard', color='#e74c3c')
+plt.bar([i + 0.35 for i in x], rpl_aer, width=0.35, label='RPL-AER', color='#2ecc71')
+plt.xticks([i + 0.175 for i in x], categories)
+plt.ylabel('Valeur')
+plt.legend()
+plt.title('Comparaison RPL standard vs RPL-AER')
+plt.savefig('results/comparison.png')
+plt.show()</code></pre>
+
+    <h2>6. Exporter pour publication</h2>
+    <pre><code># Générer des figures en haute résolution
+python3 tools/simulate_results.py \
+    --log-file simulation_logs.txt \
+    --output-dir results/ \
+    --figures --dpi 300 --format pdf</code></pre>
+
+    <h2>7. Questions</h2>
+    <ol>
+      <li>Quels sont les avantages de RPL-AER par rapport à RPL standard en termes de PDR et d'énergie ?</li>
+      <li>Comment les figures générées peuvent-elles être utilisées dans une publication académique ?</li>
+      <li>Quelles informations supplémentaires pourraient être extraites des logs pour enrichir l'analyse ?</li>
+      <li>Générez un graphique comparant la durée de vie du réseau avec et sans RPL-AER.</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

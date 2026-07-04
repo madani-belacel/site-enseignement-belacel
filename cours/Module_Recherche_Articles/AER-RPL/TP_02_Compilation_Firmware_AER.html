@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 02 — Compilation du firmware RPL-AER — Dr. Madani BELACEL</title>
+<meta name="description" content="TP 02 : compilation du firmware RPL-AER avec build_and_test.sh, configuration Makefile et project-conf.h.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">TP 02 — Compilation</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 02 : Compilation du firmware RPL-AER</h1>
+
+    <div class="md-meta">
+      <strong>TP 02 — Compilation du firmware RPL-AER</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h</li>
+        <li><strong>Objectifs :</strong> Compiler le firmware RPL-AER pour Cooja, comprendre la configuration</li>
+      </ul>
+    </div>
+
+    <h2>1. Prérequis</h2>
+    <p>Avant de commencer, assurez-vous que Contiki-NG et les outils de compilation sont installés :</p>
+    <pre><code># Vérifier l'installation de Contiki-NG
+ls $CONTIKI_DIR
+echo $CONTIKI_DIR
+
+# Vérifier la chaîne de compilation pour Cooja
+which msp430-gcc || which arm-none-eabi-gcc</code></pre>
+
+    <h2>2. Utiliser build_and_test.sh</h2>
+    <p>Le script <code>build_and_test.sh</code> automatise la compilation :</p>
+    <pre><code>cd /home/madani/contiki-ng/examples/projet_madani/RPL-AER-main
+./tools/build_and_test.sh</code></pre>
+    <p>Ce script effectue les opérations suivantes :</p>
+    <ul>
+      <li>Compilation du firmware pour la plateforme Cooja (native)</li>
+      <li>Vérification des erreurs de compilation</li>
+      <li>Lancement des tests unitaires (si présents)</li>
+    </ul>
+
+    <h2>3. Compilation manuelle avec make</h2>
+    <p>Vous pouvez aussi compiler manuellement :</p>
+    <pre><code>cd examples/rpl-aer
+make TARGET=cooja</code></pre>
+    <p>Les fichiers binaires générés sont :</p>
+    <ul>
+      <li><code>rpl-aer.cooja</code> — Firmware pour nœud normal</li>
+      <li><code>rpl-aer-sink.cooja</code> — Firmware pour nœud sink</li>
+      <li><code>udp-client.cooja</code> — Application cliente</li>
+      <li><code>udp-server.cooja</code> — Application serveur</li>
+    </ul>
+
+    <h2>4. Comprendre le Makefile</h2>
+    <p>Ouvrez le Makefile et examinez :</p>
+    <pre><code>cat examples/rpl-aer/Makefile</code></pre>
+    <p>Points clés à identifier :</p>
+    <ul>
+      <li>La variable <code>CONTIKI</code> pointant vers le répertoire racine de Contiki-NG</li>
+      <li>Les modules inclus (<code>PROJECT_SOURCEFILES</code>)</li>
+      <li>Les flags de compilation spécifiques</li>
+    </ul>
+
+    <h2>5. Configuration dans project-conf.h</h2>
+    <p>Le fichier <code>project-conf.h</code> contrôle les fonctionnalités activées :</p>
+    <pre><code>// Désactiver/activer des modules
+#define RPL_AER_TRUST_ENABLED   1   // Activer le module de confiance
+#define RPL_AER_HARVEST_ENABLED 1   // Activer la récolte solaire
+#define RPL_AER_MOBILITY_ENABLED 1  // Activer la mobilité
+
+// Configurer les poids MCS
+#define MCS_ALPHA 0.5
+#define MCS_BETA  0.3
+#define MCS_GAMMA 0.2
+
+// Configurer le LSTM
+#define LSTM_WINDOW_SIZE 5
+#define LSTM_UPDATE_INTERVAL 300  // secondes</code></pre>
+
+    <h2>6. Modifier la configuration</h2>
+    <p>Essayez de modifier <code>project-conf.h</code> pour :</p>
+    <ol>
+      <li>Désactiver le module de confiance (<code>RPL_AER_TRUST_ENABLED 0</code>)</li>
+      <li>Changer les poids MCS (&alpha;=0.4, &beta;=0.4, &gamma;=0.2)</li>
+      <li>Recompiler avec <code>make TARGET=cooja</code></li>
+    </ol>
+
+    <h2>7. Vérification des binaires</h2>
+    <p>Vérifiez que les fichiers .cooja ont été générés :</p>
+    <pre><code>ls -la *.cooja</code></pre>
+
+    <h2>8. Questions</h2>
+    <ol>
+      <li>Quels sont les fichiers source inclus dans le Makefile ?</li>
+      <li>Quelle est la différence entre <code>rpl-aer.cooja</code> et <code>rpl-aer-sink.cooja</code> ?</li>
+      <li>Comment désactiver complètement la prédiction LSTM ?</li>
+      <li>Quelle plateforme cible est utilisée pour la simulation Cooja ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

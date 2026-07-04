@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 10 — Métriques d'évaluation IDS — IDS-IOT</title>
+<meta name="description" content="Métriques d'évaluation pour RPL-ClusterIDS : DR, FPR, Précision, Rappel, F1-Score, Overhead énergétique, Latence de détection.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+</head><body>
+
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 10 — Métriques d'évaluation</li></ol></nav>
+
+<main class="page-content" id="main-content"><div class="md-content">
+
+<h1>Métriques d'évaluation IDS</h1>
+
+<div class="md-meta"><strong>Cours 10 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Auteur :</strong> Dr. Madani BELACEL</li><li><strong>Tables :</strong> Tables II–IX dans l'article Elsevier</li></ul></div>
+
+<h2>1. Matrice de confusion</h2>
+<p>Les métriques de détection sont basées sur la matrice de confusion :</p>
+<ul>
+  <li><strong>VP (Vrai Positif)</strong> — Attaque détectée correctement</li>
+  <li><strong>FP (Faux Positif)</strong> — Alerte pour un comportement normal</li>
+  <li><strong>VN (Vrai Négatif)</strong> — Comportement normal correctement identifié</li>
+  <li><strong>FN (Faux Négatif)</strong> — Attaque non détectée</li>
+</ul>
+
+<h2>2. Detection Rate (DR) / Recall</h2>
+<p>Le taux de détection mesure la proportion d'attaques correctement identifiées :</p>
+<pre><strong>DR = VP / (VP + FN)</strong></pre>
+<p>Un DR élevé (proche de 1) signifie que l'IDS détecte la plupart des attaques. RPL-ClusterIDS vise DR > 90% pour les attaques simples, > 80% pour les attaques mixtes.</p>
+
+<h2>3. False Positive Rate (FPR)</h2>
+<p>Le taux de faux positifs mesure la proportion de comportements normaux incorrectement signalés comme attaques :</p>
+<pre><strong>FPR = FP / (FP + VN)</strong></pre>
+<p>Un FPR bas (idéalement < 5%) est essentiel pour éviter la fatigue des alertes. L'agrégation CH de RPL-ClusterIDS réduit le FPR de 40-60% par rapport à une détection locale.</p>
+
+<h2>4. Précision (Precision)</h2>
+<p>La précision mesure la proportion d'alertes qui sont correctes :</p>
+<pre><strong>Précision = VP / (VP + FP)</strong></pre>
+
+<h2>5. F1-Score</h2>
+<p>Le F1-Score est la moyenne harmonique de la précision et du rappel :</p>
+<pre><strong>F1 = 2 · (Précision · Rappel) / (Précision + Rappel)</strong></pre>
+<p>Cette métrique unique permet de comparer globalement les variantes. Un F1 > 0.85 est considéré comme excellent.</p>
+
+<h2>6. Overhead énergétique</h2>
+<p>L'overhead énergétique mesure l'énergie supplémentaire consommée par le mécanisme IDS par rapport à RPL standard (B1) :</p>
+<pre><strong>Overhead_E = (E_IDS - E_B1) / E_B1 · 100%</strong></pre>
+<p>Mesuré via le modèle d'énergie de Cooja (energest). Les overheads typiques :</p>
+<ul>
+  <li>Full mode : 15-20%</li>
+  <li>Balanced mode : 8-10%</li>
+  <li>Eco mode : 3-5%</li>
+</ul>
+
+<h2>7. Latence de détection</h2>
+<p>La latence de détection est le temps entre le début d'une attaque et la première alerte générée :</p>
+<pre><strong>Latence = t_alerte - t_attaque</strong></pre>
+<p>Elle dépend de la politique contextuelle et de la période de rapport LAS. En mode Full, la latence moyenne est de 5-15 secondes simulées.</p>
+
+<h2>8. Tables de l'article (Tables II-IX)</h2>
+<p>L'article présente 8 tables comparatives :</p>
+<table>
+  <tr><th>Table</th><th>Contenu</th></tr>
+  <tr><td>II</td><td>DR par variant et type d'attaque</td></tr>
+  <tr><td>III</td><td>FPR par variant et type d'attaque</td></tr>
+  <tr><td>IV</td><td>F1-Score par variant</td></tr>
+  <tr><td>V</td><td>Overhead énergétique par variant</td></tr>
+  <tr><td>VI</td><td>Latence de détection par politique contextuelle</td></tr>
+  <tr><td>VII</td><td>Impact du nombre de nœuds malveillants</td></tr>
+  <tr><td>VIII</td><td>Comparaison avec l'état de l'art</td></tr>
+  <tr><td>IX</td><td>Résumé des ablation studies</td></tr>
+</table>
+
+<h2>9. Interpretation des résultats</h2>
+<p>Les résultats préliminaires (pilot campaign) montrent :</p>
+<ul>
+  <li>DR > 94% pour l'attaque rank en mode Full</li>
+  <li>FPR < 6% pour toutes les attaques en mode Full</li>
+  <li>CLUSTERIDS (MAIN) surpasse systématiquement les ablations</li>
+  <li>L'agrégation CH améliore le F1-Score de 0.12 à 0.15 par rapport à la détection locale</li>
+</ul>
+
+<blockquote><strong>Note :</strong> Ces résultats sont préliminaires (phase 2.1). La campagne complète permettra de les consolider statistiquement sur 30+ seeds.</blockquote>
+
+</div></main>
+
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

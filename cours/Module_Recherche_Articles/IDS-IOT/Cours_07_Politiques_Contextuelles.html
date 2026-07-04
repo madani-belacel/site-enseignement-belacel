@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 07 — Politiques contextuelles (Full/Balanced/Eco) — IDS-IOT</title>
+<meta name="description" content="Politiques contextuelles de RPL-ClusterIDS : Full (monitoring total), Balanced (échantillonnage), Eco (déclenché par événement). Implémentation dans ctx_policy.c.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+</head><body>
+
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 07 — Politiques contextuelles</li></ol></nav>
+
+<main class="page-content" id="main-content"><div class="md-content">
+
+<h1>Politiques contextuelles (Full/Balanced/Eco)</h1>
+
+<div class="md-meta"><strong>Cours 07 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Auteur :</strong> Dr. Madani BELACEL</li><li><strong>Code source :</strong> <code>ctx_policy.c</code> / <code>ctx_policy.h</code></li></ul></div>
+
+<h2>1. Principe des politiques contextuelles</h2>
+<p>Les politiques contextuelles permettent d'ajuster dynamiquement l'intensité du monitoring IDS en fonction de l'énergie résiduelle du nœud et du contexte opérationnel. L'objectif est d'optimiser le compromis entre sécurité (taux de détection) et consommation d'énergie (durée de vie du réseau).</p>
+
+<h2>2. Mode Full</h2>
+<p><strong>Description :</strong> Monitoring intensif de tous les paquets entrants et sortants. Toutes les règles R1-R4 sont appliquées sur chaque paquet. Les LAS sont transmis au CH à chaque intervalle.</p>
+<p><strong>Consommation :</strong> Élevée (≈ 15-20% d'overhead énergétique par rapport à RPL standard)</p>
+<p><strong>Taux de détection :</strong> Maximum (DR > 95% pour la plupart des attaques)</p>
+<p><strong>Quand l'utiliser :</strong> Périodes de menace élevée, énergie suffisante, nœuds CH</p>
+
+<h2>3. Mode Balanced</h2>
+<p><strong>Description :</strong> Monitoring par échantillonnage. Les règles sont appliquées sur 1 paquet sur <em>N</em> (par défaut N=5 pour 20% d'échantillonnage). Les LAS sont transmis seulement s'ils dépassent un seuil bas (0.3).</p>
+<p><strong>Consommation :</strong> Modérée (≈ 8-10% d'overhead)</p>
+<p><strong>Taux de détection :</strong> Bon (DR > 85%)</p>
+<p><strong>Quand l'utiliser :</strong> Fonctionnement normal, équilibre sécurité/énergie</p>
+
+<h2>4. Mode Eco</h2>
+<p><strong>Description :</strong> Monitoring déclenché par événement. Les règles sont appliquées seulement si un événement inhabituel est détecté (changement soudain de topologie, message RPL anormal, etc.). Entre les événements, seul un monitoring passif minimal est maintenu.</p>
+<p><strong>Consommation :</strong> Faible (≈ 3-5% d'overhead)</p>
+<p><strong>Taux de détection :</strong> Réduit (DR ≈ 70-75%)</p>
+<p><strong>Quand l'utiliser :</strong> Énergie critique, longue période sans menace détectée</p>
+
+<h2>5. Implémentation dans ctx_policy.c</h2>
+<p>Le module <code>ctx_policy.c</code> expose les fonctions suivantes :</p>
+<ul>
+  <li><code>set_context_policy(enum ctx_mode mode)</code> — Change la politique courante</li>
+  <li><code>ctx_should_monitor()</code> — Détermine si le paquet courant doit être inspecté</li>
+  <li><code>ctx_should_report(float las)</code> — Détermine si le LAS doit être transmis au CH</li>
+  <li><code>ctx_get_sampling_rate()</code> — Retourne le taux d'échantillonnage courant</li>
+  <li><code>ctx_energy_overhead()</code> — Estime l'overhead énergétique de la politique courante</li>
+</ul>
+
+<h2>6. Transition entre modes</h2>
+<p>Le système peut basculer automatiquement entre les modes selon l'énergie résiduelle :</p>
+<table>
+  <tr><th>Énergie résiduelle</th><th>Mode par défaut</th></tr>
+  <tr><td>> 60%</td><td>Full</td></tr>
+  <tr><td>30% — 60%</td><td>Balanced</td></tr>
+  <tr><td>< 30%</td><td>Eco</td></tr>
+</table>
+<p>La transition peut aussi être déclenchée manuellement via un message de la racine RPL.</p>
+
+<h2>7. Compromis sécurité vs énergie</h2>
+<p>L'analyse préliminaire montre que le mode Balanced offre le meilleur compromis : il préserve 87% du taux de détection du mode Full tout en réduisant l'overhead énergétique de 45%. Le choix de la politique est donc contextuel et peut être adapté dynamiquement.</p>
+
+<blockquote><strong>Note :</strong> Les seuils de transition et les taux d'échantillonnage sont configurables dans <code>project-conf.h</code> via les macros <code>CTX_THRESHOLD_FULL</code>, <code>CTX_THRESHOLD_BALANCED</code>, <code>CTX_SAMPLING_RATE</code>.</blockquote>
+
+</div></main>
+
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

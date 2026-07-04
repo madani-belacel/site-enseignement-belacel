@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 07 — Durée de vie du réseau — Dr. Madani BELACEL</title>
+<meta name="description" content="Estimation de la durée de vie du réseau dans RPLCB : FND, HND, LND, impact du CB sur la longévité.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">RPLMQOS</a></li>
+    <li class="current">Cours 07 — Durée de vie du réseau</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>Cours 07 — Estimation de la durée de vie du réseau</h1>
+
+    <div class="md-meta">
+      <strong>Durée de vie du réseau</strong>
+      <ul>
+        <li><strong>Durée :</strong> 2h CM</li>
+        <li><strong>Objectif :</strong> Comprendre les définitions de durée de vie et comment RPLCB l'améliore</li>
+      </ul>
+    </div>
+
+    <h2>1. Définitions de la durée de vie du réseau</h2>
+    <p>La durée de vie d'un réseau de capteurs est une métrique essentielle qui mesure le temps pendant lequel le réseau remplit ses fonctions. Trois définitions sont utilisées dans la littérature :</p>
+    <h3>1.1 FND — First Node Death</h3>
+    <p>Temps écoulé jusqu'à ce que le premier nœud du réseau épuise complètement sa batterie. C'est la définition la plus conservative : le réseau commence à perdre sa couverture dès le premier nœud mort.</p>
+    <h3>1.2 HND — Half Node Death</h3>
+    <p>Temps écoulé jusqu'à ce que 50% des nœuds aient épuisé leur batterie. Cette définition est utilisée quand la redondance permet de tolérer des pertes partielles.</p>
+    <h3>1.3 LND — Last Node Death</h3>
+    <p>Temps écoulé jusqu'à ce que le dernier nœud meure. Cette valeur correspond à la durée de vie maximale possible mais n'est pas représentative de la fonctionnalité du réseau.</p>
+
+    <h2>2. Comment RPLCB améliore la durée de vie</h2>
+    <p>RPLCB améliore la durée de vie du réseau via le mécanisme Control Bit :</p>
+    <ul>
+      <li><strong>Évitement des nœuds à faible énergie</strong> : un nœud dont l'énergie descend sous un seuil passe CB=1, ce qui empêche les autres nœuds de le choisir comme parent</li>
+      <li><strong>Répartition de la charge</strong> : les nœuds à forte énergie sont préférentiellement sélectionnés comme parents</li>
+      <li><strong>Préservation des nœuds critiques</strong> : les nœuds proches du root (qui auraient naturellement plus de charge) peuvent signaler leur niveau d'énergie</li>
+    </ul>
+
+    <h2>3. Estimation à partir des données d'énergie</h2>
+    <p>L'estimation de la durée de vie se fait à partir de la consommation d'énergie mesurée :</p>
+    <pre>E_capacité = Capacité_batterie (mAh)  Tension (V)  3.6 (J)
+
+T_vie = E_capacité / P_moyenne
+
+où P_moyenne = Énergie_totale_consommée / Temps_de_simulation</pre>
+    <p>Par exemple, avec une batterie de 2000 mAh à 3V : E_capacité = 2000  3  3.6 = 21600 J. Si la puissance moyenne est de 0.05 W, la durée de vie estimée est de 432000 s soit 5 jours.</p>
+
+    <h2>4. Exemple d'analyse comparative</h2>
+    <table>
+      <thead>
+        <tr><th>Métrique</th><th>RPL (25 nœuds)</th><th>RPLCB (25 nœuds)</th><th>Amélioration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>FND</td><td>850 s</td><td>1200 s</td><td>+41%</td></tr>
+        <tr><td>HND</td><td>1600 s</td><td>2100 s</td><td>+31%</td></tr>
+        <tr><td>LND</td><td>2800 s</td><td>3200 s</td><td>+14%</td></tr>
+      </tbody>
+    </table>
+
+    <h2>5. Facteurs influençant la durée de vie</h2>
+    <ul>
+      <li><strong>Densité du réseau</strong> : plus il y a de nœuds, plus la charge est répartie</li>
+      <li><strong>Portée radio</strong> : une portée plus courte augmente le nombre de sauts</li>
+      <li><strong>Intervalle d'envoi</strong> : un intervalle plus court augmente la consommation</li>
+      <li><strong>Seuil du CB</strong> : le choix du seuil d'énergie pour passer CB=1 est critique</li>
+    </ul>
+
+    <h2>6. Questions de révision</h2>
+    <ol>
+      <li>Comparez FND, HND et LND. Quelle définition est la plus adaptée pour une application de surveillance ?</li>
+      <li>Expliquez comment le CB peut retarder le FND dans RPLCB.</li>
+      <li>Calculez la durée de vie d'un nœud avec une batterie de 1200 mAh à 3.7 V consommant 0.08 W.</li>
+      <li>Quel est l'impact du seuil d'énergie CB sur la durée de vie ?</li>
+      <li>Proposez une amélioration du mécanisme CB pour mieux équilibrer la durée de vie.</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span> Universit de Mostaganem</span>
+      <span> 2025-2026</span>
+    </div>
+    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

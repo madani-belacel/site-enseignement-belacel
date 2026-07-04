@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 07 — Scénarios d'attaque — AER-MQoS</title>
+<meta name="description" content="Exécuter des simulations d'attaque (rank anomaly, selective forwarding, mixed) avec AER-MQoS et observer la dégradation du Trust Score.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">TP 07 — Scénarios d'attaque</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 07 — Scénarios d'attaque</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 1h30<br>
+      <strong>Objectif :</strong> Exécuter des simulations avec attaques (rank anomaly, selective forwarding, mixed) et observer la résilience d'AER-MQoS via le Trust Score<br>
+      <strong>Prérequis :</strong> TP 03, Cours 07 (Trust Score)
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Types d'attaques simulées</h2>
+    <p>AER-MQoS inclut trois scénarios d'attaque dans les simulations :</p>
+    <table>
+      <tr><th>Attaque</th><th>Comportement du nœud malveillant</th><th>Impact attendu</th></tr>
+      <tr><td><strong>Rank anomaly</strong></td><td>Annonce un rank anormalement bas pour attirer le trafic (sinkhole)</td><td>Augmentation du trafic vers l'attaquant, pertes possibles</td></tr>
+      <tr><td><strong>Selective forwarding</strong></td><td>Ne transmet qu'une partie des paquets reçus</td><td>Baisse du PDR, augmentation des retransmissions</td></tr>
+      <tr><td><strong>Mixed</strong></td><td>Combine rank anomaly et selective forwarding</td><td>Effet cumulé : attracteur + pertes</td></tr>
+    </table>
+
+    <h2>2. Localiser les fichiers d'attaque</h2>
+    <p>Trouvez les fichiers de simulation d'attaque dans le dépôt :</p>
+    <pre><code>find . -name "*attack*" -o -name "*attaque*" -o -name "*anomaly*"</code></pre>
+    <p>Ils devraient se trouver dans <code>simulations/attack/</code> ou similaire.</p>
+
+    <h2>3. Lancer une simulation avec attaque rank anomaly</h2>
+    <pre><code># Lancer la simulation avec attaque
+./tools/cooja/cooja -nogui -contiki=.. \
+  -simulation=simulations/attack/aer-attack-rank-anomaly.csc \
+  > attack_rank.log 2>&1</code></pre>
+
+    <h2>4. Analyser les logs Trust Score</h2>
+    <p>Extrayez les logs [TRUST] qui montrent l'évolution du score de confiance :</p>
+    <pre><code>grep "\[TRUST\]" attack_rank.log > trust_logs.txt
+head -20 trust_logs.txt</code></pre>
+    <p>Le format typique :</p>
+    <pre><code>[TRUST] Node:1.1.1.5 Neighbor:1.1.1.2 ETX=2.3 TrustScore=0.675
+[TRUST] Node:1.1.1.5 Neighbor:1.1.1.3 ETX=1.2 TrustScore=0.950</code></pre>
+
+    <h2>5. Observer la pénalité d'anomalie</h2>
+    <p>Cherchez dans les logs la détection d'anomalie :</p>
+    <pre><code>grep -i "anomaly\|penalty\|suspect" attack_rank.log</code></pre>
+    <p>Vous devriez voir des messages comme :</p>
+    <pre><code>[TRUST] Anomaly detected: Node 1.1.1.3 rank_inconsistency
+[TRUST] Penalty applied to 1.1.1.3: TrustScore 0.950 -> 0.475</code></pre>
+
+    <h2>6. Comparer PDR avec et sans attaque</h2>
+    <p>Comparez les métriques de campagne :</p>
+    <pre><code>grep "\[METRIC\]" attack_rank.log
+grep "\[METRIC\]" campagne_grid_30.log  # simulation sans attaque</code></pre>
+    <p>Quelle est la différence de PDR ? Comment le Trust Score a-t-il mitigé l'impact ?</p>
+
+    <h2>7. Attaque selective forwarding</h2>
+    <p>Répétez les étapes 3 à 6 avec le fichier d'attaque <em>selective forwarding</em> :</p>
+    <pre><code>./tools/cooja/cooja -nogui -contiki=.. \
+  -simulation=simulations/attack/aer-attack-selective-fwd.csc \
+  > attack_selective.log 2>&1</code></pre>
+
+    <h2>8. Attaque mixte</h2>
+    <p>Lancez la simulation d'attaque mixte (rank anomaly + selective forwarding) :</p>
+    <pre><code>./tools/cooja/cooja -nogui -contiki=.. \
+  -simulation=simulations/attack/aer-attack-mixed.csc \
+  > attack_mixed.log 2>&1</code></pre>
+
+    <h2>9. Tableau comparatif</h2>
+    <p>Compilez les résultats dans un tableau :</p>
+    <table>
+      <tr><th>Scénario</th><th>PDR global</th><th>PDR C0</th><th>PDR C3</th><th>Trust Score (attaquant)</th></tr>
+      <tr><td>Sans attaque</td><td></td><td></td><td></td><td>N/A</td></tr>
+      <tr><td>Rank anomaly</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Selective forwarding</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>Mixte</td><td></td><td></td><td></td><td></td></tr>
+    </table>
+
+    <h2>10. Questions</h2>
+    <ol>
+      <li>Quel type d'attaque dégrade le plus le PDR ?</li>
+      <li>Le Trust Score a-t-il correctement pénalisé les nœuds attaquants ?</li>
+      <li>Les classes prioritaires (C0) sont-elles mieux protégées que C3 ?</li>
+      <li>Que se passerait-il avec RPL-MRHOF (sans Trust Score) sous ces attaques ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

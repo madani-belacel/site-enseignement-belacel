@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 04 — Analyse des logs MCS — Dr. Madani BELACEL</title>
+<meta name="description" content="TP 04 : analyser les logs MCS pour extraire NRE, PEC, ECS et comprendre l'évolution temporelle du score.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">TP 04 — Logs MCS</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 04 : Analyse des logs MCS</h1>
+
+    <div class="md-meta">
+      <strong>TP 04 — Analyse des logs MCS</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h</li>
+        <li><strong>Objectifs :</strong> Analyser les logs MCS, extraire NRE/PEC/ECS, comprendre l'évolution temporelle</li>
+      </ul>
+    </div>
+
+    <h2>1. Extraire les logs MCS</h2>
+    <p>Après avoir lancé la simulation, extrayez les lignes MCS des logs :</p>
+    <pre><code>grep "\[MCS\]" simulation_logs.txt > mcs_logs.txt</code></pre>
+
+    <h2>2. Analyser le format des logs</h2>
+    <p>Chaque ligne MCS a le format :</p>
+    <pre><code>[MCS] Node XX: NRE=X.XXX PEC=X.XXX ECS=X.XXX MCS=X.XXX</code></pre>
+    <p>Utilisez Python pour parser ces lignes :</p>
+    <pre><code>import re
+
+logs = []
+with open('mcs_logs.txt') as f:
+    for line in f:
+        m = re.search(r'Node (\d+): NRE=([\d.]+) PEC=([\d.]+) ECS=([\d.]+) MCS=([\d.]+)', line)
+        if m:
+            logs.append({
+                'node': int(m.group(1)),
+                'nre': float(m.group(2)),
+                'pec': float(m.group(3)),
+                'ecs': float(m.group(4)),
+                'mcs': float(m.group(5))
+            })</code></pre>
+
+    <h2>3. Analyser les statistiques</h2>
+    <p>Pour chaque nœud, calculez :</p>
+    <pre><code>import statistics
+
+for node_id in set(l['node'] for l in logs):
+    node_logs = [l for l in logs if l['node'] == node_id]
+    avg_nre = statistics.mean(l['nre'] for l in node_logs)
+    avg_mcs = statistics.mean(l['mcs'] for l in node_logs)
+    min_nre = min(l['nre'] for l in node_logs)
+    print(f"Node {node_id}: avg_NRE={avg_nre:.3f} avg_MCS={avg_mcs:.3f} min_NRE={min_nre:.3f}")</code></pre>
+
+    <h2>4. Évolution temporelle du MCS</h2>
+    <p>Créez un graphique de l'évolution du MCS pour plusieurs nœuds :</p>
+    <pre><code>import matplotlib.pyplot as plt
+
+# Grouper par intervalle de temps (toutes les 10 entrées)
+for node_id in [2, 5, 10, 15]:
+    node_logs = [l for l in logs if l['node'] == node_id]
+    mcs_values = [l['mcs'] for l in node_logs]
+    plt.plot(mcs_values, label=f'Node {node_id}')
+
+plt.xlabel('Échantillon')
+plt.ylabel('MCS')
+plt.legend()
+plt.title('Évolution du MCS au fil du temps')
+plt.savefig('mcs_evolution.png')
+plt.show()</code></pre>
+
+    <h2>5. Corrélation NRE vs MCS</h2>
+    <p>Analysez la corrélation entre NRE et MCS pour vérifier que le NRE est bien le facteur dominant :</p>
+    <pre><code>nre_values = [l['nre'] for l in logs]
+mcs_values = [l['mcs'] for l in logs]
+correlation = statistics.correlation(nre_values, mcs_values)
+print(f"Corrélation NRE-MCS: {correlation:.3f}")</code></pre>
+
+    <h2>6. Comparer les types de nœuds</h2>
+    <p>Si vous avez identifié les types de nœuds dans la simulation, comparez leurs MCS :</p>
+    <pre><code># Nœuds Battery: 2-25, Solar: 26-37, Mobile: 38-41 (exemple)
+battery_mcs = [l['mcs'] for l in logs if 2 <= l['node'] <= 25]
+solar_mcs = [l['mcs'] for l in logs if 26 <= l['node'] <= 37]
+mobile_mcs = [l['mcs'] for l in logs if 38 <= l['node'] <= 41]
+
+print(f"Battery avg MCS: {statistics.mean(battery_mcs):.3f}")
+print(f"Solar avg MCS:   {statistics.mean(solar_mcs):.3f}")
+print(f"Mobile avg MCS:  {statistics.mean(mobile_mcs):.3f}")</code></pre>
+
+    <h2>7. Questions</h2>
+    <ol>
+      <li>Quel est le MCS moyen pour chaque type de nœud (Battery, Solar, Mobile) ?</li>
+      <li>Le NRE est-il toujours le facteur dominant du MCS ? Dans quels cas le PEC ou l'ECS deviennent-ils déterminants ?</li>
+      <li>Observez-vous une corrélation entre le nombre de changements de parent et le MCS ?</li>
+      <li>Comment le MCS évolue-t-il pour un nœud solaire pendant la nuit ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

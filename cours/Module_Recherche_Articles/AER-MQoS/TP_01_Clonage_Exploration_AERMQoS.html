@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 01 — Cloner et explorer AER-MQoS — AER-MQoS</title>
+<meta name="description" content="Cloner le dépôt AER-MQoS, explorer l'arborescence, examiner les modules clés du code source.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">TP 01 — Cloner et explorer AER-MQoS</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 01 — Cloner et explorer AER-MQoS</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Travail pratique &mdash; <strong>Durée :</strong> 45 min<br>
+      <strong>Objectif :</strong> Cloner le dépôt GitHub AER-MQoS, explorer la structure du code source et examiner les modules principaux<br>
+      <strong>Prérequis :</strong> Git, environnement Linux avec les outils de base
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Cloner le dépôt</h2>
+    <p>Commencez par cloner le dépôt AER-MQoS depuis GitHub :</p>
+    <pre><code># Les codes sont déjà présents localement
+# Si nécessaire, cloner depuis GitHub:
+# git clone https://github.com/madani-belacel/AER-MQoS.git
+cd /home/madani/contiki-ng/examples/AER-MQoS</code></pre>
+
+<p class="note-local" style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:0.8rem 1rem;border-radius:4px;margin:1rem 0;"><strong>📂 Codes sources disponibles localement :</strong> Ces codes sont déjà présents sur votre machine dans le dossier <code>/home/madani/contiki-ng/examples/AER-MQoS</code>. Vous pouvez également les cloner depuis GitHub si nécessaire.</p>
+
+
+    <h2>2. Explorer la structure du dépôt</h2>
+    <p>Listez le contenu racine pour comprendre l'organisation :</p>
+    <pre><code>ls -la</code></pre>
+    <p>Vous devriez voir :</p>
+    <ul>
+      <li><code>code_source_AER_MQoS/</code> — répertoire du code source Contiki-NG</li>
+      <li><code>scripts/</code> — scripts de campagne et d'analyse</li>
+      <li><code>simulations/</code> — fichiers de simulation Cooja (.csc)</li>
+      <li><code>README.md</code> — documentation du dépôt</li>
+      <li><code>LICENSE</code> — licence du projet</li>
+    </ul>
+
+    <h2>3. Explorer le code source</h2>
+    <p>Plongez dans la structure du code source Contiki-NG :</p>
+    <pre><code>cd code_source_AER_MQoS
+ls -la</code></pre>
+    <p>Identifiez les dossiers clés : <code>os/</code>, <code>examples/</code>, <code>arch/</code>. Le code AER-MQoS se trouve principalement dans <code>examples/aer-mqos/</code> ou un répertoire similaire.</p>
+
+    <p><strong>Exercice :</strong> Trouvez et listez les fichiers suivants dans l'arborescence :</p>
+    <ul>
+      <li><code>aer_rpl_plus.c</code> et <code>aer_rpl_plus.h</code></li>
+      <li><code>aer_qos_queue.c</code> et <code>aer_qos_queue.h</code></li>
+      <li><code>aer_rpl_energy.c</code> et <code>aer_rpl_energy.h</code></li>
+      <li><code>aer_rpl_qlearn.c</code> et <code>aer_rpl_qlearn.h</code></li>
+      <li><code>aer_rpl_trust.c</code> et <code>aer_rpl_trust.h</code></li>
+      <li><code>rpl-of-aer-plus.c</code> et <code>rpl-of-aer-plus.h</code></li>
+    </ul>
+    <p>Utilisez la commande <code>find</code> :</p>
+    <pre><code>find . -name "aer_*.c" -o -name "aer_*.h" -o -name "rpl-of-aer*"</code></pre>
+
+    <h2>4. Examiner le module principal aer_rpl_plus.c</h2>
+    <p>Ouvrez le fichier <code>aer_rpl_plus.c</code> avec votre éditeur de texte :</p>
+    <pre><code>nano chemin/vers/aer_rpl_plus.c</code></pre>
+    <p>Identifiez :</p>
+    <ul>
+      <li>La fonction <code>mcs_calculate()</code> — calcul de la métrique composite</li>
+      <li>La fonction <code>aer_rpl_calculate_contextual_weights()</code> — pondération contextuelle</li>
+      <li>Les constantes <code>ALPHA_DEFAULT</code>, <code>BETA_DEFAULT</code>, <code>GAMMA_DEFAULT</code></li>
+      <li>Les inclusions d'en-tête et les dépendances</li>
+    </ul>
+
+    <h2>5. Examiner le module QoS</h2>
+    <p>Ouvrez <code>aer_qos_queue.c</code> et examinez :</p>
+    <ul>
+      <li>La structure <code>struct aer_qos_queue</code></li>
+      <li>La fonction <code>aer_qos_wrr_schedule()</code> — algorithme WRR</li>
+      <li>Les poids par défaut (6, 3, 2, 1)</li>
+      <li>La politique de drop en cas de file pleine</li>
+    </ul>
+
+    <h2>6. Examiner le dossier variants/</h2>
+    <p>Repérez les fichiers de macros de variantes :</p>
+    <pre><code>find . -path "*/variants/*" -name "*.h"</code></pre>
+    <p>Examinez chaque fichier <code>imacros-*.h</code> pour comprendre :</p>
+    <ul>
+      <li><code>imacros-rpl-mrhof.h</code> — variante RPL-MRHOF (baseline)</li>
+      <li><code>imacros-rpl-mqos-style.h</code> — variante RPL-MQoS-style</li>
+      <li><code>imacros-rpl-aer-style.h</code> — variante RPL-AER-style</li>
+      <li><code>imacros-aer-mqos.h</code> — variante AER-MQoS complète</li>
+    </ul>
+
+    <h2>7. Vérification et rapport</h2>
+    <p>Pour valider le TP, produisez un fichier <code>exploration.txt</code> contenant :</p>
+    <ol>
+      <li>La sortie de <code>git log --oneline -5</code></li>
+      <li>La liste des fichiers <code>aer_*.c</code> trouvés</li>
+      <li>Le contenu du fichier <code>imacros-aer-mqos.h</code></li>
+      <li>Les 20 premières lignes de <code>aer_rpl_plus.c</code></li>
+    </ol>
+    <p>Ce rapport servira de point de départ pour les TP suivants.</p>
+
+    <h2>8. Questions de réflexion</h2>
+    <ol>
+      <li>Combien de fichiers <code>.c</code> le projet AER-MQoS contient-il ?</li>
+      <li>Quels sont les trois poids contextuels par défaut ?</li>
+      <li>Quelle est la différence entre les macros des 4 variantes ?</li>
+      <li>Comment la métrique MCS est-elle structurée dans le code ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

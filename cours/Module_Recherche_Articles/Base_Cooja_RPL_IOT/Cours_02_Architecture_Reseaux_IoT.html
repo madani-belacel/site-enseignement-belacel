@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 02 — Architecture des réseaux IoT — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Architecture des réseaux IoT : IEEE 802.15.4, 6LoWPAN, IPv6, UDP/TCP pour IoT, protocole CoAP.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">Cours 02 — Architecture des réseaux IoT</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>Cours 02 — Architecture des Réseaux IoT</h1>
+
+    <div class="md-meta">
+      <strong>Cours 02</strong> — Durée estimée : 2h30 — Protocoles et standards IoT
+    </div>
+
+    <h2>1. La pile protocolaire IoT</h2>
+    <p>Contrairement aux réseaux TCP/IP classiques, l'IoT nécessite une pile protocolaire adaptée aux contraintes des objets contraints (mémoire, énergie, puissance de calcul). La pile typique se compose de :</p>
+    <ul>
+      <li><strong>Couche physique/MAC :</strong> IEEE 802.15.4</li>
+      <li><strong>Couche adaptation :</strong> 6LoWPAN</li>
+      <li><strong>Couche réseau :</strong> IPv6, RPL</li>
+      <li><strong>Couche transport :</strong> UDP (principalement)</li>
+      <li><strong>Couche application :</strong> CoAP, MQTT</li>
+    </ul>
+
+    <h2>2. IEEE 802.15.4 — Physique et MAC</h2>
+    <p>IEEE 802.15.4 est le standard de référence pour les réseaux personnels sans fil à faible débit (LR-WPAN). C'est la couche la plus utilisée dans les WSN.</p>
+    <p><strong>Caractéristiques PHY :</strong></p>
+    <ul>
+      <li>Bandes de fréquence : 868 MHz (Europe), 915 MHz (Amérique), 2.4 GHz (monde)</li>
+      <li>Débit : 20-250 kbps selon la bande</li>
+      <li>Portée : 10-100 mètres</li>
+      <li>Puissance d'émission : ~1 mW (très faible)</li>
+    </ul>
+    <p><strong>Caractéristiques MAC :</strong></p>
+    <ul>
+      <li>CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)</li>
+      <li>Trames de 127 octets maximum (très petite taille)</li>
+      <li>Deux modes : beacon-enabled (synchronisé) et non-beacon (asynchrone)</li>
+      <li>Topologies : étoile, arbre, maillage (via couche supérieure)</li>
+    </ul>
+
+    <h2>3. 6LoWPAN — IPv6 sur LoWPAN</h2>
+    <p>6LoWPAN (IPv6 over Low-Power Wireless Personal Area Networks) est défini par la RFC 4944. Il joue le rôle de couche d'adaptation entre IEEE 802.15.4 et IPv6.</p>
+    <p><strong>Problèmes résolus :</strong></p>
+    <ul>
+      <li><strong>Taille des trames :</strong> IPv6 requiert 1280 octets MTU minimum, mais 802.15.4 ne supporte que 127 octets → fragmentation et réassemblage</li>
+      <li><strong>En-tête IPv6 :</strong> 40 octets, trop lourd → compression d'en-tête (HC1, HC2, IPHC)</li>
+      <li><strong>Adressage :</strong> mappe les adresses MAC 64-bit en adresses IPv6</li>
+    </ul>
+    <p><strong>Compression d'en-tête (IPHC) :</strong> réduit l'en-tête IPv6 de 40 octets à 2-12 octets. Les champs redondants (version, traffic class, flow label) sont éliminés ou inférés.</p>
+
+    <h2>4. UDP et TCP pour l'IoT</h2>
+    <p><strong>UDP (User Datagram Protocol)</strong> est le protocole de transport privilégié dans l'IoT pour plusieurs raisons :</p>
+    <ul>
+      <li>Faible overhead (8 octets d'en-tête contre 20 pour TCP)</li>
+      <li>Pas de connexion à établir (évite le handshake TCP)</li>
+      <li>Pas de contrôle de congestion (simplicité)</li>
+      <li>La fiabilité est déléguée à la couche application si nécessaire</li>
+    </ul>
+    <p>TCP est rarement utilisé dans les réseaux de capteurs car le handshake et le contrôle de congestion consomment trop d'énergie et de bande passante.</p>
+
+    <h2>5. CoAP — Constrained Application Protocol</h2>
+    <p>CoAP (RFC 7252) est un protocole applicatif conçu pour les nœuds contraints. Il s'inspire de REST/HTTP mais avec un overhead minimal.</p>
+    <p><strong>Caractéristiques :</strong></p>
+    <ul>
+      <li>Transport sur UDP (port 5683)</li>
+      <li>Modèle requête/réponse avec 4 méthodes : GET, POST, PUT, DELETE</li>
+      <li>Observation (observe) pour les notifications push</li>
+      <li>Découverte de ressources via /.well-known/core</li>
+      <li>Fiabilité optionnelle via messages confirmables (CON) et non-confirmables (NON)</li>
+    </ul>
+
+    <h2>6. Pile protocolaire complète dans Contiki-NG</h2>
+    <p>Dans Contiki-NG, la pile réseau est implémentée dans le répertoire <code>os/net/</code> :</p>
+    <pre><code>os/net/
+  mac/       — Contrôle d'accès au médium (CSMA, TSCH)
+  llsec/     — Sécurité de liaison
+  ipv6/      — IPv6, ICMPv6, RPL
+  ipv6/uip-udp.c    — UDP
+  ipv6/uip-tcp.c    — TCP (optionnel)
+  app-layer/ — CoAP (er-coap)
+</code></pre>
+
+    <h2>7. Résumé</h2>
+    <p>Ce cours a présenté la pile protocolaire IoT de la couche physique jusqu'à l'application. IEEE 802.15.4 fournit la base radio, 6LoWPAN adapte IPv6 aux trames de petite taille, UDP offre un transport léger, et CoAP permet des échanges RESTful optimisés. Cette architecture est implémentée dans Contiki-NG et simulée avec Cooja.</p>
+
+    <h2>8. Questions de révision</h2>
+    <ol>
+      <li>Quelle est la taille maximale d'une trame IEEE 802.15.4 ? Pourquoi pose-t-elle problème pour IPv6 ?</li>
+      <li>Quel est le rôle de 6LoWPAN dans la pile IoT ?</li>
+      <li>Pourquoi UDP est-il préféré à TCP dans les réseaux de capteurs ?</li>
+      <li>Citez les quatre méthodes de CoAP et leur équivalent HTTP.</li>
+      <li>Comment CoAP assure-t-il la fiabilité si UDP n'est pas fiable ?</li>
+    </ol>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="TP_01_Installation_ContikiNG.html">TP suivant : Installation de Contiki-NG →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

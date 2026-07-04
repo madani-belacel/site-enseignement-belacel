@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 05 — Analyse des logs LSTM — Dr. Madani BELACEL</title>
+<meta name="description" content="TP 05 : analyser les logs LSTM de RPL-AER, calculer la MAE et évaluer la qualité de prédiction de consommation.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+        <li><a href="index.html">AER-RPL</a></li>
+        <li class="current">TP 05 — Logs LSTM</li>
+      </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 05 : Analyse des logs LSTM</h1>
+
+    <div class="md-meta">
+      <strong>TP 05 — Analyse des logs LSTM</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h</li>
+        <li><strong>Objectifs :</strong> Analyser les prédictions LSTM, calculer la MAE, évaluer la qualité de prédiction</li>
+      </ul>
+    </div>
+
+    <h2>1. Extraire les logs LSTM</h2>
+    <pre><code>grep "\[LSTM\]" simulation_logs.txt > lstm_logs.txt</code></pre>
+
+    <h2>2. Format des logs</h2>
+    <pre><code>[LSTM] Node 12: Pred=4.32mW Actual=4.18mW Error=0.14mW MAE=0.12</code></pre>
+    <p>Champs : Node ID, Pred (prédiction), Actual (consommation réelle), Error (différence absolue), MAE (moyenne cumulative).</p>
+
+    <h2>3. Parser les logs avec Python</h2>
+    <pre><code>import re
+import matplotlib.pyplot as plt
+
+lstm_data = []
+with open('lstm_logs.txt') as f:
+    for line in f:
+        m = re.search(r'Node (\d+): Pred=([\d.]+)mW Actual=([\d.]+)mW Error=([\d.]+)mW MAE=([\d.]+)', line)
+        if m:
+            lstm_data.append({
+                'node': int(m.group(1)),
+                'pred': float(m.group(2)),
+                'actual': float(m.group(3)),
+                'error': float(m.group(4)),
+                'mae': float(m.group(5))
+            })</code></pre>
+
+    <h2>4. Calculer la MAE globale</h2>
+    <pre><code>errors = [d['error'] for d in lstm_data]
+mae_global = sum(errors) / len(errors)
+print(f"MAE globale: {mae_global:.3f} mW")</code></pre>
+
+    <h2>5. Analyser par nœud</h2>
+    <pre><code>for node_id in sorted(set(d['node'] for d in lstm_data)):
+    node_errors = [d['error'] for d in lstm_data if d['node'] == node_id]
+    node_mae = sum(node_errors) / len(node_errors)
+    node_max_error = max(node_errors)
+    print(f"Node {node_id}: MAE={node_mae:.3f}mW MaxError={node_max_error:.3f}mW")</code></pre>
+
+    <h2>6. Visualiser prédiction vs réalité</h2>
+    <pre><code>node12 = [d for d in lstm_data if d['node'] == 12]
+timesteps = range(len(node12))
+preds = [d['pred'] for d in node12]
+actuals = [d['actual'] for d in node12]
+
+plt.plot(timesteps, preds, label='Prédiction', marker='o')
+plt.plot(timesteps, actuals, label='Réel', marker='x')
+plt.xlabel('Échantillon')
+plt.ylabel('Consommation (mW)')
+plt.legend()
+plt.title('Prédiction LSTM vs Consommation Réelle — Nœud 12')
+plt.savefig('lstm_prediction_node12.png')
+plt.show()</code></pre>
+
+    <h2>7. Détecter les dérives</h2>
+    <p>Analysez l'évolution de la MAE dans le temps pour détecter une éventuelle dérive du modèle :</p>
+    <pre><code>cumulative_mae = []
+window = 10
+for i in range(window, len(errors)+1, window):
+    window_mae = sum(errors[i-window:i]) / window
+    cumulative_mae.append(window_mae)
+
+plt.plot(cumulative_mae)
+plt.xlabel('Fenêtre (10 échantillons)')
+plt.ylabel('MAE (mW)')
+plt.title('Évolution de la MAE')
+plt.savefig('lstm_mae_evolution.png')
+plt.show()</code></pre>
+
+    <h2>8. Questions</h2>
+    <ol>
+      <li>Quelle est la MAE moyenne du prédicteur LSTM ? Est-elle acceptable (&lt; 0.5 mW) ?</li>
+      <li>Y a-t-il des nœuds avec une MAE significativement plus élevée ? Pourquoi ?</li>
+      <li>Observez-vous une dérive du modèle LSTM au fil du temps ?</li>
+      <li>Dans quels scénarios la prédiction est-elle la moins fiable ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

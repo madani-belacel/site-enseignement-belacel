@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 05 — Q-learning pour l'adaptation des poids — AER-MQoS</title>
+<meta name="description" content="Apprentissage par renforcement Q-learning pour l'adaptation dynamique du poids gamma dans AER-MQoS. États, actions, récompenses, convergence.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">Cours 05 — Q-learning pour l'adaptation des poids</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 05 — Q-learning pour l'adaptation des poids</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h30<br>
+      <strong>Objectif :</strong> Comprendre l'agent Q-learning qui adapte dynamiquement le poids gamma de la métrique MCS<br>
+      <strong>Prérequis :</strong> Cours 03 (MCS), notions de base en apprentissage automatique
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Pourquoi l'apprentissage par renforcement ?</h2>
+    <p>Les réseaux IoT sont dynamiques : la qualité des liens fluctue, les nœuds s'épuisent énergétiquement, des attaques peuvent survenir. Un réglage statique des poids de la métrique MCS ne peut pas s'adapter à ces variations. L'apprentissage par renforcement (RL) permet à chaque nœud d'apprendre en ligne la meilleure politique d'ajustement du poids gamma, basée sur l'expérience locale.</p>
+
+    <h2>2. Principes du Q-learning</h2>
+    <p>Le Q-learning est un algorithme RL <em>model-free</em> qui apprend une fonction Q(s, a) estimant la qualité d'une action a dans un état s. La mise à jour suit l'équation de Bellman :</p>
+    <pre><code>Q(s, a) = Q(s, a) + lr * [r + gamma_max * max_a' Q(s', a') - Q(s, a)]</code></pre>
+    <p>Où :</p>
+    <ul>
+      <li><code>lr</code> — taux d'apprentissage (learning rate)</li>
+      <li><code>r</code> — récompense immédiate reçue après l'action</li>
+      <li><code>gamma_max</code> — facteur d'actualisation (discount factor)</li>
+      <li><code>s'</code> — nouvel état après l'action</li>
+      <li><code>max_a' Q(s', a')</code> — estimation de la meilleure action future</li>
+    </ul>
+
+    <h2>3. Formalisation du problème d'adaptation de gamma</h2>
+    <p>L'agent Q-learning d'AER-MQoS est défini par :</p>
+
+    <table>
+      <tr><th>Composant</th><th>Définition</th></tr>
+      <tr><td><strong>État (s)</strong></td><td>Tuple (PDR, énergie_moyenne, taux_anomalies) quantifié en 3 niveaux chacun → 27 états</td></tr>
+      <tr><td><strong>Action (a)</strong></td><td>Modification de gamma : {−0.1, −0.05, 0, +0.05, +0.1} (5 actions discrètes)</td></tr>
+      <tr><td><strong>Récompense (r)</strong></td><td><code>r = PDR * énergie_moyenne * TrustScore_moyen</code> (produit des trois métriques)</td></tr>
+      <tr><td><strong>Politique</strong></td><td>ε-greedy : exploration (ε=0.1) ou exploitation (1−ε)</td></tr>
+    </table>
+
+    <h2>4. Implémentation dans aer_rpl_qlearn.c</h2>
+    <p>Le module <code>aer_rpl_qlearn.c</code> implémente l'agent RL avec les fonctions :</p>
+    <ul>
+      <li><code>qlearn_init()</code> — initialise la Q-table à zéro</li>
+      <li><code>qlearn_get_state()</code> — quantifie l'état réseau actuel (PDR, énergie, anomalies)</li>
+      <li><code>qlearn_select_action(state)</code> — choisit une action selon ε-greedy</li>
+      <li><code>qlearn_update(state, action, reward, next_state)</code> — met à jour Q(s, a)</li>
+      <li><code>qlearn_get_gamma()</code> — retourne le gamma ajusté pour le calcul MCS</li>
+    </ul>
+
+    <pre><code>/* Extrait simplifié de la mise à jour Q-learning */
+void qlearn_update(uint8_t state, uint8_t action,
+                   double reward, uint8_t next_state) {
+    double max_next = q_table[next_state][0];
+    for (int a = 1; a < NUM_ACTIONS; a++) {
+        if (q_table[next_state][a] > max_next)
+            max_next = q_table[next_state][a];
+    }
+    double td_error = reward + DISCOUNT * max_next - q_table[state][action];
+    q_table[state][action] += LR * td_error;
+}</code></pre>
+
+    <h2>5. Exploration vs Exploitation</h2>
+    <p>L'équilibre exploration/exploitation est géré par la politique ε-greedy :</p>
+    <ul>
+      <li>Avec probabilité ε (0.1), l'agent choisit une action aléatoire (exploration)</li>
+      <li>Avec probabilité 1−ε, l'agent choisit l'action avec la Q-valeur maximale (exploitation)</li>
+    </ul>
+    <p>Au fil du temps, ε peut décroître (annealing) pour favoriser l'exploitation après une phase d'exploration suffisante.</p>
+
+    <h2>6. Convergence de l'apprentissage</h2>
+    <p>Le Q-learning converge vers la politique optimale sous certaines conditions :</p>
+    <ul>
+      <li>Tous les couples (état, action) doivent être visités infiniment souvent</li>
+      <li>Le taux d'apprentissage lr doit décroître avec le temps</li>
+      <li>L'environnement doit être stationnaire à long terme</li>
+    </ul>
+    <p>Dans la pratique, l'agent AER-MQoS converge après 500 à 1000 itérations, ce qui correspond à quelques minutes de simulation Cooja. La convergence se traduit par une stabilisation de gamma autour d'une valeur optimale pour les conditions données.</p>
+
+    <h2>7. Exemple d'adaptation</h2>
+    <p>Supposons que le réseau subisse soudainement des pertes élevées (PDR chute à 60%). L'agent observe l'état (PDR_bas, énergie_moyenne, anomalies_faibles). Avec la politique ε-greedy, il peut essayer de réduire gamma (favoriser ETX plutôt que confiance) pour donner plus de poids à la fiabilité des liens. Si cette action augmente le PDR, la récompense positive renforce Q(état, réduire_gamma) et l'agent continuera à adopter ce comportement dans des situations similaires.</p>
+
+    <h2>8. Intégration dans AER-MQoS</h2>
+    <p>L'agent Q-learning fonctionne en parallèle du mécanisme de pondération contextuelle (Cours 03). La pondération contextuelle fournit une base de poids adaptée aux conditions immédiates, tandis que le Q-learning affine gamma pour optimiser la récompense à long terme. Les deux mécanismes sont complémentaires : l'un est réactif (contextuel), l'autre est proactif (apprentissage).</p>
+
+    <h2>9. Résumé</h2>
+    <p>Le Q-learning permet à AER-MQoS d'ajuster dynamiquement le poids gamma de la confiance dans la métrique MCS, en apprenant de l'expérience locale de chaque nœud. Cette capacité d'adaptation distingue AER-MQoS des protocoles statiques et améliore les performances dans des environnements IoT changeants.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

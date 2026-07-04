@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 07 — Simulation avec attaques — Dr. Madani BELACEL</title>
+<meta name="description" content="TP 07 : simuler des attaques sinkhole et selective forwarding avec RPL-AER, analyser les Trust scores et le taux de détection.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">TP 07 — Attaques</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 07 : Simulation avec attaques</h1>
+
+    <div class="md-meta">
+      <strong>TP 07 — Simulation avec attaques</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h30</li>
+        <li><strong>Objectifs :</strong> Configurer des nœuds attaquants, observer la détection, comparer les Trust scores</li>
+      </ul>
+    </div>
+
+    <h2>1. Comprendre la configuration des attaques</h2>
+    <p>RPL-AER permet de configurer des nœuds malveillants dans <code>project-conf.h</code> :</p>
+    <pre><code>#define ATTACK_SINKHOLES      1    // Activer l'attaque sinkhole
+#define ATTACK_SINKHOLE_NODES 22,25  // IDs des nœuds attaquants
+#define ATTACK_SF_ENABLED     1    // Activer selective forwarding
+#define ATTACK_SF_NODES       30     // ID du nœud attaquant</code></pre>
+
+    <h2>2. Lancer la simulation avec attaques</h2>
+    <p>Ouvrez la simulation et activez les nœuds attaquants. Lancez la simulation et observez :</p>
+    <ul>
+      <li>Les logs [ATTACK] générés par attack_detector.c</li>
+      <li>Les logs [TRUST] montrant la dégradation du Trust score</li>
+      <li>L'évolution du PDR (Packet Delivery Ratio)</li>
+    </ul>
+
+    <h2>3. Extraire les logs de confiance</h2>
+    <pre><code>grep "\[TRUST\]" simulation_logs.txt > trust_logs.txt</code></pre>
+
+    <h2>4. Analyser les Trust scores</h2>
+    <pre><code>import re
+import matplotlib.pyplot as plt
+
+trust_data = []
+with open('trust_logs.txt') as f:
+    for line in f:
+        m = re.search(r'Node (\d+): Neighbor (\d+) Trust=([\d.]+)', line)
+        if m:
+            trust_data.append({
+                'observer': int(m.group(1)),
+                'target': int(m.group(2)),
+                'trust': float(m.group(3))
+            })
+
+# Trust score moyen des nœuds attaquants vs honnêtes
+attack_nodes = [22, 25, 30]
+attack_trust = [d['trust'] for d in trust_data if d['target'] in attack_nodes]
+honest_trust = [d['trust'] for d in trust_data if d['target'] not in attack_nodes]
+
+print(f"Trust moyen attaquants: {sum(attack_trust)/len(attack_trust):.3f}")
+print(f"Trust moyen honnêtes: {sum(honest_trust)/len(honest_trust):.3f}")</code></pre>
+
+    <h2>5. Évolution temporelle du Trust</h2>
+    <pre><code># Pour le nœud attaquant 22
+node22_trust = [d for d in trust_data if d['target'] == 22]
+trust_values = [d['trust'] for d in node22_trust]
+
+plt.plot(trust_values, 'r-', label='Nœud 22 (attaquant)')
+plt.axhline(y=0.3, color='gray', linestyle='--', label='Seuil malveillant')
+plt.xlabel('Observation')
+plt.ylabel('Trust Score')
+plt.legend()
+plt.title('Évolution du Trust Score — Attaquant Sinkhole')
+plt.savefig('trust_attacker.png')
+plt.show()</code></pre>
+
+    <h2>6. Mesurer le taux de détection</h2>
+    <pre><code># Combien de fois les attaquants sont-ils identifiés comme malveillants ?
+flagged = [d for d in trust_data if d['trust'] < 0.3]
+flagged_attackers = [d for d in flagged if d['target'] in attack_nodes]
+detection_rate = len(flagged_attackers) / len(flagged) * 100 if flagged else 0
+print(f"Taux de détection: {detection_rate:.1f}%")</code></pre>
+
+    <h2>7. Comparer PDR avec et sans attaques</h2>
+    <p>Relancez la simulation SANS attaques (désactivez ATTACK_SINKHOLES et ATTACK_SF_ENABLED). Comparez le PDR :</p>
+    <pre><code># Extraire PDR des logs [PERF]
+grep "\[PERF\]" simulation_logs.txt | grep "PDR"</code></pre>
+
+    <h2>8. Questions</h2>
+    <ol>
+      <li>Quel est le Trust score moyen des nœuds attaquants après 10 minutes de simulation ?</li>
+      <li>Combien de temps faut-il au module Trust pour identifier un nœud sinkhole ?</li>
+      <li>Quel est l'impact des attaques sur le PDR global du réseau ?</li>
+      <li>Y a-t-il des faux positifs (nœuds honnêtes identifiés comme malveillants) ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

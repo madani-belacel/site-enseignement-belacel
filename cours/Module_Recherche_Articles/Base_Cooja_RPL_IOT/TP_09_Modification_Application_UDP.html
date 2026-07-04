@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 09 — Modification application UDP — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Extension de l'application UDP Contiki-NG : messages périodiques, numéros de séquence, mécanisme stop-and-wait.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">TP 09 — Modification application UDP</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 09 — Modification d'une Application UDP dans Contiki-NG</h1>
+
+    <div class="md-meta">
+      <strong>TP 09</strong> — Durée estimée : 2h — Prérequis : Cours 06, TP 03
+    </div>
+
+    <h2>1. Objectifs</h2>
+    <ul>
+      <li>Étendre l'application UDP client/serveur de Contiki-NG</li>
+      <li>Ajouter un numéro de séquence dans les paquets UDP</li>
+      <li>Implémenter un mécanisme stop-and-wait simple</li>
+      <li>Ajouter des données de payload personnalisées</li>
+    </ul>
+
+    <h2>2. Structure du projet</h2>
+    <p>Copiez l'exemple rpl-udp comme base :</p>
+    <pre><code>cp -r $CONTIKI/examples/rpl-udp ~/mon_app_udp_avancee
+cd ~/mon_app_udp_avancee</code></pre>
+
+    <h2>3. Client UDP amélioré avec numéros de séquence</h2>
+    <p>Modifiez <code>udp-client.c</code> :</p>
+    <pre><code>#include "contiki.h"
+#include "net/ip/uip.h"
+#include "net/ipv6/uip-ds6.h"
+#include "net/ip/uip-udp-packet.h"
+#include <stdio.h>
+#include <string.h>
+
+#define UDP_PORT 8765
+#define SEND_INTERVAL (CLOCK_SECOND * 10)
+
+PROCESS(udp_client_process, "UDP Client amélioré");
+AUTOSTART_PROCESSES(&udp_client_process);
+
+static struct uip_udp_conn *client_conn;
+static struct etimer periodic_timer;
+static struct etimer ack_timer;
+static int seqno = 0;
+static int waiting_for_ack = 0;
+static int retransmissions = 0;
+#define MAX_RETRANSMISSIONS 3
+
+PROCESS_THREAD(udp_client_process, ev, data)
+{
+  uip_ipaddr_t server_ip;
+  char buf[64];
+  PROCESS_BEGIN();
+
+  uip_ip6addr(&server_ip, 0xfe80, 0, 0, 0, 0, 0, 0, 0);
+  client_conn = udp_new(&server_ip, UIP_HTONS(UDP_PORT), NULL);
+  udp_bind(client_conn, UIP_HTONS(UDP_PORT));
+
+  printf("Client UDP avancé démarré (ID=%d)\n", node_id);
+  etimer_set(&periodic_timer, SEND_INTERVAL);
+
+  while(1) {
+    PROCESS_YIELD();
+
+    if(ev == PROCESS_EVENT_TIMER) {
+      if(&periodic_timer == data && !waiting_for_ack) {
+        seqno++;
+        snprintf(buf, sizeof(buf),
+          "SEQ=%d|ID=%d|PAYLOAD=Données_test_%d|TIME=%lu",
+          seqno, node_id, seqno, (unsigned long)clock_time());
+        udp_packet_send(client_conn, buf, strlen(buf));
+        printf("ENVOI: %s\n", buf);
+        waiting_for_ack = 1;
+        retransmissions = 0;
+        etimer_set(&ack_timer, CLOCK_SECOND * 2);
+      }
+      else if(&ack_timer == data && waiting_for_ack) {
+        retransmissions++;
+        if(retransmissions < MAX_RETRANSMISSIONS) {
+          printf("RETRANSMISSION #%d pour SEQ=%d\n",
+                 retransmissions, seqno);
+          udp_packet_send(client_conn, buf, strlen(buf));
+          etimer_restart(&ack_timer);
+        } else {
+          printf("ÉCHEC: SEQ=%d perdu après %d tentatives\n",
+                 seqno, MAX_RETRANSMISSIONS);
+          waiting_for_ack = 0;
+          etimer_restart(&periodic_timer);
+        }
+      }
+    }
+    else if(ev == tcpip_event && uip_newdata()) {
+      if(strncmp((char*)uip_appdata, "ACK", 3) == 0) {
+        int ack_seq;
+        sscanf((char*)uip_appdata, "ACK:%d", &ack_seq);
+        if(ack_seq == seqno && waiting_for_ack) {
+          printf("ACK reçu pour SEQ=%d\n", seqno);
+          waiting_for_ack = 0;
+          etimer_set(&periodic_timer, SEND_INTERVAL);
+        }
+      }
+    }
+  }
+
+  PROCESS_END();
+}</code></pre>
+
+    <h2>4. Serveur UDP amélioré</h2>
+    <p>Modifiez <code>udp-server.c</code> :</p>
+    <pre><code>#include "contiki.h"
+#include "net/ip/uip.h"
+#include "net/ipv6/uip-ds6.h"
+#include "net/ip/uip-udp-packet.h"
+#include <stdio.h>
+#include <string.h>
+
+#define UDP_PORT 8765
+
+PROCESS(udp_server_process, "UDP Server avancé");
+AUTOSTART_PROCESSES(&udp_server_process);
+
+static struct uip_udp_conn *server_conn;
+static int total_packets = 0;
+static int last_seq_per_node[10] = {0};
+
+PROCESS_THREAD(udp_server_process, ev, data)
+{
+  uip_ipaddr_t client_ip;
+  char response[32];
+  int seq, id;
+  PROCESS_BEGIN();
+
+  server_conn = udp_new(NULL, UIP_HTONS(UDP_PORT), NULL);
+  udp_bind(server_conn, UIP_HTONS(UDP_PORT));
+
+  printf("Serveur UDP avancé démarré\n");
+
+  while(1) {
+    PROCESS_YIELD();
+    if(ev == tcpip_event && uip_newdata()) {
+      total_packets++;
+      uip_ipaddr_copy(&client_ip, &UIP_IP_BUF->srcipaddr);
+
+      printf("REÇU de ");
+      uip_debug_ipaddr_print(&client_ip);
+      printf(": %s\n", (char*)uip_appdata);
+
+      // Extraire le numéro de séquence et l'ID
+      if(sscanf((char*)uip_appdata, "SEQ=%d|ID=%d",
+                &seq, &id) >= 2) {
+        if(seq == last_seq_per_node[id] + 1) {
+          printf("  → Paquet dans l'ordre (SEQ=%d)\n", seq);
+        } else {
+          printf("  → Paquet DÉSORDONNÉ (attendu %d, reçu %d)\n",
+                 last_seq_per_node[id] + 1, seq);
+        }
+        last_seq_per_node[id] = seq;
+      }
+
+      // Envoyer un ACK
+      snprintf(response, sizeof(response), "ACK:%d", seq);
+      udp_packet_send(server_conn, response, strlen(response));
+    }
+  }
+
+  PROCESS_END();
+}</code></pre>
+
+    <h2>5. Makefile</h2>
+    <pre><code>CONTIKI = ../..
+all: udp-server.cooja udp-client.cooja
+include $(CONTIKI)/Makefile.include</code></pre>
+
+    <h2>6. Compilation et test</h2>
+    <pre><code>make TARGET=cooja clean
+make TARGET=cooja</code></pre>
+    <p>Créez une simulation avec 1 serveur + 2 clients. Démarrez et observez :</p>
+    <ul>
+      <li>Les numéros de séquence s'incrémentent</li>
+      <li>Le serveur envoie des ACK</li>
+      <li>Les retransmissions en cas de perte</li>
+    </ul>
+
+    <h2>7. Exercices</h2>
+    <ol>
+      <li>Ajoutez un champ "batterie simulée" dans le payload, qui décroît à chaque envoi</li>
+      <li>Implémentez un mécanisme de fenêtre glissante (envoi de 3 paquets sans ACK)</li>
+      <li>Ajoutez un détecteur de pertes : si 5 paquets consécutifs sont perdus, changez de parent RPL</li>
+    </ol>
+
+    <h2>8. Livrables</h2>
+    <ul>
+      <li>Code source complet (udp-client.c, udp-server.c, Makefile)</li>
+      <li>Capture d'écran des logs montrant les séquences et ACK</li>
+      <li>Code des exercices supplémentaires</li>
+    </ul>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="TP_10_Ajout_Capteurs_Simules.html">TP suivant : Capteurs simulés →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

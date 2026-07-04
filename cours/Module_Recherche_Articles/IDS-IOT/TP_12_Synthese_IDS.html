@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 12 — Synthèse IDS-IOT — IDS-IOT</title>
+<meta name="description" content="TP de synthèse IDS-IOT : documentation complète du workflow, mini-rapport comparatif des variantes, recommandation de configuration.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+</head><body>
+
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 12 — Synthèse IDS-IOT</li></ol></nav>
+
+<main class="page-content" id="main-content"><div class="md-content">
+
+<h1>TP 12 — Synthèse IDS-IOT</h1>
+
+<div class="md-meta"><strong>TP 12 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Durée :</strong> 3 séances</li><li><strong>Type :</strong> Projet de synthèse</li></ul></div>
+
+<h2>Objectif</h2>
+<p>Ce TP de synthèse vous demande de produire un mini-rapport scientifique complet (4-6 pages) qui documente l'ensemble du workflow RPL-ClusterIDS, compare les 8 variantes, et formule des recommandations de configuration IDS pour différents scénarios opérationnels.</p>
+
+<h2>Structure du rapport</h2>
+
+<h3>1. Introduction (0.5 page)</h3>
+<p>Contextualisez le besoin d'IDS distribué pour les réseaux IoT RPL. Présentez RPL-ClusterIDS et ses contributions principales. Mentionnez le journal cible (Computer Networks, Elsevier).</p>
+
+<h3>2. Architecture du système (0.5 page)</h3>
+<p>Décrivez l'architecture à deux niveaux (membres et CH), les modules C implémentés, et le schéma de communication. Référencez les fichiers sources : <code>clus_form.c</code>, <code>ch_elect.c</code>, <code>ids_member.c</code>, <code>ids_ch.c</code>, <code>ctx_policy.c</code>.</p>
+
+<h3>3. Mécanismes de détection (1 page)</h3>
+<p>Présentez les 4 règles de détection (R1-R4) et le calcul du LAS (Eq. 4). Expliquez l'agrégation CH et la cross-confirmation. Comparez les 3 politiques contextuelles (Full/Balanced/Eco).</p>
+
+<h3>4. Variantes et ablation (0.5 page)</h3>
+<p>Décrivez les 8 variantes (B1, B2, B3, MAIN, NOCLUS, NOCTX, NOENR, NOML) et le rôle de chaque ablation dans l'évaluation.</p>
+
+<h3>5. Pipeline de simulation (0.5 page)</h3>
+<p>Documentez le pipeline complet : génération de scénarios (grid 50 nœuds), compilation, simulation Cooja (10 seeds), parsing des logs, calcul statistique, génération de figures, compilation LaTeX.</p>
+
+<h3>6. Résultats comparatifs (2 pages)</h3>
+<p>Présentez et analysez les métriques clés :</p>
+<ul>
+  <li><strong>Tableau 1 :</strong> DR par variant et type d'attaque (5 attaques × 8 variantes)</li>
+  <li><strong>Tableau 2 :</strong> FPR, Précision, F1-Score par variant</li>
+  <li><strong>Tableau 3 :</strong> Overhead énergétique et latence de détection</li>
+  <li><strong>Graphique 1 :</strong> DR comparatif (barres groupées)</li>
+  <li><strong>Graphique 2 :</strong> Trade-off sécurité vs énergie</li>
+</ul>
+<p>Analysez les résultats :</p>
+<ul>
+  <li>Quel variant offre le meilleur taux de détection ? (MAIN)</li>
+  <li>Quelle ablation a le plus grand impact ? (NOCLUS)</li>
+  <li>Quelle attaque est la mieux détectée ? (DAO Flood via R2)</li>
+  <li>Quelle attaque est la plus difficile ? (Mixed, DR ~88%)</li>
+  <li>Quel est le coût énergétique de l'IDS ? (+18% en Full)</li>
+</ul>
+
+<h3>7. Recommandations (0.5 page)</h3>
+<p>Pour chaque scénario, recommandez une configuration :</p>
+<table>
+  <tr><th>Scénario</th><th>Variant recommandé</th><th>Politique</th><th>Justification</th></tr>
+  <tr><td>Sécurité maximale</td><td>MAIN</td><td>Full</td><td>DR > 94%</td></tr>
+  <tr><td>Énergie limitée</td><td>MAIN</td><td>Balanced</td><td>DR 87%, overhead 9%</td></tr>
+  <tr><td>Batterie critique</td><td>MAIN</td><td>Eco</td><td>DR 72%, overhead 4%</td></tr>
+  <tr><td>Ressources très contraintes</td><td>B2</td><td>N/A</td><td>IDS basique, overhead réduit</td></tr>
+</table>
+
+<h3>8. Conclusion (0.5 page)</h3>
+<p>Résumez les contributions de RPL-ClusterIDS, discutez des limitations actuelles (phase 2.1, campagne pilote), et proposez des perspectives (campagne complète, déploiement réel, intégration de ML).</p>
+
+<h2>Format du rapport</h2>
+<ul>
+  <li>Format : PDF (4-6 pages)</li>
+  <li>Langue : Français ou Anglais</li>
+  <li>Style : Article court (conference/short paper)</li>
+  <li>Références : au moins 5 (inclure RFC 6550, articles connexes)</li>
+  <li>Figures : au moins 2 (DR comparatif + trade-off sécurité/énergie)</li>
+  <li>Tables : au moins 3 (DR, métriques globales, recommandations)</li>
+</ul>
+
+<h2>Grille d'évaluation</h2>
+<table>
+  <tr><th>Critère</th><th>Points</th></tr>
+  <tr><td>Introduction et contexte</td><td>2</td></tr>
+  <tr><td>Description technique (architecture, règles, LAS)</td><td>4</td></tr>
+  <tr><td>Pipeline et méthodologie</td><td>3</td></tr>
+  <tr><td>Résultats comparatifs (tables + figures)</td><td>5</td></tr>
+  <tr><td>Analyse et interprétation</td><td>3</td></tr>
+  <tr><td>Recommandations et conclusion</td><td>2</td></tr>
+  <tr><td>Qualité rédactionnelle et format</td><td>1</td></tr>
+  <tr><td><strong>Total</strong></td><td><strong>20</strong></td></tr>
+</table>
+
+<blockquote><strong>Note :</strong> Ce TP de synthèse valide l'ensemble des compétences du module IDS-IOT. Il peut être utilisé comme support pour un article de conférence ou un chapitre de thèse.</blockquote>
+
+</div></main>
+
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

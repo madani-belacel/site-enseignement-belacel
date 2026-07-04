@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 04 — Simulation RPL 25 nœuds — Dr. Madani BELACEL</title>
+<meta name="description" content="Lancer la simulation RPL standard avec 25 nœuds dans Cooja : ouvrir, exécuter, observer.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">RPLMQOS</a></li>
+    <li class="current">TP 04 — Simulation RPL 25 nœuds</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 04 — Simulation scénario RPL 25 nœuds</h1>
+
+    <div class="md-meta">
+      <strong>Simulation RPL 25 nœuds</strong>
+      <ul>
+        <li><strong>Durée :</strong> 2h TP</li>
+        <li><strong>Objectif :</strong> Lancer la simulation RPL avec 25 nœuds dans Cooja</li>
+        <li><strong>Prérequis :</strong> Firmware RPL compilé, TP 01-03 réalisés</li>
+      </ul>
+    </div>
+
+    <h2>1. Lancer Cooja</h2>
+    <pre>cd contiki-ng/tools/cooja
+ant run</pre>
+    <p>Ou utilisez le script :</p>
+    <pre>./gradlew run</pre>
+
+    <h2>2. Ouvrir le fichier de simulation</h2>
+    <p>Dans Cooja : <em>File -> Open Simulation</em>, naviguez jusqu'à <code>/home/madani/contiki-ng/examples/projet_madani/RPLMQoS_BELACEL/sim_25.csc</code>.</p>
+    <p>La simulation s'ouvre avec 25 nœuds disposés en grille 5x5. Identifiez :</p>
+    <ul>
+      <li>Le nœud 1 (root) : souvent au centre ou au bord</li>
+      <li>Les nœuds clients UDP : les autres nœuds</li>
+      <li>La portée radio (cercle autour de chaque nœud)</li>
+    </ul>
+
+    <h2>3. Configurer les firmwares</h2>
+    <p>Vérifiez que chaque nœud utilise le firmware RPL standard compilé :</p>
+    <ul>
+      <li><em>Motivations -> charger firmware</em></li>
+      <li>Le serveur (root) utilise <code>udp-server.cooja</code></li>
+      <li>Les clients utilisent <code>udp-client.cooja</code></li>
+    </ul>
+
+    <h2>4. Lancer la simulation</h2>
+    <p>Cliquez sur le bouton <strong>Start</strong>. Observez :</p>
+    <ul>
+      <li>La formation du DODAG (messages DIO diffusés)</li>
+      <li>L'échange de paquets UDP (couleurs dans le Network Viewer)</li>
+      <li>Le temps simulé (en bas à droite)</li>
+    </ul>
+
+    <h2>5. Collecter les logs</h2>
+    <p>Activez le logging : <em>Tools -> Log output</em>. Sauvegardez les logs :</p>
+    <pre>Fichier -> Save log as -> rpl_25_noeuds.log</pre>
+
+    <h2>6. Observer le DODAG</h2>
+    <p>Utilisez le <strong>Network Viewer</strong> pour visualiser le DODAG. Les lignes représentent les liens parent-enfant. Notez la profondeur et la distribution.</p>
+
+    <h2>7. Questions et rendu</h2>
+    <ol>
+      <li>Combien de temps a duré la simulation (temps simulé) ?</li>
+      <li>Quelle est la topologie du DODAG formé ? (profondeur, nombre de niveaux)</li>
+      <li>Combien de paquets UDP ont été reçus par le root ?</li>
+      <li>Notez les observations sur le comportement de RPL standard.</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span> Universit de Mostaganem</span>
+      <span> 2025-2026</span>
+    </div>
+    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

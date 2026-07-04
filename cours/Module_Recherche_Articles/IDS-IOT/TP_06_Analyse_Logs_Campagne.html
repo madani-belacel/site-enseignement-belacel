@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 06 — Analyse des logs de campagne — IDS-IOT</title>
+<meta name="description" content="Parser les logs IDS avec parse_cooja_ids_metrics.py, comprendre le format METRIC, extraire les statistiques de détection.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+</head><body>
+
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 06 — Analyse des logs</li></ol></nav>
+
+<main class="page-content" id="main-content"><div class="md-content">
+
+<h1>TP 06 — Analyse des logs de campagne</h1>
+
+<div class="md-meta"><strong>TP 06 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Durée :</strong> 1 séance</li><li><strong>Script :</strong> <code>parse_cooja_ids_metrics.py</code></li></ul></div>
+
+<h2>Objectif</h2>
+<p>Utiliser le script de parsing <code>parse_cooja_ids_metrics.py</code> pour extraire les métriques IDS des fichiers COOJA.testlog générés par la campagne pilote. Comprendre le format METRIC et produire un fichier CSV agrégé.</p>
+
+<h2>1. Localiser les scripts</h2>
+<pre><code>ls scripts/
+# Vous devriez voir :
+# python/generate_figures.py
+# statistics/compute_statistics.py</code></pre>
+
+<p>Le script <code>parse_cooja_ids_metrics.py</code> se trouve dans <code>scripts/python/</code> ou <code>SIMULATION_CAMPAIGN_READY/</code>.</p>
+
+<h2>2. Format METRIC (ids_campaign_log.h)</h2>
+<p>Chaque ligne de log structuré suit le format :</p>
+<pre><code>METRIC,&lt;sim_time_ms&gt;,&lt;node_id&gt;,&lt;event_type&gt;,&lt;value&gt;,&lt;details&gt;</code></pre>
+<p>Types d'événements :</p>
+<ul>
+  <li><code>CH_ELECTED</code> — Nœu élu CH avec sa fitness</li>
+  <li><code>CLUSTER_FORMED</code> — Cluster formé avec sa taille</li>
+  <li><code>LAS_COMPUTED</code> — Score LAS calculé par un membre</li>
+  <li><code>LAS_REPORTED</code> — LAS transmis au CH</li>
+  <li><code>ALERT_GENERATED</code> — Alerte générée par le CH</li>
+  <li><code>RULE_TRIGGERED</code> — Règle R1-R4 déclenchée</li>
+  <li><code>ENERGY_UPDATE</code> — Mise à jour du niveau d'énergie</li>
+</ul>
+
+<h2>3. Parser les logs</h2>
+<pre><code>cd $IDS_ROOT
+python3 scripts/python/parse_cooja_ids_metrics.py \
+  --input data/real/raw/ \
+  --output data/real/parsed/</code></pre>
+
+<h2>4. Examiner les fichiers parsés</h2>
+<pre><code>ls data/real/parsed/
+# Vous devriez voir des fichiers CSV comme :
+# MAIN_rank_seed1_metrics.csv
+# MAIN_rank_seed2_metrics.csv</code></pre>
+
+<pre><code>head -20 data/real/parsed/MAIN_rank_seed1_metrics.csv</code></pre>
+
+<h2>5. Comprendre le CSV généré</h2>
+<p>Le CSV agrège les événements par catégorie :</p>
+<table>
+  <tr><th>Colonne</th><th>Description</th></tr>
+  <tr><td>sim_time_ms</td><td>Temps de simulation en ms</td></tr>
+  <tr><td>node_id</td><td>ID du nœud source</td></tr>
+  <tr><td>event_type</td><td>Type d'événement METRIC</td></tr>
+  <tr><td>value</td><td>Valeur associée (score, compteur)</td></tr>
+  <tr><td>details</td><td>Détails supplémentaires (chaîne JSON-like)</td></tr>
+  <tr><td>variant</td><td>Variant utilisé (MAIN, B1, etc.)</td></tr>
+  <tr><td>attack_type</td><td>Type d'attaque</td></tr>
+  <tr><td>seed</td><td>Seed aléatoire</td></tr>
+</table>
+
+<h2>6. Statistiques de base</h2>
+<p>Utilisez Python ou des outils shell pour analyser :</p>
+<pre><code># Nombre total d'alertes
+grep -c "ALERT_GENERATED" data/real/parsed/MAIN_rank_*.csv
+
+# Distribution des types d'événements
+cut -d',' -f3 data/real/parsed/MAIN_rank_seed1_metrics.csv | sort | uniq -c | sort -rn
+
+# Score LAS moyen
+awk -F',' '$3=="LAS_COMPUTED" {sum+=$4; cnt++} END {print sum/cnt}' \
+  data/real/parsed/MAIN_rank_seed1_metrics.csv</code></pre>
+
+<h2>7. Détection des attaques</h2>
+<p>Comparez les alertes générées avec la vérité terrain (ground truth) définie dans la simulation :</p>
+<pre><code># Vrai positif : alerte pour un nœud malveillant
+# Faux positif : alerte pour un nœud légitime
+# Faux négatif : nœud malveillant sans alerte</code></pre>
+
+<h2>Rendu attendu</h2>
+<p>Produisez un fichier <code>analyse_logs.txt</code> contenant :</p>
+<ol>
+  <li>Le nombre de lignes parsées par fichier</li>
+  <li>La distribution des types d'événements</li>
+  <li>Le nombre d'alertes par seed et par type d'attaque</li>
+  <li>Le score LAS moyen par seed</li>
+  <li>Une analyse préliminaire de la détection (vrais/faux positifs)</li>
+</ol>
+
+</div></main>
+
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

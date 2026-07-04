@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 03 — NRE — Normalized Residual Energy — Dr. Madani BELACEL</title>
+<meta name="description" content="NRE — Normalized Residual Energy : modèle énergétique, capacité batterie, énergie résiduelle, normalisation et rôle dans le routage RPL-AER.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">Cours 03 — NRE</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 03 : NRE — Normalized Residual Energy</h1>
+
+    <div class="md-meta">
+      <strong>Cours 03 — NRE — Normalized Residual Energy</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h</li>
+        <li><strong>Objectifs :</strong> Comprendre le modèle énergétique, le calcul du NRE et son rôle dans la métrique MCS</li>
+      </ul>
+    </div>
+
+    <h2>1. Modèle énergétique dans Contiki-NG</h2>
+    <p>Contiki-NG intègre un modèle de consommation énergétique appelé <strong>Energest</strong>. Ce module trace le temps passé par le microcontrôleur dans chaque état (CPU, LPM, TX, RX) et estime la consommation totale :</p>
+    <pre><code>Energie = temps_CPU &times; courant_CPU + temps_LPM &times; courant_LPM
+         + temps_TX &times; courant_TX + temps_RX &times; courant_RX</code></pre>
+    <p>Les valeurs de courant sont paramétrées dans <code>project-conf.h</code> selon le matériel utilisé (ex: Zolertia Z1, Tmote Sky, CC2650).</p>
+
+    <h2>2. Capacité de la batterie</h2>
+    <p>Chaque nœud possède une capacité de batterie configurable :</p>
+    <pre><code>#define BATTERY_CAPACITY_MAH 2000  // 2000 mAh
+#define INITIAL_ENERGY_MWH   (BATTERY_CAPACITY_MAH * 3.0)  // 6000 mWh pour 3V</code></pre>
+    <p>L'énergie initiale est convertie en mWh. Au fur et à mesure de la simulation, l'énergie consommée est soustraite de l'énergie initiale pour obtenir l'énergie résiduelle.</p>
+
+    <h2>3. Calcul de l'énergie résiduelle</h2>
+    <p>L'énergie résiduelle est calculée périodiquement (toutes les 30 secondes par défaut) :</p>
+    <pre><code>// Dans le module énergétique de RPL-AER
+float get_residual_energy(void) {
+    float consumed = energest_get_total_energy();
+    float initial  = get_initial_energy();
+    float residual = initial - consumed;
+    if (residual < 0) residual = 0;
+    return residual;
+}</code></pre>
+
+    <h2>4. Normalisation du NRE</h2>
+    <p>Le NRE normalise l'énergie résiduelle pour obtenir une valeur entre 0 et 1 :</p>
+    <pre><code>NRE = get_residual_energy() / get_initial_energy()</code></pre>
+    <p>Cette normalisation permet de comparer équitablement des nœuds avec des capacités de batterie différentes. Un nœud avec une batterie de 2000 mAh à moitié vide (NRE=0.5) est comparable à un nœud avec une batterie de 4000 mAh à moitié vide (NRE=0.5).</p>
+
+    <h2>5. Rôle du NRE dans la décision de routage</h2>
+    <p>Le NRE influence directement la sélection du parent dans RPL-AER via le MCS :</p>
+    <ul>
+      <li><strong>NRE élevé (&gt;0.7) :</strong> Le nœud a suffisamment d'énergie pour servir de parent. Il peut acheminer le trafic des nœuds enfants sans risque d'épuisement.</li>
+      <li><strong>NRE moyen (0.3-0.7) :</strong> Le nœud est encore capable de router, mais le MCS sera modéré. Le nœud peut être choisi si ses autres scores (PEC, ECS) sont élevés.</li>
+      <li><strong>NRE faible (&lt;0.3) :</strong> Le nœud est en risque d'épuisement. Il sera évité comme parent, même si ses autres scores sont bons.</li>
+    </ul>
+
+    <h2>6. Seuils et alertes</h2>
+    <p>RPL-AER définit des seuils d'alerte énergétique :</p>
+    <pre><code>#define ENERGY_THRESHOLD_LOW    0.2   // Alerte basse
+#define ENERGY_THRESHOLD_CRIT   0.1   // Alerte critique</code></pre>
+    <p>Lorsque le NRE passe sous le seuil critique, le nœud envoie une notification à ses enfants pour qu'ilschangent de parent, évitant ainsi la perte de paquets suite à l'épuisement complet.</p>
+
+    <h2>7. Exemple de logs NRE</h2>
+    <p>Pendant la simulation, RPL-AER génère des logs de la forme :</p>
+    <pre><code>[MCS] Node 15: NRE=0.823, PEC=0.651, ECS=0.432, MCS=0.724
+[MCS] Node 15: NRE=0.791, PEC=0.634, ECS=0.445, MCS=0.698
+[MCS] Node 15: NRE=0.754, PEC=0.612, ECS=0.458, MCS=0.668</code></pre>
+    <p>On observe la diminution progressive du NRE à mesure que le nœud consomme son énergie, entraînant une baisse du MCS.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

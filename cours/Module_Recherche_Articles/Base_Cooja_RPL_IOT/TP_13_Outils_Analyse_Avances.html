@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 13 — Outils d'analyse avancés Cooja — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Plugins avancés Cooja : Timeline, Radio environment, plugins personnalisés, scripts Java.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">TP 13 — Outils d'analyse avancés</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 13 — Utilisation des Plugins Avancés Cooja</h1>
+
+    <div class="md-meta">
+      <strong>TP 13</strong> — Durée estimée : 2h — Prérequis : TP 01 à TP 12
+    </div>
+
+    <h2>1. Objectifs</h2>
+    <ul>
+      <li>Maîtriser la Timeline pour l'analyse temporelle des paquets</li>
+      <li>Configurer l'environnement radio (UDGM, MRM)</li>
+      <li>Créer un plugin Cooja simple en Java</li>
+      <li>Automatiser les simulations avec des scripts Java</li>
+    </ul>
+
+    <h2>2. Timeline View — Analyse temporelle</h2>
+    <p>La Timeline (View → Timeline) affiche graphiquement l'activité de chaque nœud dans le temps :</p>
+    <ul>
+      <li><strong>Lignes horizontales :</strong> chaque nœud a sa propre ligne</li>
+      <li><strong>Blocs verts :</strong> transmission radio (TX)</li>
+      <li><strong>Blocs bleus :</strong> réception radio (RX)</li>
+      <li><strong>Blocs gris :</strong> CPU actif</li>
+      <li><strong>Flèches :</strong> lien entre émission et réception</li>
+    </ul>
+    <p><strong>Utilisation :</strong></p>
+    <ol>
+      <li>Lancez une simulation avec 5 nœuds (1 racine + 4 clients)</li>
+      <li>Ouvrez la Timeline view</li>
+      <li>Observez les transmissions : qui envoie, quand, à qui</li>
+      <li>Zoomez sur un intervalle spécifique pour analyser les collisions</li>
+    </ol>
+
+    <h2>3. Modèles d'environnement radio</h2>
+    <p>Cooja propose plusieurs modèles de propagation radio :</p>
+    <table>
+      <tr><th>Modèle</th><th>Description</th><th>Utilisation</th></tr>
+      <tr><td><strong>UDGM</strong> (Unit Disk Graph Model)</td><td>Modèle simple : portée fixe avec probabilité constante</td><td>Tests rapides, scénarios idéaux</td></tr>
+      <tr><td><strong>UDGM with Distance Loss</strong></td><td>Probabilité de réception diminue avec la distance</td><td>Scénarios plus réalistes</td></tr>
+      <tr><td><strong>MRM</strong> (Multi-path Ray-tracing Model)</td><td>Modèle avancé avec réflexions, obstacles</td><td>Scénarios indoor complexes</td></tr>
+    </table>
+    <p>Configuration : Simulation → "Radio medium" → choisissez le modèle</p>
+
+    <h2>4. Scripting Cooja avec Java</h2>
+    <p>Cooja est écrit en Java et permet le scripting pour automatiser les simulations. Créez un fichier <code>MonScript.java</code> :</p>
+    <pre><code>import org.contikios.cooja.*;
+import org.contikios.cooja.plugins.*;
+import javax.swing.*;
+
+public class MonScript {
+  public static void main(String[] args) {
+    // Créer l'interface Cooja
+    final Cooja gui = new Cooja();
+    gui.start();
+
+    // Créer une simulation
+    Simulation sim = gui.createSimulation(null);
+    sim.setSimulationName("Simulation_Automatique");
+
+    // Ajouter des nœuds
+    MoteInterfaceHandler handler = new MoteInterfaceHandler();
+    MoteType moteType = new MoteType();
+    moteType.setCompileCommands("make TARGET=cooja mon_app.cooja");
+
+    // Ajouter 10 nœuds
+    for(int i=0; i<10; i++) {
+      Mote mote = moteType.generateMote(sim);
+      mote.getInterfaces().getPosition().setCoordinates(
+        Math.random()*100, Math.random()*100, 0);
+      sim.addMote(mote);
+    }
+
+    // Configurer la durée
+    sim.startSimulation();
+    try {
+      Thread.sleep(60000); // 60s
+    } catch(InterruptedException e) {}
+
+    // Arrêter et exporter
+    sim.stopSimulation();
+    System.out.println("Simulation terminée");
+  }
+}</code></pre>
+
+    <h2>5. Création d'un plugin personnalisé</h2>
+    <p>Les plugins Cooja sont des classes Java qui étendent <code>Plugin</code> :</p>
+    <pre><code>package org.contikios.cooja.plugins;
+
+import org.contikios.cooja.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class MonPlugin extends Plugin {
+  private JTextArea textArea;
+
+  public MonPlugin(Simulation sim, Cooja gui) {
+    super(sim, gui);
+    textArea = new JTextArea();
+    textArea.setEditable(false);
+    JButton btn = new JButton("Afficher logs");
+    btn.addActionListener(e -> refreshLogs());
+    add(textArea, BorderLayout.CENTER);
+    add(btn, BorderLayout.SOUTH);
+  }
+
+  private void refreshLogs() {
+    // Parcourir les nœuds et collecter les logs
+    StringBuilder sb = new StringBuilder();
+    for(Mote m : getSimulation().getMotes()) {
+      sb.append("Mote ").append(m.getID())
+        .append(": ").append(m.getInterfaces().toString())
+        .append("\n");
+    }
+    textArea.setText(sb.toString());
+  }
+}</code></pre>
+
+    <h2>6. Export et analyse avancée</h2>
+    <p>Cooja permet d'exporter les données de simulation dans plusieurs formats :</p>
+    <ul>
+      <li><strong>CSC :</strong> format natif de Cooja pour sauvegarder/charger des simulations</li>
+      <li><strong>CSV :</strong> via les plugins (PowerTracker, Radio Logger)</li>
+      <li><strong>PCAP :</strong> export des paquets au format Wireshark (Tools → Radio messages → PCAP)</li>
+    </ul>
+
+    <h2>7. Analyse PCAP avec Wireshark</h2>
+    <p>Activez l'export PCAP dans Radio messages, puis ouvrez le fichier avec Wireshark :</p>
+    <pre><code>wireshark capture.pcap</code></pre>
+    <p>Dans Wireshark, vous pouvez filtrer :</p>
+    <ul>
+      <li><code>icmpv6</code> — pour voir tous les messages RPL</li>
+      <li><code>icmpv6.type == 155</code> — messages RPL (DIO, DAO, DIS)</li>
+      <li><code>udp.port == 8765</code> — données applicatives</li>
+    </ul>
+
+    <h2>8. Exercices</h2>
+    <ol>
+      <li>Comparez UDGM et MRM : quelle différence sur le PDR et la formation du DODAG ?</li>
+      <li>Utilisez la Timeline pour identifier un phénomène de collision entre 2 nœuds</li>
+      <li>Exportez une simulation en PCAP et analysez-la avec Wireshark</li>
+      <li>Écrivez un script Java qui crée automatiquement une simulation avec 20 nœuds et l'exécute pendant 300s</li>
+    </ol>
+
+    <h2>9. Livrables</h2>
+    <ul>
+      <li>Capture d'écran de la Timeline montrant les transmissions</li>
+      <li>Analyse comparative UDGM vs MRM (PDR, nombre de messages DIO)</li>
+      <li>Fichier PCAP analysé avec Wireshark</li>
+      <li>Script Java d'automatisation de simulation</li>
+    </ul>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="Cours_08_Intro_Protocoles_Recherche.html">Cours suivant : Protocoles de recherche →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

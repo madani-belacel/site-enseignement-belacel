@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 02 — Compilation des 7 variants</title>
+<meta name="description" content="Compiler les 7 variants de RPL-ClusterIDS avec build_variant.sh, comprendre chaque variant, vérifier les builds.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+</head><body>
+
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 02 — Compilation des variants</li></ol></nav>
+
+<main class="page-content" id="main-content"><div class="md-content">
+
+<h1>TP 02 — Compilation des 7 variants</h1>
+
+<div class="md-meta"><strong>TP 02 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Durée :</strong> 1 séance</li><li><strong>Prérequis :</strong> Contiki-NG installé, variable CONTIKI configurée</li></ul></div>
+
+<h2>Objectif</h2>
+<p>Compiler l'ensemble des 8 variants du firmware RPL-ClusterIDS pour la plateforme Cooja en utilisant le script <code>build_variant.sh</code>. Comprendre le rôle de chaque variant dans l'étude d'ablation.</p>
+
+<h2>1. Configuration de l'environnement</h2>
+<p>Assurez-vous que Contiki-NG est installé et que la variable <code>CONTIKI</code> pointe vers votre installation :</p>
+<pre><code>export CONTIKI=/home/madani/contiki-ng
+export IDS_ROOT=/home/madani/contiki-ng/examples/IDS_IOT
+export IDS_CODE=$IDS_ROOT/code_source_RPL_ClusterIDS
+echo $CONTIKI
+echo $IDS_CODE</code></pre>
+
+<h2>2. Compilation manuelle d'un variant</h2>
+<p>Avant d'utiliser le script, testez la compilation manuelle du variant MAIN :</p>
+<pre><code>cd $IDS_CODE
+make clean
+make TARGET=cooja IDS_VARIANT=MAIN IDS_CONF_CAMPAIGN_METRICS=1</code></pre>
+
+<h2>3. Utilisation du script build_variant.sh</h2>
+<p>Le script automatise la compilation des 8 variantes :</p>
+<pre><code>cd $IDS_CODE/simulations/scripts
+./build_variant.sh all</code></pre>
+<p>Le script produit les fichiers <code>.csc</code> et <code>.cooja</code> dans <code>simulations/build/</code>.</p>
+
+<h2>4. Variantes disponibles</h2>
+<table>
+  <tr><th>Variant</th><th>Description</th><th>Rôle dans l'ablation</th></tr>
+  <tr><td>B1</td><td>RPL standard, pas d'IDS</td><td>Baseline minimale</td></tr>
+  <tr><td>B2</td><td>RPL + IDS basique (pas de clustering)</td><td>Impact du clustering</td></tr>
+  <tr><td>B3</td><td>RPL + clustering (pas d'IDS)</td><td>Impact de l'IDS</td></tr>
+  <tr><td>CLUSTERIDS (MAIN)</td><td>RPL-ClusterIDS complet</td><td>Proposition complète</td></tr>
+  <tr><td>NOCLUS</td><td>MAIN sans clustering</td><td>Ablation clustering</td></tr>
+  <tr><td>NOCTX</td><td>MAIN sans politique contextuelle</td><td>Ablation ctx_policy</td></tr>
+  <tr><td>NOENR</td><td>MAIN avec CH non basé sur énergie</td><td>Ablation fitness énergie</td></tr>
+  <tr><td>NOML</td><td>MAIN sans LAS/ML</td><td>Ablation apprentissage</td></tr>
+</table>
+
+<h2>5. Vérification des builds</h2>
+<p>Pour chaque variant, vérifiez que le fichier .cooja a été généré :</p>
+<pre><code>ls -la $IDS_CODE/simulations/build/*.cooja</code></pre>
+
+<h2>6. Compilation individuelle</h2>
+<p>Vous pouvez aussi compiler un variant spécifique :</p>
+<pre><code>./build_variant.sh B1
+./build_variant.sh B2
+./build_variant.sh MAIN</code></pre>
+
+<h2>7. Résolution des problèmes</h2>
+<ul>
+  <li><strong>Erreur "CONTIKI not defined" :</strong> Vérifiez la variable d'environnement</li>
+  <li><strong>Erreur de compilation C :</strong> Vérifiez que les flags du variant sont corrects dans <code>Makefile</code></li>
+  <li><strong>Erreur "target cooja not found" :</strong> Vérifiez que Contiki-NG supporte la plateforme cooja</li>
+</ul>
+
+<h2>Rendu attendu</h2>
+<p>Notez dans un fichier <code>compilation_log.txt</code> :</p>
+<ol>
+  <li>La sortie de <code>./build_variant.sh all</code></li>
+  <li>La liste des fichiers .cooja produits</li>
+  <li>Les éventuelles erreurs et leurs résolutions</li>
+</ol>
+
+</div></main>
+
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 03 — Protocole RPL — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Principes fondamentaux du protocole RPL : DODAG, rank, messages de contrôle, fonctions objectifs, métriques.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">Cours 03 — Protocole RPL</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>Cours 03 — Le Protocole RPL : Principes Fondamentaux</h1>
+
+    <div class="md-meta">
+      <strong>Cours 03</strong> — Durée estimée : 2h30 — Référence : RFC 6550
+    </div>
+
+    <h2>1. Introduction à RPL</h2>
+    <p>RPL (Routing Protocol for Low-Power and Lossy Networks) est un protocole de routage pour réseaux LLN (Low-Power and Lossy Networks), standardisé par l'IETF dans la RFC 6550. Il est conçu pour les réseaux IoT où les nœuds ont des ressources limitées et les liens sont souvent instables.</p>
+    <p>RPL construit un graphe acyclique orienté (DODAG) qui permet d'acheminer les paquets de manière efficace tout en minimisant la surcharge de contrôle.</p>
+
+    <h2>2. Le DODAG (Destination Oriented Directed Acyclic Graph)</h2>
+    <p>Un DODAG est un graphe orienté sans cycle qui part d'une racine (sink) et s'étend vers les nœuds feuilles. Chaque nœud a un ou plusieurs parents vers la racine.</p>
+    <p><strong>Propriétés du DODAG :</strong></p>
+    <ul>
+      <li><strong>Orientation :</strong> les arêtes pointent toujours vers la racine (routes montantes)</li>
+      <li><strong>Acyclique :</strong> pas de boucles de routage</li>
+      <li><strong>Destination-oriented :</strong> la racine est la destination principale</li>
+      <li><strong>Instances :</strong> plusieurs DODAG peuvent coexister avec différentes métriques</li>
+    </ul>
+
+    <h2>3. Le Rank</h2>
+    <p>Le <strong>rank</strong> est un nombre entier qui représente la distance logique d'un nœud par rapport à la racine du DODAG. La racine a un rank de 1 (ou 256 selon l'échelle). Les nœuds enfants ont un rank strictement supérieur à celui de leurs parents.</p>
+    <p><strong>Règles :</strong></p>
+    <ul>
+      <li>Le rank doit augmenter en s'éloignant de la racine</li>
+      <li>Un nœud ne peut pas être parent d'un nœud de rank supérieur ou égal</li>
+      <li>Le rank est calculé selon la fonction objectif (OF)</li>
+      <li>Il peut être basé sur le nombre de sauts, l'ETX, ou d'autres métriques</li>
+    </ul>
+
+    <h2>4. Messages de contrôle RPL</h2>
+    <p>RPL utilise trois types de messages ICMPv6 pour construire et maintenir le DODAG :</p>
+    <table>
+      <tr><th>Message</th><th>Signification</th><th>Rôle</th><th>Direction</th></tr>
+      <tr><td><strong>DIO</strong></td><td>DAG Information Object</td><td>Annonce le DODAG, contient la configuration</td><td>De la racine vers les feuilles</td></tr>
+      <tr><td><strong>DAO</strong></td><td>Destination Advertisement Object</td><td>Enregistre les routes descendants</td><td>Des feuilles vers la racine</td></tr>
+      <tr><td><strong>DIS</strong></td><td>DAG Information Solicitation</td><td>Demande un DIO à un voisin</td><td>D'un nouveau nœud vers le réseau</td></tr>
+    </table>
+
+    <h3>4.1 DIO (DAG Information Object)</h3>
+    <p>Les DIO sont émis périodiquement par la racine et relayés par les nœuds. Ils contiennent :</p>
+    <ul>
+      <li>RPLInstanceID — identifiant de l'instance RPL</li>
+      <li>DODAGID — identifiant du DODAG</li>
+      <li>Version — numéro de version (incrémenté lors des reconstructions)</li>
+      <li>Ground — indique si la racine est connectée à Internet</li>
+      <li>Rank du nœud émetteur</li>
+      <li>Objective Function (OF) utilisée</li>
+    </ul>
+    <p>Le <strong>Trickle Timer</strong> contrôle la fréquence d'émission des DIO. Après une mise à jour, le timer est réinitialisé (période courte) puis augmente exponentiellement jusqu'à un maximum (période longue).</p>
+
+    <h3>4.2 DAO (Destination Advertisement Object)</h3>
+    <p>Les DAO sont envoyés des nœuds vers la racine pour annoncer :</p>
+    <ul>
+      <li>Le préfixe du sous-réseau (si le nœud agit comme routeur)</li>
+      <li>L'adresse du nœud lui-même (routage descendant)</li>
+    </ul>
+    <p>Le DAO peut être émis de manière <strong>piggyback</strong> (avec un DIO) ou <strong>autonome</strong>. Le mode de fonctionnement (stockage ou non-stockage) détermine où sont stockées les tables de routage.</p>
+
+    <h3>4.3 DIS (DAG Information Solicitation)</h3>
+    <p>Un nœud qui souhaite rejoindre le DODAG envoie un DIS pour solliciter un DIO de ses voisins. C'est la phase d'<strong>initialisation</strong> du nœud dans le réseau RPL.</p>
+
+    <h2>5. Fonctions Objectifs (Objective Functions)</h2>
+    <p>La fonction objectif (OF) définit comment :</p>
+    <ul>
+      <li>Calculer le rank d'un nœud</li>
+      <li>Sélectionner le(s) parent(s) préféré(s)</li>
+      <li>Évaluer la qualité des routes</li>
+    </ul>
+    <p>Les deux fonctions objectifs principales sont :</p>
+    <ul>
+      <li><strong>OF0 (RFC 6552) :</strong> minimise le nombre de sauts (rank = 256 × hops)</li>
+      <li><strong>MRHOF (RFC 6719) :</strong> minimise l'ETX (Expected Transmission Count)</li>
+    </ul>
+
+    <h2>6. Instances RPL et DODAG ID</h2>
+    <p>Un réseau RPL peut avoir <strong>plusieurs instances</strong> simultanées, chacune identifiée par un RPLInstanceID. Chaque instance peut avoir un ou plusieurs DODAG. Cela permet :</p>
+    <ul>
+      <li>D'utiliser différentes métriques (ex: OF0 pour instance 1, MRHOF pour instance 2)</li>
+      <li>D'isoler le trafic de différents types (ex: données urgentes vs. données normales)</li>
+      <li>D'avoir plusieurs racines dans le même réseau</li>
+    </ul>
+
+    <h2>7. Routage montant et descendant</h2>
+    <p><strong>Routage montant (upward) :</strong> les paquets vont des nœuds vers la racine en suivant le DODAG (utilisation des parents). C'est le routage principal dans RPL.</p>
+    <p><strong>Routage descendant (downward) :</strong> les paquets vont de la racine vers les nœuds. En mode <strong>stockage</strong>, chaque routeur stocke une table de routage pour ses enfants. En mode <strong>non-stockage</strong>, seule la racine stocke les routes (source routing).</p>
+
+    <h2>8. Résumé</h2>
+    <p>RPL est le protocole de routage standard pour l'IoT. Il construit un DODAG orienté vers la racine, utilise le rank pour éviter les boucles, et emploie trois types de messages (DIO, DAO, DIS) contrôlés par Trickle Timer. Les fonctions objectifs (OF0, MRHOF) définissent les métriques de routage. Ce cours prépare les TP de simulation RPL sous Cooja.</p>
+
+    <h2>9. Questions de révision</h2>
+    <ol>
+      <li>Qu'est-ce qu'un DODAG et pourquoi est-il orienté vers la racine ?</li>
+      <li>Expliquez le rôle du rank dans RPL. Quelles sont ses propriétés ?</li>
+      <li>Différenciez les messages DIO, DAO et DIS.</li>
+      <li>Quel est le mécanisme qui contrôle l'envoi des DIO ?</li>
+      <li>Quelle est la différence entre OF0 et MRHOF ?</li>
+    </ol>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="Cours_04_Metriques_Routage_RPL.html">Cours suivant : Métriques de routage RPL →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

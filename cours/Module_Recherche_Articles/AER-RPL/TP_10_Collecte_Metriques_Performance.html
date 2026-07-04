@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 10 — Collecte des métriques de performance — Dr. Madani BELACEL</title>
+<meta name="description" content="TP 10 : collecter les métriques de performance RPL-AER (PDR, latence, throughput, énergie) et générer metrics_summary.txt.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">TP 10 — Métriques</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 10 : Collecte des métriques de performance</h1>
+
+    <div class="md-meta">
+      <strong>TP 10 — Collecte des métriques de performance</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h</li>
+        <li><strong>Objectifs :</strong> Collecter et organiser les métriques de performance RPL-AER</li>
+      </ul>
+    </div>
+
+    <h2>1. Extraire les logs PERF</h2>
+    <p>Les logs de performance sont générés par le sink sous le format [PERF] :</p>
+    <pre><code>grep "\[PERF\]" simulation_logs.txt > perf_logs.txt</code></pre>
+
+    <h2>2. Format des logs PERF</h2>
+    <pre><code>[PERF] Time=360s Nodes=40 PDR=97.5% Latency=18.3ms Throughput=312bps Power=4.2mW
+[PERF] Time=720s Nodes=40 PDR=96.8% Latency=21.5ms Throughput=298bps Power=4.1mW</code></pre>
+
+    <h2>3. Parser et structurer</h2>
+    <pre><code>import re
+import csv
+
+perf_data = []
+with open('perf_logs.txt') as f:
+    for line in f:
+        m = re.search(r'Time=(\d+)s.*PDR=([\d.]+)% Latency=([\d.]+)ms Throughput=(\d+)bps Power=([\d.]+)mW', line)
+        if m:
+            perf_data.append({
+                'time': int(m.group(1)),
+                'pdr': float(m.group(2)),
+                'latency': float(m.group(3)),
+                'throughput': int(m.group(4)),
+                'power': float(m.group(5))
+            })
+
+# Calculer les statistiques globales
+pdr_values = [d['pdr'] for d in perf_data]
+lat_values = [d['latency'] for d in perf_data]
+thr_values = [d['throughput'] for d in perf_data]
+
+print(f"PDR: min={min(pdr_values):.1f}% avg={sum(pdr_values)/len(pdr_values):.1f}% max={max(pdr_values):.1f}%")
+print(f"Latence: min={min(lat_values):.1f}ms avg={sum(lat_values)/len(lat_values):.1f}ms")
+print(f"Throughput: min={min(thr_values)}bps avg={sum(thr_values)/len(thr_values):.0f}bps")</code></pre>
+
+    <h2>4. Créer metrics_summary.txt</h2>
+    <p>Générez un fichier de résumé structuré :</p>
+    <pre><code># metrics_summary.txt
+========================================
+RPL-AER — Résumé des métriques
+Simulation: rpl-aer-simulation.csc
+Date: 2025-XX-XX
+========================================
+
+MÉTRIQUES DE QUALITÉ DE SERVICE
+  PDR moyen:            97.2 %
+  Latence moyenne:      19.8 ms
+  Throughput moyen:     305 bps
+  Surcharge RPL:        12.5 %
+
+MÉTRIQUES ÉNERGÉTIQUES
+  Consommation moyenne: 4.2 mW
+  Énergie résiduelle moyenne: 0.68 (NRE)
+  MAE prédiction LSTM:  0.12 mW
+  ECS moyen:            0.45
+
+MÉTRIQUES DE SÉCURITÉ
+  Trust score moyen:    0.82
+  Attaques détectées:   3
+  Faux positifs:        0
+
+MOBILITÉ
+  Nœuds mobiles:        4 (10%)
+  Changements parent:   127
+  Temps convergence:    45 s
+========================================</code></pre>
+
+    <h2>5. Créer un fichier CSV</h2>
+    <pre><code>with open('performance_metrics.csv', 'w', newline='') as f:
+    writer = csv.DictWriter(f, fieldnames=['time','pdr','latency','throughput','power'])
+    writer.writeheader()
+    writer.writerows(perf_data)</code></pre>
+
+    <h2>6. Visualiser les métriques</h2>
+    <pre><code>import matplotlib.pyplot as plt
+
+times = [d['time'] for d in perf_data]
+pdr = [d['pdr'] for d in perf_data]
+
+plt.plot(times, pdr, 'b-', marker='s')
+plt.xlabel('Temps (s)')
+plt.ylabel('PDR (%)')
+plt.ylim(90, 100)
+plt.grid(True)
+plt.title('Évolution du PDR au fil du temps')
+plt.savefig('pdr_evolution.png')
+plt.show()</code></pre>
+
+    <h2>7. Questions</h2>
+    <ol>
+      <li>Quel est le PDR moyen de RPL-AER ? Est-il acceptable pour une application agricole ?</li>
+      <li>Comment la latence évolue-t-elle avec le nombre de nœuds actifs ?</li>
+      <li>Y a-t-il une corrélation entre la consommation d'énergie et le PDR ?</li>
+      <li>Comparez les métriques avec RPL standard (sans MCS). Que constatez-vous ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

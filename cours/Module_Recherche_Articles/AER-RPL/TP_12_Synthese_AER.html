@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 12 — TP de synthèse RPL-AER — Dr. Madani BELACEL</title>
+<meta name="description" content="TP 12 : TP de synthèse RPL-AER. Workflow complet du clone GitHub à l'analyse des résultats, avec mini-rapport à produire.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">TP 12 — Synthèse</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>TP 12 : TP de synthèse RPL-AER</h1>
+
+    <div class="md-meta">
+      <strong>TP 12 — TP de synthèse RPL-AER</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 3h</li>
+        <li><strong>Objectifs :</strong> Réaliser le workflow complet de RPL-AER et produire un mini-rapport d'analyse</li>
+      </ul>
+    </div>
+
+    <h2>Objectif du TP de synthèse</h2>
+    <p>Ce TP de synthèse vous demande de réaliser l'ensemble du workflow RPL-AER, depuis le clonage du dépôt jusqu'à l'analyse des résultats, et de produire un mini-rapport scientifique synthétisant vos observations.</p>
+
+    <h2>Étape 1 : Cloner et compiler</h2>
+    <pre><code># Les codes sont déjà présents localement
+# Si nécessaire, cloner depuis GitHub:
+# git clone https://github.com/madani-belacel/RPL-AER.git
+cd /home/madani/contiki-ng/examples/projet_madani/RPL-AER-main/examples/rpl-aer
+make TARGET=cooja</code></pre>
+
+    <h2>Étape 2 : Générer un scénario personnalisé</h2>
+    <p>Générez un scénario avec les paramètres suivants :</p>
+    <ul>
+      <li>50 nœuds</li>
+      <li>Surface 600x600 m</li>
+      <li>20% mobiles, 30% solaires</li>
+      <li>Attaques sinkhole activées</li>
+      <li>Durée : 1 heure simulée</li>
+    </ul>
+    <pre><code>python3 ../tools/generate_csc.py -n 50 -s 600 -m 20 -w 30 -h 1 -d 3600 -r 2025</code></pre>
+
+    <h2>Étape 3 : Lancer la simulation</h2>
+    <p>Ouvrez le scénario dans Cooja, lancez la simulation et collectez les logs :</p>
+    <pre><code>nc localhost 6000 > aer_synthese_logs.txt</code></pre>
+
+    <h2>Étape 4 : Extraire les métriques</h2>
+    <pre><code>python3 ../tools/simulate_results.py --log-file aer_synthese_logs.txt --output-dir synthese_results/ --csv --figures</code></pre>
+
+    <h2>Étape 5 : Analyser les logs</h2>
+    <p>Analysez :</p>
+    <ul>
+      <li>Les logs MCS : évolution, comparaison entre types de nœuds</li>
+      <li>Les logs LSTM : MAE, qualité de prédiction</li>
+      <li>Les logs HARVEST : bilan énergétique des nœuds solaires</li>
+      <li>Les logs TRUST : détection des attaquants</li>
+      <li>Les logs PERF : PDR, latence, throughput</li>
+    </ul>
+
+    <h2>Étape 6 : Rédiger un mini-rapport</h2>
+    <p>Créez un fichier <code>rapport_synthese.md</code> structuré comme suit :</p>
+
+    <pre><code># Rapport de synthèse RPL-AER
+## Auteur: [Votre Nom]
+## Date: [Date]
+
+## 1. Configuration de la simulation
+- Nombre de nœuds: 50
+- Surface: 600x600 m
+- Mobiles: 20%, Solaires: 30%
+- Attaques: Oui (sinkhole)
+- Durée: 3600s
+
+## 2. Analyse de la métrique MCS
+- MCS moyen: X.XXX
+- Composante dominante: NRE (alpha=X.X)
+- Évolution dans le temps: [description]
+
+## 3. Prédiction LSTM
+- MAE moyenne: X.XX mW
+- Meilleur nœud: Nœud X (MAE=X.XX)
+- Pire nœud: Nœud X (MAE=X.XX)
+
+## 4. Bilan énergétique
+- Autonomie moyenne (batterie): X h
+- Autonomie moyenne (solaire): X h (estimation)
+- Gain solaire: X%
+
+## 5. Impact de la mobilité
+- Changements de parent: X
+- PDR avec mobilité: X%
+- Temps de convergence: X s
+
+## 6. Sécurité
+- Attaquants détectés: X/X
+- Trust score moyen (attaquants): X.XX
+- Trust score moyen (honnêtes): X.XX
+- Faux positifs: X
+
+## 7. Métriques QoS
+- PDR moyen: X%
+- Latence moyenne: X ms
+- Throughput moyen: X bps
+
+## 8. Conclusion
+[Synthèse des résultats et enseignements tirés]</code></pre>
+
+    <h2>Critères d'évaluation</h2>
+    <table>
+      <tr><th>Critère</th><th>Points</th></tr>
+      <tr><td>Compilation réussie et scénario correctement généré</td><td>2</td></tr>
+      <tr><td>Logs collectés et organisés</td><td>2</td></tr>
+      <tr><td>Analyse MCS complète avec graphiques</td><td>3</td></tr>
+      <tr><td>Analyse LSTM avec MAE</td><td>2</td></tr>
+      <tr><td>Analyse Harvest et bilan énergétique</td><td>2</td></tr>
+      <tr><td>Analyse Trust et détection d'attaques</td><td>3</td></tr>
+      <tr><td>Métriques QoS (PDR, latence)</td><td>2</td></tr>
+      <tr><td>Figures et CSV générés</td><td>2</td></tr>
+      <tr><td>Rapport complet et bien structuré</td><td>2</td></tr>
+      <tr><th>Total</th><th>20</th></tr>
+    </table>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

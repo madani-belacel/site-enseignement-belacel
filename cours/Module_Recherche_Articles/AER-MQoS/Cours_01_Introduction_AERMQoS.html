@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 01 — Introduction à AER-MQoS — AER-MQoS</title>
+<meta name="description" content="Introduction au protocole AER-MQoS : contexte IoT, limitations de RPL, contributions multi-objectifs, vue d'ensemble de l'architecture.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">Cours 01 — Introduction à AER-MQoS</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 01 — Introduction à AER-MQoS</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h30<br>
+      <strong>Objectif :</strong> Comprendre le contexte, la problématique et les contributions du protocole AER-MQoS<br>
+      <strong>Prérequis :</strong> Connaissances de base en RPL (RFC 6550), IoT, réseaux de capteurs sans fil
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Contexte : l'IoT et les réseaux de capteurs sans fil</h2>
+    <p>L'Internet des Objets (IoT) connecte des milliards d'objets physiques &mdash; capteurs, actionneurs, dispositifs intelligents &mdash; capables de collecter, traiter et échanger des données via Internet. Dans ce contexte, les réseaux de capteurs sans fil (WSN) forment l'infrastructure de base : des nœuds contraints en énergie, mémoire et puissance de calcul communiquent sans fil pour acheminer des données vers un point de collecte (puits).</p>
+    <p>Le protocole RPL (Routing Protocol for Low-Power and Lossy Networks, RFC 6550) est le standard IETF pour le routage dans les LLN. Il construit un DODAG (Destination-Oriented Directed Acyclic Graph) orienté vers un puits en utilisant des <em>fonctions objectives</em> (OF) qui définissent la métrique de routage.</p>
+
+    <h2>2. Problématique : les limites de RPL standard</h2>
+    <p>RPL standard utilise des métriques simples comme ETX (Expected Transmission Count) via MRHOF (Multi-Hop Routing Objective Function). Cette approche présente plusieurs limitations :</p>
+    <ul>
+      <li><strong>Absence de différenciation QoS</strong> : tous les paquets sont traités de la même façon, qu'ils soient une alarme critique ou un relevé périodique.</li>
+      <li><strong>Métrique unique</strong> : ETX ne capture que la fiabilité du lien, ignorant l'énergie résiduelle ou la confiance.</li>
+      <li><strong>Pas d'adaptation contextuelle</strong> : les poids de métriques sont statiques, incapables de s'adapter aux changements du réseau.</li>
+      <li><strong>Vulnérabilité aux attaques</strong> : l'absence de mécanisme de confiance rend RPL sensible aux attaques de routage.</li>
+    </ul>
+
+    <h2>3. AER-MQoS : une extension multi-objectifs contextuelle</h2>
+    <p>AER-MQoS (v1.1) est une extension de RPL qui introduit :</p>
+    <ul>
+      <li><strong>Une métrique composite contextuelle (MCS)</strong> combinant l'énergie résiduelle normalisée (NRE), la fiabilité des liens (ETX normalisé) et un score de confiance (Trust Score).</li>
+      <li><strong>Quatre classes de trafic QoS (C0–C3)</strong> avec des priorités distinctes, ordonnancées par WRR (Weighted Round Robin) selon les proportions 6:3:2:1.</li>
+      <li><strong>Un mécanisme d'adaptation par Q-learning</strong> qui ajuste dynamiquement le poids gamma de la confiance dans la métrique MCS en fonction des conditions du réseau.</li>
+      <li><strong>Un modèle d'énergie NRE</strong> étendu du protocole RPL-AER, intégrant la capacité de batterie et la consommation résiduelle.</li>
+      <li><strong>Un score de confiance</strong> basé sur l'ETX et les anomalies de routage, renforçant la résilience aux attaques.</li>
+    </ul>
+
+    <h2>4. Architecture logicielle</h2>
+    <p>Le code source est organisé autour de modules spécialisés :</p>
+    <ul>
+      <li><code>aer_rpl_plus.c/h</code> : module central implémentant la métrique MCS et la pondération contextuelle (alpha, beta, gamma).</li>
+      <li><code>aer_qos_queue.c/h</code> : gestion des quatre files d'attente QoS et de l'ordonnanceur WRR.</li>
+      <li><code>aer_rpl_energy.c/h</code> : modèle de consommation énergétique NRE avec suivi de la capacité de batterie.</li>
+      <li><code>aer_rpl_qlearn.c/h</code> : agent Q-learning pour l'ajustement du poids gamma.</li>
+      <li><code>aer_rpl_trust.c/h</code> : calcul du score de confiance basé sur l'ETX.</li>
+      <li><code>rpl-of-aer-plus.c/h</code> : fonction objective personnalisée utilisant la métrique MCS.</li>
+      <li><code>variants/imacros-*.h</code> : quatre fichiers de macros définissant les variantes du protocole (RPL-MRHOF, RPL-MQoS-style, RPL-AER-style, AER-MQoS).</li>
+    </ul>
+
+    <h2>5. Variantes du protocole</h2>
+    <p>AER-MQoS supporte quatre variantes sélectionnables via des macros de préprocesseur :</p>
+    <table>
+      <tr><th>Variante</th><th>Macro</th><th>Description</th></tr>
+      <tr><td>RPL-MRHOF</td><td><code>RPL_MRHOF</code></td><td>ETX uniquement, sans QoS (baseline)</td></tr>
+      <tr><td>RPL-MQoS-style</td><td><code>RPL_MQOS_STYLE</code></td><td>Métrique composite + QoS sans adaptation</td></tr>
+      <tr><td>RPL-AER-style</td><td><code>RPL_AER_STYLE</code></td><td>Métrique NRE + énergie uniquement</td></tr>
+      <tr><td>AER-MQoS</td><td><code>AER_MQOS</code></td><td>Version complète avec MCS, WRR, Q-learning</td></tr>
+    </table>
+
+    <h2>6. Publication scientifique</h2>
+    <p>AER-MQoS fait l'objet d'un article scientifique détaillant l'architecture, les algorithmes et les résultats expérimentaux. Le dépôt GitHub (v1.1) contient l'ensemble du code source, les scripts de campagne et les templates de simulation Cooja permettant de reproduire les résultats.</p>
+
+    <blockquote><strong>Point clé :</strong> AER-MQoS est un protocole de recherche complet, implémenté dans Contiki-NG, validé par simulation avec Cooja, et conçu pour démontrer l'apport du routage contextuel multi-objectifs dans les LLN.</blockquote>
+
+    <h2>7. Résumé</h2>
+    <p>Dans ce cours introductif, nous avons planté le décor : l'IoT a besoin de différenciation QoS, RPL standard ne la fournit pas, et AER-MQoS répond à ce besoin par une approche multi-objectifs contextuelle. Les prochains cours détailleront chaque composant : classes de trafic, métrique MCS, ordonnancement WRR, Q-learning, modèle d'énergie, confiance et analyse des résultats.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

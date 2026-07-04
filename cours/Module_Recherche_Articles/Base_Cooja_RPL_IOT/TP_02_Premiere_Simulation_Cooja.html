@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 02 — Première simulation Cooja — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Première simulation avec Cooja : créer un projet, ajouter des nœuds Sky, écrire un programme Hello World.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">TP 02 — Première simulation Cooja</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 02 — Première Simulation Cooja (Hello World)</h1>
+
+    <div class="md-meta">
+      <strong>TP 02</strong> — Durée estimée : 1h30 — Prérequis : TP 01 (Cooja installé)
+    </div>
+
+    <h2>1. Objectifs</h2>
+    <ul>
+      <li>Créer une nouvelle simulation dans Cooja</li>
+      <li>Ajouter des nœuds de type Sky mote</li>
+      <li>Écrire et compiler un programme Hello World simple</li>
+      <li>Exécuter la simulation et observer les messages dans le panneau de logs</li>
+      <li>Comprendre l'interface de Cooja (Network view, Timeline, Log)</li>
+    </ul>
+
+    <h2>2. Lancement de Cooja</h2>
+    <p>Depuis un terminal :</p>
+    <pre><code>cd $CONTIKI/tools/cooja
+make cooja</code></pre>
+    <p>Patientez pendant la compilation. La fenêtre principale de Cooja s'ouvre.</p>
+
+    <h2>3. Création d'une nouvelle simulation</h2>
+    <ol>
+      <li>Menu <code>File → New simulation</code></li>
+      <li>Donnez un nom : <code>HelloWorld_Simulation</code></li>
+      <li>Laissez les paramètres par défaut (Radio medium : UDGM, Start delimiter : 1 s)</li>
+      <li>Cliquez sur <code>Create</code></li>
+    </ol>
+    <p>La fenêtre principale affiche maintenant l'onglet "Network" vide.</p>
+
+    <h2>4. Ajout de nœuds</h2>
+    <ol>
+      <li>Menu <code>Nodes → Add node</code> (ou clic droit dans la vue Network)</li>
+      <li>Sélectionnez <code>Sky mote</code> comme type de nœud</li>
+      <li>Cliquez sur <code>Create</code> — un nœud apparaît dans la vue</li>
+      <li>Répétez pour ajouter un second nœud</li>
+      <li>Positionnez les nœuds à environ 50 mètres de distance</li>
+    </ol>
+
+    <h2>5. Écriture du programme Hello World</h2>
+    <p>Créez un fichier <code>hello-world.c</code> dans votre répertoire de travail :</p>
+    <pre><code>#include "contiki.h"
+#include <stdio.h>
+
+PROCESS(hello_world_process, "Hello World Process");
+AUTOSTART_PROCESSES(&hello_world_process);
+
+PROCESS_THREAD(hello_world_process, ev, data)
+{
+  PROCESS_BEGIN();
+
+  printf("Hello World! Je suis un nœud Cooja.\n");
+  printf("Mon nom est : %s\n", PROCESS_NAME());
+
+  PROCESS_END();
+}</code></pre>
+
+    <h2>6. Compilation et association du firmware</h2>
+    <p>Dans Cooja, pour chaque nœud :</p>
+    <ol>
+      <li>Sélectionnez le nœud dans la vue Network</li>
+      <li>Onglet "Mote" → <code>Compiler</code></li>
+      <li>Collez le code source dans l'éditeur</li>
+      <li>Cliquez sur <code>Compile</code> — la compilation doit réussir sans erreur</li>
+      <li>Répétez pour l'autre nœud</li>
+    </ol>
+    <p>Vous pouvez aussi créer un projet séparé avec un Makefile :</p>
+    <pre><code>CONTIKI = ../..
+all: hello-world.cooja
+include $(CONTIKI)/Makefile.include</code></pre>
+    <p>Puis compiler avec :</p>
+    <pre><code>make TARGET=cooja hello-world.cooja</code></pre>
+
+    <h2>7. Exécution de la simulation</h2>
+    <ol>
+      <li>Ouvrez le panneau <code>Log</code> (View → Log)</li>
+      <li>Cliquez sur le bouton <code>Start</code> (triangle vert) dans la barre d'outils</li>
+      <li>Observez les messages dans le panneau Log : chaque nœud affiche "Hello World!"</li>
+    </ol>
+
+    <h2>8. Exploration de l'interface Cooja</h2>
+    <p><strong>Network view :</strong> affiche la position des nœuds et les connexions radio. Les lignes pointillées indiquent les liens de communication possibles. La couleur des nœuds change selon leur état.</p>
+    <p><strong>Timeline :</strong> affiche une chronologie des événements (transmissions, réceptions, éveils). Utile pour analyser le comportement temporel du réseau.</p>
+    <p><strong>Log :</strong> affiche les messages de débogage émis par les nœuds via <code>printf()</code>. Chaque message est horodaté et identifié par le nœud émetteur.</p>
+    <p><strong>Radio messages :</strong> outil d'analyse des paquets échangés (activation via Tools → Radio messages).</p>
+
+    <h2>9. Exercices</h2>
+    <ol>
+      <li>Modifiez le programme pour que chaque nœud affiche son ID : <code>printf("Node ID: %d\n", node_id);</code></li>
+      <li>Ajoutez une boucle pour envoyer "Hello" toutes les 5 secondes en utilisant <code>etimer</code></li>
+      <li>Ajoutez un troisième nœud et vérifiez qu'il s'affiche aussi</li>
+    </ol>
+
+    <h2>10. Livrables</h2>
+    <ul>
+      <li>Capture d'écran de Cooja montrant les 2 nœuds et le panneau Log avec les messages</li>
+      <li>Code source du hello-world.c</li>
+      <li>Réponse aux exercices</li>
+    </ul>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="TP_03_Communication_UDP.html">TP suivant : Communication UDP →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

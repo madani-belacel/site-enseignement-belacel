@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 10 — Capteurs simulés — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Ajout de capteurs simulés (température, humidité) dans Contiki-NG, envoi des données par UDP.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">TP 10 — Capteurs simulés</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 10 — Ajout de Capteurs Simulés (Température, Humidité)</h1>
+
+    <div class="md-meta">
+      <strong>TP 10</strong> — Durée estimée : 2h — Prérequis : TP 09
+    </div>
+
+    <h2>1. Objectifs</h2>
+    <ul>
+      <li>Implémenter des capteurs simulés de température et d'humidité dans Contiki-NG</li>
+      <li>Utiliser des valeurs aléatoires pour simuler les lectures de capteurs</li>
+      <li>Envoyer les données capteurs via UDP vers le serveur</li>
+      <li>Afficher et collecter les données côté serveur</li>
+    </ul>
+
+    <h2>2. Principe des capteurs simulés</h2>
+    <p>Dans Cooja, les nœuds Sky ne sont pas connectés à du matériel réel. Nous simulons donc les lectures de capteurs avec des valeurs aléatoires qui imitent le comportement de vrais capteurs :</p>
+    <ul>
+      <li>Température : 15-35 °C (variation lente avec bruit)</li>
+      <li>Humidité : 40-80 % (variation lente)</li>
+      <li>Luminosité : 100-1000 lux (variation aléatoire)</li>
+    </ul>
+
+    <h2>3. Module capteur simulé</h2>
+    <p>Créez un fichier <code>simulated_sensor.h</code> :</p>
+    <pre><code>#ifndef SIMULATED_SENSOR_H_
+#define SIMULATED_SENSOR_H_
+
+typedef struct {
+  int temperature;      // en dixièmes de °C (ex: 235 = 23.5°C)
+  int humidity;         // en dixièmes de % (ex: 655 = 65.5%)
+  int light;            // en lux
+  unsigned long timestamp;
+} sensor_data_t;
+
+void sensor_init(void);
+sensor_data_t sensor_read(void);
+
+#endif /* SIMULATED_SENSOR_H_ */</code></pre>
+    <p>Créez le fichier <code>simulated_sensor.c</code> :</p>
+    <pre><code>#include "simulated_sensor.h"
+#include "lib/random.h"
+#include <stdio.h>
+
+static int base_temp = 250;   // 25.0°C
+static int base_hum  = 600;   // 60.0%
+static int base_light = 500;  // 500 lux
+
+void sensor_init(void) {
+  random_init(42);  // seed fixe pour reproductibilité
+  printf("Capteurs simulés initialisés\n");
+}
+
+sensor_data_t sensor_read(void) {
+  sensor_data_t data;
+
+  // Variation aléatoire autour de la valeur de base
+  int temp_var = (random_rand() % 100) - 50;    // +/- 5°C
+  int hum_var  = (random_rand() % 100) - 50;    // +/- 5%
+  int light_var = (random_rand() % 400) - 200;  // +/- 200 lux
+
+  data.temperature = base_temp + temp_var;
+  data.humidity = base_hum + hum_var;
+  data.light = base_light + light_var;
+  data.timestamp = clock_time();
+
+  // Faire varier lentement la base (simuler cycle jour/nuit)
+  base_temp += (random_rand() % 10) - 5;
+  base_hum  += (random_rand() % 10) - 5;
+  base_light += (random_rand() % 50) - 25;
+
+  // Contraintes réalistes
+  if(base_temp < 150) base_temp = 150;
+  if(base_temp > 350) base_temp = 350;
+  if(base_hum < 400) base_hum = 400;
+  if(base_hum > 800) base_hum = 800;
+  if(base_light < 50) base_light = 50;
+  if(base_light > 1000) base_light = 1000;
+
+  return data;
+}</code></pre>
+
+    <h2>4. Client UDP avec capteurs</h2>
+    <p>Modifiez le client UDP pour intégrer les capteurs :</p>
+    <pre><code>#include "contiki.h"
+#include "net/ip/uip.h"
+#include "net/ipv6/uip-ds6.h"
+#include "net/ip/uip-udp-packet.h"
+#include "simulated_sensor.h"
+#include <stdio.h>
+#include <string.h>
+
+#define UDP_PORT 8765
+#define SEND_INTERVAL (CLOCK_SECOND * 30)
+
+PROCESS(sensor_client_process, "Client Capteurs");
+AUTOSTART_PROCESSES(&sensor_client_process);
+
+static struct uip_udp_conn *client_conn;
+static struct etimer et;
+
+PROCESS_THREAD(sensor_client_process, ev, data)
+{
+  uip_ipaddr_t server_ip;
+  char buf[128];
+  sensor_data_t sensor;
+  PROCESS_BEGIN();
+
+  sensor_init();
+  uip_ip6addr(&server_ip, 0xfe80, 0, 0, 0, 0, 0, 0, 0);
+  client_conn = udp_new(&server_ip, UIP_HTONS(UDP_PORT), NULL);
+  udp_bind(client_conn, UIP_HTONS(UDP_PORT));
+
+  printf("Client capteurs démarré (ID=%d)\n", node_id);
+  etimer_set(&et, SEND_INTERVAL);
+
+  while(1) {
+    PROCESS_YIELD();
+    if(ev == PROCESS_EVENT_TIMER) {
+      sensor = sensor_read();
+
+      snprintf(buf, sizeof(buf),
+        "ID=%d|TEMP=%d.%d|HUM=%d.%d|LUX=%d|TIME=%lu",
+        node_id,
+        sensor.temperature / 10, sensor.temperature % 10,
+        sensor.humidity / 10, sensor.humidity % 10,
+        sensor.light,
+        (unsigned long)sensor.timestamp);
+
+      printf("ENVOI CAPTEUR: %s\n", buf);
+      udp_packet_send(client_conn, buf, strlen(buf));
+      etimer_restart(&et);
+    }
+    else if(ev == tcpip_event && uip_newdata()) {
+      printf("Réponse: %s\n", (char*)uip_appdata);
+    }
+  }
+
+  PROCESS_END();
+}</code></pre>
+
+    <h2>5. Serveur de collecte de données</h2>
+    <p>Le serveur affiche les données reçues de chaque capteur :</p>
+    <pre><code>// Extrait de la boucle principale
+while(1) {
+  PROCESS_YIELD();
+  if(ev == tcpip_event && uip_newdata()) {
+    printf("[%lu] DONNÉES: %s\n",
+           (unsigned long)clock_time(), (char*)uip_appdata);
+    // Les données sont au format CSV, prêtes pour l'analyse
+  }
+}</code></pre>
+
+    <h2>6. Compilation et simulation</h2>
+    <pre><code># Makefile
+CONTIKI = ../..
+all: sensor-client.cooja collector-server.cooja
+MODULES += lib
+include $(CONTIKI)/Makefile.include</code></pre>
+    <pre><code>make TARGET=cooja</code></pre>
+    <p>Simulation : 1 serveur collecteur + 5 clients capteurs en grille.</p>
+
+    <h2>7. Résultats attendus</h2>
+    <pre><code>[ID:1] Client capteurs démarré (ID=1)
+[ID:2] Client capteurs démarré (ID=2)
+[ID:1] ENVOI CAPTEUR: ID=1|TEMP=24.3|HUM=58.2|LUX=423|TIME=12345
+[ID:3] ENVOI CAPTEUR: ID=3|TEMP=26.1|HUM=62.7|LUX=512|TIME=12346
+[ID:0] DONNÉES: ID=1|TEMP=24.3|HUM=58.2|LUX=423|TIME=12345
+[ID:0] DONNÉES: ID=3|TEMP=26.1|HUM=62.7|LUX=512|TIME=12346</code></pre>
+
+    <h2>8. Exercices</h2>
+    <ol>
+      <li>Ajoutez un capteur de qualité de l'air (CO2) simulé entre 400 et 2000 ppm</li>
+      <li>Implémentez un seuil d'alerte : si température > 35°C, envoyez un message d'alerte prioritaire</li>
+      <li>Du côté serveur, calculez la moyenne des températures reçues toutes les 5 minutes</li>
+      <li>Exportez les données collectées dans un format CSV analysable par Python</li>
+    </ol>
+
+    <h2>9. Livrables</h2>
+    <ul>
+      <li>Code source du module capteur (simulated_sensor.h, simulated_sensor.c)</li>
+      <li>Code du client et du serveur (sensor-client.c, collector-server.c)</li>
+      <li>Capture d'écran des logs avec données de capteurs</li>
+      <li>Fichier CSV des données collectées</li>
+    </ul>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="Cours_07_Energie_Mobilite.html">Cours suivant : Énergie et mobilité →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

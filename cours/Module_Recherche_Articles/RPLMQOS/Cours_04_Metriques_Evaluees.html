@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 04 — Métriques d'évaluation — Dr. Madani BELACEL</title>
+<meta name="description" content="Métriques d'évaluation pour RPLCB : PDR, latence, énergie, durée de vie, overhead. Formules et méthodes de mesure.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">RPLMQOS</a></li>
+    <li class="current">Cours 04 — Métriques d'évaluation</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>Cours 04 — Métriques d'évaluation</h1>
+
+    <div class="md-meta">
+      <strong>Métriques d'évaluation</strong>
+      <ul>
+        <li><strong>Durée :</strong> 2h CM</li>
+        <li><strong>Objectif :</strong> Maîtriser les formules et méthodes de mesure des métriques de performance</li>
+      </ul>
+    </div>
+
+    <h2>1. Packet Delivery Ratio (PDR)</h2>
+    <p>Le PDR mesure le taux de paquets reçus avec succès par rapport au total émis :</p>
+    <pre>PDR = (Nombre de paquets reçus / Nombre de paquets émis)  100</pre>
+    <p><strong>Méthode de mesure</strong> : Le serveur UDP (sink) comptabilise les paquets reçus avec un numéro de séquence. Le client UDP émet des paquets à intervalle régulier (ex: 10 secondes). Le PDR est calculé en fin de simulation en comparant le nombre de paquets reçus au nombre de paquets attendus.</p>
+    <p>Exemple : sur 1000 paquets émis par 25 nœuds, si 892 sont reçus, PDR = 89.2%.</p>
+
+    <h2>2. Latence (End-to-End Delay)</h2>
+    <p>La latence mesure le temps mis par un paquet pour aller de la source à la destination :</p>
+    <pre>Latence = T_réception - T_émission</pre>
+    <p>On distingue trois métriques de latence :</p>
+    <ul>
+      <li><strong>Latence moyenne</strong> : moyenne arithmétique des latences de tous les paquets reçus</li>
+      <li><strong>Latence maximale</strong> : latence la plus élevée observée (pire cas)</li>
+      <li><strong>Latence minimale</strong> : latence la plus faible (meilleur cas)</li>
+    </ul>
+    <p>Dans Cooja, les timestamps sont obtenus via le module <code>sim.time</code> ou via les logs du firmware.</p>
+
+    <h2>3. Consommation d'énergie</h2>
+    <p>La consommation d'énergie est mesurée en millijoules (mJ) et calculée comme suit :</p>
+    <pre>E = P  t
+
+où P = I  V (puissance), t = temps d'activité
+
+Énergie totale = E_TX + E_RX + E_CPU + E_LPM</pre>
+    <p>Les composantes sont :</p>
+    <ul>
+      <li><strong>E_TX</strong> : énergie de transmission (radio en émission)</li>
+      <li><strong>E_RX</strong> : énergie de réception (radio en écoute)</li>
+      <li><strong>E_CPU</strong> : énergie du microcontrôleur en mode actif</li>
+      <li><strong>E_LPM</strong> : énergie en mode basse consommation (Low Power Mode)</li>
+    </ul>
+    <p>Dans Contiki-NG, l'énergie est estimée via le module <code>energest</code> qui comptabilise le temps passé dans chaque état.</p>
+
+    <h2>4. Durée de vie du réseau (Network Lifetime)</h2>
+    <p>La durée de vie du réseau est définie selon trois critères :</p>
+    <ul>
+      <li><strong>FND (First Node Death)</strong> : temps écoulé avant la mort du premier nœud (épuisement énergétique)</li>
+      <li><strong>HND (Half Node Death)</strong> : temps écoulé avant que 50% des nœuds soient morts</li>
+      <li><strong>LND (Last Node Death)</strong> : temps écoulé avant la mort du dernier nœud</li>
+    </ul>
+    <p>La métrique la plus utilisée dans l'article RPLCB est le <strong>FND</strong>, car il représente le moment où le réseau commence à perdre sa couverture.</p>
+
+    <h2>5. Overhead de routage (Routing Overhead)</h2>
+    <p>L'overhead de routage mesure la quantité de trafic de contrôle généré par le protocole de routage :</p>
+    <pre>Overhead = Nombre d'octets de contrôle / Nombre total d'octets transmis</pre>
+    <p>Dans RPL/RPLCB, les messages de contrôle sont DIO, DAO et DIS. L'overhead s'exprime aussi en :</p>
+    <ul>
+      <li><strong>Nombre total de messages de contrôle</strong> émis par tous les nœuds</li>
+      <li><strong>Ratio de contrôle</strong> : contrôle / (contrôle + données)</li>
+      <li><strong>Overhead par nœud</strong> : nombre de messages de contrôle émis par nœud</li>
+    </ul>
+
+    <h2>6. Tableau récapitulatif</h2>
+    <table>
+      <thead>
+        <tr><th>Métrique</th><th>Unité</th><th>Formule</th><th>Source de mesure</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>PDR</td><td>%</td><td>Reçus/Émis 100</td><td>Logs serveur UDP</td></tr>
+        <tr><td>Latence</td><td>ms</td><td>T_récep - T_émission</td><td>Timestamps Cooja</td></tr>
+        <tr><td>Énergie</td><td>mJ</td><td>P  t</td><td>Energest (Contiki-NG)</td></tr>
+        <tr><td>Durée de vie</td><td>secondes</td><td>T_FND / T_HND / T_LND</td><td>Simulation jusqu'à épuisement</td></tr>
+        <tr><td>Overhead</td><td>octets ou paquets</td><td>Total contrôle</td><td>Logs réseau (Cooja)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>7. Questions de révision</h2>
+    <ol>
+      <li>Calculez le PDR si 2340 paquets sont émis et 2106 reçus.</li>
+      <li>Quelle est la différence entre latence moyenne et latence maximale ? Laquelle est la plus critique pour une application temps réel ?</li>
+      <li>Décrivez les quatre états énergétiques mesurés par Energest.</li>
+      <li>Pourquoi FND est-il plus pertinent que LND pour évaluer la durée de vie ?</li>
+      <li>Calculez le ratio d'overhead si 5000 octets de contrôle sont échangés pour 50000 octets de données.</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span> Universit de Mostaganem</span>
+      <span> 2025-2026</span>
+    </div>
+    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

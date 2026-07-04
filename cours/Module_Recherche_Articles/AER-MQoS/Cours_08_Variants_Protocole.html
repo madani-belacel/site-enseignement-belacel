@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 08 — Variants du protocole — AER-MQoS</title>
+<meta name="description" content="Les 4 variantes d'AER-MQoS : RPL-MRHOF (baseline), RPL-MQoS-style, RPL-AER-style, AER-MQoS (full), méthodologie de comparaison.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">Cours 08 — Variants du protocole</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 08 — Variants du protocole</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h00<br>
+      <strong>Objectif :</strong> Comprendre les 4 variantes d'AER-MQoS, leurs différences architecturales et la méthodologie de comparaison<br>
+      <strong>Prérequis :</strong> Cours 01 à 07
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Principe de la comparaison</h2>
+    <p>Pour évaluer l'apport d'AER-MQoS, le protocole est comparé à 3 variantes plus simples dans des conditions de simulation identiques. Chaque variante ajoute progressivement des fonctionnalités, permettant d'isoler l'impact de chaque innovation. Les 4 variantes partagent la même base de code ; seules les macros de compilation changent.</p>
+
+    <h2>2. Les 4 variantes</h2>
+
+    <table>
+      <tr><th>Variante</th><th>Macro</th><th>Métrique</th><th>QoS</th><th>Trust</th><th>Q-learning</th></tr>
+      <tr><td>RPL-MRHOF</td><td><code>RPL_MRHOF</code></td><td>ETX uniquement</td><td>Non</td><td>Non</td><td>Non</td></tr>
+      <tr><td>RPL-MQoS-style</td><td><code>RPL_MQOS_STYLE</code></td><td>Composite fixe</td><td>Oui (WRR)</td><td>Non</td><td>Non</td></tr>
+      <tr><td>RPL-AER-style</td><td><code>RPL_AER_STYLE</code></td><td>NRE + ETX</td><td>Non</td><td>Non</td><td>Non</td></tr>
+      <tr><td>AER-MQoS</td><td><code>AER_MQOS</code></td><td>MCS (NRE+ETX+Trust)</td><td>Oui (WRR)</td><td>Oui</td><td>Oui</td></tr>
+    </table>
+
+    <h2>3. RPL-MRHOF (baseline)</h2>
+    <p>Cette variante implémente le comportement standard de RPL avec la fonction objective MRHOF basée sur ETX. Tous les paquets sont traités de manière identique. Elle sert de référence minimale pour évaluer l'amélioration apportée par les fonctionnalités QoS et multi-objectifs.</p>
+    <p><strong>Macro associée :</strong></p>
+    <pre><code>/* imacros-rpl-mrhof.h */
+#define RPL_MRHOF
+#undef AER_MQOS
+#undef RPL_MQOS_STYLE
+#undef RPL_AER_STYLE</code></pre>
+
+    <h2>4. RPL-MQoS-style</h2>
+    <p>Cette variante est inspirée du protocole RPLMQoS. Elle introduit une métrique composite à poids fixes (sans adaptation contextuelle ni Q-learning) et active l'ordonnanceur WRR pour la QoS. Elle permet d'isoler l'apport de la QoS par rapport à la baseline.</p>
+    <p><strong>Caractéristiques :</strong></p>
+    <ul>
+      <li>Métrique composite : NRE + ETX + Trust (poids fixes alpha=0.3, beta=0.35, gamma=0.35)</li>
+      <li>WRR actif avec poids 6:3:2:1</li>
+      <li>Pas d'adaptation contextuelle ni de Q-learning</li>
+      <li>Trust Score basique (sans pénalité d'anomalie)</li>
+    </ul>
+
+    <h2>5. RPL-AER-style</h2>
+    <p>Cette variante correspond au protocole RPL-AER antérieur. Elle utilise le modèle d'énergie NRE comme métrique principale, sans QoS ni trust. Elle permet d'évaluer l'apport du routage énergétique seul.</p>
+    <p><strong>Caractéristiques :</strong></p>
+    <ul>
+      <li>Métrique : NRE uniquement (ou NRE + ETX avec poids forts sur NRE)</li>
+      <li>Pas de WRR (file unique)</li>
+      <li>Pas de Trust Score</li>
+      <li>Optimisé pour l'équilibrage de charge énergétique</li>
+    </ul>
+
+    <h2>6. AER-MQoS (full)</h2>
+    <p>La variante complète active l'ensemble des fonctionnalités : MCS contextuelle avec Q-learning, WRR 6:3:2:1, Trust Score avec détection d'anomalies. C'est la version la plus sophistiquée, censée offrir les meilleures performances globales.</p>
+    <pre><code>/* imacros-aer-mqos.h */
+#define AER_MQOS
+#define AER_CONTEXTUAL_WEIGHTS
+#define AER_QLEARNING
+#define AER_TRUST_ANOMALY_PENALTY</code></pre>
+
+    <h2>7. Méthodologie de comparaison</h2>
+    <p>La campagne comparative suit ces principes :</p>
+    <ul>
+      <li><strong>Mêmes scénarios</strong> : tous les variants sont exécutés sur exactement les mêmes fichiers de simulation Cooja (topologie, trafic, durée)</li>
+      <li><strong>Mêmes seeds</strong> : les seeds aléatoires sont identiques pour garantir la comparabilité</li>
+      <li><strong>Métriques mesurées</strong> : PDR (Packet Delivery Ratio), latence moyenne, consommation énergétique, équité de charge</li>
+      <li><strong>Répétitions</strong> : 4 seeds (20260601–20260604) pour la significativité statistique</li>
+    </ul>
+
+    <h2>8. Fichiers de macros variants</h2>
+    <p>Chaque fichier dans <code>variants/</code> définit les macros appropriées :</p>
+    <pre><code># Lister les fichiers de variantes
+ls code_source_AER_MQoS/variants/
+imacros-rpl-mrhof.h
+imacros-rpl-mqos-style.h
+imacros-rpl-aer-style.h
+imacros-aer-mqos.h</code></pre>
+    <p>Le script <code>build_variant.sh</code> utilise ces fichiers pour compiler chaque variante.</p>
+
+    <h2>9. Résumé et attentes</h2>
+    <p>L'analyse comparative entre ces 4 variantes permet de quantifier l'apport de chaque fonctionnalité :</p>
+    <ul>
+      <li><strong>RPL-MRHOF vs RPL-MQoS-style</strong> → apport de la QoS (WRR)</li>
+      <li><strong>RPL-MRHOF vs RPL-AER-style</strong> → apport du routage énergétique</li>
+      <li><strong>RPL-MQoS-style vs AER-MQoS</strong> → apport de l'adaptation contextuelle et du Q-learning</li>
+      <li><strong>RPL-MRHOF vs AER-MQoS</strong> → apport global de l'approche multi-objectifs</li>
+    </ul>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

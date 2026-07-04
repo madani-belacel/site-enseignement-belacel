@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 05 — ECS — Environmental Context Score — Dr. Madani BELACEL</title>
+<meta name="description" content="ECS — Environmental Context Score : modèle de récolte solaire, simulation d'irradiance, facteurs environnementaux et impact sur le routage RPL-AER.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">Cours 05 — ECS</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 05 : ECS — Environmental Context Score</h1>
+
+    <div class="md-meta">
+      <strong>Cours 05 — ECS — Environmental Context Score</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h</li>
+        <li><strong>Objectifs :</strong> Comprendre le modèle de récolte solaire et le calcul du score contextuel environnemental</li>
+      </ul>
+    </div>
+
+    <h2>1. Contexte : récolte d'énergie solaire dans les WSN</h2>
+    <p>Dans les applications agricoles, les nœuds IoT peuvent être équipés de panneaux solaires pour prolonger leur autonomie, voire fonctionner indéfiniment si la récolte excède la consommation. RPL-AER intègre un module de récolte (<code>harvest_module.c</code>) qui modélise la production solaire en fonction des conditions environnementales.</p>
+
+    <h2>2. Modèle de récolte solaire</h2>
+    <p>Le modèle utilisé est basé sur l'équation de l'irradiance solaire :</p>
+    <pre><code>P_harvest = &eta; &times; A &times; G &times; (1 + &alpha; &times; (T - 25))</code></pre>
+    <p>Avec :</p>
+    <ul>
+      <li><strong>&eta;</strong> : Rendement du panneau solaire (typiquement 15-20%)</li>
+      <li><strong>A</strong> : Surface du panneau (m&sup2;)</li>
+      <li><strong>G</strong> : Irradiance solaire (W/m&sup2;), typiquement 100-1000 W/m&sup2;</li>
+      <li><strong>&alpha;</strong> : Coefficient de température (-0.004 /&deg;C pour les panneaux silicium)</li>
+      <li><strong>T</strong> : Température ambiante (&deg;C)</li>
+    </ul>
+
+    <h2>3. Simulation d'irradiance dans Cooja</h2>
+    <p>Dans la simulation, l'irradiance est simulée selon un cycle jour/nuit :</p>
+    <pre><code>// harvest_module.c — simulation d'irradiance
+float get_solar_irradiance(uint32_t time_seconds) {
+    float hour = (time_seconds % 86400) / 3600.0;
+    if (hour < 6 || hour > 18) return 0;  // Nuit
+    float peak = 1000;  // W/m2 à midi
+    float irradiance = peak * sin(M_PI * (hour - 6) / 12);
+    if (irradiance < 0) irradiance = 0;
+    return irradiance;
+}</code></pre>
+
+    <h2>4. Calcul de l'ECS</h2>
+    <p>L'ECS combine trois sous-scores environnementaux :</p>
+    <pre><code>ECS = w_sol &times; S_solaire + w_meteo &times; S_meteo + w_temp &times; S_temperature</code></pre>
+    <ul>
+      <li><strong>S_solaire</strong> : Ratio de récolte solaire effective (énergie récoltée / énergie maximale possible)</li>
+      <li><strong>S_meteo</strong> : Indice météo (1 pour ciel clair, 0.5 pour nuageux, 0 pour pluie)</li>
+      <li><strong>S_temperature</strong> : Score de température (optimal à 25&deg;C, dégradé à 0&deg;C et 50&deg;C)</li>
+      <li><strong>w_sol, w_meteo, w_temp</strong> : Poids configurables (défaut : 0.5, 0.3, 0.2)</li>
+    </ul>
+
+    <h2>5. Impact de l'ECS sur le routage</h2>
+    <p>L'ECS permet de favoriser les nœuds bénéficiant de conditions environnementales favorables :</p>
+    <ul>
+      <li>Un nœud avec panneau solaire bien exposé (ECS &gt; 0.7) est prioritaire comme parent car il peut recharger sa batterie.</li>
+      <li>Un nœud à l'ombre ou en conditions défavorables (ECS &lt; 0.3) sera évité car sa batterie risque de s'épuiser sans pouvoir se recharger.</li>
+    </ul>
+
+    <h2>6. Types de nœuds dans RPL-AER</h2>
+    <p>La simulation RPL-AER définit trois types de nœuds avec des caractéristiques différentes :</p>
+    <table>
+      <tr><th>Type</th><th>Batterie</th><th>Panneau solaire</th><th>ECS typique</th></tr>
+      <tr><td>Battery</td><td>2000 mAh</td><td>Non</td><td>0.0-0.2</td></tr>
+      <tr><td>Solar</td><td>2000 mAh</td><td>Oui</td><td>0.3-0.9</td></tr>
+      <tr><td>Mobile</td><td>2000 mAh</td><td>Oui</td><td>0.3-0.7</td></tr>
+    </table>
+
+    <h2>7. Logs de récolte</h2>
+    <pre><code>[HARVEST] Node 8: Harvested=12.5mW Stored=8.2mW Consumed=4.3mW
+[HARVEST] Node 8: Harvested=0.0mW Stored=0.0mW Consumed=4.3mW  (nuit)
+[HARVEST] Node 8: Harvested=15.1mW Stored=10.8mW Consumed=4.3mW</code></pre>
+    <p>Pendant la journée, l'énergie récoltée excède la consommation, permettant le stockage. La nuit, seule la batterie alimente le nœud.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 03 — Métrique MCS contextuelle — AER-MQoS</title>
+<meta name="description" content="Métrique composite MCS d'AER-MQoS : NRE, ETX normalisé, Trust Score, pondération contextuelle alpha/beta/gamma, adaptation par Q-learning.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">Cours 03 — Métrique MCS contextuelle</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 03 — Métrique MCS contextuelle</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h30<br>
+      <strong>Objectif :</strong> Maîtriser la métrique composite MCS, sa formule, ses composantes et le mécanisme d'ajustement contextuel des poids<br>
+      <strong>Prérequis :</strong> Cours 01, Cours 02
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Définition de la métrique MCS</h2>
+    <p>La métrique MCS (Multi-Objective Composite Score) est une métrique de routage composite qui agrège trois indicateurs de performance :</p>
+    <ul>
+      <li><strong>NRE</strong> — Normalized Residual Energy : énergie résiduelle normalisée du parent candidat</li>
+      <li><strong>ETX<sub>norm</sub></strong> — ETX normalisé : fiabilité du lien inversée et normalisée</li>
+      <li><strong>TrustScore</strong> — Score de confiance : évaluation de la fiabilité du nœud basée sur l'historique ETX et les anomalies</li>
+    </ul>
+
+    <h2>2. Formule de la métrique</h2>
+    <p>Le MCS est calculé comme une somme pondérée :</p>
+    <pre><code>MCS(parent) = alpha * NRE(parent) + beta * (1 - ETX_norm(parent)) + gamma * TrustScore(parent)</code></pre>
+    <p>Où :</p>
+    <ul>
+      <li><code>alpha</code>, <code>beta</code>, <code>gamma</code> sont des poids contextuels dans [0, 1] avec <code>alpha + beta + gamma = 1</code></li>
+      <li><code>NRE(parent)</code> ∈ [0, 1] — 1 = pleine charge, 0 = batterie épuisée</li>
+      <li><code>ETX_norm(parent)</code> ∈ [0, 1] — ETX normalisé par rapport à une valeur maximale de référence</li>
+      <li><code>TrustScore(parent)</code> ∈ [0, 1] — 1 = totalement fiable, 0 = suspect</li>
+    </ul>
+    <p>Un score MCS élevé indique un parent de meilleure qualité. Le parent avec le MCS le plus élevé est choisi comme parent préféré dans le DODAG.</p>
+
+    <h2>3. Pondération contextuelle</h2>
+    <p>Les poids alpha, beta, gamma ne sont pas fixes. Ils s'adaptent aux conditions du réseau selon des règles contextuelles :</p>
+
+    <table>
+      <tr><th>Condition réseau</th><th>alpha (NRE)</th><th>beta (ETX)</th><th>gamma (Trust)</th><th>Comportement</th></tr>
+      <tr><td>Énergie faible (&lt; 20%)</td><td>0.6</td><td>0.2</td><td>0.2</td><td>Favorise l'économie d'énergie</td></tr>
+      <tr><td>Pertes élevées (&gt; 30%)</td><td>0.1</td><td>0.7</td><td>0.2</td><td>Favorise la fiabilité des liens</td></tr>
+      <tr><td>Attaque suspectée</td><td>0.15</td><td>0.15</td><td>0.7</td><td>Favorise la confiance</td></tr>
+      <tr><td>Normal</td><td>0.3</td><td>0.35</td><td>0.35</td><td>Équilibre</td></tr>
+    </table>
+
+    <p>Ces poids sont définis dans <code>aer_rpl_plus.c</code> via la fonction <code>aer_rpl_calculate_contextual_weights()</code>.</p>
+
+    <h2>4. Adaptation par Q-learning du poids gamma</h2>
+    <p>En plus de l'ajustement contextuel statique, le poids gamma (confiance) est dynamiquement adapté par un agent Q-learning. L'agent observe l'état du réseau (PDR, énergie moyenne, taux d'anomalies) et sélectionne des actions qui modifient gamma pour maximiser une récompense combinée (PDR &times; Énergie &times; Confiance).</p>
+    <p>Ce mécanisme est détaillé dans le Cours 05. Il permet à AER-MQoS de s'adapter en continu aux conditions changeantes du réseau sans intervention humaine.</p>
+
+    <h2>5. Implémentation dans aer_rpl_plus.c</h2>
+    <p>Le module principal <code>aer_rpl_plus.c</code> contient les fonctions clés :</p>
+    <ul>
+      <li><code>mcs_calculate(parent)</code> — calcule le score MCS d'un parent candidat</li>
+      <li><code>aer_rpl_calculate_contextual_weights()</code> — détermine alpha/beta/gamma selon le contexte</li>
+      <li><code>aer_rpl_update_metrics()</code> — met à jour NRE, ETX_norm et TrustScore périodiquement</li>
+      <li><code>aer_rpl_parent_select()</code> — sélectionne le meilleur parent via MCS</li>
+    </ul>
+
+    <pre><code>/* Extrait simplifié du calcul MCS */
+double mcs_calculate(const rpl_parent_t *parent) {
+    double nre = aer_rpl_energy_get_nre(parent);
+    double etx = aer_rpl_get_etx_normalized(parent);
+    double trust = aer_rpl_trust_get_score(parent);
+    double alpha, beta, gamma;
+    aer_rpl_calculate_contextual_weights(&alpha, &beta, &gamma);
+    return alpha * nre + beta * (1.0 - etx) + gamma * trust;
+}</code></pre>
+
+    <h2>6. Exemple de calcul</h2>
+    <p>Considérons un parent avec NRE = 0.9, ETX_norm = 0.3, TrustScore = 0.95, dans un contexte normal (alpha=0.3, beta=0.35, gamma=0.35) :</p>
+    <pre><code>MCS = 0.3 * 0.9 + 0.35 * (1 - 0.3) + 0.35 * 0.95
+   = 0.27 + 0.35 * 0.7 + 0.3325
+   = 0.27 + 0.245 + 0.3325
+   = 0.8475</code></pre>
+    <p>Un second parent avec NRE = 0.4, ETX_norm = 0.1, TrustScore = 0.5 donnerait MCS = 0.4575. Le premier parent est donc préféré.</p>
+
+    <h2>7. Avantages de l'approche composite</h2>
+    <ul>
+      <li><strong>Holistique</strong> : intègre énergie, fiabilité ETX et confiance en une seule métrique</li>
+      <li><strong>Contextuelle</strong> : les poids s'adaptent aux conditions réseau</li>
+      <li><strong>Apprentissage</strong> : gamma affine par Q-learning pour des performances optimales</li>
+      <li><strong>Résiliente</strong> : le TrustScore protège contre les anomalies et attaques</li>
+    </ul>
+
+    <h2>8. Résumé</h2>
+    <p>La métrique MCS est le coeur d'AER-MQoS. Elle synthétise trois dimensions essentielles du routage IoT en une note composite, pondérée contextuellement et adaptée par apprentissage. Les cours suivants détaillent chaque composante : WRR pour l'ordonnancement, Q-learning pour l'adaptation, modèle NRE pour l'énergie et Trust Score pour la confiance.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

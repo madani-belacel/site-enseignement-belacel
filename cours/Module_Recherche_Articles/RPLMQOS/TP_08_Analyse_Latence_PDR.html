@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 08 — Analyse latence et PDR — Dr. Madani BELACEL</title>
+<meta name="description" content="Analyser la latence et le PDR : parsing des logs Cooja, calculs, comparaison RPL vs RPLCB.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">RPLMQOS</a></li>
+    <li class="current">TP 08 — Analyse latence et PDR</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 08 — Analyse de la latence et du PDR</h1>
+
+    <div class="md-meta">
+      <strong>Analyse de la latence et du PDR</strong>
+      <ul>
+        <li><strong>Durée :</strong> 2h TP</li>
+        <li><strong>Objectif :</strong> Calculer et comparer la latence et le PDR entre RPL et RPLCB</li>
+        <li><strong>Prérequis :</strong> TP 06 réalisé, logs disponibles</li>
+      </ul>
+    </div>
+
+    <h2>1. Structure des logs Cooja</h2>
+    <p>Les logs Cooja contiennent des lignes de ce type :</p>
+    <pre>ID:1  Timestamp: 123456  "Sending seqno 42"
+ID:3  Timestamp: 124567  "Received seqno 42 from 1"</pre>
+
+    <h2>2. Calcul du PDR</h2>
+    <p>Le PDR (Packet Delivery Ratio) se calcule simplement :</p>
+    <pre># Compter les paquets émis
+EMIS=$(grep "Sending" rpl_25.log | wc -l)
+# Compter les paquets reçus (côté serveur)
+RECUS=$(grep "Received" rpl_25.log | wc -l)
+PDR=$(echo "scale=2; $RECUS * 100 / $EMIS" | bc)
+echo "PDR = $PDR%"</pre>
+
+    <h2>3. Calcul de la latence</h2>
+    <p>Pour chaque paquet, la latence est la différence entre timestamp de réception et d'émission :</p>
+    <pre>import re
+
+emissions = {}  # seqno -> timestamp
+receps = {}     # seqno -> timestamp
+
+with open("sim.log") as f:
+    for line in f:
+        m = re.search(r"Sending seqno (\d+)", line)
+        if m:
+            ts = int(re.search(r"Timestamp: (\d+)", line).group(1))
+            emissions[m.group(1)] = ts
+        m = re.search(r"Received seqno (\d+)", line)
+        if m:
+            ts = int(re.search(r"Timestamp: (\d+)", line).group(1))
+            receps[m.group(1)] = ts
+
+latences = []
+for seqno in receps:
+    if seqno in emissions:
+        lat = receps[seqno] - emissions[seqno]
+        latences.append(lat)
+
+print(f"Latence moyenne: {sum(latences)/len(latences):.2f} ms")
+print(f"Latence max: {max(latences):.2f} ms")
+print(f"Latence min: {min(latences):.2f} ms")</pre>
+
+    <h2>4. Analyse comparative</h2>
+    <table>
+      <thead>
+        <tr><th>Métrique</th><th>RPL</th><th>RPLCB</th><th>Amélioration</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>PDR (%)</td><td>...</td><td>...</td><td>...</td></tr>
+        <tr><td>Latence moyenne (ms)</td><td>...</td><td>...</td><td>...</td></tr>
+        <tr><td>Latence max (ms)</td><td>...</td><td>...</td><td>...</td></tr>
+        <tr><td>Latence min (ms)</td><td>...</td><td>...</td><td>...</td></tr>
+      </tbody>
+    </table>
+
+    <h2>5. Distribution de la latence</h2>
+    <p>Créez un histogramme de la latence pour chaque protocole. La distribution montre la stabilité du réseau :</p>
+    <pre>import matplotlib.pyplot as plt
+plt.hist(latences_rpl, alpha=0.5, label='RPL')
+plt.hist(latences_rplcb, alpha=0.5, label='RPLCB')
+plt.legend()
+plt.xlabel('Latence (ms)')
+plt.ylabel('Fréquence')
+plt.savefig('latence_distribution.png')</pre>
+
+    <h2>6. Questions et rendu</h2>
+    <ol>
+      <li>Quel protocole a le meilleur PDR ? Quelle est la différence ?</li>
+      <li>Comparez les latences moyennes. RPLCB réduit-il la latence ?</li>
+      <li>La distribution de la latence est-elle plus stable avec RPLCB ?</li>
+      <li>Y a-t-il des paquets avec une latence anormalement élevée (> 1s) ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span> Universit de Mostaganem</span>
+      <span> 2025-2026</span>
+    </div>
+    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

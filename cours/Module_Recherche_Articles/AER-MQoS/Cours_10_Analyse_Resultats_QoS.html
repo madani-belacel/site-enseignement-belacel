@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 10 — Analyse des résultats QoS — AER-MQoS</title>
+<meta name="description" content="Analyse des performances QoS d'AER-MQoS : quand surpasse-t-il les autres variantes, compromis QoS vs énergie, performance par classe.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">Cours 10 — Analyse des résultats QoS</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 10 — Analyse des résultats QoS</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h30<br>
+      <strong>Objectif :</strong> Analyser et interpréter les résultats comparatifs d'AER-MQoS face aux autres variantes, comprendre les compromis et les conditions de supériorité<br>
+      <strong>Prérequis :</strong> Cours 08, Cours 09, TP 09, TP 10
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Résultats attendus</h2>
+    <p>Sur la base de la conception d'AER-MQoS, voici les résultats attendus par métrique :</p>
+
+    <table>
+      <tr><th>Métrique</th><th>RPL-MRHOF</th><th>RPL-MQoS-style</th><th>RPL-AER-style</th><th>AER-MQoS</th></tr>
+      <tr><td>PDR global</td><td>Moyen</td><td>Bon</td><td>Moyen</td><td><strong>Très bon</strong></td></tr>
+      <tr><td>PDR C0</td><td>Identique à C3</td><td>Excellent</td><td>Identique à C3</td><td><strong>Excellent</strong></td></tr>
+      <tr><td>PDR C3</td><td>Identique à C0</td><td>Faible</td><td>Identique à C0</td><td>Moyen</td></tr>
+      <tr><td>Latence</td><td>Moyenne</td><td>Bonne (C0)</td><td>Élevée</td><td><strong>Bonne</strong></td></tr>
+      <tr><td>Énergie</td><td>Moyenne</td><td>Élevée</td><td>Faible</td><td>Moyenne</td></tr>
+      <tr><td>Équité</td><td>Faible</td><td>Bonne</td><td>Moyenne</td><td><strong>Très bonne</strong></td></tr>
+      <tr><td>Résilience attaques</td><td>Faible</td><td>Moyenne</td><td>Faible</td><td><strong>Élevée</strong></td></tr>
+    </table>
+
+    <h2>2. Analyse PDR : quand AER-MQoS domine</h2>
+    <p>AER-MQoS surpasse les autres variantes dans plusieurs scénarios :</p>
+    <ul>
+      <li><strong>Trafic hétérogène</strong> : avec des flux mixtes C0–C3, le WRR garantit que les paquets critiques sont livrés prioritairement, ce que RPL-MRHOF et RPL-AER-style ne font pas.</li>
+      <li><strong>Réseau à forte perte</strong> : la pondération contextuelle augmente beta (ETX) quand les pertes sont élevées, ce qui améliore le choix du parent par rapport à RPL-MRHOF (ETX fixe) et RPL-MQoS-style (poids fixes).</li>
+      <li><strong>Réseau sous attaque</strong> : le Trust Score avec pénalité d'anomalie permet d'exclure les nœuds malveillants, là où les autres variantes continuent de les utiliser.</li>
+    </ul>
+
+    <h2>3. Compromis QoS vs Énergie</h2>
+    <p>L'analyse des résultats doit tenir compte des compromis fondamentaux :</p>
+    <ul>
+      <li><strong>AER-MQoS vs RPL-AER-style</strong> : AER-MQoS offre un meilleur PDR et une meilleure QoS, mais consomme légèrement plus d'énergie (overhead du calcul MCS, WRR, Q-learning). Ce compromis est acceptable pour des applications nécessitant de la QoS.</li>
+      <li><strong>AER-MQoS vs RPL-MQoS-style</strong> : L'ajout du Q-learning et de la pondération contextuelle améliore les performances sans surcoût énergétique significatif (l'apprentissage est local et léger).</li>
+      <li><strong>AER-MQoS vs RPL-MRHOF</strong> : La différence est la plus marquée, surtout pour les classes prioritaires. RPL-MRHOF peut être préféré si l'énergie est la seule préoccupation et que la QoS n'est pas requise.</li>
+    </ul>
+
+    <h2>4. Performance par classe de trafic</h2>
+    <p>L'un des résultats les plus importants est la différenciation par classe :</p>
+    <ul>
+      <li><strong>C0</strong> : AER-MQoS obtient un PDR proche de 99% même sous contention, grâce au WRR.</li>
+      <li><strong>C1</strong> : bon PDR (~95%), légèrement inférieur à C0.</li>
+      <li><strong>C2</strong> : PDR correct (~88%), peut baisser en cas de congestion.</li>
+      <li><strong>C3</strong> : PDR plus faible (~75-80%), les paquets C3 sont dropés en premier.</li>
+    </ul>
+    <p>Cette hiérarchie C0 > C1 > C2 > C3 est exactement ce que le design vise. Chez RPL-MRHOF, les 4 classes auraient le même PDR (pas de différenciation).</p>
+
+    <h2>5. Impact du Q-learning</h2>
+    <p>L'analyse de l'évolution de gamma au cours du temps est instructive :</p>
+    <ul>
+      <li>En début de simulation, gamma explore différentes valeurs (phase d'exploration)</li>
+      <li>Progressivement, gamma se stabilise autour d'une valeur optimale (exploitation)</li>
+      <li>Si les conditions réseau changent (pertes, énergie), l'agent ré-explore et converge vers une nouvelle valeur</li>
+      <li>La valeur de convergence dépend du contexte : gamma élevé si confiance importante, gamma faible si ETX prédomine</li>
+    </ul>
+
+    <h2>6. Résilience aux attaques</h2>
+    <p>Sous attaque rank anomaly, le Trust Score des attaquants chute rapidement en dessous du seuil d'éligibilité (<code>AER_TRUST_THRESHOLD</code>). Les nœuds honnêtes les excluent du DODAG, maintenant un PDR élevé. Sans ce mécanisme (RPL-MRHOF, RPL-MQoS-style), le PDR peut chuter de 30 à 50%.</p>
+
+    <h2>7. Limites et travaux futurs</h2>
+    <p>Quelques limites identifiées :</p>
+    <ul>
+      <li>L'overhead de calcul MCS et WRR est négligeable sur les plateformes récentes mais pourrait être significatif sur des nœuds très contraints</li>
+      <li>Le Q-learning nécessite une phase de convergence (quelques minutes simulées)</li>
+      <li>Le modèle NRE suppose une connaissance précise de la capacité de la batterie</li>
+      <li>Les attaques non couvertes (wormhole, sybil) ne sont pas détectées par le Trust Score actuel</li>
+    </ul>
+
+    <h2>8. Résumé</h2>
+    <p>AER-MQoS démontre sa supériorité pour les applications IoT nécessitant de la QoS, particulièrement dans les environnements à pertes ou sous attaque. Le prix à payer est une légère augmentation de la complexité et de la consommation énergétique, justifiée par les gains en fiabilité et en différenciation de service.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

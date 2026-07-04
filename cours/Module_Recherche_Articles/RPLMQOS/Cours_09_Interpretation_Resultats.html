@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 09 — Interprétation des résultats — Dr. Madani BELACEL</title>
+<meta name="description" content="Interprétation des résultats comparatifs RPL vs RPLCB : lecture des graphiques, significativité statistique, conclusions.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">RPLMQOS</a></li>
+    <li class="current">Cours 09 — Interprétation des résultats</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>Cours 09 — Interprétation des résultats</h1>
+
+    <div class="md-meta">
+      <strong>Interprétation des résultats</strong>
+      <ul>
+        <li><strong>Durée :</strong> 2h CM</li>
+        <li><strong>Objectif :</strong> Apprendre à lire, interpréter et tirer des conclusions des résultats comparatifs</li>
+      </ul>
+    </div>
+
+    <h2>1. Lecture des graphiques comparatifs</h2>
+    <p>Les résultats de simulation sont présentés sous forme de graphiques. Voici comment les interpréter :</p>
+    <h3>1.1 Box plots (boîtes à moustaches)</h3>
+    <p>Ils montrent la distribution complète des données : médiane (ligne centrale), Q1-Q3 (boîte), min-max (moustaches), valeurs aberrantes (points). Un box plot avec des boîtes non chevauchantes indique une différence statistiquement significative.</p>
+    <h3>1.2 Barres d'erreur</h3>
+    <p>La hauteur de la barre représente la moyenne, les barres d'erreur représentent l'écart-type ou l'intervalle de confiance à 95%. Si les barres d'erreur de RPL et RPLCB ne se chevauchent pas, la différence est significative.</p>
+
+    <h2>2. Analyse des résultats par métrique</h2>
+    <h3>2.1 PDR</h3>
+    <p>RPLCB montre généralement un PDR équivalent ou légèrement supérieur à RPL. L'amélioration est plus marquée dans les topologies denses où la congestion est fréquente. Un gain de 2-5% est typique.</p>
+    <h3>2.2 Latence</h3>
+    <p>La latence sous RPLCB est généralement stable ou légèrement réduite. L'évitement des nœuds congestionnés (CB=1) permet de choisir des chemins moins chargés. Réduction typique : 5-15%.</p>
+    <h3>2.3 Énergie</h3>
+    <p>La consommation d'énergie par nœud est mieux répartie dans RPLCB. Les nœuds à faible énergie sont préservés, tandis que ceux avec plus d'énergie sont plus sollicités. La consommation totale du réseau peut être légèrement supérieure (meilleure répartition).</p>
+    <h3>2.4 Durée de vie</h3>
+    <p>C'est la métrique où RPLCB montre le plus grand gain. Le FND (First Node Death) peut être retardé de 30-50% car le CB empêche les nœuds faibles d'être sur-sollicités.</p>
+
+    <h2>3. Significativité statistique</h2>
+    <p>Une différence observée n'est pas nécessairement significative. Il faut vérifier :</p>
+    <ul>
+      <li>La <strong>valeur p</strong> du test statistique (p < 0.05 indique une différence significative)</li>
+      <li>La <strong>taille de l'effet</strong> (effect size) : différence normalisée par l'écart-type</li>
+      <li>La <strong>puissance statistique</strong> : probabilité de détecter un effet réel (doit être > 0.8)</li>
+    </ul>
+
+    <h2>4. Quand une différence est-elle importante ?</h2>
+    <p>Au-delà de la significativité statistique, il faut évaluer l'<strong>importance pratique</strong> :</p>
+    <ul>
+      <li>Un gain de PDR de 1% n'est pas important pour une application best-effort</li>
+      <li>Une amélioration de 30% de la durée de vie est très significative pour des nœuds sur batterie</li>
+      <li>Une augmentation de l'overhead de 2% est négligeable pour la plupart des applications</li>
+    </ul>
+
+    <h2>5. Conclusion de l'évaluation</h2>
+    <p>L'évaluation comparative entre RPL et RPLCB doit aboutir à une conclusion claire :</p>
+    <ul>
+      <li>RPLCB <strong>améliore</strong> la durée de vie du réseau (gain majeur)</li>
+      <li>RPLCB <strong>maintient ou améliore</strong> le PDR et la latence (gain modéré)</li>
+      <li>RPLCB <strong>augmente légèrement</strong> l'overhead de routage (coût négligeable)</li>
+      <li>RPLCB est <strong>particulièrement adapté</strong> aux réseaux denses et hétérogènes</li>
+    </ul>
+
+    <h2>6. Questions de révision</h2>
+    <ol>
+      <li>Un box plot montre les médianes RPL=88% et RPLCB=92% avec des boîtes qui se chevauchent. La différence est-elle significative ?</li>
+      <li>Quelle est la différence entre significativité statistique et importance pratique ?</li>
+      <li>Si RPLCB double presque l'overhead mais améliore la durée de vie de 40%, est-ce acceptable ?</li>
+      <li>Rédigez un paragraphe de conclusion pour l'article RPLCB basé sur les résultats typiques.</li>
+      <li>Quelles sont les limites de l'étude RPLCB (simulations uniquement, topologies spécifiques, etc.) ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span> Universit de Mostaganem</span>
+      <span> 2025-2026</span>
+    </div>
+    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

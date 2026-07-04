@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 11 — Simulations à densité variable — Dr. Madani BELACEL</title>
+<meta name="description" content="Lancer des simulations RPL et RPLCB avec 25, 50 et 80 nœuds pour analyser la scalabilité.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">RPLMQOS</a></li>
+    <li class="current">TP 11 — Simulations à densité variable</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 11 — Simulations à densité variable</h1>
+
+    <div class="md-meta">
+      <strong>Simulations à densité variable</strong>
+      <ul>
+        <li><strong>Durée :</strong> 3h TP</li>
+        <li><strong>Objectif :</strong> Évaluer la scalabilité de RPL et RPLCB avec 25, 50 et 80 nœuds</li>
+        <li><strong>Prérequis :</strong> TP 04-09 réalisés (maîtrise des simulations)</li>
+      </ul>
+    </div>
+
+    <h2>1. Plan des simulations</h2>
+    <table>
+      <thead>
+        <tr><th>Configuration</th><th>Fichier CSC</th><th>Nœuds</th><th>Durée (s)</th><th>Répétitions</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>RPL 25</td><td>sim_25.csc</td><td>25</td><td>300</td><td>10</td></tr>
+        <tr><td>RPLCB 25</td><td>sim_25.csc</td><td>25</td><td>300</td><td>10</td></tr>
+        <tr><td>RPL 50</td><td>sim_50.csc</td><td>50</td><td>300</td><td>10</td></tr>
+        <tr><td>RPLCB 50</td><td>sim_50.csc</td><td>50</td><td>300</td><td>10</td></tr>
+        <tr><td>RPL 80</td><td>sim_80.csc</td><td>80</td><td>300</td><td>10</td></tr>
+        <tr><td>RPLCB 80</td><td>sim_80.csc</td><td>80</td><td>300</td><td>10</td></tr>
+      </tbody>
+    </table>
+    <p>Total : 60 simulations (2 protocoles  3 densités  10 répétitions).</p>
+
+    <h2>2. Automatisation des simulations</h2>
+    <p>Créez un script bash pour lancer les simulations en batch :</p>
+    <pre>#!/bin/bash
+# run_all_simulations.sh
+SEEDS=(12345 12346 12347 12348 12349 12350 12351 12352 12353 12354)
+PROTOCOLS=("RPL" "RPLCB")
+NODES=(25 50 80)
+
+for proto in "${PROTOCOLS[@]}"; do
+  for nodes in "${NODES[@]}"; do
+    for seed in "${SEEDS[@]}"; do
+      echo "Running $proto ${nodes}n seed=$seed"
+      # Lancer Cooja en mode non-interactif
+      # java -jar cooja.jar -nogui=sim_${nodes}.csc ...
+    done
+  fi
+done</pre>
+
+    <h2>3. Analyser la scalabilité</h2>
+    <p>Pour chaque métrique, créez un graphique de scalabilité : axe X = nombre de nœuds, axe Y = valeur de la métrique. Deux courbes : RPL et RPLCB. Ces graphiques montrent comment chaque protocole se comporte quand le réseau grandit.</p>
+
+    <h2>4. Créer les courbes de scalabilité</h2>
+    <pre>import matplotlib.pyplot as plt
+import numpy as np
+
+nodes = [25, 50, 80]
+rpl_pdr = [91.2, 85.6, 78.3]
+rplcb_pdr = [93.1, 89.4, 84.7]
+
+plt.plot(nodes, rpl_pdr, 'o-', label='RPL')
+plt.plot(nodes, rplcb_pdr, 's-', label='RPLCB')
+plt.xlabel('Nombre de nœuds')
+plt.ylabel('PDR (%)')
+plt.legend()
+plt.grid()
+plt.savefig('scalability_pdr.png', dpi=300)</pre>
+
+    <h2>5. Questions et rendu</h2>
+    <ol>
+      <li>Quel protocole se dégrade le moins quand la densité augmente ?</li>
+      <li>Créez les courbes de scalabilité pour le PDR, la latence et la durée de vie.</li>
+      <li>À partir de combien de nœuds la différence RPL vs RPLCB devient-elle significative ?</li>
+      <li>RPLCB est-il plus scalable que RPL ? Justifiez avec les graphiques.</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span> Universit de Mostaganem</span>
+      <span> 2025-2026</span>
+    </div>
+    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 06 — Topologies RPL — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Création de topologies RPL avec 10+ nœuds : grille, aléatoire, analyse du DODAG.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">TP 06 — Topologies RPL</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 06 — Création de topologies RPL (10+ nœuds)</h1>
+
+    <div class="md-meta">
+      <strong>TP 06</strong> — Durée estimée : 2h — Prérequis : TP 04, TP 05
+    </div>
+
+    <h2>1. Objectifs</h2>
+    <ul>
+      <li>Créer des topologies de grande taille (10, 20, 30 nœuds)</li>
+      <li>Expérimenter avec des topologies en grille et aléatoires</li>
+      <li>Utiliser le visualiseur de topologie de Cooja</li>
+      <li>Analyser la structure du DODAG en fonction de la topologie</li>
+      <li>Observer les relations parent-enfant dans différents déploiements</li>
+    </ul>
+
+    <h2>2. Topologie en grille (Grid)</h2>
+    <p>Une topologie en grille place les nœuds à intervalles réguliers. C'est utile pour simuler un déploiement structuré (ex: champs agricoles).</p>
+    <h3>Configuration de la grille 3×4 (12 nœuds)</h3>
+    <ol>
+      <li>Créez une simulation nommée <code>Topologie_Grille</code></li>
+      <li>Ajoutez 1 racine UDP server (nœud 1) positionnée au centre (100, 50)</li>
+      <li>Ajoutez 11 clients UDP positionnés en grille 3×4</li>
+    </ol>
+    <pre><code>Positions de la grille 3×4 (espacement 40m) :
+(20,10) (60,10) (100,10) (140,10)
+(20,50) (60,50) (100,50) (140,50)  ← racine au centre
+(20,90) (60,90) (100,90) (140,90)</code></pre>
+    <ol start="4">
+      <li>Réglez la portée radio à 60 mètres (UDGM : Transmission range = 60 m)</li>
+      <li>Démarrez la simulation et observez la formation du DODAG</li>
+    </ol>
+
+    <h2>3. Topologie aléatoire (Random)</h2>
+    <p>Une topologie aléatoire simule un déploiement non structuré, plus réaliste pour les WSN.</p>
+    <h3>Configuration aléatoire avec 20 nœuds</h3>
+    <ol>
+      <li>Créez une simulation nommée <code>Topologie_Aleatoire</code></li>
+      <li>Ajoutez 1 racine UDP server (position fixe : 80, 80)</li>
+      <li>Ajoutez 19 clients avec positions aléatoires :</li>
+    </ol>
+    <pre><code>// Script pour générer des positions aléatoires (200x200)
+x = rand() % 200
+y = rand() % 200</code></pre>
+    <ol start="4">
+      <li>Réglez la portée radio à 50 mètres</li>
+      <li>Démarrez la simulation</li>
+    </ol>
+
+    <h2>4. Utilisation du visualiseur de topologie</h2>
+    <p>Cooja offre une vue réseau qui montre les connexions entre nœuds :</p>
+    <ul>
+      <li>Les lignes en trait plein indiquent les liens parents-enfants</li>
+      <li>Les lignes en pointillé indiquent les voisins radio (portée mais pas forcément parent)</li>
+      <li>La couleur des nœuds peut indiquer le rank (clair = faible, foncé = élevé)</li>
+    </ul>
+    <p>Pour exporter la topologie : Tools → Topology visualizer (ou capture d'écran)</p>
+
+    <h2>5. Analyse du DODAG à différentes échelles</h2>
+    <table>
+      <tr><th>Nombre de nœuds</th><th>Topologie</th><th>Profondeur max</th><th>Nombre de parents par nœud</th></tr>
+      <tr><td>10</td><td>Grille 2×5</td><td>?</td><td>?</td></tr>
+      <tr><td>20</td><td>Aléatoire</td><td>?</td><td>?</td></tr>
+      <tr><td>30</td><td>Grille 5×6</td><td>?</td><td>?</td></tr>
+    </table>
+    <p>Pour chaque configuration, notez :</p>
+    <ul>
+      <li>La profondeur maximale du DODAG (rank le plus élevé)</li>
+      <li>Le nombre de voisins par nœud (densité du réseau)</li>
+      <li>Le nombre de sauts moyen pour atteindre la racine</li>
+      <li>Les nœuds qui n'ont qu'un seul parent potentiel (goulots d'étranglement)</li>
+    </ul>
+
+    <h2>6. Impact de la densité sur le DODAG</h2>
+    <p>Expérience : faites varier la portée radio et observez l'impact sur la structure du DODAG.</p>
+    <table>
+      <tr><th>Portée radio</th><th>Densité</th><th>Structure du DODAG</th></tr>
+      <tr><td>30 m</td><td>Faible</td><td>Profond, peu de parents possibles</td></tr>
+      <tr><td>60 m</td><td>Moyenne</td><td>Équilibré, plusieurs parents</td></tr>
+      <tr><td>100 m</td><td>Élevée</td><td>Peu profond, beaucoup de parents</td></tr>
+    </table>
+
+    <h2>7. Exercices</h2>
+    <ol>
+      <li>Créez une topologie en grille 5×6 (30 nœuds) avec la racine au centre. Combien de niveaux de profondeur ?</li>
+      <li>Dans une topologie aléatoire de 20 nœuds, identifiez les nœuds qui ont le plus de parents potentiels</li>
+      <li>Comparez le nombre de messages DIO émis dans les topologies grille et aléatoire (utilisez le Radio Logger)</li>
+      <li>Quelle est la topologie la plus résiliente (meilleure connectivité) ? Justifiez</li>
+    </ol>
+
+    <h2>8. Livrables</h2>
+    <ul>
+      <li>Captures d'écran des topologies (grille 12, aléatoire 20, grille 30)</li>
+      <li>Tableau comparatif des métriques pour chaque topologie</li>
+      <li>Analyse de l'impact de la densité sur la structure du DODAG</li>
+    </ul>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="Cours_05_Collecte_Metriques.html">Cours suivant : Collecte de métriques →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

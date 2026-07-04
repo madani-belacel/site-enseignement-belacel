@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 02 — Architecture et mécanisme CB — Dr. Madani BELACEL</title>
+<meta name="description" content="Architecture de RPLCB : mécanisme du Control Bit, placement dans l'en-tête RPL, interaction avec DIO/DAO.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">RPLMQOS</a></li>
+    <li class="current">Cours 02 — Architecture et mécanisme CB</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>Cours 02 — Architecture et mécanisme CB</h1>
+
+    <div class="md-meta">
+      <strong>Architecture et mécanisme Control Bit</strong>
+      <ul>
+        <li><strong>Durée :</strong> 2h CM</li>
+        <li><strong>Objectif :</strong> Comprendre en détail le fonctionnement du mécanisme CB et son intégration dans l'architecture RPL</li>
+      </ul>
+    </div>
+
+    <h2>1. Rappel de l'architecture RPL</h2>
+    <p>RPL construit un DODAG (Destination-Oriented Directed Acyclic Graph) orienté vers un root (puits). Les messages de contrôle sont :</p>
+    <ul>
+      <li><strong>DIO (DODAG Information Object)</strong> : diffusé par le root et relayé par les nœuds pour annoncer le DODAG</li>
+      <li><strong>DAO (Destination Advertisement Object)</strong> : envoyé par les nœuds vers le root pour annoncer leurs préfixes</li>
+      <li><strong>DIS (DODAG Information Solicitation)</strong> : sollicitation d'informations DIO</li>
+    </ul>
+    <p>La sélection de parent dans RPL standard utilise l'OF (Objective Function), typiquement MRHOF avec ETX.</p>
+
+    <h2>2. Principe du Control Bit (CB)</h2>
+    <p>Le Control Bit est un mécanisme qui <strong>étend le message DIO</strong> en y ajoutant un champ d'un bit. Ce bit code une information binaire qui influence la décision de sélection de parent. Dans RPLCB, le Control Bit est utilisé pour signaler :</p>
+    <ul>
+      <li><strong>CB = 0</strong> : état normal — le nœud a une énergie suffisante et n'est pas congestionné</li>
+      <li><strong>CB = 1</strong> : état critique — le nœud a une énergie faible ou est congestionné, il ne doit pas être choisi comme parent</li>
+    </ul>
+
+    <h2>3. Placement du CB dans l'en-tête RPL</h2>
+    <p>Le Control Bit est inséré dans le champ <strong>options</strong> du message DIO, dans un sous-champ de type <em>RPLCB-option</em>. La structure est la suivante :</p>
+    <pre>Message DIO RPL standard :
+  base-header (ICMPv6 type 155, code 1)
+    RPLInstanceID
+    Version
+    Rank
+    DODAGID
+    Options... (variable)
+
+Message DIO RPLCB :
+  base-header (ICMPv6 type 155, code 1)
+    RPLInstanceID
+    Version
+    Rank
+    DODAGID
+    Options...
+      RPLCB-option (Type TBD, Length 1)
+        Control Bit (1 bit) + padding (7 bits)</pre>
+
+    <h2>4. Algorithme de sélection de parent avec CB</h2>
+    <p>L'algorithme de sélection de parent dans RPLCB fonctionne en deux phases :</p>
+    <ol>
+      <li><strong>Phase de filtrage</strong> : tout nœud candidat avec CB=1 est exclu de la sélection, quel que soit son ETX</li>
+      <li><strong>Phase de classement</strong> : parmi les candidats restants (CB=0), le parent est choisi selon la métrique ETX classique</li>
+    </ol>
+    <p>Cet algorithme simple permet d'éviter les nœuds à faible énergie tout en conservant les bonnes propriétés de RPL standard.</p>
+
+    <h2>5. Implémentation du CB dans Contiki-NG</h2>
+    <p>Dans Contiki-NG, l'implémentation de RPLCB modifie les fichiers suivants :</p>
+    <ul>
+      <li><code>rpl-dio.c</code> : ajout du champ CB dans l'option DIO</li>
+      <li><code>rpl-of0.c</code> / <code>rpl-mrhof.c</code> : modification de la fonction de sélection de parent</li>
+      <li><code>rpl.h</code> : définition de la structure <code>rpl_cb_option</code></li>
+    </ul>
+    <p>Le code C typique pour lire le CB est :</p>
+    <pre>if (parent-&gt;cb_flag == 1) {
+  /* Ne pas sélectionner ce parent */
+  continue;
+}
+/* Sinon, procéder à la sélection normale basée sur ETX */</pre>
+
+    <h2>6. Gestion du CB dans les messages DIO et DAO</h2>
+    <p>Le Control Bit est principalement transporté dans les messages <strong>DIO</strong> (descendants vers ascendants). Lorsqu'un nœud reçoit un DIO avec CB=1 d'un parent potentiel, il l'exclut de sa liste de parents. Le CB peut également être intégré dans les messages <strong>DAO</strong> pour signaler au root l'état des nœuds, permettant une vue globale de la santé du réseau.</p>
+
+    <h2>7. Questions de révision</h2>
+    <ol>
+      <li>Dessinez le format d'un message DIO RPLCB avec l'option CB.</li>
+      <li>Expliquez en quoi le CB modifie l'algorithme de sélection de parent.</li>
+      <li>Quels sont les avantages de placer le CB dans l'option DIO plutôt que dans un message séparé ?</li>
+      <li>Comment le CB pourrait-il être étendu pour transporter plus d'un bit d'information ?</li>
+      <li>Quelle est la différence entre le filtrage CB et une métrique composite pondérée ?</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span> Universit de Mostaganem</span>
+      <span> 2025-2026</span>
+    </div>
+    <p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

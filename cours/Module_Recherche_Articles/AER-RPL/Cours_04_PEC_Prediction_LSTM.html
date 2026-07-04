@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 04 — PEC — Prédiction LSTM de consommation — Dr. Madani BELACEL</title>
+<meta name="description" content="PEC — Predictive Energy Consumption : réseau LSTM pour la prédiction de consommation énergétique, architecture, entraînement et intégration dans RPL-AER.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-RPL</a></li>
+    <li class="current">Cours 04 — PEC / LSTM</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 04 : PEC — Prédiction LSTM de consommation</h1>
+
+    <div class="md-meta">
+      <strong>Cours 04 — PEC — Prédiction LSTM de consommation</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Durée estimée :</strong> 1h30</li>
+        <li><strong>Objectifs :</strong> Comprendre l'architecture LSTM, son rôle dans la prédiction de consommation et son intégration dans RPL-AER</li>
+      </ul>
+    </div>
+
+    <h2>1. Pourquoi un LSTM pour la prédiction énergétique ?</h2>
+    <p>La consommation énergétique des nœuds IoT n'est pas constante. Elle varie selon le trafic réseau, les cycles d'émission/réception, et les événements capteurs. Un réseau de neurones LSTM (Long Short-Term Memory) est particulièrement adapté car il peut capturer les dépendances temporelles dans les séquences de consommation.</p>
+    <p>Contrairement à un réseau feedforward classique, le LSTM possède une mémoire interne (<em>cell state</em>) qui lui permet de retenir des informations sur le long terme.</p>
+
+    <h2>2. Architecture du LSTM dans RPL-AER</h2>
+    <p>Le prédicteur LSTM implémenté dans <code>lstm_predictor.c</code> est une version légère adaptée aux contraintes mémoire des nœuds IoT :</p>
+    <ul>
+      <li><strong>Couche d'entrée :</strong> Séquence de 5 pas de temps (window_size = 5) de consommation énergétique normalisée</li>
+      <li><strong>Couche LSTM :</strong> 4 cellules LSTM (taille réduite pour l'embarqué)</li>
+      <li><strong>Couche de sortie :</strong> Un neurone avec activation sigmoïde produisant la prédiction normalisée</li>
+    </ul>
+    <pre><code>// Architecture simplifiée du LSTM
+#define LSTM_WINDOW_SIZE  5   // Séquence d'entrée
+#define LSTM_HIDDEN_SIZE  4   // Nombre de cellules cachées
+#define LSTM_OUTPUT_SIZE  1   // Sortie : consommation prédite</code></pre>
+
+    <h2>3. Fonctionnement du prédicteur</h2>
+    <p>Le module <code>lstm_predictor.c</code> fonctionne en trois étapes :</p>
+    <ol>
+      <li><strong>Collecte :</strong> À chaque intervalle (30s), la consommation est enregistrée dans un buffer circulaire</li>
+      <li><strong>Prédiction :</strong> Toutes les 5 minutes, le LSTM prédit la consommation pour les 5 prochains intervalles</li>
+      <li><strong>Mise à jour du PEC :</strong> La prédiction est convertie en score PEC entre 0 et 1</li>
+    </ol>
+
+    <h2>4. Conversion en score PEC</h2>
+    <p>La prédiction brute du LSTM (consommation en mW) est convertie en PEC normalisé :</p>
+    <pre><code>float predict_to_pec(float predicted_consumption) {
+    // Plus la consommation prédite est faible, plus le PEC est élevé
+    float pec = 1.0 - (predicted_consumption / MAX_CONSUMPTION);
+    if (pec < 0) pec = 0;
+    if (pec > 1) pec = 1;
+    return pec;
+}</code></pre>
+    <p>Un PEC élevé signifie que le nœud prévoit une faible consommation future, ce qui le rend plus fiable comme parent.</p>
+
+    <h2>5. Implémentation du stub LSTM dans Cooja</h2>
+    <p>Dans la simulation Cooja, le LSTM est implémenté comme un <em>stub</em> qui émule le comportement du réseau de neurones sans nécessiter de framework ML lourd :</p>
+    <pre><code>// lstm_predictor.c — stub de prédiction
+float lstm_predict(float *window, int len) {
+    // Modèle pré-entraîné : combinaison linéaire simplifiée
+    float weights[] = {0.1, 0.15, 0.2, 0.25, 0.3};
+    float prediction = 0;
+    for (int i = 0; i < len; i++) {
+        prediction += weights[i] * window[i];
+    }
+    return prediction;
+}</code></pre>
+    <p>Pour une utilisation réelle, les poids seraient obtenus par entraînement sur Keras/TensorFlow puis exportés vers le firmware.</p>
+
+    <h2>6. Logs de prédiction</h2>
+    <p>Les logs LSTM permettent d'évaluer la qualité de la prédiction :</p>
+    <pre><code>[LSTM] Node 12: Pred=4.32mW Actual=4.18mW Error=0.14mW MAE=0.12
+[LSTM] Node 12: Pred=4.45mW Actual=4.51mW Error=0.06mW MAE=0.11
+[LSTM] Node 12: Pred=4.10mW Actual=5.02mW Error=0.92mW MAE=0.38</code></pre>
+    <p>La Mean Absolute Error (MAE) est calculée en continu pour évaluer la dérive du modèle. Une MAE &lt; 0.5 mW est considérée comme acceptable.</p>
+
+    <h2>7. Impact sur le routage</h2>
+    <p>La prédiction LSTM permet d'anticiper l'épuisement d'un nœud avant qu'il ne se produise. Par exemple, si le LSTM prédit une consommation élevée (PEC faible) pour un nœud dans les 5 prochaines minutes, RPL-AER peut progressivement rediriger le trafic vers d'autres parents avant que le nœud ne s'éteigne, assurant ainsi une continuité de service.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

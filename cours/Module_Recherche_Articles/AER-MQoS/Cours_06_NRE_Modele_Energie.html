@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 06 — Modèle d'énergie NRE — AER-MQoS</title>
+<meta name="description" content="Modèle d'énergie NRE (Normalized Residual Energy) dans AER-MQoS : capacité de batterie, consommation résiduelle, normalisation, rôle dans la métrique MCS.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">Cours 06 — Modèle d'énergie NRE</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 06 — Modèle d'énergie NRE (Normalized Residual Energy)</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h00<br>
+      <strong>Objectif :</strong> Comprendre le modèle d'énergie NRE étendu de RPL-AER, son implémentation et son rôle dans la métrique MCS<br>
+      <strong>Prérequis :</strong> Cours 01, Cours 03, notions de consommation énergétique IoT
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Importance de l'énergie dans les LLN</h2>
+    <p>Les nœuds IoT sont généralement alimentés par batterie avec une capacité limitée. La durée de vie du réseau dépend directement de la gestion de l'énergie. Un protocole de routage qui ignore l'énergie résiduelle risque d'épuiser prématurément certains nœuds, fragmentant le réseau et réduisant sa couverture.</p>
+    <p>AER-MQoS intègre un modèle énergétique complet, hérité et étendu du protocole RPL-AER, qui suit en continu la charge de la batterie et normalise l'énergie résiduelle pour l'inclure dans la métrique de routage.</p>
+
+    <h2>2. Le modèle NRE</h2>
+    <p>Le NRE (Normalized Residual Energy) représente l'énergie résiduelle d'un nœud normalisée dans [0, 1] :</p>
+    <pre><code>NRE = énergie_résiduelle / capacité_totale_de_la_batterie</code></pre>
+    <p>Où :</p>
+    <ul>
+      <li><code>énergie_résiduelle</code> = capacité_initial − énergie_consommée</li>
+      <li><code>capacité_totale</code> = énergie totale de la batterie en mAh (paramétrable)</li>
+    </ul>
+    <p>Un NRE = 1 signifie batterie pleinement chargée, NRE ≈ 0 signifie batterie épuisée.</p>
+
+    <h2>3. Suivi de la consommation</h2>
+    <p>Le module <code>aer_rpl_energy.c</code> met à jour la consommation énergétique à chaque opération :</p>
+    <ul>
+      <li><strong>Transmission radio</strong> : coût en fonction de la puissance d'émission (TX)</li>
+      <li><strong>Réception radio</strong> : coût en écoute (RX)</li>
+      <li><strong>Écoute de canal (CCA)</strong> : coût de <em>clear channel assessment</em></li>
+      <li><strong>Traitement CPU</strong> : consommation du microcontrôleur</li>
+      <li><strong>Veille (sleep)</strong> : consommation minimale en mode basse consommation</li>
+    </ul>
+
+    <h2>4. Paramétrage de la batterie</h2>
+    <p>Le modèle est configurable via des constantes dans <code>project-conf.h</code> :</p>
+    <pre><code>/* Configuration typique pour une simulation Cooja */
+#define AER_BATTERY_CAPACITY    3000    // 3000 mAh
+#define AER_TX_CURRENT_MA       17.4    // mA en transmission
+#define AER_RX_CURRENT_MA       18.8    // mA en réception
+#define AER_CPU_CURRENT_MA      1.8     // mA en actif
+#define AER_SLEEP_CURRENT_MA    0.001   // mA en veille</code></pre>
+
+    <h2>5. Implémentation dans aer_rpl_energy.c</h2>
+    <p>Les fonctions clés du module sont :</p>
+    <pre><code>/* Initialisation du modèle */
+void aer_rpl_energy_init(void) {
+    battery_capacity = AER_BATTERY_CAPACITY;
+    energy_consumed = 0;
+}
+
+/* Mise à jour après émission d'un paquet */
+void aer_rpl_energy_tx_packet(uint8_t len) {
+    double time_ms = (len * 8.0) / BITRATE_KBPS;
+    energy_consumed += (AER_TX_CURRENT_MA * time_ms) / 3600000.0;
+}
+
+/* Obtention du NRE */
+double aer_rpl_energy_get_nre(void) {
+    double residual = battery_capacity - energy_consumed;
+    if (residual < 0) residual = 0;
+    return residual / battery_capacity;
+}</code></pre>
+
+    <h2>6. NRE dans la métrique MCS</h2>
+    <p>Le NRE est l'une des trois composantes de la métrique MCS (Cours 03). Multiplié par le poids alpha, il influence le choix du parent. Lorsque alpha est élevé (contexte d'énergie faible), les nœuds avec une batterie bien chargée sont favorisés comme parents, répartissant ainsi la charge énergétique et prolongeant la durée de vie du réseau.</p>
+
+    <p>L'extrait suivant montre comment le NRE est obtenu pour un parent candidat :</p>
+    <pre><code>/* Dans la fonction de sélection de parent */
+double nre = aer_rpl_energy_get_nre_for_parent(parent);
+double mcs = alpha * nre + beta * (1 - etx_norm) + gamma * trust;</code></pre>
+
+    <h2>7. Comparaison avec le modèle énergétique de Contiki-NG</h2>
+    <p>Contiki-NG intègre un module <code>energest</code> qui estime la consommation par échantillonnage de l'activité radio. Le modèle NRE d'AER-MQoS est plus précis car il calcule la consommation réelle à chaque transmission/réception plutôt que par échantillonnage statistique.</p>
+
+    <table>
+      <tr><th>Caractéristique</th><th>Energest (Contiki-NG)</th><th>NRE (AER-MQoS)</th></tr>
+      <tr><td>Méthode</td><td>Échantillonnage temporel</td><td>Comptage exact par opération</td></tr>
+      <tr><td>Précision</td><td>Moyenne (dépend de la fréquence d'échantillonnage)</td><td>Élevée (par paquet)</td></tr>
+      <tr><td>Normalisation</td><td>Non</td><td>Oui (NRE dans [0,1])</td></tr>
+      <tr><td>Paramétrage batterie</td><td>Non</td><td>Oui (capacité configurable)</td></tr>
+    </table>
+
+    <h2>8. Visualisation de l'énergie dans Cooja</h2>
+    <p>Le plugin <em>Energest</em> de Cooja peut visualiser la consommation énergétique des nœuds. Combiné aux logs [ENERGY] produits par AER-MQoS, il permet d'analyser l'évolution du NRE au cours du temps et de vérifier l'équité de la répartition énergétique entre les nœuds.</p>
+
+    <h2>9. Résumé</h2>
+    <p>Le modèle NRE fournit à AER-MQoS une mesure précise et normalisée de l'énergie résiduelle, essentielle pour un routage équilibré en énergie. Il s'intègre naturellement dans la métrique MCS via le poids alpha, contribuant à prolonger la durée de vie du réseau tout en maintenant la QoS.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 03 — Communication UDP — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Mise en place d'une communication UDP entre deux nœuds dans Cooja avec Contiki-NG.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">TP 03 — Communication UDP</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 03 — Communication UDP entre deux nœuds</h1>
+
+    <div class="md-meta">
+      <strong>TP 03</strong> — Durée estimée : 2h — Prérequis : TP 02
+    </div>
+
+    <h2>1. Objectifs</h2>
+    <ul>
+      <li>Comprendre la communication UDP dans Contiki-NG</li>
+      <li>Créer un client UDP et un serveur UDP</li>
+      <li>Compiler avec <code>make TARGET=cooja</code></li>
+      <li>Observer les échanges de paquets dans Cooja</li>
+    </ul>
+
+    <h2>2. Structure d'un projet UDP Contiki-NG</h2>
+    <p>Un projet Contiki-NG pour Cooja nécessite :</p>
+    <ul>
+      <li>Un fichier source <code>.c</code> avec le code applicatif</li>
+      <li>Un <code>Makefile</code> qui référence Contiki-NG</li>
+      <li>Un fichier <code>project-conf.h</code> optionnel pour la configuration</li>
+    </ul>
+
+    <h2>3. Code du serveur UDP (udp-server.c)</h2>
+    <pre><code>#include "contiki.h"
+#include "net/ip/uip.h"
+#include "net/ipv6/uip-ds6.h"
+#include "net/ip/uip-udp-packet.h"
+#include <stdio.h>
+
+#define UDP_PORT 8765
+
+PROCESS(udp_server_process, "UDP Server");
+AUTOSTART_PROCESSES(&udp_server_process);
+
+static struct uip_udp_conn *server_conn;
+
+PROCESS_THREAD(udp_server_process, ev, data)
+{
+  uip_ipaddr_t client_ip;
+  PROCESS_BEGIN();
+
+  server_conn = udp_new(NULL, UIP_HTONS(UDP_PORT), NULL);
+  udp_bind(server_conn, UIP_HTONS(UDP_PORT));
+
+  printf("Serveur UDP démarré sur le port %d\n", UDP_PORT);
+
+  while(1) {
+    PROCESS_YIELD();
+    if(ev == tcpip_event) {
+      if(uip_newdata()) {
+        uip_ipaddr_copy(&client_ip, &UIP_IP_BUF->srcipaddr);
+        printf("Reçu de ");
+        uip_debug_ipaddr_print(&client_ip);
+        printf(" : %s\n", (char *)uip_appdata);
+
+        udp_packet_send(server_conn, "OK", 2);
+        printf("Réponse envoyée\n");
+      }
+    }
+  }
+
+  PROCESS_END();
+}</code></pre>
+
+    <h2>4. Code du client UDP (udp-client.c)</h2>
+    <pre><code>#include "contiki.h"
+#include "net/ip/uip.h"
+#include "net/ipv6/uip-ds6.h"
+#include "net/ip/uip-udp-packet.h"
+#include <stdio.h>
+
+#define UDP_PORT 8765
+
+PROCESS(udp_client_process, "UDP Client");
+AUTOSTART_PROCESSES(&udp_client_process);
+
+static struct uip_udp_conn *client_conn;
+static struct etimer et;
+
+PROCESS_THREAD(udp_client_process, ev, data)
+{
+  uip_ipaddr_t server_ip;
+  PROCESS_BEGIN();
+
+  etimer_set(&et, CLOCK_SECOND * 5);
+
+  /* Adresse IPv6 du serveur (adresse lien-local par défaut) */
+  uip_ip6addr(&server_ip, 0xfe80, 0, 0, 0, 0, 0, 0, 0);
+  client_conn = udp_new(&server_ip, UIP_HTONS(UDP_PORT), NULL);
+  udp_bind(client_conn, UIP_HTONS(UDP_PORT));
+
+  printf("Client UDP démarré\n");
+
+  while(1) {
+    PROCESS_YIELD();
+    if(ev == PROCESS_EVENT_TIMER) {
+      printf("Envoi d'un paquet au serveur\n");
+      udp_packet_send(client_conn, "Hello Serveur!", 14);
+      etimer_restart(&et);
+    }
+    if(ev == tcpip_event && uip_newdata()) {
+      printf("Réponse reçue : %s\n", (char *)uip_appdata);
+    }
+  }
+
+  PROCESS_END();
+}</code></pre>
+
+    <h2>5. Makefile</h2>
+    <pre><code>CONTIKI = ../..
+all: udp-server.cooja udp-client.cooja
+include $(CONTIKI)/Makefile.include</code></pre>
+    <p>Compilation :</p>
+    <pre><code>make TARGET=cooja</code></pre>
+
+    <h2>6. Configuration de la simulation</h2>
+    <ol>
+      <li>Créez une nouvelle simulation dans Cooja</li>
+      <li>Ajoutez un nœud Sky avec le firmware <code>udp-server.cooja</code></li>
+      <li>Ajoutez un nœud Sky avec le firmware <code>udp-client.cooja</code></li>
+      <li>Placez les nœuds à moins de 100 mètres (portée radio)</li>
+      <li>Ouvrez le panneau Radio messages (Tools → Radio messages)</li>
+      <li>Démarrez la simulation</li>
+    </ol>
+
+    <h2>7. Observation des résultats</h2>
+    <p>Dans le panneau Log, vous devriez voir :</p>
+    <pre><code>[ID:1] Serveur UDP démarré sur le port 8765
+[ID:2] Client UDP démarré
+[ID:2] Envoi d'un paquet au serveur
+[ID:1] Reçu de fe80::2 : Hello Serveur!
+[ID:1] Réponse envoyée
+[ID:2] Réponse reçue : OK</code></pre>
+    <p>Dans le panneau Radio messages, vous pouvez observer chaque paquet échangé avec ses caractéristiques (taille, type, source, destination).</p>
+
+    <h2>8. Explication ligne par ligne</h2>
+    <ul>
+      <li><code>udp_new()</code> : crée une nouvelle connexion UDP vers une adresse et un port</li>
+      <li><code>udp_bind()</code> : lie la connexion à un port local</li>
+      <li><code>udp_packet_send()</code> : envoie un paquet UDP</li>
+      <li><code>tcpip_event</code> : événement déclenché à la réception d'un paquet</li>
+      <li><code>uip_newdata()</code> : vérifie si de nouvelles données sont disponibles</li>
+      <li><code>UIP_IP_BUF->srcipaddr</code> : adresse IP source du paquet reçu</li>
+    </ul>
+
+    <h2>9. Exercices</h2>
+    <ol>
+      <li>Modifiez le client pour envoyer un message avec un numéro de séquence incrémenté</li>
+      <li>Ajoutez un deuxième client et observez les échanges</li>
+      <li>Mesurez le temps d'aller-retour (RTT) entre l'envoi et la réponse</li>
+    </ol>
+
+    <h2>10. Livrables</h2>
+    <ul>
+      <li>Code source complet (udp-server.c, udp-client.c, Makefile)</li>
+      <li>Capture d'écran des logs montrant les échanges UDP</li>
+      <li>Réponse aux exercices</li>
+    </ul>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="TP_04_Simulation_RPL_3_noeuds.html">TP suivant : Simulation RPL 3 nœuds →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

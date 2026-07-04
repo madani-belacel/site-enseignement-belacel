@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 11 — Simulation nœuds mobiles — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Ajout de mobilité aux nœuds Cooja, Random Waypoint, reconstruction du DODAG, PDR et latence.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">TP 11 — Simulation nœuds mobiles</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>TP 11 — Simulation avec Nœuds Mobiles</h1>
+
+    <div class="md-meta">
+      <strong>TP 11</strong> — Durée estimée : 2h30 — Prérequis : Cours 07, TP 07
+    </div>
+
+    <h2>1. Objectifs</h2>
+    <ul>
+      <li>Ajouter la mobilité aux nœuds dans Cooja (Random Waypoint)</li>
+      <li>Observer la reconstruction du DODAG lorsqu'un nœud se déplace</li>
+      <li>Analyser l'impact de la mobilité sur le PDR et la latence</li>
+      <li>Comparer les performances avec un scénario statique</li>
+    </ul>
+
+    <h2>2. Configuration de la simulation</h2>
+    <ol>
+      <li>Créez une simulation nommée <code>Simulation_Mobile</code></li>
+      <li>Ajoutez 1 racine fixe (udp-server) à la position (50, 50)</li>
+      <li>Ajoutez 5 clients mobiles (udp-client avec horodatage)</li>
+      <li>Zone de simulation : 200 m × 200 m</li>
+      <li>Portée radio : 60 mètres</li>
+      <li>Durée : 600 secondes</li>
+    </ol>
+
+    <h2>3. Configuration de la mobilité</h2>
+    <p>Pour chaque nœud mobile :</p>
+    <ol>
+      <li>Sélectionnez le nœud → onglet "Mote"</li>
+      <li>Dans "Mobility", choisissez "RandomWaypoint"</li>
+      <li>Paramètres :</li>
+    </ol>
+    <pre><code>Vitesse min : 0.5 m/s
+Vitesse max : 1.5 m/s
+Pause min : 5 s
+Pause max : 20 s
+Zone X : [0, 200]
+Zone Y : [0, 200]</code></pre>
+
+    <h2>4. Observation de la reconstruction du DODAG</h2>
+    <p>Activez le panneau Log et le Radio Messages. Observez :</p>
+    <ul>
+      <li>Au début, tous les nœuds rejoignent le DODAG via les parents les plus proches</li>
+      <li>Quand un nœud se déplace, il peut perdre la connexion avec son parent</li>
+      <li>Il émet alors des DIS pour trouver un nouveau parent</li>
+      <li>Le Trickle Timer est réinitialisé, augmentant les DIO</li>
+      <li>Le nœud se rattache à un nouveau parent</li>
+    </ul>
+    <p><strong>Log typique :</strong></p>
+    <pre><code>[t=120s] Node 3: Lien perdu avec parent fe80::1 (ETX=8.5)
+[t=121s] Node 3: DIS émis
+[t=121s] Node 2: DIO reçu par Node 3
+[t=122s] Node 3: Nouveau parent: fe80::2 (rank=768)
+[t=125s] Node 3: Envoi paquet via nouveau parent</code></pre>
+
+    <h2>5. Comparaison statique vs mobile</h2>
+    <p>Créez une simulation identique <strong>sans mobilité</strong> (statique) :</p>
+    <table>
+      <tr><th>Métrique</th><th>Statique</th><th>Mobile</th></tr>
+      <tr><td>PDR global</td><td>?</td><td>?</td></tr>
+      <tr><td>Latence moyenne (ticks)</td><td>?</td><td>?</td></tr>
+      <tr><td>Nombre de changements de parent</td><td>0</td><td>?</td></tr>
+      <tr><td>Énergie totale (mJ)</td><td>?</td><td>?</td></tr>
+      <tr><td>Messages DIO émis</td><td>?</td><td>?</td></tr>
+    </table>
+
+    <h2>6. Analyse des résultats</h2>
+    <p>Utilisez les scripts du TP 08 pour analyser les logs des deux simulations :</p>
+    <pre><code>python3 calcul_pdr.py logs_statique.csv
+python3 calcul_pdr.py logs_mobile.csv
+python3 analyse_latence.py logs_statique.csv
+python3 analyse_latence.py logs_mobile.csv</code></pre>
+    <p>Comparez les résultats et tirez des conclusions sur l'impact de la mobilité.</p>
+
+    <h2>7. Visualisation des trajectoires</h2>
+    <p>Dans Cooja, la vue Network montre les déplacements des nœuds en temps réel. Vous pouvez exporter les trajectoires :</p>
+    <ol>
+      <li>Tools → Radio messages → Enable logging (inclut les positions)</li>
+      <li>Analysez les déplacements avec Python :</li>
+    </ol>
+    <pre><code>#!/usr/bin/env python3
+import matplotlib.pyplot as plt
+
+# Extraire les positions (format: POS;node;x;y;time)
+positions = {1: [], 2: [], 3: []}
+with open("logs_mobile.csv") as f:
+    for line in f:
+        if line.startswith("POS"):
+            parts = line.strip().split(';')
+            node, x, y = int(parts[1]), float(parts[2]), float(parts[3])
+            positions[node].append((x, y))
+
+for node, coords in positions.items():
+    xs = [c[0] for c in coords]
+    ys = [c[1] for c in coords]
+    plt.plot(xs, ys, '-o', label=f'Node {node}')
+
+plt.legend()
+plt.savefig('trajectoires.png')</code></pre>
+
+    <h2>8. Exercices</h2>
+    <ol>
+      <li>Testez différentes vitesses (0.5, 2, 5 m/s) et comparez l'impact sur le PDR</li>
+      <li>Ajoutez la mobilité à la racine (scénario mobile sink) — que se passe-t-il ?</li>
+      <li>Comparez OF0 et MRHOF dans un scénario mobile</li>
+      <li>Proposez une amélioration de RPL pour mieux gérer la mobilité</li>
+    </ol>
+
+    <h2>9. Livrables</h2>
+    <ul>
+      <li>Tableau comparatif statique vs mobile (PDR, latence, énergie, changements de parent)</li>
+      <li>Graphique des trajectoires des nœuds mobiles</li>
+      <li>Analyse de l'impact de la vitesse sur les performances</li>
+      <li>Comparaison OF0 vs MRHOF en environnement mobile</li>
+    </ul>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="TP_12_Simulation_Recolte_Solaire.html">TP suivant : Récolte solaire →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

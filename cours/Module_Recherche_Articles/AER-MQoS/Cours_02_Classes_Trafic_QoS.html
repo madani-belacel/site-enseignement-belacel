@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 02 — Classes de trafic et QoS — AER-MQoS</title>
+<meta name="description" content="Les quatre classes de trafic QoS d'AER-MQoS : C0 haute priorité (alarmes), C1 données capteurs, C2 rapports périodiques, C3 best-effort.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">AER-MQoS</a></li>
+    <li class="current">Cours 02 — Classes de trafic et QoS</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="md-content">
+
+    <h1>Cours 02 — Classes de trafic et QoS (C0–C3)</h1>
+
+    <div class="md-meta">
+      <strong>Type :</strong> Cours théorique &mdash; <strong>Durée :</strong> 1h00<br>
+      <strong>Objectif :</strong> Comprendre les quatre classes de trafic QoS et leur rôle dans la différenciation de service<br>
+      <strong>Prérequis :</strong> Cours 01, notions de QoS réseau
+    </div>
+
+    <div class="download-bar">
+      <a href="#" class="download-link download-pdf" onclick="alert('PDF disponible dans la version imprimable.');return false;">Telecharger PDF</a>
+      <a href="#" class="download-link download-pptx" onclick="alert('PPTX disponible dans la version imprimable.');return false;">Telecharger PPTX</a>
+    </div>
+
+    <h2>1. Pourquoi différencier les trafics dans l'IoT ?</h2>
+    <p>Dans un réseau IoT typique, les nœuds capteurs produisent des flux de données hétérogènes : des alarmes critiques nécessitant un acheminement immédiat, des relevés périodiques de température, des diagnostics de maintenance, ou des mises à jour logicielles. Traiter tous ces flux avec la même priorité conduit à une dégradation des performances pour les applications temps réel.</p>
+    <p>La différenciation QoS (Quality of Service) permet d'attribuer des traitements distincts aux paquets selon leur classe, garantissant aux flux prioritaires une latence réduite, un taux de livraison élevé et une bande passante réservée.</p>
+
+    <h2>2. Les quatre classes AER-MQoS</h2>
+    <p>AER-MQoS définit quatre classes de trafic, numérotées de C0 (priorité maximale) à C3 (priorité minimale) :</p>
+
+    <table>
+      <tr><th>Classe</th><th>Nom</th><th>Priorité</th><th>Exemples d'application</th><th>Poids WRR</th></tr>
+      <tr><td>C0</td><td>Haute priorité</td><td>Critique</td><td>Alarmes, détection d'intrusion, urgence médicale</td><td>6</td></tr>
+      <tr><td>C1</td><td>Moyenne priorité</td><td>Importante</td><td>Données capteurs temps réel, vidéo surveillance</td><td>3</td></tr>
+      <tr><td>C2</td><td>Basse priorité</td><td>Normale</td><td>Relevés périodiques, rapports de diagnostic</td><td>2</td></tr>
+      <tr><td>C3</td><td>Meilleur effort</td><td>Faible</td><td>Maintenance, mise à jour firmware, logs</td><td>1</td></tr>
+    </table>
+
+    <h2>3. Marquage des paquets</h2>
+    <p>Le marquage de classe est effectué au niveau de l'application émettrice via un champ dédié dans la structure de données du paquet. Dans l'implémentation Contiki-NG, chaque application UDP associe une classe à ses paquets :</p>
+    <pre><code>/* Exemple de marquage dans l'application émettrice */
+#include "aer_qos_queue.h"
+
+void send_alarm(void) {
+    packetbuf_clear();
+    packetbuf_set_datalen(sizeof(alarm_data));
+    memcpy(packetbuf_dataptr(), &alarm, sizeof(alarm_data));
+    /* Classe C0 pour l'alarme */
+    aer_qos_mark_packet(packetbuf_dataptr(), AER_QOS_CLASS_C0);
+    udp_send(&client_conn, sizeof(alarm_data));
+}</code></pre>
+
+    <h2>4. Gestion des files d'attente</h2>
+    <p>Le module <code>aer_qos_queue.c</code> implémente quatre files d'attente FIFO distinctes, une par classe. Chaque file maintient :</p>
+    <ul>
+      <li>Un compteur de paquets en attente (<code>queue_length</code>)</li>
+      <li>Un pointeur de tête et de queue pour l'accès FIFO</li>
+      <li>Un mécanisme de <em>drop</em> en cas de saturation (priorité inverse : on drop C3 d'abord)</li>
+    </ul>
+    <p>La fonction <code>aer_qos_enqueue()</code> achemine un paquet vers la file correspondant à sa classe, tandis que <code>aer_qos_dequeue()</code> est appelée par l'ordonnanceur WRR pour extraire le prochain paquet à transmettre.</p>
+
+    <h2>5. Interaction avec la métrique MCS</h2>
+    <p>La classe de trafic influence également le choix du parent dans le DODAG. AER-MQoS utilise la métrique MCS qui intègre la confiance et l'énergie, et le routage peut favoriser des parents fiables et énergétiquement stables pour les classes prioritaires. Cependant, la décision de routage reste unifiée (un seul DODAG), c'est l'ordonnancement local qui différencie le service.</p>
+
+    <blockquote><strong>Principe :</strong> Un seul DODAG est construit pour tout le trafic. La différenciation QoS s'opère au niveau de l'ordonnancement local (WRR) et non au niveau de la construction du graphe de routage.</blockquote>
+
+    <h2>6. Avantages de la classification</h2>
+    <ul>
+      <li><strong>Garantie de service</strong> : les paquets C0 sont toujours transmis avant C1, C2, C3.</li>
+      <li><strong>Équité pondérée</strong> : les classes inférieures ne sont pas affamées grâce au ratio WRR 6:3:2:1.</li>
+      <li><strong>Adaptabilité</strong> : le ratio peut être ajusté selon les besoins de l'application.</li>
+      <li><strong>Simplicité</strong> : le modèle à 4 classes est suffisamment expressif sans complexité excessive.</li>
+    </ul>
+
+    <h2>7. Exemple concret</h2>
+    <p>Considérons un réseau de surveillance environnementale. Les capteurs de fumée (C0) doivent transmettre une alarme en moins de 100 ms. Les capteurs de température (C1) envoient des données toutes les 10 secondes. Les rapports de qualité de l'air (C2) toutes les heures. Les logs de diagnostic (C3) quotidiennement. Avec RPL standard, une rafale de logs C3 pourrait retarder une alarme C0. Avec AER-MQoS, le WRR assure que C0 est servi 6 fois plus souvent que C3.</p>
+
+    <h2>8. Résumé</h2>
+    <p>Les quatre classes de trafic C0–C3 sont le fondement de la QoS dans AER-MQoS. Elles permettent une différenciation fine des flux IoT, garantissant que les applications critiques reçoivent le service qu'elles exigent. Le prochain cours détaille la métrique MCS qui, combinée à ces classes, offre un routage contextuel adapté aux besoins hétérogènes des LLN.</p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>madani.belacel@univ-mosta.dz</span>
+      <span>Université de Mostaganem</span>
+      <span>2025-2026</span>
+    </div>
+    <p>&copy; 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

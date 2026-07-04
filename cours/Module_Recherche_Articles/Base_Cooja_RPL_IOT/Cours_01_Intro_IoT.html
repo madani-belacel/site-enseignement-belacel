@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 01 — Introduction à l'IoT et aux WSN — Base Cooja / RPL / IoT</title>
+<meta name="description" content="Introduction à l'Internet des Objets (IoT) et aux réseaux de capteurs sans fil (WSN) : architecture, applications, défis.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li><a href="../../../habilitation.html">Habilitation</a></li>
+        <li><a href="../../../ressources.html">Ressources</a></li>
+        <li><a href="../../../contact.html">Contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li>
+    <li><a href="../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li>
+    <li><a href="index.html">Base Cooja / RPL / IoT</a></li>
+    <li class="current">Cours 01 — Introduction à l'IoT</li>
+  </ol>
+</nav>
+
+<div class="md-meta" style="background:#e8f5e9;border-color:#2e7d32;">
+<strong>💻 Environnement local</strong>
+<ul>
+<li><strong>Contiki-NG installé dans :</strong> <code>/home/madani/contiki-ng/</code></li>
+<li><strong>Exemples additionnels dans :</strong> <code>/home/madani/contiki-ng/examples/</code></li>
+<li><strong>Protocoles de recherche dans :</strong>
+<ul>
+<li>RPLMQOS → <code>examples/projet_madani/RPLMQoS_BELACEL/</code></li>
+<li>RPL-AER → <code>examples/projet_madani/RPL-AER-main/</code></li>
+<li>AER-MQoS → <code>examples/AER-MQoS/</code></li>
+<li>IDS-IOT → <code>examples/IDS_IOT/</code></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>Cours 01 — Introduction à l'IoT et aux Réseaux de Capteurs Sans Fil (WSN)</h1>
+
+    <div class="md-meta">
+      <strong>Cours 01</strong> — Durée estimée : 2h — Chapitre introductif
+    </div>
+
+    <h2>1. Qu'est-ce que l'Internet des Objets (IoT) ?</h2>
+    <p>L'Internet des Objets (IoT) désigne l'interconnexion d'objets physiques équipés de capteurs, d'actionneurs et de capacités de communication via Internet. Contrairement aux réseaux traditionnels où les utilisateurs génèrent le trafic, les objets communiquent entre eux de manière autonome (M2M).</p>
+    <p>Un système IoT typique comprend :</p>
+    <ul>
+      <li><strong>Des capteurs</strong> : mesurent des grandeurs physiques (température, humidité, pression, lumière)</li>
+      <li><strong>Des actionneurs</strong> : agissent sur l'environnement (ouvrir une vanne, allumer une lampe)</li>
+      <li><strong>Des modules de communication</strong> : transmettent les données (radio, Wi-Fi, LoRa, BLE)</li>
+      <li><strong>Une infrastructure réseau</strong> : achemine les données vers des plateformes de traitement</li>
+      <li><strong>Des applications</strong> : analysent et visualisent les données collectées</li>
+    </ul>
+
+    <h2>2. Architecture en couches de l'IoT</h2>
+    <p>L'architecture IoT se décompose généralement en trois couches :</p>
+    <h3>Couche Perception</h3>
+    <p>Elle regroupe les objets physiques (capteurs, actionneurs, RFID) qui interagissent avec l'environnement. Les nœuds capteurs sont souvent appelés <em>motes</em> dans le contexte des WSN.</p>
+    <h3>Couche Réseau</h3>
+    <p>Assure la transmission des données des capteurs vers les serveurs de traitement. Elle utilise des protocoles comme IPv6, 6LoWPAN, RPL, CoAP. C'est la couche la plus critique en termes de consommation d'énergie.</p>
+    <h3>Couche Application</h3>
+    <p>Fournit les services aux utilisateurs finaux : visualisation, analyse, alertes, prise de décision. Exemples : plateformes ThingsBoard, AWS IoT, Azure IoT Hub.</p>
+
+    <h2>3. Réseaux de Capteurs Sans Fil (WSN)</h2>
+    <p>Un WSN est un réseau composé de nœuds capteurs autonomes distribués spatialement qui coopèrent pour surveiller des conditions physiques ou environnementales.</p>
+    <p><strong>Caractéristiques principales :</strong></p>
+    <ul>
+      <li><strong>Contraintes énergétiques</strong> : les nœuds fonctionnent sur batterie, la durée de vie est cruciale</li>
+      <li><strong>Auto-organisation</strong> : le réseau doit se configurer sans intervention humaine</li>
+      <li><strong>Passage à l'échelle</strong> : support de quelques dizaines à plusieurs milliers de nœuds</li>
+      <li><strong>Environnement dynamique</strong> : pannes, interférences radio, mobilité</li>
+      <li><strong>Topologie variable</strong> : les nœuds peuvent être ajoutés ou retirés dynamiquement</li>
+    </ul>
+
+    <h2>4. Applications de l'IoT et des WSN</h2>
+    <table>
+      <tr><th>Domaine</th><th>Applications</th><th>Exemples</th></tr>
+      <tr><td>Agriculture intelligente</td><td>Surveillance des sols, irrigation automatisée</td><td>Température, humidité, pH du sol</td></tr>
+      <tr><td>Villes intelligentes</td><td>Gestion du trafic, éclairage public, poubelles connectées</td><td>Capteurs de présence, qualité de l'air</td></tr>
+      <tr><td>Santé</td><td>Monitoring patient, alertes médicales</td><td>Freq. cardiaque, glycémie, température corporelle</td></tr>
+      <tr><td>Industrie 4.0</td><td>Maintenance prédictive, contrôle qualité</td><td>Vibrations, température machines</td></tr>
+      <tr><td>Smart home</td><td>Domotique, sécurité, gestion énergétique</td><td>Détecteurs fumée, caméras, thermostats</td></tr>
+    </table>
+
+    <h2>5. Défis techniques</h2>
+    <ul>
+      <li><strong>Énergie</strong> : maximiser l'autonomie des nœuds (duty-cycling, récolte d'énergie)</li>
+      <li><strong>Scalabilité</strong> : gérer des réseaux de grande taille avec des protocoles adaptés</li>
+      <li><strong>Sécurité</strong> : protéger les données et le réseau contre les intrusions (chiffrement, authentification)</li>
+      <li><strong>Qualité de service (QoS)</strong> : garantir fiabilité, latence, débit selon l'application</li>
+      <li><strong>Interopérabilité</strong> : faire communiquer des objets de différents fabricants</li>
+      <li><strong>Fiabilité</strong> : assurer la transmission malgré les pertes radio et les pannes</li>
+    </ul>
+
+    <h2>6. Contiki-NG et Cooja</h2>
+    <p><strong>Contiki-NG</strong> est un système d'exploitation open-source pour l'IoT, successeur de Contiki. Il supporte de nombreuses plateformes matérielles (Zolertia Z1, CC2538, TI CC2650) et implémente les protocoles standards (6LoWPAN, RPL, CoAP).</p>
+    <p><strong>Cooja</strong> est le simulateur intégré à Contiki-NG qui permet d'exécuter et de déboguer des applications sans matériel physique. Il offre une vue réseau, une timeline et des outils d'analyse.</p>
+
+    <h2>7. Résumé</h2>
+    <p>Ce cours a introduit les concepts fondamentaux de l'IoT et des WSN. Les points clés à retenir sont : l'architecture en trois couches, les caractéristiques des WSN (énergie, auto-organisation, passage à l'échelle), les applications variées et les défis techniques. Les prochains cours approfondiront les protocoles réseau spécifiques à l'IoT.</p>
+
+    <h2>8. Questions de révision</h2>
+    <ol>
+      <li>Quelles sont les trois couches de l'architecture IoT ? Expliquez le rôle de chacune.</li>
+      <li>Citez trois caractéristiques distinctives des WSN par rapport aux réseaux traditionnels.</li>
+      <li>Pourquoi l'énergie est-elle un défi majeur dans les WSN ?</li>
+      <li>Donnez trois domaines d'application de l'IoT avec un exemple concret pour chacun.</li>
+      <li>Quel est le rôle du simulateur Cooja dans le développement d'applications IoT ?</li>
+    </ol>
+
+    <hr>
+    <p><a href="index.html">← Retour à l'index</a> | <a href="Cours_02_Architecture_Reseaux_IoT.html">Cours suivant : Architecture des réseaux IoT →</a></p>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

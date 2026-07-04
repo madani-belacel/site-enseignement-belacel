@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 03 — Simulation test avec 3 nœuds — IDS-IOT</title>
+<meta name="description" content="Première simulation IDS-IOT avec 3 nœuds sous Cooja, vérifier l'initialisation IDS et observer les logs.">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+</head><body>
+
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">TP 03 — Simulation test 3 nœuds</li></ol></nav>
+
+<main class="page-content" id="main-content"><div class="md-content">
+
+<h1>TP 03 — Simulation test avec 3 nœuds</h1>
+
+<div class="md-meta"><strong>TP 03 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Durée :</strong> 1 séance</li><li><strong>Prérequis :</strong> TP 02 réussi (builds disponibles), Cooja opérationnel</li></ul></div>
+
+<h2>Objectif</h2>
+<p>Lancer une première simulation de test avec le variant CLUSTERIDS (MAIN) sur une topologie de 3 nœuds, vérifier l'initialisation des modules IDS, observer les logs structurés, et valider le bon fonctionnement du pipeline.</p>
+
+<h2>1. Préparer la simulation de base</h2>
+<p>Un template CSC de base pour 3 nœuds est disponible dans <code>simulations/templates/</code> :</p>
+<pre><code>ls code_source_RPL_ClusterIDS/simulations/templates/</code></pre>
+
+<p>Copiez <code>basic_3nodes.csc</code> dans votre répertoire de travail :</p>
+<pre><code>cp code_source_RPL_ClusterIDS/simulations/templates/basic_3nodes.csc .
+# Ou utilisez le template fourni</code></pre>
+
+<h2>2. Configurer le firmware</h2>
+<p>Assurez-vous que le template CSC pointe vers le firmware MAIN compilé :</p>
+<pre><code>&lt;firmware&gt;
+  &lt;compile&gt;
+    &lt;command&gt;make TARGET=cooja IDS_VARIANT=MAIN IDS_CONF_CAMPAIGN_METRICS=1&lt;/command&gt;
+  &lt;/compile&gt;
+&lt;/firmware&gt;</code></pre>
+
+<h2>3. Lancer la simulation</h2>
+<p>Via Cooja (GUI) :</p>
+<pre><code>ant run &amp;
+# Dans Cooja : File -> Open -> basic_3nodes.csc
+# Puis : Simulation -> Start</code></pre>
+
+<p>Via la ligne de commande (headless) :</p>
+<pre><code>cd code_source_RPL_ClusterIDS/simulations
+../../tools/cooja/dist/cooja -nogui=&lt;chemin&gt;/basic_3nodes.csc</code></pre>
+
+<h2>4. Observer les logs</h2>
+<p>Pendant la simulation, observez la console Cooja. Cherchez les messages suivants :</p>
+<ul>
+  <li><code>[IDS] Initializing RPL-ClusterIDS...</code> — Initialisation du module IDS</li>
+  <li><code>[CLUSTER] Forming clusters...</code> — Début de la formation des clusters</li>
+  <li><code>[CH_ELECT] Electing cluster head...</code> — Élection du CH</li>
+  <li><code>[MEMBER] Applying rules R1-R4...</code> — Activation des règles de détection</li>
+  <li><code>[METRIC] ...</code> — Lignes de log structuré (si metrics activé)</li>
+</ul>
+
+<h2>5. Vérifier les lignes METRIC</h2>
+<p>Les logs <code>METRIC,...</code> suivent le format :</p>
+<pre><code>METRIC,sim_time,node_id,event_type,value,details</code></pre>
+<p>Exemple :</p>
+<pre><code>METRIC,120000,2,LAS_COMPUTED,0.23,"R1=0.1 R2=0.3 R3=0.2 R4=0.3"
+METRIC,150000,1,CH_ELECTED,1,"fitness=0.87"
+METRIC,180000,2,LAS_REPORTED,0.23,"dest_ch=1"</code></pre>
+
+<h2>6. Simulation avec attaque</h2>
+<p>Modifiez le template CSC pour activer une attaque rank sur le nœud 2 :</p>
+<pre><code># Dans project-conf.h ou via les variables Cooja :
+IDS_CONF_ATTACK_ENABLED=1
+IDS_CONF_ATTACK_TYPE=ATTACK_RANK
+IDS_CONF_ATTACK_START=60000</code></pre>
+<p>Relancez la simulation et observez les alertes générées.</p>
+
+<h2>7. Analyse des résultats</h2>
+<p>Notez dans un fichier <code>simulation_3nodes.txt</code> :</p>
+<ol>
+  <li>Les messages d'initialisation IDS observés</li>
+  <li>Le nombre de lignes METRIC générées</li>
+  <li>Les alertes détectées pendant l'attaque</li>
+  <li>Le temps de détection (simulation time) de la première alerte</li>
+</ol>
+
+<h2>Rendu attendu</h2>
+<p>Capture d'écran de la console Cooja montrant les logs IDS, et fichier d'analyse.</p>
+
+</div></main>
+
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>

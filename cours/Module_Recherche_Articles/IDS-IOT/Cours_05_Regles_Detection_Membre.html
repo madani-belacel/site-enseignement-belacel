@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cours 05 — Règles de détection au niveau membre (R1-R4) — IDS-IOT</title>
+<meta name="description" content="Règles de détection au niveau membre R1-R4 dans RPL-ClusterIDS : packet drop ratio, fréquence messages, data rate, incohérence DAO. Calcul du LAS (Eq. 4).">
+<link rel="stylesheet" href="../../../css/style.css">
+<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<style>.md-content{max-width:900px;margin:0 auto;padding:2rem 1.5rem}.md-content h1{font-family:var(--font-heading);color:var(--primary);margin:1.5rem 0 0.5rem;font-size:1.6rem}.md-content h2{font-family:var(--font-heading);color:var(--primary);margin:1.3rem 0 0.4rem;font-size:1.3rem;border-bottom:1px solid var(--border);padding-bottom:0.3rem}.md-content h3{font-family:var(--font-heading);margin:1rem 0 0.3rem;font-size:1.1rem}.md-content p{margin:0.5rem 0;line-height:1.8}.md-content ul,.md-content ol{margin:0.5rem 0 0.5rem 1.5rem}.md-content li{margin:0.25rem 0;line-height:1.7}.md-content blockquote{border-left:4px solid var(--primary-light);padding:0.5rem 1rem;margin:0.75rem 0;background:var(--bg-alt);border-radius:0 var(--radius) var(--radius) 0}.md-content code{background:var(--bg-alt);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88em}.md-content pre{background:var(--bg-alt);padding:1rem;border-radius:var(--radius);overflow-x:auto;border:1px solid var(--border);margin:0.75rem 0}.md-content pre code{background:none;padding:0}.md-meta{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem;font-size:0.9rem}</style>
+</head><body>
+
+<header class="header" role="banner"><div class="header-inner"><div class="header-left"><a href="../../../index.html" class="header-logo"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"><div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div></a><div class="header-faculty"><img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts"></div></div><img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner"><button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav role="navigation" aria-label="Navigation principale"><ul id="nav-list" class="nav-list"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../recherche.html">Recherche</a></li><li><a href="../../../habilitation.html">Habilitation</a></li><li><a href="../../../ressources.html">Ressources</a></li><li><a href="../../../contact.html">Contact</a></li><li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li></ul></nav></div></header>
+
+<nav aria-label="Fil d'Ariane"><ol class="breadcrumb"><li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../_index_Module_Recherche_Articles.html">Recherche & Articles</a></li><li><a href="index.html">IDS-IOT</a></li><li class="current">Cours 05 — Règles R1-R4</li></ol></nav>
+
+<main class="page-content" id="main-content"><div class="md-content">
+
+<h1>Règles de détection au niveau membre (R1-R4)</h1>
+
+<div class="md-meta"><strong>Cours 05 — Module IDS-IOT / RPL-ClusterIDS</strong><ul><li><strong>Auteur :</strong> Dr. Madani BELACEL</li><li><strong>Code source :</strong> <code>ids_member.c</code> / <code>ids_member.h</code></li></ul></div>
+
+<h2>1. Détection locale distribuée</h2>
+<p>Chaque nœud membre exécute quatre règles de détection locales (R1 à R4) qui surveillent différents aspects du trafic réseau et du comportement des voisins. Ces règles sont légères en calcul et conçues pour fonctionner sur des nœuds contraints en ressources.</p>
+
+<h2>2. Règle R1 — Packet Drop Ratio Anomaly</h2>
+<p><strong>Objectif :</strong> Détecter le forwarding sélectif (selective forwarding attack). Un nœud malveillant reçoit des paquets mais ne les transmet pas (ou les transmet partiellement).</p>
+<p><strong>Mécanisme :</strong> Le membre surveille le ratio de paquets reçus vs. transmis par chaque voisin. Si le <em>Packet Drop Ratio (PDR)</em> d'un voisin dépasse un seuil <em>θ_pdr</em> (typiquement 0.4), une anomalie est signalée.</p>
+<pre><strong>R1_score = max(0, (PDR_observed - θ_pdr) / (1 - θ_pdr))</strong></pre>
+
+<h2>3. Règle R2 — Control Message Frequency Anomaly</h2>
+<p><strong>Objectif :</strong> Détecter les attaques par inondation de messages de contrôle RPL (DAO flood, DIO flood).</p>
+<p><strong>Mécanisme :</strong> Le membre compte le nombre de messages DIO/DAO reçus par intervalle de temps. Si la fréquence dépasse un seuil <em>θ_freq</em> (par défaut 10 messages par période de monitoring), une anomalie est enregistrée.</p>
+<pre><strong>R2_score = min(1, max(0, (freq_observed - θ_freq) / θ_freq))</strong></pre>
+
+<h2>4. Règle R3 — Data Rate Anomaly</h2>
+<p><strong>Objectif :</strong> Détecter les anomalies de débit de données, typiques d'une attaque par tunnellisation (wormhole) ou d'un nœud compromis qui génère un trafic anormal.</p>
+<p><strong>Mécanisme :</strong> Le membre compare le débit observé de chaque voisin avec la moyenne du cluster. Un écart de plus de <em>θ_rate</em> (par défaut 2 écarts-types) déclenche une anomalie.</p>
+<pre><strong>R3_score = min(1, max(0, |rate_observed - rate_mean| / (θ_rate · rate_stddev)))</strong></pre>
+
+<h2>5. Règle R4 — DAO Inconsistency</h2>
+<p><strong>Objectif :</strong> Détecter les manipulations de topologie via des messages DAO incohérents (rank attack).</p>
+<p><strong>Mécanisme :</strong> Le membre vérifie la cohérence des informations de routage annoncées par les voisins. Une incohérence est détectée si le rang annoncé est incompatible avec la topologie locale (ex. : un nœud annonce un rang trop bas par rapport à sa position dans le DODAG).</p>
+<pre><strong>R4_score = min(1, max(0, |rank_announced - rank_expected| / rank_max))</strong></pre>
+
+<h2>6. Calcul du LAS (Local Anomaly Score) — Eq. 4</h2>
+<p>Le Local Anomaly Score combine les scores des quatre règles en une métrique composite :</p>
+<pre><strong>LAS = w_R1 · R1_score + w_R2 · R2_score + w_R3 · R3_score + w_R4 · R4_score</strong></pre>
+<p>Avec w_R1 + w_R2 + w_R3 + w_R4 = 1. Par défaut, les poids sont uniformes (0.25 chacun). Le LAS est normalisé entre 0 (comportement normal) et 1 (comportement malveillant certain).</p>
+
+<h2>7. Transmission du LAS</h2>
+<p>Chaque membre transmet son LAS au Cluster Head selon la politique contextuelle :</p>
+<ul>
+  <li><strong>Full :</strong> transmission à chaque intervalle de monitoring (toutes les 30s simulées)</li>
+  <li><strong>Balanced :</strong> transmission seulement si LAS > seuil_min (0.3)</li>
+  <li><strong>Eco :</strong> transmission seulement si LAS > seuil_haut (0.6)</li>
+</ul>
+
+<blockquote><strong>Implémentation :</strong> <code>ids_member.c</code> — fonctions <code>apply_rule_R1()</code>, <code>apply_rule_R2()</code>, <code>apply_rule_R3()</code>, <code>apply_rule_R4()</code>, <code>compute_las()</code>. Les seuils sont configurables dans <code>project-conf.h</code>.</blockquote>
+
+</div></main>
+
+<footer class="footer" role="contentinfo"><div class="container"><div class="footer-logos"><img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"><img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"></div><div class="footer-infos"><span>madani.belacel@univ-mosta.dz</span><span> Université de Mostaganem</span><span> 2025-2026</span></div><p> 2026 Dr. Madani BELACEL — Tous droits réservés.</p></div></footer>
+
+<script src="../../../js/data.js"></script>
+<script src="../../../js/main.js"></script>
+</body></html>
