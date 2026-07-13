@@ -224,11 +224,31 @@ body {
 .section-subtitle { color: var(--text-light); margin-bottom: 2rem; font-size: 0.95rem; }
 .section-alt { background: var(--bg-alt); }
 
-/* ── Module Cards (Style Actualités) ── */
-.module-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+/* ── Module Carousel (Style Actualités univ-sba.dz) ── */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  margin: 0 -0.5rem;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 0;
+}
+
+.carousel-slide {
+  min-width: 33.333%;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .carousel-slide { min-width: 50%; }
+}
+
+@media (max-width: 600px) {
+  .carousel-slide { min-width: 100%; }
 }
 
 .module-card {
@@ -241,18 +261,12 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  height: 100%;
 }
 
 .module-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-.module-card-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
 }
 
 .module-card-gradient {
@@ -264,6 +278,7 @@ body {
   font-size: 4rem;
   color: white;
   position: relative;
+  flex-shrink: 0;
 }
 
 .module-card-gradient::after {
@@ -335,6 +350,56 @@ body {
 
 .module-card-link::after {
   content: '»';
+}
+
+/* ── Carousel Navigation ── */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s;
+}
+
+.carousel-btn:hover { background: var(--primary-light); }
+
+.carousel-btn-prev { left: 0; }
+.carousel-btn-next { right: 0; }
+
+/* ── Carousel Dots ── */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-dot.active {
+  background: var(--primary);
+  transform: scale(1.3);
 }
 
 .badge {
