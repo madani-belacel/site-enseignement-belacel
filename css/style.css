@@ -666,3 +666,96 @@ body {
 @media print {
   .header, .footer, .breadcrumb, .search-bar { display: none; }
 }
+
+/* ── Dropdown menu (ADE.dz style) ── */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-dropdown-toggle::after {
+  content: '▾';
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+
+.nav-dropdown:hover .nav-dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 0.5rem 0;
+  z-index: 999;
+  list-style: none;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+  display: block;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nav-dropdown-menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1.2rem;
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+.nav-dropdown-menu a:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* Mobile: hide dropdowns, show toggle */
+@media (max-width: 768px) {
+  .nav-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-left: 3px solid var(--primary);
+    margin-left: 1rem;
+    padding: 0.25rem 0;
+    display: none;
+    animation: none;
+  }
+  
+  .nav-dropdown.open .nav-dropdown-menu {
+    display: block;
+  }
+  
+  .nav-dropdown-menu a {
+    white-space: normal;
+    font-size: 0.82rem;
+    padding: 0.4rem 1rem;
+  }
+}

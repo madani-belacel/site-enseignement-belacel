@@ -47,9 +47,22 @@
         navList.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
         navToggle.textContent = '\u2630';
+        document.querySelectorAll('.nav-dropdown.open').forEach(function(d){ d.classList.remove('open'); });
       }
     });
   }
+
+  /* ── Mobile dropdown toggle ── */
+  document.querySelectorAll('.nav-dropdown-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = this.closest('.nav-dropdown');
+        parent.classList.toggle('open');
+      }
+    });
+  });
 
   /* ── Active nav link ── */
   (function setActiveNav() {
