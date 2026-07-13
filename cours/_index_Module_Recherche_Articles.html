@@ -26,13 +26,21 @@
   .md-content strong { font-weight: 700; }
   .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
   .md-meta strong { font-family: var(--font-heading); }
-  .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
-  .module-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; box-shadow: var(--shadow); }
-  .module-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+  .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin: 1.5rem 0; }
+  .module-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: transform .3s, box-shadow .3s; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+  .module-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+  .module-card-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+  .module-card-date { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; font-family: var(--font-heading); }
   .module-card h3 { margin: 0 0 0.4rem; color: var(--primary); }
-  .module-card p { font-size: 0.88rem; margin: 0.3rem 0; }
-  .module-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin: 0.15rem; }
+  .module-card p { font-size: 0.88rem; margin: 0.3rem 0; flex: 1; }
+  .module-card-meta { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+  .module-card-gradient { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; position: relative; }
+  .module-card-gradient::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to top, rgba(0,0,0,0.3), transparent); }
+  .gradient-tic { background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%); }
+  .gradient-ens { background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%); }
+  .gradient-rd { background: linear-gradient(135deg, #7d3c98 0%, #a569bd 100%); }
+  .gradient-reseaux { background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%); }
+  .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-heading); }
   .badge-fr { background: #e3f2fd; color: #1565c0; }
   .badge-en { background: #fce4ec; color: #c62828; }
   .badge-cours { background: #e8f5e9; color: #2e7d32; }
@@ -103,57 +111,72 @@
 
       <div class="module-grid">
         <a href="Module_Recherche_Articles/Base_Cooja_RPL_IOT/index.html" class="module-card">
-          <div class="module-icon">🌱</div>
-          <h3>Base Cooja / RPL / IoT</h3>
-          <p>Fondamentaux : installation Contiki-NG, simulateur Cooja, protocole RPL, premières simulations. <strong>22 sessions</strong></p>
-          <div class="module-meta">
-            <span class="badge badge-cours">Cours</span>
-            <span class="badge badge-tp">TP</span>
-            <span class="badge badge-fr">FR</span>
+          <div class="module-card-gradient gradient-ens" style="font-size:3rem;">🌱</div>
+          <div class="module-card-content">
+            <div class="module-card-date">22 sessions</div>
+            <h3>Base Cooja / RPL / IoT</h3>
+            <p>Fondamentaux : installation Contiki-NG, simulateur Cooja, protocole RPL, premières simulations.</p>
+            <div class="module-card-meta">
+              <span class="badge badge-cours">Cours</span>
+              <span class="badge badge-tp">TP</span>
+              <span class="badge badge-fr">FR</span>
+            </div>
           </div>
         </a>
 
         <a href="Module_Recherche_Articles/RPLMQOS/index.html" class="module-card">
-          <div class="module-icon">🔧</div>
-          <h3>RPLMQOS (RPLCB)</h3>
-          <p>Protocole RPL avec mécanisme de Contrôle par Bit (CB) — Comparaison RPL vs RPLCB. <strong>20+ sessions</strong></p>
-          <div class="module-meta">
-            <span class="badge badge-cours">Cours</span>
-            <span class="badge badge-tp">TP</span>
-            <span class="badge badge-github">RPLCB</span>
+          <div class="module-card-gradient gradient-rd" style="font-size:3rem;">🔧</div>
+          <div class="module-card-content">
+            <div class="module-card-date">20+ sessions</div>
+            <h3>RPLMQOS (RPLCB)</h3>
+            <p>Protocole RPL avec mécanisme de Contrôle par Bit (CB) — Comparaison RPL vs RPLCB.</p>
+            <div class="module-card-meta">
+              <span class="badge badge-cours">Cours</span>
+              <span class="badge badge-tp">TP</span>
+              <span class="badge badge-github">RPLCB</span>
+            </div>
           </div>
         </a>
 
         <a href="Module_Recherche_Articles/AER-RPL/index.html" class="module-card">
-          <div class="module-icon">⚡</div>
-          <h3>AER-RPL (RPL-AER)</h3>
-          <p>Routage adaptatif énergétique avec prédiction LSTM, détection d'attaques et métrique MCS. <strong>20+ sessions</strong></p>
-          <div class="module-meta">
-            <span class="badge badge-cours">Cours</span>
-            <span class="badge badge-tp">TP</span>
-            <span class="badge badge-github">RPL-AER</span>
+          <div class="module-card-gradient gradient-reseaux" style="font-size:3rem;">⚡</div>
+          <div class="module-card-content">
+            <div class="module-card-date">20+ sessions</div>
+            <h3>AER-RPL (RPL-AER)</h3>
+            <p>Routage adaptatif énergétique avec prédiction LSTM, détection d'attaques et métrique MCS.</p>
+            <div class="module-card-meta">
+              <span class="badge badge-cours">Cours</span>
+              <span class="badge badge-tp">TP</span>
+              <span class="badge badge-github">RPL-AER</span>
+            </div>
           </div>
         </a>
 
         <a href="Module_Recherche_Articles/AER-MQoS/index.html" class="module-card">
-          <div class="module-icon">🎯</div>
-          <h3>AER-MQoS</h3>
-          <p>Extension multi-objectifs avec QoS, fiabilité des liens, files d'attente WRR et apprentissage Q-learning. <strong>20+ sessions</strong></p>
-          <div class="module-meta">
-            <span class="badge badge-cours">Cours</span>
-            <span class="badge badge-tp">TP</span>
-            <span class="badge badge-github">AER-MQoS</span>
+          <div class="module-card-gradient gradient-tic" style="font-size:3rem;">🎯</div>
+          <div class="module-card-content">
+            <div class="module-card-date">20+ sessions</div>
+            <h3>AER-MQoS</h3>
+            <p>Extension multi-objectifs avec QoS, fiabilité des liens, files d'attente WRR et apprentissage Q-learning.</p>
+            <div class="module-card-meta">
+              <span class="badge badge-cours">Cours</span>
+              <span class="badge badge-tp">TP</span>
+              <span class="badge badge-github">AER-MQoS</span>
+            </div>
           </div>
         </a>
 
         <a href="Module_Recherche_Articles/IDS-IOT/index.html" class="module-card">
-          <div class="module-icon">🛡️</div>
-          <h3>IDS-IOT (RPL-ClusterIDS)</h3>
-          <p>Système de détection d'intrusion distribué avec clustering adaptatif pour réseaux RPL. <strong>20+ sessions</strong></p>
-          <div class="module-meta">
-            <span class="badge badge-cours">Cours</span>
-            <span class="badge badge-tp">TP</span>
-            <span class="badge badge-github">IDS-IOT</span>
+          <div class="module-card-gradient gradient-ens" style="font-size:3rem;">🛡️</div>
+          <div class="module-card-content">
+            <div class="module-card-date">20+ sessions</div>
+            <h3>IDS-IOT (RPL-ClusterIDS)</h3>
+            <p>Système de détection d'intrusion distribué avec clustering adaptatif pour réseaux RPL.</p>
+            <div class="module-card-meta">
+              <span class="badge badge-cours">Cours</span>
+              <span class="badge badge-tp">TP</span>
+              <span class="badge badge-github">IDS-IOT</span>
+            </div>
           </div>
         </a>
       </div>
