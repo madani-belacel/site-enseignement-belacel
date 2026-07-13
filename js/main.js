@@ -55,12 +55,10 @@
   /* ── Mobile dropdown toggle ── */
   document.querySelectorAll('.nav-dropdown-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        e.stopPropagation();
-        var parent = this.closest('.nav-dropdown');
-        parent.classList.toggle('open');
-      }
+      e.preventDefault();
+      e.stopPropagation();
+      var parent = this.closest('.nav-dropdown');
+      parent.classList.toggle('open');
     });
   });
 
