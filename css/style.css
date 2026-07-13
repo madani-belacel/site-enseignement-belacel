@@ -271,14 +271,23 @@ body {
 
 .module-card-gradient {
   width: 100%;
-  height: 200px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
+  font-size: 5rem;
   color: white;
   position: relative;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.module-card-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 40%);
 }
 
 .module-card-gradient::after {
@@ -288,13 +297,53 @@ body {
   left: 0;
   right: 0;
   height: 60px;
-  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
 }
 
-.gradient-tic { background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%); }
-.gradient-ens { background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%); }
-.gradient-rd { background: linear-gradient(135deg, #7d3c98 0%, #a569bd 100%); }
-.gradient-reseaux { background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%); }
+.module-card-gradient .card-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 5rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  transition: transform 0.3s;
+}
+
+.module-card:hover .card-icon {
+  transform: scale(1.15);
+}
+
+.module-card-gradient .card-pattern {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.1;
+  background-image:
+    radial-gradient(circle at 10% 20%, white 1px, transparent 1px),
+    radial-gradient(circle at 80% 40%, white 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, white 1px, transparent 1px),
+    radial-gradient(circle at 70% 10%, white 1px, transparent 1px),
+    radial-gradient(circle at 90% 70%, white 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.gradient-tic { 
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 40%, #42a5f5 100%); 
+}
+
+.gradient-ens { 
+  background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 40%, #66bb6a 100%); 
+}
+
+.gradient-rd { 
+  background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 40%, #ab47bc 100%); 
+}
+
+.gradient-reseaux { 
+  background: linear-gradient(135deg, #b71c1c 0%, #c62828 40%, #ef5350 100%); 
+}
+
+.gradient-recherche { 
+  background: linear-gradient(135deg, #e65100 0%, #ef6c00 40%, #ff9800 100%); 
+}
 
 .module-card-content {
   padding: 1.5rem;
