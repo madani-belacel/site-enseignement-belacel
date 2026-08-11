@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Q/R TICE Cours 07 — Spreadsheets — Dr. Madani BELACEL</title>
+<meta name="description" content="Questions et réponses bilingues (EN/FR) — TICE Cours 07 : Spreadsheets.">
+<link rel="stylesheet" href="../../../../..css/style.css">
+<link rel="icon" href="../../../../..images/Université_de_Mostaganem.png">
+<style>
+  .qr-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .qr-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .qr-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .qr-idea { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.3rem; margin: 1.2rem 0; background: var(--bg-card); }
+  .qr-idea h3 { margin: 0 0 0.5rem; font-size: 1.1rem; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+  .qr-tag { display: inline-block; background: var(--primary); color: #fff; border-radius: 20px; padding: 0.15rem 0.6rem; font-size: 0.72rem; font-weight: 700; }
+  .qr-expl { margin: 0.4rem 0; font-style: italic; color: var(--text-muted); line-height: 1.7; }
+  .qr-qa { margin-top: 0.6rem; }
+  .qr-item { margin: 0.6rem 0; }
+  .qr-q { margin: 0.4rem 0 0.1rem; font-weight: 600; }
+  .qr-r { margin: 0 0 0.6rem; padding-left: 0.75rem; border-left: 3px solid var(--primary-light); color: var(--text); line-height: 1.6; }
+  .qr-content .lang-fr { display: none !important; }
+  .qr-content.lang-fr .lang-en { display: none !important; }
+  .qr-content.lang-fr .lang-fr { display: block !important; }
+  .qr-tabs { display: flex; gap: 0.5rem; margin: 1.2rem 0; flex-wrap: wrap; }
+  .qr-tab { padding: 0.5rem 1.2rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-card); font-weight: 600; cursor: pointer; color: var(--text); }
+  .qr-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../..index.html" class="header-logo">
+        <img src="../../../../..images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../..images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../..images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../../../..index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../..index.html#about">Présentation</a></li>
+          <li><a href="../../../../..habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../../../..contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../..enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../..tic.html">TIC</a></li>
+          <li><a href="../../../../..informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../../../..recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../../../..reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../../../..cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../..recherche.html">Recherche</a></li>
+      <li><a href="../../../../..ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../..index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../..ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../..contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../..index.html">Accueil</a></li>
+    <li><a href="../../../../..enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../..tic.html">Module TIC</a></li>
+    <li class="current">Q/R — Cours 07 : Spreadsheets</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="qr-content">
+    <h1><span class="lang-en">Questions &amp; Answers — TICE Course 07</span><span class="lang-fr">Questions &amp; Réponses — TICE Cours 07</span></h1>
+    <p style="font-size:1.05rem;color:var(--text-muted);margin:0.4rem 0 1.2rem;">
+      <span class="lang-en">Spreadsheets</span><span class="lang-fr">Tableurs</span>
+      <span style="display:block;font-size:0.85rem;margin-top:0.2rem;">Licence 1 — Département Anglais | First-Year English Students</span>
+    </p>
+
+    <div class="qr-tabs" role="group" aria-label="Choisir la langue">
+      <button type="button" class="qr-tab active" data-lang="en">🇬🇧 English</button>
+      <button type="button" class="qr-tab" data-lang="fr">🇫🇷 Français</button>
+    </div>
+
+    <div class="download-bar">
+      <a href="Dialogue_TIC_07_Tableurs_EN.pdf" download class="download-link download-pdf">⬇ Télécharger le dialogue (PDF)</a>
+    </div>
+
+    <h2><span class="lang-en">10 ideas with 30 questions and answers</span><span class="lang-fr">10 idées avec 30 questions et réponses</span></h2>
+    <article class="qr-idea"><h3><span class="qr-tag">Idée 1</span> <span class="lang-en">What is a spreadsheet?</span><span class="lang-fr">Qu'est-ce qu'un tableur ?</span></h3><p class="qr-expl lang-en">A spreadsheet is a program for organizing, calculating and analyzing data in tables. Excel, Google Sheets and LibreOffice Calc are examples.</p><p class="qr-expl lang-fr">Un tableur est un programme pour organiser, calculer et analyser des données dans des tableaux. Excel, Google Sheets et LibreOffice Calc en sont des exemples.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is a spreadsheet used for?</p><p class="qr-r lang-en"><strong>R1.</strong> To organize data, do calculations and make charts.</p><p class="qr-q lang-fr"><strong>Q1.</strong> À quoi sert un tableur ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Pour organiser des données, faire des calculs et créer des graphiques.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is the free alternative to Excel?</p><p class="qr-r lang-en"><strong>R2.</strong> Google Sheets and LibreOffice Calc are free and powerful.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Quelle est l'alternative gratuite à Excel ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Google Sheets et LibreOffice Calc sont gratuits et puissants.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is a chart?</p><p class="qr-r lang-en"><strong>R3.</strong> A visual representation of data, like a bar chart or a pie chart.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qu'est-ce qu'un graphique ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Une représentation visuelle des données, comme un histogramme ou un camembert.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 2</span> <span class="lang-en">Cells, rows and columns</span><span class="lang-fr">Cellules, lignes et colonnes</span></h3><p class="qr-expl lang-en">A worksheet is made of cells arranged in rows and columns. A cell has an address like A1: column letter first, then row number.</p><p class="qr-expl lang-fr">Une feuille de calcul est faite de cellules disposées en lignes et colonnes. Une cellule a une adresse comme A1 : la lettre de la colonne d'abord, puis le numéro de la ligne.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is a cell?</p><p class="qr-r lang-en"><strong>R1.</strong> The intersection of a row and a column where you write data.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce qu'une cellule ?</p><p class="qr-r lang-fr"><strong>R1.</strong> L'intersection d'une ligne et d'une colonne où l'on écrit des données.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> How is a cell address written?</p><p class="qr-r lang-en"><strong>R2.</strong> With the column letter and the row number, like B3.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Comment s'écrit une adresse de cellule ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Avec la lettre de la colonne et le numéro de la ligne, comme B3.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is a cell range?</p><p class="qr-r lang-en"><strong>R3.</strong> A group of cells, written with a colon, like A1:A10.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qu'est-ce qu'une plage de cellules ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Un groupe de cellules, écrit avec deux points, comme A1:A10.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 3</span> <span class="lang-en">Entering and editing data</span><span class="lang-fr">Saisir et modifier les données</span></h3><p class="qr-expl lang-en">Click a cell and type to enter text, numbers or dates. Use Enter to go down and Tab to go right. Double-click to edit.</p><p class="qr-expl lang-fr">Cliquez sur une cellule et tapez pour saisir du texte, des nombres ou des dates. Utilisez Entrée pour descendre et Tab pour aller à droite. Double-cliquez pour modifier.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is the active cell?</p><p class="qr-r lang-en"><strong>R1.</strong> The selected cell, surrounded by a dark border.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce que la cellule active ?</p><p class="qr-r lang-fr"><strong>R1.</strong> La cellule sélectionnée, entourée d'un bord sombre.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> How do I move quickly in the sheet?</p><p class="qr-r lang-en"><strong>R2.</strong> Use the arrow keys, the Tab key, or click a cell directly.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Comment se déplacer vite dans la feuille ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Utilisez les flèches, la touche Tab, ou cliquez directement sur une cellule.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> How do I delete a cell content?</p><p class="qr-r lang-en"><strong>R3.</strong> Select the cell and press the Delete key.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Comment supprimer le contenu d'une cellule ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Sélectionnez la cellule et appuyez sur la touche Suppr.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 4</span> <span class="lang-en">Formulas and functions</span><span class="lang-fr">Formules et fonctions</span></h3><p class="qr-expl lang-en">A formula starts with the = sign and performs a calculation, like =A1+A2. A function is a ready-made formula, like =SUM(A1:A10).</p><p class="qr-expl lang-fr">Une formule commence par le signe = et effectue un calcul, comme =A1+A2. Une fonction est une formule prête à l'emploi, comme =SOMME(A1:A10).</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> How do I start a formula?</p><p class="qr-r lang-en"><strong>R1.</strong> Always with the = sign, then the operation.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Comment commencer une formule ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Toujours avec le signe =, puis l'opération.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What does =SUM(A1:A10) do?</p><p class="qr-r lang-en"><strong>R2.</strong> It adds all the numbers from A1 to A10.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Que fait =SUM(A1:A10) ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Il additionne tous les nombres de A1 à A10.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is the average function?</p><p class="qr-r lang-en"><strong>R3.</strong> AVERAGE, which gives the mean of the selected numbers.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Quelle est la fonction de la moyenne ?</p><p class="qr-r lang-fr"><strong>R3.</strong> AVERAGE, qui donne la moyenne des nombres sélectionnés.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 5</span> <span class="lang-en">Common functions</span><span class="lang-fr">Fonctions courantes</span></h3><p class="qr-expl lang-en">Essential functions: SUM for addition, AVERAGE for the mean, MIN and MAX for the extremes, COUNT for the number of values.</p><p class="qr-expl lang-fr">Fonctions essentielles : SOMME pour l'addition, MOYENNE pour la moyenne, MIN et MAX pour les extrêmes, NB pour le nombre de valeurs.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is MIN used for?</p><p class="qr-r lang-en"><strong>R1.</strong> To find the smallest number in a range.</p><p class="qr-q lang-fr"><strong>Q1.</strong> À quoi sert MIN ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Pour trouver le plus petit nombre d'une plage.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is COUNT used for?</p><p class="qr-r lang-en"><strong>R2.</strong> To count how many numeric values are in a range.</p><p class="qr-q lang-fr"><strong>Q2.</strong> À quoi sert NB ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Pour compter combien de valeurs numériques sont dans une plage.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is MAX?</p><p class="qr-r lang-en"><strong>R3.</strong> A function that returns the largest value in a range.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qu'est-ce que MAX ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Une fonction qui renvoie la plus grande valeur d'une plage.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 6</span> <span class="lang-en">Cell references</span><span class="lang-fr">Références de cellules</span></h3><p class="qr-expl lang-en">A reference tells a formula which cells to use. Relative references (A1) change when copied; absolute references ($A$1) stay fixed.</p><p class="qr-expl lang-fr">Une référence indique à une formule quelles cellules utiliser. Les références relatives (A1) changent quand on les copie ; les absolues ($A$1) restent fixes.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is a relative reference?</p><p class="qr-r lang-en"><strong>R1.</strong> It adapts to the new position when the formula is copied.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce qu'une référence relative ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Elle s'adapte à la nouvelle position quand la formule est copiée.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is an absolute reference?</p><p class="qr-r lang-en"><strong>R2.</strong> It stays fixed, marked with the $ sign, like $B$2.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce qu'une référence absolue ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Elle reste fixe, marquée par le signe $, comme $B$2.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Why use the $ sign?</p><p class="qr-r lang-en"><strong>R3.</strong> To keep the formula pointing at the same cell when copied.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Pourquoi utiliser le signe $ ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Pour garder la formule pointant sur la même cellule quand on la copie.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 7</span> <span class="lang-en">Sorting and filtering</span><span class="lang-fr">Trier et filtrer</span></h3><p class="qr-expl lang-en">Sorting arranges data in order (A to Z, small to big). Filtering shows only the rows that match a condition.</p><p class="qr-expl lang-fr">Le tri arrange les données dans l'ordre (A à Z, petit à grand). Le filtre n'affiche que les lignes qui correspondent à une condition.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> How do I sort a list of names?</p><p class="qr-r lang-en"><strong>R1.</strong> Select the column and choose Sort A to Z.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Comment trier une liste de noms ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Sélectionnez la colonne et choisissez Trier de A à Z.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What does filter do?</p><p class="qr-r lang-en"><strong>R2.</strong> It temporarily hides rows that do not match the chosen condition.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Que fait le filtre ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Il masque temporairement les lignes qui ne correspondent pas à la condition choisie.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is a header row?</p><p class="qr-r lang-en"><strong>R3.</strong> The first row that names the columns, like Name or Mark.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qu'est-ce qu'une ligne d'en-tête ?</p><p class="qr-r lang-fr"><strong>R3.</strong> La première ligne qui nomme les colonnes, comme Nom ou Note.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 8</span> <span class="lang-en">Creating charts</span><span class="lang-fr">Créer des graphiques</span></h3><p class="qr-expl lang-en">Charts make data easy to read. Select the data, go to Insert and choose the chart type: bars, lines or pie.</p><p class="qr-expl lang-fr">Les graphiques rendent les données faciles à lire. Sélectionnez les données, allez dans Insertion et choisissez le type : barres, courbes ou secteurs.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> When is a pie chart used?</p><p class="qr-r lang-en"><strong>R1.</strong> To show parts of a whole, like the percentage of each answer.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Quand utilise-t-on un camembert ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Pour montrer les parts d'un tout, comme le pourcentage de chaque réponse.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> When is a bar chart better?</p><p class="qr-r lang-en"><strong>R2.</strong> To compare categories, like marks per student.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Quand un histogramme est-il meilleur ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Pour comparer des catégories, comme les notes par étudiant.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is a line chart?</p><p class="qr-r lang-en"><strong>R3.</strong> A chart that shows change over time.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qu'est-ce qu'une courbe ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Un graphique qui montre l'évolution dans le temps.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 9</span> <span class="lang-en">Practical uses for students</span><span class="lang-fr">Usages pratiques pour les étudiants</span></h3><p class="qr-expl lang-en">Students use spreadsheets for planning: budgets, timetables, study plans, and grade calculations.</p><p class="qr-expl lang-fr">Les étudiants utilisent les tableurs pour s'organiser : budgets, emplois du temps, plans de travail et calculs de notes.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> How can I track my marks?</p><p class="qr-r lang-en"><strong>R1.</strong> Make a table with the modules, the marks and the average.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Comment suivre mes notes ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Faites un tableau avec les modules, les notes et la moyenne.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> How do I plan a monthly budget?</p><p class="qr-r lang-en"><strong>R2.</strong> List income in one column and expenses in another, then subtract.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Comment planifier un budget mensuel ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Listez les revenus dans une colonne et les dépenses dans une autre, puis soustrayez.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is a to-do list in a spreadsheet?</p><p class="qr-r lang-en"><strong>R3.</strong> A column of tasks with checkboxes or dates to track progress.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qu'est-ce qu'une liste de tâches dans un tableur ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Une colonne de tâches avec des cases ou des dates pour suivre l'avancement.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 10</span> <span class="lang-en">Data analysis and accuracy</span><span class="lang-fr">Analyse des données et exactitude</span></h3><p class="qr-expl lang-en">Numbers can be misleading. Check your formulas, label your columns, and understand what the results really mean.</p><p class="qr-expl lang-fr">Les nombres peuvent être trompeurs. Vérifiez vos formules, nommez vos colonnes et comprenez ce que les résultats signifient vraiment.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Why check formulas twice?</p><p class="qr-r lang-en"><strong>R1.</strong> Because one error can change all the results of the table.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Pourquoi vérifier les formules deux fois ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Parce qu'une erreur peut changer tous les résultats du tableau.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is data validation?</p><p class="qr-r lang-en"><strong>R2.</strong> A rule that limits what can be typed in a cell, like a number from 0 to 20.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce que la validation des données ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Une règle qui limite ce qu'on peut écrire dans une cellule, comme un nombre de 0 à 20.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What does a clear label do?</p><p class="qr-r lang-en"><strong>R3.</strong> It explains what the numbers in the column represent.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Que fait une étiquette claire ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Elle explique ce que représentent les nombres de la colonne.</p></div></div></article>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../..images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../..images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../..js/data.js"></script>
+<script src="../../../../..js/main.js"></script>
+<script>
+(function() {
+  var root = document.querySelector('.qr-content');
+  var tabs = document.querySelectorAll('.qr-tab');
+  function setLang(lang) {
+    root.classList.remove('lang-en', 'lang-fr');
+    root.classList.add('lang-' + lang);
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-lang') === lang);
+    });
+  }
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() { setLang(t.getAttribute('data-lang')); });
+  });
+  setLang('en');
+})();
+</script>
+</body></html>

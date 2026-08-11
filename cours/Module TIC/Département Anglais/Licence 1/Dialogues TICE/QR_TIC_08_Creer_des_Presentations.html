@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Q/R TICE Cours 08 — Creating Presentations — Dr. Madani BELACEL</title>
+<meta name="description" content="Questions et réponses bilingues (EN/FR) — TICE Cours 08 : Creating Presentations.">
+<link rel="stylesheet" href="../../../../..css/style.css">
+<link rel="icon" href="../../../../..images/Université_de_Mostaganem.png">
+<style>
+  .qr-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .qr-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .qr-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .qr-idea { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.3rem; margin: 1.2rem 0; background: var(--bg-card); }
+  .qr-idea h3 { margin: 0 0 0.5rem; font-size: 1.1rem; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+  .qr-tag { display: inline-block; background: var(--primary); color: #fff; border-radius: 20px; padding: 0.15rem 0.6rem; font-size: 0.72rem; font-weight: 700; }
+  .qr-expl { margin: 0.4rem 0; font-style: italic; color: var(--text-muted); line-height: 1.7; }
+  .qr-qa { margin-top: 0.6rem; }
+  .qr-item { margin: 0.6rem 0; }
+  .qr-q { margin: 0.4rem 0 0.1rem; font-weight: 600; }
+  .qr-r { margin: 0 0 0.6rem; padding-left: 0.75rem; border-left: 3px solid var(--primary-light); color: var(--text); line-height: 1.6; }
+  .qr-content .lang-fr { display: none !important; }
+  .qr-content.lang-fr .lang-en { display: none !important; }
+  .qr-content.lang-fr .lang-fr { display: block !important; }
+  .qr-tabs { display: flex; gap: 0.5rem; margin: 1.2rem 0; flex-wrap: wrap; }
+  .qr-tab { padding: 0.5rem 1.2rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-card); font-weight: 600; cursor: pointer; color: var(--text); }
+  .qr-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../..index.html" class="header-logo">
+        <img src="../../../../..images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../..images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+      </div>
+    </div>
+    <img src="../../../../..images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../../../..index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../..index.html#about">Présentation</a></li>
+          <li><a href="../../../../..habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../../../..contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../..enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../..tic.html">TIC</a></li>
+          <li><a href="../../../../..informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../../../..recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../../../..reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../../../..cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../..recherche.html">Recherche</a></li>
+      <li><a href="../../../../..ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../..index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../..ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../..contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../..index.html">Accueil</a></li>
+    <li><a href="../../../../..enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../..tic.html">Module TIC</a></li>
+    <li class="current">Q/R — Cours 08 : Creating Presentations</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="qr-content">
+    <h1><span class="lang-en">Questions &amp; Answers — TICE Course 08</span><span class="lang-fr">Questions &amp; Réponses — TICE Cours 08</span></h1>
+    <p style="font-size:1.05rem;color:var(--text-muted);margin:0.4rem 0 1.2rem;">
+      <span class="lang-en">Creating Presentations</span><span class="lang-fr">Création de présentations</span>
+      <span style="display:block;font-size:0.85rem;margin-top:0.2rem;">Licence 1 — Département Anglais | First-Year English Students</span>
+    </p>
+
+    <div class="qr-tabs" role="group" aria-label="Choisir la langue">
+      <button type="button" class="qr-tab active" data-lang="en">🇬🇧 English</button>
+      <button type="button" class="qr-tab" data-lang="fr">🇫🇷 Français</button>
+    </div>
+
+    <div class="download-bar">
+      <a href="Dialogue_TIC_08_Creer_des_Presentations_EN.pdf" download class="download-link download-pdf">⬇ Télécharger le dialogue (PDF)</a>
+    </div>
+
+    <h2><span class="lang-en">10 ideas with 30 questions and answers</span><span class="lang-fr">10 idées avec 30 questions et réponses</span></h2>
+    <article class="qr-idea"><h3><span class="qr-tag">Idée 1</span> <span class="lang-en">What is presentation software?</span><span class="lang-fr">Qu'est-ce qu'un logiciel de présentation ?</span></h3><p class="qr-expl lang-en">Presentation software creates slides with text, images and videos, used to support an oral talk. PowerPoint, Google Slides and Impress are examples.</p><p class="qr-expl lang-fr">Un logiciel de présentation crée des diapositives avec du texte, des images et des vidéos, utilisées pour soutenir un exposé oral. PowerPoint, Google Slides et Impress en sont des exemples.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is a slide?</p><p class="qr-r lang-en"><strong>R1.</strong> One page of the presentation, displayed on the screen.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce qu'une diapositive ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Une page de la présentation, affichée à l'écran.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is a slideshow?</p><p class="qr-r lang-en"><strong>R2.</strong> The set of slides shown in order during the talk.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce qu'un diaporama ?</p><p class="qr-r lang-fr"><strong>R2.</strong> L'ensemble des diapositives affichées dans l'ordre pendant l'exposé.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is the free alternative to PowerPoint?</p><p class="qr-r lang-en"><strong>R3.</strong> Google Slides and LibreOffice Impress are free alternatives.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Quelle est l'alternative gratuite à PowerPoint ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Google Slides et LibreOffice Impress sont des alternatives gratuites.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 2</span> <span class="lang-en">Planning your presentation</span><span class="lang-fr">Planifier votre présentation</span></h3><p class="qr-expl lang-en">Start on paper: define the goal, the audience, and the structure. Use the classic plan: introduction, development, conclusion.</p><p class="qr-expl lang-fr">Commencez sur papier : définissez l'objectif, le public et la structure. Utilisez le plan classique : introduction, développement, conclusion.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Why plan before opening the software?</p><p class="qr-r lang-en"><strong>R1.</strong> Because a good structure gives the talk its logic and its flow.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Pourquoi planifier avant d'ouvrir le logiciel ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Parce qu'une bonne structure donne à l'exposé sa logique et son rythme.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is the classic structure?</p><p class="qr-r lang-en"><strong>R2.</strong> An introduction, a development, and a conclusion.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Quelle est la structure classique ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Une introduction, un développement et une conclusion.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Who is the audience?</p><p class="qr-r lang-en"><strong>R3.</strong> The people who will watch the talk: classmates, teachers or a jury.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qui est le public ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Les personnes qui regarderont l'exposé : camarades, enseignants ou jury.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 3</span> <span class="lang-en">Designing effective slides</span><span class="lang-fr">Concevoir des diapositives efficaces</span></h3><p class="qr-expl lang-en">Good slides are simple: one idea per slide, short sentences, and large readable text. The audience reads, then listens to you.</p><p class="qr-expl lang-fr">Les bonnes diapositives sont simples : une idée par diapositive, des phrases courtes et un texte grand et lisible. Le public lit, puis vous écoute.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> How much text on a slide?</p><p class="qr-r lang-en"><strong>R1.</strong> Few words, five to seven lines maximum, as bullet points.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Combien de texte sur une diapositive ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Peu de mots, cinq à sept lignes maximum, en puces.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is the ideal font size?</p><p class="qr-r lang-en"><strong>R2.</strong> At least 24 points so everyone can read from far away.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Quelle est la taille de police idéale ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Au moins 24 points pour que tout le monde lise de loin.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Why one idea per slide?</p><p class="qr-r lang-en"><strong>R3.</strong> Because too much information confuses the audience.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Pourquoi une idée par diapositive ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Parce que trop d'informations perturbent le public.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 4</span> <span class="lang-en">Adding images and media</span><span class="lang-fr">Ajouter des images et des médias</span></h3><p class="qr-expl lang-en">Images, charts and videos make the talk more attractive. Choose only relevant media, and mention the sources.</p><p class="qr-expl lang-fr">Les images, les graphiques et les vidéos rendent l'exposé plus attractif. Choisissez uniquement des médias pertinents et citez les sources.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Why use images?</p><p class="qr-r lang-en"><strong>R1.</strong> They help the audience understand and remember the message.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Pourquoi utiliser des images ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Elles aident le public à comprendre et à mémoriser le message.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is a placeholder?</p><p class="qr-r lang-en"><strong>R2.</strong> The empty box on a slide layout where you add content.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce qu'un espace réservé ?</p><p class="qr-r lang-fr"><strong>R2.</strong> La zone vide d'une disposition de diapositive où l'on ajoute le contenu.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Why cite the sources?</p><p class="qr-r lang-en"><strong>R3.</strong> To respect copyright and show honesty and professionalism.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Pourquoi citer les sources ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Pour respecter le droit d'auteur et montrer de l'honnêteté et du professionnalisme.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 5</span> <span class="lang-en">Using templates and themes</span><span class="lang-fr">Utiliser des modèles et des thèmes</span></h3><p class="qr-expl lang-en">A template is a ready-made design with colors, fonts and layouts. Themes give a consistent, professional look to all slides.</p><p class="qr-expl lang-fr">Un modèle est un design prêt à l'emploi avec des couleurs, des polices et des mises en page. Les thèmes donnent un aspect cohérent et professionnel à toutes les diapositives.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is a template?</p><p class="qr-r lang-en"><strong>R1.</strong> A file with a ready-made design, like a resume template or a course template.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce qu'un modèle ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Un fichier avec un design prêt, comme un modèle de CV ou de cours.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is a theme?</p><p class="qr-r lang-en"><strong>R2.</strong> A set of colors, fonts and effects applied to the whole presentation.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce qu'un thème ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Un ensemble de couleurs, de polices et d'effets appliqué à toute la présentation.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Why keep one style throughout?</p><p class="qr-r lang-en"><strong>R3.</strong> For coherence, which makes the presentation look professional.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Pourquoi garder un seul style partout ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Pour la cohérence, qui rend la présentation professionnelle.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 6</span> <span class="lang-en">Adding notes and transitions</span><span class="lang-fr">Ajouter des notes et des transitions</span></h3><p class="qr-expl lang-en">Speaker notes help you during the talk. Transitions are effects between slides: use them lightly, never to distract.</p><p class="qr-expl lang-fr">Les notes de l'orateur aident pendant l'exposé. Les transitions sont des effets entre les diapositives : utilisez-les avec modération, jamais pour distraire.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What are speaker notes?</p><p class="qr-r lang-en"><strong>R1.</strong> Private reminders under each slide, visible only to the speaker.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce que les notes de l'orateur ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Des rappels privés sous chaque diapositive, visibles seulement par l'orateur.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is a transition?</p><p class="qr-r lang-en"><strong>R2.</strong> The visual effect when moving from one slide to the next.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce qu'une transition ?</p><p class="qr-r lang-fr"><strong>R2.</strong> L'effet visuel au passage d'une diapositive à la suivante.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Why avoid too many animations?</p><p class="qr-r lang-en"><strong>R3.</strong> They distract the audience from your message.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Pourquoi éviter trop d'animations ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Elles distraient le public de votre message.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 7</span> <span class="lang-en">The 10-20-30 rule</span><span class="lang-fr">La règle 10-20-30</span></h3><p class="qr-expl lang-en">A famous advice: maximum 10 slides, 20 minutes of talk, and 30 point font size. It keeps the presentation short and readable.</p><p class="qr-expl lang-fr">Un conseil célèbre : maximum 10 diapositives, 20 minutes d'exposé et une police de 30 points. Cela garde la présentation courte et lisible.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Why limit the number of slides?</p><p class="qr-r lang-en"><strong>R1.</strong> Because the audience loses attention if the talk is too long.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Pourquoi limiter le nombre de diapositives ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Parce que le public perd l'attention si l'exposé est trop long.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> Why use font size 30?</p><p class="qr-r lang-en"><strong>R2.</strong> To force you to put only the essential words on the slide.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Pourquoi une police de 30 points ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Pour vous obliger à ne mettre que l'essentiel sur la diapositive.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Is the rule always strict?</p><p class="qr-r lang-en"><strong>R3.</strong> No, it is advice. Adapt it to your subject and your time.</p><p class="qr-q lang-fr"><strong>Q3.</strong> La règle est-elle toujours stricte ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Non, c'est un conseil. Adaptez-la à votre sujet et à votre temps.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 8</span> <span class="lang-en">Rehearsing your talk</span><span class="lang-fr">Répéter votre exposé</span></h3><p class="qr-expl lang-en">Rehearse out loud, check the timing, and ask a friend to listen. Practice makes you confident and in control of the clock.</p><p class="qr-expl lang-fr">Répétez à voix haute, vérifiez le temps et demandez à un ami d'écouter. La pratique donne confiance et contrôle du temps.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Why rehearse out loud?</p><p class="qr-r lang-en"><strong>R1.</strong> To practice your pronunciation, your rhythm and your confidence.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Pourquoi répéter à voix haute ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Pour travailler votre prononciation, votre rythme et votre confiance.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> How do I check the timing?</p><p class="qr-r lang-en"><strong>R2.</strong> Use the rehearsal tool and a timer during your practice.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Comment vérifier le temps ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Utilisez l'outil de répétition et un chronomètre pendant votre pratique.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What should I do with the clock?</p><p class="qr-r lang-en"><strong>R3.</strong> Keep to your time, and shorten the talk if it is too long.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Que dois-je faire avec le chronomètre ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Respectez votre temps et raccourcissez l'exposé s'il est trop long.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 9</span> <span class="lang-en">Giving the presentation</span><span class="lang-fr">Faire la présentation</span></h3><p class="qr-expl lang-en">On the day: arrive early, speak slowly, look at the audience, and never read your slides. Your slides support you; you carry the talk.</p><p class="qr-expl lang-fr">Le jour J : arrivez tôt, parlez lentement, regardez le public et ne lisez jamais vos diapositives. Vos diapositives vous soutiennent ; c'est vous qui portez l'exposé.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Should I read my slides?</p><p class="qr-r lang-en"><strong>R1.</strong> No. The slides are short reminders; the details come from your mouth.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Dois-je lire mes diapositives ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Non. Les diapositives sont de courts rappels ; les détails viennent de votre bouche.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> Where should I look?</p><p class="qr-r lang-en"><strong>R2.</strong> At the audience, and not at the screen or the floor.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Où dois-je regarder ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Le public, et non l'écran ou le sol.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What do I do if I am nervous?</p><p class="qr-r lang-en"><strong>R3.</strong> Breathe slowly, stand straight and remember that you rehearsed.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Que faire si je suis nerveux ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Respirez lentement, tenez-vous droit et rappelez-vous que vous avez répété.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 10</span> <span class="lang-en">After the presentation</span><span class="lang-fr">Après la présentation</span></h3><p class="qr-expl lang-en">End with a conclusion and thank the audience. Answer questions calmly, admit what you do not know, and improve for next time.</p><p class="qr-expl lang-fr">Terminez par une conclusion et remerciez le public. Répondez calmement aux questions, admettez ce que vous ne savez pas et améliorez-vous pour la prochaine fois.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> How do I end the talk?</p><p class="qr-r lang-en"><strong>R1.</strong> With a short conclusion, a thank you, and an invitation for questions.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Comment terminer l'exposé ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Avec une courte conclusion, un remerciement et une invitation aux questions.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What if I do not know an answer?</p><p class="qr-r lang-en"><strong>R2.</strong> Say honestly: I do not know, but I will check it. Never invent.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Que faire si je ne connais pas une réponse ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Dites honnêtement : Je ne sais pas, mais je vais vérifier. N'inventez jamais.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Why ask for feedback?</p><p class="qr-r lang-en"><strong>R3.</strong> Because feedback helps you improve your next presentation.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Pourquoi demander un retour ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Parce que le retour vous aide à améliorer votre prochaine présentation.</p></div></div></article>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../..images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../..images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../..js/data.js"></script>
+<script src="../../../../..js/main.js"></script>
+<script>
+(function() {
+  var root = document.querySelector('.qr-content');
+  var tabs = document.querySelectorAll('.qr-tab');
+  function setLang(lang) {
+    root.classList.remove('lang-en', 'lang-fr');
+    root.classList.add('lang-' + lang);
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-lang') === lang);
+    });
+  }
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() { setLang(t.getAttribute('data-lang')); });
+  });
+  setLang('en');
+})();
+</script>
+</body></html>
