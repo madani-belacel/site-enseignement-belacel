@@ -2,7 +2,7 @@
 
 Site web académique professionnel de **Dr. Madani BELACEL**, Maître de Conférences B à l'Université de Mostaganem.
 
-**URL (test) :** https://madani-belacel.github.io/site-enseignement-belacel *(à configurer)*
+**URL :** https://madani-belacel.github.io/site-enseignement-belacel/
 
 ---
 
@@ -26,8 +26,7 @@ site-enseignement-belacel/
 ├── js/
 │   ├── main.js                # Thème, nav, recherche
 │   └── data.js                # Données centralisées des cours
-├── images/                    # Photos, logos (à compléter)
-├── import_courses.py          # Script d'import automatique
+├── images/                    # Photos, logos
 └── README.md                  # Ce fichier
 ```
 
@@ -62,29 +61,12 @@ site-enseignement-belacel/
 
 ---
 
-## Importation automatique des cours
-
-Le script Python `import_courses.py` génère les pages de cours et les liens de téléchargement à partir de l'arborescence existante.
-
-```bash
-python import_courses.py --source "C:\chemin\vers\Supports de Cours"
-```
-
-Ce script :
-- Parcourt tous les dossiers de modules
-- Extrait les métadonnées (titre, date, langue, type)
-- Génère les listes de documents pour chaque page HTML
-- Met à jour les badges FR/EN/Cours/TD/TP
-
----
-
 ## Personnalisation
 
 ### Ajouter un cours
 
-1. Placer le fichier `.md`, `.pdf` ou `.pptx` dans le dossier approprié sous `static/`
-2. Mettre à jour `js/data.js` ou relancer le script d'import
-3. La page correspondante sera automatiquement mise à jour
+1. Placer le fichier `.md`, `.pdf` ou `.pptx` dans le dossier approprié sous `cours/`
+2. La page correspondante sera automatiquement listée (les pages racine se basent sur `js/generated_courses.json`)
 
 ### Changer les couleurs
 
