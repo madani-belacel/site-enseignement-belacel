@@ -61,7 +61,7 @@ HEADER_HTML = """<!DOCTYPE html><html lang="fr" data-theme="light"><head>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
-        <img src="{root_path}images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des Lettres et des Arts">
+        <img src="{root_path}images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
       </div>
     </div>
     <img src="{root_path}images/alg_drap.gif" alt="Algérie" class="flag-corner">
