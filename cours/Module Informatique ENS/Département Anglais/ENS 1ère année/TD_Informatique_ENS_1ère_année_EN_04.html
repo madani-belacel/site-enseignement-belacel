@@ -1,0 +1,449 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 1 — Session 04 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="Instructor: BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../index.html" class="header-logo">
+        <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+      </div>
+    </div>
+    <img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#about">Présentation</a></li>
+          <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../tic.html">TIC</a></li>
+          <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../recherche.html">Recherche</a></li>
+      <li><a href="../../../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 1 — Session 04 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Instructor:</strong> BELACEL Madani</li><li><strong>Module:</strong> Computer Science</li><li><strong>Level:</strong> ENS — Year 1 — English Department</li><li><strong>Duration:</strong> 1h30</li><li><strong>Academic Year:</strong> 2025-2026</li><li><strong>Problem statement:</strong> Match each function to its description.</li><li><strong>Answer:</strong> Process management → D, Memory management → C, File management → A, Kernel → B (partially), Driver → E. The kernel manages everything; drivers are part of the kernel.</li><li><strong>Problem statement:</strong> A process goes through 3 states: Ready, Running, Blocked. Match each situation to the corresponding state.</li><li><strong>Answer:</strong> 1→Blocked, 2→Running, 3→Ready, 4→Blocked (I/O wait), 5→Ready.</li><li><strong>Problem statement:</strong> Draw the tree structure corresponding to the following path:</li></ul></div>
+    <div class="download-bar"><a href="TD_Informatique_ENS_1ère_année_EN_04.pdf" download class="download-link download-pdf">⬇ PDF</a><a href="TD_Informatique_ENS_1ère_année_EN_04.pptx" download class="download-link download-pptx">⬇ PPTX</a></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_EN_04.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 1 — Session 04 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Learning Objectives</h2>
+<p>By the end of this tutorial session, the student will be able to:
+- Explain the role of the operating system and its components (kernel, drivers)
+- Describe the states of a process and their life cycle
+- Navigate a file tree and construct absolute paths
+- Execute PowerShell commands to manipulate files and folders
+- Distinguish kernel/user mode privileges via system calls</p>
+<hr />
+<h2>Tutorial Plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — Role of the OS</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — Processes</td>
+<td>15 min</td>
+<td>35 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — File tree</td>
+<td>20 min</td>
+<td>55 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — PowerShell</td>
+<td>15 min</td>
+<td>70 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — Syscalls</td>
+<td>15 min</td>
+<td>85 min</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>5 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Operating system architecture</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;User&quot;</span>
+<span class="w">        </span><span class="n">APP1</span><span class="p">[</span><span class="n">Application</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span>
+<span class="w">        </span><span class="n">APP2</span><span class="p">[</span><span class="n">Application</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+<span class="w">        </span><span class="n">APP3</span><span class="p">[</span><span class="n">Application</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;User Mode&quot;</span>
+<span class="w">        </span><span class="n">APP1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">API</span><span class="p">[</span><span class="n">API</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">System</span><span class="w"> </span><span class="n">calls</span><span class="p">]</span>
+<span class="w">        </span><span class="n">APP2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">API</span>
+<span class="w">        </span><span class="n">APP3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">API</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Kernel Mode&quot;</span>
+<span class="w">        </span><span class="n">API</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Kernel</span><span class="p">[</span><span class="n">Kernel</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Kernel</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">ProcM</span><span class="p">[</span><span class="n">Process</span><span class="w"> </span><span class="n">management</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Kernel</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">MemM</span><span class="p">[</span><span class="n">Memory</span><span class="w"> </span><span class="n">management</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Kernel</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">FileM</span><span class="p">[</span><span class="n">File</span><span class="w"> </span><span class="n">management</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Kernel</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Drivers</span><span class="p">[</span><span class="n">Drivers</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Hardware&quot;</span>
+<span class="w">        </span><span class="n">Drivers</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">CPU</span>
+<span class="w">        </span><span class="n">Drivers</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">RAM</span>
+<span class="w">        </span><span class="n">Drivers</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">HD</span><span class="p">[</span><span class="n">Hard</span><span class="w"> </span><span class="n">drive</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Drivers</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Net</span><span class="p">[</span><span class="n">Network</span><span class="p">]</span>
+<span class="w">    </span><span class="n">end</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">APP1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">APP2</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">APP3</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Kernel</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ProcM</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">MemM</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">FileM</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Drivers</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">RAM</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HD</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Net</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+</code></pre></div>
+
+<h2>Process life cycle</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">stateDiagram</span><span class="o">-</span><span class="n">v2</span>
+<span class="w">    </span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ready</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Creation</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Loading</span>
+<span class="w">    </span><span class="n">Ready</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Scheduling</span>
+<span class="w">    </span><span class="n">Running</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ready</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Interrupt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Quantum</span><span class="w"> </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">Running</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Blocked</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Blocking</span><span class="w"> </span><span class="n">system</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Blocked</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Ready</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">Wait</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="w"> </span><span class="n">done</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Running</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Termination</span>
+
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="kr">right</span><span class="w"> </span><span class="kr">of</span><span class="w"> </span><span class="n">Ready</span>
+<span class="w">        </span><span class="n">Queue</span><span class="w"> </span><span class="kr">of</span>
+<span class="w">        </span><span class="n">ready</span><span class="w"> </span><span class="n">processes</span>
+<span class="w">    </span><span class="kd">end </span><span class="n">note</span>
+
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="kr">right</span><span class="w"> </span><span class="kr">of</span><span class="w"> </span><span class="n">Running</span>
+<span class="w">        </span><span class="n">The</span><span class="w"> </span><span class="n">CPU</span><span class="w"> </span><span class="n">executes</span>
+<span class="w">        </span><span class="n">the</span><span class="w"> </span><span class="n">instructions</span>
+<span class="w">    </span><span class="kd">end </span><span class="n">note</span>
+
+<span class="w">    </span><span class="n">note</span><span class="w"> </span><span class="kr">right</span><span class="w"> </span><span class="kr">of</span><span class="w"> </span><span class="n">Blocked</span>
+<span class="w">        </span><span class="n">Waiting</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">resource</span>
+<span class="w">        </span><span class="p">(</span><span class="n">disk</span><span class="p">,</span><span class="w"> </span><span class="n">network</span><span class="p">,</span><span class="w"> </span><span class="n">keyboard</span><span class="p">...)</span>
+<span class="w">    </span><span class="kd">end </span><span class="n">note</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 1 — Role of the OS <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Match each function to its description.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Process management</td>
+<td>A. Organize files in a tree structure</td>
+</tr>
+<tr>
+<td>Memory management</td>
+<td>B. Translate system calls to hardware</td>
+</tr>
+<tr>
+<td>File management</td>
+<td>C. Allocate RAM to applications</td>
+</tr>
+<tr>
+<td>Kernel</td>
+<td>D. Schedule program execution</td>
+</tr>
+<tr>
+<td>Driver</td>
+<td>E. Interface between the OS and a device</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Answer:</strong> Process management → D, Memory management → C, File management → A, Kernel → B (partially), Driver → E. The kernel manages everything; drivers are part of the kernel.</p>
+<hr />
+<h2>Exercise 2 — Processes and states <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> A process goes through 3 states: Ready, Running, Blocked. Match each situation to the corresponding state.</p>
+<ol>
+<li>A process waits for the user to click a button.</li>
+<li>The CPU executes the process's instructions.</li>
+<li>The process is in the queue, ready to be executed.</li>
+<li>A process reads a file from the hard drive.</li>
+<li>The operating system has just loaded the process into memory.</li>
+</ol>
+<p><strong>Answer:</strong> 1→Blocked, 2→Running, 3→Ready, 4→Blocked (I/O wait), 5→Ready.</p>
+<hr />
+<h2>Exercise 3 — File tree <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Draw the tree structure corresponding to the following path:</p>
+<div class="codehilite"><pre><span></span><code>C:\
+├── Users\
+│   └── Madani\
+│       ├── Documents\
+│       │   ├── ENS_Year1_Course\
+│       │   └── TD_Info.txt
+│       ├── Pictures\
+│       └── Desktop\
+│           └── Python_Project\
+├── Program Files\
+│   └── Python3\
+└── Windows\
+    └── System32\
+</code></pre></div>
+
+<p><strong>Questions:</strong>
+1. What is the absolute path to <code>TD_Info.txt</code>?
+2. What is the parent folder of <code>Python_Project</code>?
+3. How many folders does <code>C:\</code> contain?</p>
+<p><strong>Answer:</strong>
+1. <code>C:\Users\Madani\Documents\TD_Info.txt</code>
+2. <code>Desktop</code>
+3. 3 folders (Users, Program Files, Windows)</p>
+<hr />
+<h2>Exercise 4 — PowerShell commands <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Mentally execute the following command sequence and describe the result.</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Name</span> <span class="s2">&quot;Internship&quot;</span>
+<span class="nb">Set-Location</span> <span class="s2">&quot;Internship&quot;</span>
+<span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">File</span> <span class="n">-Name</span> <span class="s2">&quot;Report.txt&quot;</span>
+<span class="nb">Set-Content</span> <span class="n">-Path</span> <span class="s2">&quot;Report.txt&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;My internship report&quot;</span>
+<span class="nb">Get-ChildItem</span>
+<span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="s2">&quot;Report.txt&quot;</span>
+<span class="nb">Get-Location</span>
+</code></pre></div>
+
+<p><strong>Answer:</strong>
+1. Creates the <code>Internship</code> folder
+2. Goes into <code>Internship</code>
+3. Creates the file <code>Report.txt</code>
+4. Writes "My internship report" into the file
+5. Lists the folder contents (shows <code>Report.txt</code>)
+6. Deletes <code>Report.txt</code>
+7. Displays the current path (<code>...\Internship</code>)</p>
+<hr />
+<h2>Exercise 5 — Syscalls and permissions <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> True or False? Justify.</p>
+<ol>
+<li>An application can directly access the hard drive without going through the OS.</li>
+<li>The Linux kernel and the Windows kernel are identical.</li>
+<li>A system call (syscall) allows an application to request a service from the kernel.</li>
+<li>Virtual memory allows a process to use more memory than the available RAM.</li>
+<li>A blocked process consumes CPU time.</li>
+</ol>
+<p><strong>Answer:</strong>
+1. False — any hardware operation goes through the OS (security, abstraction).
+2. False — different architectures (monolithic vs hybrid, different API calls).
+3. True — this is the standard application/kernel communication mechanism.
+4. True — via swap and paging, some data can be on disk.
+5. False — a blocked process is not eligible for the CPU (waiting for a resource).</p>
+<hr />
+<h2>Self-assessment quiz</h2>
+<ol>
+<li>
+<p><strong>The kernel of an operating system is:</strong>
+   a) An application  b) The core of the system that manages resources ✓  c) A device driver</p>
+</li>
+<li>
+<p><strong>A process in the "Blocked" state is waiting for:</strong>
+   a) The CPU to be free  b) A resource (I/O, keyboard...) ✓  c) The end of the time quantum</p>
+</li>
+<li>
+<p><strong>In a path <code>C:\Users\Name\Doc\file.txt</code>, the parent folder of <code>Doc</code> is:</strong>
+   a) <code>C:\</code>  b) <code>Name</code> ✓  c) <code>Users</code></p>
+</li>
+<li>
+<p><strong>A system call (syscall) allows:</strong>
+   a) Restarting the computer  b) Switching from user mode to kernel mode ✓  c) Installing software</p>
+</li>
+<li>
+<p><strong>The PowerShell command <code>Remove-Item</code> allows you to:</strong>
+   a) Create a file  b) Delete a file ✓  c) Move a file</p>
+</li>
+</ol>
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Role of the kernel</td>
+<td>20 %</td>
+<td>Does not know the role</td>
+<td>Role partially understood</td>
+<td>Role well understood</td>
+</tr>
+<tr>
+<td>Process states</td>
+<td>20 %</td>
+<td>States in wrong order</td>
+<td>2-3 correct states</td>
+<td>5 correct states</td>
+</tr>
+<tr>
+<td>Round Robin scheduling</td>
+<td>20 %</td>
+<td>Does not understand the principle</td>
+<td>Principle partially understood</td>
+<td>Principle well understood</td>
+</tr>
+<tr>
+<td>File tree</td>
+<td>20 %</td>
+<td>Incorrect structure</td>
+<td>Partially correct structure</td>
+<td>Correct structure</td>
+</tr>
+<tr>
+<td>Command line</td>
+<td>20 %</td>
+<td>No correct command</td>
+<td>2-3 correct commands</td>
+<td>5+ correct commands</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<h3>Teaching transposition</h3>
+<p>The notion of an operating system can be introduced in SNT Year 10 with the analogy of an orchestra conductor (OS) directing musicians (applications) and distributing scores (resources). The file tree is a very concrete concept: students can explore Windows Explorer to find the folders seen in the tutorial. For PowerShell commands, organize a "command race" challenge where each group must complete a series of tasks as quickly as possible.</p>
+<h3>Trainer advice</h3>
+<p>Exercise 3 (file tree) is a good way to check that students understand the difference between absolute and relative paths. Offer additional exercises where students must write the relative path between two points in the tree. For process states, have students reproduce the state machine diagram from memory.</p>
+<h3>Extension</h3>
+<p>Ask students to install a Linux virtual machine (Ubuntu) under VirtualBox and reproduce the same commands in a bash terminal: <code>ls</code>, <code>mkdir</code>, <code>cd</code>, <code>touch</code>, <code>cat</code>, <code>rm</code>, <code>pwd</code>. Compare PowerShell/Linux syntaxes and discuss the philosophical differences between the two OSes.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

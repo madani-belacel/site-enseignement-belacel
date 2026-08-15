@@ -1,0 +1,538 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Course — ENS Year 1 — Session 09 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="Instructor: BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../index.html" class="header-logo">
+        <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+      </div>
+    </div>
+    <img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#about">Présentation</a></li>
+          <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../tic.html">TIC</a></li>
+          <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../recherche.html">Recherche</a></li>
+      <li><a href="../../../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Course — ENS Year 1 — Session 09 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Instructor:</strong> BELACEL Madani</li><li><strong>Module:</strong> Computer Science</li><li><strong>Level:</strong> ENS — Year 1 — English Department</li><li><strong>Duration:</strong> 1h30</li><li><strong>Academic Year:</strong> 2025-2026</li><li><strong>Pedagogical strengths:</strong> readable syntax (close to pseudocode), dynamic typing, free/open source, rich libraries, active educational community. Python is the official language of the NSI program in France.</li><li><strong>Uses in school contexts:</strong></li><li>- <strong>Mathematics:</strong> calculations, simulation, plotting (matplotlib)</li><li>- <strong>Languages:</strong> text analysis, vocabulary quizzes</li><li>- <strong>Science:</strong> data processing, graphs</li></ul></div>
+    <div class="download-bar"><a href="Cours_Informatique_ENS_1ère_année_EN_09.pdf" download class="download-link download-pdf">⬇ PDF</a><a href="Cours_Informatique_ENS_1ère_année_EN_09.pptx" download class="download-link download-pptx">⬇ PPTX</a></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_1ère_année_EN_09.pdf</code></p>
+</blockquote>
+<h1>Computer Science Course — ENS Year 1 — Session 09 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Specific Learning Objectives</h2>
+<p>At the end of this session, the student is able to:
+- Justify the choice of Python for teaching programming
+- Install and configure a Python environment (IDLE, VS Code, Thonny)
+- Declare and use basic types (int, float, str, bool)
+- Structure a program with conditions (if/elif/else) and loops (for/while)
+- Define and call functions with parameters and return values
+- Read and write a text file from a Python script</p>
+<hr />
+<h2>Algerian Regulatory Context</h2>
+<p>This course falls within the Algerian regulatory framework for teacher training:</p>
+<ul>
+<li><strong>Ministerial decree establishing ENS (Bachelor's/Master's cycle)</strong> — defines the institutional framework of the Écoles Normales Supérieures and their mission of teacher training.</li>
+<li><strong>National Computer Science curriculum for Algerian ENS</strong> — sets the objectives, content and hourly volumes of the Computer Science module in initial teacher training.</li>
+<li><strong>Decree 712 setting the ENS competition syllabus</strong> — determines the tests and programs for ENS entrance competitions, consistent with the taught content.</li>
+<li><strong>Algerian digital competency framework</strong> — national framework (under development) defining the digital competencies expected of teachers.</li>
+<li><strong>Benchmark of 10 Algerian universities</strong> — comparative study of computer science teaching practices, consulted to align this course with national standards.</li>
+</ul>
+<hr />
+<h2>Course Plan</h2>
+<ol>
+<li>Why Python for teaching — 10 min</li>
+<li>Development environments — 10 min</li>
+<li>Variables and types — 15 min</li>
+<li>Conditions (if/elif/else) — 15 min</li>
+<li>Loops (for, while) — 15 min</li>
+<li>Functions (def, return, parameters) — 15 min</li>
+<li>Input/output and files — 10 min</li>
+<li>MCQ and conclusion — 5 min</li>
+</ol>
+<hr />
+<h2>1. Why Python for teaching? <em>(10 min)</em></h2>
+<p>Python has become the most widely used programming language in education and research.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Algorithmic pseudocode&quot;</span>
+<span class="w">        </span><span class="n">PC</span><span class="p">[</span><span class="s">&quot;IF grade &gt;= 10&lt;br/&gt;    DISPLAY &#39;</span><span class="n">Passed</span><span class="s">&#39;&lt;br/&gt;ELSE&lt;br/&gt;    DISPLAY &#39;</span><span class="n">Failed</span><span class="s">&#39;&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Python code&quot;</span>
+<span class="w">        </span><span class="n">PY</span><span class="p">[</span><span class="s">&quot;if grade &gt;= 10:&lt;br/&gt;    print(&#39;</span><span class="n">Passed</span><span class="s">&#39;)&lt;br/&gt;else:&lt;br/&gt;    print(&#39;</span><span class="n">Failed</span><span class="s">&#39;)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Execution&quot;</span>
+<span class="w">        </span><span class="n">EX</span><span class="p">[</span><span class="s">&quot;Input: 15&lt;br/&gt;Output: Passed&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">PC</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Natural translation&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">PY</span>
+<span class="w">    </span><span class="n">PY</span><span class="w"> </span><span class="o">--&gt;|</span><span class="s">&quot;Interpretation&quot;</span><span class="o">|</span><span class="w"> </span><span class="n">EX</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">PC</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">PY</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">EX</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>Pedagogical strengths:</strong> readable syntax (close to pseudocode), dynamic typing, free/open source, rich libraries, active educational community. Python is the official language of the NSI program in France.</p>
+<p><strong>Uses in school contexts:</strong>
+- <strong>Mathematics:</strong> calculations, simulation, plotting (matplotlib)
+- <strong>Languages:</strong> text analysis, vocabulary quizzes
+- <strong>Science:</strong> data processing, graphs
+- <strong>SNT/NSI:</strong> official program — reference language</p>
+<hr />
+<h2>2. Development environments <em>(10 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Type</th>
+<th>Target audience</th>
+<th>Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IDLE</strong></td>
+<td>Built-in IDE</td>
+<td>Beginners</td>
+<td>Installed with Python</td>
+</tr>
+<tr>
+<td><strong>Thonny</strong></td>
+<td>Educational IDE</td>
+<td>Middle/High school</td>
+<td>Visual debugger, ideal for discovery</td>
+</tr>
+<tr>
+<td><strong>VS Code</strong></td>
+<td>Professional editor</td>
+<td>High school/University</td>
+<td>Extensions, integrated terminal</td>
+</tr>
+<tr>
+<td><strong>Replit</strong></td>
+<td>Online</td>
+<td>All</td>
+<td>No installation required</td>
+</tr>
+<tr>
+<td><strong>Google Colab</strong></td>
+<td>Web Notebook</td>
+<td>Research/NSI</td>
+<td>Shared tutorials</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> Thonny for beginners, then VS Code for projects.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Check Python</span>
+python<span class="w"> </span>--version
+<span class="c1"># Run a script</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;print(&quot;Hello ENS !&quot;)&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>hello.py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>hello.py
+</code></pre></div>
+
+<hr />
+<h2>3. Variables and types <em>(15 min)</em></h2>
+<p>In Python, variables are labels pointing to objects. No explicit type declaration.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span>                  <span class="c1"># int</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>              <span class="c1"># float</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Madani&quot;</span>           <span class="c1"># str</span>
+<span class="n">is_teacher</span> <span class="o">=</span> <span class="kc">True</span>         <span class="c1"># bool</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">))</span>          <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old&quot;</span><span class="p">)</span>  <span class="c1"># f-string (Python 3.6+)</span>
+
+<span class="c1"># Type conversion</span>
+<span class="n">age_str</span> <span class="o">=</span> <span class="s2">&quot;20&quot;</span>
+<span class="n">age_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">age_str</span><span class="p">)</span>           <span class="c1"># &quot;20&quot; → 20</span>
+<span class="n">grade</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Grade: &quot;</span><span class="p">))</span>   <span class="c1"># Input → float</span>
+</code></pre></div>
+
+<p><strong>Pseudocode ↔ Python parallel:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Pseudocode</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assignment</td>
+<td><code>age ← 20</code></td>
+<td><code>age = 20</code></td>
+</tr>
+<tr>
+<td>Display</td>
+<td><code>DISPLAY age</code></td>
+<td><code>print(age)</code></td>
+</tr>
+<tr>
+<td>Input</td>
+<td><code>READ age</code></td>
+<td><code>input()</code></td>
+</tr>
+<tr>
+<td>Comment</td>
+<td><code>// text</code></td>
+<td><code># text</code></td>
+</tr>
+<tr>
+<td>Comparison</td>
+<td><code>age == 18</code></td>
+<td><code>age == 18</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pitfall:</strong> <code>=</code> is assignment, <code>==</code> is comparison.</p>
+<hr />
+<h2>4. Conditions <em>(15 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">START</span><span class="p">([</span><span class="s">&quot;Start&quot;</span><span class="p">])</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">INPUT</span><span class="p">[</span><span class="n">Input</span><span class="w"> </span><span class="n">grade</span><span class="p">]</span>
+<span class="w">    </span><span class="n">INPUT</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">COND</span><span class="p">{</span><span class="s">&quot;grade &gt;= 10 ?&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="n">COND</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">Yes</span><span class="o">|</span><span class="w"> </span><span class="n">PASSED</span><span class="p">[</span><span class="n">Display</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Passed</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">COND</span><span class="w"> </span><span class="o">--&gt;|</span><span class="n">No</span><span class="o">|</span><span class="w"> </span><span class="n">FAILED</span><span class="p">[</span><span class="n">Display</span><span class="w"> </span><span class="err">&#39;</span><span class="n">Failed</span><span class="err">&#39;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">PASSED</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">END</span><span class="p">([</span><span class="s">&quot;End&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="n">FAILED</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">END</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">START</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">END</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">COND</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">f39c12</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">grade</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Grade out of 20: &quot;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">16</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Excellent&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">14</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fairly good&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Passable&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Operators:</strong> <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>and</code>, <code>or</code>, <code>not</code></p>
+<p><strong>Golden rules:</strong>
+- Don't forget the <code>:</code> after <code>if</code>, <code>elif</code>, <code>else</code>
+- Consistent indentation (4 spaces)
+- <code>float(input())</code> for decimal numbers</p>
+<hr />
+<h2>5. Loops <em>(15 min)</em></h2>
+<h3><code>for</code> loop — sequence traversal</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>                    <span class="c1"># 1, 3, 5, 7, 9</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;Mohamed&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3><code>while</code> loop — conditional repetition</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">while</span> <span class="n">response</span> <span class="o">!=</span> <span class="s2">&quot;yes&quot;</span> <span class="ow">and</span> <span class="n">response</span> <span class="o">!=</span> <span class="s2">&quot;no&quot;</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Continue? (yes/no): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Counter: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nf">graph</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;for loop&quot;</span>
+<span class="w">        </span><span class="n">F1</span><span class="p">[</span><span class="s">&quot;for i in range(5):&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">F2</span><span class="p">[</span><span class="s">&quot;print(i)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">F3</span><span class="p">[</span><span class="s">&quot;i: 0 → 1 → 2 → 3 → 4&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;while loop&quot;</span>
+<span class="w">        </span><span class="n">W1</span><span class="p">[</span><span class="s">&quot;while condition:&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">W2</span><span class="p">[</span><span class="s">&quot;statement&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">W3</span><span class="p">[</span><span class="s">&quot;Condition checked&lt;br/&gt;at each iteration&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">F1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F3</span>
+<span class="w">    </span><span class="n">W1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">W2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">W3</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">W1</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">F1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">3498</span><span class="n">db</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">W1</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<p><strong>When to use which?</strong> <code>for</code> when the number of iterations is known (sequence traversal). <code>while</code> when waiting for a condition.</p>
+<hr />
+<h2>6. Functions <em>(15 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_average</span><span class="p">(</span><span class="n">grades</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the average of a list of grades.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Welcome&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+
+<span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">calculate_average</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average: </span><span class="si">{</span><span class="n">avg</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Ali&quot;</span><span class="p">)</span>                <span class="c1"># Welcome, Ali!</span>
+<span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>      <span class="c1"># Hello, Sara!</span>
+
+<span class="k">def</span> <span class="nf">min_max_grades</span><span class="p">(</span><span class="n">grades</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">grades</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>  <span class="c1"># Returns a tuple</span>
+
+<span class="n">mini</span><span class="p">,</span> <span class="n">maxi</span> <span class="o">=</span> <span class="n">min_max_grades</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">mini</span><span class="si">}</span><span class="s2">, Max: </span><span class="si">{</span><span class="n">maxi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Why functions?</strong> Reusability, readability, testability, modularity.</p>
+<p><strong>Best practices:</strong> verb names, docstring between <code>"""</code>, one return per function.</p>
+<hr />
+<h2>7. Input/output and files <em>(10 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># User input</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your name: &quot;</span><span class="p">)</span>
+<span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your age: &quot;</span><span class="p">))</span>
+
+<span class="c1"># File writing</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;grades.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Name,Grade</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Ali,15</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Sara,18</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># &#39;with&#39; closes automatically</span>
+
+<span class="c1"># File reading</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;grades.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+<span class="c1"># Modes: &quot;r&quot; read, &quot;w&quot; write (overwrites), &quot;a&quot; append</span>
+
+<span class="c1"># Simple CSV processing</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;grades.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>   <span class="c1"># Skip header</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">grade</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">grade</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average: </span><span class="si">{</span><span class="n">total</span><span class="o">/</span><span class="n">n</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Pedagogical context:</strong> the CSV format is ubiquitous in education (Moodle export, Excel, report cards).</p>
+<hr />
+<h2>8. Mini-project <em>(5 min)</em></h2>
+<p><strong>English/French vocabulary quiz — combining all concepts:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">questions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cat&quot;</span><span class="p">:</span> <span class="s2">&quot;chat&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">:</span> <span class="s2">&quot;chien&quot;</span><span class="p">,</span> <span class="s2">&quot;house&quot;</span><span class="p">:</span> <span class="s2">&quot;maison&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;book&quot;</span><span class="p">:</span> <span class="s2">&quot;livre&quot;</span><span class="p">,</span> <span class="s2">&quot;school&quot;</span><span class="p">:</span> <span class="s2">&quot;école&quot;</span><span class="p">,</span> <span class="s2">&quot;teacher&quot;</span><span class="p">:</span> <span class="s2">&quot;professeur&quot;</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">ask_question</span><span class="p">(</span><span class="n">word_en</span><span class="p">,</span> <span class="n">word_fr</span><span class="p">):</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Translate &#39;</span><span class="si">{</span><span class="n">word_en</span><span class="si">}</span><span class="s2">&#39;: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="n">word_fr</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Correct!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✗ Wrong. Answer: </span><span class="si">{</span><span class="n">word_fr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">en</span><span class="p">,</span> <span class="n">fr</span> <span class="ow">in</span> <span class="n">questions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">ask_question</span><span class="p">(</span><span class="n">en</span><span class="p">,</span> <span class="n">fr</span><span class="p">):</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>MCQ Self-Assessment</h2>
+<ol>
+<li>
+<p><strong>Which function displays text in the console in Python?</strong>
+   a) <code>input()</code>  b) <code>print()</code> ✓  c) <code>write()</code></p>
+</li>
+<li>
+<p><strong>What type does <code>input()</code> return?</strong>
+   a) <code>int</code>  b) <code>float</code>  c) <code>str</code> ✓</p>
+</li>
+<li>
+<p><strong>Which keyword defines a function?</strong>
+   a) <code>function</code>  b) <code>def</code> ✓  c) <code>define</code></p>
+</li>
+<li>
+<p><strong>Which loop is ideal for traversing a list?</strong>
+   a) <code>while</code>  b) <code>for</code> ✓  c) <code>repeat</code></p>
+</li>
+<li>
+<p><strong>Which opening mode allows writing (overwrites)?</strong>
+   a) <code>"r"</code>  b) <code>"w"</code> ✓  c) <code>"a"</code></p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion <em>(5 min)</em></h2>
+<p>Python is ideal for teaching: clear syntax, universal concepts (variables, conditions, loops, functions), concrete applications (file processing, quizzes). CSV manipulation prepares future teachers to handle educational data.</p>
+<p><strong>Next class:</strong> Python project — revision card generator and average calculator.</p>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<p><strong>Teaching transposition for secondary school:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Theme</th>
+<th>Recommended activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SNT Year 10</strong></td>
+<td>Programming</td>
+<td>Use Thonny for first steps. Write a script that displays "Hello class!" and modify it collectively.</td>
+</tr>
+<tr>
+<td><strong>NSI Year 11</strong></td>
+<td>Types and functions</td>
+<td>Implement a <code>average(grades)</code> function that calculates the average of a list. Compare with a spreadsheet average.</td>
+</tr>
+<tr>
+<td><strong>NSI Year 12</strong></td>
+<td>Recursion and files</td>
+<td>Read a CSV grade file, calculate statistics, export a report card.</td>
+</tr>
+<tr>
+<td><strong>Mathematics</strong></td>
+<td>Simulation</td>
+<td>Write a function that simulates a die roll (random), repeat N times, count frequencies.</td>
+</tr>
+<tr>
+<td><strong>Cross-curricular</strong></td>
+<td>Vocabulary quiz</td>
+<td>The mini-project quiz (section 8) can be adapted in language class: the student programs a quiz for their classmates.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Progressive pedagogical approach:</strong>
+1. <strong>Read</strong>: analyze an existing script, identify blocks (variables, conditions, loops)
+2. <strong>Modify</strong>: change values, add a condition, extend a loop
+3. <strong>Create</strong>: write a script meeting a simple specification
+4. <strong>Evaluate</strong>: test with different datasets, detect and fix errors</p>
+<p><strong>Trainer advice:</strong>
+- Use <strong>Thonny</strong> for discovery (step-by-step visible debugger), then <strong>VS Code</strong> for projects
+- Prioritize <strong>contextual exercises</strong> (average calculator, quiz, converter) rather than decontextualized exercises
+- <strong>Systematically</strong> show the pseudocode ↔ Python parallel to anchor concepts seen in the algorithms course (session 05)
+- Prepare <strong>help sheets</strong> (Python cheatsheet) that students keep for subsequent sessions
+- <strong>Avoid:</strong> using portable Thonny or Replit for the first sessions (prefer a local installation)</p>
+<p><strong>Extension:</strong> Students can explore Python libraries for teaching: <code>turtle</code> (graphics), <code>pygame</code> (games), <code>matplotlib</code> (visualization). Propose a complementary activity: create a small French vocabulary exercise with random flashcards using <code>tkinter</code> or an interactive command-line quiz with timer (<code>time</code>). These activities are directly transferable to language or history-geography classes.</p>
+<hr />
+<h2>Bibliography</h2>
+<ul>
+<li>Downey — <em>Think Python</em> (2nd ed., O'Reilly)</li>
+<li>Python 3 Documentation: docs.python.org</li>
+<li><em>Python for Teaching</em> (Eduscol)</li>
+</ul>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

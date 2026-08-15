@@ -1,0 +1,497 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 1 — Session 03 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="Instructor: BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../index.html" class="header-logo">
+        <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+      </div>
+    </div>
+    <img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#about">Présentation</a></li>
+          <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../tic.html">TIC</a></li>
+          <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../recherche.html">Recherche</a></li>
+      <li><a href="../../../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 1 — Session 03 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Instructor:</strong> BELACEL Madani</li><li><strong>Module:</strong> Computer Science</li><li><strong>Level:</strong> ENS — Year 1 — English Department</li><li><strong>Duration:</strong> 1h30</li><li><strong>Academic Year:</strong> 2025-2026</li><li><strong>Problem statement:</strong> Name the 5 units of the von Neumann model and match each component to its role.</li><li><strong>Components:</strong> ALU, Control unit, RAM, Hard drive, Keyboard, Screen, L1 Cache, System bus.</li><li><strong>Answer:</strong></li><li><strong>Problem statement:</strong> Put the steps of the instruction execution cycle in order.</li><li><strong>Correct order:</strong> 4 → 1 → 2 → 3 (Fetch → Decode → Execute → Write-back)</li></ul></div>
+    <div class="download-bar"><a href="TD_Informatique_ENS_1ère_année_EN_03.pdf" download class="download-link download-pdf">⬇ PDF</a><a href="TD_Informatique_ENS_1ère_année_EN_03.pptx" download class="download-link download-pptx">⬇ PPTX</a></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_1ère_année_EN_03.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 1 — Session 03 (EN)</h1>
+<p><strong>Instructor:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 1 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Learning Objectives</h2>
+<p>By the end of this tutorial session, the student will be able to:
+- Identify and describe the 5 units of the von Neumann model
+- Order the steps of the instruction execution cycle (fetch-decode-execute-writeback)
+- Classify different types of memory by speed and size
+- Execute basic command-line commands (PowerShell)
+- Explain the role of each component in the overall operation of a computer</p>
+<hr />
+<h2>Tutorial Plan</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — von Neumann</td>
+<td>15 min</td>
+<td>20 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — Execution cycle</td>
+<td>15 min</td>
+<td>35 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — Memory hierarchy</td>
+<td>20 min</td>
+<td>55 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — Command line</td>
+<td>15 min</td>
+<td>70 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — Architecture QCM</td>
+<td>15 min</td>
+<td>85 min</td>
+</tr>
+<tr>
+<td>Correction</td>
+<td>5 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Von Neumann model</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">block</span><span class="o">-</span><span class="n">beta</span>
+<span class="w">    </span><span class="n">columns</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">    </span><span class="n">UC</span><span class="p">[</span><span class="s">&quot;Control Unit&lt;br/&gt;(Control)&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">space</span><span class="w"> </span><span class="n">ALU</span><span class="p">[</span><span class="s">&quot;ALU&lt;br/&gt;(Processing)&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">block</span><span class="o">:</span><span class="n">Memory</span><span class="p">[</span><span class="s">&quot;Main memory&lt;br/&gt;(RAM)&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">columns</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="n">Instructions</span><span class="p">[</span><span class="s">&quot;Instructions&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="n">Data</span><span class="p">[</span><span class="s">&quot;Data&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+<span class="w">    </span><span class="n">Input</span><span class="p">[</span><span class="s">&quot;Input&lt;br/&gt;(Keyboard)&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">space</span><span class="w"> </span><span class="kr">Output</span><span class="p">[</span><span class="s">&quot;Output&lt;br/&gt;(Screen)&quot;</span><span class="p">]</span>
+
+<span class="w">    </span><span class="n">Bus</span><span class="p">[</span><span class="s">&quot;System bus&quot;</span><span class="p">]</span><span class="w"> </span><span class="n">across</span>
+
+<span class="w">    </span><span class="n">UC</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Bus</span>
+<span class="w">    </span><span class="n">ALU</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Bus</span>
+<span class="w">    </span><span class="n">Memory</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Bus</span>
+<span class="w">    </span><span class="n">Input</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Bus</span>
+<span class="w">    </span><span class="kr">Output</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">Bus</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">UC</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">ALU</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Memory</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Input</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="kr">Output</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">Bus</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<h2>Execution cycle and memory hierarchy</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">flowchart</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Execution cycle&quot;</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">LR</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="nf">Fetch</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Loading</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Decode</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Decoding</span><span class="p">]</span>
+<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Execute</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Execution</span><span class="p">]</span>
+<span class="w">        </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Write</span><span class="o">-</span><span class="n">back</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="n">Writing</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">subgraph</span><span class="w"> </span><span class="s">&quot;Memory hierarchy&quot;</span>
+<span class="w">        </span><span class="n">direction</span><span class="w"> </span><span class="n">TB</span>
+<span class="w">        </span><span class="n">R</span><span class="p">[</span><span class="n">Registers</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mi">512</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">ns</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L1</span><span class="p">[</span><span class="n">L1</span><span class="w"> </span><span class="n">Cache</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mi">64</span><span class="w"> </span><span class="n">KB</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="o">~</span><span class="mi">1</span><span class="w"> </span><span class="n">ns</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L1</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L2</span><span class="p">[</span><span class="n">L2</span><span class="w"> </span><span class="n">Cache</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mi">512</span><span class="w"> </span><span class="n">KB</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="o">~</span><span class="mi">4</span><span class="w"> </span><span class="n">ns</span><span class="p">]</span>
+<span class="w">        </span><span class="n">L2</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">RAM</span><span class="p">[</span><span class="n">RAM</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mi">16</span><span class="w"> </span><span class="n">GB</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="o">~</span><span class="mi">50</span><span class="w"> </span><span class="n">ns</span><span class="p">]</span>
+<span class="w">        </span><span class="n">RAM</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">SSD</span><span class="p">[</span><span class="n">SSD</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mi">1</span><span class="w"> </span><span class="n">TB</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="o">~</span><span class="mi">100</span><span class="w"> </span><span class="err">µ</span><span class="n">s</span><span class="p">]</span>
+<span class="w">        </span><span class="n">SSD</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">HDD</span><span class="p">[</span><span class="n">HDD</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mi">2</span><span class="w"> </span><span class="n">TB</span><span class="w"> </span><span class="err">•</span><span class="w"> </span><span class="o">~</span><span class="mi">10</span><span class="w"> </span><span class="n">ms</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">end</span>
+
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">R</span>
+
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="mo">000</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">HDD</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 1 — Von Neumann model <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Name the 5 units of the von Neumann model and match each component to its role.</p>
+<p><strong>Components:</strong> ALU, Control unit, RAM, Hard drive, Keyboard, Screen, L1 Cache, System bus.</p>
+<table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Associated component(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processing</td>
+<td></td>
+</tr>
+<tr>
+<td>Control</td>
+<td></td>
+</tr>
+<tr>
+<td>Memory</td>
+<td></td>
+</tr>
+<tr>
+<td>Input</td>
+<td></td>
+</tr>
+<tr>
+<td>Output</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Answer:</strong>
+| Unit | Component(s) |
+|------|-------------|
+| Processing | ALU |
+| Control | Control unit |
+| Memory | RAM, L1 Cache, Hard drive |
+| Input | Keyboard |
+| Output | Screen |</p>
+<p>The system bus connects all units together.</p>
+<hr />
+<h2>Exercise 2 — Execution cycle <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Put the steps of the instruction execution cycle in order.</p>
+<ol>
+<li>The control unit decodes the instruction (operation + operands)</li>
+<li>The ALU executes the operation</li>
+<li>The result is written to a register or to memory</li>
+<li>The instruction is loaded from RAM to the instruction register</li>
+</ol>
+<p><strong>Correct order:</strong> 4 → 1 → 2 → 3 (Fetch → Decode → Execute → Write-back)</p>
+<p><strong>Application:</strong> Describe what happens when you press <code>A</code> on the keyboard (from key press to screen display). <em>(Answer: keyboard → bus → CPU → OS → screen)</em></p>
+<hr />
+<h2>Exercise 3 — Memory hierarchy <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> Classify the following memory types from fastest to slowest and from smallest to largest:</p>
+<ul>
+<li>SSD 1 TB</li>
+<li>RAM 16 GB</li>
+<li>L1 Cache 64 KB</li>
+<li>Registers 512 bytes</li>
+<li>HDD 2 TB</li>
+<li>L2 Cache 512 KB</li>
+</ul>
+<p><strong>Answer:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Type</th>
+<th>Size</th>
+<th>Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (fast)</td>
+<td>Registers</td>
+<td>512 B</td>
+<td>&lt; 1 ns</td>
+</tr>
+<tr>
+<td>2</td>
+<td>L1 Cache</td>
+<td>64 KB</td>
+<td>~1 ns</td>
+</tr>
+<tr>
+<td>3</td>
+<td>L2 Cache</td>
+<td>512 KB</td>
+<td>~4 ns</td>
+</tr>
+<tr>
+<td>4</td>
+<td>RAM</td>
+<td>16 GB</td>
+<td>~50 ns</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SSD</td>
+<td>1 TB</td>
+<td>~100 µs</td>
+</tr>
+<tr>
+<td>6 (slow)</td>
+<td>HDD</td>
+<td>2 TB</td>
+<td>~10 ms</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Question:</strong> Why can a computer with 8 GB of RAM be faster than another with 16 GB?
+<em>Answer: it also depends on the CPU (frequency, cache), the SSD (vs HDD), and the OS.</em></p>
+<hr />
+<h2>Exercise 4 — Command line <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Write the Windows PowerShell command to:</p>
+<ol>
+<li>List the files in the current folder</li>
+<li>Create a folder <code>TD_Architecture</code></li>
+<li>Navigate into this folder</li>
+<li>Create an empty file <code>notes.txt</code></li>
+<li>Display the machine's IP address</li>
+</ol>
+<p><strong>Answer:</strong>
+1. <code>Get-ChildItem</code> (or <code>dir</code>)
+2. <code>New-Item -ItemType Directory -Name "TD_Architecture"</code>
+3. <code>Set-Location "TD_Architecture"</code> (or <code>cd TD_Architecture</code>)
+4. <code>New-Item -ItemType File -Name "notes.txt"</code>
+5. <code>Get-NetIPAddress</code> (or <code>ipconfig</code>)</p>
+<hr />
+<h2>Exercise 5 — Architecture QCM <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Choose the correct answer.</p>
+<ol>
+<li>
+<p>What does CPU stand for?
+   a) Central Processing Unit
+   b) Computer Personal Unit
+   c) Central Program Utility</p>
+</li>
+<li>
+<p>RAM memory is:
+   a) Non-volatile
+   b) Volatile
+   c) As fast as registers</p>
+</li>
+<li>
+<p>The von Neumann model stores:
+   a) Only data
+   b) Only programs
+   c) Data AND programs</p>
+</li>
+<li>
+<p>The control unit is part of:
+   a) The hard drive
+   b) The processor
+   c) RAM</p>
+</li>
+<li>
+<p>CPU frequency is measured in:
+   a) MHz or GHz
+   b) MB/s
+   c) Watts</p>
+</li>
+</ol>
+<p><strong>Answer:</strong> 1a, 2b, 3c, 4b, 5a</p>
+<hr />
+<h2>Self-assessment quiz</h2>
+<ol>
+<li>
+<p><strong>Which unit of the von Neumann model performs calculations?</strong>
+   a) Control unit  b) ALU ✓  c) Memory</p>
+</li>
+<li>
+<p><strong>The role of the cache is to:</strong>
+   a) Store files  b) Speed up access to frequently used data ✓  c) Cool the CPU</p>
+</li>
+<li>
+<p><strong>The execution cycle starts with the step:</strong>
+   a) Execute  b) Decode  c) Fetch ✓</p>
+</li>
+<li>
+<p><strong>Among these memories, which is the fastest?</strong>
+   a) RAM  b) Registers ✓  c) SSD</p>
+</li>
+<li>
+<p><strong>The command <code>Get-ChildItem</code> in PowerShell allows you to:</strong>
+   a) List files ✓  b) Create a folder  c) Delete a file</p>
+</li>
+</ol>
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Von Neumann diagram</td>
+<td>20 %</td>
+<td>Diagram missing or wrong</td>
+<td>Partial diagram</td>
+<td>Complete and correct diagram</td>
+</tr>
+<tr>
+<td>Fetch-Decode-Execute cycle</td>
+<td>20 %</td>
+<td>Steps in wrong order</td>
+<td>3 steps out of 4</td>
+<td>4 correct steps in order</td>
+</tr>
+<tr>
+<td>Memory hierarchy</td>
+<td>20 %</td>
+<td>Incorrect order</td>
+<td>3 levels out of 5</td>
+<td>5 correct levels</td>
+</tr>
+<tr>
+<td>CPU registers</td>
+<td>20 %</td>
+<td>No register identified</td>
+<td>2-3 registers</td>
+<td>4+ correct registers</td>
+</tr>
+<tr>
+<td>Teaching analogies</td>
+<td>20 %</td>
+<td>No analogy proposed</td>
+<td>Partial analogy</td>
+<td>Relevant and justified analogy</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<h3>Teaching transposition</h3>
+<p>The von Neumann model can be introduced in middle/high school with a simple analogy: the brain (CPU) reading a recipe (program in memory), executing instructions (ALU), and using the countertop (RAM) to store temporary ingredients. Each student can mime the role of a component (memory, ALU, controller) in a theatrical activity.</p>
+<h3>Trainer advice</h3>
+<p>Exercise 2 (execution cycle) is fundamental: make sure each student can recite the 4 steps in order. Use a card game or flashcards to memorize the cycle. For memory hierarchy, emphasize the orders of magnitude (ns vs µs vs ms) which are abstract for beginners.</p>
+<h3>Extension</h3>
+<p>Have students disassemble (virtually through diagrams or actually with an old computer) a PC's components and identify them. Create a class poster representing the von Neumann model with the actual components of a lab computer.</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

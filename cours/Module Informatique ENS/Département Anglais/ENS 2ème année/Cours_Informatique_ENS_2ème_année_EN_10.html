@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Course — ENS Year 2 — Session 10 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="Instructor : BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../index.html" class="header-logo">
+        <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+      </div>
+    </div>
+    <img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#about">Présentation</a></li>
+          <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../tic.html">TIC</a></li>
+          <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../recherche.html">Recherche</a></li>
+      <li><a href="../../../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Course — ENS Year 2 — Session 10 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Instructor :</strong> BELACEL Madani</li><li><strong>Module:</strong> Computer Science</li><li><strong>Level :</strong> ENS — Year 2 — English Department</li><li><strong>Duration :</strong> 1h30</li><li><strong>Academic year :</strong> 2025-2026</li><li><strong>Reference framework :</strong> benchmark of 10 Algerian universities + practices Univ-Mosta/Biskra/M'sila.</li><li><strong>Target audience :</strong> ENS Year 2 Students — English Department</li><li><strong>Prerequisite skills :</strong> ENS2 project developed (session 09), Git, OOP, SQL, Flask</li><li><strong>Cross-curricular objectives :</strong></li><li><strong>Assessment method :</strong> OOP Lab + SQL 35 % — Integrated Project 40 % — Pedagogical Session Sheet 25 %</li></ul></div>
+    <div class="download-bar"><a href="Cours_Informatique_ENS_2ème_année_EN_10.pdf" download class="download-link download-pdf">⬇ PDF</a><a href="Cours_Informatique_ENS_2ème_année_EN_10.pptx" download class="download-link download-pptx">⬇ PPTX</a></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>Cours_Informatique_ENS_2ème_année_EN_10.pdf</code></p>
+</blockquote>
+<h1>Computer Science Course — ENS Year 2 — Session 10 (EN)</h1>
+<p><strong>Instructor :</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level :</strong> ENS — Year 2 — English Department<br />
+<strong>Duration :</strong> 1h30<br />
+<strong>Academic year :</strong> 2025-2026</p>
+<hr />
+<h2>Course Sheet — E-learning Platform (Moodle)</h2>
+<p><strong>Reference framework :</strong> benchmark of 10 Algerian universities + practices Univ-Mosta/Biskra/M'sila.</p>
+<p><strong>Target audience :</strong> ENS Year 2 Students — English Department</p>
+<p><strong>Prerequisite skills :</strong> ENS2 project developed (session 09), Git, OOP, SQL, Flask</p>
+<p><strong>Cross-curricular objectives :</strong>
+- Apply object-oriented programming (classes, inheritance, encapsulation) in Python
+- Design advanced algorithms (sorting, searching, recursion) and estimate their complexity
+- Model data with the relational model and basic SQL queries
+- Understand Web architecture (HTML, CSS, JavaScript intro, HTTP)
+- Use Git and collaborative work methods (branches, merge)
+- Prepare the teaching of computer science in middle/high school (Scratch, pedagogical Python)</p>
+<p><strong>Assessment method :</strong> OOP Lab + SQL 35 % — Integrated Project 40 % — Pedagogical Session Sheet 25 %</p>
+<p><strong>Bibliography :</strong> MDN Web Docs ; Flask Documentation ; Git Book</p>
+<hr />
+<h2>Specific Learning Objectives</h2>
+<p>At the end of this session, the student is able to :
+- Present a complete software project
+- Demonstrate the developed features
+- Explain technical and architectural choices
+- Show the Git repository with history
+- Present the associated pedagogical session sheet</p>
+<hr />
+<h2>Course Plan</h2>
+<ol>
+<li>Detailed evaluation criteria</li>
+<li>Presentation structure (10 min)</li>
+<li>Live demo</li>
+<li>Technical questions</li>
+<li>Pedagogical session sheet</li>
+<li>ENS2 module review</li>
+<li>Next steps (internship, portfolio)</li>
+</ol>
+<hr />
+<h2>1. Evaluation criteria <em>(5 min)</em></h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Features</td>
+<td>30 %</td>
+<td>CRUD students/grades, average, CSV export</td>
+</tr>
+<tr>
+<td>OOP Code</td>
+<td>20 %</td>
+<td>Classes, inheritance, methods</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>15 %</td>
+<td>SQLite, tables, queries, joins</td>
+</tr>
+<tr>
+<td>Web Interface</td>
+<td>10 %</td>
+<td>Flask, HTML/CSS, templates</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>10 %</td>
+<td>Regular commits, branches, README</td>
+</tr>
+<tr>
+<td>Pedagogical sheet</td>
+<td>10 %</td>
+<td>Middle/high school session with Scratch</td>
+</tr>
+<tr>
+<td>Oral presentation</td>
+<td>5 %</td>
+<td>Clarity, structure, demo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. Presentation structure <em>(10 min)</em></h2>
+<p>Each student has 10 minutes :</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mindmap</span>
+<span class="w">  </span><span class="n">root</span><span class="p">((</span><span class="n">ENS2</span><span class="w"> </span><span class="n">Project</span><span class="o">&lt;</span><span class="n">br</span><span class="o">/&gt;</span><span class="mi">10</span><span class="w"> </span><span class="nb">min</span><span class="w"> </span><span class="n">Defense</span><span class="p">))</span>
+<span class="w">    </span><span class="n">Presentation</span>
+<span class="w">      </span><span class="n">Objective</span>
+<span class="w">      </span><span class="n">Target</span><span class="w"> </span><span class="n">audience</span>
+<span class="w">      </span><span class="n">School</span><span class="w"> </span><span class="n">context</span>
+<span class="w">    </span><span class="n">Architecture</span>
+<span class="w">      </span><span class="n">MVC</span><span class="w"> </span><span class="n">diagram</span>
+<span class="w">      </span><span class="n">Technologies</span>
+<span class="w">      </span><span class="n">Database</span>
+<span class="w">    </span><span class="n">Live</span><span class="w"> </span><span class="n">demo</span>
+<span class="w">      </span><span class="n">Add</span><span class="w"> </span><span class="n">student</span>
+<span class="w">      </span><span class="n">Grade</span><span class="w"> </span><span class="n">entry</span>
+<span class="w">      </span><span class="n">Grade</span><span class="w"> </span><span class="n">report</span>
+<span class="w">      </span><span class="n">CSV</span><span class="w"> </span><span class="k">export</span>
+<span class="w">    </span><span class="n">Code</span>
+<span class="w">      </span><span class="n">Student</span><span class="w"> </span><span class="n">OOP</span><span class="w"> </span><span class="n">Class</span>
+<span class="w">      </span><span class="n">SQL</span><span class="w"> </span><span class="n">queries</span>
+<span class="w">      </span><span class="n">Flask</span><span class="w"> </span><span class="n">routes</span>
+<span class="w">      </span><span class="n">HTML</span><span class="w"> </span><span class="n">templates</span>
+<span class="w">    </span><span class="n">Versioning</span>
+<span class="w">      </span><span class="n">Git</span><span class="w"> </span><span class="n">history</span>
+<span class="w">      </span><span class="n">Branches</span>
+<span class="w">      </span><span class="n">README</span>
+<span class="w">      </span><span class="o">.</span><span class="n">gitignore</span>
+<span class="w">    </span><span class="n">Pedagogy</span>
+<span class="w">      </span><span class="n">Middle</span><span class="w"> </span><span class="n">school</span><span class="w"> </span><span class="n">session</span><span class="w"> </span><span class="n">sheet</span>
+<span class="w">      </span><span class="n">Scratch</span><span class="w"> </span><span class="n">progression</span>
+<span class="w">      </span><span class="n">Assessment</span>
+<span class="w">    </span><span class="n">Conclusion</span>
+<span class="w">      </span><span class="n">Skills</span><span class="w"> </span><span class="n">review</span>
+<span class="w">      </span><span class="n">Perspectives</span>
+<span class="w">      </span><span class="n">Questions</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Minute</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-1</td>
+<td>Project presentation (objective, target audience)</td>
+</tr>
+<tr>
+<td>1-3</td>
+<td>Architecture (diagram, technologies)</td>
+</tr>
+<tr>
+<td>3-5</td>
+<td>Live demo (add student, grade entry, report)</td>
+</tr>
+<tr>
+<td>5-7</td>
+<td>Code: Student class, SQL query, Flask route</td>
+</tr>
+<tr>
+<td>7-8</td>
+<td>Git: history, branches, README</td>
+</tr>
+<tr>
+<td>8-9</td>
+<td>Associated pedagogical session sheet</td>
+</tr>
+<tr>
+<td>9-10</td>
+<td>Conclusion + questions</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Live demo — typical scenario <em>(20 min)</em></h2>
+<p><strong>Demonstration scenario :</strong></p>
+<ol>
+<li><strong>Home</strong> — Home page with presentation</li>
+<li><strong>Add student</strong> — Enter "Belacel", "Ali", "ENS2-A"</li>
+<li><strong>Add grades</strong> — Computer Science: 15, French: 12, English: 18</li>
+<li><strong>Average calculation</strong> — Verify that the average displays correctly</li>
+<li><strong>Grade report</strong> — Display the complete table</li>
+<li><strong>CSV export</strong> — Download the file and open it in Excel</li>
+<li><strong>GitHub</strong> — Show the repository, commits, README</li>
+</ol>
+<p><strong>Errors to anticipate :</strong>
+- Adding a grade &gt; 20 → expected error message
+- Deleting a student → confirmation
+- Navigation → responsive (mobile/desktop)</p>
+<hr />
+<h2>4. Possible technical questions <em>(15 min)</em></h2>
+<p>Prepare answers to these questions :</p>
+<p><strong>OOP :</strong>
+- Why did you choose inheritance in your model ?
+- What is the difference between a class attribute and an instance attribute ?
+- How did you implement encapsulation ?</p>
+<p><strong>Database :</strong>
+- Why SQLite rather than MySQL/PostgreSQL ?
+- What is the primary key ? Why AUTOINCREMENT ?
+- How did you handle the 0 ≤ grade ≤ 20 constraint ?</p>
+<p><strong>Web :</strong>
+- Explain the request/response cycle in Flask
+- How do you pass data from Python to HTML ?
+- What is a route in Flask ?</p>
+<p><strong>Git :</strong>
+- Show a commit where you fixed a bug
+- What is the difference between merge and rebase ?
+- How do you handle a merge conflict ?</p>
+<p><strong>Pedagogy :</strong>
+- How would you adapt this project for 9th grade students ?
+- What written summary do you propose for students ?
+- How do you assess PIX skills ?</p>
+<hr />
+<h2>5. Pedagogical session sheet <em>(15 min — individual work)</em></h2>
+<p>Write a 45-minute session sheet for middle school, related to the project.</p>
+<p><strong>Proposed topic :</strong> Discovering programming with Scratch — Creating an interactive quiz</p>
+<p>Use the model from session 08 :</p>
+<div class="codehilite"><pre><span></span><code><span class="gh"># Session Sheet — Interactive quiz with Scratch</span>
+
+<span class="gs">**Level :**</span> 9th grade (Cycle 4)
+<span class="gs">**Theme :**</span> Algorithms and programming
+<span class="gs">**Duration :**</span> 45 minutes
+
+<span class="gu">## Objectives</span>
+<span class="k">-</span><span class="w"> </span>Use a variable (score)
+<span class="k">-</span><span class="w"> </span>Implement a condition (if the answer is correct)
+<span class="k">-</span><span class="w"> </span>Create a game loop
+
+<span class="gu">## Procedure</span>
+<span class="k">1.</span> Discovery (5 min): show the completed quiz
+<span class="k">2.</span> Variables (10 min): create &quot;score&quot; variable
+<span class="k">3.</span> Questions (15 min): add 3 questions with conditions
+<span class="k">4.</span> Test (10 min): play and debug
+<span class="k">5.</span> Review (5 min): written summary
+
+<span class="gu">## Assessment</span>
+<span class="k">-</span><span class="w"> </span>Functional final quiz (3 questions minimum)
+<span class="k">-</span><span class="w"> </span>Score variable that increments
+<span class="k">-</span><span class="w"> </span>Feedback message (well done/try again)
+</code></pre></div>
+
+<hr />
+<h2>6. ENS2 module review <em>(10 min)</em></h2>
+<div class="codehilite"><pre><span></span><code><span class="n">quadrantChart</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="n">Acquired</span><span class="w"> </span><span class="n">skills</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">ENS2</span><span class="w"> </span><span class="n">Computer</span><span class="w"> </span><span class="n">Science</span><span class="w"> </span><span class="kr">Module</span>
+<span class="w">    </span><span class="n">x</span><span class="o">-</span><span class="n">axis</span><span class="w"> </span><span class="s">&quot;Technical&quot;</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="s">&quot;Pedagogical&quot;</span>
+<span class="w">    </span><span class="n">y</span><span class="o">-</span><span class="n">axis</span><span class="w"> </span><span class="s">&quot;Basic&quot;</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="s">&quot;Advanced&quot;</span>
+<span class="w">    </span><span class="n">quadrant</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="s">&quot;Pedagogical expertise&quot;</span>
+<span class="w">    </span><span class="n">quadrant</span><span class="o">-</span><span class="mi">2</span><span class="w"> </span><span class="s">&quot;Technical expertise&quot;</span>
+<span class="w">    </span><span class="n">quadrant</span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="s">&quot;Fundamentals&quot;</span>
+<span class="w">    </span><span class="n">quadrant</span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="s">&quot;In development&quot;</span>
+<span class="w">    </span><span class="n">Python</span><span class="w"> </span><span class="n">OOP</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.75</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85</span><span class="p">]</span>
+<span class="w">    </span><span class="n">Algorithms</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.80</span><span class="p">,</span><span class="w"> </span><span class="mf">0.70</span><span class="p">]</span>
+<span class="w">    </span><span class="n">Databases</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.70</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75</span><span class="p">]</span>
+<span class="w">    </span><span class="n">Web</span><span class="w"> </span><span class="n">Development</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.65</span><span class="p">,</span><span class="w"> </span><span class="mf">0.60</span><span class="p">]</span>
+<span class="w">    </span><span class="n">Git</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.60</span><span class="p">,</span><span class="w"> </span><span class="mf">0.55</span><span class="p">]</span>
+<span class="w">    </span><span class="n">Didactics</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.30</span><span class="p">,</span><span class="w"> </span><span class="mf">0.80</span><span class="p">]</span>
+<span class="w">    </span><span class="n">Integrated</span><span class="w"> </span><span class="nf">Project</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="w"> </span><span class="mf">0.90</span><span class="p">]</span>
+</code></pre></div>
+
+<p><strong>Acquired skills :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Skill</th>
+<th>Level attained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>Module architecture</td>
+<td>Mastery</td>
+</tr>
+<tr>
+<td>02-03</td>
+<td>Python OOP (classes, inheritance, encapsulation)</td>
+<td>Mastery</td>
+</tr>
+<tr>
+<td>04</td>
+<td>Advanced algorithms (recursion, sorting)</td>
+<td>Advanced</td>
+</tr>
+<tr>
+<td>05</td>
+<td>Databases and SQL</td>
+<td>Mastery</td>
+</tr>
+<tr>
+<td>06</td>
+<td>Web Development (HTML/CSS/JS)</td>
+<td>Advanced</td>
+</tr>
+<tr>
+<td>07</td>
+<td>Git and collaboration</td>
+<td>Mastery</td>
+</tr>
+<tr>
+<td>08</td>
+<td>Computer science didactics</td>
+<td>Awareness</td>
+</tr>
+<tr>
+<td>09-10</td>
+<td>Integrated project</td>
+<td>Synthesis</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Objectives achieved :</strong>
+- ✅ Object-oriented programming in Python
+- ✅ SQL queries and database
+- ✅ Functional Web application
+- ✅ Git repository with history
+- ✅ Pedagogical session sheet
+- ✅ Presentation and demonstration</p>
+<hr />
+<h2>7. Next steps <em>(5 min)</em></h2>
+<p><strong>Practical internship :</strong>
+- Observation internship in a school (2 weeks)
+- Apply computer science didactics in practice
+- Test session sheets with students</p>
+<p><strong>Digital portfolio :</strong>
+- GitHub Pages site showcasing your projects
+- Link to the ENS2 project repository
+- CV and cover letters</p>
+<p><strong>Certifications :</strong>
+- PIX (digital skills certification)
+- C2i (Computer and Internet Certificate)
+- TOEFL/IELTS (if planned)</p>
+<hr />
+<h2>8. Conclusion <em>(5 min)</em></h2>
+<p>Congratulations ! The ENS Computer Science module has given you a solid foundation to teach digital literacy in the 21st century. You leave with :</p>
+<div class="codehilite"><pre><span></span><code>┌──────────────────────────────────────┐
+│      Competent ENS Teacher           │
+│                                      │
+│  ✓  Algorithms and programming       │
+│  ✓  OOP and software architecture    │
+│  ✓  Databases and SQL                │
+│  ✓  Web Development                  │
+│  ✓  Git and collaboration            │
+│  ✓  Computer science didactics       │
+│  ✓  Digital ethics and security      │
+│  ✓  Integrated project               │
+└──────────────────────────────────────┘
+</code></pre></div>
+
+<p><strong>Computer science is not just a subject — it is a cross-curricular skill for all teachers.</strong></p>
+<hr />
+<h2>MCQ Self-Assessment</h2>
+<ol>
+<li>
+<p><strong>What is the duration of the oral project presentation ?</strong>
+   a) 5 minutes  b) 10 minutes ✓  c) 20 minutes</p>
+</li>
+<li>
+<p><strong>What is the weight of OOP code in the evaluation ?</strong>
+   a) 10 %  b) 20 % ✓  c) 30 %</p>
+</li>
+<li>
+<p><strong>Which error should be anticipated during the demo ?</strong>
+   a) Adding a grade &gt; 20 → error message ✓  b) The server crashing  c) The database deleting itself</p>
+</li>
+<li>
+<p><strong>What is the purpose of the pedagogical session sheet in the project ?</strong>
+   a) Describe the code architecture  b) Show how to teach the project to middle/high school students ✓  c) List known bugs</p>
+</li>
+<li>
+<p><strong>After the ENS2 module, which digital certification is recommended ?</strong>
+   a) TOEFL  b) PIX ✓  c) CCNA</p>
+</li>
+</ol>
+<hr />
+<h2>Conclusion</h2>
+<p>Congratulations ! You have completed the ENS Year 2 Computer Science module. You leave with solid skills in object-oriented programming, algorithms, databases, Web development, Git versioning, and computer science didactics. These tools will accompany you throughout your teaching career and in preparing your future students for digital challenges.</p>
+<p><strong>Next steps :</strong> Practical internship in a school, building your teacher portfolio, and PIX/C2i certifications.</p>
+<hr />
+<h2>Pedagogical Note ENS</h2>
+<p><strong>Teaching transposition :</strong> This defense session is itself a model for teachers: it shows how to structure a project evaluation (transparent criteria, live demo, technical questions, pedagogical sheet). This format can be adapted for middle school students (5-minute Scratch project defense) or high school students (15-20 minute NSI defense). Criteria-based grid assessment is a recommended practice in the official curriculum.</p>
+<p><strong>Trainer advice :</strong> The defense is a key moment: it evaluates not only the code but also the ability to communicate and argue. Encourage students to prepare a script and rehearse. Provide a projector for the demo and test it beforehand. The technical questions (section 4) should be adapted to each student's level. A weaker student can be asked basic questions (difference class/instance) while an advanced student can be questioned about architectural choices.</p>
+<p><strong>Extension :</strong> The ENS2 project becomes the centerpiece of the teaching portfolio. Students are encouraged to :
+- Present the project during interviews for teaching positions
+- Improve it during the practical internship with student feedback
+- Publish it on GitHub Pages as a demonstration of their skills
+- Extend it with features inspired by their internship experience</p>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>

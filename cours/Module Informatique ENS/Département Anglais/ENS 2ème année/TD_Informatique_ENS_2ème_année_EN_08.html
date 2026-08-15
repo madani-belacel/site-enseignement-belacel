@@ -1,0 +1,556 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Computer Science Tutorial — ENS Year 2 — Session 08 (EN) — Dr. Madani BELACEL</title>
+<meta name="description" content="Lecturer: BELACEL Madani">
+<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="icon" href="../../../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .md-content blockquote p { margin: 0.2rem 0; }
+  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
+  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
+  .md-content pre code { background: none; padding: 0; }
+  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
+  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .md-content img { max-width: 100%; border-radius: var(--radius); }
+  .md-content em { font-style: italic; }
+  .md-content strong { font-weight: 700; }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .download-link:hover { opacity: 0.85; }
+  .download-pdf { background: #e74c3c; color: #fff; }
+  .download-pptx { background: #d24726; color: #fff; }
+</style>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../index.html" class="header-logo">
+        <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+      </div>
+    </div>
+    <img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#about">Présentation</a></li>
+          <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../tic.html">TIC</a></li>
+          <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../recherche.html">Recherche</a></li>
+      <li><a href="../../../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../../../index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li>
+    <li><a href="../../../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../../../informatique-ens.html">Module Informatique ENS</a></li>
+    <li class="current">Computer Science Tutorial — ENS Year 2 — Session 08 (EN)</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Lecturer:</strong> BELACEL Madani</li><li><strong>Module:</strong> Computer Science</li><li><strong>Level:</strong> ENS — Year 2 — English Department</li><li><strong>Duration:</strong> 1h30</li><li><strong>Academic Year:</strong> 2025-2026</li><li><strong>Problem statement:</strong> A teacher proposes the following Scratch exercise to 1st year middle school students:</li><li><strong>Solution:</strong></li><li>- <strong>Negative numbers:</strong> students may not understand that -50 steps = moving backward</li><li>- <strong>Sequencing:</strong> respecting instruction order (sequential reading)</li><li>- <strong>Temporal concepts:</strong> "for 2 seconds" is a wait time, not execution duration</li></ul></div>
+    <div class="download-bar"><a href="TD_Informatique_ENS_2ème_année_EN_08.pdf" download class="download-link download-pdf">⬇ PDF</a><a href="TD_Informatique_ENS_2ème_année_EN_08.pptx" download class="download-link download-pptx">⬇ PPTX</a></div>
+    <blockquote>
+<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code>
+<strong>PDF :</strong> <code>TD_Informatique_ENS_2ème_année_EN_08.pdf</code></p>
+</blockquote>
+<h1>Computer Science Tutorial — ENS Year 2 — Session 08 (EN)</h1>
+<p><strong>Lecturer:</strong> BELACEL Madani<br />
+<strong>Module:</strong> Computer Science<br />
+<strong>Level:</strong> ENS — Year 2 — English Department<br />
+<strong>Duration:</strong> 1h30<br />
+<strong>Academic Year:</strong> 2025-2026</p>
+<hr />
+<h2>Exercise 1 — Analyzing a Scratch Exercise <em>(20 min)</em></h2>
+<p><strong>Problem statement:</strong> A teacher proposes the following Scratch exercise to 1st year middle school students:</p>
+<blockquote>
+<p>"The Scratch cat must move forward 50 steps, say 'Hello!' for 2 seconds, then move backward 50 steps."</p>
+</blockquote>
+<ol>
+<li>Which Scratch blocks are needed?</li>
+<li>What are the cognitive difficulties for a beginner student?</li>
+<li>Propose an adaptation for a struggling student.</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ol>
+<li><strong>Required blocks:</strong></li>
+<li><code>move 50 steps</code> (motion block)</li>
+<li><code>say "Hello!" for 2 seconds</code> (looks block)</li>
+<li><code>move -50 steps</code> or <code>move 50 steps</code> (backward)</li>
+<li>
+<p><code>when green flag clicked</code> (trigger)</p>
+</li>
+<li>
+<p><strong>Cognitive difficulties:</strong></p>
+</li>
+<li><strong>Negative numbers:</strong> students may not understand that -50 steps = moving backward</li>
+<li><strong>Sequencing:</strong> respecting instruction order (sequential reading)</li>
+<li><strong>Temporal concepts:</strong> "for 2 seconds" is a wait time, not execution duration</li>
+<li>
+<p><strong>Abstraction:</strong> the screen represents a mathematical space (coordinates)</p>
+</li>
+<li>
+<p><strong>Adaptation (difficulty):</strong></p>
+</li>
+<li>Simplified version without negative numbers:
+     <code>move 50 steps
+     say "Hello!" for 2 seconds
+     wait 2 seconds
+     move 50 steps (to the right)</code></li>
+<li>Use colors for each block type</li>
+<li>Label each block with a French instruction</li>
+</ol>
+<hr />
+<h2>Exercise 2 — Designing a Lesson Plan <em>(25 min)</em></h2>
+<p><strong>Problem statement:</strong> Design a <strong>lesson plan</strong> for an introductory Scratch programming session for 1st year middle school students (11-12 years old). Duration: 1h00.</p>
+<p>The plan must include:
+- General objective
+- Specific objectives (3)
+- Prerequisites
+- Materials
+- Procedure (4 phases, with durations)
+- Assessment
+- Extension</p>
+<p><strong>Solution:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">LESSON</span><span class="w"> </span><span class="k">PLAN</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Introduction</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">Scratch</span>
+
+<span class="k">Level</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="n">st</span><span class="w"> </span><span class="nf">Year</span><span class="w"> </span><span class="n">Middle</span><span class="w"> </span><span class="n">School</span>
+<span class="nl">Duration</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="n">minutes</span>
+<span class="nl">Teacher</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n">Name</span><span class="o">]</span>
+
+<span class="o">---</span>
+
+<span class="k">GENERAL</span><span class="w"> </span><span class="nl">OBJECTIVE</span><span class="p">:</span>
+<span class="k">Create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="n">simple</span><span class="w"> </span><span class="n">Scratch</span><span class="w"> </span><span class="n">program</span>
+<span class="n">that</span><span class="w"> </span><span class="n">moves</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">sprite</span><span class="p">.</span>
+
+<span class="k">SPECIFIC</span><span class="w"> </span><span class="nl">OBJECTIVES</span><span class="p">:</span>
+<span class="mf">1.</span><span class="w"> </span><span class="n">Identify</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Scratch</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="w"> </span><span class="n">sprite</span><span class="p">,</span><span class="w"> </span><span class="n">blocks</span><span class="p">)</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Assemble</span><span class="w"> </span><span class="n">blocks</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">sequence</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">instructions</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Run</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">observe</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">result</span>
+
+<span class="nl">PREREQUISITES</span><span class="p">:</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Ability</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">mouse</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Basic</span><span class="w"> </span><span class="nl">notions</span><span class="p">:</span><span class="w"> </span><span class="n">forward</span><span class="o">/</span><span class="n">backward</span><span class="p">,</span><span class="w"> </span><span class="nf">left</span><span class="o">/</span><span class="nf">right</span>
+
+<span class="nl">MATERIALS</span><span class="p">:</span>
+<span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">computer</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">students</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Access</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">Scratch</span><span class="w"> </span><span class="p">(</span><span class="n">online</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">installed</span><span class="p">)</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Printed</span><span class="w"> </span><span class="n">instruction</span><span class="w"> </span><span class="n">sheet</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Demonstration</span><span class="w"> </span><span class="n">video</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="nf">min</span><span class="p">)</span>
+
+<span class="k">PROCEDURE</span><span class="err">:</span>
+
+<span class="n">Phase</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Guided</span><span class="w"> </span><span class="n">Discovery</span><span class="w"> </span><span class="p">(</span><span class="mi">15</span><span class="w"> </span><span class="nf">min</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nl">Video</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;What is Scratch?&quot;</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="nf">min</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="ow">In</span><span class="w"> </span><span class="nl">pairs</span><span class="p">:</span><span class="w"> </span><span class="n">explore</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">freely</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="nf">min</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="k">Group</span><span class="w"> </span><span class="nl">discussion</span><span class="p">:</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">areas</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="nf">min</span><span class="p">)</span>
+
+<span class="n">Phase</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Challenge</span><span class="w"> </span><span class="ss">&quot;The Walking Cat&quot;</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="w"> </span><span class="nf">min</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nl">Task</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;Make the cat move 100 steps then say Hello!&quot;</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Differentiated</span><span class="w"> </span><span class="nl">support</span><span class="p">:</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">Level</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="n">sheet</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">drawn</span><span class="w"> </span><span class="n">blocks</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">use</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">Level</span><span class="w"> </span><span class="mi">2</span><span class="err">:</span><span class="w"> </span><span class="n">oral</span><span class="w"> </span><span class="n">instruction</span><span class="w"> </span><span class="k">only</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">Level</span><span class="w"> </span><span class="mi">3</span><span class="err">:</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="n">change</span>
+
+<span class="n">Phase</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Sharing</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">Analysis</span><span class="w"> </span><span class="p">(</span><span class="mi">15</span><span class="w"> </span><span class="nf">min</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">pairs</span><span class="w"> </span><span class="n">present</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">solution</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">board</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Collective</span><span class="w"> </span><span class="nl">analysis</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;Which blocks did you use?&quot;</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="nl">Summary</span><span class="p">:</span><span class="w"> </span><span class="n">Motion</span><span class="p">,</span><span class="w"> </span><span class="n">Looks</span><span class="p">,</span><span class="w"> </span><span class="n">Events</span><span class="w"> </span><span class="n">blocks</span>
+
+<span class="n">Phase</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="err">—</span><span class="w"> </span><span class="n">Bonus</span><span class="w"> </span><span class="n">Challenge</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="nf">min</span><span class="p">)</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="ss">&quot;Make the cat walk in a square&quot;</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">Fastest</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="n">help</span><span class="w"> </span><span class="n">others</span><span class="w"> </span><span class="p">(</span><span class="n">peer</span><span class="w"> </span><span class="n">tutoring</span><span class="p">)</span>
+
+<span class="nl">ASSESSMENT</span><span class="p">:</span>
+<span class="o">-</span><span class="w"> </span><span class="nl">Formative</span><span class="p">:</span><span class="w"> </span><span class="n">teacher</span><span class="w"> </span><span class="n">observation</span><span class="w"> </span><span class="p">(</span><span class="n">criteria</span><span class="w"> </span><span class="n">grid</span><span class="p">)</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Students</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">teacher</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Self</span><span class="o">-</span><span class="nl">assessment</span><span class="p">:</span><span class="w"> </span><span class="ss">&quot;I managed to...&quot;</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="n">checkboxes</span><span class="p">)</span>
+
+<span class="nl">EXTENSION</span><span class="p">:</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Take</span><span class="o">-</span><span class="n">home</span><span class="w"> </span><span class="nl">challenge</span><span class="p">:</span>
+<span class="w">  </span><span class="ss">&quot;Create a simple story with two characters who talk to each other&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 3 — Creating a 3-Session Progression <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> From the previous lesson plan, propose a 3-session Scratch progression for 1st year middle school students.</p>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Title</th>
+<th>Objective</th>
+<th>Production</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>2</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>3</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Solution:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Title</th>
+<th>Objective</th>
+<th>Production</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Discovery</td>
+<td>Discover the interface and create a first movement</td>
+<td>The walking cat</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Interactions</td>
+<td>Use control blocks (if, repeat) and sensors</td>
+<td>Interactive quiz</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Project</td>
+<td>Design a guided mini-game</td>
+<td>"Catch the apple" game</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Session 2 Details — "Interactive Quiz":</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="n">Blocks</span><span class="p">:</span><span class="w"> </span><span class="n">ask</span><span class="p">,</span><span class="w"> </span><span class="k">if</span><span class="o">/</span><span class="k">else</span><span class="p">,</span><span class="w"> </span><span class="n">sensors</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Example</span><span class="p">:</span><span class="w"> </span><span class="n">ask</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">question</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">answer</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">say</span><span class="w"> </span><span class="s2">&quot;Well done&quot;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s2">&quot;Try again&quot;</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Advanced</span><span class="p">:</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">variable</span>
+</code></pre></div>
+
+<p><strong>Session 3 Details — "Catch the Apple":</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="n">Apple</span><span class="w"> </span><span class="n">sprite</span><span class="w"> </span><span class="n">falling</span><span class="w"> </span><span class="n">randomly</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">basket</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">arrow</span><span class="w"> </span><span class="n">keys</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">apples</span><span class="w"> </span><span class="n">caught</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="n">seconds</span>
+<span class="o">-</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">timer</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 4 — Analyzing a Student's Work <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> A student produced the following Scratch program:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">when</span><span class="w"> </span><span class="n">green</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">clicked</span>
+<span class="n">move</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">steps</span>
+<span class="n">repeat</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">times</span>
+<span class="w">  </span><span class="n">move</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">steps</span>
+<span class="w">  </span><span class="n">say</span><span class="w"> </span><span class="ss">&quot;Hello&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">seconds</span>
+<span class="n">wait</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">seconds</span>
+<span class="k">go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">x</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nl">y</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+
+<ol>
+<li>What does this program do?</li>
+<li>Identify 3 syntax or logic errors</li>
+<li>Propose the corrected version</li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ol>
+<li>
+<p><strong>Behavior:</strong> The cat moves 10 steps, then repeats 10 times (move 5 steps + say Hello), then waits 2 seconds and returns to center. <strong>However</strong> the <code>repeat</code> has no explicit <code>end repeat</code>, so the program is poorly structured.</p>
+</li>
+<li>
+<p><strong>Errors:</strong></p>
+</li>
+<li><strong>Structure:</strong> The <code>repeat</code> block does not enclose the following instructions (no closing). Scratch uses visual "hats", so the actual order depends on stacking. The real sequence will be: move 10 → repeat 10 times (move 5 + say) → wait → go to (0,0).</li>
+<li><strong>Logic:</strong> <code>repeat 10 times</code> contains <code>say "Hello" for 1 seconds</code> → takes 10 seconds. The student may have wanted to say it only once.</li>
+<li>
+<p><strong>Pedagogical:</strong> total duration (10+ seconds) is too long for a visible effect.</p>
+</li>
+<li>
+<p><strong>Corrected version:</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="nv">when</span><span class="w"> </span><span class="nv">green</span><span class="w"> </span><span class="nv">flag</span><span class="w"> </span><span class="nv">clicked</span>
+<span class="nv">repeat</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="nv">times</span>
+<span class="w">  </span><span class="nv">move</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="nv">steps</span>
+<span class="w">  </span><span class="k">wait</span><span class="w"> </span><span class="mi">0</span>.<span class="mi">5</span><span class="w"> </span><span class="nv">seconds</span>
+<span class="nv">say</span><span class="w"> </span><span class="s2">&quot;Arrived!&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="nv">seconds</span>
+</code></pre></div>
+
+<hr />
+<h2>Exercise 5 — Designing a Grading Rubric <em>(15 min)</em></h2>
+<p><strong>Problem statement:</strong> Design a criteria-based grading rubric for the "Catch the Apple" project (Session 3). The rubric must include 4 criteria with 3 levels (Acquired, Partially acquired, Not acquired).</p>
+<p><strong>Solution:</strong></p>
+<p><strong>Grading Rubric — "Catch the Apple" Project</strong></p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Not acquired (0 pts)</th>
+<th>Partially acquired (1 pt)</th>
+<th>Acquired (2 pts)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interface</strong></td>
+<td>Project contains only one sprite</td>
+<td>Multiple sprites but no decoration</td>
+<td>Chosen sprites, decoration, project name</td>
+</tr>
+<tr>
+<td><strong>Movement</strong></td>
+<td>Basket does not move</td>
+<td>Basket moves but does not follow arrows</td>
+<td>Basket follows left/right arrows</td>
+</tr>
+<tr>
+<td><strong>Mechanics</strong></td>
+<td>Apple does not fall</td>
+<td>Apple falls but not randomly</td>
+<td>Apple falls from random position, repetition</td>
+</tr>
+<tr>
+<td><strong>Score</strong></td>
+<td>No score variable</td>
+<td>Score variable but does not increment correctly</td>
+<td>Score increments on contact, 30s timer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scale:</strong>
+- 7-8 pts: Excellent mastery
+- 5-6 pts: Acquired
+- 3-4 pts: Partially acquired
+- 0-2 pts: Needs revision</p>
+<hr />
+<h2>Grading Rubric</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Not acquired (0)</th>
+<th>Partial (0.5)</th>
+<th>Acquired (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scratch exercise analysis</td>
+<td>20 %</td>
+<td>No analysis</td>
+<td>Partial block analysis</td>
+<td>Complete analysis + adaptation</td>
+</tr>
+<tr>
+<td>Lesson plan design</td>
+<td>20 %</td>
+<td>Incomplete or incoherent plan</td>
+<td>Partially structured plan</td>
+<td>Complete and pedagogically coherent plan</td>
+</tr>
+<tr>
+<td>3-session progression</td>
+<td>20 %</td>
+<td>No progression</td>
+<td>Progression without links between sessions</td>
+<td>Logical and structured progression</td>
+</tr>
+<tr>
+<td>Student work analysis</td>
+<td>20 %</td>
+<td>Errors not identified</td>
+<td>Partial error identification</td>
+<td>3 errors identified + corrected version</td>
+</tr>
+<tr>
+<td>Grading rubric design</td>
+<td>20 %</td>
+<td>Rubric absent or unusable</td>
+<td>Incomplete criteria rubric</td>
+<td>Criteria-based rubric with 3 levels</td>
+</tr>
+</tbody>
+</table>
+<h2>Pedagogical Note ENS</h2>
+<p><strong>Teaching transposition:</strong> Scratch is an excellent tool for introducing programming in middle school (1st year) because it avoids syntax and allows visual manipulation. Concepts of sequence, loop, and condition are addressed intuitively.</p>
+<p><strong>Trainer advice:</strong> Encourage the "challenge" approach to motivate students and prioritize peer tutoring. Analyzing errors in student work is an excellent training exercise to develop the pedagogical eye of future teachers.</p>
+<p><strong>Extension:</strong> Ask trainees to design a complete 6-session Scratch sequence with diagnostic, formative, and summative assessment.</p>
+<h3>Conceptual Diagrams</h3>
+<h4>Diagram 1 — Key Scratch Concepts</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">mindmap</span>
+<span class="w">  </span><span class="n">root</span><span class="p">((</span><span class="n">Scratch</span><span class="p">))</span>
+<span class="w">    </span><span class="n">Motion</span>
+<span class="w">      </span><span class="n">Move</span>
+<span class="w">      </span><span class="n">Turn</span>
+<span class="w">      </span><span class="k">Go</span><span class="w"> </span><span class="k">to</span>
+<span class="w">    </span><span class="n">Looks</span>
+<span class="w">      </span><span class="n">Say</span>
+<span class="w">      </span><span class="n">Think</span>
+<span class="w">      </span><span class="n">Switch</span><span class="w"> </span><span class="n">costume</span>
+<span class="w">    </span><span class="n">Control</span>
+<span class="w">      </span><span class="n">Repeat</span>
+<span class="w">      </span><span class="k">If</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">Else</span>
+<span class="w">      </span><span class="n">Wait</span>
+<span class="w">    </span><span class="n">Sensing</span>
+<span class="w">      </span><span class="n">Ask</span>
+<span class="w">      </span><span class="n">Touching</span>
+<span class="w">    </span><span class="n">Variables</span>
+<span class="w">      </span><span class="n">Score</span>
+<span class="w">      </span><span class="n">Timer</span>
+<span class="w">    </span><span class="n">Events</span>
+<span class="w">      </span><span class="n">Green</span><span class="w"> </span><span class="n">flag</span>
+<span class="w">      </span><span class="k">Key</span><span class="w"> </span><span class="n">pressed</span>
+</code></pre></div>
+
+<h4>Diagram 2 — Scratch Session Flow</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">graph</span><span class="w"> </span><span class="n">TD</span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="n">h</span><span class="w"> </span><span class="n">Scratch</span><span class="w"> </span><span class="n">Session</span><span class="p">]</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">Phase</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">Guided</span><span class="w"> </span><span class="n">Discovery</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">Phase</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">Main</span><span class="w"> </span><span class="n">Challenge</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">Phase</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="w"> </span><span class="n">Sharing</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Analysis</span><span class="p">]</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">[</span><span class="n">Phase</span><span class="w"> </span><span class="mi">4</span><span class="o">:</span><span class="w"> </span><span class="n">Bonus</span><span class="w"> </span><span class="n">Challenge</span><span class="p">]</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">F</span><span class="p">[</span><span class="n">Video</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">free</span><span class="w"> </span><span class="n">exploration</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="n">The</span><span class="w"> </span><span class="n">walking</span><span class="w"> </span><span class="n">cat</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="n">Level</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">visual</span><span class="w"> </span><span class="n">aid</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="n">Level</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">oral</span><span class="w"> </span><span class="n">instruction</span><span class="p">]</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">J</span><span class="p">[</span><span class="n">Level</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="w"> </span><span class="n">extra</span><span class="w"> </span><span class="n">challenge</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">K</span><span class="p">[</span><span class="n">Solution</span><span class="w"> </span><span class="n">presentations</span><span class="p">]</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">Collective</span><span class="w"> </span><span class="n">summary</span><span class="p">]</span>
+<span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="o">--&gt;</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">Peer</span><span class="w"> </span><span class="n">tutoring</span><span class="p">]</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">4</span><span class="n">a90d9</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">2</span><span class="n">ecc71</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e67e22</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">D</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="n">e74c3c</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+<span class="w">    </span><span class="n">style</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">fill</span><span class="o">:</span><span class="err">#</span><span class="mi">9</span><span class="n">b59b6</span><span class="p">,</span><span class="n">color</span><span class="o">:</span><span class="err">#</span><span class="n">fff</span>
+</code></pre></div>
+
+<hr />
+<h2>Session Schedule — 1h30 (90 min)</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Duration</th>
+<th>Cumulative total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Welcome</td>
+<td>5 min</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td>Exercise 1 — Scratch Analysis</td>
+<td>20 min</td>
+<td>25 min</td>
+</tr>
+<tr>
+<td>Exercise 2 — Lesson Plan</td>
+<td>25 min</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>Exercise 3 — 3-Session Progression</td>
+<td>15 min</td>
+<td>65 min</td>
+</tr>
+<tr>
+<td>Exercise 4 — Student Work Analysis</td>
+<td>15 min</td>
+<td>80 min</td>
+</tr>
+<tr>
+<td>Exercise 5 — Grading Rubric</td>
+<td>10 min</td>
+<td>90 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>90 min</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2025-2026</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="../../../../js/data.js"></script>
+<script src="../../../../js/main.js"></script>
+</body></html>
