@@ -1,113 +1,48 @@
-<!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Compréhension Écrite — Dr. Madani BELACEL</title>
-<meta name="description" content="Contenu du dossier Compréhension Écrite">
-<link rel="stylesheet" href="../../../css/style.css">
-<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compréhension Écrite — Accueil</title>
 <style>
-  .doc-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
-  .doc-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: border-color 0.2s; }
-  .doc-item:hover { border-color: var(--primary); }
-  .doc-icon { font-size: 1.3rem; }
-  .doc-info { flex: 1; min-width: 0; }
-  .doc-title { font-weight: 600; color: var(--text); word-break: break-word; }
-  .doc-date { font-size: 0.8rem; color: var(--text-muted); }
-  .doc-badges { display: flex; gap: 0.25rem; flex-wrap: wrap; }
-  .badge { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px; background: var(--bg-alt); color: var(--text-muted); }
-  .badge-dossier { background: var(--primary-light); color: var(--primary); }
-</style>
-</head><body>
+body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #f7f7f5; color: #222; }
+h1 { color: #2c6e49; border-bottom: 3px solid #2c6e49; padding-bottom: 10px; }
+p.desc { color: #555; }
+.author { background: #e8f0e9; border: 1px solid #c5d9c7; border-radius: 8px; padding: 10px 14px; margin: 12px 0; color: #1a3c22; font-size: 0.95em; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th { background: #2c6e49; color: #fff; text-align: left; padding: 10px 12px; }
+td { padding: 10px 12px; border-bottom: 1px solid #e3e3e0; }
+tr:hover td { background: #f0f7ee; }
+.num { width: 40px; color: #888; }
+.nm { font-weight: bold; }
+.links { white-space: nowrap; }
+.links a { display: inline-block; margin-right: 10px; padding: 5px 12px; border-radius: 5px; text-decoration: none; font-size: 0.9em; background: #2c6e49; color: #fff; }
+.links a.pdf-link { background: #b45309; }
+audio { height: 32px; vertical-align: middle; }
+img.flag-corner { position: fixed; top: 8px; right: 8px; z-index: 9999; width: 48px; height: auto; opacity: 0.9; pointer-events: none; }
+.header-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #1a5c33 0%, #2c6e49 60%, #3f8a5f 100%); color: #fff; border-radius: 12px; padding: 16px 20px; margin: 14px 0 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+.header-banner img.prof-photo { width: 96px; height: 96px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.5); object-fit: cover; flex-shrink: 0; }
+.header-banner .hb-info h2 { margin: 0; font-size: 1.25rem; line-height: 1.3; }
+.header-banner .hb-info h2 small { display: block; font-size: 0.85rem; opacity: 0.85; font-weight: normal; margin-top: 2px; }
+.header-banner .hb-info p { margin: 4px 0 0; font-size: 0.9em; opacity: 0.92; line-height: 1.45; }
 
-<header class="header" role="banner">
-  <div class="header-inner">
-    <div class="header-left">
-      <a href="../../../index.html" class="header-logo">
-        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
-        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
-      </a>
-      <div class="header-faculty">
-        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
-      </div>
-    </div>
-    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    <nav role="navigation" aria-label="Navigation principale">
-      <ul id="nav-list" class="nav-list">
-      <li><a href="../../../index.html">Accueil</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../index.html#about">Présentation</a></li>
-          <li><a href="../../../habilitation.html">Habilitation Universitaire</a></li>
-          <li><a href="../../../contact.html">Contact</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../enseignement.html">Enseignement</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../tic.html">TIC</a></li>
-          <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../recherche.html">Recherche</a></li>
-      <li><a href="../../../ressources.html">Ressources</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../index.html#carrousel">Actualités des Modules</a></li>
-          <li><a href="../../../ressources.html">Ressources</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../contact.html">Contact</a></li>
-      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<div class="page-header">
-  <div class="container"><h1>📁 Compréhension Écrite</h1><p>Contenu du dossier Compréhension Écrite</p></div>
+</style>
+</head>
+<body>
+<img src="alg_drap.gif" alt="Algérie" class="flag-corner">
+<div class="header-banner">
+<img class="prof-photo" src="photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
 </div>
-<nav aria-label="Fil d'Ariane">
-  <ol class="breadcrumb">
-<li><a href="../../../index.html">Accueil</a></li>
-<li><a href="../../../enseignement.html">Enseignement</a></li>
-<li><a href="../index.html">Licence 1 Anglais</a></li>
-<li class="current">Compréhension Écrite</li>
-  </ol>
-</nav>
-<main class="page-content">
-  <div class="container">
-    <h1 class="section-title">Compréhension Écrite</h1>
-    <p class="section-subtitle">Parcourir les fichiers et sous-dossiers</p>
-    <div class="doc-list">
-<a href="../index.html" class="doc-item"><span class="doc-icon">⬆️</span><div class="doc-info"><div class="doc-title">Dossier parent</div><div class="doc-date">Revenir au niveau supérieur</div></div></a>
-<a href="Reading_Course1_Introduction_Reading.pdf" class="doc-item" target="_blank"><span class="doc-icon">📕</span><div class="doc-info"><div class="doc-title">Reading_Course1_Introduction_Reading.pdf</div><div class="doc-date">Fichier — 895 Ko</div></div><div class="doc-badges"><span class="badge badge-cours">COURS</span><span class="badge badge-pdf">PDF</span></div></a>
-<a href="Reading_Course2_Main_Ideas_Details.pdf" class="doc-item" target="_blank"><span class="doc-icon">📕</span><div class="doc-info"><div class="doc-title">Reading_Course2_Main_Ideas_Details.pdf</div><div class="doc-date">Fichier — 894 Ko</div></div><div class="doc-badges"><span class="badge badge-cours">COURS</span><span class="badge badge-pdf">PDF</span></div></a>
-<a href="Reading_Course3_Vocabulary_Context.pdf" class="doc-item" target="_blank"><span class="doc-icon">📕</span><div class="doc-info"><div class="doc-title">Reading_Course3_Vocabulary_Context.pdf</div><div class="doc-date">Fichier — 896 Ko</div></div><div class="doc-badges"><span class="badge badge-cours">COURS</span><span class="badge badge-pdf">PDF</span></div></a>
-<a href="Reading_Course4_Inference.pdf" class="doc-item" target="_blank"><span class="doc-icon">📕</span><div class="doc-info"><div class="doc-title">Reading_Course4_Inference.pdf</div><div class="doc-date">Fichier — 894 Ko</div></div><div class="doc-badges"><span class="badge badge-cours">COURS</span><span class="badge badge-pdf">PDF</span></div></a>
-<a href="Reading_Course5_Text_Organization.pdf" class="doc-item" target="_blank"><span class="doc-icon">📕</span><div class="doc-info"><div class="doc-title">Reading_Course5_Text_Organization.pdf</div><div class="doc-date">Fichier — 895 Ko</div></div><div class="doc-badges"><span class="badge badge-cours">COURS</span><span class="badge badge-pdf">PDF</span></div></a>
-<a href="Reading_Course6_Critical_Reading_Summary.pdf" class="doc-item" target="_blank"><span class="doc-icon">📕</span><div class="doc-info"><div class="doc-title">Reading_Course6_Critical_Reading_Summary.pdf</div><div class="doc-date">Fichier — 894 Ko</div></div><div class="doc-badges"><span class="badge badge-cours">COURS</span><span class="badge badge-pdf">PDF</span></div></a>
-    </div>
-  </div>
-</main>
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-logos">
-      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
-    </div>
-    <div class="footer-infos">
-      <span>📧 madani.belacel@univ-mosta.dz</span>
-      <span>📍 Université de Mostaganem</span>
-      <span>📅 2025-2026</span>
-    </div>
-    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
-  </div>
-</footer>
-<script src="../../../js/data.js"></script>
-<script src="../../../js/main.js"></script>
-</body></html>
+</div>
+
+<h1>📚 Compréhension Écrite — Anglais / Français</h1>
+<p class="desc">Dialogues de classe bilingues pour le module Compréhension Écrite (Licence 1 Anglais). Ouvrez une page pour écouter chaque réplique anglaise (Student/Teacher) avec sa traduction française.</p>
+<table>
+<tr><th>Cours</th><th>Fichier</th><th>Contenu</th><th>Phrases</th><th>Accès</th></tr>
+<tr><td class="num">1</td><td class="nm">Reading Course1 Introduction Reading</td><td>14 dialogues</td><td>57 phrases</td><td class="links"><a href="Reading_Course1_Introduction_Reading/Reading_Course1_Introduction_Reading.html">Ouvrir la page</a><a class="pdf-link" href="Reading_Course1_Introduction_Reading.pdf" download>PDF</a><audio controls preload="none" src="Reading_Course1_Introduction_Reading/Reading_Course1_Introduction_Reading.mp3"></audio></td></tr><tr><td class="num">2</td><td class="nm">Reading Course2 Main Ideas Details</td><td>14 dialogues</td><td>55 phrases</td><td class="links"><a href="Reading_Course2_Main_Ideas_Details/Reading_Course2_Main_Ideas_Details.html">Ouvrir la page</a><a class="pdf-link" href="Reading_Course2_Main_Ideas_Details.pdf" download>PDF</a><audio controls preload="none" src="Reading_Course2_Main_Ideas_Details/Reading_Course2_Main_Ideas_Details.mp3"></audio></td></tr><tr><td class="num">3</td><td class="nm">Reading Course3 Vocabulary Context</td><td>15 dialogues</td><td>59 phrases</td><td class="links"><a href="Reading_Course3_Vocabulary_Context/Reading_Course3_Vocabulary_Context.html">Ouvrir la page</a><a class="pdf-link" href="Reading_Course3_Vocabulary_Context.pdf" download>PDF</a><audio controls preload="none" src="Reading_Course3_Vocabulary_Context/Reading_Course3_Vocabulary_Context.mp3"></audio></td></tr><tr><td class="num">4</td><td class="nm">Reading Course4 Inference</td><td>14 dialogues</td><td>57 phrases</td><td class="links"><a href="Reading_Course4_Inference/Reading_Course4_Inference.html">Ouvrir la page</a><a class="pdf-link" href="Reading_Course4_Inference.pdf" download>PDF</a><audio controls preload="none" src="Reading_Course4_Inference/Reading_Course4_Inference.mp3"></audio></td></tr><tr><td class="num">5</td><td class="nm">Reading Course5 Text Organization</td><td>15 dialogues</td><td>61 phrases</td><td class="links"><a href="Reading_Course5_Text_Organization/Reading_Course5_Text_Organization.html">Ouvrir la page</a><a class="pdf-link" href="Reading_Course5_Text_Organization.pdf" download>PDF</a><audio controls preload="none" src="Reading_Course5_Text_Organization/Reading_Course5_Text_Organization.mp3"></audio></td></tr><tr><td class="num">6</td><td class="nm">Reading Course6 Critical Reading Summary</td><td>13 dialogues</td><td>57 phrases</td><td class="links"><a href="Reading_Course6_Critical_Reading_Summary/Reading_Course6_Critical_Reading_Summary.html">Ouvrir la page</a><a class="pdf-link" href="Reading_Course6_Critical_Reading_Summary.pdf" download>PDF</a><audio controls preload="none" src="Reading_Course6_Critical_Reading_Summary/Reading_Course6_Critical_Reading_Summary.mp3"></audio></td></tr>
+</table>
+</body>
+</html>
