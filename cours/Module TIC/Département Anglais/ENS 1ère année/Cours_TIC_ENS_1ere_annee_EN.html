@@ -1,136 +1,84 @@
-<!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ICT Course 01 — Introduction to ICT (ENS) — Dr. Madani BELACEL</title>
-<meta name="description" content="Lecturer: BELACEL Madani">
-<link rel="stylesheet" href="../../../../css/style.css">
-<link rel="icon" href="../../../../images/Université_de_Mostaganem.png">
+<meta name="description" content="Enseignant : BELACEL Madani">
 <style>
-  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
-  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
-  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
-  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
-  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
-  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
-  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
-  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
-  .md-content blockquote p { margin: 0.2rem 0; }
-  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
-  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
-  .md-content pre code { background: none; padding: 0; }
-  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
-  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
-  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
-  .md-content img { max-width: 100%; border-radius: var(--radius); }
-  .md-content em { font-style: italic; }
-  .md-content strong { font-weight: 700; }
-  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
-  .md-meta strong { font-family: var(--font-heading); }
-  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
-  .download-link:hover { opacity: 0.85; }
-  .download-pdf { background: #e74c3c; color: #fff; }
-  .download-pptx { background: #d24726; color: #fff; }
+body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f7f7f5; color: #222; line-height: 1.7; }
+h1 { color: #2c6e49; border-bottom: 3px solid #2c6e49; padding-bottom: 8px; font-size: 1.5rem; }
+audio { height: 32px; vertical-align: middle; margin-left: 6px; }
+img.flag-corner { position: fixed; top: 8px; right: 8px; z-index: 9999; width: 48px; height: auto; opacity: 0.9; pointer-events: none; }
+nav.navbar { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+nav.navbar a.btn { display: inline-block; padding: 6px 14px; border-radius: 5px; background: #2c6e49; color: #fff; text-decoration: none; font-size: 0.9em; }
+nav.navbar a.btn.disabled { background: #d5d5d2; color: #888; pointer-events: none; }
+nav.navbar span.spacer { flex: 1; }
+.header-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #1a5c33 0%, #2c6e49 60%, #3f8a5f 100%); color: #fff; border-radius: 12px; padding: 16px 20px; margin: 14px 0 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+.header-banner img.prof-photo { width: 84px; height: 84px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.5); object-fit: cover; flex-shrink: 0; }
+.header-banner .hb-info h2 { margin: 0; font-size: 1.15rem; line-height: 1.3; }
+.header-banner .hb-info h2 small { display: block; font-size: 0.85rem; opacity: 0.85; font-weight: normal; margin-top: 2px; }
+.header-banner .hb-info p { margin: 4px 0 0; font-size: 0.9em; opacity: 0.92; line-height: 1.45; }
+a.btn.pdf { display: inline-block; margin-left: auto; padding: 8px 16px; border-radius: 6px; background: #fff; color: #1a5c33; text-decoration: none; font-weight: bold; font-size: 0.9em; white-space: nowrap; }
+a.btn.pdf:hover { background: #f0f7ee; }
+.md-content { background: #fff; border: 1px solid #e3e3e0; border-radius: 10px; padding: 20px 24px; margin-top: 14px; }
+.md-content h2 { color: #1a3c22; border-bottom: 2px solid #c5d9c7; padding-bottom: 6px; margin: 26px 0 10px; font-size: 1.25rem; }
+.md-content h3 { color: #2c6e49; margin: 20px 0 8px; font-size: 1.1rem; }
+.md-content p { margin: 10px 0; }
+.md-content ul, .md-content ol { margin: 8px 0 8px 22px; }
+.md-content li { margin: 4px 0; }
+.md-content blockquote { border-left: 4px solid #c5d9c7; padding: 6px 14px; margin: 12px 0; background: #f0f7ee; border-radius: 0 8px 8px 0; }
+.md-content table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.md-content th, .md-content td { border: 1px solid #d9ddd8; padding: 7px 10px; text-align: left; }
+.md-content th { background: #e8f0e9; color: #1a3c22; }
+.md-content pre { background: #f4f6f4; border: 1px solid #e3e3e0; border-radius: 8px; padding: 12px; overflow-x: auto; }
+.md-content code { background: #f4f6f4; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
+.md-content pre code { background: none; padding: 0; }
+.md-content hr { border: none; border-top: 1px solid #e3e3e0; margin: 22px 0; }
+
 </style>
-</head><body>
-
-<header class="header" role="banner">
-  <div class="header-inner">
-    <div class="header-left">
-      <a href="../../../../index.html" class="header-logo">
-        <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
-        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
-      </a>
-      <div class="header-faculty">
-        <img src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
-      </div>
-    </div>
-    <img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    <nav role="navigation" aria-label="Navigation principale">
-      <ul id="nav-list" class="nav-list">
-      <li><a href="../../../../index.html">Accueil</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../../index.html#about">Présentation</a></li>
-          <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
-          <li><a href="../../../../contact.html">Contact</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../../enseignement.html">Enseignement</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../../tic.html">TIC</a></li>
-          <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../../recherche.html">Recherche</a></li>
-      <li><a href="../../../../ressources.html">Ressources</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../../index.html#carrousel">Actualités des Modules</a></li>
-          <li><a href="../../../../ressources.html">Ressources</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../../contact.html">Contact</a></li>
-      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<nav aria-label="Fil d'Ariane">
-  <ol class="breadcrumb">
-    <li><a href="../../../../index.html">Accueil</a></li>
-    <li><a href="../../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../../../../tic.html">Module TIC</a></li>
-    <li class="current">ICT Course 01 — Introduction to ICT (ENS)</li>
-  </ol>
+</head>
+<body>
+<nav class="navbar">
+<a class="btn" href="index.html">← Accueil</a>
+<a class="btn" href="Cours_TIC_10_Services_Internet_EN.html">◀ Précédent</a>
+<span class="spacer"></span>
+<a class="btn" href="TD_TIC_01_Introduction_aux_TIC_EN.html">Suivant ▶</a>
+<a class="btn pdf" href="Cours_TIC_ENS_1ere_annee_EN.pdf" download>⬇ Télécharger le PDF</a>
+<img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
 </nav>
+<h1>📖 ICT Course 01 — Introduction to ICT (ENS)</h1>
+<div class="header-banner">
+<img class="prof-photo" src="../../../../images/photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département d'anglais<br>madani.belacel@univ-mosta.dz</p>
+</div>
+</div>
+<main class="md-content">
 
-<main class="page-content">
-  <div class="md-content">
-    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Lecturer:</strong> BELACEL Madani</li><li><strong>Module:</strong> ICT</li><li><strong>Level:</strong> ENS 1st and 2nd Year — English Department</li><li><strong>Duration:</strong> 1h30</li><li><strong>Academic Year:</strong> 2025-2026</li><li><strong>Target audience:</strong> ENS students — future language teachers</li><li><strong>Prerequisites:</strong> Basic computer skills (Licence level)</li><li><strong>Knowledge:</strong></li><li><strong>Skills:</strong></li><li><strong>Attitudes:</strong></li></ul></div>
-    <div class="download-bar"><a href="Cours_TIC_ENS_1ere_annee_EN.pdf" download class="download-link download-pdf">⬇ PDF</a></div>
-    <blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration :</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_01_Introduction_aux_TIC_EN.pdf</code></p>
-</blockquote>
-<hr />
-<h1>ICT Course 01 — Introduction to ICT (ENS)</h1>
-<p><strong>Lecturer:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> ENS 1st and 2nd Year — English Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic Year:</strong> 2025-2026</p>
-<hr />
-<h2>Course Overview — E-learning Platform (Moodle)</h2>
-<p><strong>Target audience:</strong> ENS students — future language teachers</p>
-<p><strong>Prerequisites:</strong> Basic computer skills (Licence level)</p>
+    
+    
+<hr /><h2>Course Overview — E-learning Platform (Moodle)</h2>
+
 <h3>Learning Objectives</h3>
 <p><strong>Knowledge:</strong>
 - Define ICT and its evolution
 - Distinguish technical, information, and communication dimensions
-- Understand pedagogical ICT integration in language didactics</p>
+- Understand pedagogical ICT integration in language didactics <audio controls preload="none" src="../../_audio_tic/e581b181da7a1604d08ca33b3972a234.mp3"></audio></p>
 <p><strong>Skills:</strong>
 - Use ICT tools to design teaching sequences
 - Evaluate and select digital resources for the classroom
-- Create interactive teaching materials</p>
+- Create interactive teaching materials <audio controls preload="none" src="../../_audio_tic/1fe0895ce32249eb3eb9872763801853.mp3"></audio></p>
 <p><strong>Attitudes:</strong>
 - Adopt a digital mediator posture in the classroom
-- Develop critical thinking about tools and resources</p>
-<p><strong>Assessment:</strong> Tutorial 40% + ICT Teaching Project 30% + Exam 30%</p>
+- Develop critical thinking about tools and resources <audio controls preload="none" src="../../_audio_tic/3b506e05b93ebb305911d7fdf5009329.mp3"></audio></p>
+
 <hr />
 <h2>1. Definition and Evolution <em>(10 min)</em></h2>
-<p><strong>ICT</strong> covers digital tools and systems for creating, processing, storing, transmitting, and sharing information.</p>
-<p><strong>Evolution:</strong> NTIC (1990-2005) → ICT (2005-present) → AI and EdTech (2020+).</p>
-<p><strong>For the future teacher:</strong> ICT are not just personal tools but <strong>pedagogical instruments</strong> to integrate into teaching practice.</p>
+<p><strong>ICT</strong> covers digital tools and systems for creating, processing, storing, transmitting, and sharing information. <audio controls preload="none" src="../../_audio_tic/a120219143079e502361b3ca9aecdf36.mp3"></audio></p>
+<p><strong>Evolution:</strong> NTIC (1990-2005) → ICT (2005-present) → AI and EdTech (2020+). <audio controls preload="none" src="../../_audio_tic/915308cf098f08f8ae6fa022d5d5d308.mp3"></audio></p>
+<p><strong>For the future teacher:</strong> ICT are not just personal tools but <strong>pedagogical instruments</strong> to integrate into teaching practice. <audio controls preload="none" src="../../_audio_tic/30fc554d60aed0534ca732039b695cc8.mp3"></audio></p>
 <hr />
 <h2>2. Three Dimensions <em>(10 min)</em></h2>
 <table>
@@ -165,12 +113,12 @@
 - Learner motivation and engagement
 - Access to authentic resources (videos, articles, podcasts)
 - Individualized learning paths
-- Autonomy development</p>
+- Autonomy development <audio controls preload="none" src="../../_audio_tic/444d9b6fa406bfdba8276fcc85915482.mp3"></audio></p>
 <p><strong>Application areas:</strong>
 - Listening: podcasts, audio recording
 - Writing: blogs, wikis, collaborative editing
 - Interaction: videoconferencing with partner classes
-- Grammar/vocabulary: interactive exercises, quizzes</p>
+- Grammar/vocabulary: interactive exercises, quizzes <audio controls preload="none" src="../../_audio_tic/fdcdceb45fedaf9eb3a8def95acd4fed.mp3"></audio></p>
 <hr />
 <h2>4. The SAMR Model <em>(15 min)</em></h2>
 <table>
@@ -204,7 +152,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Goal:</strong> aim for <strong>Modification</strong> and <strong>Redefinition</strong> levels.</p>
+<p><strong>Goal:</strong> aim for <strong>Modification</strong> and <strong>Redefinition</strong> levels. <audio controls preload="none" src="../../_audio_tic/b20d0b12dc0765d71678af20c7c1bf9c.mp3"></audio></p>
 <hr />
 <h2>5. ICT Tools for Language Teachers <em>(20 min)</em></h2>
 <table>
@@ -251,28 +199,28 @@
 <hr />
 <h2>6. Teacher Digital Competencies <em>(15 min)</em></h2>
 <ol>
-<li>Design sequences integrating digital tools</li>
-<li>Implement collaborative online activities</li>
-<li>Assess with digital tools</li>
-<li>Ensure security and ethics</li>
-<li>Develop professional monitoring</li>
+<li>Design sequences integrating digital tools <audio controls preload="none" src="../../_audio_tic/3548dd387d2971e09a89a52835c95f8d.mp3"></audio></li>
+<li>Implement collaborative online activities <audio controls preload="none" src="../../_audio_tic/0f4e6863fefef0cdbe234219127e8c42.mp3"></audio></li>
+<li>Assess with digital tools <audio controls preload="none" src="../../_audio_tic/4311a0ee62b9e9a119f382d1e4c84e00.mp3"></audio></li>
+<li>Ensure security and ethics <audio controls preload="none" src="../../_audio_tic/1f4a4565b42cf9ec271509c243a5305f.mp3"></audio></li>
+<li>Develop professional monitoring <audio controls preload="none" src="../../_audio_tic/a23f7c34116ca3fc5e22445c224ceb47.mp3"></audio></li>
 </ol>
 <hr />
 <h2>7. Ethics and Security <em>(10 min)</em></h2>
 <ul>
-<li><strong>GDPR compliance:</strong> protect student data</li>
-<li><strong>Copyright:</strong> use open-licensed resources (Creative Commons)</li>
-<li><strong>Cyberbullying:</strong> prevention in class</li>
-<li><strong>Digital identity:</strong> the teacher as a role model</li>
+<li><strong>GDPR compliance:</strong> protect student data <audio controls preload="none" src="../../_audio_tic/4db72d3ab9fcc7bc3d5d896eb8c2ca24.mp3"></audio></li>
+<li><strong>Copyright:</strong> use open-licensed resources (Creative Commons) <audio controls preload="none" src="../../_audio_tic/a4958283fecb1d4bd3acfce6b1a41058.mp3"></audio></li>
+<li><strong>Cyberbullying:</strong> prevention in class <audio controls preload="none" src="../../_audio_tic/f77b8f18afb2de5461f2c1908a5393ba.mp3"></audio></li>
+<li><strong>Digital identity:</strong> the teacher as a role model <audio controls preload="none" src="../../_audio_tic/edd1888c4a541d77b53583dfe219b168.mp3"></audio></li>
 </ul>
 <hr />
 <h2>8. Conclusion <em>(5 min)</em></h2>
 <ul>
-<li>ICT are a <strong>pedagogical lever</strong> for language teachers</li>
-<li>Integration must be <strong>thoughtful</strong> (SAMR model)</li>
-<li>Future teachers must develop <strong>digital competencies</strong></li>
+<li>ICT are a <strong>pedagogical lever</strong> for language teachers <audio controls preload="none" src="../../_audio_tic/30c43b8a1572fb438b137f8f611d4887.mp3"></audio></li>
+<li>Integration must be <strong>thoughtful</strong> (SAMR model) <audio controls preload="none" src="../../_audio_tic/7bedfcdc44ac73cf7cdd614da3cba3ab.mp3"></audio></li>
+<li>Future teachers must develop <strong>digital competencies</strong> <audio controls preload="none" src="../../_audio_tic/adacfa8190249c4733b2fa771da74ccc.mp3"></audio></li>
 </ul>
-<p><strong>TD 01</strong> (1h30) — analyzing ICT tools for the classroom.</p>
+<p><strong>TD 01</strong> (1h30) — analyzing ICT tools for the classroom. <audio controls preload="none" src="../../_audio_tic/912ec0bc671c9b6638675fe0b3a825b2.mp3"></audio></p>
 <hr />
 <h2>Session Timeline — 1h30 (90 min)</h2>
 <table>
@@ -311,139 +259,107 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_02_Informatique_et_Ordinateur_EN.pdf</code></p>
-</blockquote>
+
 <hr />
-<h1>ICT Course 02 — Computer Science and Computer Architecture</h1>
-<p><strong>Teacher:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> License 1 — French Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
+
 <h2><em>(Email and detailed progress of the session: see PDF cover page.)</em></h2>
 <h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 02</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+
 <hr />
 <h2>Course Plan</h2>
 <ol>
-<li>Introduction: Why understand computers?  </li>
-<li>Definition of IT  </li>
-<li>The computer: concept and model of von Neumann  </li>
-<li>Hardware components (Hardware)  </li>
-<li>Software and operating systems (Software)  </li>
-<li>Interaction between Hardware and Software  </li>
-<li>Best practices for university students  </li>
-<li>Conclusion and transition to Windows</li>
+<li>Introduction: Why understand computers?   <audio controls preload="none" src="../../_audio_tic/9ffea50a5fdce27a38bbc2746391da8b.mp3"></audio></li>
+<li>Definition of IT   <audio controls preload="none" src="../../_audio_tic/46cc35d6c224149c57ac6c2699498dae.mp3"></audio></li>
+<li>The computer: concept and model of von Neumann   <audio controls preload="none" src="../../_audio_tic/d7992efee2f2e9684aa4d252a9a5a4aa.mp3"></audio></li>
+<li>Hardware components (Hardware)   <audio controls preload="none" src="../../_audio_tic/b369edf3a3b1cb01a5b1186eda2426e6.mp3"></audio></li>
+<li>Software and operating systems (Software)   <audio controls preload="none" src="../../_audio_tic/9cdbfb0c94787489582107f7f14bc7c5.mp3"></audio></li>
+<li>Interaction between Hardware and Software   <audio controls preload="none" src="../../_audio_tic/f66adb4ecb49eacc01ddee676d009f74.mp3"></audio></li>
+<li>Best practices for university students   <audio controls preload="none" src="../../_audio_tic/4d1aba02fa0b76bd8fb4543aa3607d1f.mp3"></audio></li>
+<li>Conclusion and transition to Windows <audio controls preload="none" src="../../_audio_tic/f307bd918784974fa6bfa57a9a94fe21.mp3"></audio></li>
 </ol>
 <hr />
 <h2>1. Introduction <em>(10 min)</em></h2>
-<p>Understanding how the computer works is essential for any student, even in the Languages ​​sector. This allows you to better use your tools (Word, browser, Moodle), avoid data loss, diagnose simple problems and effectively organize your digital workspace.</p>
-<p>The computer has become <strong>the main university working instrument</strong>.</p>
+<p>Understanding how the computer works is essential for any student, even in the Languages ​​sector. This allows you to better use your tools (Word, browser, Moodle), avoid data loss, diagnose simple problems and effectively organize your digital workspace. <audio controls preload="none" src="../../_audio_tic/d8206e811211d4ed902585312e357fbb.mp3"></audio></p>
+<p>The computer has become <strong>the main university working instrument</strong>. <audio controls preload="none" src="../../_audio_tic/2f91804b2f8dd55ab8ac5437aa129ac6.mp3"></audio></p>
 <hr />
 <h2>2. What is IT? <em>(10 mins)</em></h2>
-<p><strong>Computer science</strong> is the science of <strong>automatic information processing</strong> using algorithms executed by machines. It includes theory, hardware, software and networks.</p>
-<p><strong>User</strong> approach: understand enough to use the computer well in your studies.</p>
+<p><strong>Computer science</strong> is the science of <strong>automatic information processing</strong> using algorithms executed by machines. It includes theory, hardware, software and networks. <audio controls preload="none" src="../../_audio_tic/29c01e85375a5ed91c8258f6669f516f.mp3"></audio></p>
+<p><strong>User</strong> approach: understand enough to use the computer well in your studies. <audio controls preload="none" src="../../_audio_tic/56ca7bb697621474062de728283da667.mp3"></audio></p>
 <hr />
 <h2>3. von Neumann model <em>(15 min)</em></h2>
-<p>A computer is a programmable machine capable of: receiving data (<strong>Input</strong>), processing it (<strong>CPU</strong>), temporarily storing it (<strong>RAM</strong>), returning it (<strong>Output</strong>) and retaining it (<strong>Secondary storage</strong>).</p>
-<p>This operation follows the <strong>von Neumann model</strong> (1945), still used today.</p>
+<p>A computer is a programmable machine capable of: receiving data (<strong>Input</strong>), processing it (<strong>CPU</strong>), temporarily storing it (<strong>RAM</strong>), returning it (<strong>Output</strong>) and retaining it (<strong>Secondary storage</strong>). <audio controls preload="none" src="../../_audio_tic/4429d798f91c33a98ad79222f57b7485.mp3"></audio></p>
+<p>This operation follows the <strong>von Neumann model</strong> (1945), still used today. <audio controls preload="none" src="../../_audio_tic/40a75b7099faf79d123b32a829ea4a35.mp3"></audio></p>
 <hr />
 <h2>4. Hardware Components <em>(15 min)</em></h2>
 <ul>
-<li><strong>Processor (CPU)</strong>: the brain of the computer  </li>
-<li><strong>Motherboard</strong>: interconnection of components  </li>
-<li><strong>RAM</strong>: volatile RAM, very fast  </li>
-<li><strong>Storage</strong>: HDD or SSD (faster)  </li>
-<li><strong>Peripherals</strong>: input (keyboard, mouse), output (screen, printer), external storage (USB key)</li>
+<li><strong>Processor (CPU)</strong>: the brain of the computer   <audio controls preload="none" src="../../_audio_tic/5a118cf183988871e0c178fb408a69a4.mp3"></audio></li>
+<li><strong>Motherboard</strong>: interconnection of components   <audio controls preload="none" src="../../_audio_tic/ed5b90fc27d67e92d307c2673b689c40.mp3"></audio></li>
+<li><strong>RAM</strong>: volatile RAM, very fast   <audio controls preload="none" src="../../_audio_tic/6a310586b1dedfb9e921a07da47b11d1.mp3"></audio></li>
+<li><strong>Storage</strong>: HDD or SSD (faster)   <audio controls preload="none" src="../../_audio_tic/6e82cbee4baaaeb9566fe4857677ce8f.mp3"></audio></li>
+<li><strong>Peripherals</strong>: input (keyboard, mouse), output (screen, printer), external storage (USB key) <audio controls preload="none" src="../../_audio_tic/43cb38d890f1fc7ba9d65568aa99da3a.mp3"></audio></li>
 </ul>
-<p><strong>Important point:</strong> RAM loses unsaved data when turned off.</p>
+<p><strong>Important point:</strong> RAM loses unsaved data when turned off. <audio controls preload="none" src="../../_audio_tic/c28e74a77d75d78cea754cbcb5b0c779.mp3"></audio></p>
 <hr />
 <h2>5. Software <em>(15 min)</em></h2>
 <ul>
-<li><strong>Operating system</strong>: Windows, Linux, macOS  </li>
-<li><strong>Application software</strong>: Word, PowerPoint, browsers, Moodle  </li>
-<li><strong>Utility software</strong>: antivirus, compressors</li>
+<li><strong>Operating system</strong>: Windows, Linux, macOS   <audio controls preload="none" src="../../_audio_tic/3272ae705e1f6aa6258dbb0af08e6ec0.mp3"></audio></li>
+<li><strong>Application software</strong>: Word, PowerPoint, browsers, Moodle   <audio controls preload="none" src="../../_audio_tic/fc737e6d6848a5f601b0b8c7ec12c677.mp3"></audio></li>
+<li><strong>Utility software</strong>: antivirus, compressors <audio controls preload="none" src="../../_audio_tic/b9bc7b94c47303ab1ec59d87fcf8615f.mp3"></audio></li>
 </ul>
-<p>The hardware is tangible; the software is intangible but essential.</p>
+<p>The hardware is tangible; the software is intangible but essential. <audio controls preload="none" src="../../_audio_tic/5d31371749c83b91b716ea099b4c07d6.mp3"></audio></p>
 <hr />
 <h2>6. Hardware / Software Interaction <em>(10 min)</em></h2>
-<p>Example: keyboard keystroke → OS translated → processor processes → screen displays.</p>
-<p>Without software, hardware is useless. Without hardware, the software cannot run.</p>
+<p>Example: keyboard keystroke → OS translated → processor processes → screen displays. <audio controls preload="none" src="../../_audio_tic/68a24577e91860f32a1ee7d68d0cc10f.mp3"></audio></p>
+<p>Without software, hardware is useless. Without hardware, the software cannot run. <audio controls preload="none" src="../../_audio_tic/63f93fbd45f5f26f857fdd85a3c27449.mp3"></audio></p>
 <hr />
 <h2>7. Good Practices <em>(10 min)</em></h2>
 <ol>
-<li>Backup regularly (<code>Ctrl + S</code> + Cloud)  </li>
-<li>Organize your files from the start of the semester  </li>
-<li>Update Windows and software  </li>
-<li>Use an antivirus  </li>
-<li>Distinguish between RAM and permanent storage</li>
+<li>Backup regularly (<code>Ctrl + S</code> + Cloud)   <audio controls preload="none" src="../../_audio_tic/7db12fac36144a80ca9c4efe811a2545.mp3"></audio></li>
+<li>Organize your files from the start of the semester   <audio controls preload="none" src="../../_audio_tic/3054df3d6eec98b1a1765feb820233c9.mp3"></audio></li>
+<li>Update Windows and software   <audio controls preload="none" src="../../_audio_tic/0e6630ebdb78328f7ab4b2c4bb03eb7e.mp3"></audio></li>
+<li>Use an antivirus   <audio controls preload="none" src="../../_audio_tic/746e2233d91bea8c83f09f34f3e5edde.mp3"></audio></li>
+<li>Distinguish between RAM and permanent storage <audio controls preload="none" src="../../_audio_tic/93e730ce28945ddd8411db101328b33b.mp3"></audio></li>
 </ol>
 <hr />
 <h2>8. Conclusion <em>(5 min)</em></h2>
-<p>Understanding computer architecture allows you to be more independent and efficient.</p>
-<p><strong>Next lesson:</strong> Windows — Interface, files and customization.</p>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_03_Windows_EN.pdf</code></p>
-</blockquote>
+<p>Understanding computer architecture allows you to be more independent and efficient. <audio controls preload="none" src="../../_audio_tic/156353d36346eb89fda0d215499bb82c.mp3"></audio></p>
+<p><strong>Next lesson:</strong> Windows — Interface, files and customization. <audio controls preload="none" src="../../_audio_tic/0f5b6c2339814e52102fa7614935391b.mp3"></audio></p>
+
 <hr />
-<h1>ICT Course 03 — Windows: Graphical Interface, Files and Personalization</h1>
-<p><strong>Teacher:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> License 1 — French Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
+
 <h2><em>(Email and detailed progress of the session: see PDF cover page.)</em></h2>
 <h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 03</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+
 <hr />
 <h2>Course Plan</h2>
 <ol>
-<li>Introduction to Windows in the academic context  </li>
-<li>The complete Windows Desktop GUI  </li>
-<li>Advanced file and folder management  </li>
-<li>File Extensions and Naming Conventions  </li>
-<li>Essential Keyboard Shortcuts  </li>
-<li>Personalization and organization of the workspace  </li>
-<li>Basic security and best practices  </li>
-<li>Conclusion and transition to Word</li>
+<li>Introduction to Windows in the academic context   <audio controls preload="none" src="../../_audio_tic/8f74b64f04bc4623903be401f0d821ff.mp3"></audio></li>
+<li>The complete Windows Desktop GUI   <audio controls preload="none" src="../../_audio_tic/c13c9930acaf7e23834f5177941bebbd.mp3"></audio></li>
+<li>Advanced file and folder management   <audio controls preload="none" src="../../_audio_tic/d5c52437c74972f23b99a3315fb3ab9f.mp3"></audio></li>
+<li>File Extensions and Naming Conventions   <audio controls preload="none" src="../../_audio_tic/3a988fd76ce797fd8de1203a9bd36dc1.mp3"></audio></li>
+<li>Essential Keyboard Shortcuts   <audio controls preload="none" src="../../_audio_tic/45da5d64999c99638c292dc19da14ff2.mp3"></audio></li>
+<li>Personalization and organization of the workspace   <audio controls preload="none" src="../../_audio_tic/917d0908e044f306038bbad78f276cd8.mp3"></audio></li>
+<li>Basic security and best practices   <audio controls preload="none" src="../../_audio_tic/7a32614f2819859f2597615572eddc1d.mp3"></audio></li>
+<li>Conclusion and transition to Word <audio controls preload="none" src="../../_audio_tic/6201641d7147f36a285d4bea028da69d.mp3"></audio></li>
 </ol>
 <hr />
 <h2>1. Introduction to Windows <em>(10 min)</em></h2>
-<p>Windows is the most widely used operating system in academia. Mastering Windows allows you to save time, avoid losing documents and produce quality work.</p>
+<p>Windows is the most widely used operating system in academia. Mastering Windows allows you to save time, avoid losing documents and produce quality work. <audio controls preload="none" src="../../_audio_tic/800636002ff67e5e9d26a194659f6b41.mp3"></audio></p>
 <hr />
 <h2>2. Graphical Interface <em>(15 min)</em></h2>
 <ul>
-<li><strong>Desktop</strong>: main workspace  </li>
-<li><strong>Icons</strong>: shortcuts to applications and folders  </li>
-<li><strong>Taskbar</strong>: open applications  </li>
-<li><strong>Start Menu</strong>: programs, settings, search  </li>
-<li><strong>Notification area</strong>: network, volume, updates</li>
+<li><strong>Desktop</strong>: main workspace   <audio controls preload="none" src="../../_audio_tic/86a708ccdee5cd0bda527fa66c6fec36.mp3"></audio></li>
+<li><strong>Icons</strong>: shortcuts to applications and folders   <audio controls preload="none" src="../../_audio_tic/702abe2b0d6be4203049f1299634f936.mp3"></audio></li>
+<li><strong>Taskbar</strong>: open applications   <audio controls preload="none" src="../../_audio_tic/b804324a0c5a9814504bd0a22410e8fa.mp3"></audio></li>
+<li><strong>Start Menu</strong>: programs, settings, search   <audio controls preload="none" src="../../_audio_tic/40c61f9b826b8fdb418b5d0d2778e59c.mp3"></audio></li>
+<li><strong>Notification area</strong>: network, volume, updates <audio controls preload="none" src="../../_audio_tic/69a89509003f9e979244ba56c4528d06.mp3"></audio></li>
 </ul>
-<p>Organize the office by thematic folders (Courses, Tutorials, Exams, Administrative).</p>
+<p>Organize the office by thematic folders (Courses, Tutorials, Exams, Administrative). <audio controls preload="none" src="../../_audio_tic/a1f402280ee4a7ef0416245a48c429bd.mp3"></audio></p>
 <hr />
 <h2>3. Files and Folders <em>(15 min)</em></h2>
-<p>A <strong>file</strong> = name + extension. A <strong>folder</strong> = container.</p>
-<p>Recommended tree structure: <code>Documents/L1_Langues_2025-2026/Cours | TD | Exams | Projects | Backups</code></p>
-<p>Convention: <code>YYYY-MM-DD_Module_Type_Name_vX.ext</code></p>
+<p>A <strong>file</strong> = name + extension. A <strong>folder</strong> = container. <audio controls preload="none" src="../../_audio_tic/e68196741842a649d4e2abd1aced4153.mp3"></audio></p>
+<p>Recommended tree structure: <code>Documents/L1_Langues_2025-2026/Cours | TD | Exams | Projects | Backups</code> <audio controls preload="none" src="../../_audio_tic/60df20ea7c9bf6fb0738ee894d046ec2.mp3"></audio></p>
+<p>Convention: <code>YYYY-MM-DD_Module_Type_Name_vX.ext</code> <audio controls preload="none" src="../../_audio_tic/de9ea610853eeb60421f7e79d39892e8.mp3"></audio></p>
 <hr />
 <h2>4. Common Extensions <em>(10 min)</em></h2>
 <table>
@@ -479,410 +395,262 @@
 </table>
 <hr />
 <h2>5. Keyboard Shortcuts <em>(10 min)</em></h2>
-<p><code>Ctrl+C/V/X</code>, <code>Ctrl+Z</code>, <code>Ctrl+A</code>, <code>Windows+L</code> (lock), <code>Windows+S</code> (search).</p>
+<p><code>Ctrl+C/V/X</code>, <code>Ctrl+Z</code>, <code>Ctrl+A</code>, <code>Windows+L</code> (lock), <code>Windows+S</code> (search). <audio controls preload="none" src="../../_audio_tic/8cf0733996dd2e6eb70098f2def3c687.mp3"></audio></p>
 <hr />
 <h2>6. Personalization <em>(10 min)</em></h2>
-<p>Simple wallpaper, pin Word/Chrome/Explorer, light/dark mode, optimized taskbar.</p>
+<p>Simple wallpaper, pin Word/Chrome/Explorer, light/dark mode, optimized taskbar. <audio controls preload="none" src="../../_audio_tic/034eafd94942e19bc66dca4fa7d51426.mp3"></audio></p>
 <hr />
 <h2>7. Safety <em>(10 min)</em></h2>
-<p>Lock session, 3-2-1 backup rule, Windows updates, antivirus, caution with unknown USB drives.</p>
+<p>Lock session, 3-2-1 backup rule, Windows updates, antivirus, caution with unknown USB drives. <audio controls preload="none" src="../../_audio_tic/a8ea8625c7ec1c2445d9efd43776b23a.mp3"></audio></p>
 <hr />
 <h2>8. Conclusion <em>(10 min)</em></h2>
-<p>A good command of Windows is the foundation of all your digital skills.</p>
-<p><strong>Next lesson:</strong> Microsoft Word — Academic office automation.</p>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_04_Microsoft_Word_EN.pdf</code></p>
-</blockquote>
+<p>A good command of Windows is the foundation of all your digital skills. <audio controls preload="none" src="../../_audio_tic/dd5fd55c3ea9e9a3da5bd8a97e07505b.mp3"></audio></p>
+<p><strong>Next lesson:</strong> Microsoft Word — Academic office automation. <audio controls preload="none" src="../../_audio_tic/fe53b7bf2b07213c00cd052d1b5573e6.mp3"></audio></p>
+
 <hr />
-<h1>ICT Course 04 — Microsoft Word: Academic Office Automation and Page Layout</h1>
-<p><strong>Teacher:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> License 1 — French Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
+
 <h2><em>(Email and detailed progress of the session: see PDF cover page.)</em></h2>
 <h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 04</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+
 <hr />
 <h2>Course Plan</h2>
 <ol>
-<li>Importance of Microsoft Word in the university career  </li>
-<li>Word interface and main areas  </li>
-<li>Academic layout (university standards)  </li>
-<li>Professional use of Styles  </li>
-<li>Automatic table of contents  </li>
-<li>Tables, lists and visual elements  </li>
-<li>Saving, PDF export and best practices  </li>
-<li>Conclusion and transition to Excel</li>
+<li>Importance of Microsoft Word in the university career   <audio controls preload="none" src="../../_audio_tic/61f4c4c6eb81c367a5279489c9616aa6.mp3"></audio></li>
+<li>Word interface and main areas   <audio controls preload="none" src="../../_audio_tic/5ec33a2ead7dbc04931826343d813b15.mp3"></audio></li>
+<li>Academic layout (university standards)   <audio controls preload="none" src="../../_audio_tic/6c12cea34b1dc13d55dbd816f6c9c1d1.mp3"></audio></li>
+<li>Professional use of Styles   <audio controls preload="none" src="../../_audio_tic/cb0000fcf470b6ae74f789a7e4bf1a7d.mp3"></audio></li>
+<li>Automatic table of contents   <audio controls preload="none" src="../../_audio_tic/bee5ac937cbd49c168b2b3e437ef0fcf.mp3"></audio></li>
+<li>Tables, lists and visual elements   <audio controls preload="none" src="../../_audio_tic/089b9377e09a6ee85a490984fc741baf.mp3"></audio></li>
+<li>Saving, PDF export and best practices   <audio controls preload="none" src="../../_audio_tic/4b7260cbee62ba16e0abe25a10455b36.mp3"></audio></li>
+<li>Conclusion and transition to Excel <audio controls preload="none" src="../../_audio_tic/673aad00cc93c081998af38b6bbbee58.mp3"></audio></li>
 </ol>
 <hr />
 <h2>1. Why master Word? <em>(10 mins)</em></h2>
-<p>Word allows you to produce homework, reading sheets, reports and written presentations. A well-formatted document reflects the seriousness of the student.</p>
+<p>Word allows you to produce homework, reading sheets, reports and written presentations. A well-formatted document reflects the seriousness of the student. <audio controls preload="none" src="../../_audio_tic/303c9bec052578a0b83aa63571c5bb86.mp3"></audio></p>
 <hr />
 <h2>2. Interface <em>(15 min)</em></h2>
-<p>Ribbon (Home, Insert, Layout, References), page area, navigation pane, status bar.</p>
+<p>Ribbon (Home, Insert, Layout, References), page area, navigation pane, status bar. <audio controls preload="none" src="../../_audio_tic/2c64198c4bb09bd160a08c018a70ea6a.mp3"></audio></p>
 <hr />
 <h2>3. Academic Layout <em>(20 min)</em></h2>
-<p>Times New Roman or Calibri 12 font, 1.5 line spacing, 2.5 cm margins, justified text, pagination, headers/footers.</p>
+<p>Times New Roman or Calibri 12 font, 1.5 line spacing, 2.5 cm margins, justified text, pagination, headers/footers. <audio controls preload="none" src="../../_audio_tic/a1f4678ea970c24d6090ef82390a4b8a.mp3"></audio></p>
 <hr />
 <h2>4. Styles <em>(20 min)</em></h2>
-<p>Heading 1, Heading 2, Heading 3, Normal — consistent formatting and automatic table of contents.</p>
+<p>Heading 1, Heading 2, Heading 3, Normal — consistent formatting and automatic table of contents. <audio controls preload="none" src="../../_audio_tic/2d3c2a07fa8e6d8aa196b43370592350.mp3"></audio></p>
 <hr />
 <h2>5. Table of Contents <em>(10 min)</em></h2>
-<p>Apply styles Title → References → Table of Contents → Update.</p>
+<p>Apply styles Title → References → Table of Contents → Update. <audio controls preload="none" src="../../_audio_tic/00ef37939fb1835bfb787834c6726476.mp3"></audio></p>
 <hr />
 <h2>6. Tables, Lists, Images <em>(10 min)</em></h2>
-<p>Numbered lists, comparative tables, images with captions.</p>
+<p>Numbered lists, comparative tables, images with captions. <audio controls preload="none" src="../../_audio_tic/5a042857fdfbaad9876337533b5546cb.mp3"></audio></p>
 <hr />
 <h2>7. Recording and Export <em>(5 min)</em></h2>
-<p>.docx (editable) + .pdf (final submission) + Ctrl+S frequent.</p>
+<p>.docx (editable) + .pdf (final submission) + Ctrl+S frequent. <audio controls preload="none" src="../../_audio_tic/6595ba4b441fd068db71bf123447dc9e.mp3"></audio></p>
 <hr />
 <h2>8. Conclusion <em>(10 min)</em></h2>
-<p><strong>Next lesson:</strong> Microsoft Excel — Basics and academic uses.</p>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_05_Microsoft_Excel_EN.pdf</code></p>
-</blockquote>
+<p><strong>Next lesson:</strong> Microsoft Excel — Basics and academic uses. <audio controls preload="none" src="../../_audio_tic/0363f8a94638d6591104e5d24438244c.mp3"></audio></p>
+
 <hr />
-<h1>ICT Course 05 — Microsoft Excel: Basics and Academic Uses</h1>
-<p><strong>Teacher:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> License 1 — French Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
+
 <h2><em>(Email and detailed progress of the session: see PDF cover page.)</em></h2>
 <h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 05</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+
 <hr />
 <h2>Course Plan</h2>
 <ol>
-<li>Introduction: Why use Excel at university?  </li>
-<li>Interface and basic concepts  </li>
-<li>Data entry, formatting and organization  </li>
-<li>Essential formulas and functions  </li>
-<li>Relative and absolute references  </li>
-<li>Creating and Customizing Charts  </li>
-<li>Good practices and export for academic use  </li>
-<li>Conclusion and transition to PowerPoint</li>
+<li>Introduction: Why use Excel at university?   <audio controls preload="none" src="../../_audio_tic/be12c203aa6535cc5848c55ee10a9129.mp3"></audio></li>
+<li>Interface and basic concepts   <audio controls preload="none" src="../../_audio_tic/2fa49fdcea8084a9d1e87c4ef5678c1e.mp3"></audio></li>
+<li>Data entry, formatting and organization   <audio controls preload="none" src="../../_audio_tic/7ca75978020c19f667e4302beb995b07.mp3"></audio></li>
+<li>Essential formulas and functions   <audio controls preload="none" src="../../_audio_tic/4bc45579d90b124ac809444225c87d69.mp3"></audio></li>
+<li>Relative and absolute references   <audio controls preload="none" src="../../_audio_tic/282bc5b5e9bab66b156927df980dd0bd.mp3"></audio></li>
+<li>Creating and Customizing Charts   <audio controls preload="none" src="../../_audio_tic/93f03199ddef3b582719e2c0fdb1a463.mp3"></audio></li>
+<li>Good practices and export for academic use   <audio controls preload="none" src="../../_audio_tic/e2ce89fee9d58e711cc13ed878d7403d.mp3"></audio></li>
+<li>Conclusion and transition to PowerPoint <audio controls preload="none" src="../../_audio_tic/572d3053dbd57782f0fe76f0bc1811e3.mp3"></audio></li>
 </ol>
 <hr />
 <h2>1. Introduction <em>(10 min)</em></h2>
-<p>Excel allows you to organize notes, bibliographies, survey data, automatic calculations and graphs for reports.</p>
+<p>Excel allows you to organize notes, bibliographies, survey data, automatic calculations and graphs for reports. <audio controls preload="none" src="../../_audio_tic/dd64a99724b8c6b05cc920c46d5a05df.mp3"></audio></p>
 <hr />
 <h2>2. Interface <em>(15 min)</em></h2>
-<p>Workbook (.xlsx), sheet, cell (B5), range (A1:D10), formula bar.</p>
+<p>Workbook (.xlsx), sheet, cell (B5), range (A1:D10), formula bar. <audio controls preload="none" src="../../_audio_tic/3aea280eda0e100cda475078e3418565.mp3"></audio></p>
 <hr />
 <h2>3. Input and Formatting <em>(15 min)</em></h2>
-<p>Inline 1 headers, borders, alignment, conditional formatting.</p>
+<p>Inline 1 headers, borders, alignment, conditional formatting. <audio controls preload="none" src="../../_audio_tic/ea892bfd8297b18898bd3afa494da429.mp3"></audio></p>
 <hr />
 <h2>4. Formulas <em>(20 min)</em></h2>
-<p><code>=SUM()</code>, <code>=AVERAGE()</code>, <code>=MIN()</code>/<code>=MAX()</code>, <code>=COUNT()</code>, <code>=IF()</code>.</p>
+<p><code>=SUM()</code>, <code>=AVERAGE()</code>, <code>=MIN()</code>/<code>=MAX()</code>, <code>=COUNT()</code>, <code>=IF()</code>. <audio controls preload="none" src="../../_audio_tic/2c972652eddb15362b3786137f45bcf1.mp3"></audio></p>
 <hr />
 <h2>5. References <em>(15 min)</em></h2>
-<p>Relative (B2) vs absolute ($B$2) — F4 key.</p>
+<p>Relative (B2) vs absolute ($B$2) — F4 key. <audio controls preload="none" src="../../_audio_tic/997b1ae7198811ea80cd7cac8f86066e.mp3"></audio></p>
 <hr />
 <h2>6. Graphics <em>(10 min)</em></h2>
-<p>Histogram, curve, sectors — title, legends, sober style.</p>
+<p>Histogram, curve, sectors — title, legends, sober style. <audio controls preload="none" src="../../_audio_tic/f69ced242f7b8986eb04f6ef508c7d44.mp3"></audio></p>
 <hr />
 <h2>7. Good Practices <em>(5 min)</em></h2>
-<p>Naming, Ctrl+S, PDF export, check formulas.</p>
+<p>Naming, Ctrl+S, PDF export, check formulas. <audio controls preload="none" src="../../_audio_tic/c033908c01f545b21964fe15a96005da.mp3"></audio></p>
 <hr />
 <h2>8. Conclusion <em>(10 min)</em></h2>
-<p><strong>Next class:</strong> Microsoft PowerPoint — Academic Presentations.</p>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_06_Microsoft_PowerPoint_EN.pdf</code></p>
-</blockquote>
-<hr />
-<h1>ICT course 06 — Microsoft PowerPoint</h1>
-<p><strong>Teacher:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> License 1 — French Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
-<p><em>(Email and detailed progress of the session: see PDF cover page.)</em></p>
-<hr />
-<h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 06</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<p><strong>Next class:</strong> Microsoft PowerPoint — Academic Presentations. <audio controls preload="none" src="../../_audio_tic/f2de21a1e903327395a12e089545c32d.mp3"></audio></p>
+
+<hr /><h2>Course Sheet — E-learning Platform (Moodle)</h2>
+
 <hr />
 <h2>Course outline</h2>
 <ol>
-<li>Introduction to PowerPoint</li>
-<li>Interface and display modes</li>
-<li>Architecture of a presentation (10 slides)</li>
-<li>Professional design and template</li>
-<li>Transitions and animations</li>
-<li>Word and Excel integration</li>
-<li>Oral presentation and export</li>
+<li>Introduction to PowerPoint <audio controls preload="none" src="../../_audio_tic/e2163d10564cf7426c6ff9baaa66d935.mp3"></audio></li>
+<li>Interface and display modes <audio controls preload="none" src="../../_audio_tic/88ed57e296354a0746d775b0b23b4bd7.mp3"></audio></li>
+<li>Architecture of a presentation (10 slides) <audio controls preload="none" src="../../_audio_tic/e8ab3c2b4c5cbdbc5b92b0b0623354fd.mp3"></audio></li>
+<li>Professional design and template <audio controls preload="none" src="../../_audio_tic/68d61a3b982a1365ec318f66ddcaf25c.mp3"></audio></li>
+<li>Transitions and animations <audio controls preload="none" src="../../_audio_tic/67c1d387607245e5eba7c6fa3e152df7.mp3"></audio></li>
+<li>Word and Excel integration <audio controls preload="none" src="../../_audio_tic/69580cab9043d4c886bf57d612151dbb.mp3"></audio></li>
+<li>Oral presentation and export <audio controls preload="none" src="../../_audio_tic/726e40bba217d618e5dd705b8a480221.mp3"></audio></li>
 <li>Conclusion</li>
 </ol>
 <hr />
 <h2>Introduction to PowerPoint <em>(10 min)</em></h2>
-<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 06.</p>
+<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 06. <audio controls preload="none" src="../../_audio_tic/1a5c0f26c552d598bfb4416e8c99e996.mp3"></audio></p>
 <h2>Interface and display modes <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Architecture of a presentation (10 slides) <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Professional design and template <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Transitions and animations <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Word and Excel integration <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Oral presentation and export <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Conclusion <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_07_Internet_EN.pdf</code></p>
-</blockquote>
-<hr />
-<h1>ICT course 07 — Introduction to the Internet</h1>
-<p><strong>Teacher:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> License 1 — French Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
-<p><em>(Email and detailed progress of the session: see PDF cover page.)</em></p>
-<hr />
-<h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 07</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
+
+<hr /><h2>Course Sheet — E-learning Platform (Moodle)</h2>
+
 <hr />
 <h2>Course outline</h2>
 <ol>
-<li>Introduction to Chapter 2: Web technology</li>
-<li>Definition and history of the Internet</li>
-<li>Global network and TCP/IP protocol</li>
-<li>Connecting to the Internet</li>
-<li>Internet and Web Differences</li>
-<li>IP addressing (concepts)</li>
-<li>Academic uses and security</li>
+<li>Introduction to Chapter 2: Web technology <audio controls preload="none" src="../../_audio_tic/e6ce010644bce0943cf75be03382c84d.mp3"></audio></li>
+<li>Definition and history of the Internet <audio controls preload="none" src="../../_audio_tic/e337f84b679ee838a93bcde743b87e16.mp3"></audio></li>
+<li>Global network and TCP/IP protocol <audio controls preload="none" src="../../_audio_tic/88cd2f88cecdf6b746803db978635d11.mp3"></audio></li>
+<li>Connecting to the Internet <audio controls preload="none" src="../../_audio_tic/f892d807a433a37be63b596d6b3d9852.mp3"></audio></li>
+<li>Internet and Web Differences <audio controls preload="none" src="../../_audio_tic/54936b2eb5fe3fbe11956b57e7f09805.mp3"></audio></li>
+<li>IP addressing (concepts) <audio controls preload="none" src="../../_audio_tic/49298597b51c897a59686f261f25c023.mp3"></audio></li>
+<li>Academic uses and security <audio controls preload="none" src="../../_audio_tic/9e0cb5418d6328dc572eba1f6e96c6a1.mp3"></audio></li>
 <li>Conclusion</li>
 </ol>
 <hr />
 <h2>Introduction to Chapter 2: Web technology <em>(10 min)</em></h2>
-<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 07.</p>
+<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 07. <audio controls preload="none" src="../../_audio_tic/35ecc7050db52c817776e23248df0bd0.mp3"></audio></p>
 <h2>Definition and history of the Internet <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Global network and TCP/IP protocol <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Internet connection <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Internet and Web Differences <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>IP addressing (concepts) <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Academic uses and security <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Conclusion <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_08_World_Wide_Web_EN.pdf</code></p>
-</blockquote>
-<hr />
-<h1>ICT Course 08 — World Wide Web</h1>
-<p><strong>Teacher:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> License 1 — French Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
-<p><em>(Email and detailed progress of the session: see PDF cover page.)</em></p>
-<hr />
-<h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 08</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
+
+<hr /><h2>Course Sheet — E-learning Platform (Moodle)</h2>
+
 <hr />
 <h2>Course outline</h2>
 <ol>
-<li>Introduction to the Web (WWW)</li>
+<li>Introduction to the Web (WWW) <audio controls preload="none" src="../../_audio_tic/1861832e9903ef4a4c1109f74167688f.mp3"></audio></li>
 <li>Web Browsers</li>
-<li>Pages, sites and hyperlinks</li>
-<li>URL and structure of an address</li>
-<li>HTTP and HTTPS protocols</li>
-<li>Searching for information on the Web</li>
-<li>Good academic practices</li>
+<li>Pages, sites and hyperlinks <audio controls preload="none" src="../../_audio_tic/70de879db0c5737fb1f18fd47593108a.mp3"></audio></li>
+<li>URL and structure of an address <audio controls preload="none" src="../../_audio_tic/5ef44befa5674c2328ba300f1856da32.mp3"></audio></li>
+<li>HTTP and HTTPS protocols <audio controls preload="none" src="../../_audio_tic/d6dcc49cecdd2e9d870f319fe1f6796a.mp3"></audio></li>
+<li>Searching for information on the Web <audio controls preload="none" src="../../_audio_tic/6a1a4c092a10e348e635bd5126966897.mp3"></audio></li>
+<li>Good academic practices <audio controls preload="none" src="../../_audio_tic/512ffa5faf047cbe50a3dc1e42a78abf.mp3"></audio></li>
 <li>Conclusion</li>
 </ol>
 <hr />
 <h2>Introduction to the Web (WWW) <em>(10 min)</em></h2>
-<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 08.</p>
+<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 08. <audio controls preload="none" src="../../_audio_tic/700f111e588616243ef8aba8044646c9.mp3"></audio></p>
 <h2>Web Browsers <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Pages, sites and hyperlinks <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>URL and structure of an address <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>HTTP and HTTPS protocols <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Searching for information on the Web <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Good academic practices <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Conclusion <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_09_Reseaux_Informatiques_EN.pdf</code></p>
-</blockquote>
-<hr />
-<h1>ICT course 09 — Computer networks</h1>
-<p><strong>Instructor:</strong> BELACEL Madani
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> Year 1 — English Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
-<p><em>(Email and detailed progress of the session: see PDF cover page.)</em></p>
-<hr />
-<h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 09</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
+
+<hr /><h2>Course Sheet — E-learning Platform (Moodle)</h2>
+
 <hr />
 <h2>Course outline</h2>
 <ol>
-<li>Introduction to Networks</li>
-<li>Types of networks (LAN, MAN, WAN)</li>
-<li>Topologies: bus, ring, star</li>
-<li>Topologies: mesh and tree</li>
-<li>Components of a network</li>
-<li>IP and DHCP addressing</li>
-<li>University network and Wi-Fi</li>
+<li>Introduction to Networks <audio controls preload="none" src="../../_audio_tic/aaef4a684bc0d7f9c458826ba54ca8f0.mp3"></audio></li>
+<li>Types of networks (LAN, MAN, WAN) <audio controls preload="none" src="../../_audio_tic/0d0a9b88146228fcb9bd037eccd6bca5.mp3"></audio></li>
+<li>Topologies: bus, ring, star <audio controls preload="none" src="../../_audio_tic/a667d4299e63d4696a56790e72c4faeb.mp3"></audio></li>
+<li>Topologies: mesh and tree <audio controls preload="none" src="../../_audio_tic/a717dc3c3e29eca270b1e02507be78f6.mp3"></audio></li>
+<li>Components of a network <audio controls preload="none" src="../../_audio_tic/1599f3eda738c8ddea21881dfec879bd.mp3"></audio></li>
+<li>IP and DHCP addressing <audio controls preload="none" src="../../_audio_tic/53a31054fd732081fbfeca285d7ecce3.mp3"></audio></li>
+<li>University network and Wi-Fi <audio controls preload="none" src="../../_audio_tic/02363ce2c3f72b6569afffee8067e28f.mp3"></audio></li>
 <li>Conclusion</li>
 </ol>
 <hr />
 <h2>Introduction to networks <em>(10 min)</em></h2>
-<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 09.</p>
+<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 09. <audio controls preload="none" src="../../_audio_tic/bd5a18905fdee4074d58b240c292156d.mp3"></audio></p>
 <h2>Network types (LAN, MAN, WAN) <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Topologies: bus, ring, star <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Topologies: mesh and tree <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Components of a network <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>IP and DHCP addressing <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>University network and Wi-Fi <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Conclusion <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
-<blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_10_Services_Internet_EN.pdf</code></p>
-</blockquote>
-<hr />
-<h1>ICT Course 10 — Internet Services</h1>
-<p><strong>Instructor:</strong> BELACEL Madani
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> Year 1 — English Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
-<p><em>(Email and detailed progress of the session: see PDF cover page.)</em></p>
-<hr />
-<h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 10</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
+
+<hr /><h2>Course Sheet — E-learning Platform (Moodle)</h2>
+
 <hr />
 <h2>Course outline</h2>
 <ol>
-<li>Overview of Internet services</li>
-<li>Search engines and metasearch engines</li>
-<li>Email (SMTP, POP, IMAP)</li>
-<li>File transfer (Drive, Dropbox)</li>
-<li>Instant messaging and video conferencing</li>
-<li>Security and cleanliness</li>
-<li>Summary of the ICT module</li>
+<li>Overview of Internet services <audio controls preload="none" src="../../_audio_tic/dd2a21db384816f416c8240cef464bdc.mp3"></audio></li>
+<li>Search engines and metasearch engines <audio controls preload="none" src="../../_audio_tic/7a360aa1ece27bf8185941f8787c9d4f.mp3"></audio></li>
+<li>Email (SMTP, POP, IMAP) <audio controls preload="none" src="../../_audio_tic/eb8433b77d8cd15ad952ede693ec5e9f.mp3"></audio></li>
+<li>File transfer (Drive, Dropbox) <audio controls preload="none" src="../../_audio_tic/f25bbe10302bd11292a6b1cc7a840f31.mp3"></audio></li>
+<li>Instant messaging and video conferencing <audio controls preload="none" src="../../_audio_tic/12736147650d48de7d26817fe4bc34ed.mp3"></audio></li>
+<li>Security and cleanliness <audio controls preload="none" src="../../_audio_tic/ac8191fb74b41a16903a29a00fbac2f4.mp3"></audio></li>
+<li>Summary of the ICT module <audio controls preload="none" src="../../_audio_tic/9809bf195f311fdcd85a8e4e5ffa9c95.mp3"></audio></li>
 <li>Conclusion</li>
 </ol>
 <hr />
 <h2>Overview of Internet services <em>(10 min)</em></h2>
-<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 10.</p>
+<p>Chapter of the ICT module (series 10 sessions). Handout reference UEM212 — session 10. <audio controls preload="none" src="../../_audio_tic/4e594a968a89556720190e706ef3a377.mp3"></audio></p>
 <h2>Search engines and metasearch engines <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Email (SMTP, POP, IMAP) <em>(15 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>File transfer (Drive, Dropbox) <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Instant messaging and videoconferencing <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Safety and cleanliness <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Summary of the ICT module <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
 <h2>Conclusion <em>(10 min)</em></h2>
-<p>Detailed content: see official PDF (PG-fr cover + LaTeX body).</p>
-  </div>
+<p>Detailed content: see official PDF (PG-fr cover + LaTeX body). <audio controls preload="none" src="../../_audio_tic/bfbcc5185528358c5fdec8344142169c.mp3"></audio></p>
+  
 </main>
-
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-logos">
-      <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-      <img src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
-    </div>
-    <div class="footer-infos">
-      <span>📧 madani.belacel@univ-mosta.dz</span>
-      <span>📍 Université de Mostaganem</span>
-      <span>📅 2025-2026</span>
-    </div>
-    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
-  </div>
-</footer>
-<script src="../../../../js/data.js"></script>
-<script src="../../../../js/main.js"></script>
-</body></html>
+</body>
+</html>

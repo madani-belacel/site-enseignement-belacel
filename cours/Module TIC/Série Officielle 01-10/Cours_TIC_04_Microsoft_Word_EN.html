@@ -1,178 +1,106 @@
-<!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ICT Course 04 — Microsoft Word: Academic Office Automation and Page Layout — Dr. Madani BELACEL</title>
-<meta name="description" content="Teacher: BELACEL Madani">
-<link rel="stylesheet" href="../../../css/style.css">
-<link rel="icon" href="../../../images/Université_de_Mostaganem.png">
+<meta name="description" content="Enseignant : BELACEL Madani">
 <style>
-  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
-  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
-  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
-  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
-  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
-  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
-  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
-  .md-content blockquote { border-left: 4px solid var(--primary-light); padding: 0.5rem 1rem; margin: 0.75rem 0; background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
-  .md-content blockquote p { margin: 0.2rem 0; }
-  .md-content code { background: var(--bg-alt); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88em; }
-  .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
-  .md-content pre code { background: none; padding: 0; }
-  .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
-  .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
-  .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
-  .md-content img { max-width: 100%; border-radius: var(--radius); }
-  .md-content em { font-style: italic; }
-  .md-content strong { font-weight: 700; }
-  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
-  .md-meta strong { font-family: var(--font-heading); }
-  .download-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .download-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: var(--radius); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
-  .download-link:hover { opacity: 0.85; }
-  .download-pdf { background: #e74c3c; color: #fff; }
-  .download-pptx { background: #d24726; color: #fff; }
+body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f7f7f5; color: #222; line-height: 1.7; }
+h1 { color: #2c6e49; border-bottom: 3px solid #2c6e49; padding-bottom: 8px; font-size: 1.5rem; }
+audio { height: 32px; vertical-align: middle; margin-left: 6px; }
+img.flag-corner { position: fixed; top: 8px; right: 8px; z-index: 9999; width: 48px; height: auto; opacity: 0.9; pointer-events: none; }
+nav.navbar { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+nav.navbar a.btn { display: inline-block; padding: 6px 14px; border-radius: 5px; background: #2c6e49; color: #fff; text-decoration: none; font-size: 0.9em; }
+nav.navbar a.btn.disabled { background: #d5d5d2; color: #888; pointer-events: none; }
+nav.navbar span.spacer { flex: 1; }
+.header-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #1a5c33 0%, #2c6e49 60%, #3f8a5f 100%); color: #fff; border-radius: 12px; padding: 16px 20px; margin: 14px 0 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+.header-banner img.prof-photo { width: 84px; height: 84px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.5); object-fit: cover; flex-shrink: 0; }
+.header-banner .hb-info h2 { margin: 0; font-size: 1.15rem; line-height: 1.3; }
+.header-banner .hb-info h2 small { display: block; font-size: 0.85rem; opacity: 0.85; font-weight: normal; margin-top: 2px; }
+.header-banner .hb-info p { margin: 4px 0 0; font-size: 0.9em; opacity: 0.92; line-height: 1.45; }
+a.btn.pdf { display: inline-block; margin-left: auto; padding: 8px 16px; border-radius: 6px; background: #fff; color: #1a5c33; text-decoration: none; font-weight: bold; font-size: 0.9em; white-space: nowrap; }
+a.btn.pdf:hover { background: #f0f7ee; }
+.md-content { background: #fff; border: 1px solid #e3e3e0; border-radius: 10px; padding: 20px 24px; margin-top: 14px; }
+.md-content h2 { color: #1a3c22; border-bottom: 2px solid #c5d9c7; padding-bottom: 6px; margin: 26px 0 10px; font-size: 1.25rem; }
+.md-content h3 { color: #2c6e49; margin: 20px 0 8px; font-size: 1.1rem; }
+.md-content p { margin: 10px 0; }
+.md-content ul, .md-content ol { margin: 8px 0 8px 22px; }
+.md-content li { margin: 4px 0; }
+.md-content blockquote { border-left: 4px solid #c5d9c7; padding: 6px 14px; margin: 12px 0; background: #f0f7ee; border-radius: 0 8px 8px 0; }
+.md-content table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.md-content th, .md-content td { border: 1px solid #d9ddd8; padding: 7px 10px; text-align: left; }
+.md-content th { background: #e8f0e9; color: #1a3c22; }
+.md-content pre { background: #f4f6f4; border: 1px solid #e3e3e0; border-radius: 8px; padding: 12px; overflow-x: auto; }
+.md-content code { background: #f4f6f4; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
+.md-content pre code { background: none; padding: 0; }
+.md-content hr { border: none; border-top: 1px solid #e3e3e0; margin: 22px 0; }
+
 </style>
-</head><body>
-
-<header class="header" role="banner">
-  <div class="header-inner">
-    <div class="header-left">
-      <a href="../../../index.html" class="header-logo">
-        <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
-        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
-      </a>
-      <div class="header-faculty">
-        <img src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
-      </div>
-    </div>
-    <img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    <nav role="navigation" aria-label="Navigation principale">
-      <ul id="nav-list" class="nav-list">
-      <li><a href="../../../index.html">Accueil</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../index.html#about">Présentation</a></li>
-          <li><a href="../../../habilitation.html">Habilitation Universitaire</a></li>
-          <li><a href="../../../contact.html">Contact</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../enseignement.html">Enseignement</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../tic.html">TIC</a></li>
-          <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../recherche.html">Recherche</a></li>
-      <li><a href="../../../ressources.html">Ressources</a></li>
-      <li class="nav-dropdown">
-        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
-        <ul class="nav-dropdown-menu">
-          <li><a href="../../../index.html#carrousel">Actualités des Modules</a></li>
-          <li><a href="../../../ressources.html">Ressources</a></li>
-        </ul>
-      </li>
-      <li><a href="../../../contact.html">Contact</a></li>
-      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<nav aria-label="Fil d'Ariane">
-  <ol class="breadcrumb">
-    <li><a href="../../../index.html">Accueil</a></li>
-    <li><a href="../../../enseignement.html">Enseignement</a></li>
-    <li><a href="../../../tic.html">Module TIC</a></li>
-    <li class="current">ICT Course 04 — Microsoft Word: Academic Office Automation and Page Layout</li>
-  </ol>
+</head>
+<body>
+<nav class="navbar">
+<a class="btn" href="index.html">← Accueil</a>
+<a class="btn" href="Cours_TIC_03_Windows_FR.html">◀ Précédent</a>
+<span class="spacer"></span>
+<a class="btn" href="Cours_TIC_04_Microsoft_Word_FR.html">Suivant ▶</a>
+<a class="btn pdf" href="Cours_TIC_04_Microsoft_Word_EN.pdf" download>⬇ Télécharger le PDF</a>
+<img src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
 </nav>
+<h1>📖 ICT Course 04 — Microsoft Word: Academic Office Automation and Page Layout</h1>
+<div class="header-banner">
+<img class="prof-photo" src="../../../images/photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département d'anglais<br>madani.belacel@univ-mosta.dz</p>
+</div>
+</div>
+<main class="md-content">
 
-<main class="page-content">
-  <div class="md-content">
-    <div class="md-meta"><strong>Informations :</strong><ul><li><strong>Teacher:</strong> BELACEL Madani</li><li><strong>Module:</strong> ICT</li><li><strong>Level:</strong> License 1 — French Department</li><li><strong>Duration:</strong> 1h30</li><li><strong>Academic year:</strong> 2025-2026</li><li><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (`elearning.univ-usto.dz`); best practices from 10 Algerian university Moodle platforms.</li><li><strong>Target audience:</strong> L1 Language students / ENS Year 1</li><li><strong>Prerequisites:</strong> see FR fiche session 04</li><li><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</li><li><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</li></ul></div>
-    <div class="download-bar"><a href="Cours_TIC_04_Microsoft_Word_EN.pdf" download class="download-link download-pdf">⬇ PDF</a><a href="Cours_TIC_04_Microsoft_Word_EN.pptx" download class="download-link download-pptx">⬇ PPTX</a></div>
-    <blockquote>
-<p><strong>Templates :</strong> <code>Templatte/PG-fr.docx</code> | <code>Templatte/Presentation_BELACEL_V3.pptx</code><br />
-<strong>Duration:</strong> 1h30 (90 min) | <strong>PDF :</strong> <code>Cours_TIC_04_Microsoft_Word_EN.pdf</code></p>
-</blockquote>
+    
+    
 <hr />
-<h1>ICT Course 04 — Microsoft Word: Academic Office Automation and Page Layout</h1>
-<p><strong>Teacher:</strong> BELACEL Madani<br />
-<strong>Module:</strong> ICT<br />
-<strong>Level:</strong> License 1 — French Department<br />
-<strong>Duration:</strong> 1h30<br />
-<strong>Academic year:</strong> 2025-2026</p>
+
 <h2><em>(Email and detailed progress of the session: see PDF cover page.)</em></h2>
 <h2>Course Sheet — E-learning Platform (Moodle)</h2>
-<p><strong>Reference:</strong> titles aligned with Univ-Mosta Canvas (<code>elearning.univ-usto.dz</code>); best practices from 10 Algerian university Moodle platforms.</p>
-<p><strong>Target audience:</strong> L1 Language students / ENS Year 1</p>
-<p><strong>Prerequisites:</strong> see FR fiche session 04</p>
-<p><strong>Learning outcomes:</strong> knowledge, skills and attitudes aligned with Biskra/Univ-Mosta model (savoir / savoir-faire / savoir-être).</p>
-<p><strong>Assessment:</strong> coursework 40% + Moodle quiz 20–30% + final exam 30%</p>
-<p><strong>Learning activities:</strong> Moodle forum, assignment upload, guided TD exercises</p>
-<p><strong>Assessment activities:</strong> chapter quizzes (Univ-Mosta/M'sila model)</p>
-<p><strong>Bibliography:</strong> institutional Moodle guides (Boumerdès, Béjaïa); course-specific references in FR version</p>
-<p><strong>Instructor:</strong> BELACEL Madani — <code>madani.belacel@univ-mosta.dz</code></p>
+
 <hr />
 <h2>Course Plan</h2>
 <ol>
-<li>Importance of Microsoft Word in the university career  </li>
-<li>Word interface and main areas  </li>
-<li>Academic layout (university standards)  </li>
-<li>Professional use of Styles  </li>
-<li>Automatic table of contents  </li>
-<li>Tables, lists and visual elements  </li>
-<li>Saving, PDF export and best practices  </li>
-<li>Conclusion and transition to Excel</li>
+<li>Importance of Microsoft Word in the university career   <audio controls preload="none" src="../_audio_tic/61f4c4c6eb81c367a5279489c9616aa6.mp3"></audio></li>
+<li>Word interface and main areas   <audio controls preload="none" src="../_audio_tic/5ec33a2ead7dbc04931826343d813b15.mp3"></audio></li>
+<li>Academic layout (university standards)   <audio controls preload="none" src="../_audio_tic/6c12cea34b1dc13d55dbd816f6c9c1d1.mp3"></audio></li>
+<li>Professional use of Styles   <audio controls preload="none" src="../_audio_tic/cb0000fcf470b6ae74f789a7e4bf1a7d.mp3"></audio></li>
+<li>Automatic table of contents   <audio controls preload="none" src="../_audio_tic/bee5ac937cbd49c168b2b3e437ef0fcf.mp3"></audio></li>
+<li>Tables, lists and visual elements   <audio controls preload="none" src="../_audio_tic/089b9377e09a6ee85a490984fc741baf.mp3"></audio></li>
+<li>Saving, PDF export and best practices   <audio controls preload="none" src="../_audio_tic/4b7260cbee62ba16e0abe25a10455b36.mp3"></audio></li>
+<li>Conclusion and transition to Excel <audio controls preload="none" src="../_audio_tic/673aad00cc93c081998af38b6bbbee58.mp3"></audio></li>
 </ol>
 <hr />
 <h2>1. Why master Word? <em>(10 mins)</em></h2>
-<p>Word allows you to produce homework, reading sheets, reports and written presentations. A well-formatted document reflects the seriousness of the student.</p>
+<p>Word allows you to produce homework, reading sheets, reports and written presentations. A well-formatted document reflects the seriousness of the student. <audio controls preload="none" src="../_audio_tic/303c9bec052578a0b83aa63571c5bb86.mp3"></audio></p>
 <hr />
 <h2>2. Interface <em>(15 min)</em></h2>
-<p>Ribbon (Home, Insert, Layout, References), page area, navigation pane, status bar.</p>
+<p>Ribbon (Home, Insert, Layout, References), page area, navigation pane, status bar. <audio controls preload="none" src="../_audio_tic/2c64198c4bb09bd160a08c018a70ea6a.mp3"></audio></p>
 <hr />
 <h2>3. Academic Layout <em>(20 min)</em></h2>
-<p>Times New Roman or Calibri 12 font, 1.5 line spacing, 2.5 cm margins, justified text, pagination, headers/footers.</p>
+<p>Times New Roman or Calibri 12 font, 1.5 line spacing, 2.5 cm margins, justified text, pagination, headers/footers. <audio controls preload="none" src="../_audio_tic/a1f4678ea970c24d6090ef82390a4b8a.mp3"></audio></p>
 <hr />
 <h2>4. Styles <em>(20 min)</em></h2>
-<p>Heading 1, Heading 2, Heading 3, Normal — consistent formatting and automatic table of contents.</p>
+<p>Heading 1, Heading 2, Heading 3, Normal — consistent formatting and automatic table of contents. <audio controls preload="none" src="../_audio_tic/2d3c2a07fa8e6d8aa196b43370592350.mp3"></audio></p>
 <hr />
 <h2>5. Table of Contents <em>(10 min)</em></h2>
-<p>Apply styles Title → References → Table of Contents → Update.</p>
+<p>Apply styles Title → References → Table of Contents → Update. <audio controls preload="none" src="../_audio_tic/00ef37939fb1835bfb787834c6726476.mp3"></audio></p>
 <hr />
 <h2>6. Tables, Lists, Images <em>(10 min)</em></h2>
-<p>Numbered lists, comparative tables, images with captions.</p>
+<p>Numbered lists, comparative tables, images with captions. <audio controls preload="none" src="../_audio_tic/5a042857fdfbaad9876337533b5546cb.mp3"></audio></p>
 <hr />
 <h2>7. Recording and Export <em>(5 min)</em></h2>
-<p>.docx (editable) + .pdf (final submission) + Ctrl+S frequent.</p>
+<p>.docx (editable) + .pdf (final submission) + Ctrl+S frequent. <audio controls preload="none" src="../_audio_tic/6595ba4b441fd068db71bf123447dc9e.mp3"></audio></p>
 <hr />
 <h2>8. Conclusion <em>(10 min)</em></h2>
-<p><strong>Next lesson:</strong> Microsoft Excel — Basics and academic uses.</p>
-  </div>
+<p><strong>Next lesson:</strong> Microsoft Excel — Basics and academic uses. <audio controls preload="none" src="../_audio_tic/0363f8a94638d6591104e5d24438244c.mp3"></audio></p>
+  
 </main>
-
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-logos">
-      <img src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-      <img src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
-    </div>
-    <div class="footer-infos">
-      <span>📧 madani.belacel@univ-mosta.dz</span>
-      <span>📍 Université de Mostaganem</span>
-      <span>📅 2025-2026</span>
-    </div>
-    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
-  </div>
-</footer>
-<script src="../../../js/data.js"></script>
-<script src="../../../js/main.js"></script>
-</body></html>
+</body>
+</html>
