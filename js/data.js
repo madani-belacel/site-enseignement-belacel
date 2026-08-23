@@ -4,6 +4,21 @@
  */
 
 const COURSES_DATA = {
+  licence1anglais: {
+    name: "Licence 1 Anglais",
+    icon: "🎓",
+    description: "8 matières avec dialogues interactifs EN↔FR — Grammaire, Phonétique, Littérature, Civilisation, Expression",
+    levels: {
+      "Grammaire": { path: "grammaire", count: "8 cours" },
+      "Phonétique": { path: "phonetique", count: "6 cours" },
+      "Littérature": { path: "litterature", count: "6 cours" },
+      "Civilisation et Culture": { path: "civilisation", count: "6 cours" },
+      "Compréhension et Expression Orales": { path: "ceo", count: "8 cours" },
+      "Expression Écrite": { path: "expression-ecrite", count: "7 cours" },
+      "Compréhension Écrite": { path: "comprehension-ecrite", count: "6 cours" },
+      "TICE (Licence 1)": { path: "tice", count: "6 cours" }
+    }
+  },
   tic: {
     name: "Module TIC",
     icon: "💻",
@@ -51,14 +66,33 @@ const COURSES_DATA = {
   reseaux: {
     name: "Module Réseaux Mostaganem",
     icon: "🌐",
-    description: "Réseaux informatiques — ISIL-S4, SI-S5, Ingénieur, Master RSID",
+    description: "Réseaux informatiques — ISIL-S4, SI-S5, Ingénieur, Master RSID + Examens blancs",
     levels: {
-      "ISIL-S4": { path: "isil-s4", count: "8 cours + 8 TD + 6 TP" },
-      "SI-S5": { path: "si-s5", count: "9 cours + 9 TD + 7 TP" },
-      "Ingénieur S5→S9": { path: "ingenieur", count: "20+ cours/TD/TP" },
-      "Master RSID M1-S1": { path: "rsid-m1s1", count: "4 cours + 2 TD + 1 TP" },
-      "Master RSID M1-S2": { path: "rsid-m1s2", count: "4 cours + 2 TD + 1 TP" },
+      "ISIL-S4": { path: "isil-s4", count: "8 cours + 8 TD + 6 TP + 2 examens" },
+      "SI-S5": { path: "si-s5", count: "9 cours + 9 TD + 7 TP + 3 examens" },
+      "Ingénieur S5→S9": { path: "ingenieur", count: "25+ cours/TD/TP + examens" },
+      "Master RSID M1-S1": { path: "rsid-m1s1", count: "4 cours + 2 TD + 1 TP + 1 examen" },
+      "Master RSID M1-S2": { path: "rsid-m1s2", count: "4 cours + 2 TD + 1 TP + 1 examen" },
       "Master RSID M2": { path: "rsid-m2", count: "4 cours + 2 TD + 1 TP" }
+    }
+  },
+  dialogues_anglais: {
+    name: "Dialogues Anglais",
+    icon: "🗣️",
+    description: "21 niveaux de dialogues EN→AR avec audio MP3 et présentations PPTX",
+    levels: {
+      "Niveaux 1-7": { path: "niveaux-1-7", count: "7 dialogues" },
+      "Niveaux 8-14": { path: "niveaux-8-14", count: "7 dialogues" },
+      "Niveaux 15-21": { path: "niveaux-15-21", count: "7 dialogues" }
+    }
+  },
+  dialogues_tice: {
+    name: "Dialogues TICE",
+    icon: "🗣️",
+    description: "8 niveaux de dialogues EN→FR sur les TIC avec audio et présentations",
+    levels: {
+      "Niveaux 1-4": { path: "niveaux-1-4", count: "4 dialogues" },
+      "Niveaux 5-8": { path: "niveaux-5-8", count: "4 dialogues" }
     }
   }
 };

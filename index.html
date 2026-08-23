@@ -2,15 +2,15 @@
 <html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <link rel="dns-prefetch" href="//madani-belacel.github.io">
+  <link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
   <link rel="preconnect" href="https://madani-belacel.github.io">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Madani BELACEL — Enseignant-Chercheur | Université de Mostaganem</title>
-  <meta name="description" content="Site académique professionnel de Dr. Madani BELACEL, Maître de Conférences B à l'Université de Mostaganem. Supports de cours TIC, Informatique ENS, Recherche Documentaire, Réseaux.">
-  <meta name="keywords" content="BELACEL Madani, Université Mostaganem, cours TIC, informatique ENS, recherche documentaire, réseaux, habilitation universitaire">
+  <meta name="description" content="Site académique professionnel de Dr. Madani BELACEL, Maître de Conférences B à l'Université de Mostaganem. Supports de cours TIC, Informatique ENS, Recherche Documentaire, Réseaux. 800+ pages, 7 niveaux, FR/EN.">
+  <meta name="keywords" content="BELACEL Madani, Université Mostaganem, cours TIC, informatique ENS, recherche documentaire, réseaux, habilitation universitaire, MCA">
   <meta name="author" content="Dr. Madani BELACEL">
   <meta property="og:title" content="Dr. Madani BELACEL — Enseignant-Chercheur">
-  <meta property="og:description" content="Site académique avec supports de cours et ressources pédagogiques">
+  <meta property="og:description" content="Site académique avec 800+ supports de cours, ressources pédagogiques et informations de recherche">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/">
   <meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/Université_de_Mostaganem.png">
@@ -19,15 +19,30 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Madani BELACEL",
-  "jobTitle": "Maître de Conférences B",
-  "affiliation": {
-    "@type": "CollegeOrUniversity",
-    "name": "Université de Mostaganem"
-  },
-  "url": "https://madani-belacel.github.io/site-enseignement-belacel/",
-  "email": "madani.belacel@univ-mosta.dz"
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Madani BELACEL",
+      "jobTitle": "Maître de Conférences B",
+      "affiliation": { "@type": "CollegeOrUniversity", "name": "Université de Mostaganem" },
+      "url": "https://madani-belacel.github.io/site-enseignement-belacel/",
+      "email": "madani.belacel [at] univ-mosta.dz"
+    },
+    {
+      "@type": "Course",
+      "name": "Module TIC",
+      "description": "Technologies de l'information et de la communication — cours et TD pour Licence et Master",
+      "provider": { "@type": "CollegeOrUniversity", "name": "Université de Mostaganem" },
+      "url": "https://madani-belacel.github.io/site-enseignement-belacel/tic.html"
+    },
+    {
+      "@type": "Course",
+      "name": "Module Réseaux Mostaganem",
+      "description": "Réseaux informatiques — ISIL-S4, SI-S5, Ingénieur, Master RSID",
+      "provider": { "@type": "CollegeOrUniversity", "name": "Université de Mostaganem" },
+      "url": "https://madani-belacel.github.io/site-enseignement-belacel/reseaux.html"
+    }
+  ]
 }
 </script>
   <link rel="stylesheet" href="css/style.css">
@@ -35,21 +50,21 @@
 </head>
 <body>
 
-  <a href="#main-content" class="skip-link" style="position:absolute;top:-100px;left:0;background:var(--primary);color:#fff;padding:0.5rem 1rem;z-index:9999;transition:top 0.2s;">Aller au contenu principal</a>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
   <!-- Header -->
   <header class="header" role="banner">
     <div class="header-inner">
     <div class="header-left">
       <a href="index.html" class="header-logo">
-        <img src="images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <img loading="lazy" width="960" height="931" src="images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
-        <img src="images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+        <img loading="lazy" width="207" height="243" src="images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
       </div>
     </div>
-    <img src="images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <img loading="lazy" width="132" height="95" src="images/alg_drap.gif" alt="Algérie" class="flag-corner">
     <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
       <nav role="navigation" aria-label="Navigation principale">
         <ul id="nav-list" class="nav-list">
@@ -75,13 +90,6 @@
         </li>
         <li><a href="recherche.html">Recherche</a></li>
         <li><a href="ressources.html">Ressources</a></li>
-        <li class="nav-dropdown">
-          <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
-          <ul class="nav-dropdown-menu">
-            <li><a href="index.html#carrousel">Actualités des Modules</a></li>
-            <li><a href="ressources.html">Ressources</a></li>
-          </ul>
-        </li>
         <li><a href="contact.html">Contact</a></li>
         <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
         </ul>
@@ -90,186 +98,443 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero" id="main-content" role="banner">
+  <section class="hero">
     <div class="hero-content">
-      <img src="images/photo-profil.png" alt="Photo de Dr. Madani BELACEL" class="hero-photo">
+      <img loading="lazy" width="516" height="507" src="images/photo-profil.png" alt="Photo de Dr. Madani BELACEL" class="hero-photo">
       <h1>Dr. Madani BELACEL</h1>
       <p class="subtitle">Maître de Conférences B (MCB)</p>
-      <p class="affiliation">Université de Mostaganem — Faculté des langues étrangères · Département de français</p>
+      <p class="affiliation">Université de Mostaganem — Faculté des langues étrangères · Département d'anglais</p>
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-number">4</span>
+          <span class="stat-number">6</span>
           <span class="stat-label">Modules</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">200+</span>
-          <span class="stat-label">Cours / TD / TP</span>
+          <span class="stat-number">800+</span>
+          <span class="stat-label">Pages de cours</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">25+</span>
+          <span class="stat-label">Niveaux</span>
         </div>
         <div class="stat-item">
           <span class="stat-number">FR · EN</span>
-          <span class="stat-label">Langues</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">7</span>
-          <span class="stat-label">Niveaux</span>
+          <span class="stat-label">Bilingue</span>
         </div>
       </div>
       <div class="hero-cta">
-        <a href="enseignement.html" class="btn btn-primary">📚 Accéder aux cours</a>
+        <a href="#modules" class="btn btn-primary">📚 Modules d'enseignement</a>
+        <a href="#quick-nav" class="btn btn-outline">🎓 Accès rapide par niveau</a>
         <a href="habilitation.html" class="btn btn-outline">📄 Dossier d'habilitation</a>
-        <a href="contact.html" class="btn btn-outline">📧 Me contacter</a>
       </div>
     </div>
   </section>
 
-  <!-- Modules (Carrousel Actualités) -->
-  <section class="section section-alt" role="region" aria-labelledby="modules-title">
+  <main class="page-content" id="main-content">
+
+  <!-- ═══════ SECTION 1 : POUR LA COMMISSION ═══════ -->
+  <section class="section" role="region" aria-labelledby="profile-title">
     <div class="container">
-      <h2 id="modules-title" class="section-title">Mes Modules d'Enseignement</h2>
-      <p class="section-subtitle">Découvrez les supports de cours par module — glissez pour voir plus</p>
-      
-      <div class="carousel-container">
-        <button type="button" class="carousel-btn carousel-btn-prev" aria-label="Précédent">‹</button>
-        <div class="carousel-track" id="carousel-track">
-          
-          <div class="carousel-slide">
-            <a href="tic.html" class="module-card">
-              <div class="module-card-gradient gradient-tic">
-                <img src="images/module-tic-banner.png" alt="Module TIC" class="card-image-cover">
-                <div class="card-pattern"></div>
-              </div>
-              <div class="module-card-content">
-                <div class="module-card-date">Année 2025-2026</div>
-                <h3>Module TIC</h3>
-                <p>Technologies de l'Information et de la Communication — 10 cours officiels + 14 variantes adaptées par niveau.</p>
-                <div class="module-card-meta">
-                  <span class="badge badge-fr">FR</span>
-                  <span class="badge badge-en">EN</span>
-                  <span class="badge badge-cours">Cours + TD</span>
-                </div>
-                <span class="module-card-link">Accéder aux cours</span>
-              </div>
-            </a>
-          </div>
-          
-          <div class="carousel-slide">
-            <a href="informatique-ens.html" class="module-card">
-              <div class="module-card-gradient gradient-ens">
-                <div class="card-pattern"></div>
-                <span class="card-icon">📚</span>
-              </div>
-              <div class="module-card-content">
-                <div class="module-card-date">Année 2025-2026</div>
-                <h3>Module Informatique ENS</h3>
-                <p>Algorithmique, Python, POO, Bases de Données, Web, Git, Scratch et Didactique pour l'École Normale Supérieure.</p>
-                <div class="module-card-meta">
-                  <span class="badge badge-fr">FR</span>
-                  <span class="badge badge-en">EN</span>
-                  <span class="badge badge-cours">18 Cours + 18 TD</span>
-                </div>
-                <span class="module-card-link">Accéder aux cours</span>
-              </div>
-            </a>
-          </div>
-          
-          <div class="carousel-slide">
-            <a href="recherche-documentaire.html" class="module-card">
-              <div class="module-card-gradient gradient-rd">
-                <div class="card-pattern"></div>
-                <span class="card-icon">🔍</span>
-              </div>
-              <div class="module-card-content">
-                <div class="module-card-date">Année 2025-2026</div>
-                <h3>Module Recherche Documentaire</h3>
-                <p>Méthodologie de recherche — Problématique, Zotero, APA 7, synthèse bibliographique pour Master 2 DLE.</p>
-                <div class="module-card-meta">
-                  <span class="badge badge-fr">FR</span>
-                  <span class="badge badge-en">EN</span>
-                  <span class="badge badge-cours">10 Cours</span>
-                </div>
-                <span class="module-card-link">Accéder aux cours</span>
-              </div>
-            </a>
-          </div>
-          
-          <div class="carousel-slide">
-            <a href="reseaux.html" class="module-card">
-              <div class="module-card-gradient gradient-reseaux">
-                <div class="card-pattern"></div>
-                <span class="card-icon">🌐</span>
-              </div>
-              <div class="module-card-content">
-                <div class="module-card-date">Année 2025-2026</div>
-                <h3>Module Réseaux Mostaganem</h3>
-                <p>Réseaux — ISIL-S4, SI-S5, Ingénieur S5→S9, Master RSID. Cours, TD et TP avec pipeline LaTeX.</p>
-                <div class="module-card-meta">
-                  <span class="badge badge-fr">FR</span>
-                  <span class="badge badge-cours">Cours + TD + TP</span>
-                  <span class="badge badge-pdf">PDF + PPTX</span>
-                </div>
-                <span class="module-card-link">Accéder aux cours</span>
-              </div>
-            </a>
-          </div>
-          
-          <div class="carousel-slide">
-            <a href="cours/_index_Module_Recherche_Articles.html" class="module-card">
-              <div class="module-card-gradient gradient-recherche">
-                <div class="card-pattern"></div>
-                <span class="card-icon">🔬</span>
-              </div>
-              <div class="module-card-content">
-                <div class="module-card-date">Année 2025-2026</div>
-                <h3>Module Recherche & Articles</h3>
-                <p>Protocoles IoT/RPL — Cooja, RPL-MQoS, RPL-AER, AER-MQoS, IDS-IoT. 110+ sessions pédagogiques.</p>
-                <div class="module-card-meta">
-                  <span class="badge badge-fr">FR</span>
-                  <span class="badge badge-cours">Cours + TP</span>
-                  <span class="badge badge-github">GitHub</span>
-                </div>
-                <span class="module-card-link">Accéder aux cours</span>
-              </div>
-            </a>
-          </div>
-          
+      <h2 id="profile-title" class="section-title">Professionnel & Compétences</h2>
+      <p class="section-subtitle">Aperçu des domaines d'enseignement, de recherche et de la production pédagogique</p>
+
+      <div class="profile-grid">
+
+        <div class="profile-card">
+          <div class="profile-card-icon icon-blue">💻</div>
+          <h3>Didactique des langues & TIC</h3>
+          <p>Intégration des technologies numériques dans l'enseignement des langues. Modèle SAMR, outils pédagogiques, e-learning, pédagogie inversée.</p>
+          <span class="card-stat">464</span>
+          <span class="card-stat-label">Fichiers audio MP3</span>
         </div>
-        <button type="button" class="carousel-btn carousel-btn-next" aria-label="Suivant">›</button>
-      </div>
-      
-      <div class="carousel-dots" id="carousel-dots"></div>
-      
-      <div style="text-align:center;margin-top:1.5rem;">
-        <a href="enseignement.html" class="btn btn-accent">📚 Voir tous les modules</a>
+
+        <div class="profile-card">
+          <div class="profile-card-icon icon-green">📚</div>
+          <h3>Informatique fondamentale</h3>
+          <p>Algorithmique, Python, POO, Bases de Données, Web, Git, Scratch. Formation d'enseignants (ENS) et didactique de l'informatique.</p>
+          <span class="card-stat">36+</span>
+          <span class="card-stat-label">Cours + TD (FR/EN)</span>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-card-icon icon-purple">🔬</div>
+          <h3>Recherche & Sécurité Réseaux</h3>
+          <p>Protocoles IoT/RPL, Cooja simulator, QoS, intrusion detection, LSTM, trust score. 5 protocoles de recherche avec code GitHub.</p>
+          <span class="card-stat">112</span>
+          <span class="card-stat-label">Sessions pédagogiques</span>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-card-icon icon-amber">🌐</div>
+          <h3>Réseaux informatiques</h3>
+          <p>Routing, switching, TCP/IP, VLAN, IPv6, Wireshark. ISIL-S4, SI-S5, Ingénieur S5→S9, Master RSID — cours, TD, TP.</p>
+          <span class="card-stat">9</span>
+          <span class="card-stat-label">Niveaux couverts</span>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-card-icon icon-red">🔍</div>
+          <h3>Méthodologie de recherche</h3>
+          <p>Problématique, Zotero, APA 7, synthèse bibliographique, revue de littérature. Master 2 DLE — Français et Anglais.</p>
+          <span class="card-stat">20</span>
+          <span class="card-stat-label">Cours + TD (FR/EN)</span>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-card-icon icon-teal">🎓</div>
+          <h3>Licence 1 Anglais</h3>
+          <p>8 matières : Grammaire, Phonétique, Littérature, Civilisation, Expression Orale, Écrite, Compréhension, TICE. Dialogues EN↔FR.</p>
+          <span class="card-stat">53</span>
+          <span class="card-stat-label">Cours interactifs</span>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="section section-alt" role="region" aria-labelledby="about-title">
+  <!-- ═══════ SECTION 2 : ACCÈS RAPIDE PAR NIVEAU ═══════ -->
+  <section class="section section-alt" id="quick-nav" role="region" aria-labelledby="quick-nav-title">
+    <div class="container">
+      <h2 id="quick-nav-title" class="section-title">Accès rapide par niveau</h2>
+      <p class="section-subtitle">Trouvez vos cours, TD et TP en cliquant sur votre spécialité et niveau</p>
+
+      <div class="quick-nav-grid">
+
+        <!-- TIC -->
+        <a href="tic.html" class="quick-nav-card">
+          <div class="qnc-icon icon-blue">💻</div>
+          <div class="qnc-info">
+            <div class="qnc-title">Module TIC</div>
+            <div class="qnc-meta">14 cours + 14 TD · FR/EN · Licence → Master</div>
+          </div>
+          <span class="qnc-arrow">›</span>
+        </a>
+
+        <!-- ENS -->
+        <a href="informatique-ens.html" class="quick-nav-card">
+          <div class="qnc-icon icon-green">📚</div>
+          <div class="qnc-info">
+            <div class="qnc-title">Informatique ENS</div>
+            <div class="qnc-meta">36 cours + 36 TD + 16 TP · FR/EN · ENS 1ère + 2ème</div>
+          </div>
+          <span class="qnc-arrow">›</span>
+        </a>
+
+        <!-- Réseaux -->
+        <a href="reseaux.html" class="quick-nav-card">
+          <div class="qnc-icon icon-amber">🌐</div>
+          <div class="qnc-info">
+            <div class="qnc-title">Réseaux Mostaganem</div>
+            <div class="qnc-meta">ISIL-S4, SI-S5, Ingénieur, Master RSID · Cours + TD + TP + Examens</div>
+          </div>
+          <span class="qnc-arrow">›</span>
+        </a>
+
+        <!-- Recherche Doc -->
+        <a href="recherche-documentaire.html" class="quick-nav-card">
+          <div class="qnc-icon icon-red">🔍</div>
+          <div class="qnc-info">
+            <div class="qnc-title">Recherche Documentaire</div>
+            <div class="qnc-meta">10 cours + 10 TD · FR/EN · Master 2 DLE</div>
+          </div>
+          <span class="qnc-arrow">›</span>
+        </a>
+
+        <!-- Recherche Articles -->
+        <a href="cours/_index_Module_Recherche_Articles.html" class="quick-nav-card">
+          <div class="qnc-icon icon-purple">🔬</div>
+          <div class="qnc-info">
+            <div class="qnc-title">Recherche & Articles IoT</div>
+            <div class="qnc-meta">5 protocoles · 51 cours + 61 TP · FR · GitHub</div>
+          </div>
+          <span class="qnc-arrow">›</span>
+        </a>
+
+        <!-- Licence 1 Anglais -->
+        <a href="cours/_index_Licence_1_Anglais.html" class="quick-nav-card">
+          <div class="qnc-icon icon-teal">🎓</div>
+          <div class="qnc-info">
+            <div class="qnc-title">Licence 1 Anglais</div>
+            <div class="qnc-meta">8 matières · 53 cours · 5035 MP3 · EN↔FR</div>
+          </div>
+          <span class="qnc-arrow">›</span>
+        </a>
+
+        <!-- Dialogues Anglais -->
+        <a href="cours/Dialogues_Anglais/index.html" class="quick-nav-card">
+          <div class="qnc-icon icon-teal">🗣️</div>
+          <div class="qnc-info">
+            <div class="qnc-title">Dialogues Anglais</div>
+            <div class="qnc-meta">21 niveaux · MP3 + PPTX · EN→AR</div>
+          </div>
+          <span class="qnc-arrow">›</span>
+        </a>
+
+        <!-- Dialogues TICE -->
+        <a href="cours/Dialogues_TICE/index.html" class="quick-nav-card">
+          <div class="qnc-icon icon-blue">🗣️</div>
+          <div class="qnc-info">
+            <div class="qnc-title">Dialogues TICE</div>
+            <div class="qnc-meta">8 niveaux · MP3 + PPTX · EN→FR</div>
+          </div>
+          <span class="qnc-arrow">›</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SECTION 3 : MODULES D'ENSEIGNEMENT ═══════ -->
+  <section class="section" id="modules" role="region" aria-labelledby="modules-title">
+    <div class="container">
+      <h2 id="modules-title" class="section-title">Modules d'Enseignement</h2>
+      <p class="section-subtitle">Chaque module contient cours, TD, TP, présentations PPTX et examens (quand disponibles)</p>
+
+      <div class="module-features">
+
+        <!-- TIC -->
+        <a href="tic.html" class="module-feature">
+          <div class="mf-header">
+            <div class="mf-icon icon-blue">💻</div>
+            <div class="mf-header-text">
+              <h3>Module TIC</h3>
+              <div class="mf-subtitle">Technologies de l'Information et de la Communication</div>
+            </div>
+          </div>
+          <div class="mf-body">
+            <p>10 cours officiels + 14 variantes adaptées par niveau (Licence → Master). Cours audio, présentations PPTX, PDF bilingues.</p>
+            <div class="mf-levels">
+              <span class="mf-level-tag">Licence 1-2</span>
+              <span class="mf-level-tag">ENS 1ère-2ème</span>
+              <span class="mf-level-tag">Master 1-2</span>
+              <span class="mf-level-tag">Série Officielle</span>
+            </div>
+          </div>
+          <div class="mf-footer">
+            <div class="mf-stats">
+              <span class="mf-stat"><strong>24</strong> Cours</span>
+              <span class="mf-stat"><strong>24</strong> TD</span>
+              <span class="mf-stat"><strong>464</strong> MP3</span>
+            </div>
+            <span class="mf-cta">Accéder</span>
+          </div>
+        </a>
+
+        <!-- Informatique ENS -->
+        <a href="informatique-ens.html" class="module-feature">
+          <div class="mf-header">
+            <div class="mf-icon icon-green">📚</div>
+            <div class="mf-header-text">
+              <h3>Informatique ENS</h3>
+              <div class="mf-subtitle">Algorithmique, Python, POO, BD, Web, Git, Scratch</div>
+            </div>
+          </div>
+          <div class="mf-body">
+            <p>Formation fondamentale en informatique pour les futurs enseignants. Cours théoriques + travaux dirigés + travaux pratiques.</p>
+            <div class="mf-levels">
+              <span class="mf-level-tag">ENS 1ère année</span>
+              <span class="mf-level-tag">ENS 2ème année</span>
+              <span class="mf-level-tag">FR + EN</span>
+            </div>
+          </div>
+          <div class="mf-footer">
+            <div class="mf-stats">
+              <span class="mf-stat"><strong>36</strong> Cours</span>
+              <span class="mf-stat"><strong>36</strong> TD</span>
+              <span class="mf-stat"><strong>16</strong> TP</span>
+            </div>
+            <span class="mf-cta">Accéder</span>
+          </div>
+        </a>
+
+        <!-- Réseaux -->
+        <a href="reseaux.html" class="module-feature">
+          <div class="mf-header">
+            <div class="mf-icon icon-amber">🌐</div>
+            <div class="mf-header-text">
+              <h3>Réseaux Mostaganem</h3>
+              <div class="mf-subtitle">TCP/IP, Routing, VLAN, IPv6, Wireshark, Sécurité</div>
+            </div>
+          </div>
+          <div class="mf-body">
+            <p>Le module le plus complet — de ISIL-S4 au Master RSID. Cours, TD, TP et <strong>examens blancs</strong> avec corrigés.</p>
+            <div class="mf-levels">
+              <span class="mf-level-tag">ISIL-S4</span>
+              <span class="mf-level-tag">SI-S5</span>
+              <span class="mf-level-tag">Ingénieur S5-S9</span>
+              <span class="mf-level-tag">Master RSID</span>
+              <span class="mf-level-tag badge-exam">Examens</span>
+            </div>
+          </div>
+          <div class="mf-footer">
+            <div class="mf-stats">
+              <span class="mf-stat"><strong>50+</strong> Cours</span>
+              <span class="mf-stat"><strong>40+</strong> TD</span>
+              <span class="mf-stat"><strong>25+</strong> TP</span>
+              <span class="mf-stat"><strong>27</strong> Examens</span>
+            </div>
+            <span class="mf-cta">Accéder</span>
+          </div>
+        </a>
+
+        <!-- Recherche Doc -->
+        <a href="recherche-documentaire.html" class="module-feature">
+          <div class="mf-header">
+            <div class="mf-icon icon-red">🔍</div>
+            <div class="mf-header-text">
+              <h3>Recherche Documentaire</h3>
+              <div class="mf-subtitle">Zotero, APA 7, problématique, synthèse bibliographique</div>
+            </div>
+          </div>
+          <div class="mf-body">
+            <p>Méthodologie de recherche pour Master 2 DLE. De la problématique à la rédaction scientifique, outils et techniques.</p>
+            <div class="mf-levels">
+              <span class="mf-level-tag">Master 2 DLE FR</span>
+              <span class="mf-level-tag">Master 2 DLE EN</span>
+            </div>
+          </div>
+          <div class="mf-footer">
+            <div class="mf-stats">
+              <span class="mf-stat"><strong>10</strong> Cours</span>
+              <span class="mf-stat"><strong>10</strong> TD</span>
+              <span class="mf-stat">FR + EN</span>
+            </div>
+            <span class="mf-cta">Accéder</span>
+          </div>
+        </a>
+
+        <!-- Recherche Articles -->
+        <a href="cours/_index_Module_Recherche_Articles.html" class="module-feature">
+          <div class="mf-header">
+            <div class="mf-icon icon-purple">🔬</div>
+            <div class="mf-header-text">
+              <h3>Recherche & Articles IoT</h3>
+              <div class="mf-subtitle">RPL, Cooja, QoS, LSTM, IDS — Protocoles de recherche</div>
+            </div>
+          </div>
+          <div class="mf-body">
+            <p>5 protocoles de recherche IoT avec cours théoriques et TP pratiques sur simulateur Cooja. Code GitHub ouvert.</p>
+            <div class="mf-levels">
+              <span class="mf-level-tag">Base Cooja/RPL</span>
+              <span class="mf-level-tag">RPL-MQoS</span>
+              <span class="mf-level-tag">AER-RPL</span>
+              <span class="mf-level-tag">AER-MQoS</span>
+              <span class="mf-level-tag">IDS-IoT</span>
+            </div>
+          </div>
+          <div class="mf-footer">
+            <div class="mf-stats">
+              <span class="mf-stat"><strong>51</strong> Cours</span>
+              <span class="mf-stat"><strong>61</strong> TP</span>
+              <span class="mf-stat"><strong>5</strong> GitHub</span>
+            </div>
+            <span class="mf-cta">Accéder</span>
+          </div>
+        </a>
+
+        <!-- Licence 1 Anglais -->
+        <a href="cours/_index_Licence_1_Anglais.html" class="module-feature">
+          <div class="mf-header">
+            <div class="mf-icon icon-teal">🎓</div>
+            <div class="mf-header-text">
+              <h3>Licence 1 Anglais</h3>
+              <div class="mf-subtitle">Grammaire, Phonétique, Littérature, Civilisation, Expression</div>
+            </div>
+          </div>
+          <div class="mf-body">
+            <p>8 matières avec dialogues interactifs EN↔FR. Chaque cours contient audio MP3, traductions et présentations PPTX.</p>
+            <div class="mf-levels">
+              <span class="mf-level-tag">Grammaire</span>
+              <span class="mf-level-tag">Phonétique</span>
+              <span class="mf-level-tag">Littérature</span>
+              <span class="mf-level-tag">Civilisation</span>
+              <span class="mf-level-tag">Expression</span>
+              <span class="mf-level-tag">TICE</span>
+            </div>
+          </div>
+          <div class="mf-footer">
+            <div class="mf-stats">
+              <span class="mf-stat"><strong>53</strong> Cours</span>
+              <span class="mf-stat"><strong>5035</strong> MP3</span>
+              <span class="mf-stat"><strong>53</strong> PPTX</span>
+            </div>
+            <span class="mf-cta">Accéder</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SECTION 4 : HIGHLIGHT — EXAMENS ═══════ -->
+  <section class="section section-alt" role="region" aria-labelledby="exam-title">
+    <div class="container">
+      <div class="highlight-box">
+        <div class="highlight-icon">📝</div>
+        <div class="highlight-content">
+          <h3 id="exam-title">Examens blancs disponibles</h3>
+          <p>Le module Réseaux Mostaganem propose des examens blancs avec corrigés pour tous les niveaux : ISIL-S4, SI-S5, Ingénieur S5→S9, Master RSID. 27 sujets d'examen en PDF et HTML.</p>
+          <div class="btn-group">
+            <a href="reseaux.html" class="btn btn-primary">📋 Voir les examens</a>
+            <a href="enseignement.html" class="btn btn-outline">📚 Tous les modules</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SECTION 5 : À PROPOS ═══════ -->
+  <section class="section" id="about" role="region" aria-labelledby="about-title">
     <div class="container">
       <h2 id="about-title" class="section-title">À Propos</h2>
-      <p class="section-subtitle">Enseignant-chercheur en didactique des langues et TIC</p>
+      <p class="section-subtitle">Enseignant-chercheur en didactique des langues, TIC et réseaux informatiques</p>
+
       <div class="about-grid">
         <div class="about-section">
           <h3>📋 Biographie</h3>
-          <p style="font-size:0.9rem;line-height:1.8;">Dr. Madani BELACEL est Maître de Conférences B (MCB) à l'Université de Mostaganem. Ses domaines d'enseignement et de recherche couvrent la didactique des langues assistée par les TIC, l'informatique fondamentale (algorithmique, programmation, bases de données, web), les réseaux informatiques et la sécurité. Il est responsable de plusieurs modules d'enseignement pour les niveaux licence, master et formation d'enseignants (ENS).</p>
+          <p class="bio-text">Dr. Madani BELACEL est Maître de Conférences B (MCB) à l'Université de Mostaganem. Ses domaines d'enseignement et de recherche couvrent la didactique des langues assistée par les TIC, l'informatique fondamentale (algorithmique, programmation, bases de données, web), les réseaux informatiques et la sécurité. Il est responsable de plusieurs modules d'enseignement pour les niveaux licence, master et formation d'enseignants (ENS).</p>
         </div>
         <div class="about-section">
           <h3>🎯 Domaines d'expertise</h3>
-          <ul>
-            <li>TIC et didactique des langues</li>
-            <li>Informatique fondamentale (Algorithmique, Python, POO, BD, Web)</li>
-            <li>Réseaux et sécurité (Cloud, SDN, IoT)</li>
-            <li>Méthodologie de recherche documentaire</li>
-            <li>Pédagogie numérique et e-learning</li>
-          </ul>
+          <div class="competence-grid">
+            <div class="competence-item">
+              <span class="competence-dot dot-primary"></span>
+              <span class="competence-label">TIC & Didactique</span>
+              <span class="competence-count">464 MP3</span>
+            </div>
+            <div class="competence-item">
+              <span class="competence-dot dot-green"></span>
+              <span class="competence-label">Informatique ENS</span>
+              <span class="competence-count">88 cours</span>
+            </div>
+            <div class="competence-item">
+              <span class="competence-dot dot-accent"></span>
+              <span class="competence-label">Réseaux</span>
+              <span class="competence-count">9 niveaux</span>
+            </div>
+            <div class="competence-item">
+              <span class="competence-dot dot-red"></span>
+              <span class="competence-label">Recherche Doc.</span>
+              <span class="competence-count">20 cours</span>
+            </div>
+            <div class="competence-item">
+              <span class="competence-dot dot-purple"></span>
+              <span class="competence-label">IoT / RPL</span>
+              <span class="competence-count">112 sessions</span>
+            </div>
+            <div class="competence-item">
+              <span class="competence-dot dot-teal"></span>
+              <span class="competence-label">Licence 1 Anglais</span>
+              <span class="competence-count">53 cours</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- News -->
-  <section class="section" role="region" aria-labelledby="news-title">
+  <!-- ═══════ SECTION 6 : ACTUALITÉS ═══════ -->
+  <section class="section section-alt" id="news" role="region" aria-labelledby="news-title">
     <div class="container">
       <h2 id="news-title" class="section-title">📰 Dernières Actualités</h2>
       <p class="section-subtitle">Mises à jour des supports de cours et publications</p>
@@ -277,15 +542,39 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer class="footer" role="contentinfo">
     <div class="container">
+      <div class="footer-stats">
+        <div class="footer-stat">
+          <span class="footer-stat-number">800+</span>
+          <span class="footer-stat-label">Pages de cours</span>
+        </div>
+        <div class="footer-stat">
+          <span class="footer-stat-number">5500+</span>
+          <span class="footer-stat-label">Fichiers audio</span>
+        </div>
+        <div class="footer-stat">
+          <span class="footer-stat-number">746</span>
+          <span class="footer-stat-label">Présentations PPTX</span>
+        </div>
+        <div class="footer-stat">
+          <span class="footer-stat-number">25+</span>
+          <span class="footer-stat-label">Niveaux universitaires</span>
+        </div>
+        <div class="footer-stat">
+          <span class="footer-stat-number">2</span>
+          <span class="footer-stat-label">Langues (FR/EN)</span>
+        </div>
+      </div>
       <div class="footer-logos">
-        <img src="images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-        <img src="images/alg_drap.gif" alt="Algérie" class="footer-logo">
+        <img loading="lazy" width="960" height="931" src="images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+        <img loading="lazy" width="132" height="95" src="images/alg_drap.gif" alt="Algérie" class="footer-logo">
       </div>
       <div class="footer-infos">
-        <span>📧 madani.belacel@univ-mosta.dz</span>
+        <span>📧 <a href="mailto:madani.belacel [at] univ-mosta.dz">madani.belacel [at] univ-mosta.dz</a></span>
         <span>📍 Université de Mostaganem</span>
         <span>📅 2026-2027</span>
       </div>
@@ -293,91 +582,41 @@
     </div>
   </footer>
 
-  <script src="js/data.js"></script>
+  <script src="js/data-loader.js" defer></script>
   <script src="js/main.js"></script>
   <script>
-    // Render news items
-    if (document.getElementById('news-list')) {
+    (function () {
       var list = document.getElementById('news-list');
-      NEWS_DATA.forEach(function (item) {
-        var div = document.createElement('div');
-        div.className = 'news-item';
-        div.innerHTML = '<div class="news-date">' + item.date + '</div>' +
-          '<div class="news-title">' + item.title + '</div>' +
-          '<div class="news-desc">' + item.desc + '</div>';
-        list.appendChild(div);
-      });
-    }
-  </script>
-  <script>
-    // ── Carousel ──
-    (function() {
-      var track = document.getElementById('carousel-track');
-      if (!track) return;
-      var slides = track.querySelectorAll('.carousel-slide');
-      var totalSlides = slides.length;
-      var dotsContainer = document.getElementById('carousel-dots');
-      var prevBtn = document.querySelector('.carousel-btn-prev');
-      var nextBtn = document.querySelector('.carousel-btn-next');
-      var current = 0;
-      var autoInterval;
+      if (!list) return;
+      function render() {
+        if (!window.NEWS_DATA || !window.NEWS_DATA.length) return;
+        if (list.childElementCount) return;
+        window.NEWS_DATA.forEach(function (item) {
+          var div = document.createElement('div');
+          div.className = 'news-item';
 
-      function getVisible() {
-        if (window.innerWidth <= 600) return 1;
-        if (window.innerWidth <= 900) return 2;
-        return 3;
+          var dateDiv = document.createElement('div');
+          dateDiv.className = 'news-date';
+          dateDiv.textContent = item.date;
+
+          var titleDiv = document.createElement('div');
+          titleDiv.className = 'news-title';
+          titleDiv.textContent = item.title;
+
+          var descDiv = document.createElement('div');
+          descDiv.className = 'news-desc';
+          descDiv.textContent = item.desc;
+
+          div.appendChild(dateDiv);
+          div.appendChild(titleDiv);
+          div.appendChild(descDiv);
+          list.appendChild(div);
+        });
       }
-
-      function getMax() {
-        return Math.max(0, totalSlides - getVisible());
-      }
-
-      function goTo(index) {
-        var v = getVisible();
-        var max = Math.max(0, totalSlides - v);
-        if (index < 0) index = max;
-        if (index > max) index = 0;
-        current = index;
-        var pct = (100 / v) * current;
-        track.style.transform = 'translateX(-' + pct + '%)';
-        var dots = dotsContainer.querySelectorAll('.carousel-dot');
-        var dotIndex = Math.min(current, dots.length - 1);
-        dots.forEach(function(d, i) { d.classList.toggle('active', i === dotIndex); });
-      }
-
-      function nextSlide() { goTo(current + 1); }
-      function prevSlide() { goTo(current - 1); }
-
-      // Dots
-      var dotCount = Math.max(1, totalSlides - getVisible() + 1);
-      for (var i = 0; i < dotCount; i++) {
-        var dot = document.createElement('button');
-        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', 'Aller au slide ' + (i + 1));
-        dot.addEventListener('click', (function(idx) { return function() { goTo(idx); }; })(i));
-        dotsContainer.appendChild(dot);
-      }
-
-      // Buttons
-      if (prevBtn) prevBtn.addEventListener('click', function() { prevSlide(); resetAuto(); });
-      if (nextBtn) nextBtn.addEventListener('click', function() { nextSlide(); resetAuto(); });
-
-      function startAuto() { autoInterval = setInterval(nextSlide, 4000); }
-      function resetAuto() { clearInterval(autoInterval); startAuto(); }
-
-      // Touch support
-      var startX = 0;
-      track.addEventListener('touchstart', function(e) { startX = e.changedTouches[0].screenX; });
-      track.addEventListener('touchend', function(e) {
-        var diff = startX - e.changedTouches[0].screenX;
-        if (Math.abs(diff) > 40) { diff > 0 ? nextSlide() : prevSlide(); resetAuto(); }
-      });
-
-      // Resize
-      window.addEventListener('resize', function() { goTo(current); });
-
-      startAuto();
+      document.addEventListener('data-loaded', render);
+      if (window.NEWS_DATA) render();
     })();
   </script>
+
 </body>
 </html>

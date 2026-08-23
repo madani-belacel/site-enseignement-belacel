@@ -38,14 +38,14 @@
   <div class="header-inner">
     <div class="header-left">
       <a href="../../../../index.html" class="header-logo">
-        <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <img loading="lazy" width="960" height="931" src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
-        <img src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+        <img loading="lazy" width="207" height="243" src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
       </div>
     </div>
-    <img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <img loading="lazy" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
     <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
@@ -74,7 +74,7 @@
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="../../../../index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../index.html#news">Actualités des Modules</a></li>
           <li><a href="../../../../ressources.html">Ressources</a></li>
         </ul>
       </li>
@@ -682,7 +682,7 @@
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2"> and I teach </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subject</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="c1"># Test</span>
-<span class="n">teacher</span> <span class="o">=</span> <span class="n">Teacher</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Madani&quot;</span><span class="p">,</span> <span class="s2">&quot;m.belacel@ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;Computer Science&quot;</span><span class="p">)</span>
+<span class="n">teacher</span> <span class="o">=</span> <span class="n">Teacher</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Madani&quot;</span><span class="p">,</span> <span class="s2">&quot;m.belacel [at] ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;Computer Science&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">teacher</span><span class="o">.</span><span class="n">introduce</span><span class="p">())</span>
 </code></pre></div>
 
@@ -855,13 +855,13 @@ Rex says: Woof! Bad dog!
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span><span class="si">}</span><span class="s2"> â€” </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subject</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">courses</span><span class="p">)</span><span class="si">}</span><span class="s2"> courses)&quot;</span>
 
 <span class="c1"># Test</span>
-<span class="n">student</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">&quot;Benali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;s.benali@ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;ENS2-A&quot;</span><span class="p">)</span>
+<span class="n">student</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s2">&quot;Benali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;s.benali [at] ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;ENS2-A&quot;</span><span class="p">)</span>
 <span class="n">student</span><span class="o">.</span><span class="n">add_grade</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">student</span><span class="o">.</span><span class="n">add_grade</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">student</span><span class="o">.</span><span class="n">add_grade</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
 
-<span class="n">prof</span> <span class="o">=</span> <span class="n">Professor</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Madani&quot;</span><span class="p">,</span> <span class="s2">&quot;m.belacel@ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;Computer Science&quot;</span><span class="p">)</span>
+<span class="n">prof</span> <span class="o">=</span> <span class="n">Professor</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Madani&quot;</span><span class="p">,</span> <span class="s2">&quot;m.belacel [at] ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;Computer Science&quot;</span><span class="p">)</span>
 <span class="n">prof</span><span class="o">.</span><span class="n">add_course</span><span class="p">(</span><span class="s2">&quot;OOP&quot;</span><span class="p">)</span>
 <span class="n">prof</span><span class="o">.</span><span class="n">add_course</span><span class="p">(</span><span class="s2">&quot;DB&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prof</span><span class="p">)</span>
@@ -1526,9 +1526,9 @@ Pass 4: [5, 8, 12, 15, 20]   (sorted)
 <span class="p">);</span>
 
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="k">VALUES</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Benali&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;s.benali@ens.dz&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ziani&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ahmed&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;a.ziani@ens.dz&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Kaci&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Leila&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;l.kaci@ens.dz&#39;</span><span class="p">);</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Benali&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sara&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;s.benali [at] ens.dz&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ziani&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ahmed&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;a.ziani [at] ens.dz&#39;</span><span class="p">),</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Kaci&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Leila&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;l.kaci [at] ens.dz&#39;</span><span class="p">);</span>
 
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">Course</span><span class="w"> </span><span class="k">VALUES</span>
 <span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;OOP&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span>
@@ -1778,7 +1778,7 @@ Pass 4: [5, 8, 12, 15, 20]   (sorted)
     <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
     <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contact: s.benali@ens.dz<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contact: s.benali [at] ens.dz<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -1874,7 +1874,7 @@ Pass 4: [5, 8, 12, 15, 20]   (sorted)
     <span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
 
     <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contact: s.benali@ens.dz<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Contact: s.benali [at] ens.dz<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -3833,17 +3833,16 @@ python manage.py runserver
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-      <img src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+      <img loading="lazy" width="960" height="931" src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img loading="lazy" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">
-      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📧 <a href="mailto:madani.belacel [at] univ-mosta.dz">madani.belacel [at] univ-mosta.dz</a></span>
       <span>📍 Université de Mostaganem</span>
       <span>📅 2025-2026</span>
     </div>
     <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
   </div>
 </footer>
-<script src="../../../../js/data.js"></script>
 <script src="../../../../js/main.js"></script>
 </body></html>

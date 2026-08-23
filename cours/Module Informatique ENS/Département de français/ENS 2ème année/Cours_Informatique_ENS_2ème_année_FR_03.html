@@ -38,14 +38,14 @@
   <div class="header-inner">
     <div class="header-left">
       <a href="../../../../index.html" class="header-logo">
-        <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <img loading="lazy" width="960" height="931" src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
-        <img src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+        <img loading="lazy" width="207" height="243" src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
       </div>
     </div>
-    <img src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <img loading="lazy" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
     <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
@@ -74,7 +74,7 @@
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="../../../../index.html#carrousel">Actualités des Modules</a></li>
+          <li><a href="../../../../index.html#news">Actualités des Modules</a></li>
           <li><a href="../../../../ressources.html">Ressources</a></li>
         </ul>
       </li>
@@ -369,10 +369,10 @@
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> — </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">matiere</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="c1"># Test</span>
-<span class="n">eleve</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Benali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;s.benali@etu.ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;ENS2-A&quot;</span><span class="p">)</span>
+<span class="n">eleve</span> <span class="o">=</span> <span class="n">Eleve</span><span class="p">(</span><span class="s2">&quot;Benali&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">,</span> <span class="s2">&quot;s.benali [at] etu.ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;ENS2-A&quot;</span><span class="p">)</span>
 <span class="n">eleve</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">)</span>
 <span class="n">eleve</span><span class="o">.</span><span class="n">ajouter_note</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;Français&quot;</span><span class="p">)</span>
-<span class="n">prof</span> <span class="o">=</span> <span class="n">Enseignant</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Madani&quot;</span><span class="p">,</span> <span class="s2">&quot;m.belacel@ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;Informatique&quot;</span><span class="p">)</span>
+<span class="n">prof</span> <span class="o">=</span> <span class="n">Enseignant</span><span class="p">(</span><span class="s2">&quot;Belacel&quot;</span><span class="p">,</span> <span class="s2">&quot;Madani&quot;</span><span class="p">,</span> <span class="s2">&quot;m.belacel [at] ens.dz&quot;</span><span class="p">,</span> <span class="s2">&quot;Informatique&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">eleve</span><span class="p">)</span>                 <span class="c1"># &quot;Sara Benali&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prof</span><span class="p">)</span>                  <span class="c1"># &quot;Madani Belacel — Informatique&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moyenne : </span><span class="si">{</span><span class="n">eleve</span><span class="o">.</span><span class="n">moyenne_generale</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -418,17 +418,16 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <img src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
-      <img src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+      <img loading="lazy" width="960" height="931" src="../../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img loading="lazy" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">
-      <span>📧 madani.belacel@univ-mosta.dz</span>
+      <span>📧 <a href="mailto:madani.belacel [at] univ-mosta.dz">madani.belacel [at] univ-mosta.dz</a></span>
       <span>📍 Université de Mostaganem</span>
       <span>📅 2025-2026</span>
     </div>
     <p>© 2026 Dr. Madani BELACEL — Tous droits réservés.</p>
   </div>
 </footer>
-<script src="../../../../js/data.js"></script>
 <script src="../../../../js/main.js"></script>
 </body></html>
