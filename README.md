@@ -83,7 +83,7 @@ site-enseignement-belacel/
 
 Placer `photo.jpg` (carré, 300×300px min) dans `images/` et modifier `index.html` :
 ```html
-<img src="images/photo.jpg" alt="Dr. Madani BELACEL" class="hero-photo">
+<img loading="lazy" src="images/photo.jpg" alt="Dr. Madani BELACEL" class="hero-photo">
 ```
 
 ---
