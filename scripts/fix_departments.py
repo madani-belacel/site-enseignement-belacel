@@ -27,28 +27,35 @@ DEFAULT_MAPPINGS = [
     # pattern (relative path contains) -> replacement label
     {
         "pattern": os.path.join("cours", "Licence 1 Anglais"),
-        "label": "Université de Mostaganem — Faculté des langues étrangères · Département d'anglais",
+        "label": "Université de Mostaganem — Faculté des langues étrangères · Département de français",
     },
     {
         "pattern": os.path.join("cours", "Dialogues_Anglais"),
-        "label": "Université de Mostaganem — Faculté des langues étrangères · Département d'anglais",
+        "label": "Université de Mostaganem — Faculté des langues étrangères · Département de français",
     },
     {
         "pattern": os.path.join("cours", "Dialogues_TICE"),
-        "label": "Université de Mostaganem — Faculté des langues étrangères · Département d'anglais",
+        "label": "Université de Mostaganem — Faculté des langues étrangères · Département de français",
     },
     {
         "pattern": os.path.join("cours", "Module_Réseau_Mostaganem"),
-        "label": "Université de Mostaganem — Faculté des Sciences · Département Mathématiques et Informatique",
+        "label": "Université de Mostaganem — Faculté des Sciences Exactes et Informatique · Département de Mathématiques et Informatique",
     },
     {
         "pattern": os.path.join("cours", "Module Informatique ENS"),
-        "label": "Université de Mostaganem — Faculté des Sciences · Département Mathématiques et Informatique",
+        "label": "École Normale Supérieure de Mostaganem",
     },
 ]
 
 
 EMAIL_RE = re.compile(r"([A-Za-z0-9._%+-]+\s*(?:@|\[at\]|\[AT\])\s*[A-Za-z0-9._%+-]+\.[A-Za-z]{2,})")
+
+# A line is eligible ONLY if it is a simple institutional paragraph:
+# optional indentation, <p>…</p> wrapping the whole line, containing the
+# university name and no markup other than inline formatting tags.
+SIMPLE_P_RE = re.compile(r"^(\s*)<p>(.*)</p>\s*$")
+ALLOWED_TAGS_RE = re.compile(r"</?(?:br\s*/?|strong|em|b|i|small)>", re.IGNORECASE)
+ANCHOR_RE = re.compile(r"<[a-zA-Z!/]")
 
 
 def find_target_label(path: str, mappings: List[Dict[str, str]]) -> str | None:
@@ -60,7 +67,13 @@ def find_target_label(path: str, mappings: List[Dict[str, str]]) -> str | None:
 
 
 def process_file(path: str, new_label: str, do_apply: bool, make_backup: bool) -> Tuple[bool, List[Tuple[str, str]]]:
-    """Return (changed, list_of_diffs (old_line, new_line))."""
+    """Return (changed, list_of_diffs (old_line, new_line)).
+
+    Only simple institutional paragraphs are touched:
+    ``<p>Université de Mostaganem … [email]</p>`` on a single line.
+    Any other line containing the university name (JSON-LD, <img>, <div>,
+    <meta>, breadcrumbs…) is left strictly untouched.
+    """
     changed = False
     diffs: List[Tuple[str, str]] = []
 
@@ -70,30 +83,42 @@ def process_file(path: str, new_label: str, do_apply: bool, make_backup: bool) -
     out_lines = lines.copy()
 
     for i, line in enumerate(lines):
-        if "Université de Mostaganem" in line:
-            old_line = line.rstrip("\n")
-            # extract possible email to preserve
-            m = EMAIL_RE.search(line)
-            email_part = ""
-            if m:
-                email_part = m.group(1).strip()
-            # preserve existing closing tags if present
-            closing = ""
-            if old_line.strip().endswith("</p>"):
-                closing = "</p>"
-            elif old_line.strip().endswith("<br>"):
-                closing = ""
-
-            # build replacement
-            new_content = f"<p>{new_label}"
-            if email_part:
-                new_content += "<br>" + email_part
-            new_content += closing
-
-            if new_content != old_line:
-                out_lines[i] = new_content + "\n"
-                changed = True
-                diffs.append((old_line, new_content))
+        if "Université de Mostaganem" not in line and new_label not in line and "École Normale Supérieure" not in line:
+            continue
+        m = SIMPLE_P_RE.match(line)
+        if not m:
+            continue  # not a standalone <p>…</p> line -> never touch
+        indent, orig_inner = m.group(1), m.group(2)
+        inner = orig_inner
+        email_part = ""
+        em = EMAIL_RE.search(inner)
+        if em:
+            email_part = em.group(1).strip()
+            inner = EMAIL_RE.sub("", inner)
+            inner = re.sub(r"(?:<br\s*/?>\s*)+$", "", inner.strip()).strip()
+        residue = ALLOWED_TAGS_RE.sub("", inner)
+        if ANCHOR_RE.search(residue):
+            continue  # contains real markup (links, spans with attrs…) -> skip
+        text = re.sub(r"\s+", " ", residue).strip()
+        for inst in ("Université de Mostaganem", "École Normale Supérieure"):
+            if text.startswith(inst):
+                remainder = text[len(inst):]
+                break
+        else:
+            continue  # does not start with an institution name -> never touch
+        # The remainder must look like a faculty/department label only:
+        # a single em-dash separated segment, no sentence punctuation.
+        remainder = remainder.strip()
+        if remainder and not re.fullmatch(r"—\s*[^:;,.(?!][^:;,.(?!]*", remainder):
+            continue  # real sentence mentioning the university -> never touch
+        expected = new_label + ("<br>" + email_part if email_part else "")
+        if orig_inner == expected:
+            continue  # already normalized
+        old_line = line.rstrip("\n")
+        new_content = f"{indent}<p>{expected}</p>"
+        out_lines[i] = new_content + "\n"
+        changed = True
+        diffs.append((old_line, new_content))
 
     if changed and do_apply:
         if make_backup:
