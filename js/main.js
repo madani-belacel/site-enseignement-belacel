@@ -40,6 +40,30 @@
   }
   setTheme(getPreferredTheme());
 
+  /* ── Protect images from standard browser copy/save actions ── */
+  (function protectImagesFromCopy() {
+    document.querySelectorAll('img').forEach(function (img) {
+      img.setAttribute('draggable', 'false');
+      img.classList.add('img-no-copy');
+      img.style.webkitUserDrag = 'none';
+      img.style.userDrag = 'none';
+      img.style.webkitUserSelect = 'none';
+      img.style.userSelect = 'none';
+    });
+
+    document.addEventListener('contextmenu', function (event) {
+      if (event.target && event.target.tagName && event.target.tagName.toLowerCase() === 'img') {
+        event.preventDefault();
+      }
+    }, { passive: false });
+
+    document.addEventListener('dragstart', function (event) {
+      if (event.target && event.target.tagName && event.target.tagName.toLowerCase() === 'img') {
+        event.preventDefault();
+      }
+    }, { passive: false });
+  })();
+
   /* ── Course pages: simplify course identity banner and keep the header bar compact ── */
   (function initCourseHeaderIdentity() {
     if (!window.location.pathname.includes('/cours/')) return;
