@@ -40,6 +40,45 @@
   }
   setTheme(getPreferredTheme());
 
+  /* ── Course pages: simplify course identity banner and keep the header bar compact ── */
+  (function initCourseHeaderIdentity() {
+    if (!window.location.pathname.includes('/cours/')) return;
+
+    var headerInner = document.querySelector('.header-inner');
+    var headerLeft = headerInner && headerInner.querySelector('.header-left');
+    var logoLink = headerLeft && headerLeft.querySelector('.header-logo');
+    if (!headerLeft || !logoLink) return;
+
+    var existingPhoto = headerLeft.querySelector('.header-profile-photo');
+    if (!existingPhoto) {
+      var pathname = window.location.pathname;
+      var parts = pathname.split('/').filter(Boolean);
+      var courseIndex = parts.indexOf('cours');
+      var nestedDepth = 0;
+
+      if (courseIndex >= 0) {
+        nestedDepth = parts.slice(courseIndex + 1, -1).length;
+      }
+
+      var relativePrefix = Array(nestedDepth + 2).join('../');
+      var photo = document.createElement('img');
+      photo.src = relativePrefix + 'images/photo-profil.png';
+      photo.alt = 'Dr. BELACEL Madani';
+      photo.loading = 'eager';
+      photo.className = 'header-profile-photo';
+      photo.setAttribute('draggable', 'false');
+      headerLeft.insertBefore(photo, logoLink);
+    }
+
+    var title = logoLink.querySelector('.header-logo-text');
+    if (title) {
+      title.innerHTML = 'Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small>';
+    }
+
+    var banner = document.querySelector('.header-banner');
+    if (banner) banner.remove();
+  })();
+
   /* ── Algerian flags in all four corners ── */
   (function addCornerFlags() {
     var existingFlags = document.querySelectorAll('.flag-corner');
