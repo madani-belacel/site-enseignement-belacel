@@ -40,6 +40,51 @@
   }
   setTheme(getPreferredTheme());
 
+  /* ── Algerian flags in all four corners ── */
+  (function addCornerFlags() {
+    var existingFlags = document.querySelectorAll('.flag-corner');
+    var hasCornerClasses = Array.prototype.some.call(existingFlags, function (flag) {
+      return flag.classList.contains('flag-corner--tl') ||
+        flag.classList.contains('flag-corner--tr') ||
+        flag.classList.contains('flag-corner--bl') ||
+        flag.classList.contains('flag-corner--br');
+    });
+    if (hasCornerClasses) return;
+
+    var source = 'images/alg_drap.gif';
+    var alt = 'Drapeau de l\'Algérie';
+    var existing = existingFlags.length ? existingFlags[0] : null;
+
+    if (existing) {
+      existing.classList.add('flag-corner--tr');
+      existing.setAttribute('alt', alt);
+      source = existing.getAttribute('src') || source;
+    }
+
+    var corners = ['flag-corner--tl', 'flag-corner--bl', 'flag-corner--br'];
+    corners.forEach(function (modifier) {
+      var flag = document.createElement('img');
+      flag.src = source;
+      flag.alt = alt;
+      flag.loading = 'lazy';
+      flag.className = 'flag-corner ' + modifier;
+      flag.setAttribute('aria-hidden', 'true');
+      flag.setAttribute('draggable', 'false');
+      document.body.appendChild(flag);
+    });
+
+    if (!existing) {
+      var mainFlag = document.createElement('img');
+      mainFlag.src = source;
+      mainFlag.alt = alt;
+      mainFlag.loading = 'eager';
+      mainFlag.className = 'flag-corner flag-corner--tr';
+      mainFlag.setAttribute('aria-hidden', 'true');
+      mainFlag.setAttribute('draggable', 'false');
+      document.body.appendChild(mainFlag);
+    }
+  })();
+
   /* ── Mobile Nav Toggle ── */
   var navToggle = document.getElementById('nav-toggle');
   var navList = document.getElementById('nav-list');
