@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 17</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%2016.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2018.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%2016.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2018.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 17 — Prepositions of Place: in, on, at, under, next to...</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">حروف الجر المكانية</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">11</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Prepositions of Place</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 17</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Prepositions of Place</span> <span class="ar">— حروف الجر المكانية</span></b><br>
+    <div class="en">Ce niveau propose <b>11</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>11</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. In = inside</a><a href="#idea-2">2. On = touching a surface</a><a href="#idea-3">3. At = a point/place</a><a href="#idea-4">4. Under = below</a><a href="#idea-5">5. Next to / beside / near</a><a href="#idea-6">6. In front of / behind</a><a href="#idea-7">7. Between (two things)</a><a href="#idea-8">8. On the left / right, in the middle</a><a href="#idea-9">9. Prepositions after 'be' describing position</a><a href="#idea-10">10. Over / above and in front of</a><a href="#idea-11">11. Describe your room</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>In = inside — <span class="ar">In = داخل</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل in للأماكن المغلقة أو المساحات: in the house (في البيت),<br>in the box (في الصندوق),<br>in Algeria (في الجزائر),<br>in the town (في المدينة).<br>وتعني «داخل».</div>
+<div class="en">📗 Explication claire : 'In' for inside spaces: in the house, in the box. Also in countries and towns.</div>
+</div>
+<div class="formula">in + enclosed space/area</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The milk is in the fridge.</td><td class="ar-c">الحليب في الثلاجة.</td><td class="pron-c">«ذا ميلك إيز إين ذا فريدج»</td></tr><tr><td class="en-c">We live in Mostaganem.</td><td class="ar-c">نعيش في مستغانم.</td><td class="pron-c">«وي ليف إين موستاغنيم»</td></tr><tr><td class="en-c">The pencils are in the pencil case.</td><td class="ar-c">الأقلام في المقلمة.</td><td class="pron-c">«ذا بنسلز آر إين ذا بنسل كيس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>On = touching a surface — <span class="ar">On = على سطح</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل on عندما يكون شيء ملامساً لسطح: on the table (على الطاولة),<br>on the wall (على الحائط),<br>on the floor (على الأرض),<br>على الغطاء.<br>وللأدوات: on the phone (على الهاتف),<br>on TV (على التلفاز).</div>
+<div class="en">📗 Explication claire : 'On' for surfaces: on the table, on the wall, on the floor.</div>
+</div>
+<div class="formula">on + surface (table, wall, floor...)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The book is on the desk.</td><td class="ar-c">الكتاب على المكتب.</td><td class="pron-c">«ذا بوك إيز أون ذا ديسك»</td></tr><tr><td class="en-c">There is a picture on the wall.</td><td class="ar-c">توجد صورة على الحائط.</td><td class="pron-c">«ذير إيز آ بيكتشير أون ذا وول»</td></tr><tr><td class="en-c">I am on the phone.</td><td class="ar-c">أنا على الهاتف.</td><td class="pron-c">«آي آم أون ذا فون»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>At = a point/place — <span class="ar">At = عند/في النقطة</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل at للنقطة أو المحطة أو المكان المحدد: at the door (عند الباب),<br>at the bus stop (في موقف الحافلات),<br>at school (في المدرسة),<br>at home (في المنزل),<br>at the top (في الأعلى).<br>نقول at home وليس in home.</div>
+<div class="en">📗 Explication claire : 'At' for points and specific places: at the door, at school, at home.</div>
+</div>
+<div class="formula">at + point/specific place</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I am at home now.</td><td class="ar-c">أنا في المنزل الآن.</td><td class="pron-c">«آي آم آت هوم ناو»</td></tr><tr><td class="en-c">He is waiting at the bus stop.</td><td class="ar-c">ينتظر في موقف الحافلات.</td><td class="pron-c">«هي إيز ويتينغ آت ذا باس ستوب»</td></tr><tr><td class="en-c">We meet at the entrance.</td><td class="ar-c">نلتقي عند المدخل.</td><td class="pron-c">«وي ميت آت ذا إنترنس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Under = below — <span class="ar">Under = تحت</span></h3>
+<div class="expl">
+<div class="ar">📘 Under (تحت) تعني مباشرة أسفل شيء: under the bed (تحت السرير),<br>under the table (تحت الطاولة),<br>تحت الماء.<br>مثال: The cat is under the chair (القطة تحت الكرسي).</div>
+<div class="en">📗 Explication claire : 'Under' means below something: The cat is under the chair.</div>
+</div>
+<div class="formula">under + noun</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The shoes are under the bed.</td><td class="ar-c">الحذاء تحت السرير.</td><td class="pron-c">«ذا شوز آر أندير ذا باد»</td></tr><tr><td class="en-c">The dog hides under the table.</td><td class="ar-c">يختبئ الكلب تحت الطاولة.</td><td class="pron-c">«ذا دوغ هايدز أندير ذا تيبل»</td></tr><tr><td class="en-c">We swim under the water.</td><td class="ar-c">نسبح تحت الماء.</td><td class="pron-c">«وي سويم أندير ذا ووتر»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Next to / beside / near — <span class="ar">بجانب / بالقرب</span></h3>
+<div class="expl">
+<div class="ar">📘 next to و beside (بجانب) بمعنى ملاصق,<br>و near (قريب من) بمسافة صغيرة: The bank is next to the mosque (البنك بجانب المسجد),<br>Our house is near the school (بيتنا قريب من المدرسة).</div>
+<div class="en">📗 Explication claire : Next to/beside = touching side. Near = close but not touching.</div>
+</div>
+<div class="formula">next to/beside + noun | near + noun</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The pharmacy is next to the post office.</td><td class="ar-c">الصيدلية بجانب مكتب البريد.</td><td class="pron-c">«ذا فارماسي إيز نايكست تو ذا بوست أوفيس»</td></tr><tr><td class="en-c">Sit beside me.</td><td class="ar-c">اجلس بجانبي.</td><td class="pron-c">«سيت بيسايد مي»</td></tr><tr><td class="en-c">There is a market near our home.</td><td class="ar-c">يوجد سوق قريب من بيتنا.</td><td class="pron-c">«ذير إيز آ ماركيت نير آور هوم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>In front of / behind — <span class="ar">أمام / خلف</span></h3>
+<div class="expl">
+<div class="ar">📘 in front of (أمام) و behind (خلف): The teacher stands in front of the class (يقف الأستاذ أمام القسم),<br>The garden is behind the house (الحديقة خلف البيت).</div>
+<div class="en">📗 Explication claire : 'In front of' = before; 'behind' = at the back.</div>
+</div>
+<div class="formula">in front of + noun | behind + noun</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The bus stops in front of the school.</td><td class="ar-c">تقف الحافلة أمام المدرسة.</td><td class="pron-c">«ذا باس ستوبس إين فرانت آف ذا سكول»</td></tr><tr><td class="en-c">The tree is behind the house.</td><td class="ar-c">الشجرة خلف البيت.</td><td class="pron-c">«ذا تري إيز بيهيند ذا هاوس»</td></tr><tr><td class="en-c">He sits behind me in class.</td><td class="ar-c">يجلس خلفي في القسم.</td><td class="pron-c">«هي سيتس بيهيند مي إين كلاس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Between (two things) — <span class="ar">Between = بين</span></h3>
+<div class="expl">
+<div class="ar">📘 between تعني «بين شيئين»: The shop is between the bakery and the mosque (المحل بين المخبزة والمسجد).</div>
+<div class="en">📗 Explication claire : 'Between' is for two things: The shop is between the bakery and the mosque.</div>
+</div>
+<div class="formula">between A and B</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Oran is between Algiers and Ain Temouchent.</td><td class="ar-c">وهران بين الجزائر وعين تموشنت.</td><td class="pron-c">«أوران إيز بيتوين ألجيرز آند اين تموشنت»</td></tr><tr><td class="en-c">The bathroom is between two bedrooms.</td><td class="ar-c">الحمام بين غرفتي النوم.</td><td class="pron-c">«ذا باتروم إيز بيتوين تو بيدرومز»</td></tr><tr><td class="en-c">He sat between his father and mother.</td><td class="ar-c">جلس بين أبيه وأمه.</td><td class="pron-c">«هي سات بيتوين هيز فاذر آند ماذر»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>On the left / right, in the middle — <span class="ar">على اليسار / اليمين، في الوسط</span></h3>
+<div class="expl">
+<div class="ar">📘 للاتجاهات: on the left (على اليسار),<br>on the right (على اليمين),<br>in the middle (في الوسط).<br>مثال: The hospital is on the left (المستشفى على اليسار).</div>
+<div class="en">📗 Explication claire : Directions: on the left, on the right, in the middle.</div>
+</div>
+<div class="formula">on the left/right of + noun | in the middle of + noun</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The hospital is on the left.</td><td class="ar-c">المستشفى على اليسار.</td><td class="pron-c">«ذا هوسبيتل إيز أون ذا ليفت»</td></tr><tr><td class="en-c">My house is on the right of the street.</td><td class="ar-c">بيتي على يمين الشارع.</td><td class="pron-c">«ماي هاوس إيز أون ذا رايت آف ذا ستريت»</td></tr><tr><td class="en-c">The table is in the middle of the room.</td><td class="ar-c">الطاولة في وسط الغرفة.</td><td class="pron-c">«ذا تيبل إيز إين ذا ميدل آف ذا روم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Prepositions after 'be' describing position — <span class="ar">حروف الجر بعد فعل الكينونة</span></h3>
+<div class="expl">
+<div class="ar">📘 نصف موضع الأشياء بفعل be + حرف الجر: It is on.<br>.<br>.<br>,<br>They are under.<br>.<br>.<br>,<br>He is next to.<br>.<br>.<br>.<br>هذا هو النمط الأساسي لوصف المكان.</div>
+<div class="en">📗 Explication claire : Describe position: subject + be + preposition + place.</div>
+</div>
+<div class="formula">Subject + be + preposition + place</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The keys are on the shelf.</td><td class="ar-c">المفاتيح على الرف.</td><td class="pron-c">«ذا كيز آر أون ذا شيلف»</td></tr><tr><td class="en-c">Her office is at the end of the corridor.</td><td class="ar-c">مكتبها في نهاية الممر.</td><td class="pron-c">«هور أوفيس إيز آت ذا إند آف ذا كوريدور»</td></tr><tr><td class="en-c">The park is in front of the station.</td><td class="ar-c">الحديقة أمام المحطة.</td><td class="pron-c">«ذا بارك إيز إين فرانت آف ذا ستيشين»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Over / above and in front of — <span class="ar">فوق (بدون لمس) وأمام</span></h3>
+<div class="expl">
+<div class="ar">📘 over و above (فوق دون ملامسة) مثل الطائر فوق السقف: The birds fly over the sea (تحلق الطيور فوق البحر).<br>بينما on تعني ملامسة.<br>احفظ الفرق: on يلمس,<br>over لا يلمس.</div>
+<div class="en">📗 Explication claire : 'On' touches; 'over/above' does not touch: The birds fly over the sea.</div>
+</div>
+<div class="formula">on (touch) | over/above (no touch)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The plane flies over the city.</td><td class="ar-c">تحلق الطائرة فوق المدينة.</td><td class="pron-c">«ذا بلين فلايز أوفير ذا سيتي»</td></tr><tr><td class="en-c">A lamp hangs above the desk.</td><td class="ar-c">مصباح معلق فوق المكتب.</td><td class="pron-c">«آ لامب هانغس أبوف ذا ديسك»</td></tr><tr><td class="en-c">Put the glass on the table.</td><td class="ar-c">ضع الكأس على الطاولة.</td><td class="pron-c">«بوت ذا غلاس أون ذا تيبل»</td></tr></table>
+</div>
+
+<div class="card" id="idea-11">
+<h3><span class="idea-num">11</span>Describe your room — <span class="ar">صف غرفتك</span></h3>
+<div class="expl">
+<div class="ar">📘 طبّق كل الحروف في وصف غرفتك: In my room (في غرفتي),<br>the bed is next to the window (السرير بجانب النافذة).<br>.<br>.<br>,<br>the carpet is on the floor (السجادة على الأرضية).<br>.<br>.<br>,<br>the lamp is over the desk (المصباح فوق المكتب).<br>.<br>.<br>,<br>the chair is under the table (الكرسي تحت الطاولة).</div>
+<div class="en">📗 Explication claire : Describe your room using all place prepositions.</div>
+</div>
+<div class="formula">There is/are + noun + preposition + place</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There is a desk next to the bed.</td><td class="ar-c">يوجد مكتب بجانب السرير.</td><td class="pron-c">«ذير إيز آ ديسك نايكست تو ذا باد»</td></tr><tr><td class="en-c">The computer is on the desk.</td><td class="ar-c">الحاسوب على المكتب.</td><td class="pron-c">«ذا كومبيوتر إيز أون ذا ديسك»</td></tr><tr><td class="en-c">The ball is under the chair.</td><td class="ar-c">الكرة تحت الكرسي.</td><td class="pron-c">«ذا بول إيز أندير ذا تشير»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%2016.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2018.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

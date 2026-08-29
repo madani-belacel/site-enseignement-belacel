@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 3</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%202.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%204.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%202.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%204.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 3 — Subject Pronouns and the Verb To Be</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">ضمائر الفاعل وفعل الكينونة (am, is, are)</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Pronouns and To Be</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 3</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Pronouns and To Be</span> <span class="ar">— الضمائر وفعل الكينونة</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. Subject pronouns</a><a href="#idea-2">2. To be: am, is, are</a><a href="#idea-3">3. Contractions: I'm, you're, he's...</a><a href="#idea-4">4. Negative with to be</a><a href="#idea-5">5. Questions with to be</a><a href="#idea-6">6. Short answers</a><a href="#idea-7">7. It is ... — special uses</a><a href="#idea-8">8. To be + feelings and states</a><a href="#idea-9">9. To be + nationality and place</a><a href="#idea-10">10. Who is it? What is it?</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>Subject pronouns — <span class="ar">ضمائر الفاعل</span></h3>
+<div class="expl">
+<div class="ar">📘 ضمائر الفاعل هي التي تقوم بالفعل: I (أنا),<br>You (أنت),<br>He (هو),<br>She (هي),<br>It (هو/هي لغير العاقل),<br>We (نحن),<br>They (هم).<br>نستعملها قبل الفعل في الجملة.</div>
+<div class="en">📗 Explication claire : Subject pronouns do the action: I, you, he, she, it, we, they. They come before the verb.</div>
+</div>
+<div class="formula">I • you • he • she • it • we • they</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I am a student.</td><td class="ar-c">أنا طالب.</td><td class="pron-c">«آي آم آ ستيودنت»</td></tr><tr><td class="en-c">She is my sister.</td><td class="ar-c">هي أختي.</td><td class="pron-c">«شي إيز ماي سيستير»</td></tr><tr><td class="en-c">They are happy.</td><td class="ar-c">هم سعداء.</td><td class="pron-c">«ذاي آر هابي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>To be: am, is, are — <span class="ar">فعل الكينونة: am, is, are</span></h3>
+<div class="expl">
+<div class="ar">📘 فعل To be معناه «يكون / هو».<br>له ثلاثة أشكال في الحاضر: am مع I,<br>is مع he/she/it أو اسم مفرد,<br>و are مع you/we/they أو اسم جمع.</div>
+<div class="en">📗 Explication claire : 'To be' means to exist. Its present forms are am (with I), is (with he, she, it, singular), are (with you, we, they, plural).</div>
+</div>
+<div class="formula">I am • he/she/it is • you/we/they are</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I am happy.</td><td class="ar-c">أنا سعيد.</td><td class="pron-c">«آي آم هابي»</td></tr><tr><td class="en-c">He is a doctor.</td><td class="ar-c">هو طبيب.</td><td class="pron-c">«هي إيز آ داكتور»</td></tr><tr><td class="en-c">They are teachers.</td><td class="ar-c">هم معلمون.</td><td class="pron-c">«ذاي آر تيتشيرز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Contractions: I'm, you're, he's... — <span class="ar">الاختصارات: I'm, you're, he's...</span></h3>
+<div class="expl">
+<div class="ar">📘 في الكلام اليومي نختصر الفعل مع الضمير: I am ← I'm,<br>you are ← you're,<br>he is ← he's,<br>we are ← we're,<br>they are ← they're.<br>النطق يصبح أسرع وأسهل.</div>
+<div class="en">📗 Explication claire : In speaking we join pronoun + verb: I'm, you're, he's, she's, it's, we're, they're.</div>
+</div>
+<div class="formula">I am = I'm • you are = you're • he is = he's</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I'm fine, thanks.</td><td class="ar-c">أنا بخير شكراً.</td><td class="pron-c">«آيم فاين ثانكس»</td></tr><tr><td class="en-c">You're very kind.</td><td class="ar-c">أنت لطيف جداً.</td><td class="pron-c">«يور فيري كايند»</td></tr><tr><td class="en-c">She's my friend.</td><td class="ar-c">هي صديقتي.</td><td class="pron-c">«شيز ماي فريند»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Negative with to be — <span class="ar">النفي مع فعل الكينونة</span></h3>
+<div class="expl">
+<div class="ar">📘 للنفي نضيف not بعد الفعل: is not,<br>are not,<br>am not.<br>الاختصارات الشائعة: isn't لـ is not,<br>aren't لـ are not.<br>لاحظ أننا لا نختصر am not في الإنجليزية القياسية إلا في السؤال (aren't I).</div>
+<div class="en">📗 Explication claire : For the negative, add 'not' after the verb: is not, are not. Short forms: isn't, aren't.</div>
+</div>
+<div class="formula">am/is/are + not</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">It is not cold.</td><td class="ar-c">الجو ليس باردا.</td><td class="pron-c">«إت إيز نوت كولد»</td></tr><tr><td class="en-c">They aren't at home.</td><td class="ar-c">هم ليسوا في المنزل.</td><td class="pron-c">«ذاي آرنت آت هوم»</td></tr><tr><td class="en-c">I am not tired.</td><td class="ar-c">أنا لست متعبا.</td><td class="pron-c">«آي آم نوت تايرد»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Questions with to be — <span class="ar">السؤال مع فعل الكينونة</span></h3>
+<div class="expl">
+<div class="ar">📘 لجعل الجملة سؤالاً,<br>نضع الفعل قبل الفاعل: You are → Are you?<br>الفعل (am/is/are) في البداية يرفع نبرة السؤال.</div>
+<div class="en">📗 Explication claire : To make a question, put the verb first: Are you? Is he?</div>
+</div>
+<div class="formula">Am/Is/Are + subject + rest ?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Are you ready?</td><td class="ar-c">هل أنت مستعد؟</td><td class="pron-c">«آر يو ريدي»</td></tr><tr><td class="en-c">Is he your brother?</td><td class="ar-c">هل هو أخوك؟</td><td class="pron-c">«إيز هي يور براذر»</td></tr><tr><td class="en-c">Are they English teachers?</td><td class="ar-c">هل هم أساتذة إنجليزية؟</td><td class="pron-c">«آر ذاي إينغليش تيتشيرز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Short answers — <span class="ar">الأجوبة القصيرة</span></h3>
+<div class="expl">
+<div class="ar">📘 عند السؤال بـ Yes/No نجيب بإيجاز: Yes,<br>I am.<br>أو No,<br>he isn't.<br>نكرر الضمير مع فعل to be,<br>ولا نستعمل الاختصار في الجواب الإيجابي القصير (لا نقول Yes, I'm).</div>
+<div class="en">📗 Explication claire : Answer Yes/No questions briefly: Yes, I am. No, he isn't. We do not use a contraction in a short Yes answer.</div>
+</div>
+<div class="formula">Yes, + pronoun + am/is/are | No, + pronoun + am/is/are + not</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Are you a pupil? Yes, I am.</td><td class="ar-c">هل أنت تلميذ؟ نعم.</td><td class="pron-c">«آر يو آ بيوبيل ييس آي آم»</td></tr><tr><td class="en-c">Is she at school? No, she isn't.</td><td class="ar-c">هل هي في المدرسة؟ لا.</td><td class="pron-c">«إيز شي آت سكول نو شي إيزنت»</td></tr><tr><td class="en-c">Are they here? Yes, they are.</td><td class="ar-c">هل هم هنا؟ نعم.</td><td class="pron-c">«آر ذاي هير ييس ذاي آر»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>It is ... — special uses — <span class="ar">استعمالات خاصة لـ It is</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل It مثلاً للزمن والطقس والأشياء: It is a book (إنه كتاب),<br>It is sunny (الجو مشمس),<br>It is seven o'clock (إنها الساعة السابعة).</div>
+<div class="en">📗 Explication claire : We use 'it' for weather, time and things: It's a book, It's sunny, It's seven o'clock.</div>
+</div>
+<div class="formula">It is + noun / weather / time</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">It is raining now.</td><td class="ar-c">إنها تمطر الآن.</td><td class="pron-c">«إت إيز رينينغ ناو»</td></tr><tr><td class="en-c">It is six o'clock.</td><td class="ar-c">إنها الساعة السادسة.</td><td class="pron-c">«إت إيز سيكس أوكلوك»</td></tr><tr><td class="en-c">It is a beautiful day.</td><td class="ar-c">إنه يوم جميل.</td><td class="pron-c">«إت إيز آ بيوتيفول داي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>To be + feelings and states — <span class="ar">فعل الكينونة مع المشاعر والحالات</span></h3>
+<div class="expl">
+<div class="ar">📘 نصف المشاعر والحالة بالصفة بعد الفعل: happy (سعيد),<br>sad (حزين),<br>hungry (جائع),<br>thirsty (عطشان),<br>cold (بارد),<br>hot (حار),<br>tired (متعب).<br>المثال: He is thirsty (هو عطشان).</div>
+<div class="en">📗 Explication claire : Describe feelings with to be + adjective: happy, sad, hungry, thirsty, tired.</div>
+</div>
+<div class="formula">Subject + am/is/are + adjective (happy, sad...)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I am hungry.</td><td class="ar-c">أنا جائع.</td><td class="pron-c">«آي آم هانغري»</td></tr><tr><td class="en-c">She is thirsty.</td><td class="ar-c">هي عطشانة.</td><td class="pron-c">«شي إيز ثيرستي»</td></tr><tr><td class="en-c">We are tired.</td><td class="ar-c">نحن متعبون.</td><td class="pron-c">«وي آر تايرد»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>To be + nationality and place — <span class="ar">فعل الكينونة مع الجنسية والمكان</span></h3>
+<div class="expl">
+<div class="ar">📘 نقول الجنسية أو المكان بعد الفعل: I am Algerian (أنا جزائري),<br>He is from France (هو من فرنسا),<br>They are in the classroom (هم في القسم).</div>
+<div class="en">📗 Explication claire : Use to be with nationalities and places: I am Algerian, He is from France, They are in class.</div>
+</div>
+<div class="formula">Subject + be + nationality | be + in/from + place</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">We are Algerians.</td><td class="ar-c">نحن جزائريون.</td><td class="pron-c">«وي آر ألجيريانس»</td></tr><tr><td class="en-c">She is from Tunisia.</td><td class="ar-c">هي من تونس.</td><td class="pron-c">«شي إيز فروم تونسيا»</td></tr><tr><td class="en-c">The bag is on the table.</td><td class="ar-c">الحقيبة على الطاولة.</td><td class="pron-c">«ذا باغ إيز أون ذا تيبل»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Who is it? What is it? — <span class="ar">من هذا؟ ما هذا؟</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل Who مع الأشخاص (Who is he? من هو؟) و What مع الأشياء (What is this? ما هذا؟).<br>الجواب يبدأ بـ It is .<br>.<br>.<br>أو He/She is .<br>.<br>.<br>.</div>
+<div class="en">📗 Explication claire : 'Who' is for people and 'What' is for things.</div>
+</div>
+<div class="formula">Who is he? → He is my father. | What is this? → It is a pen.</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Who is that man?</td><td class="ar-c">من هذا الرجل؟</td><td class="pron-c">«هو إيز ذات مان»</td></tr><tr><td class="en-c">What is that?</td><td class="ar-c">ما ذلك؟</td><td class="pron-c">«وات إيز ذات»</td></tr><tr><td class="en-c">It is a mobile phone.</td><td class="ar-c">إنه هاتف نقال.</td><td class="pron-c">«إت إيز آ موبايل فون»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%202.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%204.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

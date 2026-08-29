@@ -48,10 +48,10 @@ const COURSES_DATA = {
     icon: "📚",
     description: "Informatique pour l'École Normale Supérieure — algorithmique, programmation, bases de données, Web",
     levels: {
-      "ENS 1ère année (FR)": { path: "ens-1a-fr", count: "9 cours + 9 TD" },
-      "ENS 1ère année (EN)": { path: "ens-1a-en", count: "9 cours + 9 TD" },
-      "ENS 2ème année (FR)": { path: "ens-2a-fr", count: "9 cours + 9 TD" },
-      "ENS 2ème année (EN)": { path: "ens-2a-en", count: "9 cours + 9 TD" }
+      "ENS 1ère année (FR)": { path: "ens-1a-fr", count: "10 cours + 10 TD" },
+      "ENS 1ère année (EN)": { path: "ens-1a-en", count: "10 cours + 10 TD" },
+      "ENS 2ème année (FR)": { path: "ens-2a-fr", count: "10 cours + 10 TD" },
+      "ENS 2ème année (EN)": { path: "ens-2a-en", count: "10 cours + 10 TD" }
     }
   },
   rd: {
@@ -79,7 +79,7 @@ const COURSES_DATA = {
   dialogues_anglais: {
     name: "Dialogues Anglais",
     icon: "🗣️",
-    description: "21 niveaux de dialogues EN→AR avec audio MP3 et présentations PPTX",
+    description: "21 niveaux de dialogues EN↔FR avec audio MP3 et présentations PPTX",
     levels: {
       "Niveaux 1-7": { path: "niveaux-1-7", count: "7 dialogues" },
       "Niveaux 8-14": { path: "niveaux-8-14", count: "7 dialogues" },
@@ -89,7 +89,7 @@ const COURSES_DATA = {
   dialogues_tice: {
     name: "Dialogues TICE",
     icon: "🗣️",
-    description: "8 niveaux de dialogues EN→FR sur les TIC avec audio et présentations",
+    description: "8 niveaux de dialogues EN↔FR sur les TIC avec audio et présentations",
     levels: {
       "Niveaux 1-4": { path: "niveaux-1-4", count: "4 dialogues" },
       "Niveaux 5-8": { path: "niveaux-5-8", count: "4 dialogues" }
@@ -137,20 +137,17 @@ const RESEARCH_DATA = {
     {
       title: "Integration of TIC in Language Teaching: A Systematic Review",
       journal: "International Journal of Educational Technology and Online Learning",
-      year: "2024",
-      doi: "10.1234/example"
+      year: "2024"
     },
     {
       title: "Network Security in Educational Environments: Cloud Computing Challenges",
       journal: "Conference Proceedings - International Conference on ICT in Education",
-      year: "2023",
-      url: "#"
+      year: "2023"
     },
     {
       title: "Designing Effective Online Learning Modules for Language Education",
       journal: "Journal of Digital Learning and Teaching",
-      year: "2023",
-      url: "#"
+      year: "2023"
     }
   ],
   projects: [
@@ -158,7 +155,7 @@ const RESEARCH_DATA = {
       title: "Plateforme e-learning intégrée pour l'enseignement des langues",
       description: "Développement d'une plateforme collaborative utilisant TIC pour améliorer l'apprentissage des langues",
       status: "En cours",
-      year: "2025-2026"
+      year: "2026-2027"
     },
     {
       title: "Audit pédagogique des ressources numériques universitaires",
@@ -172,13 +169,13 @@ const RESEARCH_DATA = {
       student: "12 étudiants",
       level: "Master 1-2 DLE",
       topic: "Mémoires de recherche en didactique et TIC",
-      year: "2025-2026"
+      year: "2026-2027"
     },
     {
       student: "8 étudiants",
       level: "ENS - Mémoire professionnel",
       topic: "Projets pédagogiques innovants",
-      year: "2025-2026"
+      year: "2026-2027"
     }
   ]
 };

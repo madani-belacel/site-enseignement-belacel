@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 1</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link disabled">◀ السابق</a>
+    <a class="side-link" href="Niveau%202.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn disabled">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%202.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 1 — The Alphabet, Letters and Sounds</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">الحروف الأبجدية والأصوات</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">12</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Alphabet and Sounds</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 1</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Alphabet and Sounds</span> <span class="ar">— الحروف الأبجدية والأصوات</span></b><br>
+    <div class="en">Ce niveau propose <b>12</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>12</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. The English alphabet has 26 letters</a><a href="#idea-2">2. Vowels: A, E, I, O, U</a><a href="#idea-3">3. Consonants</a><a href="#idea-4">4. Capital letters and small letters</a><a href="#idea-5">5. Spelling your name</a><a href="#idea-6">6. Sounds: the alphabet vs phonics</a><a href="#idea-7">7. Common letter pairs: ch, sh, th</a><a href="#idea-8">8. The letter Y is special</a><a href="#idea-9">9. Memorizing the alphabet order</a><a href="#idea-10">10. Reading the alphabet in words</a><a href="#idea-11">11. Nice, new sounds: the alphabet practice</a><a href="#idea-12">12. Alphabet for classroom use</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>The English alphabet has 26 letters — <span class="ar">تحتوي الأبجدية الإنجليزية على 26 حرفاً</span></h3>
+<div class="expl">
+<div class="ar">📘 الأبجدية الإنجليزية تتكون من 26 حرفاً,<br>نبدأ بحرف A وننتهي بحرف Z.<br>حفظ ترتيب هذه الحروف يساعدنا عندما نبحث في القاموس أو نكتب القوائم.</div>
+<div class="en">📗 Explication claire : English has 26 letters, from A to Z. We memorize their order for the dictionary and for lists.</div>
+</div>
+<div class="formula">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">A is the first letter.</td><td class="ar-c">A هو أول حرف.</td><td class="pron-c">«آ إيز ذا فيرست ليتر»</td></tr><tr><td class="en-c">Z is the last letter.</td><td class="ar-c">Z هو آخر حرف.</td><td class="pron-c">«ز إيز ذا لاست ليتر»</td></tr><tr><td class="en-c">There are 26 letters in English.</td><td class="ar-c">يوجد 26 حرفاً في الإنجليزية.</td><td class="pron-c">«ذير آر ليتيرز إين إينغليش»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Vowels: A, E, I, O, U — <span class="ar">حروف العلة: A, E, I, O, U</span></h3>
+<div class="expl">
+<div class="ar">📘 حروف العلة (Vowels) هي خمسة أحرف: A,<br>E,<br>I,<br>O,<br>U.<br>بقية الحروف تسمى ساكنة (Consonants).<br>كل كلمة إنجليزية تقريباً تحتوي على حرف علة واحد على الأقل.</div>
+<div class="en">📗 Explication claire : The vowels are A, E, I, O and U. The other letters are consonants. Almost every word has a vowel.</div>
+</div>
+<div class="formula">Vowels = A, E, I, O, U</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">cat → a is a vowel.</td><td class="ar-c">cat → حرف a علة.</td><td class="pron-c">«كات آ إيز آ فاول»</td></tr><tr><td class="en-c">dog → o is a vowel.</td><td class="ar-c">dog → حرف o علة.</td><td class="pron-c">«دوغ و إيز آ فاول»</td></tr><tr><td class="en-c">The vowels are A E I O U.</td><td class="ar-c">حروف العلة هي A E I O U.</td><td class="pron-c">«ذا فاولز آر آ ا آي و ا»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Consonants — <span class="ar">الحروف الساكنة</span></h3>
+<div class="expl">
+<div class="ar">📘 الحروف الساكنة هي كل الحروف ما عدا حروف العلة: مثل B,<br>C,<br>D,<br>F,<br>G.<br>.<br>.<br>وهي 21 حرفاً.<br>معظم الحروف في الكلمة تكون ساكنة.</div>
+<div class="en">📗 Explication claire : Consonants are the 21 non-vowel letters, like B, C, D, and F. Most letters in a word are consonants.</div>
+</div>
+<div class="formula">Consonants = 26 − 5 vowels = 21</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">B, C, D are consonants.</td><td class="ar-c">B, C, D حروف ساكنة.</td><td class="pron-c">«ب س د آر كونسوننتس»</td></tr><tr><td class="en-c">Yes begins with y (consonant).</td><td class="ar-c">كلمة Yes تبدأ بحرف y الساكن.</td><td class="pron-c">«ييس بغينز ويذ ي كونسوننت»</td></tr><tr><td class="en-c">Book has 4 letters and 4 sounds.</td><td class="ar-c">كلمة Book فيها 4 حروف و4 أصوات.</td><td class="pron-c">«بوك هاز ليتيرز آند ساوندز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Capital letters and small letters — <span class="ar">الحروف الكبيرة والحروف الصغيرة</span></h3>
+<div class="expl">
+<div class="ar">📘 كل حرف له شكلان: كبير (CAPITAL) وصغير (small).<br>نستعمل الحرف الكبير في بداية الجملة,<br>ومع أسماء العلم (الأشخاص, المدن, الدول, الأيام, الشهور).</div>
+<div class="en">📗 Explication claire : Each letter has a big (capital) and a small form. We use capital letters at the start of a sentence and for names.</div>
+</div>
+<div class="formula">Aa Bb Cc ... Zz  |  Start of sentence + names</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">My name is Oussama.</td><td class="ar-c">اسمي أسامة.</td><td class="pron-c">«ماي نيم إيز أوساما»</td></tr><tr><td class="en-c">We live in Algeria.</td><td class="ar-c">نعيش في الجزائر.</td><td class="pron-c">«وي ليف إين ألجيريا»</td></tr><tr><td class="en-c">Today is Sunday.</td><td class="ar-c">اليوم هو الأحد.</td><td class="pron-c">«توداي إيز سنداي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Spelling your name — <span class="ar">تهجئة الاسم</span></h3>
+<div class="expl">
+<div class="ar">📘 عندما نذكر اسمنا لشخص لا يعرفه,<br>ننطق الحروف واحداً واحداً.<br>هذا مفيد جداً عند ملء الاستمارات أو التحدث في الهاتف.</div>
+<div class="en">📗 Explication claire : When we say our name to someone who does not know it, we say the letters one by one. This helps on the phone and in forms.</div>
+</div>
+<div class="formula">My name is ____ . It is spelled S-A-L-I-M.</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">How do you spell your name?</td><td class="ar-c">كيف تهجئ اسمك؟</td><td class="pron-c">«هاو دو يو سبيل يور نيم»</td></tr><tr><td class="en-c">M-A-D-A-N-I. That is my name.</td><td class="ar-c">M-A-D-A-N-I. هذا هو اسمي.</td><td class="pron-c">«م آ د آ ن آي ذات إيز ماي نيم»</td></tr><tr><td class="en-c">Can you spell that, please?</td><td class="ar-c">هل يمكنك تهجئة ذلك من فضلك؟</td><td class="pron-c">«كان يو سبيل ذات بليز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Sounds: the alphabet vs phonics — <span class="ar">أصوات الحروف: الاسم مقابل النطق</span></h3>
+<div class="expl">
+<div class="ar">📘 لكل حرف «اسم» (مثل: bee لحرف B) وصوت مختلف في الكلمة (مثل: صوت /b/ في كلمة ball (كرة)).<br>ننتبه إلى أن بعض الحروف تنطق بصوت مختلف حسب الكلمة.</div>
+<div class="en">📗 Explication claire : Each letter has a name (like 'bee' for B) and a sound (like /b/ in ball). The sound can change in different words.</div>
+</div>
+<div class="formula">Letter name ≠ letter sound</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">letter B: name /bee/, sound /b/.</td><td class="ar-c">حرف B: اسمه بي، وصوته ب.</td><td class="pron-c">«ليتر ب نيم بي ساوند ب»</td></tr><tr><td class="en-c">letter C can sound /k/ or /s/.</td><td class="ar-c">حرف C قد ينطق ك أو س.</td><td class="pron-c">«ليتر س كان ساوند ك أور س»</td></tr><tr><td class="en-c">letter G can sound /g/ or /j/.</td><td class="ar-c">حرف G قد ينطق ج أو جيم أخرى.</td><td class="pron-c">«ليتر ج كان ساوند ج أور ج»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Common letter pairs: ch, sh, th — <span class="ar">أزواج حروف شائعة: ch, sh, th</span></h3>
+<div class="expl">
+<div class="ar">📘 بعض الحروف تتجمع معاً لإنتاج صوت جديد.<br>مثلاً ch تنطق «تش»,<br>sh تنطق «ش»,<br>وth لها نطقان: ذ أو ث.</div>
+<div class="en">📗 Explication claire : Some letters work together to make a new sound. ch says 'ch' (chair), sh says 'sh' (ship), th says 'th' (three).</div>
+</div>
+<div class="formula">ch → /tʃ/ • sh → /ʃ/ • th → /θ/ or /ð/</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Chair, cheese ← ch.</td><td class="ar-c">كرسي، جبن ← ch.</td><td class="pron-c">«تشير تشيز تش»</td></tr><tr><td class="en-c">Ship, fish ← sh.</td><td class="ar-c">سفينة، سمك ← sh.</td><td class="pron-c">«شيب فيش ش»</td></tr><tr><td class="en-c">Three, this ← th.</td><td class="ar-c">ثلاثة، هذا ← th.</td><td class="pron-c">«ثري ذيس ث»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>The letter Y is special — <span class="ar">حرف Y حرف خاص</span></h3>
+<div class="expl">
+<div class="ar">📘 حرف Y يمكن أن يكون ساكناً في بداية الكلمة (yes) أو علة في نهاية الكلمة مثل happy (سعيد) و fly (يطير).<br>هذا يجعله حرفاً مميزاً.</div>
+<div class="en">📗 Explication claire : Y is special: it is a consonant in 'yes' but a vowel in 'happy' and 'fly'.</div>
+</div>
+<div class="formula">Y = consonant (yes) or vowel (baby)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Yellow ← Y consonant.</td><td class="ar-c">أصفر ← Y ساكن.</td><td class="pron-c">«يلو ي كونسوننت»</td></tr><tr><td class="en-c">Happy ← y vowel sound.</td><td class="ar-c">سعيد ← y علة.</td><td class="pron-c">«هابي ي فاول ساوند»</td></tr><tr><td class="en-c">My fly cry ← y as a vowel.</td><td class="ar-c">في كلمات مثل fly وcry.</td><td class="pron-c">«ماي فلاي كراي ي آز آ فاول»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Memorizing the alphabet order — <span class="ar">حفظ ترتيب الحروف</span></h3>
+<div class="expl">
+<div class="ar">📘 ترتيب الحروف مهم جداً في القواميس والهواتف والفهارس.<br>نستعمل «الأغنية الأبجدية» لمساعدتنا على الحفظ.<br>تكرار الترتيب يومياً يجعل الحفظ أسهل.</div>
+<div class="en">📗 Explication claire : Alphabet order helps us in dictionaries and indexes. Singing the ABC song helps us memorize it.</div>
+</div>
+<div class="formula">A B C D / E F G / H I J K / L M N O P ...</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The dictionary is in alphabet order.</td><td class="ar-c">القاموس مرتب بالترتيب الأبجدي.</td><td class="pron-c">«ذا ديكشنري إيز إين ألفابيت أوردير»</td></tr><tr><td class="en-c">Apple comes before banana.</td><td class="ar-c">Apple تأتي قبل banana.</td><td class="pron-c">«أبل كامز بيفور بانانا»</td></tr><tr><td class="en-c">Fruit comes before vegetable.</td><td class="ar-c">Fruit قبل vegetable.</td><td class="pron-c">«فروت كامز بيفور فجيتبل»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Reading the alphabet in words — <span class="ar">قراءة الحروف داخل الكلمات</span></h3>
+<div class="expl">
+<div class="ar">📘 عند القراءة نقرأ الكلمة كلها كمقاطع,<br>لا نقرأ كل حرف على حدة.<br>مثلاً كلمة cat تقرأ في صوت واحد وليس c-a-t.<br>هذا هو أساس القراءة الصحيحة.</div>
+<div class="en">📗 Explication claire : When we read, we blend the letters into one word. We do not read c-a-t; we read 'cat'.</div>
+</div>
+<div class="formula">c + a + t → /kæt/</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Dog → one sound /dɒg/.</td><td class="ar-c">Dog تنطق كصوت واحد.</td><td class="pron-c">«دوغ وان ساوند د ج»</td></tr><tr><td class="en-c">Sun → one sound /sʌn/.</td><td class="ar-c">Sun تنطق كصوت واحد.</td><td class="pron-c">«سان وان ساوند س ن»</td></tr><tr><td class="en-c">Blend the letters to read.</td><td class="ar-c">امزج الحروف لتقرأ الكلمة.</td><td class="pron-c">«بلاند ذا ليتيرز تو ريد»</td></tr></table>
+</div>
+
+<div class="card" id="idea-11">
+<h3><span class="idea-num">11</span>Nice, new sounds: the alphabet practice — <span class="ar">تدريب عملي على الحروف</span></h3>
+<div class="expl">
+<div class="ar">📘 أفضل طريقة لتعلم الحروف هي الممارسة: انطق كل حرف بصوت عالٍ,<br>واكتبه,<br>وابحث عن كلمات تبدأ به.<br>كل دقيقة تدريب تقوّي ذاكرتك.</div>
+<div class="en">📗 Explication claire : The best way to learn the alphabet is practice: say each letter aloud, write it, and find words that start with it.</div>
+</div>
+<div class="formula">Learn = say + write + find examples</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">A: apple, ant, arm.</td><td class="ar-c">A: تفاحة، نملة، ذراع.</td><td class="pron-c">«آ أبل أنت أرم»</td></tr><tr><td class="en-c">B: book, boy, box.</td><td class="ar-c">B: كتاب، ولد، صندوق.</td><td class="pron-c">«ب بوك بوي بوكس»</td></tr><tr><td class="en-c">Practice five letters every day.</td><td class="ar-c">درّب خمسة حروف كل يوم.</td><td class="pron-c">«براكتيس فايف ليتيرز إيفري داي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-12">
+<h3><span class="idea-num">12</span>Alphabet for classroom use — <span class="ar">الأبجدية في القسم</span></h3>
+<div class="expl">
+<div class="ar">📘 في القسم نستعمل الأبجدية كثيراً: لتهجئة الكلمات الجديدة,<br>وللإشارة إلى الحروف,<br>ولمعرفة أسماء الحروف بالضبط.<br>انتبه إلى نطق الحروف بالطريقة الإنجليزية لا الفرنسية.</div>
+<div class="en">📗 Explication claire : In class we use the alphabet to spell new words and to name letters. Pronounce letters the English way.</div>
+</div>
+<div class="formula">Q = /kjuː/ • W = /ˈdʌbəljuː/</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">How is that word spelled?</td><td class="ar-c">كيف تُهجأ تلك الكلمة؟</td><td class="pron-c">«هاو إيز ذات وورد سبيلد»</td></tr><tr><td class="en-c">Spell 'house': H-O-U-S-E.</td><td class="ar-c">هجِّئ كلمة house: H-O-U-S-E.</td><td class="pron-c">«سبيل هاوس ه و ا س ا»</td></tr><tr><td class="en-c">Say the letter H, please.</td><td class="ar-c">انطق حرف H من فضلك.</td><td class="pron-c">«ساي ذا ليتر ه بليز»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn disabled">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%202.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

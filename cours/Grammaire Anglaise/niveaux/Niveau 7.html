@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 7</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%206.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%208.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%206.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%208.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 7 — Possessive Adjectives and 's</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">صفات الملكية وإضافة الملكية 's</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Possessives</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 7</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Possessives</span> <span class="ar">— الملكية</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. What are possessive adjectives?</a><a href="#idea-2">2. Always followed by a noun</a><a href="#idea-3">3. No plural form for possessive adjectives</a><a href="#idea-4">4. Its vs It's</a><a href="#idea-5">5. His vs Her</a><a href="#idea-6">6. Whose...? questions</a><a href="#idea-7">7. The 's possessive: Oussama's book</a><a href="#idea-8">8. The 's with the last owner</a><a href="#idea-9">9. Possessive adjectives vs possessive pronouns (intro)</a><a href="#idea-10">10. Practice: possessive sentences</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>What are possessive adjectives? — <span class="ar">ما هي صفات الملكية؟</span></h3>
+<div class="expl">
+<div class="ar">📘 صفات الملكية تدل على أن شيئاً ملكاً لشخص: my (لي),<br>your (لك),<br>his (له),<br>her (لها),<br>its (له لغير العاقل),<br>our (لنا),<br>their (لهم).</div>
+<div class="en">📗 Explication claire : Possessive adjectives show ownership: my, your, his, her, its, our, their.</div>
+</div>
+<div class="formula">my • your • his • her • its • our • their</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">My house is big.</td><td class="ar-c">بيتي كبير.</td><td class="pron-c">«ماي هاوس إيز بيغ»</td></tr><tr><td class="en-c">His name is Omar.</td><td class="ar-c">اسمه عمر.</td><td class="pron-c">«هيز نيم إيز عمار»</td></tr><tr><td class="en-c">Our school is new.</td><td class="ar-c">مدرستنا جديدة.</td><td class="pron-c">«آور سكول إيز نيو»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Always followed by a noun — <span class="ar">تأتي دائماً قبل الاسم</span></h3>
+<div class="expl">
+<div class="ar">📘 صفة الملكية لا تقف وحدها بل تتبعها اسماً: my book,<br>your pen,<br>our teacher.<br>لا نقول This is my بل نضيف الاسم.</div>
+<div class="en">📗 Explication claire : A possessive adjective always comes before a noun: my book, your pen.</div>
+</div>
+<div class="formula">possessive adjective + noun</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">my book</td><td class="ar-c">كتابي.</td><td class="pron-c">«ماي بوك»</td></tr><tr><td class="en-c">her mother</td><td class="ar-c">أمها.</td><td class="pron-c">«هور ماذر»</td></tr><tr><td class="en-c">their house</td><td class="ar-c">بيتهم.</td><td class="pron-c">«ذير هاوس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>No plural form for possessive adjectives — <span class="ar">لا جمع لصفات الملكية</span></h3>
+<div class="expl">
+<div class="ar">📘 صفات الملكية لا تتغير مع الجمع: my books ليست «مياس» بل my books.<br>نفس الصفة مع المفرد والجمع.</div>
+<div class="en">📗 Explication claire : Possessive adjectives do not change for plural: my book / my books.</div>
+</div>
+<div class="formula">my + singular = my + plural (same word)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">my car → my cars</td><td class="ar-c">سيارتي ← سياراتي.</td><td class="pron-c">«ماي كار ماي كارز»</td></tr><tr><td class="en-c">their child → their children</td><td class="ar-c">طفلهم ← أطفالهم.</td><td class="pron-c">«ذير تشايلد ذير تشيلدرن»</td></tr><tr><td class="en-c">your pen → your pens</td><td class="ar-c">قلمك ← أقلامك.</td><td class="pron-c">«يور بن يور بينز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Its vs It's — <span class="ar">الفرق بين Its و It's</span></h3>
+<div class="expl">
+<div class="ar">📘 Its (بدون فاصلة علوية) = ملك لغير العاقل: The cat drinks its milk (القط يشرب حليبه).<br>أما It's = اختصار It is: It's a cat (إنه قط).</div>
+<div class="en">📗 Explication claire : 'Its' = ownership for things/animals. 'It's' = it is.</div>
+</div>
+<div class="formula">its = of it | it's = it is</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The dog eats its food.</td><td class="ar-c">الكلب يأكل طعامه.</td><td class="pron-c">«ذا دوغ إيتس إتس فود»</td></tr><tr><td class="en-c">It's a beautiful day.</td><td class="ar-c">إنه يوم جميل.</td><td class="pron-c">«إيتس آ بيوتيفول داي»</td></tr><tr><td class="en-c">The tree loses its leaves.</td><td class="ar-c">الشجرة تفقد أوراقها.</td><td class="pron-c">«ذا تري لوزز إتس ليفز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>His vs Her — <span class="ar">His هيس / Her هير</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل his للمذكر (له): His name (اسمه).<br>و her للمؤنث (لها): Her name (اسمها).<br>انتبه: his للملكية قد يخص رجلا أو وطنا أو حيوانا ذكرا.</div>
+<div class="en">📗 Explication claire : 'His' = for men, 'her' = for women.</div>
+</div>
+<div class="formula">his + noun (male) | her + noun (female)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">His father is a doctor.</td><td class="ar-c">أبوه طبيب.</td><td class="pron-c">«هيز فاذر إيز آ داكتور»</td></tr><tr><td class="en-c">Her hair is long.</td><td class="ar-c">شعرها طويل.</td><td class="pron-c">«هور هير إيز لونغ»</td></tr><tr><td class="en-c">She loves her family.</td><td class="ar-c">هي تحب عائلتها.</td><td class="pron-c">«شي لافز هور فاميلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Whose...? questions — <span class="ar">السؤال بـ Whose (لمن؟)</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل Whose للسؤال عن ملكية: Whose book is this?<br>(لمن هذا الكتاب؟).<br>الجواب: It is Oussama's / It is mine.</div>
+<div class="en">📗 Explication claire : 'Whose' asks about possession: Whose book is this? Answer: It's Oussama's.</div>
+</div>
+<div class="formula">Whose + noun + is/are + ...?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Whose car is that?</td><td class="ar-c">لمن تلك السيارة؟</td><td class="pron-c">«هوز كار إيز ذات»</td></tr><tr><td class="en-c">Whose pen is this? It's mine.</td><td class="ar-c">لمن هذا القلم؟ إنه لي.</td><td class="pron-c">«هوز بن إيز ذيس إيتس ماين»</td></tr><tr><td class="en-c">Whose keys are these?</td><td class="ar-c">لمن هذه المفاتيح؟</td><td class="pron-c">«هوز كيز آر ذيز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>The 's possessive: Oussama's book — <span class="ar">الملكية بـ 's: كتاب أسامة</span></h3>
+<div class="expl">
+<div class="ar">📘 للملكية مع الأشخاص نضيف فاصلة علوية و s: Oussama's book (كتاب أسامة),<br>my mother's car (سيارة أمي).<br>وللجمع المختوم بـ s نضيف فاصلة فقط: my parents' house (بيت والديّ).</div>
+<div class="en">📗 Explication claire : Add 's for possession: Oussama's book, my mother's car. Plural ending in s → just ': my parents' house.</div>
+</div>
+<div class="formula">name/owner + 's + thing | plural-s + ' + thing</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Oussama's bicycle</td><td class="ar-c">دراجة أسامة.</td><td class="pron-c">«أسامة بايسكل»</td></tr><tr><td class="en-c">my sister's bag</td><td class="ar-c">حقيبة أختي.</td><td class="pron-c">«ماي سيسترز باغ»</td></tr><tr><td class="en-c">the students' books</td><td class="ar-c">كتب الطلاب.</td><td class="pron-c">«ذا ستيودنتس بوكس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>The 's with the last owner — <span class="ar">الحرف 's مع آخر المالك</span></h3>
+<div class="expl">
+<div class="ar">📘 عند الملكية المشتركة نضيف 's لآخر اسم فقط: Oussama and Islem's room (غرفة أسامة وإسلام معاً).<br>أما إذا لكل منهما شيء فأضف 's للاثنين: Oussama's and Islem's rooms.</div>
+<div class="en">📗 Explication claire : Shared ownership: put 's on the last name only (Oussama and Islem's room).</div>
+</div>
+<div class="formula">A + B + 's + thing (shared)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Anes and Islem's toys</td><td class="ar-c">ألعاب أنس وإسلام.</td><td class="pron-c">«أنس آند إسلامز تويز»</td></tr><tr><td class="en-c">my uncle and aunt's house</td><td class="ar-c">بيت عمي وعمتي (معاً).</td><td class="pron-c">«ماي أنكل آند أنتس هاوس»</td></tr><tr><td class="en-c">Mom and Dad's wedding</td><td class="ar-c">زواج أمي وأبي.</td><td class="pron-c">«مام آند دادز ويدينغ»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Possessive adjectives vs possessive pronouns (intro) — <span class="ar">صفات الملكية مقابل ضمائر الملكية</span></h3>
+<div class="expl">
+<div class="ar">📘 صفة الملكية قبل الاسم (my book),<br>وضمير الملكية يحل محل الاسم (mine بمعنى «لي»).<br>سنفصله في مستوى لاحق لكن تذكر: his و its كما هما.</div>
+<div class="en">📗 Explication claire : Possessive adjective + noun (my book). Possessive pronoun replaces the noun (mine).</div>
+</div>
+<div class="formula">my→mine • your→yours • her→hers • our→ours • their→theirs</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">This is my pen. It is mine.</td><td class="ar-c">هذا قلمي. إنه لي.</td><td class="pron-c">«ذيس إيز ماي بن إت إيز ماين»</td></tr><tr><td class="en-c">Her bag is red. Hers is new.</td><td class="ar-c">حقيبتها حمراء. حقيبتها (لها) جديدة.</td><td class="pron-c">«هور باغ إيز ريد هورز إيز نيو»</td></tr><tr><td class="en-c">Our house is here. Yours is there.</td><td class="ar-c">بيتنا هنا. بيتكم هناك.</td><td class="pron-c">«آور هاوس إيز هير يورز إيز ذير»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Practice: possessive sentences — <span class="ar">تمارين على الملكية</span></h3>
+<div class="expl">
+<div class="ar">📘 تدرب على تحويل: I have a brother → My brother .<br>.<br>.<br>؟ لا,<br>بل: my brother.<br>استعمل صفات الملكية مع أفراد العائلة والأشياء الشخصية كل يوم.</div>
+<div class="en">📗 Explication claire : Practise: say these daily — my father, your mother, his bike, her school, our class, their city.</div>
+</div>
+<div class="formula">subject → possessive: I → my, you → your, he → his ...</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">We love our city.</td><td class="ar-c">نحب مدينتنا.</td><td class="pron-c">«وي لاف آور سيتي»</td></tr><tr><td class="en-c">They play in their garden.</td><td class="ar-c">يلعبون في حديقتهم.</td><td class="pron-c">«ذاي بلاي إين ذير غاردن»</td></tr><tr><td class="en-c">You must finish your homework.</td><td class="ar-c">يجب أن تنجز واجبك.</td><td class="pron-c">«يو ماست فينيش يور هوموورك»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%206.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%208.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

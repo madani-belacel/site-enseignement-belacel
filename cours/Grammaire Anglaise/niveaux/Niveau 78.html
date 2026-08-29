@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 78</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%2077.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2079.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%2077.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2079.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 78 — Emphasis: do/does/did and Fronting</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">التأكيد: do/does/did وتقديم العنصر</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge advanced">C1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Emphasis: Do and Inversion</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 78</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge advanced">C1</span> <span class="cat-label">Emphasis: Do and Inversion</span> <span class="ar">— التأكيد: do والقلب</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. Emphatic do/does/did</a><a href="#idea-2">2. Emphatic do in denials and contrasts</a><a href="#idea-3">3. Fronting for emphasis</a><a href="#idea-4">4. Inversion for emphasis revision</a><a href="#idea-5">5. Emphasis with 'what' cleft (revision)</a><a href="#idea-6">6. Review 6: practice with emphasis: do/does/did and fronting</a><a href="#idea-7">7. Review 7: practice with emphasis: do/does/did and fronting</a><a href="#idea-8">8. Review 8: practice with emphasis: do/does/did and fronting</a><a href="#idea-9">9. Review 9: practice with emphasis: do/does/did and fronting</a><a href="#idea-10">10. Review 10: practice with emphasis: do/does/did and fronting</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>Emphatic do/does/did — <span class="ar">do/does/did التأكيدية</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل do/does/did للتأكيد القوي.<br>مثال: I do believe you (أنا فعلا أصدقك),<br>She did finish on time.<br>تبرز الفعل أمام المقارنة.</div>
+<div class="en">📗 Explication claire : Emphatic do/does/did strengthens the verb: I do believe you.</div>
+</div>
+<div class="formula">do/does/did + base verb (emphatic)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I do hope you come.</td><td class="ar-c">أتمنى فعلا أن تأتي.</td><td class="pron-c">«آي دو هوب يو كام»</td></tr><tr><td class="en-c">He does work very hard.</td><td class="ar-c">إنه يعمل بجد فعلا.</td><td class="pron-c">«هي داز وورك فيري هارد»</td></tr><tr><td class="en-c">We did enjoy the concert.</td><td class="ar-c">لقد استمتعنا فعلا بالحفلة.</td><td class="pron-c">«وي ديد إنجوي ذا كونسارت»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Emphatic do in denials and contrasts — <span class="ar">do التأكيدية في النفي والمقابلة</span></h3>
+<div class="expl">
+<div class="ar">📘 لتأكيد التناقض مع النفي.<br>مثال: I don't agree,<br>but he does (أنا لا أوافق لكنه هو يوافق).<br>يقابل فعل الجملة السابقة لتأكيد الفرق.</div>
+<div class="en">📗 Explication claire : Emphatic do contrasts with a previous negative/positive statement.</div>
+</div>
+<div class="formula">subject + do/does/did (contrasting)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">She said she wouldn't come, but she did come.</td><td class="ar-c">قالت إنها لن تأتي، لكنها أتت.</td><td class="pron-c">«شي ساد شي وودنت كام بات شي ديد كام»</td></tr><tr><td class="en-c">I don't like it, but he does.</td><td class="ar-c">أنا لا أحبه، لكنه هو يحبه.</td><td class="pron-c">«آي دونت لايك إت بات هي داز»</td></tr><tr><td class="en-c">They didn't complain, but we did.</td><td class="ar-c">هم لم يشتكوا، لكننا نحن اشتكينا.</td><td class="pron-c">«ذاي ديدنت كومبلاين بات وي ديد»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Fronting for emphasis — <span class="ar">تقديم العنصر للتأكيد</span></h3>
+<div class="expl">
+<div class="ar">📘 يمكن تقديم عنصر في بداية الجملة لتأكيده.<br>مثال: This I cannot believe (هذا لا أستطيع تصديقه),<br>Beautiful was the sunset (الغروب).<br>إنه أسلوب أدبي/رسمي.</div>
+<div class="en">📗 Explication claire : Move an element to the front for emphasis: This I believe.</div>
+</div>
+<div class="formula">object/complement + clause (fronted)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">That I will never forget.</td><td class="ar-c">ذلك لن أنساه أبدا.</td><td class="pron-c">«ذات آي ويل نيفير فورغيت»</td></tr><tr><td class="en-c">The truth he refused to accept.</td><td class="ar-c">الحقيقة رفض أن يتقبلها.</td><td class="pron-c">«ذا تراث هي رافازاد تو أكسابت»</td></tr><tr><td class="en-c">Wonderful was the view from the top.</td><td class="ar-c">كان المنظر رائعا من القمة.</td><td class="pron-c">«ووندارفال واز ذا فيو فروم ذا توب»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Inversion for emphasis revision — <span class="ar">مراجعة القلب للتأكيد</span></h3>
+<div class="expl">
+<div class="ar">📘 مع الظروف المنفية في البداية نقلب.<br>مثال: Never have I seen,<br>Not until later did he realize (يدرك),<br>Little did she know.<br>يؤكد أثر الظرف.</div>
+<div class="en">📗 Explication claire : Fronted negatives trigger inversion: Never have I...</div>
+</div>
+<div class="formula">negative adverbial + auxiliary + subject + verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Little did she know what awaited her.</td><td class="ar-c">ما كانت تدري بما ينتظرها.</td><td class="pron-c">«ليتل ديد شي نو وات اوايتد هور»</td></tr><tr><td class="en-c">Not until the end did he understand.</td><td class="ar-c">لم يفهم إلا في النهاية.</td><td class="pron-c">«نوت انتيل ذا إند ديد هي أندرساند»</td></tr><tr><td class="en-c">No sooner had we arrived than it stopped.</td><td class="ar-c">ما كدنا نصل حتى توقف المطر.</td><td class="pron-c">«نو سونر هاد وي أرايفد ذان إت ستوبت»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Emphasis with 'what' cleft (revision) — <span class="ar">التأكيد بالجملة المشقوقة (مراجعة)</span></h3>
+<div class="expl">
+<div class="ar">📘 تذكير: what + focus is .<br>.<br>.<br>للتأكيد.<br>مثال: What matters (يهم) is the result (النتيجة),<br>What he lacked (افتقر) was confidence (الثقة).</div>
+<div class="en">📗 Explication claire : What-cleft for emphasis: What matters is...</div>
+</div>
+<div class="formula">What + clause + be + focus</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">What matters most is your health.</td><td class="ar-c">ما يهم أكثر هو صحتك.</td><td class="pron-c">«وات ماترز ماوست إيز يور هيلث»</td></tr><tr><td class="en-c">What we need is a fresh start.</td><td class="ar-c">ما نحتاجه هو بداية جديدة.</td><td class="pron-c">«وات وي نيد إيز آ فراش ستار»</td></tr><tr><td class="en-c">What amazed me was her courage.</td><td class="ar-c">ما أذهلني هو شجاعتها.</td><td class="pron-c">«وات امازاد مي واز هور كاورايج»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Review 6: practice with emphasis: do/does/did and fronting — <span class="ar">مراجعة 6: التدريب على Emphasis: do/does/did and Fronting</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Emphasis: do/does/did and Fronting في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Emphasis: do/does/did and Fronting in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Emphasis: do/does/did and Fronting + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use emphasis: do/does/did and fronting in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز امفازيز دو داز ديد آند فرونتينغ إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply emphasis: do/does/did and fronting correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي امفازيز دو داز ديد آند فرونتينغ كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Review 7: practice with emphasis: do/does/did and fronting — <span class="ar">مراجعة 7: التدريب على Emphasis: do/does/did and Fronting</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Emphasis: do/does/did and Fronting في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Emphasis: do/does/did and Fronting in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Emphasis: do/does/did and Fronting + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use emphasis: do/does/did and fronting in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز امفازيز دو داز ديد آند فرونتينغ إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply emphasis: do/does/did and fronting correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي امفازيز دو داز ديد آند فرونتينغ كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>Review 8: practice with emphasis: do/does/did and fronting — <span class="ar">مراجعة 8: التدريب على Emphasis: do/does/did and Fronting</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Emphasis: do/does/did and Fronting في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Emphasis: do/does/did and Fronting in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Emphasis: do/does/did and Fronting + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use emphasis: do/does/did and fronting in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز امفازيز دو داز ديد آند فرونتينغ إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply emphasis: do/does/did and fronting correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي امفازيز دو داز ديد آند فرونتينغ كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Review 9: practice with emphasis: do/does/did and fronting — <span class="ar">مراجعة 9: التدريب على Emphasis: do/does/did and Fronting</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Emphasis: do/does/did and Fronting في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Emphasis: do/does/did and Fronting in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Emphasis: do/does/did and Fronting + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use emphasis: do/does/did and fronting in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز امفازيز دو داز ديد آند فرونتينغ إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply emphasis: do/does/did and fronting correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي امفازيز دو داز ديد آند فرونتينغ كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Review 10: practice with emphasis: do/does/did and fronting — <span class="ar">مراجعة 10: التدريب على Emphasis: do/does/did and Fronting</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Emphasis: do/does/did and Fronting في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Emphasis: do/does/did and Fronting in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Emphasis: do/does/did and Fronting + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use emphasis: do/does/did and fronting in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز امفازيز دو داز ديد آند فرونتينغ إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply emphasis: do/does/did and fronting correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي امفازيز دو داز ديد آند فرونتينغ كوراكتلي»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%2077.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2079.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

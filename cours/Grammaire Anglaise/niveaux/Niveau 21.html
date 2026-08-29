@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 21</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%2020.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2022.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%2020.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2022.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 21 — Like, Love, Hate + -ing</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">أحب / أحب كثيراً / أكره + فعل (ing)</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Like + -ing</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 21</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Like + -ing</span> <span class="ar">— أحب + الفعل بصيغة ing</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. Like + verb-ing</a><a href="#idea-2">2. Love + verb-ing (strong like)</a><a href="#idea-3">3. Hate + verb-ing (dislike)</a><a href="#idea-4">4. Don't like / doesn't like + verb-ing</a><a href="#idea-5">5. Hobbies: swimming, reading, hiking...</a><a href="#idea-6">6. Prefer + verb-ing</a><a href="#idea-7">7. Enjoy + verb-ing</a><a href="#idea-8">8. Would like / Would love + to + verb</a><a href="#idea-9">9. Key verbs with -ing: finish, start, stop</a><a href="#idea-10">10. What do you like doing?</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>Like + verb-ing — <span class="ar">like + فعل بـ ing</span></h3>
+<div class="expl">
+<div class="ar">📘 عندما نحب فعل شيء نقول: like + فعل-ing.<br>مثال: I like reading (أحب القراءة),<br>She likes cooking (تحب الطبخ).<br>مع he/she نضيف s للفعل like: likes.</div>
+<div class="en">📗 Explication claire : To talk about things you enjoy: like + verb-ing. With he/she/it use 'likes'.</div>
+</div>
+<div class="formula">subject + like/likes + verb-ing</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I like reading the Quran.</td><td class="ar-c">أحب قراءة القرآن.</td><td class="pron-c">«آي لايك ريدينغ ذا قرآن»</td></tr><tr><td class="en-c">She likes listening to music.</td><td class="ar-c">تحب الاستماع إلى الموسيقى.</td><td class="pron-c">«شي لايكس ليسنينغ تو ميوزيك»</td></tr><tr><td class="en-c">We like watching documentaries.</td><td class="ar-c">نحب مشاهدة الوثائقيات.</td><td class="pron-c">«وي لايك ووتشينغ دوكيومنتيريز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Love + verb-ing (strong like) — <span class="ar">love + فعل بـ ing (حب شديد)</span></h3>
+<div class="expl">
+<div class="ar">📘 love (أحب كثيراً) أقوى من like (أحب): I love swimming (أحب السباحة),<br>He loves football (يحب كرة القدم).<br>نستعملها مع الأنشطة التي تمنحنا فرحاً كبيراً.</div>
+<div class="en">📗 Explication claire : 'Love' is a stronger like. Use it with -ing: I love swimming.</div>
+</div>
+<div class="formula">subject + love/loves + verb-ing</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I love swimming in summer.</td><td class="ar-c">أحب السباحة كثيراً في الصيف.</td><td class="pron-c">«آي لاف سويمينغ إين سامير»</td></tr><tr><td class="en-c">He loves playing chess.</td><td class="ar-c">يحب لعب الشطرنج كثيراً.</td><td class="pron-c">«هي لافز بلايينغ تشيس»</td></tr><tr><td class="en-c">Kids love eating ice cream.</td><td class="ar-c">يحب الأطفال أكل المثلجات.</td><td class="pron-c">«كيدز لاف إيتينغ آيس كريم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Hate + verb-ing (dislike) — <span class="ar">hate + فعل بـ ing (كره)</span></h3>
+<div class="expl">
+<div class="ar">📘 hate (أكره) تعبر عن الكره: I hate getting up early (أكره الاستيقاظ مبكراً).<br>بين don't like (لا أحب) و hate (أكره) فرق في الشدة.</div>
+<div class="en">📗 Explication claire : 'Hate' expresses strong dislike: I hate getting up early.</div>
+</div>
+<div class="formula">subject + hate/hates + verb-ing</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I hate waiting in long queues.</td><td class="ar-c">أكره الانتظار في الطوابير الطويلة.</td><td class="pron-c">«آي هيت ويتينغ إين لونغ كيو»</td></tr><tr><td class="en-c">He hates doing the dishes.</td><td class="ar-c">يكره غسل الأطباق.</td><td class="pron-c">«هي هيتس دوينغ ذا دشيز»</td></tr><tr><td class="en-c">My sister hates getting up at dawn.</td><td class="ar-c">أختي تكره الاستيقاظ فجرا.</td><td class="pron-c">«ماي سيستير هيتس غيتينغ آب آت دون»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Don't like / doesn't like + verb-ing — <span class="ar">لا أحب / لا يحب + فعل بـ ing</span></h3>
+<div class="expl">
+<div class="ar">📘 للنفي: don't like مع I/you/we/they و doesn't like مع he/she/it: I don't like shopping (لا أحب التسوق),<br>He doesn't like walking (لا يحب المشي).</div>
+<div class="en">📗 Explication claire : Negative: don't like / doesn't like + verb-ing.</div>
+</div>
+<div class="formula">subject + don't/doesn't like + verb-ing</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I don't like eating very spicy food.</td><td class="ar-c">لا أحب أكل الطعام الحار جدا.</td><td class="pron-c">«آي دونت لايك إيتينغ فيري سبايسي فود»</td></tr><tr><td class="en-c">She doesn't like going out at night.</td><td class="ar-c">لا تحب الخروج ليلا.</td><td class="pron-c">«شي دازنت لايك غوينغ آوت آت نايت»</td></tr><tr><td class="en-c">They don't like playing video games.</td><td class="ar-c">لا يحبون ألعاب الفيديو.</td><td class="pron-c">«ذاي دونت لايك بلايينغ فيديو غيمز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Hobbies: swimming, reading, hiking... — <span class="ar">الهوايات: السباحة، القراءة، المشي...</span></h3>
+<div class="expl">
+<div class="ar">📘 للتعبير عن هواية أضف ing للفعل: swim→swimming,<br>read→reading,<br>walk→walking,<br>paint→painting,<br>travel→travelling,<br>cook→cooking,<br>play→playing.</div>
+<div class="en">📗 Explication claire : For hobbies add -ing: reading, swimming, painting, cooking.</div>
+</div>
+<div class="formula">hobby = verb-ing (swimming, reading...)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">My hobby is drawing.</td><td class="ar-c">هوايتي هي الرسم.</td><td class="pron-c">«ماي هوبي إيز دراينغ»</td></tr><tr><td class="en-c">I enjoy playing football.</td><td class="ar-c">أستمتع بلعب كرة القدم.</td><td class="pron-c">«آي إنجوي بلايينغ فوتبول»</td></tr><tr><td class="en-c">She likes painting on Sundays.</td><td class="ar-c">تحب الرسم يوم الأحد.</td><td class="pron-c">«شي لايكس بينتينغ أون صنديز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Prefer + verb-ing — <span class="ar">prefer + فعل بـ ing (أفضّل)</span></h3>
+<div class="expl">
+<div class="ar">📘 prefer (أفضّل) تعبر عن الاختيار: I prefer drinking tea (أفضل شرب الشاي).<br>نستعملها لمقارنة اختياراتنا.</div>
+<div class="en">📗 Explication claire : 'Prefer' shows a choice: I prefer drinking tea to coffee.</div>
+</div>
+<div class="formula">subject + prefer/prefers + verb-ing</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I prefer reading to watching TV.</td><td class="ar-c">أفضل القراءة على مشاهدة التلفاز.</td><td class="pron-c">«آي بريفير ريدينغ تو ووتشينغ تي في»</td></tr><tr><td class="en-c">She prefers travelling by train.</td><td class="ar-c">تفضل السفر بالقطار.</td><td class="pron-c">«شي بريفيرز ترافلينغ باي ترين»</td></tr><tr><td class="en-c">We prefer eating at home.</td><td class="ar-c">نفضل الأكل في المنزل.</td><td class="pron-c">«وي بريفير إيتينغ آت هوم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Enjoy + verb-ing — <span class="ar">enjoy + فعل بـ ing (أستمتع)</span></h3>
+<div class="expl">
+<div class="ar">📘 enjoy (أستمتع بـ) تأتي قبل الفعل بـ ing أيضاً: I enjoy cooking (أستمتع بالطبخ),<br>We enjoy playing (نستمتع باللعب).<br>لا نقول enjoy to cook لذلك احفظ: enjoy + ing.</div>
+<div class="en">📗 Explication claire : 'Enjoy' always takes verb-ing: I enjoy cooking. Not 'enjoy to cook'.</div>
+</div>
+<div class="formula">subject + enjoy/enjoys + verb-ing</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I enjoy planting vegetables.</td><td class="ar-c">أستمتع بزرع الخضار.</td><td class="pron-c">«آي إنجوي بلانتينغ فجيتبلز»</td></tr><tr><td class="en-c">He enjoys solving puzzles.</td><td class="ar-c">يستمتع بحل الألغاز.</td><td class="pron-c">«هي أنجويز سولفينغ بازلز»</td></tr><tr><td class="en-c">We enjoy spending time with family.</td><td class="ar-c">نستمتع بقضاء الوقت مع العائلة.</td><td class="pron-c">«وي إنجوي سبندينغ تايم ويذ فاميلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>Would like / Would love + to + verb — <span class="ar">would like / would love + to + فعل</span></h3>
+<div class="expl">
+<div class="ar">📘 للرغبة المؤدبة نستعمل would like + to + فعل: I would like to travel (أود السفر).<br>هذه ليست like + ing بل قاعدة مختلفة.</div>
+<div class="en">📗 Explication claire : For polite wishes: would like + to + verb. I would like to travel.</div>
+</div>
+<div class="formula">subject + would like/love + to + base verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I would like to visit Makkah.</td><td class="ar-c">أود زيارة مكة.</td><td class="pron-c">«آي وود لايك تو فيزيت مكة»</td></tr><tr><td class="en-c">She would love to learn English.</td><td class="ar-c">تحب أن تتعلم الإنجليزية (ستسعد بذلك).</td><td class="pron-c">«شي وود لاف تو ليرن إينغليش»</td></tr><tr><td class="en-c">We would like to stay here.</td><td class="ar-c">نود البقاء هنا.</td><td class="pron-c">«وي وود لايك تو ستاي هير»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Key verbs with -ing: finish, start, stop — <span class="ar">أفعال تأخذ ing: finish, start, stop</span></h3>
+<div class="expl">
+<div class="ar">📘 بعض الأفعال تأتي بعدها فعل -ing دائماً: finish (ينهي),<br>start (يبدأ),<br>stop (يتوقف),<br>keep (يستمر): stop talking (توقف عن الكلام),<br>start working (ابدأ العمل).</div>
+<div class="en">📗 Explication claire : Some verbs take -ing after them: finish, start, stop, keep.</div>
+</div>
+<div class="formula">start/stop/finish/keep + verb-ing</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Stop talking, please.</td><td class="ar-c">توقف عن الكلام من فضلك.</td><td class="pron-c">«ستوب توكينغ بليز»</td></tr><tr><td class="en-c">I finished doing my homework.</td><td class="ar-c">أنهيت واجبي.</td><td class="pron-c">«آي فينيشد دوينغ ماي هوموورك»</td></tr><tr><td class="en-c">She started crying.</td><td class="ar-c">بدأت تبكي.</td><td class="pron-c">«شي ستارتد كرايينغ»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>What do you like doing? — <span class="ar">ماذا تحب أن تفعل؟</span></h3>
+<div class="expl">
+<div class="ar">📘 سؤال شائع: What do you like doing?<br>(ماذا تحب أن تفعل؟) أو What is your hobby?<br>(ما هي هوايتك؟).<br>الجواب: I like.<br>.<br>.<br>+ ing,<br>ورد بالمثل: And you?<br>(وأنت؟)</div>
+<div class="en">📗 Explication claire : Question: What do you like doing? Answer: I like + verb-ing.</div>
+</div>
+<div class="formula">What do you like doing? → I like + -ing.</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">What do you like doing in your free time?</td><td class="ar-c">ماذا تحب أن تفعل في وقت فراغك؟</td><td class="pron-c">«وات دو يو لايك دوينغ إين يور فري تايم»</td></tr><tr><td class="en-c">I like playing with my friends.</td><td class="ar-c">أحب اللعب مع أصدقائي.</td><td class="pron-c">«آي لايك بلايينغ ويذ ماي فريندز»</td></tr><tr><td class="en-c">What does your brother like doing?</td><td class="ar-c">ماذا يحب أخوك أن يفعل؟</td><td class="pron-c">«وات داز يور براذر لايك دوينغ»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%2020.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2022.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

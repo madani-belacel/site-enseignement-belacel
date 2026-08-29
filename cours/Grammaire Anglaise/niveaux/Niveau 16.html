@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 16</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%2015.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2017.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%2015.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2017.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 16 — Adverbs of Frequency: always, usually, sometimes, never</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">ظروف التكرار</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Adverbs of Frequency</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 16</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Adverbs of Frequency</span> <span class="ar">— ظروف التكرار</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. What are adverbs of frequency?</a><a href="#idea-2">2. Position: before the verb</a><a href="#idea-3">3. Always = 100%</a><a href="#idea-4">4. Usually = most of the time</a><a href="#idea-5">5. Sometimes = 50%</a><a href="#idea-6">6. Never = 0%</a><a href="#idea-7">7. Rarely / hardly ever</a><a href="#idea-8">8. Frequency with the verb 'to be'</a><a href="#idea-9">9. Questions about frequency: How often...?</a><a href="#idea-10">10. Combine with daily routines</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>What are adverbs of frequency? — <span class="ar">ما هي ظروف التكرار؟</span></h3>
+<div class="expl">
+<div class="ar">📘 ظروف التكرار تخبرنا كم مرة يحدث الفعل: always (دائماً),<br>usually (عادة),<br>often (غالباً),<br>sometimes (أحياناً),<br>rarely/seldom (نادراً),<br>never (أبداً).</div>
+<div class="en">📗 Explication claire : Adverbs of frequency tell how often something happens: always, usually, often, sometimes, rarely, never.</div>
+</div>
+<div class="formula">always → usually → often → sometimes → rarely → never</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I always wake up early.</td><td class="ar-c">أستيقظ مبكرا دائما.</td><td class="pron-c">«آي أولويز ويك آب إيرلي»</td></tr><tr><td class="en-c">She sometimes takes the bus.</td><td class="ar-c">تأخذ الحافلة أحيانا.</td><td class="pron-c">«شي سامتايمز تيكس ذا باس»</td></tr><tr><td class="en-c">They never lie.</td><td class="ar-c">لا يكذبون أبدا.</td><td class="pron-c">«ذاي نيفير لاي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Position: before the verb — <span class="ar">المكان: قبل الفعل</span></h3>
+<div class="expl">
+<div class="ar">📘 نضع ظرف التكرار قبل الفعل الرئيسي: I always pray (أصلي دائماً),<br>He usually walks (يمشي عادة),<br>They never fight (لا يتشاجرون أبداً).<br>لكن بعد فعل be: I am always on time (أنا دائماً في الموعد).</div>
+<div class="en">📗 Explication claire : Adverb before main verb: I always pray. After 'be': I am always on time.</div>
+</div>
+<div class="formula">subject + adverb + verb | subject + be + adverb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">We always eat together.</td><td class="ar-c">نأكل معا دائما.</td><td class="pron-c">«وي أولويز إيت توغيتير»</td></tr><tr><td class="en-c">He usually goes to bed early.</td><td class="ar-c">ينام مبكرا عادة.</td><td class="pron-c">«هي يوجوالي غوز تو باد إيرلي»</td></tr><tr><td class="en-c">She is never late.</td><td class="ar-c">لا تتأخر أبدا.</td><td class="pron-c">«شي إيز نيفير ليت»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Always = 100% — <span class="ar">Always = 100%</span></h3>
+<div class="expl">
+<div class="ar">📘 Always تدل على عمل يحدث بدون استثناء: always (دائماً).<br>مثال: The sun always rises in the east (تشرق الشمس دائماً من الشرق).</div>
+<div class="en">📗 Explication claire : Always = every time, 100%. The sun always rises in the east.</div>
+</div>
+<div class="formula">always + verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I always brush my teeth.</td><td class="ar-c">أنظف أسناني دائما.</td><td class="pron-c">«آي أولويز براش ماي تيث»</td></tr><tr><td class="en-c">He always says 'please'.</td><td class="ar-c">يقول من فضلك دائما.</td><td class="pron-c">«هي أولويز سيز بليز»</td></tr><tr><td class="en-c">They always help each other.</td><td class="ar-c">يساعدون بعضهم دائما.</td><td class="pron-c">«ذاي أولويز هيلب إيتش أذير»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Usually = most of the time — <span class="ar">Usually = في أغلب الأحيان</span></h3>
+<div class="expl">
+<div class="ar">📘 Usually تدل على أغلب الوقت مع احتمال استثناء: usually (عادة).<br>مثال: We usually have couscous on Friday (نتناول عادة الكسكس يوم الجمعة).</div>
+<div class="en">📗 Explication claire : Usually = most of the time, with some exceptions.</div>
+</div>
+<div class="formula">usually + verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I usually drink tea in the morning.</td><td class="ar-c">أشرب الشاي عادة في الصباح.</td><td class="pron-c">«آي يوجوالي درينك تي إين ذا مورنينغ»</td></tr><tr><td class="en-c">She usually walks to work.</td><td class="ar-c">تمشي عادة إلى العمل.</td><td class="pron-c">«شي يوجوالي ووكس تو وورك»</td></tr><tr><td class="en-c">They usually sleep early on weekdays.</td><td class="ar-c">ينامون مبكرا عادة في أيام الأسبوع.</td><td class="pron-c">«ذاي يوجوالي سليب إيرلي أون ويكدايز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Sometimes = 50% — <span class="ar">Sometimes = أحياناً</span></h3>
+<div class="expl">
+<div class="ar">📘 Sometimes (أحياناً) تعني في منتصف التردد: نصف الأوقات.<br>يمكن وضعها في البداية أو النهاية أيضاً: Sometimes I read (أحياناً أقرأ).<br>أو I read sometimes (أقرأ أحياناً).</div>
+<div class="en">📗 Explication claire : Sometimes = half of the time. It can go at the start, middle or end.</div>
+</div>
+<div class="formula">sometimes + verb | Sometimes, + sentence</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Sometimes we visit our family.</td><td class="ar-c">أحيانا نزور عائلتنا.</td><td class="pron-c">«سامتايمز وي فيزيت آور فاميلي»</td></tr><tr><td class="en-c">I sometimes eat sweets.</td><td class="ar-c">آكل الحلويات أحيانا.</td><td class="pron-c">«آي سامتايمز إيت سويتس»</td></tr><tr><td class="en-c">He goes jogging sometimes.</td><td class="ar-c">يركض أحيانا.</td><td class="pron-c">«هي غوز جوغينغ سامتايمز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Never = 0% — <span class="ar">Never = أبداً</span></h3>
+<div class="expl">
+<div class="ar">📘 Never تعني صفر بالمئة: لا يحدث أبداً.<br>الجملة تبقى مثبتة الشكل لكن المعنى نفي: I never eat pork (لا آكل لحم الخنزير أبداً).</div>
+<div class="en">📗 Explication claire : Never = 0%. The sentence looks positive but means negative.</div>
+</div>
+<div class="formula">never + verb (no don't needed)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I never skip prayers.</td><td class="ar-c">لا أتخلى عن الصلاة أبدا.</td><td class="pron-c">«آي نيفير سكيب برييرز»</td></tr><tr><td class="en-c">She never borrows money.</td><td class="ar-c">لا تقترض المال أبدا.</td><td class="pron-c">«شي نيفير بوروز ماني»</td></tr><tr><td class="en-c">They never watch horror films.</td><td class="ar-c">لا يشاهدون أفلام الرعب أبدا.</td><td class="pron-c">«ذاي نيفير ووتش هورر فيلمز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Rarely / hardly ever — <span class="ar">Rarely / hardly ever = نادراً</span></h3>
+<div class="expl">
+<div class="ar">📘 Rarely و hardly ever (نادراً ما) تجمعان بين القليل جداً: I rarely travel (نادراً ما أسافر),<br>We hardly ever eat fast food (نادراً جداً ما نأكل الوجبات السريعة).</div>
+<div class="en">📗 Explication claire : Rarely and hardly ever mean almost never.</div>
+</div>
+<div class="formula">rarely/hardly ever + verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I rarely watch TV.</td><td class="ar-c">نادرا ما أشاهد التلفاز.</td><td class="pron-c">«آي ريرلي ووتش تي في»</td></tr><tr><td class="en-c">He rarely gets angry.</td><td class="ar-c">نادرا ما يغضب.</td><td class="pron-c">«هي ريرلي غيتس أنجري»</td></tr><tr><td class="en-c">We hardly ever miss school.</td><td class="ar-c">نادرا ما نتغيب عن المدرسة.</td><td class="pron-c">«وي هار دلي إفر ميس سكول»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>Frequency with the verb 'to be' — <span class="ar">التردد مع فعل الكينونة</span></h3>
+<div class="expl">
+<div class="ar">📘 مع am/is/are يأتي الظرف بعده مباشرة: I am always kind (أنا دائماً لطيف),<br>He is usually tired (هو متعب عادة),<br>They are never wrong (هم لا يخطئون أبداً).<br>انتبه للترتيب المعاكس.</div>
+<div class="en">📗 Explication claire : With be, the adverb comes after: I am always kind.</div>
+</div>
+<div class="formula">subject + am/is/are + adverb + adjective/noun</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I am always on time.</td><td class="ar-c">أنا دائما في الموعد.</td><td class="pron-c">«آي آم أولويز أون تايم»</td></tr><tr><td class="en-c">She is sometimes sad.</td><td class="ar-c">هي حزينة أحيانا.</td><td class="pron-c">«شي إيز سامتايمز ساد»</td></tr><tr><td class="en-c">We are never bored in class.</td><td class="ar-c">لا نمل أبدا في القسم.</td><td class="pron-c">«وي آر نيفير بورد إين كلاس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Questions about frequency: How often...? — <span class="ar">السؤال: How often...?</span></h3>
+<div class="expl">
+<div class="ar">📘 للسؤال عن التردد: How often do you.<br>.<br>.<br>?<br>(كم مرة تفعل؟) الجواب بظرف تكرار أو عدد من المرات: twice a week (مرتين في الأسبوع),<br>every day (كل يوم).</div>
+<div class="en">📗 Explication claire : Ask: How often do you...? Answer with a frequency adverb or 'twice a week'.</div>
+</div>
+<div class="formula">How often + do/does + subject + verb?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">How often do you visit your uncle?</td><td class="ar-c">كم مرة تزور عمك؟</td><td class="pron-c">«هاو أوفن دو يو فيزيت يور أنكل»</td></tr><tr><td class="en-c">Once a month.</td><td class="ar-c">مرة في الشهر.</td><td class="pron-c">«وانس آ مانث»</td></tr><tr><td class="en-c">How often does he travel? Rarely.</td><td class="ar-c">كم مرة يسافر؟ نادرا.</td><td class="pron-c">«هاو أوفن داز هي ترافل ريرلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Combine with daily routines — <span class="ar">ادمج مع الروتين اليومي</span></h3>
+<div class="expl">
+<div class="ar">📘 اجعل جولتك اليومية: I always get up at six (أستيقظ دائماً في السادسة),<br>I usually have bread and milk (أتناول عادة خبزاً وحليباً),<br>I never miss Fajr (لا أفوت الفجر أبداً),<br>I sometimes play football after school (ألعب كرة القدم أحياناً بعد المدرسة),<br>I rarely stay up late (نادراً ما أسهر متأخراً).</div>
+<div class="en">📗 Explication claire : Combine: always get up, usually eat, never miss, sometimes play, rarely stay up.</div>
+</div>
+<div class="formula">daily routine + frequency adverb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I always make my bed.</td><td class="ar-c">أرتب سريري دائما.</td><td class="pron-c">«آي أولويز مايك ماي باد»</td></tr><tr><td class="en-c">We usually pray Taraweeh in Ramadan.</td><td class="ar-c">نصلي التراويح عادة في رمضان.</td><td class="pron-c">«وي يوجوالي بري تراويح إين رمضان»</td></tr><tr><td class="en-c">I never forget my homework.</td><td class="ar-c">لا أنسى واجبي أبدا.</td><td class="pron-c">«آي نيفير فورغيت ماي هوموورك»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%2015.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2017.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

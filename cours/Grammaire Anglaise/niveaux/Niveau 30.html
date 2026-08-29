@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 30</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%2029.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2031.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%2029.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2031.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 30 — Future with 'be going to'</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">المستقبل القريب: going to</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Future: Going To</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 30</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Future: Going To</span> <span class="ar">— المستقبل: going to</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. Be going to + base verb</a><a href="#idea-2">2. Plans already made</a><a href="#idea-3">3. Predictions with evidence</a><a href="#idea-4">4. Negative: am not / isn't / aren't going to</a><a href="#idea-5">5. Questions: Are you going to...?</a><a href="#idea-6">6. Short answers</a><a href="#idea-7">7. Going to vs will (preview)</a><a href="#idea-8">8. Going to with time expressions</a><a href="#idea-9">9. Talk about intentions</a><a href="#idea-10">10. Going to vs present continuous (arrangements)</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>Be going to + base verb — <span class="ar">be going to + فعل أصلي</span></h3>
+<div class="expl">
+<div class="ar">📘 نعبّر عن المستقبل بـ be going to + فعل: I am going to study (سأدرس),<br>She is going to travel (ستسافر).<br>نقصد قراراً أو خطة مسبقة.</div>
+<div class="en">📗 Explication claire : Future plans/decisions: be going to + base verb.</div>
+</div>
+<div class="formula">subject + am/is/are + going to + base verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I am going to visit my grandparents.</td><td class="ar-c">سأزور أجدادي.</td><td class="pron-c">«آي آم غوينغ تو فيزيت ماي غراندبارنتس»</td></tr><tr><td class="en-c">She is going to buy a new dress.</td><td class="ar-c">ستشتري فستانا جديدا.</td><td class="pron-c">«شي إيز غوينغ تو باي آ نيو دريس»</td></tr><tr><td class="en-c">We are going to watch a match tonight.</td><td class="ar-c">سنشاهد مباراة الليلة.</td><td class="pron-c">«وي آر غوينغ تو ووتش آ ماتش تونات»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Plans already made — <span class="ar">خطط مقررة مسبقاً</span></h3>
+<div class="expl">
+<div class="ar">📘 going to يستعمل للخطط التي اتخذناها قبل الكلام: I'm going to study medicine (قررت ذلك منذ مدة).<br>ليست قراراً لحظياً.</div>
+<div class="en">📗 Explication claire : Use 'going to' for plans made before speaking: decisions already taken.</div>
+</div>
+<div class="formula">I have decided → I'm going to + verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">He is going to be a doctor.</td><td class="ar-c">سيصبح طبيبا.</td><td class="pron-c">«هي إيز غوينغ تو بي آ داكتور»</td></tr><tr><td class="en-c">We are going to move to a new house.</td><td class="ar-c">سننتقل إلى بيت جديد.</td><td class="pron-c">«وي آر غوينغ تو موف تو آ نيو هاوس»</td></tr><tr><td class="en-c">They are going to start a business.</td><td class="ar-c">سيؤسسون شركة.</td><td class="pron-c">«ذاي آر غوينغ تو ستار آ بيزنس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Predictions with evidence — <span class="ar">توقعات مع دليل</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل going to للتوقع الذي نرى دليله الآن: Look at the clouds!<br>It is going to rain (انظر للسحب! ستمطر).<br>السحب دليل.</div>
+<div class="en">📗 Explication claire : Going to for predictions we can see: Look at the clouds! It's going to rain.</div>
+</div>
+<div class="formula">evidence → be going to + verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Look! He is going to fall.</td><td class="ar-c">انظر! على وشك السقوط.</td><td class="pron-c">«لوك هي إيز غوينغ تو فول»</td></tr><tr><td class="en-c">The sky is dark. It's going to storm.</td><td class="ar-c">السماء معتمة. ستهب عاصفة.</td><td class="pron-c">«ذا سكاي إيز دارك إيتس غوينغ تو ستورم»</td></tr><tr><td class="en-c">She is going to win; she is so fast.</td><td class="ar-c">ستفوز؛ إنها سريعة جدا.</td><td class="pron-c">«شي إيز غوينغ تو وين شي إيز سو فاست»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Negative: am not / isn't / aren't going to — <span class="ar">النفي: لن</span></h3>
+<div class="expl">
+<div class="ar">📘 النفي بإضافة not بعد be: I'm not going to come (لن آتي),<br>It isn't going to snow (لن تثلج),<br>They aren't going to play (لن يلعبوا).</div>
+<div class="en">📗 Explication claire : Negative: be + not + going to + verb.</div>
+</div>
+<div class="formula">subject + be + not + going to + base verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I am not going to watch that film.</td><td class="ar-c">لن أشاهد ذلك الفيلم.</td><td class="pron-c">«آي آم نوت غوينغ تو ووتش ذات فيلم»</td></tr><tr><td class="en-c">He isn't going to accept the offer.</td><td class="ar-c">لن يقبل العرض.</td><td class="pron-c">«هي إيزنت غوينغ تو أكسابت ذا أوفير»</td></tr><tr><td class="en-c">We aren't going to give up.</td><td class="ar-c">لن نستسلم.</td><td class="pron-c">«وي آرنت غوينغ تو غيف آب»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Questions: Are you going to...? — <span class="ar">السؤال: هل ستفعل؟</span></h3>
+<div class="expl">
+<div class="ar">📘 نبدأ بفعل الكينونة: Are you going to come?<br>(هل ستأتي؟),<br>Is she going to travel?<br>(هل ستسافر؟),<br>What are you going to do?<br>(ماذا ستفعل؟).</div>
+<div class="en">📗 Explication claire : Question: be + subject + going to + verb?</div>
+</div>
+<div class="formula">Am/Is/Are + subject + going to + base verb?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Are you going to attend the meeting?</td><td class="ar-c">هل ستحضر الاجتماع؟</td><td class="pron-c">«آر يو غوينغ تو أتند ذا ميتينغ»</td></tr><tr><td class="en-c">Is he going to come with us?</td><td class="ar-c">هل سيأتي معنا؟</td><td class="pron-c">«إيز هي غوينغ تو كام ويذ آس»</td></tr><tr><td class="en-c">What are you going to do this summer?</td><td class="ar-c">ماذا ستفعل هذا الصيف؟</td><td class="pron-c">«وات آر يو غوينغ تو دو ذيس سامير»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Short answers — <span class="ar">الأجوبة القصيرة</span></h3>
+<div class="expl">
+<div class="ar">📘 نجيب: Yes,<br>I am.<br>/ No,<br>I'm not.<br>/ Yes,<br>she is.<br>/ No,<br>they aren't.<br>نكرر فعل الكينونة وليس going to.</div>
+<div class="en">📗 Explication claire : Short answers: Yes, I am. No, I'm not. Yes, she is. No, they aren't.</div>
+</div>
+<div class="formula">Yes/No + pronoun + be (or be+n't)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Are you going to help? Yes, I am.</td><td class="ar-c">هل ستساعد؟ نعم.</td><td class="pron-c">«آر يو غوينغ تو هيلب ييس آي آم»</td></tr><tr><td class="en-c">Is he going to join? No, he isn't.</td><td class="ar-c">هل سينضم؟ لا.</td><td class="pron-c">«إيز هي غوينغ تو جوين نو هي إيزنت»</td></tr><tr><td class="en-c">Are they going to wait? Yes, they are.</td><td class="ar-c">هل سينتظرون؟ نعم.</td><td class="pron-c">«آر ذاي غوينغ تو ويت ييس ذاي آر»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Going to vs will (preview) — <span class="ar">لمحة: going to مقابل will</span></h3>
+<div class="expl">
+<div class="ar">📘 going to للخطط المقررة والتوقع بدليل,<br>بينما will للقرارات اللحظية والوعود والتنبؤ العام.<br>قارن: I'm going to travel (خطة: سأسافر) مقابل Okay,<br>I'll help you (قرار لحظي: حسناً, سأساعدك).</div>
+<div class="en">📗 Explication claire : Going to: plans/evidence. Will: sudden decisions, promises, general predictions.</div>
+</div>
+<div class="formula">plan → going to | sudden decision → will</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I'm going to travel next month.</td><td class="ar-c">سأسافر الشهر القادم (خطة).</td><td class="pron-c">«آيم غوينغ تو ترافل نايكست مانث»</td></tr><tr><td class="en-c">Don't worry, I'll help you.</td><td class="ar-c">لا تقلق، سأساعدك (قرار لحظي).</td><td class="pron-c">«دونت ووري آيل هيلب يو»</td></tr><tr><td class="en-c">It's going to be a lovely day.</td><td class="ar-c">سيكون يوما جميلا (توقع).</td><td class="pron-c">«إيتس غوينغ تو بي آ لافلي داي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>Going to with time expressions — <span class="ar">going to مع تعبيرات الزمن</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل معها: tomorrow (غداً),<br>next week (الأسبوع القادم),<br>next summer (الصيف القادم),<br>tonight (الليلة),<br>in the future (في المستقبل).<br>مثال: I'm going to start a course next week (سأبدأ دورة الأسبوع القادم).</div>
+<div class="en">📗 Explication claire : With future times: tomorrow, next week, tonight, next summer.</div>
+</div>
+<div class="formula">be going to + verb + future time</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">We are going to visit the museum tomorrow.</td><td class="ar-c">سنزور المتحف غدا.</td><td class="pron-c">«وي آر غوينغ تو فيزيت ذا ميوزيوم تومورو»</td></tr><tr><td class="en-c">I'm going to learn cooking next month.</td><td class="ar-c">سأتعلم الطبخ الشهر القادم.</td><td class="pron-c">«آيم غوينغ تو ليرن كوكنغ نايكست مانث»</td></tr><tr><td class="en-c">They are going to plant trees this year.</td><td class="ar-c">سيغرسون الأشجار هذه السنة.</td><td class="pron-c">«ذاي آر غوينغ تو بلانت تريز ذيس يير»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Talk about intentions — <span class="ar">تحدث عن نواياك</span></h3>
+<div class="expl">
+<div class="ar">📘 اكتب ثلاث خطط: I'm going to.<br>.<br>.<br>(سوف...) وثلاث توقعات بدليل: Look!<br>(انظر!) .<br>.<br>.<br>is going to.<br>.<br>.<br>وثلاث نفي: I'm not going to.<br>.<br>.<br>هذا يغطي كل أشكال القاعدة.</div>
+<div class="en">📗 Explication claire : Make plans, predictions and negatives with going to.</div>
+</div>
+<div class="formula">plan: I'm going to... | evidence: ... is going to... | negative: I'm not going to...</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I'm going to memorize a new surah.</td><td class="ar-c">سأحفظ سورة جديدة.</td><td class="pron-c">«آيم غوينغ تو ميمورايز آ نيو سورة»</td></tr><tr><td class="en-c">Look at the sun! It's going to be hot.</td><td class="ar-c">انظر للشمس! سيكون الجو حارا.</td><td class="pron-c">«لوك آت ذا سان إيتس غوينغ تو بي هوت»</td></tr><tr><td class="en-c">I'm not going to waste my time.</td><td class="ar-c">لن أضيع وقتي.</td><td class="pron-c">«آيم نوت غوينغ تو ويست ماي تايم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Going to vs present continuous (arrangements) — <span class="ar">going to مقابل المضارع المستمر للتخطيط</span></h3>
+<div class="expl">
+<div class="ar">📘 كلاهما للمستقبل المقرر: العزم والنية: I'm going to study (قررت بنية),<br>ولقاءات مرتبة: I'm meeting the doctor at 5 (ترتيب بموعد) أو I'm going to meet him at 5 (سأقابله في الخامسة).<br>الفرق دقيق: المستمر يحسس بالترتيب الرسمي.</div>
+<div class="en">📗 Explication claire : Going to = intention. Present continuous = fixed arrangements.</div>
+</div>
+<div class="formula">going to + verb (intention) | be + verb-ing (arrangement)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I'm going to call him later.</td><td class="ar-c">سأتصل به لاحقا (نية).</td><td class="pron-c">«آيم غوينغ تو كول هيم ليتير»</td></tr><tr><td class="en-c">I'm seeing the dentist at four.</td><td class="ar-c">أرى طبيب الأسنان في الرابعة (موعد).</td><td class="pron-c">«آيم سينغ ذا دانتيست آت فور»</td></tr><tr><td class="en-c">We're going to start a course soon.</td><td class="ar-c">سنبدأ دورة قريبا.</td><td class="pron-c">«وير غوينغ تو ستار آ كورس سون»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%2029.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2031.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

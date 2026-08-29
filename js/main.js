@@ -6,19 +6,26 @@
 (function () {
   'use strict';
 
+  /* ── Helper: strip accents for search ── */
+  function stripAccents(s) {
+    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
   /* ── Theme Toggle ── */
-  const themeToggle = document.getElementById('theme-toggle');
-  const html = document.documentElement;
+  var themeToggle = document.getElementById('theme-toggle');
+  var html = document.documentElement;
 
   function getPreferredTheme() {
-    const stored = localStorage.getItem('theme');
-    if (stored) return stored;
+    try {
+      var stored = localStorage.getItem('theme');
+      if (stored) return stored;
+    } catch (e) {}
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
   function setTheme(theme) {
     html.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    try { localStorage.setItem('theme', theme); } catch (e) {}
     if (themeToggle) {
       themeToggle.textContent = theme === 'dark' ? '\u2600' : '\u263E';
       themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
@@ -27,18 +34,18 @@
 
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
-      const current = html.getAttribute('data-theme');
+      var current = html.getAttribute('data-theme');
       setTheme(current === 'dark' ? 'light' : 'dark');
     });
   }
   setTheme(getPreferredTheme());
 
   /* ── Mobile Nav Toggle ── */
-  const navToggle = document.getElementById('nav-toggle');
-  const navList = document.getElementById('nav-list');
+  var navToggle = document.getElementById('nav-toggle');
+  var navList = document.getElementById('nav-list');
   if (navToggle && navList) {
     navToggle.addEventListener('click', function () {
-      const isOpen = navList.classList.toggle('open');
+      var isOpen = navList.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', isOpen);
       navToggle.textContent = isOpen ? '\u2715' : '\u2630';
     });
@@ -56,12 +63,12 @@
   document.querySelectorAll('.nav-dropdown-toggle').forEach(function(toggle) {
     toggle.setAttribute('role', 'button');
     toggle.setAttribute('aria-haspopup', 'true');
-    // ensure aria-expanded reflects state
+    toggle.setAttribute('aria-expanded', 'false');
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      const parent = this.closest('.nav-dropdown');
-      const isOpen = parent.classList.toggle('open');
+      var parent = this.closest('.nav-dropdown');
+      var isOpen = parent.classList.toggle('open');
       this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   });
@@ -70,19 +77,16 @@
   (function setActiveNav() {
     function normalize(p) {
       if (!p) return 'index.html';
-      // strip query + hash
       p = p.split('?')[0].split('#')[0];
-      // if path ends with '/', it's index
       if (p.endsWith('/')) return 'index.html';
-      // return last segment
       var parts = p.split('/');
       var last = parts.pop() || parts.pop() || 'index.html';
       return last || 'index.html';
     }
 
-    const current = normalize(window.location.pathname);
+    var current = normalize(window.location.pathname);
     document.querySelectorAll('.nav-list a').forEach(function (a) {
-      const href = a.getAttribute('href');
+      var href = a.getAttribute('href');
       if (normalize(href) === current) a.classList.add('active');
       else if (current === '' && normalize(href) === 'index.html') a.classList.add('active');
     });
@@ -94,16 +98,15 @@
     var filterModule = document.getElementById('filter-module');
     var filterType = document.getElementById('filter-type');
     var filterLang = document.getElementById('filter-lang');
-    var resultsContainer = document.getElementById('search-results');
+    var countEl = document.getElementById('results-count');
 
     if (!searchInput) return;
 
-    // Build course data from DOM
     var allDocs = [];
     document.querySelectorAll('.doc-item').forEach(function (item) {
       allDocs.push({
         el: item,
-        title: (item.querySelector('.doc-title') || {}).textContent || '',
+        title: stripAccents((item.querySelector('.doc-title') || {}).textContent || ''),
         date: (item.querySelector('.doc-date') || {}).textContent || '',
         badges: Array.from(item.querySelectorAll('.badge')).map(function (b) { return b.textContent; }),
         module: item.getAttribute('data-module') || '',
@@ -111,34 +114,62 @@
       });
     });
 
+    var allCards = [];
+    document.querySelectorAll('.module-card').forEach(function (card) {
+      allCards.push({
+        el: card,
+        title: stripAccents((card.querySelector('h3') || {}).textContent || ''),
+        desc: stripAccents((card.querySelector('p') || {}).textContent || ''),
+        badges: Array.from(card.querySelectorAll('.badge')).map(function (b) { return b.textContent; })
+      });
+    });
+
     function filterDocs() {
-      var query = (searchInput.value || '').toLowerCase().trim();
-      var mod = (filterModule ? filterModule.value : '');
-      var typ = (filterType ? filterType.value : '');
-      var lang = (filterLang ? filterLang.value : '');
+      var query = stripAccents((searchInput.value || '').trim());
+      var mod = filterModule ? filterModule.value : '';
+      var typ = filterType ? filterType.value : '';
+      var lang = filterLang ? filterLang.value : '';
 
       var matched = allDocs.filter(function (d) {
-        if (query && d.title.toLowerCase().indexOf(query) === -1) return false;
+        if (query && d.title.indexOf(query) === -1) return false;
         if (mod && d.module !== mod) return false;
         if (lang) {
           if (lang === 'fr' && d.badges.indexOf('FR') === -1 && d.badges.indexOf('Français') === -1) return false;
           if (lang === 'en' && d.badges.indexOf('EN') === -1 && d.badges.indexOf('Anglais') === -1) return false;
         }
         if (typ) {
-          if (typ === 'cours' && d.badges.indexOf('Cours') === -1 && d.title.indexOf('Cours') === -1 && d.title.indexOf('Chapitre') === -1) return false;
-          if (typ === 'td' && d.badges.indexOf('TD') === -1 && d.title.indexOf('TD') === -1) return false;
-          if (typ === 'tp' && d.badges.indexOf('TP') === -1 && d.title.indexOf('TP') === -1) return false;
+          if (typ === 'cours' && d.badges.indexOf('Cours') === -1 && d.title.indexOf('cours') === -1 && d.title.indexOf('chapitre') === -1) return false;
+          if (typ === 'td' && d.badges.indexOf('TD') === -1 && d.title.indexOf('td') === -1) return false;
+          if (typ === 'tp' && d.badges.indexOf('TP') === -1 && d.title.indexOf('tp') === -1) return false;
         }
         return true;
       });
 
-      // Hide/show
+      var matchedCards = allCards.filter(function (c) {
+        if (query && c.title.indexOf(query) === -1 && c.desc.indexOf(query) === -1) return false;
+        if (lang) {
+          if (lang === 'fr' && c.badges.indexOf('FR') === -1) return false;
+          if (lang === 'en' && c.badges.indexOf('EN') === -1) return false;
+        }
+        return true;
+      });
+
       allDocs.forEach(function (d) { d.el.style.display = 'none'; });
       matched.forEach(function (d) { d.el.style.display = 'flex'; });
 
-      // Update count
-      var countEl = document.getElementById('results-count');
-      if (countEl) countEl.textContent = matched.length + ' document' + (matched.length > 1 ? 's' : '');
+      allCards.forEach(function (c) { c.el.style.display = 'none'; });
+      matchedCards.forEach(function (c) { c.el.style.display = ''; });
+
+      var total = matched.length + matchedCards.length;
+      if (countEl) {
+        if (query && total === 0) {
+          countEl.textContent = 'Aucun résultat pour « ' + searchInput.value.trim() + ' »';
+        } else if (query) {
+          countEl.textContent = total + ' résultat' + (total > 1 ? 's' : '');
+        } else {
+          countEl.textContent = '';
+        }
+      }
     }
 
     searchInput.addEventListener('input', filterDocs);
@@ -164,6 +195,7 @@
     var nextBtn = document.querySelector('.carousel-btn-next');
     var current = 0;
     var autoInterval;
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function getVisible() {
       if (window.innerWidth <= 600) return 1;
@@ -189,7 +221,6 @@
     function nextSlide() { goTo(current + 1); }
     function prevSlide() { goTo(current - 1); }
 
-    // Dots
     if (dotsContainer) {
       var dotCount = Math.max(1, totalSlides - getVisible() + 1);
       for (var i = 0; i < dotCount; i++) {
@@ -201,21 +232,23 @@
       }
     }
 
-    // Buttons
     if (prevBtn) prevBtn.addEventListener('click', function() { prevSlide(); resetAuto(); });
     if (nextBtn) nextBtn.addEventListener('click', function() { nextSlide(); resetAuto(); });
 
-    function startAuto() { autoInterval = setInterval(nextSlide, 4000); }
+    function startAuto() {
+      if (prefersReduced) return;
+      autoInterval = setInterval(nextSlide, 4000);
+    }
     function resetAuto() { clearInterval(autoInterval); startAuto(); }
 
-    // Pause on hover
     var container = track.closest('.carousel-container');
     if (container) {
       container.addEventListener('mouseenter', function() { clearInterval(autoInterval); });
       container.addEventListener('mouseleave', function() { startAuto(); });
+      container.addEventListener('focusin', function() { clearInterval(autoInterval); });
+      container.addEventListener('focusout', function() { startAuto(); });
     }
 
-    // Touch support
     var startX = 0;
     track.addEventListener('touchstart', function(e) { startX = e.changedTouches[0].screenX; });
     track.addEventListener('touchend', function(e) {
@@ -223,10 +256,14 @@
       if (Math.abs(diff) > 40) { diff > 0 ? nextSlide() : prevSlide(); resetAuto(); }
     });
 
-    // Resize
     window.addEventListener('resize', function() { goTo(current); });
 
-    startAuto();
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) clearInterval(autoInterval);
+      else startAuto();
+    });
+
+    if (!prefersReduced) startAuto();
   })();
 
   /* ── Fade in on scroll ── */
@@ -244,7 +281,6 @@
       observer.observe(el);
     });
   } else {
-    // Fallback: add fade-in class to all elements immediately
     document.querySelectorAll('.module-card, .level-item, .news-item').forEach(function (el) {
       el.classList.add('fade-in');
     });

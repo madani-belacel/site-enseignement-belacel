@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 10</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%209.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2011.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%209.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2011.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 10 — Have got / Has got</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">have got / has got (الملكية)</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Have Got / Has Got</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 10</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Have Got / Has Got</span> <span class="ar">— الملكية: have got / has got</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. Have got: possession</a><a href="#idea-2">2. Has got with he/she/it</a><a href="#idea-3">3. Short forms: 've got / 's got</a><a href="#idea-4">4. Negative: haven't got / hasn't got</a><a href="#idea-5">5. Questions: Have you got...?</a><a href="#idea-6">6. Short answers</a><a href="#idea-7">7. Uses: family, things, feelings</a><a href="#idea-8">8. Have got vs Have</a><a href="#idea-9">9. Never use double forms</a><a href="#idea-10">10. Describe yourself and your family</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>Have got: possession — <span class="ar">have got: الملكية</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل have got للتعبير عن الملكية.<br>مع I/you/we/they: have got,<br>ومع he/she/it: has got.<br>المثال: I have got a bike (لدي دراجة).</div>
+<div class="en">📗 Explication claire : Use 'have got' to show possession. I/you/we/they → have got. He/she/it → has got.</div>
+</div>
+<div class="formula">I/you/we/they + have got | he/she/it + has got</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I have got one brother.</td><td class="ar-c">لدي أخ واحد.</td><td class="pron-c">«آي هاف غوت وان براذر»</td></tr><tr><td class="en-c">You have got two eyes.</td><td class="ar-c">لديك عينان.</td><td class="pron-c">«يو هاف غوت تو آيز»</td></tr><tr><td class="en-c">They have got a new car.</td><td class="ar-c">لديهم سيارة جديدة.</td><td class="pron-c">«ذاي هاف غوت آ نيو كار»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Has got with he/she/it — <span class="ar">has got مع هو/هي</span></h3>
+<div class="expl">
+<div class="ar">📘 المفرد الغائب (he, she, it) يأخذ has got: She has got long hair (لديها شعر طويل),<br>The house has got three rooms (للبيت ثلاث غرف).</div>
+<div class="en">📗 Explication claire : Has got is for he, she, it: She has got long hair.</div>
+</div>
+<div class="formula">He/She/It + has got + noun</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">She has got a dog.</td><td class="ar-c">لديها كلب.</td><td class="pron-c">«شي هاز غوت آ دوغ»</td></tr><tr><td class="en-c">He has got blue eyes.</td><td class="ar-c">لديه عينان زرقاوان.</td><td class="pron-c">«هي هاز غوت بلو آيز»</td></tr><tr><td class="en-c">It (the phone) has got a big screen.</td><td class="ar-c">لها شاشة كبيرة.</td><td class="pron-c">«إت ذا فون هاز غوت آ بيغ سكرين»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Short forms: 've got / 's got — <span class="ar">الاختصارات: 've got / 's got</span></h3>
+<div class="expl">
+<div class="ar">📘 نختصر: I have got ← I've got,<br>He has got ← He's got,<br>They have got ← They've got.<br>تحذف have/has وتُستبدل بفاصلة علوية.</div>
+<div class="en">📗 Explication claire : Contractions: I've got, He's got, They've got.</div>
+</div>
+<div class="formula">have→'ve | has→'s</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I've got a cold.</td><td class="ar-c">لدي زكام.</td><td class="pron-c">«آيف غوت آ كولد»</td></tr><tr><td class="en-c">She's got two sisters.</td><td class="ar-c">لديها أختان.</td><td class="pron-c">«شيز غوت تو سيسترز»</td></tr><tr><td class="en-c">We've got time.</td><td class="ar-c">لدينا وقت.</td><td class="pron-c">«ويف غوت تايم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Negative: haven't got / hasn't got — <span class="ar">النفي: ليس لدي</span></h3>
+<div class="expl">
+<div class="ar">📘 النفي بإضافة not بين have/has و got: I haven't got (ليس لدي),<br>She hasn't got (ليس لديها).<br>لا نستعمل do في النفي هنا.</div>
+<div class="en">📗 Explication claire : Negative: haven't got / hasn't got. Do not use 'do' with got.</div>
+</div>
+<div class="formula">I/you/we/they + haven't got | he/she/it + hasn't got</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I haven't got a laptop.</td><td class="ar-c">ليس لدي حاسوب محمول.</td><td class="pron-c">«آي هافنت غوت آ لابتوپ»</td></tr><tr><td class="en-c">He hasn't got any money.</td><td class="ar-c">ليس لديه مال.</td><td class="pron-c">«هي هازنت غوت إني ماني»</td></tr><tr><td class="en-c">We haven't got homework today.</td><td class="ar-c">ليس لدينا واجب اليوم.</td><td class="pron-c">«وي هافنت غوت هوموورك توداي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Questions: Have you got...? — <span class="ar">السؤال: هل لديك...؟</span></h3>
+<div class="expl">
+<div class="ar">📘 نبدأ السؤال بالفعل: Have you got a car?<br>(هل لديك سيارة؟),<br>Has she got a sister?<br>(هل لديها أخت؟).</div>
+<div class="en">📗 Explication claire : Questions start with the verb: Have you got...? Has she got...?</div>
+</div>
+<div class="formula">Have/Has + subject + got + noun?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Have you got a pen?</td><td class="ar-c">هل لديك قلم؟</td><td class="pron-c">«هاف يو غوت آ بن»</td></tr><tr><td class="en-c">Has he got a phone?</td><td class="ar-c">هل لديه هاتف؟</td><td class="pron-c">«هاز هي غوت آ فون»</td></tr><tr><td class="en-c">Have they got any children?</td><td class="ar-c">هل لديهم أطفال؟</td><td class="pron-c">«هاف ذاي غوت إني تشيلدرن»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Short answers — <span class="ar">الأجوبة القصيرة</span></h3>
+<div class="expl">
+<div class="ar">📘 نجيب بـ Yes/No مع الفاعل: Yes,<br>I have.<br>/ No,<br>I haven't.<br>مع المفرد الغائب: Yes,<br>she has.<br>/ No,<br>he hasn't.</div>
+<div class="en">📗 Explication claire : Short answers: Yes, I have. No, I haven't. Yes, she has. No, he hasn't.</div>
+</div>
+<div class="formula">Yes, + subject + have/has | No, + subject + haven't/hasn't</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Have you got a bike? Yes, I have.</td><td class="ar-c">هل لديك دراجة؟ نعم.</td><td class="pron-c">«هاف يو غوت آ بايك ييس آي هاف»</td></tr><tr><td class="en-c">Has she got a cat? No, she hasn't.</td><td class="ar-c">هل لديها قطة؟ لا.</td><td class="pron-c">«هاز شي غوت آ كات نو شي هازنت»</td></tr><tr><td class="en-c">Have we got time? Yes, we have.</td><td class="ar-c">هل لدينا وقت؟ نعم.</td><td class="pron-c">«هاف وي غوت تايم ييس وي هاف»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Uses: family, things, feelings — <span class="ar">الاستعمالات: العائلة والأشياء والمشاعر</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل have got مع: العائلة (I have got a big family),<br>الأشياء المادية (a house),<br>وحتى بعض الحالات (I've got a headache).</div>
+<div class="en">📗 Explication claire : Have got is used for family, possessions, and some conditions like a headache.</div>
+</div>
+<div class="formula">have got + family member / possession / illness</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I've got three cousins.</td><td class="ar-c">لدي ثلاثة أبناء عم.</td><td class="pron-c">«آيف غوت ثري كازنز»</td></tr><tr><td class="en-c">He's got a very big house.</td><td class="ar-c">لديه منزل كبير جدا.</td><td class="pron-c">«هيز غوت آ فيري بيغ هاوس»</td></tr><tr><td class="en-c">I've got a bad headache.</td><td class="ar-c">لدي صداع شديد.</td><td class="pron-c">«آيف غوت آ باد هيديك»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>Have got vs Have — <span class="ar">have got مقابل have</span></h3>
+<div class="expl">
+<div class="ar">📘 have got و have بمعنى واحد للملكية في الإنجليزية البريطانية: I have a car = I have got a car.<br>لكن للسؤال والنفي نماذج مختلفة: Do you have a car?<br>= Have you got a car?</div>
+<div class="en">📗 Explication claire : Have = Have got for possession. Questions: Do you have...? = Have you got...?</div>
+</div>
+<div class="formula">I have ... = I've got ... | Do you have? = Have you got?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I have two brothers. = I've got two brothers.</td><td class="ar-c">لدي أخوان.</td><td class="pron-c">«آي هاف تو براذرز آيف غوت تو براذرز»</td></tr><tr><td class="en-c">Do you have a car? = Have you got a car?</td><td class="ar-c">هل لديك سيارة؟</td><td class="pron-c">«دو يو هاف آ كار هاف يو غوت آ كار»</td></tr><tr><td class="en-c">I don't have a computer. = I haven't got one.</td><td class="ar-c">ليس لدي حاسوب.</td><td class="pron-c">«آي دونت هاف آ كومبيوتر آي هافنت غوت وان»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Never use double forms — <span class="ar">لا تجمع الصيغتين</span></h3>
+<div class="expl">
+<div class="ar">📘 لا تقل «I have got a car» مع do: لا نقول Do you have got؟ ولا He doesn't has got.<br>اختر صيغة واحدة: has got أو have.</div>
+<div class="en">📗 Explication claire : Never mix: 'Do you have got?' is wrong. Choose one form: have got or have.</div>
+</div>
+<div class="formula">WRONG: Do you have got? | RIGHT: Have you got? / Do you have?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Have you got a pen? ✓</td><td class="ar-c">هل لديك قلم؟ صحيح.</td><td class="pron-c">«هاف يو غوت آ بن»</td></tr><tr><td class="en-c">Do you have a pen? ✓</td><td class="ar-c">هل تملك قلما؟ صحيح.</td><td class="pron-c">«دو يو هاف آ بن»</td></tr><tr><td class="en-c">Do you have got a pen? ✗</td><td class="ar-c">جملة خاطئة.</td><td class="pron-c">«دو يو هاف غوت آ بن»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Describe yourself and your family — <span class="ar">صف نفسك وعائلتك</span></h3>
+<div class="expl">
+<div class="ar">📘 تحدث عما تملكه: I've got brown eyes (لدي عيون بنية),<br>my brother has got short hair (لأخي شعر قصير),<br>we've got a small garden (لدينا حديقة صغيرة).<br>استعمل have/has got لوصف أفراد عائلتك.</div>
+<div class="en">📗 Explication claire : Describe yourself: I've got brown eyes. Describe your family with has/have got.</div>
+</div>
+<div class="formula">I've got ... • My brother has got ... • We've got ...</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I've got long hair.</td><td class="ar-c">لدي شعر طويل.</td><td class="pron-c">«آيف غوت لونغ هير»</td></tr><tr><td class="en-c">My father has got a grey beard.</td><td class="ar-c">لأبي لحية رمادية.</td><td class="pron-c">«ماي فاذر هاز غوت آ غري بيرد»</td></tr><tr><td class="en-c">We've got a small, cosy house.</td><td class="ar-c">لدينا بيت صغير ومريح.</td><td class="pron-c">«ويف غوت آ سمول كوزي هاوس»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%209.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2011.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

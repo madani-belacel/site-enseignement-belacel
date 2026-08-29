@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1720">
+<title>قواعد اللغة الإنجليزية — Fiches de grammaire</title>
+
+<style>
+:root {
+  --bg: #f5f7f4;
+  --paper: #ffffff;
+  --paper-soft: #edf7f0;
+  --line: #e0e7df;
+  --primary: #1d683d;
+  --primary-dark: #124d2d;
+  --primary-soft: #dfeee2;
+  --text: #1f2b23;
+  --muted: #5e6d65;
+  --shadow: 0 14px 32px rgba(24, 52, 34, 0.08);
+}
+* { box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f9fcfa 0%, #f4f6f3 18%, #edf3ee 100%); color: var(--text);
+}
+h1 { color: var(--primary-dark); border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+p.desc { color: var(--muted); }
+.table-wrap {
+  background: rgba(255,255,255,0.9); border-radius: 16px; overflow: hidden; box-shadow: 0 12px 28px rgba(19,42,29,0.06);
+  border: 1px solid var(--line);
+}
+.table-tools {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin: 18px 0 12px; padding: 12px 14px; background: rgba(29,104,61,0.06); border-radius: 12px; border: 1px solid rgba(29,104,61,0.08);
+}
+.table-tools .search-box {
+  flex: 1 1 260px; max-width: 420px; display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; padding: 8px 12px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+}
+.table-tools input {
+  border: 0; background: transparent; width: 100%; outline: none; font-size: 0.96em; color: var(--text);
+}
+.table-tools .stats {
+  color: var(--muted); font-size: 0.92em; font-weight: 600;
+}
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th {
+  background: linear-gradient(180deg, #1b653a 0%, #2a804d 100%); color: #fff; text-align: left; padding: 12px 14px; }
+td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr:hover td { background: #f1f8f3; }
+.num { width: 52px; color: #7a807b; font-weight: bold; }
+.nm { font-weight: bold; }
+.links { white-space: nowrap; }
+.links a {
+  display: inline-block; padding: 7px 12px; border-radius: 8px; text-decoration: none; font-size: 0.9em; background: var(--primary); color: #fff; font-weight: 600;
+  box-shadow: 0 6px 12px rgba(29,104,61,0.18); transition: transform 0.2s ease, background 0.2s ease;
+}
+.links a:hover { transform: translateY(-1px); background: var(--primary-dark); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; }
+.ar.t { direction: rtl; text-align: right; color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 8px; right: 8px; z-index: 9999; width: 48px; height: auto; opacity: 0.9; pointer-events: none;
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #1a5c33 0%, #2c6e49 60%, #3f8a5f 100%);
+  color: #fff; border-radius: 14px; padding: 16px 20px; margin: 14px 0 18px; box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+.header-banner img.prof-photo { width: 96px; height: 96px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.5); object-fit: cover; flex-shrink: 0; }
+.header-banner .hb-info h2 { margin: 0; font-size: 1.25rem; line-height: 1.3; }
+.header-banner .hb-info h2 small { display: block; font-size: 0.85rem; opacity: 0.85; font-weight: normal; margin-top: 2px; }
+.header-banner .hb-info p { margin: 4px 0 0; font-size: 0.9em; opacity: 0.92; line-height: 1.45; }
+.badge { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff; }
+.badge.beginner { background: #4c9c3a; }
+.badge.elementary { background: #7a9c3a; }
+.badge.intermediate { background: #c98a2c; }
+.badge.upper { background: #c96a2c; }
+.badge.advanced { background: #b5482c; }
+.badge.proficiency { background: #8d2f2f; }
+.legend { margin: 14px 0 0; font-size: 0.9em; color: #555; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.legend .badge { font-size: 0.76em; }
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 18px 0 20px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.72em; text-transform: uppercase; letter-spacing: 0.06em; color: #5d6e63; margin-bottom: 5px; }
+.summary-card .value { font-size: 1.05rem; font-weight: 700; color: #1a3c22; }
+.side-menu,
+.side-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.side-section {
+  margin-top: 12px;
+}
+.side-section-title {
+  display: block;
+  width: 100%;
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  padding: 0 8px;
+}
+.side-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.9em;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.side-link:hover,
+.side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(29,104,61,0.14);
+  color: var(--primary-dark);
+}
+.hidden-row { display: none; }
+.empty-state {
+  padding: 18px; text-align: center; color: var(--muted); background: #f7faf8; border-top: 1px solid var(--line);
+}
+@media (max-width: 720px) {
+  body { padding: 16px 10px 36px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  .table-tools { display: block; }
+  .table-tools .search-box { max-width: none; margin-bottom: 10px; }
+  table { display: block; overflow-x: auto; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Fiches de grammaire</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="#">🏠 Accueil</a>
+    <a class="side-link" href="#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="niveaux/Niveau%201.html">▶ Niveau 1</a>
+    <a class="side-link" href="niveaux/Niveau%2010.html">▶ Niveau 10</a>
+    <a class="side-link" href="niveaux/Niveau%2020.html">▶ Niveau 20</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Groupes</div>
+    <a class="side-link" href="niveaux/Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="niveaux/Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="niveaux/Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="niveaux/Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="niveaux/Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="niveaux/Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="niveaux/Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="niveaux/Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="niveaux/Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="niveaux/Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <img src="alg_drap.gif" alt="Algérie" class="flag-corner">
+    <h1>📚 قواعد اللغة الإنجليزية — English Grammar</h1>
+    <div class="header-banner">
+      <img class="prof-photo" src="photo-profil.png" alt="Dr. BELACEL Madani">
+      <div class="hb-info">
+        <h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+        <p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+      </div>
+    </div>
+    <p class="desc">100 مستوى من <b>المبتدئ (A1)</b> إلى <b>A1 → A2 → B1 → B2 → C1 → C2</b>. كل مستوى يحتوي على قواعد مفسّرة بالعربية وبالإنجليزية البسيطة، مع أمثلة مترجمة مع النُّطق.</p>
+    <p class="desc">Chaque niveau contient des règles expliquées en arabe et en anglais simple, avec des exemples traduits et leur prononciation.</p>
+    
+<div class="summary-grid">
+  <div class="summary-card"><span class="label">Total</span><span class="value">100</span></div>
+  <div class="summary-card"><span class="label">Idées</span><span class="value">1006</span></div>
+  <div class="summary-card"><span class="label">Progression</span><span class="value">A1 → C2</span></div>
+  <div class="summary-card"><span class="label">Format</span><span class="value">100% HTML</span></div>
+</div>
+
+    <div class="table-tools">
+      <label class="search-box" for="level-search" aria-label="Rechercher un niveau">
+        <span>🔎</span>
+        <input id="level-search" type="search" placeholder="Rechercher un niveau, un thème ou un niveau CEFR...">
+      </label>
+      <div class="stats" id="level-stats">100 niveaux disponibles</div>
+    </div>
+    <div id="catalogue" class="table-wrap">
+      <table>
+        <tr><th>المستوى</th><th>المستوى الأوروبي</th><th>القاعدة (English)</th><th>العنوان بالعربية</th><th>القواعد</th><th>الوصول</th></tr>
+        <tr>
+<td class="num">1</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">The Alphabet, Letters and Sounds</td>
+<td class="ar t">الحروف الأبجدية والأصوات</td>
+<td>12</td>
+<td class="links"><a href="niveaux/Niveau%201.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">2</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Greetings and Basic Expressions</td>
+<td class="ar t">التحية والتعابير الأساسية</td>
+<td>11</td>
+<td class="links"><a href="niveaux/Niveau%202.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">3</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Subject Pronouns and the Verb To Be</td>
+<td class="ar t">ضمائر الفاعل وفعل الكينونة (am, is, are)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%203.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">4</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Articles: a, an, the</td>
+<td class="ar t">أدوات النكرة والمعرفة: a, an, the</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%204.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">5</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Plural Nouns</td>
+<td class="ar t">جمع الأسماء</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%205.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">6</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">This, That, These, Those</td>
+<td class="ar t">أسماء الإشارة: هذا، تلك، هؤلاء، أولئك</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%206.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">7</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Possessive Adjectives and 's</td>
+<td class="ar t">صفات الملكية وإضافة الملكية 's</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%207.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">8</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Numbers, Days, Months and Seasons</td>
+<td class="ar t">الأرقام والأيام والشهور والفصول</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%208.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">9</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">There is / There are</td>
+<td class="ar t">There is / There are (يوجد)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%209.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">10</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Have got / Has got</td>
+<td class="ar t">have got / has got (الملكية)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2010.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">11</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Present Simple: I, You, We, They</td>
+<td class="ar t">المضارع البسيط: أنا، أنت، نحن، هم</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2011.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">12</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Present Simple: He, She, It (+ s)</td>
+<td class="ar t">المضارع البسيط: هو، هي + حرف s</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2012.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">13</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Present Simple: Negatives (don't / doesn't)</td>
+<td class="ar t">نفي المضارع البسيط: don't / doesn't</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2013.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">14</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Present Simple: Questions (Do / Does)</td>
+<td class="ar t">السؤال في المضارع البسيط: Do / Does</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2014.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">15</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Question Words: What, Where, When, Why, Who, How</td>
+<td class="ar t">أدوات الاستفهام</td>
+<td>11</td>
+<td class="links"><a href="niveaux/Niveau%2015.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">16</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Adverbs of Frequency: always, usually, sometimes, never</td>
+<td class="ar t">ظروف التكرار</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2016.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">17</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Prepositions of Place: in, on, at, under, next to...</td>
+<td class="ar t">حروف الجر المكانية</td>
+<td>11</td>
+<td class="links"><a href="niveaux/Niveau%2017.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">18</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Prepositions of Time: in, on, at</td>
+<td class="ar t">حروف الجر الزمنية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2018.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">19</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Can / Can't (Ability and Possibility)</td>
+<td class="ar t">Can / Can't</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2019.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">20</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Imperatives and Let's</td>
+<td class="ar t">صيغة الأمر و Let's</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2020.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">21</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Like, Love, Hate + -ing</td>
+<td class="ar t">أحب / أحب كثيراً / أكره + فعل (ing)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2021.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">22</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Object Pronouns: me, you, him, her, it, us, them</td>
+<td class="ar t">ضمائر المفعول</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2022.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">23</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Possessive Pronouns: mine, yours, his, hers, ours, theirs</td>
+<td class="ar t">ضمائر الملكية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2023.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">24</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Present Continuous: am/is/are + -ing</td>
+<td class="ar t">المضارع المستمر: الآن يحدث</td>
+<td>11</td>
+<td class="links"><a href="niveaux/Niveau%2024.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">25</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Present Simple vs Present Continuous</td>
+<td class="ar t">المقارنة بين المضارع البسيط والمستمر</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2025.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">26</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Past Simple: was / were</td>
+<td class="ar t">الماضي البسيط: was / were (كان)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2026.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">27</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Past Simple: Regular Verbs (-ed)</td>
+<td class="ar t">الماضي البسيط: الأفعال المنتظمة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2027.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">28</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Past Simple: Irregular Verbs</td>
+<td class="ar t">الماضي البسيط: الأفعال الشاذة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2028.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">29</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Past Simple: Negatives and Questions (did)</td>
+<td class="ar t">نفي الماضي البسيط وسؤاله (did)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2029.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">30</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Future with 'be going to'</td>
+<td class="ar t">المستقبل القريب: going to</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2030.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">31</td>
+<td><span class="badge beginner">A1</span></td>
+<td class="nm">Future with 'will'</td>
+<td class="ar t">المستقبل البسيط: will</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2031.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">32</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">Will vs Going to</td>
+<td class="ar t">الفرق بين will و going to</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2032.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">33</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">Comparatives: -er / more</td>
+<td class="ar t">صيغة المقارنة: أطول، أفضل، أكثر</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2033.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">34</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">Superlatives: -est / the most</td>
+<td class="ar t">صيغة التفضيل: الأطول، الأفضل</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2034.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">35</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">Comparative vs Superlative: review</td>
+<td class="ar t">مراجعة: المقارنة والتفضيل</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2035.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">36</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">Countable and Uncountable Nouns</td>
+<td class="ar t">الأسماء المعدودة وغير المعدودة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2036.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">37</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">Some, Any, No</td>
+<td class="ar t">بعض، أي، لا</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2037.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">38</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">Much, Many, A lot of</td>
+<td class="ar t">الكثرة: much, many, a lot of</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2038.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">39</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">A little, A few</td>
+<td class="ar t">a little / a few</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2039.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">40</td>
+<td><span class="badge elementary">A2</span></td>
+<td class="nm">How much? / How many?</td>
+<td class="ar t">كم؟ (How much / How many)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2040.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">41</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Present Perfect: Form and Use</td>
+<td class="ar t">المضارع التام: التشكيل والاستعمال</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2041.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">42</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Present Perfect with just, already, yet</td>
+<td class="ar t">المضارع التام: just, already, yet</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2042.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">43</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Present Perfect with for and since</td>
+<td class="ar t">المضارع التام: for و since</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2043.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">44</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Past Continuous</td>
+<td class="ar t">الماضي المستمر</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2044.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">45</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Past Simple vs Past Continuous</td>
+<td class="ar t">الماضي البسيط والماضي المستمر</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2045.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">46</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Used to (Past Habits and States)</td>
+<td class="ar t">used to (العادات والحالات الماضية)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2046.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">47</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Modals: Should and Shouldn't (Advice)</td>
+<td class="ar t">الأفعال الناقصة: should (نصيحة)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2047.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">48</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Modals: Must / Have to (Obligation and Prohibition)</td>
+<td class="ar t">must و have to (الوجوب والمنع)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2048.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">49</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Modals: May / Might / Could (Possibility)</td>
+<td class="ar t">may و might و could (إمكانية)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2049.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">50</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">First Conditional</td>
+<td class="ar t">الجملة الشرطية الأولى</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2050.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">51</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Second Conditional</td>
+<td class="ar t">الجملة الشرطية الثانية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2051.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">52</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Zero and Third Conditional</td>
+<td class="ar t">الجملة الشرطية الصفرية والثالثة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2052.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">53</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Relative Clauses (who, which, that, where)</td>
+<td class="ar t">جمل الوصل (who, which, that, where)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2053.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">54</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Gerunds and Infinitives (verb + -ing / + to)</td>
+<td class="ar t">المصدر المؤول والمصدر مع to</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2054.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">55</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Verb Patterns: make, let, allow + object</td>
+<td class="ar t">أنماط الأفعال: make, let, allow</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2055.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">56</td>
+<td><span class="badge intermediate">B1</span></td>
+<td class="nm">Tag Questions</td>
+<td class="ar t">أسئلة الذيل (التأكيد)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2056.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">57</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Present Perfect Continuous</td>
+<td class="ar t">المضارع التام المستمر</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2057.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">58</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Past Perfect</td>
+<td class="ar t">الماضي التام</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2058.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">59</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Future Forms Review</td>
+<td class="ar t">مراجعة أشكال المستقبل</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2059.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">60</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Future Perfect and Future Continuous</td>
+<td class="ar t">المستقبل التام والمستقبل المستمر</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2060.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">61</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Passive Voice: Present and Past</td>
+<td class="ar t">المبني للمجهول: الحاضر والماضي</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2061.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">62</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Passive Voice: All Tenses</td>
+<td class="ar t">المبني للمجهول: كل الأزمنة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2062.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">63</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Causative: have/get something done</td>
+<td class="ar t">الصيغة السببية: have/get + شيء + تصريف ثالث</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2063.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">64</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Reported Speech: Statements</td>
+<td class="ar t">الكلام المنقول: الجمل الخبرية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2064.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">65</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Reported Speech: Questions and Commands</td>
+<td class="ar t">الكلام المنقول: الأسئلة والأوامر</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2065.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">66</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Reported Speech: Tense Changes (Review)</td>
+<td class="ar t">الكلام المنقول: مراجعة تغييرات الزمن</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2066.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">67</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Modal Perfects: could have, should have, must have</td>
+<td class="ar t">الأفعال الناقصة التامة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2067.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">68</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Phrasal Verbs</td>
+<td class="ar t">الأفعال العبارية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2068.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">69</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">So / Such / Too / Enough</td>
+<td class="ar t">so و such و too و enough</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2069.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">70</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Question Tags and Echo Questions</td>
+<td class="ar t">أسئلة الذيل وأسئلة الصدى</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2070.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">71</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Inversion (never, hardly, not only...)</td>
+<td class="ar t">القلب (never, hardly, not only...)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2071.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">72</td>
+<td><span class="badge upper">B2</span></td>
+<td class="nm">Cleft Sentences (It is..., What...)</td>
+<td class="ar t">الجمل المشقوقة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2072.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">73</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Mixed Conditionals</td>
+<td class="ar t">الجمل الشرطية المختلطة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2073.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">74</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">I wish / If only: Wishes and Regrets</td>
+<td class="ar t">I wish / If only: التمنيات والندم</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2074.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">75</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Subjunctive and Fixed Expressions</td>
+<td class="ar t">صفة المطابقة (Subjunctive) والتراكيب الثابتة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2075.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">76</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Participle Clauses (reduced relative and adverbial)</td>
+<td class="ar t">جمل اسم الفاعل والمفعول</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2076.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">77</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Reduced Relative Clauses</td>
+<td class="ar t">جمل الوصل المختصرة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2077.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">78</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Emphasis: do/does/did and Fronting</td>
+<td class="ar t">التأكيد: do/does/did وتقديم العنصر</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2078.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">79</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Nominal Clauses: That, Whether, Wh-</td>
+<td class="ar t">الجمل الاسمية: that, whether, Wh-</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2079.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">80</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Discourse Markers</td>
+<td class="ar t">أدوات الخطاب والربط</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2080.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">81</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Register: Formal vs Informal Language</td>
+<td class="ar t">الأسلوب: الرسمي وغير الرسمي</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2081.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">82</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Hedging and Degrees of Certainty</td>
+<td class="ar t">التلطيف ودرجات اليقين</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2082.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">83</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Ellipsis and Substitution</td>
+<td class="ar t">الحذف والاستبدال</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2083.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">84</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Advanced Comparative Structures</td>
+<td class="ar t">تركيبات المقارنة المتقدمة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2084.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">85</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Narrative Tenses Review</td>
+<td class="ar t">مراجعة أزمنة السرد</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2085.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">86</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Advanced Passive and Impersonal Constructions</td>
+<td class="ar t">المبني للمجهول المتقدم والتراكيب غير الشخصية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2086.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">87</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Fronting and Focalisation</td>
+<td class="ar t">تقديم العناصر وتمركز الاهتمام</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2087.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">88</td>
+<td><span class="badge advanced">C1</span></td>
+<td class="nm">Cohesion and Reference</td>
+<td class="ar t">التماسك والإحالة النصية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2088.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">89</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Stance and Evaluative Language</td>
+<td class="ar t">لغة الموقف والتقييم</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2089.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">90</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Advanced Modal Auxiliaries</td>
+<td class="ar t">الأفعال الناقصة المتقدمة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2090.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">91</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Conditional Perfection (all types)</td>
+<td class="ar t">إتقان الجمل الشرطية (كل الأنواع)</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2091.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">92</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Substitution and Ellipsis (Advanced)</td>
+<td class="ar t">الاستبدال والحذف المتقدم</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2092.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">93</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Complex Fronting and Emphasis</td>
+<td class="ar t">التقديم المعقد والتأكيد</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2093.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">94</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Dependent Prepositions and Prepositional Phrases</td>
+<td class="ar t">حروف الجر التابعة والعبارات الجرية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2094.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">95</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Discourse Structure and Paragraphing</td>
+<td class="ar t">بنية الخطاب وتنظيم الفقرات</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2095.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">96</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Legal and Formal Register</td>
+<td class="ar t">الأسلوب القانوني والرسمي</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2096.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">97</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Punctuation and Complex Syntax</td>
+<td class="ar t">الترقيم والتركيب النحوي المعقد</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2097.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">98</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Stylistic Variation and Idiomatic Language</td>
+<td class="ar t">التنوع الأسلوبي واللغة الاصطلاحية</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2098.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">99</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Advanced Cohesion and Reference in Texts</td>
+<td class="ar t">التماسك المتقدم والإحالة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%2099.html">فتح الصفحة</a></td>
+</tr><tr>
+<td class="num">100</td>
+<td><span class="badge proficiency">C2</span></td>
+<td class="nm">Comprehensive Grammar Mastery (Review)</td>
+<td class="ar t">الإتقان الشامل: مراجعة عامة</td>
+<td>10</td>
+<td class="links"><a href="niveaux/Niveau%20100.html">فتح الصفحة</a></td>
+</tr>
+      </table>
+      <div class="empty-state hidden-row" id="empty-state">Aucun niveau ne correspond à votre recherche.</div>
+    </div>
+    <div class="legend">
+      <span>مفتاح المستويات:</span>
+      <span class="badge beginner">A1 مبتدئ</span>
+      <span class="badge elementary">A2 ابتدائي</span>
+      <span class="badge intermediate">B1 متوسط</span>
+      <span class="badge upper">B2 فوق المتوسط</span>
+      <span class="badge advanced">C1 متقدم</span>
+      <span class="badge proficiency">C2 أستاذية</span>
+    </div>
+  </div>
+</div>
+<script>
+  const searchInput = document.getElementById('level-search');
+  const rows = Array.from(document.querySelectorAll('table tr')).filter((row) => !row.querySelector('th'));
+  const emptyState = document.getElementById('empty-state');
+  const stats = document.getElementById('level-stats');
+
+  function filterLevels() {
+    const query = searchInput.value.trim().toLowerCase();
+    let visible = 0;
+    rows.forEach((row) => {
+      const text = row.textContent.toLowerCase();
+      const matches = !query || text.includes(query);
+      row.classList.toggle('hidden-row', !matches);
+      if (matches) visible += 1;
+    });
+    emptyState.classList.toggle('hidden-row', visible !== 0);
+    stats.textContent = visible + ' niveau(s) visible(s)';
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', filterLevels);
+    filterLevels();
+  }
+</script>
+</body>
+</html>

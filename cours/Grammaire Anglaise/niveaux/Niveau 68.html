@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 68</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%2067.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2069.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%2067.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2069.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 68 — Phrasal Verbs</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">الأفعال العبارية</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge upper">B2</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Phrasal Verbs</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 68</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge upper">B2</span> <span class="cat-label">Phrasal Verbs</span> <span class="ar">— الأفعال العبارية</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. What are phrasal verbs?</a><a href="#idea-2">2. Separable and inseparable</a><a href="#idea-3">3. Common phrasal verbs: out/up/down</a><a href="#idea-4">4. Phrasal verbs with 'get'</a><a href="#idea-5">5. Phrasal verbs and register</a><a href="#idea-6">6. Phrasal verbs in context</a><a href="#idea-7">7. Review 7: practice with phrasal verbs</a><a href="#idea-8">8. Review 8: practice with phrasal verbs</a><a href="#idea-9">9. Review 9: practice with phrasal verbs</a><a href="#idea-10">10. Review 10: practice with phrasal verbs</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>What are phrasal verbs? — <span class="ar">ما هي الأفعال العبارية؟</span></h3>
+<div class="expl">
+<div class="ar">📘 الفعل العباري = فعل + حرف جر أو ظرف يغير المعنى: look (ينظر) → look after (يعتني),<br>look for (يبحث عن),<br>look forward to (يتطلع إلى).</div>
+<div class="en">📗 Explication claire : A phrasal verb = verb + preposition/adverb that changes the meaning.</div>
+</div>
+<div class="formula">verb + particle (different meaning)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">She looks after her little brother.</td><td class="ar-c">تعتنى بأخيها الصغير.</td><td class="pron-c">«شي لوكس أفتير هور ليتل براذر»</td></tr><tr><td class="en-c">I am looking for my keys.</td><td class="ar-c">أبحث عن مفاتيحي.</td><td class="pron-c">«آي آم لوكينغ فور ماي كيز»</td></tr><tr><td class="en-c">We are looking forward to the trip.</td><td class="ar-c">نتطلع إلى الرحلة.</td><td class="pron-c">«وي آر لوكينغ فوروارد تو ذا تريب»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Separable and inseparable — <span class="ar">قابلة للفصل وغير قابلة</span></h3>
+<div class="expl">
+<div class="ar">📘 بعض الأفعال العبارية تفصل بين الفعل والحرف (turn off the light / turn the light off (أطفئ الضوء)),<br>وأخرى لا (look after (يعتني) لا يمكن فصله).<br>مع الضمير يجب الفصل: turn it off (أطفئه).</div>
+<div class="en">📗 Explication claire : Some are separable (turn off / turn it off); some are not.</div>
+</div>
+<div class="formula">verb + particle + object | verb + object + particle (if separable)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Turn off the light. / Turn the light off.</td><td class="ar-c">أطفئ الضوء.</td><td class="pron-c">«تورن أوف ذا لايت تورن ذا لايت أوف»</td></tr><tr><td class="en-c">Turn it off. (not 'turn off it')</td><td class="ar-c">أطفئه.</td><td class="pron-c">«تورن إت أوف نوت تورن أوف إت»</td></tr><tr><td class="en-c">He looks after his grandmother. (not separable)</td><td class="ar-c">يعتني بجدته.</td><td class="pron-c">«هي لوكس أفتير هيز غراندماذر نوت سابارابلا»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Common phrasal verbs: out/up/down — <span class="ar">أفعال عبارية شائعة: out/up/down</span></h3>
+<div class="expl">
+<div class="ar">📘 أمثلة: find out (يكتشف),<br>give up (يستسلم),<br>put off (يؤجل),<br>turn down (يرفض/يخفض),<br>take off (يخلع/يقلع),<br>look up (يبحث عن).</div>
+<div class="en">📗 Explication claire : Common: find out, give up, put off, turn down, take off, look up.</div>
+</div>
+<div class="formula">verbs + out/up/down/off/on + object</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">They found out the truth.</td><td class="ar-c">اكتشفوا الحقيقة.</td><td class="pron-c">«ذاي فاوند آوت ذا تراث»</td></tr><tr><td class="en-c">Don't give up!</td><td class="ar-c">لا تستسلم!</td><td class="pron-c">«دونت غيف آب»</td></tr><tr><td class="en-c">The plane took off on time.</td><td class="ar-c">أقلعت الطائرة في وقتها.</td><td class="pron-c">«ذا بلين توك أوف أون تايم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Phrasal verbs with 'get' — <span class="ar">أفعال عبارية مع get</span></h3>
+<div class="expl">
+<div class="ar">📘 get يكوّن أفعالا عبارية كثيرة: get up (يستيقظ),<br>get on/off (يصعد/ينزل),<br>get along (ينسجم),<br>get over (يتعافى من),<br>get away (يهرب).</div>
+<div class="en">📗 Explication claire : 'get' phrasals: get up, get on, get along, get over, get away.</div>
+</div>
+<div class="formula">get + up/on/off/along/over/away</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I get up at six every day.</td><td class="ar-c">أستيقظ في السادسة كل يوم.</td><td class="pron-c">«آي غيت آب آت سيكس إيفري داي»</td></tr><tr><td class="en-c">We get along well with our neighbours.</td><td class="ar-c">نتعايش جيدا مع جيراننا.</td><td class="pron-c">«وي غيت الونغ ويل ويذ آور نيبورز»</td></tr><tr><td class="en-c">She got over her illness quickly.</td><td class="ar-c">تعافت من مرضها بسرعة.</td><td class="pron-c">«شي غوت أوفير هور يلناس كويكلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Phrasal verbs and register — <span class="ar">الأفعال العبارية والأسلوب</span></h3>
+<div class="expl">
+<div class="ar">📘 الأفعال العبارية عامية/محكية,<br>وبدلاً منها في الأسلوب الرسمي أفعال مفردة: give up = abandon (يتخلى عن),<br>put off = postpone (يؤجل),<br>find out = discover (يكتشف),<br>set up = establish (يؤسس).</div>
+<div class="en">📗 Explication claire : Phrasals are informal; single verbs are formal (give up = abandon).</div>
+</div>
+<div class="formula">informal phrasal = formal single verb</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">They gave up the idea. / They abandoned the idea.</td><td class="ar-c">تخلوا عن الفكرة.</td><td class="pron-c">«ذاي جيف آب ذا أيديا ذاي اباندوناد ذا أيديا»</td></tr><tr><td class="en-c">We put off the meeting. / We postponed the meeting.</td><td class="ar-c">أجلنا الاجتماع.</td><td class="pron-c">«وي بوت أوف ذا ميتينغ وي بوستبوناد ذا ميتينغ»</td></tr><tr><td class="en-c">She set up the company. / She established the company.</td><td class="ar-c">أسست الشركة.</td><td class="pron-c">«شي سات آب ذا كومباني شي استابليشاد ذا كومباني»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Phrasal verbs in context — <span class="ar">الأفعال العبارية في السياق</span></h3>
+<div class="expl">
+<div class="ar">📘 تظهر كثيرا في المحادثة اليومية والأغاني: wake up (يستيقظ),<br>calm down (يهدأ),<br>cheer up (ينشّط),<br>hang out (يتسكع),<br>break down (يتعطل),<br>run out of (ينفد).<br>حفظها بالسياق أسهل من حفظ القوائم.</div>
+<div class="en">📗 Explication claire : Learn phrasals in context: wake up, calm down, hang out, break down.</div>
+</div>
+<div class="formula">phrasal verb + context (everyday speech)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The car broke down on the highway.</td><td class="ar-c">تعطلت السيارة في الطريق السريع.</td><td class="pron-c">«ذا كار بروك داون أون ذا هايواي»</td></tr><tr><td class="en-c">We ran out of milk.</td><td class="ar-c">نفد الحليب.</td><td class="pron-c">«وي ران آوت آف ميلك»</td></tr><tr><td class="en-c">Let's hang out at the café.</td><td class="ar-c">لنتسكع في المقهى.</td><td class="pron-c">«ليتس هانغ آوت آت ذا كاف»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Review 7: practice with phrasal verbs — <span class="ar">مراجعة 7: التدريب على Phrasal Verbs</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Phrasal Verbs في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Phrasal Verbs in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Phrasal Verbs + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use phrasal verbs in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز فرازال فاربس إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply phrasal verbs correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي فرازال فاربس كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>Review 8: practice with phrasal verbs — <span class="ar">مراجعة 8: التدريب على Phrasal Verbs</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Phrasal Verbs في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Phrasal Verbs in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Phrasal Verbs + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use phrasal verbs in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز فرازال فاربس إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply phrasal verbs correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي فرازال فاربس كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Review 9: practice with phrasal verbs — <span class="ar">مراجعة 9: التدريب على Phrasal Verbs</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Phrasal Verbs في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Phrasal Verbs in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Phrasal Verbs + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use phrasal verbs in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز فرازال فاربس إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply phrasal verbs correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي فرازال فاربس كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Review 10: practice with phrasal verbs — <span class="ar">مراجعة 10: التدريب على Phrasal Verbs</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Phrasal Verbs في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Phrasal Verbs in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Phrasal Verbs + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use phrasal verbs in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز فرازال فاربس إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply phrasal verbs correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي فرازال فاربس كوراكتلي»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%2067.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2069.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

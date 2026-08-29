@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 42</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%2041.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2043.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%2041.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2043.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 42 — Present Perfect with just, already, yet</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">المضارع التام: just, already, yet</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge intermediate">B1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Present Perfect: Just, Already, Yet</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 42</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge intermediate">B1</span> <span class="cat-label">Present Perfect: Just, Already, Yet</span> <span class="ar">— المضارع التام: just, already, yet</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. just (a moment ago)</a><a href="#idea-2">2. already (sooner than expected)</a><a href="#idea-3">3. yet (up to now, in negatives and questions)</a><a href="#idea-4">4. Choosing between just, already, yet</a><a href="#idea-5">5. Placement in the sentence</a><a href="#idea-6">6. Participle with just/already/yet in questions</a><a href="#idea-7">7. Review 7: practice with present perfect with just, already, yet</a><a href="#idea-8">8. Review 8: practice with present perfect with just, already, yet</a><a href="#idea-9">9. Review 9: practice with present perfect with just, already, yet</a><a href="#idea-10">10. Review 10: practice with present perfect with just, already, yet</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>just (a moment ago) — <span class="ar">just (لتوه / حالا)</span></h3>
+<div class="expl">
+<div class="ar">📘 just توضع بين have والتصريف الثالث وتعني «التو»: I've just finished (انتهيت للتو).<br>نتحدث عن حدث قريب جدا من اللحظة الحالية.</div>
+<div class="en">📗 Explication claire : just = a very short time ago, between have and the participle.</div>
+</div>
+<div class="formula">subject + have/has + just + past participle</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I have just eaten lunch.</td><td class="ar-c">تناولت الغداء للتو.</td><td class="pron-c">«آي هاف جاست يتان لانتش»</td></tr><tr><td class="en-c">She has just left the office.</td><td class="ar-c">غادرت المكتب للتو.</td><td class="pron-c">«شي هاز جاست ليفت ذا أوفيس»</td></tr><tr><td class="en-c">We have just heard the news.</td><td class="ar-c">سمعنا الخبر توا.</td><td class="pron-c">«وي هاف جاست هيرد ذا نيوز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>already (sooner than expected) — <span class="ar">already (قبل المتوقع)</span></h3>
+<div class="expl">
+<div class="ar">📘 already تعني «بفعل / سلفا» وتوضع بين have والتصريف الثالث (أو في نهاية الجملة): I've already paid (دفعت بالفعل).<br>نستعملها في المثبت,<br>وغالبا للتعجب أن الأمر تم أسرع من المتوقع.</div>
+<div class="en">📗 Explication claire : already = before expected, in positive sentences.</div>
+</div>
+<div class="formula">subject + have/has + already + pp | subject + have + pp + already</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I've already bought the tickets.</td><td class="ar-c">اشتريت التذاكر بالفعل.</td><td class="pron-c">«آيف الريدي بوت ذا تيكاتس»</td></tr><tr><td class="en-c">She's already finished her work.</td><td class="ar-c">أنهت عملها بالفعل.</td><td class="pron-c">«شيز الريدي فينيشد هور وورك»</td></tr><tr><td class="en-c">We've already seen this film.</td><td class="ar-c">شاهدنا هذا الفيلم من قبل.</td><td class="pron-c">«ويف الريدي سين ذيس فيلم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>yet (up to now, in negatives and questions) — <span class="ar">yet (حتى الآن) في النفي والسؤال</span></h3>
+<div class="expl">
+<div class="ar">📘 yet توضع في نهاية النفي أو السؤال وتعني «حتى الآن,<br>بعد»: I haven't finished yet (لم أنتهِ بعد),<br>Have you called him yet?<br>(هل اتصلت به بعد؟).</div>
+<div class="en">📗 Explication claire : yet = up to now, used at the end of negatives and questions.</div>
+</div>
+<div class="formula">haven't/hasn't + pp + yet | Have/Has + subject + pp + yet?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I haven't sent the email yet.</td><td class="ar-c">لم أرسل البريد الإلكتروني بعد.</td><td class="pron-c">«آي هافنت سنت ذا إيميل ييت»</td></tr><tr><td class="en-c">Has the train arrived yet?</td><td class="ar-c">هل وصل القطار بعد؟</td><td class="pron-c">«هاز ذا ترين أرايفد ييت»</td></tr><tr><td class="en-c">They haven't decided yet.</td><td class="ar-c">لم يقرروا بعد.</td><td class="pron-c">«ذاي هافنت ديسايديد ييت»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Choosing between just, already, yet — <span class="ar">الاختيار بين just, already, yet</span></h3>
+<div class="expl">
+<div class="ar">📘 قاعدة بسيطة: just = حدث قريب جدا,<br>already = تم قبل المتوقع (مثبت),<br>yet = حتى الآن (نفي/سؤال).<br>لا نستعمل already عادة مع منفى,<br>ولا yet مع مثبت.</div>
+<div class="en">📗 Explication claire : just = recent, already = positive, yet = negative/question.</div>
+</div>
+<div class="formula">just/already (positive) — yet (negative/question)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I've just started the lesson.</td><td class="ar-c">بدأت الدرس للتو.</td><td class="pron-c">«آيف جاست ستارتد ذا ليسن»</td></tr><tr><td class="en-c">We've already done the exercise.</td><td class="ar-c">أنجزنا التمرين بالفعل.</td><td class="pron-c">«ويف الريدي دان ذا إكسرسايز»</td></tr><tr><td class="en-c">I haven't started yet.</td><td class="ar-c">لم أبدأ بعد.</td><td class="pron-c">«آي هافنت ستارتد ييت»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Placement in the sentence — <span class="ar">مكانها في الجملة</span></h3>
+<div class="expl">
+<div class="ar">📘 just و already تأتي بعد have/has وقبل التصريف الثالث (أو في آخر الجملة مع already),<br>بينما yet تأتي دائما في آخر الجملة عادة.</div>
+<div class="en">📗 Explication claire : just/already after have, before participle. yet usually at the end.</div>
+</div>
+<div class="formula">have + just/already + pp | pp + yet</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">She has just bought a new car.</td><td class="ar-c">اشترت سيارة جديدة لتوها.</td><td class="pron-c">«شي هاز جاست بوت آ نيو كار»</td></tr><tr><td class="en-c">I have already written the article.</td><td class="ar-c">كتبت المقال بالفعل.</td><td class="pron-c">«آي هاف الريدي ريتان ذا ارتيكلا»</td></tr><tr><td class="en-c">He hasn't arrived at the airport yet.</td><td class="ar-c">لم يصل إلى المطار بعد.</td><td class="pron-c">«هي هازنت أرايفد آت ذا إييربورت ييت»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Participle with just/already/yet in questions — <span class="ar">التصريف الثالث مع just, already, yet في السؤال</span></h3>
+<div class="expl">
+<div class="ar">📘 في السؤال: Have you just eaten?<br>(هل أكلت للتو؟),<br>Have you already told him?<br>(هل أخبرته بالفعل؟),<br>Have you finished yet?<br>(هل انتهيت بعد؟).</div>
+<div class="en">📗 Explication claire : Questions: Have you just/already + pp? Have you + pp + yet?</div>
+</div>
+<div class="formula">Have + subject + just/already + pp? | Have + subject + pp + yet?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Have you just arrived from Algiers?</td><td class="ar-c">هل وصلت للتو من الجزائر؟</td><td class="pron-c">«هاف يو جاست أرايفد فروم ألجيرز»</td></tr><tr><td class="en-c">Has she already spoken to the doctor?</td><td class="ar-c">هل تحدثت مع الطبيب بالفعل؟</td><td class="pron-c">«هاز شي الريدي سبوكان تو ذا داكتور»</td></tr><tr><td class="en-c">Have they paid the rent yet?</td><td class="ar-c">هل دفعوا الإيجار بعد؟</td><td class="pron-c">«هاف ذاي بايد ذا رانت ييت»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Review 7: practice with present perfect with just, already, yet — <span class="ar">مراجعة 7: التدريب على Present Perfect with just, already, yet</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Present Perfect with just,<br>already,<br>yet في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Present Perfect with just, already, yet in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Present Perfect with just, already, yet + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use present perfect with just, already, yet in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز بريزنت بارفاكت ويذ جاست الريدي ييت إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply present perfect with just, already, yet correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي بريزنت بارفاكت ويذ جاست الريدي ييت كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>Review 8: practice with present perfect with just, already, yet — <span class="ar">مراجعة 8: التدريب على Present Perfect with just, already, yet</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Present Perfect with just,<br>already,<br>yet في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Present Perfect with just, already, yet in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Present Perfect with just, already, yet + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use present perfect with just, already, yet in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز بريزنت بارفاكت ويذ جاست الريدي ييت إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply present perfect with just, already, yet correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي بريزنت بارفاكت ويذ جاست الريدي ييت كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Review 9: practice with present perfect with just, already, yet — <span class="ar">مراجعة 9: التدريب على Present Perfect with just, already, yet</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Present Perfect with just,<br>already,<br>yet في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Present Perfect with just, already, yet in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Present Perfect with just, already, yet + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use present perfect with just, already, yet in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز بريزنت بارفاكت ويذ جاست الريدي ييت إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply present perfect with just, already, yet correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي بريزنت بارفاكت ويذ جاست الريدي ييت كوراكتلي»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Review 10: practice with present perfect with just, already, yet — <span class="ar">مراجعة 10: التدريب على Present Perfect with just, already, yet</span></h3>
+<div class="expl">
+<div class="ar">📘 في هذا الجزء,<br>نراجع استعمال Present Perfect with just,<br>already,<br>yet في جمل قصيرة وواضحة.<br>الهدف هو التطبيق المستمر,<br>مع الانتباه إلى الشكل الصحيح ووضع الكلمات في السياق المناسب.</div>
+<div class="en">📗 Explication claire : This review point focuses on using Present Perfect with just, already, yet in short, correct sentences. The goal is to apply the structure in real contexts and keep the form accurate.</div>
+</div>
+<div class="formula">focus on Present Perfect with just, already, yet + sentence practice</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">I use present perfect with just, already, yet in a short sentence.</td><td class="ar-c">أستخدم هذا الشكل في جملة قصيرة.</td><td class="pron-c">«آي يوز بريزنت بارفاكت ويذ جاست الريدي ييت إين آ شورت سينتنس»</td></tr><tr><td class="en-c">This form is useful in everyday English.</td><td class="ar-c">هذا الشكل مفيد في الإنجليزية اليومية.</td><td class="pron-c">«ذيس فورم إيز يوسفول إين افاريداي إينغليش»</td></tr><tr><td class="en-c">I can apply present perfect with just, already, yet correctly.</td><td class="ar-c">أستطيع تطبيق هذا الشكل بشكل صحيح.</td><td class="pron-c">«آي كان أبلاي بريزنت بارفاكت ويذ جاست الريدي ييت كوراكتلي»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%2041.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2043.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

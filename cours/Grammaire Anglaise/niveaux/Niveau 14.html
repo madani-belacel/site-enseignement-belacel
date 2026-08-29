@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 14</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%2013.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2015.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%2013.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2015.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 14 — Present Simple: Questions (Do / Does)</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">السؤال في المضارع البسيط: Do / Does</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">Present Simple</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 14</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">Present Simple</span> <span class="ar">— المضارع البسيط</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. Questions with do / does</a><a href="#idea-2">2. Short answers with do/does</a><a href="#idea-3">3. The verb stays base with do/does</a><a href="#idea-4">4. Wh- questions with present simple</a><a href="#idea-5">5. Word order: question vs statement</a><a href="#idea-6">6. Asking about habits and routines</a><a href="#idea-7">7. Subject questions: Who...? and What...?</a><a href="#idea-8">8. Do vs Does in full sentences</a><a href="#idea-9">9. Common questions at school</a><a href="#idea-10">10. Interview your friend</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>Questions with do / does — <span class="ar">السؤال بـ do / does</span></h3>
+<div class="expl">
+<div class="ar">📘 للسؤال في المضارع البسيط نبدأ بـ Do (مع I, you, we, they) أو Does (مع he, she, it) ثم الفاعل ثم الفعل الأصلي: Do you play?<br>(هل تلعب؟) Does she work?<br>(هل تعمل؟)</div>
+<div class="en">📗 Explication claire : Questions start with Do or Does + subject + base verb: Do you play? Does she work?</div>
+</div>
+<div class="formula">Do/Does + subject + base verb + rest?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Do you like coffee?</td><td class="ar-c">هل تحب القهوة؟</td><td class="pron-c">«دو يو لايك كوفي»</td></tr><tr><td class="en-c">Does he watch football?</td><td class="ar-c">هل يشاهد كرة القدم؟</td><td class="pron-c">«داز هي ووتش فوتبول»</td></tr><tr><td class="en-c">Do they live near the school?</td><td class="ar-c">هل يعيشون قرب المدرسة؟</td><td class="pron-c">«دو ذاي ليف نير ذا سكول»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>Short answers with do/does — <span class="ar">الأجوبة القصيرة</span></h3>
+<div class="expl">
+<div class="ar">📘 نجيب بـ Yes/No ثم الفاعل و do/does: Yes,<br>I do.<br>No,<br>I don't.<br>مع الغائب: Yes,<br>she does.<br>No,<br>he doesn't.</div>
+<div class="en">📗 Explication claire : Short answers: Yes, I do. No, I don't. Yes, she does. No, he doesn't.</div>
+</div>
+<div class="formula">Yes, + pronoun + do/does | No, + pronoun + don't/doesn't</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Do you swim? Yes, I do.</td><td class="ar-c">هل تسبح؟ نعم.</td><td class="pron-c">«دو يو سويم ييس آي دو»</td></tr><tr><td class="en-c">Does she cook? No, she doesn't.</td><td class="ar-c">هل تطبخ؟ لا.</td><td class="pron-c">«داز شي كوك نو شي دازنت»</td></tr><tr><td class="en-c">Do they work? Yes, they do.</td><td class="ar-c">هل يعملون؟ نعم.</td><td class="pron-c">«دو ذاي وورك ييس ذاي دو»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>The verb stays base with do/does — <span class="ar">الفعل يبقى في أصله مع do/does</span></h3>
+<div class="expl">
+<div class="ar">📘 مع Does يختفي الـ s: Does he plays?<br>✗ → الصحيح: Does he play?<br>الفعل دوماً بعد المساعد في صورته الأصلية.</div>
+<div class="en">📗 Explication claire : After does, the verb has no -s: Does he play? (not plays).</div>
+</div>
+<div class="formula">Does he + play? (base)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Does she read every day?</td><td class="ar-c">هل تقرأ كل يوم؟</td><td class="pron-c">«داز شي ريد إيفري داي»</td></tr><tr><td class="en-c">Does your father drive?</td><td class="ar-c">هل يقود والدك؟</td><td class="pron-c">«داز يور فاذر درايف»</td></tr><tr><td class="en-c">Does it rain in winter?</td><td class="ar-c">هل تمطر في الشتاء؟</td><td class="pron-c">«داز إت رين إين وينتير»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Wh- questions with present simple — <span class="ar">أسئلة بأدوات الاستفهام</span></h3>
+<div class="expl">
+<div class="ar">📘 قبل Do/Does نضع أداة استفهام: What (ماذا),<br>Where (أين),<br>When (متى),<br>Why (لماذا),<br>How (كيف): Where do you live?<br>(أين تعيش؟) When does he come?<br>(متى يأتي؟) Why do they cry?<br>(لماذا يبكون؟)</div>
+<div class="en">📗 Explication claire : Wh-word + do/does + subject + verb: Where do you live? When does he come?</div>
+</div>
+<div class="formula">Wh + do/does + subject + verb?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Where do you live?</td><td class="ar-c">أين تعيش؟</td><td class="pron-c">«وير دو يو ليف»</td></tr><tr><td class="en-c">When does the train leave?</td><td class="ar-c">متى يغادر القطار؟</td><td class="pron-c">«وين داز ذا ترين ليف»</td></tr><tr><td class="en-c">Why do you study English?</td><td class="ar-c">لماذا تدرس الإنجليزية؟</td><td class="pron-c">«واي دو يو ستادي إينغليش»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Word order: question vs statement — <span class="ar">ترتيب الكلمات: سؤال مقابل جملة خبرية</span></h3>
+<div class="expl">
+<div class="ar">📘 الجملة الخبرية: Subject + Verb (You live here).<br>أما السؤال: Do + Subject + Verb (Do you live here?).<br>لاحظ قلب الترتيب و إضافة المساعد.</div>
+<div class="en">📗 Explication claire : Statement: You live here. Question: Do you live here?</div>
+</div>
+<div class="formula">S + V (statement) → Do + S + V ? (question)</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">They eat pizza. → Do they eat pizza?</td><td class="ar-c">يأكلون البيتزا. ← هل يأكلون البيتزا؟</td><td class="pron-c">«ذاي إيت بيتزا دو ذاي إيت بيتزا»</td></tr><tr><td class="en-c">She speaks French. → Does she speak French?</td><td class="ar-c">تتكلم الفرنسية. ← هل تتكلم الفرنسية؟</td><td class="pron-c">«شي سبيكس فرينتش داز شي سبيك فرينتش»</td></tr><tr><td class="en-c">We work hard. → Do you work hard?</td><td class="ar-c">نعمل بجد. ← هل تعمل بجد؟</td><td class="pron-c">«وي وورك هارد دو يو وورك هارد»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>Asking about habits and routines — <span class="ar">السؤال عن العادات</span></h3>
+<div class="expl">
+<div class="ar">📘 أسئلة شائعة عن الروتين: What time do you get up?<br>(متى تستيقظ؟),<br>How often do you pray?<br>(كم مرة تصلي؟),<br>What do you eat for breakfast?<br>(ماذا تأكل على الفطور؟),<br>Where do you study?<br>(أين تدرس؟)</div>
+<div class="en">📗 Explication claire : Routine questions: What time do you get up? What do you eat for breakfast?</div>
+</div>
+<div class="formula">What/How often/Where + do/does + subject + verb?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">What time do you have dinner?</td><td class="ar-c">متى تتناول العشاء؟</td><td class="pron-c">«وات تايم دو يو هاف دينير»</td></tr><tr><td class="en-c">How often does he visit you?</td><td class="ar-c">كم مرة يزورك؟</td><td class="pron-c">«هاو أوفن داز هي فيزيت يو»</td></tr><tr><td class="en-c">What do you do in the evening?</td><td class="ar-c">ماذا تفعل في المساء؟</td><td class="pron-c">«وات دو يو دو إين ذا إيفنينغ»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>Subject questions: Who...? and What...? — <span class="ar">أسئلة عن الفاعل: Who...? و What...?</span></h3>
+<div class="expl">
+<div class="ar">📘 إذا سألنا عن الفاعل (من؟) لا نستعمل do/does: Who wrote?<br>بل Who writes?<br>مباشرة.<br>مثال: Who plays football?<br>(من يلعب؟).<br>القاعدة: لا مساعد مع سؤال الفاعل.</div>
+<div class="en">📗 Explication claire : Subject questions use no do/does: Who plays? (not Who does play?).</div>
+</div>
+<div class="formula">Who/What + verb + s + rest?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Who speaks English here?</td><td class="ar-c">من يتكلم الإنجليزية هنا؟</td><td class="pron-c">«هو سبيكس إينغليش هير»</td></tr><tr><td class="en-c">What makes you happy?</td><td class="ar-c">ما الذي يسعدك؟</td><td class="pron-c">«وات مايكس يو هابي»</td></tr><tr><td class="en-c">Who lives in this house?</td><td class="ar-c">من يعيش في هذا البيت؟</td><td class="pron-c">«هو ليفز إين ذيس هاوس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>Do vs Does in full sentences — <span class="ar">Do مقابل Does في جمل كاملة</span></h3>
+<div class="expl">
+<div class="ar">📘 Do لـ I/you/we/they,<br>و Does لـ he/she/it وكل اسم مفرد: Does Amel like (تحب).<br>.<br>.<br>؟ Do the students (الطلاب).<br>.<br>.<br>؟ لاحظ الاسم المفرد يعامل معاملة he/she.</div>
+<div class="en">📗 Explication claire : Do: I/you/we/they + plural. Does: he/she/it + singular names and nouns.</div>
+</div>
+<div class="formula">Do + I/you/we/they | Does + he/she/it/name</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Do your parents work?</td><td class="ar-c">هل يعمل والداك؟</td><td class="pron-c">«دو يور بارنتس وورك»</td></tr><tr><td class="en-c">Does Amel sing?</td><td class="ar-c">هل تغني أمل؟</td><td class="pron-c">«داز أمل سينغ»</td></tr><tr><td class="en-c">Do the teachers help us?</td><td class="ar-c">هل يساعدنا المعلمون؟</td><td class="pron-c">«دو ذا تيتشيرز هيلب آس»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Common questions at school — <span class="ar">أسئلة شائعة في المدرسة</span></h3>
+<div class="expl">
+<div class="ar">📘 أسئلة يومية: Do you understand?<br>هل تفهم؟,<br>Do you have any questions?<br>(هل لديك أي أسئلة؟),<br>What does this word mean?<br>(ماذا تعني هذه الكلمة؟),<br>Where does the lesson start؟ (أين تبدأ الحصة؟) Keep them ready (احتفظ بها جاهزة).</div>
+<div class="en">📗 Explication claire : Classroom questions: Do you understand? What does this word mean?</div>
+</div>
+<div class="formula">Do you ...? • What does ... ?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Do you understand the lesson?</td><td class="ar-c">هل تفهم الدرس؟</td><td class="pron-c">«دو يو أندرساند ذا ليسن»</td></tr><tr><td class="en-c">What does 'book' mean?</td><td class="ar-c">ماذا تعني كلمة book؟</td><td class="pron-c">«وات داز بوك مين»</td></tr><tr><td class="en-c">Do we have homework?</td><td class="ar-c">هل لدينا واجب؟</td><td class="pron-c">«دو وي هاف هوموورك»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Interview your friend — <span class="ar">قابِل صديقك</span></h3>
+<div class="expl">
+<div class="ar">📘 تدرّب: اسأل زميلك خمسة أسئلة: Where do you live?<br>(أين تعيش؟) What do you like?<br>(ماذا تحب؟) Do you play sport?<br>(هل تمارس الرياضة؟) Does your brother study here?<br>(هل يدرس أخوك هنا؟) سجل الأجوبة وكررها.</div>
+<div class="en">📗 Explication claire : Practise: ask a friend five questions and write their answers.</div>
+</div>
+<div class="formula">Q: Do/Does + subject + verb? → A: Yes/No + do/don't</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Do you like reading?</td><td class="ar-c">هل تحب القراءة؟</td><td class="pron-c">«دو يو لايك ريدينغ»</td></tr><tr><td class="en-c">Yes, I do.</td><td class="ar-c">نعم.</td><td class="pron-c">«ييس آي دو»</td></tr><tr><td class="en-c">Does your father work in the city?</td><td class="ar-c">هل يعمل والدك في المدينة؟</td><td class="pron-c">«داز يور فاذر وورك إين ذا سيتي»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%2013.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2015.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>

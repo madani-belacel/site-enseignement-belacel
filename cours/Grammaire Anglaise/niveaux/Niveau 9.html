@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قواعد اللغة الإنجليزية — Niveau 9</title>
+
+<style>
+:root {
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
+  --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
+  color: var(--text);
+  line-height: 1.75;
+}
+.content-shell {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+.page-shell {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(31,107,58,0.08);
+  border-radius: 22px;
+  padding: 18px 18px 26px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(2px);
+}
+.sidebar {
+  position: sticky; top: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
+  margin: 0 0 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
+}
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20,77,45,0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
+  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31,107,58,0.14);
+  color: var(--primary-dark);
+}
+.side-link.disabled { opacity: 0.45; pointer-events: none; }
+.topbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 16px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
+  padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.spacer { flex: 1; }
+h1 {
+  color: var(--primary-dark);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 10px;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+h2 { color: #1a3c22; }
+img.flag-corner {
+  position: fixed; top: 10px; right: 10px; z-index: 9999;
+  width: 52px; height: auto; opacity: 0.9; pointer-events: none;
+  border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.header-banner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
+  color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
+  box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
+}
+.header-banner img.prof-photo {
+  width: 90px; height: 90px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.55);
+  object-fit: cover; flex-shrink: 0; background: #fff;
+}
+.header-banner .hb-info h2 { margin: 0; font-size: 1.22rem; line-height: 1.3; }
+.header-banner .hb-info h2 small {
+  display: block; font-size: 0.82rem; opacity: 0.9; font-weight: normal; margin-top: 2px;
+}
+.header-banner .hb-info p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.96; line-height: 1.5; }
+.badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
+  margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
+.badge.root { background: #5bb; }
+.card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
+  box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 14px 22px rgba(17, 32, 24, 0.06); }
+.card h3 { margin: 0 0 8px; color: var(--primary-dark); font-size: 1.08rem; }
+.card .cat { font-size: 0.85em; margin: 2px 0 8px; }
+.card .cat .en { font-weight: bold; color: var(--primary); }
+.ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
+.expl { margin: 10px 0; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
+.formula {
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
+}
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
+table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
+table.ex td:first-child { width: 44%; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.idea-num {
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
+  color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
+  box-shadow: 0 8px 16px rgba(20,61,41,0.18);
+}
+.meta {
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+}
+.summary-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
+}
+.summary-card {
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
+}
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
+.toc {
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+}
+.toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
+.toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc-list a {
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
+}
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
+.story-box {
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
+@media (max-width: 700px) {
+  body { padding: 16px 12px 42px; }
+  .header-banner { flex-direction: column; align-items: flex-start; }
+  .header-banner img.prof-photo { width: 72px; height: 72px; }
+  img.flag-corner { width: 36px; top: 8px; right: 8px; }
+  .card { padding: 14px 12px; }
+  table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
+  table.ex th { display: none; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
+}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📘</div>
+    <div>
+      <h3>English Grammar</h3>
+      <small>Grammaire / niveaux</small>
+    </div>
+  </div>
+  <nav class="side-menu">
+    <a class="side-link active" href="../index.html">🏠 Accueil</a>
+    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="Niveau%208.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%2010.html">التالي ▶</a>
+  </nav>
+  <div class="side-section">
+    <div class="side-section-title">Sujets</div>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
+  </div>
+</div>
+<div class="content-shell">
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="btn" href="../index.html">🏠 الرئيسية</a>
+      <a class="btn" href="Niveau%208.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2010.html">التالي ▶</a>
+    </div>
+    <h1>📖 مستوى 9 — There is / There are</h1>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">There is / There are (يوجد)</div>
+    <div class="header-banner">
+<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<div class="hb-info">
+<h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
+<p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
+</div>
+</div>
+
+    <div class="summary-grid">
+      <div class="summary-card"><span class="label">CEFR</span><span class="value"><span class="badge beginner">A1</span></span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">10</span></div>
+      <div class="summary-card"><span class="label">الفئة</span><span class="value">There is / There are</span></div>
+      <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau 9</span></div>
+    </div>
+    <div class="meta">
+    <b><span class="badge beginner">A1</span> <span class="cat-label">There is / There are</span> <span class="ar">— يوجد / توجد</span></b><br>
+    <div class="en">Ce niveau propose <b>10</b> points de grammaire à maîtriser.</div>
+    <div class="ar">يحتوي هذا المستوى على <b>10</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    </div>
+    <div class="toc">
+      <h3>Sommaire rapide</h3>
+      <div class="toc-list"><a href="#idea-1">1. There is + singular</a><a href="#idea-2">2. There are + plural</a><a href="#idea-3">3. Negative: There isn't / There aren't</a><a href="#idea-4">4. Questions: Is there...? Are there...?</a><a href="#idea-5">5. Short answers: Yes, there is / No, there isn't</a><a href="#idea-6">6. There is vs It is</a><a href="#idea-7">7. There are + some</a><a href="#idea-8">8. There is + some + uncountable</a><a href="#idea-9">9. Describing rooms and places</a><a href="#idea-10">10. Practice: your town and home</a></div>
+    </div>
+    <div class="story-box">
+      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+    </div>
+    
+<div class="card" id="idea-1">
+<h3><span class="idea-num">1</span>There is + singular — <span class="ar">There is + مفرد</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل There is (يوجد/هناك) مع الاسم المفرد: There is a book on the table (يوجد كتاب على الطاولة).<br>الاختصار: There's.</div>
+<div class="en">📗 Explication claire : Use 'There is' with a singular noun: There is a book on the table. Short form: There's.</div>
+</div>
+<div class="formula">There is + a/an + singular noun + place</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There is a cat in the garden.</td><td class="ar-c">يوجد قطة في الحديقة.</td><td class="pron-c">«ذير إيز آ كات إين ذا غاردن»</td></tr><tr><td class="en-c">There's a phone in my bag.</td><td class="ar-c">يوجد هاتف في حقيبتي.</td><td class="pron-c">«ذيرز آ فون إين ماي باغ»</td></tr><tr><td class="en-c">Is there a bank near here?</td><td class="ar-c">هل يوجد بنك قريب من هنا؟</td><td class="pron-c">«إيز ذير آ بانك نير هير»</td></tr></table>
+</div>
+
+<div class="card" id="idea-2">
+<h3><span class="idea-num">2</span>There are + plural — <span class="ar">There are + جمع</span></h3>
+<div class="expl">
+<div class="ar">📘 نستعمل There are مع الاسم الجمع: There are two windows in the room (يوجد نافذتان في الغرفة).<br>لا نقول There is مع الجمع.</div>
+<div class="en">📗 Explication claire : Use 'There are' with plural nouns: There are two windows.</div>
+</div>
+<div class="formula">There are + plural noun + place</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There are four chairs here.</td><td class="ar-c">توجد أربعة كراسي هنا.</td><td class="pron-c">«ذير آر فور تشيرز هير»</td></tr><tr><td class="en-c">There are many students.</td><td class="ar-c">يوجد طلاب كثيرون.</td><td class="pron-c">«ذير آر ماني ستيودنتس»</td></tr><tr><td class="en-c">There are apples in the basket.</td><td class="ar-c">يوجد تفاح في السلة.</td><td class="pron-c">«ذير آر أبلز إين ذا باسكيت»</td></tr></table>
+</div>
+
+<div class="card" id="idea-3">
+<h3><span class="idea-num">3</span>Negative: There isn't / There aren't — <span class="ar">النفي: ليس هناك</span></h3>
+<div class="expl">
+<div class="ar">📘 النفي: There isn't (مع مفرد) و There aren't (مع جمع): There isn't any sugar (لا يوجد سكر),<br>There aren't any pencils (لا توجد أقلام).</div>
+<div class="en">📗 Explication claire : Negatives: There isn't (singular), There aren't (plural).</div>
+</div>
+<div class="formula">There isn't + a/an/any + singular | There aren't + any + plural</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There isn't a TV in my room.</td><td class="ar-c">لا يوجد تلفاز في غرفتي.</td><td class="pron-c">«ذير إيزنت آ تي في إين ماي روم»</td></tr><tr><td class="en-c">There aren't any chairs.</td><td class="ar-c">لا توجد كراسي.</td><td class="pron-c">«ذير آرنت إني تشيرز»</td></tr><tr><td class="en-c">There's no milk in the fridge.</td><td class="ar-c">لا يوجد حليب في الثلاجة.</td><td class="pron-c">«ذيرز نو ميلك إين ذا فريدج»</td></tr></table>
+</div>
+
+<div class="card" id="idea-4">
+<h3><span class="idea-num">4</span>Questions: Is there...? Are there...? — <span class="ar">السؤال: هل يوجد...؟</span></h3>
+<div class="expl">
+<div class="ar">📘 نقلب الفعل للسؤال: Is there a bank?<br>(هل يوجد بنك؟),<br>Are there any shops?<br>(هل توجد محلات؟).<br>نستعمل any في السؤال مع الجمع و بعض المفرادات.</div>
+<div class="en">📗 Explication claire : Questions: Is there...? (singular), Are there...? (plural). Use 'any' in questions.</div>
+</div>
+<div class="formula">Is there + a/an + noun? | Are there + any + plural noun?</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Is there a mosque near here?</td><td class="ar-c">هل يوجد مسجد قريب؟</td><td class="pron-c">«إيز ذير آ موسك نير هير»</td></tr><tr><td class="en-c">Are there any parks in town?</td><td class="ar-c">هل توجد حدائق في المدينة؟</td><td class="pron-c">«آر ذير إني باركس إين تاون»</td></tr><tr><td class="en-c">Is there a problem?</td><td class="ar-c">هل توجد مشكلة؟</td><td class="pron-c">«إيز ذير آ بروبلم»</td></tr></table>
+</div>
+
+<div class="card" id="idea-5">
+<h3><span class="idea-num">5</span>Short answers: Yes, there is / No, there isn't — <span class="ar">الأجوبة القصيرة</span></h3>
+<div class="expl">
+<div class="ar">📘 نجيب باختصار: Yes,<br>there is.<br>أو No,<br>there isn't.<br>للجمع: Yes,<br>there are.<br>أو No,<br>there aren't.<br>لا نكرر الاسم في الجواب المختصر.</div>
+<div class="en">📗 Explication claire : Short answers: Yes, there is. No, there isn't. (plural: there are / there aren't).</div>
+</div>
+<div class="formula">Yes, there is/are. | No, there isn't/aren't.</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Is there a library? Yes, there is.</td><td class="ar-c">هل توجد مكتبة؟ نعم.</td><td class="pron-c">«إيز ذير آ لايبراري ييس ذير إيز»</td></tr><tr><td class="en-c">Are there any buses? No, there aren't.</td><td class="ar-c">هل توجد حافلات؟ لا.</td><td class="pron-c">«آر ذير إني باسز نو ذير آرنت»</td></tr><tr><td class="en-c">Is there any water? Yes, there is.</td><td class="ar-c">هل يوجد ماء؟ نعم.</td><td class="pron-c">«إيز ذير إني ووتر ييس ذير إيز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-6">
+<h3><span class="idea-num">6</span>There is vs It is — <span class="ar">الفرق بين There is و It is</span></h3>
+<div class="expl">
+<div class="ar">📘 There is يُقدم شيئاً جديداً لأول مرة (يوجد...),<br>أما It is فيحدد شيئاً معروفاً (إنه...).<br>مثال: There is a dog in the street.<br>It is brown.</div>
+<div class="en">📗 Explication claire : 'There is' introduces something new. 'It is' describes known things.</div>
+</div>
+<div class="formula">There is + new noun → then → It is + description</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There is a bird on the tree. It is singing.</td><td class="ar-c">يوجد طائر على الشجرة. إنه يغرد.</td><td class="pron-c">«ذير إيز آ بيرد أون ذا تري إت إيز سينغينغ»</td></tr><tr><td class="en-c">There is a school near here. It is new.</td><td class="ar-c">يوجد مركز قريب. إنه جديد.</td><td class="pron-c">«ذير إيز آ سكول نير هير إت إيز نيو»</td></tr><tr><td class="en-c">Is there a doctor? It is Dr. Madani.</td><td class="ar-c">هل يوجد طبيب؟ إنه الدكتور مداني.</td><td class="pron-c">«إيز ذير آ داكتور إت إيز در مداني»</td></tr></table>
+</div>
+
+<div class="card" id="idea-7">
+<h3><span class="idea-num">7</span>There are + some — <span class="ar">There are + some (بعض)</span></h3>
+<div class="expl">
+<div class="ar">📘 مع الجمع نستعمل some في الجملة المثبتة: There are some books (يوجد بعض الكتب).<br>أما في النفي والسؤال فنستعمل any.</div>
+<div class="en">📗 Explication claire : Use 'some' in positive plurals: There are some books. Use 'any' in negatives and questions.</div>
+</div>
+<div class="formula">positive: There are some + plural | question/negative: any</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There are some chairs.</td><td class="ar-c">توجد بعض الكراسي.</td><td class="pron-c">«ذير آر سام تشيرز»</td></tr><tr><td class="en-c">Are there any problems?</td><td class="ar-c">هل توجد مشاكل؟</td><td class="pron-c">«آر ذير إني بروبلمز»</td></tr><tr><td class="en-c">There aren't any eggs.</td><td class="ar-c">لا توجد بيضات.</td><td class="pron-c">«ذير آرنت إني إغز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-8">
+<h3><span class="idea-num">8</span>There is + some + uncountable — <span class="ar">There is + some + غير معدود</span></h3>
+<div class="expl">
+<div class="ar">📘 مع الأسماء غير المعدودة (ماء, حليب, سكر, خبز) نستعمل There is وليس There are: There is some water (يوجد بعض الماء).</div>
+<div class="en">📗 Explication claire : With uncountable nouns (water, milk) use 'There is': There is some water.</div>
+</div>
+<div class="formula">There is + some + uncountable noun</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There is some bread.</td><td class="ar-c">يوجد بعض الخبز.</td><td class="pron-c">«ذير إيز سام بريد»</td></tr><tr><td class="en-c">There is some juice in the fridge.</td><td class="ar-c">يوجد بعض العصير في الثلاجة.</td><td class="pron-c">«ذير إيز سام جوس إين ذا فريدج»</td></tr><tr><td class="en-c">Is there any rice? Yes, there is.</td><td class="ar-c">هل يوجد أرز؟ نعم.</td><td class="pron-c">«إيز ذير إني رايس ييس ذير إيز»</td></tr></table>
+</div>
+
+<div class="card" id="idea-9">
+<h3><span class="idea-num">9</span>Describing rooms and places — <span class="ar">وصف الغرف والأماكن</span></h3>
+<div class="expl">
+<div class="ar">📘 لوصف مكان نستعمل There is/are مع حروف الجر المكانية: in,<br>on,<br>under,<br>next to,<br>between.<br>مثال: There is a bed next to the window (توجد سرير بجانب النافذة).</div>
+<div class="en">📗 Explication claire : Describe places with There is/are + place prepositions (in, on, under, next to).</div>
+</div>
+<div class="formula">There is/are + noun + preposition + place</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There is a lamp on the desk.</td><td class="ar-c">يوجد مصباح على المكتب.</td><td class="pron-c">«ذير إيز آ لامب أون ذا ديسك»</td></tr><tr><td class="en-c">There is a table in the kitchen.</td><td class="ar-c">توجد طاولة في المطبخ.</td><td class="pron-c">«ذير إيز آ تيبل إين ذا كيتشين»</td></tr><tr><td class="en-c">There are pictures on the wall.</td><td class="ar-c">توجد صور على الجدار.</td><td class="pron-c">«ذير آر بيكتشيرز أون ذا وول»</td></tr></table>
+</div>
+
+<div class="card" id="idea-10">
+<h3><span class="idea-num">10</span>Practice: your town and home — <span class="ar">تمرين: مدينتك ومنزلك</span></h3>
+<div class="expl">
+<div class="ar">📘 تحدث عن مدينتك: There is a market (سوق).<br>.<br>.<br>,<br>There are two mosques (مساجد).<br>.<br>.<br>,<br>There isn't a cinema (سينما).<br>وعن منزلك: There is a garden (حديقة) behind the house.</div>
+<div class="en">📗 Explication claire : Talk about your town and home with There is/are. Say what exists and what does not.</div>
+</div>
+<div class="formula">In my town, there is/are ... There isn't/aren't ...</div>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">There is a stadium in our city.</td><td class="ar-c">يوجد ملعب في مدينتنا.</td><td class="pron-c">«ذير إيز آ ستاديوم إين آور سيتي»</td></tr><tr><td class="en-c">There aren't any bridges here.</td><td class="ar-c">لا توجد جسور هنا.</td><td class="pron-c">«ذير آرنت إني بريدجز هير»</td></tr><tr><td class="en-c">There is a big kitchen in my house.</td><td class="ar-c">يوجد مطبخ كبير في منزلي.</td><td class="pron-c">«ذير إيز آ بيغ كيتشين إين ماي هاوس»</td></tr></table>
+</div>
+    <div class="topbar" style="margin-top:24px;">
+      <a class="btn" href="Niveau%208.html">◀ السابق</a>
+      <span class="spacer"></span>
+      <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
+      <span class="spacer"></span>
+      <a class="btn" href="Niveau%2010.html">التالي ▶</a>
+    </div>
+  </div>
+</div>
+<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</body>
+</html>
