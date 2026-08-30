@@ -64,6 +64,64 @@
     }, { passive: false });
   })();
 
+  /* ── Convert legacy tables of 'Niveaux disponibles' into .doc-list blocks (client-side)
+     This fixes presentation immediately on deployed pages without changing HTML files on the server.
+  */
+  function convertTablesToDocList() {
+    document.querySelectorAll('section.section-alt').forEach(function (sec) {
+      var table = sec.querySelector('table');
+      if (!table) return;
+      try {
+        var tbody = table.querySelector('tbody');
+        if (!tbody) return;
+        var docList = document.createElement('div');
+        docList.className = 'doc-list';
+        Array.prototype.forEach.call(tbody.querySelectorAll('tr'), function (tr) {
+          var tds = tr.querySelectorAll('td');
+          if (tds.length < 7) return;
+          var num = tds[0].textContent.trim();
+          var title = tds[1].textContent.trim();
+          var desc = tds[2].textContent.trim();
+          var dialogues = tds[3].textContent.trim();
+          var phrases = tds[4].textContent.trim();
+          var pptx = tds[5].textContent.trim();
+          var linksTd = tds[6];
+
+          var row = document.createElement('div'); row.className = 'doc-row';
+          var mainA = document.createElement('a'); mainA.className = 'doc-item';
+          // prefer audio link as the main href
+          var audio = linksTd.querySelector('a');
+          mainA.href = audio ? audio.getAttribute('href') : '#';
+
+          var icon = document.createElement('span'); icon.className = 'doc-icon'; icon.textContent = '📘';
+          mainA.appendChild(icon);
+
+          var info = document.createElement('div'); info.className = 'doc-info';
+          var titleDiv = document.createElement('div'); titleDiv.className = 'doc-title'; titleDiv.textContent = num + '. ' + title;
+          var dateDiv = document.createElement('div'); dateDiv.className = 'doc-date'; dateDiv.textContent = desc + ' · ' + dialogues + ' dialogues · ' + phrases + ' phrases · ' + pptx + ' PPTX';
+          info.appendChild(titleDiv); info.appendChild(dateDiv);
+          mainA.appendChild(info);
+
+          var extras = document.createElement('div'); extras.className = 'doc-extras';
+          Array.prototype.forEach.call(linksTd.querySelectorAll('a'), function (a) {
+            var b = document.createElement('a'); b.className = 'access-badge'; b.href = a.getAttribute('href'); b.textContent = a.textContent.trim(); extras.appendChild(b);
+          });
+          mainA.appendChild(extras);
+
+          row.appendChild(mainA);
+          docList.appendChild(row);
+        });
+        table.parentNode.replaceChild(docList, table);
+      } catch (e) { console.error('convertTablesToDocList error', e); }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', convertTablesToDocList);
+  } else {
+    convertTablesToDocList();
+  }
+
   /* ── Header identity: show the profile photo on all public pages and keep the header compact ── */
   function getAssetBaseUrl() {
     var pathname = window.location.pathname || '';
