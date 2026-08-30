@@ -60,7 +60,16 @@ body {
 }
 .brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
 .brand small { color: var(--muted); }
-.side-menu, .side-section { display: grid; gap: 8px; }
+.side-menu,
+.side-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+.side-section {
+    margin-top: 12px;
+}
 .side-section { margin-top: 14px; }
 .side-section-title {
   font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
@@ -210,13 +219,14 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
     </div>
   </div>
   <nav class="side-menu">
-    <a class="side-link active" href="../index.html">🏠 Accueil</a>
-    <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
-    <a class="side-link" href="Niveau%203.html">◀ السابق</a>
-    <a class="side-link" href="Niveau%205.html">التالي ▶</a>
+    <a class="side-link active" href="#">🏠 Accueil</a>
+    <a class="side-link" href="#catalogue">📚 Catalogue</a>
+    <a class="side-link" href="niveaux/Niveau%201.html">▶ Niveau 1</a>
+    <a class="side-link" href="niveaux/Niveau%2010.html">▶ Niveau 10</a>
+    <a class="side-link" href="niveaux/Niveau%2020.html">▶ Niveau 20</a>
   </nav>
   <div class="side-section">
-    <div class="side-section-title">Sujets</div>
+    <div class="side-section-title">Groupes</div>
     <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a>
   </div>
 </div>
