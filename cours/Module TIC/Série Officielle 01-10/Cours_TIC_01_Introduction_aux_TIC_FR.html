@@ -62,9 +62,54 @@ a.btn.pdf:hover { background: #f0f7ee; }
 </script>
 </head>
 <body>
+<script>
+  (function () {
+    function goToPrevious() {
+      var ref = document.referrer;
+      if (ref && ref !== '' && ref !== window.location.href) {
+        try {
+          var refUrl = new URL(ref, window.location.href);
+          if (refUrl.origin === window.location.origin || refUrl.protocol === 'file:') {
+            window.location.href = refUrl.href;
+            return;
+          }
+        } catch (e) {}
+      }
+
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      window.location.href = '../index.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var homeBtn = document.querySelector('a.btn[href="index.html"]');
+      if (homeBtn) {
+        homeBtn.setAttribute('href', '../../../index.html');
+        homeBtn.addEventListener('click', function (event) {
+          event.preventDefault();
+          window.location.href = '../../../index.html';
+        });
+      }
+
+      var prevBtn = Array.prototype.find.call(document.querySelectorAll('a.btn'), function (link) {
+        return (link.textContent || '').replace(/\s+/g, ' ').trim().indexOf('Précédent') !== -1;
+      });
+      if (prevBtn) {
+        prevBtn.setAttribute('href', '#previous');
+        prevBtn.addEventListener('click', function (event) {
+          event.preventDefault();
+          goToPrevious();
+        });
+      }
+    });
+  })();
+</script>
 <nav class="navbar">
-<a class="btn" href="index.html">← Accueil</a>
-<a class="btn" href="Cours_TIC_01_Introduction_aux_TIC_EN.html">◀ Précédent</a>
+<a class="btn" href="../../../index.html">← Accueil</a>
+<a class="btn" href="#">◀ Précédent</a>
 <span class="spacer"></span>
 <a class="btn" href="Cours_TIC_02_Informatique_et_Ordinateur_EN.html">Suivant ▶</a>
 <a class="btn pdf" href="Cours_TIC_01_Introduction_aux_TIC_FR.pdf" download>⬇ Télécharger le PDF</a>
