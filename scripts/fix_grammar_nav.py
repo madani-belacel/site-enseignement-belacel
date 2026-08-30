@@ -65,6 +65,21 @@ for f in sorted(NIVEAUX.glob('*.html')):
             if str(f.relative_to(ROOT)) not in fixed:
                 fixed.append(str(f.relative_to(ROOT)))
             count += 1
+
+# Additionally, normalize side-menu CSS across all module HTML files under cours/
+all_fixed = []
+for f in sorted(ROOT.joinpath('cours').rglob('*.html')):
+    text = f.read_text(encoding='utf-8')
+    if pattern_css.search(text):
+        new_text = pattern_css.sub(desired_side_css, text, count=1)
+        if new_text != text:
+            f.write_text(new_text, encoding='utf-8')
+            all_fixed.append(str(f.relative_to(ROOT)))
+
+if all_fixed:
+    print('\nAlso normalized side-menu CSS in these files:')
+    for p in all_fixed[:200]:
+        print(p)
     # Normalize CSS for side-menu/side-section to use flex (so links stay on one line)
     if pattern_css.search(text):
         new_text3 = pattern_css.sub(desired_side_css, text, count=1)
