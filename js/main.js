@@ -64,10 +64,30 @@
     }, { passive: false });
   })();
 
-  /* ── Course pages: simplify course identity banner and keep the header bar compact ── */
-  (function initCourseHeaderIdentity() {
-    if (!window.location.pathname.includes('/cours/')) return;
+  /* ── Header identity: show the profile photo on all public pages and keep the header compact ── */
+  function getAssetBaseUrl() {
+    var pathname = window.location.pathname || '';
+    var repoMatch = pathname.match(/^(.*\/site-enseignement-belacel)(?:\/|$)/);
 
+    if (repoMatch && repoMatch[1]) {
+      if (window.location.protocol === 'file:') {
+        return 'file://' + repoMatch[1] + '/';
+      }
+      return window.location.origin + repoMatch[1] + '/';
+    }
+
+    if (window.location.protocol === 'file:') {
+      return new URL('.', window.location.href).href;
+    }
+
+    return window.location.origin + '/';
+  }
+
+  function resolveAssetUrl(assetPath) {
+    return new URL(assetPath, getAssetBaseUrl()).href;
+  }
+
+  (function initHeaderIdentity() {
     var headerInner = document.querySelector('.header-inner');
     var headerLeft = headerInner && headerInner.querySelector('.header-left');
     var logoLink = headerLeft && headerLeft.querySelector('.header-logo');
@@ -75,22 +95,17 @@
 
     var existingPhoto = headerLeft.querySelector('.header-profile-photo');
     if (!existingPhoto) {
-      var pathname = window.location.pathname;
-      var parts = pathname.split('/').filter(Boolean);
-      var courseIndex = parts.indexOf('cours');
-      var nestedDepth = 0;
-
-      if (courseIndex >= 0) {
-        nestedDepth = parts.slice(courseIndex + 1, -1).length;
-      }
-
-      var relativePrefix = Array(nestedDepth + 2).join('../');
       var photo = document.createElement('img');
-      photo.src = relativePrefix + 'images/photo-profil.png';
+      photo.src = resolveAssetUrl('images/photo-profil.png');
       photo.alt = 'Dr. BELACEL Madani';
       photo.loading = 'eager';
       photo.className = 'header-profile-photo';
       photo.setAttribute('draggable', 'false');
+      photo.onerror = function () {
+        this.onerror = null;
+        this.src = resolveAssetUrl('images/Université_de_Mostaganem.png');
+        this.alt = 'Université de Mostaganem';
+      };
       headerLeft.insertBefore(photo, logoLink);
     }
 
@@ -101,6 +116,42 @@
 
     var banner = document.querySelector('.header-banner');
     if (banner) banner.remove();
+  })();
+
+  /* ── Previous / home navigation should use real browser history and referrer, not hardcoded lesson links ── */
+  (function initPreviousNavigation() {
+    var previousButtons = document.querySelectorAll('a.btn');
+
+    Array.prototype.forEach.call(previousButtons, function (button) {
+      var text = (button.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!/Précédent|Previous|◀/.test(text)) return;
+
+      button.setAttribute('href', '#previous');
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        var ref = document.referrer;
+        if (ref && ref !== '' && ref !== window.location.href) {
+          try {
+            var refUrl = new URL(ref, window.location.href);
+            if (refUrl.origin === window.location.origin || refUrl.protocol === 'file:') {
+              window.location.href = refUrl.href;
+              return;
+            }
+          } catch (e) {}
+        }
+
+        if (window.history.length > 1) {
+          window.history.back();
+          return;
+        }
+
+        var pathname = window.location.pathname;
+        var trimmed = pathname.replace(/\/[^/]+$/, '/');
+        var fallback = trimmed + 'index.html';
+        window.location.href = fallback;
+      });
+    });
   })();
 
   /* ── Algerian flags in all four corners ── */
@@ -114,7 +165,7 @@
     });
     if (hasCornerClasses) return;
 
-    var source = 'images/alg_drap.gif';
+    var source = resolveAssetUrl('images/alg_drap.gif');
     var alt = 'Drapeau de l\'Algérie';
     var existing = existingFlags.length ? existingFlags[0] : null;
 
