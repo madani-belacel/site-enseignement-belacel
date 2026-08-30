@@ -931,6 +931,28 @@ button:focus-visible {
 .md-content pre { background: var(--bg-alt); padding: 1rem; border-radius: var(--radius); overflow-x: auto; border: 1px solid var(--border); margin: 0.75rem 0; }
 .md-content pre code { background: none; padding: 0; }
 .md-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+
+/* Make tables in alternate sections look like card lists on small screens
+   and improve the appearance of the access links. Non-invasive: keeps
+   desktop table layout but stacks rows into cards on narrow viewports. */
+@media (max-width: 980px) {
+  .section-alt table thead { display: none; }
+  .section-alt table { border-collapse: separate; }
+  .section-alt table tbody { display: block; }
+  .section-alt table tbody tr { display: flex; flex-direction: column; gap: 0.45rem; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 0.9rem 1rem; margin-bottom: 0.7rem; }
+  .section-alt table tbody tr td { display: block; padding: 0; border: none; }
+  .section-alt table tbody tr td.col-num { font-weight: 700; color: var(--primary); }
+  .section-alt table tbody tr td:first-child { margin-bottom: 0.15rem; }
+  .section-alt table tbody tr td:nth-child(2) { font-weight: 700; font-size: 1rem; margin-bottom: 0.15rem; }
+  .section-alt table tbody tr td:nth-child(3) { color: var(--text-muted); margin-bottom: 0.15rem; }
+  .section-alt table tbody tr td.links { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.35rem; }
+  .section-alt table tbody tr td.links a { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.6rem; border-radius: 999px; background: var(--bg-alt); color: var(--text); text-decoration: none; border: 1px solid var(--border-light); font-weight: 600; }
+}
+
+/* Desktop: keep table but make the access links look like compact badges */
+.section-alt table td.links { white-space: nowrap; }
+.section-alt table td.links a { display: inline-block; margin-right: 0.5rem; padding: 0.28rem 0.5rem; border-radius: 6px; background: var(--bg-card); border: 1px solid var(--border-light); text-decoration: none; font-weight: 600; }
+
 .md-content th, .md-content td { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
 .md-content th { background: var(--bg-alt); font-family: var(--font-heading); }
 .md-content hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
