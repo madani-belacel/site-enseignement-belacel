@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Q/R IA Cours 04 — Comment réaliser une IA — Dr. Madani BELACEL</title>
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/QR_IA_04_Realiser_IA.html" rel="canonical"/>
+
+<meta name="description" content="Questions et réponses bilingues (EN/FR) — IA Cours 04 : How to build an AI from scratch. Comment réaliser une IA à partir de zéro en 6 étapes. Explications très simples.">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<style>
+  .qr-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .qr-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .qr-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .qr-idea { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.3rem; margin: 1.2rem 0; background: var(--bg-card); }
+  .qr-idea h3 { margin: 0 0 0.5rem; font-size: 1.1rem; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+  .qr-tag { display: inline-block; background: var(--primary); color: #fff; border-radius: 20px; padding: 0.15rem 0.6rem; font-size: 0.72rem; font-weight: 700; }
+  .qr-expl { margin: 0.4rem 0; font-style: italic; color: var(--text-muted); line-height: 1.7; }
+  .qr-qa { margin-top: 0.6rem; }
+  .qr-item { margin: 0.6rem 0; }
+  .qr-q { margin: 0.4rem 0 0.1rem; font-weight: 600; }
+  .qr-r { margin: 0 0 0.6rem; padding-left: 0.75rem; border-left: 3px solid var(--primary-light); color: var(--text); line-height: 1.6; }
+  .qr-content .lang-fr { display: none !important; }
+  .qr-content.lang-fr .lang-en { display: none !important; }
+  .qr-content.lang-fr .lang-fr { display: block !important; }
+  .qr-tabs { display: flex; gap: 0.5rem; margin: 1.2rem 0; flex-wrap: wrap; }
+  .qr-tab { padding: 0.5rem 1.2rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-card); font-weight: 600; cursor: pointer; color: var(--text); }
+  .qr-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Q/R IA Cours 04 — Comment réaliser une IA",
+  "url": "https://madani-belacel.github.io/site-enseignement-belacel/cours/Module Intelligence Artificielle/QR_IA_04_Realiser_IA.html",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. BELACEL Madani"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Université de Mostaganem"
+  },
+  "inLanguage": "fr",
+  "learningResourceType": "Questions-Réponses",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "Module Intelligence Artificielle"
+  },
+  "description": "Questions et réponses bilingues (EN/FR) — IA Cours 04 : Comment réaliser une IA à partir de zéro."
+}
+</script>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../index.html" class="header-logo">
+        <img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img loading="lazy" width="207" height="243" src="../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+      </div>
+    </div>
+    <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../index.html#about">Présentation</a></li>
+          <li><a href="../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../tic.html">TIC</a></li>
+          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
+          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+            <li><a href="../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+        </ul>
+      </li>
+      <li><a href="../../recherche.html">Recherche</a></li>
+      <li><a href="../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../index.html#news">Actualités des Modules</a></li>
+          <li><a href="../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../index.html">Accueil</a></li>
+    <li><a href="../../enseignement.html">Enseignement</a></li>
+    <li><a href="index.html">Module Intelligence Artificielle</a></li>
+    <li class="current">Q/R — Cours 04 : Comment réaliser une IA</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="qr-content">
+    <h1><span class="lang-en">Questions &amp; Answers — AI Course 04</span><span class="lang-fr">Questions &amp; Réponses — Cours IA 04</span></h1>
+    <p style="font-size:1.05rem;color:var(--text-muted);margin:0.4rem 0 1.2rem;">
+      <span class="lang-en">How to build an AI from scratch</span><span class="lang-fr">Comment réaliser une IA à partir de zéro</span>
+      <span style="display:block;font-size:0.85rem;margin-top:0.2rem;">The method in 6 steps, explained very simply | La méthode en 6 étapes, expliquée très simplement</span>
+    </p>
+
+    <div class="qr-tabs" role="group" aria-label="Choisir la langue">
+      <button type="button" class="qr-tab active" data-lang="en">🇬🇧 English</button>
+      <button type="button" class="qr-tab" data-lang="fr">🇫🇷 Français</button>
+    </div>
+
+    <h2><span class="lang-en">10 ideas with 30 questions and answers</span><span class="lang-fr">10 idées avec 30 questions et réponses</span></h2>
+    <article class="qr-idea"><h3><span class="qr-tag">Idée 1</span> <span class="lang-en">Yes, you can build an AI</span><span class="lang-fr">Oui, tu peux construire une IA</span></h3><p class="qr-expl lang-en">You do not need to be a genius. With a computer, a little Python and free tools, you can build your first AI in a few hours.</p><p class="qr-expl lang-fr">Tu n'as pas besoin d'être un génie. Avec un ordinateur, un peu de Python et des outils gratuits, tu peux construire ta première IA en quelques heures.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Do I need a super computer?</p><p class="qr-r lang-en"><strong>R1.</strong> No, a simple laptop is enough to start.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Ai-je besoin d'un super ordinateur ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Non, un ordinateur portable simple suffit pour commencer.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> Do I need to be a math genius?</p><p class="qr-r lang-en"><strong>R2.</strong> No, basic math is enough at the beginning. You learn the rest as you go.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Dois-je être un génie en mathématiques ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Non, les maths de base suffisent au début. Tu apprends le reste en chemin.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> How long to make a first AI?</p><p class="qr-r lang-en"><strong>R3.</strong> A few hours, by following a ready-made example and a library.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Combien de temps pour faire une première IA ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Quelques heures, en suivant un exemple tout prêt et une bibliothèque.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 2</span> <span class="lang-en">The 6 steps of an AI project</span><span class="lang-fr">Les 6 étapes d'un projet IA</span></h3><p class="qr-expl lang-en">1) define the problem, 2) collect data, 3) prepare the data, 4) choose a model, 5) train the model, 6) test and use. That is the whole journey from zero.</p><p class="qr-expl lang-fr">1) définir le problème, 2) collecter les données, 3) préparer les données, 4) choisir un modèle, 5) entraîner le modèle, 6) tester et utiliser. C'est tout le parcours à partir de zéro.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is step 1?</p><p class="qr-r lang-en"><strong>R1.</strong> Decide exactly what the AI must do, for example "classify flowers by type".</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce que l'étape 1 ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Décider exactement ce que l'IA doit faire, par exemple « classer des fleurs par type ».</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is step 5?</p><p class="qr-r lang-en"><strong>R2.</strong> Give the data to the model for training, so that it gradually learns to answer correctly.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce que l'étape 5 ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Donner les données au modèle pour l'entraîner, afin qu'il apprenne progressivement à bien répondre.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> Which step takes the most time?</p><p class="qr-r lang-en"><strong>R3.</strong> Usually collecting and preparing the data, not the code itself.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Quelle étape prend le plus de temps ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Généralement la collecte et la préparation des données, pas le code lui-même.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 3</span> <span class="lang-en">Step 1 — Define the problem</span><span class="lang-fr">Étape 1 — Définir le problème</span></h3><p class="qr-expl lang-en">Be precise: ask an input → answer question. For example: input = a photo, answer = "cat or dog?". A clear problem makes everything easier.</p><p class="qr-expl lang-fr">Sois précis : pose une question entrée → réponse. Par exemple : entrée = une photo, réponse = « chat ou chien ? ». Un problème clair rend tout plus facile.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Why define the problem first?</p><p class="qr-r lang-en"><strong>R1.</strong> Because the data, the model and the test all depend on the exact goal.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Pourquoi définir le problème d'abord ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Parce que les données, le modèle et le test dépendent tous de l'objectif exact.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is a good first problem?</p><p class="qr-r lang-en"><strong>R2.</strong> A simple classification with only two choices: yes/no, cat/dog, spam/not spam.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Quel est un bon premier problème ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Une classification simple avec seulement deux choix : oui/non, chat/chien, spam/pas spam.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is a bad first problem?</p><p class="qr-r lang-en"><strong>R3.</strong> Something vague or too big, like "an AI that does all my homework".</p><p class="qr-q lang-fr"><strong>Q3.</strong> Quel est un mauvais premier problème ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Quelque chose de vague ou trop gros, comme « une IA qui fait tous mes devoirs ».</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 4</span> <span class="lang-en">Step 2 — Collect the data</span><span class="lang-fr">Étape 2 — Collecter les données</span></h3><p class="qr-expl lang-en">Find or create examples. Free public datasets exist (images, texts, numbers) and you can download them, for example the famous iris flowers dataset.</p><p class="qr-expl lang-fr">Trouve ou crée des exemples. Il existe des jeux de données publics et gratuits (images, textes, nombres) et tu peux les télécharger, par exemple le célèbre jeu de données des fleurs iris.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is a dataset?</p><p class="qr-r lang-en"><strong>R1.</strong> A table or list of examples, each with inputs and, for supervised learning, the expected answers.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce qu'un jeu de données ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Un tableau ou une liste d'exemples, chacun avec des entrées et, pour l'apprentissage supervisé, les réponses attendues.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> Where to find free data?</p><p class="qr-r lang-en"><strong>R2.</strong> On open platforms like Kaggle, the UCI archive, or the example datasets of scikit-learn.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Où trouver des données gratuites ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Sur des plateformes ouvertes comme Kaggle, l'archive UCI ou les jeux de données d'exemple de scikit-learn.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> How many examples do you need?</p><p class="qr-r lang-en"><strong>R3.</strong> For the simplest projects, a few hundred well-chosen examples can be enough.</p><p class="qr-q lang-fr"><strong>Q3.</strong> De combien d'exemples as-tu besoin ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Pour les projets les plus simples, quelques centaines d'exemples bien choisis peuvent suffire.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 5</span> <span class="lang-en">Step 3 — Prepare the data</span><span class="lang-fr">Étape 3 — Préparer les données</span></h3><p class="qr-expl lang-en">Clean the data: remove errors, duplicate lines and empty values, and turn everything into numbers. Good preparation means good learning.</p><p class="qr-expl lang-fr">Nettoie les données : retire les erreurs, les doublons et les valeurs vides, et transforme tout en nombres. Une bonne préparation signifie un bon apprentissage.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Why clean the data?</p><p class="qr-r lang-en"><strong>R1.</strong> Because the model learns from the data. If the data is dirty, the answers will be dirty too.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Pourquoi nettoyer les données ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Parce que le modèle apprend à partir des données. Si les données sont sales, les réponses seront sales aussi.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What does "turn into numbers" mean?</p><p class="qr-r lang-en"><strong>R2.</strong> The model only understands numbers, so text and categories must be converted.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Que signifie « transformer en nombres » ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Le modèle ne comprend que les nombres, donc les textes et les catégories doivent être convertis.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is a "missing value"?</p><p class="qr-r lang-en"><strong>R3.</strong> A box with no data. We either remove that line or fill it with a reasonable value.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qu'est-ce qu'une « valeur manquante » ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Une case sans donnée. On retire cette ligne ou on la remplit avec une valeur raisonnable.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 6</span> <span class="lang-en">Step 4 — Choose a model</span><span class="lang-fr">Étape 4 — Choisir un modèle</span></h3><p class="qr-expl lang-en">A model is a ready-made program, like a decision tree or a neural network. You do not write it from scratch: you import it and adjust a few settings.</p><p class="qr-expl lang-fr">Un modèle est un programme tout prêt, comme un arbre de décision ou un réseau de neurones. Tu ne l'écris pas de zéro : tu l'importes et tu ajustes quelques réglages.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Do I have to program a model myself?</p><p class="qr-r lang-en"><strong>R1.</strong> No. Libraries like scikit-learn or TensorFlow give you ready models in a few lines.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Dois-je programmer moi-même un modèle ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Non. Des bibliothèques comme scikit-learn ou TensorFlow te donnent des modèles prêts en quelques lignes.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> Which model for a beginner?</p><p class="qr-r lang-en"><strong>R2.</strong> A simple classifier like a decision tree or k-nearest neighbours: easy to use and easy to understand.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Quel modèle pour un débutant ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Un classifieur simple comme un arbre de décision ou les k-plus-proches voisins : facile à utiliser et à comprendre.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What are "settings"?</p><p class="qr-r lang-en"><strong>R3.</strong> Little knobs that change how the model learns, like the number of neighbours or the tree depth.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Qu'est-ce que les « réglages » ?</p><p class="qr-r lang-fr"><strong>R3.</strong> De petites commandes qui changent la façon dont le modèle apprend, comme le nombre de voisins ou la profondeur de l'arbre.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 7</span> <span class="lang-en">Step 5 — Train the model</span><span class="lang-fr">Étape 5 — Entraîner le modèle</span></h3><p class="qr-expl lang-en">You show the dataset to the model. It "learns" the patterns and keeps them. In code, this is often just one line: model.fit(X_train, y_train).</p><p class="qr-expl lang-fr">Tu montres le jeu de données au modèle. Il « apprend » les régularités et les garde. En code, c'est souvent une seule ligne : model.fit(X_train, y_train).</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is fit()?</p><p class="qr-r lang-en"><strong>R1.</strong> The training function: it gives the data to the model so it can learn.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Qu'est-ce que fit() ?</p><p class="qr-r lang-fr"><strong>R1.</strong> La fonction d'entraînement : elle donne les données au modèle pour qu'il apprenne.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> How long does training last?</p><p class="qr-r lang-en"><strong>R2.</strong> For simple models, a few seconds. For huge deep-learning models, days or weeks.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Combien de temps dure l'entraînement ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Pour les modèles simples, quelques secondes. Pour d'énormes modèles de deep learning, des jours ou des semaines.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What if training takes too long?</p><p class="qr-r lang-en"><strong>R3.</strong> Use less data, a simpler model, or a more powerful machine.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Que faire si l'entraînement est trop long ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Utiliser moins de données, un modèle plus simple ou une machine plus puissante.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 8</span> <span class="lang-en">Step 6 — Test and improve</span><span class="lang-fr">Étape 6 — Tester et améliorer</span></h3><p class="qr-expl lang-en">Keep a part of the data that the model has never seen, then ask it to predict. Compare with the true answers to compute the accuracy. Then improve.</p><p class="qr-expl lang-fr">Garde une partie des données que le modèle n'a jamais vues, puis demande-lui de prédire. Compare avec les vraies réponses pour calculer la précision. Ensuite améliore.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Why test on new data?</p><p class="qr-r lang-en"><strong>R1.</strong> To be sure the model learned general rules and did not just memorize the examples.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Pourquoi tester sur de nouvelles données ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Pour être sûr que le modèle a appris des règles générales et n'a pas seulement mémorisé les exemples.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is accuracy?</p><p class="qr-r lang-en"><strong>R2.</strong> The percentage of good answers: 95% means 95 predictions out of 100 were correct.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce que la précision (accuracy) ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Le pourcentage de bonnes réponses : 95% signifie que 95 prédictions sur 100 étaient correctes.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> How to improve the model?</p><p class="qr-r lang-en"><strong>R3.</strong> Add good data, clean better, change the model, or adjust its settings.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Comment améliorer le modèle ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Ajouter de bonnes données, mieux nettoyer, changer de modèle ou ajuster ses réglages.</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 9</span> <span class="lang-en">The tools you need</span><span class="lang-fr">Les outils dont tu as besoin</span></h3><p class="qr-expl lang-en">Python, the scikit-learn library (great for beginners), the pandas library for tables, and Google Colab: a free notebook in the browser, no installation needed.</p><p class="qr-expl lang-fr">Python, la bibliothèque scikit-learn (géniale pour débuter), la bibliothèque pandas pour les tableaux et Google Colab : un cahier gratuit dans le navigateur, sans installation.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> Do I need to install complex software?</p><p class="qr-r lang-en"><strong>R1.</strong> No. Google Colab works in the browser, with everything already installed.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Dois-je installer des logiciels complexes ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Non. Google Colab fonctionne dans le navigateur, avec tout déjà installé.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> Why Python?</p><p class="qr-r lang-en"><strong>R2.</strong> It is simple to read, and almost all AI tools use it.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Pourquoi Python ?</p><p class="qr-r lang-fr"><strong>R2.</strong> C'est simple à lire, et presque tous les outils d'IA l'utilisent.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> What is pandas used for?</p><p class="qr-r lang-en"><strong>R3.</strong> To read and manipulate tables of data (rows and columns) easily.</p><p class="qr-q lang-fr"><strong>Q3.</strong> À quoi sert pandas ?</p><p class="qr-r lang-fr"><strong>R3.</strong> À lire et manipuler facilement des tableaux de données (lignes et colonnes).</p></div></div></article><article class="qr-idea"><h3><span class="qr-tag">Idée 10</span> <span class="lang-en">A complete beginner path</span><span class="lang-fr">Un parcours complet de débutant</span></h3><p class="qr-expl lang-en">1) learn small Python basics, 2) follow a first example with scikit-learn (iris flowers), 3) understand train/test, 4) try a second dataset, 5) explore a tiny neural network, 6) build your own idea.</p><p class="qr-expl lang-fr">1) apprends de petites bases de Python, 2) suis un premier exemple avec scikit-learn (fleurs iris), 3) comprends train/test, 4) essaie un deuxième jeu de données, 5) explore un petit réseau de neurones, 6) réalise ta propre idée.</p><div class="qr-qa"><div class="qr-item"><p class="qr-q lang-en"><strong>Q1.</strong> What is the very first step?</p><p class="qr-r lang-en"><strong>R1.</strong> Run a first simple Python program. Whatever the content, just learn the basics.</p><p class="qr-q lang-fr"><strong>Q1.</strong> Quelle est la toute première étape ?</p><p class="qr-r lang-fr"><strong>R1.</strong> Exécuter un premier petit programme Python. Quel que soit le contenu, apprends simplement les bases.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q2.</strong> What is a "training set" and a "test set"?</p><p class="qr-r lang-en"><strong>R2.</strong> One part of the data used for learning, and another part kept aside to check the result.</p><p class="qr-q lang-fr"><strong>Q2.</strong> Qu'est-ce qu'un « ensemble d'entraînement » et un « ensemble de test » ?</p><p class="qr-r lang-fr"><strong>R2.</strong> Une partie des données utilisée pour apprendre, et une autre partie gardée de côté pour vérifier le résultat.</p></div><div class="qr-item"><p class="qr-q lang-en"><strong>Q3.</strong> When am I ready to make my own AI?</p><p class="qr-r lang-en"><strong>R3.</strong> After completing one full example from beginning to end, you can adapt it to your own idea.</p><p class="qr-q lang-fr"><strong>Q3.</strong> Quand suis-je prêt à réaliser ma propre IA ?</p><p class="qr-r lang-fr"><strong>R3.</strong> Après avoir terminé un exemple complet du début à la fin, tu peux l'adapter à ta propre idée.</p></div></div></article>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../../js/main.v2.js"></script>
+<script>
+(function() {
+  var root = document.querySelector('.qr-content');
+  var tabs = document.querySelectorAll('.qr-tab');
+  function setLang(lang) {
+    root.classList.remove('lang-en', 'lang-fr');
+    root.classList.add('lang-' + lang);
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-lang') === lang);
+    });
+  }
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() { setLang(t.getAttribute('data-lang')); });
+  });
+  setLang('en');
+})();
+</script>
+</body></html>

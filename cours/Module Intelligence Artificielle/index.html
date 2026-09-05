@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Module Intelligence Artificielle — Dr. Madani BELACEL</title>
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/index.html" rel="canonical"/>
+
+<meta name="description" content="Module Intelligence Artificielle — Cours et questions-réponses bilingues (FR/EN) très simples pour les étudiants : comment fonctionne l'IA, exemples simples, et comment réaliser une IA à partir de zéro.">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<style>
+  .md-content { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .md-content h1 { font-family: var(--font-heading); color: var(--primary); margin: 1.5rem 0 0.5rem; font-size: 1.6rem; }
+  .md-content h2 { font-family: var(--font-heading); color: var(--primary); margin: 1.3rem 0 0.4rem; font-size: 1.3rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+  .md-content h3 { font-family: var(--font-heading); margin: 1rem 0 0.3rem; font-size: 1.1rem; }
+  .md-content p { margin: 0.5rem 0; line-height: 1.8; }
+  .md-content ul, .md-content ol { margin: 0.5rem 0 0.5rem 1.5rem; }
+  .md-content li { margin: 0.25rem 0; line-height: 1.7; }
+  .gradient-ia { background: linear-gradient(135deg, #37474f, #546e7a, #90a4ae); }
+  .gradient-ia2 { background: linear-gradient(135deg, #263238, #455a64, #78909c); }
+  .md-meta { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .md-meta strong { font-family: var(--font-heading); }
+  .module-desc { font-size: 0.9rem; color: var(--text-muted); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Module Intelligence Artificielle",
+  "url": "https://madani-belacel.github.io/site-enseignement-belacel/cours/Module Intelligence Artificielle/index.html",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. BELACEL Madani"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Université de Mostaganem"
+  },
+  "inLanguage": "fr",
+  "learningResourceType": "Index de module",
+  "description": "Cours et questions-réponses bilingues (FR/EN) très simples pour les étudiants : comment fonctionne l'IA, exemples simples, et comment réaliser une IA à partir de zéro."
+}
+</script>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../index.html" class="header-logo">
+        <img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <img loading="lazy" width="207" height="243" src="../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+      </div>
+    </div>
+    <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../index.html#about">Présentation</a></li>
+          <li><a href="../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../tic.html">TIC</a></li>
+          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
+          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+            <li><a href="../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+        </ul>
+      </li>
+      <li><a href="../../recherche.html">Recherche</a></li>
+      <li><a href="../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../index.html#news">Actualités des Modules</a></li>
+          <li><a href="../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../contact.html">Contact</a></li>
+      <li><button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../index.html">Accueil</a></li>
+    <li><a href="../../enseignement.html">Enseignement</a></li>
+    <li><a href="../index.html">Cours</a></li>
+    <li class="current">Module Intelligence Artificielle</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="md-content">
+
+    <h1>🤖 Module Intelligence Artificielle</h1>
+
+    <div class="md-meta">
+      <strong>Module : Intelligence Artificielle</strong>
+      <ul>
+        <li><strong>Auteur :</strong> Dr. Madani BELACEL</li>
+        <li><strong>Objectif :</strong> Expliquer l'Intelligence Artificielle avec des mots très simples, donner des exemples de la vie quotidienne et montrer comment réaliser une IA à partir de zéro.</li>
+        <li><strong>Format :</strong> Cours sous forme de <strong>Questions / Réponses (Q/R)</strong> en deux langues — <span class="badge badge-en">EN</span> et <span class="badge badge-fr">FR</span> — basculables à un clic.</li>
+        <li><strong>Niveau :</strong> Débutants complets. Aucune connaissance préalable n'est requise.</li>
+        <li><strong>Prérequis :</strong> Savoir utiliser un ordinateur et Internet (navegateur web, e-mail).</li>
+        <li><strong>Année :</strong> 2026-2027</li>
+      </ul>
+    </div>
+
+    <p>Ce module vous fait découvrir l'Intelligence Artificielle pas à pas : <strong>ce que c'est</strong>, <strong>comment elle fonctionne</strong>, <strong>des exemples simples</strong>, et surtout <strong>comment vous pouvez réaliser votre propre IA à partir de zéro</strong>, même si vous n'avez jamais programmé.</p>
+
+    <p>Chaque cours est présenté comme une série de questions et réponses très simples, dans les deux langues (français et anglais). Utilisez les onglets <strong>🇫🇷 Français</strong> / <strong>🇬🇧 English</strong> en haut de chaque page pour changer la langue.</p>
+
+    <h2>🗺️ Parcours pédagogique (suivre dans cet ordre)</h2>
+
+    <div class="module-grid">
+      <a href="QR_IA_01_Introduction_IA.html" class="module-card">
+        <div class="module-card-gradient gradient-ia"><div class="card-pattern"></div><span class="card-icon">🤖</span></div>
+        <div class="module-card-content">
+          <div class="module-card-date">Cours 01 — Débutant</div>
+          <h3>Introduction à l'IA</h3>
+          <p>Qu'est-ce que l'IA ? Où la rencontre-t-on ? IA faible vs IA générale, le rôle des données, et une petite histoire de l'IA.</p>
+          <div class="module-card-meta">
+            <span class="badge badge-cours">Cours</span>
+            <span class="badge badge-qr">Q/R</span>
+            <span class="badge badge-fr">FR</span>
+            <span class="badge badge-en">EN</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="QR_IA_02_Comment_Fonctionne_IA.html" class="module-card">
+        <div class="module-card-gradient gradient-ia2"><div class="card-pattern"></div><span class="card-icon">🧠</span></div>
+        <div class="module-card-content">
+          <div class="module-card-date">Cours 02 — Débutant</div>
+          <h3>Comment fonctionne l'IA</h3>
+          <p>Les trois ingrédients (données, modèle, ordinateur), l'apprentissage, la prédiction, et les types d'apprentissage avec des comparaisons très simples.</p>
+          <div class="module-card-meta">
+            <span class="badge badge-cours">Cours</span>
+            <span class="badge badge-qr">Q/R</span>
+            <span class="badge badge-fr">FR</span>
+            <span class="badge badge-en">EN</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="QR_IA_03_Exemples_Simples_IA.html" class="module-card">
+        <div class="module-card-gradient gradient-ia"><div class="card-pattern"></div><span class="card-icon">📱</span></div>
+        <div class="module-card-content">
+          <div class="module-card-date">Cours 03 — Débutant</div>
+          <h3>Exemples simples d'IA</h3>
+          <p>L'IA dans la vie quotidienne : anti-spam, météo, photos, recommandations, assistants vocaux, traduction, ChatGPT, jeux, voitures autonomes et médecine.</p>
+          <div class="module-card-meta">
+            <span class="badge badge-cours">Cours</span>
+            <span class="badge badge-qr">Q/R</span>
+            <span class="badge badge-fr">FR</span>
+            <span class="badge badge-en">EN</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="QR_IA_04_Realiser_IA.html" class="module-card">
+        <div class="module-card-gradient gradient-ia2"><div class="card-pattern"></div><span class="card-icon">🛠️</span></div>
+        <div class="module-card-content">
+          <div class="module-card-date">Cours 04 — Débutant +</div>
+          <h3>Comment réaliser une IA</h3>
+          <p>La méthode en 6 étapes pour créer une IA à partir de zéro : définir le problème, collecter les données, les préparer, choisir le modèle, entraîner, tester.</p>
+          <div class="module-card-meta">
+            <span class="badge badge-cours">Cours</span>
+            <span class="badge badge-qr">Q/R</span>
+            <span class="badge badge-fr">FR</span>
+            <span class="badge badge-en">EN</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="QR_IA_05_Premier_Projet_IA.html" class="module-card">
+        <div class="module-card-gradient gradient-ia"><div class="card-pattern"></div><span class="card-icon">💻</span></div>
+        <div class="module-card-content">
+          <div class="module-card-date">Cours 05 — Pratique</div>
+          <h3>Ton premier projet IA</h3>
+          <p>Un mini-projet complet et gratuit : classer des fleurs (iris) en programmant une IA simple. Code inclus, étape par étape, sans installation compliquée.</p>
+          <div class="module-card-meta">
+            <span class="badge badge-cours">Projet</span>
+            <span class="badge badge-qr">Q/R</span>
+            <span class="badge badge-tp">TP</span>
+            <span class="badge badge-fr">FR</span>
+            <span class="badge badge-en">EN</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <h2>📋 Comment réaliser une IA en 6 étapes (résumé)</h2>
+    <p>Si vous voulez créer une IA vous-même, voici la méthode complète, développée en détail dans les cours 04 et 05 :</p>
+    <ol>
+      <li><strong>Étape 1 — Définir le problème :</strong> posez une question précise, par exemple « est-ce que cette e-mail est un spam ? »</li>
+      <li><strong>Étape 2 — Collecter les données :</strong> rassemblez des exemples (vieilles e-mails déjà classées, photos, chiffres...).</li>
+      <li><strong>Étape 3 — Préparer les données :</strong> nettoyez les erreurs et transformez tout en nombres.</li>
+      <li><strong>Étape 4 — Choisir un modèle :</strong> importez un programme prêt à l'emploi (par ex. scikit-learn).</li>
+      <li><strong>Étape 5 — Entraîner le modèle :</strong> montrez les exemples au modèle pour qu'il apprenne.</li>
+      <li><strong>Étape 6 — Tester et améliorer :</strong> vérifiez sur des données jamais vues, mesurez la précision, améliorez.</li>
+    </ol>
+
+    <div class="md-meta section-margin-top">
+      <strong>💡 Conseil :</strong> 
+      <ul>
+        <li>Commencez par le <a href="QR_IA_01_Introduction_IA.html">Cours 01</a> puis suivez l'ordre des cours.</li>
+        <li>Choisissez une langue (🇬🇧 ou 🇫🇷) et restez-y pour ne pas confondre les termes.</li>
+        <li>Le <a href="QR_IA_05_Premier_Projet_IA.html">Cours 05</a> utilise <strong>Google Colab</strong>, gratuit, qui fonctionne directement dans le navigateur — aucune installation n'est nécessaire.</li>
+        <li>Reproduisez chaque exemple, puis adaptez-le à votre propre idée.</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo">
+      <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+
+<script src="../../js/main.v2.js"></script>
+</body></html>

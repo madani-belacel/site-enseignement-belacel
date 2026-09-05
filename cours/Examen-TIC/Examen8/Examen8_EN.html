@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam 8 — Mock Exam Semester 1 | ICT Module — Dr. Madani BELACEL</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f4f3;color:#1a2a1a;line-height:1.7;padding:0}
+.container{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#1a5c33,#2c6e49,#3f8a5f);color:#fff;border-radius:14px;padding:24px 28px;margin-bottom:20px;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+header h1{font-size:1.4rem;margin-bottom:4px}
+header p{opacity:.9;font-size:.92rem}
+.badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:.78rem;margin:4px 3px 0}
+
+/* Formulaire identité */
+.identity-card{background:#fff;border-radius:14px;padding:22px 26px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2980b9}
+.identity-card h2{color:#1a3c22;font-size:1.1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.identity-card h2 span{background:#2980b9;color:#fff;border-radius:8px;padding:2px 10px;font-size:.8rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-weight:600;font-size:.85rem;color:#333;margin-bottom:4px}
+.form-group input,.form-group select{padding:9px 12px;border:2px solid #d0d8d5;border-radius:8px;font-size:.92rem;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus{border-color:#2c6e49;outline:none}
+.form-group.full{grid-column:1/-1}
+.identity-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.btn-start{padding:10px 28px;border:none;border-radius:8px;cursor:pointer;font-size:.95rem;font-weight:700;background:#2c6e49;color:#fff;transition:all .2s}
+.btn-start:hover{background:#1a5c33}
+.btn-start:disabled{background:#b0bec5;cursor:not-allowed}
+.btn-secondary-sm{padding:8px 16px;border:2px solid #2c6e49;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:#2c6e49;transition:all .2s}
+.btn-secondary-sm:hover{background:#e8f5e9}
+
+/* Barre d'outils */
+.top-bar{display:none;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:#fff;border-radius:12px;padding:12px 18px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.timer{font-size:1.2rem;font-weight:700;color:#c0392b;display:flex;align-items:center;gap:6px}
+.timer svg{width:20px;height:20px}
+.progress-wrap{flex:1;min-width:180px;margin:0 12px}
+.progress-bar{height:8px;background:#e0e7e4;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#2c6e49,#3f8a5f);border-radius:4px;transition:width .4s}
+.progress-text{text-align:center;font-size:.75rem;color:#666;margin-top:2px}
+.btn-group{display:flex;gap:6px;flex-wrap:wrap}
+.btn{padding:7px 16px;border:none;border-radius:8px;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s}
+.btn-primary{background:#2c6e49;color:#fff}.btn-primary:hover{background:#1a5c33}
+.btn-warning{background:#f39c12;color:#fff}.btn-warning:hover{background:#e67e22}
+.btn-info{background:#3498db;color:#fff}.btn-info:hover{background:#2980b9}
+.btn-danger{background:#e74c3c;color:#fff}.btn-danger:hover{background:#c0392b}
+.autosave-indicator{font-size:.75rem;color:#27ae60;display:flex;align-items:center;gap:4px}
+.autosave-indicator.saving{color:#f39c12}
+
+/* Exam content */
+.exercise{display:none;background:#fff;border-radius:14px;padding:22px 26px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2c6e49}
+.exercise h2{color:#1a3c22;font-size:1.1rem;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.exercise h2 .ex-num{background:#2c6e49;color:#fff;border-radius:8px;padding:2px 10px;font-size:.8rem}
+.exercise .theme{font-size:.82rem;color:#666;margin-bottom:14px;font-style:italic}
+.question{margin-bottom:16px;padding:12px 14px;background:#f9fbfa;border-radius:10px;border:1px solid #e3e7e5;transition:border-color .3s,background .3s}
+.question.correct{border-color:#27ae60;background:#f0faf4}
+.question.wrong{border-color:#e74c3c;background:#fdf0ef}
+.question label.q-label{font-weight:600;color:#1a3c22;display:block;margin-bottom:6px;font-size:.95rem}
+.q-points{float:right;font-size:.72rem;background:#e8f5e9;color:#2c6e49;padding:2px 8px;border-radius:10px;font-weight:600}
+.options{display:flex;flex-direction:column;gap:5px}
+.options label{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;transition:background .2s;font-size:.92rem}
+.options label:hover{background:#e8f0e9}
+.options input[type="radio"],.options input[type="checkbox"]{accent-color:#2c6e49;width:16px;height:16px}
+.tf-group{display:flex;gap:10px;margin-top:6px}
+.tf-btn{padding:7px 22px;border:2px solid #d0d8d5;border-radius:8px;cursor:pointer;font-weight:600;transition:all .2s;background:#fff;font-size:.9rem}
+.tf-btn:hover{border-color:#2c6e49}
+.tf-btn.selected{border-color:#2c6e49;background:#e8f5e9;color:#1a5c33}
+select.q-select{padding:8px 12px;border:2px solid #d0d8d5;border-radius:8px;font-size:.9rem;width:100%;max-width:380px;cursor:pointer;background:#fff}
+select.q-select:focus{border-color:#2c6e49;outline:none}
+
+/* Matching */
+.matching-area{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.match-item{padding:7px 13px;border-radius:8px;font-size:.88rem;cursor:pointer;transition:all .2s;border:2px solid #d0d8d5;background:#fff;user-select:none}
+.match-item.term{background:#e8f5e9;border-color:#c8e6c9}
+.match-item.term:hover{border-color:#2c6e49}
+.match-item.term.selected{border-color:#2c6e49;background:#c8e6c9;font-weight:600;box-shadow:0 0 0 2px rgba(44,110,73,.3)}
+.match-item.def{background:#fff;border-color:#d0d8d5}
+.match-item.def:hover{border-color:#2980b9}
+.match-item.def.matched{background:#d4efdf;border-color:#27ae60;font-weight:600}
+
+/* Results */
+.results-panel{display:none;background:#fff;border-radius:14px;padding:24px 28px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2980b9}
+.results-panel h2{color:#1a3c22;margin-bottom:14px}
+.score-total{text-align:center;padding:16px;font-weight:700}
+.score-total .big{font-size:2.2rem;color:#1a5c33}
+.score-total .sub{font-size:1rem;color:#666}
+.score-bar{height:16px;background:#e0e7e4;border-radius:8px;overflow:hidden;margin:10px 0}
+.score-fill{height:100%;border-radius:8px;transition:width 1s}
+.result-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;font-size:.92rem}
+.result-row .label{font-weight:600}
+.result-row .score{font-weight:700}
+.detail-block{margin:10px 0;padding:12px;border-radius:10px;font-size:.88rem}
+.detail-block.good{background:#f0faf4;border:1px solid #c8e6c9}
+.detail-block.bad{background:#fdf0ef;border:1px solid #f5b7b1}
+.detail-block h3{font-size:.95rem;margin-bottom:6px}
+.correct-answer{color:#27ae60;font-weight:600}
+.wrong-answer{color:#e74c3c;font-weight:600}
+.correction-info{font-size:.82rem;color:#555;margin-top:4px;padding:6px 10px;background:rgba(0,0,0,.03);border-radius:6px}
+.csv-actions{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+footer{text-align:center;padding:18px;color:#888;font-size:.78rem}
+@media print{.top-bar,.identity-card,.btn-group,.csv-actions,footer{display:none!important}.exercise{display:block!important}header{background:#2c6e49!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(max-width:640px){.container{padding:10px}header{padding:16px}header h1{font-size:1.15rem}.exercise{padding:14px}.top-bar{flex-direction:column;align-items:stretch}.timer{justify-content:center}.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<h1>Exam 8 — Mock Exam Semester 1</h1>
+<p>ICT Module · Semester 1 · Academic year 2026-2027</p>
+<div style="margin-top:6px">
+<span class="badge">6 exercises · 30 points</span> <span class="badge">Mark /20</span> <span class="badge">Dr. BELACEL Madani</span>
+</div>
+</header>
+
+<!-- FORMULAIRE IDENTITÉ -->
+<div class="identity-card" id="identity-card">
+<h2><span>📋</span> Student information</h2>
+<div class="form-grid">
+<div class="form-group">
+<label for="nom">Last name *</label>
+<input type="text" id="nom" placeholder="Your last name" required>
+</div>
+<div class="form-group">
+<label for="prenom">First name *</label>
+<input type="text" id="prenom" placeholder="Your first name" required>
+</div>
+<div class="form-group">
+<label for="groupe">Group *</label>
+<select id="groupe">
+<option value="">-- Sélectionner --</option>
+<option value="G1">Group 1</option>
+<option value="G2">Group 2</option>
+<option value="G3">Group 3</option>
+<option value="G4">Group 4</option>
+<option value="G5">Group 5</option>
+<option value="G6">Group 6</option>
+</select>
+</div>
+<div class="form-group">
+<label for="niveau">Level *</label>
+<select id="niveau">
+<option value="">-- Sélectionner --</option>
+<option value="L1">Licence 1</option>
+<option value="L2">Licence 2</option>
+<option value="L3">Licence 3</option>
+<option value="M1">Master 1</option>
+<option value="M2">Master 2</option>
+<option value="ENS1">ENS 1st year</option>
+<option value="ENS2">ENS 2nd year</option>
+</select>
+</div>
+<div class="form-group">
+<label for="departement">Department *</label>
+<select id="departement">
+<option value="">-- Sélectionner --</option>
+<option value="Français">French Department</option>
+<option value="Anglais">English Department</option>
+</select>
+</div>
+<div class="form-group">
+<label for="specialite">Specialty *</label>
+<select id="specialite">
+<option value="">-- Sélectionner --</option>
+<option value="Langue et Culture">Language and Culture</option>
+<option value="DLE">DLE (Foreign Language Didactics)</option>
+</select>
+</div>
+</div>
+<div class="identity-actions">
+<button class="btn-start" id="btn-start" onclick="startExam()" disabled>Start the exam</button>
+<button class="btn-secondary-sm" onclick="restoreSession()">Resume a session</button>
+</div>
+</div>
+
+<!-- BARRE D'OUTILS -->
+<div class="top-bar" id="top-bar">
+<div class="timer" id="timer">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+<span id="time-display">1:30:00</span>
+</div>
+<div class="progress-wrap">
+<div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+<div class="progress-text" id="progress-text">0 / 30 questions</div>
+</div>
+<div class="autosave-indicator" id="autosave-indicator">● Auto-save</div>
+<div class="btn-group">
+<button class="btn btn-primary" onclick="submitExam()">✅ Submit</button>
+<button class="btn btn-warning" onclick="resetExam()">🔄 Reset</button>
+<button class="btn btn-info" onclick="window.print()">🖨 Print</button>
+</div>
+</div>
+
+<!-- RÉSULTATS -->
+<div class="results-panel" id="results-panel">
+<h2>📊 Detailed results</h2>
+<div id="score-total" class="score-total"></div>
+<div class="score-bar"><div class="score-fill" id="score-fill" style="width:0%"></div></div>
+<div id="results-summary"></div>
+<div id="results-detail"></div>
+<div class="csv-actions">
+<button class="btn btn-primary" onclick="downloadCSV()">📥 Download the Excel file (CSV)</button>
+<button class="btn btn-info" onclick="viewAllResults()">📋 View all the saved results</button>
+</div>
+</div>
+
+<!-- EXERCICES -->
+<div id="exercises-container">
+
+<!-- EXERCICE 1 — QCM -->
+<div class="exercise" id="exercise1">
+<h2><span class="ex-num">Exercise 1</span> Multiple Choice Questions (MCQ)</h2>
+<div class="theme">Complex cases and advanced concepts</div>
+
+<div class="question" id="q1">
+<label class="q-label">1. Which computer architecture model separates the central processing unit (CPU) from memory? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> A) The client-server model</label>
+<label><input type="radio" name="q1" value="b"> B) The Von Neumann architecture</label>
+<label><input type="radio" name="q1" value="c"> C) The cloud model</label>
+<label><input type="radio" name="q1" value="d"> D) The distributed architecture</label>
+</div>
+</div>
+
+<div class="question" id="q2">
+<label class="q-label">2. In Windows, which extension denotes a Word document? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> A) .xlsx</label>
+<label><input type="radio" name="q2" value="b"> B) .pptx</label>
+<label><input type="radio" name="q2" value="c"> C) .docx</label>
+<label><input type="radio" name="q2" value="d"> D) .pdf</label>
+</div>
+</div>
+
+<div class="question" id="q3">
+<label class="q-label">3. What is the main purpose of an Excel spreadsheet? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> A) Create multimedia presentations</label>
+<label><input type="radio" name="q3" value="b"> B) Process data using formulas and functions</label>
+<label><input type="radio" name="q3" value="c"> C) Write long documents with page layout</label>
+<label><input type="radio" name="q3" value="d"> D) Browse the Internet</label>
+</div>
+</div>
+
+<div class="question" id="q4">
+<label class="q-label">4. Which keyboard shortcut undoes the last action in Word? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> A) Ctrl + S</label>
+<label><input type="radio" name="q4" value="b"> B) Ctrl + Z</label>
+<label><input type="radio" name="q4" value="c"> C) Ctrl + Y</label>
+<label><input type="radio" name="q4" value="d"> D) Ctrl + A</label>
+</div>
+</div>
+
+<div class="question" id="q5">
+<label class="q-label">5. Which hardware component allows data to be stored permanently? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> A) RAM</label>
+<label><input type="radio" name="q5" value="b"> B) The processor</label>
+<label><input type="radio" name="q5" value="c"> C) The hard drive or SSD</label>
+<label><input type="radio" name="q5" value="d"> D) The graphics card</label>
+</div>
+</div>
+</div>
+
+<!-- EXERCICE 2 — VRAI / FAUX -->
+<div class="exercise" id="exercise2">
+<h2><span class="ex-num">Exercise 2</span> True or False</h2>
+<div class="theme">Tous les chapitres — TIC 01 à 05</div>
+
+<div class="question" id="q6">
+<label class="q-label">6. Software refers to the physical part of a computer. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q6" data-val="vrai" onclick="toggleTF(this)">True</button>
+<button type="button" class="tf-btn" data-q="q6" data-val="faux" onclick="toggleTF(this)">False</button>
+</div>
+</div>
+
+<div class="question" id="q7">
+<label class="q-label">7. In Word, styles allow consistent formatting to be applied to the entire document. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q7" data-val="vrai" onclick="toggleTF(this)">True</button>
+<button type="button" class="tf-btn" data-q="q7" data-val="faux" onclick="toggleTF(this)">False</button>
+</div>
+</div>
+
+<div class="question" id="q8">
+<label class="q-label">8. The Excel formula =SOMME(A1:A5) adds the values of cells A1 through A5. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q8" data-val="vrai" onclick="toggleTF(this)">True</button>
+<button type="button" class="tf-btn" data-q="q8" data-val="faux" onclick="toggleTF(this)">False</button>
+</div>
+</div>
+
+<div class="question" id="q9">
+<label class="q-label">9. The "communication" dimension of ICT solely encompasses social networks. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q9" data-val="vrai" onclick="toggleTF(this)">True</button>
+<button type="button" class="tf-btn" data-q="q9" data-val="faux" onclick="toggleTF(this)">False</button>
+</div>
+</div>
+
+<div class="question" id="q10">
+<label class="q-label">10. The Ctrl + Shift + F3 shortcut in Word inserts the source library. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q10" data-val="vrai" onclick="toggleTF(this)">True</button>
+<button type="button" class="tf-btn" data-q="q10" data-val="faux" onclick="toggleTF(this)">False</button>
+</div>
+</div>
+</div>
+
+<!-- EXERCICE 3 — SÉLECTION MULTIPLE -->
+<div class="exercise" id="exercise3">
+<h2><span class="ex-num">Exercise 3</span> Multiple Selection Questions</h2>
+<div class="theme">Tous les chapitres — TIC 01 à 05</div>
+
+<div class="question" id="q11">
+<label class="q-label">11. Among the following items, which ones are hardware components? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="checkbox" name="q11" value="a"> A) Processor (CPU)</label>
+<label><input type="checkbox" name="q11" value="b"> B) Windows operating system</label>
+<label><input type="checkbox" name="q11" value="c"> C) Keyboard</label>
+<label><input type="checkbox" name="q11" value="d"> D) Screen</label>
+</div>
+</div>
+
+<div class="question" id="q12">
+<label class="q-label">12. Among the following extensions, which ones belong to Microsoft Office? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="checkbox" name="q12" value="a"> A) .docx</label>
+<label><input type="checkbox" name="q12" value="b"> B) .xlsx</label>
+<label><input type="checkbox" name="q12" value="c"> C) .pptx</label>
+<label><input type="checkbox" name="q12" value="d"> D) .odt</label>
+</div>
+</div>
+
+<div class="question" id="q13">
+<label class="q-label">13. Which are common Excel functions used to compute statistics? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="checkbox" name="q13" value="a"> A) MOYENNE()</label>
+<label><input type="checkbox" name="q13" value="b"> B) NB()</label>
+<label><input type="checkbox" name="q13" value="c"> C) REMPLACER()</label>
+<label><input type="checkbox" name="q13" value="d"> D) MAX()</label>
+</div>
+</div>
+</div>
+
+<!-- EXERCICE 4 — TEXTE À COMPLÉTER -->
+<div class="exercise" id="exercise4">
+<h2><span class="ex-num">Exercise 4</span> Fill-in-the-blank Text</h2>
+<div class="theme">Tous les chapitres — TIC 01 à 05</div>
+
+<div class="question" id="q14">
+<label class="q-label">14. In the Von Neumann model, the three main units are: the central processing unit, memory, and the __________ unit. <span class="q-points">1 pt</span></label>
+<select class="q-select" id="q14-select" onchange="onSelectChange()">
+<option value="">-- Choose --</option>
+<option value="entree-sortie">of input-output</option>
+<option value="graphique">graphics</option>
+<option value="alimentation">power supply</option>
+</select>
+</div>
+
+<div class="question" id="q15">
+<label class="q-label">15. In Excel, to create a chart, you first select the __________, then insert the desired chart type. <span class="q-points">1 pt</span></label>
+<select class="q-select" id="q15-select" onchange="onSelectChange()">
+<option value="">-- Choose --</option>
+<option value="cellules">cells</option>
+<option value="donnees">data</option>
+<option value="feuilles">sheets</option>
+</select>
+</div>
+</div>
+
+<!-- EXERCICE 5 — ASSOCIER -->
+<div class="exercise" id="exercise5">
+<h2><span class="ex-num">Exercise 5</span> Matching Terms</h2>
+<div class="theme">Tous les chapitres — TIC 01 à 05</div>
+
+<div class="question" id="q21">
+<label class="q-label">21. Match each keyboard shortcut to its action in Windows: <span class="q-points">2 pts</span></label>
+<p style="font-size:.8rem;color:#888;margin-bottom:6px">Click on a term (left), then on its definition (right).</p>
+<div class="matching-area" id="match-21">
+<div class="match-item term" data-id="t1" onclick="selectTerm(this,'21')">Ctrl + C</div>
+<div class="match-item def" data-id="d1" data-group="21" onclick="selectDef(this,'21')">Copy</div>
+<div class="match-item term" data-id="t2" onclick="selectTerm(this,'21')">Ctrl + V</div>
+<div class="match-item def" data-id="d2" data-group="21" onclick="selectDef(this,'21')">Paste</div>
+<div class="match-item term" data-id="t3" onclick="selectTerm(this,'21')">Ctrl + X</div>
+<div class="match-item def" data-id="d3" data-group="21" onclick="selectDef(this,'21')">Cut</div>
+</div>
+<div id="q21-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<div class="question" id="q22">
+<label class="q-label">22. Match each hardware component to its function: <span class="q-points">2 pts</span></label>
+<div class="matching-area" id="match-22">
+<div class="match-item term" data-id="t4" onclick="selectTerm(this,'22')">Processor (CPU)</div>
+<div class="match-item def" data-id="d4" data-group="22" onclick="selectDef(this,'22')">Instruction processing</div>
+<div class="match-item term" data-id="t5" onclick="selectTerm(this,'22')">RAM</div>
+<div class="match-item def" data-id="d5" data-group="22" onclick="selectDef(this,'22')">Short-term volatile memory</div>
+<div class="match-item term" data-id="t6" onclick="selectTerm(this,'22')">Hard drive</div>
+<div class="match-item def" data-id="d6" data-group="22" onclick="selectDef(this,'22')">Permanent storage</div>
+</div>
+<div id="q22-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<div class="question" id="q23">
+<label class="q-label">23. Match each type of software to its example: <span class="q-points">2 pts</span></label>
+<div class="matching-area" id="match-23">
+<div class="match-item term" data-id="t7" onclick="selectTerm(this,'23')">Operating system</div>
+<div class="match-item def" data-id="d7" data-group="23" onclick="selectDef(this,'23')">Windows 11</div>
+<div class="match-item term" data-id="t8" onclick="selectTerm(this,'23')">Word processor software</div>
+<div class="match-item def" data-id="d8" data-group="23" onclick="selectDef(this,'23')">Microsoft Word</div>
+<div class="match-item term" data-id="t9" onclick="selectTerm(this,'23')">Spreadsheet software</div>
+<div class="match-item def" data-id="d9" data-group="23" onclick="selectDef(this,'23')">Microsoft Excel</div>
+</div>
+<div id="q23-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<div class="question" id="q24">
+<label class="q-label">24. Match each Word shortcut to its action: <span class="q-points">2 pts</span></label>
+<div class="matching-area" id="match-24">
+<div class="match-item term" data-id="t10" onclick="selectTerm(this,'24')">Ctrl + G</div>
+<div class="match-item def" data-id="d10" data-group="24" onclick="selectDef(this,'24')">Align left</div>
+<div class="match-item term" data-id="t11" onclick="selectTerm(this,'24')">Ctrl + E</div>
+<div class="match-item def" data-id="d11" data-group="24" onclick="selectDef(this,'24')">Center</div>
+<div class="match-item term" data-id="t12" onclick="selectTerm(this,'24')">Ctrl + D</div>
+<div class="match-item def" data-id="d12" data-group="24" onclick="selectDef(this,'24')">Font dialog box</div>
+</div>
+<div id="q24-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<div class="question" id="q25">
+<label class="q-label">25. Match each Excel function to its description: <span class="q-points">2 pts</span></label>
+<div class="matching-area" id="match-25">
+<div class="match-item term" data-id="t13" onclick="selectTerm(this,'25')">=MOYENNE()</div>
+<div class="match-item def" data-id="d13" data-group="25" onclick="selectDef(this,'25')">Calculates the average</div>
+<div class="match-item term" data-id="t14" onclick="selectTerm(this,'25')">=NB()</div>
+<div class="match-item def" data-id="d14" data-group="25" onclick="selectDef(this,'25')">Counts numeric cells</div>
+<div class="match-item term" data-id="t15" onclick="selectTerm(this,'25')">=SI()</div>
+<div class="match-item def" data-id="d15" data-group="25" onclick="selectDef(this,'25')">Tests a condition</div>
+</div>
+<div id="q25-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+</div>
+
+
+<!-- EXERCICE 6 — QUESTIONS AVANCÉES DIFFICILES -->
+<div class="exercise" id="exercise6">
+<h2><span class="ex-num">Exercise 6</span> Advanced Questions — Difficult level, in-depth analysis</h2>
+<div class="theme">Cas complexes et notions avancées</div>
+
+<div class="question" id="q26">
+<label class="q-label">11. A student stores their data locally, in the cloud, and on a USB drive every week: which backup strategy does this describe? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q26" value="a"> A) The 3-2-1 rule (3 copies, 2 media, 1 offsite)</label>
+<label><input type="radio" name="q26" value="b"> B) Incremental backup</label>
+<label><input type="radio" name="q26" value="c"> C) RAID 0</label>
+<label><input type="radio" name="q26" value="d"> D) System snapshot</label>
+</div>
+</div>
+
+<div class="question" id="q27">
+<label class="q-label">12. Why does a backup kept ONLY on the internal drive not protect against ransomware? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q27" value="a"> A) The ransomware also encrypts the accessible volumes; the copy is compromised</label>
+<label><input type="radio" name="q27" value="b"> B) Because the internal drive refuses writes</label>
+<label><input type="radio" name="q27" value="c"> C) Because ransomware only affects the cloud</label>
+<label><input type="radio" name="q27" value="d"> D) Because the drive is read-only</label>
+</div>
+</div>
+
+<div class="question" id="q28">
+<label class="q-label">13. What is the real role of the 'Business Continuity Plan' (PRA) after a major disaster? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q28" value="a"> A) Restore critical systems within a defined time frame (RTO/RPO) after the failure</label>
+<label><input type="radio" name="q28" value="b"> B) Prevent any failure</label>
+<label><input type="radio" name="q28" value="c"> C) Replace the firewall</label>
+<label><input type="radio" name="q28" value="d"> D) Manage passwords</label>
+</div>
+</div>
+
+<div class="question" id="q29">
+<label class="q-label">14. What is the difference between DIFFERENTIAL backup and INCREMENTAL backup? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q29" value="a"> A) Incremental saves only the changes since the LAST backup (be it incremental); differential from the last full backup</label>
+<label><input type="radio" name="q29" value="b"> B) Incremental is slower</label>
+<label><input type="radio" name="q29" value="c"> C) Differential is always smaller</label>
+<label><input type="radio" name="q29" value="d"> D) They are identical</label>
+</div>
+</div>
+
+<div class="question" id="q30">
+<label class="q-label">15. A file corrupted by a virus before backup, then restored: why is the restoration ineffective if the backup predates the infection? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q30" value="a"> A) Because the backup already contained the healthy version (it predates the infection)</label>
+<label><input type="radio" name="q30" value="b"> B) Because the virus replicates</label>
+<label><input type="radio" name="q30" value="c"> C) Because the backup is always empty</label>
+<label><input type="radio" name="q30" value="d"> D) Because Windows blocks the restoration</label>
+</div>
+</div>
+</div>
+</div><!-- fin exercises-container -->
+
+<footer>
+<p>Module TIC — Dr. Madani BELACEL · ENS Université de Mostaganem · 2026-2027</p>
+</footer>
+</div>
+
+<script>
+/* ========== DONNÉES DE L'EXAMEN ========== */
+const EXAM_ID = 'Examen8';
+const EXAM_TITRE = 'Mock Exam Semester 1';
+const SEMESTRE = 'S1';
+const TOTAL_Q = 30;
+const TOTAL_PTS = 30;
+
+const ANSWERS = {
+  q1:'b', q2:'c', q3:'b', q4:'b', q5:'c',
+  q6:'faux', q7:'vrai', q8:'vrai', q9:'faux', q10:'faux',
+  q11:['a','c','d'], q12:['a','b','c'], q13:['a','b','d'],
+  q14:'entree-sortie', q15:'donnees',
+  q21:{t1:'d1',t2:'d2',t3:'d3'},
+  q22:{t4:'d4',t5:'d5',t6:'d6'},
+  q23:{t7:'d7',t8:'d8',t9:'d9'},
+  q24:{t10:'d10',t11:'d11',t12:'d12'},
+  q25:{t13:'d13',t14:'d14',t15:'d15'},
+  q26:'a',
+  q27:'a',
+  q28:'a',
+  q29:'a',
+  q30:'a',
+};
+
+const EXPLANATIONS = {
+  q1:'B — The Von Neumann architecture (1945) separates the CPU from memory on a shared bus.',
+  q2:'C — .docx is the standard extension of Word documents (Office 2007+).',
+  q3:'B — Excel is a spreadsheet that processes data using formulas and functions.',
+  q4:'B — Ctrl + Z undoes the last action in Word and in most software.',
+  q5:'C — The hard drive or SSD stores data permanently (unlike the volatile RAM).',
+  q6:'False — Software refers to the programs (the logical part), while hardware refers to the physical part.',
+  q7:'True — Styles allow homogeneous formatting (headings, body, etc.) to be applied to the entire document.',
+  q8:'True — =SOMME(A1:A5) sums all the values from A1 to A5 (always true).',
+  q9:'False — Communication includes email, forums, videoconferencing, social networks, etc.',
+  q10:'False — Ctrl + Shift + F3 opens the sources pane. There is no standard shortcut to insert the source library in one click.',
+  q11:'A, C, D — The processor, the keyboard, and the screen are hardware. Windows is software.',
+  q12:'A, B, C — .docx (Word), .xlsx (Excel), .pptx (PowerPoint) are Office extensions. .odt is OpenDocument (LibreOffice).',
+  q13:'A, B, D — MOYENNE(), NB(), and MAX() are statistical functions. REMPLACER() is a string function.',
+  q14:'Input-output — The Von Neumann model comprises the CPU, memory, and input/output units.',
+  q15:'Data — You must first select the data, then insert the chart.',
+  q26:'3-2-1: 3 copies, 2 different types of media, 1 offsite copy (cloud/USB drive).',
+  q27:'A ransomware encrypts all mounted/accessible volumes, including local copies: a disconnected medium is required.',
+  q28:'The PRA defines the RTO (recovery time) and RPO (acceptable data loss) objectives in the event of a disaster.',
+  q29:'Each incremental backup refers to the previous one; each differential backup refers to the last full backup.',
+  q30:'If the backup predates the infection, the restored file is the healthy version: hence the value of historical versions.',
+};
+
+const MATCH_CORRECTIONS = {
+  '21':{t1:'d1',t2:'d2',t3:'d3'},
+  '22':{t4:'d4',t5:'d5',t6:'d6'},
+  '23':{t7:'d7',t8:'d8',t9:'d9'},
+  '24':{t10:'d10',t11:'d11',t12:'d12'},
+  '25':{t13:'d13',t14:'d14',t15:'d15'}
+};
+
+const MATCH_NAMES = {
+  '21':{t1:'Ctrl + C',t2:'Ctrl + V',t3:'Ctrl + X'},
+  '22':{t4:'Processor (CPU)',t5:'RAM',t6:'Hard drive'},
+  '23':{t7:'Operating system',t8:'Word processor software',t9:'Spreadsheet software'},
+  '24':{t10:'Ctrl + G',t11:'Ctrl + E',t12:'Ctrl + D'},
+  '25':{t13:'=MOYENNE()',t14:'=NB()',t15:'=SI()'},
+};
+
+/* ========== ÉTAT ========== */
+let timerInterval;
+let totalTime = 90 * 60;
+let examStarted = false;
+let matchingState = {};
+let selectedTerm = null;
+
+/* ========== FORMULAIRE IDENTITÉ ========== */
+const champIds = ['nom','prenom','groupe','niveau','departement','specialite'];
+champIds.forEach(id => {
+  document.getElementById(id).addEventListener('input', checkForm);
+  document.getElementById(id).addEventListener('change', checkForm);
+});
+
+function checkForm(){
+  const allFilled = champIds.every(id => document.getElementById(id).value.trim() !== '');
+  document.getElementById('btn-start').disabled = !allFilled;
+}
+
+function getStudentInfo(){
+  return {
+    nom: document.getElementById('nom').value.trim(),
+    prenom: document.getElementById('prenom').value.trim(),
+    groupe: document.getElementById('groupe').value,
+    niveau: document.getElementById('niveau').value,
+    departement: document.getElementById('departement').value,
+    specialite: document.getElementById('specialite').value
+  };
+}
+
+/* ========== DÉMARRAGE ========== */
+function startExam(){
+  const info = getStudentInfo();
+  if(!info.nom || !info.prenom || !info.groupe || !info.niveau || !info.departement || !info.specialite){
+    alert('Please fill in all the fields.');
+    return;
+  }
+  examStarted = true;
+  document.getElementById('identity-card').style.display = 'none';
+  document.getElementById('top-bar').style.display = 'flex';
+  document.querySelectorAll('.exercise').forEach(e => e.style.display = 'block');
+  saveStudentInfo(info);
+  startTimer();
+  setupAutoSave();
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ========== RESTAURER SESSION ========== */
+function restoreSession(){
+  const saved = localStorage.getItem(EXAM_ID+'_student');
+  if(!saved){ alert('No saved session was found.'); return; }
+  const info = JSON.parse(saved);
+  champIds.forEach(id => {
+    if(info[id]) document.getElementById(id).value = info[id];
+  });
+  const answers = JSON.parse(localStorage.getItem(EXAM_ID+'_answers') || '{}');
+  restoreAnswers(answers);
+  startExam();
+}
+
+function restoreAnswers(answers){
+  for(let q in answers){
+    const val = answers[q];
+    if(q.startsWith('q') && !q.startsWith('q2')){
+      const radios = document.querySelectorAll('input[name="'+q+'"]');
+      radios.forEach(r => { if(r.value === val) r.checked = true; });
+      const checks = document.querySelectorAll('input[name="'+q+'"]');
+      if(Array.isArray(val)){
+        checks.forEach(c => { if(val.includes(c.value)) c.checked = true; });
+      }
+    }
+    if(q.includes('-select')){
+      const sel = document.getElementById(q);
+      if(sel) sel.value = val;
+    }
+    if(q.match(/^match-\d+$/)){
+      matchingState[q.replace('match-','')] = val;
+      for(let termId in val){
+        const termEl = document.querySelector('.match-item[data-id="'+termId+'"]');
+        const defEl = document.querySelector('.match-item[data-id="'+val[termId]+'"]');
+        if(termEl){termEl.classList.add('matched');termEl.style.background='#c8e6c9';}
+        if(defEl){defEl.classList.add('matched');}
+      }
+    }
+  }
+}
+
+function saveStudentInfo(info){
+  localStorage.setItem(EXAM_ID+'_student', JSON.stringify(info));
+}
+
+/* ========== TIMER ========== */
+function startTimer(){
+  timerInterval = setInterval(()=>{
+    if(totalTime <= 0){clearInterval(timerInterval); autoSubmit(); return;}
+    totalTime--;
+    const h = Math.floor(totalTime/3600);
+    const m = Math.floor((totalTime%3600)/60);
+    const s = totalTime%60;
+    document.getElementById('time-display').textContent = h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    const timerEl = document.getElementById('timer');
+    if(totalTime <= 300){ timerEl.style.color='#c0392b'; timerEl.style.fontWeight='900'; }
+    else if(totalTime <= 600){ timerEl.style.color='#e67e22'; }
+  },1000);
+}
+
+function autoSubmit(){
+  clearInterval(timerInterval);
+  alert('⏱ Temps écoulé ! L\'examen est soumis automatiquement.');
+  submitExam();
+}
+
+/* ========== PROGRESSION ========== */
+function updateProgress(){
+  if(!examStarted) return;
+  let answered = 0;
+  // QCM q1-q5
+  for(let i=1;i<=5;i++) if(document.querySelector('input[name="q'+i+'"]:checked')) answered++;
+  // Vrai/Faux q6-q10
+  for(let i=6;i<=10;i++) if(matchingState['q'+i]) answered++;
+  // Multi q11-q13
+  for(let i=11;i<=13;i++) if(document.querySelector('input[name="q'+i+'"]:checked')) answered++;
+  // Texte q14-q15
+  for(let i=14;i<=15;i++) if(document.getElementById('q'+i+'-select') && document.getElementById('q'+i+'-select').value) answered++;
+  // Nouvelles questions avancées q26-q30
+  for(let i=26;i<=30;i++) if(document.querySelector('input[name="q"'+i+'"]:checked')) answered++;
+  // Matching q21-q25
+  for(let i=21;i<=25;i++) if(matchingState[i] && Object.keys(matchingState[i]).length > 0) answered++;
+  document.getElementById('progress-fill').style.width = (answered/TOTAL_Q*100)+'%';
+  document.getElementById('progress-text').textContent = answered+' / '+TOTAL_Q+' questions';
+}
+
+/* ========== VRAI/FAUX ========== */
+function toggleTF(btn){
+  const q = btn.dataset.q;
+  document.querySelectorAll('.tf-btn[data-q="'+q+'"]').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  matchingState[q] = btn.dataset.val;
+  updateProgress();
+  autoSaveAnswers();
+}
+
+/* ========== SÉLECTION ========== */
+function onSelectChange(){
+  updateProgress();
+  autoSaveAnswers();
+}
+
+/* ========== MATCHING ========== */
+function selectTerm(el, group){
+  if(!examStarted) return;
+  document.querySelectorAll('.match-item.term.selected').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedTerm = {el, group};
+}
+
+function selectDef(el, group){
+  if(!examStarted || !selectedTerm || selectedTerm.group !== group) return;
+  const termId = selectedTerm.el.dataset.id;
+  const defId = el.dataset.id;
+  if(!matchingState[group]) matchingState[group] = {};
+  matchingState[group][termId] = defId;
+  el.classList.add('matched');
+  selectedTerm.el.classList.add('matched');
+  selectedTerm.el.style.background = '#c8e6c9';
+  selectedTerm.el.classList.remove('selected');
+  selectedTerm = null;
+  updateProgress();
+  autoSaveAnswers();
+}
+
+/* ========== SAUVEGARDE AUTO ========== */
+function setupAutoSave(){
+  setInterval(autoSaveAnswers, 30000);
+  document.addEventListener('change', autoSaveAnswers);
+}
+
+function autoSaveAnswers(){
+  if(!examStarted) return;
+  const data = collectAllAnswers();
+  localStorage.setItem(EXAM_ID+'_answers', JSON.stringify(data.answers));
+  localStorage.setItem(EXAM_ID+'_matching', JSON.stringify(matchingState));
+  showSaveIndicator();
+}
+
+function showSaveIndicator(){
+  const el = document.getElementById('autosave-indicator');
+  el.classList.add('saving');
+  el.textContent = '⏳ Saving...';
+  setTimeout(()=>{ el.classList.remove('saving'); el.textContent = '● Auto-save'; }, 1500);
+}
+
+function collectAllAnswers(){
+  const answers = {};
+  // QCM
+  for(let i=1;i<=5;i++){
+    const c = document.querySelector('input[name="q'+i+'"]:checked');
+    if(c) answers['q'+i] = c.value;
+  }
+  // Vrai/Faux
+  for(let i=6;i<=10;i++) if(matchingState['q'+i]) answers['q'+i] = matchingState['q'+i];
+  // Multi
+  for(let i=11;i<=13;i++){
+    const arr = Array.from(document.querySelectorAll('input[name="q'+i+'"]:checked')).map(c=>c.value);
+    if(arr.length) answers['q'+i] = arr;
+  }
+  // Select
+  for(let i=14;i<=15;i++){
+    const sel = document.getElementById('q'+i+'-select');
+    if(sel && sel.value) answers['q'+i+'-select'] = sel.value;
+  }
+  // Nouvelles questions avancées q26-q30
+  for(let i=26;i<=30;i++){
+    const cc = document.querySelector('input[name="q"+i+"]:checked');
+    if(cc) answers['q'+i] = cc.value;
+  }
+  // Matching
+  for(let g in matchingState) answers['match-'+g] = matchingState[g];
+  return {answers};
+}
+
+/* ========== SOUMETTRE ========== */
+function submitExam(){
+  if(!examStarted) return;
+  const pwd = prompt('🔑 Teacher password to display the corrections:');
+  if(pwd !== 'm5503113') {
+    alert('❌ Wrong password. Result not shown.');
+    clearInterval(timerInterval);
+    const a = collectAllAnswers().answers;
+    saveResult(0,0,'Not evaluated',a);
+    return;
+  }
+  clearInterval(timerInterval);
+
+  let score = 0;
+  let correct = 0, wrong = 0;
+  let details = '';
+  const allAnswers = collectAllAnswers().answers;
+
+  // QCM q1-q5
+  for(let i=1;i<=5;i++){
+    const name = 'q'+i;
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Answer: '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Expected answer: '+ANSWERS[name].toUpperCase()+(val?' | Your answer: '+val.toUpperCase():' | Not answered'));
+    }
+  }
+
+  // Vrai/Faux q6-q10
+  for(let i=6;i<=10;i++){
+    const name = 'q'+i;
+    const val = matchingState[name];
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Answer: '+cap(val));
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Expected answer: '+cap(ANSWERS[name])+(val?' | Your answer: '+cap(val):' | Not answered'));
+    }
+  }
+
+  // Multi q11-q13
+  for(let i=11;i<=13;i++){
+    const name = 'q'+i;
+    const checked = Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(c=>c.value).sort();
+    const expected = Array.from(ANSWERS[name]).sort();
+    const qEl = document.getElementById(name);
+    if(JSON.stringify(checked)===JSON.stringify(expected)){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name]||'Correct answers: '+expected.join(', ').toUpperCase(), '');
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name]||'', 'Expected: '+expected.join(', ').toUpperCase()+(checked.length?' | Your answers: '+checked.join(', ').toUpperCase():' | No answer'));
+    }
+  }
+
+  // Select q14-q15
+  for(let i=14;i<=15;i++){
+    const name = 'q'+i;
+    const sel = document.getElementById(name+'-select');
+    const val = sel ? sel.value : '';
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], '');
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Expected word: '+ANSWERS[name]);
+    }
+  }
+
+  // Nouvelles questions avancées q26-q30
+
+  // Matching q21-q25
+  for(let i=21;i<=25;i++){
+    const name = 'q'+i;
+    const state = matchingState[i] || {};
+    const expected = MATCH_CORRECTIONS[i];
+    let allCorrect = true;
+    for(let k in expected){ if(state[k]!==expected[k]) allCorrect = false; }
+    const qEl = document.getElementById(name);
+    const resEl = document.getElementById(name+'-result');
+    if(allCorrect && Object.keys(expected).length > 0){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      resEl.innerHTML = '<span class="correct-answer">✓ All the associations are correct</span>';
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      let pairs = [];
+      for(let k in expected){
+        const tName = (MATCH_NAMES[i] && MATCH_NAMES[i][k]) ? MATCH_NAMES[i][k] : k;
+        const dEl = document.querySelector('.match-item[data-id="'+expected[k]+'"]');
+        pairs.push(tName+' → '+(dEl?dEl.textContent:expected[k]));
+      }
+      resEl.innerHTML = '<span class="wrong-answer">✗ Incorrect associations</span><div class="correction-info">Correct answers: '+pairs.join(' | ')+'</div>';
+    }
+  }
+
+    // Q avancée q26
+  {
+    const name = 'q26';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Answer: '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Expected answer: '+ANSWERS[name].toUpperCase()+(val?' | Your answer: '+val.toUpperCase():' | Not answered'));
+    }
+  }
+  // Q avancée q27
+  {
+    const name = 'q27';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Answer: '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Expected answer: '+ANSWERS[name].toUpperCase()+(val?' | Your answer: '+val.toUpperCase():' | Not answered'));
+    }
+  }
+  // Q avancée q28
+  {
+    const name = 'q28';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Answer: '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Expected answer: '+ANSWERS[name].toUpperCase()+(val?' | Your answer: '+val.toUpperCase():' | Not answered'));
+    }
+  }
+  // Q avancée q29
+  {
+    const name = 'q29';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Answer: '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Expected answer: '+ANSWERS[name].toUpperCase()+(val?' | Your answer: '+val.toUpperCase():' | Not answered'));
+    }
+  }
+  // Q avancée q30
+  {
+    const name = 'q30';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Answer: '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Expected answer: '+ANSWERS[name].toUpperCase()+(val?' | Your answer: '+val.toUpperCase():' | Not answered'));
+    }
+  }
+  const note20 = Math.round((score / TOTAL_PTS) * 20 * 10) / 10;
+  const pct = Math.round(score / TOTAL_PTS * 100);
+  let mention = note20 >= 16 ? 'Very good' : note20 >= 14 ? 'Bien' : note20 >= 12 ? 'Fairly good' : note20 >= 10 ? 'Pass' : 'Fail';
+
+  // Afficher résultats
+  const panel = document.getElementById('results-panel');
+  panel.style.display = 'block';
+  panel.scrollIntoView({behavior:'smooth'});
+
+  document.getElementById('score-total').innerHTML =
+    '<div class="big">'+score+' / '+TOTAL_PTS+'</div>'+
+    '<div class="sub">Mark: <strong>'+note20+' / 20</strong> — Grade: <strong>'+mention+'</strong></div>';
+
+  const fill = document.getElementById('score-fill');
+  fill.style.width = pct+'%';
+  fill.style.background = pct>=80?'linear-gradient(90deg,#27ae60,#2ecc71)':pct>=50?'linear-gradient(90deg,#f39c12,#f1c40f)':'linear-gradient(90deg,#e74c3c,#c0392b)';
+
+  document.getElementById('results-summary').innerHTML =
+    '<div class="result-row"><span class="label">Correct answers</span><span class="score" style="color:#27ae60">'+correct+'</span></div>'+
+    '<div class="result-row"><span class="label">Wrong answers</span><span class="score" style="color:#e74c3c">'+wrong+'</span></div>'+
+    '<div class="result-row"><span class="label">Score</span><span class="score">'+score+' / '+TOTAL_PTS+' ('+pct+'%)</span></div>'+
+    '<div class="result-row"><span class="label">Note</span><span class="score">'+note20+' / 20</span></div>'+
+    '<div class="result-row"><span class="label">Grade</span><span class="score">'+mention+'</span></div>';
+
+  document.getElementById('results-detail').innerHTML = details;
+
+  // Sauvegarder le résultat final
+  saveResult(score, note20, mention, allAnswers);
+}
+
+function mkDetail(qName, isCorrect, explanation, extra){
+  const cls = isCorrect ? 'good' : 'bad';
+  const icon = isCorrect ? '✓' : '✗';
+  const clsText = isCorrect ? 'correct-answer' : 'wrong-answer';
+  return '<div class="detail-block '+cls+'"><strong>'+qName.toUpperCase()+'</strong> <span class="'+clsText+'">'+icon+' '+(isCorrect?'Correct':'Incorrect')+'</span>'+
+    (extra?'<div style="font-size:.82rem;color:#555;margin-top:2px">'+extra+'</div>':'')+
+    '<div class="correction-info">'+explanation+'</div></div>';
+}
+
+function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : ''; }
+
+/* ========== SAUVEGARDE RÉSULTAT ========== */
+function saveResult(score, note, mention, answers){
+  const info = getStudentInfo();
+  const now = new Date().toLocaleString('en-GB');
+  const record = {
+    date: now,
+    examen: EXAM_TITRE,
+    semestre: SEMESTRE,
+    ...info,
+    score: score,
+    note20: note,
+    mention: mention,
+    answers: answers
+  };
+
+  let allResults = JSON.parse(localStorage.getItem(EXAM_ID+'_results') || '[]');
+  allResults.push(record);
+  localStorage.setItem(EXAM_ID+'_results', JSON.stringify(allResults));
+}
+
+/* ========== CSV ========== */
+function downloadCSV(){
+  let allResults = JSON.parse(localStorage.getItem(EXAM_ID+'_results') || '[]');
+  if(!allResults.length){ alert('No results to export.'); return; }
+
+  const headers = ['Date','Examen','Nom','Prénom','Groupe','Niveau','Département','Spécialité'];
+  for(let i=1;i<=TOTAL_Q;i++) headers.push('Q'+i);
+  headers.push('Score/'+TOTAL_PTS,'Note/20','Grade');
+
+  let csv = '\uFEFF';
+  csv += headers.join(';') + '\n';
+
+  allResults.forEach(r => {
+    let row = [
+      r.date, r.examen, r.nom, r.prenom, r.groupe, r.niveau, r.departement, r.specialite
+    ];
+    for(let i=1;i<=TOTAL_Q;i++){
+      const qKey = 'q'+i;
+      const mKey = 'match-'+i;
+      let val = r.answers[qKey] || r.answers[qKey+'-select'] || r.answers[mKey] || '';
+      if(Array.isArray(val)) val = val.join('+');
+      if(typeof val === 'object') val = JSON.stringify(val);
+      row.push(val);
+    }
+    row.push(r.score, r.note20, r.mention);
+    csv += row.join(';') + '\n';
+  });
+
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'Results_'+EXAM_ID+'.csv';
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+function viewAllResults(){
+  let allResults = JSON.parse(localStorage.getItem(EXAM_ID+'_results') || '[]');
+  if(!allResults.length){ alert('No saved results.'); return; }
+  let msg = '📋 Saved results ('+allResults.length+' attempt(s)) :\n\n';
+  allResults.forEach((r,i) => {
+    msg += (i+1)+'. '+r.date+' — '+r.nom+' '+r.prenom+' ('+r.groupe+'/'+r.niveau+'/'+r.specialite+') — Score: '+r.score+'/'+TOTAL_PTS+' — Note: '+r.note20+'/20 — '+r.mention+'\n';
+  });
+  alert(msg);
+}
+
+/* ========== RÉINITIALISER ========== */
+function resetExam(){
+  if(!confirm('Reset all the answers and the saved data?')) return;
+  document.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(i => i.checked = false);
+  document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('select.q-select').forEach(s => s.selectedIndex = 0);
+  document.querySelectorAll('.match-item').forEach(m => {m.classList.remove('matched','selected');m.style.background='';});
+  matchingState = {};
+  selectedTerm = null;
+  document.querySelectorAll('.question').forEach(q => q.classList.remove('correct','wrong'));
+  document.querySelectorAll('[id$="-result"]').forEach(r => r.innerHTML = '');
+  document.getElementById('results-panel').style.display = 'none';
+  localStorage.removeItem(EXAM_ID+'_answers');
+  localStorage.removeItem(EXAM_ID+'_matching');
+  totalTime = 90 * 60;
+  document.getElementById('timer').style.color = '#c0392b';
+  document.getElementById('time-display').textContent = '1:30:00';
+  clearInterval(timerInterval);
+  startTimer();
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ========== INIT ========== */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const saved = localStorage.getItem(EXAM_ID+'_student');
+  if(saved){
+    const info = JSON.parse(saved);
+    champIds.forEach(id => { if(info[id]) document.getElementById(id).value = info[id]; });
+    checkForm();
+  }
+});
+</script>
+</body>
+</html>

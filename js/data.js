@@ -99,6 +99,11 @@ const COURSES_DATA = {
 
 const NEWS_DATA = [
   {
+    date: "Septembre 2026",
+    title: "🤖 Nouveau module Intelligence Artificielle",
+    desc: "Cours Questions/Réponses bilingues (FR/EN) très simples : comment fonctionne l'IA, exemples de la vie quotidienne, et méthode en 6 étapes pour réaliser sa propre IA à partir de zéro."
+  },
+  {
     date: "Juin 2026",
     title: "🌐 Site académique en ligne",
     desc: "Lancement du site professionnel avec tous les supports de cours, ressources pédagogiques et informations de recherche."

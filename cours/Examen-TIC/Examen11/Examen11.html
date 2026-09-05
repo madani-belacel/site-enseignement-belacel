@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen 11 — Base de données | Module TIC — Dr. Madani BELACEL</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f4f3;color:#1a2a1a;line-height:1.7;padding:0}
+.container{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#1a5c33,#2c6e49,#3f8a5f);color:#fff;border-radius:14px;padding:24px 28px;margin-bottom:20px;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+header h1{font-size:1.4rem;margin-bottom:4px}
+header p{opacity:.9;font-size:.92rem}
+.badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:.78rem;margin:4px 3px 0}
+
+.identity-card{background:#fff;border-radius:14px;padding:22px 26px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2980b9}
+.identity-card h2{color:#1a3c22;font-size:1.1rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.identity-card h2 span{background:#2980b9;color:#fff;border-radius:8px;padding:2px 10px;font-size:.8rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-weight:600;font-size:.85rem;color:#333;margin-bottom:4px}
+.form-group input,.form-group select{padding:9px 12px;border:2px solid #d0d8d5;border-radius:8px;font-size:.92rem;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus{border-color:#2c6e49;outline:none}
+.form-group.full{grid-column:1/-1}
+.identity-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.btn-start{padding:10px 28px;border:none;border-radius:8px;cursor:pointer;font-size:.95rem;font-weight:700;background:#2c6e49;color:#fff;transition:all .2s}
+.btn-start:hover{background:#1a5c33}
+.btn-start:disabled{background:#b0bec5;cursor:not-allowed}
+.btn-secondary-sm{padding:8px 16px;border:2px solid #2c6e49;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:600;background:transparent;color:#2c6e49;transition:all .2s}
+.btn-secondary-sm:hover{background:#e8f5e9}
+
+.top-bar{display:none;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:#fff;border-radius:12px;padding:12px 18px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.timer{font-size:1.2rem;font-weight:700;color:#c0392b;display:flex;align-items:center;gap:6px}
+.timer svg{width:20px;height:20px}
+.progress-wrap{flex:1;min-width:180px;margin:0 12px}
+.progress-bar{height:8px;background:#e0e7e4;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#2c6e49,#3f8a5f);border-radius:4px;transition:width .4s}
+.progress-text{text-align:center;font-size:.75rem;color:#666;margin-top:2px}
+.btn-group{display:flex;gap:6px;flex-wrap:wrap}
+.btn{padding:7px 16px;border:none;border-radius:8px;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s}
+.btn-primary{background:#2c6e49;color:#fff}.btn-primary:hover{background:#1a5c33}
+.btn-warning{background:#f39c12;color:#fff}.btn-warning:hover{background:#e67e22}
+.btn-info{background:#3498db;color:#fff}.btn-info:hover{background:#2980b9}
+.btn-danger{background:#e74c3c;color:#fff}.btn-danger:hover{background:#c0392b}
+.autosave-indicator{font-size:.75rem;color:#27ae60;display:flex;align-items:center;gap:4px}
+.autosave-indicator.saving{color:#f39c12}
+
+.exercise{display:none;background:#fff;border-radius:14px;padding:22px 26px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2c6e49}
+.exercise h2{color:#1a3c22;font-size:1.1rem;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.exercise h2 .ex-num{background:#2c6e49;color:#fff;border-radius:8px;padding:2px 10px;font-size:.8rem}
+.exercise .theme{font-size:.82rem;color:#666;margin-bottom:14px;font-style:italic}
+.question{margin-bottom:16px;padding:12px 14px;background:#f9fbfa;border-radius:10px;border:1px solid #e3e7e5;transition:border-color .3s,background .3s}
+.question.correct{border-color:#27ae60;background:#f0faf4}
+.question.wrong{border-color:#e74c3c;background:#fdf0ef}
+.question label.q-label{font-weight:600;color:#1a3c22;display:block;margin-bottom:6px;font-size:.95rem}
+.q-points{float:right;font-size:.72rem;background:#e8f5e9;color:#2c6e49;padding:2px 8px;border-radius:10px;font-weight:600}
+.options{display:flex;flex-direction:column;gap:5px}
+.options label{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;transition:background .2s;font-size:.92rem}
+.options label:hover{background:#e8f0e9}
+.options input[type="radio"],.options input[type="checkbox"]{accent-color:#2c6e49;width:16px;height:16px}
+.tf-group{display:flex;gap:10px;margin-top:6px}
+.tf-btn{padding:7px 22px;border:2px solid #d0d8d5;border-radius:8px;cursor:pointer;font-weight:600;transition:all .2s;background:#fff;font-size:.9rem}
+.tf-btn:hover{border-color:#2c6e49}
+.tf-btn.selected{border-color:#2c6e49;background:#e8f5e9;color:#1a5c33}
+select.q-select{padding:8px 12px;border:2px solid #d0d8d5;border-radius:8px;font-size:.9rem;width:100%;max-width:380px;cursor:pointer;background:#fff}
+select.q-select:focus{border-color:#2c6e49;outline:none}
+
+.matching-area{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.match-item{padding:7px 13px;border-radius:8px;font-size:.88rem;cursor:pointer;transition:all .2s;border:2px solid #d0d8d5;background:#fff;user-select:none}
+.match-item.term{background:#e8f5e9;border-color:#c8e6c9}
+.match-item.term:hover{border-color:#2c6e49}
+.match-item.term.selected{border-color:#2c6e49;background:#c8e6c9;font-weight:600;box-shadow:0 0 0 2px rgba(44,110,73,.3)}
+.match-item.def{background:#fff;border-color:#d0d8d5}
+.match-item.def:hover{border-color:#2980b9}
+.match-item.def.matched{background:#d4efdf;border-color:#27ae60;font-weight:600}
+
+.results-panel{display:none;background:#fff;border-radius:14px;padding:24px 28px;margin-bottom:18px;box-shadow:0 2px 10px rgba(0,0,0,.07);border-left:5px solid #2980b9}
+.results-panel h2{color:#1a3c22;margin-bottom:14px}
+.score-total{text-align:center;padding:16px;font-weight:700}
+.score-total .big{font-size:2.2rem;color:#1a5c33}
+.score-total .sub{font-size:1rem;color:#666}
+.score-bar{height:16px;background:#e0e7e4;border-radius:8px;overflow:hidden;margin:10px 0}
+.score-fill{height:100%;border-radius:8px;transition:width 1s}
+.result-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;font-size:.92rem}
+.result-row .label{font-weight:600}
+.result-row .score{font-weight:700}
+.detail-block{margin:10px 0;padding:12px;border-radius:10px;font-size:.88rem}
+.detail-block.good{background:#f0faf4;border:1px solid #c8e6c9}
+.detail-block.bad{background:#fdf0ef;border:1px solid #f5b7b1}
+.detail-block h3{font-size:.95rem;margin-bottom:6px}
+.correct-answer{color:#27ae60;font-weight:600}
+.wrong-answer{color:#e74c3c;font-weight:600}
+.correction-info{font-size:.82rem;color:#555;margin-top:4px;padding:6px 10px;background:rgba(0,0,0,.03);border-radius:6px}
+.csv-actions{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+footer{text-align:center;padding:18px;color:#888;font-size:.78rem}
+@media print{.top-bar,.identity-card,.btn-group,.csv-actions,footer{display:none!important}.exercise{display:block!important}header{background:#2c6e49!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(max-width:640px){.container{padding:10px}header{padding:16px}header h1{font-size:1.15rem}.exercise{padding:14px}.top-bar{flex-direction:column;align-items:stretch}.timer{justify-content:center}.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<h1>Examen 11 — Base de données</h1>
+<p>Module TIC · Semestre 2 · Année universitaire 2026-2027</p>
+<div style="margin-top:6px">
+<span class="badge">Durée : 1h30</span>
+<span class="badge">5 exercices · 25 points</span>
+<span class="badge">Note /20</span>
+<span class="badge">Dr. BELACEL Madani</span>
+</div>
+</header>
+
+<div class="identity-card" id="identity-card">
+<h2><span>📋</span> Informations de l'étudiant</h2>
+<div class="form-grid">
+<div class="form-group">
+<label for="nom">Nom *</label>
+<input type="text" id="nom" placeholder="Votre nom" required>
+</div>
+<div class="form-group">
+<label for="prenom">Prénom *</label>
+<input type="text" id="prenom" placeholder="Votre prénom" required>
+</div>
+<div class="form-group">
+<label for="groupe">Groupe *</label>
+<select id="groupe">
+<option value="">-- Sélectionner --</option>
+<option value="G1">Groupe 1</option>
+<option value="G2">Groupe 2</option>
+<option value="G3">Groupe 3</option>
+<option value="G4">Groupe 4</option>
+<option value="G5">Groupe 5</option>
+<option value="G6">Groupe 6</option>
+</select>
+</div>
+<div class="form-group">
+<label for="niveau">Niveau *</label>
+<select id="niveau">
+<option value="">-- Sélectionner --</option>
+<option value="L1">Licence 1</option>
+<option value="L2">Licence 2</option>
+<option value="L3">Licence 3</option>
+<option value="M1">Master 1</option>
+<option value="M2">Master 2</option>
+<option value="ENS1">ENS 1ère année</option>
+<option value="ENS2">ENS 2ème année</option>
+</select>
+</div>
+<div class="form-group">
+<label for="departement">Département *</label>
+<select id="departement">
+<option value="">-- Sélectionner --</option>
+<option value="Français">Département Français</option>
+<option value="Anglais">Département Anglais</option>
+</select>
+</div>
+<div class="form-group">
+<label for="specialite">Spécialité *</label>
+<select id="specialite">
+<option value="">-- Sélectionner --</option>
+<option value="Langue et Culture">Langue et Culture</option>
+<option value="DLE">DLE (Didactique des Langues Étrangères)</option>
+</select>
+</div>
+</div>
+<div class="identity-actions">
+<button class="btn-start" id="btn-start" onclick="startExam()" disabled>Commencer l'examen</button>
+<button class="btn-secondary-sm" onclick="restoreSession()">Reprendre une session</button>
+</div>
+</div>
+
+<div class="top-bar" id="top-bar">
+<div class="timer" id="timer">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+<span id="time-display">1:30:00</span>
+</div>
+<div class="progress-wrap">
+<div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+<div class="progress-text" id="progress-text">0 / 25 questions</div>
+</div>
+<div class="autosave-indicator" id="autosave-indicator">● Sauvegarde auto</div>
+<div class="btn-group">
+<button class="btn btn-primary" onclick="submitExam()">✅ Soumettre</button>
+<button class="btn btn-warning" onclick="resetExam()">🔄 Réinitialiser</button>
+<button class="btn btn-info" onclick="window.print()">🖨 Imprimer</button>
+</div>
+</div>
+
+<div class="results-panel" id="results-panel">
+<h2>📊 Résultats détaillés</h2>
+<div id="score-total" class="score-total"></div>
+<div class="score-bar"><div class="score-fill" id="score-fill" style="width:0%"></div></div>
+<div id="results-summary"></div>
+<div id="results-detail"></div>
+<div class="csv-actions">
+<button class="btn btn-primary" onclick="downloadCSV()">📥 Télécharger le fichier Excel (CSV)</button>
+<button class="btn btn-info" onclick="viewAllResults()">📋 Voir tous les résultats enregistrés</button>
+</div>
+</div>
+
+<div id="exercises-container">
+
+<!-- EXERCICE 1 — QCM -->
+<div class="exercise" id="exercise1">
+<h2><span class="ex-num">Exercice 1</span> Questionnaire à choix multiple (QCM)</h2>
+<div class="theme">Introduction aux bases de données et SGBD</div>
+
+<div class="question" id="q1">
+<label class="q-label">1. Qu'est-ce qu'une base de données ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> A) Un logiciel de traitement de texte</label>
+<label><input type="radio" name="q1" value="b"> B) Un ensemble organisé de données stockées électroniquement</label>
+<label><input type="radio" name="q1" value="c"> C) Un réseau informatique local</label>
+<label><input type="radio" name="q1" value="d"> D) Un type de mémoire vive</label>
+</div>
+</div>
+
+<div class="question" id="q2">
+<label class="q-label">2. Lequel parmi les suivants n'est PAS un Système de Gestion de Base de Données (SGBD) ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> A) MySQL</label>
+<label><input type="radio" name="q2" value="b"> B) Oracle</label>
+<label><input type="radio" name="q2" value="c"> C) Microsoft Word</label>
+<label><input type="radio" name="q2" value="d"> D) Microsoft Access</label>
+</div>
+</div>
+
+<div class="question" id="q3">
+<label class="q-label">3. Dans une table relationnelle, qu'est-ce qu'une clé primaire ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> A) Une colonne contenant des valeurs en double</label>
+<label><input type="radio" name="q3" value="b"> B) Un identifiant unique pour chaque enregistrement de la table</label>
+<label><input type="radio" name="q3" value="c"> C) Une colonne qui référence une autre table</label>
+<label><input type="radio" name="q3" value="d"> D) Un index de tri automatique</label>
+</div>
+</div>
+
+<div class="question" id="q4">
+<label class="q-label">4. Dans le modèle Entité-Association, qu'est-ce qu'une entité ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> A) Un objet ou concept du monde réel représenté dans la base</label>
+<label><input type="radio" name="q4" value="b"> B) Une opération SQL d'insertion</label>
+<label><input type="radio" name="q4" value="c"> C) Un type de clé étrangère</label>
+<label><input type="radio" name="q4" value="d"> D) Un outil de visualisation de données</label>
+</div>
+</div>
+
+<div class="question" id="q5">
+<label class="q-label">5. Quel est l'avantage principal d'une base de données par rapport à un fichier plat ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> A) Élimination des redondances et meilleure intégrité des données</label>
+<label><input type="radio" name="q5" value="b"> B) Facilité d'utilisation sans aucune formation</label>
+<label><input type="radio" name="q5" value="c"> C) Coût moins élevé que les fichiers texte</label>
+<label><input type="radio" name="q5" value="d"> D) Aucun besoin de matériel informatique</label>
+</div>
+</div>
+</div>
+
+<!-- EXERCICE 2 — VRAI / FAUX -->
+<div class="exercise" id="exercise2">
+<h2><span class="ex-num">Exercice 2</span> Vrai ou Faux</h2>
+<div class="theme">Modèle relationnel, intégrité et normalisation</div>
+
+<div class="question" id="q6">
+<label class="q-label">6. Un SGBD permet uniquement de stocker des données, mais pas de les manipuler (requêtes, mises à jour). <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q6" data-val="vrai" onclick="toggleTF(this)">Vrai</button>
+<button type="button" class="tf-btn" data-q="q6" data-val="faux" onclick="toggleTF(this)">Faux</button>
+</div>
+</div>
+
+<div class="question" id="q7">
+<label class="q-label">7. Une clé étrangère est une colonne qui fait référence à la clé primaire d'une autre table. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q7" data-val="vrai" onclick="toggleTF(this)">Vrai</button>
+<button type="button" class="tf-btn" data-q="q7" data-val="faux" onclick="toggleTF(this)">Faux</button>
+</div>
+</div>
+
+<div class="question" id="q8">
+<label class="q-label">8. La normalisation d'une base de données vise à éliminer les redondances et à améliorer la cohérence des données. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q8" data-val="vrai" onclick="toggleTF(this)">Vrai</button>
+<button type="button" class="tf-btn" data-q="q8" data-val="faux" onclick="toggleTF(this)">Faux</button>
+</div>
+</div>
+
+<div class="question" id="q9">
+<label class="q-label">9. La requête SQL « DELETE FROM Etudiants WHERE id=5 » supprime l'enregistrement ayant l'identifiant 5. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q9" data-val="vrai" onclick="toggleTF(this)">Vrai</button>
+<button type="button" class="tf-btn" data-q="q9" data-val="faux" onclick="toggleTF(this)">Faux</button>
+</div>
+</div>
+
+<div class="question" id="q10">
+<label class="q-label">10. L'intégrité des données garantit que les informations stockées restent toujours cohérentes, valides et fiables. <span class="q-points">1 pt</span></label>
+<div class="tf-group">
+<button type="button" class="tf-btn" data-q="q10" data-val="vrai" onclick="toggleTF(this)">Vrai</button>
+<button type="button" class="tf-btn" data-q="q10" data-val="faux" onclick="toggleTF(this)">Faux</button>
+</div>
+</div>
+</div>
+
+<!-- EXERCICE 3 — SÉLECTION MULTIPLE -->
+<div class="exercise" id="exercise3">
+<h2><span class="ex-num">Exercice 3</span> Questions à sélection multiple</h2>
+<div class="theme">Requêtes SQL et types de données</div>
+
+<div class="question" id="q11">
+<label class="q-label">11. Parmi les systèmes suivants, lesquels sont des SGBD (Systèmes de Gestion de Base de Données) ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="checkbox" name="q11" value="a"> A) MySQL</label>
+<label><input type="checkbox" name="q11" value="b"> B) Oracle</label>
+<label><input type="checkbox" name="q11" value="c"> C) Microsoft Access</label>
+<label><input type="checkbox" name="q11" value="d"> D) Notepad++</label>
+</div>
+</div>
+
+<div class="question" id="q12">
+<label class="q-label">12. Les opérations de base en langage SQL incluent : <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="checkbox" name="q12" value="a"> A) SELECT (sélectionner)</label>
+<label><input type="checkbox" name="q12" value="b"> B) INSERT (insérer)</label>
+<label><input type="checkbox" name="q12" value="c"> C) UPDATE (modifier)</label>
+<label><input type="checkbox" name="q12" value="d"> D) PRINT (imprimer)</label>
+</div>
+</div>
+
+<div class="question" id="q13">
+<label class="q-label">13. Les objets principaux d'une base de données Microsoft Access incluent : <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="checkbox" name="q13" value="a"> A) Tables</label>
+<label><input type="checkbox" name="q13" value="b"> B) Requêtes</label>
+<label><input type="checkbox" name="q13" value="c"> C) Formulaires</label>
+<label><input type="checkbox" name="q13" value="d"> D) Compilateurs de code</label>
+</div>
+</div>
+</div>
+
+<!-- EXERCICE 4 — TEXTE À COMPLÉTER -->
+<div class="exercise" id="exercise4">
+<h2><span class="ex-num">Exercice 4</span> Texte à compléter</h2>
+<div class="theme">Requêtes SQL et schéma relationnel</div>
+
+<div class="question" id="q14">
+<label class="q-label">14. La requête SQL pour récupérer tous les étudiants dont l'âge est supérieur à 20 est : SELECT * FROM Etudiants WHERE __________ > 20. <span class="q-points">1 pt</span></label>
+<select class="q-select" id="q14-select" onchange="onSelectChange()">
+<option value="">-- Choisissez --</option>
+<option value="age">age</option>
+<option value="nom">nom</option>
+<option value="id">id</option>
+</select>
+</div>
+
+<div class="question" id="q15">
+<label class="q-label">15. Pour ajouter un nouvel enregistrement dans la table Etudiants, on utilise la requête SQL INSERT INTO Etudiants (___, prenom) VALUES ('Dupont', 'Jean'). <span class="q-points">1 pt</span></label>
+<select class="q-select" id="q15-select" onchange="onSelectChange()">
+<option value="">-- Choisissez --</option>
+<option value="nom">nom</option>
+<option value="id">id</option>
+<option value="age">age</option>
+</select>
+</div>
+</div>
+
+<!-- EXERCICE 5 — ASSOCIER -->
+<div class="exercise" id="exercise5">
+<h2><span class="ex-num">Exercice 5</span> Associer les termes</h2>
+<div class="theme">Correspondance entre concepts de bases de données</div>
+
+<div class="question" id="q16">
+<label class="q-label">16. Associez chaque type de données à son exemple : <span class="q-points">2 pts</span></label>
+<p style="font-size:.8rem;color:#888;margin-bottom:6px">Cliquez sur un terme (gauche), puis sur sa définition (droite).</p>
+<div class="matching-area" id="match-16">
+<div class="match-item term" data-id="t1" onclick="selectTerm(this,'16')">Clé primaire</div>
+<div class="match-item def" data-id="d1" data-group="16" onclick="selectDef(this,'16')">Identifiant unique d'une table</div>
+<div class="match-item term" data-id="t2" onclick="selectTerm(this,'16')">Clé étrangère</div>
+<div class="match-item def" data-id="d2" data-group="16" onclick="selectDef(this,'16')">Référence vers une autre table</div>
+</div>
+<div id="q16-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<div class="question" id="q17">
+<label class="q-label">17. Associez chaque opération SQL à son rôle : <span class="q-points">2 pts</span></label>
+<div class="matching-area" id="match-17">
+<div class="match-item term" data-id="t3" onclick="selectTerm(this,'17')">SELECT</div>
+<div class="match-item def" data-id="d3" data-group="17" onclick="selectDef(this,'17')">Interroger / lire des données</div>
+<div class="match-item term" data-id="t4" onclick="selectTerm(this,'17')">INSERT</div>
+<div class="match-item def" data-id="d4" data-group="17" onclick="selectDef(this,'17')">Ajouter de nouvelles lignes</div>
+<div class="match-item term" data-id="t5" onclick="selectTerm(this,'17')">DELETE</div>
+<div class="match-item def" data-id="d5" data-group="17" onclick="selectDef(this,'17')">Supprimer des lignes existantes</div>
+</div>
+<div id="q17-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<div class="question" id="q18">
+<label class="q-label">18. Associez chaque composant du modèle Entité-Association à sa description : <span class="q-points">2 pts</span></label>
+<div class="matching-area" id="match-18">
+<div class="match-item term" data-id="t6" onclick="selectTerm(this,'18')">Entité</div>
+<div class="match-item def" data-id="d6" data-group="18" onclick="selectDef(this,'18')">Objet du monde réel</div>
+<div class="match-item term" data-id="t7" onclick="selectTerm(this,'18')">Attribut</div>
+<div class="match-item def" data-id="d7" data-group="18" onclick="selectDef(this,'18')">Propriété d'une entité</div>
+<div class="match-item term" data-id="t8" onclick="selectTerm(this,'18')">Relation</div>
+<div class="match-item def" data-id="d8" data-group="18" onclick="selectDef(this,'18')">Lien entre deux entités</div>
+</div>
+<div id="q18-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<div class="question" id="q19">
+<label class="q-label">19. Associez chaque forme normale à son objectif : <span class="q-points">2 pts</span></label>
+<div class="matching-area" id="match-19">
+<div class="match-item term" data-id="t9" onclick="selectTerm(this,'19')">1FN</div>
+<div class="match-item def" data-id="d9" data-group="19" onclick="selectDef(this,'19')">Valeurs atomiques, pas de groupes répétitifs</div>
+<div class="match-item term" data-id="t10" onclick="selectTerm(this,'19')">2FN</div>
+<div class="match-item def" data-id="d10" data-group="19" onclick="selectDef(this,'19')">Éliminer les dépendances partielles</div>
+<div class="match-item term" data-id="t11" onclick="selectTerm(this,'19')">3FN</div>
+<div class="match-item def" data-id="d11" data-group="19" onclick="selectDef(this,'19')">Éliminer les dépendances transitives</div>
+</div>
+<div id="q19-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<div class="question" id="q20">
+<label class="q-label">20. Associez chaque type de jointure SQL à son comportement : <span class="q-points">2 pts</span></label>
+<div class="matching-area" id="match-20">
+<div class="match-item term" data-id="t12" onclick="selectTerm(this,'20')">INNER JOIN</div>
+<div class="match-item def" data-id="d12" data-group="20" onclick="selectDef(this,'20')">Lignes correspondantes dans les deux tables</div>
+<div class="match-item term" data-id="t13" onclick="selectTerm(this,'20')">LEFT JOIN</div>
+<div class="match-item def" data-id="d13" data-group="20" onclick="selectDef(this,'20')">Toutes les lignes de la table gauche</div>
+<div class="match-item term" data-id="t14" onclick="selectTerm(this,'20')">RIGHT JOIN</div>
+<div class="match-item def" data-id="d14" data-group="20" onclick="selectDef(this,'20')">Toutes les lignes de la table droite</div>
+</div>
+<div id="q20-result" style="margin-top:6px;font-size:.85rem"></div>
+</div>
+
+<!-- EXERCICE 6 — QUESTIONS AVANCÉES DIFFICILES -->
+<div class="exercise" id="exercise6">
+<h2><span class="ex-num">Exercice 6</span> Questions avancées — Niveau difficile, analyse approfondie</h2>
+<div class="theme">Cas complexes et notions avancées</div>
+
+<div class="question" id="q26">
+<label class="q-label">11. Que produit en SQL la requête : SELECT COUNT(*) FROM Etudiants GROUP BY Groupe HAVING COUNT(*) > 5 ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q26" value="a"> A) Le nombre d'étudiants par groupe dont le total dépasse 5</label>
+<label><input type="radio" name="q26" value="b"> B) Le nombre total d'étudiants du SGBD</label>
+<label><input type="radio" name="q26" value="c"> C) Une erreur de syntaxe</label>
+<label><input type="radio" name="q26" value="d"> D) La liste des étudiants du groupe 5</label>
+</div>
+</div>
+
+<div class="question" id="q27">
+<label class="q-label">12. Quelle est la propriété garantissant qu'une transaction SQL est isolée des autres (ACID) ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q27" value="a"> A) Isolation (I)</label>
+<label><input type="radio" name="q27" value="b"> B) Atomicité (A)</label>
+<label><input type="radio" name="q27" value="c"> C) Durabilité (D)</label>
+<label><input type="radio" name="q27" value="d"> D) Cohérence (C)</label>
+</div>
+</div>
+
+<div class="question" id="q28">
+<label class="q-label">13. Comment appelle-t-on la forme normale qui élimine les dépendances fonctionnelles partiellement (chaque attribut non-clé dépend de la TOTALITÉ de la clé) ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q28" value="a"> A) 2e forme normale (2NF)</label>
+<label><input type="radio" name="q28" value="b"> B) 1NF</label>
+<label><input type="radio" name="q28" value="c"> C) 3NF</label>
+<label><input type="radio" name="q28" value="d"> D) Forme normale de Boyce-Codd</label>
+</div>
+</div>
+
+<div class="question" id="q29">
+<label class="q-label">14. Quel est le rôle de l'index dans une base de données relationnelle ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q29" value="a"> A) Accélérer les recherches/liaisons en structurant l'accès (type B-tree/Hash)</label>
+<label><input type="radio" name="q29" value="b"> B) Chiffrer les colonnes</label>
+<label><input type="radio" name="q29" value="c"> C) Augmenter la taille du fichier</label>
+<label><input type="radio" name="q29" value="d"> D) Supprimer les doublons automatiquement</label>
+</div>
+</div>
+
+<div class="question" id="q30">
+<label class="q-label">15. Quel type de jointure SQL NULL ne comporte AUCUN schéma de jointure explicite et produit un produit cartésien ? <span class="q-points">1 pt</span></label>
+<div class="options">
+<label><input type="radio" name="q30" value="a"> A) CROSS JOIN (produit cartésien)</label>
+<label><input type="radio" name="q30" value="b"> B) INNER JOIN</label>
+<label><input type="radio" name="q30" value="c"> C) LEFT JOIN</label>
+<label><input type="radio" name="q30" value="d"> D) FULL OUTER JOIN</label>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<footer>
+<p>Module TIC — Dr. Madani BELACEL · Université de Mostaganem · 2026-2027</p>
+</footer>
+</div>
+
+<script>
+const EXAM_ID = 'Examen11';
+const EXAM_TITRE = 'Base de données';
+const SEMESTRE = 'S2';
+const TOTAL_Q = 30;
+const TOTAL_PTS = 30;
+
+const ANSWERS = {
+  q1:'b', q2:'c', q3:'b', q4:'a', q5:'a',
+  q6:'faux', q7:'vrai', q8:'vrai', q9:'vrai', q10:'vrai',
+  q11:['a','b','c'], q12:['a','b','c'], q13:['a','b','c'],
+  q14:'age', q15:'nom',
+  q16:{t1:'d1',t2:'d2'},
+  q17:{t3:'d3',t4:'d4',t5:'d5'},
+  q18:{t6:'d6',t7:'d7',t8:'d8'},
+  q19:{t9:'d9',t10:'d10',t11:'d11'},
+  q20:{t12:'d12',t13:'d13',t14:'d14'},
+  q26:'a',
+  q27:'a',
+  q28:'a',
+  q29:'a',
+  q30:'a',
+};
+
+const EXPLANATIONS = {
+  q1:'B — Une base de données est un ensemble structuré et organisé de données stockées électroniquement pour un accès et une gestion faciles.',
+  q2:'C — Microsoft Word est un logiciel de traitement de texte, pas un SGBD.',
+  q3:'B — La clé primaire identifie de manière unique chaque ligne (enregistrement) d\'une table relationnelle.',
+  q4:'A — Une entité représente un objet ou un concept du monde réel (ex. : Étudiant, Cours) dans le modèle E/A.',
+  q5:'A — Les bases de données réduisent la redondance et garantissent l\'intégrité contrairement aux fichiers plats.',
+  q6:'Faux — Un SGBD permet de stocker, interroger, manipuler et maintenir les données.',
+  q7:'Vrai — Une clé étrangère établit un lien en référençant la clé primaire d\'une autre table.',
+  q8:'Vrai — La normalisation vise à minimiser les redondances et maximiser la cohérence.',
+  q9:'Vrai — La commande DELETE avec une clause WHERE supprime les lignes correspondantes.',
+  q10:'Vrai — L\'intégrité assure la validité, la cohérence et la fiabilité des données.',
+  q11:'A, B, C — MySQL, Oracle et Access sont des SGBD. Notepad++ est un éditeur de texte.',
+  q12:'A, B, C — SELECT, INSERT et UPDATE sont des opérations SQL de base. PRINT n\'existe pas en SQL standard.',
+  q13:'A, B, C — Tables, requêtes et formulaires sont des objets Access. Access n\'a pas de compilateur de code.',
+  q26:'GROUP BY Groupe regroupe ; HAVING filtre les groupes dont le COUNT dépasse 5 (contrairement à WHERE, HAVING porte sur les groupes).',
+  q27:'ACID : Atomicité, Cohérence, Isolation, Durabilité. L\'isolation empêche les transactions concurrentes de se voir mutuellement à moitié.',
+  q28:'La 2NF exige d\'être en 1NF et que toute dépendance à une PARTIE de la clé composite soit supprimée.',
+  q29:'Un index (B-tree, hash) réduit le coût des recherches : O(log n) au lieu d\'un balayage séquentiel O(n).',
+  q30:'CROSS JOIN combine chaque ligne d\'une table avec chaque ligne de l\'autre : n×m lignes, sans condition.',
+};
+
+const MATCH_CORRECTIONS = {
+  '16':{t1:'d1',t2:'d2'},
+  '17':{t3:'d3',t4:'d4',t5:'d5'},
+  '18':{t6:'d6',t7:'d7',t8:'d8'},
+  '19':{t9:'d9',t10:'d10',t11:'d11'},
+  '20':{t12:'d12',t13:'d13',t14:'d14'}
+};
+
+const MATCH_NAMES = {
+  '16':{t1:'Clé primaire',t2:'Clé étrangère'},
+  '17':{t3:'SELECT',t4:'INSERT',t5:'DELETE'},
+  '18':{t6:'Entité',t7:'Attribut',t8:'Relation'},
+  '19':{t9:'1FN',t10:'2FN',t11:'3FN'},
+  '20':{t12:'INNER JOIN',t13:'LEFT JOIN',t14:'RIGHT JOIN'}
+};
+
+let timerInterval;
+let totalTime = 90 * 60;
+let examStarted = false;
+let matchingState = {};
+let selectedTerm = null;
+
+const champIds = ['nom','prenom','groupe','niveau','departement','specialite'];
+champIds.forEach(id => {
+  document.getElementById(id).addEventListener('input', checkForm);
+  document.getElementById(id).addEventListener('change', checkForm);
+});
+
+function checkForm(){
+  const allFilled = champIds.every(id => document.getElementById(id).value.trim() !== '');
+  document.getElementById('btn-start').disabled = !allFilled;
+}
+
+function getStudentInfo(){
+  return {
+    nom: document.getElementById('nom').value.trim(),
+    prenom: document.getElementById('prenom').value.trim(),
+    groupe: document.getElementById('groupe').value,
+    niveau: document.getElementById('niveau').value,
+    departement: document.getElementById('departement').value,
+    specialite: document.getElementById('specialite').value
+  };
+}
+
+function startExam(){
+  const info = getStudentInfo();
+  if(!info.nom || !info.prenom || !info.groupe || !info.niveau || !info.departement || !info.specialite){
+    alert('Veuillez remplir tous les champs.');
+    return;
+  }
+  examStarted = true;
+  document.getElementById('identity-card').style.display = 'none';
+  document.getElementById('top-bar').style.display = 'flex';
+  document.querySelectorAll('.exercise').forEach(e => e.style.display = 'block');
+  saveStudentInfo(info);
+  startTimer();
+  setupAutoSave();
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function restoreSession(){
+  const saved = localStorage.getItem(EXAM_ID+'_student');
+  if(!saved){ alert('Aucune session sauvegardée trouvée.'); return; }
+  const info = JSON.parse(saved);
+  champIds.forEach(id => {
+    if(info[id]) document.getElementById(id).value = info[id];
+  });
+  const answers = JSON.parse(localStorage.getItem(EXAM_ID+'_answers') || '{}');
+  restoreAnswers(answers);
+  startExam();
+}
+
+function restoreAnswers(answers){
+  for(let q in answers){
+    const val = answers[q];
+    if(q.startsWith('q') && !q.startsWith('q1')){
+      const radios = document.querySelectorAll('input[name="'+q+'"]');
+      radios.forEach(r => { if(r.value === val) r.checked = true; });
+      const checks = document.querySelectorAll('input[name="'+q+'"]');
+      if(Array.isArray(val)){
+        checks.forEach(c => { if(val.includes(c.value)) c.checked = true; });
+      }
+    }
+    if(q.includes('-select')){
+      const sel = document.getElementById(q);
+      if(sel) sel.value = val;
+    }
+    if(q.match(/^match-\d+$/)){
+      matchingState[q.replace('match-','')] = val;
+      for(let termId in val){
+        const termEl = document.querySelector('.match-item[data-id="'+termId+'"]');
+        const defEl = document.querySelector('.match-item[data-id="'+val[termId]+'"]');
+        if(termEl){termEl.classList.add('matched');termEl.style.background='#c8e6c9';}
+        if(defEl){defEl.classList.add('matched');}
+      }
+    }
+  }
+}
+
+function saveStudentInfo(info){
+  localStorage.setItem(EXAM_ID+'_student', JSON.stringify(info));
+}
+
+function startTimer(){
+  timerInterval = setInterval(()=>{
+    if(totalTime <= 0){clearInterval(timerInterval); autoSubmit(); return;}
+    totalTime--;
+    const h = Math.floor(totalTime/3600);
+    const m = Math.floor((totalTime%3600)/60);
+    const s = totalTime%60;
+    document.getElementById('time-display').textContent = h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    const timerEl = document.getElementById('timer');
+    if(totalTime <= 300){ timerEl.style.color='#c0392b'; timerEl.style.fontWeight='900'; }
+    else if(totalTime <= 600){ timerEl.style.color='#e67e22'; }
+  },1000);
+}
+
+function autoSubmit(){
+  clearInterval(timerInterval);
+  alert('⏱ Temps écoulé ! L\'examen est soumis automatiquement.');
+  submitExam();
+}
+
+function updateProgress(){
+  if(!examStarted) return;
+  let answered = 0;
+  for(let i=1;i<=5;i++) if(document.querySelector('input[name="q'+i+'"]:checked')) answered++;
+  for(let i=6;i<=10;i++) if(matchingState['q'+i]) answered++;
+  for(let i=11;i<=13;i++) if(document.querySelector('input[name="q'+i+'"]:checked')) answered++;
+  for(let i=14;i<=15;i++) if(document.getElementById('q'+i+'-select') && document.getElementById('q'+i+'-select').value) answered++;
+  for(let i=16;i<=20;i++) if(matchingState[i] && Object.keys(matchingState[i]).length > 0) answered++;
+  // Nouvelles questions avancées q26-q30
+  for(let i=26;i<=30;i++) if(document.querySelector('input[name="q"'+i+'"]:checked')) answered++;
+  document.getElementById('progress-fill').style.width = (answered/TOTAL_Q*100)+'%';
+  document.getElementById('progress-text').textContent = answered+' / '+TOTAL_Q+' questions';
+}
+
+function toggleTF(btn){
+  const q = btn.dataset.q;
+  document.querySelectorAll('.tf-btn[data-q="'+q+'"]').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  matchingState[q] = btn.dataset.val;
+  updateProgress();
+  autoSaveAnswers();
+}
+
+function onSelectChange(){
+  updateProgress();
+  autoSaveAnswers();
+}
+
+function selectTerm(el, group){
+  if(!examStarted) return;
+  document.querySelectorAll('.match-item.term.selected').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedTerm = {el, group};
+}
+
+function selectDef(el, group){
+  if(!examStarted || !selectedTerm || selectedTerm.group !== group) return;
+  const termId = selectedTerm.el.dataset.id;
+  const defId = el.dataset.id;
+  if(!matchingState[group]) matchingState[group] = {};
+  matchingState[group][termId] = defId;
+  el.classList.add('matched');
+  selectedTerm.el.classList.add('matched');
+  selectedTerm.el.style.background = '#c8e6c9';
+  selectedTerm.el.classList.remove('selected');
+  selectedTerm = null;
+  updateProgress();
+  autoSaveAnswers();
+}
+
+function setupAutoSave(){
+  setInterval(autoSaveAnswers, 30000);
+  document.addEventListener('change', autoSaveAnswers);
+}
+
+function autoSaveAnswers(){
+  if(!examStarted) return;
+  const data = collectAllAnswers();
+  localStorage.setItem(EXAM_ID+'_answers', JSON.stringify(data.answers));
+  localStorage.setItem(EXAM_ID+'_matching', JSON.stringify(matchingState));
+  showSaveIndicator();
+}
+
+function showSaveIndicator(){
+  const el = document.getElementById('autosave-indicator');
+  el.classList.add('saving');
+  el.textContent = '⏳ Sauvegarde...';
+  setTimeout(()=>{ el.classList.remove('saving'); el.textContent = '● Sauvegarde auto'; }, 1500);
+}
+
+function collectAllAnswers(){
+  const answers = {};
+  for(let i=1;i<=5;i++){
+    const c = document.querySelector('input[name="q'+i+'"]:checked');
+    if(c) answers['q'+i] = c.value;
+  }
+  for(let i=6;i<=10;i++) if(matchingState['q'+i]) answers['q'+i] = matchingState['q'+i];
+  for(let i=11;i<=13;i++){
+    const arr = Array.from(document.querySelectorAll('input[name="q'+i+'"]:checked')).map(c=>c.value);
+    if(arr.length) answers['q'+i] = arr;
+  }
+  for(let i=14;i<=15;i++){
+    const sel = document.getElementById('q'+i+'-select');
+    if(sel && sel.value) answers['q'+i+'-select'] = sel.value;
+  }
+  for(let g in matchingState) answers['match-'+g] = matchingState[g];
+    // Nouvelles questions avancées q26-q30
+  for(let i=26;i<=30;i++){
+    const cc = document.querySelector('input[name="q"+i+"]:checked');
+    if(cc) answers['q'+i] = cc.value;
+  }
+  return {answers};
+}
+
+function submitExam(){
+  if(!examStarted) return;
+  const pwd = prompt('🔑 Mot de passe enseignant pour afficher les corrections :');
+  if(pwd !== 'm5503113') {
+    alert('❌ Mot de passe incorrect. Résultat non affiché.');
+    clearInterval(timerInterval);
+    const a = collectAllAnswers().answers;
+    saveResult(0,0,'Non evalué',a);
+    return;
+  }
+  clearInterval(timerInterval);
+
+  let score = 0;
+  let correct = 0, wrong = 0;
+  let details = '';
+  const allAnswers = collectAllAnswers().answers;
+
+  for(let i=1;i<=5;i++){
+    const name = 'q'+i;
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Réponse : '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Réponse attendue : '+ANSWERS[name].toUpperCase()+(val?' | Votre réponse : '+val.toUpperCase():' | Non répondu'));
+    }
+  }
+
+  for(let i=6;i<=10;i++){
+    const name = 'q'+i;
+    const val = matchingState[name];
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Réponse : '+cap(val));
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Réponse attendue : '+cap(ANSWERS[name])+(val?' | Votre réponse : '+cap(val):' | Non répondu'));
+    }
+  }
+
+  for(let i=11;i<=13;i++){
+    const name = 'q'+i;
+    const checked = Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(c=>c.value).sort();
+    const expected = Array.from(ANSWERS[name]).sort();
+    const qEl = document.getElementById(name);
+    if(JSON.stringify(checked)===JSON.stringify(expected)){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name]||'Bonnes réponses : '+expected.join(', ').toUpperCase(), '');
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name]||'', 'Attendues : '+expected.join(', ').toUpperCase()+(checked.length?' | Vos réponses : '+checked.join(', ').toUpperCase():' | Aucune réponse'));
+    }
+  }
+
+  for(let i=14;i<=15;i++){
+    const name = 'q'+i;
+    const sel = document.getElementById(name+'-select');
+    const val = sel ? sel.value : '';
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], '');
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Mot attendu : '+ANSWERS[name]);
+    }
+  }
+
+  for(let i=16;i<=20;i++){
+    const name = 'q'+i;
+    const state = matchingState[i] || {};
+    const expected = MATCH_CORRECTIONS[i];
+    let allCorrect = true;
+    for(let k in expected){ if(state[k]!==expected[k]) allCorrect = false; }
+    const qEl = document.getElementById(name);
+    const resEl = document.getElementById(name+'-result');
+    if(allCorrect && Object.keys(expected).length > 0){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      resEl.innerHTML = '<span class="correct-answer">✓ Toutes les associations sont correctes</span>';
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      let pairs = [];
+      for(let k in expected){
+        const tName = (MATCH_NAMES[i] && MATCH_NAMES[i][k]) ? MATCH_NAMES[i][k] : k;
+        const dEl = document.querySelector('.match-item[data-id="'+expected[k]+'"]');
+        pairs.push(tName+' → '+(dEl?dEl.textContent:expected[k]));
+      }
+      resEl.innerHTML = '<span class="wrong-answer">✗ Associations incorrectes</span><div class="correction-info">Bonnes réponses : '+pairs.join(' | ')+'</div>';
+    }
+  }
+
+    // Q avancée q26
+  {
+    const name = 'q26';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Réponse : '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Réponse attendue : '+ANSWERS[name].toUpperCase()+(val?' | Votre réponse : '+val.toUpperCase():' | Non répondu'));
+    }
+  }
+  // Q avancée q27
+  {
+    const name = 'q27';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Réponse : '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Réponse attendue : '+ANSWERS[name].toUpperCase()+(val?' | Votre réponse : '+val.toUpperCase():' | Non répondu'));
+    }
+  }
+  // Q avancée q28
+  {
+    const name = 'q28';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Réponse : '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Réponse attendue : '+ANSWERS[name].toUpperCase()+(val?' | Votre réponse : '+val.toUpperCase():' | Non répondu'));
+    }
+  }
+  // Q avancée q29
+  {
+    const name = 'q29';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Réponse : '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Réponse attendue : '+ANSWERS[name].toUpperCase()+(val?' | Votre réponse : '+val.toUpperCase():' | Non répondu'));
+    }
+  }
+  // Q avancée q30
+  {
+    const name = 'q30';
+    const checked = document.querySelector('input[name="'+name+'"]:checked');
+    const val = checked ? checked.value : null;
+    const qEl = document.getElementById(name);
+    if(val === ANSWERS[name]){
+      score++; correct++;
+      qEl.classList.add('correct'); qEl.classList.remove('wrong');
+      details += mkDetail(name, true, EXPLANATIONS[name], 'Réponse : '+val.toUpperCase());
+    } else {
+      wrong++;
+      qEl.classList.add('wrong'); qEl.classList.remove('correct');
+      details += mkDetail(name, false, EXPLANATIONS[name], 'Réponse attendue : '+ANSWERS[name].toUpperCase()+(val?' | Votre réponse : '+val.toUpperCase():' | Non répondu'));
+    }
+  }
+  const note20 = Math.round((score / TOTAL_PTS) * 20 * 10) / 10;
+  const pct = Math.round(score / TOTAL_PTS * 100);
+  let mention = note20 >= 16 ? 'Très bien' : note20 >= 14 ? 'Bien' : note20 >= 12 ? 'Assez bien' : note20 >= 10 ? 'Passable' : 'Insuffisant';
+
+  const panel = document.getElementById('results-panel');
+  panel.style.display = 'block';
+  panel.scrollIntoView({behavior:'smooth'});
+
+  document.getElementById('score-total').innerHTML =
+    '<div class="big">'+score+' / '+TOTAL_PTS+'</div>'+
+    '<div class="sub">Note : <strong>'+note20+' / 20</strong> — Mention : <strong>'+mention+'</strong></div>';
+
+  const fill = document.getElementById('score-fill');
+  fill.style.width = pct+'%';
+  fill.style.background = pct>=80?'linear-gradient(90deg,#27ae60,#2ecc71)':pct>=50?'linear-gradient(90deg,#f39c12,#f1c40f)':'linear-gradient(90deg,#e74c3c,#c0392b)';
+
+  document.getElementById('results-summary').innerHTML =
+    '<div class="result-row"><span class="label">Bonnes réponses</span><span class="score" style="color:#27ae60">'+correct+'</span></div>'+
+    '<div class="result-row"><span class="label">Mauvaises réponses</span><span class="score" style="color:#e74c3c">'+wrong+'</span></div>'+
+    '<div class="result-row"><span class="label">Score</span><span class="score">'+score+' / '+TOTAL_PTS+' ('+pct+'%)</span></div>'+
+    '<div class="result-row"><span class="label">Note</span><span class="score">'+note20+' / 20</span></div>'+
+    '<div class="result-row"><span class="label">Mention</span><span class="score">'+mention+'</span></div>';
+
+  document.getElementById('results-detail').innerHTML = details;
+
+  saveResult(score, note20, mention, allAnswers);
+}
+
+function mkDetail(qName, isCorrect, explanation, extra){
+  const cls = isCorrect ? 'good' : 'bad';
+  const icon = isCorrect ? '✓' : '✗';
+  const clsText = isCorrect ? 'correct-answer' : 'wrong-answer';
+  return '<div class="detail-block '+cls+'"><strong>'+qName.toUpperCase()+'</strong> <span class="'+clsText+'">'+icon+' '+(isCorrect?'Correct':'Incorrect')+'</span>'+
+    (extra?'<div style="font-size:.82rem;color:#555;margin-top:2px">'+extra+'</div>':'')+
+    '<div class="correction-info">'+explanation+'</div></div>';
+}
+
+function cap(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : ''; }
+
+function saveResult(score, note, mention, answers){
+  const info = getStudentInfo();
+  const now = new Date().toLocaleString('fr-FR');
+  const record = {
+    date: now,
+    examen: EXAM_TITRE,
+    semestre: SEMESTRE,
+    ...info,
+    score: score,
+    note20: note,
+    mention: mention,
+    answers: answers
+  };
+  let allResults = JSON.parse(localStorage.getItem(EXAM_ID+'_results') || '[]');
+  allResults.push(record);
+  localStorage.setItem(EXAM_ID+'_results', JSON.stringify(allResults));
+}
+
+function downloadCSV(){
+  let allResults = JSON.parse(localStorage.getItem(EXAM_ID+'_results') || '[]');
+  if(!allResults.length){ alert('Aucun résultat à exporter.'); return; }
+  const headers = ['Date','Examen','Nom','Prénom','Groupe','Niveau','Département','Spécialité'];
+  for(let i=1;i<=TOTAL_Q;i++) headers.push('Q'+i);
+  headers.push('Score/'+TOTAL_PTS,'Note/20','Mention');
+  let csv = '\uFEFF';
+  csv += headers.join(';') + '\n';
+  allResults.forEach(r => {
+    let row = [
+      r.date, r.examen, r.nom, r.prenom, r.groupe, r.niveau, r.departement, r.specialite
+    ];
+    for(let i=1;i<=TOTAL_Q;i++){
+      const qKey = 'q'+i;
+      const mKey = 'match-'+i;
+      let val = r.answers[qKey] || r.answers[qKey+'-select'] || r.answers[mKey] || '';
+      if(Array.isArray(val)) val = val.join('+');
+      if(typeof val === 'object') val = JSON.stringify(val);
+      row.push(val);
+    }
+    row.push(r.score, r.note20, r.mention);
+    csv += row.join(';') + '\n';
+  });
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'Resultats_'+EXAM_ID+'.csv';
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+function viewAllResults(){
+  let allResults = JSON.parse(localStorage.getItem(EXAM_ID+'_results') || '[]');
+  if(!allResults.length){ alert('Aucun résultat enregistré.'); return; }
+  let msg = '📋 Résultats enregistrés ('+allResults.length+' passage(s)) :\n\n';
+  allResults.forEach((r,i) => {
+    msg += (i+1)+'. '+r.date+' — '+r.nom+' '+r.prenom+' ('+r.groupe+'/'+r.niveau+'/'+r.specialite+') — Score: '+r.score+'/'+TOTAL_PTS+' — Note: '+r.note20+'/20 — '+r.mention+'\n';
+  });
+  alert(msg);
+}
+
+function resetExam(){
+  if(!confirm('Réinitialiser toutes les réponses et les données sauvegardées ?')) return;
+  document.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(i => i.checked = false);
+  document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('select.q-select').forEach(s => s.selectedIndex = 0);
+  document.querySelectorAll('.match-item').forEach(m => {m.classList.remove('matched','selected');m.style.background='';});
+  matchingState = {};
+  selectedTerm = null;
+  document.querySelectorAll('.question').forEach(q => q.classList.remove('correct','wrong'));
+  document.querySelectorAll('[id$="-result"]').forEach(r => r.innerHTML = '');
+  document.getElementById('results-panel').style.display = 'none';
+  localStorage.removeItem(EXAM_ID+'_answers');
+  localStorage.removeItem(EXAM_ID+'_matching');
+  totalTime = 90 * 60;
+  document.getElementById('timer').style.color = '#c0392b';
+  document.getElementById('time-display').textContent = '1:30:00';
+  clearInterval(timerInterval);
+  startTimer();
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const saved = localStorage.getItem(EXAM_ID+'_student');
+  if(saved){
+    const info = JSON.parse(saved);
+    champIds.forEach(id => { if(info[id]) document.getElementById(id).value = info[id]; });
+    checkForm();
+  }
+});
+</script>
+</body>
+</html>
