@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<!-- FLE-charte -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1720">
+<meta name="theme-color" content="#162B40">
 <title>قواعد اللغة الإنجليزية — Fiches de grammaire</title>
 <link href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Grammaire%20Anglaise/index.html" rel="canonical"/>
 <meta content="قواعد اللغة الإنجليزية — Fiches de grammaire" name="description"/>
@@ -11,21 +16,21 @@
 
 <style>
 :root {
-  --bg: #f5f7f4;
-  --paper: #ffffff;
-  --paper-soft: #edf7f0;
-  --line: #e0e7df;
-  --primary: #1d683d;
-  --primary-dark: #124d2d;
-  --primary-soft: #dfeee2;
-  --text: #1f2b23;
-  --muted: #5e6d65;
+  --bg: #F4F6F8;
+  --paper: #FFFFFF;
+  --paper-soft: #EDF7F0;
+  --line: #DFE5EA;
+  --primary: #006847;
+  --primary-dark: #006847;
+  --primary-soft: #E8EDF3;
+  --text: #162B40;
+  --muted: #45586A;
   --shadow: 0 14px 32px rgba(24, 52, 34, 0.08);
 }
 * { box-sizing: border-box; }
 body {
-  font-family: 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 24px 18px 60px;
-  background: radial-gradient(circle at top, #f9fcfa 0%, #f4f6f3 18%, #edf3ee 100%); color: var(--text);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 24px 18px 60px;
+  background: radial-gradient(circle at top, #F4F6F8 0%, #F4F6F8 18%, #EEF1F4 100%); color: var(--text);
 }
 h1 { color: var(--primary-dark); border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
 p.desc { color: var(--muted); }
@@ -49,10 +54,10 @@ p.desc { color: var(--muted); }
 }
 table { width: 100%; border-collapse: collapse; background: #fff; }
 th {
-  background: linear-gradient(180deg, #1b653a 0%, #2a804d 100%); color: #fff; text-align: left; padding: 12px 14px; }
+  background: linear-gradient(180deg, #006847 0%, #007A55 100%); color: #fff; text-align: left; padding: 12px 14px; }
 td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-tr:hover td { background: #f1f8f3; }
-.num { width: 52px; color: #7a807b; font-weight: bold; }
+tr:hover td { background: #F4F6F8; }
+.num { width: 52px; color: #69788B; font-weight: bold; }
 .nm { font-weight: bold; }
 .links { white-space: nowrap; }
 .links a {
@@ -61,12 +66,12 @@ tr:hover td { background: #f1f8f3; }
 }
 .links a:hover { transform: translateY(-1px); background: var(--primary-dark); }
 .ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; }
-.ar.t { direction: rtl; text-align: right; color: #1a3c22; }
+.ar.t { direction: rtl; text-align: right; color: #007A55; }
 img.flag-corner {
   position: fixed; top: 8px; right: 8px; z-index: 9999; width: 48px; height: auto; opacity: 0.9; pointer-events: none;
 }
 .header-banner {
-  display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #1a5c33 0%, #2c6e49 60%, #3f8a5f 100%);
+  display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, #006847 0%, #00875B 60%, #0DA574 100%);
   color: #fff; border-radius: 14px; padding: 16px 20px; margin: 14px 0 18px; box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 .header-banner img.prof-photo { width: 96px; height: 96px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.5); object-fit: cover; flex-shrink: 0; }
@@ -74,23 +79,23 @@ img.flag-corner {
 .header-banner .hb-info h2 small { display: block; font-size: 0.85rem; opacity: 0.85; font-weight: normal; margin-top: 2px; }
 .header-banner .hb-info p { margin: 4px 0 0; font-size: 0.9em; opacity: 0.92; line-height: 1.45; }
 .badge { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff; }
-.badge.beginner { background: #4c9c3a; }
-.badge.elementary { background: #7a9c3a; }
-.badge.intermediate { background: #c98a2c; }
-.badge.upper { background: #c96a2c; }
-.badge.advanced { background: #b5482c; }
-.badge.proficiency { background: #8d2f2f; }
+.badge.beginner { background: #00875B; }
+.badge.elementary { background: #00875B; }
+.badge.intermediate { background: #F0B429; }
+.badge.upper { background: #F0B429; }
+.badge.advanced { background: #C0392B; }
+.badge.proficiency { background: #C0392B; }
 .legend { margin: 14px 0 0; font-size: 0.9em; color: #555; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .legend .badge { font-size: 0.76em; }
 .summary-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 18px 0 20px;
 }
 .summary-card {
-  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
+  background: linear-gradient(180deg, #F4F6F8 0%, #EEF1F4 100%); border: 1px solid #DFE5EA; border-radius: 12px; padding: 12px 14px;
   box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
 }
-.summary-card .label { display: block; font-size: 0.72em; text-transform: uppercase; letter-spacing: 0.06em; color: #5d6e63; margin-bottom: 5px; }
-.summary-card .value { font-size: 1.05rem; font-weight: 700; color: #1a3c22; }
+.summary-card .label { display: block; font-size: 0.72em; text-transform: uppercase; letter-spacing: 0.06em; color: #45586A; margin-bottom: 5px; }
+.summary-card .value { font-size: 1.05rem; font-weight: 700; color: #007A55; }
 .side-menu,
 .side-section {
     display: flex;
@@ -130,13 +135,13 @@ img.flag-corner {
 }
 .side-link:hover,
 .side-link.active {
-  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #EEF1F4 100%);
   border-color: rgba(29,104,61,0.14);
   color: var(--primary-dark);
 }
 .hidden-row { display: none; }
 .empty-state {
-  padding: 18px; text-align: center; color: var(--muted); background: #f7faf8; border-top: 1px solid var(--line);
+  padding: 18px; text-align: center; color: var(--muted); background: #F4F6F8; border-top: 1px solid var(--line);
 }
 @media (max-width: 720px) {
   body { padding: 16px 10px 36px; }
