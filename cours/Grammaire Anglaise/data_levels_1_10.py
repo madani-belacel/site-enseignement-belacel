@@ -55,7 +55,7 @@ LEVELS = [
 "ar": "تحتوي الأبجدية الإنجليزية على 26 حرفاً",
 "expl_ar": "الأبجدية الإنجليزية تتكون من 26 حرفاً، نبدأ بحرف A وننتهي بحرف Z.\nحفظ ترتيب هذه الحروف يساعدنا عندما نبحث في القاموس أو نكتب القوائم.",
 "expl_en": "English has 26 letters, from A to Z. We memorize their order for the dictionary and for lists.",
-"formula": "a b c d e f g h i j k l m n o p q r s t u v w x y z<br><span style=\"font-family:'Traditional Arabic','Amiri',serif;direction:rtl;display:inline-block;margin-top:8px\">اللفظ: أي، بي، سي، دي، إي، إف، جي، إتش، آي، جي، كي، إل، إم، إن، أو، بي، كيو، آر، إس، تي، يو، في، دبليو، إكس، واي، زد</span>",
+"formula": "a b c d e f g h i j k l m n o p q r s t u v w x y z<br><span style=\"font-family:'Traditional Arabic','Amiri',serif;direction:rtl;display:inline-block;margin-top:8px;line-height:2\">اللفظ: <b>أَيْ</b>، <b>بِي</b>، <b>سِي</b>، <b>دِي</b>، <b>إِي</b>، <b>إِفْ</b>، <b>جِي</b>، <b>إِيْتْش</b>، <b>آيْ</b>، <b>جَيْ</b>، <b>كِي</b>، <b>إِلْ</b>، <b>إِمْ</b>، <b>إِنْ</b>، <b>أُو</b>، <b>بِي</b>، <b>كْيُو</b>، <b>آرْ</b>، <b>إِسْ</b>، <b>تِي</b>، <b>يُو</b>، <b>فِي</b>، <b>دَبَلْيُو</b>، <b>إِكْسْ</b>، <b>وَايْ</b>، <b>زِدْ</b></span>",
 "examples": [
 ("A is the first letter.", "A هو أول حرف."),
 ("Z is the last letter.", "Z هو آخر حرف."),
