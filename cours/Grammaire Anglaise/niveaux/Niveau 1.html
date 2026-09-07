@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<!-- FLE-charte -->
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قواعد اللغة الإنجليزية — Niveau 1</title>
 
 <style>
 :root {
-  --bg: #F4F6F8;
-  --bg-strong: #E8EDF3;
-  --paper: #FFFFFF;
-  --paper-soft: #F4F6F8;
-  --line: #DFE5EA;
-  --primary: #006847;
-  --primary-dark: #162B40;
-  --primary-soft: #E6F2EB;
-  --text: #22344A;
-  --muted: #45586A;
-  --gold: #8A5B00;
+  --bg: #f3f6f2;
+  --bg-strong: #eaf2ec;
+  --paper: #ffffff;
+  --paper-soft: #f8fbf8;
+  --line: #dfe9e1;
+  --primary: #1f6b3a;
+  --primary-dark: #143d29;
+  --primary-soft: #e8f5e9;
+  --text: #1d2a22;
+  --muted: #5d6d63;
+  --gold: #9a6500;
   --shadow: 0 18px 40px rgba(19, 42, 29, 0.08);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   max-width: 980px;
   margin: 0 auto;
   padding: 24px 18px 60px;
-  background: radial-gradient(circle at top, #F4F6F8 0%, #F4F6F8 30%, #EEF1F4 100%);
+  background: radial-gradient(circle at top, #f8fbf9 0%, #f3f6f2 30%, #edf3ee 100%);
   color: var(--text);
   line-height: 1.75;
 }
@@ -50,17 +45,17 @@ body {
 }
 .sidebar {
   position: sticky; top: 18px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F4F6F8 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
   border: 1px solid var(--line);
   border-radius: 18px; padding: 16px 14px; box-shadow: 0 18px 26px rgba(17,35,25,0.08);
   margin: 0 0 18px;
 }
 .brand {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #E8EDF3;
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0;
 }
 .brand-mark {
   width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
-  background: linear-gradient(135deg, #006847 0%, #0DA574 100%); color: #fff; font-size: 1.2rem;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
   box-shadow: 0 10px 14px rgba(20,77,45,0.16);
 }
 .brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
@@ -76,7 +71,7 @@ body {
   border: 1px solid transparent; transition: all 0.2s ease;
 }
 .side-link:hover, .side-link.active {
-  background: linear-gradient(180deg, var(--primary-soft) 0%, #EEF1F4 100%);
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
   border-color: rgba(31,107,58,0.14);
   color: var(--primary-dark);
 }
@@ -86,12 +81,12 @@ body {
 }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  background: linear-gradient(180deg, #006847 0%, #007A55 100%); color: #fff; border-radius: 10px;
+  background: linear-gradient(180deg, #1d653a 0%, #2b7b4a 100%); color: #fff; border-radius: 10px;
   padding: 8px 12px; text-decoration: none; font-size: 0.9em; font-weight: 600; box-shadow: 0 10px 16px rgba(31,107,58,0.16);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
-.btn.disabled { background: #DFE5EA; color: #69788B; box-shadow: none; pointer-events: none; }
+.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
 .spacer { flex: 1; }
 h1 {
   color: var(--primary-dark);
@@ -101,7 +96,7 @@ h1 {
   margin-top: 8px;
   letter-spacing: -0.02em;
 }
-h2 { color: #007A55; }
+h2 { color: #1a3c22; }
 img.flag-corner {
   position: fixed; top: 10px; right: 10px; z-index: 9999;
   width: 52px; height: auto; opacity: 0.9; pointer-events: none;
@@ -109,7 +104,7 @@ img.flag-corner {
 }
 .header-banner {
   display: flex; align-items: center; gap: 16px;
-  background: linear-gradient(135deg, #006847 0%, #007A55 55%, #007A55 100%);
+  background: linear-gradient(135deg, #164f2d 0%, #236a3f 55%, #2d7a49 100%);
   color: #fff; border-radius: 16px; padding: 16px 20px; margin: 18px 0 22px;
   box-shadow: 0 14px 26px rgba(20, 77, 45, 0.18);
 }
@@ -126,15 +121,15 @@ img.flag-corner {
   display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
   margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-.badge.beginner { background: #00875B; }
-.badge.elementary { background: #00875B; }
-.badge.intermediate { background: #F0B429; }
-.badge.upper { background: #F0B429; }
-.badge.advanced { background: #C0392B; }
-.badge.proficiency { background: #C0392B; }
+.badge.beginner { background: #4d9b43; }
+.badge.elementary { background: #7ca442; }
+.badge.intermediate { background: #d48a1d; }
+.badge.upper { background: #d56b1c; }
+.badge.advanced { background: #b94a31; }
+.badge.proficiency { background: #882f2e; }
 .badge.root { background: #5bb; }
 .card {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F4F6F8 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
   border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
   box-shadow: 0 10px 18px rgba(17, 32, 24, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -145,78 +140,78 @@ img.flag-corner {
 .card .cat .en { font-weight: bold; color: var(--primary); }
 .ar { font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; direction: rtl; text-align: right; }
 .expl { margin: 10px 0; }
-.expl .ar { color: #007A55; font-size: 1.02em; margin-bottom: 4px; }
-.expl .en { color: #45586A; font-size: 0.97em; }
+.expl .ar { color: #1a3c22; font-size: 1.02em; margin-bottom: 4px; }
+.expl .en { color: #3a4b3f; font-size: 0.97em; }
 .formula {
-  background: linear-gradient(180deg, #EEF1F4 0%, #E8EDF3 100%); border-left: 4px solid var(--primary); border-radius: 10px;
-  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #162B40;
+  background: linear-gradient(180deg, #edf9ee 0%, #e5f4ea 100%); border-left: 4px solid var(--primary); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; font-family: 'Consolas', monospace; font-size: 0.94em; color: #173522;
 }
-.cat-label { color: #F0B429; font-weight: bold; font-size: 0.82em; }
+.cat-label { color: #b45309; font-weight: bold; font-size: 0.82em; }
 table.ex { border-collapse: collapse; width: 100%; margin-top: 10px; border-radius: 12px; overflow: hidden; }
-table.ex th { background: linear-gradient(180deg, #006847 0%, #007A55 100%); color: #fff; text-align: left; padding: 9px 12px; }
-table.ex td { padding: 10px 12px; border-bottom: 1px solid #E8EDF3; background: #fff; }
+table.ex th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; text-align: left; padding: 9px 12px; }
+table.ex td { padding: 10px 12px; border-bottom: 1px solid #ebefe9; background: #fff; }
 table.ex td:first-child { width: 44%; }
-table.ex .en-c { color: #162B40; }
-table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #007A55; }
+table.ex .en-c { color: #0f3d24; }
+table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
 table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
 .pron-table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 18px rgba(17, 32, 24, 0.06); background: #fff; }
 table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; }
-table.pron th { background: linear-gradient(180deg, #006847 0%, #007A55 100%); color: #fff; padding: 10px 12px; white-space: nowrap; }
-table.pron td { padding: 9px 12px; border-bottom: 1px solid #E8EDF3; vertical-align: top; }
-table.pron tr:nth-child(even) td { background: #F4F6F8; }
-table.pron td.num { width: 40px; text-align: center; color: #69788B; font-weight: bold; }
-table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #007A55; }
-table.pron td.en { color: #162B40; }
-table.pron tr.sec td { background: linear-gradient(180deg, #006847 0%, #00875B 100%); color: #fff; font-weight: 700; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 10px 12px; letter-spacing: 0.02em; }
+table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; white-space: nowrap; }
+table.pron td { padding: 9px 12px; border-bottom: 1px solid #ebefe9; vertical-align: top; }
+table.pron tr:nth-child(even) td { background: #f7faf8; }
+table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; }
+table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.pron td.en { color: #0f3d24; }
+table.pron tr.sec td { background: linear-gradient(180deg, #164f2d 0%, #2a6e45 100%); color: #fff; font-weight: 700; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 10px 12px; letter-spacing: 0.02em; }
 table.pron th:nth-child(2), table.pron td:nth-child(2) { width: 5%; padding: 9px 6px; overflow-wrap: anywhere; }
 table.pron th:nth-child(3), table.pron td:nth-child(3) { width: 6%; white-space: nowrap; }
 table.pron th:nth-child(4), table.pron td:nth-child(4) { width: 35%; }
 table.pron th:nth-child(5), table.pron td:nth-child(5) { width: 23%; }
 table.pron th:nth-child(6), table.pron td:nth-child(6) { width: 31%; }
 .idea-num {
-  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #162B40 0%, #007A55 100%);
+  display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
   color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
   box-shadow: 0 8px 16px rgba(20,61,41,0.18);
 }
 td.audio-cell { text-align: center; }
 button.say {
-  background: linear-gradient(135deg, #162B40 0%, #007A55 100%); color: #fff; border: none; cursor: pointer;
+  background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%); color: #fff; border: none; cursor: pointer;
   width: 30px; height: 30px; border-radius: 50%; font-size: 0.8rem; line-height: 1;
   box-shadow: 0 6px 12px rgba(20,61,41,0.22); transition: transform .15s ease, box-shadow .15s ease;
 }
 button.say:hover { transform: translateY(-1px) scale(1.06); box-shadow: 0 10px 16px rgba(20,61,41,0.28); }
 button.say:active { transform: translateY(0) scale(0.97); }
 .player-bar {
-  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: linear-gradient(180deg, #EEF1F4 0%, #E8EDF3 100%);
-  border: 1px solid #D6E8DC; border-radius: 12px; padding: 10px 14px; margin: 14px 0;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%);
+  border: 1px solid #cfe0d3; border-radius: 12px; padding: 10px 14px; margin: 14px 0;
 }
-.player-bar .now-playing { font-size: .92em; color: #007A55; font-weight: 600; }
-.btn.stop { background: linear-gradient(180deg, #C0392B 0%, #C0392B 100%); padding: 6px 12px; font-size: .85em; }
+.player-bar .now-playing { font-size: .92em; color: #1a3c22; font-weight: 600; }
+.btn.stop { background: linear-gradient(180deg, #b33f2c 0%, #c95a45 100%); padding: 6px 12px; font-size: .85em; }
 .meta {
-  background: linear-gradient(180deg, #EEF1F4 0%, #E8EDF3 100%); border: 1px solid #D6E8DC; border-radius: 12px;
-  padding: 12px 14px; margin: 16px 0; color: #007A55; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
+  background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
+  padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
 }
 .summary-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0 18px;
 }
 .summary-card {
-  background: linear-gradient(180deg, #F4F6F8 0%, #EEF1F4 100%); border: 1px solid #DFE5EA; border-radius: 12px; padding: 12px 14px;
+  background: linear-gradient(180deg, #f9fcfa 0%, #eef6f0 100%); border: 1px solid #dfe9df; border-radius: 12px; padding: 12px 14px;
   box-shadow: 0 4px 10px rgba(26, 60, 34, 0.04);
 }
-.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #45586A; margin-bottom: 6px; }
-.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #007A55; }
+.summary-card .label { display: block; font-size: 0.74em; text-transform: uppercase; letter-spacing: 0.08em; color: #5d6e63; margin-bottom: 6px; }
+.summary-card .value { font-size: 1.15rem; font-weight: 700; color: #1a3c22; }
 .toc {
-  background: #FFFFFF; border: 1px solid #E8EDF3; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
+  background: #ffffff; border: 1px solid #e0e9e1; border-radius: 14px; padding: 12px 14px; margin: 14px 0 18px; box-shadow: 0 8px 14px rgba(19,42,29,0.03);
 }
 .toc h3 { margin: 0 0 10px; color: var(--primary-dark); font-size: 1rem; }
 .toc-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .toc-list a {
-  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #EEF1F4; color: #006847; text-decoration: none; font-size: 0.85em; border: 1px solid #D6E8DC; transition: all 0.2s ease;
+  display: inline-block; padding: 6px 10px; border-radius: 999px; background: #edf5f0; color: #1c5a39; text-decoration: none; font-size: 0.85em; border: 1px solid #d9e8dc; transition: all 0.2s ease;
 }
-.toc-list a:hover { background: #E8EDF3; transform: translateY(-1px); }
+.toc-list a:hover { background: #e2f0e7; transform: translateY(-1px); }
 .story-box {
-  border-left: 4px solid #00875B; background: linear-gradient(180deg, #EEF1F4 0%, #E8EDF3 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
-  color: #22344A; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  border-left: 4px solid #2c6e49; background: linear-gradient(180deg, #eef7f1 0%, #e7f3eb 100%); border-radius: 10px; padding: 12px 14px; margin: 12px 0;
+  color: #1d2a22; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
 }
 a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-radius: 5px; background: var(--primary); color: #fff; text-decoration: none; font-size: 0.9em; }
 @media (max-width: 700px) {
@@ -227,8 +222,8 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
   .card { padding: 14px 12px; }
   table.ex, table.ex thead, table.ex tbody, table.ex th, table.ex td, table.ex tr { display: block; width: 100%; }
   table.ex th { display: none; }
-  table.ex tr { margin-bottom: 10px; border: 1px solid #E8EDF3; border-radius: 8px; overflow: hidden; }
-  table.ex td { border-bottom: 1px solid #E8EDF3; }
+  table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
+  table.ex td { border-bottom: 1px solid #edf1ed; }
 }
 </style>
 
@@ -262,7 +257,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
       <a class="btn" href="Niveau%202.html">التالي ▶</a>
     </div>
     <h1>📖 مستوى 1 — The Alphabet, Letters and Sounds</h1>
-    <div class="ar" style="color:#EEF1F4;font-size:1.1rem;">الحروف الأبجدية والأصوات</div>
+    <div class="ar" style="color:#dfeee9;font-size:1.1rem;">الحروف الأبجدية والأصوات</div>
     <div class="header-banner">
 <img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
 <div class="hb-info">
@@ -294,7 +289,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : English has 26 letters, from A to Z. We memorize their order for the dictionary and for lists.</div>
 </div>
 <div class="formula">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">A is the first letter.</td><td class="ar-c">A هو أول حرف.</td><td class="pron-c">«آ إيز ذا فيرست ليتر»</td></tr><tr><td class="en-c">Z is the last letter.</td><td class="ar-c">Z هو آخر حرف.</td><td class="pron-c">«ز إيز ذا لاست ليتر»</td></tr><tr><td class="en-c">There are 26 letters in English.</td><td class="ar-c">يوجد 26 حرفاً في الإنجليزية.</td><td class="pron-c">«ذير آر ليتيرز إين إينغليش»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">A is the first letter. <button class="say" data-src="_audio_niveaux/13005379e7c2.mp3" data-label="A is the first letter." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">A هو أول حرف.</td><td class="pron-c">«آ إيز ذا فيرست ليتر»</td></tr><tr><td class="en-c">Z is the last letter. <button class="say" data-src="_audio_niveaux/a9a601089bc9.mp3" data-label="Z is the last letter." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">Z هو آخر حرف.</td><td class="pron-c">«ز إيز ذا لاست ليتر»</td></tr><tr><td class="en-c">There are 26 letters in English. <button class="say" data-src="_audio_niveaux/83349eb84daa.mp3" data-label="There are 26 letters in English." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">يوجد 26 حرفاً في الإنجليزية.</td><td class="pron-c">«ذير آر ليتيرز إين إينغليش»</td></tr></table>
 </div>
 
 <div class="card" id="idea-2">
@@ -304,7 +299,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : The vowels are A, E, I, O and U. The other letters are consonants. Almost every word has a vowel.</div>
 </div>
 <div class="formula">Vowels = A, E, I, O, U</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">cat → a is a vowel.</td><td class="ar-c">cat → حرف a علة.</td><td class="pron-c">«كات آ إيز آ فاول»</td></tr><tr><td class="en-c">dog → o is a vowel.</td><td class="ar-c">dog → حرف o علة.</td><td class="pron-c">«دوغ و إيز آ فاول»</td></tr><tr><td class="en-c">The vowels are A E I O U.</td><td class="ar-c">حروف العلة هي A E I O U.</td><td class="pron-c">«ذا فاولز آر آ ا آي و ا»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">cat → a is a vowel. <button class="say" data-src="_audio_niveaux/ef68b7fe451c.mp3" data-label="cat → a is a vowel." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">cat → حرف a علة.</td><td class="pron-c">«كات آ إيز آ فاول»</td></tr><tr><td class="en-c">dog → o is a vowel. <button class="say" data-src="_audio_niveaux/dee217ce2369.mp3" data-label="dog → o is a vowel." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">dog → حرف o علة.</td><td class="pron-c">«دوغ و إيز آ فاول»</td></tr><tr><td class="en-c">The vowels are A E I O U. <button class="say" data-src="_audio_niveaux/28af578f68fe.mp3" data-label="The vowels are A E I O U." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">حروف العلة هي A E I O U.</td><td class="pron-c">«ذا فاولز آر آ ا آي و ا»</td></tr></table>
 </div>
 
 <div class="card" id="idea-3">
@@ -314,7 +309,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : Consonants are the 21 non-vowel letters, like B, C, D, and F. Most letters in a word are consonants.</div>
 </div>
 <div class="formula">Consonants = 26 − 5 vowels = 21</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">B, C, D are consonants.</td><td class="ar-c">B, C, D حروف ساكنة.</td><td class="pron-c">«ب س د آر كونسوننتس»</td></tr><tr><td class="en-c">Yes begins with y (consonant).</td><td class="ar-c">كلمة Yes تبدأ بحرف y الساكن.</td><td class="pron-c">«ييس بغينز ويذ ي كونسوننت»</td></tr><tr><td class="en-c">Book has 4 letters and 4 sounds.</td><td class="ar-c">كلمة Book فيها 4 حروف و4 أصوات.</td><td class="pron-c">«بوك هاز ليتيرز آند ساوندز»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">B, C, D are consonants. <button class="say" data-src="_audio_niveaux/af2f91a5998b.mp3" data-label="B, C, D are consonants." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">B, C, D حروف ساكنة.</td><td class="pron-c">«ب س د آر كونسوننتس»</td></tr><tr><td class="en-c">Yes begins with y (consonant). <button class="say" data-src="_audio_niveaux/4e154bc302fe.mp3" data-label="Yes begins with y (consonant)." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">كلمة Yes تبدأ بحرف y الساكن.</td><td class="pron-c">«ييس بغينز ويذ ي كونسوننت»</td></tr><tr><td class="en-c">Book has 4 letters and 4 sounds. <button class="say" data-src="_audio_niveaux/499d9a69dd8b.mp3" data-label="Book has 4 letters and 4 sounds." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">كلمة Book فيها 4 حروف و4 أصوات.</td><td class="pron-c">«بوك هاز ليتيرز آند ساوندز»</td></tr></table>
 </div>
 
 <div class="card" id="idea-4">
@@ -324,7 +319,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : Each letter has a big (capital) and a small form. We use capital letters at the start of a sentence and for names.</div>
 </div>
 <div class="formula">Aa Bb Cc ... Zz  |  Start of sentence + names</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">My name is Oussama.</td><td class="ar-c">اسمي أسامة.</td><td class="pron-c">«ماي نيم إيز أوساما»</td></tr><tr><td class="en-c">We live in Algeria.</td><td class="ar-c">نعيش في الجزائر.</td><td class="pron-c">«وي ليف إين ألجيريا»</td></tr><tr><td class="en-c">Today is Sunday.</td><td class="ar-c">اليوم هو الأحد.</td><td class="pron-c">«توداي إيز سنداي»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">My name is Oussama. <button class="say" data-src="_audio_niveaux/a2df2dd165de.mp3" data-label="My name is Oussama." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">اسمي أسامة.</td><td class="pron-c">«ماي نيم إيز أوساما»</td></tr><tr><td class="en-c">We live in Algeria. <button class="say" data-src="_audio_niveaux/44ba99870252.mp3" data-label="We live in Algeria." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">نعيش في الجزائر.</td><td class="pron-c">«وي ليف إين ألجيريا»</td></tr><tr><td class="en-c">Today is Sunday. <button class="say" data-src="_audio_niveaux/7b9e4f87be9c.mp3" data-label="Today is Sunday." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">اليوم هو الأحد.</td><td class="pron-c">«توداي إيز سنداي»</td></tr></table>
 </div>
 
 <div class="card" id="idea-5">
@@ -334,7 +329,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : When we say our name to someone who does not know it, we say the letters one by one. This helps on the phone and in forms.</div>
 </div>
 <div class="formula">My name is ____ . It is spelled S-A-L-I-M.</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">How do you spell your name?</td><td class="ar-c">كيف تهجئ اسمك؟</td><td class="pron-c">«هاو دو يو سبيل يور نيم»</td></tr><tr><td class="en-c">M-A-D-A-N-I. That is my name.</td><td class="ar-c">M-A-D-A-N-I. هذا هو اسمي.</td><td class="pron-c">«م آ د آ ن آي ذات إيز ماي نيم»</td></tr><tr><td class="en-c">Can you spell that, please?</td><td class="ar-c">هل يمكنك تهجئة ذلك من فضلك؟</td><td class="pron-c">«كان يو سبيل ذات بليز»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">How do you spell your name? <button class="say" data-src="_audio_niveaux/5def5b76fd69.mp3" data-label="How do you spell your name?" title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">كيف تهجئ اسمك؟</td><td class="pron-c">«هاو دو يو سبيل يور نيم»</td></tr><tr><td class="en-c">M-A-D-A-N-I. That is my name. <button class="say" data-src="_audio_niveaux/58c3204647f6.mp3" data-label="M-A-D-A-N-I. That is my name." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">M-A-D-A-N-I. هذا هو اسمي.</td><td class="pron-c">«م آ د آ ن آي ذات إيز ماي نيم»</td></tr><tr><td class="en-c">Can you spell that, please? <button class="say" data-src="_audio_niveaux/e73c23e444ce.mp3" data-label="Can you spell that, please?" title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">هل يمكنك تهجئة ذلك من فضلك؟</td><td class="pron-c">«كان يو سبيل ذات بليز»</td></tr></table>
 </div>
 
 <div class="card" id="idea-6">
@@ -344,7 +339,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : Each letter has a name (like 'bee' for B) and a sound (like /b/ in ball). The sound can change in different words.</div>
 </div>
 <div class="formula">Letter name ≠ letter sound</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">letter B: name /bee/, sound /b/.</td><td class="ar-c">حرف B: اسمه بي، وصوته ب.</td><td class="pron-c">«ليتر ب نيم بي ساوند ب»</td></tr><tr><td class="en-c">letter C can sound /k/ or /s/.</td><td class="ar-c">حرف C قد ينطق ك أو س.</td><td class="pron-c">«ليتر س كان ساوند ك أور س»</td></tr><tr><td class="en-c">letter G can sound /g/ or /j/.</td><td class="ar-c">حرف G قد ينطق ج أو جيم أخرى.</td><td class="pron-c">«ليتر ج كان ساوند ج أور ج»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">letter B: name /bee/, sound /b/. <button class="say" data-src="_audio_niveaux/7cdab5ef4e0c.mp3" data-label="letter B: name /bee/, sound /b/." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">حرف B: اسمه بي، وصوته ب.</td><td class="pron-c">«ليتر ب نيم بي ساوند ب»</td></tr><tr><td class="en-c">letter C can sound /k/ or /s/. <button class="say" data-src="_audio_niveaux/b05f1ff01078.mp3" data-label="letter C can sound /k/ or /s/." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">حرف C قد ينطق ك أو س.</td><td class="pron-c">«ليتر س كان ساوند ك أور س»</td></tr><tr><td class="en-c">letter G can sound /g/ or /j/. <button class="say" data-src="_audio_niveaux/703cc3f150b2.mp3" data-label="letter G can sound /g/ or /j/." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">حرف G قد ينطق ج أو جيم أخرى.</td><td class="pron-c">«ليتر ج كان ساوند ج أور ج»</td></tr></table>
 </div>
 
 <div class="card" id="idea-7">
@@ -354,7 +349,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : Some letters work together to make a new sound. ch says 'ch' (chair), sh says 'sh' (ship), th says 'th' (three).</div>
 </div>
 <div class="formula">ch → /tʃ/ • sh → /ʃ/ • th → /θ/ or /ð/</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Chair, cheese ← ch.</td><td class="ar-c">كرسي، جبن ← ch.</td><td class="pron-c">«تشير تشيز تش»</td></tr><tr><td class="en-c">Ship, fish ← sh.</td><td class="ar-c">سفينة، سمك ← sh.</td><td class="pron-c">«شيب فيش ش»</td></tr><tr><td class="en-c">Three, this ← th.</td><td class="ar-c">ثلاثة، هذا ← th.</td><td class="pron-c">«ثري ذيس ث»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Chair, cheese ← ch. <button class="say" data-src="_audio_niveaux/cd2e48e2d6b0.mp3" data-label="Chair, cheese ← ch." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">كرسي، جبن ← ch.</td><td class="pron-c">«تشير تشيز تش»</td></tr><tr><td class="en-c">Ship, fish ← sh. <button class="say" data-src="_audio_niveaux/fe71a7970342.mp3" data-label="Ship, fish ← sh." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">سفينة، سمك ← sh.</td><td class="pron-c">«شيب فيش ش»</td></tr><tr><td class="en-c">Three, this ← th. <button class="say" data-src="_audio_niveaux/d1029c8c85e6.mp3" data-label="Three, this ← th." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">ثلاثة، هذا ← th.</td><td class="pron-c">«ثري ذيس ث»</td></tr></table>
 </div>
 
 <div class="card" id="idea-8">
@@ -364,7 +359,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : Y is special: it is a consonant in 'yes' but a vowel in 'happy' and 'fly'.</div>
 </div>
 <div class="formula">Y = consonant (yes) or vowel (baby)</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Yellow ← Y consonant.</td><td class="ar-c">أصفر ← Y ساكن.</td><td class="pron-c">«يلو ي كونسوننت»</td></tr><tr><td class="en-c">Happy ← y vowel sound.</td><td class="ar-c">سعيد ← y علة.</td><td class="pron-c">«هابي ي فاول ساوند»</td></tr><tr><td class="en-c">My fly cry ← y as a vowel.</td><td class="ar-c">في كلمات مثل fly وcry.</td><td class="pron-c">«ماي فلاي كراي ي آز آ فاول»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Yellow ← Y consonant. <button class="say" data-src="_audio_niveaux/836909fe99fc.mp3" data-label="Yellow ← Y consonant." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">أصفر ← Y ساكن.</td><td class="pron-c">«يلو ي كونسوننت»</td></tr><tr><td class="en-c">Happy ← y vowel sound. <button class="say" data-src="_audio_niveaux/7776c9935ac0.mp3" data-label="Happy ← y vowel sound." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">سعيد ← y علة.</td><td class="pron-c">«هابي ي فاول ساوند»</td></tr><tr><td class="en-c">My fly cry ← y as a vowel. <button class="say" data-src="_audio_niveaux/4a62ba38e622.mp3" data-label="My fly cry ← y as a vowel." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">في كلمات مثل fly وcry.</td><td class="pron-c">«ماي فلاي كراي ي آز آ فاول»</td></tr></table>
 </div>
 
 <div class="card" id="idea-9">
@@ -374,7 +369,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : Alphabet order helps us in dictionaries and indexes. Singing the ABC song helps us memorize it.</div>
 </div>
 <div class="formula">A B C D / E F G / H I J K / L M N O P ...</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The dictionary is in alphabet order.</td><td class="ar-c">القاموس مرتب بالترتيب الأبجدي.</td><td class="pron-c">«ذا ديكشنري إيز إين ألفابيت أوردير»</td></tr><tr><td class="en-c">Apple comes before banana.</td><td class="ar-c">Apple تأتي قبل banana.</td><td class="pron-c">«أبل كامز بيفور بانانا»</td></tr><tr><td class="en-c">Fruit comes before vegetable.</td><td class="ar-c">Fruit قبل vegetable.</td><td class="pron-c">«فروت كامز بيفور فجيتبل»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">The dictionary is in alphabet order. <button class="say" data-src="_audio_niveaux/58a3dab50aaf.mp3" data-label="The dictionary is in alphabet order." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">القاموس مرتب بالترتيب الأبجدي.</td><td class="pron-c">«ذا ديكشنري إيز إين ألفابيت أوردير»</td></tr><tr><td class="en-c">Apple comes before banana. <button class="say" data-src="_audio_niveaux/547676fcfcd2.mp3" data-label="Apple comes before banana." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">Apple تأتي قبل banana.</td><td class="pron-c">«أبل كامز بيفور بانانا»</td></tr><tr><td class="en-c">Fruit comes before vegetable. <button class="say" data-src="_audio_niveaux/7b1626a2de38.mp3" data-label="Fruit comes before vegetable." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">Fruit قبل vegetable.</td><td class="pron-c">«فروت كامز بيفور فجيتبل»</td></tr></table>
 </div>
 
 <div class="card" id="idea-10">
@@ -384,7 +379,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : When we read, we blend the letters into one word. We do not read c-a-t; we read 'cat'.</div>
 </div>
 <div class="formula">c + a + t → /kæt/</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Dog → one sound /dɒg/.</td><td class="ar-c">Dog تنطق كصوت واحد.</td><td class="pron-c">«دوغ وان ساوند د ج»</td></tr><tr><td class="en-c">Sun → one sound /sʌn/.</td><td class="ar-c">Sun تنطق كصوت واحد.</td><td class="pron-c">«سان وان ساوند س ن»</td></tr><tr><td class="en-c">Blend the letters to read.</td><td class="ar-c">امزج الحروف لتقرأ الكلمة.</td><td class="pron-c">«بلاند ذا ليتيرز تو ريد»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">Dog → one sound /dɒg/. <button class="say" data-src="_audio_niveaux/5e0349fecba7.mp3" data-label="Dog → one sound /dɒg/." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">Dog تنطق كصوت واحد.</td><td class="pron-c">«دوغ وان ساوند د ج»</td></tr><tr><td class="en-c">Sun → one sound /sʌn/. <button class="say" data-src="_audio_niveaux/b7af16b0fc71.mp3" data-label="Sun → one sound /sʌn/." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">Sun تنطق كصوت واحد.</td><td class="pron-c">«سان وان ساوند س ن»</td></tr><tr><td class="en-c">Blend the letters to read. <button class="say" data-src="_audio_niveaux/932405a1f815.mp3" data-label="Blend the letters to read." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">امزج الحروف لتقرأ الكلمة.</td><td class="pron-c">«بلاند ذا ليتيرز تو ريد»</td></tr></table>
 </div>
 
 <div class="card" id="idea-11">
@@ -394,7 +389,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : The best way to learn the alphabet is practice: say each letter aloud, write it, and find words that start with it.</div>
 </div>
 <div class="formula">Learn = say + write + find examples</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">A: apple, ant, arm.</td><td class="ar-c">A: تفاحة، نملة، ذراع.</td><td class="pron-c">«آ أبل أنت أرم»</td></tr><tr><td class="en-c">B: book, boy, box.</td><td class="ar-c">B: كتاب، ولد، صندوق.</td><td class="pron-c">«ب بوك بوي بوكس»</td></tr><tr><td class="en-c">Practice five letters every day.</td><td class="ar-c">درّب خمسة حروف كل يوم.</td><td class="pron-c">«براكتيس فايف ليتيرز إيفري داي»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">A: apple, ant, arm. <button class="say" data-src="_audio_niveaux/e4d735ce6129.mp3" data-label="A: apple, ant, arm." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">A: تفاحة، نملة، ذراع.</td><td class="pron-c">«آ أبل أنت أرم»</td></tr><tr><td class="en-c">B: book, boy, box. <button class="say" data-src="_audio_niveaux/33607f96bad0.mp3" data-label="B: book, boy, box." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">B: كتاب، ولد، صندوق.</td><td class="pron-c">«ب بوك بوي بوكس»</td></tr><tr><td class="en-c">Practice five letters every day. <button class="say" data-src="_audio_niveaux/4bf6ba774e2a.mp3" data-label="Practice five letters every day." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">درّب خمسة حروف كل يوم.</td><td class="pron-c">«براكتيس فايف ليتيرز إيفري داي»</td></tr></table>
 </div>
 
 <div class="card" id="idea-12">
@@ -404,8 +399,28 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="en">📗 Explication claire : In class we use the alphabet to spell new words and to name letters. Pronounce letters the English way.</div>
 </div>
 <div class="formula">Q = /kjuː/ • W = /ˈdʌbəljuː/</div>
-<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">How is that word spelled?</td><td class="ar-c">كيف تُهجأ تلك الكلمة؟</td><td class="pron-c">«هاو إيز ذات وورد سبيلد»</td></tr><tr><td class="en-c">Spell 'house': H-O-U-S-E.</td><td class="ar-c">هجِّئ كلمة house: H-O-U-S-E.</td><td class="pron-c">«سبيل هاوس ه و ا س ا»</td></tr><tr><td class="en-c">Say the letter H, please.</td><td class="ar-c">انطق حرف H من فضلك.</td><td class="pron-c">«ساي ذا ليتر ه بليز»</td></tr></table>
+<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">How is that word spelled? <button class="say" data-src="_audio_niveaux/94aec9bd19c8.mp3" data-label="How is that word spelled?" title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">كيف تُهجأ تلك الكلمة؟</td><td class="pron-c">«هاو إيز ذات وورد سبيلد»</td></tr><tr><td class="en-c">Spell 'house': H-O-U-S-E. <button class="say" data-src="_audio_niveaux/a2183b0501ea.mp3" data-label="Spell 'house': H-O-U-S-E." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">هجِّئ كلمة house: H-O-U-S-E.</td><td class="pron-c">«سبيل هاوس ه و ا س ا»</td></tr><tr><td class="en-c">Say the letter H, please. <button class="say" data-src="_audio_niveaux/90d7a8a3c53e.mp3" data-label="Say the letter H, please." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">انطق حرف H من فضلك.</td><td class="pron-c">«ساي ذا ليتر ه بليز»</td></tr></table>
 </div>
+    <div class="player-bar">
+<audio id="gram-audio" preload="none"></audio>
+<button class="btn stop" id="gram-stop" onclick="stopAudio()">⏹ إيقاف</button>
+<span id="gram-now-playing" class="now-playing"></span>
+</div>
+<script>
+const gramAudio = document.getElementById('gram-audio');
+const nowPlaying = document.getElementById('gram-now-playing');
+function playAudio(btn){
+  gramAudio.src = btn.dataset.src;
+  gramAudio.play();
+  nowPlaying.textContent = '🔊 ' + (btn.dataset.label || '');
+}
+function stopAudio(){ gramAudio.pause(); gramAudio.currentTime = 0; nowPlaying.textContent=''; }
+document.querySelectorAll('.say').forEach(btn=>{
+  btn.addEventListener('click', ()=>playAudio(btn));
+});
+gramAudio.addEventListener('ended', ()=>{ nowPlaying.textContent=''; });
+</script>
+
     <div class="topbar" style="margin-top:24px;">
       <a class="btn disabled">◀ السابق</a>
       <span class="spacer"></span>

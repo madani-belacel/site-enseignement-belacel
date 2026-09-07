@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Agrège toutes les fiches de grammaire (100 niveaux)."""
+"""Agrège toutes les fiches de grammaire (101 niveaux)."""
 
 import data_levels_1_10 as d1
 import data_levels_11_20 as d2
@@ -10,6 +10,7 @@ import data_levels_51_60 as d6
 import data_levels_61_70 as d7
 import data_levels_71_85 as d8
 import data_levels_86_100 as d9
+import data_levels_101_110 as d10
 
 
 def _build_fallback_idea(level_num, title_en, category, index):
@@ -37,9 +38,13 @@ def _build_fallback_idea(level_num, title_en, category, index):
 
 
 def ensure_minimum_ideas(levels, minimum=10):
-    """Complète chaque niveau jusqu'à minimum d'idées pédagogiques."""
+    """Complète chaque niveau jusqu'à minimum d'idées pédagogiques.
+    Les niveaux au format 'table' (layout == "table") sont gardés tels quels."""
     completed = []
     for lvl in levels:
+        if lvl.get("layout") == "table":
+            completed.append(lvl)
+            continue
         ideas = list(lvl.get("ideas", []) or [])
         while len(ideas) < minimum:
             index = len(ideas) + 1
@@ -52,5 +57,5 @@ def ensure_minimum_ideas(levels, minimum=10):
 
 
 LEVELS = (d1.LEVELS + d2.LEVELS + d3.LEVELS + d4.LEVELS +
-          d5.LEVELS + d6.LEVELS + d7.LEVELS + d8.LEVELS + d9.LEVELS)
+          d5.LEVELS + d6.LEVELS + d7.LEVELS + d8.LEVELS + d9.LEVELS + d10.LEVELS)
 LEVELS = ensure_minimum_ideas(LEVELS, minimum=10)

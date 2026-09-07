@@ -11,6 +11,49 @@
     return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
 
+  /* ── Lecture audio des boutons .say (data-src = mp3) ── */
+  var sayAudio = null;
+  function stopSay() {
+    if (sayAudio) {
+      sayAudio.pause();
+      sayAudio.currentTime = 0;
+      sayAudio = null;
+    }
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+  }
+  function playSay(btn) {
+    stopSay();
+    var src = btn.getAttribute('data-src');
+    var label = (btn.getAttribute('data-label') || '').trim();
+    if (src) {
+      try {
+        sayAudio = new Audio(src);
+        sayAudio.play().catch(function () {
+          speakLabel(label);
+        });
+        return;
+      } catch (e) {
+        speakLabel(label);
+      }
+    } else {
+      speakLabel(label);
+    }
+  }
+  function speakLabel(label) {
+    if (label && 'speechSynthesis' in window) {
+      var u = new SpeechSynthesisUtterance(label);
+      u.lang = 'en-GB';
+      u.rate = 0.92;
+      speechSynthesis.speak(u);
+    }
+  }
+  document.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest ? e.target.closest('.say') : null;
+    if (!btn) return;
+    e.preventDefault();
+    playSay(btn);
+  });
+
   /* ── Theme Toggle ── */
   var themeToggle = document.getElementById('theme-toggle');
   var html = document.documentElement;

@@ -3,13 +3,18 @@
 Lit data_levels_*.py et produit index.html + niveaux/Niveau_X.html
 dans le même style que « dialogue anglais »."""
 
+import asyncio
 import os
 
 from data_grammaire import LEVELS
 from prononciation import ar_pron
 
+import edge_tts
+
 BASE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(BASE, "niveaux")
+AUDIO_DIR = os.path.join(OUT, "_audio_niveaux")
+AUDIO_VOICE = "en-GB-SoniaNeural"
 
 STYLE_COMMON = """
 <style>
@@ -161,11 +166,39 @@ table.ex td:first-child { width: 44%; }
 table.ex .en-c { color: #0f3d24; }
 table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
 table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
+.pron-table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 18px rgba(17, 32, 24, 0.06); background: #fff; }
+table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; }
+table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; white-space: nowrap; }
+table.pron td { padding: 9px 12px; border-bottom: 1px solid #ebefe9; vertical-align: top; }
+table.pron tr:nth-child(even) td { background: #f7faf8; }
+table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; }
+table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
+table.pron td.en { color: #0f3d24; }
+table.pron tr.sec td { background: linear-gradient(180deg, #164f2d 0%, #2a6e45 100%); color: #fff; font-weight: 700; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 10px 12px; letter-spacing: 0.02em; }
+table.pron th:nth-child(2), table.pron td:nth-child(2) { width: 5%; padding: 9px 6px; overflow-wrap: anywhere; }
+table.pron th:nth-child(3), table.pron td:nth-child(3) { width: 6%; white-space: nowrap; }
+table.pron th:nth-child(4), table.pron td:nth-child(4) { width: 35%; }
+table.pron th:nth-child(5), table.pron td:nth-child(5) { width: 23%; }
+table.pron th:nth-child(6), table.pron td:nth-child(6) { width: 31%; }
 .idea-num {
   display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
   color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
   box-shadow: 0 8px 16px rgba(20,61,41,0.18);
 }
+td.audio-cell { text-align: center; }
+button.say {
+  background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%); color: #fff; border: none; cursor: pointer;
+  width: 30px; height: 30px; border-radius: 50%; font-size: 0.8rem; line-height: 1;
+  box-shadow: 0 6px 12px rgba(20,61,41,0.22); transition: transform .15s ease, box-shadow .15s ease;
+}
+button.say:hover { transform: translateY(-1px) scale(1.06); box-shadow: 0 10px 16px rgba(20,61,41,0.28); }
+button.say:active { transform: translateY(0) scale(0.97); }
+.player-bar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%);
+  border: 1px solid #cfe0d3; border-radius: 12px; padding: 10px 14px; margin: 14px 0;
+}
+.player-bar .now-playing { font-size: .92em; color: #1a3c22; font-weight: 600; }
+.btn.stop { background: linear-gradient(180deg, #b33f2c 0%, #c95a45 100%); padding: 6px 12px; font-size: .85em; }
 .meta {
   background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%); border: 1px solid #cfe0d3; border-radius: 12px;
   padding: 12px 14px; margin: 16px 0; color: #1a3c22; font-size: 0.96em; box-shadow: 0 4px 10px rgba(28, 76, 48, 0.04);
@@ -273,9 +306,163 @@ def format_arabic_explanation(text):
     return "<br>".join(cleaned) if cleaned else ""
 
 
+def table_rule_count(rows):
+    return sum(1 for r in rows if r and r[0] != "SECTION")
+
+
+def _audio_player_bar():
+    return """<div class="player-bar">
+<audio id="gram-audio" preload="none"></audio>
+<button class="btn stop" id="gram-stop" onclick="stopAudio()">⏹ إيقاف</button>
+<span id="gram-now-playing" class="now-playing"></span>
+</div>"""
+
+
+def _audio_player_script():
+    return """
+<script>
+const gramAudio = document.getElementById('gram-audio');
+const nowPlaying = document.getElementById('gram-now-playing');
+function playAudio(btn){
+  gramAudio.src = btn.dataset.src;
+  gramAudio.play();
+  nowPlaying.textContent = '🔊 ' + (btn.dataset.label || '');
+}
+function stopAudio(){ gramAudio.pause(); gramAudio.currentTime = 0; nowPlaying.textContent=''; }
+document.querySelectorAll('.say').forEach(btn=>{
+  btn.addEventListener('click', ()=>playAudio(btn));
+});
+gramAudio.addEventListener('ended', ()=>{ nowPlaying.textContent=''; });
+</script>
+"""
+
+
+def _audio_clean(text):
+    if isinstance(text, str):
+        text = text.replace("→", ", ").replace("←", ", ")
+        text = text.replace("؛", ", ").replace("،", ", ")
+        text = " ".join(text.split())
+    return text
+
+
+def _audio_fname(text):
+    import hashlib
+    h = hashlib.sha1(text.strip().encode("utf-8")).hexdigest()[:12]
+    return f"{h}.mp3"
+
+
+def ensure_audio_files(levels):
+    """Génère les MP3 manquants (prononciation anglaise des exemples)."""
+    os.makedirs(AUDIO_DIR, exist_ok=True)
+
+    def _schedule(text):
+        text = _audio_clean(text)
+        if not text:
+            return
+        fname = _audio_fname(text)
+        path = os.path.join(AUDIO_DIR, fname)
+        if not os.path.exists(path):
+            tasks.append((text, path))
+
+    tasks = []
+    for lvl in levels:
+        if lvl.get("layout") == "table":
+            col = lvl.get("audio_col")
+            build = lvl.get("audio_build")
+            if col is None and build is None:
+                continue
+            for row in lvl.get("table_rows", []):
+                if row and row[0] == "SECTION":
+                    continue
+                if build:
+                    _schedule(build(row))
+                elif col is not None and col < len(row):
+                    text = _audio_clean(row[col])
+                    pcol = lvl.get("audio_prefix_col")
+                    if pcol is not None and pcol < len(row):
+                        text = f"{_audio_clean(row[pcol])}. {text}"
+                    _schedule(text)
+        else:
+            # niveaux classiques (1-100) : une piste MP3 par phrase d'exemple anglaise
+            for idea in lvl.get("ideas", []):
+                for row in (idea.get("examples") or []):
+                    if len(row) and row[0]:
+                        _schedule(row[0])
+    print(f"Audio : {len(tasks)} MP3 manquants à générer.")
+    if not tasks:
+        return
+
+    async def worker(text, path):
+        com = edge_tts.Communicate(text, voice=AUDIO_VOICE, rate="-8%")
+        try:
+            await com.save(path)
+            print("  audio ✓", text[:50])
+        except Exception as e:  # noqa: BLE001
+            print("  audio ✗", text[:50], "→", e)
+
+    async def _run():
+        await asyncio.gather(*(worker(t, p) for t, p in tasks))
+
+    asyncio.run(_run())
+
+
+def render_table(lvl):
+    """Rendu d'un niveau au format tableau (prononciation : الأصوات المركبة ...)."""
+    columns = lvl["table_columns"]
+    rows = lvl["table_rows"]
+    audio_col = lvl.get("audio_col")  # colonne dont le texte est lu à voix haute
+    audio_build = lvl.get("audio_build")  # fonction custom pour générer le texte audio
+    has_audio = audio_col is not None or audio_build is not None
+    colspan = len(columns) + (1 if has_audio else 0) + 1
+
+    thead = "".join(f"<th>{c}</th>" for c in columns)
+    if has_audio:
+        thead += '<th title="استمع إلى النطق">🔊</th>'
+    tbody = ""
+    counter = 0
+    for row in rows:
+        if row and row[0] == "SECTION":
+            tbody += f'<tr class="sec"><td colspan="{colspan}" class="sec">{row[1]}</td></tr>'
+            continue
+        counter += 1
+        tds = "".join(
+            f'<td class="{"en" if j in (0, 2) else "ar"}">{c}</td>'
+            for j, c in enumerate(row)
+        )
+        if has_audio:
+            if audio_build:
+                atext = _audio_clean(audio_build(row))
+            elif audio_col is not None and audio_col < len(row):
+                atext = _audio_clean(row[audio_col])
+                if lvl.get("audio_prefix_col") is not None and lvl.get("audio_prefix_col") < len(row):
+                    atext = f"{_audio_clean(row[lvl.get('audio_prefix_col')])}. {atext}"
+            else:
+                atext = ""
+            if atext:
+                fname = _audio_fname(atext)
+                tds += f'<td class="audio-cell"><button class="say" data-src="_audio_niveaux/{fname}" data-label="{row[0]}" title="استمع إلى النطق" aria-label="استمع">▶</button></td>'
+            else:
+                tds += '<td class="audio-cell"></td>'
+        else:
+            tds += '<td class="audio-cell"></td>'
+        tbody += f'<tr><td class="num">{counter}</td>{tds}</tr>'
+
+    audio_script = ""
+    if has_audio:
+        audio_script = _audio_player_bar() + _audio_player_script()
+
+    return f"""<div class="pron-table-wrap">
+<table class="pron">
+<thead><tr><th class="num">#</th>{thead}</tr></thead>
+<tbody>{tbody}</tbody>
+</table>
+</div>
+{audio_script}"""
+
+
 def render_level(lvl):
     n = lvl["num"]
-    ideas = lvl["ideas"]
+    ideas = lvl.get("ideas", [])
     cefr = lvl.get("cefr", "A1")
     title_en = lvl["title_en"]
     title_ar = lvl["title_ar"]
@@ -284,27 +471,44 @@ def render_level(lvl):
     prev = f'<a class="btn" href="Niveau%20{n-1}.html">◀ السابق</a>' if n > 1 else '<a class="btn disabled">◀ السابق</a>'
     nxt = f'<a class="btn" href="Niveau%20{n+1}.html">التالي ▶</a>' if n < len(LEVELS) else '<a class="btn disabled">التالي ▶</a>'
 
-    cards = []
-    toc_links = []
-    for i, idea in enumerate(ideas, 1):
-        def ex_row(row):
-            en, ar = row[0], row[1]
-            pron = row[2] if len(row) > 2 and row[2].strip() else ar_pron(en)
-            return (f'<tr>'
-                    f'<td class="en-c">{en}</td>'
-                    f'<td class="ar-c">{ar}</td>'
-                    f'<td class="pron-c">«{pron}»</td>'
-                    f'</tr>')
-        ex_rows = "".join(ex_row(row) for row in idea.get("examples", []))
-        ex_html = ""
-        if idea.get("examples"):
-            ex_html = f'<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr>{ex_rows}</table>'
-        formula = ""
-        if idea.get("formula"):
-            formula = f'<div class="formula">{idea["formula"]}</div>'
-        anchor = f"idea-{i}"
-        toc_links.append(f'<a href="#{anchor}">{i}. {idea["en"]}</a>')
-        cards.append(f"""
+    if lvl.get("layout") == "table":
+        icon = "📗"
+        ideas_content = render_table(lvl)
+        n_points = table_rule_count(lvl.get("table_rows", []))
+        toc_links = []
+        toc_html = ""
+        meta_en = f"Ce niveau présente <b>{n_points}</b> règles de prononciation sous forme d'un tableau récapitulatif."
+        meta_ar = f"يحتوي هذا المستوى على <b>{n_points}</b> قاعدة نطق للحروف المركبة في شكل جدول ملخّص."
+        objectif = "maîtriser les règles de prononciation des digraphes anglais pour lire et prononcer correctement les mots."
+        audio_block = ""
+    else:
+        icon = "📖"
+        cards = []
+        toc_links = []
+        for i, idea in enumerate(ideas, 1):
+            def ex_row(row):
+                en, ar = row[0], row[1]
+                pron = row[2] if len(row) > 2 and row[2].strip() else ar_pron(en)
+                say = ""
+                if en.strip():
+                    fname = _audio_fname(_audio_clean(en))
+                    say = (f' <button class="say" data-src="_audio_niveaux/{fname}" '
+                           f'data-label="{en}" title="استمع إلى النطق" aria-label="Écouter">▶</button>')
+                return (f'<tr>'
+                        f'<td class="en-c">{en}{say}</td>'
+                        f'<td class="ar-c">{ar}</td>'
+                        f'<td class="pron-c">«{pron}»</td>'
+                        f'</tr>')
+            ex_rows = "".join(ex_row(row) for row in idea.get("examples", []))
+            ex_html = ""
+            if idea.get("examples"):
+                ex_html = f'<table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr>{ex_rows}</table>'
+            formula = ""
+            if idea.get("formula"):
+                formula = f'<div class="formula">{idea["formula"]}</div>'
+            anchor = f"idea-{i}"
+            toc_links.append(f'<a href="#{anchor}">{i}. {idea["en"]}</a>')
+            cards.append(f"""
 <div class="card" id="{anchor}">
 <h3><span class="idea-num">{i}</span>{idea["en"]} — <span class="ar">{idea["ar"]}</span></h3>
 <div class="expl">
@@ -314,8 +518,14 @@ def render_level(lvl):
 {formula}
 {ex_html}
 </div>""")
+        ideas_content = "\n".join(cards)
+        n_points = len(cards)
+        toc_html = f'<div class="toc"><h3>Sommaire rapide</h3><div class="toc-list">{"".join(toc_links)}</div></div>'
+        meta_en = f"Ce niveau propose <b>{n_points}</b> points de grammaire à maîtriser."
+        meta_ar = f"يحتوي هذا المستوى على <b>{n_points}</b> نقطة لغوية أساسية للتدريب والتطبيق."
+        objectif = "maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes."
+        audio_block = _audio_player_bar() + _audio_player_script()
 
-    ideas_content = "\n".join(cards)
     badge = f'<span class="badge {cefr_class(cefr)}">{cefr}</span>'
     catline = f'<span class="cat-label">{cat}</span>'
     if cat_ar:
@@ -362,28 +572,26 @@ def render_level(lvl):
       <span class="spacer"></span>
       {nxt}
     </div>
-    <h1>📖 مستوى {n} — {title_en}</h1>
+    <h1>{icon} مستوى {n} — {title_en}</h1>
     <div class="ar" style="color:#dfeee9;font-size:1.1rem;">{title_ar}</div>
     {banner()}
     <div class="summary-grid">
       <div class="summary-card"><span class="label">CEFR</span><span class="value">{badge}</span></div>
-      <div class="summary-card"><span class="label">القواعد</span><span class="value">{len(ideas)}</span></div>
+      <div class="summary-card"><span class="label">القواعد</span><span class="value">{n_points}</span></div>
       <div class="summary-card"><span class="label">الفئة</span><span class="value">{cat if cat else 'General'}</span></div>
       <div class="summary-card"><span class="label">الترتيب</span><span class="value">Niveau {n}</span></div>
     </div>
     <div class="meta">
     <b>{badge} {catline}</b><br>
-    <div class="en">Ce niveau propose <b>{len(ideas)}</b> points de grammaire à maîtriser.</div>
-    <div class="ar">يحتوي هذا المستوى على <b>{len(ideas)}</b> نقطة لغوية أساسية للتدريب والتطبيق.</div>
+    <div class="en">{meta_en}</div>
+    <div class="ar">{meta_ar}</div>
     </div>
-    <div class="toc">
-      <h3>Sommaire rapide</h3>
-      <div class="toc-list">{''.join(toc_links)}</div>
-    </div>
+    {toc_html}
     <div class="story-box">
-      <strong>Objectif du niveau :</strong> maîtriser les bases de ce thème pour les utiliser naturellement dans des phrases simples, claires et correctes.
+      <strong>Objectif du niveau :</strong> {objectif}
     </div>
     {ideas_content}
+    {audio_block}
     <div class="topbar" style="margin-top:24px;">
       {prev}
       <span class="spacer"></span>
@@ -407,13 +615,14 @@ def render_index():
     cefr_txt = " → ".join(cefr_found) if cefr_found else ""
     for lvl in LEVELS:
         cls = cefr_class(lvl.get("cefr", "A1"))
+        n_points = table_rule_count(lvl.get("table_rows", [])) if lvl.get("layout") == "table" else len(lvl.get("ideas", []))
         rows.append(
             f"""<tr>
 <td class="num">{lvl['num']}</td>
 <td><span class="badge {cls}">{lvl.get('cefr','A1')}</span></td>
 <td class="nm">{lvl['title_en']}</td>
 <td class="ar t">{lvl['title_ar']}</td>
-<td>{len(lvl['ideas'])}</td>
+<td>{n_points}</td>
 <td class="links"><a href="niveaux/Niveau%20{lvl['num']}.html">فتح الصفحة</a></td>
 </tr>"""
         )
@@ -517,7 +726,7 @@ img.flag-corner {
     summary_cards = f"""
 <div class="summary-grid">
   <div class="summary-card"><span class="label">Total</span><span class="value">{n}</span></div>
-  <div class="summary-card"><span class="label">Idées</span><span class="value">{sum(len(l['ideas']) for l in LEVELS)}</span></div>
+  <div class="summary-card"><span class="label">Idées</span><span class="value">{sum((table_rule_count(l.get('table_rows', [])) if l.get('layout') == 'table' else len(l.get('ideas', []))) for l in LEVELS)}</span></div>
   <div class="summary-card"><span class="label">Progression</span><span class="value">A1 → {cefr_txt.split(' → ')[-1] if ' → ' in cefr_txt else cefr_txt}</span></div>
   <div class="summary-card"><span class="label">Format</span><span class="value">100% HTML</span></div>
 </div>
@@ -627,6 +836,7 @@ img.flag-corner {
 
 def main():
     os.makedirs(OUT, exist_ok=True)
+    ensure_audio_files(LEVELS)
     with open(os.path.join(BASE, "index.html"), "w", encoding="utf-8") as f:
         f.write(render_index())
     for lvl in LEVELS:
@@ -634,11 +844,13 @@ def main():
         path = os.path.join(OUT, f"Niveau {lvl['num']}.html")
         with open(path, "w", encoding="utf-8") as f:
             f.write(page)
-        print(f"Niveau {lvl['num']} : {len(lvl['ideas'])} idées → {path}")
+        n_points = table_rule_count(lvl.get("table_rows", [])) if lvl.get("layout") == "table" else len(lvl["ideas"])
+        print(f"Niveau {lvl['num']} : {n_points} idées → {path}")
     print(f"Total : {len(LEVELS)} niveaux générés.")
 
-    import re
-    total_ideas = sum(len(l["ideas"]) for l in LEVELS)
+    def _points(l):
+        return table_rule_count(l.get("table_rows", [])) if l.get("layout") == "table" else len(l.get("ideas", []))
+    total_ideas = sum(_points(l) for l in LEVELS)
     print(f"Total idées : {total_ideas}")
 
 
