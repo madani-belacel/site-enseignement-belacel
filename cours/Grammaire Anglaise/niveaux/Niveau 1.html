@@ -155,19 +155,18 @@ table.ex .en-c { color: #0f3d24; }
 table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
 table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
 .pron-table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 18px rgba(17, 32, 24, 0.06); background: #fff; }
-table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; }
-table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; white-space: nowrap; }
+table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; table-layout: auto; }
+table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; }
 table.pron td { padding: 9px 12px; border-bottom: 1px solid #ebefe9; vertical-align: top; }
 table.pron tr:nth-child(even) td { background: #f7faf8; }
-table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; }
-table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
-table.pron td.en { color: #0f3d24; }
+table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; white-space: nowrap; }
+table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; overflow-wrap: anywhere; }
+table.pron td.en { color: #0f3d24; overflow-wrap: anywhere; }
 table.pron tr.sec td { background: linear-gradient(180deg, #164f2d 0%, #2a6e45 100%); color: #fff; font-weight: 700; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 10px 12px; letter-spacing: 0.02em; }
-table.pron th:nth-child(2), table.pron td:nth-child(2) { width: 5%; padding: 9px 6px; overflow-wrap: anywhere; }
-table.pron th:nth-child(3), table.pron td:nth-child(3) { width: 6%; white-space: nowrap; }
-table.pron th:nth-child(4), table.pron td:nth-child(4) { width: 35%; }
-table.pron th:nth-child(5), table.pron td:nth-child(5) { width: 23%; }
-table.pron th:nth-child(6), table.pron td:nth-child(6) { width: 31%; }
+table.pron tr.note td { background: linear-gradient(180deg, #fff8e7 0%, #fdf0d0 100%); color: #5a3e00; border-top: 2px solid #e8c169; border-bottom: 1px solid #ead9a8; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 12px 14px; font-size: 0.95em; line-height: 1.75; }
+table.pron tr.note td b { color: #8a5a00; }
+table.pron td.audio-cell, table.pron td.audio-cell { width: 44px; text-align: center; white-space: nowrap; padding: 9px 6px; }
+table.pron th:last-child { white-space: normal; }
 .idea-num {
   display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
   color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
@@ -227,6 +226,13 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 }
 </style>
 
+<style>
+body { max-width: 1600px; }
+.content-shell { width: min(100%, 1600px); }
+table.pron th, table.pron td { padding: 10px 14px; }
+table.pron { font-size: 0.95em; }
+</style>
+
 </head>
 <body>
 <div class="sidebar">
@@ -245,7 +251,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
   </nav>
   <div class="side-section">
     <div class="side-section-title">Sujets</div>
-    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a><a class="side-link" href="Niveau%20101.html">Niveaux 101-105</a>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a><a class="side-link" href="Niveau%20101.html">Niveaux 101-110</a>
   </div>
 </div>
 <div class="content-shell">
@@ -288,7 +294,7 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 <div class="ar">📘 الأبجدية الإنجليزية تتكون من 26 حرفاً,<br>نبدأ بحرف A وننتهي بحرف Z.<br>حفظ ترتيب هذه الحروف يساعدنا عندما نبحث في القاموس أو نكتب القوائم.</div>
 <div class="en">📗 Explication claire : English has 26 letters, from A to Z. We memorize their order for the dictionary and for lists.</div>
 </div>
-<div class="formula">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+<div class="formula">a b c d e f g h i j k l m n o p q r s t u v w x y z<br><span style="font-family:'Traditional Arabic','Amiri',serif;direction:rtl;display:inline-block;margin-top:8px">اللفظ: أي، بي، سي، دي، إي، إف، جي، إتش، آي، جي، كي، إل، إم، إن، أو، بي، كيو، آر، إس، تي، يو، في، دبليو، إكس، واي، زد</span></div>
 <table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">A is the first letter. <button class="say" data-src="_audio_niveaux/13005379e7c2.mp3" data-label="A is the first letter." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">A هو أول حرف.</td><td class="pron-c">«آ إيز ذا فيرست ليتر»</td></tr><tr><td class="en-c">Z is the last letter. <button class="say" data-src="_audio_niveaux/a9a601089bc9.mp3" data-label="Z is the last letter." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">Z هو آخر حرف.</td><td class="pron-c">«ز إيز ذا لاست ليتر»</td></tr><tr><td class="en-c">There are 26 letters in English. <button class="say" data-src="_audio_niveaux/83349eb84daa.mp3" data-label="There are 26 letters in English." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">يوجد 26 حرفاً في الإنجليزية.</td><td class="pron-c">«ذير آر ليتيرز إين إينغليش»</td></tr></table>
 </div>
 
@@ -400,6 +406,32 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 </div>
 <div class="formula">Q = /kjuː/ • W = /ˈdʌbəljuː/</div>
 <table class="ex"><tr><th>English</th><th>العربية</th><th>النُّطق «...»</th></tr><tr><td class="en-c">How is that word spelled? <button class="say" data-src="_audio_niveaux/94aec9bd19c8.mp3" data-label="How is that word spelled?" title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">كيف تُهجأ تلك الكلمة؟</td><td class="pron-c">«هاو إيز ذات وورد سبيلد»</td></tr><tr><td class="en-c">Spell 'house': H-O-U-S-E. <button class="say" data-src="_audio_niveaux/a2183b0501ea.mp3" data-label="Spell 'house': H-O-U-S-E." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">هجِّئ كلمة house: H-O-U-S-E.</td><td class="pron-c">«سبيل هاوس ه و ا س ا»</td></tr><tr><td class="en-c">Say the letter H, please. <button class="say" data-src="_audio_niveaux/90d7a8a3c53e.mp3" data-label="Say the letter H, please." title="استمع إلى النطق" aria-label="Écouter">▶</button></td><td class="ar-c">انطق حرف H من فضلك.</td><td class="pron-c">«ساي ذا ليتر ه بليز»</td></tr></table>
+</div>
+<div class="card" style="overflow:visible;"><h3>The English Alphabet — Letters & Names — <span class="ar">الحروف الأبجدية الإنجليزية A–Z مع طريقة نطق اسمها</span></h3><div class="cat-label">📎 Niveau 102 — alphabet complet (A–Z)</div><div class="pron-table-wrap">
+<table class="pron">
+<thead><tr><th class="num">#</th><th>الحرف</th><th>الاسم بالإنجليزية</th><th>النطق بالعربية</th><th>مثال</th><th>المعنى</th><th title="استمع إلى النطق">🔊</th></tr></thead>
+<tbody><tr class="sec"><td colspan="7" class="sec">الحروف A إلى M</td></tr><tr><td class="num">1</td><td class="en">Aa</td><td class="ar">ey</td><td class="en">آي</td><td class="ar">apple</td><td class="ar">تفاحة</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/d0be2dc421be.mp3" data-label="Aa" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">2</td><td class="en">Bb</td><td class="ar">bee</td><td class="en">بي</td><td class="ar">book</td><td class="ar">كتاب</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/e7e694c58cd5.mp3" data-label="Bb" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">3</td><td class="en">Cc</td><td class="ar">see</td><td class="en">سي</td><td class="ar">cat</td><td class="ar">قطة</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/9d989e8d27dc.mp3" data-label="Cc" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">4</td><td class="en">Dd</td><td class="ar">dee</td><td class="en">دي</td><td class="ar">dog</td><td class="ar">كلب</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/e49512524f47.mp3" data-label="Dd" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">5</td><td class="en">Ee</td><td class="ar">ee</td><td class="en">إي</td><td class="ar">egg</td><td class="ar">بيضة</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/4fa6024f1249.mp3" data-label="Ee" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">6</td><td class="en">Ff</td><td class="ar">ef</td><td class="en">إف</td><td class="ar">fish</td><td class="ar">سمكة</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/64875fcccaac.mp3" data-label="Ff" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">7</td><td class="en">Gg</td><td class="ar">jee</td><td class="en">جي</td><td class="ar">go</td><td class="ar">يذهب</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/1ec558a60b5d.mp3" data-label="Gg" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">8</td><td class="en">Hh</td><td class="ar">eych</td><td class="en">إيتش</td><td class="ar">hat</td><td class="ar">قبعة</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/10e5866050d2.mp3" data-label="Hh" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">9</td><td class="en">Ii</td><td class="ar">ay</td><td class="en">آي</td><td class="ar">in</td><td class="ar">في</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/af10ef20dd90.mp3" data-label="Ii" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">10</td><td class="en">Jj</td><td class="ar">jey</td><td class="en">جي</td><td class="ar">jump</td><td class="ar">يقفز</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/271e9a568c0e.mp3" data-label="Jj" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">11</td><td class="en">Kk</td><td class="ar">key</td><td class="en">كي</td><td class="ar">key</td><td class="ar">مفتاح</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/a62f2225bf70.mp3" data-label="Kk" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">12</td><td class="en">Ll</td><td class="ar">el</td><td class="en">إل</td><td class="ar">like</td><td class="ar">يحب</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/c4eb7d7fea3c.mp3" data-label="Ll" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">13</td><td class="en">Mm</td><td class="ar">em</td><td class="en">إم</td><td class="ar">man</td><td class="ar">رجل</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/8175e3c8753a.mp3" data-label="Mm" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr class="sec"><td colspan="7" class="sec">الحروف N إلى Z</td></tr><tr><td class="num">14</td><td class="en">Nn</td><td class="ar">en</td><td class="en">إن</td><td class="ar">no</td><td class="ar">لا</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/fd1286353570.mp3" data-label="Nn" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">15</td><td class="en">Oo</td><td class="ar">ow</td><td class="en">أو</td><td class="ar">on</td><td class="ar">على</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/db3d405b1067.mp3" data-label="Oo" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">16</td><td class="en">Pp</td><td class="ar">pee</td><td class="en">بي</td><td class="ar">pen</td><td class="ar">قلم</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/31a841af7b2f.mp3" data-label="Pp" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">17</td><td class="en">Qq</td><td class="ar">kyuo</td><td class="en">كيو</td><td class="ar">quick</td><td class="ar">سريع</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/9a5751d5acec.mp3" data-label="Qq" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">18</td><td class="en">Rr</td><td class="ar">aar</td><td class="en">آر</td><td class="ar">red</td><td class="ar">أحمر</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/78988010b890.mp3" data-label="Rr" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">19</td><td class="en">Ss</td><td class="ar">es</td><td class="en">إس</td><td class="ar">sun</td><td class="ar">شمس</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/22fa6121da96.mp3" data-label="Ss" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">20</td><td class="en">Tt</td><td class="ar">tee</td><td class="en">تي</td><td class="ar">ten</td><td class="ar">عشرة</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/dd3562449147.mp3" data-label="Tt" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">21</td><td class="en">Uu</td><td class="ar">yoo</td><td class="en">يو</td><td class="ar">up</td><td class="ar">فوق</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/7c0a25c06ea3.mp3" data-label="Uu" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">22</td><td class="en">Vv</td><td class="ar">vee</td><td class="en">في</td><td class="ar">very</td><td class="ar">جداً</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/e74295bfc2ed.mp3" data-label="Vv" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">23</td><td class="en">Ww</td><td class="ar">dabalyoo</td><td class="en">دبليو</td><td class="ar">water</td><td class="ar">ماء</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/6d5a45920a15.mp3" data-label="Ww" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">24</td><td class="en">Xx</td><td class="ar">eks</td><td class="en">إكس</td><td class="ar">box</td><td class="ar">صندوق</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/c7d8a6d722a1.mp3" data-label="Xx" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">25</td><td class="en">Yy</td><td class="ar">way</td><td class="en">واي</td><td class="ar">yes</td><td class="ar">نعم</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/fb360f9c09ac.mp3" data-label="Yy" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr><tr><td class="num">26</td><td class="en">Zz</td><td class="ar">zee</td><td class="en">زد</td><td class="ar">zoo</td><td class="ar">حديقة حيوان</td><td class="audio-cell"><button class="say" data-src="_audio_niveaux/4c1f32a51dbf.mp3" data-label="Zz" title="استمع إلى النطق" aria-label="استمع">▶</button></td></tr></tbody>
+</table>
+</div>
+<div class="player-bar">
+<audio id="gram-audio" preload="none"></audio>
+<button class="btn stop" id="gram-stop" onclick="stopAudio()">⏹ إيقاف</button>
+<span id="gram-now-playing" class="now-playing"></span>
+</div>
+<script>
+const gramAudio = document.getElementById('gram-audio');
+const nowPlaying = document.getElementById('gram-now-playing');
+function playAudio(btn){
+  gramAudio.src = btn.dataset.src;
+  gramAudio.play();
+  nowPlaying.textContent = '🔊 ' + (btn.dataset.label || '');
+}
+function stopAudio(){ gramAudio.pause(); gramAudio.currentTime = 0; nowPlaying.textContent=''; }
+document.querySelectorAll('.say').forEach(btn=>{
+  btn.addEventListener('click', ()=>playAudio(btn));
+});
+gramAudio.addEventListener('ended', ()=>{ nowPlaying.textContent=''; });
+</script>
 </div>
     <div class="player-bar">
 <audio id="gram-audio" preload="none"></audio>

@@ -167,19 +167,18 @@ table.ex .en-c { color: #0f3d24; }
 table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
 table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
 .pron-table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 18px rgba(17, 32, 24, 0.06); background: #fff; }
-table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; }
-table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; white-space: nowrap; }
+table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; table-layout: auto; }
+table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; }
 table.pron td { padding: 9px 12px; border-bottom: 1px solid #ebefe9; vertical-align: top; }
 table.pron tr:nth-child(even) td { background: #f7faf8; }
-table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; }
-table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
-table.pron td.en { color: #0f3d24; }
+table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; white-space: nowrap; }
+table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; overflow-wrap: anywhere; }
+table.pron td.en { color: #0f3d24; overflow-wrap: anywhere; }
 table.pron tr.sec td { background: linear-gradient(180deg, #164f2d 0%, #2a6e45 100%); color: #fff; font-weight: 700; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 10px 12px; letter-spacing: 0.02em; }
-table.pron th:nth-child(2), table.pron td:nth-child(2) { width: 5%; padding: 9px 6px; overflow-wrap: anywhere; }
-table.pron th:nth-child(3), table.pron td:nth-child(3) { width: 6%; white-space: nowrap; }
-table.pron th:nth-child(4), table.pron td:nth-child(4) { width: 35%; }
-table.pron th:nth-child(5), table.pron td:nth-child(5) { width: 23%; }
-table.pron th:nth-child(6), table.pron td:nth-child(6) { width: 31%; }
+table.pron tr.note td { background: linear-gradient(180deg, #fff8e7 0%, #fdf0d0 100%); color: #5a3e00; border-top: 2px solid #e8c169; border-bottom: 1px solid #ead9a8; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 12px 14px; font-size: 0.95em; line-height: 1.75; }
+table.pron tr.note td b { color: #8a5a00; }
+table.pron td.audio-cell, table.pron td.audio-cell { width: 44px; text-align: center; white-space: nowrap; padding: 9px 6px; }
+table.pron th:last-child { white-space: normal; }
 .idea-num {
   display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
   color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
@@ -237,6 +236,17 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
   table.ex tr { margin-bottom: 10px; border: 1px solid #edf1ed; border-radius: 8px; overflow: hidden; }
   table.ex td { border-bottom: 1px solid #edf1ed; }
 }
+</style>
+"""
+
+# Pages au format tableau (niveaux de prononciation 101-110) :
+# élargit la feuille pour que les colonnes respirent.
+STYLE_TABLE_WIDTH = """
+<style>
+body { max-width: 1600px; }
+.content-shell { width: min(100%, 1600px); }
+table.pron th, table.pron td { padding: 10px 14px; }
+table.pron { font-size: 0.95em; }
 </style>
 """
 
@@ -307,7 +317,7 @@ def format_arabic_explanation(text):
 
 
 def table_rule_count(rows):
-    return sum(1 for r in rows if r and r[0] != "SECTION")
+    return sum(1 for r in rows if r and r[0] not in ("SECTION", "NOTE"))
 
 
 def _audio_player_bar():
@@ -372,7 +382,7 @@ def ensure_audio_files(levels):
             if col is None and build is None:
                 continue
             for row in lvl.get("table_rows", []):
-                if row and row[0] == "SECTION":
+                if row and row[0] in ("SECTION", "NOTE"):
                     continue
                 if build:
                     _schedule(build(row))
@@ -388,6 +398,19 @@ def ensure_audio_files(levels):
                 for row in (idea.get("examples") or []):
                     if len(row) and row[0]:
                         _schedule(row[0])
+            # extra_tables : exemples prononciation des tableaux fusionnés (ex. alphabet 102)
+            for tbl in (lvl.get("extra_tables") or []):
+                col = tbl.get("audio_col")
+                for row in tbl.get("table_rows", []):
+                    if row and row[0] in ("SECTION", "NOTE"):
+                        continue
+                    if col is None or col >= len(row):
+                        continue
+                    text = _audio_clean(row[col])
+                    pcol = tbl.get("audio_prefix_col")
+                    if text and pcol is not None and pcol < len(row):
+                        text = f"{_audio_clean(row[pcol])}. {text}"
+                    _schedule(text)
     print(f"Audio : {len(tasks)} MP3 manquants à générer.")
     if not tasks:
         return
@@ -423,6 +446,10 @@ def render_table(lvl):
     for row in rows:
         if row and row[0] == "SECTION":
             tbody += f'<tr class="sec"><td colspan="{colspan}" class="sec">{row[1]}</td></tr>'
+            continue
+        if row and row[0] == "NOTE":
+            note_text = row[1].replace("\n", "<br>")
+            tbody += f'<tr class="note"><td colspan="{colspan}" class="note">{note_text}</td></tr>'
             continue
         counter += 1
         tds = "".join(
@@ -460,6 +487,26 @@ def render_table(lvl):
 {audio_script}"""
 
 
+def visible_levels():
+    return [l for l in LEVELS if not l.get("hidden")]
+
+
+def _nav_links(n):
+    vis = visible_levels()
+    nums = [l["num"] for l in vis]
+    idx = nums.index(n) if n in nums else None
+    def link(target, label, disabled_label):
+        if target is None:
+            return f'<a class="btn disabled">{disabled_label}</a>'
+        return f'<a class="btn" href="Niveau%20{target}.html">{label}</a>'
+    prev_target = nums[idx - 1] if idx not in (None, 0) else None
+    nxt_target = nums[idx + 1] if idx is not None and idx + 1 < len(nums) else None
+    return (
+        link(prev_target, "◀ السابق", "◀ السابق"),
+        link(nxt_target, "التالي ▶", "التالي ▶"),
+    )
+
+
 def render_level(lvl):
     n = lvl["num"]
     ideas = lvl.get("ideas", [])
@@ -468,11 +515,11 @@ def render_level(lvl):
     title_ar = lvl["title_ar"]
     cat = lvl.get("category", "")
     cat_ar = lvl.get("category_ar", "")
-    prev = f'<a class="btn" href="Niveau%20{n-1}.html">◀ السابق</a>' if n > 1 else '<a class="btn disabled">◀ السابق</a>'
-    nxt = f'<a class="btn" href="Niveau%20{n+1}.html">التالي ▶</a>' if n < len(LEVELS) else '<a class="btn disabled">التالي ▶</a>'
+    prev, nxt = _nav_links(n)
 
     if lvl.get("layout") == "table":
         icon = "📗"
+        style_extra = STYLE_TABLE_WIDTH
         ideas_content = render_table(lvl)
         n_points = table_rule_count(lvl.get("table_rows", []))
         toc_links = []
@@ -482,6 +529,7 @@ def render_level(lvl):
         objectif = "maîtriser les règles de prononciation des digraphes anglais pour lire et prononcer correctement les mots."
         audio_block = ""
     else:
+        style_extra = STYLE_TABLE_WIDTH if lvl.get("extra_tables") else ""
         icon = "📖"
         cards = []
         toc_links = []
@@ -519,6 +567,20 @@ def render_level(lvl):
 {ex_html}
 </div>""")
         ideas_content = "\n".join(cards)
+        for et in (lvl.get("extra_tables") or []):
+            et_lvl = {
+                "num": lvl["num"],
+                "table_columns": et["table_columns"],
+                "table_rows": et["table_rows"],
+                "audio_col": et.get("audio_col"),
+                "audio_prefix_col": et.get("audio_prefix_col"),
+            }
+            ideas_content += f'\n<div class="card" style="overflow:visible;">'
+            ideas_content += f'<h3>{et.get("title_en", "")} — <span class="ar">{et.get("title_ar", "")}</span></h3>'
+            if et.get("source"):
+                ideas_content += f'<div class="cat-label">📎 {et["source"]} — alphabet complet (A–Z)</div>'
+            ideas_content += render_table(et_lvl)
+            ideas_content += '</div>'
         n_points = len(cards)
         toc_html = f'<div class="toc"><h3>Sommaire rapide</h3><div class="toc-list">{"".join(toc_links)}</div></div>'
         meta_en = f"Ce niveau propose <b>{n_points}</b> points de grammaire à maîtriser."
@@ -532,8 +594,9 @@ def render_level(lvl):
         catline += f' <span class="ar">— {cat_ar}</span>'
 
     groups = []
-    for start in range(1, len(LEVELS) + 1, 10):
-        end = min(start + 9, len(LEVELS))
+    vis_nums = [l["num"] for l in visible_levels()]
+    for start in range(1, max(vis_nums) + 1, 10):
+        end = min(start + 9, max(vis_nums))
         groups.append(f'<a class="side-link" href="Niveau%20{start}.html">Niveaux {start}-{end}</a>')
 
     html = f"""<!DOCTYPE html>
@@ -542,7 +605,7 @@ def render_level(lvl):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قواعد اللغة الإنجليزية — Niveau {n}</title>
-{STYLE_COMMON}
+{STYLE_COMMON}{style_extra}
 </head>
 <body>
 <div class="sidebar">
@@ -608,12 +671,13 @@ def render_level(lvl):
 
 
 def render_index():
+    vis = [l for l in LEVELS if not l.get("hidden")]
     rows = []
-    n = len(LEVELS)
-    total_levels = len(LEVELS)
-    cefr_found = sorted({l.get("cefr", "A1") for l in LEVELS})
+    n = len(vis)
+    total_levels = len(vis)
+    cefr_found = sorted({l.get("cefr", "A1") for l in vis})
     cefr_txt = " → ".join(cefr_found) if cefr_found else ""
-    for lvl in LEVELS:
+    for lvl in vis:
         cls = cefr_class(lvl.get("cefr", "A1"))
         n_points = table_rule_count(lvl.get("table_rows", [])) if lvl.get("layout") == "table" else len(lvl.get("ideas", []))
         rows.append(
@@ -732,8 +796,9 @@ img.flag-corner {
 </div>
 """
     sidebar_links = []
-    for start in range(1, len(LEVELS) + 1, 10):
-        end = min(start + 9, len(LEVELS))
+    vis_nums = [l["num"] for l in visible_levels()]
+    for start in range(1, max(vis_nums) + 1, 10):
+        end = min(start + 9, max(vis_nums))
         sidebar_links.append(f'<a class="side-link" href="niveaux/Niveau%20{start}.html">Niveaux {start}-{end}</a>')
 
     html = f"""<!DOCTYPE html>
@@ -840,17 +905,19 @@ def main():
     with open(os.path.join(BASE, "index.html"), "w", encoding="utf-8") as f:
         f.write(render_index())
     for lvl in LEVELS:
+        if lvl.get("hidden"):
+            continue
         page = render_level(lvl)
         path = os.path.join(OUT, f"Niveau {lvl['num']}.html")
         with open(path, "w", encoding="utf-8") as f:
             f.write(page)
         n_points = table_rule_count(lvl.get("table_rows", [])) if lvl.get("layout") == "table" else len(lvl["ideas"])
         print(f"Niveau {lvl['num']} : {n_points} idées → {path}")
-    print(f"Total : {len(LEVELS)} niveaux générés.")
+    print(f"Total : {len(visible_levels())} niveaux générés.")
 
     def _points(l):
         return table_rule_count(l.get("table_rows", [])) if l.get("layout") == "table" else len(l.get("ideas", []))
-    total_ideas = sum(_points(l) for l in LEVELS)
+    total_ideas = sum(_points(l) for l in visible_levels())
     print(f"Total idées : {total_ideas}")
 
 

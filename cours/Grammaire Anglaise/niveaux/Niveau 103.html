@@ -155,19 +155,18 @@ table.ex .en-c { color: #0f3d24; }
 table.ex .ar-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
 table.ex .pron-c { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: center; color: var(--gold); font-size: 0.95em; }
 .pron-table-wrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 18px rgba(17, 32, 24, 0.06); background: #fff; }
-table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; }
-table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; white-space: nowrap; }
+table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; table-layout: auto; }
+table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; }
 table.pron td { padding: 9px 12px; border-bottom: 1px solid #ebefe9; vertical-align: top; }
 table.pron tr:nth-child(even) td { background: #f7faf8; }
-table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; }
-table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; }
-table.pron td.en { color: #0f3d24; }
+table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; white-space: nowrap; }
+table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; overflow-wrap: anywhere; }
+table.pron td.en { color: #0f3d24; overflow-wrap: anywhere; }
 table.pron tr.sec td { background: linear-gradient(180deg, #164f2d 0%, #2a6e45 100%); color: #fff; font-weight: 700; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 10px 12px; letter-spacing: 0.02em; }
-table.pron th:nth-child(2), table.pron td:nth-child(2) { width: 5%; padding: 9px 6px; overflow-wrap: anywhere; }
-table.pron th:nth-child(3), table.pron td:nth-child(3) { width: 6%; white-space: nowrap; }
-table.pron th:nth-child(4), table.pron td:nth-child(4) { width: 35%; }
-table.pron th:nth-child(5), table.pron td:nth-child(5) { width: 23%; }
-table.pron th:nth-child(6), table.pron td:nth-child(6) { width: 31%; }
+table.pron tr.note td { background: linear-gradient(180deg, #fff8e7 0%, #fdf0d0 100%); color: #5a3e00; border-top: 2px solid #e8c169; border-bottom: 1px solid #ead9a8; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 12px 14px; font-size: 0.95em; line-height: 1.75; }
+table.pron tr.note td b { color: #8a5a00; }
+table.pron td.audio-cell, table.pron td.audio-cell { width: 44px; text-align: center; white-space: nowrap; padding: 9px 6px; }
+table.pron th:last-child { white-space: normal; }
 .idea-num {
   display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #123f29 0%, #2c7d4d 100%);
   color: #fff; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-size: 0.85em; margin-right: 8px;
@@ -227,6 +226,13 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
 }
 </style>
 
+<style>
+body { max-width: 1600px; }
+.content-shell { width: min(100%, 1600px); }
+table.pron th, table.pron td { padding: 10px 14px; }
+table.pron { font-size: 0.95em; }
+</style>
+
 </head>
 <body>
 <div class="sidebar">
@@ -240,19 +246,19 @@ a.back { display: inline-block; margin: 6px 0 10px; padding: 6px 14px; border-ra
   <nav class="side-menu">
     <a class="side-link active" href="../index.html">🏠 Accueil</a>
     <a class="side-link" href="../index.html#catalogue">📚 Catalogue</a>
-    <a class="side-link" href="Niveau%20102.html">◀ السابق</a>
+    <a class="side-link" href="Niveau%20101.html">◀ السابق</a>
     <a class="side-link" href="Niveau%20104.html">التالي ▶</a>
   </nav>
   <div class="side-section">
     <div class="side-section-title">Sujets</div>
-    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a><a class="side-link" href="Niveau%20101.html">Niveaux 101-105</a>
+    <a class="side-link" href="Niveau%201.html">Niveaux 1-10</a><a class="side-link" href="Niveau%2011.html">Niveaux 11-20</a><a class="side-link" href="Niveau%2021.html">Niveaux 21-30</a><a class="side-link" href="Niveau%2031.html">Niveaux 31-40</a><a class="side-link" href="Niveau%2041.html">Niveaux 41-50</a><a class="side-link" href="Niveau%2051.html">Niveaux 51-60</a><a class="side-link" href="Niveau%2061.html">Niveaux 61-70</a><a class="side-link" href="Niveau%2071.html">Niveaux 71-80</a><a class="side-link" href="Niveau%2081.html">Niveaux 81-90</a><a class="side-link" href="Niveau%2091.html">Niveaux 91-100</a><a class="side-link" href="Niveau%20101.html">Niveaux 101-110</a>
   </div>
 </div>
 <div class="content-shell">
   <div class="page-shell">
     <div class="topbar">
       <a class="btn" href="../index.html">🏠 الرئيسية</a>
-      <a class="btn" href="Niveau%20102.html">◀ السابق</a>
+      <a class="btn" href="Niveau%20101.html">◀ السابق</a>
       <span class="spacer"></span>
       <a class="btn" href="Niveau%20104.html">التالي ▶</a>
     </div>
@@ -309,7 +315,7 @@ gramAudio.addEventListener('ended', ()=>{ nowPlaying.textContent=''; });
 
     
     <div class="topbar" style="margin-top:24px;">
-      <a class="btn" href="Niveau%20102.html">◀ السابق</a>
+      <a class="btn" href="Niveau%20101.html">◀ السابق</a>
       <span class="spacer"></span>
       <a class="btn" href="../index.html">🏠 الرجوع إلى الفهرس</a>
       <span class="spacer"></span>
