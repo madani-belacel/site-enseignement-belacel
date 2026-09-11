@@ -19,13 +19,21 @@ site-enseignement-belacel/
 ├── recherche.html             # Page Recherche
 ├── habilitation.html          # Dossier d'habilitation
 ├── ressources.html            # Ressources et outils
-├── contact.html               # Contact
+├── contact.html               # Contact (formulaire Formspree)
 ├── 404.html                   # Page d'erreur
+├── sitemap.xml                # Plan du site (SEO)
+├── robots.txt                 # Règles d'exploration
 ├── css/
 │   └── style.css              # Styles (clair/sombre, responsive)
 ├── js/
-│   ├── main.js                # Thème, nav, recherche
+│   ├── main.v2.js             # Thème, nav, recherche, audio, conversion
+│   ├── data-loader.js         # Chargement asynchrone des cours
+│   ├── generated_courses.json # Index des cours généré
 │   └── data.js                # Données centralisées des cours
+├── scripts/
+│   ├── convert_tables_to_doclist.py   # Conversion des tableaux
+│   └── fix_grammar_nav.py             # Navigation des bouts de grammaire
+├── cours/                     # Supports de cours (modules, dialogues, grammaire)
 ├── images/                    # Photos, logos
 └── README.md                  # Ce fichier
 ```
@@ -68,6 +76,12 @@ site-enseignement-belacel/
 1. Placer le fichier `.md`, `.pdf` ou `.pptx` dans le dossier approprié sous `cours/`
 2. La page correspondante sera automatiquement listée (les pages racine se basent sur `js/generated_courses.json`)
 
+### Ajouter un niveau de grammaire anglaise
+
+1. Ajouter le niveau dans `cours/Grammaire Anglaise/data_levels_*.py` (liste agrégée dans `data_grammaire.py`)
+2. Lancer `python3 generer_grammaire.py` pour régénérer `index.html` et les pages `niveaux/Niveau X.html`
+3. Les fichiers audio MP3 manquants sont générés automatiquement (edge-tts)
+
 ### Changer les couleurs
 
 Éditer les variables CSS dans `css/style.css` :
@@ -93,11 +107,12 @@ Placer `photo.jpg` (carré, 300×300px min) dans `images/` et modifier `index.ht
 - ✅ Design responsive (mobile, tablette, desktop)
 - ✅ Thème clair/sombre (mémorisé)
 - ✅ Barre de recherche avec filtres (module, type, langue)
+- ✅ Readers audio pour les dialogues et la grammaire anglaise
 - ✅ Fil d'Ariane (breadcrumb)
 - ✅ Badges FR/EN/Cours/TD/TP/PDF/PPTX
 - ✅ Animations au défilement
 - ✅ Accessibilité (ARIA, contraste, navigation clavier)
-- ✅ Prêt SEO (balises meta, sitemap à générer)
+- ✅ Prêt SEO (balises meta, sitemap, robots.txt)
 - ✅ Aucune dépendance (HTML/CSS/JS pur)
 
 ---

@@ -83,30 +83,6 @@
   }
   setTheme(getPreferredTheme());
 
-  /* ── Protect images from standard browser copy/save actions ── */
-  (function protectImagesFromCopy() {
-    document.querySelectorAll('img').forEach(function (img) {
-      img.setAttribute('draggable', 'false');
-      img.classList.add('img-no-copy');
-      img.style.webkitUserDrag = 'none';
-      img.style.userDrag = 'none';
-      img.style.webkitUserSelect = 'none';
-      img.style.userSelect = 'none';
-    });
-
-    document.addEventListener('contextmenu', function (event) {
-      if (event.target && event.target.tagName && event.target.tagName.toLowerCase() === 'img') {
-        event.preventDefault();
-      }
-    }, { passive: false });
-
-    document.addEventListener('dragstart', function (event) {
-      if (event.target && event.target.tagName && event.target.tagName.toLowerCase() === 'img') {
-        event.preventDefault();
-      }
-    }, { passive: false });
-  })();
-
   /* ── Convert legacy tables of 'Niveaux disponibles' into .doc-list blocks (client-side)
      This fixes presentation immediately on deployed pages without changing HTML files on the server.
   */
@@ -266,18 +242,17 @@
     });
     if (hasCornerClasses) return;
 
-    var source = resolveAssetUrl('images/alg_drap.gif');
+    var source = 'data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2060%2040%22%20shape-rendering%3D%22geometricPrecision%22%3E%3Crect%20width%3D%2230%22%20height%3D%2240%22%20fill%3D%22%23006233%22/%3E%3Crect%20x%3D%2230%22%20width%3D%2230%22%20height%3D%2240%22%20fill%3D%22%23fff%22/%3E%3Cpath%20d%3D%22M26%2012.5%20a8.5%208.5%200%201%200%200%2015%207%207%200%201%201%200-15z%22%20fill%3D%22%23d21034%22/%3E%3Cpath%20d%3D%22M37%2012l2.1%204.3%204.7.7-3.4%203.3.8%204.7-4.2-2.2-4.2%202.2.8-4.7-3.4-3.3%204.7-.7z%22%20fill%3D%22%23d21034%22/%3E%3C/svg%3E';
     var alt = 'Drapeau de l\'Algérie';
+
+    var corners = ['flag-corner--tl', 'flag-corner--tr', 'flag-corner--bl', 'flag-corner--br'];
     var existing = existingFlags.length ? existingFlags[0] : null;
-
-    if (existing) {
-      existing.classList.add('flag-corner--tr');
+    if (existing && !hasCornerClasses) {
+      existing.className = 'flag-corner flag-corner--tr';
       existing.setAttribute('alt', alt);
-      source = existing.getAttribute('src') || source;
     }
-
-    var corners = ['flag-corner--tl', 'flag-corner--bl', 'flag-corner--br'];
     corners.forEach(function (modifier) {
+      if (existing && modifier === 'flag-corner--tr') return;
       var flag = document.createElement('img');
       flag.src = source;
       flag.alt = alt;
@@ -287,17 +262,6 @@
       flag.setAttribute('draggable', 'false');
       document.body.appendChild(flag);
     });
-
-    if (!existing) {
-      var mainFlag = document.createElement('img');
-      mainFlag.src = source;
-      mainFlag.alt = alt;
-      mainFlag.loading = 'eager';
-      mainFlag.className = 'flag-corner flag-corner--tr';
-      mainFlag.setAttribute('aria-hidden', 'true');
-      mainFlag.setAttribute('draggable', 'false');
-      document.body.appendChild(mainFlag);
-    }
   })();
 
   /* ── Mobile Nav Toggle ── */
@@ -432,7 +396,12 @@
       }
     }
 
-    searchInput.addEventListener('input', filterDocs);
+    var debounceTimer = null;
+    function debouncedFilter() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(filterDocs, 300);
+    }
+    searchInput.addEventListener('input', debouncedFilter);
     if (filterModule) filterModule.addEventListener('change', filterDocs);
     if (filterType) filterType.addEventListener('change', filterDocs);
     if (filterLang) filterLang.addEventListener('change', filterDocs);
