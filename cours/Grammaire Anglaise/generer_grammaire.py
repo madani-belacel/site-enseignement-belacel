@@ -253,7 +253,7 @@ table.pron { font-size: 0.95em; }
 
 def banner():
     return """<div class="header-banner">
-<img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani">
+<picture><source srcset="../photo-profil.avif" type="image/avif"><source srcset="../photo-profil.webp" type="image/webp"><img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani"></picture>
 <div class="hb-info">
 <h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
 <p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
@@ -429,7 +429,7 @@ def ensure_audio_files(levels):
     asyncio.run(_run())
 
 
-def render_table(lvl):
+def render_table(lvl, emit_audio=True):
     """Rendu d'un niveau au format tableau (prononciation : الأصوات المركبة ...)."""
     columns = lvl["table_columns"]
     rows = lvl["table_rows"]
@@ -475,7 +475,7 @@ def render_table(lvl):
         tbody += f'<tr><td class="num">{counter}</td>{tds}</tr>'
 
     audio_script = ""
-    if has_audio:
+    if has_audio and emit_audio:
         audio_script = _audio_player_bar() + _audio_player_script()
 
     return f"""<div class="pron-table-wrap">
@@ -579,7 +579,7 @@ def render_level(lvl):
             ideas_content += f'<h3>{et.get("title_en", "")} — <span class="ar">{et.get("title_ar", "")}</span></h3>'
             if et.get("source"):
                 ideas_content += f'<div class="cat-label">📎 {et["source"]} — alphabet complet (A–Z)</div>'
-            ideas_content += render_table(et_lvl)
+            ideas_content += render_table(et_lvl, emit_audio=False)
             ideas_content += '</div>'
         n_points = len(cards)
         toc_html = f'<div class="toc"><h3>Sommaire rapide</h3><div class="toc-list">{"".join(toc_links)}</div></div>'
@@ -836,7 +836,7 @@ img.flag-corner {
     <img src="alg_drap.gif" alt="Algérie" class="flag-corner">
     <h1>📚 قواعد اللغة الإنجليزية — English Grammar</h1>
     <div class="header-banner">
-      <img class="prof-photo" src="photo-profil.png" alt="Dr. BELACEL Madani">
+      <picture><source srcset="photo-profil.avif" type="image/avif"><source srcset="photo-profil.webp" type="image/webp"><img class="prof-photo" src="photo-profil.png" alt="Dr. BELACEL Madani"></picture>
       <div class="hb-info">
         <h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
         <p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
