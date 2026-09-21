@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Module Intelligence Artificielle en Éducation — PEP 2ème année — Dr. Madani BELACEL</title>
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/index.html" rel="canonical"/>
+<meta name="description" content="10 séances (1h30) pour former les futurs enseignants du primaire à l'usage de l'Intelligence Artificielle : définitions, usages pédagogiques, éthique et inclusion.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../ia-pep-2/assets/styles-seance.css">
+<link rel="icon" href="../images/Université_de_Mostaganem.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Intelligence Artificielle en Éducation — PEP 2ème année (ENS)",
+  "url": "https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/index.html",
+  "author": { "@type": "Person", "name": "Dr. BELACEL Madani" },
+  "provider": { "@type": "Organization", "name": "ENS — Université de Mostaganem" },
+  "inLanguage": "fr",
+  "numberOfCredits": "10 séances de 1h30"
+}
+</script>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../index.html" class="header-logo">
+        <picture><source srcset="../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <picture><source srcset="../images/LOGO-FLE-UNIV-Mosta.avif" type="image/avif"><source srcset="../images/LOGO-FLE-UNIV-Mosta.webp" type="image/webp"><img loading="lazy" width="207" height="243" src="../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères"></picture>
+      </div>
+    </div>
+    <img loading="lazy" width="132" height="95" src="../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../index.html#about">Présentation</a></li>
+          <li><a href="../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../tic.html">TIC</a></li>
+          <li><a href="../cours/Examen-TIC/index.html">Examens TIC</a></li>
+          <li><a href="../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+          <li><a href="../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
+        </ul>
+      </li>
+      <li><a href="../recherche.html">Recherche</a></li>
+      <li><a href="../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../index.html#news">Actualités des Modules</a></li>
+          <li><a href="../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../index.html">Accueil</a></li>
+    <li><a href="../enseignement.html">Enseignement</a></li>
+    <li><a href="../informatique-ens.html">Informatique ENS</a></li>
+    <li class="current">IA en Éducation — PEP 2A</li>
+  </ol>
+</nav>
+
+<style>
+  .module-ia-g1{background:linear-gradient(135deg,#263238,#455a64,#78909c);}
+  .module-ia-g2{background:linear-gradient(135deg,#1a237e,#283593,#5c6bc0);}
+  .module-content .lang-fr{display:none!important;}.module-content .lang-ar{display:none!important;}
+  .module-content.lang-fr .lang-en{display:none!important;}.module-content.lang-fr .lang-ar{display:none!important;}.module-content.lang-fr .lang-fr{display:block!important;}
+  .module-content.lang-en .lang-fr{display:none!important;}.module-content.lang-en .lang-ar{display:none!important;}.module-content.lang-en .lang-en{display:block!important;}
+  .module-content.lang-ar .lang-fr{display:none!important;}.module-content.lang-ar .lang-en{display:none!important;}.module-content.lang-ar .lang-ar{display:block!important;direction:rtl;text-align:right;}
+  @media print{.module-content.lang-fr .lang-en,.module-content.lang-fr .lang-ar{display:block!important;}}
+</style>
+<main class="page-content">
+  <div class="module-content" style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
+
+    <h1 style="font-family:var(--font-heading);color:var(--primary);margin:1.2rem 0 0.2rem;font-size:1.7rem;">
+      🤖 <span class="lang-fr">Intelligence Artificielle en Éducation — PEP 2ème année</span>
+      <span class="lang-en">Artificial Intelligence in Education — 2nd year PEP</span>
+      <span class="lang-ar">الذكاء الاصطناعي في التربية — السنة الثانية PEP</span>
+    </h1>
+    <p style="color:var(--text-muted);font-size:.95rem;margin:0 0 0.3rem;">
+      <span class="lang-fr">10 séances de 1 h 30 — Dr. Madani BELACEL · ENS Université de Mostaganem · 2026-2027</span>
+      <span class="lang-en">10 sessions of 1h30 — Dr. Madani BELACEL · ENS University of Mostaganem · 2026-2027</span>
+      <span class="lang-ar">10 حصص من ساعة و30 دقيقة — د. مداني بلعسل · المدرسة العليا للأساتذة - مستغانم · 2026-2027</span>
+    </p>
+    <div class="language-switcher">
+    <div class="lang-tabs" role="group" aria-label="Choisir la langue">
+  <button type="button" class="lang-tab active" data-lang="fr">🇫🇷 Français</button>
+  <button type="button" class="lang-tab" data-lang="en">🇬🇧 English</button>
+  <button type="button" class="lang-tab" data-lang="ar">🇩🇿 العربية</button>
+</div>
+    </div>
+
+    <div class="seance-meta">
+      <p class="lang-fr">Ce module prépare les futurs <strong>professeurs de l'enseignement primaire (PEP)</strong> à comprendre, utiliser et encadrer l'intelligence artificielle en classe : des définitions de base jusqu'aux questions éthiques. Chaque séance contient : une page web trilingue (FR/EN/AR), un cours écrit, un support PowerPoint et des dialogues pédagogiques à jouer.</p>
+      <p class="lang-en">This module prepares future <strong>primary school teachers (PEP)</strong> to understand, use and supervise AI in the classroom: from basic definitions to ethical questions. Each session contains: a trilingual web page (FR/EN/AR), a written course, a PowerPoint deck and classroom dialogues.</p>
+      <p class="lang-ar">تُعِدّ هذه الوحدة <strong>أساتذة التعليم الابتدائي المستقبليين (PEP)</strong> لفهم الذكاء الاصطناعي واستعماله وتأطيره في القسم: من التعريفات الأساسية إلى القضايا الأخلاقية. تحتوي كل حصة على: صفحة ويب ثلاثية اللغات (فرنسية/إنجليزية/عربية)، ودرس مكتوب، وعرض يدعمه PowerPoint، وحوارات بيداغوجية للتمثيل.</p>
+    </div>
+
+    <h2 style="font-family:var(--font-heading);color:var(--navy);margin:1.6rem 0 .6rem;font-size:1.4rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;">
+      <span class="lang-fr">🗺️ Les 10 séances du module</span>
+      <span class="lang-en">🗺️ The 10 sessions of the module</span>
+      <span class="lang-ar">🗺️ حصص الوحدة العشر</span>
+    </h2>
+    <div class="module-grid">
+      <a href="seance-01/index.html" class="module-card">
+        <div class="module-card-gradient module-ia-g1"><div class="card-pattern"></div><span class="card-icon">🤖</span></div>
+        <div class="module-card-content">
+          <div class="module-card-date"><span class="lang-fr">Séance 01 · 1 h 30</span><span class="lang-en">Session 01 · 1 h 30</span><span class="lang-ar">الحصة 01 · 1 h 30</span></div>
+          <h3><span class="lang-fr">Introduction à l'Intelligence Artificielle</span><span class="lang-en">Introduction to Artificial Intelligence</span><span class="lang-ar">مدخل إلى الذكاء الاصطناعي</span></h3>
+          <p><span class="lang-fr">Définir l'IA en mots simples, la démystifier et comprendre pourquoi elle devient indispensable pour un enseignant de l'école primaire.</span><span class="lang-en">Defining AI in simple words, demystifying it, and understanding why it is becoming essential for a primary school teacher.</span><span class="lang-ar">تعريف الذكاء الاصطناعي بكلمات بسيطة، وإزالة الغموض عنه، وفهم سبب أهميّته لمعلّم المدرسة الابتدائية.</span></p>
+          <span class="module-card-link"><span class="lang-fr">Ouvrir la séance</span><span class="lang-en">Open the session</span><span class="lang-ar">فتح الحصة</span></span>
+        </div>
+      </a>
+      <a href="seance-02/index.html" class="module-card">
+        <div class="module-card-gradient module-ia-g2"><div class="card-pattern"></div><span class="card-icon">🧰</span></div>
+        <div class="module-card-content">
+          <div class="module-card-date"><span class="lang-fr">Séance 02 · 1 h 30</span><span class="lang-en">Session 02 · 1 h 30</span><span class="lang-ar">الحصة 02 · 1 h 30</span></div>
+          <h3><span class="lang-fr">Panorama des outils d'IA pour l'enseignant</span><span class="lang-en">Overview of AI tools for the teacher</span><span class="lang-ar">نظرة عامة على أدوات الذكاء الاصطناعي للمعلّم</span></h3>
+          <p><span class="lang-fr">Découvrir les principales familles d'outils d'IA (texte, images, quiz, voix) et apprendre à choisir l'outil adapté à une tâche de classe.</span><span class="lang-en">Discover the main families of AI tools (text, images, quizzes, voice) and learn to choose the right tool for a classroom task.</span><span class="lang-ar">اكتشاف أهمّ عائلات أدوات الذكاء الاصطناعي (نصوص، صور، اختبارات، صوت) والتعلّم كيفية اختيار الأداة المناسبة لمهمّة صفّية.</span></p>
+          <span class="module-card-link"><span class="lang-fr">Ouvrir la séance</span><span class="lang-en">Open the session</span><span class="lang-ar">فتح الحصة</span></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="highlight-box" style="margin:2.5rem 0;">
+      <div class="highlight-icon">🎯</div>
+      <div class="highlight-content">
+        <h3 class="lang-fr">Comment utiliser ce module ?</h3>
+        <h3 class="lang-en">How to use this module?</h3>
+        <h3 class="lang-ar">كيف تستعملون هذه الوحدة؟</h3>
+        <p class="lang-fr">Suivez les séances dans l'ordre (1 à 10). Pour chaque séance : projetez le PowerPoint, distribuez le cours écrit, puis faites jouer les dialogues en binômes. Les durées de chaque étape sont indiquées dans le plan de la séance.</p>
+        <p class="lang-en">Follow the sessions in order (1 to 10). For each session: project the PowerPoint, hand out the written course, then let students perform the dialogues in pairs. Timings for each step are given in the session plan.</p>
+        <p class="lang-ar">اتبعوا الحصص بالترتيب (من 1 إلى 10). في كل حصة: اعرضوا PowerPoint، وقدّموا الدرس المكتوب، ثم اجعلوا الطلبة يمثّلون الحوارات في مجموعات ثنائية. مدد كل مرحلة مذكورة في خطة الحصة.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <picture><source srcset="../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <img loading="lazy" width="132" height="95" src="../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../js/main.v2.js"></script>
+<script>
+(function() {
+  var root = document.querySelector('.seance-content, .module-content');
+  var tabs = document.querySelectorAll('.lang-tab');
+  if (!root) return;
+  function setLang(lang) {
+    root.classList.remove('lang-en', 'lang-fr', 'lang-ar');
+    root.classList.add('lang-' + lang);
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-lang') === lang);
+    });
+  }
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() { setLang(t.getAttribute('data-lang')); });
+  });
+  setLang('fr');
+})();
+</script>
+</body></html>

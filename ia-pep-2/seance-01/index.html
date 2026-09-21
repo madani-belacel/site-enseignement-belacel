@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Séance 01 — Introduction à l'Intelligence Artificielle — IA en Éducation PEP 2A — Dr. Madani BELACEL</title>
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-01/index.html" rel="canonical"/>
+<meta name="description" content="Définir l'IA en mots simples, la démystifier et comprendre pourquoi elle devient indispensable pour un enseignant de l'école primaire.">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../ia-pep-2/assets/styles-seance.css">
+<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Séance 01 — Introduction à l'Intelligence Artificielle",
+  "url": "https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-01/index.html",
+  "author": { "@type": "Person", "name": "Dr. BELACEL Madani" },
+  "provider": { "@type": "Organization", "name": "ENS — Université de Mostaganem" },
+  "inLanguage": "fr",
+  "learningResourceType": "Cours universitaire (1h30)",
+  "isPartOf": { "@type": "Course", "name": "Intelligence Artificielle en Éducation — PEP 2ème année" }
+}
+</script>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../index.html" class="header-logo">
+        <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <picture><source srcset="../../images/LOGO-FLE-UNIV-Mosta.avif" type="image/avif"><source srcset="../../images/LOGO-FLE-UNIV-Mosta.webp" type="image/webp"><img loading="lazy" width="207" height="243" src="../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères"></picture>
+      </div>
+    </div>
+    <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../index.html#about">Présentation</a></li>
+          <li><a href="../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../tic.html">TIC</a></li>
+          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
+          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+          <li><a href="../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
+        </ul>
+      </li>
+      <li><a href="../../recherche.html">Recherche</a></li>
+      <li><a href="../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../index.html#news">Actualités des Modules</a></li>
+          <li><a href="../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../contact.html">Contact</a></li>
+      <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../index.html">Accueil</a></li>
+    <li><a href="../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../ia-pep-2/index.html">IA en Éducation — PEP 2A</a></li>
+    <li class="current">Séance 01</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="seance-content">
+    <h1>🤖 <span class="lang-fr">Séance 01 — Introduction à l'Intelligence Artificielle</span><span class="lang-en">Session 01 — Introduction to Artificial Intelligence</span><span class="lang-ar">الحصة 01 — مدخل إلى الذكاء الاصطناعي</span></h1>
+    <p style="font-size:1.05rem;color:var(--text-muted);margin:0.3rem 0 0.2rem;">
+      <span class="lang-fr">Définir l'IA en mots simples, la démystifier et comprendre pourquoi elle devient indispensable pour un enseignant de l'école primaire.</span>
+      <span class="lang-en">Defining AI in simple words, demystifying it, and understanding why it is becoming essential for a primary school teacher.</span>
+      <span class="lang-ar">تعريف الذكاء الاصطناعي بكلمات بسيطة، وإزالة الغموض عنه، وفهم سبب أهميّته لمعلّم المدرسة الابتدائية.</span>
+    </p>
+    <p style="font-size:.85rem;color:var(--text-muted);">
+      <span class="lang-fr">Durée : 1 h 30 · Module « Intelligence Artificielle » · 2ème année PEP — ENS</span>
+      <span class="lang-en">Duration: 1 h 30 · Module "Artificial Intelligence" · 2nd year PEP — ENS</span>
+      <span class="lang-ar">المدّة: 1 h 30 · وحدة « الذكاء الاصطناعي » · السنة الثانية PEP — المدرسة العليا للأساتذة</span>
+    </p>
+    <div class="language-switcher">
+    <div class="lang-tabs" role="group" aria-label="Choisir la langue">
+  <button type="button" class="lang-tab active" data-lang="fr">🇫🇷 Français</button>
+  <button type="button" class="lang-tab" data-lang="en">🇬🇧 English</button>
+  <button type="button" class="lang-tab" data-lang="ar">🇩🇿 العربية</button>
+</div>
+    </div>
+
+    <div class="seance-meta">
+      <strong class="lang-fr">🎯 Objectifs pédagogiques</strong>
+      <strong class="lang-en">🎯 Learning objectives</strong>
+      <strong class="lang-ar">🎯 الأهداف البيداغوجية</strong>
+      <ul class="lang-fr"><li>Définir l'intelligence artificielle en une phrase compréhensible pour un enfant du primaire.</li><li>Citer au moins 3 exemples concrets d'IA rencontrés dans la vie quotidienne.</li><li>Distinguer l'IA faible, l'IA générale et l'hypothétique super-IA.</li><li>Identifier 3 usages de l'IA utiles à un enseignant de primaire (préparer des cours, différencier, évaluer).</li><li>Démystifier les idées fausses : l'IA ne « pense » pas comme un humain.</li></ul>
+      <ul class="lang-en"><li>Define artificial intelligence in one sentence a primary-school child can understand.</li><li>Give at least 3 concrete examples of AI from everyday life.</li><li>Tell the difference between narrow AI, general AI and the hypothetical super-intelligence.</li><li>Identify 3 useful uses of AI for a primary teacher (preparing lessons, differentiating, assessing).</li><li>Debunk common myths: AI does not "think" like a human.</li></ul>
+      <ul class="lang-ar"><li>أن يعرّف الذكاء الاصطناعي بجملة واحدة يفهمها طفل المدرسة الابتدائية.</li><li>أن يذكر على الأقل ثلاثة أمثلة ملموسة على الذكاء الاصطناعي من الحياة اليومية.</li><li>أن يفرّق بين الذكاء الاصطناعي الضيّق والذكاء العام والذكاء الفائق الافتراضي.</li><li>أن يحدّد ثلاثة استعمالات مفيدة للذكاء الاصطناعي لمعلّم الابتدائي (تحضير الدروس، التفريد، والتقييم).</li><li>أن يزيل المفاهيم الخاطئة: الذكاء الاصطناعي لا « يفكّر » مثل الإنسان.</li></ul>
+      <strong class="lang-fr">🧱 Prérequis</strong>
+      <strong class="lang-en">🧱 Prerequisites</strong>
+      <strong class="lang-ar">🧱 المكتسبات القبلية</strong>
+      <p class="lang-fr">Aucun prérequis technique. Savoir utiliser un smartphone ou un ordinateur (navigateur web, applications) est suffisant.</p>
+      <p class="lang-en">No technical prerequisite. Knowing how to use a smartphone or a computer (web browser, apps) is enough.</p>
+      <p class="lang-ar">لا توجد مكتسبات تقنية مطلوبة. يكفي معرفة استعمال الهاتف الذكي أو الحاسوب (متصفّح، تطبيقات).</p>
+    </div>
+
+    <h2><span class="lang-fr">⏱️ Déroulé de la séance (1 h 30)</span><span class="lang-en">⏱️ Session plan (1h30)</span><span class="lang-ar">⏱️ سير الحصة (ساعة و30 دقيقة)</span></h2>
+    <table class="plan-table lang-fr"><thead><tr><th>Durée</th><th>Étape</th></tr></thead><tbody><tr><td class="time">00–10</td><td><strong>Accueil et mise en route</strong><br><span style="color:var(--text-muted);font-size:.9em;">Tour de table : « Qu'est-ce que l'IA pour vous ? » + nuage de mots au tableau.</span></td></tr><tr><td class="time">10–35</td><td><strong>Partie 1 : Définitions et petite histoire</strong><br><span style="color:var(--text-muted);font-size:.9em;">Définir l'IA, l'algorithme, les données ; dates clés (1956, 1997, 2012, 2022).</span></td></tr><tr><td class="time">35–50</td><td><strong>Partie 2 : Les 3 familles d'IA</strong><br><span style="color:var(--text-muted);font-size:.9em;">IA faible, IA générale, super-IA : définitions et exemples illustrés.</span></td></tr><tr><td class="time">50–70</td><td><strong>Partie 3 : Démystification et intérêt pour le primaire</strong><br><span style="color:var(--text-muted);font-size:.9em;">Ce que l'IA sait faire / ne sait pas faire ; pourquoi former les futurs enseignants.</span></td></tr><tr><td class="time">70–80</td><td><strong>Activité pratique : « Intelligent ou programmé ? »</strong><br><span style="color:var(--text-muted);font-size:.9em;">Classer 8 situations (calculatrice, GPS, ChatGPT, robot aspirateur…) sur un tableau à deux colonnes.</span></td></tr><tr><td class="time">80–90</td><td><strong>Synthèse, « à retenir », questions et annonce de la séance 2</strong><br><span style="color:var(--text-muted);font-size:.9em;">Reformulation par les étudiants, mémo collectif, annonce : les outils d'IA dans l'éducation.</span></td></tr></tbody></table>
+    <table class="plan-table lang-en"><thead><tr><th>Time</th><th>Step</th></tr></thead><tbody><tr><td class="time">00–10</td><td><strong>Welcome and warm-up</strong><br><span style="color:var(--text-muted);font-size:.9em;">Round table: "What is AI to you?" + word cloud on the board.</span></td></tr><tr><td class="time">10–35</td><td><strong>Part 1: Definitions and brief history</strong><br><span style="color:var(--text-muted);font-size:.9em;">Define AI, algorithm, data; key dates (1956, 1997, 2012, 2022).</span></td></tr><tr><td class="time">35–50</td><td><strong>Part 2: The three families of AI</strong><br><span style="color:var(--text-muted);font-size:.9em;">Narrow AI, general AI, super-intelligence: definitions with illustrated examples.</span></td></tr><tr><td class="time">50–70</td><td><strong>Part 3: Myth-busting and interest for primary school</strong><br><span style="color:var(--text-muted);font-size:.9em;">What AI can / cannot do; why training future teachers matters.</span></td></tr><tr><td class="time">70–80</td><td><strong>Hands-on activity: "Smart or programmed?"</strong><br><span style="color:var(--text-muted);font-size:.9em;">Classify 8 situations (calculator, GPS, ChatGPT, robot vacuum…) on a two-column board.</span></td></tr><tr><td class="time">80–90</td><td><strong>Wrap-up, key takeaways, Q&A, and preview of session 2</strong><br><span style="color:var(--text-muted);font-size:.9em;">Students rephrase, collective memo, preview: AI tools in education.</span></td></tr></tbody></table>
+    <table class="plan-table lang-ar"><thead><tr><th>المدّة</th><th>المرحلة</th></tr></thead><tbody><tr><td class="time">00–10</td><td><strong>استقبال وتمهيد</strong><br><span style="color:var(--text-muted);font-size:.9em;">جولة على المجموعة: « ما هو الذكاء الاصطناعي بالنسبة لكم؟ » + تشكيل خريطة كلمات على السبورة.</span></td></tr><tr><td class="time">10–35</td><td><strong>الجزء الأوّل: تعريفات وتاريخ موجز</strong><br><span style="color:var(--text-muted);font-size:.9em;">تعريف الذكاء الاصطناعي والخوارزمية والبيانات؛ تواريخ مفتاحية (1956، 1997، 2012، 2022).</span></td></tr><tr><td class="time">35–50</td><td><strong>الجزء الثاني: عائلات الذكاء الاصطناعي الثلاث</strong><br><span style="color:var(--text-muted);font-size:.9em;">الذكاء الضيّق، والذكاء العام، والذكاء الفائق: تعريفات وأمثلة مصوّرة.</span></td></tr><tr><td class="time">50–70</td><td><strong>الجزء الثالث: إزالة الغموض وأهمّيته للابتدائي</strong><br><span style="color:var(--text-muted);font-size:.9em;">ما يجيده الذكاء الاصطناعي وما لا يجيده؛ لماذا يجب تكوين المعلّمين المستقبليين.</span></td></tr><tr><td class="time">70–80</td><td><strong>نشاط تطبيقي: « ذكي أم مبرمج؟ »</strong><br><span style="color:var(--text-muted);font-size:.9em;">تصنيف ثماني حالات (آلة حاسبة، نظام ملاحة، ChatGPT، مكنسة روبوت…) في جدول من عمودين.</span></td></tr><tr><td class="time">80–90</td><td><strong>خلاصة، « ما يجب تذكّره »، أسئلة وتقديم الحصة الثانية</strong><br><span style="color:var(--text-muted);font-size:.9em;">إعادة الصياغة من الطلبة، وملخّص جماعي، وتقديم الحصة الثانية: أدوات الذكاء الاصطناعي في التربية.</span></td></tr></tbody></table>
+
+    <h2><span class="lang-fr">📚 Contenu de la séance</span><span class="lang-en">📚 Lesson content</span><span class="lang-ar">📚 محتوى الحصة</span></h2>
+    
+<section id="s1">
+<h2><span class="lang-fr">Qu'est-ce que l'Intelligence Artificielle ?</span><span class="lang-en">What is Artificial Intelligence?</span><span class="lang-ar">ما هو الذكاء الاصطناعي؟</span></h2>
+<div class="lang-fr"><p class="lang-fr">L'intelligence artificielle (IA) est un programme informatique qui apprend à partir de données pour reconnaître des formes, comprendre un langage ou prendre des décisions. Pour un enfant de primaire, on peut dire : « c'est un ordinateur qui apprend en regardant beaucoup d'exemples ». « Artificiel » signifie « fabriqué par l'homme », par opposition à l'intelligence naturelle des êtres vivants.</p>
+<p class="lang-fr">Trois mots-clés à retenir : <strong>les données</strong> (les exemples fournis), <strong>l'algorithme</strong> (la recette de calcul) et <strong>le modèle</strong> (le résultat de l'apprentissage, que l'on réutilise). Sans données, pas d'IA : c'est la matière première.</p>
+<div class="goal-box lang-fr"><strong>Def pour la classe :</strong> « L'IA, c'est comme un élève qui apprend d'abord en regardant plein d'exemples, puis qui devient capable de répondre tout seul. »</div></div>
+<div class="lang-en"><p class="lang-en">Artificial intelligence (AI) is a computer program that learns from data to recognise patterns, understand language or make decisions. For a primary-school child we can say: "it is a computer that learns by looking at lots of examples". "Artificial" means "made by humans", as opposed to the natural intelligence of living beings.</p>
+<p class="lang-en">Three key words: <strong>data</strong> (the examples provided), <strong>algorithm</strong> (the recipe of calculations) and <strong>model</strong> (the result of learning, which we reuse). Without data, no AI: it is the raw material.</p>
+<div class="goal-box lang-en"><strong>Class-ready definition:</strong> "AI is like a pupil who first learns by looking at lots of examples, and then becomes able to answer on their own."</div></div>
+<div class="lang-ar"><p class="lang-ar">الذكاء الاصطناعي هو برنامج حاسوبي يتعلّم من البيانات ليتمكّن من التعرّف على الأنماط، أو فهم لغة، أو اتخاذ قرارات. ويمكن القول لطفل الابتدائي: « إنه حاسوب يتعلّم بالنظر إلى أمثلة كثيرة ». وكلمة « اصطناعي » تعني « من صنع الإنسان »، قبالة الذكاء الطبيعي للكائنات الحيّة.</p>
+<p class="lang-ar">ثلاث كلمات مفتاحية: <strong>البيانات</strong> (الأمثلة المقدَّمة)، <strong>الخوارزمية</strong> (وصفة الحساب)، و<strong>النموذج</strong> (نتيجة التعلّم التي نعيد استعمالها). وبدون بيانات لا يوجد ذكاء اصطناعي، فهي المادة الأولية.</p>
+<div class="goal-box lang-ar"><strong>تعريف جاهز للقسم:</strong> « الذكاء الاصطناعي مثل تلميذ يتعلّم أوّلاً بالنظر إلى أمثلة كثيرة، ثم يصبح قادراً على الإجابة وحده ».</div></div>
+</section>
+
+<section id="s2">
+<h2><span class="lang-fr">Une petite histoire de l'IA (5 dates à connaître)</span><span class="lang-en">A short history of AI (5 dates to know)</span><span class="lang-ar">لمحة عن تاريخ الذكاء الاصطناعي (5 تواريخ يجب معرفتها)</span></h2>
+<div class="lang-fr"><p class="lang-fr">L'idée n'est pas neuve : dès les années 1950, les chercheurs rêvent de machines qui calculent et réfléchissent. Voici les dates clés à retenir pour expliquer l'IA à vos futurs élèves.</p>
+<table class="plan-table lang-fr"><thead><tr><th>Année</th><th>Événement</th><th>Pourquoi c'est important</th></tr></thead><tbody><tr><td>1950</td><td>Alan Turing publie « Computing Machinery and Intelligence »</td><td>Il pose la question : une machine peut-elle penser ? Jeu de l'imitation.</td></tr><tr><td>1956</td><td>Conférence de Dartmouth (USA)</td><td>Le nom « intelligence artificielle » est créé.</td></tr><tr><td>1997</td><td>Deep Blue bat le champion du monde d'échecs Kasparov</td><td>Première victoire d'une machine sur un humain dans un jeu.</td></tr><tr><td>2012</td><td>Révolution du « deep learning » (réseaux de neurones profonds)</td><td>Les ordinateurs reconnaissent les images beaucoup mieux.</td></tr><tr><td>2022</td><td>Lancement public de ChatGPT</td><td>L'IA conversationnelle devient accessible à tous, y compris à l'école.</td></tr></tbody></table></div>
+<div class="lang-en"><p class="lang-en">The idea is not new: from the 1950s, researchers dreamed of machines that calculate and think. Here are the key dates to remember when explaining AI to your future pupils.</p>
+<table class="plan-table lang-en"><thead><tr><th>Year</th><th>Event</th><th>Why it matters</th></tr></thead><tbody><tr><td>1950</td><td>Alan Turing publishes "Computing Machinery and Intelligence"</td><td>He asks: can a machine think? The imitation game.</td></tr><tr><td>1956</td><td>Dartmouth Conference (USA)</td><td>The name "artificial intelligence" is coined.</td></tr><tr><td>1997</td><td>Deep Blue beats chess world champion Kasparov</td><td>First machine victory over a human in a game.</td></tr><tr><td>2012</td><td>Deep learning breakthrough (deep neural networks)</td><td>Computers recognise images much better.</td></tr><tr><td>2022</td><td>Public launch of ChatGPT</td><td>Conversational AI becomes accessible to everyone, including school.</td></tr></tbody></table></div>
+<div class="lang-ar"><p class="lang-ar">ليست الفكرة جديدة: فمنذ خمسينيات القرن الماضي، حلم الباحثون بآلات تحسب وتفكّر. إليكم التواريخ المفتاحية لتشرحوا الذكاء الاصطناعي لتلاميذكم المستقبليين.</p>
+<table class="plan-table lang-ar"><thead><tr><th>السنة</th><th>الحدث</th><th>لماذا هو مهمّ</th></tr></thead><tbody><tr><td>1950</td><td>ألان تورينغ ينشر « Computing Machinery and Intelligence »</td><td>طرح السؤال: هل يمكن للآلة أن تفكّر؟ لعبة المحاكاة.</td></tr><tr><td>1956</td><td>مؤتمر دارتموث (الولايات المتحدة)</td><td>وضع اسم « الذكاء الاصطناعي ».</td></tr><tr><td>1997</td><td>آلة « ديب بلو » تهزم بطل العالم في الشطرنج كاسباروف</td><td>أول انتصار لآلة على إنسان في لعبة.</td></tr><tr><td>2012</td><td>ثورة « التعلّم العميق » (الشبكات العصبية العميقة)</td><td>أصبحت الحواسيب تعرف الصور بشكل أفضل بكثير.</td></tr><tr><td>2022</td><td>إطلاق ChatGPT للعموم</td><td>أصبح الذكاء الاصطناعي الحواري متاحاً للجميع، بما في ذلك المدرسة.</td></tr></tbody></table></div>
+</section>
+
+<section id="s3">
+<h2><span class="lang-fr">Les 3 grandes familles d'IA</span><span class="lang-en">The three main families of AI</span><span class="lang-ar">عائلات الذكاء الاصطناعي الثلاث الكبرى</span></h2>
+<div class="lang-fr"><p class="lang-fr">On distingue trois niveaux d'IA. Aujourd'hui, tout ce que nous utilisons est de l'IA faible (appelée aussi « étroite ») : elle excelle dans une seule tâche précise.</p>
+<ul class="lang-fr"><li><strong>IA faible (étroite)</strong> : une seule tâche — traduction, reconnaissance d'images, filtrage des spams… Excellente dans son domaine, mais inutile ailleurs.</li><li><strong>IA générale</strong> : égalerait un humain dans toutes les tâches intellectuelles. N'existe pas encore, c'est un objectif de recherche.</li><li><strong>Super-IA</strong> : dépasserait l'intelligence humaine. C'est un scénario hypothétique (science-fiction pour l'instant, mais qui nourrit les débats éthiques).</li></ul>
+<div class="tip-box lang-fr"><strong>Astuce de formateur :</strong> utilisez l'image de la boîte à outils — « l'IA faible, ce sont des outils spécialisés, pas un couteau suisse magique ».</div></div>
+<div class="lang-en"><p class="lang-en">We can distinguish three levels of AI. Today, everything we use is narrow AI: it excels at one single specific task.</p>
+<ul class="lang-en"><li><strong>Narrow AI</strong>: a single task — translation, image recognition, spam filtering… Excellent in its domain, useless elsewhere.</li><li><strong>General AI</strong>: would equal a human in all intellectual tasks. Does not exist yet; it is a research goal.</li><li><strong>Super-intelligence</strong>: would exceed human intelligence. A hypothetical scenario (science fiction for now, but it fuels ethical debates).</li></ul>
+<div class="tip-box lang-en"><strong>Trainer tip:</strong> use the toolbox image — "narrow AI tools are specialised tools, not a magic Swiss knife".</div></div>
+<div class="lang-ar"><p class="lang-ar">نميّز ثلاثة مستويات للذكاء الاصطناعي. اليوم، كل ما نستعمله هو ذكاء ضيّق: يتفوّق في مهمّة واحدة دقيقة فقط.</p>
+<ul class="lang-ar"><li><strong>الذكاء الضيّق</strong>: مهمّة واحدة فقط — الترجمة، التعرّف على الصور، فلترة الرسائل المزعجة… بارع في مجاله وغير نافع خارجها.</li><li><strong>الذكاء العام</strong>: يساوي الإنسان في كل المهام الفكرية. غير موجود بعد، وهو هدف بحثي.</li><li><strong>الذكاء الفائق</strong>: يتجاوز القدرة العقلية للإنسان. سيناريو افتراضي (خيال علمي حالياً، لكنه يغذّي النقاشات الأخلاقية).</li></ul>
+<div class="tip-box lang-ar"><strong>نصيحة المكوِّن:</strong> استعملوا صورة الصندوق الأدواتي — « الذكاء الضيّق أدوات متخصّصة، وليس سكّيناً سويسرياً سحرياً ».</div></div>
+</section>
+
+<section id="s4">
+<h2><span class="lang-fr">L'IA dans la vie quotidienne (exemples concrets)</span><span class="lang-en">AI in everyday life (concrete examples)</span><span class="lang-ar">الذكاء الاصطناعي في الحياة اليومية (أمثلة ملموسة)</span></h2>
+<div class="lang-fr"><p class="lang-fr">Vos étudiants utilisent de l'IA sans le savoir, plusieurs fois par jour. Demandez-leur de citer des exemples avant de montrer cette liste.</p>
+<ul class="lang-fr"><li>Le <strong>GPS</strong> qui choisit le chemin le plus rapide (prédiction du trafic).</li><li>Le <strong>fil anti-spam</strong> de l'e-mail (classement des messages).</li><li><strong>Netflix / YouTube</strong> : suggestions « parce que vous avez regardé… » (moteur de recommandation).</li><li>La <strong>reconnaissance faciale</strong> pour déverrouiller le téléphone.</li><li>Les <strong>assistants vocaux</strong> (Siri, Google Assistant) qui comprennent la parole.</li><li><strong>ChatGPT / Gemini / Grok</strong> : ce sont des IA conversationnelles et génératives.</li><li><strong>Google Traduction</strong> et les sous-titres automatiques sur YouTube.</li></ul></div>
+<div class="lang-en"><p class="lang-en">Your students use AI without knowing it, several times a day. Ask them to give examples before showing this list.</p>
+<ul class="lang-en"><li>The <strong>GPS</strong> that picks the fastest route (traffic prediction).</li><li>The <strong>spam filter</strong> of e-mail (message classification).</li><li><strong>Netflix / YouTube</strong>: "because you watched…" suggestions (recommendation engine).</li><li><strong>Facial recognition</strong> to unlock the phone.</li><li><strong>Voice assistants</strong> (Siri, Google Assistant) that understand speech.</li><li><strong>ChatGPT / Gemini / Grok</strong>: conversational and generative AI.</li><li><strong>Google Translate</strong> and automatic subtitles on YouTube.</li></ul></div>
+<div class="lang-ar"><p class="lang-ar">يستعمل طلبتكم الذكاء الاصطناعي دون أن يعلموا، مرّات عديدة في اليوم. اطلبوا منهم ذكر أمثلة قبل عرض هذه القائمة.</p>
+<ul class="lang-ar"><li><strong>نظام الملاحة GPS</strong> الذي يختار أسرع طريق (توقّع الحركة المرورية).</li><li><strong>فلتر الرسائل المزعجة</strong> في البريد الإلكتروني (تصنيف الرسائل).</li><li><strong>Netflix / YouTube</strong>: اقتراحات « لأنك شاهدت… » (محرّك توصيات).</li><li><strong>التعرّف على الوجوه</strong> لفتح الهاتف.</li><li><strong>المساعدات الصوتية</strong> (Siri، مساعد جوجل) التي تفهم الكلام.</li><li><strong>ChatGPT / Gemini / Grok</strong>: ذكاء اصطناعي حواري وتوليدي.</li><li><strong>ترجمة جوجل</strong> والترجمة الفورية للنصوص في يوتيوب.</li></ul></div>
+</section>
+
+<section id="s5">
+<h2><span class="lang-fr">Ce que l'IA sait faire… et ne sait pas faire</span><span class="lang-en">What AI can do… and cannot do</span><span class="lang-ar">ما يستطيعه الذكاء الاصطناعي… وما لا يستطيعه</span></h2>
+<div class="lang-fr"><ul class="lang-fr"><li><strong>✅ Ce qu'elle fait bien :</strong> résumer un texte, traduire, générer une image ou un exercice, corriger l'orthographe, adapter un texte à un niveau de lecture, produire une première version de fiche.</li><li><strong>⚠️ Ce qu'il faut vérifier :</strong> elle peut se tromper (« hallucination » : inventer des faits avec assurance), copier des biais présents dans ses données, et mélanger les langues.</li><li><strong>❌ Ce qu'elle ne fait pas :</strong> elle ne comprend pas réellement le sens, n'a pas d'intention, n'a pas d'émotions et n'est pas « responsable » de ses réponses.</li></ul>
+<div class="warn-box lang-fr"><strong>Règle d'or pour l'enseignant :</strong> on ne met jamais un outil d'IA entre un élève et son apprentissage sans vérifier et sans garder son regard de professionnel. L'IA propose, l'enseignant dispose.</div></div>
+<div class="lang-en"><ul class="lang-en"><li><strong>✅ What it does well:</strong> summarise a text, translate, generate an image or an exercise, fix spelling, adapt a text to a reading level, produce a first draft of a worksheet.</li><li><strong>⚠️ What you must check:</strong> it can be wrong ("hallucination": inventing facts with confidence), reproduce biases present in its data, and mix languages.</li><li><strong>❌ What it does not do:</strong> it does not really understand meaning, has no intention, no emotions, and is not "responsible" for its answers.</li></ul>
+<div class="warn-box lang-en"><strong>Golden rule for the teacher:</strong> never place an AI tool between a pupil and their learning without checking, and keep your professional judgement. AI proposes, the teacher disposes.</div></div>
+<div class="lang-ar"><ul class="lang-ar"><li><strong>✅ ما يجيده:</strong> تلخيص نص، ترجمة، توليد صورة أو تمرين، تصحيح الإملاء، تكييف نص لمستوى قراءة، إنتاج مسودّة أولى لورقة عمل.</li><li><strong>⚠️ ما يجب التثبّت منه:</strong> قد يخطئ (« الهلوسة »: اختلاق حقائق بثقة)، قد يكرّر تحيّزات موجودة في بياناته، وقد يخلط اللغات.</li><li><strong>❌ ما لا يفعله:</strong> لا يفهم المعنى فعلاً، لا نيّة لديه، لا مشاعر، ولا يتحمّل « مسؤولية » إجاباته.</li></ul>
+<div class="warn-box lang-ar"><strong>القاعدة الذهبية للمعلّم:</strong> لا تضعوا أداة ذكاء اصطناعي بين التلميذ وتعلّمه دون مراجعة، مع الحفاظ على النظرة المهنية. الذكاء الاصطناعي يقترح، والمعلّم يقرّر.</div></div>
+</section>
+
+<section id="s6">
+<h2><span class="lang-fr">Pourquoi cela concerne le futur enseignant du primaire ?</span><span class="lang-en">Why this matters for the future primary teacher</span><span class="lang-ar">لماذا يهمّ هذا المعلّم المستقبلي في الابتدائي؟</span></h2>
+<div class="lang-fr"><p class="lang-fr">Trois raisons principales, qui seront développées dans les séances 2 à 9 de ce module :</p>
+<ul class="lang-fr"><li><strong>Gagner du temps :</strong> préparer une fiche de lecture, un QCM ou un exemple adapté en quelques minutes au lieu d'une heure.</li><li><strong>Différencier :</strong> proposer une version simplifiée ou enrichie du même exercice pour chaque élève.</li><li><strong>Eduquer aux médias :</strong> vos élèves grandiront avec l'IA ; ils doivent apprendre ce que c'est, et comment l'utiliser avec esprit critique.</li></ul>
+<div class="tip-box lang-fr"><strong>Exemple pour la classe (à partager en séance 6) :</strong> un énoncé de problème de maths reformulé « avec des dinosaures » grâce à l'IA, pour motiver un élève réticent.</div></div>
+<div class="lang-en"><p class="lang-en">Three main reasons, developed further in sessions 2 to 9 of this module:</p>
+<ul class="lang-en"><li><strong>Save time:</strong> prepare a reading worksheet, a quiz or an adapted example in minutes instead of an hour.</li><li><strong>Differentiate:</strong> offer a simpler or richer version of the same exercise to each pupil.</li><li><strong>Educate in media literacy:</strong> your pupils will grow up with AI; they must learn what it is and how to use it critically.</li></ul>
+<div class="tip-box lang-en"><strong>Class example (shared in session 6):</strong> a maths problem restated "with dinosaurs" thanks to AI, to motivate a reluctant pupil.</div></div>
+<div class="lang-ar"><p class="lang-ar">ثلاثة أسباب رئيسية سيتم تفصيلها في الحصص 2 إلى 9 من هذه الوحدة:</p>
+<ul class="lang-ar"><li><strong>كسب الوقت:</strong> تحضير ورقة قراءة، أو اختبار قصير، أو مثال مكيّف في دقائق بدلاً من ساعة.</li><li><strong>تفريد التعلّم:</strong> تقديم نسخة مبسّطة أو أوسع من نفس التمرين لكل تلميذ.</li><li><strong>التربية الإعلامية:</strong> سيكبر تلاميذكم مع الذكاء الاصطناعي؛ يجب أن يتعلّموا ما هو وكيف يستعملونه بنقدٍ بنّاء.</li></ul>
+<div class="tip-box lang-ar"><strong>مثال للقسم (يُعرض لاحقاً في الحصة 6):</strong> إعادة صياغة مسألة رياضيات « مع ديناصورات » بفضل الذكاء الاصطناعي، لتحفيز تلميذ متردّد.</div></div>
+</section>
+
+    <h2><span class="lang-fr">✏️ Activités et exercices</span><span class="lang-en">✏️ Activities and exercises</span><span class="lang-ar">✏️ الأنشطة والتمارين</span></h2>
+    <ul class="lang-fr"><li>Tour de table et nuage de mots : chaque étudiant dit un mot associé à « IA », le formateur le note au tableau.</li><li>Activité « Intelligent ou programmé ? » : classer 8 situations (calculatrice, GPS, ChatGPT, aspirateur robot, réveil, sous-titres auto, jeu d'échecs, thermostat) dans un tableau à deux colonnes, puis discuter.</li><li>Démo guidée (si connexion disponible) : montrer une réponse de ChatGPT qui corrige une phrase de CP, et demander aux étudiants de repérer la qualité du texte.</li><li>Débat « IA et école primaire » : quelles peurs, quels espoirs ? Noter les arguments au tableau et les conserver pour la séance 10.</li></ul>
+    <ul class="lang-en"><li>Round table and word cloud: each student says a word linked to "AI", the trainer writes it on the board.</li><li>"Smart or programmed?" activity: classify 8 situations (calculator, GPS, ChatGPT, robot vacuum, alarm clock, auto subtitles, chess game, thermostat) into a two-column table, then discuss.</li><li>Guided demo (if internet available): show a ChatGPT answer that fixes a Year-1 sentence, and ask students to assess the quality of the text.</li><li>"AI and primary school" debate: fears and hopes? Note the arguments on the board and keep them for session 10.</li></ul>
+    <ul class="lang-ar"><li>جولة و« خريطة كلمات »: كل طالب يقول كلمة مرتبطة بـ « الذكاء الاصطناعي » ويُدوّنها المكوِّن على السبورة.</li><li>نشاط « ذكي أم مبرمج؟ »: تصنيف 8 حالات (آلة حاسبة، نظام ملاحة، ChatGPT، مكنسة روبوت، منبّه، ترجمة فورية، لعبة شطرنج، منظّمة حرارة) في جدول عمودين، ثم مناقشة.</li><li>عرض موجَّه (إن توفرت الشبكة): عرض إجابة ChatGPT تصحّح جملة قسم التحضيري، وطلب الحكم على جودة النص.</li><li>نقاش « الذكاء الاصطناعي والمدرسة الابتدائية »: ما المخاوف وما الآمال؟ توثيق الحجج في السبورة والاحتفاظ بها للحصة العاشرة.</li></ul>
+
+    <h2><span class="lang-fr">🧠 À retenir</span><span class="lang-en">🧠 Key takeaways</span><span class="lang-ar">🧠 ما يجب تذكّره</span></h2>
+    <ul class="lang-fr"><li>L'IA est un programme qui apprend à partir de données (exemples) pour reconnaître, comprendre ou décider.</li><li>Aujourd'hui, nous n'utilisons que de l'IA faible (étroite), spécialisée dans une seule tâche.</li><li>L'IA ne « pense » pas comme un humain : elle calcule et imite, et elle peut se tromper (hallucinations).</li><li>Pour l'enseignant : l'IA est un assistant de préparation, jamais un remplaçant du jugement professionnel.</li><li>Dates clés : 1956 (création du terme), 1997 (Deep Blue), 2012 (deep learning), 2022 (ChatGPT).</li></ul>
+    <ul class="lang-en"><li>AI is a program that learns from data (examples) to recognise, understand or decide.</li><li>Today we only use narrow AI, specialised in a single task.</li><li>AI does not "think" like a human: it computes and imitates, and it can get things wrong (hallucinations).</li><li>For the teacher: AI is a planning assistant, never a replacement for professional judgement.</li><li>Key dates: 1956 (term coined), 1997 (Deep Blue), 2012 (deep learning), 2022 (ChatGPT).</li></ul>
+    <ul class="lang-ar"><li>الذكاء الاصطناعي برنامج يتعلّم من البيانات (الأمثلة) ليتعرّف أو يفهم أو يقرّر.</li><li>اليوم نستعمل الذكاء الضيّق حصراً، المتخصّص في مهمّة واحدة.</li><li>الذكاء الاصطناعي لا « يفكّر » كالإنسان: يحسب ويقلّد، ويمكن أن يخطئ (الهلوسة).</li><li>للمعلّم: الذكاء الاصطناعي مساعد للتحضير، وليس بديلاً عن الحكم المهني أبداً.</li><li>تواريخ مفتاحية: 1956 (وضع المصطلح)، 1997 (ديب بلو)، 2012 (التعلّم العميق)، 2022 (ChatGPT).</li></ul>
+
+    <h2><span class="lang-fr">📖 Glossaire</span><span class="lang-en">📖 Glossary</span><span class="lang-ar">📖 مسرد المصطلحات</span></h2>
+    <div class="glossary"><details><summary class="gl-term">Intelligence Artificielle (IA) <span style="font-weight:400;color:var(--text-muted);">— Artificial Intelligence (AI)</span></summary><p class="lang-fr">Programme informatique capable d'apprendre à partir de données pour effectuer une tâche (reconnaître, comprendre, décider).</p><p class="lang-en">A computer program able to learn from data to perform a task (recognise, understand, decide).</p><p class="lang-ar">برنامج حاسوبي قادر على التعلّم من البيانات لإنجاز مهمّة (التعرّف، الفهم، اتخاذ القرار).</p></details><details><summary class="gl-term">Données <span style="font-weight:400;color:var(--text-muted);">— Data</span></summary><p class="lang-fr">Les exemples (textes, images, nombres) fournis à l'IA pour qu'elle apprenne.</p><p class="lang-en">The examples (texts, images, numbers) given to AI so it can learn.</p><p class="lang-ar">الأمثلة (نصوص، صور، أرقام) المقدَّمة للذكاء الاصطناعي ليتعلّم.</p></details><details><summary class="gl-term">Algorithme <span style="font-weight:400;color:var(--text-muted);">— Algorithm</span></summary><p class="lang-fr">Suite finie d'étapes précises pour résoudre un problème (une recette de calcul).</p><p class="lang-en">A finite sequence of precise steps to solve a problem (a calculation recipe).</p><p class="lang-ar">سلسلة منتهية من الخطوات الدقيقة لحلّ مسألة (وصفة حساب).</p></details><details><summary class="gl-term">Modèle <span style="font-weight:400;color:var(--text-muted);">— Model</span></summary><p class="lang-fr">Le résultat de l'apprentissage d'une IA, que l'on réutilise ensuite pour faire des prédictions.</p><p class="lang-en">The result of an AI's learning, reused afterwards to make predictions.</p><p class="lang-ar">نتيجة تعلّم الذكاء الاصطناعي، والتي نعيد استعمالها لاحقاً لإصدار تنبّؤات.</p></details><details><summary class="gl-term">Apprentissage automatique <span style="font-weight:400;color:var(--text-muted);">— Machine Learning</span></summary><p class="lang-fr">Méthode où l'IA apprend des règles à partir d'exemples, au lieu de recevoir des règles écrites à la main.</p><p class="lang-en">A method where AI learns rules from examples, instead of being given hand-written rules.</p><p class="lang-ar">منهج يتعلّم فيه الذكاء الاصطناعي القواعد من الأمثلة، بدلاً من استقبال قواعد مكتوبة يدوياً.</p></details><details><summary class="gl-term">Hallucination <span style="font-weight:400;color:var(--text-muted);">— Hallucination</span></summary><p class="lang-fr">Erreur d'une IA générative qui affirme avec assurance un fait faux ou inventé.</p><p class="lang-en">A generative AI error when it confidently states a false or invented fact.</p><p class="lang-ar">خطأ يقع فيه الذكاء الاصطناعي التوليدي عندما يصرّح بثقة بحقيقة خاطئة أو مختلقة.</p></details></div>
+
+    <h2><span class="lang-fr">📂 Ressources de la séance</span><span class="lang-en">📂 Session resources</span><span class="lang-ar">📂 موارد الحصة</span></h2>
+    <div class="resource-grid"><a class="resource-card" href="cours-fr.md"><span class="rc-icon">📘</span><div class="rc-title">Cours détaillé (Français)</div><div class="rc-desc">Document texte complet de la séance en français.</div></a><a class="resource-card" href="cours-en.md"><span class="rc-icon">📗</span><div class="rc-title">Course notes (English)</div><div class="rc-desc">Full written lesson in English.</div></a><a class="resource-card" href="cours-ar.md"><span class="rc-icon">📙</span><div class="rc-title">Cours résumé (العربية)</div><div class="rc-desc">ملخّص الدرس باللغة العربية.</div></a><a class="resource-card" href="presentation.pptx"><span class="rc-icon">🖥️</span><div class="rc-title">Présentation PowerPoint</div><div class="rc-desc">Support de cours à projeter en classe.</div></a><a class="resource-card" href="slides.md"><span class="rc-icon">🎞️</span><div class="rc-title">Diapositives (Marp)</div><div class="rc-desc">Support de présentation au format Markdown (15 diapositives).</div></a><a class="resource-card" href="dialogues-fr.md"><span class="rc-icon">💬</span><div class="rc-title">Dialogues pédagogiques (FR)</div><div class="rc-desc">Scripts de dialogues à jouer en classe, en français.</div></a><a class="resource-card" href="dialogues-en.md"><span class="rc-icon">💬</span><div class="rc-title">Pedagogical dialogues (EN)</div><div class="rc-desc">Classroom dialogue scripts in English.</div></a></div>
+
+    <div class="seance-nav"><a class="disabled">◀ Séance précédente</a><a href="../index.html">📋 Sommaire du module</a><a href="../seance-02/index.html">Séance suivante ▶</a></div>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../../js/main.v2.js"></script>
+<script>
+(function() {
+  var root = document.querySelector('.seance-content, .module-content');
+  var tabs = document.querySelectorAll('.lang-tab');
+  if (!root) return;
+  function setLang(lang) {
+    root.classList.remove('lang-en', 'lang-fr', 'lang-ar');
+    root.classList.add('lang-' + lang);
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-lang') === lang);
+    });
+  }
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() { setLang(t.getAttribute('data-lang')); });
+  });
+  setLang('fr');
+})();
+</script>
+</body></html>
