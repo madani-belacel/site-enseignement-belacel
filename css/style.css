@@ -18,3 +18,11 @@ a,.btn,.card,.module-card,.level-item,.news-item,.side-link{transition:color .22
 /* sélection texte */
 ::selection{background:var(--primary);color:#fff}
 @media(prefers-reduced-motion:reduce){.btt{transition:none}.theme-toggle,.nav-toggle{transition:none}*{transition:none!important}}
+/* === Sélecteur de langue flottant GLOBAL (FR/EN/AR) — visible sur toutes les pages === */
+.language-switcher{position:fixed;top:20px;right:120px;z-index:9999;background:var(--bg-card,#fff);color:var(--text,#22344a);padding:6px 12px;border-radius:20px;box-shadow:var(--shadow-md,0 6px 20px rgba(52,73,94,.12));border:1px solid var(--border,#dfe5ea);display:flex;gap:8px;align-items:center}
+.language-switcher .lang-tabs{display:flex;gap:8px;margin:0;flex-wrap:wrap}
+.language-switcher .lang-tab{padding:.5rem 1.2rem;border-radius:var(--radius,8px);border:1px solid var(--border,#dfe5ea);background:var(--bg-card,#fff);font-weight:600;cursor:pointer;color:var(--text,#22344a);transition:background .2s ease,color .2s ease}
+.language-switcher .lang-tab.active{background:var(--primary,#177bbe);color:#fff;border-color:var(--primary,#177bbe)}
+.language-switcher .lang-tab:hover{border-color:var(--primary,#177bbe)}
+[data-theme="dark"] .language-switcher{background:var(--bg-elevated,#1a2634);color:var(--text-inverse,#fff);box-shadow:0 6px 20px rgba(0,0,0,.4)}
+@media(max-width:768px){.language-switcher{top:10px;right:70px;padding:4px 8px;font-size:.8em}.language-switcher .lang-tab{padding:.35rem .7rem}}

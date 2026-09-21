@@ -73,6 +73,11 @@ def md_escape(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+def L(fr, en, ar=None):
+    """Construit un dict trilingue {fr,en,ar} (ar=en par défaut)."""
+    return {"fr": fr, "en": en, "ar": ar if ar is not None else en}
+
+
 LANG_EMOJI = {"fr": "🇫🇷", "en": "🇬🇧", "ar": "🇩🇿"}
 
 
