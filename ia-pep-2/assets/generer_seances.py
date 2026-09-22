@@ -292,11 +292,12 @@ def render_videos_html(seance):
         titre = "".join(tri(v["titre"], "div"))
         concept = "".join(tri(v["concept"], "div"))
         lang_badge = LANG_EMOJI.get(v.get("langue", "fr"), "")
+        todo = "\n<!-- TODO: remplacer par lien définitif -->" if "results?search_query" in v.get("url", "") else ""
         cards.append(
             f'<a class="video-card" href="{v["url"]}" target="_blank" rel="noopener">'
             f'<span class="vid-thumb">▶️</span>'
             f'<span class="vid-info">{titre}<span class="vid-lang">{lang_badge} YouTube</span>{concept}</span>'
-            f'</a>'
+            f'</a>{todo}'
         )
     return f"""<section id="videos">
 {render_phase_h2(None, "📺 Vidéos pour mieux comprendre", "📺 Videos to understand better", "📺 فيديوهات لفهم أفضل")}
@@ -934,7 +935,7 @@ def build_pptx(seance, path):
         add_content_slide(
             "🧠 Quiz éclair (3 questions)", "Quick quiz",
             [
-                f"Q{i+1}. {q['q']['fr']}\n   ✅ {q['options'][q.get('answer', 0)]['fr']}"
+                f"Q{i+1}. {q['q']['fr']}\n   ✅ {quiz_opts(q)[q.get('answer', 0)]['fr']}"
                 for i, q in enumerate(quiz[:3])
             ],
             [q["q"]["en"] for q in quiz[:3]],

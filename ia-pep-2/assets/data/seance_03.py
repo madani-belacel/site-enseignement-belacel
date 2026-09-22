@@ -11,9 +11,9 @@ SEANCE = {
     "slug": "seance-03",
     "icon": "🔎",
     "titles": L(
-        "Approfondir la recherche : Perplexity, Scholar et fiabilité des sources",
-        "Deeper research: Perplexity, Scholar and source reliability",
-        "تعميق البحث: Perplexity وScholar وموثوقية المصادر",
+        "Rechercher et comprendre l'information avec l'IA",
+        "Searching and understanding information with AI",
+        "البحث عن المعلومات وفهمها بالذكاء الاصطناعي",
     ),
     "descriptions": L(
         "Trouver vite l'information juste pour ses modules : formuler une bonne question de recherche, utiliser Perplexity (sources citées), Google Scholar et Consensus, puis croiser les sources.",
@@ -53,6 +53,23 @@ SEANCE = {
         "Sessions 1 and 2 completed. Know how to open a browser and create a free account. Come with a module topic to search.",
         "إتمام الحصتين 1 و2. معرفة فتح متصفّح وإنشاء حساب مجاني. الإتيان بموضوع وحدة للبحث فيه.",
     ),
+    "accroche": {
+        "question": L(
+            "Google vous donne 1 million de résultats en 0,5 seconde… mais lequel croire ? Chercher n'est pas trouver : aujourd'hui on apprend à pêcher les bonnes sources.",
+            "Google gives you 1 million results in 0.5 seconds… but which one to believe? Searching is not finding: today we learn to fish the right sources.",
+            "يعطيك جوجل مليون نتيجة في نصف ثانية… لكن أيها تصدّق؟ البحث ليس إيجاداً: اليوم نتعلّم صيد المصادر الجيدة.",
+        ),
+        "analogie": L(
+            "🍳 Google, c'est un filet qui ramène tout : poissons, crabes et vieilles chaussures. Perplexity, c'est une canne à pêche avec un hameçon-source : moins de prises, mais on sait d'où vient chacune.",
+            "🍳 Google is a net bringing everything: fish, crabs and old shoes. Perplexity is a fishing rod with a source-hook: fewer catches, but you know where each comes from.",
+            "🍳 جوجل شبكة تجلب كل شيء: سمكاً وسرطانات وأحذية قديمة. وPerplexity صنارة بخطاف-مصدر: صيد أقل، لكنك تعرف مصدر كل سمكة.",
+        ),
+        "phrase": L(
+            "💡 Bien chercher = une question précise + les bons outils (Perplexity, Scholar) + vérifier chaque source avant de l'utiliser.",
+            "💡 Searching well = a precise question + the right tools (Perplexity, Scholar) + checking each source before using it.",
+            "💡 البحث الجيد = سؤال دقيق + أدوات مناسبة (Perplexity وScholar) + التحقق من كل مصدر قبل استعماله.",
+        ),
+    },
     "plan": [
         {
             "time": "00–10",
@@ -191,6 +208,15 @@ A good research question = an answer verifiable in 3 clicks.""",
 سؤال بحثي جيد = إجابة قابلة للتحقق في ثلاث نقرات.""",
                     ),
                 },
+                {
+                    "t": "note",
+                    "kind": "idea",
+                    **L(
+                        "<strong>🔗 Rappel séance 2 :</strong> les 4 composantes d'une requête (contexte, objectif, format, contrainte) s'appliquent ici : « Je suis en PEP 2A [contexte], je cherche des études 2020-2026 [contrainte], liste 3 sources avec liens [format] pour comprendre [objectif]. »",
+                        "<strong>🔗 Reminder of session 2:</strong> the 4 query components (context, goal, format, constraint) apply here: \"I am in PEP 2A [context], I seek 2020-2026 studies [constraint], list 3 sources with links [format] to understand [goal].\"",
+                        "<strong>🔗 تذكير بالحصة 2:</strong> عناصر الصياغة الأربعة (سياق، هدف، صيغة، قيد) تنطبق هنا: « أنا في الثانية PEP [سياق]، أبحث عن دراسات 2020-2026 [قيد]، اعرض 3 مصادر بروابط [صيغة] للفهم [هدف] ».",
+                    ),
+                },
             ],
         },
         {
@@ -242,6 +268,15 @@ A good research question = an answer verifiable in 3 clicks.""",
                         "<strong>À retenir :</strong> la réponse de Perplexity n'est qu'un point de départ. La valeur est dans les sources citées : c'est elles que vous lisez, citez et jugez.",
                         "<strong>Remember:</strong> Perplexity's answer is only a starting point. The value lies in the cited sources: they are what you read, cite and judge.",
                         "<strong>تذكّر:</strong> جواب Perplexity مجرّد نقطة انطلاق. القيمة في المصادر المذكورة: هي ما تقرؤه وتستشهد به وتقيّمه.",
+                    ),
+                },
+                {
+                    "t": "note",
+                    "kind": "idea",
+                    **L(
+                        "<strong>🧪 Exemple concret :</strong> « Quels sont les effets des écrans sur le sommeil des enfants ? » (mode Academic) → réponse + 4 sources → ouvrir 2 liens → noter revue + année → 1 phrase pour votre exposé, citée.",
+                        "<strong>🧪 Concrete example:</strong> \"What are the effects of screens on children's sleep?\" (Academic mode) → answer + 4 sources → open 2 links → note journal + year → 1 sentence for your talk, cited.",
+                        "<strong>🧪 مثال ملموس:</strong> « ما تأثيرات الشاشات على نوم الأطفال؟ » (الوضع الأكاديمي) ← جواب + 4 مصادر ← افتح رابطين ← سجّل المجلة + السنة ← جملة لعرضك مستشهَدة.",
                     ),
                 },
             ],
@@ -366,6 +401,15 @@ A good research question = an answer verifiable in 3 clicks.""",
                     ),
                 },
                 {
+                    "t": "note",
+                    "kind": "goal",
+                    **L(
+                        "<strong>➡️ Pont vers la séance 4 :</strong> les sources vérifiées d'aujourd'hui deviendront les fiches de révision de demain : un PDF de cours + Perplexity + la méthode Cornell (séance 4).",
+                        "<strong>➡️ Bridge to session 4:</strong> today's verified sources will become tomorrow's revision sheets: a lesson PDF + Perplexity + the Cornell method (session 4).",
+                        "<strong>➡️ جسر إلى الحصة 4:</strong> مصادر اليوم الموثقة ستصبح بطاقات مراجعة الغد: ملف درس + Perplexity + منهجية كورنيل (الحصة 4).",
+                    ),
+                },
+                {
                     "t": "ul",
                     **L(
                         [
@@ -431,6 +475,265 @@ A good research question = an answer verifiable in 3 clicks.""",
             ],
         },
     ],
+    "verifications": [
+        {
+            "q": L(
+                "Perplexity ou chatbot : lequel pour vérifier une information ?",
+                "Perplexity or chatbot: which one to verify information?",
+                "Perplexity أم روبوت المحادثة: أيهما للتحقق من معلومة؟",
+            ),
+            "r": L(
+                "Perplexity : il affiche ses sources à côté de chaque affirmation, que vous pouvez ouvrir. Le chatbot affirme sans montrer d'où il tient l'info.",
+                "Perplexity: it shows sources next to each claim, which you can open. The chatbot states without showing where it got the info.",
+                "Perplexity: يعرض مصادره بجانب كل معلومة ويمكنك فتحها. وروبوت المحادثة يؤكد دون إظهار مصدر المعلومة.",
+            ),
+        },
+        {
+            "q": L(
+                "Comment chercher un article sur Google Scholar ?",
+                "How to search a paper on Google Scholar?",
+                "كيف تبحث عن مقال في Google Scholar؟",
+            ),
+            "r": L(
+                "Mots-clés en anglais, filtre par année, lire l'abstract, noter revue + année + auteurs avant de citer.",
+                "English keywords, year filter, read the abstract, note journal + year + authors before citing.",
+                "كلمات مفتاحية بالإنجليزية وترشيح بالسنة وقراءة الملخص وتسجيل المجلة + السنة + المؤلفين قبل الاستشهاد.",
+            ),
+        },
+        {
+            "q": L(
+                "Une source citée est introuvable : que faire ?",
+                "A cited source cannot be found: what to do?",
+                "مصدر مذكور غير موجود: ماذا تفعل؟",
+            ),
+            "r": L(
+                "La traiter comme inventée : ne jamais la citer. Chercher une vraie source équivalente sur Scholar.",
+                "Treat it as invented: never cite it. Find a real equivalent source on Scholar.",
+                "عامِله كمختلَق: لا تستشهد به أبداً. وابحث عن مصدر حقيقي مكافئ في Scholar.",
+            ),
+        },
+    ],
+    "exercise_guide": {
+        "enonce": L(
+            "Question imposée : « Les écrans nuisent-ils au sommeil des enfants ? » 1) Interrogez Perplexity (mode Academic). 2) Ouvrez 2 sources citées. 3) Rédigez 3 phrases sourcées (auteur, année).",
+            "Set question: \"Do screens harm children's sleep?\" 1) Ask Perplexity (Academic mode). 2) Open 2 cited sources. 3) Write 3 sourced sentences (author, year).",
+            "السؤال المفروض: « هل تضر الشاشات بنوم الأطفال؟ » 1) اسأل Perplexity (الوضع الأكاديمي). 2) افتح مصدرين مذكورين. 3) اكتب 3 جمل مستشهَدة (مؤلف، سنة).",
+        ),
+        "demarche": L(
+            "1) Copier la question + ajouter « études 2020-2026 ». 2) Lire la synthèse, cliquer les numéros de sources. 3) Pour chaque source : existe ? revue ? année ? 4) Écrire les 3 phrases avec citations.",
+            "1) Copy the question + add \"2020-2026 studies\". 2) Read the synthesis, click source numbers. 3) For each source: exists? journal? year? 4) Write 3 sentences with citations.",
+            "1) انسخ السؤال + أضف « دراسات 2020-2026 ». 2) اقرأ التركيب وانقر أرقام المصادر. 3) لكل مصدر: موجود؟ مجلة؟ سنة؟ 4) اكتب الجمل الثلاث مع الاستشهادات.",
+        ),
+        "solution": L(
+            "Réussi si : 2 sources ouvertes et existantes (revue + année notées), 3 phrases avec (auteur, année), et 1 source écartée expliquée (« blog sans auteur, écarté »).",
+            "Success if: 2 opened, existing sources (journal + year noted), 3 sentences with (author, year), and 1 discarded source explained (\"authorless blog, discarded\").",
+            "نجاح إذا: مصدران مفتوحان وموجودان (مجلة + سنة مدوّنة)، و3 جمل مع (مؤلف، سنة)، ومصدر مستبعَد مفسَّر (« مدونة دون مؤلف، استُبعِدت »).",
+        ),
+    },
+    "videos": [
+        {
+            "titre": L(
+                "Perplexity : le mode Academic pour vos exposés (tutoriel)",
+                "Perplexity: Academic mode for your talks (tutorial)",
+                "Perplexity: الوضع الأكاديمي لعروضكم (شرح)",
+            ),
+            "url": "https://www.youtube.com/results?search_query=perplexity+academic+tutoriel+francais+recherche",
+            "langue": "fr",
+            "concept": L(
+                "Voir le mode Academic et l'ouverture des sources en vidéo.",
+                "See Academic mode and source opening on video.",
+                "شاهد الوضع الأكاديمي وفتح المصادر بالفيديو.",
+            ),
+        },
+        {
+            "titre": L(
+                "كيف تبحث في Google Scholar؟ شرح للطلبة",
+                "How to search Google Scholar? Explained for students",
+                "كيف تبحث في Google Scholar؟ شرح للطلبة",
+            ),
+            "url": "https://www.youtube.com/results?search_query=google+scholar+شرح+للباحثين+المبتدئين",
+            "langue": "ar",
+            "concept": L(
+                "Mots-clés, filtres et lecture d'abstract pas à pas.",
+                "Keywords, filters and abstract reading step by step.",
+                "الكلمات المفتاحية والفلاتر وقراءة الملخص خطوة بخطوة.",
+            ),
+        },
+        {
+            "titre": L(
+                "Consensus : interroger la science en une question",
+                "Consensus: question science in one query",
+                "Consensus: استجواب العلم بسؤال واحد",
+            ),
+            "url": "https://www.youtube.com/results?search_query=consensus+app+ask+scientific+question+tutorial",
+            "langue": "en",
+            "concept": L(
+                "Poser une question factuelle et lire le verdict du consensus.",
+                "Ask a factual question and read the consensus verdict.",
+                "اطرح سؤالاً واقعياً واقرأ حكم الإجماع.",
+            ),
+        },
+    ],
+    "fiche_synthese": {
+        "points": [
+            L(
+                "Question précise (4 composantes) avant tout outil.",
+                "Precise question (4 components) before any tool.",
+                "سؤال دقيق (4 عناصر) قبل أي أداة.",
+            ),
+            L(
+                "Perplexity = réponse + sources à ouvrir.",
+                "Perplexity = answer + sources to open.",
+                "Perplexity = جواب + مصادر تُفتَح.",
+            ),
+            L(
+                "Scholar : mots-clés anglais + filtre année + abstract.",
+                "Scholar: English keywords + year filter + abstract.",
+                "Scholar: كلمات إنجليزية + ترشيح سنة + ملخص.",
+            ),
+            L(
+                "Source introuvable = source inventée = jamais citée.",
+                "Unfindable source = invented source = never cited.",
+                "مصدر غير موجود = مصدر مختلَق = لا يُستشهَد أبداً.",
+            ),
+            L(
+                "Toujours savoir D'OÙ vient une information.",
+                "Always know WHERE information comes from.",
+                "اعرف دائماً من أين تأتي المعلومة.",
+            ),
+        ],
+        "analogies": [
+            L(
+                "La canne à pêche (Perplexity) contre le filet (Google).",
+                "The fishing rod (Perplexity) vs the net (Google).",
+                "الصنارة (Perplexity) مقابل الشبكة (جوجل).",
+            ),
+            L(
+                "3 clics : question → source → vérification.",
+                "3 clicks: question → source → check.",
+                "3 نقرات: سؤال ← مصدر ← تحقق.",
+            ),
+            L(
+                "Le détective : aucun indice sans preuve d'origine.",
+                "The detective: no clue without proof of origin.",
+                "المحقق: لا دليل دون إثبات مصدر.",
+            ),
+        ],
+        "exemples": [
+            L(
+                "« Écrans + sommeil enfants » → 4 sources → 2 ouvertes → 1 phrase citée.",
+                "\"Screens + children sleep\" → 4 sources → 2 opened → 1 cited sentence.",
+                "« شاشات + نوم أطفال » ← 4 مصادر ← 2 مفتوحة ← جملة مستشهَدة.",
+            ),
+            L(
+                "« primary school morphology 2020 » → revue + année notées.",
+                "\"primary school morphology 2020\" → journal + year noted.",
+                "« primary school morphology 2020 » ← مجلة + سنة مدوّنة.",
+            ),
+            L(
+                "Blog sans auteur écarté et remplacé par un article Scholar.",
+                "Authorless blog discarded, replaced by a Scholar paper.",
+                "مدونة دون مؤلف مستبعَدة ومعوَّضة بمقال Scholar.",
+            ),
+        ],
+        "analogie_finale": L(
+            "🏁 Chercher avec l'IA, c'est comme pêcher avec un sonar : l'appareil repère les poissons (Perplexity), mais c'est vous qui choisissez lesquels garder (Scholar) et qui cuisinez le repas (votre exposé).",
+            "🏁 Searching with AI is like fishing with sonar: the device spots fish (Perplexity), but you choose which to keep (Scholar) and cook the meal (your talk).",
+            "🏁 البحث بالذكاء كالصيد بالسونار: الجهاز يرصد السمك (Perplexity)، لكنك تختار ما تحتفظ به (Scholar) وتطهو الوجبة (عرضك).",
+        ),
+        "quiz": [
+            {
+                "q": L(
+                    "Quel outil pour une réponse AVEC sources à ouvrir ?",
+                    "Which tool for an answer WITH sources to open?",
+                    "أي أداة لجواب مع مصادر تُفتَح؟",
+                ),
+                "options": L(
+                    ["ChatGPT seul", "Perplexity (réponse + liens cités)", "La calculatrice", "Aucun"],
+                    ["ChatGPT alone", "Perplexity (answer + cited links)", "The calculator", "None"],
+                    ["ChatGPT وحده", "Perplexity (جواب + روابط مذكورة)", "الآلة الحاسبة", "لا شيء"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Perplexity affiche ses sources à côté de chaque affirmation : la valeur est là.",
+                    "Perplexity shows sources next to each claim: that is where value lies.",
+                    "يعرض Perplexity مصادره بجانب كل معلومة: القيمة هناك.",
+                ),
+            },
+            {
+                "q": L(
+                    "Comment chercher sur Google Scholar ?",
+                    "How to search on Google Scholar?",
+                    "كيف تبحث في Google Scholar؟",
+                ),
+                "options": L(
+                    ["En arabe dialectal", "Mots-clés anglais + filtre année + lire l'abstract", "Au hasard", "Sans filtre"],
+                    ["In dialectal Arabic", "English keywords + year filter + read the abstract", "Randomly", "No filter"],
+                    ["بالدارجة", "كلمات إنجليزية + ترشيح سنة + قراءة الملخص", "عشوائياً", "دون ترشيح"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "La littérature scientifique est indexée en anglais : mots-clés anglais + année + abstract.",
+                    "Scientific literature is indexed in English: English keywords + year + abstract.",
+                    "الأدبيات العلمية مفهرسة بالإنجليزية: كلمات إنجليزية + سنة + ملخص.",
+                ),
+            },
+            {
+                "q": L(
+                    "À quoi sert Consensus ?",
+                    "What is Consensus for?",
+                    "ما فائدة Consensus؟",
+                ),
+                "options": L(
+                    ["Traduire", "Résumer ce que disent les études sur une question factuelle", "Dessiner", "Jouer"],
+                    ["Translate", "Summarise what studies say on a factual question", "Draw", "Play"],
+                    ["الترجمة", "تلخيص ما تقوله الدراسات عن سؤال واقعي", "الرسم", "اللعب"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Consensus répond « oui / probablement / non » avec les études à l'appui.",
+                    "Consensus answers \"yes / probably / no\" with supporting studies.",
+                    "يجيب Consensus « نعم / probablement / لا » مع الدراسات الداعمة.",
+                ),
+            },
+            {
+                "q": L(
+                    "Une référence citée est introuvable : verdict ?",
+                    "A cited reference cannot be found: verdict?",
+                    "مرجع مذكور غير موجود: الحكم؟",
+                ),
+                "options": L(
+                    ["On la cite quand même", "Inventée : ne jamais la citer, chercher une vraie source", "On l'invente aussi", "On abandonne"],
+                    ["Cite it anyway", "Invented: never cite it, find a real source", "Invent one too", "Give up"],
+                    ["نستشهد به رغم ذلك", "مختلَق: لا نستشهد به أبداً ونبحث عن مصدر حقيقي", "نختلق مثله", "نستسلم"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Introuvable = inventée (hallucination) : la citer, c'est frauder.",
+                    "Unfindable = invented (hallucination): citing it is fraud.",
+                    "غير الموجود = مختلَق (هلوسة): الاستشهاد به غش.",
+                ),
+            },
+            {
+                "q": L(
+                    "Quel est le réflexe clé du chercheur ?",
+                    "What is the researcher's key reflex?",
+                    "ما السلوك المفتاحي للباحث؟",
+                ),
+                "options": L(
+                    ["Tout croire", "Toujours savoir D'OÙ vient l'information (source ouverte)", "Ne rien lire", "Copier-coller"],
+                    ["Believe everything", "Always know WHERE information comes from (opened source)", "Read nothing", "Copy-paste"],
+                    ["تصديق كل شيء", "معرفة دائماً من أين تأتي المعلومة (مصدر مفتوح)", "لا تقرأ شيئاً", "نسخ ولصق"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Source ouverte + auteur + année = information utilisable ; sinon, rumeur.",
+                    "Opened source + author + year = usable information; else rumour.",
+                    "مصدر مفتوح + مؤلف + سنة = معلومة صالحة؛ وإلا إشاعة.",
+                ),
+            },
+        ],
+    },
     "activites": [
         L(
             "Avant/après : transformer 3 mauvaises recherches en questions complètes (contexte, objectif, format, borne de date).",
@@ -544,51 +847,51 @@ A good research question = an answer verifiable in 3 clicks.""",
 
 ## Dialogue A — « Cherche, mais vérifie ! » (25 min)
 
-**Personnages :** Amina (étudiante), le Chatbot (joué par un camarade), Walid (camarade qui vérifie).
+**Personnages :** Sara (étudiante), le Chatbot (joué par un camarade), Karim (camarade qui vérifie).
 
 ---
 
-Amina : J'ai besoin d'un article récent sur l'intelligence artificielle à l'école. Je demande au chat.
+Sara : J'ai besoin d'un article récent sur l'intelligence artificielle à l'école. Je demande au chat.
 
 Chatbot : Voici trois références : Bennani (2023), Ziani (2022), et un rapport UNESCO (2021). Ce sont des sources excellentes !
 
-Amina : Parfait, je les mets dans mon exposé.
+Sara : Parfait, je les mets dans mon exposé.
 
-Walid : Attends ! Tu les as vérifiées ? Ouvre Google Scholar et cherche « Ziani 2022 »…
+Karim : Attends ! Tu les as vérifiées ? Ouvre Google Scholar et cherche « Ziani 2022 »…
 
-Amina : Hmm, je ne trouve rien. Et « Bennani 2023 » non plus !
+Sara : Hmm, je ne trouve rien. Et « Bennani 2023 » non plus !
 
-Walid : Ce sont des sources fantômes : inventées par le chatbot. Il a peut-être mélangé des vrais auteurs avec de fausses dates.
+Karim : Ce sont des sources fantômes : inventées par le chatbot. Il a peut-être mélangé des vrais auteurs avec de fausses dates.
 
-Amina : Heureusement que je n'ai rien recopié ! Et le rapport UNESCO ?
+Sara : Heureusement que je n'ai rien recopié ! Et le rapport UNESCO ?
 
-Walid : Lui, il existe. Mais vérifie la version exacte, l'année et l'organisation. Utilise toujours Scholar ou le site officiel.
+Karim : Lui, il existe. Mais vérifie la version exacte, l'année et l'organisation. Utilise toujours Scholar ou le site officiel.
 
 Chatbot : Mea culpa. Prochaine fois, je vous conseille de me demander : « cite uniquement des articles vérifiables, avec DOI ».
 
-Amina : Donc la règle, c'est : je croise Perplexity pour comprendre, Scholar pour vérifier, et le cours pour recouper. C'est noté !
+Sara : Donc la règle, c'est : je croise Perplexity pour comprendre, Scholar pour vérifier, et le cours pour recouper. C'est noté !
 
 ---
 
 ## Dialogue B — « Trois clics » (15 min)
 
-**Personnages :** Sofiane (étudiant), sa sœur Sarah (étudiante en médecine), leur père.
+**Personnages :** Yacine (étudiant), sa sœur Lina (étudiante en médecine), leur père.
 
 ---
 
-Sofiane : Papa, on débat en classe : « Le jeu vidéo aide-t-il à apprendre ? »
+Yacine : Papa, on débat en classe : « Le jeu vidéo aide-t-il à apprendre ? »
 
 Père : Et comment tu vas trancher ça ?
 
-Sofiane : Je pose la question dans Consensus. Il répond avec des études réelles.
+Yacine : Je pose la question dans Consensus. Il répond avec des études réelles.
 
-Sarah : Moi en médecine on utilise aussi des outils comme ça. Mais toujours avec un regard critique.
+Lina : Moi en médecine on utilise aussi des outils comme ça. Mais toujours avec un regard critique.
 
-Sofiane : Je regarde le consensus, j'ouvre 2 études, je note les années et les revues, et je compare avec mon cours de psychologie.
+Yacine : Je regarde le consensus, j'ouvre 2 études, je note les années et les revues, et je compare avec mon cours de psychologie.
 
-Sarah : Et si deux études disent le contraire ?
+Lina : Et si deux études disent le contraire ?
 
-Sofiane : C'est ça la science : je présente les deux résultats honnêtement. L'IA m'aide à trouver, pas à trancher à ma place.
+Yacine : C'est ça la science : je présente les deux résultats honnêtement. L'IA m'aide à trouver, pas à trancher à ma place.
 
 Père : « Trouver, pas trancher »… J'aime bien cette phrase.
 
@@ -601,51 +904,51 @@ Un étudiant demande à un chatbot « 3 références sur un thème ». L'autre j
 
 ## Dialogue A — "Search, but check!" (25 min)
 
-**Characters:** Amina (student), the Chatbot (played by a classmate), Walid (classmate who checks).
+**Characters:** Sara (student), the Chatbot (played by a classmate), Karim (classmate who checks).
 
 ---
 
-Amina: I need a recent paper on AI in schools. I will ask the chat.
+Sara: I need a recent paper on AI in schools. I will ask the chat.
 
 Chatbot: Here are three references: Bennani (2023), Ziani (2022), and a UNESCO report (2021). Excellent sources!
 
-Amina: Perfect, I will put them in my presentation.
+Sara: Perfect, I will put them in my presentation.
 
-Walid: Wait! Have you checked them? Open Google Scholar and search "Ziani 2022"…
+Karim: Wait! Have you checked them? Open Google Scholar and search "Ziani 2022"…
 
-Amina: Hmm, I find nothing. And "Bennani 2023" neither!
+Sara: Hmm, I find nothing. And "Bennani 2023" neither!
 
-Walid: Those are ghost sources: invented by the chatbot. It may have mixed real authors with false dates.
+Karim: Those are ghost sources: invented by the chatbot. It may have mixed real authors with false dates.
 
-Amina: Good thing I copied nothing! And the UNESCO report?
+Sara: Good thing I copied nothing! And the UNESCO report?
 
-Walid: That one exists. But check the exact version, the year and the organisation. Always use Scholar or the official site.
+Karim: That one exists. But check the exact version, the year and the organisation. Always use Scholar or the official site.
 
 Chatbot: Mea culpa. Next time, I suggest you ask me: "cite only verifiable papers, with DOI".
 
-Amina: So the rule is: I use Perplexity to understand, Scholar to check, and the lesson to cross-check. Noted!
+Sara: So the rule is: I use Perplexity to understand, Scholar to check, and the lesson to cross-check. Noted!
 
 ---
 
 ## Dialogue B — "Three clicks" (15 min)
 
-**Characters:** Sofiane (student), his sister Sarah (medical student), their father.
+**Characters:** Yacine (student), his sister Lina (medical student), their father.
 
 ---
 
-Sofiane: Dad, we debate in class: "Does video gaming help learning?"
+Yacine: Dad, we debate in class: "Does video gaming help learning?"
 
 Father: And how will you settle this?
 
-Sofiane: I ask Consensus. It answers with real studies.
+Yacine: I ask Consensus. It answers with real studies.
 
-Sarah: In medicine we also use tools like that. But always with a critical eye.
+Lina: In medicine we also use tools like that. But always with a critical eye.
 
-Sofiane: I look at the consensus, I open 2 studies, I note the years and journals, and I compare with my psychology course.
+Yacine: I look at the consensus, I open 2 studies, I note the years and journals, and I compare with my psychology course.
 
-Sarah: And if two studies say the opposite?
+Lina: And if two studies say the opposite?
 
-Sofiane: That is science: I present both results honestly. AI helps me find, not decide for me.
+Yacine: That is science: I present both results honestly. AI helps me find, not decide for me.
 
 Father: "Find, not decide"… I like that sentence.
 

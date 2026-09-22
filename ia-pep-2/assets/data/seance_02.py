@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Séance 02 — Rechercher et comprendre l'information avec l'IA (PEP 2A — ENS)."""
+"""Séance 02 — Panorama des 12+ outils d'IA pour l'étudiant (PEP 2A — ENS).
+Pédagogie : accroche → explication pas à pas → démonstration → exercice → résumé.
+"""
 
 
 def L(fr, en, ar):
@@ -9,43 +11,43 @@ def L(fr, en, ar):
 SEANCE = {
     "num": 2,
     "slug": "seance-02",
-    "icon": "🔎",
+    "icon": "🧰",
     "titles": L(
-        "Rechercher et comprendre l'information avec l'IA",
-        "Searching and understanding information with AI",
-        "البحث عن المعلومات وفهمها بالذكاء الاصطناعي",
+        "Panorama des 12+ outils d'IA pour l'étudiant",
+        "Overview of 12+ AI tools for students",
+        "نظرة عامة على أكثر من 12 أداة ذكاء اصطناعي للطالب",
     ),
     "descriptions": L(
-        "Apprendre à formuler des requêtes efficaces et à utiliser ChatGPT, Perplexity, Google Scholar et Consensus pour trouver et comprendre de l'information fiable pour tes études.",
-        "Learn to write effective queries and to use ChatGPT, Perplexity, Google Scholar and Consensus to find and understand reliable information for your studies.",
-        "أن تتعلّم صياغة طلبات بحث فعّالة واستعمال ChatGPT وPerplexity وGoogle Scholar وConsensus لإيجاد معلومات موثوقة وفهمها في دراستك.",
+        "Vue d'ensemble des outils d'IA : à quoi sert chacun, comment les classer en 4 familles, démonstration rapide de 3 outils et méthode pour toujours choisir le bon.",
+        "Overview of AI tools: what each is for, how to sort them into 4 families, quick demo of 3 tools and a method to always pick the right one.",
+        "نظرة شاملة على أدوات الذكاء: وظيفة كل منها وكيفية تصنيفها في 4 عائلات وعرض سريع لثلاث أدوات ومنهجية لاختيار المناسب دائماً.",
     ),
     "duration": "1 h 30",
     "objectifs": [
         L(
-            "Distinguer un chatbot conversationnel, un moteur de recherche et une base de données académiques.",
-            "Distinguish a conversational chatbot, a search engine and an academic database.",
-            "أن تميّز بين روبوت المحادثة، ومحرّك البحث، وقاعدة البيانات الأكاديمية.",
+            "Classer les outils d'IA en 4 familles : comprendre, chercher, créer, organiser-coder.",
+            "Sort AI tools into 4 families: understand, search, create, organise-code.",
+            "أن يصنّف أدوات الذكاء في 4 عائلات: الفهم والبحث والإنشاء والتنظيم-البرمجة.",
         ),
         L(
-            "Formuler une requête précise en 4 composantes : contexte, objectif, format et contrainte.",
-            "Write a precise query with 4 components: context, goal, format and constraint.",
-            "أن تصوغ طلباً دقيقاً من أربعة عناصر: السياق، والهدف، والصيغة، والقيود.",
+            "Décrire en une phrase l'usage de chacun des 12 outils du module.",
+            "Describe in one sentence the use of each of the module's 12 tools.",
+            "أن يصف بجملة استعمال كل أداة من أدوات الوحدة الاثنتي عشرة.",
         ),
         L(
-            "Utiliser Perplexity pour obtenir une réponse accompagnée de sources citées.",
-            "Use Perplexity to get an answer with cited sources.",
-            "أن تستعمل Perplexity للحصول على إجابة مرفقة بمصادر مذكورة.",
+            "Comparer 3 outils en démonstration : assistant, moteur sourcé, création visuelle.",
+            "Compare 3 tools in a demo: assistant, sourced engine, visual creation.",
+            "أن يقارن 3 أدوات عملياً: مساعد ومحرّك بمصادر وإنشاء بصري.",
         ),
         L(
-            "Chercher de la littérature scientifique avec Google Scholar et Consensus (mots-clés, tri, résumé).",
-            "Search scientific literature with Google Scholar and Consensus (keywords, sorting, abstracts).",
-            "أن تبحث في الأدبيات العلمية بواسطة Google Scholar وConsensus (كلمات مفتاحية، ترتيب، ملخصات).",
+            "Choisir le bon outil pour une tâche avec l'arbre de décision.",
+            "Pick the right tool for a task with the decision tree.",
+            "أن يختار الأداة المناسبة لمهمة بشجرة القرار.",
         ),
         L(
-            "Évaluer la fiabilité d'une information en croisant au moins deux sources.",
-            "Assess the reliability of information by cross-checking at least two sources.",
-            "أن تقيّم موثوقية معلومة عبر تطابق مصدرين على الأقل.",
+            "Éviter les 3 erreurs de débutant : tout demander au même outil, croire sans vérifier, payer avant d'essayer le gratuit.",
+            "Avoid 3 beginner mistakes: asking everything to one tool, believing without checking, paying before trying free.",
+            "أن يتجنّب 3 أخطاء مبتدئة: طلب كل شيء من أداة واحدة والتصديق دون تحقق والدفع قبل تجربة المجاني.",
         ),
     ],
     "prerequis": L(
@@ -53,83 +55,106 @@ SEANCE = {
         "Session 1 completed. Know how to open a browser and, if possible, have a free account on an AI tool.",
         "إتمام الحصة الأولى. معرفة فتح متصفّح، وإن أمكن امتلاك حساب مجاني على أداة ذكاء اصطناعي.",
     ),
+    "accroche": {
+        "question": L(
+            "ChatGPT, Gemini, Perplexity, Canva, Notion… 12 noms sur le tableau : qui peut dire à quoi sert chacun ? Aujourd'hui, on range cette jungle.",
+            "ChatGPT, Gemini, Perplexity, Canva, Notion… 12 names on the board: who can say what each is for? Today, we tidy this jungle.",
+            "ChatGPT وGemini وPerplexity وCanva وNotion… 12 اسماً على السبورة: من يقول وظيفة كل منها؟ اليوم نرتّب هذه الغابة.",
+        ),
+        "analogie": L(
+            "🍳 Les outils d'IA, c'est comme la pharmacie : on ne soigne pas tout avec le même sirop. Le pharmacien (vous, bientôt) lit l'ordonnance (la tâche) puis choisit le bon flacon.",
+            "🍳 AI tools are like the pharmacy: you do not cure everything with the same syrup. The pharmacist (you, soon) reads the prescription (the task) then picks the right bottle.",
+            "🍳 أدوات الذكاء كالصيدلية: لا نداوي كل شيء بنفس الشراب. والصيدلي (أنت قريباً) يقرأ الوصفة (المهمة) ثم يختار القارورة المناسبة.",
+        ),
+        "phrase": L(
+            "💡 12 outils, 4 familles : COMPRENDRE (assistants), CHERCHER (moteurs sourcés), CRÉER (slides, images, voix), ORGANISER-CODER (notes, code, local).",
+            "💡 12 tools, 4 families: UNDERSTAND (assistants), SEARCH (sourced engines), CREATE (slides, images, voice), ORGANISE-CODE (notes, code, local).",
+            "💡 12 أداة و4 عائلات: الفهم (مساعدات) والبحث (محرّكات بمصادر) والإنشاء (عروض وصور وصوت) والتنظيم-البرمجة (ملاحظات وكود ومحلي).",
+        ),
+    },
     "plan": [
         {
-            "time": "00–10",
+            "time": "00–05",
+            "badge": "🎬 A",
             **L(
-                "Accueil, rappel et tour de table",
-                "Welcome, recap and round table",
-                "استقبال ومراجعة وجولة",
+                "Accroche : la jungle des 12 noms",
+                "Hook: the 12-name jungle",
+                "انطلاقة: غابة الأسماء الاثني عشر",
             ),
             "detail": L(
-                "Rappel des 3 règles d'or. Sondage : « Où cherchez-vous une information aujourd'hui ? ».",
-                "Recap of the 3 golden rules. Survey: \"Where do you look for information today?\".",
-                "مراجعة القواعد الذهبية الثلاث. استطلاع: « أين تبحثون عن معلومة اليوم؟ ».",
+                "Sondage : qui utilise quoi ? + analogie de la pharmacie.",
+                "Survey: who uses what? + pharmacy analogy.",
+                "استطلاع: من يستعمل ماذا؟ + تشبيه الصيدلية.",
             ),
         },
         {
-            "time": "10–30",
+            "time": "05–25",
+            "badge": "🧱 B",
             **L(
-                "Partie 1 : 4 outils pour 4 besoins",
-                "Part 1: 4 tools for 4 needs",
-                "الجزء الأوّل: أربع أدوات لأربع حاجات",
+                "Explication : les 4 familles",
+                "Explanation: the 4 families",
+                "شرح: العائلات الأربع",
             ),
             "detail": L(
-                "Chatbot (comprendre), Perplexity (réponses sourcées), Google Scholar (articles), Consensus (consensus scientifique).",
-                "Chatbot (understand), Perplexity (sourced answers), Google Scholar (articles), Consensus (scientific consensus).",
-                "روبوت المحادثة (الفهم)، Perplexity (إجابات بمصادر)، Google Scholar (مقالات)، Consensus (إجماع علمي).",
+                "Comprendre, chercher, créer, organiser-coder : 1 exemple étudiant par famille.",
+                "Understand, search, create, organise-code: 1 student example per family.",
+                "الفهم والبحث والإنشاء والتنظيم-البرمجة: مثال طلابي لكل عائلة.",
             ),
         },
         {
-            "time": "30–45",
+            "time": "25–50",
+            "badge": "🛠️ C",
             **L(
-                "Partie 2 : Formuler une bonne requête",
-                "Part 2: Writing a good query",
-                "الجزء الثاني: صياغة طلب جيد",
+                "Démo : 3 outils en action",
+                "Demo: 3 tools in action",
+                "عرض: 3 أدوات عملياً",
             ),
             "detail": L(
-                "Les 4 composantes (contexte, objectif, format, contrainte) + exemples avant/après.",
-                "The 4 components (context, goal, format, constraint) + before/after examples.",
-                "العناصر الأربعة (سياق، هدف، صيغة، قيد) + أمثلة قبل/بعد.",
+                "Même question à ChatGPT, Perplexity et Canva : comparer les réponses.",
+                "Same question to ChatGPT, Perplexity and Canva: compare answers.",
+                "نفس السؤال لـ ChatGPT وPerplexity وCanva: قارن الأجوبة.",
             ),
         },
         {
-            "time": "45–65",
+            "time": "50–70",
+            "badge": "✏️ D",
             **L(
-                "Partie 3 : La littérature scientifique",
-                "Part 3: Scientific literature",
-                "الجزء الثالث: الأدبيات العلمية",
+                "Exercice guidé : le bon pharmacien",
+                "Guided exercise: the good pharmacist",
+                "تمرين موجّه: الصيدلي الجيد",
             ),
             "detail": L(
-                "Google Scholar et Consensus : mots-clés, filtres, lire un résumé, repérer la revue et l'année.",
-                "Google Scholar and Consensus: keywords, filters, reading an abstract, spotting the journal and the year.",
-                "Google Scholar وConsensus: كلمات مفتاحية، فلاتر، قراءة الملخص، تمييز المجلة والسنة.",
+                "8 situations d'étudiant → prescrire le bon outil avec l'arbre de décision.",
+                "8 student situations → prescribe the right tool with the decision tree.",
+                "8 حالات طلابية ← اصرف الأداة المناسبة بشجرة القرار.",
             ),
         },
         {
-            "time": "65–80",
+            "time": "70–80",
+            "badge": "🛠️ C",
             **L(
-                "Activité : compétition de requêtes",
-                "Activity: query competition",
-                "نشاط: مسابقة الصياغات",
+                "Démo 2 : mauvais vs bon prompt",
+                "Demo 2: bad vs good prompt",
+                "عرض 2: صياغة ضعيفة مقابل قوية",
             ),
             "detail": L(
-                "Par binômes : même question, meilleure requête pour 2 outils, puis comparaison des résultats.",
-                "In pairs: same question, best query for 2 tools, then comparison of results.",
-                "في مجموعات ثنائية: نفس السؤال، أفضل صياغة لأداتين، ثم مقارنة النتائج.",
+                "« Fais mon exposé » contre la requête en 4 composantes : le fossé en direct.",
+                "“Do my talk” vs the 4-component query: the gap, live.",
+                "« أنجز عرضي » مقابل الصياغة بالعناصر الأربعة: الهوة مباشرة.",
             ),
         },
         {
             "time": "80–90",
+            "badge": "📋 E",
             **L(
-                "Synthèse et annonce de la séance 3",
-                "Wrap-up and preview of session 3",
-                "خلاصة وتقديم الحصة الثالثة",
+                "Synthèse, quiz et annonce de la séance 3",
+                "Wrap-up, quiz and preview of session 3",
+                "خلاصة واختبار وتقديم الحصة الثالثة",
             ),
-"detail": L(
-                "« À retenir », questions. Annonce : approfondir la recherche avec Perplexity et vérifier la fiabilité des sources.",
-                "Key takeaways, Q&A. Preview: going deeper with Perplexity and checking source reliability.",
-                "« ما يجب تذكّره » والأسئلة. تقديم: تعميق البحث بـ Perplexity والتحقق من موثوقية المصادر.",
+            "detail": L(
+                "« À retenir ». Annonce : la recherche approfondie avec Perplexity et Scholar.",
+                "Key takeaways. Preview: deep research with Perplexity and Scholar.",
+                "« ما يجب تذكّره ». تقديم: البحث المعمَّق بـ Perplexity وScholar.",
             ),
         },
     ],
@@ -137,54 +162,54 @@ SEANCE = {
         {
             "id": "s1",
             "titre": L(
-                "4 outils pour 4 besoins différents",
-                "4 tools for 4 different needs",
-                "أربع أدوات لأربع حاجات مختلفة",
+                "Les 4 familles : rangez la jungle",
+                "The 4 families: tidy the jungle",
+                "العائلات الأربع: رتّب الغابة",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Le réflexe du bon étudiant : choisir l'outil selon le besoin, pas l'inverse. Une même question peut recevoir des réponses très différentes selon l'outil.",
-                        "The good student's reflex: choose the tool according to the need, not the other way round. The same question can get very different answers depending on the tool.",
-                        "من سلوك الطالب الجيّد: اختيار الأداة حسب الحاجة، لا العكس. قد تتلقّى نفس السؤال إجابات مختلفة جداً حسب الأداة.",
+                        "Retenez 4 tiroirs, pas 12 noms. Devant chaque tâche, demandez-vous : est-ce que je veux COMPRENDRE, CHERCHER, CRÉER ou ORGANISER-CODER ? Le tiroir désigne l'outil.",
+                        "Remember 4 drawers, not 12 names. Before each task, ask: do I want to UNDERSTAND, SEARCH, CREATE or ORGANISE-CODE? The drawer points to the tool.",
+                        "احفظ 4 أدراج لا 12 اسماً. أمام كل مهمة اسأل: هل أريد الفهم أم البحث أم الإنشاء أم التنظيم-البرمجة؟ الدرج يدل على الأداة.",
                     ),
                 },
                 {
                     "t": "table",
                     "header": L(
-                        ["Besoin", "Outil", "Ce qu'il fait", "Limite"],
-                        ["Need", "Tool", "What it does", "Limit"],
-                        ["حاجة", "أداة", "ما تفعله", "حدّها"],
+                        ["Famille", "Outils", "Exemple étudiant"],
+                        ["Family", "Tools", "Student example"],
+                        ["العائلة", "الأدوات", "مثال طلابي"],
                     ),
                     "rows": L(
                         [
-                            ["Comprendre un concept", "ChatGPT / Gemini", "Explique, reformule, résume", "Peut halluciner, pas de sources"],
-                            ["Réponse + sources", "Perplexity", "Répond avec des liens cités", "Sources pas toujours de qualité"],
-                            ["Trouver des articles", "Google Scholar", "Indexe des articles et citations", "Pas de synthèse, outil brut"],
-                            ["Savoir ce que dit la science", "Consensus", "Résume des études sur une question", "Anglais + sciences avant tout"],
+                            ["🔵 COMPRENDRE", "ChatGPT, Gemini, Claude", "« Explique-moi Piaget en 5 points »"],
+                            ["🟢 CHERCHER", "Perplexity, Scholar, Consensus, NotebookLM", "« Quelles études 2020-2026 sur les écrans ? »"],
+                            ["🟠 CRÉER", "Gamma, Canva IA, DALL·E, ElevenLabs", "« 5 slides + 1 affiche pour mon exposé »"],
+                            ["🟣 ORGANISER-CODER", "Notion AI, Copilot/Cursor, Ollama, Dify", "« Planning 4 semaines + script Python »"],
                         ],
                         [
-                            ["Understanding a concept", "ChatGPT / Gemini", "Explains, rephrases, summarises", "Can hallucinate, no sources"],
-                            ["Answer + sources", "Perplexity", "Answers with cited links", "Sources not always high-quality"],
-                            ["Finding articles", "Google Scholar", "Indexes papers and citations", "No synthesis, raw tool"],
-                            ["Knowing what science says", "Consensus", "Summarises studies on a question", "English + science first"],
+                            ["🔵 UNDERSTAND", "ChatGPT, Gemini, Claude", "\"Explain Piaget in 5 points\""],
+                            ["🟢 SEARCH", "Perplexity, Scholar, Consensus, NotebookLM", "\"Which 2020-2026 studies on screens?\""],
+                            ["🟠 CREATE", "Gamma, Canva AI, DALL·E, ElevenLabs", "\"5 slides + 1 poster for my talk\""],
+                            ["🟣 ORGANISE-CODE", "Notion AI, Copilot/Cursor, Ollama, Dify", "\"4-week schedule + Python script\""],
                         ],
                         [
-                            ["فهم مفهوم", "ChatGPT / Gemini", "يشرح ويعيد الصياغة ويلخّص", "قد يهلوس، بلا مصادر"],
-                            ["إجابة + مصادر", "Perplexity", "يجيب مع روابط مذكورة", "المصادر ليست دائماً عالية الجودة"],
-                            ["إيجاد مقالات", "Google Scholar", "يفهرس المقالات والاستشهادات", "لا تلخيص، أداة خام"],
-                            ["معرفة ما تقوله الدراسات", "Consensus", "يلخّص دراسات حول سؤال", "إنجليزية + علوم بالأساس"],
+                            ["🔵 الفهم", "ChatGPT وGemini وClaude", "« اشرح لي بياجيه في 5 نقاط »"],
+                            ["🟢 البحث", "Perplexity وScholar وConsensus وNotebookLM", "« ما دراسات 2020-2026 عن الشاشات؟ »"],
+                            ["🟠 الإنشاء", "Gamma وCanva IA وDALL·E وElevenLabs", "« 5 شرائح + ملصق لعرضي »"],
+                            ["🟣 التنظيم-البرمجة", "Notion AI وCopilot/Cursor وOllama وDify", "« مخطط 4 أسابيع + برنامج بايثون »"],
                         ],
                     ),
                 },
                 {
                     "t": "note",
-                    "kind": "tip",
+                    "kind": "idea",
                     **L(
-                        "<strong>Règle du bon réflexe :</strong> pour « comprendre », un chatbot ; pour « vérifier », Perplexity ; pour « citer un article », Google Scholar ; pour « connaître le consensus », Consensus.",
-                        "<strong>Good-reflex rule:</strong> to \"understand\", a chatbot; to \"check\", Perplexity; to \"cite a paper\", Google Scholar; to \"know the consensus\", Consensus.",
-                        "<strong>قاعدة السلوك الجيّد:</strong> لـ « الفهم » روبوت محادثة؛ لـ « التثبّت » Perplexity؛ لـ « الاستشهاد بمقال » Google Scholar؛ لـ « معرفة الإجماع » Consensus.",
+                        "<strong>🔗 Rappel séance 1 :</strong> les 3 règles d'or (vérifier, citer, garder son jugement) s'appliquent aux 4 familles. Et souvenez-vous de l'acteur brillant : convaincant ne veut pas dire vrai — dans AUCUNE famille.",
+                        "<strong>🔗 Reminder of session 1:</strong> the 3 golden rules (verify, cite, keep judgement) apply to all 4 families. And remember the brilliant actor: convincing does not mean true — in NO family.",
+                        "<strong>🔗 تذكير بالحصة 1:</strong> القواعد الذهبية الثلاث (تحقّق واستشهد وحافظ على حكمك) تنطبق على العائلات الأربع. وتذكّر الممثل البارع: المقنع لا يعني الصحيح — في أي عائلة.",
                     ),
                 },
             ],
@@ -192,49 +217,79 @@ SEANCE = {
         {
             "id": "s2",
             "titre": L(
-                "Formuler une requête efficace : 4 composantes",
-                "Writing an effective query: 4 components",
-                "صياغة طلب فعّال: أربعة عناصر",
+                "Les 12 outils en fiches express",
+                "The 12 tools in flash sheets",
+                "الأدوات الاثنتا عشرة في بطاقات سريعة",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "La qualité de la réponse dépend de la qualité de la question. Ajoute du contexte et de la précision : l'IA n'est pas dans ta tête.",
-                        "The quality of the answer depends on the quality of the question. Add context and precision: AI is not inside your head.",
-                        "جودة الإجابة تتوقف على جودة السؤال. أضف السياق والدقّة: الذكاء الاصطناعي ليس داخل رأسك.",
+                        "Une phrase par outil, à connaître par cœur. Le détail complet (étapes, forces, limites) est sur la page « Outils IA » du module : chaque outil y a sa fiche.",
+                        "One sentence per tool, to know by heart. Full detail (steps, strengths, limits) is on the module's \"AI Tools\" page: each tool has its sheet there.",
+                        "جملة لكل أداة تُحفَظ. والتفصيل الكامل (خطوات ومزايا وحدود) في صفحة « أدوات الذكاء » للوحدة: لكل أداة بطاقتها.",
                     ),
                 },
                 {
                     "t": "ul",
                     **L(
                         [
-                            "<strong>1. Contexte</strong> : qui tu es, de quel cours il s'agit, ton niveau.",
-                            "<strong>2. Objectif</strong> : que veux-tu faire de la réponse (comprendre, citer, réviser) ?",
-                            "<strong>3. Format</strong> : liste, tableau, résumé, plan, 5 lignes…",
-                            "<strong>4. Contrainte</strong> : sources à privilégier, langue, ton, date de fraîcheur.",
+                            "<strong>ChatGPT :</strong> l'assistant généraliste qui explique, résume et rédige.",
+                            "<strong>Gemini :</strong> comme ChatGPT + lit images et PDF.",
+                            "<strong>Claude :</strong> le champion des longs textes en bon français.",
+                            "<strong>Perplexity :</strong> répond AVEC les sources à ouvrir.",
+                            "<strong>Scholar / Consensus :</strong> la bibliothèque scientifique (articles, consensus).",
+                            "<strong>NotebookLM :</strong> interroge VOS propres PDF de cours.",
+                            "<strong>Gamma :</strong> transforme un plan en diaporama.",
+                            "<strong>Canva IA :</strong> affiches et visuels magnifiques.",
+                            "<strong>Copilot / Cursor :</strong> le copilote du programmeur.",
+                            "<strong>Notion AI :</strong> notes, plannings et tableaux intelligents.",
+                            "<strong>DALL·E :</strong> dessine ce que vous décrivez.",
+                            "<strong>ElevenLabs / Whisper :</strong> voix de synthèse et transcription.",
+                            "<strong>Ollama :</strong> une IA chez vous, hors-ligne et gratuite.",
+                            "<strong>Dify :</strong> votre chatbot sans coder.",
                         ],
                         [
-                            "<strong>1. Context</strong>: who you are, which lesson it concerns, your level.",
-                            "<strong>2. Goal</strong>: what will you do with the answer (understand, cite, revise)?",
-                            "<strong>3. Format</strong>: list, table, summary, outline, 5 lines…",
-                            "<strong>4. Constraint</strong>: preferred sources, language, tone, freshness date.",
+                            "<strong>ChatGPT:</strong> the generalist assistant explaining, summarising, writing.",
+                            "<strong>Gemini:</strong> like ChatGPT + reads images and PDFs.",
+                            "<strong>Claude:</strong> the champion of long texts in good French.",
+                            "<strong>Perplexity:</strong> answers WITH sources to open.",
+                            "<strong>Scholar / Consensus:</strong> the scientific library (papers, consensus).",
+                            "<strong>NotebookLM:</strong> questions YOUR own course PDFs.",
+                            "<strong>Gamma:</strong> turns an outline into slides.",
+                            "<strong>Canva AI:</strong> gorgeous posters and visuals.",
+                            "<strong>Copilot / Cursor:</strong> the programmer's copilot.",
+                            "<strong>Notion AI:</strong> smart notes, schedules and boards.",
+                            "<strong>DALL·E:</strong> draws what you describe.",
+                            "<strong>ElevenLabs / Whisper:</strong> synthetic voice and transcription.",
+                            "<strong>Ollama:</strong> an AI at home, offline and free.",
+                            "<strong>Dify:</strong> your chatbot without coding.",
                         ],
                         [
-                            "<strong>1. السياق</strong>: من أنت، أي درس، ما مستواك.",
-                            "<strong>2. الهدف</strong>: ماذا ستفعل بالإجابة (فهم، استشهاد، مراجعة)؟",
-                            "<strong>3. الصيغة</strong>: قائمة، جدول، ملخص، خطة، خمس أسطر…",
-                            "<strong>4. القيود</strong>: مصادر مفضلة، لغة، نبرة، تاريخ حداثة.",
+                            "<strong>ChatGPT:</strong> المساعد العام الذي يشرح ويلخّص ويكتب.",
+                            "<strong>Gemini:</strong> مثل ChatGPT + يقرأ الصور وPDF.",
+                            "<strong>Claude:</strong> بطل النصوص الطويلة بفرنسية جيدة.",
+                            "<strong>Perplexity:</strong> يجيب مع مصادر تُفتَح.",
+                            "<strong>Scholar / Consensus:</strong> المكتبة العلمية (مقالات وإجماع).",
+                            "<strong>NotebookLM:</strong> يستجوب ملفات دروسك الخاصة.",
+                            "<strong>Gamma:</strong> يحوّل الخطة إلى شرائح.",
+                            "<strong>Canva IA:</strong> ملصقات وصور رائعة.",
+                            "<strong>Copilot / Cursor:</strong> مساعد المبرمج.",
+                            "<strong>Notion AI:</strong> ملاحظات ومخططات ولوحات ذكية.",
+                            "<strong>DALL·E:</strong> يرسم ما تصفه.",
+                            "<strong>ElevenLabs / Whisper:</strong> صوت اصطناعي ونسخ.",
+                            "<strong>Ollama:</strong> ذكاء عندك دون اتصال ومجاناً.",
+                            "<strong>Dify:</strong> روبوتك دون برمجة.",
                         ],
                     ),
                 },
                 {
                     "t": "note",
-                    "kind": "goal",
+                    "kind": "tip",
                     **L(
-                        "<strong>Exemple « avant » :</strong> « parle-moi de Piaget ». <br><strong>Exemple « après » :</strong> « Je suis étudiant en 2ème année PEP, cours de psychologie de l'enfant niveau licence. Explique-moi en 10 lignes la théorie du développement cognitif de Piaget, avec 3 exemples concrets utilisables en classe de primaire. »",
-                        "<strong>\"Before\" example:</strong> \"Tell me about Piaget\". <br><strong>\"After\" example:</strong> \"I am a 2nd-year PEP student, bachelor-level child psychology course. Explain in 10 lines Piaget's theory of cognitive development, with 3 concrete examples usable in primary class.\"",
-                        "<strong>مثال « قبل »:</strong> « حدّثني عن بياجيه ». <br><strong>مثال « بعد »:</strong> « أنا طالب في الثانية PEP، درس علم نفس الطفل بمستوى ليسانس. اشرح لي في عشرة أسطر نظرية بياجيه في النمو المعرفي، مع ثلاثة أمثلة ملموسة قابلة للاستعمال في قسم الابتدائي ».",
+                        "<strong>Astuce mémoire :</strong> 4 couleurs = 4 familles (🔵🟢🟠🟣). Demandez à un camarade : « cite-moi les 3 outils verts » — celui qui hésite révise la fiche !",
+                        "<strong>Memory tip:</strong> 4 colours = 4 families (🔵🟢🟠🟣). Ask a classmate: \"name the 3 green tools\" — whoever hesitates revises the sheet!",
+                        "<strong>نصيحة حفظ:</strong> 4 ألوان = 4 عائلات (🔵🟢🟠🟣). اسأل زميلك: « سمِّ الأدوات الخضراء الثلاث » — من يتردد يراجع البطاقة!",
                     ),
                 },
             ],
@@ -242,52 +297,49 @@ SEANCE = {
         {
             "id": "s3",
             "titre": L(
-                "Chercher et lire de la littérature scientifique",
-                "Searching and reading scientific literature",
-                "البحث في الأدبيات العلمية وقراءتها",
+                "Démo : la même question à 3 outils",
+                "Demo: the same question to 3 tools",
+                "عرض: نفس السؤال لثلاث أدوات",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Pour ton mémoire, un exposé ou un dossier, Google Scholar et Consensus donnent accès à des études vérifiables. Apprends à les interroger comme un chercheur débutant.",
-                        "For your thesis, a presentation or a portfolio, Google Scholar and Consensus give access to verifiable studies. Learn to query them like a beginner researcher.",
-                        "لمذكّرتك أو عرضك أو ملفّك، يمنحك Google Scholar وConsensus الوصول إلى دراسات قابلة للتحقق. تعلّم الاستعلام فيها كباحث مبتدئ.",
+                        "Question test : « Explique la différenciation pédagogique avec un exemple de primaire. » Regardez ce que CHAQUE outil apporte — aucun ne fait tout.",
+                        "Test question: \"Explain pedagogical differentiation with a primary example.\" Watch what EACH tool brings — none does everything.",
+                        "السؤال الاختباري: « اشرح التفريد البيداغوجي بمثال ابتدائي ». لاحظ ما يقدمه كل أداة — لا واحدة تفعل كل شيء.",
                     ),
                 },
                 {
                     "t": "ul",
                     **L(
                         [
-                            "<strong>Choisis tes mots-clés</strong> : traduis-les en anglais (la science s'écrit surtout en anglais) et ajoute des synonymes.",
-                            "<strong>Utilise les filtres</strong> : année, langue, auteur, « depuis 2015 » pour des données récentes.",
-                            "<strong>Lis le résumé (abstract)</strong> avant de lire l'article : question, méthode, résultat.",
-                            "<strong>Repère la revue et la date</strong> : une revue à comité de lecture est plus fiable qu'un site commercial.",
-                            "<strong>Consensus</strong> : pose une question claire, lis le « consensus meter » et compare 2-3 études.",
+                            "<strong>ChatGPT (🔵) :</strong> explication claire + exemple, sans sources. Parfait pour COMPRENDRE vite.",
+                            "<strong>Perplexity (🟢) :</strong> réponse plus courte MAIS avec 3 liens : parfait pour VÉRIFIER et citer.",
+                            "<strong>Canva IA (🟠) :</strong> une affiche « différenciation » pour la classe : parfait pour MONTRER.",
+                            "<strong>Leçon :</strong> comprendre → bleu ; prouver → vert ; montrer → orange. Trois outils, trois métiers.",
                         ],
                         [
-                            "<strong>Choose your keywords</strong>: translate them into English (science is mostly written in English) and add synonyms.",
-                            "<strong>Use filters</strong>: year, language, author, \"since 2015\" for recent data.",
-                            "<strong>Read the abstract</strong> before the full paper: question, method, result.",
-                            "<strong>Spot the journal and the date</strong>: a peer-reviewed journal is more reliable than a commercial site.",
-                            "<strong>Consensus</strong>: ask a clear question, read the \"consensus meter\" and compare 2-3 studies.",
+                            "<strong>ChatGPT (🔵):</strong> clear explanation + example, no sources. Perfect to UNDERSTAND fast.",
+                            "<strong>Perplexity (🟢):</strong> shorter answer BUT with 3 links: perfect to CHECK and cite.",
+                            "<strong>Canva AI (🟠):</strong> a \"differentiation\" poster for class: perfect to SHOW.",
+                            "<strong>Lesson:</strong> understand → blue; prove → green; show → orange. Three tools, three jobs.",
                         ],
                         [
-                            "<strong>اختر كلماتك المفتاحية</strong>: ترجمها إلى الإنجليزية (العلم يُكتب غالباً بالإنجليزية) وأضف مترادفات.",
-                            "<strong>استعمل الفلاتر</strong>: السنة، اللغة، المؤلف، « منذ 2015 » للحصول على بيانات حديثة.",
-                            "<strong>اقرأ الملخص</strong> قبل قراءة المقال: السؤال، المنهج، النتيجة.",
-                            "<strong>ميّز المجلة والتاريخ</strong>: مجلة محكّمة أوثق من موقع تجاري.",
-                            "<strong>Consensus</strong>: اطرح سؤالاً واضحاً، اقرأ « مقياس الإجماع » وقارن 2-3 دراسات.",
+                            "<strong>ChatGPT (🔵):</strong> شرح واضح + مثال، دون مصادر. مثالي للفهم السريع.",
+                            "<strong>Perplexity (🟢):</strong> جواب أقصر لكن مع 3 روابط: مثالي للتحقق والاستشهاد.",
+                            "<strong>Canva IA (🟠):</strong> ملصق « التفريد » للقسم: مثالي للعرض.",
+                            "<strong>العبرة:</strong> للفهم ← أزرق؛ للإثبات ← أخضر؛ للعرض ← برتقالي. ثلاث أدوات وثلاث مهن.",
                         ],
                     ),
                 },
                 {
                     "t": "note",
-                    "kind": "warn",
+                    "kind": "idea",
                     **L(
-                        "<strong>Piège fréquent :</strong> demander à un chatbot de « citer des sources » peut produire des références inventées. Toujours vérifier dans Google Scholar qu'elle existe réellement (titre, auteurs, année).",
-                        "<strong>Common trap:</strong> asking a chatbot to \"cite sources\" can produce invented references. Always check in Google Scholar that it really exists (title, authors, year).",
-                        "<strong>مصيدة شائعة:</strong> طلب « مصادر » من روبوت محادثة قد يولّد مراجع مختلقة. تحقّق دائماً في Google Scholar من وجودها فعلاً (العنوان، المؤلفون، السنة).",
+                        "<strong>🧪 Exemple concret :</strong> Karim prépare un exposé sur l'eau : ChatGPT lui donne le plan en 1 minute, Perplexity lui trouve 3 sources datées, Canva lui dessine l'affiche du cycle. Trois pharmaciens, une ordonnance : l'exposé.",
+                        "<strong>🧪 Concrete example:</strong> Karim prepares a talk on water: ChatGPT gives the outline in 1 minute, Perplexity finds 3 dated sources, Canva draws the cycle poster. Three pharmacists, one prescription: the talk.",
+                        "<strong>🧪 مثال ملموس:</strong> كريم يحضّر عرضاً عن الماء: ChatGPT يعطيه الخطة في دقيقة وPerplexity يجد 3 مصادر مؤرَّخة وCanva يرسم ملصق الدورة. ثلاثة صيادلة ووصفة واحدة: العرض.",
                     ),
                 },
             ],
@@ -295,52 +347,55 @@ SEANCE = {
         {
             "id": "s4",
             "titre": L(
-                "Évaluer et croiser les sources",
-                "Evaluating and cross-checking sources",
-                "تقييم المصادر وتطابقها",
+                "Bien choisir : l'arbre de décision du pharmacien",
+                "Choose well: the pharmacist's decision tree",
+                "أحسِن الاختيار: شجرة قرار الصيدلي",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Une information répétée est plus fiable qu'une information isolée. Confronte toujours l'IA à ton cours, tes polycopiés et au moins une source officielle.",
-                        "Information that is repeated is more reliable than isolated information. Always confront AI with your lesson, your handouts and at least one official source.",
-                        "المعلومة المتكررة أوثق من المعلومة المنعزلة. قارن دائماً الذكاء الاصطناعي بدرسك وطبقاتك ومصدر رسمي واحد على الأقل.",
+                        "Trois questions suffisent pour ne plus jamais se tromper d'outil.",
+                        "Three questions are enough to never pick the wrong tool again.",
+                        "تكفي ثلاثة أسئلة لئلا تخطئ الأداة أبداً.",
                     ),
                 },
                 {
-                    "t": "ul",
+                    "t": "ol",
                     **L(
                         [
-                            "<strong>Qui ?</strong> L'auteur est-il identifiable ? est-il qualifié (université, organisme) ?",
-                            "<strong>Quand ?</strong> La date : une info de 2019 sur un sujet qui évolue vite (IA, politique) peut être périmée.",
-                            "<strong>Quoi ?</strong> Fait vérifiable, analyse sourcée, ou simple opinion ?",
-                            "<strong>Vérifiable ?</strong> Peux-tu retrouver la même info ailleurs (Perplexity + Google Scholar + cours) ?",
-                            "<strong>Pourquoi ?</strong> Le but du document : informer, vendre, convaincre, tromper ?",
+                            "<strong>1. Ai-je besoin de SOURCES ?</strong> Oui → 🟢 (Perplexity, Scholar). Non → question 2.",
+                            "<strong>2. Est-ce que je CRÉE quelque chose à montrer ?</strong> Oui → 🟠 (Gamma, Canva, DALL·E). Non → question 3.",
+                            "<strong>3. Est-ce que j'ORGANISE ou je CODE ?</strong> Oui → 🟣 (Notion, Copilot, Ollama, Dify). Non → 🔵 (ChatGPT, Gemini, Claude).",
                         ],
                         [
-                            "<strong>Who?</strong> Is the author identifiable? Are they qualified (university, organisation)?",
-                            "<strong>When?</strong> The date: 2019 information on a fast-moving topic (AI, politics) may be outdated.",
-                            "<strong>What?</strong> Verifiable fact, sourced analysis, or mere opinion?",
-                            "<strong>Checkable?</strong> Can you find the same information elsewhere (Perplexity + Google Scholar + lesson)?",
-                            "<strong>Why?</strong> The document's purpose: inform, sell, persuade, deceive?",
+                            "<strong>1. Do I need SOURCES?</strong> Yes → 🟢 (Perplexity, Scholar). No → question 2.",
+                            "<strong>2. Am I CREATING something to show?</strong> Yes → 🟠 (Gamma, Canva, DALL·E). No → question 3.",
+                            "<strong>3. Am I ORGANISING or CODING?</strong> Yes → 🟣 (Notion, Copilot, Ollama, Dify). No → 🔵 (ChatGPT, Gemini, Claude).",
                         ],
                         [
-                            "<strong>من؟</strong> هل المؤلف محدّد؟ وهل هو مؤهّل (جامعة، مؤسسة)؟",
-                            "<strong>متى؟</strong> التاريخ: معلومة 2019 في موضوع سريع التغيّر (الذكاء الاصطناعي، السياسة) قد تكون قديمة.",
-                            "<strong>ماذا؟</strong> حقيقة قابلة للتحقق، تحليل بمصادر، أم رأي فقط؟",
-                            "<strong>قابل للتحقق؟</strong> هل تجد المعلومة نفسها في مكان آخر (Perplexity + Google Scholar + درسك)؟",
-                            "<strong>لماذا؟</strong> غاية الوثيقة: إعلام، بيع، إقناع، تضليل؟",
+                            "<strong>1. هل أحتاج مصادر؟</strong> نعم ← 🟢 (Perplexity وScholar). لا ← السؤال 2.",
+                            "<strong>2. هل أُنشئ شيئاً للعرض؟</strong> نعم ← 🟠 (Gamma وCanva وDALL·E). لا ← السؤال 3.",
+                            "<strong>3. هل أنظّم أم أبرمج؟</strong> نعم ← 🟣 (Notion وCopilot وOllama وDify). لا ← 🔵 (ChatGPT وGemini وClaude).",
                         ],
                     ),
                 },
                 {
                     "t": "note",
-                    "kind": "goal",
+                    "kind": "tip",
                     **L(
-                        "<strong>À retenir :</strong> « 2 sources indépendantes qui concordent » est une base saine. Une seule source = doute raisonnable.",
-                        "<strong>Remember:</strong> \"two independent sources that agree\" is a sound basis. A single source = reasonable doubt.",
-                        "<strong>تذكّر:</strong> « مصدران مستقلان يتفقان » أساس سليم. مصدر واحد = شكّ معقول.",
+                        "<strong>Les 4 composantes d'une bonne requête :</strong> contexte (qui tu es, quel cours), objectif (comprendre, citer, réviser), format (liste, tableau, 5 lignes), contrainte (sources, langue, dates). La démo 2 les applique en direct.",
+                        "<strong>The 4 components of a good query:</strong> context (who you are, which course), goal (understand, cite, revise), format (list, table, 5 lines), constraint (sources, language, dates). Demo 2 applies them live.",
+                        "<strong>عناصر الصياغة الجيدة الأربعة:</strong> السياق (من أنت وأي درس) والهدف (فهم واستشهاد ومراجعة) والصيغة (قائمة وجدول و5 أسطر) والقيد (مصادر ولغة وتواريخ). العرض 2 يطبّقها مباشرة.",
+                    ),
+                },
+                {
+                    "t": "note",
+                    "kind": "warn",
+                    **L(
+                        "<strong>❌ 3 erreurs de débutant :</strong> 1) tout demander au même outil (le sirop unique) ; 2) croire sans ouvrir les sources ; 3) payer un abonnement avant d'avoir épuisé le gratuit étudiant.",
+                        "<strong>❌ 3 beginner mistakes:</strong> 1) asking everything to one tool (the single syrup); 2) believing without opening sources; 3) paying before exhausting free student tiers.",
+                        "<strong>❌ 3 أخطاء مبتدئة:</strong> 1) طلب كل شيء من أداة واحدة (الشراب الوحيد)؛ 2) التصديق دون فتح المصادر؛ 3) الدفع قبل استنفاد المجاني الطلابي.",
                     ),
                 },
             ],
@@ -356,31 +411,40 @@ SEANCE = {
                 {
                     "t": "p",
                     **L(
-                        "La règle ici est simple : jamais un seul outil pour tout, jamais un outil sans vérification. Combinez les familles (texte + recherche + quiz) et gardez toujours le dernier mot.",
-                        "The rule here is simple: never one single tool for everything, never a tool without checking. Combine families (text + search + quiz) and always keep the final word.",
-                        "القاعدة هنا بسيطة: لا أداة واحدة لكل شيء أبداً، ولا أداة دون تحقّق. اجمع بين العائلات (نصّ + بحث + اختبار) واحتفظ دائماً بكلمة الفصل.",
+                        "Le bon pharmacien ne connaît pas 12 sirops par cœur le premier jour : il connaît 4 tiroirs, 1 outil préféré par tiroir, et la page « Outils IA » pour le reste.",
+                        "The good pharmacist does not memorise 12 syrups on day one: he knows 4 drawers, 1 favourite tool per drawer, and the \"AI Tools\" page for the rest.",
+                        "الصيدلي الجيد لا يحفظ 12 شراباً أول يوم: يعرف 4 أدراج وأداة مفضلة لكل درج وصفحة « أدوات الذكاء » للباقي.",
+                    ),
+                },
+                {
+                    "t": "note",
+                    "kind": "goal",
+                    **L(
+                        "<strong>➡️ Pont vers la séance 3 :</strong> la famille verte (CHERCHER) mérite une séance entière : Perplexity en profondeur, Scholar comme un chercheur, et l'art de vérifier (séance 3).",
+                        "<strong>➡️ Bridge to session 3:</strong> the green family (SEARCH) deserves a whole session: Perplexity in depth, Scholar like a researcher, and the art of checking (session 3).",
+                        "<strong>➡️ جسر إلى الحصة 3:</strong> العائلة الخضراء (البحث) تستحق حصة كاملة: Perplexity بعمق وScholar كباحث وفن التحقق (الحصة 3).",
                     ),
                 },
                 {
                     "t": "ul",
                     **L(
                         [
-                            "<strong>✅ Choisir selon la tâche :</strong> rédiger → assistant de texte ; illustrer → générateur d'images ; vérifier → Perplexity / Scholar ; présenter → Gamma.",
-                            "<strong>✅ Tester avant la classe :</strong> version gratuite, langue, publicité, âge minimum des élèves.",
-                            "<strong>✅ Gérer ses données :</strong> ne jamais donner de données personnelles d'élèves ni de documents confidentiels.",
-                            "<strong>✅ Comparer 2 outils :</strong> poser la même question à deux IA et regarder les différences.",
+                            "<strong>✅ 1 favori par tiroir :</strong> choisissez vos 4 outils de tous les jours cette semaine.",
+                            "<strong>✅ Gratuit d'abord :</strong> comptes étudiants gratuits avant tout abonnement.",
+                            "<strong>✅ Fiche outils :</strong> gardez la page « Outils IA » en favori du navigateur.",
+                            "<strong>✅ Testez à deux :</strong> même question, deux outils, comparez — le meilleur exercice.",
                         ],
                         [
-                            "<strong>✅ Choose by task:</strong> write → text assistant; illustrate → image generator; check → Perplexity / Scholar; present → Gamma.",
-                            "<strong>✅ Test before class:</strong> free version, language, advertising, minimum pupil age.",
-                            "<strong>✅ Manage your data:</strong> never feed pupils' personal data or confidential documents.",
-                            "<strong>✅ Compare 2 tools:</strong> ask the same question to two AIs and look at the differences.",
+                            "<strong>✅ 1 favourite per drawer:</strong> pick your 4 everyday tools this week.",
+                            "<strong>✅ Free first:</strong> free student accounts before any subscription.",
+                            "<strong>✅ Tools sheet:</strong> bookmark the \"AI Tools\" page in your browser.",
+                            "<strong>✅ Test in pairs:</strong> same question, two tools, compare — the best exercise.",
                         ],
                         [
-                            "<strong>✅ اختر حسب المهمّة:</strong> الكتابة → مساعد نصّي؛ التوضيح → مولّد صور؛ التحقق → Perplexity / Scholar؛ العرض → Gamma.",
-                            "<strong>✅ جرّب قبل القسم:</strong> النسخة المجانية، اللغة، الإعلانات، السنّ الأدنى للتلاميذ.",
-                            "<strong>✅ دبّر بياناتك:</strong> لا تُدخل أبداً بيانات تلاميذ شخصية ولا وثائق سرّية.",
-                            "<strong>✅ قارن أداتين:</strong> اطرح السؤال نفسه على ذكاءين اصطناعيين ولاحظ الفروق.",
+                            "<strong>✅ مفضلة لكل درج:</strong> اختر أدواتك الأربع اليومية هذا الأسبوع.",
+                            "<strong>✅ المجاني أولاً:</strong> حسابات طلابية مجانية قبل أي اشتراك.",
+                            "<strong>✅ بطاقة الأدوات:</strong> احفظ صفحة « أدوات الذكاء » في متصفحك.",
+                            "<strong>✅ جرّب ثنائياً:</strong> نفس السؤال وأداتان وقارن — أفضل تمرين.",
                         ],
                     ),
                 },
@@ -388,9 +452,9 @@ SEANCE = {
                     "t": "note",
                     "kind": "warn",
                     **L(
-                        "<strong>❌ Erreurs à éviter :</strong> utiliser le premier outil trouvé sans vérifier sa politique de données, croire qu'une réponse « gratuite » est sans publicité, et surtout <strong>montrer aux élèves un contenu jamais relu</strong>. L'IA propose, l'enseignant dispose.",
-                        "<strong>❌ Mistakes to avoid:</strong> using the first tool found without checking its data policy, believing that a \"free\" tool has no advertising, and above all <strong>showing pupils content never proofread</strong>. AI proposes, the teacher disposes.",
-                        "<strong>❌ أخطاء يجب تجنّبها:</strong> استعمال أول أداة دون فحص سياسة بياناتها، والاعتقاد أن الأداة « المجانية » خالية من الإعلانات، وخصوصاً <strong>عرض محتوى غير مراجَع على التلاميذ</strong>. الذكاء الاصطناعي يقترح والمعلّم يقرّر.",
+                        "<strong>❌ Erreurs à éviter :</strong> collectionner 12 comptes qu'on n'ouvre jamais, demander des sources à un outil bleu, demander un poème à un outil vert.",
+                        "<strong>❌ Mistakes to avoid:</strong> collecting 12 accounts you never open, asking a blue tool for sources, asking a green tool for a poem.",
+                        "<strong>❌ أخطاء يجب تجنّبها:</strong> جمع 12 حساباً لا تُفتَح أبداً وطلب المصادر من أداة زرقاء وطلب قصيدة من أداة خضراء.",
                     ),
                 },
                 {
@@ -402,256 +466,459 @@ SEANCE = {
                     ),
                     "rows": L(
                         [
-                            ["Demande", "« Donne-moi une leçon sur la forêt. »", "« Tu es un enseignant de CP. Pour ma leçon de découverte, propose-moi 3 activités courtes sur la forêt, avec le matériel et la durée de chacune. »"],
-                            ["Outil", "Un seul chatbot, réponse non relue.", "ChatGPT pour rédiger + Perplexity pour vérifier + Canva pour l'affiche."],
+                            ["Demande", "« Fais tout pour mon exposé » à un seul outil.", "« Plan (bleu) + sources (vert) + affiche (orange) » : 3 outils, 3 métiers."],
+                            ["Résultat", "Un seul sirop pour tous les maux.", "Le bon flacon pour chaque symptôme."],
                         ],
                         [
-                            ["Request", "\"Give me a lesson about the forest.\"", "\"You are a Year-1 teacher. For my discovery lesson, suggest 3 short forest activities with materials and timings.\""],
-                            ["Tool", "A single chatbot, unproofread answer.", "ChatGPT to write + Perplexity to check + Canva for the poster."],
+                            ["Prompt", "\"Do everything for my talk\" to a single tool.", "\"Outline (blue) + sources (green) + poster (orange)\": 3 tools, 3 jobs."],
+                            ["Result", "One syrup for all ills.", "The right bottle for each symptom."],
                         ],
                         [
-                            ["الطلب", "« أعطني درساً عن الغابة »", "« أنت معلّم تحضيري. لدرس اكتشافي، اقترح 3 أنشطة قصيرة عن الغابة مع الأدوات ومددها »"],
-                            ["الأداة", "روبوت واحد، جواب غير مراجَع.", "ChatGPT للكتابة + Perplexity للتحقق + Canva للملصق."],
+                            ["الطلب", "« افعل كل شيء لعرضي » لأداة واحدة.", "« خطة (أزرق) + مصادر (أخضر) + ملصق (برتقالي) »: 3 أدوات و3 مهن."],
+                            ["النتيجة", "شراب واحد لكل الأدواء.", "القارورة المناسبة لكل عرَض."],
                         ],
-                    ),
-                },
-                {
-                    "t": "note",
-                    "kind": "tip",
-                    **L(
-                        "<strong>Astuce de sélection :</strong> créez un petit tableau « besoin → outil → version gratuite ? → RGPD ? » dans vos notes. Vous le réutiliserez pour chaque préparation de cours.",
-                        "<strong>Selection tip:</strong> keep a small table \"need → tool → free version? → GDPR?\" in your notes. You will reuse it for every lesson preparation.",
-                        "<strong>نصيحة للاختيار:</strong> احتفظ بجدول صغير « الحاجة → الأداة → نسخة مجانية؟ → حماية البيانات؟ » في ملاحظاتك. ستعيد استعماله في كل تحضير درس.",
                     ),
                 },
             ],
         },
     ],
+    "verifications": [
+        {
+            "q": L(
+                "Que faire si vous avez besoin de SOURCES ?",
+                "What to do if you need SOURCES?",
+                "ماذا تفعل إذا احتجت مصادر؟",
+            ),
+            "r": L(
+                "Tiroir vert : Perplexity pour une réponse sourcée rapide, Scholar/Consensus pour des articles vérifiables.",
+                "Green drawer: Perplexity for a fast sourced answer, Scholar/Consensus for verifiable papers.",
+                "الدرج الأخضر: Perplexity لجواب مسنَد سريع وScholar/Consensus لمقالات قابلة للتحقق.",
+            ),
+        },
+        {
+            "q": L(
+                "NotebookLM appartient à quelle famille, et pourquoi ?",
+                "Which family is NotebookLM in, and why?",
+                "إلى أي عائلة ينتمي NotebookLM ولماذا؟",
+            ),
+            "r": L(
+                "CHERCHER (vert) : il répond à partir de VOS documents, sources affichées — c'est un moteur sur vos PDF.",
+                "SEARCH (green): it answers from YOUR documents, sources shown — an engine over your PDFs.",
+                "البحث (أخضر): يجيب من وثائقك مع عرض المصادر — محرّك فوق ملفاتك.",
+            ),
+        },
+        {
+            "q": L(
+                "Ollama et Dify : quelle différence en une phrase ?",
+                "Ollama and Dify: what difference in one sentence?",
+                "Ollama وDify: ما الفرق في جملة؟",
+            ),
+            "r": L(
+                "Ollama fait tourner un modèle chez vous hors-ligne ; Dify construit un chatbot sur vos PDF sans coder.",
+                "Ollama runs a model at home offline; Dify builds a chatbot on your PDFs without coding.",
+                "يشغّل Ollama نموذجاً عندك دون اتصال؛ ويبني Dify روبوتاً على ملفاتك دون برمجة.",
+            ),
+        },
+    ],
+    "exercise_guide": {
+        "enonce": L(
+            "8 situations d'étudiant : prescrivez le bon outil avec l'arbre de décision (sources ? créer ? organiser-coder ?). Justifiez en 1 phrase.",
+            "8 student situations: prescribe the right tool with the decision tree (sources? create? organise-code?). Justify in 1 sentence.",
+            "8 حالات طلابية: اصرف الأداة المناسبة بشجرة القرار (مصادر؟ إنشاء؟ تنظيم-برمجة؟). برّر في جملة.",
+        ),
+        "demarche": L(
+            "1) Lire la situation. 2) Poser les 3 questions de l'arbre dans l'ordre. 3) Nommer l'outil + la famille (couleur). 4) Comparer avec le voisin avant correction.",
+            "1) Read the situation. 2) Ask the tree's 3 questions in order. 3) Name the tool + family (colour). 4) Compare with neighbour before correction.",
+            "1) اقرأ الحالة. 2) اطرح أسئلة الشجرة الثلاثة بالترتيب. 3) سمِّ الأداة + العائلة (اللون). 4) قارن مع الجار قبل التصحيح.",
+        ),
+        "solution": L(
+            "1) Expliquer une notion → 🔵 ChatGPT. 2) Citer 2 études → 🟢 Perplexity/Scholar. 3) Slides d'exposé → 🟠 Gamma. 4) Affiche → 🟠 Canva. 5) Planning révisions → 🟣 Notion. 6) Bug Python → 🟣 Copilot. 7) Résumer VOS PDF → 🟢 NotebookLM. 8) Chatbot sans code → 🟣 Dify.",
+            "1) Explain a notion → 🔵 ChatGPT. 2) Cite 2 studies → 🟢 Perplexity/Scholar. 3) Talk slides → 🟠 Gamma. 4) Poster → 🟠 Canva. 5) Revision plan → 🟣 Notion. 6) Python bug → 🟣 Copilot. 7) Summarise YOUR PDFs → 🟢 NotebookLM. 8) No-code chatbot → 🟣 Dify.",
+            "1) شرح مفهوم ← 🔵 ChatGPT. 2) الاستشهاد بدراستين ← 🟢 Perplexity/Scholar. 3) شرائح عرض ← 🟠 Gamma. 4) ملصق ← 🟠 Canva. 5) مخطط مراجعات ← 🟣 Notion. 6) خطأ بايثون ← 🟣 Copilot. 7) تلخيص ملفاتك ← 🟢 NotebookLM. 8) روبوت دون كود ← 🟣 Dify.",
+        ),
+    },
+    "videos": [
+        {
+            "titre": L(
+                "Playlist IA de Mohammad Dawoud (référence du module)",
+                "Mohammad Dawoud's AI playlist (module reference)",
+                "سلسلة محمد داود في الذكاء الاصطناعي (مرجع الوحدة)",
+            ),
+            "url": "https://www.youtube.com/watch?v=H5WUwwivEaI&list=PLbR_CTcUs1088jfqbbO5AqwODO9MgYA85",
+            "langue": "ar",
+            "concept": L(
+                "Comprendre ce qu'il y a SOUS les outils : introduction, ML, réseaux de neurones.",
+                "Understand what is UNDER the tools: intro, ML, neural networks.",
+                "فهم ما تحت الأدوات: مدخل وتعلم آلي وشبكات عصبية.",
+            ),
+        },
+        {
+            "titre": L(
+                "Comparatif assistants IA 2026 : lequel choisir ?",
+                "2026 AI assistants compared: which to pick?",
+                "مقارنة مساعدي الذكاء 2026: أيها تختار؟",
+            ),
+            "url": "https://www.youtube.com/results?search_query=comparatif+chatgpt+gemini+claude+2026+francais",
+            "langue": "fr",
+            "concept": L(
+                "Voir les différences bleu contre bleu avant de choisir votre favori.",
+                "See blue-vs-blue differences before picking your favourite.",
+                "شاهد فروق الأزرق ضد الأزرق قبل اختيار مفضّلتك.",
+            ),
+        },
+        {
+            "titre": L(
+                "10 outils IA pour étudiants : panorama guidé",
+                "10 AI tools for students: guided tour",
+                "10 أدوات ذكاء للطلبة: جولة موجّهة",
+            ),
+            "url": "https://www.youtube.com/results?search_query=outils+ia+etudiants+universite+tutoriel",
+            "langue": "fr",
+            "concept": L(
+                "Le panorama en vidéo : quand passer du tiroir bleu au vert puis à l'orange.",
+                "The panorama on video: when to move from blue to green to orange drawer.",
+                "النظرة العامة بالفيديو: متى تنتقل من الدرج الأزرق إلى الأخضر ثم البرتقالي.",
+            ),
+        },
+    ],
+    "fiche_synthese": {
+        "points": [
+            L(
+                "4 tiroirs : 🔵 comprendre, 🟢 chercher, 🟠 créer, 🟣 organiser-coder.",
+                "4 drawers: 🔵 understand, 🟢 search, 🟠 create, 🟣 organise-code.",
+                "4 أدراج: 🔵 الفهم و🟢 البحث و🟠 الإنشاء و🟣 التنظيم-البرمجة.",
+            ),
+            L(
+                "Arbre : sources ? → créer ? → organiser-coder ? → sinon bleu.",
+                "Tree: sources? → create? → organise-code? → else blue.",
+                "الشجرة: مصادر؟ ← إنشاء؟ ← تنظيم-برمجة؟ ← وإلا أزرق.",
+            ),
+            L(
+                "1 favori par tiroir + page Outils IA en favori.",
+                "1 favourite per drawer + AI Tools page bookmarked.",
+                "مفضلة لكل درج + صفحة أدوات الذكاء محفوظة.",
+            ),
+            L(
+                "Gratuit étudiant d'abord, jamais d'abonnement aveugle.",
+                "Student free first, never a blind subscription.",
+                "المجاني الطلابي أولاً ولا اشتراك أعمى أبداً.",
+            ),
+            L(
+                "3 règles d'or partout : vérifier, citer, juger.",
+                "3 golden rules everywhere: verify, cite, judge.",
+                "القواعد الذهبية الثلاث دائماً: تحقّق واستشهد واحكم.",
+            ),
+        ],
+        "analogies": [
+            L(
+                "La pharmacie : l'ordonnance (tâche) désigne le flacon (outil).",
+                "The pharmacy: the prescription (task) points to the bottle (tool).",
+                "الصيدلية: الوصفة (المهمة) تدل على القارورة (الأداة).",
+            ),
+            L(
+                "Les 4 tiroirs valent mieux que 12 noms en vrac.",
+                "4 drawers beat 12 loose names.",
+                "4 أدراج خير من 12 اسماً مبعثراً.",
+            ),
+            L(
+                "Le sirop unique : l'erreur du débutant pressé.",
+                "The single syrup: the rushed beginner's mistake.",
+                "الشراب الوحيد: خطأ المبتدئ المستعجل.",
+            ),
+        ],
+        "exemples": [
+            L(
+                "Exposé eau : plan (bleu) + sources (vert) + affiche (orange).",
+                "Water talk: outline (blue) + sources (green) + poster (orange).",
+                "عرض الماء: خطة (أزرق) + مصادر (أخضر) + ملصق (برتقالي).",
+            ),
+            L(
+                "« Différenciation » : ChatGPT explique, Perplexity prouve, Canva montre.",
+                "\"Differentiation\": ChatGPT explains, Perplexity proves, Canva shows.",
+                "« التفريد »: ChatGPT يشرح وPerplexity يثبت وCanva يعرض.",
+            ),
+            L(
+                "Planning + bug + PDF : Notion, Copilot, NotebookLM (violet et vert).",
+                "Schedule + bug + PDFs: Notion, Copilot, NotebookLM (purple and green).",
+                "مخطط + خطأ + ملفات: Notion وCopilot وNotebookLM (بنفسجي وأخضر).",
+            ),
+        ],
+        "analogie_finale": L(
+            "🏁 Les outils d'IA et vous, c'est comme l'orchestre et le chef : chaque instrument (outil) a son timbre, mais c'est le chef (vous, et votre arbre de décision) qui décide qui joue, quand — et la musique, c'est vos études.",
+            "🏁 AI tools and you is like orchestra and conductor: each instrument (tool) has its tone, but the conductor (you, and your decision tree) decides who plays, when — and the music is your studies.",
+            "🏁 أدوات الذكاء وأنت كالأوركسترا والقائد: لكل آلة (أداة) صوتها، لكن القائد (أنت وشجرة قرارك) يقرّر من يعزف ومتى — والموسيقى دراستك.",
+        ),
+        "quiz": [
+            {
+                "q": L(
+                    "Besoin de SOURCES : quel tiroir ?",
+                    "Need SOURCES: which drawer?",
+                    "تحتاج مصادر: أي درج؟",
+                ),
+                "options": L(
+                    ["🔵 Bleu", "🟢 Vert (Perplexity, Scholar)", "🟠 Orange", "🟣 Violet"],
+                    ["🔵 Blue", "🟢 Green (Perplexity, Scholar)", "🟠 Orange", "🟣 Purple"],
+                    ["🔵 أزرق", "🟢 أخضر (Perplexity وScholar)", "🟠 برتقالي", "🟣 بنفسجي"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Sources = tiroir vert : Perplexity pour vite, Scholar pour citer des articles.",
+                    "Sources = green drawer: Perplexity for fast, Scholar to cite papers.",
+                    "المصادر = الدرج الأخضر: Perplexity للسرعة وScholar للاستشهاد بمقالات.",
+                ),
+            },
+            {
+                "q": L(
+                    "Slides d'exposé : quel outil ?",
+                    "Talk slides: which tool?",
+                    "شرائح العرض: أي أداة؟",
+                ),
+                "options": L(
+                    ["Ollama", "Perplexity", "Gamma (créer à montrer)", "Whisper"],
+                    ["Ollama", "Perplexity", "Gamma (create to show)", "Whisper"],
+                    ["Ollama", "Perplexity", "Gamma (إنشاء للعرض)", "Whisper"],
+                ),
+                "answer": 2,
+                "exp": L(
+                    "Créer à montrer = tiroir orange : Gamma transforme un plan en diaporama.",
+                    "Create to show = orange drawer: Gamma turns an outline into slides.",
+                    "الإنشاء للعرض = الدرج البرتقالي: يحوّل Gamma الخطة إلى شرائح.",
+                ),
+            },
+            {
+                "q": L(
+                    "Interroger VOS propres PDF : quel outil ?",
+                    "Question YOUR own PDFs: which tool?",
+                    "استجواب ملفاتك الخاصة: أي أداة؟",
+                ),
+                "options": L(
+                    ["DALL·E", "NotebookLM (vert : chercher dans vos documents)", "Canva", "ElevenLabs"],
+                    ["DALL·E", "NotebookLM (green: search your documents)", "Canva", "ElevenLabs"],
+                    ["DALL·E", "NotebookLM (أخضر: البحث في وثائقك)", "Canva", "ElevenLabs"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "NotebookLM répond depuis VOS fichiers avec sources : le moteur de vos cours.",
+                    "NotebookLM answers from YOUR files with sources: your lessons' engine.",
+                    "يجيب NotebookLM من ملفاتك مع المصادر: محرّك دروسك.",
+                ),
+            },
+            {
+                "q": L(
+                    "Réviser sans connexion dans le bus : quelle solution ?",
+                    "Revise offline on the bus: which solution?",
+                    "مراجعة دون اتصال في الحافلة: أي حل؟",
+                ),
+                "options": L(
+                    ["ChatGPT en ligne", "Ollama en local (violet : gratuit, privé, hors-ligne)", "Gamma", "Perplexity"],
+                    ["Online ChatGPT", "Local Ollama (purple: free, private, offline)", "Gamma", "Perplexity"],
+                    ["ChatGPT متصل", "Ollama محلياً (بنفسجي: مجاني وخاص ودون اتصال)", "Gamma", "Perplexity"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Ollama fait tourner un modèle sur votre PC : gratuit, privé, sans Internet.",
+                    "Ollama runs a model on your PC: free, private, no Internet.",
+                    "يشغّل Ollama نموذجاً على جهازك: مجاني وخاص ودون إنترنت.",
+                ),
+            },
+            {
+                "q": L(
+                    "Chatbot sur vos fiches SANS coder : quel outil ?",
+                    "Chatbot on your sheets WITHOUT coding: which tool?",
+                    "روبوت على بطاقاتك دون برمجة: أي أداة؟",
+                ),
+                "options": L(
+                    ["Python", "Dify (violet : no-code sur vos PDF)", "Ollama", "Scholar"],
+                    ["Python", "Dify (purple: no-code on your PDFs)", "Ollama", "Scholar"],
+                    ["بايثون", "Dify (بنفسجي: دون كود على ملفاتك)", "Ollama", "Scholar"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Dify = voie no-code : compte, Knowledge, PDF importé, publier (séance 10).",
+                    "Dify = no-code path: account, Knowledge, imported PDF, publish (session 10).",
+                    "Dify = مسار دون كود: حساب ومعرفة وملف مستورَد ونشر (الحصة 10).",
+                ),
+            },
+        ],
+    },
     "activites": [
         L(
-            "Avant/après : transformer 3 mauvaises questions en requêtes complètes (contexte, objectif, format, contrainte).",
-            "Before/after: turn 3 poor questions into complete queries (context, goal, format, constraint).",
-            "قبل/بعد: حوّل ثلاث أسئلة سيئة إلى طلبات كاملة (سياق، هدف، صيغة، قيد).",
+            "Ordonnance express : 8 situations → outil + famille + 1 phrase de justification.",
+            "Express prescription: 8 situations → tool + family + 1 justification sentence.",
+            "وصفة سريعة: 8 حالات ← أداة + عائلة + جملة تبرير.",
         ),
         L(
-            "Comparaison : poser la même question à un chatbot et à Perplexity ; noter les différences de sources et de précision.",
-            "Comparison: ask the same question to a chatbot and to Perplexity; note the differences in sources and precision.",
-            "مقارنة: اطرح السؤال نفسه على روبوت محادثة وPerplexity؛ سجّل اختلافات المصادر والدقّة.",
+            "Duel d'outils : même question à 2 outils de familles différentes, comparer en tableau.",
+            "Tool duel: same question to 2 tools from different families, compare in a table.",
+            "مبارزة أدوات: نفس السؤال لأداتين من عائلتين وقارن في جدول.",
         ),
         L(
-            "Missions Scholar : trouver 3 articles sur un thème du programme (année, revue, auteur) et rédiger une fiche de lecture de 5 lignes chacun.",
-            "Scholar missions: find 3 papers on a curriculum topic (year, journal, author) and write a 5-line reading sheet for each.",
-            "مهام Scholar: ابحث عن ثلاث مقالات حول موضوع من البرنامج (سنة، مجلة، مؤلف) واكتب بطاقة قراءة من خمسة أسطر لكل منها.",
+            "Mes 4 favoris : choisir 1 outil par tiroir et justifier devant la classe.",
+            "My 4 favourites: pick 1 tool per drawer and justify in class.",
+            "مفضلاتي الأربع: اختر أداة لكل درج وبرّر أمام القسم.",
         ),
         L(
-            "Défi « source fantôme » : demander à un chatbot un article sur un thème, vérifier dans Google Scholar s'il existe vraiment, puis corriger la référence.",
-            "\"Ghost source\" challenge: ask a chatbot for a paper on a topic, check in Google Scholar whether it really exists, then fix the reference.",
-            "تحدّي « المصدر الوهمي »: اطلب من روبوت محادثة مقالاً حول موضوع، تحقّق في Google Scholar من وجوده فعلاً، ثم صحّح المرجع.",
+            "Chasse à l'erreur : 3 prescriptions volontairement fausses à corriger (ex : sources → DALL·E).",
+            "Mistake hunt: 3 deliberately wrong prescriptions to fix (e.g. sources → DALL·E).",
+            "صيد الأخطاء: 3 وصفات خاطئة عمداً للتصحيح (مثال: مصادر ← DALL·E).",
         ),
     ],
     "retenir": [
         L(
-            "Choisir l'outil selon le besoin : comprendre (chatbot), vérifier (Perplexity), citer (Scholar), consensus (Consensus).",
-            "Choose the tool by need: understand (chatbot), check (Perplexity), cite (Scholar), consensus (Consensus).",
-            "اختر الأداة حسب الحاجة: الفهم (روبوت محادثة)، التثبّت (Perplexity)، الاستشهاد (Scholar)، الإجماع (Consensus).",
+            "4 tiroirs : 🔵🟢🟠🟣 valent mieux que 12 noms.",
+            "4 drawers: 🔵🟢🟠🟣 beat 12 names.",
+            "4 أدراج: 🔵🟢🟠🟣 خير من 12 اسماً.",
         ),
         L(
-            "Une bonne requête a 4 composantes : contexte, objectif, format, contrainte.",
-            "A good query has 4 components: context, goal, format, constraint.",
-            "الطلب الجيد له أربعة عناصر: سياق، هدف، صيغة، قيد.",
+            "Arbre : sources ? créer ? organiser-coder ? sinon bleu.",
+            "Tree: sources? create? organise-code? else blue.",
+            "الشجرة: مصادر؟ إنشاء؟ تنظيم-برمجة؟ وإلا أزرق.",
         ),
         L(
-            "La science s'écrit surtout en anglais : traduis tes mots-clés et utilise les filtres (année, revue).",
-            "Science is mostly written in English: translate your keywords and use filters (year, journal).",
-            "العلم يُكتب غالباً بالإنجليزية: ترجم كلماتك المفتاحية واستعمل الفلاتر (سنة، مجلة).",
+            "Démo : même question, 3 outils, 3 métiers.",
+            "Demo: same question, 3 tools, 3 jobs.",
+            "العرض: نفس السؤال و3 أدوات و3 مهن.",
         ),
         L(
-            "Les références générées peuvent être inventées : vérifie dans Google Scholar avant de citer.",
-            "Generated references can be invented: check in Google Scholar before citing.",
-            "المراجع المولَّدة قد تكون مختلقة: تحقّق في Google Scholar قبل الاستشهاد.",
+            "Gratuit étudiant d'abord ; 3 règles d'or partout.",
+            "Student free first; 3 golden rules everywhere.",
+            "المجاني الطلابي أولاً؛ والقواعد الذهبية دائماً.",
         ),
         L(
-            "2 sources indépendantes qui concordent = base saine. Une seule source = doute.",
-            "2 independent sources that agree = sound basis. A single source = doubt.",
-            "مصدران مستقلان يتفقان = أساس سليم. مصدر واحد = شكّ.",
+            "Page Outils IA en favori : la pharmacie de poche.",
+            "AI Tools page bookmarked: the pocket pharmacy.",
+            "صفحة أدوات الذكاء محفوظة: الصيدلية الجيبية.",
         ),
     ],
     "glossaire": [
         {
-            "term": "Moteur de recherche",
-            "term_en": "Search engine",
-            "def_fr": "Outil qui indexe des pages web et renvoie une liste de liens selon des mots-clés (Google, Bing).",
-            "def_en": "A tool that indexes web pages and returns a list of links according to keywords (Google, Bing).",
-            "def_ar": "أداة تفهرس صفحات الويب وتعرض قائمة روابط حسب كلمات مفتاحية (جوجل، بينغ).",
+            "term": "Famille d'outils",
+            "term_en": "Tool family",
+            "def_fr": "Regroupement par besoin : comprendre, chercher, créer, organiser-coder.",
+            "def_en": "Grouping by need: understand, search, create, organise-code.",
+            "def_ar": "تجميع حسب الحاجة: الفهم والبحث والإنشاء والتنظيم-البرمجة.",
         },
         {
-            "term": "Perplexity",
-            "term_en": "Perplexity",
-            "def_fr": "Assistant de recherche qui répond avec des sources citées en bas de réponse.",
-            "def_en": "A research assistant that answers with sources cited at the bottom of the answer.",
-            "def_ar": "مساعد بحث يجيب مع مصادر مذكورة أسفل الإجابة.",
+            "term": "Moteur sourcé",
+            "term_en": "Sourced engine",
+            "def_fr": "Outil qui répond en affichant ses sources (Perplexity, Consensus).",
+            "def_en": "A tool answering while showing its sources (Perplexity, Consensus).",
+            "def_ar": "أداة تجيب عارضة مصادرها (Perplexity وConsensus).",
         },
         {
-            "term": "Google Scholar",
-            "term_en": "Google Scholar",
-            "def_fr": "Moteur spécialisé dans les articles scientifiques, les thèses et les citations.",
-            "def_en": "A search engine specialised in scientific papers, theses and citations.",
-            "def_ar": "محرّك متخصّص في المقالات العلمية والأطروحات والاستشهادات.",
+            "term": "Arbre de décision",
+            "term_en": "Decision tree",
+            "def_fr": "3 questions (sources ? créer ? organiser ?) pour choisir le bon outil.",
+            "def_en": "3 questions (sources? create? organise?) to pick the right tool.",
+            "def_ar": "3 أسئلة (مصادر؟ إنشاء؟ تنظيم؟) لاختيار الأداة المناسبة.",
         },
         {
-            "term": "Consensus",
-            "term_en": "Consensus",
-            "def_fr": "Outil qui synthétise les conclusions d'études scientifiques sur une question.",
-            "def_en": "A tool that synthesises the conclusions of scientific studies on a question.",
-            "def_ar": "أداة تلخّص استنتاجات الدراسات العلمية حول سؤال.",
+            "term": "Version gratuite",
+            "term_en": "Free tier",
+            "def_fr": "Offre gratuite (souvent étudiante) à épuiser avant tout abonnement.",
+            "def_en": "Free (often student) offer to exhaust before any subscription.",
+            "def_ar": "عرض مجاني (طلابي غالباً) يُستنفَد قبل أي اشتراك.",
         },
         {
-            "term": "Résumé (abstract)",
-            "term_en": "Abstract",
-            "def_fr": "Court paragraphe résumant question, méthode et résultats d'un article.",
-            "def_en": "A short paragraph summarising a paper's question, method and results.",
-            "def_ar": "فقرة قصيرة تلخّص سؤال المقال ومنهجه ونتائجه.",
-        },
-        {
-            "term": "Source primaire / secondaire",
-            "term_en": "Primary / secondary source",
-            "def_fr": "Primaire : document original (étude, loi, texte de loi). Secondaire : document qui commente le primaire.",
-            "def_en": "Primary: original document (study, law, legal text). Secondary: a document that comments on the primary.",
-            "def_ar": "أولي: وثيقة أصلية (دراسة، قانون، نص تشريعي). ثانوي: وثيقة تعلّق على الأوّلي.",
+            "term": "Fiche express",
+            "term_en": "Flash sheet",
+            "def_fr": "Résumé d'un outil en une phrase : usage + limite.",
+            "def_en": "A one-sentence tool summary: use + limit.",
+            "def_ar": "ملخص أداة في جملة: استعمال + حد.",
         },
     ],
     "dialogues_fr": """# Séance 02 — Dialogues pédagogiques (Français)
 
-## Dialogue A — « Google dit quoi, mais moi je dis quoi ? » (25 min)
+## Dialogue A — « Docteur, quel sirop ? » (25 min)
 
-**Personnages :** Salima (étudiante PEP 2A), Karim (camarade), l'assistante IA (jouée par la formatrice).
-
----
-
-Salima : Karim, tu rédiges ton exposé sur « les écrans et le sommeil des enfants » ?
-
-Karim : Oui… j'ai demandé à ChatGPT et il m'a donné plein de chiffres. Je vais les copier.
-
-Salima : Attends ! Tu as vérifié ces chiffres d'où ils viennent ?
-
-Karim : Euh… non. Il avait l'air sûr de lui.
-
-Salima : Justement, c'est le piège ! Les références peuvent être inventées. On doit vérifier dans Google Scholar.
-
-IA : Bonjour vous deux ! Je peux aider. Donnez-moi la question précise et je vous trouve des études, avec auteurs et années.
-
-Salima : Parfait ! Question précise : « Quel est l'impact des écrans sur le sommeil chez l'enfant de 6 à 10 ans ? » — Tu peux me donner deux études récentes ?
-
-IA : Voici deux études. Mais utilisez Google Scholar pour confirmer, puis lisez le résumé de chacune.
-
-Karim : Et Perplexity, il ne sert à rien alors ?
-
-Salima : Si ! Pour une réponse avec des sources citées tout de suite. ChatGPT pour comprendre, Perplexity pour vérifier, Scholar pour citer.
-
-Karim : Et si ChatGPT et Perplexity se contredisent ?
-
-Salima : Là, tu ouvres ton cours et tu cherches une troisième source. Deux sources indépendantes qui concordent…
-
-Karim : … c'est une base saine ! Je commence à comprendre.
-
-Salima : Et retiens : on ne copie pas un chiffre sans l'avoir retrouvé dans l'étude.
+**Personnages :** Sara (étudiante perdue), Karim (camarade pharmacien), Mme Amel (enseignante).
 
 ---
 
-## Dialogue B — « Aide-moi, mais pas n'importe comment ! » (15 min)
+Sara : Douze outils… Je suis perdue ! Pour mon exposé sur l'eau, je prends lequel ?
 
-**Personnages :** Lina (étudiante), le formateur (qui joue l'IA maladroite).
+Karim : Calme-toi, future pharmacienne. D'abord l'ordonnance : que dois-tu FAIRE ? Un plan ? Des sources ? Une affiche ?
+
+Sara : Les trois ! Un plan, des preuves et quelque chose à montrer.
+
+Karim : Alors trois flacons : 🔵 ChatGPT pour le plan (comprendre), 🟢 Perplexity pour les sources datées (chercher), 🟠 Canva pour l'affiche du cycle (créer).
+
+Sara : Et si je demandais tout à ChatGPT ?
+
+Karim : Le sirop unique ! Il inventerait des sources et dessinerait mal. Chaque famille a son métier.
+
+Mme Amel : Exactement. Et les 3 règles d'or de la séance 1 (vérifier, citer, juger) s'appliquent aux 4 tiroirs. Rangez d'abord, prescrivez ensuite.
 
 ---
 
-Lina : Je veux une réponse sur Vygotsky pour mon devoir.
+## Dialogue B — « Le duel » (15 min)
 
-IA : Bien sûr ! Vygotsky disait… [réponse vague et longue]
+**Personnages :** Yacine (étudiant), Lina (camarade arbitre), l'écran (joué par un camarade).
 
-Lina : Hmm, tu me donnes tout sauf ce que je veux. Je suis en licence, cours de psychologie. Je veux une fiche : 3 idées-clés, 1 exemple de classe, 1 question d'examen possible.
+---
 
-IA : Ah, maintenant je comprends mieux ! [réponse structurée exactement comme demandée]
+Yacine : « Explique la photosynthèse » : ChatGPT répond en 10 lignes claires. Perplexity répond en 5 lignes + 3 liens. Lequel gagne ?
 
-Lina : Là, c'est utile ! Le contexte et le format changeaient tout.
+Lina : Ça dépend du match ! Pour COMPRENDRE vite : ChatGPT. Pour CITER dans ton devoir : Perplexity, avec les liens ouverts.
 
-IA : Exactement. Contexte, objectif, format, contrainte. Retenez ces 4 mots.
+Yacine : Et Canva dans tout ça ?
 
-Lina : Je note : « Je suis étudiant… », « je veux une fiche pour réviser… », « sous forme de tableau… », « avec un exemple de primaire ». Et ensuite je vérifie dans mon cours.
+Lina : Il ne joue pas le même match : il MONTRERA ta photosynthèse en affiche. Trois outils, trois métiers, un seul exposé.
 
-IA : Tu es une étudiante modèle !
+Yacine : Donc je ne choisis plus UN outil, je compose une ÉQUIPE ?
 
-Lina : Non, une étudiante critique. C'est encore mieux.
+Lina : Voilà le pharmacien : bleu + vert + orange, et l'ordonnance est remplie !
 
 ---
 
 ## Mini-rôle à jouer (3 min par binôme)
-L'un de vous joue un étudiant qui veut recopier la première réponse d'un chatbot pour son devoir ; l'autre lui rappelle la méthode : infléchir la requête (contexte-objectif-format-contrainte), vérifier les sources, croiser avec le cours, et ne citer que ce qui a été vérifié.
+L'un énonce une situation (« résumer MES pdf », « bug Python », « affiche A3 »), l'autre prescrit outil + famille + 1 phrase. Échangez, puis le jury vérifie avec l'arbre de décision.
 """,
     "dialogues_en": """# Session 02 — Classroom dialogues (English)
 
-## Dialogue A — "Google says what, but what do I say?" (25 min)
+## Dialogue A — "Doctor, which syrup?" (25 min)
 
-**Characters:** Salima (PEP 2A student), Karim (classmate), the AI assistant (played by the trainer).
-
----
-
-Salima: Karim, you are writing your presentation on "screens and children's sleep", right?
-
-Karim: Yes… I asked ChatGPT and it gave me lots of figures. I will copy them.
-
-Salima: Wait! Did you check where those figures come from?
-
-Karim: Hmm… no. It seemed so sure of itself.
-
-Salima: Exactly, that is the trap! References can be invented. We must check in Google Scholar.
-
-AI: Hello both of you! I can help. Give me your precise question and I find studies for you, with authors and years.
-
-Salima: Perfect! Precise question: "What is the impact of screens on sleep in children aged 6 to 10?" — Can you give me two recent studies?
-
-AI: Here are two studies. But use Google Scholar to confirm, then read the abstract of each.
-
-Karim: And Perplexity? Is it useless then?
-
-Salima: No! It is for an answer with cited sources right away. ChatGPT to understand, Perplexity to check, Scholar to cite.
-
-Karim: And if ChatGPT and Perplexity contradict each other?
-
-Salima: Then you open your lesson and look for a third source. Two independent sources that agree…
-
-Karim: … are a sound basis! I'm starting to understand.
-
-Salima: And remember: we never copy a figure without finding it again in the study.
+**Characters:** Sara (a lost student), Karim (a pharmacist classmate), Mrs Amel (teacher).
 
 ---
 
-## Dialogue B — "Help me, but not anyhow!" (15 min)
+Sara: Twelve tools… I am lost! For my talk on water, which one do I take?
 
-**Characters:** Lina (student), the trainer (playing a clumsy AI).
+Karim: Calm down, future pharmacist. First the prescription: what must you DO? An outline? Sources? A poster?
+
+Sara: All three! An outline, proofs and something to show.
+
+Karim: Then three bottles: 🔵 ChatGPT for the outline (understand), 🟢 Perplexity for dated sources (search), 🟠 Canva for the cycle poster (create).
+
+Sara: And if I asked everything to ChatGPT?
+
+Karim: The single syrup! It would invent sources and draw badly. Each family has its job.
+
+Mrs Amel: Exactly. And session 1's 3 golden rules (verify, cite, judge) apply to all 4 drawers. Sort first, prescribe next.
 
 ---
 
-Lina: I want an answer about Vygotsky for my assignment.
+## Dialogue B — "The duel" (15 min)
 
-AI: Of course! Vygotsky said… [vague, long answer]
+**Characters:** Yacine (student), Lina (referee classmate), the screen (played by a classmate).
 
-Lina: Hmm, you give me everything except what I want. I am an undergraduate, psychology course. I want a sheet: 3 key ideas, 1 classroom example, 1 possible exam question.
+---
 
-AI: Ah, now I understand better! [answer structured exactly as requested]
+Yacine: "Explain photosynthesis": ChatGPT answers in 10 clear lines. Perplexity answers in 5 lines + 3 links. Which wins?
 
-Lina: Now that is useful! The context and the format changed everything.
+Lina: Depends on the match! To UNDERSTAND fast: ChatGPT. To CITE in your homework: Perplexity, with open links.
 
-AI: Exactly. Context, goal, format, constraint. Remember these 4 words.
+Yacine: And Canva in all this?
 
-Lina: I note: "I am a student…", "I want a sheet to revise…", "as a table…", "with a primary example". And afterwards I check with my lesson.
+Lina: It plays another match: it will SHOW your photosynthesis as a poster. Three tools, three jobs, one talk.
 
-AI: You are a model student!
+Yacine: So I no longer pick ONE tool, I build a TEAM?
 
-Lina: No, a critical student. That is even better.
+Lina: There is the pharmacist: blue + green + orange, and the prescription is filled!
 
 ---
 
 ## Mini role-play (3 min per pair)
-One of you plays a student who wants to copy a chatbot's first answer for their assignment; the other reminds them of the method: refine the query (context-goal-format-constraint), check the sources, cross-check with the lesson, and cite only what has been verified.
+One states a situation ("summarise MY pdfs", "Python bug", "A3 poster"), the other prescribes tool + family + 1 sentence. Swap, then the jury checks with the decision tree.
 """,
 }

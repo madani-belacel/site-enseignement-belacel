@@ -53,6 +53,23 @@ SEANCE = {
         "Sessions 1 to 3 completed. Bring a handout or a lesson chapter to summarise.",
         "إتمام الحصص من 1 إلى 3. إحضار ورقة درس أو فصلاً للتلخيص.",
     ),
+    "accroche": {
+        "question": L(
+            "Un résumé copié-collé qui ne rentre pas dans la tête, ou une fiche d'une page qui fait réfléchir ? Aujourd'hui, on fabrique des fiches qui restent.",
+            "A copy-pasted summary that never enters memory, or a one-page sheet that makes you think? Today, we craft sheets that stick.",
+            "ملخص منسوخ لا يدخل الرأس، أم بطاقة صفحة واحدة تُفكِّر؟ اليوم نصنع بطاقات تبقى.",
+        ),
+        "analogie": L(
+            "🍳 Résumer, c'est presser une orange : garder le jus (l'essentiel), jeter la pulpe (le remplissage). Synthétiser, c'est un cocktail de plusieurs fruits AVEC votre recette : le mélange n'existait pas avant vous.",
+            "🍳 Summarising is squeezing an orange: keep the juice (the essentials), throw the pulp (the filler). Synthesising is a multi-fruit cocktail WITH your recipe: the mix never existed before you.",
+            "🍳 التلخيص عصر برتقالة: الاحتفاظ بالعصير (الأساس) ورمي اللب (الحشو). والتركيب كوكتيل فواكه متعددة مع وصفتك: المزيج لم يوجد قبلك.",
+        ),
+        "phrase": L(
+            "💡 Une bonne fiche = 1 page, vos mots, une structure fixe (idées, questions, exemples) — fabriquée AVEC l'IA, jamais À LA PLACE de vous.",
+            "💡 A good sheet = 1 page, your words, a fixed structure (ideas, questions, examples) — made WITH AI, never INSTEAD of you.",
+            "💡 البطاقة الجيدة = صفحة واحدة وكلماتك وهيكل ثابت (أفكار وأسئلة وأمثلة) — مصنوعة مع الذكاء أبداً بدلاً منك.",
+        ),
+    },
     "plan": [
         {
             "time": "00–10",
@@ -178,6 +195,15 @@ SEANCE = {
                         ],
                     ),
                 },
+                {
+                    "t": "note",
+                    "kind": "idea",
+                    **L(
+                        "<strong>🔗 Rappel séance 3 :</strong> on ne fiche que du VÉRIFIÉ : les sources validées sur Scholar/Perplexity deviennent la matière première des fiches. Un résumé de texte douteux reste douteux, même bien présenté.",
+                        "<strong>🔗 Reminder of session 3:</strong> we only sheet VERIFIED material: Scholar/Perplexity-validated sources become the raw material of sheets. A summary of a dubious text stays dubious, however well presented.",
+                        "<strong>🔗 تذكير بالحصة 3:</strong> لا نلخّص إلا الموثَّق: المصادر المعتمدة في Scholar وPerplexity تصبح المادة الأولية للبطاقات. ملخص نص مشكوك يبقى مشكوكاً مهما حَسُن عرضه.",
+                    ),
+                },
             ],
         },
         {
@@ -224,6 +250,15 @@ SEANCE = {
                         "<strong>Méthode Cornell en 1 ligne :</strong> première colonne = questions que tu te poseras ; deuxième colonne = tes notes ; bas de page = résumé de toute la fiche. Se cacher la deuxième colonne = s'auto-tester.",
                         "<strong>Cornell in one line:</strong> first column = questions you will ask yourself; second column = your notes; bottom = summary of the whole sheet. Hiding the second column = self-testing.",
                         "<strong>كورنيل في سطر:</strong> العمود الأول = أسئلة تسألها لنفسك؛ العمود الثاني = ملاحظاتك؛ أسفل الصفحة = ملخص البطاقة كلها. إخفاء العمود الثاني = اختبار ذاتي.",
+                    ),
+                },
+                {
+                    "t": "note",
+                    "kind": "idea",
+                    **L(
+                        "<strong>🧪 Exemple concret :</strong> chapitre « les stades de Piaget » → fiche 1 page : 4 stades en tableau (âge, nom, exemple), question Cornell « à quel stade un enfant de 5 ans qui croit que la lune le suit ? » → réponse : préopératoire.",
+                        "<strong>🧪 Concrete example:</strong> \"Piaget's stages\" chapter → 1-page sheet: 4 stages in a table (age, name, example), Cornell question \"at which stage is a 5-year-old believing the moon follows him?\" → answer: preoperational.",
+                        "<strong>🧪 مثال ملموس:</strong> فصل « مراحل بياجيه » ← بطاقة صفحة: 4 مراحل في جدول (عمر، اسم، مثال)، وسؤال كورنيل « في أي مرحلة طفل 5 سنوات يظن القمر يتبعه؟ » ← الجواب: ما قبل الإجرائية.",
                     ),
                 },
             ],
@@ -340,6 +375,15 @@ SEANCE = {
                     ),
                 },
                 {
+                    "t": "note",
+                    "kind": "goal",
+                    **L(
+                        "<strong>➡️ Pont vers la séance 5 :</strong> vos fiches Cornell deviennent le carburant de l'exposé : 3 fiches = 3 parties du plan, exemples inclus (séance 5).",
+                        "<strong>➡️ Bridge to session 5:</strong> your Cornell sheets become presentation fuel: 3 sheets = 3 parts of the outline, examples included (session 5).",
+                        "<strong>➡️ جسر إلى الحصة 5:</strong> بطاقات كورنيل تصبح وقود العرض: 3 بطاقات = 3 أجزاء من الخطة، بالأمثلة (الحصة 5).",
+                    ),
+                },
+                {
                     "t": "ul",
                     **L(
                         [
@@ -405,6 +449,265 @@ SEANCE = {
             ],
         },
     ],
+    "verifications": [
+        {
+            "q": L(
+                "Quelle est la différence entre résumer et synthétiser ?",
+                "What is the difference between summarising and synthesising?",
+                "ما الفرق بين التلخيص والتركيب؟",
+            ),
+            "r": L(
+                "Résumer = réduire UN texte sans le déformer. Synthétiser = croiser PLUSIEURS textes pour créer un point de vue nouveau.",
+                "Summarising = shortening ONE text without distorting it. Synthesising = crossing SEVERAL texts to create a new viewpoint.",
+                "التلخيص = اختزال نص واحد دون تشويه. والتركيب = تقاطع عدة نصوص لبناء رؤية جديدة.",
+            ),
+        },
+        {
+            "q": L(
+                "Comment la méthode Cornell permet-elle l'auto-test ?",
+                "How does the Cornell method enable self-testing?",
+                "كيف تتيح منهجية كورنيل الاختبار الذاتي؟",
+            ),
+            "r": L(
+                "Colonne gauche = questions, colonne droite = notes : on cache la droite et on répond aux questions de gauche.",
+                "Left column = questions, right column = notes: hide the right side and answer the left questions.",
+                "العمود الأيسر = أسئلة والأيمن = ملاحظات: أخفِ الأيمن وأجب عن أسئلة الأيسر.",
+            ),
+        },
+        {
+            "q": L(
+                "Pourquoi coller son texte source à l'IA avant de demander un résumé ?",
+                "Why paste your source text to AI before asking for a summary?",
+                "لماذا تلصق نص المصدر للذكاء قبل طلب الملخص؟",
+            ),
+            "r": L(
+                "Sans le texte, l'IA résume ce qu'elle CROIT savoir (risque d'invention). Avec le texte, elle travaille sur du réel et reste fidèle.",
+                "Without the text, AI summarises what it BELIEVES it knows (invention risk). With the text, it works on reality and stays faithful.",
+                "دون النص يلخّص الذكاء ما يظن معرفته (خطر الاختلاق). ومع النص يعمل على الواقع ويلتزم الأمانة.",
+            ),
+        },
+    ],
+    "exercise_guide": {
+        "enonce": L(
+            "Avec votre polycopié : 1) collez 2 pages à l'IA + prompt Cornell ; 2) recevez la fiche ; 3) vérifiez chaque idée contre le texte (cochez ✓ ou corrigez).",
+            "With your handout: 1) paste 2 pages to AI + Cornell prompt; 2) receive the sheet; 3) check each idea against the text (tick ✓ or fix).",
+            "بمطبوعتك: 1) الصق صفحتين للذكاء + صياغة كورنيل؛ 2) استلم البطاقة؛ 3) تحقق من كل فكرة مقابل النص (علّم ✓ أو صحّح).",
+        ),
+        "demarche": L(
+            "1) Prompt : « Voici 2 pages [coller]. Fiche Cornell : idées-clés, tableau, 3 questions d'auto-test, 1 exemple, résumé 3 phrases. » 2) Comparer au texte, ligne par ligne. 3) Réécrire 1 idée avec vos mots.",
+            "1) Prompt: \"Here are 2 pages [paste]. Cornell sheet: key ideas, table, 3 self-test questions, 1 example, 3-sentence summary.\" 2) Compare with the text, line by line. 3) Rewrite 1 idea in your words.",
+            "1) الصياغة: « هاتان صفحتان [الصق]. بطاقة كورنيل: أفكار رئيسية وجدول و3 أسئلة اختبار ومثال وملخص 3 جمل ». 2) قارن بالنص سطراً سطراً. 3) أعد كتابة فكرة بكلماتك.",
+        ),
+        "solution": L(
+            "Réussi si : fiche 1 page (6 zones remplies), chaque idée cochée ✓ contre le texte, 1 idée réécrite personnellement, et 1 erreur de l'IA repérée et corrigée (il y en a presque toujours une).",
+            "Success if: 1-page sheet (6 zones filled), each idea ticked ✓ against the text, 1 idea personally rewritten, and 1 AI mistake spotted and fixed (there is almost always one).",
+            "نجاح إذا: بطاقة صفحة (6 مناطق مملوءة)، وكل فكرة مؤشَّرة ✓ مقابل النص، وفكرة معاد كتابتها شخصياً، وخطأ للذكاء مرصود ومصحَّح (يوجد دائماً تقريباً).",
+        ),
+    },
+    "videos": [
+        {
+            "titre": L(
+                "La méthode Cornell pour des fiches qui marchent (tutoriel)",
+                "The Cornell method for sheets that work (tutorial)",
+                "منهجية كورنيل لبطاقات ناجحة (شرح)",
+            ),
+            "url": "https://www.youtube.com/results?search_query=methode+cornell+fiche+revision+tutoriel",
+            "langue": "fr",
+            "concept": L(
+                "Tracer sa première fiche Cornell et s'auto-tester en la cachant.",
+                "Draw your first Cornell sheet and self-test by hiding it.",
+                "ارسم أول بطاقة كورنيل واختبر نفسك بإخفائها.",
+            ),
+        },
+        {
+            "titre": L(
+                "كيف تلخّص درساً بالذكاء الاصطناعي دون أخطاء؟",
+                "How to summarise a lesson with AI without mistakes?",
+                "كيف تلخّص درساً بالذكاء الاصطناعي دون أخطاء؟",
+            ),
+            "url": "https://www.youtube.com/results?search_query=تلخيص+الدروس+بالذكاء+الاصطناعي+للطلبة",
+            "langue": "ar",
+            "concept": L(
+                "Coller la source, guider avec un prompt, vérifier ligne par ligne.",
+                "Paste the source, guide with a prompt, check line by line.",
+                "الصق المصدر ووجّه بصياغة وتحقق سطراً سطراً.",
+            ),
+        },
+        {
+            "titre": L(
+                "Transformer un PDF en carte mentale (méthode)",
+                "Turn a PDF into a mind map (method)",
+                "تحويل PDF إلى خريطة ذهنية (منهجية)",
+            ),
+            "url": "https://www.youtube.com/results?search_query=pdf+carte+mentale+revision+methode",
+            "langue": "fr",
+            "concept": L(
+                "Du chapitre à la carte visuelle qui « vend » la page.",
+                "From chapter to the visual map that \"sells\" the page.",
+                "من الفصل إلى الخريطة البصرية التي « تروّج » للصفحة.",
+            ),
+        },
+    ],
+    "fiche_synthese": {
+        "points": [
+            L(
+                "Résumer = 1 texte réduit. Synthétiser = plusieurs textes croisés + votre point de vue.",
+                "Summarise = 1 text shortened. Synthesise = several texts crossed + your viewpoint.",
+                "التلخيص = اختزال نص واحد. والتركيب = تقاطع نصوص + وجهة نظرك.",
+            ),
+            L(
+                "Fiche Cornell : questions à gauche, notes à droite, résumé en bas.",
+                "Cornell sheet: questions left, notes right, summary bottom.",
+                "بطاقة كورنيل: أسئلة يساراً وملاحظات يميناً وملخص أسفل.",
+            ),
+            L(
+                "Toujours coller le texte source avant de demander.",
+                "Always paste the source text before asking.",
+                "الصق نص المصدر دائماً قبل الطلب.",
+            ),
+            L(
+                "Vérifier chaque idée contre le texte (✓ ou corriger).",
+                "Check each idea against the text (✓ or fix).",
+                "تحقق من كل فكرة مقابل النص (✓ أو صحّح).",
+            ),
+            L(
+                "Protocole AIDE : garder la main du début à la fin.",
+                "AIDE protocol: keep control from start to finish.",
+                "بروتوكول AIDE: حافظ على السيطرة من البداية للنهاية.",
+            ),
+        ],
+        "analogies": [
+            L(
+                "Le jus d'orange : garder l'essentiel, jeter la pulpe.",
+                "Orange juice: keep the essentials, throw the pulp.",
+                "عصير البرتقال: احتفظ بالأساس وارمِ اللب.",
+            ),
+            L(
+                "Le cocktail : plusieurs fruits + VOTRE recette.",
+                "The cocktail: several fruits + YOUR recipe.",
+                "الكوكتيل: فواكه عدة + وصفتك أنت.",
+            ),
+            L(
+                "Le miroir : la fiche doit refléter le texte, pas l'inventer.",
+                "The mirror: the sheet must reflect the text, not invent it.",
+                "المرآة: البطاقة تعكس النص ولا تختلقه.",
+            ),
+        ],
+        "exemples": [
+            L(
+                "Chapitre Piaget → tableau 4 stades + question lune → préopératoire.",
+                "Piaget chapter → 4-stage table + moon question → preoperational.",
+                "فصل بياجيه ← جدول 4 مراحل + سؤال القمر ← ما قبل الإجرائية.",
+            ),
+            L(
+                "2 pages collées → fiche 6 zones → 1 erreur d'IA corrigée.",
+                "2 pasted pages → 6-zone sheet → 1 AI mistake fixed.",
+                "صفحتان ملصقتان ← بطاقة 6 مناطق ← خطأ ذكاء مصحَّح.",
+            ),
+            L(
+                "Fiche relue à J+3 : cacher la droite, répondre à gauche.",
+                "Sheet reviewed at D+3: hide right, answer left.",
+                "بطاقة تُراجَع اليوم+3: أخفِ اليمين وأجب عن اليسار.",
+            ),
+        ],
+        "analogie_finale": L(
+            "🏁 Votre fiche et l'IA, c'est comme votre cuisine et le robot : il épluche et coupe vite (le brouillon), mais l'assaisonnement final (vos mots, votre structure, votre vérification), c'est vous — sinon le plat n'a aucun goût.",
+            "🏁 Your sheet and AI is like your kitchen and the food processor: it peels and chops fast (the draft), but final seasoning (your words, structure, check) is you — else the dish tastes of nothing.",
+            "🏁 بطاقتك والذكاء كمطبخك ومحضّرة الطعام: تقشّر وتقطّع بسرعة (المسودة)، لكن التتبيلة النهائية (كلماتك وهيكلك وتحققك) أنت — وإلا كان الطبق بلا طعم.",
+        ),
+        "quiz": [
+            {
+                "q": L(
+                    "Résumer ou synthétiser : que choisir pour 3 articles ?",
+                    "Summarise or synthesise: what for 3 papers?",
+                    "التلخيص أم التركيب: ماذا لثلاثة مقالات؟",
+                ),
+                "options": L(
+                    ["Résumer chacun séparément seulement", "Synthétiser : croiser les 3 + ajouter votre point de vue", "Copier le plus long", "Ne rien faire"],
+                    ["Summarise each separately only", "Synthesise: cross all 3 + add your viewpoint", "Copy the longest", "Do nothing"],
+                    ["لخّص كلاًّ على حدة فقط", "ركّب: قاطع الثلاثة + أضف وجهة نظرك", "انسخ الأطول", "لا تفعل شيئاً"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Plusieurs sources = synthèse : comparaison + organisation + votre lecture.",
+                    "Several sources = synthesis: comparison + organisation + your reading.",
+                    "مصادر عدة = تركيب: مقارنة + تنظيم + قراءتك.",
+                ),
+            },
+            {
+                "q": L(
+                    "Où vont les questions d'auto-test dans Cornell ?",
+                    "Where do self-test questions go in Cornell?",
+                    "أين أسئلة الاختبار الذاتي في كورنيل؟",
+                ),
+                "options": L(
+                    ["En bas", "Colonne de gauche (on cache la droite pour se tester)", "Nulle part", "Dans la marge du voisin"],
+                    ["At the bottom", "Left column (hide the right to test yourself)", "Nowhere", "In the neighbour's margin"],
+                    ["أسفل", "العمود الأيسر (أخفِ الأيمن لتختبر نفسك)", "لا مكان", "في هامش الجار"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Gauche = questions, droite = notes : caché la droite, la fiche devient un interrogateur.",
+                    "Left = questions, right = notes: hiding the right turns the sheet into a questioner.",
+                    "اليسار = أسئلة واليمين = ملاحظات: إخفاء اليمين يحوّل البطاقة إلى مستجوب.",
+                ),
+            },
+            {
+                "q": L(
+                    "Pourquoi coller le texte source à l'IA ?",
+                    "Why paste the source text to AI?",
+                    "لماذا تلصق نص المصدر للذكاء؟",
+                ),
+                "options": L(
+                    ["Pour décorer", "Pour qu'elle travaille sur du réel au lieu d'inventer", "Pour ralentir", "Inutile"],
+                    ["For decoration", "So it works on reality instead of inventing", "To slow down", "Useless"],
+                    ["للزينة", "ليعمل على الواقع بدل الاختلاق", "للإبطاء", "لا فائدة"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Sans source collée, l'IA résume ses souvenirs approximatifs : hallucinations garanties.",
+                    "Without pasted source, AI summarises approximate memories: guaranteed hallucinations.",
+                    "دون مصدر ملصق يلخّص الذكاء ذكرياته التقريبية: هلوسات مضمونة.",
+                ),
+            },
+            {
+                "q": L(
+                    "Que faire d'une idée de la fiche non retrouvée dans le texte ?",
+                    "What to do with a sheet idea missing from the text?",
+                    "ماذا تفعل بفكرة في البطاقة غير موجودة في النص؟",
+                ),
+                "options": L(
+                    ["La garder, elle est jolie", "La corriger ou la supprimer : c'est une invention de l'IA", "L'encadrer", "L'ignorer"],
+                    ["Keep it, it is pretty", "Fix or delete it: it is an AI invention", "Frame it", "Ignore it"],
+                    ["أبقها فهي جميلة", "صحّحها أو احذفها: إنها اختلاق ذكاء", "أطّرها", "تجاهلها"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Vérification ligne par ligne : toute idée sans ancrage texte = hallucination à éliminer.",
+                    "Line-by-line check: any idea without text anchor = hallucination to remove.",
+                    "التحقق سطراً سطراً: كل فكرة دون مرساة نصية = هلوسة تُزال.",
+                ),
+            },
+            {
+                "q": L(
+                    "Quel est le rôle du protocole AIDE ?",
+                    "What is the AIDE protocol for?",
+                    "ما دور بروتوكول AIDE؟",
+                ),
+                "options": L(
+                    ["Tout déléguer", "Garder la main : vous décidez, l'IA exécute sous contrôle", "Appeler à l'aide", "Éviter l'IA"],
+                    ["Delegate everything", "Keep control: you decide, AI executes under supervision", "Call for help", "Avoid AI"],
+                    ["تفويض كل شيء", "الحفاظ على السيطرة: أنت تقرّر والذكاء ينفذ تحت إشراف", "طلب النجدة", "تجنّب الذكاء"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "AIDE = vous pilotez chaque étape : source collée, consignes précises, vérification finale.",
+                    "AIDE = you drive each step: pasted source, precise instructions, final check.",
+                    "AIDE = أنت تقود كل خطوة: مصدر ملصق وتعليمات دقيقة وتحقق نهائي.",
+                ),
+            },
+        ],
+    },
     "activites": [
         L(
             "Démo guidée : résumer un paragraphe du cours avec un prompt complet (rôle, source, niveau, format, interdits), puis comparer avec la version sans source.",
@@ -491,138 +794,138 @@ SEANCE = {
             "def_ar": "منهج من أربع خطوات للعمل مع الذكاء الاصطناعي دون فقدان السيطرة: حلّل، استجوب، تحقّق مرتين، اعرض.",
         },
     ],
-    "dialogues_fr": """# Séance 03 — Dialogues pédagogiques (Français)
+    "dialogues_fr": """# Séance 04 — Dialogues pédagogiques (Français)
 
 ## Dialogue A — « La fiche qui n'était pas la mienne » (25 min)
 
-**Personnages :** Rania (étudiante), l'IA (jouée par un camarade), Younes (camarade qui aide).
+**Personnages :** Sara (étudiante), l'IA (jouée par un camarade), Karim (camarade qui aide).
 
 ---
 
-Rania : J'ai demandé à l'IA de résumer mon cours de didactique. Regarde, c'est parfait !
+Sara : J'ai demandé à l'IA de résumer mon cours de didactique. Regarde, c'est parfait !
 
-Younes : Parfait ? Tu l'as relu, comparé au texte ?
+Karim : Parfait ? Tu l'as relu, comparé au texte ?
 
-Rania : Non… il écrit tellement bien.
+Sara : Non… il écrit tellement bien.
 
-Younes : Rania, une fiche que tu n'as pas réécrite, tu ne la retiendras pas. Surtout, vérifie qu'il n'a rien ajouté.
+Karim : Sara, une fiche que tu n'as pas réécrite, tu ne la retiendras pas. Surtout, vérifie qu'il n'a rien ajouté.
 
-Rania : Comment je vérifie, moi ?
+Sara : Comment je vérifie, moi ?
 
-Younes : Le protocole AIDE ! D'abord, tu lis le cours une fois et tu surlignes tes 5 idées. Ensuite, tu interroges l'IA avec le texte collé. Ensuite tu revérifies idée par idée.
+Karim : Le protocole AIDE ! D'abord, tu lis le cours une fois et tu surlignes tes 5 idées. Ensuite, tu interroges l'IA avec le texte collé. Ensuite tu revérifies idée par idée.
 
 IA : Je peux aussi me corriger. Donne-moi ta liste de 5 idées et je compare avec ma synthèse.
 
-Rania : Bon, je tente. Mes 5 idées : 1) la transposition didactique, 2) le contrat didactique…
+Sara : Bon, je tente. Mes 5 idées : 1) la transposition didactique, 2) le contrat didactique…
 
 IA : Attention : j'ai bien la 1, mais la 2 n'apparaît pas dans ton texte. Je l'ai ajoutée d'après mes connaissances. Tu avais dit « n'ajoute rien » : donc mea culpa.
 
-Rania : Tu vois, Younes ? Il a inventé une phrase et je l'aurais apprise !
+Sara : Tu vois, Karim ? Il a inventé une phrase et je l'aurais apprise !
 
-Younes : C'est exactement pour ça qu'on vérifie. Maintenant, réécris la fiche à ta façon, sans l'écran, en t'aidant de tes questions Cornell.
+Karim : C'est exactement pour ça qu'on vérifie. Maintenant, réécris la fiche à ta façon, sans l'écran, en t'aidant de tes questions Cornell.
 
-Rania : Et si je n'arrive pas à reformuler ?
+Sara : Et si je n'arrive pas à reformuler ?
 
-Younes : Alors tu n'as pas encore compris — et c'est justement là que l'IA est utile : elle explique, tu comprends, tu reformules. Jamais l'inverse.
+Karim : Alors tu n'as pas encore compris — et c'est justement là que l'IA est utile : elle explique, tu comprends, tu reformules. Jamais l'inverse.
 
 ---
 
 ## Dialogue B — « Maman, c'est une note de cours ! » (15 min)
 
-**Personnages :** Imad (étudiant), sa mère, le petit frère Walid (9 ans).
+**Personnages :** Yacine (étudiant), sa mère, le petit frère Anis (9 ans).
 
 ---
 
-Imad : Je colle mes notes de cours et je demande : « transforme ça en fiche Cornell ».
+Yacine : Je colle mes notes de cours et je demande : « transforme ça en fiche Cornell ».
 
-Walid : Tu triches, non ?
+Anis : Tu triches, non ?
 
-Imad : Non ! Pour tricher, il faudrait que je ne comprenne pas. Moi je comprends, je vérifie, et je réécris.
+Yacine : Non ! Pour tricher, il faudrait que je ne comprenne pas. Moi je comprends, je vérifie, et je réécris.
 
 Maman : Et l'ordinateur, il fait quoi exactement ?
 
-Imad : Il organise mes notes en tableau, il propose des questions, il connaît la mise en forme de Cornell. Moi, je contrôle tout.
+Yacine : Il organise mes notes en tableau, il propose des questions, il connaît la mise en forme de Cornell. Moi, je contrôle tout.
 
-Walid : Alors c'est comme le concierge qui range ta chambre ?
+Anis : Alors c'est comme le concierge qui range ta chambre ?
 
-Imad : Presque ! Sauf que le concierge, il ne doit pas déplacer mes affaires sans me dire où. Si l'IA déplace une idée, je dois la retrouver.
+Yacine : Presque ! Sauf que le concierge, il ne doit pas déplacer mes affaires sans me dire où. Si l'IA déplace une idée, je dois la retrouver.
 
 Maman : Et si tu ne la retrouves pas ?
 
-Imad : Je lui demande de comparer avec le texte. C'est le « double-check ».
+Yacine : Je lui demande de comparer avec le texte. C'est le « double-check ».
 
-Walid : Et pourquoi tu réécris ensuite dans le cahier ?
+Anis : Et pourquoi tu réécris ensuite dans le cahier ?
 
-Imad : Parce que c'est en écrivant que je mémorise. L'ordinateur range, c'est moi qui apprends.
+Yacine : Parce que c'est en écrivant que je mémorise. L'ordinateur range, c'est moi qui apprends.
 
 ---
 
 ## Mini-rôle à jouer (3 min par binôme)
 Un étudiant montre une synthèse IA très belle mais où une idée a été ajoutée. Avec l'autre, trouvez l'idée inventée (en comparant au texte source) et reformulez la règle : « la synthèse ne doit contenir que ce qui est dans la source ».
 """,
-    "dialogues_en": """# Session 03 — Classroom dialogues (English)
+    "dialogues_en": """# Session 04 — Classroom dialogues (English)
 
 ## Dialogue A — "The sheet that was not mine" (25 min)
 
-**Characters:** Rania (student), the AI (played by a classmate), Younes (classmate who helps).
+**Characters:** Sara (student), the AI (played by a classmate), Karim (classmate who helps).
 
 ---
 
-Rania: I asked AI to summarise my teaching-method course. Look, it's perfect!
+Sara: I asked AI to summarise my teaching-method course. Look, it's perfect!
 
-Younes: Perfect? Did you re-read it and compare it with the text?
+Karim: Perfect? Did you re-read it and compare it with the text?
 
-Rania: No… it writes so well.
+Sara: No… it writes so well.
 
-Younes: Rania, a sheet you have not rewritten, you will not remember. Above all, check that it added nothing.
+Karim: Sara, a sheet you have not rewritten, you will not remember. Above all, check that it added nothing.
 
-Rania: How do I check?
+Sara: How do I check?
 
-Younes: The AIDE protocol! First, read the lesson once and highlight your 5 ideas. Then interrogate AI with the pasted text. Then re-check idea by idea.
+Karim: The AIDE protocol! First, read the lesson once and highlight your 5 ideas. Then interrogate AI with the pasted text. Then re-check idea by idea.
 
 AI: I can also correct myself. Give me your list of 5 ideas and I will compare it with my synthesis.
 
-Rania: OK, let me try. My 5 ideas: 1) didactic transposition, 2) the didactic contract…
+Sara: OK, let me try. My 5 ideas: 1) didactic transposition, 2) the didactic contract…
 
 AI: Careful: I have idea 1, but idea 2 does not appear in your text. I added it from my own knowledge. You had said "add nothing", so mea culpa.
 
-Rania: You see, Younes? It invented a sentence and I would have learned it!
+Sara: You see, Karim? It invented a sentence and I would have learned it!
 
-Younes: That is exactly why we check. Now, rewrite the sheet your own way, without the screen, using your Cornell questions.
+Karim: That is exactly why we check. Now, rewrite the sheet your own way, without the screen, using your Cornell questions.
 
-Rania: And if I cannot rephrase?
+Sara: And if I cannot rephrase?
 
-Younes: Then you have not understood yet — and that is exactly where AI helps: it explains, you understand, you rephrase. Never the other way round.
+Karim: Then you have not understood yet — and that is exactly where AI helps: it explains, you understand, you rephrase. Never the other way round.
 
 ---
 
 ## Dialogue B — "Mum, it's a course note!" (15 min)
 
-**Characters:** Imad (student), his mother, little brother Walid (age 9).
+**Characters:** Yacine (student), his mother, little brother Anis (age 9).
 
 ---
 
-Imad: I paste my course notes and ask: "turn this into a Cornell sheet".
+Yacine: I paste my course notes and ask: "turn this into a Cornell sheet".
 
-Walid: You cheat, right?
+Anis: You cheat, right?
 
-Imad: No! To cheat I would have to not understand. I understand, I check, and I rewrite.
+Yacine: No! To cheat I would have to not understand. I understand, I check, and I rewrite.
 
 Mum: And the computer, what exactly does it do?
 
-Imad: It organises my notes into a table, suggests questions, knows the Cornell layout. I control everything.
+Yacine: It organises my notes into a table, suggests questions, knows the Cornell layout. I control everything.
 
-Walid: So it is like the janitor who tidies your room?
+Anis: So it is like the janitor who tidies your room?
 
-Imad: Almost! Except the janitor must not move my things without telling me where. If AI moves an idea, I must find it again.
+Yacine: Almost! Except the janitor must not move my things without telling me where. If AI moves an idea, I must find it again.
 
 Mum: And if you don't find it?
 
-Imad: I ask it to compare with the text. That is the "double-check".
+Yacine: I ask it to compare with the text. That is the "double-check".
 
-Walid: And why do you rewrite it in the notebook afterwards?
+Anis: And why do you rewrite it in the notebook afterwards?
 
-Imad: Because it is by writing that I remember. The computer tidies, but I learn.
+Yacine: Because it is by writing that I remember. The computer tidies, but I learn.
 
 ---
 

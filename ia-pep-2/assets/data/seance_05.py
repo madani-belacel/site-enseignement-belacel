@@ -53,6 +53,23 @@ SEANCE = {
         "Sessions 1 to 4 completed. Come with the topic of your next presentation (or choose one in class).",
         "إتمام الحصص من 1 إلى 4. الإتيان بموضوع العرض القادم (أو اختياره في القسم).",
     ),
+    "accroche": {
+        "question": L(
+            "Un exposé généré en 2 minutes, prêt à présenter… ou un exposé construit en 6 étapes, prêt à convaincre ? Lequel restera dans les mémoires ?",
+            "A talk generated in 2 minutes, ready to present… or a talk built in 6 steps, ready to convince? Which one will be remembered?",
+            "عرض مولّد في دقيقتين جاهز للإلقاء… أم عرض مبني في 6 خطوات جاهز للإقناع؟ أيهما سيبقى في الذاكرة؟",
+        ),
+        "analogie": L(
+            "🍳 Un exposé tout-généré, c'est un plat réchauffé : ça se mange, mais personne ne demande la recette. Un exposé construit, c'est un plat cuisiné : on sent la main du chef — votre message.",
+            "🍳 An all-generated talk is a reheated dish: edible, but nobody asks for the recipe. A built talk is a cooked dish: you taste the chef's hand — your message.",
+            "🍳 العرض المولّد كلياً كطبق مسخَّن: يؤكَل لكن لا أحد يطلب الوصفة. والعرض المبني كطبق مطهو: تُحَسّ يد الطباخ — رسالتك.",
+        ),
+        "phrase": L(
+            "💡 6 étapes : cadrer, plan, sources, slides, script, répéter — l'IA accélère le milieu, jamais le message ni la répétition.",
+            "💡 6 steps: frame, outline, sources, slides, script, rehearse — AI speeds the middle, never the message nor rehearsal.",
+            "💡 6 خطوات: تأطير وخطة ومصادر وشرائح ونص وتكرار — يسرّع الذكاء الوسط ولا يسرّع الرسالة ولا التكرار أبداً.",
+        ),
+    },
     "plan": [
         {
             "time": "00–10",
@@ -186,6 +203,15 @@ SEANCE = {
                         "<strong>Astuce :</strong> demandez un squelette « en 3 parties, 2 sections chacune », puis supprimez, fusionnez et déplacez. Un plan que l'on n'a pas réorganisé soi-même ne nous appartient pas.",
                         "<strong>Tip:</strong> ask for a skeleton \"in 3 parts, 2 sections each\", then delete, merge and move. An outline you have not reorganised does not belong to you.",
                         "<strong>نصيحة:</strong> اطلب هيكلاً « من ثلاثة أجزاء، قسمان لكل جزء »، ثم احذف وادمج ونقل. الخطة التي لا تعيد تنظيمها بنفسك لا تخصّك.",
+                    ),
+                },
+                {
+                    "t": "note",
+                    "kind": "idea",
+                    **L(
+                        "<strong>🔗 Rappel séances 3 et 4 :</strong> chaque partie du plan s'appuie sur une source vérifiée (séance 3) et tient sur une fiche Cornell (séance 4). Un plan sans sources ni fiches = un château de sable.",
+                        "<strong>🔗 Reminder of sessions 3 and 4:</strong> each outline part relies on a verified source (session 3) and fits on a Cornell sheet (session 4). An outline without sources or sheets = a sandcastle.",
+                        "<strong>🔗 تذكير بالحصتين 3 و4:</strong> كل جزء من الخطة يعتمد على مصدر موثق (الحصة 3) ويتسع لبطاقة كورنيل (الحصة 4). خطة دون مصادر ولا بطاقات = قصر رملي.",
                     ),
                 },
             ],
@@ -338,6 +364,15 @@ SEANCE = {
                         "<strong>اختبار « الملقن »:</strong> إذا كان على جمهورك قراءة الشريحة لفهمها، فقد فشلت الشريحة. شريحتك تُبرز الفكرة، وكلامك يتولى الباقي.",
                     ),
                 },
+                {
+                    "t": "note",
+                    "kind": "idea",
+                    **L(
+                        "<strong>🧪 Exemple concret :</strong> sujet « l'eau en CE2 » → slide 3 : titre « Le cycle de l'eau » + 1 schéma + 5 mots. Script 45 s : « Regardez ce schéma : l'eau monte, voyage, retombe — comme vos vacances ! » Test du téléprompteur réussi.",
+                        "<strong>🧪 Concrete example:</strong> topic \"water in Year 4\" → slide 3: title \"The water cycle\" + 1 diagram + 5 words. 45-s script: \"Look at this diagram: water rises, travels, falls — like your holidays!\" Teleprompter test passed.",
+                        "<strong>🧪 مثال ملموس:</strong> موضوع « الماء في CE2 » ← شريحة 3: عنوان « دورة الماء » + مخطط + 5 كلمات. نص 45 ثانية: « انظروا هذا المخطط: الماء يصعد ويرحل ويهطل — كعطلتكم! » اختبار الملقن ناجح.",
+                    ),
+                },
             ],
         },
         {
@@ -407,6 +442,15 @@ SEANCE = {
                     ),
                 },
                 {
+                    "t": "note",
+                    "kind": "goal",
+                    **L(
+                        "<strong>➡️ Pont vers la séance 6 :</strong> votre exposé répété doit tenir sans notes : les flashcards et le tuteur socratique (séance 6) transformeront vos slides en mémoire.",
+                        "<strong>➡️ Bridge to session 6:</strong> your rehearsed talk must hold without notes: flashcards and the Socratic tutor (session 6) will turn your slides into memory.",
+                        "<strong>➡️ جسر إلى الحصة 6:</strong> عرضك المكرَّر يجب أن يصمد دون أوراق: البطاقات والمدرّس السقراطي (الحصة 6) سيحوّلان شرائحك إلى ذاكرة.",
+                    ),
+                },
+                {
                     "t": "ul",
                     **L(
                         [
@@ -472,6 +516,265 @@ SEANCE = {
             ],
         },
     ],
+    "verifications": [
+        {
+            "q": L(
+                "Pourquoi un plan généré doit-il être réorganisé par vous ?",
+                "Why must a generated outline be reorganised by you?",
+                "لماذا يجب أن تعيد تنظيم الخطة المولّدة بنفسك؟",
+            ),
+            "r": L(
+                "Parce qu'un plan non réorganisé n'est pas le vôtre : vous ne pourrez ni le défendre ni vous en souvenir. Réorganisé, il devient votre message.",
+                "Because an unreorganised outline is not yours: you could neither defend nor remember it. Reorganised, it becomes your message.",
+                "لأن خطة غير معاد تنظيمها ليست لك: لن تدافع عنها ولن تتذكرها. ومعاد تنظيمها تصبح رسالتك.",
+            ),
+        },
+        {
+            "q": L(
+                "Que dit le test du téléprompteur ?",
+                "What does the teleprompter test say?",
+                "ماذا يقول اختبار الملقن؟",
+            ),
+            "r": L(
+                "Si le public doit LIRE la slide pour comprendre, la slide est ratée : 1 idée, peu de mots, le détail dans votre parole.",
+                "If the audience must READ the slide to understand, the slide failed: 1 idea, few words, detail in your speech.",
+                "إذا كان على الجمهور قراءة الشريحة للفهم فقد فشلت: فكرة واحدة وكلمات قليلة والتفاصيل في كلامك.",
+            ),
+        },
+        {
+            "q": L(
+                "Peut-on présenter une statistique générée non vérifiée ?",
+                "May you present an unverified generated statistic?",
+                "هل يجوز عرض إحصائية مولّدة غير موثقة؟",
+            ),
+            "r": L(
+                "Jamais : règle des 3 sources (titre, auteurs, année retrouvés). Une statistique inventée devant la classe détruit votre crédibilité.",
+                "Never: the 3-source rule (title, authors, year found). An invented statistic in front of the class destroys your credibility.",
+                "أبداً: قاعدة المصادر الثلاثة (عنوان ومؤلفون وسنة موجودة). إحصائية مختلقة أمام القسم تهدم مصداقيتك.",
+            ),
+        },
+    ],
+    "exercise_guide": {
+        "enonce": L(
+            "Avec votre sujet : 1) générez un squelette (3 parties, 2 sections) ; 2) critiquez-le (supprimer, fusionner, déplacer) ; 3) produisez 5 slides nettoyées (moitié des mots).",
+            "With your topic: 1) generate a skeleton (3 parts, 2 sections); 2) critique it (delete, merge, move); 3) produce 5 cleaned slides (half the words).",
+            "بموضوعك: 1) ولّد هيكلاً (3 أجزاء وقسمان)؛ 2) انقده (احذف وادمج وانقل)؛ 3) أنتج 5 شرائح منظفة (نصف الكلمات).",
+        ),
+        "demarche": L(
+            "1) Prompt squelette + temps par partie. 2) Imprimer/entourer : barrer 1 partie, flécher 2 déplacements. 3) Gamma/Canva → générer → supprimer la moitié des mots. 4) Voisin : test du téléprompteur.",
+            "1) Skeleton prompt + time per part. 2) Print/circle: cross 1 part, arrow 2 moves. 3) Gamma/Canva → generate → delete half the words. 4) Neighbour: teleprompter test.",
+            "1) صياغة الهيكل + مدة لكل جزء. 2) اطبع/أحِط: اشطب جزءاً وسهّم نقلين. 3) Gamma/Canva ← ولّد ← احذف نصف الكلمات. 4) الجار: اختبار الملقن.",
+        ),
+        "solution": L(
+            "Réussi si : plan réorganisé visiblement (ratures/flèches), 5 slides à 1 idée chacune, test voisin réussi (il comprend sans lire), et 3 sources vérifiées notées.",
+            "Success if: visibly reorganised outline (crossings/arrows), 5 slides with 1 idea each, neighbour test passed (they get it without reading), and 3 verified sources noted.",
+            "نجاح إذا: خطة معاد تنظيمها ظاهراً (شطب/أسهم)، و5 شرائح بفكرة لكل منها، واختبار الجار ناجح (يفهم دون قراءة)، و3 مصادر موثقة مدوّنة.",
+        ),
+    },
+    "videos": [
+        {
+            "titre": L(
+                "Gamma : générer un exposé complet en 10 minutes (tutoriel)",
+                "Gamma: generate a full talk in 10 minutes (tutorial)",
+                "Gamma: توليد عرض كامل في 10 دقائق (شرح)",
+            ),
+            "url": "https://www.youtube.com/results?search_query=gamma+app+tutoriel+francais+presentation+expose",
+            "langue": "fr",
+            "concept": L(
+                "Du plan collé aux slides stylées, puis le nettoyage de moitié des mots.",
+                "From pasted outline to styled slides, then cutting half the words.",
+                "من الخطة الملصقة إلى شرائح منسقة، ثم حذف نصف الكلمات.",
+            ),
+        },
+        {
+            "titre": L(
+                "كيف تلقي عرضاً أمام الجمهور دون خوف؟",
+                "How to deliver a talk fearlessly?",
+                "كيف تلقي عرضاً أمام الجمهور دون خوف؟",
+            ),
+            "url": "https://www.youtube.com/results?search_query=فن+الإلقاء+أمام+الجمهور+للطلبة",
+            "langue": "ar",
+            "concept": L(
+                "Voix, regard, première phrase : les 10 premières secondes qui donnent le ton.",
+                "Voice, gaze, first sentence: the 10 first seconds setting the tone.",
+                "الصوت والنظر والجملة الأولى: الثواني العشر التي تحدد النبرة.",
+            ),
+        },
+        {
+            "titre": L(
+                "Canva Magic Design pour des slides magnifiques (tutoriel)",
+                "Canva Magic Design for gorgeous slides (tutorial)",
+                "Canva Magic Design لشرائح رائعة (شرح)",
+            ),
+            "url": "https://www.youtube.com/results?search_query=canva+magic+design+tutoriel+francais+slides",
+            "langue": "fr",
+            "concept": L(
+                "Modèles, visuels et lisibilité : le test du téléprompteur appliqué.",
+                "Templates, visuals and readability: the teleprompter test applied.",
+                "قوالب وصور ووضوح: اختبار الملقن مطبَّقاً.",
+            ),
+        },
+    ],
+    "fiche_synthese": {
+        "points": [
+            L(
+                "6 étapes : cadrer, plan, sources, slides, script, répéter.",
+                "6 steps: frame, outline, sources, slides, script, rehearse.",
+                "6 خطوات: تأطير وخطة ومصادر وشرائح ونص وتكرار.",
+            ),
+            L(
+                "Plan généré puis réorganisé PAR VOUS (barrer, déplacer).",
+                "Generated outline then reorganised BY YOU (cross, move).",
+                "خطة مولّدة ثم معاد تنظيمها منك (اشطب وانقل).",
+            ),
+            L(
+                "1 slide = 1 idée = très peu de mots (test du téléprompteur).",
+                "1 slide = 1 idea = very few words (teleprompter test).",
+                "شريحة = فكرة = كلمات قليلة جداً (اختبار الملقن).",
+            ),
+            L(
+                "Aucune statistique sans source vérifiée (règle des 3).",
+                "No statistic without verified source (rule of 3).",
+                "لا إحصائية دون مصدر موثق (قاعدة الثلاثة).",
+            ),
+            L(
+                "Répéter à voix haute, chronométré, sans écran.",
+                "Rehearse aloud, timed, screen-free.",
+                "كرّر جهراً وبمؤقّت ودون شاشة.",
+            ),
+        ],
+        "analogies": [
+            L(
+                "Le plat cuisiné contre le plat réchauffé.",
+                "The cooked dish vs the reheated dish.",
+                "الطبق المطهو مقابل المسخَّن.",
+            ),
+            L(
+                "Le post-it : le plan se déplace, s'abandonne, se recrée.",
+                "The post-it: the outline moves, drops, recreates.",
+                "الملصقة: الخطة تُنقَل وتُحذَف وتُنشَأ.",
+            ),
+            L(
+                "Le téléprompteur : si on doit lire, c'est raté.",
+                "The teleprompter: if you must read, it failed.",
+                "الملقن: إذا وجب القراءة فقد فشل.",
+            ),
+        ],
+        "exemples": [
+            L(
+                "« L'eau en CE2 » → slide 3 : schéma + 5 mots + script 45 s.",
+                "\"Water in Year 4\" → slide 3: diagram + 5 words + 45-s script.",
+                "« الماء في CE2 » ← شريحة 3: مخطط + 5 كلمات + نص 45 ثانية.",
+            ),
+            L(
+                "Plan critiqué : 1 partie barrée, 2 déplacées → votre message.",
+                "Critiqued outline: 1 part crossed, 2 moved → your message.",
+                "خطة منقَّدة: جزء مشطوب و2 منقولان ← رسالتك.",
+            ),
+            L(
+                "3 sources Scholar notées avant la première slide.",
+                "3 Scholar sources noted before the first slide.",
+                "3 مصادر Scholar مدوّنة قبل أول شريحة.",
+            ),
+        ],
+        "analogie_finale": L(
+            "🏁 Votre exposé et l'IA, c'est comme votre voix et le micro : le micro amplifie (les slides, le plan), mais c'est votre voix (votre message, votre répétition) que le public retient — et applaudit.",
+            "🏁 Your talk and AI is like your voice and the mic: the mic amplifies (slides, outline), but your voice (message, rehearsal) is what the audience remembers — and applauds.",
+            "🏁 عرضك والذكاء كصوتك والمكبّر: المكبّر يضخّم (الشرائح والخطة)، لكن صوتك (رسالتك وتكرارك) ما يتذكره الجمهور — ويصفّق له.",
+        ),
+        "quiz": [
+            {
+                "q": L(
+                    "Pourquoi réorganiser le plan généré ?",
+                    "Why reorganise the generated outline?",
+                    "لماذا تعيد تنظيم الخطة المولّدة؟",
+                ),
+                "options": L(
+                    ["Pour décorer", "Pour qu'il devienne VÔTRE : défendable et mémorisable", "Pour perdre du temps", "Inutile"],
+                    ["For decoration", "To make it YOURS: defendable and memorable", "To waste time", "Useless"],
+                    ["للزينة", "لتصبح لك: قابلة للدفاع والتذكر", "لتضييع الوقت", "لا فائدة"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "On ne défend et ne retient que ce qu'on a soi-même structuré.",
+                    "You only defend and remember what you structured yourself.",
+                    "لا تدافع ولا تتذكر إلا ما بنيتَه بنفسك.",
+                ),
+            },
+            {
+                "q": L(
+                    "Que dit le test du téléprompteur ?",
+                    "What does the teleprompter test say?",
+                    "ماذا يقول اختبار الملقن؟",
+                ),
+                "options": L(
+                    ["Lire ses slides", "Si le public doit lire pour comprendre : raté — 1 idée, peu de mots", "Beaucoup de texte", "Pas de slides"],
+                    ["Read your slides", "If the audience must read to get it: failed — 1 idea, few words", "Lots of text", "No slides"],
+                    ["اقرأ شرائحك", "إذا وجب على الجمهور القراءة للفهم: فشل — فكرة وكلمات قليلة", "نص كثير", "لا شرائح"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "La slide marque l'idée, votre parole fait le reste.",
+                    "The slide marks the idea, your speech does the rest.",
+                    "الشريحة تُبرز الفكرة وكلامك يتولى الباقي.",
+                ),
+            },
+            {
+                "q": L(
+                    "Combien de sources vérifiées minimum avant les slides ?",
+                    "How many verified sources minimum before slides?",
+                    "كم مصدراً موثقاً على الأقل قبل الشرائح؟",
+                ),
+                "options": L(
+                    ["0", "3 (titre, auteurs, année retrouvés)", "100", "1 suffit toujours"],
+                    ["0", "3 (title, authors, year found)", "100", "1 always enough"],
+                    ["0", "3 (عنوان ومؤلفون وسنة موجودة)", "100", "واحد يكفي دائماً"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Règle des 3 sources : sans elles, aucune statistique ne monte en classe.",
+                    "Rule of 3 sources: without them, no statistic goes to class.",
+                    "قاعدة المصادر الثلاثة: دونها لا إحصائية تصعد إلى القسم.",
+                ),
+            },
+            {
+                "q": L(
+                    "Que contient un bon script oral ?",
+                    "What does a good oral script contain?",
+                    "ماذا يحوي النص الشفهي الجيد؟",
+                ),
+                "options": L(
+                    ["Le texte des slides recopié", "Ce que VOUS direz : phrases courtes, naturelles, chronométrées", "Des blagues seulement", "Rien"],
+                    ["Copied slide text", "What YOU will say: short, natural, timed sentences", "Only jokes", "Nothing"],
+                    ["نص الشرائح منسوخاً", "ما ستقوله أنت: جمل قصيرة طبيعية مضبوطة", "نكات فقط", "لا شيء"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Le script se DIT, il ne se lit pas : 45 secondes par slide, première phrase soignée.",
+                    "The script is SPOKEN, not read: 45 seconds per slide, polished first sentence.",
+                    "النص يُقال ولا يُقرَأ: 45 ثانية لكل شريحة وجملة أولى متقنة.",
+                ),
+            },
+            {
+                "q": L(
+                    "Comment répéter efficacement ?",
+                    "How to rehearse efficiently?",
+                    "كيف تكرّر بفعالية؟",
+                ),
+                "options": L(
+                    ["Dans sa tête", "À voix haute, chronométré, sans écran, devant miroir ou ami", "La veille 5 min", "Jamais"],
+                    ["In your head", "Aloud, timed, screen-free, mirror or friend", "5 min the day before", "Never"],
+                    ["في رأسك", "جهراً وبمؤقّت ودون شاشة وأمام مرآة أو صديق", "5 دقائق ليلة الامتحان", "أبداً"],
+                ),
+                "answer": 1,
+                "exp": L(
+                    "Miroir + chrono + sans script = possession de l'exposé.",
+                    "Mirror + timer + no script = owning the talk.",
+                    "مرآة + مؤقّت + دون نص = امتلاك العرض.",
+                ),
+            },
+        ],
+    },
     "activites": [
         L(
             "Prompt squelette : chaque étudiant génère un plan pour son sujet, puis l'échange avec un voisin qui le critique (ajouter/supprimer/déplacer).",
