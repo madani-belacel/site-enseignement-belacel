@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Séance 07 — IA et programmation — mini-projet Python — IA en Éducation PEP 2A — Dr. Madani BELACEL</title>
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-07/index.html" rel="canonical"/>
+<meta name="description" content="Comprendre le code, déboguer avec l'IA, puis construire un vrai assistant Python qui appelle l'API Gemini : clé gratuite, script commenté, exécution et modification.">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../ia-pep-2/assets/styles-seance.css">
+<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Séance 07 — IA et programmation — mini-projet Python",
+  "url": "https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-07/index.html",
+  "author": { "@type": "Person", "name": "Dr. BELACEL Madani" },
+  "provider": { "@type": "Organization", "name": "ENS — Université de Mostaganem" },
+  "inLanguage": "fr",
+  "learningResourceType": "Cours universitaire (1h30)",
+  "isPartOf": { "@type": "Course", "name": "Intelligence Artificielle en Éducation — PEP 2ème année" }
+}
+</script>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../index.html" class="header-logo">
+        <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <picture><source srcset="../../images/LOGO-FLE-UNIV-Mosta.avif" type="image/avif"><source srcset="../../images/LOGO-FLE-UNIV-Mosta.webp" type="image/webp"><img loading="lazy" width="207" height="243" src="../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères"></picture>
+      </div>
+    </div>
+    <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../index.html#about">Présentation</a></li>
+          <li><a href="../../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../tic.html">TIC</a></li>
+          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
+          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+          <li><a href="../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
+          <li><a href="../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
+          <li><a href="../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
+        </ul>
+      </li>
+      <li><a href="../../recherche.html">Recherche</a></li>
+      <li><a href="../../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../../index.html#news">Actualités des Modules</a></li>
+          <li><a href="../../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../../contact.html">Contact</a></li>
+      <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../index.html">Accueil</a></li>
+    <li><a href="../../enseignement.html">Enseignement</a></li>
+    <li><a href="../../ia-pep-2/index.html">IA en Éducation — PEP 2A</a></li>
+    <li class="current">Séance 07</li>
+  </ol>
+</nav>
+
+<main class="page-content">
+  <div class="seance-content">
+    <h1>🐍 <span class="lang-fr">Séance 07 — IA et programmation — mini-projet Python</span><span class="lang-en">Session 07 — AI and programming — Python mini-project</span><span class="lang-ar">الحصة 07 — الذكاء الاصطناعي والبرمجة — مشروع بايثون مصغّر</span></h1>
+    <p style="font-size:1.05rem;color:var(--text-muted);margin:0.3rem 0 0.2rem;">
+      <span class="lang-fr">Comprendre le code, déboguer avec l'IA, puis construire un vrai assistant Python qui appelle l'API Gemini : clé gratuite, script commenté, exécution et modification.</span><span class="lang-en">Understand code, debug with AI, then build a real Python assistant calling the Gemini API: free key, commented script, run and modification.</span><span class="lang-ar">فهم الكود، وتصحيح الأخطاء بالذكاء الاصطناعي، ثم بناء مساعد بايثون حقيقي يستدعي واجهة Gemini: مفتاح مجاني، وبرنامج مشروح، وتشغيل وتعديل.</span>
+    </p>
+    <p style="font-size:.85rem;color:var(--text-muted);">
+      <span class="lang-fr">Durée : 1 h 30 · Module « Intelligence Artificielle » · 2ème année PEP — ENS</span>
+      <span class="lang-en">Duration: 1 h 30 · Module "Artificial Intelligence" · 2nd year PEP — ENS</span>
+      <span class="lang-ar">المدّة: 1 h 30 · وحدة « الذكاء الاصطناعي » · السنة الثانية PEP — المدرسة العليا للأساتذة</span>
+    </p>
+    <div class="language-switcher">
+    <div class="lang-tabs" role="group" aria-label="Choisir la langue">
+  <button type="button" class="lang-tab active" data-lang="fr">🇫🇷 Français</button>
+  <button type="button" class="lang-tab" data-lang="en">🇬🇧 English</button>
+  <button type="button" class="lang-tab" data-lang="ar">🇩🇿 العربية</button>
+</div>
+    </div>
+
+    <div class="seance-meta">
+      <strong class="lang-fr">🎯 Objectifs pédagogiques</strong>
+      <strong class="lang-en">🎯 Learning objectives</strong>
+      <strong class="lang-ar">🎯 الأهداف البيداغوجية</strong>
+      <ul class="lang-fr"><li>Expliquer un algorithme simple avec l'aide de l'IA, ligne par ligne.</li><li>Déboguer un script Python : lire l'erreur, demander un diagnostic, corriger.</li><li>Obtenir une clé API gratuite (Gemini) et l'utiliser sans la partager.</li><li>Exécuter le script assistant_chat.py et dialoguer avec sa propre IA.</li><li>Modifier le script (mémoire de conversation) et expliquer chaque ajout.</li></ul>
+      <ul class="lang-en"><li>Explain a simple algorithm with AI help, line by line.</li><li>Debug a Python script: read the error, ask for a diagnosis, fix.</li><li>Get a free API key (Gemini) and use it without sharing it.</li><li>Run the assistant_chat.py script and chat with your own AI.</li><li>Modify the script (conversation memory) and explain each addition.</li></ul>
+      <ul class="lang-ar"><li>أن يشرح خوارزمية بسيطة بمساعدة الذكاء الاصطناعي، سطراً سطراً.</li><li>أن يصحّح برنامج بايثون: يقرأ الخطأ، ويطلب تشخيصاً، ويصلح.</li><li>أن يحصل على مفتاح API مجاني (Gemini) ويستعمله دون مشاركته.</li><li>أن يشغّل برنامج assistant_chat.py ويحاور ذكاءه الخاص.</li><li>أن يعدّل البرنامج (ذاكرة المحادثة) ويشرح كل إضافة.</li></ul>
+      <strong class="lang-fr">🧱 Prérequis</strong>
+      <strong class="lang-en">🧱 Prerequisites</strong>
+      <strong class="lang-ar">🧱 المكتسبات القبلية</strong>
+      <p class="lang-fr">Séances 1 à 6 suivies. Python installé (ou VS Code). Aucun niveau avancé requis.</p>
+      <p class="lang-en">Sessions 1 to 6 completed. Python installed (or VS Code). No advanced level required.</p>
+      <p class="lang-ar">إتمام الحصص من 1 إلى 6. بايثون مثبّتة (أو VS Code). لا مستوى متقدم مطلوب.</p>
+    </div>
+
+    <h2><span class="lang-fr">⏱️ Déroulé de la séance (1 h 30)</span><span class="lang-en">⏱️ Session plan (1h30)</span><span class="lang-ar">⏱️ سير الحصة (ساعة و30 دقيقة)</span></h2>
+    <table class="plan-table lang-fr"><thead><tr><th>Durée</th><th>Étape</th></tr></thead><tbody><tr><td class="time">00–05</td><td><span class="phase-badge">🎬 A</span> <strong>Accroche : le commis cuisinier</strong><br><span style="color:var(--text-muted);font-size:.9em;">Question d'ouverture + analogie du chef et du commis.</span></td></tr><tr><td class="time">05–25</td><td><span class="phase-badge">🧱 B</span> <strong>Explication : comprendre et déboguer avec l'IA</strong><br><span style="color:var(--text-muted);font-size:.9em;">3 idées : faire expliquer le code ligne par ligne ; lire les messages d'erreur ; demander un diagnostic avant la solution.</span></td></tr><tr><td class="time">25–50</td><td><span class="phase-badge">🛠️ C</span> <strong>Démo : la clé API + le premier script</strong><br><span style="color:var(--text-muted);font-size:.9em;">ai.google.dev → clé gratuite → pip install → assistant_chat.py qui répond.</span></td></tr><tr><td class="time">50–70</td><td><span class="phase-badge">✏️ D</span> <strong>Exercice guidé : ajoutez la mémoire</strong><br><span style="color:var(--text-muted);font-size:.9em;">Transformer le script : garder les 6 derniers échanges pour le contexte.</span></td></tr><tr><td class="time">70–80</td><td><span class="phase-badge">🛠️ C</span> <strong>Démo 2 : Cursor / Copilot en action</strong><br><span style="color:var(--text-muted);font-size:.9em;">Auto-complétion en direct : écrire un commentaire, laisser l'outil compléter, vérifier.</span></td></tr><tr><td class="time">80–90</td><td><span class="phase-badge">📋 E</span> <strong>Synthèse, quiz et annonce de la séance 8</strong><br><span style="color:var(--text-muted);font-size:.9em;">« À retenir ». Annonce : rédaction académique et anti-plagiat.</span></td></tr></tbody></table>
+    <table class="plan-table lang-en"><thead><tr><th>Time</th><th>Step</th></tr></thead><tbody><tr><td class="time">00–05</td><td><span class="phase-badge">🎬 A</span> <strong>Hook: the kitchen helper</strong><br><span style="color:var(--text-muted);font-size:.9em;">Opening question + chef-and-helper analogy.</span></td></tr><tr><td class="time">05–25</td><td><span class="phase-badge">🧱 B</span> <strong>Explanation: understand and debug with AI</strong><br><span style="color:var(--text-muted);font-size:.9em;">3 ideas: have code explained line by line; read error messages; ask for a diagnosis before the solution.</span></td></tr><tr><td class="time">25–50</td><td><span class="phase-badge">🛠️ C</span> <strong>Demo: the API key + the first script</strong><br><span style="color:var(--text-muted);font-size:.9em;">ai.google.dev → free key → pip install → assistant_chat.py answering.</span></td></tr><tr><td class="time">50–70</td><td><span class="phase-badge">✏️ D</span> <strong>Guided exercise: add the memory</strong><br><span style="color:var(--text-muted);font-size:.9em;">Transform the script: keep the last 6 exchanges for context.</span></td></tr><tr><td class="time">70–80</td><td><span class="phase-badge">🛠️ C</span> <strong>Demo 2: Cursor / Copilot in action</strong><br><span style="color:var(--text-muted);font-size:.9em;">Live auto-completion: write a comment, let the tool complete, verify.</span></td></tr><tr><td class="time">80–90</td><td><span class="phase-badge">📋 E</span> <strong>Wrap-up, quiz and preview of session 8</strong><br><span style="color:var(--text-muted);font-size:.9em;">Key takeaways. Preview: academic writing and anti-plagiarism.</span></td></tr></tbody></table>
+    <table class="plan-table lang-ar"><thead><tr><th>المدّة</th><th>المرحلة</th></tr></thead><tbody><tr><td class="time">00–05</td><td><span class="phase-badge">🎬 A</span> <strong>انطلاقة: مساعد الطباخ</strong><br><span style="color:var(--text-muted);font-size:.9em;">سؤال الافتتاح + تشبيه الطباخ والمساعد.</span></td></tr><tr><td class="time">05–25</td><td><span class="phase-badge">🧱 B</span> <strong>شرح: الفهم والتصحيح بالذكاء الاصطناعي</strong><br><span style="color:var(--text-muted);font-size:.9em;">3 أفكار: شرح الكود سطراً سطراً؛ قراءة رسائل الخطأ؛ طلب التشخيص قبل الحل.</span></td></tr><tr><td class="time">25–50</td><td><span class="phase-badge">🛠️ C</span> <strong>عرض: مفتاح API + أول برنامج</strong><br><span style="color:var(--text-muted);font-size:.9em;">ai.google.dev ← مفتاح مجاني ← تثبيت ← assistant_chat.py يجيب.</span></td></tr><tr><td class="time">50–70</td><td><span class="phase-badge">✏️ D</span> <strong>تمرين موجّه: أضف الذاكرة</strong><br><span style="color:var(--text-muted);font-size:.9em;">تحويل البرنامج: الاحتفاظ بآخر 6 تبادلات للسياق.</span></td></tr><tr><td class="time">70–80</td><td><span class="phase-badge">🛠️ C</span> <strong>عرض 2: Cursor / Copilot عملياً</strong><br><span style="color:var(--text-muted);font-size:.9em;">إكمال تلقائي مباشر: اكتب تعليقاً، ودع الأداة تكمل، وتحقّق.</span></td></tr><tr><td class="time">80–90</td><td><span class="phase-badge">📋 E</span> <strong>خلاصة واختبار وتقديم الحصة الثامنة</strong><br><span style="color:var(--text-muted);font-size:.9em;">« ما يجب تذكّره ». تقديم: الكتابة الأكاديمية ومكافحة الانتحال.</span></td></tr></tbody></table>
+
+    <h2><span class="lang-fr">📚 Contenu de la séance</span><span class="lang-en">📚 Lesson content</span><span class="lang-ar">📚 محتوى الحصة</span></h2>
+    <section id="accroche" class="hook-box">
+<h2><span class="lang-fr">🎬 Accroche et analogie — 5 min</span><span class="lang-en">🎬 Hook and analogy — 5 min</span><span class="lang-ar">🎬 انطلاقة وتشبيه — 5 دقائق</span></h2>
+<div class="hook-row"><span class="hook-emoji">❓</span><div><div class="lang-fr">Et si votre prochain exercice de programmation se corrigeait tout seul… en vous expliquant vos propres erreurs ? C'est exactement ce qu'on va construire aujourd'hui.</div><div class="lang-en">What if your next programming exercise corrected itself… while explaining your own mistakes? That is exactly what we will build today.</div><div class="lang-ar">ماذا لو صحّح تمرينك البرمجي نفسه… شارحاً أخطاءك؟ هذا بالضبط ما سنبنيه اليوم.</div></div></div><div class="hook-row"><span class="hook-emoji">🍳</span><div><div class="lang-fr">🍳 Programmer avec l'IA, c'est comme cuisiner avec un commis : c'est vous le chef (vous décidez du plat), le commis épluche et coupe (il écrit le code répétitif), mais vous goûtez chaque étape — sinon le plat est raté.</div><div class="lang-en">🍳 Programming with AI is like cooking with a helper: you are the chef (you decide the dish), the helper peels and chops (it writes repetitive code), but you taste every step — otherwise the dish fails.</div><div class="lang-ar">🍳 البرمجة مع الذكاء الاصطناعي كالطبخ مع مساعد: أنت الطباخ الرئيسي (تقرّر الطبق)، والمساعد يقشّر ويقطّع (يكتب الكود المتكرر)، لكنك تتذوّق كل مرحلة — وإلا فشل الطبق.</div></div></div><div class="hook-row hook-phrase"><span class="hook-emoji">💡</span><div><div class="lang-fr">💡 Une API, c'est un guichet : votre petit script Python y dépose une question, et le grand modèle d'IA y répond. Aujourd'hui, vous construisez le guichet.</div><div class="lang-en">💡 An API is a counter: your small Python script drops a question there, and the big AI model answers. Today, you build the counter.</div><div class="lang-ar">💡 الواجهة API كشبّاك: برنامجك الصغير يضع سؤالاً، والنموذج الكبير يجيب. اليوم ستبني الشبّاك.</div></div></div>
+</section>
+    
+<section id="s1">
+<h2><span class="lang-fr">Comprendre le code : l'IA comme professeur particulier</span><span class="lang-en">Understand code: AI as a private teacher</span><span class="lang-ar">فهم الكود: الذكاء الاصطناعي كمدرّس خصوصي</span></h2>
+<div class="lang-fr"><p class="lang-fr">Ne demandez jamais « fais mon TP » : demandez « explique-moi ». Un étudiant qui comprend 10 programmes expliqués progresse ; celui qui rend 10 programmes générés stagne.</p>
+<ul class="lang-fr"><li><strong>Prompt explication :</strong> « Explique ce code ligne par ligne, comme à un débutant : [coller le code]. »</li><li><strong>Prompt algorithme :</strong> « Explique la recherche du maximum dans une liste avec un exemple chiffré pas à pas. »</li><li><strong>Prompt comparaison :</strong> « Quelle est la différence entre une boucle for et while ? Un exemple chacun. »</li></ul>
+<div class="idea-box lang-fr">🧩 <strong>🔗 Rappel séance 6 :</strong> le tuteur socratique posait des questions au lieu de donner les réponses. Aujourd'hui, on le CODE : notre script posera des questions à Gemini au lieu de tout faire à notre place.</div></div>
+<div class="lang-en"><p class="lang-en">Never ask "do my assignment": ask "explain to me". A student who understands 10 explained programs progresses; one who submits 10 generated programs stagnates.</p>
+<ul class="lang-en"><li><strong>Explanation prompt:</strong> "Explain this code line by line, like to a beginner: [paste code]."</li><li><strong>Algorithm prompt:</strong> "Explain finding the maximum in a list with a step-by-step number example."</li><li><strong>Comparison prompt:</strong> "What is the difference between for and while loops? One example each."</li></ul>
+<div class="idea-box lang-en">🧩 <strong>🔗 Reminder of session 6:</strong> the Socratic tutor asked questions instead of giving answers. Today, we CODE it: our script will ask Gemini questions instead of doing everything for us.</div></div>
+<div class="lang-ar"><p class="lang-ar">لا تطلب « أنجز واجبي » أبداً: اطلب « اشرح لي ». الطالب الذي يفهم عشرة برامج مشروحة يتقدّم؛ ومن يسلّم عشرة برامج مولّدة يراوح.</p>
+<ul class="lang-ar"><li><strong>صياغة الشرح:</strong> « اشرح هذا الكود سطراً سطراً كمبتدئ: [الصق الكود] ».</li><li><strong>صياغة الخوارزمية:</strong> « اشرح البحث عن أكبر عنصر في قائمة بمثال رقمي خطوة بخطوة ».</li><li><strong>صياغة المقارنة:</strong> « ما الفرق بين حلقتي for وwhile؟ مثال لكل منهما ».</li></ul>
+<div class="idea-box lang-ar">🧩 <strong>🔗 تذكير بالحصة 6:</strong> المدرّس السقراطي كان يطرح أسئلة بدل إعطاء الأجوبة. اليوم سنبرمجه: برنامجنا سيطرح أسئلة على Gemini بدل فعل كل شيء بدلاً منا.</div></div>
+</section>
+
+<section id="s2">
+<h2><span class="lang-fr">Déboguer : lire l'erreur avant de la réparer</span><span class="lang-en">Debug: read the error before fixing it</span><span class="lang-ar">تصحيح الأخطاء: اقرأ الخطأ قبل إصلاحه</span></h2>
+<div class="lang-fr"><p class="lang-fr">Un message d'erreur n'est pas une insulte : c'est une adresse (le numéro de ligne) et un diagnostic (le type d'erreur). Montrez les deux à l'IA, et demandez d'abord le POURQUOI.</p>
+<ul class="lang-fr"><li><strong>Méthode en 3 temps :</strong> 1) lire la dernière ligne de l'erreur ; 2) demander « pourquoi cette erreur ? » ; 3) seulement ensuite « comment corriger ? ».</li><li><strong>Prompt modèle :</strong> « Voici mon code [coller] et l'erreur [coller]. Explique la cause en 2 phrases, puis propose UNE correction. »</li><li><strong>Erreurs classiques PEP :</strong> indentation, deux-points oubliés, variable non définie, mélange de types.</li></ul>
+<div class="tip-box lang-fr">💡 <strong>Astuce :</strong> après la correction, demandez « donne-moi un mini-exercice similaire pour vérifier que j'ai compris ». La boucle est bouclée : erreur → cause → correction → vérification.</div>
+<div class="idea-box lang-fr">🧩 <strong>🧪 Exemple concret :</strong> moyenne = total / nombre. Une TypeError mélangeant texte et nombres → cause : un âge lu comme texte → correction : int(age). Demandez ensuite un exercice similaire avec des notes.</div></div>
+<div class="lang-en"><p class="lang-en">An error message is not an insult: it is an address (the line number) and a diagnosis (the error type). Show both to AI, and ask for the WHY first.</p>
+<ul class="lang-en"><li><strong>3-step method:</strong> 1) read the last line of the error; 2) ask "why this error?"; 3) only then "how to fix?"</li><li><strong>Model prompt:</strong> "Here is my code [paste] and the error [paste]. Explain the cause in 2 sentences, then suggest ONE fix."</li><li><strong>Classic PEP mistakes:</strong> indentation, missing colons, undefined variable, mixed types.</li></ul>
+<div class="tip-box lang-en">💡 <strong>Tip:</strong> after the fix, ask "give me a similar mini-exercise to check I understood". The loop is closed: error → cause → fix → check.</div>
+<div class="idea-box lang-en">🧩 <strong>🧪 Concrete example:</strong> average = total / count. A TypeError mixing text and numbers → cause: an age read as text → fix: int(age). Then ask for a similar exercise with grades.</div></div>
+<div class="lang-ar"><p class="lang-ar">رسالة الخطأ ليست إهانة: بل عنوان (رقم السطر) وتشخيص (نوع الخطأ). اعرضهما على الذكاء الاصطناعي، واطلب لماذا أولاً.</p>
+<ul class="lang-ar"><li><strong>منهجية بثلاث خطوات:</strong> 1) اقرأ آخر سطر من الخطأ؛ 2) اسأل « لماذا هذا الخطأ؟ »؛ 3) ثم فقط « كيف أصلح؟ ».</li><li><strong>صياغة نموذجية:</strong> « هذا كودي [الصق] والخطأ [الصق]. اشرح السبب في جملتين، ثم اقترح تصحيحاً واحداً ».</li><li><strong>أخطاء PEP الكلاسيكية:</strong> المسافة البادئة، نقطتان منسيتان، متغير غير معرّف، خلط الأنواع.</li></ul>
+<div class="tip-box lang-ar">💡 <strong>نصيحة:</strong> بعد التصحيح اطلب « أعطني تمريناً مصغّراً مشابهاً لأتحقق أني فهمت ». الحلقة مكتملة: خطأ ← سبب ← تصحيح ← تحقق.</div>
+<div class="idea-box lang-ar">🧩 <strong>🧪 مثال ملموس:</strong> المعدل = المجموع / العدد. خطأ نوع يخلط نصاً وأعداداً ← السبب: عمر مقروء كنص ← التصحيح: int(age). ثم اطلب تمريناً مشابهاً بالعلامات.</div></div>
+</section>
+
+<section id="s3">
+<h2><span class="lang-fr">Le mini-projet : votre assistant qui appelle Gemini</span><span class="lang-en">The mini-project: your assistant calling Gemini</span><span class="lang-ar">المشروع المصغّر: مساعدك الذي يستدعي Gemini</span></h2>
+<div class="lang-fr"><p class="lang-fr">Une API (interface de programmation) est un guichet : votre script envoie du texte, le modèle géant répond. Avec une clé gratuite, 15 lignes de Python suffisent pour avoir VOTRE chatbot.</p>
+<ol class="lang-fr"><li><strong>Clé gratuite :</strong> aller sur ai.google.dev → « Get API key » → copier (comme un mot de passe, jamais partagée).</li><li><strong>Installer :</strong> <strong>python -m pip install google-generativeai</strong> dans le terminal.</li><li><strong>Copier</strong> le script assistant_chat.py ci-dessous, coller la clé, exécuter : <strong>python assistant_chat.py</strong>.</li><li><strong>Tester :</strong> poser 3 questions de révision de votre module préféré.</li></ol>
+<pre class="lang-fr"><code># assistant_chat.py -- mini assistant IA (projet seance 07)
+# Installation : python -m pip install google-generativeai
+import google.generativeai as genai
+
+# 1. Cle gratuite sur https://ai.google.dev (ne jamais la partager !)
+genai.configure(api_key="COLLE_TA_CLE_ICI")
+
+# 2. Choix du modele (rapide et gratuit)
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+print("Assistant IA pour etudiant (tape 'quit' pour sortir)")
+while True:
+    question = input("\nToi &gt; ")
+    if question.lower() in ("quit", "exit"):
+        break
+    reponse = model.generate_content(question)
+    print("IA   &gt;", reponse.text)</code></pre>
+<div class="warn-box lang-fr">⚠️ <strong>🔒 Sécurité :</strong> la clé API, c'est un mot de passe payant. Jamais dans un devoir rendu, jamais sur GitHub, jamais en photo. Si elle fuite, la régénérer sur ai.google.dev.</div></div>
+<div class="lang-en"><p class="lang-en">An API (programming interface) is a counter: your script sends text, the giant model answers. With a free key, 15 lines of Python are enough for YOUR chatbot.</p>
+<ol class="lang-en"><li><strong>Free key:</strong> go to ai.google.dev → "Get API key" → copy (like a password, never shared).</li><li><strong>Install:</strong> <strong>python -m pip install google-generativeai</strong> in the terminal.</li><li><strong>Copy</strong> the assistant_chat.py script below, paste the key, run: <strong>python assistant_chat.py</strong>.</li><li><strong>Test:</strong> ask 3 revision questions from your favourite module.</li></ol>
+<pre class="lang-en"><code># assistant_chat.py -- mini assistant IA (projet seance 07)
+# Installation : python -m pip install google-generativeai
+import google.generativeai as genai
+
+# 1. Cle gratuite sur https://ai.google.dev (ne jamais la partager !)
+genai.configure(api_key="COLLE_TA_CLE_ICI")
+
+# 2. Choix du modele (rapide et gratuit)
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+print("Assistant IA pour etudiant (tape 'quit' pour sortir)")
+while True:
+    question = input("\nToi &gt; ")
+    if question.lower() in ("quit", "exit"):
+        break
+    reponse = model.generate_content(question)
+    print("IA   &gt;", reponse.text)</code></pre>
+<div class="warn-box lang-en">⚠️ <strong>🔒 Security:</strong> the API key is a paying password. Never in a submitted assignment, never on GitHub, never in a photo. If leaked, regenerate it on ai.google.dev.</div></div>
+<div class="lang-ar"><p class="lang-ar">الواجهة API كشبّاك: برنامجك يرسل نصاً، والنموذج العملاق يجيب. بمفتاح مجاني، تكفي 15 سطراً من بايثون لامتلاك روبوتك.</p>
+<ol class="lang-ar"><li><strong>مفتاح مجاني:</strong> ادخل ai.google.dev ← « Get API key » ← انسخ (ككلمة مرور، لا يُشارَك أبداً).</li><li><strong>ثبّت:</strong> <strong>python -m pip install google-generativeai</strong> في الطرفية.</li><li><strong>انسخ</strong> برنامج assistant_chat.py أدناه، والصق المفتاح، وشغّل: <strong>python assistant_chat.py</strong>.</li><li><strong>جرّب:</strong> اطرح 3 أسئلة مراجعة من وحدتك المفضلة.</li></ol>
+<pre class="lang-ar"><code># assistant_chat.py -- mini assistant IA (projet seance 07)
+# Installation : python -m pip install google-generativeai
+import google.generativeai as genai
+
+# 1. Cle gratuite sur https://ai.google.dev (ne jamais la partager !)
+genai.configure(api_key="COLLE_TA_CLE_ICI")
+
+# 2. Choix du modele (rapide et gratuit)
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+print("Assistant IA pour etudiant (tape 'quit' pour sortir)")
+while True:
+    question = input("\nToi &gt; ")
+    if question.lower() in ("quit", "exit"):
+        break
+    reponse = model.generate_content(question)
+    print("IA   &gt;", reponse.text)</code></pre>
+<div class="warn-box lang-ar">⚠️ <strong>🔒 أمان:</strong> مفتاح API كلمة مرور مدفوعة. لا في واجب مسلَّم، ولا على GitHub، ولا في صورة. إذا تسرّب، أعد توليده في ai.google.dev.</div></div>
+</section>
+
+<section id="s4">
+<h2><span class="lang-fr">Aller plus loin : Copilot, Cursor et la mémoire</span><span class="lang-en">Go further: Copilot, Cursor and memory</span><span class="lang-ar">للمضي أبعد: Copilot وCursor والذاكرة</span></h2>
+<div class="lang-fr"><p class="lang-fr">Deuxième étage de la fusée : les assistants intégrés à l'éditeur (complétion pendant la frappe) et l'historique (le chatbot qui se souvient).</p>
+<ul class="lang-fr"><li><strong>Cursor / Copilot :</strong> écrivez un commentaire « # fonction qui calcule la moyenne », laissez l'outil proposer le code, LISEZ-LE avant d'accepter.</li><li><strong>Mémoire :</strong> la version assistant_memoire.py garde les 6 derniers échanges : testez « et en arabe ? » après une question.</li><li><strong>Limite :</strong> l'assistant écrit vite mais ne comprend pas votre TP — seul votre test (exécution + cas limites) valide.</li></ul>
+<pre class="lang-fr"><code># assistant_memoire.py -- meme assistant, AVEC memoire de conversation
+import google.generativeai as genai
+
+genai.configure(api_key="COLLE_TA_CLE_ICI")
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+# Nouveaute : l'historique garde le contexte des questions precedentes
+historique = []
+
+print("Assistant avec memoire (tape 'quit' pour sortir)")
+while True:
+    question = input("\nToi &gt; ")
+    if question.lower() in ("quit", "exit"):
+        break
+    historique.append("Etudiant : " + question)
+    prompt = "\n".join(historique[-6:])  # les 6 derniers echanges
+    reponse = model.generate_content(prompt)
+    historique.append("IA : " + reponse.text)
+    print("IA   &gt;", reponse.text)</code></pre></div>
+<div class="lang-en"><p class="lang-en">Second stage of the rocket: assistants built into the editor (completion while typing) and history (the chatbot that remembers).</p>
+<ul class="lang-en"><li><strong>Cursor / Copilot:</strong> write a comment "# function computing the average", let the tool suggest code, READ it before accepting.</li><li><strong>Memory:</strong> the assistant_memoire.py version keeps the last 6 exchanges: try "and in Arabic?" after a question.</li><li><strong>Limit:</strong> the assistant writes fast but does not understand your assignment — only your test (run + edge cases) validates.</li></ul>
+<pre class="lang-en"><code># assistant_memoire.py -- meme assistant, AVEC memoire de conversation
+import google.generativeai as genai
+
+genai.configure(api_key="COLLE_TA_CLE_ICI")
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+# Nouveaute : l'historique garde le contexte des questions precedentes
+historique = []
+
+print("Assistant avec memoire (tape 'quit' pour sortir)")
+while True:
+    question = input("\nToi &gt; ")
+    if question.lower() in ("quit", "exit"):
+        break
+    historique.append("Etudiant : " + question)
+    prompt = "\n".join(historique[-6:])  # les 6 derniers echanges
+    reponse = model.generate_content(prompt)
+    historique.append("IA : " + reponse.text)
+    print("IA   &gt;", reponse.text)</code></pre></div>
+<div class="lang-ar"><p class="lang-ar">المرحلة الثانية: مساعدات مدمجة في المحرر (إكمال أثناء الكتابة) والذاكرة (روبوت يتذكّر).</p>
+<ul class="lang-ar"><li><strong>Cursor / Copilot:</strong> اكتب تعليقاً « # دالة تحسب المعدل »، ودع الأداة تقترح الكود، واقرأه قبل القبول.</li><li><strong>الذاكرة:</strong> نسخة assistant_memoire.py تحتفظ بآخر 6 تبادلات: جرّب « وبالعربية؟ » بعد سؤال.</li><li><strong>حدّ:</strong> المساعد يكتب بسرعة لكنه لا يفهم واجبك — اختبارك وحده (تشغيل + حالات حدّية) يوثّق.</li></ul>
+<pre class="lang-ar"><code># assistant_memoire.py -- meme assistant, AVEC memoire de conversation
+import google.generativeai as genai
+
+genai.configure(api_key="COLLE_TA_CLE_ICI")
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+# Nouveaute : l'historique garde le contexte des questions precedentes
+historique = []
+
+print("Assistant avec memoire (tape 'quit' pour sortir)")
+while True:
+    question = input("\nToi &gt; ")
+    if question.lower() in ("quit", "exit"):
+        break
+    historique.append("Etudiant : " + question)
+    prompt = "\n".join(historique[-6:])  # les 6 derniers echanges
+    reponse = model.generate_content(prompt)
+    historique.append("IA : " + reponse.text)
+    print("IA   &gt;", reponse.text)</code></pre></div>
+</section>
+
+<section id="profiter" class="profiter-section">
+<h2><span class="lang-fr">Comment en profiter au maximum</span><span class="lang-en">How to get the most out of it</span><span class="lang-ar">كيف تستفيد إلى أقصى حد</span></h2>
+<div class="lang-fr"><p class="lang-fr">Le programmeur augmenté : l'IA propose, vous disposez. Chaque ligne générée est relue, exécutée et testée — c'est ce qui distingue l'étudiant de l'opérateur de copier-coller.</p>
+<div class="goal-box lang-fr">🎯 <strong>➡️ Pont vers la séance 8 :</strong> un programme qui écrit bien impressionne, mais un étudiant qui écrit bien convainc : votre assistant servira aussi à relire vos textes (correction expliquée, séance 8).</div>
+<ul class="lang-fr"><li><strong>✅ Explique-moi d'abord :</strong> toujours comprendre avant de rendre.</li><li><strong>✅ Une erreur = une leçon :</strong> noter la cause dans un carnet de bugs.</li><li><strong>✅ Versionnez :</strong> garder assistant_chat.py puis assistant_memoire.py (voir la progression).</li><li><strong>✅ Testez les limites :</strong> question vide, très longue, en arabe dialectal — que se passe-t-il ?</li></ul>
+<div class="warn-box lang-fr">⚠️ <strong>❌ Erreurs à éviter :</strong> rendre du code non exécuté, partager sa clé API, croire que « ça marche une fois » = « c'est correct » (tester les cas limites).</div>
+<table class="plan-table lang-fr"><thead><tr><th></th><th>Mauvais usage</th><th>Bon usage</th></tr></thead><tbody><tr><td>Demande</td><td>« Fais mon TP de tri. »</td><td>« Explique le tri par sélection avec un exemple [7, 2, 9], puis donne-moi un exercice similaire. »</td></tr><tr><td>Résultat</td><td>Code rendu, rien compris, zéro le jour de l'examen.</td><td>Compréhension + entraînement, autonome le jour J.</td></tr></tbody></table></div>
+<div class="lang-en"><p class="lang-en">The augmented programmer: AI proposes, you decide. Every generated line is reread, run and tested — that is what distinguishes a student from a copy-paste operator.</p>
+<div class="goal-box lang-en">🎯 <strong>➡️ Bridge to session 8:</strong> a program writing well impresses, but a student writing well convinces: your assistant will also proofread your texts (explained correction, session 8).</div>
+<ul class="lang-en"><li><strong>✅ Explain-first:</strong> always understand before submitting.</li><li><strong>✅ One error = one lesson:</strong> note the cause in a bug notebook.</li><li><strong>✅ Version:</strong> keep assistant_chat.py then assistant_memoire.py (see progress).</li><li><strong>✅ Test limits:</strong> empty question, very long, dialectal Arabic — what happens?</li></ul>
+<div class="warn-box lang-en">⚠️ <strong>❌ Mistakes to avoid:</strong> submitting unrun code, sharing your API key, believing "it works once" = "it is correct" (test edge cases).</div>
+<table class="plan-table lang-en"><thead><tr><th></th><th>Bad use</th><th>Good use</th></tr></thead><tbody><tr><td>Prompt</td><td>"Do my sorting assignment."</td><td>"Explain selection sort with an example [7, 2, 9], then give me a similar exercise."</td></tr><tr><td>Result</td><td>Submitted code, nothing understood, zero on exam day.</td><td>Understanding + training, autonomous on D-day.</td></tr></tbody></table></div>
+<div class="lang-ar"><p class="lang-ar">المبرمج المعزَّز: الذكاء يقترح وأنت تقرّر. كل سطر مولّد يُقرأ ويُشغَّل ويُختبَر — وهذا ما يميّز الطالب عن ناسخ لاصق.</p>
+<div class="goal-box lang-ar">🎯 <strong>➡️ جسر إلى الحصة 8:</strong> برنامج يكتب جيداً يُبهر، لكن طالباً يكتب جيداً يُقنِع: مساعدك سيصلح نصوصك أيضاً (تصحيح مفسَّر، الحصة 8).</div>
+<ul class="lang-ar"><li><strong>✅ اشرح أولاً:</strong> افهم دائماً قبل التسليم.</li><li><strong>✅ خطأ = درس:</strong> سجّل السبب في دفتر أخطاء.</li><li><strong>✅ نسّخ:</strong> احتفظ بـ assistant_chat.py ثم assistant_memoire.py (لاحظ التقدّم).</li><li><strong>✅ اختبر الحدود:</strong> سؤال فارغ، طويل جداً، بالدارجة — ماذا يحدث؟</li></ul>
+<div class="warn-box lang-ar">⚠️ <strong>❌ أخطاء يجب تجنّبها:</strong> تسليم كود غير مشغَّل، مشاركة مفتاح API، الظن أن « يعمل مرة » = « صحيح » (اختبر الحالات الحدّية).</div>
+<table class="plan-table lang-ar"><thead><tr><th></th><th>استعمال سيئ</th><th>استعمال جيد</th></tr></thead><tbody><tr><td>الطلب</td><td>« أنجز واجب الترتيب »</td><td>« اشرح الترتيب بالاختيار بمثال [7، 2، 9]، ثم أعطني تمريناً مشابهاً »</td></tr><tr><td>النتيجة</td><td>كود مسلَّم، لا فهم، وصفر يوم الامتحان.</td><td>فهم + تدريب، واستقلالية يوم الامتحان.</td></tr></tbody></table></div>
+</section>
+    <section id="videos">
+<h2><span class="lang-fr">📺 Vidéos pour mieux comprendre</span><span class="lang-en">📺 Videos to understand better</span><span class="lang-ar">📺 فيديوهات لفهم أفضل</span></h2>
+<div class="video-grid"><a class="video-card" href="https://www.youtube.com/watch?v=H5WUwwivEaI&list=PLbR_CTcUs1088jfqbbO5AqwODO9MgYA85" target="_blank" rel="noopener"><span class="vid-thumb">▶️</span><span class="vid-info"><div class="lang-fr">Playlist IA de Mohammad Dawoud (introduction, ML, réseaux de neurones)</div><div class="lang-en">Mohammad Dawoud's AI playlist (intro, ML, neural networks)</div><div class="lang-ar">سلسلة محمد داود في الذكاء الاصطناعي (مدخل، تعلم آلي، شبكات عصبية)</div><span class="vid-lang">🇩🇿 YouTube</span><div class="lang-fr">La référence du module : comprendre ce qu'il y a SOUS le guichet API (neurones, apprentissage).</div><div class="lang-en">The module's reference: understand what is UNDER the API counter (neurons, learning).</div><div class="lang-ar">مرجع الوحدة: فهم ما تحت شبّاك API (خلايا، تعلّم).</div></span></a><a class="video-card" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener"><span class="vid-thumb">▶️</span><span class="vid-info"><div class="lang-fr">But what is a neural network? (3Blue1Brown)</div><div class="lang-en">But what is a neural network? (3Blue1Brown)</div><div class="lang-ar">ما الشبكة العصبية؟ (3Blue1Brown)</div><span class="vid-lang">🇬🇧 YouTube</span><div class="lang-fr">Visualiser comment un réseau apprend — sous-titres FR disponibles.</div><div class="lang-en">Visualise how a network learns — FR subtitles available.</div><div class="lang-ar">تصوّر كيف تتعلم الشبكة — ترجمة فرنسية متاحة.</div></span></a><a class="video-card" href="https://www.youtube.com/results?search_query=gemini+api+python+tutorial+debutant" target="_blank" rel="noopener"><span class="vid-thumb">▶️</span><span class="vid-info"><div class="lang-fr">Apprendre Python + utiliser l'API Gemini (tutoriel)</div><div class="lang-en">Learn Python + use the Gemini API (tutorial)</div><div class="lang-ar">تعلّم بايثون + استعمال واجهة Gemini (شرح)</div><span class="vid-lang">🇫🇷 YouTube</span><div class="lang-fr">Voir chaque étape (clé, pip install, premier appel) faite en vidéo avant de la refaire.</div><div class="lang-en">See each step (key, pip install, first call) done on video before redoing it.</div><div class="lang-ar">شاهد كل خطوة (مفتاح، تثبيت، أول استدعاء) بالفيديو قبل إعادتها.</div></span></a>
+<!-- TODO: remplacer par lien définitif --></div>
+</section>
+    <section id="exercice" class="ex-box">
+<h2><span class="lang-fr">✏️ Exercice guidé — 15 min</span><span class="lang-en">✏️ Guided exercise — 15 min</span><span class="lang-ar">✏️ تمرين موجّه — 15 دقيقة</span></h2>
+<div class="ex-enonce"><div class="lang-fr">1) Exécutez assistant_chat.py et posez 3 questions de cours. 2) Créez assistant_memoire.py (ajout de l'historique). 3) Testez la mémoire : question puis « résume ta réponse précédente en 1 phrase ».</div><div class="lang-en">1) Run assistant_chat.py and ask 3 lesson questions. 2) Create assistant_memoire.py (add history). 3) Test memory: ask then "summarise your previous answer in 1 sentence".</div><div class="lang-ar">1) شغّل assistant_chat.py واطرح 3 أسئلة درس. 2) أنشئ assistant_memoire.py (أضف الذاكرة). 3) اختبر الذاكرة: اسأل ثم « لخّص جوابك السابق في جملة ».</div></div>
+<details class="ex-solution" open><summary>💭 <span class="lang-fr">💭 Démarche (méthode à suivre)</span><span class="lang-en">💭 Method (steps to follow)</span><span class="lang-ar">💭 الخطوات المتبّعة</span></summary>
+<div style="margin-top:.6rem;"><div class="lang-fr">1) Vérifiez Python : python --version. 2) Installez la bibliothèque. 3) Collez la clé SANS la montrer à votre voisin d'écran. 4) Lancez, testez, puis ajoutez la liste historique. 5) Comparez les deux versions sur la même question de suivi.</div><div class="lang-en">1) Check Python: python --version. 2) Install the library. 3) Paste the key WITHOUT showing your screen neighbour. 4) Run, test, then add the historique list. 5) Compare both versions on the same follow-up question.</div><div class="lang-ar">1) تحقق من بايثون: python --version. 2) ثبّت المكتبة. 3) الصق المفتاح دون إظهاره لجارك. 4) شغّل وجرّب ثم أضف قائمة الذاكرة. 5) قارن النسختين على نفس سؤال المتابعة.</div></div></details>
+<details class="ex-solution"><summary>🔓 <span class="lang-fr">Solution et correction</span><span class="lang-en">Solution and correction</span><span class="lang-ar">الحلّ والتصحيح</span></summary>
+<div style="margin-top:.6rem;"><div class="lang-fr">Version 1 répond à chaque question isolément (oublie le contexte). Version 2 avec historique répond correctement aux suites (« et en arabe ? », « résume »). Si erreur d'API : vérifier la clé, le Wi-Fi et le nom du modèle (gemini-2.0-flash).</div><div class="lang-en">Version 1 answers each question in isolation (forgets context). Version 2 with history correctly answers follow-ups ("and in Arabic?", "summarise"). On API error: check the key, Wi-Fi and model name (gemini-2.0-flash).</div><div class="lang-ar">النسخة 1 تجيب كل سؤال معزولاً (تنسى السياق). النسخة 2 بالذاكرة تجيب التتمات صحيحاً (« وبالعربية؟ »، « لخّص »). عند خطأ API: تحقق من المفتاح والشبكة واسم النموذج (gemini-2.0-flash).</div></div></details>
+</section>
+    <section id="verif">
+<h2><span class="lang-fr">💭 As-tu bien compris ?</span><span class="lang-en">💭 Did you understand?</span><span class="lang-ar">💭 هل فهمت جيداً؟</span></h2>
+<div class="verify-list"><details class="verify-item"><summary><span class="verify-num">Q1</span><span><div class="lang-fr">Qu'est-ce qu'une clé API et pourquoi la protéger ?</div><div class="lang-en">What is an API key and why protect it?</div><div class="lang-ar">ما مفتاح API ولماذا نحميه؟</div></span></summary><div class="verify-ans"><div class="lang-fr">C'est le mot de passe qui identifie votre compte auprès du modèle et peut être facturé. Partagée = quelqu'un dépense à votre place.</div><div class="lang-en">It is the password identifying your account to the model and it can be billed. Shared = someone spends on your behalf.</div><div class="lang-ar">هو كلمة المرور التي تعرّف حسابك لدى النموذج وقد تُفوتر. مشاركته = شخص ينفق على حسابك.</div></div></details><details class="verify-item"><summary><span class="verify-num">Q2</span><span><div class="lang-fr">Pourquoi demander le POURQUOI de l'erreur avant la correction ?</div><div class="lang-en">Why ask for the WHY of the error before the fix?</div><div class="lang-ar">لماذا نطلب سبب الخطأ قبل التصحيح؟</div></span></summary><div class="verify-ans"><div class="lang-fr">Comprendre la cause évite de répéter l'erreur ; copier la correction sans comprendre la garantit au prochain TP.</div><div class="lang-en">Understanding the cause prevents repeating the mistake; copying the fix without understanding guarantees it next time.</div><div class="lang-ar">فهم السبب يمنع تكرار الخطأ؛ ونسخ التصحيح دون فهم يضمنه في الواجب القادم.</div></div></details><details class="verify-item"><summary><span class="verify-num">Q3</span><span><div class="lang-fr">Que change l'historique dans assistant_memoire.py ?</div><div class="lang-en">What does history change in assistant_memoire.py?</div><div class="lang-ar">ماذا يغيّر الاحتفاظ بالذاكرة في assistant_memoire.py؟</div></span></summary><div class="verify-ans"><div class="lang-fr">Les 6 derniers échanges sont renvoyés au modèle : il comprend les suites comme « et en arabe ? » sans répéter la question.</div><div class="lang-en">The last 6 exchanges are resent to the model: it understands follow-ups like "and in Arabic?" without repeating the question.</div><div class="lang-ar">تُرسَل آخر 6 تبادلات إلى النموذج: فيفهم التتمات مثل « وبالعربية؟ » دون إعادة السؤال.</div></div></details></div>
+</section>
+    <section id="fiche"><h2><span class="lang-fr">📋 Fiche de synthèse — 5 min</span><span class="lang-en">📋 Summary sheet — 5 min</span><span class="lang-ar">📋 بطاقة التركيب — 5 دقائق</span></h2><div class="fiche-grid"><div class="fiche-col"><h3>🗝️ <span class="lang-fr">Points clés</span><span class="lang-en">Key points</span><span class="lang-ar">النقاط الرئيسية</span></h3><ul><li><span class="lang-fr">Explique-moi > fais-moi : comprendre avant de rendre.</span><span class="lang-en">Explain-to-me > do-for-me: understand before submitting.</span><span class="lang-ar">اشرح لي > أنجز عني: افهم قبل التسليم.</span></li><li><span class="lang-fr">Débogage : lire l'erreur, demander le POURQUOI, puis corriger.</span><span class="lang-en">Debugging: read the error, ask WHY, then fix.</span><span class="lang-ar">التصحيح: اقرأ الخطأ، واسأل لماذا، ثم صحّح.</span></li><li><span class="lang-fr">API = guichet : clé gratuite sur ai.google.dev, jamais partagée.</span><span class="lang-en">API = counter: free key on ai.google.dev, never shared.</span><span class="lang-ar">API = شبّاك: مفتاح مجاني من ai.google.dev، لا يُشارَك أبداً.</span></li><li><span class="lang-fr">15 lignes suffisent : assistant_chat.py dialogue avec Gemini.</span><span class="lang-en">15 lines are enough: assistant_chat.py chats with Gemini.</span><span class="lang-ar">تكفي 15 سطراً: assistant_chat.py يحاور Gemini.</span></li><li><span class="lang-fr">Mémoire = renvoyer les 6 derniers échanges au modèle.</span><span class="lang-en">Memory = resend the last 6 exchanges to the model.</span><span class="lang-ar">الذاكرة = إعادة إرسال آخر 6 تبادلات إلى النموذج.</span></li></ul></div><div class="fiche-col"><h3>🍳 <span class="lang-fr">Analogies utilisées</span><span class="lang-en">Analogies used</span><span class="lang-ar">التشبيهات المستعملة</span></h3><ul><li>🎯 <span class="lang-fr">Le commis cuisinier : il prépare, vous goûtez et décidez.</span><span class="lang-en">The kitchen helper: he prepares, you taste and decide.</span><span class="lang-ar">مساعد الطباخ: يحضّر، وأنت تتذوّق وتقرّر.</span></li><li>🎯 <span class="lang-fr">Le guichet API : vous déposez une question, le géant répond.</span><span class="lang-en">The API counter: you drop a question, the giant answers.</span><span class="lang-ar">شبّاك API: تضع سؤالاً، والعملاق يجيب.</span></li><li>🎯 <span class="lang-fr">Le carnet de bugs : chaque erreur notée est un piège désamorcé.</span><span class="lang-en">The bug notebook: each noted error is a defused trap.</span><span class="lang-ar">دفتر الأخطاء: كل خطأ مسجَّل فخ مُعطَّل.</span></li></ul></div><div class="fiche-col"><h3>🧩 <span class="lang-fr">Exemples concrets</span><span class="lang-en">Concrete examples</span><span class="lang-ar">أمثلة ملموسة</span></h3><ul><li>✏️ <span class="lang-fr">« Explique ce tri ligne par ligne » → l'étudiant comprend et refait seul.</span><span class="lang-en">"Explain this sort line by line" → the student understands and redoes alone.</span><span class="lang-ar">« اشرح هذا الترتيب سطراً سطراً » ← الطالب يفهم ويعيد وحده.</span></li><li>✏️ <span class="lang-fr">IndentationError → cause comprise → correction + mini-exercice de vérification.</span><span class="lang-en">IndentationError → cause understood → fix + verification mini-exercise.</span><span class="lang-ar">IndentationError ← السبب مفهوم ← تصحيح + تمرين تحقق مصغّر.</span></li><li>✏️ <span class="lang-fr">« Et en arabe ? » compris grâce à l'historique des 6 échanges.</span><span class="lang-en">"And in Arabic?" understood thanks to the 6-exchange history.</span><span class="lang-ar">« وبالعربية؟ » مفهوم بفضل ذاكرة التبادلات الستة.</span></li></ul></div></div></section><section id="symbiose"><div class="hook-row hook-phrase"><span class="hook-emoji">🏁</span><div><div class="lang-fr">🏁 Programmer avec l'IA, c'est comme apprendre à conduire avec un moniteur : au début il tient le volant avec vous, mais l'examen, c'est vous seul qui le passez — et la route ensuite aussi.</div><div class="lang-en">🏁 Programming with AI is like learning to drive with an instructor: at first he holds the wheel with you, but you take the exam alone — and drive the road after, too.</div><div class="lang-ar">🏁 البرمجة مع الذكاء الاصطناعي كتعلّم القيادة مع مدرّب: في البداية يمسك المقود معك، لكن الامتحان تجتازه وحدك — والطريق بعده أيضاً.</div></div></div></section>
+    <section id="quiz">
+<h2><span class="lang-fr">🧠 Quiz — vérifie ta compréhension</span><span class="lang-en">🧠 Quiz — check your understanding</span><span class="lang-ar">🧠 اختبار — تحقّق من فهمك</span></h2>
+<div class="verify-list"><details class="quiz-item"><summary><span class="verify-num">Q1</span><span><div class="lang-fr">Quel est le meilleur premier prompt face à un code incompris ?</div><div class="lang-en">What is the best first prompt facing misunderstood code?</div><div class="lang-ar">ما أفضل صياغة أولى أمام كود غير مفهوم؟</div></span></summary><div class="quiz-opts"><div class="quiz-opt ">🔘 <div class="lang-fr">« Fais mon TP »</div><div class="lang-en">"Do my assignment"</div><div class="lang-ar">« أنجز واجبي »</div></div><div class="quiz-opt quiz-ok">✅ <div class="lang-fr">« Explique ce code ligne par ligne, comme à un débutant »</div><div class="lang-en">"Explain this code line by line, like to a beginner"</div><div class="lang-ar">« اشرح هذا الكود سطراً سطراً كمبتدئ »</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">« C'est nul, recommence »</div><div class="lang-en">"It is bad, redo it"</div><div class="lang-ar">« سيئ، أعد »</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">« Donne-moi un autre code »</div><div class="lang-en">"Give me another code"</div><div class="lang-ar">« أعطني كوداً آخر »</div></div></div><div class="verify-ans"><div class="lang-fr">L'explication construit la compréhension ; le code tout fait la contourne.</div><div class="lang-en">Explanation builds understanding; ready-made code bypasses it.</div><div class="lang-ar">الشرح يبني الفهم؛ والكود الجاهز يلتف عليه.</div></div></details><details class="quiz-item"><summary><span class="verify-num">Q2</span><span><div class="lang-fr">Face à une erreur Python, quel est le bon ordre ?</div><div class="lang-en">Facing a Python error, what is the right order?</div><div class="lang-ar">أمام خطأ بايثون، ما الترتيب الصحيح؟</div></span></summary><div class="quiz-opts"><div class="quiz-opt ">🔘 <div class="lang-fr">Corriger puis comprendre</div><div class="lang-en">Fix then understand</div><div class="lang-ar">صحّح ثم افهم</div></div><div class="quiz-opt quiz-ok">✅ <div class="lang-fr">Lire l'erreur → demander le POURQUOI → corriger → vérifier</div><div class="lang-en">Read the error → ask WHY → fix → verify</div><div class="lang-ar">اقرأ الخطأ ← اسأل لماذا ← صحّح ← تحقق</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">Supprimer le fichier</div><div class="lang-en">Delete the file</div><div class="lang-ar">احذف الملف</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">Changer de langage</div><div class="lang-en">Change language</div><div class="lang-ar">غيّر اللغة</div></div></div><div class="verify-ans"><div class="lang-fr">La cause comprise + un mini-exercice de vérification ferment la boucle d'apprentissage.</div><div class="lang-en">The understood cause + a verification mini-exercise close the learning loop.</div><div class="lang-ar">السبب المفهوم + تمرين تحقق مصغّر يغلقان حلقة التعلّم.</div></div></details><details class="quiz-item"><summary><span class="verify-num">Q3</span><span><div class="lang-fr">Où obtenir une clé Gemini et comment la traiter ?</div><div class="lang-en">Where to get a Gemini key and how to treat it?</div><div class="lang-ar">أين تحصل على مفتاح Gemini وكيف تعامله؟</div></span></summary><div class="quiz-opts"><div class="quiz-opt ">🔘 <div class="lang-fr">Sur Google, à partager</div><div class="lang-en">On Google, to share</div><div class="lang-ar">في جوجل، للمشاركة</div></div><div class="quiz-opt quiz-ok">✅ <div class="lang-fr">Sur ai.google.dev, comme un mot de passe jamais partagé</div><div class="lang-en">On ai.google.dev, like a never-shared password</div><div class="lang-ar">في ai.google.dev، ككلمة مرور لا تُشارَك أبداً</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">Dans le script d'un ami</div><div class="lang-en">In a friend's script</div><div class="lang-ar">في برنامج صديق</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">Pas besoin de clé</div><div class="lang-en">No key needed</div><div class="lang-ar">لا حاجة لمفتاح</div></div></div><div class="verify-ans"><div class="lang-fr">La clé est gratuite sur ai.google.dev mais facturable : fuite = quelqu'un dépense à votre place.</div><div class="lang-en">The key is free on ai.google.dev but billable: a leak = someone spends on your behalf.</div><div class="lang-ar">المفتاح مجاني في ai.google.dev لكنه قابل للفوترة: تسرّبه = شخص ينفق على حسابك.</div></div></details><details class="quiz-item"><summary><span class="verify-num">Q4</span><span><div class="lang-fr">Que fait la liste historique dans assistant_memoire.py ?</div><div class="lang-en">What does the historique list do in assistant_memoire.py?</div><div class="lang-ar">ماذا تفعل قائمة الذاكرة في assistant_memoire.py؟</div></span></summary><div class="quiz-opts"><div class="quiz-opt ">🔘 <div class="lang-fr">Elle sauvegarde sur disque</div><div class="lang-en">It saves to disk</div><div class="lang-ar">تحفظ على القرص</div></div><div class="quiz-opt quiz-ok">✅ <div class="lang-fr">Elle renvoie les 6 derniers échanges pour garder le contexte</div><div class="lang-en">It resends the last 6 exchanges to keep context</div><div class="lang-ar">تعيد إرسال آخر 6 تبادلات للحفاظ على السياق</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">Elle accélère Internet</div><div class="lang-en">It speeds up Internet</div><div class="lang-ar">تسرّع الإنترنت</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">Elle traduit le code</div><div class="lang-en">It translates code</div><div class="lang-ar">تترجم الكود</div></div></div><div class="verify-ans"><div class="lang-fr">Le modèle est sans mémoire : c'est le script qui lui rappelle la conversation à chaque appel.</div><div class="lang-en">The model is memoryless: the script reminds it of the conversation on each call.</div><div class="lang-ar">النموذج بلا ذاكرة: البرنامج هو من يذكّره بالمحادثة في كل استدعاء.</div></div></details><details class="quiz-item"><summary><span class="verify-num">Q5</span><span><div class="lang-fr">Pourquoi tester les cas limites (question vide, très longue) ?</div><div class="lang-en">Why test edge cases (empty, very long question)?</div><div class="lang-ar">لماذا نختبر الحالات الحدّية (سؤال فارغ، طويل جداً)؟</div></span></summary><div class="quiz-opts"><div class="quiz-opt ">🔘 <div class="lang-fr">Pour perdre du temps</div><div class="lang-en">To waste time</div><div class="lang-ar">لتضييع الوقت</div></div><div class="quiz-opt quiz-ok">✅ <div class="lang-fr">Parce que « marche une fois » n'est pas « correct » : seul le test valide</div><div class="lang-en">Because "works once" is not "correct": only testing validates</div><div class="lang-ar">لأن « يعمل مرة » ليس « صحيحاً »: الاختبار وحده يوثّق</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">Pour impressionner</div><div class="lang-en">To impress</div><div class="lang-ar">للإبهار</div></div><div class="quiz-opt ">🔘 <div class="lang-fr">C'est interdit</div><div class="lang-en">It is forbidden</div><div class="lang-ar">ممنوع</div></div></div><div class="verify-ans"><div class="lang-fr">Un programme se juge sur les cas normaux ET limites : c'est la marque du programmeur, pas du copieur.</div><div class="lang-en">A program is judged on normal AND edge cases: that is the programmer's mark, not the copier's.</div><div class="lang-ar">يُحكَم على البرنامج بالحالات العادية والحدّية: هذه سمة المبرمج لا الناسخ.</div></div></details></div>
+</section>
+
+    <h2><span class="lang-fr">✏️ Activités et exercices</span><span class="lang-en">✏️ Activities and exercises</span><span class="lang-ar">✏️ الأنشطة والتمارين</span></h2>
+    <ul class="lang-fr"><li>Explication croisée : l'IA explique un tri, chaque binôme le réexplique sans écran.</li><li>Chasse au bug : 3 scripts piégés (indentation, variable, type) à diagnostiquer avant de corriger.</li><li>Premier appel : clé + pip install + assistant_chat.py → 3 questions de révision.</li><li>Défi mémoire : ajouter l'historique puis réussir le test « résume ta réponse précédente ».</li></ul>
+    <ul class="lang-en"><li>Cross-explanation: AI explains a sort, each pair re-explains it without screen.</li><li>Bug hunt: 3 trapped scripts (indentation, variable, type) to diagnose before fixing.</li><li>First call: key + pip install + assistant_chat.py → 3 revision questions.</li><li>Memory challenge: add history then pass the "summarise your previous answer" test.</li></ul>
+    <ul class="lang-ar"><li>شرح متبادل: الذكاء يشرح ترتيباً، وكل ثنائي يعيد شرحه دون شاشة.</li><li>صيد الأخطاء: 3 برامج مفخخة (مسافة، متغير، نوع) للتشخيص قبل التصحيح.</li><li>أول استدعاء: مفتاح + تثبيت + assistant_chat.py ← 3 أسئلة مراجعة.</li><li>تحدّي الذاكرة: أضف الذاكرة ثم انجح في اختبار « لخّص جوابك السابق ».</li></ul>
+
+    <h2><span class="lang-fr">🧠 À retenir</span><span class="lang-en">🧠 Key takeaways</span><span class="lang-ar">🧠 ما يجب تذكّره</span></h2>
+    <ul class="lang-fr"><li>Explique-moi > fais-moi : la compréhension d'abord.</li><li>Déboguer : lire, POURQUOI, corriger, vérifier.</li><li>Clé sur ai.google.dev, jamais partagée, jamais sur GitHub.</li><li>assistant_chat.py : 15 lignes pour parler à Gemini.</li><li>La mémoire, c'est le script qui rappelle la conversation au modèle.</li></ul>
+    <ul class="lang-en"><li>Explain-to-me > do-for-me: understanding first.</li><li>Debug: read, WHY, fix, verify.</li><li>Key on ai.google.dev, never shared, never on GitHub.</li><li>assistant_chat.py: 15 lines to talk to Gemini.</li><li>Memory is the script reminding the model of the conversation.</li></ul>
+    <ul class="lang-ar"><li>اشرح لي > أنجز عني: الفهم أولاً.</li><li>صحّح: اقرأ، لماذا، صحّح، تحقق.</li><li>المفتاح من ai.google.dev، لا يُشارَك أبداً، ولا على GitHub أبداً.</li><li>assistant_chat.py: خمسة عشر سطراً لمحاورة Gemini.</li><li>الذاكرة هي البرنامج الذي يذكّر النموذج بالمحادثة.</li></ul>
+
+    <h2><span class="lang-fr">📖 Glossaire</span><span class="lang-en">📖 Glossary</span><span class="lang-ar">📖 مسرد المصطلحات</span></h2>
+    <div class="glossary"><details><summary class="gl-term">API <span style="font-weight:400;color:var(--text-muted);">— API</span></summary><p class="lang-fr">Guichet logiciel : votre programme envoie une demande, le service (Gemini) répond.</p><p class="lang-en">A software counter: your program sends a request, the service (Gemini) answers.</p><p class="lang-ar">شبّاك برمجي: برنامجك يرسل طلباً، والخدمة (Gemini) تجيب.</p></details><details><summary class="gl-term">Clé API <span style="font-weight:400;color:var(--text-muted);">— API key</span></summary><p class="lang-fr">Mot de passe personnel qui identifie vos appels au service ; gratuite mais facturable, à protéger.</p><p class="lang-en">A personal password identifying your calls to the service; free but billable, protect it.</p><p class="lang-ar">كلمة مرور شخصية تعرّف استدعاءاتك للخدمة؛ مجانية لكن قابلة للفوترة، احمها.</p></details><details><summary class="gl-term">Débogage <span style="font-weight:400;color:var(--text-muted);">— Debugging</span></summary><p class="lang-fr">Art de trouver la cause d'une erreur (lire, diagnostiquer) avant de la corriger.</p><p class="lang-en">The art of finding an error's cause (read, diagnose) before fixing it.</p><p class="lang-ar">فن إيجاد سبب الخطأ (اقرأ، شخّص) قبل تصحيحه.</p></details><details><summary class="gl-term">Bibliothèque (package) <span style="font-weight:400;color:var(--text-muted);">— Library (package)</span></summary><p class="lang-fr">Code prêt à l'emploi qu'on installe (pip install) pour utiliser un service comme Gemini.</p><p class="lang-en">Ready-to-use code you install (pip install) to use a service like Gemini.</p><p class="lang-ar">كود جاهز يُثبَّت (pip install) لاستعمال خدمة مثل Gemini.</p></details><details><summary class="gl-term">Historique de conversation <span style="font-weight:400;color:var(--text-muted);">— Conversation history</span></summary><p class="lang-fr">Échanges précédents renvoyés au modèle pour qu'il garde le contexte.</p><p class="lang-en">Previous exchanges resent to the model so it keeps context.</p><p class="lang-ar">تبادلات سابقة تُعاد إلى النموذج ليحافظ على السياق.</p></details></div>
+
+    <h2><span class="lang-fr">📂 Ressources de la séance</span><span class="lang-en">📂 Session resources</span><span class="lang-ar">📂 موارد الحصة</span></h2>
+    <div class="resource-grid"><a class="resource-card" href="cours-fr.md"><span class="rc-icon">📘</span><div class="rc-title">Cours détaillé (Français)</div><div class="rc-desc">Document texte complet de la séance en français.</div></a><a class="resource-card" href="cours-en.md"><span class="rc-icon">📗</span><div class="rc-title">Course notes (English)</div><div class="rc-desc">Full written lesson in English.</div></a><a class="resource-card" href="cours-ar.md"><span class="rc-icon">📙</span><div class="rc-title">Cours résumé (العربية)</div><div class="rc-desc">ملخّص الدرس باللغة العربية.</div></a><a class="resource-card" href="fiche-synthese.md"><span class="rc-icon">🗒️</span><div class="rc-title">Fiche de synthèse + quiz</div><div class="rc-desc">Points clés, analogies, exemples et quiz corrigé.</div></a><a class="resource-card" href="presentation.pptx"><span class="rc-icon">🖥️</span><div class="rc-title">Présentation PowerPoint</div><div class="rc-desc">Support de cours à projeter en classe.</div></a><a class="resource-card" href="slides.md"><span class="rc-icon">🎞️</span><div class="rc-title">Diapositives (Marp)</div><div class="rc-desc">Support de présentation au format Markdown.</div></a><a class="resource-card" href="dialogues-fr.md"><span class="rc-icon">💬</span><div class="rc-title">Dialogues pédagogiques (FR)</div><div class="rc-desc">Scripts de dialogues à jouer en classe, en français.</div></a><a class="resource-card" href="dialogues-en.md"><span class="rc-icon">💬</span><div class="rc-title">Pedagogical dialogues (EN)</div><div class="rc-desc">Classroom dialogue scripts in English.</div></a><a class="resource-card" href="../outils-ia.html"><span class="rc-icon">🧰</span><div class="rc-title">Outils IA (boîte à outils)</div><div class="rc-desc">12+ outils IA détaillés : usage, exemple, forces, limites.</div></a><a class="resource-card" href="../construire-ia.html"><span class="rc-icon">🛠️</span><div class="rc-title">Construire son IA</div><div class="rc-desc">3 approches : no-code (Dify), API Python, local (Ollama).</div></a></div>
+
+    <div class="seance-nav"><a href="../seance-06/index.html">◀ Séance précédente</a><a href="../index.html">📋 Sommaire du module</a><a href="../seance-08/index.html">Séance suivante ▶</a></div>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../../js/main.v2.js"></script>
+<script>
+(function() {
+  var root = document.querySelector('.seance-content, .module-content, .ia-page');
+  var tabs = document.querySelectorAll('.lang-tab');
+  if (!root) return;
+  function setLang(lang) {
+    root.classList.remove('lang-en', 'lang-fr', 'lang-ar');
+    root.classList.add('lang-' + lang);
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-lang') === lang);
+    });
+  }
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() { setLang(t.getAttribute('data-lang')); });
+  });
+  setLang('fr');
+})();
+</script>
+</body></html>
