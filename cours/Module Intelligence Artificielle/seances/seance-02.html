@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 02 — Panorama des 14 outils d'IA pour l'étudiant</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 02 — Panorama des 14 outils d'IA pour l'étudiant</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Comparer 4 IA en parallèle avec ChatHub</strong><br>
+    L'extension navigateur ChatHub envoie une seule question à ChatGPT, Gemini, Claude et d'autres modèles en même temps et affiche les réponses côte à côte. Tu choisis la meilleure d'un coup d'œil — et tu vois aussitôt qui se trompe. Installe-la uniquement depuis le Web Store officiel et vérifie les permissions demandées.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu auras testé ChatGPT, Perplexity et Gemini sur la même question, et tu sauras lequel choisir selon la tâche.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Il existe des dizaines d'outils d'IA. Tu perds du temps si tu utilises toujours le même, ou si tu ouvres le mauvais. Un outil cherche des sources, un autre écrit, un autre lit tes PDF de cours. Après cette séance, tu auras une carte claire des 14 outils utiles — et tu sauras lequel ouvrir en 5 secondes.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>Un outil = une spécialité.</strong> ChatGPT écrit, Perplexity cherche avec sources, NotebookLM lit tes documents.</li>
+    <li><strong>Aucun outil n'est le meilleur partout.</strong> Tu compares sur ta propre question, pas sur la réputation.</li>
+    <li><strong>La même question donne 3 réponses différentes.</strong> Celle qui cite ses sources vérifiables est la plus fiable.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Diagnostiquer un téléphone qui ne démarre plus</strong><br>
+    Ton téléphone reste bloqué sur le logo Samsung. Tu décris le problème à ChatGPT : « Samsung Galaxy A12 bloqué sur le logo de démarrage, il vibre 3 fois puis s'éteint. Que faire ? Donne-moi les étapes dans l'ordre. » L'IA te guide : forcer le redémarrage, mode recovery, wipe cache, puis en dernier recours reflasher le firmware. Tu gagnes 2 heures de recherche sur les forums.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Repère les 14 outils (5 minutes)</h4>
+    <div class="step-meta">
+      <span>📍 Liste + tableau</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p>Ouvre ce tableau et repère les 14 outils. Garde cette page en favori.</p>
+    <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+      <thead>
+        <tr style="background:#e3f2fd;">
+          <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Outil</th>
+          <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Sert à quoi ?</th>
+          <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Lien</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">ChatGPT</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Écrire, expliquer, corriger</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>chatgpt.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Gemini</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Expliquer, lire tes PDF, images</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>gemini.google.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Perplexity</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Chercher sur Internet AVEC sources</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>perplexity.ai</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Claude</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Rédiger de longs textes fluides</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>claude.ai</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">NotebookLM</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Résumer TES cours (PDF, notes)</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>notebooklm.google.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Copilot</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Assistant Microsoft dans Office</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>copilot.microsoft.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">DeepSeek</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Chat gratuit + très bon en maths/code</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>chat.deepseek.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Cursor</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Éditeur de code piloté par l'IA</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>cursor.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Gamma</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Créer un exposé en slides en 1 clic</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>gamma.app</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Canva IA</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Images, affiches, diapositives</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>canva.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Grammarly</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Corriger anglais et français</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>grammarly.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">DeepL</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Traduire FR ⇄ EN ⇄ AR (très précis)</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>deepl.com</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Notion AI</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Organiser notes et to-do</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>notion.so</code></td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Dify</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Fabriquer TON propre chatbot</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>dify.ai</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Ce que tu tapes dans ChatGPT pour démarrer :</strong></p>
+    <div class="prompt-box">Je suis étudiant en 2ème année PEP à la Faculté des Langues Étrangères. Quels outils d'IA me serviront le plus cette année, et à quoi sert chacun ? Donne-moi 5 outils avec un usage concret pour un étudiant.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ul>
+        <li><strong>ChatGPT</strong> — rédiger un brouillon, corriger un texte, reformuler une notion : ajoute « en 3 phrases » pour raccourcir.</li>
+        <li><strong>Perplexity</strong> — chercher une information avec des sources cliquables : c'est l'outil du devoir documenté.</li>
+        <li><strong>DeepL + Grammarly</strong> — traduire proprement (FR ⇄ EN ⇄ AR) et corriger l'anglais.</li>
+        <li><strong>NotebookLM</strong> — résumer TES propres cours en PDF avant un examen, avec les citations de page.</li>
+        <li><strong>Gamma ou Canva</strong> — fabriquer les diapositives d'un exposé en quelques minutes.</li>
+      </ul>
+      <p>→ Ce sont exactement les 5 premiers outils du tableau ci-dessus. Commence par ceux-là ; les 9 autres, tu les ouvriras quand un vrai besoin se présentera.</p>
+    </div>
+    <div class="tip">Crée un dossier « IA » dans tes favoris et glisse-y ces 14 liens. Le jour où un outil est bloqué, tu passes au suivant en 5 secondes.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne t'inscris pas aux 14 outils le premier jour : ouvre 3 comptes maximum et complète au fur et à mesure de tes besoins.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Pose la question à ChatGPT</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 3 min</span>
+    </div>
+    <p>Ouvre un nouveau chat et copie-colle <strong>exactement</strong> ceci :</p>
+    <div class="prompt-box">Explique la différence entre apprentissage supervisé et non supervisé, en 5 phrases pour un étudiant de 2ème année PEP. Donne 1 exemple concret pour chacun.</div>
+    <p><strong>Voici ce que ChatGPT va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li><strong>L'apprentissage supervisé, c'est apprendre avec un professeur :</strong> on donne à l'IA des exemples déjà corrigés, avec la bonne réponse.</li>
+        <li><strong>Exemple :</strong> on lui montre 1 000 photos étiquetées « chat » ou « chien ». Elle apprend à les distinguer, puis elle devine toute seule sur une nouvelle photo.</li>
+        <li><strong>L'apprentissage non supervisé, c'est apprendre seul :</strong> on lui donne des données sans étiquette et elle cherche elle-même des structures.</li>
+        <li><strong>Exemple :</strong> elle regroupe les clients d'un magasin par comportement d'achat, sans qu'on lui dise d'avance quels groupes chercher.</li>
+        <li><strong>En résumé :</strong> supervisé = avec étiquettes et objectif précis ; non supervisé = sans étiquettes, on découvre des groupes cachés.</li>
+      </ol>
+    </div>
+    <div class="tip">Note la longueur de la réponse : tu lui as demandé 5 phrases, tu as reçu 5 puces. Le format imposé, c'est toi qui le décides.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne change pas les mots de ta question en cours de route : tu ne pourras plus comparer cette réponse avec celle de Perplexity et Gemini.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Pose la MÊME question à Perplexity</h4>
+    <div class="step-meta">
+      <span>📍 perplexity.ai</span>
+      <span>⏱️ 3 min</span>
+    </div>
+    <p>Ne change <strong>aucun mot</strong> du prompt. Copie-colle exactement ceci :</p>
+    <div class="prompt-box">Explique la différence entre apprentissage supervisé et non supervisé, en 5 phrases pour un étudiant de 2ème année PEP. Donne 1 exemple concret pour chacun.</div>
+    <p><strong>Voici ce que Perplexity va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Perplexity</h4>
+      <p>L'apprentissage supervisé utilise des données étiquetées pour entraîner un modèle à prédire une sortie précise, tandis que l'apprentissage non supervisé cherche des structures cachées dans des données non étiquetées <sup>[1]</sup><sup>[2]</sup>.</p>
+      <p><strong>Exemples :</strong> détection de spam (supervisé) ; segmentation de clients (non supervisé) <sup>[3]</sup>.</p>
+      <p><strong>Sources :</strong></p>
+      <ul>
+        <li><strong>[1]</strong> INRIA — <em>Introduction au machine learning</em> (inria.fr)</li>
+        <li><strong>[2]</strong> scikit-learn — <em>Supervised learning</em> (scikit-learn.org)</li>
+        <li><strong>[3]</strong> Wikipédia — <em>Apprentissage non supervisé</em> (wikipedia.org)</li>
+      </ul>
+    </div>
+    <div class="tip">Clique sur les numéros <sup>[1]</sup> <sup>[2]</sup> <sup>[3]</sup> : chaque clic ouvre la page d'origine. C'est ça, la différence avec ChatGPT — ici tu peux vérifier en 2 clics.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne modifie pas un seul mot du prompt par rapport à l'étape 2 : la comparaison n'aurait plus de sens.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Pose la MÊME question à Gemini</h4>
+    <div class="step-meta">
+      <span>📍 gemini.google.com</span>
+      <span>⏱️ 3 min</span>
+    </div>
+    <p>Même prompt, troisième outil. Copie-colle ceci :</p>
+    <div class="prompt-box">Explique la différence entre apprentissage supervisé et non supervisé, en 5 phrases pour un étudiant de 2ème année PEP. Donne 1 exemple concret pour chacun.</div>
+    <p><strong>Voici ce que Gemini va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Gemini</h4>
+      <ol>
+        <li><strong>Supervisé :</strong> l'IA apprend à partir d'exemples annotés, où la réponse attendue est connue à l'avance.</li>
+        <li><strong>Exemple supervisé :</strong> un modèle entraîné à repérer les e-mails de spam à partir de milliers d'e-mails déjà classés « spam » ou « non spam ».</li>
+        <li><strong>Non supervisé :</strong> l'IA explore des données sans étiquette et découvre seule des regroupements.</li>
+        <li><strong>Exemple non supervisé :</strong> un site de streaming qui crée des catégories de films à partir de l'historique de visionnage, sans règle prédéfinie.</li>
+        <li><strong>Différence clé :</strong> le supervisé a une réponse juste ou fausse ; le non supervisé n'a que des patterns à interpréter.</li>
+      </ol>
+      <p><em>Tu veux approfondir ? Je peux te faire un tableau comparatif ou un QCM.</em></p>
+    </div>
+    <div class="tip">Gemini propose souvent de continuer (« Tu veux un tableau ? un QCM ? »). Réponds « oui, un tableau » — tu gagnes du temps au lieu de réécrire un prompt.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne choisis pas ton outil sur la réponse la plus jolie : refais le test avec ta propre question de cours avant de décider.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Compare les 3 réponses</h4>
+    <div class="step-meta">
+      <span>📍 Ton cahier</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu dois noter :</strong> les 3 réponses sont correctes, mais pas identiques. Pour aller plus vite, tape ceci dans ChatGPT :</p>
+    <div class="prompt-box">Compare tes réponses avec celles de Perplexity et Gemini sur la même question : fais un tableau de 4 critères (longueur, exemples, sources, utilité pour un devoir), puis donne-moi ta recommandation pour un étudiant de 2ème année PEP.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+      <thead>
+        <tr style="background:#e3f2fd;">
+          <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Critère</th>
+          <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">ChatGPT</th>
+          <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Perplexity</th>
+          <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Gemini</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Longueur</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">5 puces claires</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">2 paragraphes courts</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">5 puces + proposition</td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Exemples</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Photos chiens/chats</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Spam, clients</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Spam, streaming</td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Sources</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">3 sources cliquables</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">2 liens en bas</td>
+        </tr>
+        <tr>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Pour un devoir</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Idéal pour rédiger</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Idéal pour citer</td>
+          <td style="padding:0.5rem;border:1px solid #cbd5e1;">Idéal si tu as un PDF</td>
+        </tr>
+      </tbody>
+    </table>
+      <p>Pour un étudiant PEP : utilise Perplexity pour <strong>citer</strong>, ChatGPT pour <strong>rédiger</strong>, Gemini si tu as <strong>un PDF de cours</strong> à analyser.</p>
+    </div>
+    <p><strong>📝 Note dans ton cahier :</strong></p>
+    <ul>
+      <li><strong>Question factuelle / à citer</strong> → Perplexity</li>
+      <li><strong>Rédaction / explication</strong> → ChatGPT ou Claude</li>
+      <li><strong>Document de cours à analyser</strong> → NotebookLM ou Gemini</li>
+      <li><strong>Un outil bloque</strong> → DeepSeek ou Copilot (secours)</li>
+    </ul>
+    <div class="tip">Recopie ce tableau dans ton cahier : c'est ta « carte des outils ». Le jour où on te demandera « pourquoi cet outil ? », tu auras la réponse prête en 10 secondes.</div>
+    <div class="warn">Perplexity affiche des sources, mais elles ne sont pas toutes bonnes. Ouvre toujours au moins <strong>un lien</strong> avant de citer une information dans un devoir.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne compare que des réponses obtenues avec strictement le même prompt, sinon tu compares des choses différentes.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Un <strong>schéma en ASCII</strong> est un dessin fait uniquement avec des caractères du clavier. Ajoute <code>« avec un schéma en ASCII »</code> à la fin de ton prompt pour en obtenir un.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Choisir l'outil pour réviser</h4>
+    <p><strong>Situation :</strong> tu as un examen dans 5 jours. Tu ne sais pas quel outil ouvrir pour réviser efficacement.</p>
+
+    <p><strong>Ce que tu tapes (dans ChatGPT) :</strong></p>
+    <div class="prompt-box">Compare ChatGPT, Perplexity et NotebookLM pour réviser un examen. Fais un tableau de 5 critères, puis recommande-en un seul pour un étudiant de 2ème année PEP qui a 12 pages de cours PDF.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <table style="width:100%;border-collapse:collapse;margin:0.6rem 0;font-size:0.92rem;">
+        <thead>
+          <tr style="background:#e3f2fd;">
+            <th style="padding:0.4rem;text-align:left;border:1px solid #cbd5e1;">Critère</th>
+            <th style="padding:0.4rem;text-align:left;border:1px solid #cbd5e1;">ChatGPT</th>
+            <th style="padding:0.4rem;text-align:left;border:1px solid #cbd5e1;">Perplexity</th>
+            <th style="padding:0.4rem;text-align:left;border:1px solid #cbd5e1;">NotebookLM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Avec mes PDF</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Oui (version web)</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Non</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Oui, fait pour ça</td>
+          </tr>
+          <tr>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">QCM générés</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Oui</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Partiellement</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Oui, en 1 clic</td>
+          </tr>
+          <tr>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Sources vérifiables</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Faible</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Excellente</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Cite ton document</td>
+          </tr>
+          <tr>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Gratuit</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Oui</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Oui</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Oui</td>
+          </tr>
+          <tr>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Meilleur pour</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Expliquer un point difficile</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Trouver des références</td>
+            <td style="padding:0.4rem;border:1px solid #cbd5e1;">Réviser MES 12 pages</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Recommandation :</strong> NotebookLM. Tu déposes tes 12 pages PDF, il reste dans ton document, il génère un résumé, un glossaire et des QCM. Tu ne sors pas de ton cours, donc pas de fausses infos.</p>
+    </div>
+
+    <div class="tip">Pose toujours ce type de question <strong>comparative</strong> avant d'adopter un outil. L'IA te donne ses limites aussi — et c'est ce qui t'intéresse.</div>
+
+    <div class="tip">Si tu travailles en groupe, chaque membre teste un outil sur la même question. Vous comparez en 10 minutes au lieu de 30.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — NotebookLM avec ton cours PDF</h4>
+    <p><strong>Situation :</strong> tu as un PDF de 12 pages de cours de pédagogie et tu ne sais pas par où commencer.</p>
+
+    <p><strong>Ce que tu tapes (après avoir déposé ton PDF dans NotebookLM) :</strong></p>
+    <div class="prompt-box">Avec uniquement ce document : fais un résumé en 5 points clés, puis donne 10 questions de révision avec leurs réponses. Si une info n'est pas dans le document, dis-le.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de NotebookLM</h4>
+      <p><strong>5 points clés du document :</strong></p>
+      <ol>
+        <li>La pédagogie par projets place l'élève en situation de production réelle.</li>
+        <li>L'évaluation formative a pour but de faire progresser, pas de noter.</li>
+        <li>L'étayage (scaffolding) diminue l'aide au fil des séances.</li>
+        <li>La différenciation pédagogique adapte les tâches aux rythmes différents.</li>
+        <li>Le portfolio d'apprentissage rassemble les preuves des progrès de l'élève.</li>
+      </ol>
+      <p><strong>10 questions de révision (extrait) :</strong></p>
+      <ol>
+        <li><strong>Q1 :</strong> Quelle est la différence entre évaluation formative et sommative ? <br><em>R1 : La formative fait progresser, la sommative délivre une note finale.</em></li>
+        <li><strong>Q2 :</strong> Que signifie « étayage » dans le texte ? <br><em>R2 : Soutien temporaire de l'enseignant, retiré progressivement.</em></li>
+        <li><strong>Q3 :</strong> Cite 3 composantes du portfolio. <br><em>R3 : Objectifs, traces de travail, auto-évaluation.</em></li>
+        <li><strong>Q4 :</strong> Que cherche la différenciation pédagogique ? <br><em>R4 : Adapter la tâche au rythme de chaque élève sans changer l'objectif.</em></li>
+        <li>… (5 autres questions générées de la même façon)</li>
+      </ol>
+      <p><em>Informations citées : points 1, 3, 5 proviennent de la page 4 de ton document.</em></p>
+    </div>
+
+    <div class="tip">Note la phrase <strong>« Si une info n'est pas dans le document, dis-le »</strong>. Elle empêche NotebookLM d'inventer. Mets-la toujours.</div>
+
+    <div class="tip">NotebookLM renvoie la <strong>page exacte</strong> de ton PDF. Tu peux vérifier en 5 secondes — c'est ton meilleur copain la veille de l'exam.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Canva IA pour illustrer un exposé</h4>
+    <p><strong>Situation :</strong> ton exposé est prêt, mais tes diapositives sont tristes et blanches.</p>
+
+    <p><strong>Ce que tu tapes (dans Canva, bouton « Magic Design ») :</strong></p>
+    <div class="prompt-box">Crée une présentation de 5 diapositives sur « L'histoire de l'intelligence artificielle », style moderne, couleurs bleues, en français.</div>
+
+    <p><strong>Voici ce que tu vas voir apparaître :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Ce que Canva génère en 15 secondes</h4>
+      <ol>
+        <li><strong>Diapo 1 :</strong> page de titre « L'histoire de l'intelligence artificielle » avec une illustration de cerveau numérique.</li>
+        <li><strong>Diapo 2 :</strong> « 1950 — Le test de Turing » avec une photo d'archive en fond.</li>
+        <li><strong>Diapo 3 :</strong> « 1997 — Deep Blue bat Kasparov » avec une image d'échiquier.</li>
+        <li><strong>Diapo 4 :</strong> « 2012 — la révolution des réseaux profonds » avec un schéma de neurones.</li>
+        <li><strong>Diapo 5 :</strong> « 2022 → aujourd'hui — l'IA générative » avec des icônes texte, image, code.</li>
+      </ol>
+      <p>Chaque diapo contient déjà un titre, 2 à 3 lignes de texte et une image cohérente. Tu cliques sur « Utiliser cette page », tu corriges le texte, c'est prêt.</p>
+    </div>
+
+    <div class="tip">Canva écrit le texte, mais <strong>toi tu vérifies les dates</strong>. Une IA peut placer « Turing » en 1955 au lieu de 1950 — relis chaque année.</div>
+
+    <div class="tip">Demande d'abord le plan à ChatGPT (« Donne-moi 5 titres de diapos sur X »), puis colle les titres dans Canva. Résultat : un exposé propre ET cohérent.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>La règle des 4 :</strong> question factuelle → Perplexity ; rédaction → ChatGPT ; PDF de cours → NotebookLM ; image → Canva.</li>
+      <li><strong>Teste avec TON sujet.</strong> Une question générique ne te dit pas si l'outil est bon pour ton module.</li>
+      <li><strong>Les versions gratuites suffisent</strong> pour tout le module. Tu n'as rien à payer.</li>
+      <li><strong>Garde une liste de secours.</strong> ChatGPT bloqué ? Gemini, DeepSeek ou Copilot font le même travail.</li>
+      <li><strong>Compare les sources, pas les phrases.</strong> 2 bonnes sources valent mieux que 10 fausses.</li>
+      <li><strong>Refais ce test tous les 3 mois.</strong> Le classement des outils change vite.</li>
+      <li><strong>Un compte Google suffit</strong> pour Gemini, NotebookLM, Copilot et Canva.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Utiliser un seul outil pour tout → tu ignores ses limites. <strong>✅ Teste 3 outils sur ta question importante.</strong></li>
+    <li>❌ Croire qu'un outil payant est meilleur → la pub n'est pas un test. <strong>✅ Compare d'abord les versions gratuites.</strong></li>
+    <li>❌ Copier une réponse sans cliquer sur les sources → tu peux citer du faux. <strong>✅ Ouvre au moins un lien avant de rendre.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>Un outil = une spécialité.</strong> Choisis selon la tâche, pas l'habitude.</li>
+      <li><strong>Même question, 3 réponses.</strong> Celles qui citent des sources sont les plus fiables.</li>
+      <li><strong>Perplexity = rechercher.</strong> <strong>ChatGPT = rédiger.</strong> <strong>NotebookLM = tes PDF.</strong></li>
+      <li><strong>Les 14 outils gratuits</strong> couvrent 100 % de tes besoins du module.</li>
+      <li><strong>Vérifie toujours</strong> au moins une source avant de citer.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>Dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à OpenAI, Google, DeepSeek… Elle apprend sur des <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés. <strong>Ton PC, ton téléphone ou celui de ton voisin ne servent pas à entraîner ChatGPT.</strong></p>
+  <div class="warn">
+    <strong>⚠️ Attention :</strong> seul un data center de la société qui produit l'IA est utilisé pour l'entraînement — pas les ordinateurs des utilisateurs connectés à Internet.
+  </div>
+
+  <h3>2. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> Un aspirateur Roomba décide où aller (l'IA) et se déplace, aspire (le robot). ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>3. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Ni mot de passe, ni carte bancaire, ni pièce d'identité, ni adresse personnelle. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.</p>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> une <strong>IA locale</strong> (Ollama) ne fait sortir aucune donnée de ton ordinateur. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés). <strong>Dans cette séance tu compares des outils : chaque comparaison que tu fais part sur leurs serveurs. Garde tes documents privés chez toi, envoie seulement des questions génériques.</strong>
+  </div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockées vos données ?</h3>
+  <p>Dans les <strong>data centers de Google, OpenAI, Anthropic</strong>… répartis en Europe et aux États-Unis. <strong>Aucun data center de ce type dans la plupart des pays du Sud</strong> : tes e-mails, tes documents et tes conversations partent à l'étranger, souvent aux États-Unis ou en Europe.</p>
+
+  <h3>2. Un employé peut-il lire ce que j'écris ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle</strong> : accès justifié, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré). En revanche, si un tribunal américain ordonne l'accès, la société doit obéir — c'est le <strong>U.S. CLOUD Act</strong>, valable même pour les données stockées en Europe.</p>
+
+  <h3>3. Comment se protéger ?</h3>
+  <ul>
+    <li><strong>IA locale (Ollama)</strong> — aucune donnée ne quitte ton ordinateur.</li>
+    <li><strong>Gestionnaire de mots de passe</strong> — Bitwarden ou KeePass, jamais un chat IA.</li>
+    <li><strong>Désactive l'entraînement</strong> — dans ChatGPT/Gemini : « Améliorer le modèle ».</li>
+    <li><strong>Signal ou ProtonMail</strong> — chiffrement de bout en bout pour les messages sensibles.</li>
+  </ul>
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mets jamais dans un chat IA ce que tu ne voudrais pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères. <strong>Dans cette séance tu compares des outils : chaque comparaison que tu fais part sur leurs serveurs. Garde tes documents privés chez toi, envoie seulement des questions génériques.</strong>
+  </div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=perplexity+ai+tutoriel+fran%C3%A7ais" target="_blank">Tutoriel Perplexity AI (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=notebooklm+tutoriel+fran%C3%A7ais" target="_blank">Tutoriel NotebookLM en français</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=compare+chatgpt+vs+gemini+vs+perplexity" target="_blank">ChatGPT vs Gemini vs Perplexity (EN)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Quel outil cites-tu pour une information vérifiable ? <br><em>(Réponse : Perplexity — il affiche des sources cliquables.)</em></li>
+    <li>Tu as 12 pages de cours en PDF à réviser. Quel outil ? <br><em>(Réponse : NotebookLM — il travaille uniquement sur ton document.)</em></li>
+    <li>Laquelle de ces affirmations est fausse ? <br><em>(Réponse : « Un outil payant est toujours meilleur que la version gratuite. »)</em></li>
+    <li>Pourquoi comparer 3 outils sur la MÊME question ? <br><em>(Réponse : pour voir qui donne la réponse la plus complète et la plus vérifiable.)</em></li>
+    <li>Tu veux fabriquer ton propre chatbot de cours. Quel outil ? <br><em>(Réponse : Dify — on le construit dans la Séance 12.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>Chatbot</strong> — Programme qui discute avec toi en langage naturel (ChatGPT, Gemini, DeepSeek).</li>
+    <li><strong>Moteur de recherche IA</strong> — Moteur qui rédige ta réponse ET cite ses sources (Perplexity).</li>
+    <li><strong>NotebookLM</strong> — Outil qui travaille uniquement sur les documents que tu déposes.</li>
+    <li><strong>Version gratuite (freemium)</strong> — Outil utilisable sans payer, avec des limites quotidiennes.</li>
+    <li><strong>Contexte de conversation</strong> — Ce que l'IA retient de ce que tu as dit dans le chat en cours.</li>
+    <li><strong>Source vérifiable</strong> — Lien que tu peux ouvrir pour confirmer l'information.</li>
+  </ul>
+
+  <div class="nav-footer">
+    <a href="seance-01.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-03.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+    <a href="seance-13.html">🎓 Séance 13</a>
+  </div>
+
+</div>
+</body>
+</html>

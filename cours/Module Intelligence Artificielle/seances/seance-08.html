@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 08 — Rédiger, corriger et traduire (FR / EN / AR)</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 08 — Rédiger, corriger et traduire (FR / EN / AR)</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — L'aller-retour FR → EN → FR pour traquer le contresens</strong><br>
+    Après une traduction, re-transmets la version étrangère en français et compare avec ton texte d'origine : si le retour change le sens, la traduction aussi. Trente secondes qui démasquent ce qu'aucun correcteur ne rattrapera pour toi. Commence par les formules administratives et les citations.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu sauras faire rédiger, corriger, alléger et traduire un texte en français, en anglais et en arabe — en comprenant chaque correction au lieu de la subir.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Lettres, devoirs, CV, échanges avec l'université, traduction d'une attestation pour un dossier de bourse : tout passe par le texte. L'IA corrige en trente secondes ce qu'un correcteur mettrait une heure à faire. Mais si tu ne comprends pas <strong>pourquoi</strong> ta faute était une faute, tu la referas au prochain devoir. Cette séance te donne la méthode complète : produire, corriger, alléger, traduire — dans les trois langues de ton département.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>Un prompt de rédaction a 4 ingrédients :</strong> un rôle, un contexte, une longueur et une structure. Sans les quatre, tu reçois du texte générique que tout le monde pourrait écrire.</li>
+    <li><strong>Corriger n'est pas réécrire :</strong> demande TOUJOURS la liste des fautes avec la règle. Une correction qu'on ne comprend pas ne se retient pas.</li>
+    <li><strong>La traduction automatique traduit les mots, pas l'intention :</strong> elle choisit le sens le plus fréquent. Fais vérifier le sens, surtout pour l'arabe et les termes administratifs.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Traduire un document administratif arabe en français</strong><br>
+    Tu reçois un document administratif en arabe (attestation, formulaire). Tu le colles dans DeepL ou ChatGPT : « Traduis ce document en français et explique-moi chaque terme administratif. » L'IA te donne la traduction + les explications. Utile pour les dossiers de bourse, d'inscription, de logement.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Rédiger un premier jet avec ChatGPT (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> obtenir un point de départ honnête — pas ton texte final. Tu vas le corriger aux étapes 2 et 3, c'est tout l'intérêt.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Tu es rédacteur professionnel. Écris une lettre de motivation d'une page (environ 180 mots) pour postuler comme animateur dans un centre culturel de ta ville. Je suis étudiant en 2ème année PEP, département Anglais. Structure : accroche, 2 paragraphes de motivation, conclusion avec demande d'entretien. Ton : soutenu mais pas guindé.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p>Madame, Monsieur,</p>
+      <p>C'est avec un vif intérêt que je vous soumets ma candidature au poste d'animateur au sein de votre centre culturel. Suivant actuellement une deuxième année de licence en psychologie, éducation et pédagogie, je souhaite mettre mes compétences linguistiques au service d'un projet qui donne aux jeunes l'envie d'apprendre.</p>
+      <p>Mon parcours m'a appris à décoder une consigne, à l'adapter à un public différent et à mesurer mes progrès : autant de qualités que j'entends appliquer à l'animation d'ateliers. Parallèlement, j'encadre régulièrement des exercices de groupe, ce qui m'a habitué à prendre la parole devant un public et à gérer le temps d'une séance.</p>
+      <p>Je serais heureux de vous exposer de vive voix ma motivation et mes idées pour vos ateliers. Dans cette attente, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
+      <p><em>→ 181 mots, 3 paragraphes, structure respectée.</em></p>
+    </div>
+    <div class="tip">Si le ton ne va pas, ne réécris pas tout : <code>« Garde la structure, mais écris-le comme un message à un ami »</code>, puis reviens au ton soutenu. Tu vois instantanément ce qui fait la différence entre les deux registres.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne présente jamais ce jet comme ton texte : c'est ton point de départ, et l'étudiant qui recopie un brouillon d'IA se fait démasquer dès la question suivante à l'oral.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Corriger avec la règle affichée (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> transformer une correction en cours de grammaire. Le format ci-dessous est celui qui te fait progresser — il est applicable à n'importe quel texte.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Corrige ce texte en français. Pour CHAQUE faute, donne : 1) la phrase fautive, 2) la correction, 3) la règle en une phrase. Classe en 3 catégories : orthographe, grammaire, style. Ne change rien d'autre. Texte : « Bonjour, je vous écris pour vous dire que je suis très motivé et très intéressé par votre offre. Je suis étudiant en deuxieme année PEP et j'ai participé a plusieurs activités, malgré que je n'ai pas beaucoup d'expérience. Je crois que je serai le bon candidat. »</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>ORTHOGRAPHE</strong></p>
+      <ol>
+        <li>« en deuxieme année » → « en deuxième année » — l'adjectif numéral prend un accent grave : deuxième.</li>
+        <li>« j'ai participé a plusieurs activités » → « j'ai participé à plusieurs activités » — après un verbe suivi d'un nom, la préposition est « à » (participer à quelque chose).</li>
+      </ol>
+      <p><strong>GRAMMAIRE</strong></p>
+      <ol>
+        <li>« malgré que je n'ai pas » → « bien que je n'aie pas » — « malgré » ne s'emploie jamais avec « que » ; il commande le subjonctif avec « bien que ».</li>
+      </ol>
+      <p><strong>STYLE</strong></p>
+      <ol>
+        <li>« très motivé et très intéressé » → « vivement intéressé » — la double redondance alourdit la phrase.</li>
+        <li>« je serai le bon candidat » → « je serais le candidat qu'il vous faut » — après « je crois que », le conditionnel adoucit la prétention.</li>
+      </ol>
+      <p><strong>Résumé :</strong> 5 corrections — 2 d'orthographe, 1 de grammaire, 2 de style.</p>
+    </div>
+    <div class="tip">Recopie chaque <strong>règle</strong> (pas la correction) dans un cahier d'erreurs personnel. La faute qui revient trois fois est <strong>ta</strong> faute, pas celle de l'IA — c'est exactement celle que le correcteur attend de toi au prochain devoir.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne corrige jamais un texte que l'IA a entièrement réécrit : tu ne sauras plus ce qui venait de toi, et tu auras perdu la seule chose qui te rend identifiable.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Alléger le style (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> gagner en densité. Les textes d'étudiants sont trop longs et trop creux : c'est la correction la plus rentable à la veille d'un partiel de rédaction.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Réécris ce texte en supprimant 30 % des mots sans rien perdre du sens. Interdits : « très », « de plus en plus », « il est important de ». Garde la structure en 3 paragraphes. Texte : « Il est important de noter que l'évaluation formative est très importante et qu'elle joue un rôle de plus en plus important dans la réussite des étudiants, parce que elle permet à l'étudiant de savoir très rapidement où il en est. »</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Version allégée :</strong></p>
+      <p>L'évaluation formative aide l'étudiant à savoir où il en est, rapidement. Placée pendant l'apprentissage, elle indique ce qui est acquis et ce qui reste à travailler. C'est ce retour précoce qui explique son rôle dans la réussite.</p>
+      <p><strong>Bilan :</strong> 54 mots → 37 mots (−31 %), sens conservé, 3 mots interdits absents.</p>
+      <p><strong>Ce qui a été supprimé :</strong> les formules creuses (« il est important de noter que », « très » ×3) et la répétition de « important ».</p>
+    </div>
+    <div class="tip">Demande toujours un <strong>objectif chiffré</strong> (−30 %, 150 mots, 5 lignes) : c'est le seul critère que l'IA peut tenir exactement, et le seul que tu peux vérifier toi-même en trois secondes.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne demande jamais « rends-le plus professionnel » sans dire de combien — « allège de 30 % » se mesure, « plus professionnel » ne se mesure pas.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Traduire en anglais, puis vérifier le sens (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 deepl.com + chatgpt.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> utiliser les deux outils pour ce qu'ils font de mieux — DeepL pour la traduction, l'IA pour le contrôle du sens. C'est la méthode qui évite les contresens dans un devoir officiel.</p>
+    <p><strong>Ce que tu tapes (après avoir traduit sur DeepL) :</strong></p>
+    <div class="prompt-box">Voici un texte français et sa traduction anglaise produite par DeepL. Liste les endroits où le sens dérape, explique pourquoi en français, puis propose une version corrigée en gardant le registre formel. FR : « Je vous serais reconnaissant de bien vouloir m'accuser réception de mon dossier. » EN : « I would be grateful if you could accuse me of receiving my file. »</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>1 contresens détecté :</strong> « accuser réception » est une formule administrative figée. DeepL a traduit le sens littéral de « accuser » (to accuse), ce qui donne en anglais « accuse me of receiving » — c'est-à-dire « accuse-moi d'avoir reçu ». Le sens est complètement inversé.</p>
+      <p><strong>Version corrigée :</strong></p>
+      <p><em>I would be grateful if you could acknowledge receipt of my application.</em></p>
+      <p><strong>Deuxième point :</strong> « dossier » se traduit par <em>file</em> (fichier) ou <em>folder</em> dans un contexte informatique ; dans un contexte administratif, il faut <em>application</em> ou <em>document</em>. La traduction DeepL « my file » est donc fausse ici.</p>
+      <p><strong>Note de registre :</strong> « I would be grateful if you could » est bien le registre formel correspondant à « je vous serais reconnaissant » — rien à corriger de ce côté.</p>
+    </div>
+    <div class="tip">Fais un <strong>aller-retour</strong> : traduis la version anglaise en français et compare avec ton texte d'origine. Si le retour change le sens, la traduction aussi — c'est le contrôle le plus rapide qui existe.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne traduis jamais une formule administrative ou une citation sans vérification : DeepL choisit le sens le plus fréquent du mot, pas le sens de ta phrase.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Traduire en arabe : version officielle et version naturelle (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> obtenir les deux arabes dont tu as besoin — un arabe écrit pour l'administration, un arabe parlé pour un message ou un exposé — et comprendre ce qui les sépare.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Traduis ce texte en arabe littéraire, puis donne une deuxième version en arabe algérien courant, puis explique en français les 3 différences entre les deux versions. Texte : « Bonjour, je souhaite m'inscrire au module d'été. Pouvez-vous me confirmer la date limite de dépôt des dossiers ? Merci. »</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>1. Version littéraire (formelle, pour l'administration) :</strong></p>
+      <p>مرحباً، أودّ التسجيل في وحدة الصيف. هل يمكنكم إبلاغي بآخر أجل لتقديم الملفات؟ شكراً لكم.</p>
+      <p><strong>2. Version algérienne courante (pour un message ou à l'oral) :</strong></p>
+      <p>سلام، بغيت نسجل في وحدة الصيف. تقدروا تخبروني بآخر تاريخ باش نقدّم الملفات؟ شكراً.</p>
+      <p><strong>3. Les 3 différences :</strong></p>
+      <ol>
+        <li><strong>Verbe :</strong> « أودّ » (je souhaite, soutenu) contre « بغيت » (je veux, courant).</li>
+        <li><strong>Nom :</strong> « آخر أجل » (délai officiel) contre « آخر تاريخ » (date, plus simple).</li>
+        <li><strong>Structure :</strong> « هل يمكنكم إبلاغي » (tournure impersonnelle) contre « تقدروا تخبروني » (2e personne directe, comme à l'oral).</li>
+      </ol>
+    </div>
+    <div class="tip">Garde <strong>les deux versions côte à côte</strong> dans ton document : l'une pour l'écrit officiel (inscription, bourse, courrier), l'autre pour parler ou écrire un message. Une seule des deux te manque, et tu passes pour quelqu'un qui ne parle pas la langue.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne recopie jamais l'arabe produit par l'IA sans le relire à voix haute : une faute d'écriture change le mot, et personne ne te dira que le mot n'existe pas.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Un <strong>schéma en ASCII</strong> est un dessin fait uniquement avec des caractères du clavier (tirets, barres, flèches, plus). Ça marche partout, sans image. Très utile pour comprendre une idée visuellement en un coup d'œil.</p>
+
+  <p><strong>Comment demander un schéma à l'IA ?</strong> Ajoute simplement <code>« avec un schéma en ASCII »</code> à la fin de ton prompt.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Écrire un e-mail à un professeur étranger (département Anglais)</h4>
+    <p><strong>Situation :</strong> tu dois demander un rendez-vous à un professeur anglais pour un mémoire. Le ton juste compte plus que le vocabulaire : trop familier = manque de respect, trop guindé = incompréhensible.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Write a short formal e-mail (120 words max) to a British professor, asking for a 20-minute meeting about my final-year project on second language acquisition. I am a second-year student. Subject line included, polite closing, my name at the end.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Subject:</strong> Request for a short meeting — final-year project on second language acquisition</p>
+      <p>Dear Dr [Nom],</p>
+      <p>I am a second-year student in the Department of English, and I am currently working on a final-year project on second language acquisition. Having read your work on corrective feedback, I would be grateful for the opportunity to discuss my research design with you.</p>
+      <p>Would you possibly have 20 minutes available at your convenience, either in person or online? I am happy to fit around your schedule.</p>
+      <p>Thank you very much for your time and consideration.</p>
+      <p>Kind regards,<br>[Ton nom]</p>
+      <p><em>→ 97 mots, objet inclus, ton formel britannique.</em></p>
+    </div>
+
+    <div class="tip">Demande ensuite <code>« now write a slightly warmer version »</code> puis compare les deux : tu apprends le registre en le voyant bouger, pas en lisant une règle de grammaire.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Corriger une introduction de dissertation (département Français)</h4>
+    <p><strong>Situation :</strong> introduction rendue hier, corrigée « 12/20 — bien entamée, manque de précision ». Tu veux savoir exactement quoi changer.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Corrige cette introduction de dissertation. Pour chaque problème : la phrase, la correction, la règle en une phrase. Puis dis-moi si l'accroche capte l'attention dès la première ligne, et si la problématique est explicite. Texte : « Depuis toujours, la littérature joue un rôle très important dans la société. Elle permet aux gens de s'évader et de réfléchir. On peut se demander si l'œuvre populaire est une œuvre mineure. Nous verrons d'abord que l'œuvre populaire est accessible, puis qu'elle n'est pas forcément mineure. »</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Problèmes relevés :</strong></p>
+      <ol>
+        <li>« Depuis toujours » → « Depuis l'Antiquité » — une localisation précise remplace une formule creuse (style).</li>
+        <li>« très important » → « déterminant » — le superlatif vide se remplace par un adjectif qui pense (style).</li>
+        <li>« aux gens » → « aux lecteurs » — le registre doit rester dans le champ littéraire (style).</li>
+        <li>« On peut se demander si » → « Dans quelle mesure… » — « on » est impersonnel et faiblit la problématique (grammaire de l'argumentation).</li>
+      </ol>
+      <p><strong>Accroche :</strong> non — la première ligne est une généralité que n'importe qui pourrait écrire. Ouvre par un fait précis, une citation ou un chiffre.</p>
+      <p><strong>Problématique :</strong> explicite mais maladroite : « Dans quelle mesure l'œuvre populaire conserve-t-elle une valeur littéraire ? »</p>
+      <p><strong>Plan :</strong> tes deux parties se répondent (accessible / pas mineure) — ajoute une troisième partie de dépassement pour atteindre la hiérarchie attendue.</p>
+    </div>
+
+    <div class="tip">Recopie les <strong>4 tournures corrigées</strong> dans un fichier « formules à bannir » : elles reviennent dans tous tes textes, et c'est exactement ce que le correcteur sanctionne en bloc.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Traduire un résumé en espagnol (département Espagnol)</h4>
+    <p><strong>Situation :</strong> abstract bilingue à rendre pour un séminaire. Tu as le français ; il te faut un espagnol naturel, pas une traduction mot à mot.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Traduis ce résumé en espagnol d'Espagne, registre académique. Garde la même longueur, puis donne la traduction inverse en français et signale les 2 endroits où le sens pourrait glisser. FR : « Cet article analyse la place de l'oral dans l'apprentissage d'une langue étrangère à l'université. À partir d'un corpus de 60 séances, il montre que l'oral reste minoritaire malgré les recommandations officielles. »</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Version espagnole :</strong></p>
+      <p>Este artículo analiza el papel de la oralidad en el aprendizaje de una lengua extranjera en la universidad. A partir de un corpus de 60 sesiones, demuestra que la producción oral sigue siendo minoritaria a pesar de las recomendaciones oficiales.</p>
+      <p><strong>Traduction inverse :</strong> « Cet article analyse le rôle de l'oralité dans l'apprentissage d'une langue étrangère à l'université. À partir d'un corpus de 60 séances, il démontre que la production orale demeure minoritaire malgré les recommandations officielles. »</p>
+      <p><strong>2 points de glissement possibles :</strong></p>
+      <ol>
+        <li><strong>« oral » → « oralidad » ou « producción oral »</strong> : « oralidad » désigne la matérialité de l'oral (concept), « producción oral » désigne l'activité de l'étudiant. Ici la 2e est plus juste pour parler des séances observées.</li>
+        <li><strong>« demeure » (reste) contre « sigue siendo » (continue d'être)</strong> : le 2e insiste sur la continuité d'une tendance, ce qui colle mieux au corpus chiffré — mais c'est une nuance d'interprétation, pas une équivalence.</li>
+      </ol>
+    </div>
+
+    <div class="tip">La <strong>traduction inverse</strong> est ton correcteur gratuit : si le texte revient identique, la traduction tient ; si elle revient déformée, c'est que le sens a bougé quelque part.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>Les 4 ingrédients.</strong> Rôle, contexte, longueur, structure — aucun prompt de rédaction sans les quatre.</li>
+      <li><strong>Demande la règle, pas la correction.</strong> « Explique la règle en une phrase » transforme une correction en cours particulier.</li>
+      <li><strong>Un outil par rôle.</strong> DeepL traduit, l'IA réécrit, l'IA contrôle : ne les mélange pas dans le même geste.</li>
+      <li><strong>Un objectif chiffré.</strong> « Allège de 30 % » se vérifie ; « rends-le plus professionnel » ne se vérifie pas.</li>
+      <li><strong>L'aller-retour permanent.</strong> Traduis EN→FR : le retour trahit immédiatement un contresens.</li>
+      <li><strong>Deux arabes toujours.</strong> Littéraire pour l'administration, algérienne pour l'oral — les deux, jamais une seule.</li>
+      <li><strong>Le modèle avant le prompt.</strong> Colle un texte qui te plaît et demande « écris dans ce style » : le ton devient un réglage, pas une chance.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Coller un texte d'IA tel quel → tout le monde reconnaît le style, et le correcteur aussi. <strong>✅ Réécris une phrase sur deux et garde tes exemples personnels.</strong></li>
+    <li>❌ « Corrige mon texte » tout court → tu reçois une réécriture silencieuse. <strong>✅ « 1) les fautes 2) les règles 3) par catégorie, ne change rien d'autre ».</strong></li>
+    <li>❌ Faire confiance à la traduction arabe ou administrative → contresens invisible. <strong>✅ Relis à voix haute et fais l'aller-retour vers le français.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>4 ingrédients de prompt :</strong> rôle, contexte, longueur, structure.</li>
+      <li><strong>Corriger = liste des fautes + règle en une phrase</strong>, jamais une réécriture.</li>
+      <li><strong>Alléger avec un chiffre</strong> (−30 %) : c'est la seule consigne tenue exactement.</li>
+      <li><strong>DeepL traduit, l'IA contrôle</strong> : l'aller-retour démasque le contresens.</li>
+      <li><strong>Deux arabes</strong> : littéraire pour l'écrit, algérien pour l'oral.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>L'IA apprend dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à des sociétés : OpenAI pour ChatGPT, Google pour Gemini, DeepSeek pour DeepSeek.</p>
+  <p>Elle apprend à partir de <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés, articles. <strong>Ce ne sont PAS les ordinateurs des utilisateurs</strong> connectés à Internet.</p>
+  <div class="warn">
+    <strong>⚠️ Ton PC, ton téléphone, le PC de ton voisin : rien de tout ça n'est utilisé pour entraîner ChatGPT.</strong> Seul un data center de la société est utilisé.
+  </div>
+
+  <h3>2. Peut-on créer une IA simple avec 1000 photos de chats ?</h3>
+  <p><strong>Oui, c'est possible en 30 minutes avec Google Colab (gratuit).</strong> Voici les étapes :</p>
+  <ol>
+    <li><strong>Collecte</strong> : 500 photos de chats + 500 photos d'autres choses, dans deux dossiers.</li>
+    <li><strong>Entraînement</strong> : un petit réseau de neurones apprend la différence (code fourni ci-dessous).</li>
+    <li><strong>Test</strong> : tu lui montres une nouvelle photo, il dit « Chat » ou « Pas chat ».</li>
+  </ol>
+  <div class="exemple">
+    <h4>🤖 Code Python minimal (Google Colab)</h4>
+<pre>
+import tensorflow as tf
+
+train = tf.keras.utils.image_dataset_from_directory(
+    "dataset/", image_size=(128,128), batch_size=32)
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Rescaling(1./255),
+    tf.keras.layers.Conv2D(32, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(64, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(2, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy'])
+model.fit(train, epochs=10)
+</pre>
+  </div>
+  <div class="warn">
+    <strong>⚠️ Important :</strong> ce programme <strong>calcule</strong>, il ne « comprend » pas. Il a juste appris quelles formes ressemblent à un chat.
+  </div>
+
+  <h3>3. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> On peut les combiner :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Exemple</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">L'IA fait</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Le robot fait</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aspirateur Roomba</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Décide où aller</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Se déplace, aspire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Voiture Tesla</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Reconnaît les piétons</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Freine, tourne</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Robot médical Da Vinci</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyse les mouvements</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Coupe précisément</td></tr>
+    </tbody>
+  </table>
+  <p>Mais la majorité des IA n'ont <strong>pas de robot</strong>. ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>4. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Voici pourquoi :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#ffebee;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Information</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Peut-on la donner ?</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi ?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Mot de passe</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Envoyé sur un serveur, journalisé</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte bancaire</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Fraude possible</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte d'identité</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Usurpation d'identité</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Adresse personnelle</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">⚠️ Éviter</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pas nécessaire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Question d'étude</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ OK</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucun risque</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> utilise une <strong>IA locale</strong> (Ollama) sur ton propre ordinateur. Aucune donnée ne sort. C'est la seule solution totalement privée. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés).
+  </div>
+
+  <h3>5. Chaque pays utilise l'IA différemment</h3>
+  <p>L'IA n'est ni bonne ni mauvaise. <strong>Tout dépend de qui l'utilise et pourquoi.</strong> Exemples :</p>
+  <ul>
+    <li><strong>Médecine</strong> — détecter un cancer sur une radio</li>
+    <li><strong>Agriculture</strong> — prévoir les récoltes, détecter les maladies des plantes</li>
+    <li><strong>Transport</strong> — GPS, voitures autonomes, gestion du trafic</li>
+    <li><strong>Finance</strong> — détecter la fraude bancaire</li>
+    <li><strong>Surveillance</strong> — reconnaissance faciale dans les lieux publics (usage controversé)</li>
+    <li><strong>Militaire</strong> — drones autonomes (usage controversé)</li>
+    <li><strong>Éducation</strong> — corriger les copies, adapter les exercices</li>
+  </ul>
+
+  <h3>6. Exemples d'utilisation de l'IA par secteur</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Secteur</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Usage concret</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Médecine</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Détecter une tumeur sur une IRM</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Agriculture</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévoir la récolte d'olives</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Éducation</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer 10 exercices personnalisés</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Justice</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser des dossiers volumineux</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Art</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer des images, de la musique</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Météo</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévisions à 10 jours</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>À retenir :</strong> l'IA est un outil puissant. Bien utilisée, elle aide. Mal utilisée, elle nuit. <strong>C'est toi qui décides.</strong>
+   <strong>Tu vas coller des textes qui partent sur des serveurs étrangers : retire les noms, numéros et références personnelles avant de traduire, et garde le document original chez toi.</strong></div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockés vos e-mails Gmail ?</h3>
+  <p>Gmail est hébergé dans les <strong>data centers de Google</strong>, répartis dans le monde entier. Google possède <strong>21 data centers</strong>, dont <strong>5 en Europe</strong> (Irlande, Pays-Bas, Danemark, Finlande, Belgique).</p>
+  <div class="warn">
+    <strong>⚠️ Aucun data center Google dans la plupart des pays du Sud.</strong> Vos e-mails, vos documents, et le travail de thèse partagé avec votre encadrant sont stockés <strong>à l'étranger</strong> — probablement aux États-Unis ou en Europe.
+  </div>
+
+  <h3>2. Un employé Google peut-il lire vos e-mails ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle.</strong> Google a trois niveaux d'accès :</p>
+  <ol>
+    <li><strong>Vous</strong> : accès direct, chiffré.</li>
+    <li><strong>Employés Google autorisés</strong> : accès possible avec une justification professionnelle.</li>
+    <li><strong>Services Google</strong> : accès automatique pour le fonctionnement.</li>
+  </ol>
+  <p>Ce qui protège : vérification des antécédents, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré).</p>
+  <div class="warn">
+    <strong>Ce qui ne protège PAS :</strong> si la justice américaine ordonne l'accès, Google doit obéir — même pour des données stockées en Europe. Le <strong>U.S. CLOUD Act</strong> étend la juridiction des tribunaux américains à toutes les données contrôlées par des sociétés américaines.
+  </div>
+
+  <h3>3. Est-ce la même chose que l'IA ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;"></th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Gmail</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">IA (ChatGPT, Gemini)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Ce qui est stocké</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">E-mails, documents</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos conversations</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Qui peut voir</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos données entraînent-elles le système ?</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Non</td><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Oui</strong> (sauf option désactivée)</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Conclusion :</strong> Gmail est déjà un risque pour la souveraineté numérique. L'IA en est un autre, souvent plus grave car vos données peuvent servir à améliorer le modèle de la société.</p>
+
+  <h3>4. « Ça laisse les pays du tiers-monde en retard » — VRAI</h3>
+  <p>Votre intuition est confirmée par la Banque Mondiale :</p>
+  <blockquote style="border-left:4px solid #177bbe;padding-left:1rem;color:#555;font-style:italic;">
+    « L'infrastructure et les systèmes qui sous-tendent l'économie numérique des pays à revenu faible et intermédiaire sont souvent construits, détenus ou exploités par des acteurs qu'ils ne contrôlent ni ne régulent pleinement. »
+  </blockquote>
+  <ul>
+    <li><strong>Dépendance technologique</strong> : les pays du Sud n'ont pas d'infrastructure IA locale.</li>
+    <li><strong>Fuite de données</strong> : les données partent à l'étranger pour être traitées.</li>
+    <li><strong>Biais culturels</strong> : les modèles sont entraînés sur des données du Nord, imposant leurs visions du monde.</li>
+  </ul>
+
+  <h3>5. Comment se protéger ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e8f5e9;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Solution</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>IA locale (Ollama)</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune donnée ne sort de votre ordinateur. Totalement privé.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Gestionnaire de mots de passe</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Bitwarden ou KeePass (gratuits, chiffrés). Ne mettez jamais vos mots de passe dans un chat IA.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Désactiver l'entraînement</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Dans les paramètres de ChatGPT/Gemini, désactivez « Améliorer le modèle ».</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Chiffrement de bout en bout</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pour les messages sensibles, utilisez Signal ou ProtonMail.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mettez <strong>JAMAIS</strong> dans un chat IA ou un e-mail non chiffré ce que vous ne voudriez pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères.
+   <strong>Tu vas coller des textes qui partent sur des serveurs étrangers : retire les noms, numéros et références personnelles avant de traduire, et garde le document original chez toi.</strong></div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=deepL+traduction+astuces+fran%C3%A7ais+anglais" target="_blank">DeepL : bien traduire (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=chatgpt+corriger+texte+fautes+explication" target="_blank">Corriger un texte avec ChatGPT (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=arabe+litt%C3%A9raire+vs+arabe+darija+diff%C3%A9rence" target="_blank">Arabe littéraire vs darija (AR)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Quels sont les 4 ingrédients d'un prompt de rédaction ? <br><em>(Réponse : rôle, contexte, longueur, structure.)</em></li>
+    <li>Pourquoi demander la règle avec chaque correction ? <br><em>(Réponse : une correction comprise ne se refait pas ; une corrigée sans règle se refait.)</em></li>
+    <li>Comment vérifier rapidement une traduction ? <br><em>(Réponse : la re-traduire dans l'autre sens et comparer avec le texte d'origine.)</em></li>
+    <li>Quelle est la différence entre les deux arabes demandés en étape 5 ? <br><em>(Réponse : la version littéraire pour l'écrit officiel, la version algérienne pour l'oral et les messages.)</em></li>
+    <li>Pourquoi un objectif chiffré vaut mieux qu'un adjectif ? <br><em>(Réponse : « allège de 30 % » est vérifiable, « plus professionnel » ne l'est pas.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>Prompt de rédaction</strong> — Demande structurée : rôle + contexte + longueur + structure.</li>
+    <li><strong>Registre de langue</strong> — Niveau de formalité (soutenu, courant, familier) adapté au destinataire.</li>
+    <li><strong>Calque</strong> — Traduction qui respecte la structure de la langue source : une fausse note typique.</li>
+    <li><strong>Allègement</strong> — Réduction de la longueur à sens constant, avec un objectif chiffré.</li>
+    <li><strong>Traduction inverse</strong> — Re-traduire la version étrangère en français pour vérifier le sens.</li>
+    <li><strong>Faute de style</strong> — Texte grammaticalement juste mais lourd, vide ou hors registre.</li>
+  </ul>
+  <div class="nav-footer">
+    <a href="seance-07.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-09.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+    <a href="seance-13.html">🎓 Séance 13</a>
+  </div>
+
+</div>
+</body>
+</html>

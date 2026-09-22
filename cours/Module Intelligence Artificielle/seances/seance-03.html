@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 03 — Chercher et vérifier l'information avec l'IA</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 03 — Chercher et vérifier l'information avec l'IA</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Activer la recherche web pour des sources réelles</strong><br>
+    Avant toute question d'actualité, active l'icône globe (recherche web) dans ChatGPT ou Perplexity : la réponse arrive avec les liens des sources, datés. Sans elle, l'IA répond de mémoire et peut inventer une date. Vérification en 2 clics : ouvre le lien cité et compare avec le site officiel.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu sauras trouver 5 sources fiables sur n'importe quel sujet et repérer une information inventée par l'IA en moins d'une minute.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Tu dois rendre un travail avec des références. Tu tapes la question dans ChatGPT, il te sort 3 belles références… et 2 n'existent pas. Ton devoir perd des points, ou pire : tu répètes une fausse info. Cette séance te donne la méthode complète en 4 outils : chercher, citer, vérifier, éliminer. Ça te prend 40 minutes une fois — et tu gagnes cette faute pour toujours.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>Une réponse sans source n'est pas une preuve.</strong> C'est une opinion très bien écrite.</li>
+    <li><strong>Une source fiable a un auteur, une date et un lien qui s'ouvre.</strong> Sans ces 3 éléments, tu ne peux pas citer.</li>
+    <li><strong>Vérifier prend 30 secondes.</strong> Copier sans vérifier prend 0 seconde — et peut te coûter ta note.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Diagnostiquer un PC qui ne démarre pas</strong><br>
+    Ton PC affiche un écran bleu au démarrage. Tu notes le code d'erreur (ex. 0xc000000f) et tu le tapes dans ChatGPT avec ton système : « Windows 11, erreur 0xc000000f au démarrage. Que faire étape par étape ? » L'IA te donne : réparer le BCD, mode sans échec, restauration système. Tu copies les commandes dans le terminal. Résultat : tu répares toi-même au lieu de payer 5000 DA au réparateur.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Cherche avec Perplexity (sources incluses)</h4>
+    <div class="step-meta">
+      <span>📍 perplexity.ai</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p>Ouvre un nouveau chat et copie-colle <strong>exactement</strong> ceci :</p>
+    <div class="prompt-box">Quelles sont les dates clés de l'histoire de l'intelligence artificielle ? Réponds en 5 points et donne pour chacune une source vérifiable avec son lien.</div>
+    <p><strong>Voici ce que Perplexity va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Perplexity</h4>
+      <ol>
+        <li><strong>1950</strong> — Alan Turing publie « Computing Machinery and Intelligence » et propose son test <sup>[1]</sup>.</li>
+        <li><strong>1956</strong> — La conférence de Dartmouth (New Hampshire) invente le mot « intelligence artificielle » <sup>[2]</sup>.</li>
+        <li><strong>1997</strong> — Deep Blue bat le champion du monde d'échecs Garry Kasparov <sup>[3]</sup>.</li>
+        <li><strong>2012</strong> — AlexNet gagne le concours ImageNet et lance la révolution des réseaux profonds <sup>[4]</sup>.</li>
+        <li><strong>2022</strong> — ChatGPT est lancé au grand public et démocratise l'IA générative <sup>[1]</sup>.</li>
+      </ol>
+      <p><strong>Sources :</strong></p>
+      <ul>
+        <li><strong>[1]</strong> Britannica — <em>Artificial intelligence</em> (britannica.com)</li>
+        <li><strong>[2]</strong> Stanford University — <em>Dartmouth Workshop 1956</em> (stanford.edu)</li>
+        <li><strong>[3]</strong> IBM — <em>Deep Blue vs Kasparov</em> (ibm.com)</li>
+        <li><strong>[4]</strong> Nature — <em>ImageNet classification with deep CNNs</em> (nature.com)</li>
+      </ul>
+    </div>
+    <div class="tip">Clique sur <strong>au moins un lien</strong> par réponse. Une source qui ne s'ouvre pas n'est pas une source.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne cite jamais une source sans l'avoir ouverte au moins une fois : un titre de site n'est pas une référence.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Cherche des articles sur Google Scholar</h4>
+    <div class="step-meta">
+      <span>📍 scholar.google.com</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p>Tape dans la barre de recherche :</p>
+    <div class="prompt-box">apprentissage automatique enseignement des langues</div>
+    <p><strong>Voici ce que tu vas voir :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Résultats typiques de Google Scholar</h4>
+      <ol>
+        <li><strong>Artificial intelligence in language education</strong> — A. Smith, B. Lee — <em>ReCALL</em>, 2021 — <strong>Cité par 412</strong> — [PDF] [Citer]</li>
+        <li><strong>Using AI tools to support EFL learners' writing</strong> — M. Karim, S. Wilkins — <em>Computer Assisted Language Learning</em>, 2023 — <strong>Cité par 158</strong> — [PDF] [Citer]</li>
+        <li><strong>Machine translation in the language classroom</strong> — F. Pérez-Luzardo — <em>Target</em>, 2020 — <strong>Cité par 96</strong> — [PDF] [Citer]</li>
+      </ol>
+      <p>Chaque résultat affiche : <strong>le titre</strong>, <strong>les auteurs</strong>, <strong>la revue</strong>, <strong>l'année</strong>, <strong>le nombre de citations</strong> et un lien <strong>[Citer]</strong> qui te génère la référence prête à coller.</p>
+    </div>
+    <div class="tip">Clique sur <strong>[Citer]</strong> (l'icône guillemet) : tu récupères la référence en APA, MLA ou Chicago. Tu la colles directement dans ta bibliographie.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne prends pas le premier résultat sans regarder l'année ni le nombre de citations : un article de 2003 est souvent dépassé.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Vérifie un consensus avec Consensus</h4>
+    <div class="step-meta">
+      <span>📍 consensus.app</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p>Consensus répond à une question fermée (oui / non) en lisant les études. Tape :</p>
+    <div class="prompt-box">Est-ce que l'utilisation de l'IA améliore les résultats d'apprentissage des langues ?</div>
+    <p><strong>Voici ce que Consensus va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Consensus</h4>
+      <p><strong>Consensus meter :</strong> Oui — <strong>71 %</strong> · Non — <strong>14 %</strong> · Incertain — <strong>15 %</strong></p>
+      <p>Basé sur <strong>23 études</strong> publiées entre 2018 et 2024.</p>
+      <ul>
+        <li><strong>Étude 1 :</strong> Les apprenants utilisant un correcteur IA produisent des textes 24 % plus cohérents (2022).</li>
+        <li><strong>Étude 2 :</strong> L'effet est fort pour les débutants (A1-A2), faible pour les avancés (C1) (2023).</li>
+        <li><strong>Étude 3 :</strong> Aucune différence mesurable si l'outil est utilisé sans consigne de l'enseignant (2021).</li>
+      </ul>
+      <p>Chaque étude est cliquable et mène vers son résumé original.</p>
+    </div>
+    <div class="tip">Reprends la réponse sous la forme « D'après 23 études publiées entre 2018 et 2024… » avec un lien : cette phrase, c'est le niveau attendu dans un devoir documenté, très au-dessus d'un « l'IA aide à apprendre » copié de ChatGPT.</div>
+    <div class="warn">Le pourcentage <strong>n'est pas une vérité</strong>. C'est le résultat d'une lecture automatique des résumés. Ouvre les études derrière les chiffres avant de dire « 71 % des études prouvent que… » dans un devoir.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne répète pas « 71 % des études prouvent que… » sans avoir ouvert au moins une étude derrière le chiffre.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Vérifie l'info douteuse dans NotebookLM</h4>
+    <div class="step-meta">
+      <span>📍 notebooklm.google.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p>Dépose les 2 ou 3 PDF que tu as trouvés, puis tape :</p>
+    <div class="prompt-box">D'après ces documents uniquement : ces trois études sont-elles d'accord sur l'effet de l'IA sur l'apprentissage ? Réponds en 3 points et cite la page de chaque document.</div>
+    <p><strong>Voici ce que NotebookLM va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de NotebookLM</h4>
+      <ol>
+        <li><strong>Accord sur le principe (p. 4 et p. 7)</strong> — Les trois études confirment un gain de cohérence dans les productions écrites lorsque l'outil IA est encadré par une consigne.</li>
+        <li><strong>Désaccord sur l'ampleur (p. 6 et p. 11)</strong> — L'étude A mesure un gain de 24 %, l'étude B un gain de 8 %. Les méthodes de mesure diffèrent (taille d'échantillon : 40 vs 120 apprenants).</li>
+        <li><strong>Point non couvert (aucune page)</strong> — Aucun document ne parle de l'effet à long terme après 6 mois. Je ne peux rien en dire.</li>
+      </ol>
+      <p><em>Informations citées : document « AI in EFL writing » pages 4, 6, 7 ; document « AI tools survey » page 11.</em></p>
+    </div>
+    <div class="tip">Note la phrase <strong>« aucun document ne parle de… »</strong>. C'est ça, une IA honnête. Mets toujours « d'après ces documents uniquement » dans ton prompt.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne dépose pas 10 documents d'un coup : commence par 2 ou 3, sinon les citations se mélangent et tu ne sais plus d'où vient quoi.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Attrape une hallucination (exercice)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com puis scholar.google.com</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p>Dans ChatGPT, <strong>sans activer la recherche web</strong>, tape :</p>
+    <div class="prompt-box">Donne-moi 3 références d'études scientifiques de 2023 qui prouvent que l'IA améliore l'écriture en langue étrangère. Format APA.</div>
+    <p><strong>Voici ce que ChatGPT va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li>Karim, M., &amp; Wilkins, S. (2023). Enhancing EFL writing through AI feedback. <em>Computer Assisted Language Learning, 36</em>(4), 512–534.</li>
+        <li>Dubois, D., et al. (2023). The effect of generative AI on academic writing. <em>Journal of Language Teaching, 12</em>(2), 88–105.</li>
+        <li>Al-Rashdi, H. (2023). AI-assisted writing in Arabic as a foreign language. <em>Arab World English Journal, 14</em>(1), 220–238.</li>
+      </ol>
+      <p>Trois références propres, en format APA parfait, avec volume, numéro et pages. Très convaincant.</p>
+    </div>
+    <p><strong>Maintenant, vérifie la deuxième référence.</strong> Colle les mots-clés dans Google Scholar :</p>
+    <div class="prompt-box">"The effect of generative AI on academic writing" Dubois Journal of Language Teaching 2023</div>
+    <div class="warn"><strong>Résultat de la vérification :</strong> 0 résultat correspondant. Le titre, la revue ou les pages ne correspondent à rien d'existant. Tu viens de trouver une <strong>hallucination</strong> : ChatGPT a fabriqué une référence parfaite en format APA. Si tu l'avais copiée, ton correcteur aurait vu que l'article n'existe pas.</div>
+    <div class="tip">La question « Combien d'études ? » ou « Quelle revue ? » en mode <strong>sans recherche</strong>, c'est le test le plus rapide pour voir si l'IA invente. Refais-le avant chaque bibliographie.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne vérifie jamais avec l'IA qui a inventé : va sur Google Scholar ou dans l'article original, un outil indépendant.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Ajoute <code>« avec un schéma en ASCII »</code> à la fin d'un prompt : l'IA te dessine le parcours avec des caractères du clavier. Ça marche partout, sans image.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Trouver 5 sources pour un exposé</h4>
+    <p><strong>Situation :</strong> tu dois faire un exposé de 10 minutes sur « l'IA dans l'enseignement des langues » et il te faut 5 références citables.</p>
+
+    <p><strong>Ce que tu tapes (dans Perplexity) :</strong></p>
+    <div class="prompt-box">Trouve 5 sources académiques publiées après 2020 sur l'usage de l'intelligence artificielle dans l'enseignement des langues. Pour chaque source : auteur, année, titre de la revue, lien direct. Si tu n'es pas sûr d'un lien, dis-le.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Perplexity</h4>
+      <ol>
+        <li><strong>Karim &amp; Wilkins (2023)</strong> — « AI feedback and EFL writing quality » — <em>Computer Assisted Language Learning</em> — [lien vérifié ✓]</li>
+        <li><strong>Al-Rashdi (2022)</strong> — « AI tools in Arabic language teaching » — <em>Arab World English Journal</em> — [lien vérifié ✓]</li>
+        <li><strong>Pérez-Luzardo (2021)</strong> — « Machine translation in the classroom » — <em>Target</em> — [lien vérifié ✓]</li>
+        <li><strong>Smith &amp; Lee (2022)</strong> — « Automatic correction for Spanish learners » — <em>Hispania</em> — [lien vérifié ✓]</li>
+        <li><strong>Müller (2024)</strong> — « Generative AI and learner autonomy » — <em>System</em> — [⚠️ je ne suis pas certain de ce lien, à vérifier]</li>
+      </ol>
+      <p>4 liens fiables, 1 signalé comme incertain par l'IA elle-même.</p>
+    </div>
+
+    <div class="tip">Note <strong>« si tu n'es pas sûr, dis-le »</strong> : l'IA te prévient au lieu d'inventer en silence. Mets toujours cette phrase dans un prompt de recherche.</div>
+
+    <div class="tip">Copie chaque référence dans un tableau Excel : Auteur | Année | Revue | Lien | Page où je l'ai utilisée. Le jour de la remise, ta bibliographie est déjà prête.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Repérer une hallucination en 30 secondes</h4>
+    <p><strong>Situation :</strong> ChatGPT vient de te donner 3 références parfaites. Tu sens que c'est trop beau.</p>
+
+    <p><strong>Ce que tu tapes (dans Google Scholar) :</strong></p>
+    <div class="prompt-box">"AI feedback and EFL writing quality" Karim Wilkins 2023</div>
+
+    <p><strong>Voici les deux issues possibles :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Résultat A — L'information est vraie</h4>
+      <p>Un résultat correspond exactement : bon titre, bons auteurs, bonne année. Tu cliques sur <strong>[Citer]</strong> et tu colles la référence dans ton devoir. ✅</p>
+      <p><strong>Résultat B — L'information est inventée :</strong></p>
+      <p>0 résultat. Ou alors un article qui existe mais avec <strong>d'autres auteurs</strong> ou <strong>une autre année</strong>. Dans les deux cas, la référence de ChatGPT était fausse. ❌ Tu la supprimes et tu remplaces par une vraie source trouvée sur Scholar.</p>
+    </div>
+
+    <div class="warn">Un titre exact entre guillemets + les noms d'auteurs + l'année : si Scholar ne trouve rien en 30 secondes, <strong>la référence n'existe pas</strong>. Ne la mets surtout pas dans ta bibliographie.</div>
+
+    <div class="tip">Utilise les filtres de Scholar : <code>depuis 2020</code> et <code>langue : français ou anglais</code>. Tu élimines les sources mortes avant même de cliquer.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Découper un texte source avant de le citer</h4>
+    <p><strong>Situation :</strong> tu as trouvé un article de 25 pages. Tu dois en extraire l'argument principal pour ton exposé.</p>
+
+    <p><strong>Ce que tu tapes (dans NotebookLM, après avoir déposé l'article PDF) :</strong></p>
+    <div class="prompt-box">Avec ce document uniquement : quelle est la thèse principale de l'auteur ? Réponds en 3 phrases, puis donne une citation exacte de 20 mots maximum avec le numéro de page.</div>
+
+    <p><strong>Voici ce que NotebookLM va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de NotebookLM</h4>
+      <p><strong>Thèse principale :</strong> L'auteur soutient que l'outil IA n'améliore l'écriture que si l'enseignant donne une consigne d'utilisation précise. Sans consigne, l'élève copie la proposition de l'IA et progresse moins que s'il écrivait seul. L'effet dépend donc de la pédagogie, pas de l'outil (p. 14).</p>
+      <p><strong>Citation exacte :</strong></p>
+      <p><em>« The tool itself does not improve writing; the task design around it does. » (p. 14)</em></p>
+      <p><em>Informations citées : pages 3 (problématique), 14 (conclusion), 17 (recommandations).</em></p>
+    </div>
+
+    <div class="tip">Vérifie la citation dans le PDF : va à la page 14 et lis la phrase. Si elle y est mot pour mot, tu peux la citer sans risque — c'est ta <strong>source primaire</strong>.</div>
+
+    <div class="tip">Demande aussi : <code>« Donne-moi cette citation en français pour que je comprenne, puis garde l'original en anglais pour la bibliographie. »</code> Parfait pour les départements Anglais et Espagnol.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>La règle des 2 sources.</strong> Une info importante n'existe que si 2 sources indépendantes la confirment.</li>
+      <li><strong>La règle des 2 clics.</strong> Ouvre le lien, regarde l'auteur et la date. 30 secondes, pas plus.</li>
+      <li><strong>Note tout de suite.</strong> Auteur + année + URL dans ton cahier au moment où tu trouves. Tu n'y penseras plus après.</li>
+      <li><strong>Préfère les articles récents et cités.</strong> « Cité par 400 » en 2021 vaut mieux qu'un article de 2003 jamais lu.</li>
+      <li><strong>Wikipédia n'est pas une source finale.</strong> C'est un point de départ : ouvre le lien de la source originale et cite-la.</li>
+      <li><strong>Le mode « sans recherche » teste l'IA.</strong> Demande des références sans internet : si elle en invente, tu sais quoi surveiller.</li>
+      <li><strong>Garde tes PDF.</strong> NotebookLM a besoin de TES documents, pas du web. Archive-les dans un dossier « sources ».</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Copier les références de ChatGPT sans vérifier → elles peuvent ne pas exister. <strong>✅ Vérifie chaque référence sur Google Scholar.</strong></li>
+    <li>❌ Citer Wikipédia comme seule source → c'est une source secondaire. <strong>✅ Suis le lien et cite l'auteur original.</strong></li>
+    <li>❌ Noter « selon une étude… » sans auteur ni date → non citable. <strong>✅ Auteur + année + lien obligatoires.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>Une réponse sans source = une opinion.</strong> Tu ne peux pas la citer.</li>
+      <li><strong>3 marques d'une source fiable :</strong> auteur, date, lien qui s'ouvre.</li>
+      <li><strong>Vérifier prend 30 secondes.</strong> Copier sans vérifier peut te coûter ta note.</li>
+      <li><strong>Perplexity cherche, Scholar prouve, Consensus mesure, NotebookLM vérifie TES documents.</strong></li>
+      <li><strong>La règle d'or :</strong> 2 sources indépendantes avant d'affirmer quoi que ce soit.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>Dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à OpenAI, Google, DeepSeek… Elle apprend sur des <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés. <strong>Ton PC, ton téléphone ou celui de ton voisin ne servent pas à entraîner ChatGPT.</strong></p>
+  <div class="warn">
+    <strong>⚠️ Attention :</strong> seul un data center de la société qui produit l'IA est utilisé pour l'entraînement — pas les ordinateurs des utilisateurs connectés à Internet.
+  </div>
+
+  <h3>2. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> Un aspirateur Roomba décide où aller (l'IA) et se déplace, aspire (le robot). ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>3. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Ni mot de passe, ni carte bancaire, ni pièce d'identité, ni adresse personnelle. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.</p>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> une <strong>IA locale</strong> (Ollama) ne fait sortir aucune donnée de ton ordinateur. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés). <strong>Ici tu vérifies des sources : rappelle-toi que l'IA qui te donne la source est elle-même hébergée à l'étranger. Ouvre toujours le lien d'origine, jamais l'IA ne doit être ta dernière source.</strong>
+  </div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockées vos données ?</h3>
+  <p>Dans les <strong>data centers de Google, OpenAI, Anthropic</strong>… répartis en Europe et aux États-Unis. <strong>Aucun data center de ce type dans la plupart des pays du Sud</strong> : tes e-mails, tes documents et tes conversations partent à l'étranger, souvent aux États-Unis ou en Europe.</p>
+
+  <h3>2. Un employé peut-il lire ce que j'écris ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle</strong> : accès justifié, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré). En revanche, si un tribunal américain ordonne l'accès, la société doit obéir — c'est le <strong>U.S. CLOUD Act</strong>, valable même pour les données stockées en Europe.</p>
+
+  <h3>3. Comment se protéger ?</h3>
+  <ul>
+    <li><strong>IA locale (Ollama)</strong> — aucune donnée ne quitte ton ordinateur.</li>
+    <li><strong>Gestionnaire de mots de passe</strong> — Bitwarden ou KeePass, jamais un chat IA.</li>
+    <li><strong>Désactive l'entraînement</strong> — dans ChatGPT/Gemini : « Améliorer le modèle ».</li>
+    <li><strong>Signal ou ProtonMail</strong> — chiffrement de bout en bout pour les messages sensibles.</li>
+  </ul>
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mets jamais dans un chat IA ce que tu ne voudrais pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères. <strong>Ici tu vérifies des sources : rappelle-toi que l'IA qui te donne la source est elle-même hébergée à l'étranger. Ouvre toujours le lien d'origine, jamais l'IA ne doit être ta dernière source.</strong>
+  </div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=google+scholar+tutoriel+fran%C3%A7ais+trouver+des+articles" target="_blank">Google Scholar — trouver des articles (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=consensus+app+tutoriel+academic+search" target="_blank">Consensus App — search academic (EN)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=perplexity+ai+v%C3%A9rifier+une+information+source" target="_blank">Vérifier une information trouvée avec l'IA (FR)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Quelles 3 choses doit avoir une source pour être citable ? <br><em>(Réponse : un auteur, une date, un lien qui s'ouvre.)</em></li>
+    <li>Tu demandes 3 références à ChatGPT (sans recherche web) et il en donne 3. Que fais-tu ? <br><em>(Réponse : tu les vérifies sur Google Scholar avant de les citer.)</em></li>
+    <li>Quel outil compare l'accord des études entre elles à partir de TES PDF ? <br><em>(Réponse : NotebookLM — il cite la page de chaque document.)</em></li>
+    <li>Que signifie « Cité par 412 » dans Google Scholar ? <br><em>(Réponse : 412 autres articles se réfèrent à cet article — c'est un signe de fiabilité.)</em></li>
+    <li>Pourquoi le « 71 % » de Consensus n'est pas une preuve absolue ? <br><em>(Réponse : c'est une lecture automatique des résumés ; il faut ouvrir les études derrière.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>Source primaire</strong> — Le document original : le texte étudié, l'entretien, les chiffres bruts.</li>
+    <li><strong>Source secondaire</strong> — Un texte qui commente ou analyse une source primaire (manuel, article de synthèse).</li>
+    <li><strong>Référence (citation)</strong> — Auteur, année, titre, lieu. Ce qui permet à ton lecteur de retrouver la source.</li>
+    <li><strong>Revue à comité de lecture</strong> — Revue où d'experts relisent l'article avant publication (peer review).</li>
+    <li><strong>« Cité par »</strong> — Nombre d'articles qui utilisent cette source. Plus c'est haut, plus elle est consultée.</li>
+    <li><strong>Hallucination</strong> — Réponse fausse mais énoncée avec assurance (ici : une référence qui n'existe pas).</li>
+  </ul>
+
+  <div class="nav-footer">
+    <a href="seance-02.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-04.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+    <a href="seance-13.html">🎓 Séance 13</a>
+  </div>
+
+</div>
+</body>
+</html>

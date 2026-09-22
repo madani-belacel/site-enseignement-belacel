@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="fr" data-theme="light"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Module Intelligence Artificielle en Éducation — PEP 2ème année — Dr. Madani BELACEL</title>
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/index.html" rel="canonical"/>
+<meta name="description" content="10 séances (1h30) pour apprendre à l'étudiant de 2ème année PEP à utiliser l'IA comme assistant de ses études universitaires : recherche, synthèse, exposés, révision, programmation, rédaction, organisation et éthique.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../ia-pep-2/assets/styles-seance.css">
+<link rel="icon" href="../images/Université_de_Mostaganem.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Intelligence Artificielle en Éducation — PEP 2ème année (ENS)",
+  "url": "https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/index.html",
+  "author": { "@type": "Person", "name": "Dr. BELACEL Madani" },
+  "provider": { "@type": "Organization", "name": "ENS — Université de Mostaganem" },
+  "inLanguage": "fr",
+  "numberOfCredits": "10 séances de 1h30"
+}
+</script>
+</head><body>
+
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../index.html" class="header-logo">
+        <picture><source srcset="../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <picture><source srcset="../images/LOGO-FLE-UNIV-Mosta.avif" type="image/avif"><source srcset="../images/LOGO-FLE-UNIV-Mosta.webp" type="image/webp"><img loading="lazy" width="207" height="243" src="../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères"></picture>
+      </div>
+    </div>
+    <img loading="lazy" width="132" height="95" src="../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Navigation principale">
+      <ul id="nav-list" class="nav-list">
+      <li><a href="../index.html">Accueil</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">À Propos</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../index.html#about">Présentation</a></li>
+          <li><a href="../habilitation.html">Habilitation Universitaire</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="../enseignement.html">Enseignement</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../tic.html">TIC</a></li>
+          <li><a href="../cours/Examen-TIC/index.html">Examens TIC</a></li>
+          <li><a href="../informatique-ens.html">Informatique ENS</a></li>
+          <li><a href="../recherche-documentaire.html">Recherche Documentaire</a></li>
+          <li><a href="../reseaux.html">Réseaux Mostaganem</a></li>
+          <li><a href="../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+          <li><a href="../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
+          <li><a href="../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
+          <li><a href="../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
+        </ul>
+      </li>
+      <li><a href="../recherche.html">Recherche</a></li>
+      <li><a href="../ressources.html">Ressources</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-toggle" role="button">Dernières Actualités</a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../index.html#news">Actualités des Modules</a></li>
+          <li><a href="../ressources.html">Ressources</a></li>
+        </ul>
+      </li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../index.html">Accueil</a></li>
+    <li><a href="../enseignement.html">Enseignement</a></li>
+    <li><a href="../informatique-ens.html">Informatique ENS</a></li>
+    <li class="current">IA en Éducation — PEP 2A</li>
+  </ol>
+</nav>
+
+<style>
+  .module-content .lang-fr{display:none!important;}.module-content .lang-ar{display:none!important;}
+  .module-content.lang-fr .lang-en{display:none!important;}.module-content.lang-fr .lang-ar{display:none!important;}.module-content.lang-fr .lang-fr{display:block!important;}
+  .module-content.lang-en .lang-fr{display:none!important;}.module-content.lang-en .lang-ar{display:none!important;}.module-content.lang-en .lang-en{display:block!important;}
+  .module-content.lang-ar .lang-fr{display:none!important;}.module-content.lang-ar .lang-en{display:none!important;}.module-content.lang-ar .lang-ar{display:block!important;direction:rtl;text-align:right;}
+  @media print{.module-content.lang-fr .lang-en,.module-content.lang-fr .lang-ar{display:block!important;}}
+</style>
+<main class="page-content">
+  <div class="module-content" style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
+
+    <div style="background:#fff8e1;border-left:4px solid #f9a825;
+                padding:0.7rem 1rem;margin:1rem 0;
+                border-radius:0 6px 6px 0;">
+      <strong>⚠️ Version archivée (septembre 2025)</strong><br>
+      Ce module a été remplacé par la version 15 séances, plus
+      complète et à jour. Il reste consultable pour ses contenus
+      complémentaires (versions EN/AR, présentations PPTX,
+      dialogues). Pour la version actuelle, voir
+      <a href="../cours/Module Intelligence Artificielle/seances/index.html">
+      IA en Éducation (PEP 2A) — 15 séances</a>.
+    </div>
+
+    <h1 style="font-family:var(--font-heading);color:var(--primary);margin:1.2rem 0 0.2rem;font-size:1.7rem;">
+      🤖 <span class="lang-fr">Intelligence Artificielle en Éducation — PEP 2ème année</span>
+      <span class="lang-en">Artificial Intelligence in Education — 2nd year PEP</span>
+      <span class="lang-ar">الذكاء الاصطناعي في التربية — السنة الثانية PEP</span>
+    </h1>
+    <p style="color:var(--text-muted);font-size:.95rem;margin:0 0 0.3rem;">
+      <span class="lang-fr">10 séances de 1 h 30 — Dr. Madani BELACEL · ENS Université de Mostaganem · 2026-2027</span>
+      <span class="lang-en">10 sessions of 1h30 — Dr. Madani BELACEL · ENS University of Mostaganem · 2026-2027</span>
+      <span class="lang-ar">10 حصص من ساعة و30 دقيقة — د. مداني بلعسل · المدرسة العليا للأساتذة - مستغانم · 2026-2027</span>
+    </p>
+    <div class="language-switcher">
+    <div class="lang-tabs" role="group" aria-label="Choisir la langue">
+  <button type="button" class="lang-tab active" data-lang="fr">🇫🇷 Français</button>
+  <button type="button" class="lang-tab" data-lang="en">🇬🇧 English</button>
+  <button type="button" class="lang-tab" data-lang="ar">🇩🇿 العربية</button>
+</div>
+    </div>
+
+    <div class="seance-meta">
+      <p class="lang-fr">Ce module apprend à l'étudiant de <strong>2ème année PEP</strong> (futur professeur des écoles) à utiliser l'IA pour <strong>ses propres études universitaires</strong> : suivre les cours, préparer des exposés, faire des recherches, programmer, réviser et comprendre les autres modules. Chaque séance suit la même méthode pédagogique, inspirée des meilleures vidéos de vulgarisation : <strong>accroche, explication pas à pas, démonstration, exercice guidé, résumé visuel</strong>. Chaque séance contient : une page web trilingue (FR/EN/AR), un cours écrit, une fiche de synthèse + quiz, un support PowerPoint, des diapositives et des dialogues à jouer. La page <a href="outils-ia.html">Outils IA</a> centralise 12+ outils, et la page <a href="construire-ia.html">Construire son IA</a> explique 3 approches pour bâtir sa propre IA.</p>
+      <p class="lang-en">This module teaches the <strong>2nd-year PEP student</strong> (future primary school teacher) to use AI for <strong>their own university studies</strong>: following courses, preparing presentations, doing research, programming, revising and understanding other modules. Each session follows the same teaching method, inspired by the best explainer videos: <strong>hook, step-by-step explanation, demonstration, guided exercise, visual summary</strong>. Each session contains: a trilingual web page (FR/EN/AR), a written lesson, a summary sheet + quiz, a PowerPoint deck, slides and playable dialogues. The <a href="outils-ia.html">AI Tools</a> page centralises 12+ tools, and the <a href="construire-ia.html">Build your own AI</a> page explains 3 approaches.</p>
+      <p class="lang-ar">تُعلّم هذه الوحدةُ طالبَ <strong>السنة الثانية PEP</strong> كيفية استعمال الذكاء الاصطناعي في <strong>دراسته الجامعية</strong>. تتبع كل حصة المنهج البيداغوجي نفسه المستوحى من أفضل فيديوهات التبسيط: <strong>انطلاقة، شرح خطوة بخطوة، عرض تطبيقي، تمرين موجّه، ملخص بصري</strong>. تحتوي كل حصة على: صفحة ويب ثلاثية اللغات، ودرس مكتوب، وبطاقة تركيب + اختبار، وعرض PowerPoint، وشرائح، وحوارات للتمثيل. صفحة <a href="outils-ia.html">أدوات الذكاء الاصطناعي</a> تجمع أكثر من 12 أداة، وصفحة <a href="construire-ia.html">بناء ذكاء اصطناعي</a> تشرح ثلاث مقاربات.</p>
+    </div>
+
+    <h2 style="font-family:var(--font-heading);color:var(--navy);margin:1.6rem 0 .6rem;font-size:1.4rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;">
+      <span class="lang-fr">🗺️ Les 10 séances du module</span>
+      <span class="lang-en">🗺️ The 10 sessions of the module</span>
+      <span class="lang-ar">🗺️ حصص الوحدة العشر</span>
+    </h2>
+    <div class="doc-list">
+<div class="doc-row"><a class="doc-item" href="seance-01/index.html"><span class="doc-icon">🤖</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 01 — Qu'est-ce que l'IA ? Introduction et démystification</span><span class="lang-en">Session 01 — What is AI? Introduction and demystification</span><span class="lang-ar">الحصة 01 — ما هو الذكاء الاصطناعي؟ مدخل وإزالة الغموض</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-01/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-02/index.html"><span class="doc-icon">🧰</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 02 — Panorama des 12+ outils d'IA pour l'étudiant</span><span class="lang-en">Session 02 — Overview of 12+ AI tools for students</span><span class="lang-ar">الحصة 02 — نظرة عامة على أكثر من 12 أداة ذكاء اصطناعي للطالب</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-02/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-03/index.html"><span class="doc-icon">🔎</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 03 — Rechercher et comprendre l'information avec l'IA</span><span class="lang-en">Session 03 — Searching and understanding information with AI</span><span class="lang-ar">الحصة 03 — البحث عن المعلومات وفهمها بالذكاء الاصطناعي</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-03/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-04/index.html"><span class="doc-icon">📝</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 04 — Résumer, synthétiser et créer des fiches de révision</span><span class="lang-en">Session 04 — Summarising, synthesising and making revision sheets</span><span class="lang-ar">الحصة 04 — التلخيص والتركيب وإنشاء بطاقات المراجعة</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-04/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-05/index.html"><span class="doc-icon">🎤</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 05 — Préparer un exposé de A à Z avec l'IA</span><span class="lang-en">Session 05 — Preparing a presentation from A to Z with AI</span><span class="lang-ar">الحصة 05 — تحضير عرض من الألف إلى الياء بالذكاء الاصطناعي</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-05/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-06/index.html"><span class="doc-icon">📝</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 06 — Réviser efficacement et simuler des examens</span><span class="lang-en">Session 06 — Revise efficiently and simulate exams</span><span class="lang-ar">الحصة 06 — المراجعة الفعّالة ومحاكاة الامتحانات</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-06/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-07/index.html"><span class="doc-icon">🐍</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 07 — IA et programmation — mini-projet Python</span><span class="lang-en">Session 07 — AI and programming — Python mini-project</span><span class="lang-ar">الحصة 07 — الذكاء الاصطناعي والبرمجة — مشروع بايثون مصغّر</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-07/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-08/index.html"><span class="doc-icon">✍️</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 08 — Rédaction académique, traduction et correction</span><span class="lang-en">Session 08 — Academic writing, translation and proofreading</span><span class="lang-ar">الحصة 08 — الكتابة الأكاديمية والترجمة والتصحيح</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-08/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-09/index.html"><span class="doc-icon">🗂️</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 09 — Organisation, gestion du temps et projets universitaires</span><span class="lang-en">Session 09 — Organisation, time management and university projects</span><span class="lang-ar">الحصة 09 — التنظيم وتدبير الوقت والمشاريع الجامعية</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-09/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+<div class="doc-row"><a class="doc-item" href="seance-10/index.html"><span class="doc-icon">⚖️</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance 10 — Esprit critique + Charte de l'étudiant + Construire son IA</span><span class="lang-en">Session 10 — Critical thinking + Student charter + Build your AI</span><span class="lang-ar">الحصة 10 — الحس النقدي + ميثاق الطالب + بناء ذكائك</span></div><div class="doc-date"><span class="lang-fr">1 h 30 · Cours + Quiz + PPTX</span><span class="lang-en">1 h 30 · Lesson + Quiz + PPTX</span><span class="lang-ar">1 h 30 · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="seance-10/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>
+      <div class="doc-row"><a class="doc-item" href="outils-ia.html"><span class="doc-icon">🧰</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Outils IA : 14 outils comparés</span><span class="lang-en">AI Tools: 14 compared tools</span><span class="lang-ar">أدوات الذكاء الاصطناعي: 14 أداة مقارنة</span></div><div class="doc-date"><span class="lang-fr">Boîte à outils · type, usage, exemple, forces, limites</span><span class="lang-en">Toolbox · type, use, example, strengths, limits</span><span class="lang-ar">صندوق الأدوات · النوع والاستعمال والمثال والمزايا والحدود</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Page</span></div></a></div>
+      <div class="doc-row"><a class="doc-item" href="construire-ia.html"><span class="doc-icon">🛠️</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Construire sa propre IA</span><span class="lang-en">Build your own AI</span><span class="lang-ar">بناء ذكاء اصطناعي خاص بك</span></div><div class="doc-date"><span class="lang-fr">Atelier code · Dify, API Python, Ollama</span><span class="lang-en">Code workshop · Dify, Python API, Ollama</span><span class="lang-ar">ورشة البرمجة · Dify وواجهة Python وOllama</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Page</span></div></a></div>
+    </div>
+
+    <div class="highlight-box" style="margin:2.5rem 0;">
+      <div class="highlight-icon">🎯</div>
+      <div class="highlight-content">
+        <h3 class="lang-fr">Comment utiliser ce module ?</h3>
+        <h3 class="lang-en">How to use this module?</h3>
+        <h3 class="lang-ar">كيف تستعملون هذه الوحدة؟</h3>
+        <p class="lang-fr">Suivez les séances dans l'ordre (1 à 10). Pour chaque séance : projetez le PowerPoint, distribuez le cours écrit et la <strong>fiche de synthèse</strong>, faites l'exercice guidé, puis faites jouer les dialogues en binômes. Les durées des 5 phases pédagogiques (accroche, explication, démonstration, exercice, résumé) sont indiquées dans le plan de la séance. Consultez <a href="outils-ia.html">Outils IA</a> et <a href="construire-ia.html">Construire son IA</a> pour les outils à comparer, installer et coder.</p>
+        <p class="lang-en">Follow the sessions in order (1 to 10). For each session: project the PowerPoint, hand out the written course and the <strong>summary sheet</strong>, run the guided exercise, then let students perform the dialogues in pairs. Timings for the 5 pedagogical phases (hook, explanation, demonstration, exercise, summary) are in the session plan. Check <a href="outils-ia.html">AI Tools</a> and <a href="construire-ia.html">Build your own AI</a> for the tools to compare, install and code.</p>
+        <p class="lang-ar">اتبعوا الحصص بالترتيب (من 1 إلى 10). في كل حصة: اعرضوا PowerPoint، وقدّموا الدرس المكتوب و<strong>بطاقة التركيب</strong>، وأنجزوا التمرين الموجّه، ثم اجعلوا الطلبة يمثّلون الحوارات في مجموعات ثنائية. مدد المراحل الخمس (انطلاقة، شرح، عرض، تمرين، ملخص) مذكورة في خطة الحصة. راجعوا <a href="outils-ia.html">أدوات الذكاء الاصطناعي</a> و<a href="construire-ia.html">بناء ذكاء اصطناعي</a>.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <picture><source srcset="../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <img loading="lazy" width="132" height="95" src="../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../js/main.v2.js"></script>
+<script>
+(function() {
+  var root = document.querySelector('.seance-content, .module-content, .ia-page');
+  var tabs = document.querySelectorAll('.lang-tab');
+  if (!root) return;
+  function setLang(lang) {
+    root.classList.remove('lang-en', 'lang-fr', 'lang-ar');
+    root.classList.add('lang-' + lang);
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-lang') === lang);
+    });
+  }
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() { setLang(t.getAttribute('data-lang')); });
+  });
+  setLang('fr');
+})();
+</script>
+</body></html>

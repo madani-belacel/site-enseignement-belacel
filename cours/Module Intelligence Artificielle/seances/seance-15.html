@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 15 — Publier un article dans une revue Q1 avec l'IA</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 15 — Publier un article dans une revue Q1 avec l'IA</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+    <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Vérifier une référence en 15 secondes</strong><br>
+    Avant de citer une référence sortie d'une IA, copie son titre exact dans Google Scholar : si rien ne s'affiche, elle n'existe pas — supprime-la. Puis ouvre son DOI sur doi.org. Ces 15 secondes séparent un article accepté et un article rétracté après publication.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu sauras utiliser l'IA pour structurer, rédiger et vérifier un article académique destiné à une revue Q1 — sans plagiat, avec des références réelles, et en déclarant honnêtement l'usage de l'IA.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Publier dans une revue Q1 est un critère majeur pour :</p>
+  <ul>
+    <li><strong>valider une thèse ou un mémoire de master recherche</strong> — de plus en plus d'établissements l'exigent avant le soutenance ;</li>
+    <li><strong>obtenir une bourse doctorale</strong> ou une mobilité internationale ;</li>
+    <li><strong>être recruté comme enseignant-chercheur</strong> : les commissions regardent d'abord la liste de publications ;</li>
+    <li><strong>contribuer à la science de ton domaine</strong> — rendre tes résultats accessibles à toute la communauté.</li>
+  </ul>
+  <p>L'IA te fait gagner des <strong>semaines</strong> sur la partie rédactionnelle et vérificationnelle — à condition de l'utiliser <strong>proprement</strong>. Une IA utilisée cachement fait perdre l'article ; déclarée et bien cadrée, elle fait gagner du temps sans rien voler.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>L'IA structure, reformule et vérifie ; elle ne produit pas ta recherche à ta place.</strong> Le fond (données, analyse, argument) reste ta signature — c'est lui que le reviewer évalue.</li>
+    <li><strong>Chaque référence se vérifie une par une</strong> sur Google Scholar et doi.org : un format parfait ne prouve pas qu'un article existe.</li>
+    <li><strong>Déclarer l'usage de l'IA est obligatoire</strong> dans la plupart des revues depuis 2023, et une IA ne peut jamais être co-auteur.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Préparer la réponse à un reviewer en une soirée</strong><br>
+    Tu reçois les remarques de deux relecteurs. Tu colles la review + ton article dans ChatGPT avec le prompt en 3 colonnes (remarque / modification / page). L'IA remplit le tableau en une minute ; tu passes une heure à personnaliser et à vérifier chaque page citée. Ce qui te prenait 3 soirées te prend 1 soirée — et ta réponse est plus précise.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Choisir la revue Q1 (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 scimagojr.com + chatgpt.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> repérer 3 revues réelles de ton domaine sur Scimago Journal Rank (quartile, facteur d'impact, délai), puis demander à l'IA de les comparer — en l'obligeant à signaler ses doutes.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Compare ces 3 revues pour un article sur l'évaluation formative en didactique des langues : (A) [nom], (B) [nom], (C) [nom]. Donne pour chacune : quartile Scimago, facteur d'impact, délai moyen de review, taux d'acceptation approximatif, frais éventuels pour l'auteur, et une ligne « à qui c'est destiné ». Dis clairement si tu n'es pas sûr d'un chiffre.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><em>« Voici la comparaison — les chiffres viennent de mes données d'entraînement, vérifie-les sur scimagojr.com avant tout envoi :</em></p>
+      <ul>
+        <li><strong>Revue A</strong> — quartile Q1 (Scimago, catégorie Education) · facteur d'impact ≈ 3,8 · délai de review ≈ 8 semaines · acceptation ≈ 15–20 % · pas de frais, sauf option open access (~2 000 USD). <em>Destiné à :</em> articles à méthodologie expérimentale, anglophone exigé.</li>
+        <li><strong>Revue B</strong> — quartile Q1–Q2 selon les années · IF ≈ 2,4 · délai ≈ 12 semaines · acceptation ≈ 25 % · frais aucun. <em>Destiné à :</em> travaux à dimension qualitative, accepte le français.</li>
+        <li><strong>Revue C</strong> — quartile Q2 · IF ≈ 1,5 · délai ≈ 6 semaines · acceptation ≈ 40 %. <em>Destiné à :</em> résultats intermédiaires, plus souple.</li>
+      </ul>
+      <p><strong>Ce dont je ne suis pas certain :</strong> les IF 2025 (ils sont mis à jour chaque année) et les taux d'acceptation, rarement publiés — traite-les comme des ordres de grandeur.</p>
+      <p><strong>Recommandation :</strong> A en premier (prestigieuse), B en repli, C en dernier. Prochaine étape : télécharge les « Instructions for Authors » de la revue A. »</p>
+    </div>
+    <div class="tip">Demande explicitement <strong>« dis si tu n'es pas sûr »</strong> : une IA qui annonce ses doutes te protège contre un chiffre faux relayé devant un jury ou un comité de labo.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne choisis jamais une revue sur un classement de forum : seul Scimago ou Web of Science fait foi. Méfie-toi surtout des revues qui promettent « publication Q1 garantie en 2 semaines » : ce sont des revues prédatrices, et y publier nuit à ton dossier.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Structurer l'article avec IMRAD (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> obtenir un plan IMRAD complet, avec le nombre de mots de chaque section. C'est le moment où tu découvres où se situe le vrai travail — et où tu réalises que l'introduction n'est pas le morceau de bravoure.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Tu es méthodologiste. Pour un article de 6 000 mots soumis à [revue choisie à l'étape 1] sur [ton sujet], propose une structure IMRAD complète : titre (3 variantes), abstract structuré de 250 mots (Objectif, Méthode, Résultats, Discussion), 5 mots-clés dont 2 en anglais, puis Introduction, Méthodes, Résultats, Discussion, Conclusion — avec le nombre de mots de chaque section et 2 questions précises que chaque section doit résoudre.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Titres proposés :</strong></p>
+      <ol>
+        <li><em>Feedback descriptif et réussite universitaire : étude quasi-expérimentale dans une faculté de langues</em></li>
+        <li><em>Quand le retour d'information note-t-il vraiment l'apprenant ?</em></li>
+        <li><em>Évaluation formative en didactique des langues : effets sur la progression d'étudiants de L2</em></li>
+      </ol>
+      <p><strong>Abstract structuré (250 mots) :</strong> Objectif (35 mots) → Méthode (60) → Résultats (80) → Discussion (60) → Mot-clé de conclusion (15).</p>
+      <p><strong>Mots-clés :</strong> évaluation formative · feedback descriptif · didactique des langues · formative assessment · descriptive feedback.</p>
+      <p><strong>Plan détaillé :</strong></p>
+      <ul>
+        <li><strong>Introduction — 900 mots :</strong> 2 questions à résoudre : quelle différence de progression entre groupe feedback et groupe note ? L'effet varie-t-il selon le niveau initial ?</li>
+        <li><strong>Méthodes — 1 200 mots :</strong> 2 questions : sur quel échantillon et avec quels instruments la comparaison est-elle légitime ?</li>
+        <li><strong>Résultats — 1 800 mots :</strong> 2 questions : quels écarts significatifs, avec quelle taille d'effet ?</li>
+        <li><strong>Discussion — 1 500 mots :</strong> 2 questions : ces résultats confirment-ils les modèles existants ? Quelles limites ?</li>
+        <li><strong>Conclusion — 400 mots :</strong> + références (30 à 40).</li>
+      </ul>
+      <p><em>→ Total : 5 800 mots + abstract. La partie la plus lourde est Résultats, pas Introduction.</em></p>
+    </div>
+    <div class="tip">Exige <strong>« le nombre de mots de chaque section »</strong> : un plan chiffré devient un calendrier. Tu vois en une seconde que 1 800 mots de résultats demandent dix fois plus d'heures que 400 mots de conclusion.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne soumets jamais ce plan tel quel : les « Instructions for Authors » imposent souvent des sections, des longueurs et un abstract différent (contexte/objectif/method/résultat). Un IMRAD hors format est rejeté par le desk avant même la relecture.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Rédiger par sections : l'IA reformule, toi le fond (8 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 8 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> écrire d'abord TON paragraphe (même imparfait), puis demander trois reformulations et le signalement des tournures trop proches d'autres textes. L'IA peaufine, tu gardes la plume.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Voici mon paragraphe d'introduction, écrit par moi. Propose 3 versions alternatives en gardant MES idées, mon style académique et mes références. Signale ensuite les tournures qui risquent de ressembler à d'autres textes, puis dis ce qui manque encore pour un lecteur expert. Paragraphe : « Dans notre étude, 60 étudiants de deuxième année ont reçu un feedback descriptif pendant un semestre. Nous avons comparé leurs résultats avec un groupe qui a reçu des notes. Les résultats montrent une meilleure progression, mais nous ne savons pas si l'effet vient du feedback ou de l'attention portée au groupe. »</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Version 1 (la plus proche de ta voix) :</strong> « Au cours d'un semestre, 60 étudiants de deuxième année ont bénéficié d'un feedback descriptif ; leurs résultats ont été comparés à ceux d'un groupe recevant des notes. La progression est supérieure dans le premier groupe, sans que l'effet du feedback puisse être distingué de l'effet d'attention. »</p>
+      <p><strong>Version 2 (plus condensée) :</strong> « La comparaison, menée sur un semestre auprès de 60 étudiants de L2, révèle une progression supérieure du groupe feedback — un écart que l'attention particulière accordée à ce groupe interdit d'attribuer au seul dispositif. »</p>
+      <p><strong>Version 3 (plus prudente scientifiquement) :</strong> « Les données recueillies auprès de 60 étudiants de deuxième année indiquent une progression plus marquée sous feedback descriptif ; toutefois, l'absence de contrôle de l'effet d'attention conduit à interpréter cet écart avec prudence. »</p>
+      <p><strong>Tournures à surveiller :</strong> « au cours d'un semestre » et « meilleure progression » sont des formules très fréquentes : à elles seules elles ne trahissent rien, mais associées elles apparaîtront dans la comparaison de similarité — varie-les.</p>
+      <p><strong>Ce qui manque pour un lecteur expert :</strong> 1) le chiffre exact (de combien de points ?) et 2) la référence du dispositif de feedback utilisé (sur quel modèle ?).</p>
+    </div>
+    <div class="tip">Tu écris <strong>toujours le brouillon avant</strong> : l'IA reformule ce qui existe, elle n'invente pas ta recherche. Exige aussi la mention de ce qui <em>manque</em> — c'est la question qui transforme une reformulation en amélioration scientifique.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne présente jamais un texte généré directement par l'IA sans le réécrire : plagiat artificiel, rejet pour « AI-generated content » — de plus en plus interdit —, et rétractation possible si l'article est déjà publié.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Vérifier chaque référence, une par une (7 min)</h4>
+    <div class="step-meta">
+      <span>📍 Google Scholar + doi.org</span>
+      <span>⏱️ 7 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> faire sortir les DOI à l'IA, puis les ouvrir un par un. C'est l'étape la moins prestigieuse et la plus importante : une référence fantôme peut faire retirer un article publié.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Pour chaque référence de ma bibliographie, donne-moi : le DOI s'il existe, le lien doi.org correspondant, et la phrase exacte de mon texte qui la cite. Signale toute référence pour laquelle tu n'es pas sûr de l'existence. Bibliographie : [colle ta liste].</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li><strong>Black, P., &amp; Wiliam, D. (1998).</strong> Assessment and classroom learning. <em>Assessment in Education</em>, 5(1), 7–74. → DOI : <code>10.1080/0969595980050102</code> · doi.org/10.1080/0969595980050102 · cité dans : « le feedback descriptif s'inscrit dans la tradition ouverte par Black et Wiliam (1998) ».</li>
+        <li><strong>Vygotsky, L. S. (1978).</strong> <em>Mind in Society</em>. Harvard University Press. → pas de DOI (ouvrage de 1978) : vérifie par le catalogue de l'éditeur.</li>
+        <li><strong>Bloom, B. S. (1956).</strong> <em>Taxonomy of Educational Objectives</em>. David McKay. → pas de DOI (ouvrage) · cité dans : « la taxonomie révisée distingue connaissance et compréhension ».</li>
+        <li><strong>[Référence 4 telle que tu l'as écrite]</strong> → <strong>je ne trouve pas de DOI certain et je ne peux pas confirmer l'existence exacte de cet article.</strong> Vérifie son titre exact sur Google Scholar avant de la garder.</li>
+      </ol>
+      <p><strong>Procédure de vérification (30 s par référence) :</strong> 1) copie le titre exact dans Scholar, 2) si trouvé, clique <em>Citer</em> pour récupérer le format réel, 3) si introuvable, <strong>supprime la référence</strong>.</p>
+      <p><em>→ Vérification réelle : doi.org/10.1080/0969595980050102 doit s'ouvrir sur la page de l'éditeur. Ouvre-la maintenant, c'est le meilleur exercice de la séance.</em></p>
+    </div>
+    <div class="tip">Copie le <strong>titre exact</strong> dans Google Scholar, puis utilise le bouton <em>Citer</em> : c'est le format de référence que la revue attendra, récupéré à la source plutôt que recopié d'une IA.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> un format parfait ne prouve rien — une référence inventée peut avoir auteurs, année, volume et pages. Seuls doi.org et Scholar tranche : une référence fausse = rétractation possible après publication.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Rédiger la lettre de réponse aux reviewers (8 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 8 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> transformer une liste de remarques parfois sévères en un tableau de réponse structuré — puis le personnaliser entièrement avant envoi.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Voici la lettre de review et voici mon article. Rédige une réponse point par point en 3 colonnes : (1) ce que le reviewer a dit, (2) ce que j'ai modifié, (3) où exactement dans l'article (page/ligne). Ton : respectueux, factuel, sans excès d'excuses. Je refuse une des remarques : je l'explique calmement avec une justification méthodologique.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Reponse au Reviewer 1 — structure proposée :</strong></p>
+      <ol>
+        <li><strong>Remarque :</strong> « The sample size (n = 60) seems too small for subgroup analysis. » <strong>→ Modification :</strong> l'analyse par sous-groupes a été retirée de la section Résultats et déplacée en limite, avec le calcul de puissance ajouté. <strong>→ Où :</strong> page 8, § 3.2 (supprimé) et page 14, § 5.3 (nouveau paragraphe).</li>
+        <li><strong>Remarque :</strong> « The control group did not receive equivalent attention. » <strong>→ Modification :</strong> non accepté, avec justification : le contrôle attentionnel n'était pas l'objet de l'étude, qui visait l'effet écologique du dispositif. Une précision a été ajoutée pour borner la portée. <strong>→ Où :</strong> page 12, § 4.1 (2 phrases ajoutées).</li>
+        <li><strong>Remarque :</strong> « More recent references (2020+) are missing. » <strong>→ Modification :</strong> 6 références récentes ajoutées, dont 2 dans l'Introduction. <strong>→ Où :</strong> pages 2–3 (intro), page 16 (références).</li>
+      </ol>
+      <p><strong>Formule de clôture proposée :</strong> « We thank the reviewer for these observations, which have materially improved the precision of the manuscript. All modifications are highlighted in the tracked-changes version attached. »</p>
+      <p><em>→ À toi : remplacer « page/ligne » par tes références réelles, vérifier chacune, et écrire la réponse avec ta propre phrase d'introduction.</em></p>
+    </div>
+    <div class="tip">Signale tes modifications avec la fonction <strong>« modifications suivies »</strong> (tracked changes) de ton traitement de texte : le reviewer voit exactement ce qui a bougé, et ta réponse gagne en crédibilité.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne réponds jamais à un reviewer avec une IA brute : relecture personnelle obligatoire, ton respectueux, et réponse à <strong>chaque</strong> remarque — y compris celles que tu refuses, calmement argumentées.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Schéma ASCII : du brouillon à la publication</h2>
+
+  <p>Avant de te lancer, il faut <strong>voir l'itinéraire complet d'un article</strong> : de l'idée jusqu'à la publication. Un <strong>schéma en ASCII</strong> (un dessin fait avec les caractères du clavier : tirets, barres, flèches) te montre ce parcours d'un coup d'œil, sans image.</p>
+
+  <p><strong>Ce que ça change :</strong> tu sais exactement à quel moment tu interviens et à quel moment l'IA intervient — et surtout, à quel moment <strong>ta signature</strong> est engagée.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Le parcours d'un article, pour la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu as une idée de recherche à la <strong>Faculté des Langues Étrangères — UNIVERSITÉ DE MOSTAGANEM</strong> et tu dois publier dans une revue Q1. Tu veux visualiser les 7 étapes et repérer celles où l'IA peut t'aider.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Dessine avec un schéma en ASCII le parcours d'un article de la Faculté des Langues Étrangères (Université de Mostaganem) de l'idée jusqu'à la publication : 7 étapes (idée, brouillon, révision IA, vérification des références, soumission, peer review, publication). Indique clairement l'étape où j'interviens et celle où l'IA intervient.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+   [1. IDÉE]         [2. BROUILLON]        [3. RÉVISION IA]
+    ta question   →   tu écris TOUT      →  l'IA propose 3 versions
+    (ta recherche)    (même imparfait)      tu choisis + tu réécris
+        │                   │                      │
+        │      TRAVAIL HUMAIN                      │ TRAVAIL IA
+        │                   │                      │
+        ▼                   ▼                      ▼
+   [4. VÉRIFICATION]   [5. SOUMISSION]       [6. PEER REVIEW]    [7. PUBLICATION]
+    Scholar + doi.org    1 SEULE revue       2 reviewers         DOI enregistré
+    : CHAQUE référence   cover letter        réponse point       + archivage (HAL)
+    + Turnitin           déclaration IA      par point           + ta signature
+        │                   │                      │
+        └───────────────────┴──────────────────────┘
+                     TA SIGNATURE (étape finale)
+</pre>
+      <p>L'IA n'intervient qu'aux étapes <strong>3</strong> (reformulation) et <strong>5</strong> (préparation de la cover letter et de la réponse aux reviewers). Les étapes <strong>1, 2, 4, 6 et 7</strong> engagent ta responsabilité — et c'est exactement ce que le reviewer évalue.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir un <strong>processus séquentiel</strong> (publication, protocole de recherche, pipeline d'écriture). Demande-le pour n'importe quelle procédure à plusieurs étapes.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne demande pas un schéma ASCII à plus de 7 étapes : les flèches croisées deviennent illisibles — demande plutôt un tableau des étapes avec la colonne « qui fait quoi ».
+    </div>
+  </div>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Article en sciences de l'éducation (département Français)</h4>
+    <p><strong>Situation :</strong> tu as achevé une étude quasi-expérimentale dans tes propres groupes de TP. Il te faut la structure et une bibliographie propre avant d'ouvrir le fichier vierge.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Voici le résumé de mon étude (60 étudiants L2, groupe feedback vs groupe notes, un semestre). Donne-moi : 1) la structure IMRAD avec le nombre de mots, 2) cinq références fondatrices sur l'évaluation formative avec leur DOI quand il existe, 3) pour CHAQUE référence, comment la vérifier en 30 secondes. Signale celles dont tu n'es pas sûr.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Structure :</strong> Introduction 900 mots · Méthodes 1 200 · Résultats 1 800 · Discussion 1 500 · Conclusion 400 · abstract 250.</p>
+      <p><strong>5 références et leur vérification :</strong></p>
+      <ol>
+        <li>Black, P., &amp; Wiliam, D. (1998). Assessment and classroom learning. <em>Assessment in Education</em>, 5(1), 7–74. <strong>DOI 10.1080/0969595980050102</strong> → vérifie : ouvre doi.org/10.1080/0969595980050102, la page de l'éditeur doit s'afficher.</li>
+        <li>Vygotsky, L. S. (1978). <em>Mind in Society</em>. Harvard University Press. → pas de DOI (ouvrage) → vérifie : tape le titre dans Scholar, le compte Harvard UP doit apparaître.</li>
+        <li>Bloom, B. S. (1956). <em>Taxonomy of Educational Objectives</em>. David McKay. → pas de DOI → vérifie : catalogue de la bibliothèque de ta fac.</li>
+        <li>Wiliam, D. (2011). <em>Embedded Formative Assessment</em>. Solution Tree Press. → pas de DOI → vérifie : ISBN de l'ouvrage.</li>
+        <li>Shadish, W. R., Cook, T. D., &amp; Campbell, D. T. (2002). <em>Experimental and Quasi-Experimental Designs</em>. Houghton Mifflin. → pas de DOI → vérifie : catalogue éditeur.</li>
+      </ol>
+      <p><strong>Ce dont je ne suis pas certain :</strong> la pagination exacte de la référence 1 (p. 7–74) : confirme-la sur Scholar avant de l'envoyer.</p>
+      <p><em>→ Les références 3 à 5 sont des ouvrages anciens : l'absence de DOI est normale, ne la confonds pas avec une référence fausse.</em></p>
+    </div>
+
+    <div class="tip">Garde ce tableau dans ton <strong>fichier de travail</strong> : à chaque nouvelle référence, tu ajoutes sa ligne et son mode de vérification. Au moment de la soumission, plus rien ne reste à vérifier.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Article en linguistique appliquée : cover letter + réponse (département Anglais)</h4>
+    <p><strong>Situation :</strong> l'article est écrit, la revue choisie. Il te manque la lettre de soumission — et un mois plus tard, la réponse aux reviewers.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Write a cover letter for submitting our study on corrective feedback to [Journal name]: 150 words max, state the novelty in one sentence, confirm originality and no simultaneous submission, declare the use of AI, polite closing with my name. Then draft a one-paragraph response to Reviewer 1's comment that "the literature review is outdated".</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Cover letter :</strong></p>
+      <p>Dear Editor,</p>
+      <p>We submit our manuscript entitled « [Title] » for consideration in [Journal name]. Our study is, to our knowledge, the first to compare descriptive and evaluative feedback in a university context where French is taught as a foreign language, with a one-semester quasi-experimental design. The manuscript is original, has not been published elsewhere, and is not under consideration by another journal. Generative AI was used solely to rephrase two paragraphs of the Introduction; the authors take full responsibility for the content. We hope the work will interest your readership.</p>
+      <p>Yours sincerely,<br>[Ton nom]</p>
+      <p><strong>Response to Reviewer 1 :</strong> « We thank the reviewer for this observation. We have updated the literature review with 12 studies published after 2019, integrated in two places: paragraph 2 of the Introduction (the recent debate on automated feedback) and the Discussion (comparison with our results). Page 4, lines 32–48. »</p>
+    </div>
+
+    <div class="tip">La <strong>phrase de nouveauté</strong> (« the first to… ») est celle que l'éditeur lit en premier : fais-la vérifier par un collègue, et ne l'affirme que si tu l'as réellement vérifiée dans la littérature.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Article en didactique de l'espagnol : résumé bilingue + choix de revue (département Espagnol)</h4>
+    <p><strong>Situation :</strong> article terminé en français, la revue visée demande un abstract en anglais et un sujet tourné vers l'international.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Rédige le résumé de mon article en français et en anglais (250 mots chacun, structure IMRAD : objectif, méthode, résultats, discussion), en gardant le même contenu dans les deux langues. Puis recommande 3 revues Q1 possibles pour ce sujet et indique comment vérifier leur quartile.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Résumé (FR) :</strong> « Cet article examine l'apport de la production orale assistée par paires sur l'acquisition du subjonctif chez des apprenants d'espagnol L2. Sur un semestre, 84 étudiants ont été répartis en groupe expérimental (tâches vidéo commentées) et groupe témoin. Les résultats montrent un gain de 22 points au test de production, plus marqué chez les apprenants de niveau intermédiaire. L'analyse des interactions révèle que l'auto-correction par les pairs précède l'intégration de la règle. »</p>
+      <p><strong>Résumé (EN) :</strong> « This article examines how paired, video-supported speaking practice affects the acquisition of the subjunctive among L2 Spanish learners. Over one semester, 84 students were assigned to an experimental group (commented video tasks) and a control group. Results show a 22-point gain in the production test, stronger among intermediate learners. Analysis of the interactions shows that peer self-correction precedes the integration of the rule. »</p>
+      <p><strong>3 revues à vérifier toi-même :</strong> Language Teaching Research (Sage) · System (Elsevier) · Didactica (USAL). <strong>Comment vérifier :</strong> ouvre scimagojr.com → recherche le titre de la revue → regarde le quartile actuel de son domaine : <strong>les quartiles changent chaque année, jamais cite une valeur sans l'avoir ouverte ce jour-là.</strong></p>
+      <p><em>→ Contrôle d'équivalence : le chiffre « 22 points » et « 84 students » doivent être identiques dans les deux résumés — vérifie-les toi-même, c'est l'erreur la plus fréquente des résumés traduits.</em></p>
+    </div>
+
+    <div class="tip">Compare les <strong>chiffres des deux résumés</strong> avant tout : c'est exactement ce qui bouge quand une IA (ou DeepL) traduit « 22 points » en « 22 % ». Un abstract contredit par le texte mène au rejet.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>Choisis la revue avant d'écrire.</strong> Longueur, langue, structure et abstract dépendent de la revue : écrire d'abord, c'est réécrire deux fois.</li>
+      <li><strong>Rédige l'abstract en dernier.</strong> Il doit résumer ce que l'article est <em>devenu</em>, pas ce que tu comptais écrire au départ.</li>
+      <li><strong>Fais relire par un collègue de la langue cible.</strong> Un anglophone natif repère en dix minutes ce qu'aucune IA ne garantit : le naturel académique.</li>
+      <li><strong>Une seule revue à la fois.</strong> Soumettre au double est une faute grave, sanctionnée par un bannissement des deux revues.</li>
+      <li><strong>Note tes outils IA dès la première heure.</strong> Un carnet d'outils (outil + tâche + date) te rend la déclaration finale absolument indolore.</li>
+      <li><strong>Réponds à chaque remarque</strong> — même refusée : tu réponds en argumentant, jamais en ignorant (une remarque ignorée = rejet quasi automatique).</li>
+      <li><strong>Archive chaque étape.</strong> brouillon_v1, plan, version soumise, tracked changes : le peer review fait toujours revenir au fichier « celui d'avant ».</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Soumettre un texte généré par IA sans réécriture → détecté et rejeté, parfois inscrit dans un registre partagé entre éditeurs. <strong>✅ Tu écris le fond, l'IA reformule, tu réécris : et tu le déclares.</strong></li>
+    <li>❌ Copier une référence ChatGPT sans la vérifier → article rétracté après publication. <strong>✅ Titre exact dans Google Scholar, DOI sur doi.org, sinon suppression.</strong></li>
+    <li>❌ Oublier la déclaration d'usage de l'IA → manquement éthique, parfois rétractation. <strong>✅ Une phrase dans Methods ou Acknowledgements, dès la soumission.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>L'IA aide à structurer, jamais à inventer</strong> : le fond et la signature restent les tiens.</li>
+      <li><strong>Chaque référence se vérifie une par une</strong> : Scholar pour l'existence, doi.org pour le DOI.</li>
+      <li><strong>La déclaration d'usage de l'IA est obligatoire</strong>, et une IA n'est jamais co-auteur.</li>
+      <li><strong>Le reviewer lit le fond, pas le style</strong> : réponds à chaque remarque, factuellement.</li>
+      <li><strong>Un article Q1 se prépare en mois, pas en jours</strong> — et commence par le choix de la revue.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Peut-on publier un article rédigé par l'IA ?</h3>
+  <p><strong>Pas pour le fond.</strong> Les grandes revues (Nature, Science, Cell) et les grands éditeurs (Elsevier, Springer, Wiley) l'interdisent pour la production intellectuelle, et <strong>une IA ne peut jamais être co-auteur</strong> : elle n'assume aucune responsabilité. En revanche, l'assistance rédactionnelle (reformulation, traduction, correction) est <strong>autorisée si elle est déclarée</strong>.</p>
+  <div class="warn">
+    <strong>⚠️ Attention :</strong> un texte généré puis à peine retouché peut être détecté — les éditeurs partagent désormais leurs signalements. Le risque n'est pas seulement un rejet : c'est un dossier marqué.
+  </div>
+
+  <h3>2. Comment vérifier qu'une référence existe vraiment ?</h3>
+  <p>Trois étapes, 30 secondes : <strong>1)</strong> copie le titre exact dans <strong>Google Scholar</strong> ; <strong>2)</strong> si elle existe, clique <em>Citer</em> pour récupérer le format réel ; <strong>3)</strong> si elle n'existe pas, <strong>supprime-la immédiatement</strong>. Pour les articles récents, ouvre le <strong>DOI sur doi.org</strong> : pas de page ouverte, pas de référence.</p>
+  <div class="tip">
+    <strong>Contrôle rapide :</strong> une référence réelle a toujours <em>deux</em> traces indépendantes — l'éditeur et Scholar. Une seule trace = doute à lever avant soumission.
+  </div>
+
+  <h3>3. Un détecteur de plagiat suffit-il à me protéger ?</h3>
+  <p><strong>Non.</strong> Un détecteur (Turnitin, iThenticate, Compilatio) signale des <em>ressemblances</em>, pas des fautes : il produit des faux positifs — fréquents pour les textes traduits et les non natifs — et reste aveugle à un plagiat reformulé phrase par phrase. C'est un indicateur, pas une garantie.</p>
+  <div class="warn">
+    <strong>Le vrai réflexe :</strong> ne jamais recopier une formulation sans guillemets et sans citation, et préférer ton propre plan à un texte d'IA recollé. Le détecteur est le contrôle final, pas la méthode de départ.
+  </div>
+
+  <h3>4. Mon brouillon d'article est-il en sécurité dans un chat ?</h3>
+  <p><strong>À condition de trois réglages :</strong> 1) désactiver l'entraînement sur tes conversations (paramètres de données), 2) ne pas coller le manuscrit <em>entier</em> mais la section sur laquelle tu travailles, 3) garder la source sur ton ordinateur. Un manuscrit confidentiel — surtout s'il n'est pas encore publié — vaut mieux un assistant local (Ollama).</p>
+  <div class="tip">
+    <strong>Pendant le peer review, la règle est absolue :</strong> le manuscrit est anonyme et confidentiel. Aucune pièce de l'évaluation (article, review) ne doit partir vers un service tiers — c'est écrit dans la charte de la plupart des revues.
+  </div>
+
+  <h3>5. Faut-il payer un outil d'IA pour publier en Q1 ?</h3>
+  <p><strong>Non.</strong> Les vérifications (Scimago, Scholar, doi.org) sont gratuites, et les outils de reformulation gratuits suffisent pour un article de 6 000 mots. Ce qui est payant — et souvent annoncé comme miracle —, ce sont les services « publie en Q1 en 30 jours » : dans 90 % des cas, des <strong>revues prédatrices</strong> qui font payer l'auteur sans vraie relecture.</p>
+  <div class="warn">
+    <strong>Règle de survie :</strong> une revue qui te contacte la première, promet une décision rapide et réclame des frais avant acceptation est prédatrice. Tu choisis la revue, jamais l'inverse.
+  </div>
+
+  <h3>6. Combien de temps faut-il pour publier un article Q1 ?</h3>
+  <p><strong>Compte 6 à 18 mois</strong> : 4 à 8 semaines de relecture, souvent un ou deux cycles de révision (2 à 4 mois), puis mise en ligne puis numérotation. Aucune IA ne raccourcit la peer review — elle raccourcit seulement ta partie rédactionnelle.</p>
+  <div class="tip">
+    <strong>Travaille en chevauchement :</strong> rédige l'article N+1 pendant la relecture de l'article N. C'est la seule façon d'avoir deux publications par an sans te décourager.
+  </div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où vont mes brouillons d'articles ?</h3>
+  <p>Dans les <strong>data centers du fournisseur</strong> de ton outil (OpenAI, Google, Anthropic…), répartis entre Europe et États-Unis. Un brouillon est un bien intellectuel : il contient des résultats non publiés, parfois financés par un projet — traité comme un document interne, pas comme un bêtisier.</p>
+
+  <h3>2. Mon manuscrit peut-il fuiter pendant l'évaluation ?</h3>
+  <p><strong>Pas par l'IA, si tu suis la règle — mais par toi, si tu colles tout.</strong> Le danger n'est pas théorique : un texte collé peut être conservé, indexé, et réapparaître dans un moteur de recherche avant ta publication. La règle du peer review — confidentialité absolue de l'article et des rapports — s'applique aussi aux outils que tu utilises dessus.</p>
+  <div class="warn">
+    <strong>Pendant toute la review :</strong> aucun extrait de l'article ni de la review dans un service en ligne. Tu travailles hors-ligne ou avec un assistant local.
+  </div>
+
+  <h3>3. Puis-je coller un manuscrit déjà soumis ailleurs ?</h3>
+  <p><strong>Non.</strong> Tu signes à chaque soumission une clause d'exclusivité : le texte ne doit être considéré nulle part ailleurs. Le soumettre simultanément — ou faire traiter son contenu par un service externe sans vérifier ses conditions — expose à un retrait des deux revues.</p>
+
+  <h3>4. Que dois-je désactiver dans les paramètres ?</h3>
+  <ul>
+    <li><strong>« Améliorer le modèle pour tous »</strong> (ChatGPT) et <strong>Gemini Apps Activity</strong> : tes brouillons ne servent plus à l'entraînement.</li>
+    <li><strong>Historique des conversations</strong> : à vider après une session sur un manuscrit sensible.</li>
+    <li><strong>Partage de liens de conversation</strong> : jamais de lien public contenant ton travail.</li>
+  </ul>
+
+  <h3>5. Comment protéger mon travail de bout en bout ?</h3>
+  <ul>
+    <li><strong>Sources locales</strong> + sauvegardes datées (le fichier du 12 mars ne se « perd » pas).</li>
+    <li><strong>Outil local (Ollama)</strong> pour les parties sensibles : résultats non publiés, données d'enquête.</li>
+    <li><strong>Antivirus à jour</strong> — un clé USB de terrain reste le chemin d'entrée n°1.</li>
+    <li><strong>Signal / ProtonMail</strong> pour échanger avec ton directeur de recherche.</li>
+  </ul>
+  <div class="tip">
+    <strong>Règle d'or du chercheur :</strong> ne mets jamais dans un chat IA ce que tu ne mettrais pas dans un e-mail à un concurrent de ton labo. Ton avance scientifique se perd en un copier-coller.
+  </div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=scimago+journal+rank+quartile+Q1+choisir+une+revue" target="_blank">Choisir une revue Q1 avec Scimago (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=structure+IMRAD+r%C3%A9diger+un+article+scientifique+tutoriel" target="_blank">Rédiger un article : la structure IMRAD (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=response+letter+reviewers+response+to+reviewers+example" target="_blank">Réponse aux reviewers : exemple de letter (EN)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Où vérifies-tu le quartile d'une revue ? <br><em>(Réponse : sur Scimago Journal Rank ou Web of Science — jamais sur un classement de forum.)</em></li>
+    <li>Tu cites un article donné par l'IA et Scholar ne renvoie rien. Que fais-tu ? <br><em>(Réponse : tu supprimes la référence — et tu en cherches une réelle sur le même sujet.)</em></li>
+    <li>Quelle structure la plupart des revues scientifiques imposent-elles ? <br><em>(Réponse : IMRAD — Introduction, Méthodes, Résultats, Discussion.)</em></li>
+    <li>Une IA peut-elle figurer parmi les co-auteurs ? <br><em>(Réponse : non, jamais — mais son usage doit être déclaré dans Methods ou Acknowledgements.)</em></li>
+    <li>Que contient la réponse aux reviewers ? <br><em>(Réponse : 3 colonnes — la remarque, ce que tu as modifié, et l'emplacement page/ligne ; et chaque remarque reçoit une réponse, même refusée.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>Q1 (quartile 1)</strong> — Les 25 % de revues les plus citées d'un domaine, selon Scimago/Web of Science. La catégorie la plus exigeante.</li>
+    <li><strong>Peer review</strong> — Évaluation anonyme par des pairs : 2 reviewers lisent, critiquent, et l'éditeur décide (accepter / réviser / rejeter).</li>
+    <li><strong>IMRAD</strong> — Structure standard des articles scientifiques : Introduction, Methods, Results, And Discussion.</li>
+    <li><strong>DOI</strong> — Identifiant permanent d'un document (doi.org/10.…). Il prouve qu'un article existe : sans DOI plausible, pas de publication.</li>
+    <li><strong>Cover letter</strong> — Lettre de soumission à l'éditeur : nouveauté de l'article, originalité, déclaration d'usage de l'IA.</li>
+    <li><strong>Facteur d'impact</strong> — Indice de citation moyen d'une revue sur 2 ans (Journal Citation Reports). Complément du quartile, pas substitut.</li>
+    <li><strong>H-index</strong> — Individu ou revue : nombre d'articles cités au moins autant de fois. Mesure cumulative de l'impact d'un chercheur.</li>
+  </ul>
+  <div class="nav-footer">
+    <a href="seance-14.html">◀ Séance 14</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+  </div>
+
+</div>
+</body>
+</html>

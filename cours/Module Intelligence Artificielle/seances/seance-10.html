@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Cmd/Ctrl + Z avant de fermer une session Cursor</strong><br>
+    Avant de quitter Cursor, passe un Cmd/Ctrl + Z et regarde le diff : tu vois immédiatement ce que l'IA a changé dans ton fichier. Si quelque chose te chiffonne, annule ; sinon ferme l'esprit tranquille. Ce réflexe de 5 secondes t'évite de retrouver le lendemain un mélange de deux versions.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu sauras utiliser Cursor pour décrire une modification en français et la voir s'appliquer dans ton code — ligne par ligne, en comprenant chaque changement avant de l'accepter.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Avec un chat, tu copies du code d'un onglet vers l'autre et tu espères que rien ne se perd. Cursor va plus loin : tu écris <strong>« ajoute un champ email avec validation »</strong>, l'IA te montre les lignes à ajouter et à supprimer <strong>dans ton propre fichier</strong>, et tu acceptes ou refuses. Pour un étudiant qui débute, c'est la première fois que modifier du code ressemble à corriger un texte avec un surligneur — en voyant exactement ce qui change.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>Cursor est un éditeur avant d'être une IA :</strong> c'est VS Code amélioré. Tout ce que tu as appris en séance 9 (terminal, fichiers, raccourcis) fonctionne à l'identique.</li>
+    <li><strong>Le diff, c'est le cœur du sujet :</strong> le vert ajoute, le rouge supprime. Aucune modification ne devrait entrer dans ton fichier sans que tu aies lu les deux couleurs.</li>
+    <li><strong>Ton code part vers le modèle :</strong> ce que tu as ouvert sert de contexte à l'IA. C'est puissant — et c'est exactement pour ça qu'on n'ouvre pas un travail sensible dans Cursor.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Trouver une info officielle en 10 secondes (mieux que Google)</strong><br>
+    Tu cherches une date ou un tarif officiel. Tu poses la question à Perplexity : « Quel est le tarif de l'inscription au DSD ? Donne-moi la source officielle. » L'IA te répond en 10 secondes avec le lien vers le document d'origine. Gagne du temps, mais vérifie toujours le lien : l'IA peut se tromper.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Installer Cursor et importer ton projet (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 cursor.com</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> télécharger Cursor sur le site officiel, t'inscrire, puis ouvrir ton dossier de travail. Cursor propose une version d'essai gratuite et une formule Hobby gratuite : on n'utilise jamais d'installation « craquée ».</p>
+    <p><strong>Ce que tu poses comme question (avant d'installer) :</strong></p>
+    <div class="prompt-box">Où télécharger Cursor de façon officielle ? Quelles sont les formules gratuites disponibles pour un étudiant, et quelle est la différence entre la formule Hobby et la formule Pro ?</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li><strong>Téléchargement officiel :</strong> <code>cursor.com</code> (le bouton « Download » détecte Windows/macOS/Linux). Méfie-toi des miroirs de téléchargement sur les forums.</li>
+        <li><strong>Formule Hobby (gratuite) :</strong> éditions complétion limitées chaque mois + accès de base au Chat — largement suffisant pour la séance.</li>
+        <li><strong>Formule Pro (payante) :</strong> requêtes illimitées et modèles avancés. Si tu es étudiant, regarde d'abord si ton établissement propose un accès groupé avant de payer.</li>
+        <li><strong>Premier lancement :</strong> Cursor propose d'importer tes réglages et extensions VS Code — accepte, tu retrouves tes habitudes immédiatement.</li>
+      </ol>
+      <p><strong>Import du projet :</strong> <code>File → Open Folder…</code> → sélectionne <code>projet-ia</code>. La barre latérale affiche tes fichiers, comme dans VS Code.</p>
+    </div>
+    <div class="tip">Ouvre un <strong>dossier de projet</strong>, jamais un fichier isolé : l'IA se sert des autres fichiers comme contexte, et un dossier vide donne des réponses génériques.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> n'utilise jamais une version modifiée ou « crackée » de Cursor : outre l'illégalité, ces exécutables contiennent le plus souvent des programmes de minage ou des logiciels espions.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Modifier le code avec Cmd/Ctrl + K (7 min)</h4>
+    <div class="step-meta">
+      <span>📍 Curseur → raccourci Cmd/Ctrl + K</span>
+      <span>⏱️ 7 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> sélectionner une portion de code, demander une modification en langage naturel, puis lire le diff proposé. C'est la fonctionnalité qui rend Cursor célèbre.</p>
+    <p><strong>Ce que tu tapes (dans le champ d'édition inline qui s'ouvre sur ta sélection) :</strong></p>
+    <div class="prompt-box">Ajoute un champ email avec validation (regex simple), affiche une erreur en français si l'adresse est invalide, et ne recharge pas la page à l'envoi.</div>
+    <p><strong>Voici ce que l'IA va probablement te proposer :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Diff proposé par Cursor</h4>
+<pre>
+&lt;form id="inscription"&gt;
+  &lt;label&gt;Nom : &lt;input type="text" name="nom" required&gt;&lt;/label&gt;
++ &lt;label&gt;Email : &lt;input type="email" name="email" id="email" required&gt;&lt;/label&gt;
++ &lt;small id="err-email" style="color:#c0392b"&gt;&lt;/small&gt;
+  &lt;button type="submit"&gt;S'inscrire&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+      <p><strong>Et le script associé :</strong></p>
+<pre>
++ const form = document.getElementById("inscription");
++ form.addEventListener("submit", (e) =&gt; {
++   const email = document.getElementById("email").value;
++   const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);   // regex simple
++   if (!ok) {
++     e.preventDefault();                                   // on bloque l'envoi
++     document.getElementById("err-email").textContent =
++       "Adresse e-mail invalide (ex. nom@exemple.com).";
++   }
++ });
+</pre>
+      <p><strong>Lecture du diff :</strong> le <span style="color:#27ae60">vert</span> ajoute le champ, le message d'erreur et le bloc de validation ; le <span style="color:#c0392b">rouge</span> (aucun ici) aurait supprimé. <strong>Cmd/Ctrl + Entrée</strong> accepte, <strong>Échap</strong> annule.</p>
+    </div>
+    <div class="tip">Sélectionne <strong>une fonction à la fois</strong>, jamais tout le fichier : le diff reste lisible, et une erreur d'IA reste isolée dans un seul bloc.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> n'accepte jamais un diff « rouge + vert » que tu n'as pas lu : une ligne supprimée peut être ton seul garde-fou (une vérification de sécurité, une condition d'arrêt).
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Poser une question sur ton code existant (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 Chat latéral (Cmd/Ctrl + L)</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> demander à Cursor d'expliquer un code que tu as reçu — le tien ou celui d'un camarade. C'est l'usage le plus honnête de l'éditeur IA : comprendre, pas produire.</p>
+    <p><strong>Ce que tu tapes (dans le Chat latéral) :</strong></p>
+    <div class="prompt-box">Explique ce fichier comme à un étudiant de 2ème année qui découvre JavaScript. Donne-moi : 1) ce qu'il fait en une phrase, 2) les 3 lignes clés, 3) une modification que je peux tester sans casser le reste.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Cursor Chat</h4>
+      <p><strong>1) En une phrase :</strong> ce formulaire vérifie que l'adresse e-mail saisie est bien formée avant d'autoriser l'envoi, et affiche un message d'erreur en français sinon.</p>
+      <p><strong>2) Les 3 lignes clés :</strong></p>
+      <ol>
+        <li><code>e.preventDefault()</code> — empêche le navigateur d'envoyer le formulaire (sinon la validation ne servirait à rien).</li>
+        <li><code>const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)</code> — la regex : « il y a un @, pas d'espace, et un point après ».</li>
+        <li><code>document.getElementById("err-email")</code> — c'est lui qui écrit le message d'erreur dans la page.</li>
+      </ol>
+      <p><strong>3) Modification sûre à tester :</strong> ajoute <code>minlength="8"</code> à l'input email — ou change le message d'erreur en anglais. Aucune autre ligne n'est concernée, tu verras l'effet immédiatement.</p>
+      <p><em>→ Le Chat cite les fichiers ouverts : c'est pour ça que ta question porte sur un vrai fichier et non sur un copier-coller.</em></p>
+    </div>
+    <div class="tip">Demande systématiquement <strong>« une modification que je peux tester sans casser le reste »</strong> : tu progresses par petits pas vérifiables, au lieu de tout casser d'un coup.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne pose jamais une question floue comme « c'est quoi ce code ? » — reprends le format « 1 phrase / 3 lignes clés / 1 test » : c'est ce format qui produit une réponse exploitable.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Générer un fichier complet à partir d'une description (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 Composer du Chat (Cmd/Ctrl + I)</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> décrire un outil dont tu as besoin et laisser Cursor créer les fichiers. Tu vérifies ensuite chaque fichier créé — c'est l'étape où l'éditeur IA devient un vrai assistant de projet.</p>
+    <p><strong>Ce que tu tapes (raccourci Cmd/Ctrl + I, mode « Agent ») :</strong></p>
+    <div class="prompt-box">Crée un outil en 2 fichiers : stats.py lit un fichier de notes « Nom;note », affiche la moyenne, la note max/min et un histogramme ASCII des tranches (0-5, 6-10, 11-15, 16-20) ; README.md explique l'utilisation en 5 lignes. Commente le code en français.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Cursor</h4>
+      <p><em>« Je crée les deux fichiers dans le dossier ouvert. »</em></p>
+<pre>
+# stats.py — statistiques simples sur un fichier de notes
+notes = []
+for ligne in open("notes.txt", encoding="utf-8"):   # une ligne « Nom;note »
+    if ";" in ligne:
+        nom, val = ligne.split(";")
+        notes.append(float(val.strip().replace(",", ".")))
+
+moy = sum(notes) / len(notes)
+print(f"Moyenne : {moy:.2f} / 20")
+print(f"Max : {max(notes):.1f}   Min : {min(notes):.1f}")
+
+tranches = [0] * 4                    # 4 compartiments
+for n in notes:
+    tranches[min(int(n // 5), 3)] += 1   # 0-5, 6-10, 11-15, 16-20
+print("
+Histogramme :")
+for i, c in enumerate(tranches):
+    print(f"{i*5}-{i*5+5} | {'#' * c} ({c})")
+</pre>
+      <p><strong>Sortie :</strong></p>
+<pre>
+Moyenne : 12.47 / 20
+Max : 18.5   Min : 4.0
+
+Histogramme :
+0-5  | ### (3)
+6-10 | ###### (6)
+11-15| ######## (8)
+16-20| ### (3)
+</pre>
+      <p><em>→ 2 fichiers créés, visibles dans la barre latérale : tu cliques et tu relis chacun.</em></p>
+    </div>
+    <div class="tip">Regarde la barre latérale : <strong>chaque fichier créé doit être ouvert et relu</strong>. Un fichier qu'on n'a jamais ouvert est un fichier qu'on ne maîtrise pas — et c'est souvent celui qui casse.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne laisse jamais l'agent écrire dans un dossier qui contient tes travaux en cours : ouvre un sous-dossier <code>test/</code> pour l'expérimentation.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Valider, annuler et garder le contrôle (4 min)</h4>
+    <div class="step-meta">
+      <span>📍 Historique des modifications</span>
+      <span>⏱️ 4 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> apprendre à défaire proprement. Un développeur assisté passe autant de temps à annuler qu'à accepter — c'est la compétence qui protège ton travail.</p>
+    <p><strong>Ce que tu tapes (raccourci Cmd/Ctrl + Z, puis dans le Chat) :</strong></p>
+    <div class="prompt-box">Annule la dernière modification et explique en 2 phrases ce que changeait le code supprimé, pour que je comprenne ce que je viens de refuser.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Cursor</h4>
+      <p><em>« Modification annulée, le fichier est revenu à son état précédent.</em></p>
+      <p><strong>Ce que faisait le code supprimé :</strong> il vérifiait la longueur du mot de passe (8 caractères minimum) <em>avant</em> l'envoi, et bloquait la requête sinon. <strong>Sans lui,</strong> le formulaire accepte n'importe quelle saisie côté serveur — le navigateur ne protège rien à lui seul.</p>
+      <p><strong>À retenir :</strong> une règle de validation côté « client » (le navigateur) sert au confort ; la vraie sécurité se place côté « serveur ». Si tu retires l'une, garde l'autre. »</p>
+      <p><em>→ Tu peux vérifier : <code>git diff</code> (ou l'historique Cursor, <code>Cmd/Ctrl + Shift + H</code>) montre l'état exact du fichier.</em></p>
+    </div>
+    <div class="tip">Avant une grosse séance de modification, <strong>enregistre une copie</strong> (<code>fichier_v1.py</code>) ou initie un dépôt <code>git init</code> : en un geste, tu reviens à l'état de départ.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne termine jamais une session sur un diff non validé ni refusé — ferme le fichier sans répondre et tu auras, le lendemain, un mélange de deux versions impossibles à démêler.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Un <strong>schéma en ASCII</strong> est un dessin fait uniquement avec des caractères du clavier (tirets, barres, flèches, plus). Ça marche partout, sans image. Très utile pour comprendre une idée visuellement en un coup d'œil.</p>
+
+  <p><strong>Comment demander un schéma à l'IA ?</strong> Ajoute simplement <code>« avec un schéma en ASCII »</code> à la fin de ton prompt.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Mettre en forme un formulaire d'inscription (département Anglais)</h4>
+    <p><strong>Situation :</strong> tu as un formulaire HTML basique pour un club d'anglais et tu veux validation + messages d'erreur, sans réécrire tout le fichier.</p>
+
+    <p><strong>Ce que tu tapes (Cmd/Ctrl + K sur le formulaire) :</strong></p>
+    <div class="prompt-box">Ajoute : champs obligatoires marqués *, validation du nom (2 lettres minimum), messages d'erreur en anglais avec la traduction française entre parenthèses, et un récapitulatif avant envoi. Ne change pas l'apparence existante.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Cursor</h4>
+<pre>
+- &lt;p&gt;Nom : &lt;input type="text" name="nom"&gt;&lt;/p&gt;
++ &lt;p&gt;Nom * : &lt;input type="text" name="nom" minlength="2" required&gt;&lt;/p&gt;
++ &lt;small class="err" id="e-nom"&gt;&lt;/small&gt;
+
++ const erreurs = {
++   nom: "Please enter your full name / Merci d'indiquer votre nom complet",
++ };
++ form.addEventListener("submit", (e) =&gt; {
++   const nom = form.nom.value.trim();
++   if (nom.length &lt; 2) {
++     e.preventDefault();
++     document.getElementById("e-nom").textContent = erreurs.nom;
++   } else if (!confirm(`Nom : ${nom}\nContinuer ?`)) {   // récapitulatif
++     e.preventDefault();
++   }
++ });
+</pre>
+      <p><em>→ 1 suppression, 2 ajouts : l'apparence HTML d'origine est intacte, comme demandé.</em></p>
+    </div>
+
+    <div class="tip">La clause <code>« ne change pas l'apparence existante »</code> est celle qui évite 80 % des mauvaises surprises : elle interdit à l'IA de refaire ton CSS en même temps que ton JS.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Automatiser le dépouillement d'un contrôle (département Français)</h4>
+    <p><strong>Situation :</strong> 3 copies scannées, notes manuscrites, et un tableau à remplir avant demain.</p>
+
+    <p><strong>Ce que tu tapes (Composer, mode Agent) :</strong></p>
+    <div class="prompt-box">Dans dossier copies/, il y a 3 fichiers texte déjà extraits (etudiant1.txt …). Écris depouillement.py qui lit chaque fichier, cherche une note au format « x/20 » ou « x,5 », calcule la moyenne, affiche un tableau aligné (Nom, Note, Appréciation : &lt;10 insuffisant, 10-12 passable, 12-14 bien, 14+ très bien), puis écrit le tout dans notes_final.csv. Commente en français.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Cursor</h4>
+<pre>
+# depouillement.py — relevé de notes à partir de textes extraits
+import re, glob
+
+def appreciation(n):                     # barème imposé
+    return "insuffisant" if n &lt; 10 else "passable" if n &lt; 12            else "bien" if n &lt; 14 else "tres bien"
+
+resultats = []
+for chemin in sorted(glob.glob("copies/etudiant*.txt")):
+    texte = open(chemin, encoding="utf-8").read()
+    m = re.search(r"(\d{1,2}(?:[,.]\d)?)\s*/\s*20", texte)   # « 13,5/20 »
+    if m:
+        note = float(m.group(1).replace(",", "."))
+        resultats.append((chemin.split("/")[-1], note))
+
+print(f"{'Nom':15} {'Note':>6}  Appréciation")
+for nom, n in resultats:
+    print(f"{nom:15} {n:6.1f}  {appreciation(n)}")
+
+moy = sum(n for _, n in resultats) / len(resultats)
+print(f"\nMoyenne de la promotion : {moy:.2f}/20")
+
+with open("notes_final.csv", "w", encoding="utf-8") as f:   # pour le tableur
+    f.write("Nom;Note;Appreciation\n")
+    for nom, n in resultats:
+        f.write(f"{nom};{n};{appreciation(n)}\n")
+</pre>
+      <p><strong>Sortie :</strong></p>
+<pre>
+Nom               Note  Appréciation
+etudiant1.txt     13.5  bien
+etudiant2.txt      9.0  insuffisant
+etudiant3.txt     15.0  tres bien
+
+Moyenne de la promotion : 12.50/20
+</pre>
+    </div>
+
+    <div class="tip">Exige le <strong>fichier CSV en sortie</strong> dès le prompt : tu ouvres le résultat dans LibreOffice, tu adjusts à la main, tu archives. L'IA fait le tri, tu gardes la décision.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Construire un mini-lexique espagnol interactif (département Espagnol)</h4>
+    <p><strong>Situation :</strong> révision en 10 minutes par jour : tu veux un programme qui te fait réciter ton lexique et te note.</p>
+
+    <p><strong>Ce que tu tapes (Composer) :</strong></p>
+    <div class="prompt-box">Crée quiz.py : charge vocabulario.txt (« espagnol = français »), en choisit 10 au hasard, affiche l'espagnol, demande le français, note « bien » ou « faux — réponse : … », affiche le score final sur 10 et relance tant que l'utilisateur tape « o ». Commente en français.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Cursor</h4>
+<pre>
+# quiz.py — récitation du lexique espagnol
+import random
+
+paires = []
+for ligne in open("vocabulario.txt", encoding="utf-8"):
+    if "=" in ligne:
+        esp, fra = ligne.split("=", 1)
+        paires.append((esp.strip(), fra.strip()))
+
+reponse = "o"
+while reponse == "o":                       # rejouer tant que « o »
+    epreuve = random.sample(paires, min(10, len(paires)))
+    score = 0
+    for esp, fra in epreuve:
+        saisie = input(f"{esp} = ? ").strip().lower()
+        if saisie == fra.lower():
+            score += 1
+            print("  ✓ bien")
+        else:
+            print(f"  ✗ faux — réponse : {fra}")
+    print(f"Score : {score}/10")
+    reponse = input("Encore ? (o/n) ").strip().lower()
+</pre>
+      <p><strong>Exemple de session :</strong></p>
+<pre>
+el apodo = ? apelido
+  ✓ bien
+la chispa = ? etincelle
+  ✗ faux — réponse : étincelle
+Score : 9/10
+Encore ? (o/n)
+</pre>
+    </div>
+
+    <div class="tip">Ajoute <code>« garde les 3 mots ratés dans ratés.txt »</code> : ta prochaine session se concentre sur tes vraies faiblesses — c'est la définition même d'une révision efficace.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>Une fonction sélectionnée à la fois.</strong> Cmd/Ctrl + K sur un bloc court : le diff reste lisible et l'erreur reste isolée.</li>
+      <li><strong>« Sans casser le reste ».</strong> Ajoute cette phrase à toute demande de modification : l'IA limite alors son périmètre.</li>
+      <li><strong>Le format 1 phrase / 3 lignes / 1 test</strong> pour expliquer un code : c'est le format qui produit une réponse exploitable.</li>
+      <li><strong>Copie de sécurité avant grosse session.</strong> <code>fichier_v1.py</code> ou <code>git init</code> : annuler devient instantané.</li>
+      <li><strong>Agent sur dossier vide.</strong> Ouvre toujours un sous-dossier <code>test/</code> pour expérimenter, jamais tes travaux en cours.</li>
+      <li><strong>Échap est une réponse.</strong> Refuser une proposition fait partie du métier — c'est comme ça que le code reste le tien.</li>
+      <li><strong>Rien de sensible à l'écran.</strong> Clés, mots de passe, noms d'élèves : jamais dans un fichier ouvert dans Cursor.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Accepter un diff rouge+vert sans le lire → une ligne supprimée peut être ton garde-fou. <strong>✅ Lis les deux couleurs avant Cmd/Ctrl + Entrée.</strong></li>
+    <li>❌ Une version « craquée » de l'éditeur → illicite et souvent piégée. <strong>✅ Formule gratuite officielle ou essai officiel.</strong></li>
+    <li>❌ Travailler dans le dossier de tes devoirs → l'agent réécrit tout. <strong>✅ Sous-dossier <code>test/</code> pour l'expérimentation.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>Cursor = VS Code + IA :</strong> tes acquis de la séance 9 restent valables.</li>
+      <li><strong>Cmd/Ctrl + K modifie, Cmd/Ctrl + L explique, Cmd/Ctrl + I crée</strong> — trois gestes, trois usages.</li>
+      <li><strong>Le diff vert/rouge est ta seule garantie</strong> : rien ne s'applique sans ta lecture.</li>
+      <li><strong>Ton code part vers le modèle</strong> : rien de sensible n'est ouvert dans Cursor.</li>
+      <li><strong>Sauvegarde avant, Cmd/Ctrl + Z après</strong> : annuler est un réflexe de professionnel.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>L'IA apprend dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à des sociétés : OpenAI pour ChatGPT, Google pour Gemini, DeepSeek pour DeepSeek.</p>
+  <p>Elle apprend à partir de <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés, articles. <strong>Ce ne sont PAS les ordinateurs des utilisateurs</strong> connectés à Internet.</p>
+  <div class="warn">
+    <strong>⚠️ Ton PC, ton téléphone, le PC de ton voisin : rien de tout ça n'est utilisé pour entraîner ChatGPT.</strong> Seul un data center de la société est utilisé.
+  </div>
+
+  <h3>2. Peut-on créer une IA simple avec 1000 photos de chats ?</h3>
+  <p><strong>Oui, c'est possible en 30 minutes avec Google Colab (gratuit).</strong> Voici les étapes :</p>
+  <ol>
+    <li><strong>Collecte</strong> : 500 photos de chats + 500 photos d'autres choses, dans deux dossiers.</li>
+    <li><strong>Entraînement</strong> : un petit réseau de neurones apprend la différence (code fourni ci-dessous).</li>
+    <li><strong>Test</strong> : tu lui montres une nouvelle photo, il dit « Chat » ou « Pas chat ».</li>
+  </ol>
+  <div class="exemple">
+    <h4>🤖 Code Python minimal (Google Colab)</h4>
+<pre>
+import tensorflow as tf
+
+train = tf.keras.utils.image_dataset_from_directory(
+    "dataset/", image_size=(128,128), batch_size=32)
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Rescaling(1./255),
+    tf.keras.layers.Conv2D(32, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(64, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(2, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy'])
+model.fit(train, epochs=10)
+</pre>
+  </div>
+  <div class="warn">
+    <strong>⚠️ Important :</strong> ce programme <strong>calcule</strong>, il ne « comprend » pas. Il a juste appris quelles formes ressemblent à un chat.
+  </div>
+
+  <h3>3. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> On peut les combiner :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Exemple</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">L'IA fait</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Le robot fait</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aspirateur Roomba</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Décide où aller</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Se déplace, aspire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Voiture Tesla</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Reconnaît les piétons</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Freine, tourne</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Robot médical Da Vinci</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyse les mouvements</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Coupe précisément</td></tr>
+    </tbody>
+  </table>
+  <p>Mais la majorité des IA n'ont <strong>pas de robot</strong>. ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>4. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Voici pourquoi :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#ffebee;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Information</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Peut-on la donner ?</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi ?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Mot de passe</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Envoyé sur un serveur, journalisé</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte bancaire</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Fraude possible</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte d'identité</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Usurpation d'identité</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Adresse personnelle</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">⚠️ Éviter</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pas nécessaire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Question d'étude</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ OK</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucun risque</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> utilise une <strong>IA locale</strong> (Ollama) sur ton propre ordinateur. Aucune donnée ne sort. C'est la seule solution totalement privée. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés).
+  </div>
+
+  <h3>5. Chaque pays utilise l'IA différemment</h3>
+  <p>L'IA n'est ni bonne ni mauvaise. <strong>Tout dépend de qui l'utilise et pourquoi.</strong> Exemples :</p>
+  <ul>
+    <li><strong>Médecine</strong> — détecter un cancer sur une radio</li>
+    <li><strong>Agriculture</strong> — prévoir les récoltes, détecter les maladies des plantes</li>
+    <li><strong>Transport</strong> — GPS, voitures autonomes, gestion du trafic</li>
+    <li><strong>Finance</strong> — détecter la fraude bancaire</li>
+    <li><strong>Surveillance</strong> — reconnaissance faciale dans les lieux publics (usage controversé)</li>
+    <li><strong>Militaire</strong> — drones autonomes (usage controversé)</li>
+    <li><strong>Éducation</strong> — corriger les copies, adapter les exercices</li>
+  </ul>
+
+  <h3>6. Exemples d'utilisation de l'IA par secteur</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Secteur</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Usage concret</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Médecine</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Détecter une tumeur sur une IRM</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Agriculture</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévoir la récolte d'olives</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Éducation</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer 10 exercices personnalisés</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Justice</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser des dossiers volumineux</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Art</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer des images, de la musique</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Météo</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévisions à 10 jours</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>À retenir :</strong> l'IA est un outil puissant. Bien utilisée, elle aide. Mal utilisée, elle nuit. <strong>C'est toi qui décides.</strong>
+   <strong>Cursor envoie ton code au modèle pour proposer des modifications : ouvre-le d'abord sur des projets d'exercice, jamais sur un travail réel que tu dois rendre.</strong></div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockés vos e-mails Gmail ?</h3>
+  <p>Gmail est hébergé dans les <strong>data centers de Google</strong>, répartis dans le monde entier. Google possède <strong>21 data centers</strong>, dont <strong>5 en Europe</strong> (Irlande, Pays-Bas, Danemark, Finlande, Belgique).</p>
+  <div class="warn">
+    <strong>⚠️ Aucun data center Google dans la plupart des pays du Sud.</strong> Vos e-mails, vos documents, et le travail de thèse partagé avec votre encadrant sont stockés <strong>à l'étranger</strong> — probablement aux États-Unis ou en Europe.
+  </div>
+
+  <h3>2. Un employé Google peut-il lire vos e-mails ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle.</strong> Google a trois niveaux d'accès :</p>
+  <ol>
+    <li><strong>Vous</strong> : accès direct, chiffré.</li>
+    <li><strong>Employés Google autorisés</strong> : accès possible avec une justification professionnelle.</li>
+    <li><strong>Services Google</strong> : accès automatique pour le fonctionnement.</li>
+  </ol>
+  <p>Ce qui protège : vérification des antécédents, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré).</p>
+  <div class="warn">
+    <strong>Ce qui ne protège PAS :</strong> si la justice américaine ordonne l'accès, Google doit obéir — même pour des données stockées en Europe. Le <strong>U.S. CLOUD Act</strong> étend la juridiction des tribunaux américains à toutes les données contrôlées par des sociétés américaines.
+  </div>
+
+  <h3>3. Est-ce la même chose que l'IA ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;"></th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Gmail</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">IA (ChatGPT, Gemini)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Ce qui est stocké</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">E-mails, documents</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos conversations</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Qui peut voir</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos données entraînent-elles le système ?</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Non</td><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Oui</strong> (sauf option désactivée)</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Conclusion :</strong> Gmail est déjà un risque pour la souveraineté numérique. L'IA en est un autre, souvent plus grave car vos données peuvent servir à améliorer le modèle de la société.</p>
+
+  <h3>4. « Ça laisse les pays du tiers-monde en retard » — VRAI</h3>
+  <p>Votre intuition est confirmée par la Banque Mondiale :</p>
+  <blockquote style="border-left:4px solid #177bbe;padding-left:1rem;color:#555;font-style:italic;">
+    « L'infrastructure et les systèmes qui sous-tendent l'économie numérique des pays à revenu faible et intermédiaire sont souvent construits, détenus ou exploités par des acteurs qu'ils ne contrôlent ni ne régulent pleinement. »
+  </blockquote>
+  <ul>
+    <li><strong>Dépendance technologique</strong> : les pays du Sud n'ont pas d'infrastructure IA locale.</li>
+    <li><strong>Fuite de données</strong> : les données partent à l'étranger pour être traitées.</li>
+    <li><strong>Biais culturels</strong> : les modèles sont entraînés sur des données du Nord, imposant leurs visions du monde.</li>
+  </ul>
+
+  <h3>5. Comment se protéger ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e8f5e9;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Solution</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>IA locale (Ollama)</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune donnée ne sort de votre ordinateur. Totalement privé.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Gestionnaire de mots de passe</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Bitwarden ou KeePass (gratuits, chiffrés). Ne mettez jamais vos mots de passe dans un chat IA.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Désactiver l'entraînement</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Dans les paramètres de ChatGPT/Gemini, désactivez « Améliorer le modèle ».</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Chiffrement de bout en bout</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pour les messages sensibles, utilisez Signal ou ProtonMail.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mettez <strong>JAMAIS</strong> dans un chat IA ou un e-mail non chiffré ce que vous ne voudriez pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères.
+   <strong>Cursor envoie ton code au modèle pour proposer des modifications : ouvre-le d'abord sur des projets d'exercice, jamais sur un travail réel que tu dois rendre.</strong></div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=cursor+ai+editor+tutoriel+fran%C3%A7ais+d%C3%A9butant" target="_blank">Cursor : tutoriel débutant (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=cursor+ai+cmd+k+cmd+l+explain" target="_blank">Cursor : Cmd+K et Chat (EN)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=lire+un+diff+git+add+remove+explication" target="_blank">Lire un diff : vert et rouge (FR)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Que fait le raccourci Cmd/Ctrl + K ? <br><em>(Réponse : ouvre l'édition inline sur la sélection pour modifier le code par instruction naturelle.)</em></li>
+    <li>Que signifient les couleurs vert et rouge dans un diff ? <br><em>(Réponse : vert = lignes ajoutées, rouge = lignes supprimées.)</em></li>
+    <li>Quel est le risque d'ouvrir un fichier sensible dans Cursor ? <br><em>(Réponse : il sert de contexte à l'IA, donc il part vers le modèle.)</em></li>
+    <li>Comment revenir à l'état initial après une mauvaise modification ? <br><em>(Réponse : Cmd/Ctrl + Z, ou restaurer la copie <code>_v1</code> / l'état git.)</em></li>
+    <li>Pourquoi ouvrir un sous-dossier <code>test/</code> ? <br><em>(Réponse : isoler l'expérimentation de l'agent pour ne pas abîmer tes travaux en cours.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>Diff</strong> — Comparaison visuelle de deux versions : vert (ajout), rouge (suppression).</li>
+    <li><strong>Édition inline</strong> — Modification demandée directement sur la sélection (Cmd/Ctrl + K).</li>
+    <li><strong>Mode Agent</strong> — Mode où l'IA crée et modifie plusieurs fichiers pour atteindre un objectif.</li>
+    <li><strong>Contexte</strong> — Fichiers et sélections envoyés au modèle pour nourrir sa réponse.</li>
+    <li><strong>Regex</strong> — Motif de recherche sur du texte (ici : valider une adresse e-mail).</li>
+    <li><strong>Reculer (undo)</strong> — Annuler la dernière action (Cmd/Ctrl + Z) pour restaurer l'état précédent.</li>
+  </ul>
+  <div class="nav-footer">
+    <a href="seance-09.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-11.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+    <a href="seance-13.html">🎓 Séance 13</a>
+  </div>
+
+</div>
+</body>
+</html>

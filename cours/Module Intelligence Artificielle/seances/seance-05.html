@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 05 — Préparer un exposé de A à Z avec l'IA</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 05 — Préparer un exposé de A à Z avec l'IA</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — 3 variantes de la même diapo, puis tu choisis</strong><br>
+    Avec Gamma (ou tout générateur de diapos), ne valide jamais la première version : « Donne-moi 3 variantes de cette diapo — une sobre, une illustrée, une en tableau » puis choisis. En une minute, tu passes d'un résultat moyen à un résultat présentable, et tu peux même montrer les trois à ton groupe.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu sauras produire un exposé complet : sujet, plan, diapositives et script oral minute par minute.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Ton exposé arrive dans 8 jours. Jusqu'ici, tu passes 4 nuits à chercher un sujet, à structurer, à faire les slides, puis tu récites en tremblant. Cette séance inverse tout : l'IA te donne le sujet, le plan, les diapos et le texte à dire. Toi, tu travailles ce qui compte — comprendre et répéter à voix haute. Résultat : un exposé propre en 2 h de travail, pas en 4 nuits.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>Un exposé = 3 temps :</strong> accroche, corps en 3 parties, conclusion. Tout le reste est du remplissage.</li>
+    <li><strong>Les diapositives servent à l'auditoire, pas à toi.</strong> Des titres + des mots-clés, jamais des phrases entières.</li>
+    <li><strong>Le script oral se prépare avant le jour J.</strong> Sans texte écrit, tu improvises et tu perds le fil.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Mettre à jour le GPS d'une voiture</strong><br>
+    Ton GPS de voiture affiche des routes périmées. Tu demandes à ChatGPT : « Comment mettre à jour le GPS d'une Peugeot 308 de 2018 ? Où télécharger les cartes officielles ? Est-ce que je peux le faire moi-même ? » L'IA te donne le site officiel du constructeur, la procédure avec clé USB et le format des cartes. Tu évites de payer 3000 DA au garage.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Trouve un sujet et formule la problématique</h4>
+    <div class="step-meta">
+      <span>📍 perplexity.ai</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p>Copie-colle <strong>exactement</strong> ceci :</p>
+    <div class="prompt-box">Propose 5 sujets d'exposé de 10 minutes pour des étudiants de 2ème année PEP en sciences de l'éducation. Pour chaque sujet : une problématique en question, 2 sources vérifiables avec lien, et le niveau de difficulté (facile / moyen / difficile).</div>
+    <p><strong>Voici ce que Perplexity va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Perplexity</h4>
+      <ol>
+        <li><strong>L'usage de l'IA par les étudiants</strong> — <em>Problématique : dans quelle mesure l'IA générative change-t-elle la manière d'apprendre ?</em> Sources : UNESCO 2023 [1], Scimago [2]. Difficulté : <strong>facile</strong>.</li>
+        <li><strong>L'évaluation par les pairs</strong> — <em>Problématique : l'élève peut-il évaluer le travail d'un camarade de façon fiable ?</em> Sources : Revue française de pédagogie [3]. Difficulté : <strong>moyen</strong>.</li>
+        <li><strong>Les classes inversées</strong> — <em>Problématique : apprendre à la maison, réfléchir en classe : que change-t-on vraiment ?</em> Sources : Eduscol — Note de service [4]. Difficulté : <strong>facile</strong>.</li>
+        <li><strong>La motivation des élèves</strong> — <em>Problématique : la récompense motive-t-elle durablement ?</em> Sources : HAL [5]. Difficulté : <strong>moyen</strong>.</li>
+        <li><strong>Le biais culturel dans les manuels</strong> — <em>Problématique : un manuel de langue représente-t-il vraiment la culture cible ?</em> Sources : [6]. Difficulté : <strong>difficile</strong>.</li>
+      </ol>
+      <p><strong>Ma recommandation : le sujet 1.</strong> Il est actuel, facile à illustrer et tu trouveras des sources en 10 minutes.</p>
+    </div>
+    <div class="tip">La <strong>problématique</strong> est une question à laquelle ton exposé répond à la fin. Si tu ne peux pas l'écrire en une phrase, le sujet est trop large.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne choisis pas un sujet avant d'avoir vérifié qu'il existe au moins 2 sources exploitables : tu seras bloqué à l'étape 2.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Construis le plan en 3 parties</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p>Colle la problématique choisie et tape :</p>
+    <div class="prompt-box">Fais le plan détaillé d'un exposé de 10 minutes sur cette problématique : [colle la problématique]. Structure obligatoire : accroche, 3 parties avec sous-points, conclusion. Pour chaque partie, donne 2 minutes chronométrées et l'argument principal.</div>
+    <p><strong>Voici ce que ChatGPT va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Accroche (1 min)</strong> — Une question au public : « Qui a utilisé une IA cette semaine, sans s'en rendre compte ? » Puis annonce du plan.</p>
+      <p><strong>Partie 1 — L'état des lieux (3 min)</strong></p>
+      <ul>
+        <li><strong>Argument :</strong> l'IA est déjà présente dans les outils quotidiens (correcteur, traduction, recommandations).</li>
+        <li>Sous-point A : les outils gratuits accessibles aux étudiants.</li>
+        <li>Sous-point B : le temps gagné sur les tâches mécaniques.</li>
+      </ul>
+      <p><strong>Partie 2 — Les effets sur l'apprentissage (3 min)</strong></p>
+      <ul>
+        <li><strong>Argument :</strong> l'IA aide si elle est encadrée, elle dessert si elle est subie.</li>
+        <li>Sous-point A : gain de cohérence dans les productions écrites.</li>
+        <li>Sous-point B : risque de copie sans compréhension.</li>
+      </ul>
+      <p><strong>Partie 3 — Les limites et la règle d'or (2 min)</strong></p>
+      <ul>
+        <li><strong>Argument :</strong> l'IA n'a pas d'esprit critique, toi si.</li>
+        <li>Sous-point A : les hallucinations, avec un exemple.</li>
+        <li>Sous-point B : les 3 règles — vérifier, citer, garder son jugement.</li>
+      </ul>
+      <p><strong>Conclusion (1 min)</strong> — Reprise de l'accroche + ouverture : « L'IA ne remplacera pas l'enseignant, mais l'enseignant qui l'utilise remplacera celui qui ne l'utilise pas. »</p>
+      <p><strong>Temps total : 10 min</strong> · Ratio : 30 % d'exemples, 70 % d'arguments.</p>
+    </div>
+    <div class="tip">Vérifie le <strong>total des minutes</strong>. Si l'IA te fait 12 minutes, dis-lui : <code>« Raccourcis la partie 2 à 2 minutes, total 10 min maximum. »</code></div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne fais pas un plan en 5 parties pour un exposé de 10 minutes : tu dépasseras — limite-toi à 3.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Génère les diapositives avec Gamma ou Canva</h4>
+    <div class="step-meta">
+      <span>📍 gamma.app (ou canva.com)</span>
+      <span>⏱️ 8 min</span>
+    </div>
+    <p>Dans Gamma, clique sur <strong>« Create new »</strong> → <strong>« Paste in text »</strong>, puis colle ton plan de l'étape 2. Voici exactement ce que tu colles :</p>
+    <div class="prompt-box">Titre : L'IA change-t-elle notre manière d'apprendre ?
+Partie 1 — État des lieux : l'IA dans la vie quotidienne d'un étudiant (correcteur, traduction, recommandations).
+Partie 2 — Les effets : ce que l'IA facilite (réviser plus vite) / ce qu'elle fragilise (copier sans comprendre).
+Partie 3 — Les règles d'or : vérifier la source, citer l'outil, garder son propre jugement.
+Public : étudiants PEP 2ème année — 9 diapos, ton sobre, fond bleu foncé, texte blanc.</div>
+    <p><strong>Voici ce que tu vas voir apparaître :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Ce que Gamma génère en 20 secondes</h4>
+      <ul>
+        <li><strong>Diapo 1</strong> — Page de titre : « L'IA change-t-elle notre manière d'apprendre ? » + ton nom, ton département, la date. Fond bleu foncé, police blanche.</li>
+        <li><strong>Diapo 2</strong> — « Sommaire » : 3 blocs numérotés 01 / 02 / 03 correspondant à tes 3 parties.</li>
+        <li><strong>Diapo 3</strong> — « État des lieux » : titre + 2 puces courtes + une icône de cerveau numérique.</li>
+        <li><strong>Diapo 4</strong> — « Les outils du quotidien » : 3 cartes visuelles (correcteur, traduction, recommandation).</li>
+        <li><strong>Diapo 5</strong> — « Effets positifs » : puces + une image d'illustration générée.</li>
+        <li><strong>Diapo 6</strong> — « Risques » : encadré rouge avec « La copie sans comprendre ».</li>
+        <li><strong>Diapo 7</strong> — « Les 3 règles d'or » : 3 icônes (vérifier / citer / juger).</li>
+        <li><strong>Diapo 8</strong> — « Conclusion » : citation de clôture en grand.</li>
+        <li><strong>Diapo 9</strong> — « Merci — Des questions ? »</li>
+      </ul>
+      <p>Chaque diapo ne contient que <strong>des titres et des mots-clés</strong>, pas de paragraphes. Boutons en bas : <em>Regenerate</em> (regénérer), <em>Edit</em> (modifier), <em>Publish</em> (publier / exporter en PDF).</p>
+    </div>
+    <div class="warn">Ne laisse <strong>jamais</strong> une phrase de 2 lignes sur une diapo. L'auditoire lit, n'écoute plus, et toi tu ne sais plus quoi dire. Titre + 3 mots-clés maximum.</div>
+    <div class="tip">L'IA génère parfois des images sans rapport. Clique sur chaque image → <strong>« Remplacer »</strong> ou supprime-la. Une mauvaise image détruit un bon exposé.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne colle jamais ton script complet sur une diapo : le public lit, n'écoute plus, et toi tu perds le fil.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Écris le script oral minute par minute</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p>Colle ton plan et tape :</p>
+    <div class="prompt-box">Écris le script oral de mon exposé, diapositive par diapositive. Langage parlé, phrases courtes, aucun jargon. Ajoute les transitions entre les parties. Indique le timing en début de chaque diapo. Note entre crochets les moments où je dois montrer une diapo ou faire une pause.</div>
+    <p><strong>Voici ce que ChatGPT va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>[Diapo 1 — 0:00 à 0:45]</strong> Bonjour à tous. Avant de commencer, une question : qui a utilisé une IA cette semaine sans s'en rendre compte ? [Faire lever les mains, pause 3 secondes] Presque tout le monde, en fait. C'est exactement ce dont je vais vous parler pendant 10 minutes.</p>
+      <p><strong>[Diapo 2 — 0:45 à 1:15]</strong> Je vais d'abord montrer que l'IA est déjà partout, puis ses effets sur l'apprentissage, et enfin ce qu'elle ne sait pas faire. [Passer à la diapo suivante]</p>
+      <p><strong>[Diapo 3 — 1:15 à 3:00]</strong> Commençons par l'état des lieux. Vous croisez de l'IA tous les jours : le correcteur de ton téléphone, les films que Netflix te propose, la traduction de ton clavier. [Montrer la diapo 4] Aucun de ces outils ne demande d'installation. Ils sont déjà là.</p>
+      <p><strong>[Transition]</strong> Maintenant, la vraie question : est-ce que ça nous aide vraiment à apprendre ?</p>
+      <p><strong>[Diapo 5 — 3:00 à 4:30]</strong> D'abord le positif. Quand un étudiant fait relire son texte, il récupère ses fautes en deux minutes au lieu d'une heure. Le gain de temps est réel. [Pause, regarder le public]</p>
+      <p><strong>[Diapo 6 — 4:30 à 6:00]</strong> Mais attention. Le même outil peut faire le travail à la place de l'étudiant. Et là, il n'apprend rien. [Ralentir, insister sur « il n'apprend rien »]</p>
+      <p><strong>[Diapo 7 — 6:00 à 8:00]</strong> D'où les trois règles : vérifier, citer, garder son jugement. [Lentement, une règle à la fois, laisser 2 secondes entre chaque]</p>
+      <p><strong>[Diapo 8 — 8:00 à 9:30]</strong> Pour conclure, je reprends ma question de départ. [Refaire le geste des mains] Oui, l'IA est déjà dans nos vies. La différence, c'est celui qui sait s'en servir. Je vous remercie. [Diapo 9] Des questions ?</p>
+      <p><strong>Total : 9 min 30</strong> — tu as 30 secondes de marge pour respirer.</p>
+    </div>
+    <div class="tip">Imprime ce script en <strong>grand corps</strong> et note les transitions en surligneur. Le jour J, tu ne lis pas : tu regardes tes mots-clés et tu parles.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne rédige pas le script avant d'avoir figé tes diapos : tu devrais tout réécrire à la fin.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Anticipe 5 questions du public</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p>Colle ton plan + ton script et tape :</p>
+    <div class="prompt-box">Fais-moi 5 questions difficiles qu'un professeur pourrait poser après cet exposé. Pour chacune : la question, puis une réponse de 3 phrases maximum que je peux dire à voix haute. S'il manque une information dans mon plan, signale-le moi.</div>
+    <p><strong>Voici ce que ChatGPT va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li><strong>« Quelle est ta source pour dire que le gain de temps est réel ? »</strong> <br>Réponse : je m'appuie sur les travaux recensés par l'UNESCO en 2023 sur l'usage des IA génératives dans l'enseignement. Je peux vous montrer le lien, il est sur ma dernière diapo. Ce sont des mesures déclaratives, je suis prudent sur les chiffres exacts.</li>
+        <li><strong>« Tu ne crains pas que tes étudiants copient avec l'IA ? »</strong> <br>Réponse : si, et c'est exactement le risque que je traite en partie 2. Ma position est que l'interdiction ne marche pas : mieux vaut encadrer l'usage et évaluer la production orale, où la copie est impossible.</li>
+        <li><strong>« Pourquoi avoir choisi ce sujet et pas un autre ? »</strong> <br>Réponse : parce qu'il touche directement notre quotidien de futurs enseignants. Et parce que Perplexity m'a proposé 5 sujets, celui-ci avait le plus de sources vérifiables en français.</li>
+        <li><strong>« Tu as dit que l'IA n'a pas d'esprit critique. Alors qui doit vérifier ? »</strong> <br>Réponse : l'utilisateur, toujours. C'est ma troisième règle d'or. L'IA produit une réponse, elle ne juge pas sa véracité. Le jugement reste humain.</li>
+        <li><strong>« Quelle est la limite de ton exposé ? »</strong> <br>Réponse : je n'ai pas traité les inégalités d'accès, ni la question du coût des outils payants. C'est un choix : 10 minutes ne suffisaient pas. Mais c'est une piste d'ouverture.</li>
+      </ol>
+      <p><strong>Information manquante dans ton plan :</strong> tu n'as pas de chiffre précis sur le pourcentage d'étudiants utilisant l'IA. Ajoute une diapo « chiffre clé » ou évite d'en avancer.</p>
+    </div>
+    <div class="tip">La question <strong>« quelle est la limite de ton exposé ? »</strong> revient toujours. Prépare-la : reconnaître une limite ne te diminue pas, ça te rend crédible.</div>
+    <div class="warn">Ne promets <strong>jamais</strong> un chiffre que tu n'as pas vérifié. Dis plutôt : « je n'ai pas de donnée précise sur ce point » — c'est honnête et ça passe bien.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne prépare que des questions faciles : demande celles que le professeur pose vraiment, sinon tu seras déstabilisé le jour J.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Ajoute <code>« avec un schéma en ASCII »</code> à la fin de ton prompt pour obtenir un dessin fait de caractères du clavier.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Exposé sur « L'IA dans l'enseignement des langues »</h4>
+    <p><strong>Situation :</strong> on te donne ce thème pour un exposé de 10 minutes en module PEP. Tu pars de zéro.</p>
+
+    <p><strong>Ce que tu tapes (dans ChatGPT) :</strong></p>
+    <div class="prompt-box">Fais-moi le plan et le script de départ d'un exposé de 10 minutes sur « l'IA dans l'enseignement des langues ». Public : étudiants de 2ème année PEP. 3 parties, accroche, conclusion. Sois concret, donne des outils réels.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Accroche (0:45)</strong> — « Si ton correcteur te dit que ta phrase est fausse, qui a décidé ? Pas toi. Ce soir, on voit qui décide. »</p>
+      <p><strong>Partie 1 — L'IA déjà dans ta salle de classe (3 min)</strong></p>
+      <ul>
+        <li>Correcteur automatique (Grammarly) : il corrige pendant que tu écris.</li>
+        <li>Traduction (DeepL) : elle comprend le registre, pas seulement les mots.</li>
+        <li>Conversation (ChatGPT) : il joue le rôle d'un partenaire de dialogue.</li>
+      </ul>
+      <p><strong>Partie 2 — Ce que ça change réellement (3 min)</strong></p>
+      <ul>
+        <li>Production écrite : moins de fautes, mais plus d'uniformité dans les copies.</li>
+        <li>Oral : l'élève peut répéter 50 fois avec l'IA sans gêne — progrès mesurable.</li>
+        <li>Correction : le professeur gagne du temps sur la grammaire, le perd sur la vérification.</li>
+      </ul>
+      <p><strong>Partie 3 — Ce que l'IA ne sait pas faire (2 min)</strong></p>
+      <ul>
+        <li>Elle ne corrige pas une erreur qu'elle ne « voit » pas dans ton intention.</li>
+        <li>Elle peut inventer une règle de grammaire qui n'existe pas.</li>
+        <li>Règle d'or : elle propose, tu valides.</li>
+      </ul>
+      <p><strong>Conclusion (1 min)</strong> — « L'IA apprend la langue à ton élève ? Non. Elle lui donne un partenaire disponible 24 h/24. C'est énorme — à condition qu'il sache ce qu'il cherche. »</p>
+      <p><strong>Outils à montrer en diapo :</strong> Grammarly, DeepL, ChatGPT, NotebookLM.</p>
+    </div>
+
+    <div class="tip">Demande toujours <strong>« donne des outils réels »</strong> : sans ça, l'IA écrit « des logiciels spécialisés » et tu n'as rien à montrer.</div>
+
+    <div class="tip">Enchaîne avec : <code>« Écris-moi l'accompagnement oral de la diapo 3, 45 secondes, langue parlée. »</code> Tu récupères le texte à dire, diapo par diapo.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Exposé sur un auteur anglais (département Anglais)</h4>
+    <p><strong>Situation :</strong> départements Anglais. Exposé de 10 minutes sur un auteur du programme, par exemple Shakespeare.</p>
+
+    <p><strong>Ce que tu tapes (dans Claude) :</strong></p>
+    <div class="prompt-box">Prépare un exposé de 10 minutes sur William Shakespeare pour des étudiants de 2ème année de licence d'anglais. Donne : une biographie en 5 dates, 3 œuvres avec 1 citation courte chacune, et 2 angles d'analyse originaux pour éviter le catalogue.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Claude</h4>
+      <p><strong>Biographie — 5 dates (2 min)</strong></p>
+      <ol>
+        <li><strong>1564</strong> — Naissance à Stratford-upon-Avon, le 23 avril.</li>
+        <li><strong>1582</strong> — Mariage avec Anne Hathaway, il a 18 ans.</li>
+        <li><strong>1592</strong> — Première trace de lui à Londres comme dramaturge.</li>
+        <li><strong>1599</strong> — Ouverture du théâtre du Globe, sa maison de production.</li>
+        <li><strong>1616</strong> — Mort à Stratford, il a 52 ans.</li>
+      </ol>
+      <p><strong>3 œuvres et 1 citation chacune (4 min)</strong></p>
+      <ul>
+        <li><strong>Romeo and Juliet (1597)</strong> — « What's in a name? That which we call a rose by any other name would smell as sweet. » → Le nom ne change rien à la chose.</li>
+        <li><strong>Hamlet (1603)</strong> — « To be, or not to be, that is the question. » → L'hésitation comme moteur du drame.</li>
+        <li><strong>Macbeth (1606)</strong> — « Fair is foul, and foul is fair. » → L'inversion des valeurs, thème politique.</li>
+      </ul>
+      <p><strong>2 angles d'analyse (3 min)</strong></p>
+      <ol>
+        <li><strong>La langue inventée</strong> — Shakespeare a créé ou popularisé plus de 1 700 mots anglais encore utilisés aujourd'hui (break the ice, wild goose chase). Angle : l'auteur comme fabrique de la langue, pas comme témoin.</li>
+        <li><strong>Le public du Globe</strong> — Des billets à 1 penny, un public mêlé de toutes les classes. Angle : comment un texte « populaire » est devenu « scolaire ». Question : qui a décidé que c'était du grand art ?</li>
+      </ol>
+      <p><strong>Ouverture finale :</strong> « Si ses pièces étaient jouées ce soir dans une discothèque de ta ville, le public comprendrait-il les blagues ? »</p>
+    </div>
+
+    <div class="tip">Les <strong>2 angles originaux</strong> font la différence : un plan qui se contente de résumer la biographie ne note pas. Demande toujours <code>« 2 angles pour éviter le catalogue »</code>.</div>
+
+    <div class="tip">Vérifie les <strong>dates et les citations</strong> sur Perplexity avant de les afficher. Une citation mal recopiée se voit immédiatement à l'oral.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Exposé sur la culture hispanique (département Espagnol)</h4>
+    <p><strong>Situation :</strong> départements Espagnol et Français. Exposé bilingue ou en français sur un élément de culture hispanique, par exemple le concept d'<em>hispanidad</em> ou la fête des <em>fiestas patronales</em>.</p>
+
+    <p><strong>Ce que tu tapes (dans ChatGPT) :</strong></p>
+    <div class="prompt-box">Prépare un exposé de 10 minutes en français sur la culture hispanique à travers les fêtes populaires. Donne un plan en 3 parties, 5 expressions espagnoles à prononcer à l'oral avec leur traduction, et 2 questions à poser au public.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Partie 1 — Qu'est-ce qu'une fête populaire en Espagne ? (3 min)</strong></p>
+      <ul>
+        <li>La <em>fiesta patronale</em> rend hommage au saint patron de la ville.</li>
+        <li>Elle est à la fois religieuse et profane : procession le matin, fête le soir.</li>
+        <li>Exemple : <em>Las Fallas</em> à Valence, en mars, avec des statues brûlées.</li>
+      </ul>
+      <p><strong>Partie 2 — Le rôle de la communauté (3 min)</strong></p>
+      <ul>
+        <li>Chaque quartier (<em>barrio</em>) prépare sa fête toute l'année.</li>
+        <li>Les rôles se transmettent de génération en génération.</li>
+        <li>La langue y joue un rôle : chants, cris, devises en espagnol ou en catalan.</li>
+      </ul>
+      <p><strong>Partie 3 — Une fête, ça dit qui on est (2 min)</strong></p>
+      <ul>
+        <li>La fête montre l'identité locale face à la mondialisation.</li>
+        <li>Elle attire aussi les touristes : identité ou vitrine ?</li>
+      </ul>
+      <p><strong>5 expressions à dire à l'oral :</strong></p>
+      <ol>
+        <li><strong>¡Bienvenidos!</strong> — Bienvenue à tous (pour ouvrir).</li>
+        <li><strong>¿Sabíais que…?</strong> — Saviez-vous que… (pour surprendre).</li>
+        <li><strong>La fiesta mayor</strong> — La grande fête (le moment le plus important).</li>
+        <li><strong>DeGeneration en generación</strong> — De génération en génération (Partie 2).</li>
+        <li><strong>¡Muchas gracias por vuestra atención!</strong> — Merci beaucoup pour votre attention (pour conclure).</li>
+      </ol>
+      <p><strong>2 questions au public :</strong></p>
+      <ol>
+        <li>« Selon vous, une fête qui attire des touristes reste-t-elle une fête d'identité ? »</li>
+        <li>« Quelle fête de ton pays correspondrait à ce modèle ? »</li>
+      </ol>
+    </div>
+
+    <div class="tip">Les <strong>expressions en espagnol</strong> prononcées à l'oral font toujours leur effet : le public se réveille. Entraîne-toi à les dire lentement, une par une.</div>
+
+    <div class="tip">La dernière question au public (<strong>« quelle fête de ton pays… »</strong>) crée le lien avec ton propre contexte. Demande toujours : <code>« Ajoute une question qui relie le sujet à mon pays. »</code></div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>L'ordre compte.</strong> Sujet → plan → diapos → script → questions. Jamais l'inverse.</li>
+      <li><strong>3 parties, pas 4.</strong> Au-delà, tu dépasses les 10 minutes et le public décroche.</li>
+      <li><strong>Une idée par diapositive.</strong> Si tu mets 2 idées, tu en perds une.</li>
+      <li><strong>Écris le script AVANT de répéter.</strong> Sans texte, tu improvises et tu oublies ta conclusion.</li>
+      <li><strong>Répète debout, à voix haute, chronométré.</strong> Sérieusement, debout. S'asseoir fausse le timing.</li>
+      <li><strong>Note les transitions.</strong> C'est là que tu perds le fil, pas au milieu d'une partie.</li>
+      <li><strong>Prépare la question « et les limites ? »</strong> Elle arrive toujours. Une réponse honnête te sauve.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Coller un paragraphe entier sur une diapo → le public lit, n'écoute plus. <strong>✅ Titre + 3 mots-clés maximum.</strong></li>
+    <li>❌ Laisser l'IA donner un chiffre sans source → tu te fais reprendre à la question. <strong>✅ Vérifie chaque chiffre sur Perplexity.</strong></li>
+    <li>❌ Réciter ton script mot pour mot → ça sonne appris, tu stresses. <strong>✅ Retiens les mots-clés, pas les phrases.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>4 étapes, 30 minutes :</strong> sujet, plan, diapos, script.</li>
+      <li><strong>3 parties maximum</strong> et une idée par diapositive.</li>
+      <li><strong>Le script se dit à voix haute</strong>, chronométré, debout.</li>
+      <li><strong>Une source vérifiable</strong> pour chaque chiffre que tu annonces.</li>
+      <li><strong>Prépare la question sur les limites</strong> — elle arrive toujours.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>Dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à OpenAI, Google, DeepSeek… Elle apprend sur des <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés. <strong>Ton PC, ton téléphone ou celui de ton voisin ne servent pas à entraîner ChatGPT.</strong></p>
+  <div class="warn">
+    <strong>⚠️ Attention :</strong> seul un data center de la société qui produit l'IA est utilisé pour l'entraînement — pas les ordinateurs des utilisateurs connectés à Internet.
+  </div>
+
+  <h3>2. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> Un aspirateur Roomba décide où aller (l'IA) et se déplace, aspire (le robot). ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>3. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Ni mot de passe, ni carte bancaire, ni pièce d'identité, ni adresse personnelle. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.</p>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> une <strong>IA locale</strong> (Ollama) ne fait sortir aucune donnée de ton ordinateur. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés). <strong>Ton exposé et tes diapos partent sur les serveurs de l'outil qui les génère : garde une copie locale de tout ce que tu produis, et ne colle jamais une image où tu es reconnaissable.</strong>
+  </div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockées vos données ?</h3>
+  <p>Dans les <strong>data centers de Google, OpenAI, Anthropic</strong>… répartis en Europe et aux États-Unis. <strong>Aucun data center de ce type dans la plupart des pays du Sud</strong> : tes e-mails, tes documents et tes conversations partent à l'étranger, souvent aux États-Unis ou en Europe.</p>
+
+  <h3>2. Un employé peut-il lire ce que j'écris ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle</strong> : accès justifié, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré). En revanche, si un tribunal américain ordonne l'accès, la société doit obéir — c'est le <strong>U.S. CLOUD Act</strong>, valable même pour les données stockées en Europe.</p>
+
+  <h3>3. Comment se protéger ?</h3>
+  <ul>
+    <li><strong>IA locale (Ollama)</strong> — aucune donnée ne quitte ton ordinateur.</li>
+    <li><strong>Gestionnaire de mots de passe</strong> — Bitwarden ou KeePass, jamais un chat IA.</li>
+    <li><strong>Désactive l'entraînement</strong> — dans ChatGPT/Gemini : « Améliorer le modèle ».</li>
+    <li><strong>Signal ou ProtonMail</strong> — chiffrement de bout en bout pour les messages sensibles.</li>
+  </ul>
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mets jamais dans un chat IA ce que tu ne voudrais pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères. <strong>Ton exposé et tes diapos partent sur les serveurs de l'outil qui les génère : garde une copie locale de tout ce que tu produis, et ne colle jamais une image où tu es reconnaissable.</strong>
+  </div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=comment+faire+un+bon+expos%C3%A9+oral+conseils" target="_blank">Réussir son exposé oral (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=gamma+ai+presentation+tutorial+generate+slides" target="_blank">Gamma AI — créer des slides (EN)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=pr%C3%A9parer+orchestration+oral+universit%C3%A9+stress" target="_blank">Gérer le stress à l'oral (FR)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Combien de parties maximum dans un exposé de 10 minutes ? <br><em>(Réponse : 3 — au-delà, tu dépasses le temps.)</em></li>
+    <li>Que faut-il écrire sur une diapositive ? <br><em>(Réponse : un titre et 3 mots-clés, jamais un paragraphe.)</em></li>
+    <li>Dans quel ordre prépare-t-on un exposé ? <br><em>(Réponse : sujet → plan → diapos → script → questions.)</em></li>
+    <li>Comment réagir si l'IA avance un chiffre que tu n'as pas vérifié ? <br><em>(Réponse : le vérifier sur Perplexity, ou ne pas l'affirmer à l'oral.)</em></li>
+    <li>Quelle question du public faut-il préparer en priorité ? <br><em>(Réponse : « Quelles sont les limites de ton exposé ? ») </em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>Problématique</strong> — La question centrale à laquelle ton exposé répond en conclusion.</li>
+    <li><strong>Accroche</strong> — La première phrase qui capte l'attention : question, chiffre ou anecdote.</li>
+    <li><strong>Transition</strong> — La phrase qui relie deux parties et empêche de perdre le fil.</li>
+    <li><strong>Script oral</strong> — Le texte de ce que tu vas dire, diapo par diapo, minuté.</li>
+    <li><strong>Diapositive</strong> — Une page affichée à l'écran : titre + mots-clés, une seule idée.</li>
+    <li><strong>Ouverture</strong> — La dernière phrase qui élargit le sujet et lance le débat.</li>
+  </ul>
+
+  <div class="nav-footer">
+    <a href="seance-04.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-06.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+    <a href="seance-13.html">🎓 Séance 13</a>
+  </div>
+
+</div>
+</body>
+</html>

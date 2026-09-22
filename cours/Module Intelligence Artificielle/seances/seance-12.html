@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 12 — Construire son IA + Charte d'usage</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 12 — Construire son IA : Dify + Charte d'usage</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Un assistant d'essai avant les vrais documents</strong><br>
+    Crée d'abord ton assistant Dify avec 2 ou 3 pages de cours pilote dans une base de test, jamais tes documents personnels : tu peux tout casser, régénérer, recommencer. Passe les 3 tests limites (météo, devoir à ma place, hors cours), puis duplique l'application et ajoute tes 5 vrais PDF.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu auras construit (sans coder) un assistant IA qui répond uniquement d'après tes propres cours — et tu auras rédigé la Charte d'usage qui explique à un jury, un collègue ou un élève comment cet outil est utilisé proprement.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Jusqu'ici, tu as utilisé des IA qui savent tout sur le monde et rien sur toi. Ici, c'est l'inverse : <strong>un assistant qui ne connaît que tes 5 PDF de cours</strong>, qui répond avec la page exacte, et qui ne sort jamais du programme. Pour réviser, c'est un examinateur disponible 24h/24. Et la charte d'usage qui l'accompagne est la seule pièce qui différencie un usage étudiant sérieux d'un usage qu'un jury sanctionne.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>Un assistant = un modèle + un périmètre.</strong> Le modèle sait tout ; ton <em>prompt système</em> et tes documents lui disent de quoi il a le droit de parler.</li>
+    <li><strong>La base de connaissances (RAG)</strong> : tes PDF sont découpés en morceaux, indexés, puis rappelés au besoin. L'IA ne « devine » plus — elle cite.</li>
+    <li><strong>La charte engage l'utilisateur, pas l'outil.</strong> Elle précise ce qui est vérifié, ce qui est déclaré, ce qui ne sera jamais déposé. C'est ton livrable de fin de module.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Construire un assistant qui connaît TES cours</strong><br>
+    Tu as 5 PDF de cours à maîtriser avant les partiels. Tu ouvres Dify (gratuit), tu crées un chatbot, tu déposes tes 5 PDF, tu colles un prompt système. Depuis, tu poses « Sur quelle page le feedback descriptif est-il défini ? » et l'IA te répond avec la page exacte. Ton assistant ne connaît que TES cours — et personne d'autre.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Choisir le bon type d'application (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 dify.ai → Get Started (gratuit)</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> créer ton espace de travail Dify, puis trancher — Chatbot, Agent, Workflow ou Générateur de texte — avant de construire quoi que ce soit. Choisir d'abord, c'est éviter de démolir ensuite.</p>
+    <p><strong>Ce que tu tapes (question préalable, dans ChatGPT ou l'aide de Dify) :</strong></p>
+    <div class="prompt-box">Je veux créer un assistant qui répond à des questions sur 5 PDF de cours en français, en citant la page. Dans Dify, quel type d'application choisir parmi Chatbot / Agent / Workflow / Générateur de texte, et pourquoi ? Réponds en 4 points, puis donne-moi le nom à lui donner.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li><strong>Chatbot + base de connaissances</strong> ← ton choix. Conversation aller-retour, réponses fondées sur tes PDF, citations de page. C'est exactement ton besoin.</li>
+        <li><strong>Agent</strong> : utile s'il doit appeler des outils (chercher un fichier, exécuter du code). Trop pour des réponses de cours, et plus difficile à maîtriser.</li>
+        <li><strong>Workflow</strong> : traitement en chaîne fixe (traduire puis résumer puis écrire). Ton usage est libre et imprévisible → non adapté.</li>
+        <li><strong>Générateur de texte</strong> : un seul tour, style formulaire. Aucune conversation, donc pas de questions de révision.</li>
+      </ol>
+      <p><strong>Nom proposé :</strong> « Mon assistant PEP — Didactique &amp; Anglais » (un nom lisible vaut mieux qu'un nom d'outil : l'utilisateur doit comprendre ce qu'il interroge).</p>
+      <p><strong>Sur Dify :</strong> <code>Get Started</code> (gratuit, sans carte bancaire) → <code>Create App</code> → type <code>Chatbot</code> → tu arrives sur l'écran d'édition : à gauche le <em>prompt système</em>, en dessous la <em>base de connaissances</em>, à droite le panneau de test.</p>
+    </div>
+    <div class="tip">Donne un nom qui dit <strong>ce que l'assistant sait faire</strong> : « Mon assistant PEP — Didactique &amp; Anglais ». Un outil mal nommé est un outil qu'on ne réutilise pas.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne paie jamais un abonnement pour ton premier assistant : la formule gratuite suffit pour 5 PDF et un usage de révision — et évite d'exposer une carte bancaire à un outil que tu ne maîtrises pas encore.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Écrire le prompt système (7 min)</h4>
+    <div class="step-meta">
+      <span>📍 Dify → champ « Prompt système »</span>
+      <span>⏱️ 7 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> coller la règle de comportement de ton assistant. C'est le fichier <code>AGENTS.md</code> de la séance 11, mais pour un chatbot : sans lui, l'assistant répond n'importe quoi avec assurance.</p>
+    <p><strong>Ce que tu colles (prompt système) :</strong></p>
+    <div class="prompt-box">Tu es l'assistant pédagogique de la 2ème année PEP, Faculté des Langues Étrangères de Mostaganem.
+Règles :
+1. Réponds UNIQUEMENT à partir des documents fournis. Si l'information n'y est pas, écris exactement : « Je ne trouve pas cette information dans les documents. » et invite à consulter le cours.
+2. Cite toujours la source : nom du document et page.
+3. Réponds en français, ton pédagogique, avec un exemple quand c'est possible.
+4. Termine par une question de vérification : « Qu'est-ce que tu en retiens ? »
+5. Si la demande concerne autre chose que les cours (météo, recettes, devoir à rendre), refuse poliment et rappelle ton rôle.
+6. Jamais de conseils juridiques ou médicaux.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre (premier test dans le panneau de droite) :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique du chatbot Dify</h4>
+      <p><em>« Bonjour ! Je suis l'assistant pédagogique de la 2ème année PEP, Faculté des Langues Étrangères de Mostaganem. Je réponds d'après les documents du cours : tu peux me poser une question sur un chapitre, me demander une définition ou un exemple. Si l'information n'est pas dans les documents, je te le dirai franchement. Qu'est-ce que tu veux réviser en premier ? »</em></p>
+      <p><em>→ Test immédiat, avant même d'ajouter les documents : tape « Qui a écrit Hamlet ? » — l'assistant, sans base de connaissances, doit répondre selon la règle 1 (« Je ne trouve pas cette information dans les documents. »). S'il répond Shakespeare, c'est que ta règle 1 n'a pas été comprise : reformule-la en première position.</em></p>
+    </div>
+    <div class="tip">Place la règle <strong>« réponds uniquement d'après les documents »</strong> en <strong>première ligne</strong> : l'IA accorde plus de poids à ce qui ouvre le prompt — c'est là que se joue le périmètre.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne rédige jamais un prompt système sans la règle de refus (« si l'information n'y est pas, dis-le ») : un assistant qui invente une page de cours ruine tout l'exercice.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Déposer tes 5 PDF et poser une question documentée (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 Dify → Base de connaissances</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> importer tes cours, puis poser la question qui prouve que l'assistant cite vraiment : une question avec page, à laquelle seule une lecture réelle permet de répondre.</p>
+    <p><strong>Ce que tu tapes (après l'import des 5 fichiers) :</strong></p>
+    <div class="prompt-box">Sur quelle page le feedback descriptif est-il défini, et quelle différence fait-on avec le feedback sommatif ? Cite le document.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique du chatbot Dify</h4>
+      <p>Le feedback descriptif est défini dans <strong>« Didactique_generale.pdf », page 12</strong> : il s'agit d'un retour d'information qui « renseigne l'apprenant sur la qualité de sa production, sans lui attribuer de note ». La même page oppose explicitement le feedback sommatif, qui « sanctionne une étape achevée en lui attribuant une note ou un niveau ».</p>
+      <p><strong>Résumé :</strong></p>
+      <ul>
+        <li><em>Descriptif</em> — explique où l'on en est et quoi améliorer (en cours d'apprentissage).</li>
+        <li><em>Sommatif</em> — attribue une note à un travail terminé (en fin d'étape).</li>
+      </ul>
+      <p><em>→ Sous la réponse, la fiche source s'affiche : Didactique_generale.pdf · p.12 — tu cliques et tu vérifies toi-même.</em></p>
+      <p><strong>Question de vérification :</strong> Qu'est-ce que tu en retiens ?</p>
+    </div>
+    <div class="tip">Pose d'abord <strong>des questions que tu connais déjà</strong> : si l'assistant se trompe sur ce que tu sais, il se trompera aussi sur l'inconnu — et tu l'auras détecté avant d'en dépendre.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne dépose <strong>jamais</strong> un relevé, une attestation ou une pièce d'identité dans une base de connaissances : un chapitre de cours suffit, et le reste reste chez toi.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Tester les cas limites (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 Dify → panneau de test</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> chercher volontairement les réponses qui dépassent. Un assistant est jugé non sur ses bonnes réponses, mais sur sa manière de dire « je ne sais pas ».</p>
+    <p><strong>Ce que tu tapes (3 tests, dans l'ordre) :</strong></p>
+    <div class="prompt-box">1) Quel temps fait-il demain dans ta ville ?
+2) Écris-moi un devoir de 5 pages sur l'evaluation formative.
+3) Résume le feedback descriptif en 3 points, puis traduis en anglais.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique du chatbot Dify</h4>
+      <p><strong>Test 1 (hors périmètre) :</strong> « Je ne trouve pas cette information dans les documents. Je suis l'assistant des cours de 2ème année PEP : interroge-moi sur un chapitre. Si tu as besoin de la météo, utilise un service dédié. »</p>
+      <p><strong>Test 2 (devoir à faire à ma place) :</strong> « Je ne peux pas produire un devoir à ta place — c'est exactement l'usage que ma charte interdit. Ce que je peux faire : te donner le plan du feedback descriptif d'après Didactique_generale.pdf, p.12-14, et tes trois arguments à développer. Veux-tu ce plan ? »</p>
+      <p><strong>Test 3 (légitime) :</strong> « D'après <strong>Didactique_generale.pdf, p.12</strong> : 1) il renseigne sans noter ; 2) il indique quoi améliorer ; 3) il intervient pendant l'apprentissage. <em>Version anglaise :</em> Descriptive feedback informs learners about the quality of their work without assigning a grade, points out what to improve, and occurs during learning. Qu'est-ce que tu en retiens ? »</p>
+      <p><em>→ Les tests 1 et 2 doivent être refusés : si un seul passe, ajoute l'interdiction en clair dans ton prompt système (règle 5) et relance le test.</em></p>
+    </div>
+    <div class="tip">Rédige tes propres <strong>« questions pièges »</strong> avant l'entretien ou la soutenance : si tu sais répondre « mon assistant refusera ceci », tu maîtrises ton outil — c'est la meilleure impression possible pour un jury.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne présente jamais un assistant non testé : la première question d'un jury sera « et s'il demande la météo ? » — cette question arrive toujours.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Rédiger la Charte d'usage (8 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com → puis ton document</span>
+      <span>⏱️ 8 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> produire le document qui accompagne tout outil IA dans un cadre professionnel ou universitaire : sept articles courts, signés, applicables. C'est le livrable officiel de la fin du module.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Rédige une « Charte d'usage de l'IA » en 7 articles courts pour un étudiant de 2ème année PEP (FLE, Mostaganem) qui utilise des assistants IA pour réviser, rédiger et traduire. Chaque article : un titre en 4 mots maximum, une phrase d'engagement, une phrase de justification. Ton : professionnel, sans jargon, utilisable tel quel dans un mémoire ou un exposé.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Charte d'usage de l'IA — 2ème année PEP</strong></p>
+      <ol>
+        <li><strong>L'IA assiste, elle ne remplace pas.</strong> J'utilise l'IA comme un point de départ, jamais comme le producteur final de mon travail. <em>Justification : un travail noté doit témoigner de ma compréhension.</em></li>
+        <li><strong>Je vérifie avant de retenir.</strong> Toute information issue d'une IA est contrôlée dans une source primaire avant d'être citée ou réutilisée. <em>Justification : les IA produisent des informations fausses avec assurance.</em></li>
+        <li><strong>Aucune donnée personnelle.</strong> Je ne dépose dans aucun outil IA un mot de passe, une pièce d'identité, une donnée d'un tiers ou un document confidentiel. <em>Justification : ces données partent vers des serveurs étrangers soumis à des lois étrangères.</em></li>
+        <li><strong>Je déclare l'usage.</strong> Je précise quel outil a aidé et pour quelle tâche dès qu'une production est remise ou présentée. <em>Justification : l'usage déclaré est un usage maîtrisé ; l'usage caché est une faute.</em></li>
+        <li><strong>Pas de travail substitué.</strong> Je ne remets pas un devoir, une dissertation ou une traduction intégralement produite par une IA. <em>Justification : la substitution est une faute d'honnêteté intellectuelle, sanctionnée comme telle.</em></li>
+        <li><strong>Licences et conditions respectées.</strong> J'utilise uniquement les formules gratuites ou payées au juste prix, dans le cadre des conditions d'utilisation. <em>Justification : contourner un paiement ou une protection n'est ni un raccourci ni un droit.</em></li>
+        <li><strong>Je signale l'erreur.</strong> Si une réponse de mon assistant ou d'un outil s'avère fausse, je la corrige dans la source et j'informe les autres utilisateurs. <em>Justification : une erreur propagée devient une erreur collective.</em></li>
+      </ol>
+      <p><em>→ Signé : [Ton nom] — [Ton département] — [Date]</em></p>
+      <p><em>→ Tu peux l'ajouter en page 2 de ton mémoire, ou la coller dans le README de ton assistant Dify.</em></p>
+    </div>
+    <div class="tip">Fais <strong>relire ta charte par une personne extérieure</strong> avant de la signer : un article que personne ne comprend à la première lecture est un article qui ne sera jamais appliqué.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne recopie pas une charte toute faite sans la modifier : un jury demande toujours « quel article as-tu ajouté et pourquoi ? » — la réponse attendue est la tienne, pas celle de l'IA.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Un <strong>schéma en ASCII</strong> est un dessin fait uniquement avec des caractères du clavier (tirets, barres, flèches, plus). Ça marche partout, sans image. Très utile pour comprendre une idée visuellement en un coup d'œil.</p>
+
+  <p><strong>Comment demander un schéma à l'IA ?</strong> Ajoute simplement <code>« avec un schéma en ASCII »</code> à la fin de ton prompt.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Assistant de conversation anglaise (département Anglais)</h4>
+    <p><strong>Situation :</strong> tu dois préparer un oral d'anglais et tu n'as personne avec qui t'entraîner chaque jour.</p>
+
+    <p><strong>Ce que tu colles (prompt système) :</strong></p>
+    <div class="prompt-box">You are my English conversation coach for an oral exam. Rules: 1) Always reply in English only. 2) Ask me one question at a time about my daily life as a university student. 3) After 3 exchanges, correct my mistakes in a short list: mistake, correct form, rule. 4) Then continue. 5) Never answer for me and never give me a full paragraph to copy.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique du chatbot Dify</h4>
+      <p>Let's practise. I will ask you one question at a time, and every three answers I will correct you in a short list.</p>
+      <p><strong>Question 1 :</strong> To start easy — what does a typical day look like for you as a second-year student?</p>
+      <p><em>(Après tes 3 réponses)</em></p>
+      <p><strong>Your corrections :</strong></p>
+      <ul>
+        <li><em>Mistake:</em> « I am going to the university since 8 o'clock » → <em>Correct:</em> « I go to the university at 8 o'clock » — rule: use <em>at</em> for a precise time, and the present simple for a routine.</li>
+        <li><em>Mistake:</em> « I am very interesting in phonetics » → <em>Correct:</em> « I am very interested in phonetics » — rule: <em>-ing</em> describes the thing, <em>-ed</em> describes the person.</li>
+      </ul>
+      <p>Good. Now, question 4 — what do you usually do after your last class?</p>
+    </div>
+
+    <div class="tip">L'article <strong>« never give me a full paragraph to copy »</strong> est celui qui change tout : sans lui, l'IA te donne des phrases prêtes à réciter, et à l'oral du vrai examen tu restes muet.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Générateur de plan de dissertation (département Français)</h4>
+    <p><strong>Situation :</strong> le sujet tombe, il te reste 15 minutes de préparation. Tu veux un plan-discuté solide, pas un plan recopié.</p>
+
+    <p><strong>Ce que tu colles (prompt système) :</strong></p>
+    <div class="prompt-box">Tu es un assistant de méthodologie. Quand je te donne un sujet de dissertation : 1) reformule-le en une problématique explicite, 2) propose un plan en 3 parties avec un titre argument par partie, 3) indique pour chaque partie un exemple concret tiré du cours, 4) signale un piège méthodologique possible. N'écris JAMAIS le développement : je dois le produire moi-même. Réponds en français.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique du chatbot Dify</h4>
+      <p><strong>Sujet :</strong> « L'œuvre populaire est-elle une œuvre mineure ? »</p>
+      <p><strong>Problématique :</strong> Dans quelle mesure la diffusion large d'une œuvre affecte-t-elle sa valeur littéraire ?</p>
+      <ol>
+        <li><strong>I. L'apparente médiocrité du populaire</strong> — argument : standards de production de masse. <em>Exemple du cours :</em> la série alimentée par un schéma éditorial répétitif. <em>Piége :</em> confondre « populaire » et « simpliste ».</li>
+        <li><strong>II. Une valeur reconnue par la critique</strong> — argument : succès critique d'œuvres d'abord commerciales. <em>Exemple du cours :</em> le roman feuilleton réhabilité par l'analyse. <em>Piége :</em> argumenter par le nombre de ventes.</li>
+        <li><strong>III. Dépasser l'opposition : le jugement dépend du regard</strong> — argument : la valeur se construit dans la réception. <em>Exemple du cours :</em> l'évolution du canon enseigné. <em>Piége :</em> conclure « ça dépend » sans critère.</li>
+      </ol>
+      <p><em>→ Développement non rédigé, conformément à la règle 5. Prochaine étape : écris la partie I en 20 minutes et je te la corrige selon la méthode de la séance 8.</em></p>
+    </div>
+
+    <div class="tip">L'interdiction <strong>« n'écris jamais le développement »</strong> est la règle la plus efficace d'une charte : elle transforme l'assistant en directeur de travail au lieu d'auteur de substitution.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Correcteur d'exercices d'espagnol (département Espagnol)</h4>
+    <p><strong>Situation :</strong> tu as corrigé tes exercices, tu veux une relecture qui t'explique tes fautes plutôt qu'une copie propre.</p>
+
+    <p><strong>Ce que tu colles (prompt système) :</strong></p>
+    <div class="prompt-box">Tu es correcteur d'espagnol pour des étudiants de 2ème année. Quand je colle un exercice : 1) indique chaque erreur avec la phrase, la correction et la règle en une phrase, 2) classe en : conjugaison / grammaire / vocabulaire, 3) note /10 avec la répartition, 4) propose un exercice de 3 phrases sur TA faute la plus fréquente. Réponds en français, sauf les exemples espagnols.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique du chatbot Dify</h4>
+      <p><strong>CONJUGAISON</strong></p>
+      <ol>
+        <li>« Cuando era niño, **iba** a la playa todos los días » — correct (imparfait, habitude) ✓</li>
+        <li>« Ayer **fui** a la biblioteca y **leí** dos capítulos » — correct (prétérit, action terminée) ✓</li>
+        <li>« Si yo **tengo** tiempo, **voy** contigo » → « Si yo **tengo** tiempo, **iré** contigo » — après <em>si + présent</em>, le futur simple exprime la conséquence (conditionnel de premier type).</li>
+      </ol>
+      <p><strong>GRAMMAIRE</strong> — « Me gusta mucho los libros » → « Me gustan mucho los libros » : le verbe s'accorde avec le complément postposé (les livres, pluriel).</p>
+      <p><strong>VOCABULAIRE</strong> — « realizar un examen » → « hacer un examen » : <em>realizar</em> se dit pour une démarche, non pour un examen.</p>
+      <p><strong>Note : 7/10</strong> — conjugaison 3/4, grammaire 2/3, vocabulaire 2/3.</p>
+      <p><strong>Exercice ciblé (accord gustar) :</strong> Complète : 1) ______ (gustar) las matemáticas. 2) A mí, ______ (interesar) la didactique. 3) ¿Te ______ (encantar) este curso ?</p>
+      <p><em>Réponses données à la correction suivante — je ne corrige que si tu me relances.</em></p>
+    </div>
+
+    <div class="tip">L'exercice <strong>« sur TA faute la plus fréquente »</strong> fait de l'assistant un tuteur personnel : en trois sessions, tu verras ta faute habituelle disparaître de la liste.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>La règle de refus en première ligne.</strong> « Réponds uniquement d'après les documents, sinon dis-le » — c'est ce qui sépare un assistant d'un bavard.</li>
+      <li><strong>Cite la source ou rien.</strong> « Nom du document + page » : sans citation, impossible de vérifier, donc impossible de réviser.</li>
+      <li><strong>Valide avec des questions que tu connais déjà.</strong> Tu ne peux pas détecter une erreur sur un sujet que tu ignores.</li>
+      <li><strong>Trois questions pièges préparées.</strong> Météo, devoir à ma place, sujet hors cours — le jury posera l'une des trois.</li>
+      <li><strong>Rien de personnel dans la base.</strong> Cinq chapitres suffisent ; relevés et attestations restent chez toi.</li>
+      <li><strong>Un seul article ajouté à la charte.</strong> Celui que tu écris toi-même est celui que tu sauras défendre à l'oral.</li>
+      <li><strong>Déclare toujours l'outil.</strong> L'usage annoncé est un usage maîtrisé ; l'usage caché devient une faute.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Un assistant qui cite mal ou pas → tu révises des inventions. <strong>✅ Exige « document + page » et vérifie deux citations par session.</strong></li>
+    <li>❌ Déposer des données personnelles dans la base → elles partent à l'étranger. <strong>✅ Des chapitres de cours, rien d'autre.</strong></li>
+    <li>❌ Une charte copiée-collée → le jury la percute en une question. <strong>✅ Ajoute ton article personnel et attends-toi à ce qu'on te le demande.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>Assistant = modèle + périmètre</strong> : prompt système et documents fixent ce dont il a le droit de parler.</li>
+      <li><strong>La base de connaissances (RAG)</strong> indexe tes PDF et transforme « je pense » en « page 12 ».</li>
+      <li><strong>La règle de refus est la première</strong> : un assistant maîtrisé sait dire « je ne trouve pas ».</li>
+      <li><strong>Teste les cas limites</strong> avant de te fier à ton outil : météo, devoir, hors sujet.</li>
+      <li><strong>La charte engage l'utilisateur</strong> : 7 articles, un signé de ta main, déclaré à chaque usage.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>L'IA apprend dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à des sociétés : OpenAI pour ChatGPT, Google pour Gemini, DeepSeek pour DeepSeek.</p>
+  <p>Elle apprend à partir de <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés, articles. <strong>Ce ne sont PAS les ordinateurs des utilisateurs</strong> connectés à Internet.</p>
+  <div class="warn">
+    <strong>⚠️ Ton PC, ton téléphone, le PC de ton voisin : rien de tout ça n'est utilisé pour entraîner ChatGPT.</strong> Seul un data center de la société est utilisé.
+  </div>
+
+  <h3>2. Peut-on créer une IA simple avec 1000 photos de chats ?</h3>
+  <p><strong>Oui, c'est possible en 30 minutes avec Google Colab (gratuit).</strong> Voici les étapes :</p>
+  <ol>
+    <li><strong>Collecte</strong> : 500 photos de chats + 500 photos d'autres choses, dans deux dossiers.</li>
+    <li><strong>Entraînement</strong> : un petit réseau de neurones apprend la différence (code fourni ci-dessous).</li>
+    <li><strong>Test</strong> : tu lui montres une nouvelle photo, il dit « Chat » ou « Pas chat ».</li>
+  </ol>
+  <div class="exemple">
+    <h4>🤖 Code Python minimal (Google Colab)</h4>
+<pre>
+import tensorflow as tf
+
+train = tf.keras.utils.image_dataset_from_directory(
+    "dataset/", image_size=(128,128), batch_size=32)
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Rescaling(1./255),
+    tf.keras.layers.Conv2D(32, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(64, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(2, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy'])
+model.fit(train, epochs=10)
+</pre>
+  </div>
+  <div class="warn">
+    <strong>⚠️ Important :</strong> ce programme <strong>calcule</strong>, il ne « comprend » pas. Il a juste appris quelles formes ressemblent à un chat.
+  </div>
+
+  <h3>3. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> On peut les combiner :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Exemple</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">L'IA fait</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Le robot fait</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aspirateur Roomba</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Décide où aller</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Se déplace, aspire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Voiture Tesla</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Reconnaît les piétons</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Freine, tourne</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Robot médical Da Vinci</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyse les mouvements</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Coupe précisément</td></tr>
+    </tbody>
+  </table>
+  <p>Mais la majorité des IA n'ont <strong>pas de robot</strong>. ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>4. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Voici pourquoi :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#ffebee;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Information</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Peut-on la donner ?</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi ?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Mot de passe</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Envoyé sur un serveur, journalisé</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte bancaire</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Fraude possible</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte d'identité</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Usurpation d'identité</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Adresse personnelle</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">⚠️ Éviter</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pas nécessaire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Question d'étude</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ OK</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucun risque</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> utilise une <strong>IA locale</strong> (Ollama) sur ton propre ordinateur. Aucune donnée ne sort. C'est la seule solution totalement privée. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés).
+  </div>
+
+  <h3>5. Chaque pays utilise l'IA différemment</h3>
+  <p>L'IA n'est ni bonne ni mauvaise. <strong>Tout dépend de qui l'utilise et pourquoi.</strong> Exemples :</p>
+  <ul>
+    <li><strong>Médecine</strong> — détecter un cancer sur une radio</li>
+    <li><strong>Agriculture</strong> — prévoir les récoltes, détecter les maladies des plantes</li>
+    <li><strong>Transport</strong> — GPS, voitures autonomes, gestion du trafic</li>
+    <li><strong>Finance</strong> — détecter la fraude bancaire</li>
+    <li><strong>Surveillance</strong> — reconnaissance faciale dans les lieux publics (usage controversé)</li>
+    <li><strong>Militaire</strong> — drones autonomes (usage controversé)</li>
+    <li><strong>Éducation</strong> — corriger les copies, adapter les exercices</li>
+  </ul>
+
+  <h3>6. Exemples d'utilisation de l'IA par secteur</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Secteur</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Usage concret</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Médecine</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Détecter une tumeur sur une IRM</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Agriculture</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévoir la récolte d'olives</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Éducation</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer 10 exercices personnalisés</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Justice</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser des dossiers volumineux</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Art</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer des images, de la musique</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Météo</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévisions à 10 jours</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>À retenir :</strong> l'IA est un outil puissant. Bien utilisée, elle aide. Mal utilisée, elle nuit. <strong>C'est toi qui décides.</strong>
+   <strong>Tu construis un assistant : chaque question posée par un utilisateur atterrit sur les serveurs de Dify. C'est précisément ce que ta charte d'usage doit écrire noir sur blanc.</strong></div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockés vos e-mails Gmail ?</h3>
+  <p>Gmail est hébergé dans les <strong>data centers de Google</strong>, répartis dans le monde entier. Google possède <strong>21 data centers</strong>, dont <strong>5 en Europe</strong> (Irlande, Pays-Bas, Danemark, Finlande, Belgique).</p>
+  <div class="warn">
+    <strong>⚠️ Aucun data center Google dans la plupart des pays du Sud.</strong> Vos e-mails, vos documents, et le travail de thèse partagé avec votre encadrant sont stockés <strong>à l'étranger</strong> — probablement aux États-Unis ou en Europe.
+  </div>
+
+  <h3>2. Un employé Google peut-il lire vos e-mails ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle.</strong> Google a trois niveaux d'accès :</p>
+  <ol>
+    <li><strong>Vous</strong> : accès direct, chiffré.</li>
+    <li><strong>Employés Google autorisés</strong> : accès possible avec une justification professionnelle.</li>
+    <li><strong>Services Google</strong> : accès automatique pour le fonctionnement.</li>
+  </ol>
+  <p>Ce qui protège : vérification des antécédents, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré).</p>
+  <div class="warn">
+    <strong>Ce qui ne protège PAS :</strong> si la justice américaine ordonne l'accès, Google doit obéir — même pour des données stockées en Europe. Le <strong>U.S. CLOUD Act</strong> étend la juridiction des tribunaux américains à toutes les données contrôlées par des sociétés américaines.
+  </div>
+
+  <h3>3. Est-ce la même chose que l'IA ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;"></th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Gmail</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">IA (ChatGPT, Gemini)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Ce qui est stocké</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">E-mails, documents</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos conversations</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Qui peut voir</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos données entraînent-elles le système ?</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Non</td><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Oui</strong> (sauf option désactivée)</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Conclusion :</strong> Gmail est déjà un risque pour la souveraineté numérique. L'IA en est un autre, souvent plus grave car vos données peuvent servir à améliorer le modèle de la société.</p>
+
+  <h3>4. « Ça laisse les pays du tiers-monde en retard » — VRAI</h3>
+  <p>Votre intuition est confirmée par la Banque Mondiale :</p>
+  <blockquote style="border-left:4px solid #177bbe;padding-left:1rem;color:#555;font-style:italic;">
+    « L'infrastructure et les systèmes qui sous-tendent l'économie numérique des pays à revenu faible et intermédiaire sont souvent construits, détenus ou exploités par des acteurs qu'ils ne contrôlent ni ne régulent pleinement. »
+  </blockquote>
+  <ul>
+    <li><strong>Dépendance technologique</strong> : les pays du Sud n'ont pas d'infrastructure IA locale.</li>
+    <li><strong>Fuite de données</strong> : les données partent à l'étranger pour être traitées.</li>
+    <li><strong>Biais culturels</strong> : les modèles sont entraînés sur des données du Nord, imposant leurs visions du monde.</li>
+  </ul>
+
+  <h3>5. Comment se protéger ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e8f5e9;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Solution</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>IA locale (Ollama)</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune donnée ne sort de votre ordinateur. Totalement privé.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Gestionnaire de mots de passe</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Bitwarden ou KeePass (gratuits, chiffrés). Ne mettez jamais vos mots de passe dans un chat IA.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Désactiver l'entraînement</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Dans les paramètres de ChatGPT/Gemini, désactivez « Améliorer le modèle ».</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Chiffrement de bout en bout</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pour les messages sensibles, utilisez Signal ou ProtonMail.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mettez <strong>JAMAIS</strong> dans un chat IA ou un e-mail non chiffré ce que vous ne voudriez pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères.
+   <strong>Tu construis un assistant : chaque question posée par un utilisateur atterrit sur les serveurs de Dify. C'est précisément ce que ta charte d'usage doit écrire noir sur blanc.</strong></div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=dify+tutoriel+fran%C3%A7ais+chatbot+gratuit" target="_blank">Dify : créer un chatbot gratuit (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=RAG+base+de+connaissances+IA+explication+fran%C3%A7ais" target="_blank">Le RAG, expliqué simplement (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=charte+usage+intelligence+artificielle+%C3%A9cole+universit%C3%A9" target="_blank">Chartes d'usage de l'IA à l'école (FR)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Quel type d'application Dify choisis-tu pour 5 PDF de cours ? <br><em>(Réponse : Chatbot + base de connaissances.)</em></li>
+    <li>Que doit répondre l'assistant si l'information n'est pas dans les documents ? <br><em>(Réponse : « Je ne trouve pas cette information dans les documents. » — et inviter à consulter le cours.)</em></li>
+    <li>Que signifie « RAG » et à quoi sert-il ? <br><em>(Réponse : retrieval-augmented generation — indexer tes documents pour que l'IA cite une source réelle.)</em></li>
+    <li>Quels trois tests limites prépares-tu avant une soutenance ? <br><em>(Réponse : la météo, le devoir à faire à ma place, le sujet hors cours.)</em></li>
+    <li>Quel est l'article que tu ne peux pas recopier d'une charte ? <br><em>(Réponse : celui que tu ajoutes toi-même — c'est le seul que tu sauras défendre.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>Chatbot</strong> — Application conversationnelle : question → réponse, ici limitée à tes documents.</li>
+    <li><strong>Base de connaissances (RAG)</strong> — Ensemble de documents indexés que l'IA consulte et cite avant de répondre.</li>
+    <li><strong>Prompt système</strong> — Règles permanentes de comportement de l'assistant (périmètre, ton, refus).</li>
+    <li><strong>Espace de travail</strong> — Conteneur Dify qui regroupe tes applications et leurs documents.</li>
+    <li><strong>Workflow</strong> — Traitement en étapes fixes (traduire → résumer → écrire), non adapté à une conversation libre.</li>
+    <li><strong>Charte d'usage</strong> — Document signé qui fixe les droits et les interdits d'utilisation d'un outil IA.</li>
+  </ul>
+  <div class="nav-footer">
+    <a href="seance-11.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-13.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+  </div>
+
+</div>
+</body>
+</html>

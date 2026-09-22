@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 09 — VS Code + GitHub Copilot : ton premier assistant de code</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 09 — VS Code + GitHub Copilot : ton premier assistant de code</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Ctrl+I : le chat de Copilot en 1 seconde</strong><br>
+    Dans VS Code, Ctrl+I ouvre le chat au-dessus de ta ligne courante (Ctrl+Alt+I pour le panneau complet) : tu poses ta question sans quitter le clavier ni chercher dans les menus. C'est le raccourci qui fait gagner le plus de temps de toute la séance — teste-le dès maintenant.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu auras installé VS Code avec Copilot, écrit un script assisté ligne par ligne, et su comprendre et corriger ce que l'IA t'a proposé — sans savoir coder avant.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Un éditeur de code avec une IA intégrée, c'est le couteau suisse de l'étudiant : un script pour renommer des fichiers, nettoyer un tableau avant un devoir, automatiser une tâche répétitive. La différence avec un chat, c'est que l'IA <strong>voit ton fichier</strong> et propose la modification directement dedans. Tu apprends en regardant la proposition se faire — c'est la façon la plus rapide de comprendre un code, même sans base.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>L'IA propose, tu décides.</strong> Chaque suggestion de Copilot s'accepte (Tab, Entrée) ou se refuse : aucune modification ne se fait sans ton geste.</li>
+    <li><strong>Le contexte fait la qualité.</strong> Copilot regarde les noms de fichiers, les commentaires et le code ouvert : un fichier propre et commenté = des propositions justes.</li>
+    <li><strong>Lire avant d'accepter est la seule règle.</strong> Une suggestion acceptée sans lecture est un bug que tu découvriras le jour de la remise.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Créer un planning de révision sur 3 semaines</strong><br>
+    Tu as 4 examens en 3 semaines. Tu tapes dans ChatGPT ou Notion AI : « Crée-moi un planning de révision sur 3 semaines pour 4 matières (psychologie, didactique, anglais, mathématiques), 2 heures par jour, avec révisions espacées. » L'IA te génère un tableau prêt à imprimer. Tu le colles au mur.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Installer VS Code et vérifier (4 min)</h4>
+    <div class="step-meta">
+      <span>📍 code.visualstudio.com</span>
+      <span>⏱️ 4 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> télécharger VS Code sur le site officiel, l'ouvrir, puis vérifier depuis le terminal qu'il est bien installé. Vérifier, c'est déjà commencer à travailler comme un développeur.</p>
+    <p><strong>Ce que tu tapes (dans le terminal, après installation) :</strong></p>
+    <div class="prompt-box">code --version</div>
+    <p><strong>Voici ce que le terminal va répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique du terminal</h4>
+<pre>
+1.95.2
+e6c8hyy0f2b8b0f2c9e5f4b8a7d6c5b4a3e2f1d0c
+x64
+</pre>
+      <p>Si au lieu de ça tu obtiens <code>command not found: code</code>, relance VS Code puis ferme-le : l'option <strong>« Install code command in PATH »</strong> s'ajoute au menu. Sur Windows, redémarre le terminal après l'installation.</p>
+    </div>
+    <div class="tip">Nomme ton dossier de travail <strong>sans accents ni espaces</strong> (<code>projet-ia</code>, jamais <code>Projet IA 2ème année</code>) : beaucoup d'outils de développement plantent sur les chemins à accents.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne télécharge VS Code que sur <code>code.visualstudio.com</code> — les « versions optimisées » proposées par les forums sont souvent des paquets piégés.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Installer Copilot et poser ta première demande (7 min)</h4>
+    <div class="step-meta">
+      <span>📍 VS Code → Copilot Chat</span>
+      <span>⏱️ 7 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> ajouter l'extension officielle GitHub Copilot, te connecter (compte gratuit possible), puis lui faire écrire ton premier fichier dans le Chat.</p>
+    <p><strong>Ce que tu tapes (dans le Chat Copilot, panneau latéral) :</strong></p>
+    <div class="prompt-box">Écris un script Python nommé bonjour.py qui affiche « Bonjour [ton nom] ! Il est 14h32. » avec l'heure réelle de l'ordinateur, puis qui compte combien de fichiers .py il y a dans le dossier courant. Commente chaque bloc.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de GitHub Copilot</h4>
+<pre>
+# bonjour.py — message d'accueil + comptage des scripts Python
+from datetime import datetime      # heure réelle de l'ordinateur
+import glob                        # recherche de fichiers par motif
+
+nom = "Madani"
+heure = datetime.now().strftime("%H:%M")      # format 14h32
+print(f"Bonjour {nom} ! Il est {heure}.")
+
+scripts = glob.glob("*.py")                    # tous les .py du dossier
+print(f"Ce dossier contient {len(scripts)} fichier(s) Python.")
+</pre>
+      <p><strong>Enregistre le fichier, puis dans le terminal :</strong></p>
+<pre>
+$ python bonjour.py
+Bonjour Madani ! Il est 14:32.
+Ce dossier contient 1 fichier(s) Python.
+</pre>
+      <p>Clique sur <strong>Create file</strong> dans la réponse du Chat pour que VS Code génère le fichier tout seul — tu n'as rien à copier.</p>
+    </div>
+    <div class="tip">Donne toujours le <strong>nom du fichier voulu</strong> (<code>bonjour.py</code>) dans ta demande : Copilot propose alors la création directe, et tu évites l'étape « coller, chercher où enregistrer, mal nommer ».</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne connecte jamais Copilot sur un compte dont tu partages l'écran ou les fichiers avec d'autres : tout ce qui est dans le fichier ouvert sert de contexte à l'IA.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Compléter une ligne avec la touche Tab (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 Éditeur (completion en ligne)</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> utiliser la complétion automatique : tu écris un <strong>commentaire</strong>, Copilot propose le code en gris, tu appuies sur <strong>Tab</strong> pour l'accepter. C'est le geste de base de tout développeur assisté.</p>
+    <p><strong>Ce que tu tapes (dans un nouveau fichier, une ligne par étape) :</strong></p>
+    <div class="prompt-box"># affiche les 10 premiers nombres premiers dans un tableau aligné</div>
+    <p><strong>Voici ce que l'IA va probablement te proposer (en gris, à accepter avec Tab) :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Complétion proposée par Copilot</h4>
+<pre>
+# affiche les 10 premiers nombres premiers dans un tableau aligné
+premiers = []
+n = 2
+while len(premiers) &lt; 10:
+    if all(n % p != 0 for p in premiers):
+        premiers.append(n)
+    n += 1
+print("Premiers :", " ".join(str(x) for x in premiers))
+</pre>
+      <p><strong>Sortie :</strong> <code>Premiers : 2 3 5 7 11 13 17 19 23 29</code></p>
+      <p>Le texte gris apparaît pendant que tu tapes. <strong>Tab</strong> = j'accepte. <strong>Échap</strong> = je refuse et je continue à écrire ma propre version.</p>
+    </div>
+    <div class="tip">Écris d'abord le <strong>commentaire</strong>, pas le code : un commentaire clair produit une complétion juste. C'est aussi la meilleure façon d'apprendre — tu décris ce que tu veux, l'IA montre comment.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> n'appuie jamais sur Tab en rafale pour « aller plus vite » : lis la proposition à chaque fois, sinon tu empiles du code que tu n'as pas lu.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Déboguer une boucle dans le Chat (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 VS Code → Copilot Chat</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> demander l'explication d'un code qui ne s'arrête pas. Pose la question <strong>avec le code</strong> — l'IA qui voit ton fichier répond juste du premier coup.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Cette boucle ne s'arrête jamais, je ne comprends pas pourquoi. Explique la cause en une phrase, donne la ligne corrigée, puis dis-moi comment éviter cette erreur à l'avenir. while n &lt; 10: print(n) n = n</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de GitHub Copilot</h4>
+      <p><strong>Cause :</strong> la variable <code>n</code> ne change jamais de valeur, donc la condition <code>n &lt; 10</code> reste vraie pour toujours — la boucle tourne à l'infini.</p>
+      <p><strong>Ligne corrigée :</strong></p>
+<pre>
+while n &lt; 10:
+    print(n)
+    n = n + 1      # avance : sans cette ligne, la boucle ne progresse pas
+</pre>
+      <p><strong>Pour l'éviter à l'avenir :</strong> dans toute boucle <code>while</code>, vérifie que la condition dépend d'une variable qui évolue à chaque tour. Si tu as un doute, ajoute un <code>print(n)</code> dans la boucle : si le nombre ne bouge pas, c'est que tu as trouvé.</p>
+      <p><strong>Utile à savoir :</strong> dans VS Code, <code>Ctrl+C</code> dans le terminal arrête une boucle qui tourne déjà.</p>
+    </div>
+    <div class="tip">Pose la question <strong>depuis le Chat intégré</strong> et non depuis un navigateur : le Chat connaît tes fichiers ouverts et cite la ligne exacte, au lieu d'une réponse générique.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne colle jamais un message d'erreur complet d'un projet pour lequel tu as partagé des identifiants — les traces d'authentification traînent souvent dans les logs.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Exécuter, inspecter et valider (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 Terminal intégré</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> lancer ton fichier, lire la sortie, puis faire expliquer à Copilot la ligne que tu n'as pas comprise. Terminer en sachant ce que fait ton code — c'est le vrai objectif de la séance.</p>
+    <p><strong>Ce que tu tapes (terminal intégré, raccourci <code>Ctrl</code>+` ) :</strong></p>
+    <div class="prompt-box">python bonjour.py</div>
+    <p><strong>Voici ce que le terminal va répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique du terminal</h4>
+<pre>
+Bonjour Madani ! Il est 14:38.
+Ce dossier contient 1 fichier(s) Python.
+</pre>
+      <p>Puis, dans le Chat, ta question de compréhension :</p>
+      <p><code>Explique-moi la ligne « scripts = glob.glob("*.py") » comme à un débutant, et donne-moi 1 question pour vérifier que j'ai compris.</code></p>
+      <p><strong>Réponse de Copilot :</strong> « <code>glob.glob("*.py")</code> cherche dans le dossier courant tous les noms de fichiers qui finissent par <code>.py</code> et renvoie une liste (ici <code>['bonjour.py']</code>). L'astérisque signifie « n'importe quelles lettres ». À toi : que renverra <code>glob.glob("*.txt")</code> dans ce même dossier ? »</p>
+    </div>
+    <div class="tip">Termine toujours par <strong>une question de compréhension</strong> sur la ligne douteuse. Tu transformes ainsi une session de copier-coller en session d'apprentissage — et c'est ce que le formateur te demandera à l'oral.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne présente jamais un script que tu n'as pas lancé toi-même : « ça devrait marcher » n'est pas une exécution, c'est une hypothèse.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Un <strong>schéma en ASCII</strong> est un dessin fait uniquement avec des caractères du clavier (tirets, barres, flèches, plus). Ça marche partout, sans image. Très utile pour comprendre une idée visuellement en un coup d'œil.</p>
+
+  <p><strong>Comment demander un schéma à l'IA ?</strong> Ajoute simplement <code>« avec un schéma en ASCII »</code> à la fin de ton prompt.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Nettoyer un tableau de notes avant un devoir (département Anglais)</h4>
+    <p><strong>Situation :</strong> tu as relevé les notes de 30 camarades dans un fichier texte désordonné (virgules, points, lignes vides) et tu dois les importer dans un tableur.</p>
+
+    <p><strong>Ce que tu tapes (dans Copilot Chat) :</strong></p>
+    <div class="prompt-box">Écris un script Python qui lit notes.txt (une ligne « Nom,note » par élève), supprime les lignes vides, remplace les virgules décimales par des points, convertit les notes en flottants, affiche la moyenne de la classe, puis écrit un fichier CSV propre. Commente chaque bloc.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de GitHub Copilot</h4>
+<pre>
+# nettoie_notes.txt -> notes_propres.csv
+lignes = [l.strip() for l in open("notes.txt", encoding="utf-8") if l.strip()]
+
+eleves = []
+for ligne in lignes:
+    nom, note = ligne.split(",")          # on coupe à la virgule
+    note = note.replace(",", ".")         # virgule -> point
+    eleves.append((nom.strip(), float(note)))
+
+moyenne = sum(n for _, n in eleves) / len(eleves)
+print(f"Moyenne de la classe : {moyenne:.2f}/20")
+
+with open("notes_propres.csv", "w", encoding="utf-8") as f:
+    for nom, note in eleves:
+        f.write(f"{nom};{note}
+")
+</pre>
+      <p><strong>Sortie :</strong></p>
+<pre>
+Moyenne de la classe : 12.47/20
+</pre>
+    </div>
+
+    <div class="tip">Ajoute <code>« affiche aussi le min et le max »</code> : en une phrase de plus, tu identifies les deux extrêmes à corriger avant l'envoi au formateur.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Automatiser le comptage pour un mémoire (département Français)</h4>
+    <p><strong>Situation :</strong> analyse de corpus : tu dois compter la fréquence des mots d'un texte littéraire de 200 pages, manuellement impossible.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Dans VS Code, écris un script qui lit un fichier texte en français, supprime la ponctuation et les mots-outils (le, la, les, de, des, un, une, et, à, que), compte les 10 mots les plus fréquents et les affiche avec leur nombre d'occurrences. Commente chaque bloc.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de GitHub Copilot</h4>
+<pre>
+# occurences.py — fréquence des mots d'un texte
+import re
+from collections import Counter
+
+STOPWORDS = {"le", "la", "les", "de", "des", "un", "une", "et", "à", "que"}
+
+texte = open("corpus.txt", encoding="utf-8").read().lower()
+mots = re.findall(r"[a-zéèêàçîôû]+", texte)   # on garde seulement les lettres
+mots = [m for m in mots if m not in STOPWORDS]  # on retire les mots-outils
+
+frequences = Counter(mots)                      # compte automatique
+print(f"{len(mots)} mots analysés")
+for mot, n in frequences.most_common(10):        # les 10 premiers
+    print(f"{mot:15} {n}")
+</pre>
+      <p><strong>Sortie :</strong></p>
+<pre>
+48 213 mots analysés
+homme           412
+nuit            287
+ville           203
+...
+</pre>
+    </div>
+
+    <div class="tip">Demande <code>« écris aussi le résultat dans un fichier CSV »</code> : tu pourras coller le tableau directement dans ton mémoire, avec la légende attendue.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Préparer un lexique de vocabulaire (département Espagnol)</h4>
+    <p><strong>Situation :</strong> contrôle de vocabulaire dans 3 jours : il te faut un lexique trié par thème à partir d'un cours désorganisé.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Dans mon fichier vocabulaire.txt (une ligne « espagnol = français »), écris un script qui trie les entrées par ordre alphabétique espagnol, affiche le total, et sépare le lexique en 3 fichiers : mots de plus de 8 lettres, mots courts, et doublons éventuels. Commente chaque bloc.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de GitHub Copilot</h4>
+<pre>
+# lexique.py — tri et contrôle du lexique espagnol
+entrees = []
+for ligne in open("vocabulario.txt", encoding="utf-8"):
+    if "=" in ligne:
+        esp, fra = ligne.split("=", 1)
+        entrees.append((esp.strip().lower(), fra.strip()))
+
+entrees.sort(key=lambda x: x[0])           # tri alphabétique espagnol
+print(f"{len(entrees)} entrées chargées")
+
+longs  = [e for e in entrees if len(e[0]) &gt; 8]
+shorts = [e for e in entrees if len(e[0]) &lt;= 8]
+
+def ecrire(nom, liste):
+    with open(nom, "w", encoding="utf-8") as f:
+        for esp, fra in liste:
+            f.write(f"{esp} = {fra}
+")
+
+ecrire("largos.txt", longs)
+ecrire("cortos.txt", shorts)
+vus, doublons = set(), [e for e in entrees if e[0] in vus or vus.add(e[0])]
+ecrire("duplicados.txt", doublons)
+</pre>
+      <p><strong>Sortie :</strong></p>
+<pre>
+231 entrées chargées
+</pre>
+    </div>
+
+    <div class="tip">L'étape <strong>doublons</strong> est celle que tout le monde oublie : c'est elle qui te montre les 12 mots que tu as déjà notés deux fois et que tu révises pour rien.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>Le commentaire avant le code.</strong> Une ligne <code># fait quoi</code> améliore toutes les propositions suivantes.</li>
+      <li><strong>Le nom du fichier dans la demande.</strong> Copilot crée le fichier au bon endroit, tu ne copie-colles plus rien.</li>
+      <li><strong>Un Chat intégré, pas un navigateur.</strong> Le Chat de VS Code voit tes fichiers et cite tes lignes.</li>
+      <li><strong>Échap autant que Tab.</strong> Refuser une proposition fait partie du métier : c'est comme ça que ton code reste le tien.</li>
+      <li><strong>Toujours « commente chaque bloc ».</strong> Le code commenté est celui que tu reliras au moment des partiels.</li>
+      <li><strong>Une question de fin de session.</strong> « Explique la ligne X + donne 1 question » : cinq minutes qui valent un cours.</li>
+      <li><strong>Rien de sensible à l'écran.</strong> Clés, mots de passe, noms d'élèves : jamais dans un fichier ouvert avec Copilot.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Accepter toutes les complétions en rafale → du code non lu, des bugs tardifs. <strong>✅ Lis la ligne grise avant chaque Tab.</strong></li>
+    <li>❌ Un script que tu n'as jamais lancé → « ça devrait marcher » n'est pas un test. <strong>✅ Exécute-le dans le terminal intégré avant de le rendre.</strong></li>
+    <li>❌ Des identifiants ou des noms d'élèves dans le fichier ouvert → l'IA les prend comme contexte. <strong>✅ Sépare données sensibles et code de travail.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>VS Code se vérifie</strong> avec <code>code --version</code>.</li>
+      <li><strong>Copilot propose, tu acceptes ou tu refuses</strong> : Tab ou Échap.</li>
+      <li><strong>Un commentaire clair = une complétion juste</strong> : décris avant de coder.</li>
+      <li><strong>Pose les bugs depuis le Chat intégré</strong> : il voit tes fichiers.</li>
+      <li><strong>Termine par une question de compréhension</strong> : c'est là que tu apprends.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>L'IA apprend dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à des sociétés : OpenAI pour ChatGPT, Google pour Gemini, DeepSeek pour DeepSeek.</p>
+  <p>Elle apprend à partir de <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés, articles. <strong>Ce ne sont PAS les ordinateurs des utilisateurs</strong> connectés à Internet.</p>
+  <div class="warn">
+    <strong>⚠️ Ton PC, ton téléphone, le PC de ton voisin : rien de tout ça n'est utilisé pour entraîner ChatGPT.</strong> Seul un data center de la société est utilisé.
+  </div>
+
+  <h3>2. Peut-on créer une IA simple avec 1000 photos de chats ?</h3>
+  <p><strong>Oui, c'est possible en 30 minutes avec Google Colab (gratuit).</strong> Voici les étapes :</p>
+  <ol>
+    <li><strong>Collecte</strong> : 500 photos de chats + 500 photos d'autres choses, dans deux dossiers.</li>
+    <li><strong>Entraînement</strong> : un petit réseau de neurones apprend la différence (code fourni ci-dessous).</li>
+    <li><strong>Test</strong> : tu lui montres une nouvelle photo, il dit « Chat » ou « Pas chat ».</li>
+  </ol>
+  <div class="exemple">
+    <h4>🤖 Code Python minimal (Google Colab)</h4>
+<pre>
+import tensorflow as tf
+
+train = tf.keras.utils.image_dataset_from_directory(
+    "dataset/", image_size=(128,128), batch_size=32)
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Rescaling(1./255),
+    tf.keras.layers.Conv2D(32, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(64, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(2, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy'])
+model.fit(train, epochs=10)
+</pre>
+  </div>
+  <div class="warn">
+    <strong>⚠️ Important :</strong> ce programme <strong>calcule</strong>, il ne « comprend » pas. Il a juste appris quelles formes ressemblent à un chat.
+  </div>
+
+  <h3>3. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> On peut les combiner :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Exemple</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">L'IA fait</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Le robot fait</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aspirateur Roomba</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Décide où aller</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Se déplace, aspire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Voiture Tesla</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Reconnaît les piétons</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Freine, tourne</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Robot médical Da Vinci</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyse les mouvements</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Coupe précisément</td></tr>
+    </tbody>
+  </table>
+  <p>Mais la majorité des IA n'ont <strong>pas de robot</strong>. ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>4. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Voici pourquoi :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#ffebee;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Information</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Peut-on la donner ?</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi ?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Mot de passe</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Envoyé sur un serveur, journalisé</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte bancaire</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Fraude possible</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte d'identité</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Usurpation d'identité</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Adresse personnelle</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">⚠️ Éviter</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pas nécessaire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Question d'étude</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ OK</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucun risque</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> utilise une <strong>IA locale</strong> (Ollama) sur ton propre ordinateur. Aucune donnée ne sort. C'est la seule solution totalement privée. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés).
+  </div>
+
+  <h3>5. Chaque pays utilise l'IA différemment</h3>
+  <p>L'IA n'est ni bonne ni mauvaise. <strong>Tout dépend de qui l'utilise et pourquoi.</strong> Exemples :</p>
+  <ul>
+    <li><strong>Médecine</strong> — détecter un cancer sur une radio</li>
+    <li><strong>Agriculture</strong> — prévoir les récoltes, détecter les maladies des plantes</li>
+    <li><strong>Transport</strong> — GPS, voitures autonomes, gestion du trafic</li>
+    <li><strong>Finance</strong> — détecter la fraude bancaire</li>
+    <li><strong>Surveillance</strong> — reconnaissance faciale dans les lieux publics (usage controversé)</li>
+    <li><strong>Militaire</strong> — drones autonomes (usage controversé)</li>
+    <li><strong>Éducation</strong> — corriger les copies, adapter les exercices</li>
+  </ul>
+
+  <h3>6. Exemples d'utilisation de l'IA par secteur</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Secteur</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Usage concret</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Médecine</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Détecter une tumeur sur une IRM</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Agriculture</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévoir la récolte d'olives</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Éducation</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer 10 exercices personnalisés</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Justice</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser des dossiers volumineux</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Art</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer des images, de la musique</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Météo</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévisions à 10 jours</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>À retenir :</strong> l'IA est un outil puissant. Bien utilisée, elle aide. Mal utilisée, elle nuit. <strong>C'est toi qui décides.</strong>
+   <strong>Ici Copilot lit ton code pour te proposer : ne laisse jamais un mot de passe, une clé ou une donnée personnelle dans un fichier ouvert — ce qui est affiché est ce qui part.</strong></div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockés vos e-mails Gmail ?</h3>
+  <p>Gmail est hébergé dans les <strong>data centers de Google</strong>, répartis dans le monde entier. Google possède <strong>21 data centers</strong>, dont <strong>5 en Europe</strong> (Irlande, Pays-Bas, Danemark, Finlande, Belgique).</p>
+  <div class="warn">
+    <strong>⚠️ Aucun data center Google dans la plupart des pays du Sud.</strong> Vos e-mails, vos documents, et le travail de thèse partagé avec votre encadrant sont stockés <strong>à l'étranger</strong> — probablement aux États-Unis ou en Europe.
+  </div>
+
+  <h3>2. Un employé Google peut-il lire vos e-mails ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle.</strong> Google a trois niveaux d'accès :</p>
+  <ol>
+    <li><strong>Vous</strong> : accès direct, chiffré.</li>
+    <li><strong>Employés Google autorisés</strong> : accès possible avec une justification professionnelle.</li>
+    <li><strong>Services Google</strong> : accès automatique pour le fonctionnement.</li>
+  </ol>
+  <p>Ce qui protège : vérification des antécédents, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré).</p>
+  <div class="warn">
+    <strong>Ce qui ne protège PAS :</strong> si la justice américaine ordonne l'accès, Google doit obéir — même pour des données stockées en Europe. Le <strong>U.S. CLOUD Act</strong> étend la juridiction des tribunaux américains à toutes les données contrôlées par des sociétés américaines.
+  </div>
+
+  <h3>3. Est-ce la même chose que l'IA ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;"></th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Gmail</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">IA (ChatGPT, Gemini)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Ce qui est stocké</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">E-mails, documents</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos conversations</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Qui peut voir</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos données entraînent-elles le système ?</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Non</td><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Oui</strong> (sauf option désactivée)</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Conclusion :</strong> Gmail est déjà un risque pour la souveraineté numérique. L'IA en est un autre, souvent plus grave car vos données peuvent servir à améliorer le modèle de la société.</p>
+
+  <h3>4. « Ça laisse les pays du tiers-monde en retard » — VRAI</h3>
+  <p>Votre intuition est confirmée par la Banque Mondiale :</p>
+  <blockquote style="border-left:4px solid #177bbe;padding-left:1rem;color:#555;font-style:italic;">
+    « L'infrastructure et les systèmes qui sous-tendent l'économie numérique des pays à revenu faible et intermédiaire sont souvent construits, détenus ou exploités par des acteurs qu'ils ne contrôlent ni ne régulent pleinement. »
+  </blockquote>
+  <ul>
+    <li><strong>Dépendance technologique</strong> : les pays du Sud n'ont pas d'infrastructure IA locale.</li>
+    <li><strong>Fuite de données</strong> : les données partent à l'étranger pour être traitées.</li>
+    <li><strong>Biais culturels</strong> : les modèles sont entraînés sur des données du Nord, imposant leurs visions du monde.</li>
+  </ul>
+
+  <h3>5. Comment se protéger ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e8f5e9;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Solution</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>IA locale (Ollama)</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune donnée ne sort de votre ordinateur. Totalement privé.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Gestionnaire de mots de passe</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Bitwarden ou KeePass (gratuits, chiffrés). Ne mettez jamais vos mots de passe dans un chat IA.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Désactiver l'entraînement</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Dans les paramètres de ChatGPT/Gemini, désactivez « Améliorer le modèle ».</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Chiffrement de bout en bout</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pour les messages sensibles, utilisez Signal ou ProtonMail.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mettez <strong>JAMAIS</strong> dans un chat IA ou un e-mail non chiffré ce que vous ne voudriez pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères.
+   <strong>Ici Copilot lit ton code pour te proposer : ne laisse jamais un mot de passe, une clé ou une donnée personnelle dans un fichier ouvert — ce qui est affiché est ce qui part.</strong></div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=installer+visual+studio+code+tutoriel+fran%C3%A7ais+d%C3%A9butant" target="_blank">Installer VS Code (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=github+copilot+tutoriel+fran%C3%A7ais+vs+code" target="_blank">GitHub Copilot avec VS Code (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=python+deboguer+boucle+while+infini+d%C3%A9butant" target="_blank">Déboguer une boucle Python (FR)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Que faut-il taper pour vérifier l'installation de VS Code ? <br><em>(Réponse : <code>code --version</code> dans le terminal.)</em></li>
+    <li>Quelles touches acceptent ou refusent une complétion de Copilot ? <br><em>(Réponse : Tab pour accepter, Échap pour refuser.)</em></li>
+    <li>Pourquoi la boucle <code>while n &lt; 10: n = n</code> ne s'arrête-t-elle jamais ? <br><em>(Réponse : <code>n</code> ne change pas, donc la condition reste vraie.)</em></li>
+    <li>D'où Copilot tire-t-il son contexte ? <br><em>(Réponse : des fichiers ouverts, des noms de fichiers et des commentaires de ton projet.)</em></li>
+    <li>Que ne faut-il jamais laisser dans un fichier ouvert avec Copilot ? <br><em>(Réponse : mots de passe, clés, données personnelles ou nominatives.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>Éditeur de code</strong> — Logiciel pour écrire et lancer du code (VS Code, Cursor).</li>
+    <li><strong>Extension</strong> — Module ajouté à VS Code pour lui donner une fonction (Copilot).</li>
+    <li><strong>Complétion en ligne</strong> — Proposition de code affichée en grise, acceptée avec Tab.</li>
+    <li><strong>Chat de code</strong> — Panneau où l'on pose des questions à l'IA sur les fichiers ouverts.</li>
+    <li><strong>Déboguer</strong> — Trouver et corriger la cause d'un comportement erroné du programme.</li>
+    <li><strong>Terminal intégré</strong> — Console dans VS Code pour lancer ses scripts (<code>python fichier.py</code>).</li>
+  </ul>
+  <div class="nav-footer">
+    <a href="seance-08.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-10.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+    <a href="seance-13.html">🎓 Séance 13</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💡 34 astuces pour mieux profiter de l'IA</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>💡 34 astuces pour mieux profiter de l'IA</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Comment lire cette page</strong><br>
+    34 astuces rangées en 8 catégories : limites gratuites, prompts, comparaison d'outils, sauvegarde, vie privée, gain de temps, méthode, publication académique. Prends-en 5 aujourd'hui, applique-les une semaine, puis reviens en prendre 5 autres. Une astuce comprise vaut mieux que 34 recopiées.
+  </div>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>📖 Sommaire de la page</strong><br>
+    <a href="#cat-1">🔐 Limites gratuites</a> ·
+    <a href="#cat-2">🎯 Prompts</a> ·
+    <a href="#cat-3">🔄 Comparer les IA</a> ·
+    <a href="#cat-4">💾 Garder et réutiliser</a> ·
+    <a href="#cat-5">🛡️ Vie privée</a> ·
+    <a href="#cat-6">⚡ Gain de temps</a> ·
+    <a href="#cat-7">🧠 Méthode</a> ·
+    <a href="#cat-8">🎓 Publication académique</a> ·
+    <a href="#seances">📋 Les 15 séances</a>
+  </div>
+
+  <h2 id="cat-1">🔐 Contourner les limites des versions gratuites</h2>
+
+  <div class="step">
+    <h4>1. Ne jamais subir la limite : regrouper, décaler, alterner</h4>
+    <p>Quand ChatGPT affiche « Vous avez atteint votre limite pour aujourd'hui », la première réflexion n'est pas de contourner, mais de <strong>regrouper</strong> : cinq petits messages deviennent un seul prompt qui contient le contexte et les cinq questions. Tu consommes moins de requêtes <em>et</em> tu obtiens une meilleure réponse. Ensuite, <strong>décale</strong> : la plupart des limites se réinitialisent en quelques heures. Enfin, <strong>alterne</strong> avec un autre outil gratuit (astuce 2), qui possède ses propres quotas.</p>
+    <div class="warn">
+      <strong>⚠️ Comptes multiples :</strong> créer de faux comptes uniquement pour doubler les quotas est contraire aux conditions d'utilisation des grands outils — perte du compte, parfois sans préavis. Garde deux comptes seulement si tes usages sont réellement distincts (personnel / étudiant), et passe toujours par l'alternative de l'astuce 2.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>2. Alterner entre ChatGPT, Gemini, Claude et DeepSeek</h4>
+    <p>Quand l'un est saturé, un autre prend le relais : leurs limites sont indépendantes. Exemple : ChatGPT te dit « trop de requêtes » → bascule sur Gemini ou DeepSeek, gratuits et souvent sans limite stricte. Et pose-leur la <strong>même question</strong> : tu verras en dix secondes combien les réponses diffèrent — c'est la meilleure école qui soit.</p>
+    <div class="tip">
+      <strong>Les trois en onglets permanents</strong> : le réflexe « regarder ailleurs » prend 10 secondes quand les outils sont déjà ouverts, et deux minutes quand il faut les rouvrir.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>3. Utiliser la version mobile quand la version web bloque</h4>
+    <p>Certaines limitations s'appliquent par appareil, et l'application mobile est parfois moins chargée que le site. Exemple : ChatGPT web saturé → ouvre l'app sur ton téléphone. Avantage bonus : la <strong>dictée</strong> (astuce 23), impossible à égaler au clavier dans un bus.</p>
+  </div>
+
+  <div class="step">
+    <h4>4. Attendre les heures creuses</h4>
+    <p>Les serveurs sont moins chargés tôt le matin (5 h – 8 h) et tard le soir (23 h – minuit) : réponses plus rapides, limite atteinte moins vite. Pour une veille de partiel, c'est le moment d'envoyer tes gros prompts de révision (fiches, QCM, plans d'exposé).</p>
+    <div class="tip">
+      <strong>Prépare-les la veille</strong> : tu écris les prompts de révision à 23 h, tu dors dessus, tu relis le lendemain matin. Deux sessions de 20 minutes valent mieux qu'une de 3 heures.
+    </div>
+  </div>
+
+  <h2 id="cat-2">🎯 Optimiser ses prompts</h2>
+
+  <div class="step">
+    <h4>5. Écrire « Rôle + Contexte + Tâche + Format »</h4>
+    <p>À chaque prompt, donne : qui tu es, ce que tu veux, pour qui, sous quelle forme. <strong>Exemple :</strong> « Tu es un professeur de français. Je suis étudiant en 2ème année PEP. Résume ce texte en 5 puces pour un débutant. » Tu vois tout de suite si un élément manque — c'est lui qui fera la différence entre une réponse générique et une réponse juste.</p>
+    <div class="tip">
+      <strong>La formule en une ligne à coller en haut de ton écran :</strong> rôle → contexte → tâche → format. Quatre champs, jamais un prompt vide.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>6. Demander « 3 questions avant de répondre »</h4>
+    <p>Quand ta demande est complexe, fais travailler l'IA sur la compréhension avant la réponse : <strong>« Avant de répondre, pose-moi 3 questions pour bien comprendre ce que je veux. »</strong> Ses questions te forcent à préciser ton besoin — la réponse qui suit est souvent dix fois meilleure.</p>
+  </div>
+
+  <div class="step">
+    <h4>7. Utiliser « Explique comme à un enfant de 10 ans »</h4>
+    <p>Pour n'importe quelle notion difficile (une règle de grammaire, un concept d'informatique, un chiffre statistique), cette formule simplifie radicalement le langage. Puis, une fois compris : <strong>« Maintenant remonte d'un cran : explique au niveau d'un étudiant en licence. »</strong> Tu montes l'escalier marche par marche.</p>
+  </div>
+
+  <div class="step">
+    <h4>8. Imposer le format exact</h4>
+    <p>« En 3 phrases », « en 5 puces », « sous forme de tableau », « en 2 paragraphes » : l'IA obéit à ce que tu imposes, sinon elle écrit 30 lignes. Ajoute même le format de sortie : « termine par un tableau à 3 colonnes » ou « note /20 avec justification ».</p>
+  </div>
+
+  <div class="step">
+    <h4>9. Combiner « Exemple + Contre-exemple »</h4>
+    <p>Demande <strong>« donne-moi 2 exemples et 2 contre-exemples »</strong> : tu comprends une notion deux fois mieux qu'avec une seule définition. Le contre-exemple dit enfin ce que le mot ne veut <em>pas</em> dire — souvent là où le contrôle se joue.</p>
+  </div>
+
+  <div class="step">
+    <h4>10. Transformer un article de journal étranger en fiche de lecture</h4>
+    <p>Les journaux et revues étrangers (Le Monde, The Guardian, El País, The New York Times, The Globe and Mail…) publient des articles que tu peux recevoir par newsletter ou lire en ligne. L'IA t'aide à les comprendre, les résumer et enrichir tes connaissances.</p>
+    <p><strong>Prompt type :</strong></p>
+    <div class="prompt-box">Voici un article du [nom du journal, pays]. Fais-moi : 1) un résumé en 5 puces, 2) les 3 idées clés à retenir, 3) le vocabulaire technique employé avec une définition simple, 4) une question à me poser pour vérifier que j'ai compris. Réponds en français.</div>
+    <div class="tip">
+      <strong>Astuce de pro :</strong> garde tous tes résumés dans un fichier <code>articles-lus.md</code> classé par thème. À la fin de l'année, tu auras ta propre base documentaire.
+    </div>
+    <div class="warn">
+      <strong>⚠️ Rappel :</strong> cite toujours l'auteur, la date et le journal d'origine. Un résumé sans source est un plagiat involontaire.
+    </div>
+  </div>
+
+  <h2 id="cat-3">🔄 Comparer et croiser les IA</h2>
+
+  <div class="step">
+    <h4>11. Comparer plusieurs IA en parallèle avec une extension</h4>
+    <p>Des extensions navigateur comme <strong>ChatHub</strong> envoient une seule question à ChatGPT, Gemini, Claude et d'autres modèles en même temps, et affichent les réponses côte à côte dans une seule page. C'est le moyen le plus rapide de voir qui se trompe, et sur quel point.</p>
+    <div class="warn">
+      <strong>⚠️ Avant d'installer :</strong> vérifie le domaine officiel de l'extension et les permissions demandées. Une extension qui lit <em>tous</em> tes onglets a accès à tes sessions ouvertes — y compris ta boîte e-mail.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>12. Faire vérifier une IA par une autre</h4>
+    <p>Demande à ChatGPT un résumé, puis à Gemini : <strong>« Y a-t-il des erreurs ou des approximations dans ce résumé ? Cite-les. »</strong> Deux IA valent mieux qu'une : là où elles s'accordent, tu peux faire confiance ; là où elles divergent, tu dois aller voir la source.</p>
+  </div>
+
+  <div class="step">
+    <h4>13. Croiser les sources pour les informations factuelles</h4>
+    <p>Pour toute information importante (dates, chiffres, noms d'institutions), vérifie sur <strong>2 sites différents</strong> avant de la citer. Une IA peut se tromper ; deux sources concordantes — de préférence officielles — sont fiables. En cas de doute, la source officielle tranche toujours.</p>
+  </div>
+
+  <h2 id="cat-4">💾 Garder et réutiliser</h2>
+
+  <div class="step">
+    <h4>14. Sauvegarder ses meilleurs prompts dans un fichier</h4>
+    <p>Crée un fichier <code>mes-prompts.md</code> avec les 20 prompts qui te servent le plus (correction de texte, plan d'exposé, QCM, traduction…). Tu les réutilises en 5 secondes au lieu de les réécrire — et tu les améliores au fil des semaines. Note en face de chacun : « utile / moyen / raté ».</p>
+    <div class="tip">
+      <strong>Trois colonnes suffisent :</strong> le prompt, pour quelle tâche, ce qui l'a amélioré. Après un mois, tu possèdes ta méthode personnelle — personne ne peut te la reprendre.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>15. Exporter ses conversations importantes</h4>
+    <p>ChatGPT, Gemini et Claude permettent d'exporter tes conversations en texte ou PDF (dans les paramètres de confidentialité, pour ChatGPT). Pour tes révisions, garde une <strong>copie locale</strong> de tes meilleures sessions : un export, un dossier « Révisions », et l'outil peut disparaître demain sans emporter ton travail.</p>
+  </div>
+
+  <div class="step">
+    <h4>16. Épingler les conversations qui marchent</h4>
+    <p>ChatGPT permet d'épingler un chat (icône 📌) : tes meilleures sessions restent en haut de la liste. Épingle ton chat de révision avant les partiels — le jour de l'examen, tu le retrouves en un clic sous 40 conversations.</p>
+  </div>
+
+  <h2 id="cat-5">🛡️ Protéger sa vie privée</h2>
+
+  <div class="step">
+    <h4>17. Désactiver l'entraînement dans les paramètres</h4>
+    <p>Sur ChatGPT : <em>Paramètres → Contrôles des données → « Améliorer le modèle pour tous »</em> à désactiver. Sur Gemini : <em>Gemini Apps Activity</em>. Tes conversations cessent alors de servir à entraîner l'IA. C'est le réglage le plus important de tout le module — et le plus souvent oublié.</p>
+  </div>
+
+  <div class="step">
+    <h4>18. Utiliser une IA locale avec Ollama</h4>
+    <p>Pour les données sensibles, <strong>Ollama</strong> fait tourner un modèle IA sur ton propre ordinateur : aucune donnée ne sort, gratuit, totalement privé. Idéal pour travailler sur des documents que tu ne veux confier à personne — l'inconvénient : il faut une machine correcte et le modèle est moins puissant que les grands services.</p>
+  </div>
+
+  <div class="step">
+    <h4>19. Ne jamais coller un mot de passe ou une carte bancaire</h4>
+    <p>Règle absolue : tout ce que tu colles part sur un serveur étranger, soumis à des lois étrangères. Si c'est confidentiel — mot de passe, pièce d'identité, relevé, numéro de dossier d'un tiers — <strong>ça ne va pas dans un chat IA</strong>.</p>
+    <div class="warn">
+      <strong>⚠️ Test des 3 secondes :</strong> avant chaque collage, demande-toi « publierais-je ceci ? ». Si la réponse est non, retire le nom, le numéro ou la date, ou n'utilise pas l'IA pour cette tâche.
+    </div>
+  </div>
+
+  <h2 id="cat-6">⚡ Gagner du temps</h2>
+
+  <div class="step">
+    <h4>20. Utiliser les raccourcis clavier</h4>
+    <p><strong>ChatGPT</strong> : <code>Ctrl+K</code> (nouveau chat), la touche <code>?</code> affiche la liste complète des raccourcis. <strong>VS Code + Copilot</strong> : <code>Ctrl+I</code> (chat au-dessus de la ligne courante), <code>Ctrl+Alt+I</code> (panneau Chat). <strong>Cursor</strong> : <code>Cmd/Ctrl+K</code> (éditer la sélection), <code>Cmd/Ctrl+L</code> (chat). Deux semaines de réflexe, puis tu ne touches plus à la souris.</p>
+  </div>
+
+  <div class="step">
+    <h4>21. Transformer un PDF en fiche en une commande</h4>
+    <p>Dans <strong>NotebookLM</strong> : dépose le PDF, puis tape « Fais une fiche de révision en 5 points + 10 QCM avec correction ». Résultat en 30 secondes, fondé uniquement sur <em>ton</em> document — c'est la transformation la plus rentable du module : un cours de 20 pages devient une fiche révisable dans le bus.</p>
+    <div class="tip">
+      <strong>Ajoute « + 10 flashcards RECTO/VERSO »</strong> : tu obtiens le vocabulaire à faire réciter par cœur, le même jour, sans refaire la manipulation.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>22. Convertir un texte en MP3</h4>
+    <p>Sur <strong>ElevenLabs</strong>, <strong>NaturalReader</strong> ou <strong>Speechify</strong> : colle ton texte, choisis une voix française, télécharge le MP3. Tu écoutes ton cours dans le bus, en faisant la queue, à pied. Pour un usage personnel, les versions gratuites suffisent largement pour un chapitre.</p>
+  </div>
+
+  <div class="step">
+    <h4>23. Utiliser la transcription vocale au lieu d'écrire</h4>
+    <p>Sur l'application mobile ChatGPT ou Gemini, l'icône micro dicte ta question : bien plus rapide que taper sur un écran, surtout pour un prompt long avec du contexte. Prononce les ponctuations : « virgule », « nouvelle ligne » — la reconnaissance suit.</p>
+  </div>
+
+  <div class="step">
+    <h4>24. Demander à l'IA de réparer, mettre à jour ou flasher un appareil</h4>
+    <p>L'IA peut te guider pour <strong>réparer un téléphone bloqué, mettre à jour une tablette ancienne, flasher un firmware, réparer un PC qui ne démarre pas</strong>, ou mettre à jour le GPS d'une voiture. C'est le prolongement direct de la séance « Réparer, flasher et mettre à jour un appareil ».</p>
+    <p><strong>Prompt type :</strong></p>
+    <div class="prompt-box">J'ai une tablette Android 4.2 bloquée. Je veux la mettre à jour vers Android 7.2. Donne-moi les prérequis (outils, ROM compatible), les étapes précises une par une, les risques, et comment sauvegarder avant.</div>
+    <div class="warn">
+      <strong>⚠️ Règles absolues :</strong> sauvegarde vérifiée avant toute manipulation · ROM téléchargée uniquement sur le site officiel du fabricant · ne jamais exécuter une commande que tu n'as pas comprise.
+    </div>
+  </div>
+
+  <h2 id="cat-7">🧠 Astuces méta — la méthode avant l'outil</h2>
+
+  <div class="step">
+    <h4>25. Demander à l'IA ses propres limites</h4>
+    <p><strong>« Quelles sont tes limites sur cette question ? Que ne peux-tu PAS faire ? »</strong> Tu anticipes les erreurs avant de les subir : l'IA sait très bien dire qu'elle n'a pas accès à l'actualité, qu'elle peut inventer des références, ou qu'elle ne peut pas vérifier un calcul long sans outil.</p>
+    <div class="tip">
+      Formule puissante en préparation d'oral : <strong>« Que demanderait un jury de sceptique à ton sujet ? »</strong> — l'IA liste elle-même les objections auxquelles tu dois répondre.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>26. Faire expliquer une réponse incomprise plutôt que d'en changer</h4>
+    <p>Quand tu ne comprends pas, ne change pas d'IA : dis <strong>« reformule plus simplement »</strong> ou <strong>« explique chaque mot que je n'ai pas compris »</strong>. C'est plus efficace — et tu gardes le fil de ta session, ses exemples et son contexte. Changer d'outil, c'est tout recommencer.</p>
+  </div>
+
+  <div class="step">
+    <h4>27. Noter ce qui marche et ce qui échoue</h4>
+    <p>Tiens un journal : les prompts qui te font gagner du temps, ceux qui échouent, les outils qui te déçoivent. Après 3 mois, tu auras ta propre méthode — bien plus solide que n'importe quel tutoriel, parce qu'elle est écrite à partir de <em>tes</em> tâches : révisions, exposés, traductions, devoirs.</p>
+  </div>
+
+  <div class="step">
+    <h4>28. Utiliser une IA pour guider une autre IA</h4>
+    <p>Tu peux utiliser une IA conversationnelle (ChatGPT, Gemini, DeepSeek) comme <strong>coach</strong> pour t'aider à mieux piloter un agent de code (OpenCode, Cursor, Copilot). C'est la méthode la plus puissante pour progresser.</p>
+    <p><strong>Méthode :</strong></p>
+    <ol>
+      <li>Tu décris ton objectif à l'IA conversationnelle, pas à l'agent.</li>
+      <li>Tu lui demandes : <strong>« Rédige-moi un prompt précis pour OpenCode, avec le contexte, les étapes et le résultat attendu. »</strong></li>
+      <li>Tu copies ce prompt dans l'agent.</li>
+      <li>Si l'agent bloque, tu reviens à l'IA conversationnelle avec le message d'erreur.</li>
+      <li>Tu valides, puis tu passes à la tâche suivante.</li>
+    </ol>
+    <p><strong>Exemple :</strong> reflasher une tablette Android 4.2 vers une version plus récente → tu demandes à ChatGPT un prompt structuré → tu le colles dans OpenCode → tu suis les étapes.</p>
+    <div class="tip">
+      <strong>Pourquoi c'est efficace :</strong> l'IA conversationnelle aide à formuler (elle ne casse rien), l'agent exécute sur la machine (il modifie vraiment), et toi tu gardes le contrôle à chaque étape.
+    </div>
+  </div>
+
+  <h2 id="cat-8">🎓 Publication académique — viser une revue Q1 avec l'IA</h2>
+
+  <div class="step">
+    <h4>29. Choisir la bonne revue Q1</h4>
+    <ol>
+      <li>Va sur <strong>Scimago Journal Rank</strong> (scimagojr.com) ou <strong>Web of Science</strong>.</li>
+      <li>Filtre par ton domaine et par <strong>quartile Q1</strong>.</li>
+      <li>Vérifie : facteur d'impact, temps de review, taux d'acceptation, éventuels frais.</li>
+      <li>Demande ensuite à ChatGPT : <strong>« Compare ces 3 revues [liste] pour un article sur [ton sujet] : facteur d'impact, délai de publication, taux d'acceptation, frais éventuels. »</strong></li>
+    </ol>
+    <div class="tip">
+      <strong>Astuce de pro :</strong> choisis <strong>3 revues par ordre de préférence</strong>. Tu commences par la plus prestigieuse ; si elle refuse, tu redescends d'un cran. Le rejet n'est jamais un échec : c'est le parcours normal d'un article.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>30. Rédiger l'article avec l'IA sans plagier</h4>
+    <p><strong>Règle d'or : l'IA ne rédige jamais à ta place. Elle structure, reformule, propose des plans.</strong></p>
+    <p><strong>Méthode :</strong></p>
+    <ol>
+      <li>Tu écris toi-même ton brouillon (même imparfait).</li>
+      <li>Tu demandes à ChatGPT : <strong>« Voici mon paragraphe. Propose 3 versions alternatives en gardant MES idées, mon style, mes références. Signale les tournures qui ressemblent trop à d'autres textes. »</strong></li>
+      <li>Tu choisis la meilleure version, tu la retravailles à la main.</li>
+      <li>Tu passes ton texte final dans un détecteur de plagiat (Turnitin, iThenticate, Compilatio).</li>
+    </ol>
+    <div class="warn">
+      <strong>⚠️ Si tu colles un texte généré directement par l'IA sans le réécrire :</strong> risque de taux de plagiat artificiel (l'IA reproduit des tournures existantes) · rejet par les comités pour « AI-generated content » (de plus en plus interdit) · rétractation si l'article est déjà publié.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>31. Vérifier que tes références existent vraiment</h4>
+    <p><strong>Problème :</strong> ChatGPT invente souvent des références avec un format parfait (auteurs, année, revue, pages) mais <strong>qui n'existent pas</strong>.</p>
+    <p><strong>Méthode de vérification en 3 étapes :</strong></p>
+    <ol>
+      <li>Pour chaque référence, copie le titre exact dans <strong>Google Scholar</strong>.</li>
+      <li>Si elle existe : clique sur <em>[Citer]</em> pour récupérer la référence réelle.</li>
+      <li>Si elle n'existe pas : <strong>supprime-la immédiatement</strong>.</li>
+    </ol>
+    <div class="tip">
+      <strong>Astuce de pro :</strong> demande à ChatGPT <strong>« Pour chaque référence, donne-moi le DOI. »</strong> Puis ouvre chaque DOI sur <strong>doi.org</strong>. Si le DOI ne renvoie rien, la référence est fausse.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>32. Rester conforme aux normes de la revue</h4>
+    <p><strong>Ce que chaque revue Q1 impose :</strong></p>
+    <ul>
+      <li>Nombre de mots (5 000 à 8 000 typiquement).</li>
+      <li>Format des références (APA, MLA, Chicago, Vancouver).</li>
+      <li>Structure <strong>IMRAD</strong> : Introduction, Méthodes, Résultats, Discussion.</li>
+      <li><strong>Déclaration d'usage de l'IA</strong> (obligatoire depuis 2023 dans la plupart des revues).</li>
+      <li>Lettre de motivation (cover letter).</li>
+      <li>Déclaration de conflits d'intérêts.</li>
+    </ul>
+    <div class="tip">
+      <strong>Astuce :</strong> colle les « Instructions for Authors » de la revue dans ChatGPT et demande : <strong>« Vérifie que mon article respecte CHAQUE point de ces instructions. Liste ce qui manque. »</strong>
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>33. Rédiger la lettre de réponse aux reviewers</h4>
+    <p><strong>Quand un reviewer te fait des remarques, prompt à utiliser :</strong></p>
+    <div class="prompt-box">Voici la lettre de review et voici mon article. Rédige une réponse point par point en 3 colonnes : (1) ce que le reviewer a dit, (2) ce que j'ai modifié, (3) où exactement dans l'article (page/ligne). Ton : respectueux, factuel, sans excès d'excuses.</div>
+    <p><strong>Règles :</strong></p>
+    <ul>
+      <li>Réponds à <strong>chaque</strong> remarque, même celles que tu refuses (explique pourquoi calmement).</li>
+      <li>Ne jamais répondre à un reviewer par une IA brute : <strong>relis et personnalise</strong>.</li>
+      <li>Signale tes modifications dans une version « tracked changes » du document.</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <h4>34. Détecter et déclarer l'usage de l'IA</h4>
+    <p><strong>Règles actuelles (2024-2026) des grandes revues :</strong></p>
+    <ul>
+      <li><strong>Nature, Science, Cell</strong> : l'IA ne peut PAS être co-auteur.</li>
+      <li><strong>Elsevier, Springer, Wiley</strong> : l'usage de l'IA doit être <strong>déclaré</strong> dans la section « Methods » ou « Acknowledgements ».</li>
+      <li><strong>HAL, arXiv</strong> : déclaration obligatoire également.</li>
+    </ul>
+    <p><strong>Méthode :</strong></p>
+    <ol>
+      <li>Note tous les outils IA utilisés (ChatGPT, DeepL, Grammarly…).</li>
+      <li>Note pour chaque : quelle tâche précise (reformulation, traduction, correction).</li>
+      <li>Rédige une phrase type : <strong>« ChatGPT (version X) a été utilisé pour reformuler certains paragraphes. Aucune donnée n'a été générée par l'IA. L'auteur assume l'entière responsabilité du contenu. »</strong></li>
+    </ol>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne rien déclarer parce que « tout le monde ne le fait pas ». Les éditeurs partagent désormais leurs signalements : un texte IA détecté après publication peut mener à la rétractation — et la mention dans un comité de labo vaut toujours mieux qu'un rejet.
+    </div>
+  </div>
+
+  <h2 id="seances">📋 Les 15 séances du module</h2>
+  <ul>
+    <li><a href="seance-01.html">🤖 Séance 01 — Comprendre l'IA et lui parler pour la première fois</a></li>
+    <li><a href="seance-02.html">🤖 Séance 02 — Panorama des 14 outils d'IA pour l'étudiant</a></li>
+    <li><a href="seance-03.html">🤖 Séance 03 — Chercher et vérifier l'information avec l'IA</a></li>
+    <li><a href="seance-04.html">🤖 Séance 04 — Résumer et créer des fiches de révision</a></li>
+    <li><a href="seance-05.html">🤖 Séance 05 — Préparer un exposé de A à Z avec l'IA</a></li>
+    <li><a href="seance-06.html">🤖 Séance 06 — Réviser un examen avec l'IA (QCM + flashcards)</a></li>
+    <li><a href="seance-07.html">🤖 Séance 07 — Programmer avec l'IA : mini-projet Python + API</a></li>
+    <li><a href="seance-08.html">🤖 Séance 08 — Rédiger, corriger et traduire (FR / EN / AR)</a></li>
+    <li><a href="seance-09.html">🤖 Séance 09 — VS Code + GitHub Copilot : ton premier assistant de code</a></li>
+    <li><a href="seance-10.html">🤖 Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix</a></li>
+    <li><a href="seance-11.html">🤖 Séance 11 — OpenCode + DeepSeek : piloter un agent IA</a></li>
+    <li><a href="seance-12.html">🤖 Séance 12 — Construire son IA : Dify + Charte d'usage</a></li>
+    <li><a href="seance-13.html">🤖 Séance 13 — Réparer, flasher et mettre à jour un appareil</a></li>
+    <li><a href="seance-14.html">🤖 Séance 14 — Cybersécurité : attaques, défenses et éthique</a></li>
+    <li><a href="seance-15.html">🤖 Séance 15 — Publier un article dans une revue Q1 avec l'IA</a></li>
+    <li><a href="index.html">📖 Sommaire complet du module</a></li>
+  </ul>
+
+  <div class="nav-footer">
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-01.html">Commencer par la séance 01 ▶</a>
+  </div>
+
+</div>
+</body>
+</html>

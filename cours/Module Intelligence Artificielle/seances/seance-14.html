@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 14 — Cybersécurité : attaques, défenses et éthique</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🛡️ Séance 14 — Cybersécurité : attaques, défenses et éthique</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Diagnostiquer, jamais détruire</strong><br>
+    Une IA est un excellent binôme pour la sécurité informatique <strong>à condition de rester du bon côté</strong> : elle t'aide à protéger ton propre matériel, à comprendre une attaque, à durcir un mot de passe. Elle refuse en revanche de t'aider à entrer chez les autres — et cette limite, tu vas comprendre pourquoi elle existe.
+  </div>
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu sauras <strong>protéger ton téléphone, ton PC et tes comptes</strong>, reconnaître les attaques les plus fréquentes, et connaître <strong>la frontière exacte entre sécurité légitime et piratage</strong> — avec le test des 3 questions à poser avant toute demande.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Un compte piraté, un ransomware ou un faux logiciel coûtent <strong>plus cher qu'une réparation</strong> : c'est tes photos, ta thèse, tes identifiants, parfois ton argent. Apprendre à te défendre te fait économiser des centaines d'euros de « dépannage » — et comprendre ce qu'une IA accepte ou refuse de faire te rend <strong>utilisateur averti plutôt qu'utilisateur naïf</strong>.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>La défense est toujours légale, l'attaque jamais.</strong> Sécuriser ton propre réseau, tester ton propre système avec autorisation : parfaitement autorisé. Tester celui du voisin : crime.</li>
+    <li><strong>Un outil n'est ni bon ni mauvais, c'est l'usage qui décide.</strong> Wireshark, Kali Linux ou Aircrack-ng sont des outils d'audit professionnels — utilisés en labo avec autorisation, ce sont des armes.</li>
+    <li><strong>L'IA refuse par conception.</strong> Elle ne connaît pas ton intention : elle refuse tout ce qui peut nuire, faute de pouvoir vérifier que tu es un chercheur plutôt qu'un malveillant.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Répondre à un faux message en 30 secondes</strong><br>
+    Tu reçois un SMS : « Votre colis est bloqué, payez 200 DA sur ce lien. » Tu colles le message à l'IA : <em>« Analyse ce SMS : est-ce une arnaque ? Donne-moi les indices et la marche à suivre. »</em> En 10 secondes elle liste les indices (faute d'orthographe, domaine inconnu, urgence artificielle, demande de paiement) et la conduite à tenir : ne rien cliquer, ne rien répondre, bloquer l'expéditeur. Aucune donnée personnelle n'était nécessaire pour obtenir cette réponse.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Décrire le problème de sécurité précisément</h4>
+    <div class="step-meta">
+      <span>📍 Dans ChatGPT / Claude / Gemini</span>
+      <span>⏱️ 3 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> décrire ce que tu observes SANS jamais demander à « retourner » l'attaque. Le symptôme précis donne un diagnostic précis.</p>
+    <p><strong>Prompt type :</strong></p>
+    <div class="prompt-box">Mon [appareil / compte / réseau] présente [symptôme exact]. Je suis le propriétaire. Donne-moi un diagnostic en 3 hypothèses par ordre de probabilité, et pour chacune comment la vérifier légalement sur MON propre système.</div>
+    <p><strong>Ce que tu vas voir :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de l'IA</h4>
+      <ol>
+        <li><strong>Hypothèse 1 — identifiants réutilisés.</strong> Vérification : activer la connexion récente de ton compte, comparer les appareils affichés.</li>
+        <li><strong>Hypothèse 2 — application tierce avec accès permanent.</strong> Vérification : liste des autorisations accordées dans les réglages du compte.</li>
+        <li><strong>Hypothèse 3 — appareil infecté (logiciel espion).</strong> Vérification : scan complet, contrôle des applications installées à l'insu.</li>
+      </ol>
+      <p>L'IA précisera toujours que ces vérifications se font <strong>sur ton propre système</strong>.</p>
+    </div>
+    <div class="tip">Note le <strong>fait exact</strong> (heure, message, code d'erreur, domaine du lien) : c'est ce qui permet de trancher entre les hypothèses.</div>
+    <div class="warn"><strong>⚠️ Piège à éviter :</strong> ne demande jamais « comment pirater le compte qui m'a piraté ». C'est déjà un délit, et cela ne récupère rien — la bonne réponse est le changement d'identifiants et la déclaration.</div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Sauvegarder avant toute manipulation</h4>
+    <div class="step-meta">
+      <span>📍 PC / disque externe / cloud</span>
+      <span>⏱️ 15 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> sortir tes données du chemin de l'attaque et vérifier que la sauvegarde est lisible.</p>
+    <p><strong>Prompt :</strong></p>
+    <div class="prompt-box">Comment sauvegarder mes données avant de nettoyer [PC / téléphone] ? Étapes, outils, puis comment vérifier que la sauvegarde est complète et saine ?</div>
+    <p><strong>Ce que tu vas voir :</strong> copie des documents et photos vers un support externe, export des mots de passe via le gestionnaire de mots de passe, et <strong>test d'ouverture</strong> de 3 fichiers copiés.</p>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de l'IA</h4>
+      <ol>
+        <li><strong>Documents et photos</strong> vers un disque externe ou un dossier cloud séparé — 15 min.</li>
+        <li><strong>Mots de passe</strong> : export depuis le gestionnaire (fichier chiffré), jamais un texte en clair.</li>
+        <li><strong>Liste des applications</strong> installées, à réinstaller après le nettoyage.</li>
+        <li><strong>Vérification</strong> : ouvrir 3 fichiers copiés <strong>sur un autre appareil propre</strong>, pas sur le PC encore infecté.</li>
+      </ol>
+      <p>Précise si tu es sur Windows, macOS ou Android : je t'adapte les chemins exacts.</p>
+    </div>
+    <div class="tip">Une sauvegarde faite <strong>après</strong> l'infection peut contenir le virus : sauvegarde les documents utiles, pas l'ensemble du disque.</div>
+    <div class="warn"><strong>⚠️ Piège à éviter :</strong> ne reconnecte jamais ta sauvegarde au PC encore infecté — elle sera contaminée à son tour.</div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Suivre la procédure officielle de défense</h4>
+    <div class="step-meta">
+      <span>📍 Site du constructeur + IA</span>
+      <span>⏱️ 10 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> obtenir une procédure numérotée de remise en état, avec les risques.</p>
+    <p><strong>Prompt :</strong></p>
+    <div class="prompt-box">Donne-moi la procédure officielle pour [sécuriser mon Wi-Fi / nettoyer mon PC / récupérer mon compte]. Étapes numérotées, risque et précaution pour chacune, et signale l'étape à partir de laquelle les données peuvent être perdues.</div>
+    <p><strong>Ce que tu vas voir :</strong> par exemple : changer le mot de passe d'administration du routeur → passer en WPA2-personal (ou WPA3) → désactiver le WPS → mettre à jour le firmware → changer les identifiants par défaut.</p>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de l'IA</h4>
+      <ol>
+        <li>Noter la référence du routeur et ouvrir son interface (souvent <code>192.168.1.1</code>) — risque : aucun.</li>
+        <li>Changer le mot de passe d'administration — risque : ne plus pouvoir y accéder, note-le.</li>
+        <li>Passer le chiffrement en <strong>WPA2-personal ou WPA3</strong> (jamais WEP) — risque : reconnexion une fois des appareils.</li>
+        <li>Désactiver le <strong>WPS</strong> — risque : aucun.</li>
+        <li>Mettre à jour le firmware depuis le site du constructeur — risque : ne pas couper le courant pendant l'opération.</li>
+        <li>Changer le nom du réseau et les identifiants par défaut — risque : reconnecter tous les appareils de la maison.</li>
+      </ol>
+      <p>Source : page Support du constructeur (modèle exact du routeur) — jamais un tutoriel de forum.</p>
+    </div>
+    <div class="tip">Demande toujours la <strong>source officielle</strong> (constructeur, éditeur, CERT) : une procédure de forum peut être obsolète ou fausse.</div>
+    <div class="warn"><strong>⚠️ Piège à éviter :</strong> la « réinitialisation d'usine » efface tout. C'est un dernier recours, jamais une première étape.</div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Vérifier le résultat</h4>
+    <div class="step-meta">
+      <span>📍 Sur ton propre système</span>
+      <span>⏱️ 10 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> tester objectivement ta protection.</p>
+    <p><strong>Prompt :</strong></p>
+    <div class="prompt-box">Comment vérifier que [mon compte / mon Wi-Fi / mon PC] est réellement sécurisé ? Donne 5 tests concrets que JE PEUX FAIRE SUR MON PROPRE SYSTÈME, et les signes d'un échec.</div>
+    <p><strong>Ce que tu vas voir :</strong> vérification de l'activation de la double authentification, test de force du mot de passe via le vérificateur officiel du fabricant, contrôle des sessions connectées, scan antivirus complet, mise à jour de tous les pilotes et applications.</p>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de l'IA</h4>
+      <ol>
+        <li><strong>Double authentification</strong> active sur la messagerie et les réseaux sociaux (page Sécurité du compte).</li>
+        <li><strong>Mot de passe</strong> testé sur le vérificateur officiel du fabricant, jamais sur un site inconnu.</li>
+        <li><strong>Sessions connectées</strong> : déconnexion de tout appareil que tu ne reconnais pas.</li>
+        <li><strong>Scan antivirus complet</strong> + système et pilotes à jour depuis les canaux officiels.</li>
+        <li><strong>Routeur</strong> : chiffrement WPA2/WPA3 visible dans la liste des réseaux, WPS éteint.</li>
+      </ol>
+      <p><strong>Signe d'échec :</strong> une seule de ces cinq vérifications fausse et la protection n'est pas réellement en place.</p>
+    </div>
+    <div class="tip">Fais cette liste <strong>avant</strong> l'intervention : c'est la seule preuve que la protection fonctionne.</div>
+    <div class="warn"><strong>⚠️ Piège à éviter :</strong> « aucun avertissement affiché » ne veut pas dire « sécurisé ». Le test doit être actif, pas passif.</div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — En cas de blocage, revenir avec le message d'erreur</h4>
+    <div class="step-meta">
+      <span>📍 Copier-coller exact</span>
+      <span>⏱️ 2 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> rendre le message exact à l'IA pour qu'elle le traduise en cause réelle.</p>
+    <p><strong>Prompt :</strong></p>
+    <div class="prompt-box">Voici le message d'erreur exact : [coller]. Explique la cause en une phrase, puis propose 2 corrections classées du moins risqué au plus risqué — uniquement sur mon propre système.</div>
+    <p><strong>Ce que tu vas voir :</strong> « Certificate error » → certificat expiré ou faux ; « Permission denied » → droit insuffisant ; « Invalid credentials after reset » → session ancienne à déconnecter.</p>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de l'IA</h4>
+      <p><strong>Cause en une phrase :</strong> le message est un refus d'accès (identifiants, droits ou session expirée) ; l'IA le traduit avant de proposer quoi que ce soit.</p>
+      <ol>
+        <li><strong>Correction 1 (le moins risquée) :</strong> déconnecter toutes les sessions, puis réinitialiser le mot de passe depuis la page officielle du service.</li>
+        <li><strong>Correction 2 (plus technique) :</strong> vérifier l'horloge du système (« Certificate error » vient souvent d'une date fausse) et mettre à jour le navigateur.</li>
+      </ol>
+      <p>Colle le message <strong>avec tes identifiants remplacés par des ***</strong> : je te le traduis en cause réelle et en ordre de corrections.</p>
+    </div>
+    <div class="tip">Colle le message <strong>tel quel</strong>, même en anglais : c'est l'identifiant exact qui mène à la correction.</div>
+    <div class="warn"><strong>⚠️ Piège à éviter :</strong> ne copie jamais ton mot de passe, ton numéro de carte ou un identifiant complet dans le message collé — remplace-les par des ***.</div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 6 — Documenter pour la prochaine fois</h4>
+    <div class="step-meta">
+      <span>📍 Fichier notes_securite.md</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> transformer l'incident en fiche réutilisable.</p>
+    <p><strong>Prompt :</strong></p>
+    <div class="prompt-box">Écris-moi un fichier notes_securite.md qui résume : symptôme / cause / procédure numérotée / vérification / à ne pas refaire. Ajoute une rubrique « mots de passe à changer » avec la liste (sans les valeurs).</div>
+    <p><strong>Ce que tu vas voir :</strong> une fiche en 5 rubriques, sans aucun secret écrit dedans, que tu peux relire dans six mois.</p>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de l'IA</h4>
+      <pre>## Symptôme    : [ce que tu as observé]
+## Cause       : [ce que l'IA a diagnostiqué]
+## Procédure   : 1) sauvegarde  2) désinfection  3) mises à jour  4) vérification
+## Vérification : [les tests qui passent maintenant]
+## À ne pas refaire : [le geste qui a aggravé]
+## Mots de passe à changer : messagerie, réseaux sociaux (valeurs JAMAIS écrites ici)</pre>
+      <p>Relis la fiche dans six mois : une limite notée (« l'IA a refusé X ») vaut mieux qu'un souvenir vague.</p>
+    </div>
+    <div class="tip">Note aussi <strong>ce que tu as refusé de faire</strong> : la trace des limites tenues est ce qui protège le mieux un utilisateur.</div>
+    <div class="warn"><strong>⚠️ Piège à éviter :</strong> aucun mot de passe, code PIN ou numéro de carte dans ce fichier.</div>
+  </div>
+
+  <h2>🎨 Bonus — Schéma ASCII : légal ou illégal ?</h2>
+  <p>Avant toute demande à une IA (ou à toi-même), fais passer ta question dans ce schéma. Il tranche en 10 secondes.</p>
+<pre><code>        ┌────────────────────────┐
+        │  1. MA DEMANDE          │
+        │  « Est-ce que je peux   │
+        │   faire X ? »           │
+        └───────────┬────────────┘
+                    │
+                    ▼
+        ┌────────────────────────┐   non    ┌──────────────────────┐
+        │  2. C'EST MON SYSTÈME ?├─────────▶│  REFUS               │
+        │  (ou autorisation      │          │  (l'IA dit non,      │
+        │   écrite)              │          │   et c'est normal)   │
+        └───────────┬────────────┘          └──────────────────────┘
+                    │ oui
+                    ▼
+        ┌────────────────────────┐   non    ┌──────────────────────┐
+        │  3. ÇA PEUT NUIRE      ├─────────▶│  REFUS               │
+        │  À QUELQU'UN ?         │          │                      │
+        └───────────┬────────────┘          └──────────────────────┘
+                    │ non
+                    ▼
+        ┌────────────────────────┐   non    ┌──────────────────────┐
+        │  4. JE POURRAIS L'     ├─────────▶│  REFUS               │
+        │  EXPLIQUER À UN JUGE ? │          │                      │
+        └───────────┬────────────┘          └──────────────────────┘
+                    │ oui
+                    ▼
+        ┌────────────────────────┐
+        │  ✅ AUTORISÉ           │
+        │  l'IA t'accompagne     │
+        └────────────────────────┘</code></pre>
+  <div class="tip">Si <strong>une seule</strong> des trois questions reçoit « non », on s'arrête — exactement comme la case « sauvegarde ? » de la séance 13.</div>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>📶 Exemple 1 — Durcir son propre Wi-Fi (légal, ton réseau)</h4>
+    <div class="prompt-box">Mon Wi-Fi est lent et je ne sais pas s'il est sécurisé. Comment vérifier et durcir MON propre réseau à la maison ? Étapes, risques et vérification finale.</div>
+    <p><strong>Réponse de l'IA :</strong></p>
+    <ol>
+      <li><strong>Noter la référence du routeur</strong> et se connecter à son interface d'administration (souvent <code>192.168.1.1</code>) — risque : aucun.</li>
+      <li><strong>Changer le mot de passe d'administration</strong> (celui du routeur, pas celui du Wi-Fi) — risque : ne plus pouvoir y accéder, noter le nouveau.</li>
+      <li><strong>Passer le chiffrement en WPA2-personal ou WPA3</strong> (jamais WEP ni « ouvert ») — risque : les appareils devront se reconnecter une fois.</li>
+      <li><strong>Désactiver le WPS</strong> et changer l'identifiant du réseau — risque : aucun.</li>
+      <li><strong>Mettre à jour le firmware</strong> du routeur depuis le site du constructeur — risque : ne pas couper le courant pendant la mise à jour.</li>
+      <li><strong>Vérification :</strong> liste des appareils connectés, test de débit, confirmation du chiffrement actif.</li>
+    </ol>
+    <div class="tip">C'est la sécurité <strong>la plus rentable</strong> : 20 minutes de travail protègent tous les appareils de la maison.</div>
+    <div class="warn"><strong>⚠️ Piège :</strong> le mot de passe d'usine du routeur est souvent « admin/admin ». Tant qu'il n'est pas changé, ta configuration est ouverte.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>💻 Exemple 2 — Audit de SON propre PC avec autorisation écrite</h4>
+    <div class="prompt-box">Je veux vérifier la sécurité de MON ordinateur personnel avant d'y stocker mon mémoire. Quels outils gratuits utiliser, et quelle est la marche à suivre ? Je suis propriétaire du matériel.</div>
+    <p><strong>Réponse de l'IA :</strong></p>
+    <ol>
+      <li><strong>Sauvegarde d'abord</strong> (documents importants sur disque externe), puis vérification de la sauvegarde.</li>
+      <li><strong>Scan complet</strong> avec un antivirus reconnu et à jour (par exemple Malwarebytes) — aucun autre outil nécessaire pour un particulier.</li>
+      <li><strong>Mise à jour du système et des pilotes</strong> depuis les canaux officiels uniquement.</li>
+      <li><strong>Contrôle des extensions de navigateur</strong> : suppression de tout ce qui n'a pas été installé volontairement.</li>
+      <li><strong>Vérification :</strong> plus de pop-ups, démarrage rapide, aucune application inconnue au démarrage.</li>
+    </ol>
+    <div class="tip">Un audit honnête se limite à <strong>tes propres machines</strong> : dès qu'il faut l'accès à un système d'autrui, il faut un contrat.</div>
+    <div class="warn"><strong>⚠️ Piège :</strong> télécharger un « nettoyeur miracles » trouvé en ligne est la meilleure façon d'infecter un PC propre.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>🔑 Exemple 3 — Compte compromis : récupération officielle</h4>
+    <div class="prompt-box">Quelqu'un s'est connecté à mon compte (je vois une session inconnue). Que faire maintenant, dans l'ordre, sans rien perdre ?</div>
+    <p><strong>Réponse de l'IA :</strong></p>
+    <ol>
+      <li><strong>Déconnecter les sessions suspectes</strong> et récupérer le compte via la procédure officielle du fournisseur (mot de passe oublié → vérification d'identité).</li>
+      <li><strong>Changer le mot de passe</strong> avec un mot de passe long et unique, puis activer la <strong>double authentification</strong>.</li>
+      <li><strong>Vérifier les règles de transfert automatique</strong> : un pirate y laisse très souvent une règle silencieuse qui copie tes messages.</li>
+      <li><strong>Changer les mots de passe réutilisés ailleurs</strong> (même mot de passe = même porte ouverte).</li>
+      <li><strong>Signaler</strong> : plateforme, puis autorités si tu as été escroqué.</li>
+    </ol>
+    <div class="tip">La <strong>double authentification</strong> est la protection la plus efficace : même ton mot de passe volé ne suffit plus.</div>
+    <div class="warn"><strong>⚠️ Piège :</strong> ne répond jamais à un « assistant support » qui te demande ton code par message : le support officiel ne le demande jamais.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>📲 Exemple 4 — Des applis qui s'installent toutes seules</h4>
+    <div class="prompt-box">Sur mon téléphone, des jeux s'installent sans que je les demande. Comment diagnostiquer et supprimer la cause ? Appareil personnel, je suis propriétaire.</div>
+    <p><strong>Réponse de l'IA :</strong></p>
+    <ol>
+      <li><strong>Lister les applications récemment installées</strong> (Réglages → Applications → tri par date) — souvent une application tierce installée avec un APK d'un site inconnu.</li>
+      <li><strong>Retirer les droits « Installation d'applications inconnues »</strong> accordés à tort — risque : aucun.</li>
+      <li><strong>Désinstaller l'application fautive</strong>, puis scanner avec Play Protect / un antivirus mobile.</li>
+      <li><strong>Vérifier les services d'accessibilité</strong>, qui peuvent réinstaller des applis à l'insu.</li>
+      <li><strong>Vérification :</strong> plus d'installation surprise pendant 48 h, et liste des applis stable.</li>
+    </ol>
+    <div class="tip">La cause est presque toujours un <strong>APK téléchargé hors Play Store</strong>. Réinstaller proprement depuis la boutique officielle règle le problème.</div>
+    <div class="warn"><strong>⚠️ Piège :</strong> une application installée par un tiers peut contenir un logiciel espion : change tes mots de passe depuis un autre appareil propre.</div>
+  </div>
+
+  <h2>📱 Le grand tableau — ce qu'une IA peut faire en sécurité</h2>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Appareil</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Problème fréquent</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que l'IA peut faire</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Outils nécessaires</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;" rowspan="5"><strong>Téléphone<br>(Android / iPhone)</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Applis qui s'installent seules</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Diagnostiquer la source, guider le retrait des droits, scanner</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Play Protect, gestionnaire d'applis</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">SMS / lien d'arnaque</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser le message, lister les indices, indiquer la conduite à tenir</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucun (copier-coller)</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Compte piraté</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Procédure officielle de récupération, activation de la double authentification</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Navigateur, e-mail de récupération</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Mots de passe faibles ou réutilisés</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer des mots de passe forts, organiser un gestionnaire</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Gestionnaire de mots de passe</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Mémoire saturée / tracer</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Repérer les applis gourmandes, limiter les autorisations</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Réglages → Batterie / Confidentialité</td></tr>
+
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;" rowspan="5"><strong>Ordinateur<br>(Windows / macOS / Linux)</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pop-ups / faux antivirus</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Reconnaître l'arnaque, guider le nettoyage, purger les extensions</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Malwarebytes, navigateur</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">PC ralenti par le démarrage</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser les programmes au démarrage, désactiver l'inutile</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Gestionnaire des tâches</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Système non mis à jour</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vérifier les correctifs critiques, réinitialiser le service Update</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Windows Update officiel</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Données chiffrées par ransomware</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Qualifier l'attaque, orienter vers les bases officielles de déchiffrement</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Sauvegarde hors ligne, site No More Ransom</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Dossier à chiffrer avant partage</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Expliquer le chiffrement et l'outillage de compression/chiffrement</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">7-Zip (AES-256), mot de passe partagé autrement</td></tr>
+
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;" rowspan="4"><strong>Réseau &amp; comptes</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Wi-Fi non sécurisé (WEP / ouvert)</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Guider le passage en WPA2/WPA3, changement des identifiants par défaut</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Interface du routeur, câble Ethernet</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Phishing par e-mail</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser l'expéditeur et le domaine, expliquer les indices</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Copier-coller du message</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Session inconnue sur un compte</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Procédure de récupération officielle, révocation des sessions</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Paramètres du compte</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Audit d'un réseau avec autorisation</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Préparer le périmètre, les outils et le rapport — en labo, avec contrat</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Kali Linux, Wireshark, autorisation écrite</td></tr>
+    </tbody>
+  </table>
+  <div class="warn"><strong>⚠️ Ce que l'IA ne peut PAS faire :</strong> ni protéger à ta place, ni tester un système qui n'est pas le tien. Elle diagnostique et forme — tu exécutes, sur ton propre matériel.</div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>Un mot de passe long vaut mieux qu'un mot de passe complexe</strong> : « moto-café-lundi-printemps-42 » est plus résistant — et plus mémorisable — que <code>P@ss1!</code>.</li>
+      <li><strong>La double authentification change tout</strong> : elle annule presque totalement le vol de mot de passe. Active-la d'abord sur ta boîte mail.</li>
+      <li><strong>Ta boîte mail est la clé de voûte</strong> : elle récupère tous tes autres comptes. Un mot de passe unique + double auth, obligatoirement.</li>
+      <li><strong>Une mise à jour n'est pas de la publicité</strong> : c'est le correctif d'une faille déjà connue des attaquants.</li>
+      <li><strong>L'urgence est toujours le signal d'alarme</strong> : « sous 24 h », « colis bloqué », « compte fermé demain » — personne ne te met une telle pression légitimement.</li>
+      <li><strong>Ne colle jamais de mot de passe ni de code dans une IA</strong> : comme un numéro de série ou un IMEI, ça part sur un serveur étranger.</li>
+      <li><strong>Le meilleur antivirus est un réflexe</strong> : ne pas cliquer. Aucun outil ne rattrape un double-clic réfléchi.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Réutiliser le même mot de passe partout → un seul piratage ouvre tous tes comptes. <strong>✅ Un mot de passe unique par service, stocké dans un gestionnaire.</strong></li>
+    <li>❌ Télécharger un logiciel ou un APK sur un site inconnu → logiciel espion assuré. <strong>✅ Boutique officielle ou site de l'éditeur.</strong></li>
+    <li>❌ « Tester » le Wi-Fi du voisin pour voir → délit pénal, même « pour rigoler ». <strong>✅ Tester uniquement ton propre réseau, avec trace écrite.</strong></li>
+  </ul>
+
+  <h2>🧭 IA et éthique : ce que l'IA refuse et pourquoi</h2>
+  <p>Une IA comme OpenCode, ChatGPT ou Gemini peut expliquer la <strong>théorie</strong> de la sécurité informatique, mais refuse <strong>toute aide à une action illégale</strong> — et c'est normal.</p>
+
+  <h3>3 raisons de ce refus</h3>
+  <ol>
+    <li><strong>Raison légale</strong> — En Algérie (loi 09-04 de 2009), en France (article 323-1), aux États-Unis (CFAA), pirater un système est un <strong>crime puni de prison</strong>.</li>
+    <li><strong>Raison commerciale</strong> — Les entreprises (OpenAI, Google, Anthropic) sont <strong>responsables pénalement</strong> de ce que leurs IA produisent.</li>
+    <li><strong>Raison éthique</strong> — Une IA ne peut pas vérifier si tu es un chercheur ou un voisin malveillant. Elle refuse tout ce qui peut nuire à autrui.</li>
+  </ol>
+
+  <div class="ok">
+    <strong>✅ Ce que l'IA accepte de t'expliquer (légalement)</strong>
+    <ul>
+      <li>La théorie de la sécurité Wi-Fi (WPA2, WPA3)</li>
+      <li>L'audit de <strong>ton propre</strong> réseau</li>
+      <li>Les outils comme Wireshark, Aircrack-ng, Kali Linux — <strong>en labo</strong></li>
+      <li>Les tests d'intrusion — <strong>avec autorisation écrite</strong></li>
+    </ul>
+  </div>
+
+  <div class="warn">
+    <strong>❌ Ce que l'IA refuse</strong>
+    <ul>
+      <li>Cracker le Wi-Fi d'un voisin, d'un café, d'une entreprise</li>
+      <li>Contourner un paiement</li>
+      <li>Accéder à un compte qui n'est pas le tien</li>
+      <li>Installer un keylogger, un ransomware</li>
+    </ul>
+  </div>
+
+  <h3>Le test des 3 questions (avant toute demande)</h3>
+  <ol>
+    <li>Est-ce que je <strong>possède</strong> ce système (ou j'ai une autorisation écrite) ?</li>
+    <li>Est-ce que mon action <strong>peut nuire</strong> à quelqu'un ?</li>
+    <li>Est-ce que je pourrais <strong>expliquer</strong> cette action à un juge ?</li>
+  </ol>
+  <div class="warn">Si une réponse est « non », ne le fais pas.</div>
+
+  <h3>Le métier de hacker éthique</h3>
+  <ul>
+    <li>Le <strong>pentester</strong> et le <strong>bug bounty hunter</strong> sont des métiers bien payés.</li>
+    <li>La différence avec un pirate : <strong>contrat signé, autorisation, divulgation responsable</strong>.</li>
+    <li>Un hacker éthique <strong>signe avant</strong> de tester ; un pirate teste <strong>puis</strong> demande pardon.</li>
+  </ul>
+  <div class="tip">Si tu veux aller dans cette voie, commence par <strong>labo chez toi</strong> et par les programmes de bug bounty officiels des grandes entreprises : c'est légal, documenté, et ça se met sur un CV.</div>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>Défendre est légal, attaquer ne l'est jamais</strong> — et la frontière, c'est la propriété du système ou l'autorisation écrite.</li>
+      <li><strong>Un outil de sécurité se juge à son usage</strong> : labo avec autorisation, ou délit.</li>
+      <li><strong>L'IA refuse ce qui peut nuire</strong>, faute de pouvoir vérifier ton intention.</li>
+      <li><strong>Le test des 3 questions</strong> : je le possède ? Ça peut nuire ? Pourrais-je l'expliquer à un juge ?</li>
+      <li><strong>La sauvegarde et la vérification viennent toujours en premier</strong>, en sécurité comme en réparation.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose</h2>
+
+  <h3>1. Pourquoi l'IA refuse-t-elle si elle connaît les techniques ?</h3>
+  <p>Parce que <strong>connaître et enseigner ne sont pas la même chose</strong>. L'IA peut t'expliquer comment fonctionne WPA2, pourquoi le WPS est dangereux, ou comment un audit se déroule — ce qui suffit à comprendre et à te défendre. Ce qu'elle refuse, c'est la <strong>mise en œuvre contre autrui</strong> : elle ne peut pas vérifier que tu es le propriétaire du système.</p>
+
+  <h3>2. « C'est juste pour apprendre », est-ce une justification ?</h3>
+  <p><strong>Non.</strong> L'article de la loi ne distingue pas l'intention : entrer dans un système sans autorisation reste un délit, même sans vol ni dégât. L'apprentissage légitime se fait <strong>chez soi</strong>, avec des machines virtuelles, des labos maison et des captures officielles.</p>
+
+  <h3>3. Peut-on gagner sa vie en cybersécurité ?</h3>
+  <p><strong>Oui, et c'est un métier en tension.</strong> Pentester, analyste SOC, spécialiste du chiffrement, bug bounty hunter : ces postes demandent une méthode rigoureuse plus qu'un « don de hacker ». Le chemin classique : labo → certifications reconnues → missions encadrées par contrat.</p>
+
+  <h3>4. Si quelqu'un a piraté mon compte, dois-je me venger ?</h3>
+  <p><strong>Non.</strong> Récupérer ton compte par la procédure officielle, changer tes mots de passe, activer la double authentification, signaler aux autorités : c'est à la fois la seule méthode qui marche et la seule légale. « Se faire justice » transforme la victime en suspect.</p>
+
+  <div class="warn">
+    <strong>⚠️ Une règle de taille :</strong> toute offre de type « test mon système contre paiement », « débloque mon compte », « récupère mes photos » par un inconnu est <strong>soit une arnaque, soit un délit</strong>. Le dépannage légal commence par un contrat ou par la procédure officielle du fabricant.
+  </div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+  <p>Quand tu colles un <strong>numéro de compte</strong>, un <strong>IMEI</strong>, un <strong>identifiant d'entreprise</strong> ou une <strong>capture d'écran</strong> dans un chat avec une IA, ces données partent sur un serveur étranger et peuvent être conservées pour l'entraînement des modèles.</p>
+  <div class="warn">
+    <strong>⚠️ Ne partage que ce qui est nécessaire au diagnostic :</strong> le modèle exact, le message d'erreur et le contexte suffisent. Masque les identifiants, les numéros, les noms et tout ce qui apparaît sur une capture avant de l'envoyer.
+  </div>
+  <div class="tip">Question de contrôle : <strong>« ai-je besoin de coller ça pour obtenir la réponse ? »</strong> Dans 9 cas sur 10, la réponse est non.</div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=s%C3%A9curit%C3%A9+informatique+pour+les+d%C3%A9butants+fran%C3%A7ais" target="_blank">Sécurité informatique pour les débutants (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=arnaque+sms+liens+pi%C3%A9g%C3%A9s+reconna%C3%AEtre" target="_blank">Reconnaître un SMS et un lien d'arnaque</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=hacker+%C3%A9thique+pentester+m%C3%A9tier+formation" target="_blank">Hacker éthique : le métier de pentester</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Pourquoi une IA refuse-t-elle d'aider à cracker un Wi-Fi ? <br><em>(Réponse : raison légale — c'est un délit ; raison commerciale — l'éditeur est responsable ; raison éthique — l'IA ne peut pas vérifier ton intention.)</em></li>
+    <li>Quelles sont les 3 questions à se poser avant toute demande ? <br><em>(Réponse : je possède ce système ou j'ai l'autorisation ? Mon action peut-elle nuire ? Pourrais-je l'expliquer à un juge ?)</em></li>
+    <li>Qu'est-ce qui distingue un pentester d'un pirate ? <br><em>(Réponse : le contrat signé, l'autorisation écrite et la divulgation responsable — il signe avant de tester.)</em></li>
+    <li>Quelle est la première étape obligatoire avant toute manipulation de sécurité ? <br><em>(Réponse : sauvegarder, puis vérifier que la sauvegarde est lisible.)</em></li>
+    <li>Que faire si une réponse aux 3 questions est « non » ? <br><em>(Réponse : ne pas le faire — et ne pas demander à l'IA de le faire à ta place.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>WPA2 / WPA3</strong> — Protocoles de chiffrement du Wi-Fi ; WPA3 est le plus récent et le plus résistant.</li>
+    <li><strong>Phishing (hameçonnage)</strong> — Faux message qui imite un service réel pour voler tes identifiants.</li>
+    <li><strong>Ransomware</strong> — Logiciel malveillant qui chiffre tes fichiers et demande une rançon.</li>
+    <li><strong>Keylogger</strong> — Programme qui enregistre frappes et mots de passe à ton insu.</li>
+    <li><strong>Pentester (test d'intrusion)</strong> — Professionnel qui attaque un système <strong>avec contrat</strong> pour en trouver les failles.</li>
+    <li><strong>Double authentification (2FA)</strong> — Un second facteur (SMS, application, clé) en plus du mot de passe.</li>
+    <li><strong>CFAA / loi 09-04 / article 323-1</strong> — Textes américains, algériens et français qui répriment l'accès non autorisé à un système informatique.</li>
+  </ul>
+
+  <div class="nav-footer">
+    <a href="seance-13.html">◀ Séance 13</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-15.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+  </div>
+
+</div>
+</body>
+</html>

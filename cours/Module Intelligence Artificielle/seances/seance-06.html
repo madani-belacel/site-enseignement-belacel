@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 06 — Réviser un examen avec l'IA (QCM + flashcards)</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 06 — Réviser un examen avec l'IA (QCM + flashcards)</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Épingler ton chat de révision (📌)</strong><br>
+    Les meilleures sessions se perdent sous vingt conversations. Clique l'épingle 📌 de ton chat QCM/flashcards : il reste en haut de la liste et tu le retrouves en 1 seconde le jour de l'examen. Même réflexe avec NotebookLM : garde un seul espace par matière, jamais un mélange.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu sauras fabriquer seul — à partir de <strong>tes propres cours</strong> — un examen blanc complet : 10 questions à choix multiple corrigées, un jeu de flashcards et une simulation d'oral notée, en moins de 30 minutes.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>En 2ème année PEP, tu enchaînes les partiels : grammaire, didactique, civilisation, psychologie… Relire un chapitre trois fois donne l'impression de savoir, mais dès qu'on t'interroge, la réponse n'est plus là. L'IA transforme chaque chapitre en <strong>outils d'entraînement</strong> : des questions pour te tester, des cartes pour mémoriser, un oral pour t'entraîner à voix haute. Tu révises <em>en te testant</em> — c'est la méthode qui fait gagner le plus de temps à la veille d'un examen, et celle qu'aucun étudiant n'utilise spontanément.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>Ton examen blanc part de TON cours, pas d'Internet.</strong> Tu déposes d'abord tes documents dans NotebookLM : sinon l'IA fabrique des questions sur un programme qui n'existe pas dans ta fac.</li>
+    <li><strong>Réviser, c'est se tester, pas relire.</strong> Une flashcard à laquelle tu réponds à voix haute avant de la retourner vaut dix relectures passives.</li>
+    <li><strong>Une question non vérifiée = une fausse révision.</strong> Fais valider tes QCM par un second outil (NotebookLM, sur tes documents) avant de les retenir.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Détecter un virus sans payer un antivirus</strong><br>
+    Ton PC rame soudainement, une fenêtre étrange apparaît. Tu décris les symptômes à ChatGPT : « Mon PC affiche des pubs même quand Chrome est fermé, il rame au démarrage. Est-ce un virus ? Comment le détecter ? » L'IA te guide : vérifier les extensions Chrome, les programmes au démarrage, utiliser Malwarebytes (gratuit), supprimer les fichiers suspects. Tu nettoies ton PC sans payer d'abonnement antivirus.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Prépare ton chapitre dans NotebookLM (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 notebooklm.google.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> ouvrir un nouveau carnet et y déposer <strong>TES</strong> documents sur un seul chapitre : le PDF du cours, le polycopié du prof, tes notes manuscrites scannées. Règle : un chapitre = un carnet.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">D'après ces documents uniquement, liste les 5 thèmes du chapitre sur lesquels j'étudie qui reviennent le plus. Pour chacun, indique la page où il apparaît. Réponds en 5 puces, une seule phrase par puce.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de NotebookLM</h4>
+      <ul>
+        <li><strong>1. Évaluation formative et évaluation sommative</strong> — pages 4 à 6 (définitions et tableau comparatif).</li>
+        <li><strong>2. Les critères d'une consigne opérationnelle</strong> — page 7 (3 critères) et page 12 (contre-exemple).</li>
+        <li><strong>3. La rétroaction (feedback) : descriptive contre évaluative</strong> — pages 8 et 9.</li>
+        <li><strong>4. L'évaluation par les pairs et l'auto-évaluation</strong> — page 10 (protocole en 4 étapes).</li>
+        <li><strong>5. Les biais de l'évaluation : effet de halo et biais de note</strong> — pages 13 et 14.</li>
+      </ul>
+      <p><em>Sources : Cours_évaluation_L2.pdf (p. 4), Polycopié_semaine_3.pdf (p. 2), Notes_de_cours.docx (p. 1).</em></p>
+    </div>
+    <div class="tip">Ajoute aussi les <strong>annales des années précédentes</strong> si ton département en partage : l'IA fabriquera alors des questions dans le style exact du vrai examen.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne dépose pas tout ton semestre dans un seul carnet — les questions mélangeront les matières et tu perdras une soirée à les trier.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Fabrique 10 QCM corrigés avec ChatGPT (7 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 7 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> demander un vrai sujet d'examen blanc : 10 questions, 4 propositions, difficulté progressive, corrigé expliqué. C'est le cœur de ta séance de révision.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Tu es examinateur de 2ème année PEP. À partir du chapitre ci-dessous, crée 10 questions à choix multiple : 4 propositions (A, B, C, D), une seule bonne réponse, difficulté progressive (3 faciles, 4 moyennes, 3 difficiles). Après chaque question, donne la bonne réponse et une phrase d'explication. Colle mon chapitre : [colle ici ton cours ou ton résumé de chapitre]</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li><strong>Facile</strong> — L'évaluation formorative se situe : A) après la fin du chapitre · B) pendant l'apprentissage · C) à la fin de l'année scolaire · D) uniquement à l'oral.<br><strong>Réponse : B</strong> — elle a lieu pendant que l'élève apprend encore, pour ajuster l'enseignement.</li>
+        <li><strong>Facile</strong> — Une consigne est dite « opérationnelle » quand : A) elle est longue et détaillée · B) on peut vérifier si elle est respectée · C) elle est écrite au tableau · D) elle est répétée deux fois.<br><strong>Réponse : B</strong> — un comportement observable permet de dire si elle est accomplie ou non.</li>
+        <li><strong>Facile</strong> — L'évaluation sommative a lieu : A) en cours de séance · B) quand l'élève le demande · C) à la fin d'une période, pour sanctionner · D) uniquement en groupe.<br><strong>Réponse : C</strong> — elle conclut et note, elle ne guide pas.</li>
+        <li><strong>Moyenne</strong> — Le feedback descriptif se distingue du feedback évaluatif parce qu'il : A) décrit le travail sans le noter · B) donne directement la note · C) compare l'élève à la classe · D) est toujours oral.<br><strong>Réponse : A</strong> — il informe sur le travail produit, sans jugement de valeur.</li>
+        <li><strong>Moyenne</strong> — L'évaluation par les pairs consiste à : A) noter le professeur · B) un élève évalue le travail d'un camarade avec une grille annoncée · C) comparer deux classes · D) corriger sa propre copie.<br><strong>Réponse : B</strong> — la grille est connue à l'avance, sinon l'exercice perd son sens.</li>
+        <li><strong>Moyenne</strong> — Un item est dit « ambigu » quand : A) il est trop long · B) deux propositions semblent justes · C) il porte sur une page non étudiée · D) il utilise un mot rare.<br><strong>Réponse : B</strong> — deux bonnes réponses tuent la validité d'un QCM.</li>
+        <li><strong>Moyenne</strong> — La rétroaction est d'autant plus utile qu'elle est : A) immédiate et orientée vers une stratégie · B) reportée à la fin du semestre · C) écrite au crayon rouge · D) donnée devant toute la classe.<br><strong>Réponse : A</strong> — à la fois rapide et tournée vers la suite à donner.</li>
+        <li><strong>Moyenne</strong> — L'auto-évaluation repose sur : A) la comparaison avec le meilleur élève · B) les critères annoncés à l'avance · C) la note obtenue au dernier contrôle · D) l'avis des parents.<br><strong>Réponse : B</strong> — sans critères affichés, l'élève ne fait que se « noter ».</li>
+        <li><strong>Difficile</strong> — L'effet de halo apparaît quand : A) l'élève est éclairé au tableau · B) une qualité globale influence toutes les notes attribuées · C) le professeur corrige vite · D) la copie est anonyme.<br><strong>Réponse : B</strong> — un premier jugement (bon orateur) colonise les autres critères.</li>
+        <li><strong>Difficile</strong> — Un examen écrit mesure d'abord : A) tout le programme · B) ce qui est vérifiable par écrit à un instant donné · C) l'intelligence de l'élève · D) le travail du professeur.<br><strong>Réponse : B</strong> — c'est la raison pour laquelle on l'associe à d'autres modes d'évaluation.</li>
+      </ol>
+      <p>Voilà ton examen blanc. Veux-tu que je transforme ces 10 questions en questions ouvertes pour varier, ou que je prépare la correction détaillée de la question 9 ?</p>
+    </div>
+    <div class="tip">Recopie chaque corrigé <strong>au dos de la question</strong> (colonne B du tableur, ou verso de la fiche) : tu auras besoin de pouvoir le cacher quand tu te testeras.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne révise jamais un QCM dont la bonne réponse n'est pas expliquée — tu retiendras la lettre « B » sans retenir la notion.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Fais valider tes questions par NotebookLM (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 notebooklm.google.com</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> retourner dans ton carnet et soumettre les 10 questions à l'IA qui lit <strong>tes</strong> documents. C'est l'étape que 90 % des étudiants sautent — et celle qui sépare une vraie révision d'une fausse.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Voici 10 questions que j'ai préparées pour l'examen de ce chapitre. Pour CHAUNE d'elles : 1) est-elle exactement couverte par mon document ? 2) une autre proposition est-elle aussi vraie ? 3) sinon, dis-moi quelle question tu ajouterais. Réponds sous forme de tableau : n° / verdict (valide, ambiguë, hors document) / problème / correction.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de NotebookLM</h4>
+      <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+        <thead>
+          <tr style="background:#e3f2fd;">
+            <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">N°</th>
+            <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Verdict</th>
+            <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Problème</th>
+            <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Correction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">1 à 3</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ Valides</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Rien — couvertes p. 4, 7 et 6.</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune.</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">4</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">⚠️ Ambiguë</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">La proposition C est aussi vraie selon le document (p. 10).</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Remplacer C par « noter le professeur ».</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">5 à 8</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ Valides</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Rien — formulations conformes au cours.</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune.</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">7</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">⚠️ Trop absolu</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Le cours dit « en temps utile », pas forcément « immédiat » (p. 9).</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Remplacer « immédiate » par « donnée en temps utile ».</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">9</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ Hors document</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">L'effet de halo n'apparaît pas dans ces pages.</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Remplacer par une question sur les 3 critères d'une consigne (p. 7).</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">10</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ Valide</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Rien.</td>
+            <td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Question à ajouter :</strong> la page 11 (les 4 critères de validité d'un item : clarté, unicité, exhaustivité, difficulté adaptée) n'est couverte par aucune question.</p>
+    </div>
+    <div class="tip">Corrige la question <strong>dans ton prompt d'origine</strong> puis relance l'étape 2 : tu gardes un examen propre en une seule version, pas trois brouillons à comparer.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne fais jamais vérifier par ChatGPT ce que ChatGPT vient d'écrire — seul NotebookLM, qui lit tes documents, fait un vrai contrôle.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Transforme ton chapitre en flashcards avec Gemini (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 gemini.google.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> produire des cartes de mémorisation recto/verso, format strict, directement importables dans un outil de révision répétée (Anki, Quizlet).</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">À partir de mon cours, fais-moi 10 flashcards pour réviser. Format strict, sans rien d'autre :
+RECTO : une seule notion ou une seule question
+VERSO : la réponse en une phrase maximum + un exemple
+Numérotées de 1 à 10, une carte par ligne. Mon cours : [colle ici ton cours ou ton résumé]</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Gemini</h4>
+      <ul>
+        <li><strong>1. RECTO :</strong> Évaluation formative · <strong>VERSO :</strong> Évaluation pendant l'apprentissage qui sert à corriger la trajectoire — ex. : le brouillon rendu avant le devoir définitif.</li>
+        <li><strong>2. RECTO :</strong> Évaluation sommative · <strong>VERSO :</strong> Évaluation à la fin d'une période qui sanctionne — ex. : le partiel de juin.</li>
+        <li><strong>3. RECTO :</strong> Consigne opérationnelle · <strong>VERSO :</strong> Consigne dont on peut vérifier l'exécution — ex. : « Souligne les 5 verbes à l'imparfait ».</li>
+        <li><strong>4. RECTO :</strong> Feedback descriptif vs feedback évaluatif · <strong>VERSO :</strong> Le premier décrit le travail, le second le juge — ex. : « Ta intro annonce 2 axes » vs « 12/20 ».</li>
+        <li><strong>5. RECTO :</strong> Auto-évaluation · <strong>VERSO :</strong> L'élève évalue son travail avec des critères connus à l'avance.</li>
+        <li><strong>6. RECTO :</strong> Évaluation par les pairs · <strong>VERSO :</strong> Un camarade évalue un travail avec une grille prédéfinie.</li>
+        <li><strong>7. RECTO :</strong> Effet de halo · <strong>VERSO :</strong> Une impression globale (« bon orateur ») entraîne de bonnes notes partout.</li>
+        <li><strong>8. RECTO :</strong> Biais de note · <strong>VERSO :</strong> Laisser la note habituelle de l'élève influencer la note de cette copie.</li>
+        <li><strong>9. RECTO :</strong> Les 4 critères d'un bon item · <strong>VERSO :</strong> Clarté, unicité, exhaustivité, difficulté adaptée.</li>
+        <li><strong>10. RECTO :</strong> Que mesure un examen écrit ? · <strong>VERSO :</strong> Ce qui est vérifiable par écrit à un instant donné — d'où la complémentarité des autres modes.</li>
+      </ul>
+      <p>Veux-tu 10 cartes de plus, en insistant sur les points que les étudiants confondent le plus souvent ?</p>
+    </div>
+    <div class="tip">Colle ce bloc directement dans <strong>Anki</strong> ou <strong>Quizlet</strong> (ils séparent recto/verso à l'import) : tu gagnes les 30 minutes que tu aurais passées à fabriquer les cartes à la main.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne mets jamais deux notions sur le même recto — quand tu rates la carte, tu ne sauras plus lequel des deux tu as oublié.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Simule l'oral avec ChatGPT (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> te faire interroger et noter, une question à la fois. C'est la seule étape qui se fait <strong>à voix haute</strong> : c'est elle qui te dira si tu as vraiment révisé.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Tu es le professeur de didactique des langues. Je suis étudiant de 2ème année PEP. Interroge-moi à l'oral sur mon chapitre : pose UNE question à la fois, attends ma réponse, puis note-la sur 20 avec un point fort et un point à corriger. Ensuite seulement, pose la question suivante. Commence maintenant.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Question 1 :</strong> Vous avez deux contrôleurs devant vous. Le premier rend des notes, le second rend des commentaires pour améliorer le travail suivant. Dans quel cas parle-t-on d'évaluation formative, et que change-t-il concrètement pour l'élève ?</p>
+      <p><em>(Tu réponds à voix haute, comme à l'oral.)</em></p>
+      <p><strong>Ma réponse :</strong> C'est le second. L'évaluation formative, c'est quand on donne des remarques en cours d'apprentissage pour que l'élève s'améliore, alors que l'autre c'est juste pour mettre une note.</p>
+      <p><strong>Note : 14/20</strong> — <strong>Point fort :</strong> la distinction est correcte et tu donnes un exemple concret, ce qui est attendu à l'oral.</p>
+      <p><strong>Point à corriger :</strong> tu as dit « en cours d'apprentissage » sans préciser que l'élève doit pouvoir <em>agir</em> ensuite. Ajoute : « et l'élève dispose encore du temps de corriger son travail ». C'est la phrase qui fait la différence avec 16/20.</p>
+      <p><strong>Question 2 :</strong> Donnez-moi un exemple de consigne opérationnelle tiré de votre propre matière, puis un exemple de consigne qui ne l'est pas.</p>
+      <p><em>⏳ En attente de ta réponse…</em></p>
+    </div>
+    <div class="tip">Réponds <strong>à voix haute, debout, chronométré</strong>, sans regarder ta fiche. Si tu n'as pas la phrase en 15 secondes, tu ne la sauras pas le jour J non plus : note-la et reprends-la.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne demande jamais la liste des questions <em>avant</em> de t'entraîner — tu réviserais le script de l'oral au lieu de réviser la matière.
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Un <strong>schéma en ASCII</strong> est un dessin fait uniquement avec des caractères du clavier (tirets, barres, flèches, plus). Ça marche partout, sans image. Très utile pour comprendre une idée visuellement en un coup d'œil.</p>
+
+  <p><strong>Comment demander un schéma à l'IA ?</strong> Ajoute simplement <code>« avec un schéma en ASCII »</code> à la fin de ton prompt.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Un contrôle de grammaire en anglais (département Anglais)</h4>
+    <p><strong>Situation :</strong> contrôle de 20 minutes prévu vendredi sur la différence entre <em>some</em> et <em>any</em>. Tu as le cours sous la main mais aucune question d'entraînement.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Je suis en 2ème année de licence d'anglais. Voici mon cours sur some / any : [colle ton cours]. Fais-moi 3 QCM difficiles avec 4 propositions et le corrigé expliqué, en insistant sur les cas où some est utilisé avec des questions (Would you like some tea ?).</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li><strong>Q1.</strong> Complète : « I don't have ___ money. » A) any · B) some · C) no · D) a few.<br><strong>Réponse : A (any)</strong> — la phrase est négative : on utilise any dans les phrases négatives et les questions.</li>
+        <li><strong>Q2.</strong> « Would you like ___ coffee ? » est correct parce que : A) c'est une question, donc some est impossible · B) on propose quelque chose, la politesse se marque par some · C) coffee est un nom dénombrable · D) la phrase est au passé.<br><strong>Réponse : B</strong> — dans une offre polie, some montre que l'on s'attend à un « oui ».</li>
+        <li><strong>Q3.</strong> Laquelle est fausse ? A) Are there any books on the desk ? · B) I need some help. · C) We didn't buy some apples. · D) She has some friends in London.<br><strong>Réponse : C</strong> — une phrase négative exige any : « We didn't buy any apples. »</li>
+      </ol>
+    </div>
+
+    <div class="tip">Ajoute <code>« puis fais-moi une version à trous de ces 3 questions »</code> : tu passes du QCM au exercice ouvert et tu vois si tu as compris ou seulement reconnu.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Des flashcards sur la méthodologie de dissertation (département Français)</h4>
+    <p><strong>Situation :</strong> partiel de méthodologie dans 3 jours. Le chapitre est court mais il est à 100 % définitions et étapes : parfait pour des cartes.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">À partir de mon cours de méthodologie, fais-moi 4 flashcards au format RECTO/VERSO (une notion par carte, réponse en une phrase, un exemple). Mes notions : l'accroche, la problématique, l'annonce du plan, la concession. Mon cours : [colle ton cours]</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de Gemini</h4>
+      <ul>
+        <li><strong>1. RECTO :</strong> Problématique · <strong>VERSO :</strong> La question précise à laquelle la dissertation répond en conclusion — ex. : « L'œuvre populaire est-elle une œuvre mineure ? ».</li>
+        <li><strong>2. RECTO :</strong> Accroche · <strong>VERSO :</strong> La première phrase qui capte le lecteur (question, chiffre, citation) avant même la problématique — ex. : ouvrir par une citation de l'auteur étudié.</li>
+        <li><strong>3. RECTO :</strong> Annonce du plan · <strong>VERSO :</strong> L'énoncé des parties en une phrase, formulée comme des réponses à la problématique — ex. : « Pour le montrer, nous verrons d'abord… puis… ».</li>
+        <li><strong>4. RECTO :</strong> Concession · <strong>VERSO :</strong> Reconnaître un argument adverse avant de le réfuter — ex. : « Si l'on peut objecter que…, il reste que… ».</li>
+      </ul>
+    </div>
+
+    <div class="tip">Demande une <strong>5ème carte piégée</strong> (<code>« fais-moi une carte qui joue sur la confusion accroche / problématique »</code>) : les cartes qui opposent deux notions proches sont celles qui font la différence le jour du partiel.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Réviser ser / estar avant un contrôle (département Espagnol)</h4>
+    <p><strong>Situation :</strong> contrôle d'espagnol dans 2 jours. Tu connais la règle mais tu hésites à chaque phrase : il te faut de l'entraînement, pas une nouvelle explication.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Je suis en 2ème année de licence d'espagnol et je confonds ser et estar au présent. Ne me réexplique pas la règle : donne-moi 3 questions d'examen (QCM, 4 propositions, corrigé commenté) où les deux verbes se ressemblent, avec des phrases de la vie quotidienne d'un étudiant.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <ol>
+        <li><strong>Q1.</strong> « Mi hermana ___ cansada hoy. » A) es · B) está · C) soy · D) estamos.<br><strong>Réponse : B (está)</strong> — un état passager : fatiguée aujourd'hui, demain ce sera différent.</li>
+        <li><strong>Q2.</strong> « El profe ___ muy severo con los exámenes. » A) está · B) es · C) hay · D) tiene.<br><strong>Réponse : B (es)</strong> — un trait permanent et caractéristique : c'est sa nature, sa façon d'être.</li>
+        <li><strong>Q3.</strong> Dans « La fiesta ___ en el salón », on choisit : A) es — c'est un lieu permanent · B) está — la fête se trouve/aura lieu en ce moment dans le salon · C) ser avec un lieu · D) les deux sont possibles.<br><strong>Réponse : B</strong> — située en ce lieu à ce moment : estar indique la localisation.</li>
+      </ol>
+      <p><em>Refais les 3 phrases à l'écrit en changeant le sujet avant de regarder le corrigé.</em></p>
+    </div>
+
+    <div class="tip">Termine par <code>« fais-moi un Q1 bis où le sujet est pluriel et le temps passé »</code> : tu multiplies les cas piégés sans jamais relire la règle.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>Le corrigé n'est pas une option.</strong> Demande toujours « donne la bonne réponse ET une phrase d'explication » — sans ça, tu apprends des lettres, pas des notions.</li>
+      <li><strong>Un chapitre = un carnet NotebookLM.</strong> Tu déposes le cours, le polycopié et les annales, puis tu travailles uniquement là-dedans.</li>
+      <li><strong>3 faciles, 4 moyennes, 3 difficiles.</strong> Précise la répartition : elle reproduit la vraie épreuve et te montre où tu casses.</li>
+      <li><strong>Pose les questions dans l'ordre croissant de difficulté.</strong> Tu commences par gagner confiance, tu termines par te confronter à ce que tu ne sais pas.</li>
+      <li><strong>Recto/verso strict, une notion par carte.</strong> Le format que tu imposes à l'IA est ce qui rend la carte utilisable dans Anki ou Quizlet.</li>
+      <li><strong>Fais valider avant de retenir.</strong> 5 minutes de vérification dans NotebookLM te évitent d'apprendre une erreur pendant une semaine.</li>
+      <li><strong>Répète à voix haute, debout, chronométré.</strong> L'oral de l'étape 5 ne sert à rien si tu le lis dans ta tête.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Réviser des QCM générés sans les avoir vérifiés → tu apprends parfois une fausse information. <strong>✅ Fais valider chaque question par NotebookLM sur ton propre cours.</strong></li>
+    <li>❌ Demander « fais-moi un examen sur tout le programme » → l'IA mélange tout et te rend une montagne inutilisable. <strong>✅ Découpe : un chapitre, 10 questions, une séance.</strong></li>
+    <li>❌ Relire ses flashcards en silence, les yeux qui bavent → illusion de maîtrise. <strong>✅ Retourne la carte, réponds à voix haute, puis compare.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>Dépose d'abord TES documents</strong> (NotebookLM) : l'examen part de ton cours, pas d'Internet.</li>
+      <li><strong>10 QCM corrigés en 7 minutes</strong> avec ChatGPT, difficulté progressive.</li>
+      <li><strong>Vérifie-les dans NotebookLM</strong> avant de les retenir : ambiguë, hors document, trop absolu.</li>
+      <li><strong>10 flashcards recto/verso</strong> avec Gemini, importables dans Anki ou Quizlet.</li>
+      <li><strong>Un oral noté à voix haute</strong> avec ChatGPT : la seule étape qui dit si tu sais vraiment.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>L'IA apprend dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à des sociétés : OpenAI pour ChatGPT, Google pour Gemini, DeepSeek pour DeepSeek.</p>
+  <p>Elle apprend à partir de <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés, articles. <strong>Ce ne sont PAS les ordinateurs des utilisateurs</strong> connectés à Internet.</p>
+  <div class="warn">
+    <strong>⚠️ Ton PC, ton téléphone, le PC de ton voisin : rien de tout ça n'est utilisé pour entraîner ChatGPT.</strong> Seul un data center de la société est utilisé.
+  </div>
+
+  <h3>2. Peut-on créer une IA simple avec 1000 photos de chats ?</h3>
+  <p><strong>Oui, c'est possible en 30 minutes avec Google Colab (gratuit).</strong> Voici les étapes :</p>
+  <ol>
+    <li><strong>Collecte</strong> : 500 photos de chats + 500 photos d'autres choses, dans deux dossiers.</li>
+    <li><strong>Entraînement</strong> : un petit réseau de neurones apprend la différence (code fourni ci-dessous).</li>
+    <li><strong>Test</strong> : tu lui montres une nouvelle photo, il dit « Chat » ou « Pas chat ».</li>
+  </ol>
+  <div class="exemple">
+    <h4>🤖 Code Python minimal (Google Colab)</h4>
+<pre>
+import tensorflow as tf
+
+train = tf.keras.utils.image_dataset_from_directory(
+    "dataset/", image_size=(128,128), batch_size=32)
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Rescaling(1./255),
+    tf.keras.layers.Conv2D(32, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(64, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(2, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy'])
+model.fit(train, epochs=10)
+</pre>
+  </div>
+  <div class="warn">
+    <strong>⚠️ Important :</strong> ce programme <strong>calcule</strong>, il ne « comprend » pas. Il a juste appris quelles formes ressemblent à un chat.
+  </div>
+
+  <h3>3. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> On peut les combiner :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Exemple</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">L'IA fait</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Le robot fait</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aspirateur Roomba</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Décide où aller</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Se déplace, aspire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Voiture Tesla</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Reconnaît les piétons</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Freine, tourne</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Robot médical Da Vinci</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyse les mouvements</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Coupe précisément</td></tr>
+    </tbody>
+  </table>
+  <p>Mais la majorité des IA n'ont <strong>pas de robot</strong>. ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>4. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Voici pourquoi :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#ffebee;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Information</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Peut-on la donner ?</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi ?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Mot de passe</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Envoyé sur un serveur, journalisé</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte bancaire</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Fraude possible</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte d'identité</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Usurpation d'identité</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Adresse personnelle</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">⚠️ Éviter</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pas nécessaire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Question d'étude</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ OK</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucun risque</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> utilise une <strong>IA locale</strong> (Ollama) sur ton propre ordinateur. Aucune donnée ne sort. C'est la seule solution totalement privée. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés).
+  </div>
+
+  <h3>5. Chaque pays utilise l'IA différemment</h3>
+  <p>L'IA n'est ni bonne ni mauvaise. <strong>Tout dépend de qui l'utilise et pourquoi.</strong> Exemples :</p>
+  <ul>
+    <li><strong>Médecine</strong> — détecter un cancer sur une radio</li>
+    <li><strong>Agriculture</strong> — prévoir les récoltes, détecter les maladies des plantes</li>
+    <li><strong>Transport</strong> — GPS, voitures autonomes, gestion du trafic</li>
+    <li><strong>Finance</strong> — détecter la fraude bancaire</li>
+    <li><strong>Surveillance</strong> — reconnaissance faciale dans les lieux publics (usage controversé)</li>
+    <li><strong>Militaire</strong> — drones autonomes (usage controversé)</li>
+    <li><strong>Éducation</strong> — corriger les copies, adapter les exercices</li>
+  </ul>
+
+  <h3>6. Exemples d'utilisation de l'IA par secteur</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Secteur</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Usage concret</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Médecine</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Détecter une tumeur sur une IRM</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Agriculture</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévoir la récolte d'olives</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Éducation</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer 10 exercices personnalisés</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Justice</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser des dossiers volumineux</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Art</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer des images, de la musique</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Météo</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévisions à 10 jours</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>À retenir :</strong> l'IA est un outil puissant. Bien utilisée, elle aide. Mal utilisée, elle nuit. <strong>C'est toi qui décides.</strong>
+   <strong>Tu révises avec tes propres documents : ne dépose jamais un relevé, une attestation ou une pièce d'identité — un chapitre de cours suffit largement.</strong></div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockés vos e-mails Gmail ?</h3>
+  <p>Gmail est hébergé dans les <strong>data centers de Google</strong>, répartis dans le monde entier. Google possède <strong>21 data centers</strong>, dont <strong>5 en Europe</strong> (Irlande, Pays-Bas, Danemark, Finlande, Belgique).</p>
+  <div class="warn">
+    <strong>⚠️ Aucun data center Google dans la plupart des pays du Sud.</strong> Vos e-mails, vos documents, et le travail de thèse partagé avec votre encadrant sont stockés <strong>à l'étranger</strong> — probablement aux États-Unis ou en Europe.
+  </div>
+
+  <h3>2. Un employé Google peut-il lire vos e-mails ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle.</strong> Google a trois niveaux d'accès :</p>
+  <ol>
+    <li><strong>Vous</strong> : accès direct, chiffré.</li>
+    <li><strong>Employés Google autorisés</strong> : accès possible avec une justification professionnelle.</li>
+    <li><strong>Services Google</strong> : accès automatique pour le fonctionnement.</li>
+  </ol>
+  <p>Ce qui protège : vérification des antécédents, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré).</p>
+  <div class="warn">
+    <strong>Ce qui ne protège PAS :</strong> si la justice américaine ordonne l'accès, Google doit obéir — même pour des données stockées en Europe. Le <strong>U.S. CLOUD Act</strong> étend la juridiction des tribunaux américains à toutes les données contrôlées par des sociétés américaines.
+  </div>
+
+  <h3>3. Est-ce la même chose que l'IA ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;"></th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Gmail</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">IA (ChatGPT, Gemini)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Ce qui est stocké</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">E-mails, documents</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos conversations</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Qui peut voir</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos données entraînent-elles le système ?</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Non</td><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Oui</strong> (sauf option désactivée)</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Conclusion :</strong> Gmail est déjà un risque pour la souveraineté numérique. L'IA en est un autre, souvent plus grave car vos données peuvent servir à améliorer le modèle de la société.</p>
+
+  <h3>4. « Ça laisse les pays du tiers-monde en retard » — VRAI</h3>
+  <p>Votre intuition est confirmée par la Banque Mondiale :</p>
+  <blockquote style="border-left:4px solid #177bbe;padding-left:1rem;color:#555;font-style:italic;">
+    « L'infrastructure et les systèmes qui sous-tendent l'économie numérique des pays à revenu faible et intermédiaire sont souvent construits, détenus ou exploités par des acteurs qu'ils ne contrôlent ni ne régulent pleinement. »
+  </blockquote>
+  <ul>
+    <li><strong>Dépendance technologique</strong> : les pays du Sud n'ont pas d'infrastructure IA locale.</li>
+    <li><strong>Fuite de données</strong> : les données partent à l'étranger pour être traitées.</li>
+    <li><strong>Biais culturels</strong> : les modèles sont entraînés sur des données du Nord, imposant leurs visions du monde.</li>
+  </ul>
+
+  <h3>5. Comment se protéger ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e8f5e9;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Solution</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>IA locale (Ollama)</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune donnée ne sort de votre ordinateur. Totalement privé.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Gestionnaire de mots de passe</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Bitwarden ou KeePass (gratuits, chiffrés). Ne mettez jamais vos mots de passe dans un chat IA.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Désactiver l'entraînement</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Dans les paramètres de ChatGPT/Gemini, désactivez « Améliorer le modèle ».</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Chiffrement de bout en bout</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pour les messages sensibles, utilisez Signal ou ProtonMail.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mettez <strong>JAMAIS</strong> dans un chat IA ou un e-mail non chiffré ce que vous ne voudriez pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères.
+   <strong>Tu révises avec tes propres documents : ne dépose jamais un relevé, une attestation ou une pièce d'identité — un chapitre de cours suffit largement.</strong></div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=notebooklm+tutoriel+fran%C3%A7ais+r%C3%A9viser+cours" target="_blank">NotebookLM : réviser ses cours (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=chatgpt+g%C3%A9n%C3%A9rer+qcm+exercices+corrig%C3%A9s+%C3%A9tudiant" target="_blank">ChatGPT : créer des QCM corrigés (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=rappel+actif+flashcards+anki+m%C3%A9thode+de+r%C3%A9vision" target="_blank">Rappel actif et flashcards (FR)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Pourquoi déposer ses propres documents dans NotebookLM avant de fabriquer un examen ? <br><em>(Réponse : pour que les questions portent sur ton vrai chapitre, et non sur un programme inventé par l'IA.)</em></li>
+    <li>Quelle est la différence entre évaluation formative et évaluation sommative ? <br><em>(Réponse : la formative a lieu pendant l'apprentissage pour aider à progresser ; la sommative conclut et note.)</em></li>
+    <li>Que demandes-tu impérativement avec chaque QCM ? <br><em>(Réponse : la bonne réponse accompagnée d'une phrase d'explication.)</em></li>
+    <li>Quel outil doit valider tes questions, et pourquoi celui-là ? <br><em>(Réponse : NotebookLM, parce qu'il travaille sur tes documents déposés — il vérifie, il ne devine pas.)</em></li>
+    <li>Comment révise-t-on ses flashcards, correctement ? <br><em>(Réponse : on répond à voix haute avant de retourner la carte, puis on compare.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>QCM</strong> — Question à choix multiple : un énoncé, plusieurs propositions, une seule bonne réponse.</li>
+    <li><strong>Flashcard</strong> — Carte de révision recto/verso : une notion au recto, sa définition au verso.</li>
+    <li><strong>Rappel actif</strong> — Méthode de révision qui consiste à se tester au lieu de relire (à la base des flashcards).</li>
+    <li><strong>Évaluation formative</strong> — Évaluation pendant l'apprentissage, dont le but est d'aider l'élève à progresser.</li>
+    <li><strong>Évaluation sommative</strong> — Évaluation à la fin d'une période, qui sanctionne et attribue une note.</li>
+    <li><strong>Oral blanc</strong> — Simulation d'examen : on se fait interroger et noter avant le vrai jour.</li>
+  </ul>
+  <div class="nav-footer">
+    <a href="seance-05.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-07.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+    <a href="seance-13.html">🎓 Séance 13</a>
+  </div>
+
+</div>
+</body>
+</html>

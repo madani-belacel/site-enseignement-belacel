@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séance 07 — Programmer avec l'IA : mini-projet Python + API</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #177bbe;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #177bbe;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>🤖 Séance 07 — Programmer avec l'IA : mini-projet Python + API</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>💡 Astuce IA — Ta clé API dans un gestionnaire de mots de passe</strong><br>
+    Une clé API (DeepSeek, OpenAI…) créée un jour se perd un jour. Enregistre-la dans Bitwarden ou KeePass dès sa création, avec l'URL du tableau de bord. Tu ne la recopies plus jamais dans un fichier, un e-mail ou un dépôt public — les trois endroits où elle serait volée en quelques heures.
+  </div>
+
+
+  <h2>🎯 En une phrase</h2>
+  <p>À la fin de cette séance, tu sauras faire écrire, lancer et comprendre un mini-projet Python qui interroge une vraie API — et tu auras un script qui tourne sur ton ordinateur.</p>
+
+  <h2>💡 Pourquoi c'est utile pour toi</h2>
+  <p>Tu n'es pas informaticien, mais tu as des tâches répétitives : renommer des photos, récupérer des informations qui changent (météo, dates, devises), nettoyer un tableau avant un devoir. Un script de 20 lignes te fait gagner des heures. Et surtout : <strong>l'IA ne te rend plus un script, elle te rend quelqu'un qui sait s'en servir</strong> — c'est la différence entre taper des commandes et être autonome sur son ordinateur.</p>
+
+  <h2>🔑 Les 3 idées essentielles</h2>
+  <ul>
+    <li><strong>Une API, c'est un serveur qui répond à ta question</strong> : tu envoies une requête, tu reçois du texte structuré (JSON). C'est exactement ce que fait ton téléphone quand il affiche la météo.</li>
+    <li><strong>L'IA écrit, toi tu lis.</strong> Un script que tu ne comprends pas est un script que tu ne pourras pas corriger le jour où il casse.</li>
+    <li><strong>Une erreur = une information.</strong> Colle le message d'erreur exact à l'IA : la cause se trouve presque toujours dans la dernière ligne affichée.</li>
+  </ul>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🔧 IA au quotidien — Écrire un script Python pour renommer 200 photos</strong><br>
+    Tu dois renommer 200 photos pour un projet. Tu demandes à ChatGPT : « Écris-moi un script Python qui renomme toutes les photos d'un dossier en photo_001.jpg, photo_002.jpg… » L'IA te donne le script prêt à copier. Tu le lances dans le terminal, en 3 secondes tout est renommé. Tu gagnes 2 heures.
+  </div>
+
+  <h2>📋 Comment faire — pas à pas</h2>
+
+  <div class="step">
+    <h4>Étape 1 — Comprendre ce qu'est une API (4 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 4 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> te construire une image mentale juste de l'API avant d'écrire une seule ligne de code. Sans ça, tu copieras du code aveuglément.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Explique-moi ce qu'est une API en 3 phrases, avec une analogie de restaurant. Puis donne-moi un exemple d'API que je peux appeler gratuitement, sans clé, pour commencer.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Une API (interface de programmation), c'est :</strong></p>
+      <ol>
+        <li>Un service qui accepte des questions écrites selon une règle précise et qui répond dans un format précis.</li>
+        <li><strong>Analogie du restaurant :</strong> tu es le client, le menu est la documentation de l'API, le serveur est l'API, et la cuisine est l'ordinateur qui calcule. Tu ne rentres pas en cuisine : tu commandes, tu reçois ton plat.</li>
+        <li>Concrètement, tu envoies une adresse web (l'<em>endpoint</em>) et tu reçois du texte structuré en retour, presque toujours en JSON.</li>
+      </ol>
+      <p><strong>Exemple gratuit sans clé : Open-Meteo</strong> (météo ouverte).</p>
+      <p><code>https://api.open-meteo.com/v1/forecast?latitude=48.85&amp;longitude=2.35&amp;current=temperature_2m</code></p>
+      <p>Réponse : <code>{"current":{"temperature_2m":24.3},"timezone":"Europe/Paris"}</code></p>
+      <p>Copie cette adresse dans ton navigateur : tu vois la réponse immédiatement, sans rien installer.</p>
+    </div>
+    <div class="tip">Demande <strong>toujours l'analogie avant la définition technique</strong>. Si l'analogie tient debout, tu as compris ; si l'IA peine à en trouver une, c'est que le concept est plus complexe qu'il n'y paraît.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne commence pas par une API payante ou qui demande une carte bancaire — Open-Meteo, Wikipedia et la plupart des API publiques sont gratuites et suffisent pour un premier projet.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 2 — Faire écrire ton script par ChatGPT (7 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 7 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> demander un script complet, commenté, sans dépendance cachée. C'est ici que la précision du prompt décide de la qualité du code.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Tu es développeur Python. Écris un script qui : 1) interroge l'API Open-Meteo pour la météo actuelle de Paris, 2) affiche la température et l'heure en français, 3) n'exige aucune clé API, 4) s'exécute avec « python meteo.py ». Commente chaque bloc de code, et rappelle la commande pour installer le module manquant.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+# meteo.py — météo actuelle de Paris (API Open-Meteo, sans clé)
+import requests
+
+# 1) On prépare la requête : coordonnées de Paris + paramètres demandés
+url = "https://api.open-meteo.com/v1/forecast"
+params = {
+    "latitude": 48.85,
+    "longitude": 2.35,
+    "current": "temperature_2m,weather_code",
+    "timezone": "Europe/Paris",
+}
+
+# 2) On appelle l'API et on vérifie que tout s'est bien passé
+reponse = requests.get(url, params=params, timeout=10)
+reponse.raise_for_status()
+data = reponse.json()
+
+# 3) On affiche le résultat en français
+print("=== Météo à Paris ===")
+print("Heure locale :", data["current"]["time"])
+print("Température  :", data["current"]["temperature_2m"], "°C")
+</pre>
+      <p><strong>Installation requise :</strong> <code>pip install requests</code></p>
+      <p><strong>Sortie obtenue :</strong></p>
+<pre>
+=== Météo à Paris ===
+Heure locale : 2026-09-22T14:00
+Température  : 24.3 °C
+</pre>
+    </div>
+    <div class="tip">Exige <strong>« commente chaque bloc »</strong> et <strong>« sans clé API »</strong> dès le premier prompt : un script commenté est un script que tu pourras relire dans six mois, et tu évites d'attendre une validation qui ne viendra jamais.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne copie jamais un script que tu n'as pas lu ligne par ligne — le jour où il affichera une erreur, l'IA ne sera pas là pour toi.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 3 — Lancer le script et traiter l'erreur (5 min)</h4>
+    <div class="step-meta">
+      <span>📍 Terminal (ou VS Code)</span>
+      <span>⏱️ 5 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> exécuter le script, et si une erreur apparaît, la faire diagnostiquer correctement. C'est la compétence la plus rentable de toute la séance.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">J'ai lancé « python meteo.py » et j'obtiens :
+ModuleNotFoundError: No module named 'requests'
+Explique la cause en une phrase et donne la commande exacte à taper. Ensuite, redis-moi comment lancer le script.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Cause :</strong> le module <code>requests</code> n'est pas installé dans l'environnement Python que tu utilises.</p>
+      <ol>
+        <li>Installe-le : <code>pip install requests</code> (sur macOS/Linux : <code>pip3 install requests</code>).</li>
+        <li>Relance : <code>python meteo.py</code>.</li>
+        <li>Si l'erreur persiste, c'est que tu as plusieurs Python d'installés : tape <code>python --version</code> et <code>pip --version</code> et envoie-moi les deux résultats.</li>
+      </ol>
+      <p><strong>Sortie attendue :</strong></p>
+<pre>
+Successfully installed requests-2.32.3
+=== Météo à Paris ===
+Température  : 24.3 °C
+</pre>
+    </div>
+    <div class="tip">Colle <strong>l'erreur exacte, en entier, telle qu'elle s'affiche</strong> — jamais ton résumé. Le nom du module manquant, le numéro de ligne et le chemin du fichier contiennent déjà 90 % de la réponse.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne lance jamais une commande d'installation proposée par l'IA sans avoir lu son nom : un paquet mal orthographié peut être un paquet piégé.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 4 — Personnaliser le script (6 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 6 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> transformer un script générique en <strong>ton</strong> script — une ville au choix, un affichage propre, un fichier de sortie. C'est là que le projet devient le tien.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Modifie mon script en demandant la ville en ligne de commande (par défaut : Paris), avec une petite table d'identification des villes (Paris 48.85/2.35, Madrid 40.42/-3.70, Rome 41.90/12.50). Affiche une ligne par ville, puis écris le résultat dans meteo.txt. Envoie le script COMPLET, pas un extrait.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+# meteo.py — plusieurs villes d'Europe
+import sys
+import requests
+
+VILLES = {
+    "paris":      ("Paris",     48.85, 2.35),
+    "madrid":     ("Madrid",    40.42, -3.70),
+    "rome":       ("Rome",      41.90, 12.50),
+}
+
+choix = sys.argv[1].lower() if len(sys.argv) > 1 else "paris"
+nom, lat, lon = VILLES[choix]
+
+url = "https://api.open-meteo.com/v1/forecast"
+r = requests.get(url, params={"latitude": lat, "longitude": lon,
+                              "current": "temperature_2m",
+                              "timezone": "Europe/Paris"}, timeout=10)
+r.raise_for_status()
+t = r.json()["current"]["temperature_2m"]
+
+ligne = f"{nom:12} {t:5.1f} °C"
+print(ligne)
+with open("meteo.txt", "a", encoding="utf-8") as f:
+    f.write(ligne + "
+")
+</pre>
+      <p><strong>Utilisation :</strong> <code>python meteo.py rome</code> → <code>Rome         26.1 °C</code></p>
+      <p>Le fichier <code>meteo.txt</code> accumule tes relevés : tu peux comparer Rome et Paris sur une semaine.</p>
+    </div>
+    <div class="tip">Écris systématiquement <strong>« envoie le script COMPLET, pas un extrait »</strong> : les IA tronquent volontiers les réponses longues et te laissent un code incomplet qu'il faudra re-demander.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne demande jamais cinq modifications d'un coup — la quatrième et la cinquième disparaissent le plus souvent. Une modification à la fois, tu relances ensuite.
+    </div>
+  </div>
+
+  <div class="step">
+    <h4>Étape 5 — Pouvoir expliquer ton script (4 min)</h4>
+    <div class="step-meta">
+      <span>📍 chatgpt.com</span>
+      <span>⏱️ 4 min</span>
+    </div>
+    <p><strong>Ce que tu vas faire :</strong> vérifier que le code est vraiment tien. C'est l'étape qui transforme un copier-coller en compétence — et la seule qui te protège à l'oral du projet.</p>
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Explique ce script ligne par ligne comme à un étudiant qui verra Python pour la première fois. Puis donne-moi 3 questions pour vérifier que j'ai compris, sans y répondre.</div>
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+      <p><strong>Ligne 1 — <code>import requests</code></strong> : tu embarques la bibliothèque qui sait parler aux sites web, comme si tu prenais un téléphone avant d'appeler quelqu'un.</p>
+      <p><strong>Ligne 3 — <code>VILLES = {...}</code></strong> : un dictionnaire, c'est une table de correspondance. Ici il associe le nom tapé par l'utilisateur à un nom d'affichage et à des coordonnées.</p>
+      <p><strong>Ligne 9 — <code>sys.argv[1]...</code></strong> : ce que tu écris après <code>python meteo.py</code> dans le terminal arrive ici sous forme de texte. S'il n'y a rien, on prend « paris » par défaut.</p>
+      <p><strong>Ligne 13 — <code>requests.get(...)</code></strong> : l'appel à l'API. Les paramètres deviennent une adresse complète ; le serveur répond par du JSON.</p>
+      <p><strong>Ligne 17 — <code>raise_for_status()</code></strong> : garde-fou. Si le serveur répond « erreur 4xx/5xx », le script s'arrête au lieu d'afficher n'importe quoi.</p>
+      <p><strong>Ligne 19-20 — <code>r.json()["current"]...`</code></strong> : on ouvre la réponse comme un tiroir imbriqué et on sort la valeur de la température.</p>
+      <p><strong>3 questions pour vérifier :</strong></p>
+      <ol>
+        <li>Que se passe-t-il si tu tapes <code>python meteo.py</code> sans argument ?</li>
+        <li>À quelle ligne le script parle-t-il à Internet, et que renvoie cette ligne ?</li>
+        <li>Pourquoi <code>raise_for_status()</code> est-il utile si l'API tombe en panne ?</li>
+      </ol>
+    </div>
+    <div class="tip">Réponds aux 3 questions <strong>à voix haute, sans regarder le script</strong>. Si tu bloques, relis l'explication une fois : la question à laquelle tu ne réponds pas est exactement celle qui tombera à l'oral.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> ne présente jamais un script que tu ne peux pas expliquer — la première question d'un jury est toujours « montre-moi la ligne qui appelle l'API ».
+    </div>
+  </div>
+
+  <h2>🎨 Bonus — Demander un schéma en ASCII à l'IA</h2>
+
+  <p>Un <strong>schéma en ASCII</strong> est un dessin fait uniquement avec des caractères du clavier (tirets, barres, flèches, plus). Ça marche partout, sans image. Très utile pour comprendre une idée visuellement en un coup d'œil.</p>
+
+  <p><strong>Comment demander un schéma à l'IA ?</strong> Ajoute simplement <code>« avec un schéma en ASCII »</code> à la fin de ton prompt.</p>
+
+  <div class="step">
+    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+
+    <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Montre-moi la structure de la Faculté des Langues Étrangères (Université de Mostaganem) avec ses 3 départements (Anglais, Français, Espagnol), avec un schéma en ASCII.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+                    ┌─────────────────────────────────────┐
+                    │   UNIVERSITÉ DE MOSTAGANEM          │
+                    │   Faculté des Langues Étrangères    │
+                    │            (FLE)                    │
+                    └──────────────────┬──────────────────┘
+                                       │
+              ┌────────────────────────┼────────────────────────┐
+              │                        │                        │
+              ▼                        ▼                        ▼
+    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │    │   DÉPARTEMENT    │
+    │    D'ANGLAIS     │    │   DE FRANÇAIS    │    │   D'ESPAGNOL     │
+    │       🇬🇧         │    │       🇫🇷         │    │       🇪🇸         │
+    ├──────────────────┤    ├──────────────────┤    ├──────────────────┤
+    │ • Étudiants PEP  │    │ • Étudiants PEP  │    │ • Étudiants PEP  │
+    │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
+    │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
+    └──────────────────┘    └──────────────────┘    └──────────────────┘
+  
+</pre>
+      <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
+    </div>
+
+    <div class="tip">Ce type de schéma est parfait pour retenir une <strong>structure hiérarchique</strong> (organisation, plan de cours, arbre de décision). Demande-le pour n'importe quelle notion à plusieurs niveaux.</div>
+    <div class="warn">
+      <strong>⚠️ Piège à éviter :</strong> Ne demande pas un schéma ASCII sur un sujet à plus de 5 éléments : il devient illisible — demande un tableau.
+    </div>
+  </div>
+
+  <h3>📌 En résumé — Comment demander un schéma ASCII</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu veux</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Ce que tu tapes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma simple</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Comparer deux choses</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII qui compare A et B</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma pour un enfant</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII très simple, sans jargon</code></td>
+      </tr>
+      <tr>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;">Un schéma en plusieurs étapes</td>
+        <td style="padding:0.5rem;border:1px solid #cbd5e1;"><code>… avec un schéma en ASCII montrant les 4 étapes dans l'ordre</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>⚠️ Attention :</strong> un schéma ASCII fonctionne bien pour des idées simples (2 à 5 éléments). Pour des concepts complexes, demande plutôt une <strong>liste structurée</strong> ou un <strong>tableau</strong>.</p>
+
+  <h2>🧪 Exemples réels</h2>
+
+  <div class="exemple">
+    <h4>Exemple 1 — Définir un mot anglais dans son programme (département Anglais)</h4>
+    <p><strong>Situation :</strong> tu rédiges un commentaire de texte et tu hésites sur un mot : est-il correct ? Que signifie-t-il exactement ? Tu veux la réponse avec des exemples, pas un simple lien.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Écris un script Python qui interroge l'API gratuite dictionaryapi.dev, prend un mot saisi en ligne de commande et affiche en français : la définition, le type de mot et un exemple d'utilisation. Commente chaque bloc.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+# dico.py — définition d'un mot en anglais
+import sys
+import requests
+
+mot = sys.argv[1] if len(sys.argv) > 1 else "evidence"
+r = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{mot}", timeout=10)
+
+if r.status_code != 200:
+    print("Mot introuvable dans le dictionnaire.")
+else:
+    entree = r.json()[0]
+    print(f"Mot : {entree['word']}")
+    for sens in entree["meanings"][:2]:
+        print(f"Type : {sens['partOfSpeech']}")
+        for d in sens["definitions"][:2]:
+            print("  -", d["definition"])
+            if "example" in d:
+                print("    Exemple :", d["example"])
+</pre>
+      <p><strong>Sortie :</strong></p>
+<pre>
+Mot : evidence
+Type : noun
+  - the available facts or information indicating whether a belief is true.
+    Exemple : There was no physical evidence of sabotage.
+</pre>
+    </div>
+
+    <div class="tip">Ajoute <code>« affiche aussi la transcription phonétique »</code> : tu gagnes la prononciation en même temps que la définition, sans ouvrir un deuxième site.</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 2 — Récupérer la liste des départements de ta Faculté (département Français)</h4>
+    <p><strong>Situation :</strong> tu dois produire une fiche sur ta faculté pour un exposé et tu veux des données officielles et à jour, pas recopiées d'un PDF de 2019.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Écris un script qui interroge l'API de l'OpenStreetMap (Nominatim) pour trouver « Faculté des Langues Étrangères Mostaganem » et affiche le nom exact, la latitude, la longitude et le lien vers la carte. Commente chaque bloc.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+# faculte.py — localiser la Faculté sur OpenStreetMap (sans clé)
+import requests
+
+# 1) Recherche textuelle : l'API renvoie une liste de lieux qui correspondent
+params = {"q": "Faculté des Langues Étrangères Mostaganem",
+          "format": "json", "limit": 1}
+r = requests.get("https://nominatim.openstreetmap.org/search",
+                 params=params, headers={"User-Agent": "projet-etu/1.0"}, timeout=10)
+r.raise_for_status()
+resultats = r.json()
+
+# 2) On affiche le premier résultat, s'il existe
+if resultats:
+    lieu = resultats[0]
+    print("Nom  :", lieu["display_name"])
+    print("Lat  :", lieu["latitude"])
+    print("Lon  :", lieu["longitude"])
+    print("Carte : https://www.openstreetmap.org/?mlat="
+          f"{lieu['latitude']}&mlon={lieu['longitude']}#map=17/{lieu['latitude']}/{lieu['longitude']}")
+else:
+    print("Aucun lieu trouvé, essaie une formulation plus courte.")
+</pre>
+      <p><strong>Sortie :</strong></p>
+<pre>
+Nom  : Faculté des Langues Étrangères, Rue ..., Mostaganem, Algérie
+Lat  : 35.9339
+Lon  : 0.2817
+Carte : https://www.openstreetmap.org/?mlat=35.9339&mlon=0.2817#map=17/35.9339/0.2817
+</pre>
+    </div>
+
+    <div class="tip">Ligne <code>User-Agent</code> obligatoire : sans elle, OpenStreetMap bloque ta requête. C'est le genre de détail que l'IA oublie si tu ne demandes pas « un script qui respecte les règles de l'API ».</div>
+  </div>
+
+  <div class="exemple">
+    <h4>Exemple 3 — Comparer la météo de 3 villes espagnoles (département Espagnol)</h4>
+    <p><strong>Situation :</strong> exposé sur les climats d'Espagne. Tu veux trois relevés réels à afficher, plutôt que trois chiffres recopiés.</p>
+
+    <p><strong>Ce que tu tapes :</strong></p>
+    <div class="prompt-box">Écris un script qui affiche la température actuelle de Madrid, Séville et Valence dans un tableau aligné, avec les noms en espagnol, puis indique laquelle est la plus chaude. Boucle sur les trois villes, une seule requête par ville.</div>
+
+    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <div class="exemple">
+      <h4>🤖 Réponse typique de ChatGPT</h4>
+<pre>
+# espana.py — comparaison de trois villes espagnoles
+import requests
+
+VILLES = [("Madrid", 40.42, -3.70), ("Sevilla", 37.39, -5.99),
+          ("València", 39.47, -0.38)]
+
+resultats = []
+for nom, lat, lon in VILLES:                      # une requête par ville
+    r = requests.get("https://api.open-meteo.com/v1/forecast",
+                     params={"latitude": lat, "longitude": lon,
+                             "current": "temperature_2m"}, timeout=10)
+    r.raise_for_status()
+    resultats.append((nom, r.json()["current"]["temperature_2m"]))
+
+print(f"{'Ville':10} {'Température':>12}")
+for nom, t in resultats:
+    print(f"{nom:10} {t:10.1f} °C")
+
+plus_chaude = max(resultats, key=lambda x: x[1])
+print("La plus chaude :", plus_chaude[0])
+</pre>
+      <p><strong>Sortie :</strong></p>
+<pre>
+Ville        Température
+Madrid              27.4 °C
+Sevilla             31.2 °C
+València            28.1 °C
+La plus chaude : Sevilla
+</pre>
+    </div>
+
+    <div class="tip">Réutilise la boucle pour <strong>5 villes</strong> : tu changes uniquement la liste <code>VILLES</code>. C'est la première leçon de la programmation — la donnée change, la logique reste.</div>
+  </div>
+
+  <h2>🎓 Les astuces que personne ne dit</h2>
+  <div class="astuces">
+    <ul>
+      <li><strong>Une modification à la fois.</strong> Tu ajoutes une fonctionnalité par prompt, jamais cinq — sinon tu ne sais plus laquelle a échoué.</li>
+      <li><strong>« Script complet, pas d'extrait ».</strong> Répète-le dans chaque prompt de modification : les IA tronquent les réponses longues.</li>
+      <li><strong>Colle l'erreur exacte.</strong> Le texte brut du terminal, pas ton résumé : module, ligne, chemin — tout compte.</li>
+      <li><strong>Exige les commentaires.</strong> Un script commenté est un script que tu comprendras au moment des partiels, pas celui que tu jetteras.</li>
+      <li><strong>« Sans clé API ».</strong> Pour un premier projet, uniquement des API gratuites et ouvertes : tu ne bloqueras jamais sur une validation bancaire.</li>
+      <li><strong>Vérifie dans la doc officielle.</strong> Les IA se trompent parfois sur les noms de fonctions : le site de la bibliothèque fait foi.</li>
+      <li><strong>Garde les versions.</strong> meteo_v1.py, meteo_v2.py… Tu pourras toujours revenir à la version qui marchait.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ Erreurs à éviter</h2>
+  <ul class="erreurs">
+    <li>❌ Copier-coller le script sans le lire → tu ne sauras pas le corriger. <strong>✅ Relis chaque ligne et commente-la à ta façon avant de lancer.</strong></li>
+    <li>❌ Demander « un script pour tout faire » → tu reçois du code ingérable. <strong>✅ Découpe : un script = une tâche précise.</strong></li>
+    <li>❌ Utiliser une API qui réclame ta carte bancaire pour un exercice → tu exposes tes données. <strong>✅ Reste sur des API ouvertes : Open-Meteo, Wikipedia, Nominatim.</strong></li>
+  </ul>
+
+  <h2>🧠 À retenir</h2>
+  <div class="retenir">
+    <ul>
+      <li><strong>Une API = une requête → une réponse JSON.</strong> Tu l'as vue fonctionner dans ton navigateur avant d'écrire du code.</li>
+      <li><strong>Prompt précis :</strong> rôle, 4 contraintes numérotées, « commente chaque bloc », « sans clé », « script complet ».</li>
+      <li><strong>Une erreur se traite en collant le message exact</strong>, jamais un résumé.</li>
+      <li><strong>Tu personnalises une modification à la fois</strong>, en gardant les versions intermédiaires.</li>
+      <li><strong>Tu sais expliquer ton script</strong> ligne par ligne — c'est ça, l'autonomie.</li>
+    </ul>
+  </div>
+
+  <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
+
+  <h3>1. Où l'IA trouve-t-elle ses exemples ?</h3>
+  <p>L'IA apprend dans des <strong>data centers</strong> (immenses salles de serveurs) appartenant à des sociétés : OpenAI pour ChatGPT, Google pour Gemini, DeepSeek pour DeepSeek.</p>
+  <p>Elle apprend à partir de <strong>milliards de pages web publiques</strong> : Wikipedia, forums, livres numérisés, articles. <strong>Ce ne sont PAS les ordinateurs des utilisateurs</strong> connectés à Internet.</p>
+  <div class="warn">
+    <strong>⚠️ Ton PC, ton téléphone, le PC de ton voisin : rien de tout ça n'est utilisé pour entraîner ChatGPT.</strong> Seul un data center de la société est utilisé.
+  </div>
+
+  <h3>2. Peut-on créer une IA simple avec 1000 photos de chats ?</h3>
+  <p><strong>Oui, c'est possible en 30 minutes avec Google Colab (gratuit).</strong> Voici les étapes :</p>
+  <ol>
+    <li><strong>Collecte</strong> : 500 photos de chats + 500 photos d'autres choses, dans deux dossiers.</li>
+    <li><strong>Entraînement</strong> : un petit réseau de neurones apprend la différence (code fourni ci-dessous).</li>
+    <li><strong>Test</strong> : tu lui montres une nouvelle photo, il dit « Chat » ou « Pas chat ».</li>
+  </ol>
+  <div class="exemple">
+    <h4>🤖 Code Python minimal (Google Colab)</h4>
+<pre>
+import tensorflow as tf
+
+train = tf.keras.utils.image_dataset_from_directory(
+    "dataset/", image_size=(128,128), batch_size=32)
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Rescaling(1./255),
+    tf.keras.layers.Conv2D(32, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(64, 3, activation='relu'),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(2, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy'])
+model.fit(train, epochs=10)
+</pre>
+  </div>
+  <div class="warn">
+    <strong>⚠️ Important :</strong> ce programme <strong>calcule</strong>, il ne « comprend » pas. Il a juste appris quelles formes ressemblent à un chat.
+  </div>
+
+  <h3>3. IA et robots : quelle différence ?</h3>
+  <p><strong>Un robot = un corps mécanique. L'IA = un cerveau logiciel.</strong> On peut les combiner :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Exemple</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">L'IA fait</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Le robot fait</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aspirateur Roomba</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Décide où aller</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Se déplace, aspire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Voiture Tesla</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Reconnaît les piétons</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Freine, tourne</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Robot médical Da Vinci</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyse les mouvements</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Coupe précisément</td></tr>
+    </tbody>
+  </table>
+  <p>Mais la majorité des IA n'ont <strong>pas de robot</strong>. ChatGPT, Perplexity, Gemini : aucun corps, juste du texte.</p>
+
+  <h3>4. Peut-on faire confiance à l'IA pour les mots de passe ?</h3>
+  <p><strong>NON, jamais.</strong> Voici pourquoi :</p>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#ffebee;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Information</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Peut-on la donner ?</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi ?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Mot de passe</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Envoyé sur un serveur, journalisé</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte bancaire</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Fraude possible</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Carte d'identité</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">❌ JAMAIS</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Usurpation d'identité</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Adresse personnelle</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">⚠️ Éviter</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pas nécessaire</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Question d'étude</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">✅ OK</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucun risque</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <strong>Règle d'or :</strong> ne mets <strong>JAMAIS</strong> dans un chat IA ce que tu ne mettrais pas dans un e-mail à un inconnu. Ton message part sur Internet, est stocké sur un serveur de la société, et peut être lu par des employés ou piraté.
+  </div>
+  <div class="tip">
+    <strong>Solution privée :</strong> utilise une <strong>IA locale</strong> (Ollama) sur ton propre ordinateur. Aucune donnée ne sort. C'est la seule solution totalement privée. Pour les mots de passe, utilise <strong>Bitwarden</strong> ou <strong>KeePass</strong> (gratuits et chiffrés).
+  </div>
+
+  <h3>5. Chaque pays utilise l'IA différemment</h3>
+  <p>L'IA n'est ni bonne ni mauvaise. <strong>Tout dépend de qui l'utilise et pourquoi.</strong> Exemples :</p>
+  <ul>
+    <li><strong>Médecine</strong> — détecter un cancer sur une radio</li>
+    <li><strong>Agriculture</strong> — prévoir les récoltes, détecter les maladies des plantes</li>
+    <li><strong>Transport</strong> — GPS, voitures autonomes, gestion du trafic</li>
+    <li><strong>Finance</strong> — détecter la fraude bancaire</li>
+    <li><strong>Surveillance</strong> — reconnaissance faciale dans les lieux publics (usage controversé)</li>
+    <li><strong>Militaire</strong> — drones autonomes (usage controversé)</li>
+    <li><strong>Éducation</strong> — corriger les copies, adapter les exercices</li>
+  </ul>
+
+  <h3>6. Exemples d'utilisation de l'IA par secteur</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Secteur</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Usage concret</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Médecine</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Détecter une tumeur sur une IRM</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Agriculture</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévoir la récolte d'olives</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Éducation</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer 10 exercices personnalisés</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Justice</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Analyser des dossiers volumineux</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Art</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Générer des images, de la musique</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Météo</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Prévisions à 10 jours</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>À retenir :</strong> l'IA est un outil puissant. Bien utilisée, elle aide. Mal utilisée, elle nuit. <strong>C'est toi qui décides.</strong>
+   <strong>Ici tu appelles des API : chaque requête part de ta machine vers un serveur étranger. N'y mets jamais de données personnelles, et choisis des API gratuites et ouvertes.</strong></div>
+
+  <h2>🔒 Vos données sont-elles en sécurité ?</h2>
+
+  <h3>1. Où sont stockés vos e-mails Gmail ?</h3>
+  <p>Gmail est hébergé dans les <strong>data centers de Google</strong>, répartis dans le monde entier. Google possède <strong>21 data centers</strong>, dont <strong>5 en Europe</strong> (Irlande, Pays-Bas, Danemark, Finlande, Belgique).</p>
+  <div class="warn">
+    <strong>⚠️ Aucun data center Google dans la plupart des pays du Sud.</strong> Vos e-mails, vos documents, et le travail de thèse partagé avec votre encadrant sont stockés <strong>à l'étranger</strong> — probablement aux États-Unis ou en Europe.
+  </div>
+
+  <h3>2. Un employé Google peut-il lire vos e-mails ?</h3>
+  <p><strong>Techniquement oui, mais sous contrôle.</strong> Google a trois niveaux d'accès :</p>
+  <ol>
+    <li><strong>Vous</strong> : accès direct, chiffré.</li>
+    <li><strong>Employés Google autorisés</strong> : accès possible avec une justification professionnelle.</li>
+    <li><strong>Services Google</strong> : accès automatique pour le fonctionnement.</li>
+  </ol>
+  <p>Ce qui protège : vérification des antécédents, accords de confidentialité, journal <code>Access Transparency</code> (chaque accès est enregistré).</p>
+  <div class="warn">
+    <strong>Ce qui ne protège PAS :</strong> si la justice américaine ordonne l'accès, Google doit obéir — même pour des données stockées en Europe. Le <strong>U.S. CLOUD Act</strong> étend la juridiction des tribunaux américains à toutes les données contrôlées par des sociétés américaines.
+  </div>
+
+  <h3>3. Est-ce la même chose que l'IA ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e3f2fd;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;"></th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Gmail</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">IA (ChatGPT, Gemini)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Ce qui est stocké</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">E-mails, documents</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos conversations</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Qui peut voir</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Employés, lois étrangères</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;">Vos données entraînent-elles le système ?</td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Non</td><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Oui</strong> (sauf option désactivée)</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Conclusion :</strong> Gmail est déjà un risque pour la souveraineté numérique. L'IA en est un autre, souvent plus grave car vos données peuvent servir à améliorer le modèle de la société.</p>
+
+  <h3>4. « Ça laisse les pays du tiers-monde en retard » — VRAI</h3>
+  <p>Votre intuition est confirmée par la Banque Mondiale :</p>
+  <blockquote style="border-left:4px solid #177bbe;padding-left:1rem;color:#555;font-style:italic;">
+    « L'infrastructure et les systèmes qui sous-tendent l'économie numérique des pays à revenu faible et intermédiaire sont souvent construits, détenus ou exploités par des acteurs qu'ils ne contrôlent ni ne régulent pleinement. »
+  </blockquote>
+  <ul>
+    <li><strong>Dépendance technologique</strong> : les pays du Sud n'ont pas d'infrastructure IA locale.</li>
+    <li><strong>Fuite de données</strong> : les données partent à l'étranger pour être traitées.</li>
+    <li><strong>Biais culturels</strong> : les modèles sont entraînés sur des données du Nord, imposant leurs visions du monde.</li>
+  </ul>
+
+  <h3>5. Comment se protéger ?</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.8rem 0;font-size:0.92rem;">
+    <thead>
+      <tr style="background:#e8f5e9;">
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Solution</th>
+        <th style="padding:0.5rem;text-align:left;border:1px solid #cbd5e1;">Pourquoi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>IA locale (Ollama)</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Aucune donnée ne sort de votre ordinateur. Totalement privé.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Gestionnaire de mots de passe</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Bitwarden ou KeePass (gratuits, chiffrés). Ne mettez jamais vos mots de passe dans un chat IA.</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Désactiver l'entraînement</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Dans les paramètres de ChatGPT/Gemini, désactivez « Améliorer le modèle ».</td></tr>
+      <tr><td style="padding:0.5rem;border:1px solid #cbd5e1;"><strong>Chiffrement de bout en bout</strong></td><td style="padding:0.5rem;border:1px solid #cbd5e1;">Pour les messages sensibles, utilisez Signal ou ProtonMail.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>Règle d'or :</strong> ne mettez <strong>JAMAIS</strong> dans un chat IA ou un e-mail non chiffré ce que vous ne voudriez pas voir publié. Vos données sont stockées sur des serveurs étrangers, soumis à des lois étrangères.
+   <strong>Ici tu appelles des API : chaque requête part de ta machine vers un serveur étranger. N'y mets jamais de données personnelles, et choisis des API gratuites et ouvertes.</strong></div>
+
+  <h2>📺 Vidéos pour aller plus loin</h2>
+  <ul>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=qu%27est+ce+qu%27une+API+explication+simple+fran%C3%A7ais" target="_blank">Une API, c'est quoi ? (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=python+requests+appeler+une+API+tutoriel+fran%C3%A7ais" target="_blank">Python + requests : appeler une API (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=open+meteo+api+python+tutorial+free" target="_blank">Open-Meteo + Python (EN)</a></li>
+  </ul>
+
+  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+  <ol>
+    <li>Que renvoie une API quand on l'appelle ? <br><em>(Réponse : du texte structuré, presque toujours en JSON.)</em></li>
+    <li>Que faut-il coller à l'IA quand le script plante, et pourquoi ? <br><em>(Réponse : le message d'erreur exact, en entier — il contient le module, la ligne et le chemin.)</em></li>
+    <li>À quelle ligne de notre script la communication avec Internet se fait-elle ? <br><em>(Réponse : la ligne requests.get(...) — c'est elle qui envoie la requête.)</em></li>
+    <li>Pourquoi demander « sans clé API » dans le prompt ? <br><em>(Réponse : pour éviter une API payante ou exigeant une carte bancaire, et pouvoir exécuter le script immédiatement.)</em></li>
+    <li>Comment protéger ton travail contre une mauvaise modification ? <br><em>(Réponse : garder des versions (meteo_v1.py, meteo_v2.py) et une modification à la fois.)</em></li>
+  </ol>
+
+  <h2>📖 Glossaire</h2>
+  <ul>
+    <li><strong>API</strong> — Interface qui permet à deux logiciels de se parler selon des règles précises (requête → réponse).</li>
+    <li><strong>Endpoint</strong> — L'adresse exacte à laquelle tu envoies ta requête (ex. api.open-meteo.com/v1/forecast).</li>
+    <li><strong>JSON</strong> — Format de réponse structuré, lisible par les humains et par les programmes.</li>
+    <li><strong>Clé API</strong> — Mot de passe qui identifie ton application auprès du service. Jamais dans un code partagé.</li>
+    <li><strong>Module / bibliothèque</strong> — Fichier Python écrit par quelqu'un d'autre que tu importes (requests, sys).</li>
+    <li><strong>Requête HTTP</strong> — Le message envoyé au serveur : GET lit, POST envoie des données.</li>
+  </ul>
+  <div class="nav-footer">
+    <a href="seance-06.html">◀ Séance précédente</a>
+    <a href="index.html">📋 Sommaire du module</a>
+    <a href="seance-08.html">Séance suivante ▶</a>
+    <a href="astuces-ia.html">💡 Astuces IA</a>
+    <a href="seance-13.html">🎓 Séance 13</a>
+  </div>
+
+</div>
+</body>
+</html>

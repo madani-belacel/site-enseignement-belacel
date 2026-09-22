@@ -456,14 +456,33 @@ def render_seance_html(seance, prefix):
   "isPartOf": {{ "@type": "Course", "name": "Intelligence Artificielle en Éducation — PEP 2ème année" }}
 }}"""
 
-    # Objectifs
-    obj_fr = "".join(f"<li>{o['fr']}</li>" for o in seance["objectifs"])
-    obj_en = "".join(f"<li>{o['en']}</li>" for o in seance["objectifs"])
-    obj_ar = "".join(f"<li>{o['ar']}</li>" for o in seance["objectifs"])
+    # Objectifs (optionnels : absents en mode guide étudiant)
+    _objs = seance.get("objectifs") or []
+    obj_fr = "".join(f"<li>{o['fr']}</li>" for o in _objs)
+    obj_en = "".join(f"<li>{o['en']}</li>" for o in _objs)
+    obj_ar = "".join(f"<li>{o['ar']}</li>" for o in _objs)
+    _pre = seance.get("prerequis") or {}
+    if _objs:
+        meta_html = f"""<div class="seance-meta">
+      <strong class="lang-fr">🎯 Objectifs pédagogiques</strong>
+      <strong class="lang-en">🎯 Learning objectives</strong>
+      <strong class="lang-ar">🎯 الأهداف البيداغوجية</strong>
+      <ul class="lang-fr">{obj_fr}</ul>
+      <ul class="lang-en">{obj_en}</ul>
+      <ul class="lang-ar">{obj_ar}</ul>
+      <strong class="lang-fr">🧱 Prérequis</strong>
+      <strong class="lang-en">🧱 Prerequisites</strong>
+      <strong class="lang-ar">🧱 المكتسبات القبلية</strong>
+      <p class="lang-fr">{_pre.get("fr", "")}</p>
+      <p class="lang-en">{_pre.get("en", "")}</p>
+      <p class="lang-ar">{_pre.get("ar", "")}</p>
+    </div>"""
+    else:
+        meta_html = ""
 
-    # Plan (déroulé = 5 phases A-E + atelier)
+    # Plan (optionnel : absent en mode guide étudiant)
     plan_rows_fr, plan_rows_en, plan_rows_ar = [], [], []
-    for ph in seance["plan"]:
+    for ph in seance.get("plan") or []:
         badge = ph.get("badge", "")
         badge_html = f'<span class="phase-badge">{badge}</span> ' if badge else ""
         plan_rows_fr.append(f'<tr><td class="time">{ph["time"]}</td><td>{badge_html}<strong>{ph["fr"]}</strong><br><span style="color:var(--text-muted);font-size:.9em;">{ph.get("detail", {}).get("fr", "")}</span></td></tr>')
@@ -486,10 +505,25 @@ def render_seance_html(seance, prefix):
 </section>""")
     sections_html = "\n".join(sections_html)
 
-    # Activités
-    act_fr = "".join(f"<li>{a['fr']}</li>" for a in seance["activites"])
-    act_en = "".join(f"<li>{a['en']}</li>" for a in seance["activites"])
-    act_ar = "".join(f"<li>{a['ar']}</li>" for a in seance["activites"])
+    # Activités (optionnelles : absentes en mode guide étudiant)
+    _acts = seance.get("activites") or []
+    act_fr = "".join(f"<li>{a['fr']}</li>" for a in _acts)
+    act_en = "".join(f"<li>{a['en']}</li>" for a in _acts)
+    act_ar = "".join(f"<li>{a['ar']}</li>" for a in _acts)
+    if _acts:
+        act_html = f"""<h2><span class="lang-fr">✏️ Activités et exercices</span><span class="lang-en">✏️ Activities and exercises</span><span class="lang-ar">✏️ الأنشطة والتمارين</span></h2>
+    <ul class="lang-fr">{act_fr}</ul>
+    <ul class="lang-en">{act_en}</ul>
+    <ul class="lang-ar">{act_ar}</ul>"""
+    else:
+        act_html = ""
+    if plan_rows_fr:
+        plan_html = f"""<h2><span class="lang-fr">⏱️ Déroulé de la séance (1 h 30)</span><span class="lang-en">⏱️ Session plan (1h30)</span><span class="lang-ar">⏱️ سير الحصة (ساعة و30 دقيقة)</span></h2>
+    <table class="plan-table lang-fr"><thead><tr><th>Durée</th><th>Étape</th></tr></thead><tbody>{"".join(plan_rows_fr)}</tbody></table>
+    <table class="plan-table lang-en"><thead><tr><th>Time</th><th>Step</th></tr></thead><tbody>{"".join(plan_rows_en)}</tbody></table>
+    <table class="plan-table lang-ar"><thead><tr><th>المدّة</th><th>المرحلة</th></tr></thead><tbody>{"".join(plan_rows_ar)}</tbody></table>"""
+    else:
+        plan_html = ""
 
     # À retenir
     ret_fr = "".join(f"<li>{r['fr']}</li>" for r in seance["retenir"])
@@ -573,25 +607,9 @@ def render_seance_html(seance, prefix):
     </p>
     {lang_tabs()}
 
-    <div class="seance-meta">
-      <strong class="lang-fr">🎯 Objectifs pédagogiques</strong>
-      <strong class="lang-en">🎯 Learning objectives</strong>
-      <strong class="lang-ar">🎯 الأهداف البيداغوجية</strong>
-      <ul class="lang-fr">{obj_fr}</ul>
-      <ul class="lang-en">{obj_en}</ul>
-      <ul class="lang-ar">{obj_ar}</ul>
-      <strong class="lang-fr">🧱 Prérequis</strong>
-      <strong class="lang-en">🧱 Prerequisites</strong>
-      <strong class="lang-ar">🧱 المكتسبات القبلية</strong>
-      <p class="lang-fr">{seance["prerequis"]["fr"]}</p>
-      <p class="lang-en">{seance["prerequis"]["en"]}</p>
-      <p class="lang-ar">{seance["prerequis"]["ar"]}</p>
-    </div>
+    {meta_html}
 
-    <h2><span class="lang-fr">⏱️ Déroulé de la séance (1 h 30)</span><span class="lang-en">⏱️ Session plan (1h30)</span><span class="lang-ar">⏱️ سير الحصة (ساعة و30 دقيقة)</span></h2>
-    <table class="plan-table lang-fr"><thead><tr><th>Durée</th><th>Étape</th></tr></thead><tbody>{"".join(plan_rows_fr)}</tbody></table>
-    <table class="plan-table lang-en"><thead><tr><th>Time</th><th>Step</th></tr></thead><tbody>{"".join(plan_rows_en)}</tbody></table>
-    <table class="plan-table lang-ar"><thead><tr><th>المدّة</th><th>المرحلة</th></tr></thead><tbody>{"".join(plan_rows_ar)}</tbody></table>
+    {plan_html}
 
     <h2><span class="lang-fr">📚 Contenu de la séance</span><span class="lang-en">📚 Lesson content</span><span class="lang-ar">📚 محتوى الحصة</span></h2>
     {accroche_html}
@@ -602,10 +620,7 @@ def render_seance_html(seance, prefix):
     {fiche_html}
     {quiz_html}
 
-    <h2><span class="lang-fr">✏️ Activités et exercices</span><span class="lang-en">✏️ Activities and exercises</span><span class="lang-ar">✏️ الأنشطة والتمارين</span></h2>
-    <ul class="lang-fr">{act_fr}</ul>
-    <ul class="lang-en">{act_en}</ul>
-    <ul class="lang-ar">{act_ar}</ul>
+    {act_html}
 
     <h2><span class="lang-fr">🧠 À retenir</span><span class="lang-en">🧠 Key takeaways</span><span class="lang-ar">🧠 ما يجب تذكّره</span></h2>
     <ul class="lang-fr">{ret_fr}</ul>
@@ -639,14 +654,16 @@ def md_for(lang, seance):
     m.append(f"")
     m.append(seance["descriptions"][lang])
     m.append("")
-    m.append("## Objectifs pédagogiques")
-    for o in seance["objectifs"]:
-        m.append(f"- {o[lang]}")
-    m.append("")
-    m.append("## Déroulé de la séance (1 h 30)")
-    for ph in seance["plan"]:
-        m.append(f"- **{ph['time']} — {ph[lang]}** : {ph.get('detail', {}).get(lang, '')}")
-    m.append("")
+    if seance.get("objectifs"):
+        m.append("## Objectifs pédagogiques")
+        for o in seance["objectifs"]:
+            m.append(f"- {o[lang]}")
+        m.append("")
+    if seance.get("plan"):
+        m.append("## Déroulé de la séance (1 h 30)")
+        for ph in seance["plan"]:
+            m.append(f"- **{ph['time']} — {ph[lang]}** : {ph.get('detail', {}).get(lang, '')}")
+        m.append("")
     m.append("## A. Accroche et analogie (5 min)")
     acc = seance.get("accroche")
     if acc:
@@ -725,10 +742,11 @@ def md_for(lang, seance):
                     m.append(f"   - {mark} {opt[lang]}")
                 m.append(f"   *Explication :* {q.get('exp', q['q'])[lang]}")
         m.append("")
-    m.append("## Activités et exercices")
-    for a in seance["activites"]:
-        m.append(f"- {a[lang]}")
-    m.append("")
+    if seance.get("activites"):
+        m.append("## Activités et exercices")
+        for a in seance["activites"]:
+            m.append(f"- {a[lang]}")
+        m.append("")
     m.append("## À retenir")
     for r in seance["retenir"]:
         m.append(f"- {r[lang]}")
