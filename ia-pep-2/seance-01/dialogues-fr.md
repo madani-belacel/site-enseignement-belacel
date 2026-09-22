@@ -1,62 +1,68 @@
 # Séance 01 — Dialogues pédagogiques (Français)
 
-## Dialogue A — « C'est quoi l'intelligence artificielle ? » (classe de CM1, 25 min)
+## Dialogue A — « L'IA, ma nouvelle collègue d'études » (25 min)
 
-**Personnages :** Mme Sarah (enseignante), Amin (8 ans), Lina (9 ans), Rayan (8 ans).
-
----
-
-Mme Sarah : Bonjour les enfants ! Aujourd'hui, je n'ai pas apporté de manuel. À la place, je voudrais qu'on réfléchisse ensemble. Qui a déjà entendu parler de l'intelligence artificielle ?
-
-Lina : Moi, c'est sur le téléphone de ma mère ! Quand on dit « OK Google », il répond.
-
-Mme Sarah : Excellent, Lina. Et d'après vous, votre téléphone, est-ce qu'il « réfléchit » comme vous ?
-
-Amin : Non… il ne va pas à l'école ! (rires)
-
-Mme Sarah : Justement ! Le téléphone ne va pas à l'école, mais il a « appris » avant d'arriver chez nous. Comment a-t-il appris ? Retenez bien : il a regardé des milliers d'exemples de voix pour apprendre à comprendre la voix de votre mère.
-
-Rayan : Donc c'est comme un animal qu'on dresse ? On répète beaucoup de fois ?
-
-Mme Sarah : Très bonne image, Rayan ! Au lieu de la récompense, l'ordinateur reçoit des exemples, et il ajuste petit à petit. Ça s'appelle « l'apprentissage automatique ». Maintenant, je dessine au tableau : un cerveau humain… et un ordinateur. Est-ce que l'ordinateur a des sentiments ?
-
-Lina : Non ! Il ne peut pas être content ou triste.
-
-Mme Sarah : Voilà. Il imite, il calcule, mais il ne ressent pas. Et parfois il se trompe : il peut inventer une réponse ! C'est pour ça qu'on doit toujours vérifier ce qu'il dit.
-
-Amin : Même s'il invente, il dit « faut toujours qu'on vérifie » ? Alors il n'est pas très intelligent…
-
-Mme Sarah : Bonne remarque, Amin ! On dit « intelligent » parce qu'il imite l'intelligence, mais ce n'est pas une personne. On dit *artificiel* : fabriqué par les humains. Qui peut me redonner la grande idée de ce matin ?
-
-Rayan : L'ordinateur apprend avec des exemples, mais il ne pense pas comme nous !
-
-Mme Sarah : Bravo ! C'est exactement ce qu'il fallait retenir.
+**Personnages :** Amine (étudiant PEP 2A), l'assistant IA (joué par le formateur), Sofia (camarade).
 
 ---
 
-## Dialogue B — « L'IA à la maison » (devant les parents, 15 min)
+Amine : Bonjour ! Je dois réviser mon cours de psychologie de l'enfant, mais je suis submergé. Tu peux m'aider ?
 
-**Personnages :** Papa, Hayat (10 ans), Mamie (qui découvre), chatbot (joué par le papa).
+IA : Bien sûr. Donne-moi le chapitre ou le sujet, et dis-moi ce que tu veux : un résumé, des questions, une explication simple ?
 
-Hayat : Papy, regarde, j'ai demandé à l'application d'écrire une histoire de dragon pour mon frère !
+Sofia : Attention Amine ! Tu ne vas pas lui confier TOUT le travail ?
 
-Mamie : Et l'application a inventé tout ça ? C'est un écrivain ?
+Amine : Non ! Je veux qu'il m'explique les idées difficiles, que je vérifie ensuite dans mon cours.
 
-Papa : Non, Mamie. C'est un programme qui a appris en lisant beaucoup d'histoires. Il mélange ce qu'il a appris pour créer du nouveau. Mais attention : il faut vérifier que l'histoire convient à un enfant de première année.
+Sofia : Et comment tu sais que ce qu'il raconte est juste ?
 
-Hayat : J'ai vérifié ! Et j'ai ajouté notre chat dans l'histoire.
+Amine : Je le vérifie. Et toi, tu proposes, je dispose. C'est la règle n°1 !
 
-Papa : Très bien ! Tu gardes toujours ton avis : l'application propose, toi tu décides. On ne copie pas une réponse sans la relire, hein ?
+IA : Bonne attitude. Je te propose une fiche avec trois idées-clés. Mais préviens-toi : je peux me tromper, vérifie les dates avec ton polycopié.
 
-Hayat : Promis, Papa. Et si je pose une question de maths, il sait répondre ?
+Sofia : Donc il avoue lui-même se tromper !
 
-Papa : Oui, mais parfois il se trompe. Alors on vérifie avec le calcul ou avec le maître. Un robot qui se trompe, c'est un robot qui a besoin de nous.
+Amine : Justement : c'est pour ça que personne ne doit copier une réponse sans la relire. L'IA prédit des mots, pas la vérité.
 
-Mamie : Alors aussi vrai que mon pot-au-feu, l'outil reste un outil !
+Sofia : Tu m'expliques ? Parce que moi, quand elle écrit, ça paraît tellement vrai…
 
-Papa : Exactement, Mamie. C'est ce qu'on apprendra toute l'année à l'école des maîtres.
+Amine : Oui, c'est son métier : être convaincante ! Un mot après l'autre. Mais parfois elle invente. Alors on vérifie toujours.
+
+Sofia : D'accord… Et si je l'utilise pour traduire mon résumé en arabe avant de le réciter ?
+
+Amine : Excellente idée ! Traduis, relis, corrige, et entraîne-toi à l'oral. L'IA t'aide à travailler, pas à travailler à ta place.
 
 ---
 
-## Mini-rôle à jouer (3 mn par groupe)
-Un élève de CE2 demande : « Est-ce que la machine qui fait les devoirs est un robot ? » Répondez avec la définition vue en cours (exemples + apprentissage + pas de pensée).
+## Dialogue B — « Papa, pourquoi tu parles avec un robot ? » (15 min)
+
+**Personnages :** Yacine (étudiant), son père, Nour (petite sœur de 7 ans).
+
+---
+
+Nour : Yacine, pourquoi tu poses des questions à ton téléphone au lieu d'étudier ?
+
+Yacine : Je lui fais corriger la grammaire de mon devoir d'anglais, Nour.
+
+Papa : Et c'est permis, à l'université ?
+
+Yacine : Oui, si on reste honnête. Je ne lui fais pas écrire à ma place : je lui demande de repérer mes fautes et de m'expliquer pourquoi. Ensuite je corrige moi-même.
+
+Nour : C'est comme la maîtresse qui marque en rouge ?
+
+Yacine : Oui, presque. Mais elle, elle ne se trompe pas toujours…
+
+Papa : Hmm, donc le téléphone peut se tromper ?
+
+Yacine : Souvent ! Il faut vérifier. Et moi, quand il se trompe, c'est moi le responsable de ma copie.
+
+Nour : Et moi, est-ce que je peux lui demander d'écrire mon exercice ?
+
+Yacine : Non ! Parce que toi, tu dois apprendre. Si tu lui demandes de faire ton devoir, tu n'apprends rien. C'est comme si tu n'allais pas à l'école.
+
+Papa : Bien dit. Quand tu seras professeur, tu comprendras encore mieux pourquoi il faut apprendre par soi-même.
+
+---
+
+## Mini-rôle à jouer (3 min par binôme)
+Ton camarade croit que « l'IA est interdite à l'université parce qu'elle triche ». Explique-lui : ce qui est interdit, c'est le plagiat, pas l'usage honnête et vérifié. Reformule les 3 règles d'or.

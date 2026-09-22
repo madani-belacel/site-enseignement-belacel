@@ -1,62 +1,68 @@
 # Session 01 — Classroom dialogues (English)
 
-## Dialogue A — "What is artificial intelligence?" (Year 4 class, 25 min)
+## Dialogue A — "AI, my new study buddy" (25 min)
 
-**Characters:** Ms Sarah (teacher), Amin (age 8), Lina (age 9), Rayan (age 8).
-
----
-
-Ms Sarah: Good morning, children! Today I didn't bring a textbook. Instead, let's think together. Who has already heard of artificial intelligence?
-
-Lina: Me! It's on my mum's phone. When we say "OK Google", it answers.
-
-Ms Sarah: Great, Lina. Now, do you think your phone "thinks" like you do?
-
-Amin: No… it doesn't go to school! (laughter)
-
-Ms Sarah: Exactly! The phone doesn't go to school, but it "learned" before it came to our house. How did it learn? Keep this in mind: it looked at thousands of voice examples to learn how to understand your mother's voice.
-
-Rayan: So it's like a trained animal? You repeat many times?
-
-Ms Sarah: Very good image, Rayan! Instead of a reward, the computer gets examples, and it adjusts little by little. That is called "machine learning". Now, I'm drawing on the board: a human brain… and a computer. Does the computer have feelings?
-
-Lina: No! It can't be happy or sad.
-
-Ms Sarah: Right. It imitates, it calculates, but it does not feel. And sometimes it makes mistakes: it can invent an answer! That is why we must always check what it says.
-
-Amin: Even if it invents things, you say we always have to check? So it's not very intelligent…
-
-Ms Sarah: Good point, Amin! We call it "intelligent" because it imitates intelligence, but it is not a person. We say *artificial*: made by humans. Who can give me the big idea of this morning?
-
-Rayan: The computer learns with examples, but it doesn't think like us!
-
-Ms Sarah: Well done! That is exactly what you had to remember.
+**Characters:** Amine (PEP 2A student), the AI assistant (played by the trainer), Sofia (classmate).
 
 ---
 
-## Dialogue B — "AI at home" (with the parents, 15 min)
+Amine: Hello! I have to revise my child-psychology lesson, but I am overwhelmed. Can you help me?
 
-**Characters:** Dad, Hayat (age 10), Granny (discovering it), chatbot (played by Dad).
+AI: Of course. Give me the chapter or the topic, and tell me what you want: a summary, questions, a simple explanation?
 
-Hayat: Grandpa, look! I asked the app to write a dragon story for my little brother!
+Sofia: Careful, Amine! You're not going to hand over ALL the work, are you?
 
-Granny: And the app made all that up? Is it a writer?
+Amine: No! I want it to explain the difficult ideas, and I will check them afterwards in my lesson.
 
-Dad: No, Granny. It's a program that learned by reading lots of stories. It mixes what it learned to create something new. But careful: we must check that the story suits a first-year child.
+Sofia: And how do you know what it says is true?
 
-Hayat: I checked! And I added our cat to the story.
+Amine: I check it. And you propose, I dispose. That is rule #1!
 
-Dad: Very good! You always keep your own opinion: the app proposes, you decide. We never copy an answer without reading it again, right?
+AI: Good attitude. Let me give you a one-page sheet with three key ideas. But be warned: I can be wrong, check the dates with your handout.
 
-Hayat: Promise, Dad. And if I ask it a maths question, can it answer?
+Sofia: So it admits itself that it makes mistakes!
 
-Dad: Yes, but sometimes it makes mistakes. So we check with the calculation or with the teacher. A robot that makes mistakes is a robot that needs us.
+Amine: Exactly: that is why nobody should copy an answer without re-reading it. AI predicts words, not truth.
 
-Granny: Well, as true as my beef stew — a tool remains a tool!
+Sofia: Explain to me? Because when it writes, it seems so true…
 
-Dad: Exactly, Granny. That is what we will learn all year at the teachers' school.
+Amine: Yes, that's its job: being convincing! One word after another. But sometimes it invents. So we always check.
+
+Sofia: OK… And what if I use it to translate my summary into Arabic before reciting it?
+
+Amine: Great idea! Translate, re-read, correct, and practise out loud. AI helps you work, not work in your place.
 
 ---
 
-## Mini role-play (3 min per group)
-A Year-3 pupil asks: "Is the machine that does homework a robot?" Answer using the definitions from the lesson (examples + learning + no thinking).
+## Dialogue B — "Dad, why are you talking to a robot?" (15 min)
+
+**Characters:** Yacine (student), his father, Nour (7-year-old sister).
+
+---
+
+Nour: Yacine, why are you asking questions to your phone instead of studying?
+
+Yacine: I'm asking it to correct the grammar of my English assignment, Nour.
+
+Dad: And is that allowed at university?
+
+Yacine: Yes, if we stay honest. I don't write for it: I ask it to spot my mistakes and explain why. Then I correct them myself.
+
+Nour: It's like the teacher who marks in red?
+
+Yacine: Yes, almost. But she is not always wrong…
+
+Dad: Hmm, so the phone can be wrong?
+
+Yacine: Often! You have to check. And when it is wrong, I am the one responsible for my paper.
+
+Nour: And me, can I ask it to do my homework?
+
+Yacine: No! Because you have to learn. If you ask it to do your homework, you learn nothing. It is like not going to school.
+
+Dad: Well said. When you become a teacher, you will understand even better why learning by yourself matters.
+
+---
+
+## Mini role-play (3 min per pair)
+Your classmate believes "AI is forbidden at university because it cheats". Explain to him/her: what is forbidden is plagiarism, not honest, verified use. Repeat the 3 golden rules.
