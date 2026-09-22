@@ -1085,20 +1085,11 @@ def render_module_index(seances):
   "inLanguage": "fr",
   "numberOfCredits": "10 séances de 1h30"
 }}"""
-    cards = []
+    rows = []
     for i, (num, s) in enumerate(seances):
-        grad = "module-ia-g1" if i % 2 == 0 else "module-ia-g2"
         sseg = s["slug"]
-        cards.append(f"""      <a href="{sseg}/index.html" class="module-card">
-        <div class="module-card-gradient {grad}"><div class="card-pattern"></div><span class="card-icon">{s["icon"]}</span></div>
-        <div class="module-card-content">
-          <div class="module-card-date"><span class="lang-fr">Séance {i+1:02d} · {s["duration"]}</span><span class="lang-en">Session {i+1:02d} · {s["duration"]}</span><span class="lang-ar">الحصة {i+1:02d} · {s["duration"]}</span></div>
-          <h3><span class="lang-fr">{s["titles"]["fr"]}</span><span class="lang-en">{s["titles"]["en"]}</span><span class="lang-ar">{s["titles"]["ar"]}</span></h3>
-          <p><span class="lang-fr">{s["descriptions"]["fr"]}</span><span class="lang-en">{s["descriptions"]["en"]}</span><span class="lang-ar">{s["descriptions"]["ar"]}</span></p>
-          <span class="module-card-link"><span class="lang-fr">Ouvrir la séance</span><span class="lang-en">Open the session</span><span class="lang-ar">فتح الحصة</span></span>
-        </div>
-      </a>""")
-    cards_html = "\n".join(cards)
+        rows.append(f"""<div class="doc-row"><a class="doc-item" href="{sseg}/index.html"><span class="doc-icon">{s["icon"]}</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Séance {i+1:02d} — {s["titles"]["fr"]}</span><span class="lang-en">Session {i+1:02d} — {s["titles"]["en"]}</span><span class="lang-ar">الحصة {i+1:02d} — {s["titles"]["ar"]}</span></div><div class="doc-date"><span class="lang-fr">{s["duration"]} · Cours + Quiz + PPTX</span><span class="lang-en">{s["duration"]} · Lesson + Quiz + PPTX</span><span class="lang-ar">{s["duration"]} · درس + اختبار + PPTX</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Séance</span></div></a><a class="doc-item doc-item--pptx" href="{sseg}/presentation.pptx" target="_blank" rel="noopener" download><span class="doc-icon">📊</span><div class="doc-info"><div class="doc-title">PPTX</div><div class="doc-date">Slides</div></div><div class="doc-badges"><span class="badge badge-pptx">PPT</span></div></a></div>""")
+    rows_html = "\n".join(rows)
 
     html = head_html(
         "Module Intelligence Artificielle en Éducation — PEP 2ème année — Dr. Madani BELACEL",
@@ -1143,26 +1134,10 @@ def render_module_index(seances):
       <span class="lang-en">🗺️ The 10 sessions of the module</span>
       <span class="lang-ar">🗺️ حصص الوحدة العشر</span>
     </h2>
-    <div class="module-grid">
-{cards_html}
-      <a href="outils-ia.html" class="module-card">
-        <div class="module-card-gradient module-ia-g2" style="box-shadow:inset 0 0 0 2px #fff;"><div class="card-pattern"></div><span class="card-icon">🧰</span></div>
-        <div class="module-card-content">
-          <div class="module-card-date"><span class="lang-fr">Boîte à outils</span><span class="lang-en">Toolbox</span><span class="lang-ar">صندوق الأدوات</span></div>
-          <h3><span class="lang-fr">Outils IA : 12+ outils comparés</span><span class="lang-en">AI Tools: 12+ compared tools</span><span class="lang-ar">أدوات الذكاء الاصطناعي: أكثر من 12 أداة مقارنة</span></h3>
-          <p><span class="lang-fr">Pour chaque outil : type, usage, étapes simples, exemple pour un étudiant PEP, forces et limites.</span><span class="lang-en">For each tool: type, use, simple steps, an example for a PEP student, strengths and limits.</span><span class="lang-ar">لكل أداة: النوع، الاستعمال، خطوات بسيطة، مثال لطالب PEP، مزايا وحدود.</span></p>
-          <span class="module-card-link"><span class="lang-fr">Ouvrir la page</span><span class="lang-en">Open the page</span><span class="lang-ar">فتح الصفحة</span></span>
-        </div>
-      </a>
-      <a href="construire-ia.html" class="module-card">
-        <div class="module-card-gradient module-ia-g1"><div class="card-pattern"></div><span class="card-icon">🛠️</span></div>
-        <div class="module-card-content">
-          <div class="module-card-date"><span class="lang-fr">Atelier code</span><span class="lang-en">Code workshop</span><span class="lang-ar">ورشة البرمجة</span></div>
-          <h3><span class="lang-fr">Construire sa propre IA</span><span class="lang-en">Build your own AI</span><span class="lang-ar">بناء ذكاء اصطناعي خاص بك</span></h3>
-          <p><span class="lang-fr">3 approches : no-code (Dify), API Python (Gemini/OpenAI), local (Ollama). Projet de la séance 07.</span><span class="lang-en">3 approaches: no-code (Dify), Python API (Gemini/OpenAI), local (Ollama). Session 7 project.</span><span class="lang-ar">ثلاث مقاربات: بدون كود (Dify)، بواجهة Python (Gemini/OpenAI)، ومحلياً (Ollama). مشروع الحصة السابعة.</span></p>
-          <span class="module-card-link"><span class="lang-fr">Ouvrir la page</span><span class="lang-en">Open the page</span><span class="lang-ar">فتح الصفحة</span></span>
-        </div>
-      </a>
+    <div class="doc-list">
+{rows_html}
+      <div class="doc-row"><a class="doc-item" href="outils-ia.html"><span class="doc-icon">🧰</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Outils IA : 14 outils comparés</span><span class="lang-en">AI Tools: 14 compared tools</span><span class="lang-ar">أدوات الذكاء الاصطناعي: 14 أداة مقارنة</span></div><div class="doc-date"><span class="lang-fr">Boîte à outils · type, usage, exemple, forces, limites</span><span class="lang-en">Toolbox · type, use, example, strengths, limits</span><span class="lang-ar">صندوق الأدوات · النوع والاستعمال والمثال والمزايا والحدود</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Page</span></div></a></div>
+      <div class="doc-row"><a class="doc-item" href="construire-ia.html"><span class="doc-icon">🛠️</span><div class="doc-info"><div class="doc-title"><span class="lang-fr">Construire sa propre IA</span><span class="lang-en">Build your own AI</span><span class="lang-ar">بناء ذكاء اصطناعي خاص بك</span></div><div class="doc-date"><span class="lang-fr">Atelier code · Dify, API Python, Ollama</span><span class="lang-en">Code workshop · Dify, Python API, Ollama</span><span class="lang-ar">ورشة البرمجة · Dify وواجهة Python وOllama</span></div></div><div class="doc-badges"><span class="badge badge-fr">FR</span><span class="badge badge-en">EN</span><span class="badge badge-doc">AR</span><span class="badge badge-cours">Page</span></div></a></div>
     </div>
 
     <div class="highlight-box" style="margin:2.5rem 0;">
@@ -1182,10 +1157,8 @@ def render_module_index(seances):
 
 footer_placeholder""" + TABS_SCRIPT
 
-    # gradient inline pour le module
+    # langues du sommaire (le sommaire utilise des lignes compactes façon TIC)
     grad_css = """<style>
-  .module-ia-g1{background:linear-gradient(135deg,#263238,#455a64,#78909c);}
-  .module-ia-g2{background:linear-gradient(135deg,#1a237e,#283593,#5c6bc0);}
   .module-content .lang-fr{display:none!important;}.module-content .lang-ar{display:none!important;}
   .module-content.lang-fr .lang-en{display:none!important;}.module-content.lang-fr .lang-ar{display:none!important;}.module-content.lang-fr .lang-fr{display:block!important;}
   .module-content.lang-en .lang-fr{display:none!important;}.module-content.lang-en .lang-ar{display:none!important;}.module-content.lang-en .lang-en{display:block!important;}
