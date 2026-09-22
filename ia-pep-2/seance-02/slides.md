@@ -3,12 +3,12 @@ marp: true
 theme: default
 paginate: true
 size: 16:9
-title: Séance 02 — Panorama des outils d'IA pour l'enseignant
+title: Séance 02 — Panorama des 12+ outils d'IA pour l'étudiant
 ---
 
-# 🧰 Séance 02 — Panorama des outils d'IA pour l'enseignant
+# 🧰 Séance 02 — Panorama des 12+ outils d'IA pour l'étudiant
 
-*Overview of AI tools for the teacher*
+*Overview of 12+ AI tools for students*
 
 **Module Intelligence Artificielle — 2ème année PEP · ENS**
 
@@ -18,131 +18,177 @@ Dr. Madani BELACEL — Université de Mostaganem
 
 ## ⏱️ Déroulé de la séance (1 h 30)
 
-- **00–10** — Accueil, rappel et sondage
-- **10–30** — Les 6 familles d'outils
-- **30–55** — Démo guidée de 3 outils
-- **55–70** — Critères de choix d'un outil
-- **70–80** — Activité : tableau comparatif
-- **80–90** — Synthèse et annonce séance 3
+- **00–05** — Accroche : la jungle des 12 noms
+- **05–25** — Explication : les 4 familles
+- **25–50** — Démo : 3 outils en action
+- **50–70** — Exercice guidé : le bon pharmacien
+- **70–80** — Démo 2 : mauvais vs bon prompt
+- **80–90** — Synthèse, quiz et annonce de la séance 3
 
 ---
 
 ## 🎯 Objectifs pédagogiques
 
-- Citer et décrire 5 familles d'outils d'IA utiles à l'enseignant.
-- Pour une tâche donnée (préparer une leçon, illustrer, évaluer), choisir la famille et l'outil adapté.
-- Construire un tableau comparatif de 3 outils sur des critères précis (coût, facilité, RGPD, langue).
-- Identifier les précautions de base avant d'utiliser un outil avec des élèves (âge, données personnelles).
-
-*Objectifs en anglais : Name and describe 5 families of AI tools useful to the teacher.*
-
----
-
-## Les 6 familles d'outils d'IA
-
-- Pour se repérer, on classe les outils d'IA en six grandes familles selon ce qu'ils produisent. Un même site peut cumuler plusieurs familles.
-- 💡 **Image mentale :** « L'outil d'IA est comme un collègue polyvalent : il faut connaître ses spécialités et appeler le bon spécialiste pour la bonne tâche. »
-
-*The 6 families of AI tools*
+- Classer les outils d'IA en 4 familles : comprendre, chercher, créer, organiser-coder.
+- Décrire en une phrase l'usage de chacun des 12 outils du module.
+- Comparer 3 outils en démonstration : assistant, moteur sourcé, création visuelle.
+- Choisir le bon outil pour une tâche avec l'arbre de décision.
+- Éviter les 3 erreurs de débutant : tout demander au même outil, croire sans vérifier, payer avant d'essayer le gratuit.
 
 ---
 
-## Zoom sur les assistants de texte
+## 🎬 Accroche (5 min)
 
-- Ce sont les outils les plus utilisés : ils peuvent rédiger, résumer, reformuler, traduire, proposer des exercices. Pour un enseignant, ils font gagner beaucoup de temps sur la préparation.
-- **Usages concrets :** rédiger la consigne d'un exercice, adapter un texte à un niveau de lecture, créer une dictée, reformuler une explication simple.
-- **Point de vigilance :** toujours relire et vérifier le contenu (niveau de langue, exactitude des faits, vocabulaire adapté à l'âge).
-- **Exemples :** ChatGPT, Gemini, Claude, Le Chat (Mistral), Copilot.
+❓ ChatGPT, Gemini, Perplexity, Canva, Notion… 12 noms sur le tableau : qui peut dire à quoi sert chacun ? Aujourd'hui, on range cette jungle.
 
-*Focus on text assistants*
+🍳 **Analogie :** 🍳 Les outils d'IA, c'est comme la pharmacie : on ne soigne pas tout avec le même sirop. Le pharmacien (vous, bientôt) lit l'ordonnance (la tâche) puis choisit le bon flacon.
 
----
-
-## Zoom sur les générateurs d'images
-
-- Un générateur d'images transforme une description en texte en une illustration. Utile pour illustrer une leçon, créer un poster, un coloriage ou un personnage de classe.
-- **Consigne de description :** sujet, style (aquarelle, bande dessinée, photo), ambiance (lumineux), et ce qu'il ne faut PAS représenter.
-- **Exemples :** DALL·E (dans ChatGPT/Bing), Midjourney, Leonardo, Ideogram, et l'outil « Magic Media » de Canva.
-- **Précautions :** vérifier le réalisme (déformations), respecter les droits d'auteur, ne pas figurer de vrai enfant identifiable.
-- 💡 **Règle RGPD de base :** ne jamais importuner d'image ou de nom d'élève réel dans un générateur d'images. Les images produites doivent rester génériques et anonymes.
-
-*Focus on image generators*
+💡 💡 12 outils, 4 familles : COMPRENDRE (assistants), CHERCHER (moteurs sourcés), CRÉER (slides, images, voix), ORGANISER-CODER (notes, code, local).
 
 ---
 
-## Zoom sur les outils de quiz, de voix et de présentation
+## Les 4 familles : rangez la jungle
 
-- Ces outils se concentrent sur des tâches très précises, souvent avec des versions gratuites suffisantes pour une classe.
-- **Quiz / évaluation :** Quizizz AI, Kahoot, LearningApps, Socrative — générer un QCM à partir d'une consigne, avec correction automatique.
-- **Voix / audio :** synthèse vocale pour lire un texte à voix haute (aide à la lecture), génération de dictées audio.
-- **Présentation :** Gamma, Canva, PowerPoint — créer des diapositives structurées à partir d'un plan.
-- 💡 **Conseil pratique :** testez toujours l'outil sur un appareil d'élève avant la séance. Un outil « gratuit » peut afficher de la publicité inadaptée à des enfants.
+- Retenez 4 tiroirs, pas 12 noms. Devant chaque tâche, demandez-vous : est-ce que je veux COMPRENDRE, CHERCHER, CRÉER ou ORGANISER-CODER ? Le tiroir désigne l'outil.
+- 💡 **🔗 Rappel séance 1 :** les 3 règles d'or (vérifier, citer, garder son jugement) s'appliquent aux 4 familles. Et souvenez-vous de l'acteur brillant : convaincant ne veut pas dire vrai — dans AUCUNE famille.
 
-*Focus on quiz, voice and presentation tools*
+*The 4 families: tidy the jungle*
 
 ---
 
-## Choisir le bon outil pour la bonne tâche
+## Les 12 outils en fiches express
 
-- Voici une grille de décision en 5 questions à poser avant tout choix d'outil :
-- **Quelle tâche ?** Rédiger → texte. Illustrer → image. Évaluer → quiz. Présenter → diaporama.
-- **Pour qui ?** Un élève de CP n'a pas le même outil qu'un collègue qui prépare un cours.
-- **Combien ça coûte ?** Y a-t-il une version gratuite suffisante ? Puis-je l'utiliser hors connexion ?
-- **Où vont les données ?** L'outil respecte-t-il le RGPD ? Peut-on l'utiliser avec les élèves (âge minimum) ?
-- **Qui vérifie ?** Le contenu généré est-il fiable ? Qui relit avant de l'utiliser en classe ?
+- Une phrase par outil, à connaître par cœur. Le détail complet (étapes, forces, limites) est sur la page « Outils IA » du module : chaque outil y a sa fiche.
+- **ChatGPT :** l'assistant généraliste qui explique, résume et rédige.
+- **Gemini :** comme ChatGPT + lit images et PDF.
+- **Claude :** le champion des longs textes en bon français.
+- **Perplexity :** répond AVEC les sources à ouvrir.
+- **Scholar / Consensus :** la bibliothèque scientifique (articles, consensus).
 
-*Choose the right tool for the right task*
-
----
-
-## Un scénario complet : la leçon de sciences de la semaine
-
-- Prenons un exemple : préparer une leçon de découverte du monde sur « le cycle de l'eau » pour des CP.
-- Avec un assistant de texte : rédiger le déroulé de la séance et 3 phrases simples de synthèse.
-- Avec un générateur d'images : créer 2 illustrations schématiques (nuage, rivière, soleil).
-- Avec un générateur de quiz : produire 4 questions vrai/faux à projeter en fin de séance.
-- Avec la synthèse vocale : enregistrer la lecture des 3 phrases pour la mise en autonomie.
-- 💡 **À faire noter aux étudiants :** un même objectif de cours peut mobiliser 4 outils différents. Le rôle de l'enseignant reste de coordonner et de vérifier.
-
-*A complete scenario: the week's science lesson*
+*The 12 tools in flash sheets*
 
 ---
 
-## ✏️ Activités et exercices
+## Démo : la même question à 3 outils
 
-1. Démo collective : montrer un exemple de production de 3 outils (texte, image, quiz) sur le même sujet de leçon.
-1. Tableau comparatif (binômes) : 3 outils × 5 critères (coût, facilité, qualité, RGPD, langue). Remplir une case avec un « + », un « = » ou un « − ».
-1. Défi « trouver la bonne famille » : pour 4 situations (dictée, coloriage, affiche, auto-correction), choisir la famille d'outil adaptée et justifier.
+- Question test : « Explique la différenciation pédagogique avec un exemple de primaire. » Regardez ce que CHAQUE outil apporte — aucun ne fait tout.
+- **ChatGPT (🔵) :** explication claire + exemple, sans sources. Parfait pour COMPRENDRE vite.
+- **Perplexity (🟢) :** réponse plus courte MAIS avec 3 liens : parfait pour VÉRIFIER et citer.
+- **Canva IA (🟠) :** une affiche « différenciation » pour la classe : parfait pour MONTRER.
+- **Leçon :** comprendre → bleu ; prouver → vert ; montrer → orange. Trois outils, trois métiers.
+- 💡 **🧪 Exemple concret :** Karim prépare un exposé sur l'eau : ChatGPT lui donne le plan en 1 minute, Perplexity lui trouve 3 sources datées, Canva lui dessine l'affiche du cycle. Trois pharmaciens, une ordonnance : l'exposé.
+
+*Demo: the same question to 3 tools*
 
 ---
 
-## 🧠 À retenir
+## Bien choisir : l'arbre de décision du pharmacien
 
-- Six familles d'outils : texte, images, voix, quiz, présentation, vidéo.
-- On choisit un outil selon la tâche, le public, le coût, la protection des données et la vérification.
-- Pas d'outil sans vérification : l'enseignant garde le dernier mot.
-- La version gratuite suffit souvent pour une classe ; toujours tester sur un appareil d'élève.
+- Trois questions suffisent pour ne plus jamais se tromper d'outil.
+- **1. Ai-je besoin de SOURCES ?** Oui → 🟢 (Perplexity, Scholar). Non → question 2.
+- **2. Est-ce que je CRÉE quelque chose à montrer ?** Oui → 🟠 (Gamma, Canva, DALL·E). Non → question 3.
+- **3. Est-ce que j'ORGANISE ou je CODE ?** Oui → 🟣 (Notion, Copilot, Ollama, Dify). Non → 🔵 (ChatGPT, Gemini, Claude).
+- 💡 **Les 4 composantes d'une bonne requête :** contexte (qui tu es, quel cours), objectif (comprendre, citer, réviser), format (liste, tableau, 5 lignes), contrainte (sources, langue, dates). La démo 2 les applique en direct.
+- 💡 **❌ 3 erreurs de débutant :** 1) tout demander au même outil (le sirop unique) ; 2) croire sans ouvrir les sources ; 3) payer un abonnement avant d'avoir épuisé le gratuit étudiant.
+
+*Choose well: the pharmacist's decision tree*
+
+---
+
+## Comment en profiter au maximum
+
+- Le bon pharmacien ne connaît pas 12 sirops par cœur le premier jour : il connaît 4 tiroirs, 1 outil préféré par tiroir, et la page « Outils IA » pour le reste.
+- 💡 **➡️ Pont vers la séance 3 :** la famille verte (CHERCHER) mérite une séance entière : Perplexity en profondeur, Scholar comme un chercheur, et l'art de vérifier (séance 3).
+- **✅ 1 favori par tiroir :** choisissez vos 4 outils de tous les jours cette semaine.
+- **✅ Gratuit d'abord :** comptes étudiants gratuits avant tout abonnement.
+- **✅ Fiche outils :** gardez la page « Outils IA » en favori du navigateur.
+- **✅ Testez à deux :** même question, deux outils, comparez — le meilleur exercice.
+
+*How to get the most out of it*
+
+---
+
+## 📺 À regarder après la classe
+
+- **Playlist IA de Mohammad Dawoud (référence du module)** (ar) — https://www.youtube.com/watch?v=H5WUwwivEaI&list=PLbR_CTcUs1088jfqbbO5AqwODO9MgYA85
+- **Comparatif assistants IA 2026 : lequel choisir ?** (fr) — https://www.youtube.com/results?search_query=comparatif+chatgpt+gemini+claude+2026+francais
+- **10 outils IA pour étudiants : panorama guidé** (fr) — https://www.youtube.com/results?search_query=outils+ia+etudiants+universite+tutoriel
+
+---
+
+## ✏️ Exercice guidé (15 min)
+
+**Énoncé :** 8 situations d'étudiant : prescrivez le bon outil avec l'arbre de décision (sources ? créer ? organiser-coder ?). Justifiez en 1 phrase.
+
+**Solution :** 1) Expliquer une notion → 🔵 ChatGPT. 2) Citer 2 études → 🟢 Perplexity/Scholar. 3) Slides d'exposé → 🟠 Gamma. 4) Affiche → 🟠 Canva. 5) Planning révisions → 🟣 Notion. 6) Bug Python → 🟣 Copilot. 7) Résumer VOS PDF → 🟢 NotebookLM. 8) Chatbot sans code → 🟣 Dify.
+
+---
+
+## 💭 As-tu bien compris ?
+
+- **Que faire si vous avez besoin de SOURCES ?**
+   - ✅ Tiroir vert : Perplexity pour une réponse sourcée rapide, Scholar/Consensus pour des articles vérifiables.
+- **NotebookLM appartient à quelle famille, et pourquoi ?**
+   - ✅ CHERCHER (vert) : il répond à partir de VOS documents, sources affichées — c'est un moteur sur vos PDF.
+- **Ollama et Dify : quelle différence en une phrase ?**
+   - ✅ Ollama fait tourner un modèle chez vous hors-ligne ; Dify construit un chatbot sur vos PDF sans coder.
+
+---
+
+## 🧠 Fiche de synthèse — points clés
+
+- 4 tiroirs : 🔵 comprendre, 🟢 chercher, 🟠 créer, 🟣 organiser-coder.
+- Arbre : sources ? → créer ? → organiser-coder ? → sinon bleu.
+- 1 favori par tiroir + page Outils IA en favori.
+- Gratuit étudiant d'abord, jamais d'abonnement aveugle.
+- 3 règles d'or partout : vérifier, citer, juger.
+
+> 🏁 🏁 Les outils d'IA et vous, c'est comme l'orchestre et le chef : chaque instrument (outil) a son timbre, mais c'est le chef (vous, et votre arbre de décision) qui décide qui joue, quand — et la musique, c'est vos études.
 
 ---
 
 ## ✅ Quiz éclair (1 min)
 
-- **Pour créer un coloriage illustrant une fable, quelle famille d'outil choisir ?**
-   - 🔘 Générateur de quiz
-   - ✅ Générateur d'images
-   - 🔘 Assistant de texte
-   - 🔘 Synthèse vocale
-- **Avant d'utiliser un outil avec des élèves, la première question à se poser est…**
-   - 🔘 Combien de gadgets contient l'outil ?
-   - 🔘 Quel est le dernier modèle ?
-   - ✅ Où vont les données des élèves ?
-   - 🔘 Quelle couleur est le logo ?
+**Q1. Besoin de SOURCES : quel tiroir ?**
+   - 🔘 🔵 Bleu
+   - ✅ 🟢 Vert (Perplexity, Scholar)
+   - 🔘 🟠 Orange
+   - 🔘 🟣 Violet
+**Q2. Slides d'exposé : quel outil ?**
+   - 🔘 Ollama
+   - 🔘 Perplexity
+   - ✅ Gamma (créer à montrer)
+   - 🔘 Whisper
+**Q3. Interroger VOS propres PDF : quel outil ?**
+   - 🔘 DALL·E
+   - ✅ NotebookLM (vert : chercher dans vos documents)
+   - 🔘 Canva
+   - 🔘 ElevenLabs
+
+---
+
+## ✏️ Activités et exercices
+
+1. Ordonnance express : 8 situations → outil + famille + 1 phrase de justification.
+1. Duel d'outils : même question à 2 outils de familles différentes, comparer en tableau.
+1. Mes 4 favoris : choisir 1 outil par tiroir et justifier devant la classe.
+1. Chasse à l'erreur : 3 prescriptions volontairement fausses à corriger (ex : sources → DALL·E).
+
+---
+
+## 🧠 À retenir
+
+- 4 tiroirs : 🔵🟢🟠🟣 valent mieux que 12 noms.
+- Arbre : sources ? créer ? organiser-coder ? sinon bleu.
+- Démo : même question, 3 outils, 3 métiers.
+- Gratuit étudiant d'abord ; 3 règles d'or partout.
+- Page Outils IA en favori : la pharmacie de poche.
 
 ---
 
 # 🎓 Merci de votre attention
 
-**Séance 02 — Panorama des outils d'IA pour l'enseignant**
+**Séance 02 — Panorama des 12+ outils d'IA pour l'étudiant**
 
 *Prochaine séance : venez avec un ordinateur ou un smartphone.*
 

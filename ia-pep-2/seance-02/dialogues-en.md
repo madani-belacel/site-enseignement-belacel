@@ -1,62 +1,46 @@
 # Session 02 — Classroom dialogues (English)
 
-## Dialogue A — "Two colleagues prepare a lesson" (staff room, 15 min)
+## Dialogue A — "Doctor, which syrup?" (25 min)
 
-**Characters:** Karim (Year-1 teacher, 24), Nadia (Year-2 teacher, 28, coordinator).
-
----
-
-Nadia: Karim, are you preparing the shapes lesson for tomorrow? Do you want a hand?
-
-Karim: Yes! I have the worksheet… but the "rectangle" illustration is not very clear for Year-1 pupils.
-
-Nadia: Use an image generator. You describe: "a rectangular school flag, cartoon style, soft colours". You get an image in 30 seconds.
-
-Karim: And for the spotting exercises? I don't have time to write 10 of them.
-
-Nadia: A text assistant can suggest 10 in two minutes. But above all, ask it for a format: "5-minute written task, with instruction, answer key and level". Then you check before printing.
-
-Karim: Do you use AI often?
-
-Nadia: To save time on the *format*, not to think for me. I keep a little chart: text, image, quiz, voice. I pick the tool according to the task, not the fashion.
-
-Karim: And for marking exercises?
-
-Nadia: I can generate a quiz on Quizizz: pupils answer and marking is automatic. But I always re-read the questions: sometimes AI invents a "logical" but wrong answer!
-
-Karim: OK, I'll try tonight. Thanks Nadia!
-
-Nadia: You're welcome. Remember: free tool + test on a pupil's device + checking. The magic trio.
+**Characters:** Sara (a lost student), Karim (a pharmacist classmate), Mrs Amel (teacher).
 
 ---
 
-## Dialogue B — "Hey computer, can you draw?" (Year 1/2, 10 min)
+Sara: Twelve tools… I am lost! For my talk on water, which one do I take?
 
-**Characters:** Mr Sami (teacher), Lina (age 7), Rayan (age 7).
+Karim: Calm down, future pharmacist. First the prescription: what must you DO? An outline? Sources? A poster?
 
----
+Sara: All three! An outline, proofs and something to show.
 
-Mr Sami: Today, I'm going to show you how the computer can help us. Who wants to say which image we need for our castle story?
+Karim: Then three bottles: 🔵 ChatGPT for the outline (understand), 🟢 Perplexity for dated sources (search), 🟠 Canva for the cycle poster (create).
 
-Lina: A castle with a tower, and a red dragon!
+Sara: And if I asked everything to ChatGPT?
 
-Mr Sami: Very good. I'll type this: "a castle with a tower and a red dragon, children's book style". Watch…
+Karim: The single syrup! It would invent sources and draw badly. Each family has its job.
 
-Rayan: Wow! It drew it! Is it a magician?
-
-Mr Sami: No, Rayan. It learned to draw by looking at lots of images. But we told it what to draw. Without our idea, it draws nothing!
-
-Lina: What if we asked it to draw a green dragon?
-
-Mr Sami: Good idea! Let's change "red" to "green"… look, it changes the colour. That is because we humans choose and check. The computer proposes, we decide.
-
-Rayan: So who's the boss? We are the boss!
-
-Mr Sami: Exactly. Now, who wants to approve the image we'll use for our project?
-
-Lina: Me, sir! It's beautiful, we keep it.
+Mrs Amel: Exactly. And session 1's 3 golden rules (verify, cite, judge) apply to all 4 drawers. Sort first, prescribe next.
 
 ---
 
-## Mini role-play (3 min per group)
-Two teachers must choose a tool to prepare "a dictation + a colouring sheet about the family". Choose the tool family and justify it with the 5-question grid.
+## Dialogue B — "The duel" (15 min)
+
+**Characters:** Yacine (student), Lina (referee classmate), the screen (played by a classmate).
+
+---
+
+Yacine: "Explain photosynthesis": ChatGPT answers in 10 clear lines. Perplexity answers in 5 lines + 3 links. Which wins?
+
+Lina: Depends on the match! To UNDERSTAND fast: ChatGPT. To CITE in your homework: Perplexity, with open links.
+
+Yacine: And Canva in all this?
+
+Lina: It plays another match: it will SHOW your photosynthesis as a poster. Three tools, three jobs, one talk.
+
+Yacine: So I no longer pick ONE tool, I build a TEAM?
+
+Lina: There is the pharmacist: blue + green + orange, and the prescription is filled!
+
+---
+
+## Mini role-play (3 min per pair)
+One states a situation ("summarise MY pdfs", "Python bug", "A3 poster"), the other prescribes tool + family + 1 sentence. Swap, then the jury checks with the decision tree.
