@@ -4,117 +4,96 @@
 **Auteur : Dr. Madani BELACEL — Université de Mostaganem**  
 **Durée : 1 h 30**  
 
-Comprendre ce qu'est l'IA en mots simples — avec des comparaisons de la vie quotidienne — pour t'en servir dès aujourd'hui dans tes études, sans naïveté, sans peur et avec ton esprit critique.
+Ouvrir un chatbot, poser tes 2 premières questions avec des prompts prêts, juger les réponses et repartir avec ta première fiche d'usage — ta toute première interaction avec une IA, guidée pas à pas.
 
 ## Objectifs pédagogiques
-- Définir avec tes mots : IA, modèle de langage et prompt.
-- Expliquer simplement comment un chatbot répond (il prédit le mot le plus probable à partir d'exemples).
-- Citer 5 usages de l'IA utiles à tes études (rechercher, résumer, rédiger, réviser, organiser).
-- Identifier 3 limites : erreurs, hallucinations, biais.
+- Ouvrir ChatGPT ou Gemini et poser ta première question avec un prompt prêt à copier.
+- Obtenir une explication simple de l'IA + 3 exemples que tu utilises sans le savoir.
+- Juger une réponse d'IA : noter ce qui est clair, confus ou douteux.
+- Expliquer l'IA en 1 phrase à un enfant de 12 ans.
 - Appliquer les 3 règles d'or : vérifier, citer, garder ton jugement.
 
 ## Déroulé de la séance (1 h 30)
-- **00–05 — Accroche et sondage** : La question « ton téléphone utilise l'IA ? » + tour de table sur les usages déjà vus.
-- **05–20 — Explication pas à pas : 3 idées clés** : 1) L'IA apprend sur des exemples (apprenti cuisinier). 2) Un chatbot prédit le mot suivant. 3) IA faible / générale / super-IA.
-- **20–40 — Démonstration : un résumé de cours** : Mauvais prompt vs bon prompt, puis piège de l'hallucination : la même question posée à un chatbot et à un moteur sourcé.
-- **40–55 — Exercice guidé : vrai ou faux ?** : 6 affirmations sur l'IA à classer + correction collective.
-- **55–60 — Résumé visuel et quiz éclair** : Fiche de synthèse (+3 points) et quiz éclair de 3 questions.
-- **60–90 — Atelier : dialogues et rôles** : Jouer les dialogues A et B en binômes, puis mini-rôle de 3 min.
+- **00–05 — 🚀 Action immédiate : ta première question** : Ouvrir ChatGPT ou Gemini, copier le prompt 1, lire la réponse et noter 1 chose claire + 1 confuse.
+- **05–20 — 📋 Recette pas à pas : 2e question et comparaison** : Prompt 2 (3 exemples du quotidien), comparaison avec la liste du cours, et ce qui se passe quand tu tapes (prédiction du mot suivant).
+- **20–40 — 🛠️ Démo : erreurs fréquentes et 2e avis** : Les 3 erreurs de débutant en direct + piège de l'hallucination : la même question au chatbot et au moteur sourcé.
+- **40–55 — 🧪 Mission : ta première fiche d'usage** : Produire le livrable : prompts utilisés + réponses + ton avis en 3 lignes.
+- **55–60 — ✅ Checklist et quiz éclair** : Cocher les 4 cases (outil ouvert, 3 questions, résultat utilisable, limite repérée) + quiz de 5 questions.
+- **60–90 — 🤝 Atelier : mission et dialogues** : Finaliser la fiche d'usage, jouer les dialogues A et B en binômes, puis mini-rôle de 3 min.
 
 ## A. Accroche et analogie (5 min)
-- **Question :** Savez-vous que votre téléphone utilise l'IA des dizaines de fois par jour, sans que vous vous en rendiez compte ? Verrouillage du visage, traduction, correction du clavier, recommandation de vidéos…
-- **Analogie :** 🍳 L'IA, c'est comme un apprenti cuisinier : il goûte des milliers de plats (les exemples), remarque des régularités (le sucre c'est sucré, le citron c'est acide) et finit par pouvoir créer sa propre recette. Il ne sait pas POURQUOI ça marche, il a appris QUE ça marche.
-- **En une phrase :** 💡 L'IA, c'est un programme informatique qui apprend à partir d'exemples pour imiter certaines capacités humaines : comprendre, parler, traduire, voir, décider.
 
 ## B + C. Explication pas à pas et démonstration
-### Idée clé 1 — L'IA apprend sur des exemples
-Une IA n'est pas programmée « à la main » comme une calculatrice. On lui montre des milliers d'exemples, et elle en tire des régularités. C'est une énorme machine à généraliser.
-> 💡 **<strong>Analogie pour te souvenir :</strong> comment un enfant reconnaît-il un chien ? Il en a vu beaucoup. Il n'apprend pas une définition : il reconnaît des ressemblances. L'IA fait pareil, à grande échelle.**
+### 🎯 Ce que vous saurez faire à la fin
+Pas de cours magistral : dans 10 minutes, tu auras déjà parlé à une IA. Voici les 3 résultats concrets que tu produiras pendant cette séance.
 
-- <strong>Données d'entraînement :</strong> les exemples qu'on montre à l'IA (textes, images, sons).
-- <strong>Modèle :</strong> le résultat de l'apprentissage — un « cerveau » numérique qui généralise à partir des exemples.
-- <strong>Prédiction :</strong> quand tu lui poses une question, il ne « cherche » pas la réponse : il la reconstruit à partir de ce qu'il a appris.
+- <strong>1.</strong> Poser 2 questions à un chatbot (prompts prêts ci-dessous) et obtenir 2 réponses utilisables.
+- <strong>2.</strong> Juger chaque réponse : noter 1 chose claire + 1 chose confuse ou douteuse.
+- <strong>3.</strong> Expliquer l'IA en 1 phrase à un enfant de 12 ans — et prouver que tu as compris.
 
-```
-Schéma simple — comment l'IA apprend :
+### 🚀 Action immédiate — ta première fois (5 minutes)
+Sors ton téléphone. Dans 5 minutes, tu auras posé ta première question à une IA. Suis les étapes, ne saute rien.
 
-    EXEMPLES (milliers)          APPRENTISSAGE              MODÈLE
-    "ceci est un chat"     ──►  régularités trouvées  ──►  "reconnaît" un chat
-    "ceci est un chien"         poids chiffrés ajustés      puis répond / prédit
-```
-
-### Idée clé 2 — Un chatbot prédit le mot suivant
-ChatGPT, Gemini ou Copilot sont des « modèles de langage » (LLM). Leur secret : ils ont été entraînés sur des milliards de phrases, et ils ont appris une seule chose — quel mot vient le plus probablement après celui-ci.
-
-- « Hier, je suis allé … » → le modèle propose « au marché » parce que c'est très fréquent dans ses données.
-- Il génère mot après mot, jusqu'à former une phrase entière. Résultat : un texte qui paraît très naturel.
-- Il est entraîné à être <strong>convaincant</strong>, pas à être <strong>vrai</strong>. D'où les erreurs et les hallucinations.
-> 💡 **<strong>Hallucination =</strong> quand l'IA affirme avec assurance un fait inventé (une référence, un chiffre, une date). Ce n'est pas un bug rare : c'est un comportement fréquent. Toujours vérifier.**
+- <strong>Ouvre</strong> chatgpt.com (ou gemini.google.com) → bouton « S'inscrire » → compte gratuit (1 minute, e-mail suffit).
+- <strong>Clique</strong> « Nouveau chat » : tu vois une grande barre vide en bas. C'est là qu'on tape.
+- <strong>Copie-colle EXACTEMENT</strong> le prompt 1 ci-dessous, puis appuie sur Envoyer (▶ ou Entrée).
+- <strong>Lis</strong> la réponse : note sur papier 1 phrase CLAIRE (tu as compris) + 1 phrase CONFUSE (tu n'as pas compris).
+- <strong>Montre</strong> ton papier au voisin : comparez vos phrases confuses.
 
 ```
-Jeu de devinettes — prédire la suite :
-
-    « L'IA, c'est un programme qui ______ »
-    Probabilités : apprend(?) > calcule(?) > ...
-    → le modèle choisit le mot le plus probable, puis recommence.
+Explique-moi ce qu'est l'intelligence artificielle comme si j'avais 12 ans, en 3 phrases.
 ```
+> 💡 **<strong>✅ Résultat attendu :</strong> une réponse courte (3 phrases simples, sans jargon). Si tu reçois 20 lignes compliquées : c'est normal, la séance 2 t'apprendra à cadrer tes demandes.**
 
-### Idée clé 3 — Trois familles d'IA
-Il faut savoir classer ce dont on parle : tout ce que tu utilises aujourd'hui appartient à la première famille.
+### 📋 Recette pas à pas : 2e question et comparaison
+Reste dans le MÊME chat. Tu vas poser une 2e question, observer ce qui change, puis comparer avec la liste du cours.
 
-- <strong>1. IA faible (étroite)</strong> : excellente dans UNE tâche (traduire, trier, générer du texte). → Tout ce qui existe aujourd'hui.
-- <strong>2. IA générale</strong> : égalerait l'humain dans TOUTES les tâches. → N'existe pas encore.
-- <strong>3. Super-IA</strong> : dépasserait l'humain. → Scénario hypothétique qui alimente les films et les débats.
-> 💡 **<strong>Schéma pour la classe :</strong> écrire les trois familles au tableau comme trois escaliers. On monte les marches : le dernier étage (super-IA) n'existe QUE dans les films.**
+- <strong>Tape</strong> le prompt 2 ci-dessous et envoie. <strong>Observe :</strong> la réponse est-elle plus longue ? Donne-t-elle des exemples ? Quel ton (simple, savant) ?
+- <strong>Compare</strong> avec la liste du cours : téléphone (déverrouillage), GPS, anti-spam, Netflix, traducteur. Coche ✓ ce que l'IA a trouvé, ✗ ce qu'elle a raté.
+- <strong>Note</strong> dans ton cahier : 1 chose apprise + 1 question qui te reste.
+- <strong>Retiens le mécanisme :</strong> quand tu appuies sur Envoyer, le chatbot ne CHERCHE pas la réponse — il PRÉDIT le mot suivant, mot après mot, d'après des milliards d'exemples. C'est pour ça qu'il faut vérifier.
 
-### Démonstration — un résumé de cours, du mauvais au bon prompt
-Étudiant : « Je dois préparer mon exposé de psychologie de l'enfant. Je colle mon cours et je demande à l'IA de l'aider. » Regardons la différence entre une question paresseuse et une question qui guide.
+```
+Donne-moi 3 exemples d'intelligence artificielle que j'utilise sans le savoir dans ma vie quotidienne, avec 1 phrase d'explication pour chacun.
+```
+> 💡 **<strong>✅ Résultat attendu :</strong> 3 exemples (souvent : assistant vocal, recommandations, correcteur). Si un exemple te surprend (« mon téléphone me reconnaît ?! »), c'est gagné : tu viens de découvrir l'IA invisible.**
 
-|  | Mauvais prompt | Bon prompt |
-|---|---|---|
-| Requête | Résume ce cours. | Je suis étudiant en 2ème année PEP. Résume ce cours de psychologie en 5 idées clés, avec un exemple concret pour le primaire à chaque idée, et sans rien inventer : dis-moi ce qui manque. |
-| Résultat | Générique, trop long, aucun lien avec l'exposé. | Ciblé, structuré, réutilisable pour l'exposé, limites signalées. |
-> 💡 **<strong>Le piège du jour :</strong> posons la même question « Donne-moi 2 études sur Piaget » à un chatbot puis à un outil sourcé. Le chatbot peut inventer des références avec assurance ; l'outil sourcé affiche des liens à ouvrir. C'est une raison d'apprendre à vérifier (séance 02).**
+### ⚠️ Erreurs fréquentes des débutants
+Regarde ton écran : as-tu fait l'une de ces 3 erreurs ? Chacune a sa correction immédiate — teste-la tout de suite.
 
-### Comment en profiter au maximum
-Dès la première séance, retenez l'essentiel : l'IA vaut ce que vaut la question posée, et la réponse vaut ce que vaut la vérification. Utilisée ainsi, elle devient un tuteur personnel disponible 24 h/24 — jamais un remplaçant de ta mémoire.
+- <strong>❌ « Explique-moi tout sur l'IA »</strong> → réponse de 20 lignes inutilisable. <strong>✅ Dis plutôt :</strong> sujet + format + pour qui (« explique X en 5 phrases pour un étudiant de 2e année »).
+- <strong>❌ Croire parce que ça a l'air sûr</strong> → la confiance n'est pas la vérité : l'IA invente parfois (hallucination). <strong>✅ Vérifie</strong> 1 fait avec ton cours avant de l'utiliser.
+- <strong>❌ Demander AVANT de réfléchir</strong> → ton cerveau s'éteint. <strong>✅ Pense 1 minute</strong>, devine la réponse, PUIS compare avec l'IA.
+> 💡 **<strong>Teste maintenant :</strong> reprends ta 1re réponse et demande « résume ta réponse en 1 phrase simple ». Observe : l'IA obéit au format que TU imposes.**
 
-- <strong>✅ Commencez petit :</strong> une tâche précise (résumer, expliquer, reformuler), jamais « fais tout mon travail ».
-- <strong>✅ Donnez du contexte :</strong> matière, niveau, objectif, format attendu et longueur.
-- <strong>✅ Vérifiez systématiquement :</strong> chaque date, chiffre et référence doit être confirmé dans ton cours.
-- <strong>✅ Demandez la méthode :</strong> « explique comment tu arrives à cette conclusion » pour apprendre, pas seulement subir.
-> 💡 **<strong>❌ Erreurs à éviter :</strong> recopier une réponse sans la relire ; faire confiance à un chatbot parce qu'il paraît sûr de lui (la confiance n'est pas la vérité) ; devenir dépendant (demander l'IA avant de réfléchir une seule minute) ; et le plagiat — déposer un texte généré comme s'il était de vous, sans le citer ni l'arranger.**
+### 🧪 Votre mission — le livrable
+En binôme, produisez UNE page (papier ou document) : c'est ce que vous rendrez au début de la séance 2.
 
-|  | Mauvais prompt | Bon prompt |
-|---|---|---|
-| Requête | Résume ce cours. | Je suis étudiant 2A PEP. Résume ce cours de psychologie en 5 idées clés avec un exemple pour le primaire à chaque idée, et dis-moi ce qui manque. |
-| Résultat | Générique, trop long, vérifications impossibles. | Ciblé, réutilisable pour l'exposé, limites signalées. |
-> 💡 **<strong>Astuce gain de temps :</strong> créez dès maintenant un fichier « mémo prompts » (dans Notion ou un simple bloc-notes) et enregistrez-y chaque invitation réussie. Posez la question d'abord, réfléchissez-y une minute, puis lisez la réponse comme un livre que vous devez critiquer.**
+- <strong>1.</strong> Les 2 prompts utilisés, copiés mot pour mot.
+- <strong>2.</strong> Les 2 réponses, résumées en 2 phrases chacune.
+- <strong>3.</strong> Votre avis en 3 lignes : qu'est-ce qui est clair ? utile ? douteux ?
+- <strong>4.</strong> Votre phrase de 12 ans : « L'IA, c'est… ».
+> 💡 **<strong>🎯 Pour aller plus loin (séance 2) :</strong> gardez vos 2 prompts : vous apprendrez à les transformer en requêtes précises (contexte, objectif, format, contrainte).**
+
+### ✅ Checklist de validation
+Avant de partir, coche avec ton binôme. Tout doit être coché :
+
+- ☐ J'ai ouvert ChatGPT ou Gemini (outil ouvert, compte créé).
+- ☐ J'ai posé au moins 2 questions (prompts 1 et 2 envoyés).
+- ☐ J'ai obtenu un résultat utilisable (1 chose claire notée).
+- ☐ J'ai identifié 1 erreur ou limite (trop long, exemple raté, doute sur un fait).
 
 ## 📺 Ressources vidéo
 - **ما هو الذكاء الاصطناعي؟ شرح مبسط للمبتدئين (AI بالعربي)** (ar): https://www.youtube.com/watch?v=wdbb-X5qH4w — Idéale pour revoir la définition de l'IA avec des exemples de la vie quotidienne.
 - **ما هو الذكاء الاصطناعي؟ شرح مبسط** (ar): https://www.youtube.com/watch?v=vCKHeYQp8nk — Deuxième regard, très pédagogique : l'IA dans le téléphone et dans la classe.
 - **The Age of A.I. (Kurzgesagt)** (en): https://www.youtube.com/watch?v=UwsrzCVZAb8 — Ce que l'IA peut et ne peut pas faire — pour rester lucide (sous-titres FR disponibles).
 
-## D. Exercice guidé (15 min)
-**Énoncé :** Classe les 6 affirmations suivantes en Vrai (V) ou Faux (F), puis justifie en une ligne : 1) L'IA pense comme un humain. 2) L'IA a été entraînée sur des textes. 3) L'IA donne toujours des bonnes réponses. 4) L'IA peut inventer une référence. 5) L'IA remplace le professeur. 6) L'IA peut t'aider à réviser si tu vérifies.
-**Méthode :** 1) Lis chaque affirmation. 2) Demande-toi : « Qu'ai-je appris sur la façon dont l'IA produit une réponse ? ». 3) Note V ou F puis une justification. 4) Compare avec ton voisin avant la correction collective.
-**Solution :** 1) F — l'IA calcule des probabilités, elle n'a ni conscience ni pensées. 2) V — c'est son apprentissage. 3) F — elle peut se tromper et même inventer (halluciner). 4) V — c'est très fréquent, d'où la règle « vérifie ». 5) F — elle assiste l'étudiant, l'évaluation et le dialogue restent humains. 6) V — à condition de vérifier le contenu avec ton cours et tes sources.
-
-## 💭 As-tu bien compris ?
-- **Q1.** Le chatbot « cherche » la réponse dans une grande bibliothèque ?
-  *Réponse :* Non. Il reconstitue la réponse mot après mot, selon les probabilités apprises sur ses données. Il n'a pas accès à « la vérité ».
-- **Q2.** Pourquoi peut-il inventer une référence quand il a l'air si sûr de lui ?
-  *Réponse :* Parce qu'il est entraîné à produire des phrases plausibles et convaincantes. La confiance n'est PAS un indicateur de vérité.
-- **Q3.** ChatGPT appartient à quelle famille d'IA : faible, générale ou super-IA ?
-  *Réponse :* IA faible : excellente dans la génération de texte, mais incapable de faire « n'importe quelle tâche » comme un humain.
-
 ## E. Résumé visuel et mémorable (5 min)
 ### Points clés
-- L'IA est un programme qui apprend à partir d'exemples pour imiter des capacités humaines.
-- Un chatbot est une machine à prédire le mot suivant, entraînée à être convaincante — pas vraie.
-- Hallucination = invention confiante. C'est fréquent, pas un bug.
-- 3 familles : IA faible (tout ce qu'on utilise), générale (future), super-IA (films).
+- J'ai ouvert un chatbot et posé 2 vraies questions (prompts 1 et 2).
+- Je sais juger une réponse : 1 chose claire + 1 chose confuse ou douteuse.
+- Je connais les 3 erreurs qui tuent un bon usage (vague, confiance aveugle, zéro réflexion).
+- J'ai produit ma fiche d'usage : prompts + réponses + avis en 3 lignes.
 - 3 règles d'or : vérifier, citer, garder ton jugement.
 ### Analogies utilisées
 - 🍳 L'apprenti cuisinier qui goûte des milliers de plats avant de créer sa recette.

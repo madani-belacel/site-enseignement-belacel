@@ -2,21 +2,21 @@
 
 **What is AI? Introduction and demystification**
 
-> Comprendre ce qu'est l'IA en mots simples — avec des comparaisons de la vie quotidienne — pour t'en servir dès aujourd'hui dans tes études, sans naïveté, sans peur et avec ton esprit critique.
+> Ouvrir un chatbot, poser tes 2 premières questions avec des prompts prêts, juger les réponses et repartir avec ta première fiche d'usage — ta toute première interaction avec une IA, guidée pas à pas.
 
 ## Points clés
-1. L'IA est un programme qui apprend à partir d'exemples pour imiter des capacités humaines.
-> EN: AI is a program that learns from examples to imitate human abilities.
-> AR: الذكاء الاصطناعي برنامج يتعلم من الأمثلة ليحاكي قدرات بشرية.
-1. Un chatbot est une machine à prédire le mot suivant, entraînée à être convaincante — pas vraie.
-> EN: A chatbot is a next-word prediction machine, trained to be convincing — not true.
-> AR: روبوت الدردشة آلة تتنبأ بالكلمة التالية، مدرَّبة على الإقناع — لا على الصدق.
-1. Hallucination = invention confiante. C'est fréquent, pas un bug.
-> EN: Hallucination = confident invention. It is common, not a bug.
-> AR: الهلوسة = اختلاق بثقة. شائعة، وليست خللاً.
-1. 3 familles : IA faible (tout ce qu'on utilise), générale (future), super-IA (films).
-> EN: 3 families: narrow AI (everything we use), general (future), super-AI (films).
-> AR: 3 عائلات: ضيّق (كل ما نستعمله)، عام (مستقبلي)، فائق (أفلام).
+1. J'ai ouvert un chatbot et posé 2 vraies questions (prompts 1 et 2).
+> EN: I opened a chatbot and asked 2 real questions (prompts 1 and 2).
+> AR: فتحت روبوت دردشة وطرحت سؤالين حقيقيين (الصياغتان 1 و2).
+1. Je sais juger une réponse : 1 chose claire + 1 chose confuse ou douteuse.
+> EN: I can judge an answer: 1 clear + 1 confusing or doubtful thing.
+> AR: أعرف الحكم على جواب: شيء واضح + شيء مربك أو مشكوك.
+1. Je connais les 3 erreurs qui tuent un bon usage (vague, confiance aveugle, zéro réflexion).
+> EN: I know the 3 mistakes killing good use (vague, blind trust, zero thinking).
+> AR: أعرف الأخطاء الثلاثة القاتلة للاستعمال الجيد (الغموض والثقة العمياء وانعدام التفكير).
+1. J'ai produit ma fiche d'usage : prompts + réponses + avis en 3 lignes.
+> EN: I produced my usage sheet: prompts + answers + 3-line review.
+> AR: أنتجت بطاقة استعمالي: الصياغات + الأجوبة + الرأي في 3 أسطر.
 1. 3 règles d'or : vérifier, citer, garder ton jugement.
 > EN: 3 golden rules: verify, cite, keep your judgement.
 > AR: 3 قواعد ذهبية: تحقّق، استشهد، حافظ على حكمك.

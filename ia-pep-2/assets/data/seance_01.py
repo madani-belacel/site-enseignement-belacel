@@ -18,31 +18,31 @@ SEANCE = {
         "ما هو الذكاء الاصطناعي؟ مدخل وإزالة الغموض",
     ),
     "descriptions": L(
-        "Comprendre ce qu'est l'IA en mots simples — avec des comparaisons de la vie quotidienne — pour t'en servir dès aujourd'hui dans tes études, sans naïveté, sans peur et avec ton esprit critique.",
-        "Understand what AI is in simple words — with everyday comparisons — to use it today in your studies, without naivety, without fear and with your critical thinking.",
-        "أن تفهم ما هو الذكاء الاصطناعي بكلمات بسيطة — مع تشبيهات من الحياة اليومية — لتستعمله اليوم في دراستك، دون سذاجة، دون خوف، ومع التفكير النقدي.",
+        "Ouvrir un chatbot, poser tes 2 premières questions avec des prompts prêts, juger les réponses et repartir avec ta première fiche d'usage — ta toute première interaction avec une IA, guidée pas à pas.",
+        "Open a chatbot, ask your first 2 questions with ready prompts, judge the answers and leave with your first usage sheet — your very first AI interaction, guided step by step.",
+        "افتح روبوت دردشة واطرح أول سؤالين بصياغات جاهزة واحكم على الأجوبة واخرج بأول بطاقة استعمال — أول تفاعل لك مع الذكاء الاصطناعي خطوة بخطوة.",
     ),
     "duration": "1 h 30",
     "objectifs": [
         L(
-            "Définir avec tes mots : IA, modèle de langage et prompt.",
-            "Define in your own words: AI, language model and prompt.",
-            "أن تعرّف بعباراتك الخاصة: الذكاء الاصطناعي، ونموذج اللغة، والصياغة (Prompt).",
+            "Ouvrir ChatGPT ou Gemini et poser ta première question avec un prompt prêt à copier.",
+            "Open ChatGPT or Gemini and ask your first question with a ready-to-copy prompt.",
+            "أن تفتح ChatGPT أو Gemini وتطرح أول سؤال بصياغة جاهزة للنسخ.",
         ),
         L(
-            "Expliquer simplement comment un chatbot répond (il prédit le mot le plus probable à partir d'exemples).",
-            "Explain simply how a chatbot answers (it predicts the most probable word from examples).",
-            "أن تشرح ببساطة كيف يجيب روبوت الدردشة (يتنبأ بالكلمة الأكثر احتمالاً انطلاقاً من أمثلة).",
+            "Obtenir une explication simple de l'IA + 3 exemples que tu utilises sans le savoir.",
+            "Get a simple explanation of AI + 3 examples you already use unknowingly.",
+            "أن تحصل على شرح مبسّط للذكاء + 3 أمثلة تستعملها دون أن تدري.",
         ),
         L(
-            "Citer 5 usages de l'IA utiles à tes études (rechercher, résumer, rédiger, réviser, organiser).",
-            "List 5 AI uses helpful for your studies (search, summarise, write, revise, organise).",
-            "أن تذكر خمسة استعمالات للذكاء الاصطناعي مفيدة لدراستك (بحث، تلخيص، كتابة، مراجعة، تنظيم).",
+            "Juger une réponse d'IA : noter ce qui est clair, confus ou douteux.",
+            "Judge an AI answer: note what is clear, confusing or doubtful.",
+            "أن تحكم على جواب ذكاء: وتسجّل الواضح والمربك والمشكوك.",
         ),
         L(
-            "Identifier 3 limites : erreurs, hallucinations, biais.",
-            "Identify 3 limits: errors, hallucinations, biases.",
-            "أن تحدّد ثلاث حدود: الأخطاء، والهلوسة، والتحيّزات.",
+            "Expliquer l'IA en 1 phrase à un enfant de 12 ans.",
+            "Explain AI in 1 sentence to a 12-year-old.",
+            "أن تشرح الذكاء في جملة واحدة لطفل في الثانية عشرة.",
         ),
         L(
             "Appliquer les 3 règles d'or : vérifier, citer, garder ton jugement.",
@@ -55,397 +55,277 @@ SEANCE = {
         "No technical prerequisite. Knowing how to open a browser and use a smartphone is enough.",
         "لا توجد مكتسبات تقنية. يكفي معرفة فتح متصفّح واستعمال الهاتف الذكي.",
     ),
-    "accroche": {
-        "question": L(
-            "Savez-vous que votre téléphone utilise l'IA des dizaines de fois par jour, sans que vous vous en rendiez compte ? Verrouillage du visage, traduction, correction du clavier, recommandation de vidéos…",
-            "Did you know your phone uses AI dozens of times a day, without you noticing? Face unlock, translation, keyboard correction, video recommendations…",
-            "هل تعلم أن هاتفك يستعمل الذكاء الاصطناعي عشرات المرات يومياً دون أن تنتبه؟ فتح الوجه، الترجمة، تصحيح لوحة المفاتيح، التوصية بالفيديوهات…",
-        ),
-        "analogie": L(
-            "🍳 L'IA, c'est comme un apprenti cuisinier : il goûte des milliers de plats (les exemples), remarque des régularités (le sucre c'est sucré, le citron c'est acide) et finit par pouvoir créer sa propre recette. Il ne sait pas POURQUOI ça marche, il a appris QUE ça marche.",
-            "🍳 AI is like an apprentice chef: he tastes thousands of dishes (the examples), notices patterns (sugar is sweet, lemon is sour) and ends up able to create his own recipe. He does not know WHY it works, he just learned THAT it works.",
-            "🍳 الذكاء الاصطناعي كطبّاخ مبتدئ: يتذوّق آلاف الأطباق (الأمثلة)، ويلاحظ انتظامات (السكر حلو، الليمون حامض)، وينتهي به الأمر قادراً على إبداع وصفته الخاصة. لا يعرف لماذا ينجح، لكنه تعلّم أنّه ينجح.",
-        ),
-        "phrase": L(
-            "💡 L'IA, c'est un programme informatique qui apprend à partir d'exemples pour imiter certaines capacités humaines : comprendre, parler, traduire, voir, décider.",
-            "💡 AI is a computer program that learns from examples to imitate certain human abilities: understanding, speaking, translating, seeing, deciding.",
-            "💡 الذكاء الاصطناعي برنامج حاسوبي يتعلّم من الأمثلة ليحاكي بعض القدرات البشرية: الفهم، والتحدث، والترجمة، والرؤية، واتخاذ القرار.",
-        ),
-    },
     "plan": [
         {
             "time": "00–05",
             "badge": "🎬 A",
             **L(
-                "Accroche et sondage",
-                "Hook and survey",
-                "انطلاقة واستطلاع",
+                "🚀 Action immédiate : ta première question",
+                "🚀 Instant action: your first question",
+                "🚀 إجراء فوري: سؤالك الأول",
             ),
             "detail": L(
-                "La question « ton téléphone utilise l'IA ? » + tour de table sur les usages déjà vus.",
-                "The \"does your phone use AI?\" question + round table on uses already seen.",
-                "سؤال « هل يستعمل هاتفك الذكاء الاصطناعي؟ » + جولة على المجموعة حول الاستعمالات.",
+                "Ouvrir ChatGPT ou Gemini, copier le prompt 1, lire la réponse et noter 1 chose claire + 1 confuse.",
+                "Open ChatGPT or Gemini, paste prompt 1, read the answer and note 1 clear + 1 confusing thing.",
+                "افتح ChatGPT أو Gemini والصق الصياغة 1 واقرأ الجواب وسجّل شيئاً واضحاً وآخر مربكاً.",
             ),
         },
         {
             "time": "05–20",
             "badge": "🧱 B",
             **L(
-                "Explication pas à pas : 3 idées clés",
-                "Step-by-step: 3 key ideas",
-                "شرح خطوة بخطوة: ثلاث أفكار رئيسية",
+                "📋 Recette pas à pas : 2e question et comparaison",
+                "📋 Step-by-step recipe: 2nd question and comparison",
+                "📋 وصفة خطوة بخطوة: السؤال الثاني والمقارنة",
             ),
             "detail": L(
-                "1) L'IA apprend sur des exemples (apprenti cuisinier). 2) Un chatbot prédit le mot suivant. 3) IA faible / générale / super-IA.",
-                "1) AI learns from examples (apprentice chef). 2) A chatbot predicts the next word. 3) Narrow / general / super AI.",
-                "1) يتعلم الذكاء الاصطناعي من الأمثلة. 2) روبوت الدردشة يتنبأ بالكلمة التالية. 3) ذكاء ضيّق / عام / فائق.",
+                "Prompt 2 (3 exemples du quotidien), comparaison avec la liste du cours, et ce qui se passe quand tu tapes (prédiction du mot suivant).",
+                "Prompt 2 (3 everyday examples), comparison with the lesson list, and what happens when you type (next-word prediction).",
+                "الصياغة 2 (3 أمثلة يومية) ومقارنة مع قائمة الدرس وما يحدث عندما تكتب (تنبؤ الكلمة التالية).",
             ),
         },
         {
             "time": "20–40",
             "badge": "🛠️ C",
             **L(
-                "Démonstration : un résumé de cours",
-                "Demonstration: a lesson summary",
-                "عرض تطبيقي: تلخيص درس",
+                "🛠️ Démo : erreurs fréquentes et 2e avis",
+                "🛠️ Demo: frequent mistakes and 2nd opinion",
+                "🛠️ عرض: أخطاء شائعة ورأي ثانٍ",
             ),
             "detail": L(
-                "Mauvais prompt vs bon prompt, puis piège de l'hallucination : la même question posée à un chatbot et à un moteur sourcé.",
-                "Bad prompt vs good prompt, then the hallucination trap: the same question asked to a chatbot and to a sourced engine.",
-                "صياغة ضعيفة مقابل صياغة قوية، ثم مصيدة الهلوسة: نفس السؤال لروبوت محادثة ومحرّك بمصادر.",
+                "Les 3 erreurs de débutant en direct + piège de l'hallucination : la même question au chatbot et au moteur sourcé.",
+                "3 beginner mistakes live + the hallucination trap: same question to chatbot and sourced engine.",
+                "3 أخطاء مبتدئة مباشرة + مصيدة الهلوسة: نفس السؤال لروبوت الدردشة والمحرّك بمصادر.",
             ),
         },
         {
             "time": "40–55",
             "badge": "✏️ D",
             **L(
-                "Exercice guidé : vrai ou faux ?",
-                "Guided exercise: true or false?",
-                "تمرين موجّه: صحيح أم خطأ؟",
+                "🧪 Mission : ta première fiche d'usage",
+                "🧪 Mission: your first usage sheet",
+                "🧪 المهمة: أول بطاقة استعمال",
             ),
             "detail": L(
-                "6 affirmations sur l'IA à classer + correction collective.",
-                "6 statements about AI to classify + collective correction.",
-                "6 جمل حول الذكاء الاصطناعي تُصنَّف + تصحيح جماعي.",
+                "Produire le livrable : prompts utilisés + réponses + ton avis en 3 lignes.",
+                "Produce the deliverable: used prompts + answers + your 3-line review.",
+                "إنتاج المطلوب: الصياغات المستعملة + الأجوبة + رأيك في 3 أسطر.",
             ),
         },
         {
             "time": "55–60",
             "badge": "🧠 E",
             **L(
-                "Résumé visuel et quiz éclair",
-                "Visual summary and quick quiz",
-                "ملخص بصري واختبار خاطف",
+                "✅ Checklist et quiz éclair",
+                "✅ Checklist and quick quiz",
+                "✅ قائمة تحقق واختبار خاطف",
             ),
             "detail": L(
-                "Fiche de synthèse (+3 points) et quiz éclair de 3 questions.",
-                "Summary sheet (+3 points) and a 3-question quick quiz.",
-                "بطاقة تركيب (نقاط +3) واختبار خاطف من ثلاثة أسئلة.",
+                "Cocher les 4 cases (outil ouvert, 3 questions, résultat utilisable, limite repérée) + quiz de 5 questions.",
+                "Tick the 4 boxes (tool opened, 3 questions, usable result, spotted limit) + 5-question quiz.",
+                "علّم على الخانات الأربع (الأداة مفتوحة و3 أسئلة ونتيجة صالحة وحد مرصود) + اختبار من 5 أسئلة.",
             ),
         },
         {
             "time": "60–90",
             "badge": "🤝 Atelier",
             **L(
-                "Atelier : dialogues et rôles",
-                "Workshop: dialogues and role-play",
-                "ورشة: الحوارات والأدوار",
+                "🤝 Atelier : mission et dialogues",
+                "🤝 Workshop: mission and dialogues",
+                "🤝 ورشة: المهمة والحوارات",
             ),
             "detail": L(
-                "Jouer les dialogues A et B en binômes, puis mini-rôle de 3 min.",
-                "Act out dialogues A and B in pairs, then a 3-minute mini role-play.",
-                "تمثيل الحوارين A وB في مجموعات ثنائية، ثم دور مصغّر من 3 دقائق.",
+                "Finaliser la fiche d'usage, jouer les dialogues A et B en binômes, puis mini-rôle de 3 min.",
+                "Finalise the usage sheet, act out dialogues A and B in pairs, then a 3-minute mini role-play.",
+                "أنهِ بطاقة الاستعمال ومثّل الحوارين A وB ثنائياً ثم دوراً مصغّراً من 3 دقائق.",
             ),
         },
     ],
     "sections": [
         {
-            "id": "b1",
+            "id": "s1",
             "titre": L(
-                "Idée clé 1 — L'IA apprend sur des exemples",
-                "Key idea 1 — AI learns from examples",
-                "الفكرة الأولى — يتعلم الذكاء الاصطناعي من الأمثلة",
+                "🎯 Ce que vous saurez faire à la fin",
+                "🎯 What you will be able to do by the end",
+                "🎯 ما ستعرف فعله في النهاية",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Une IA n'est pas programmée « à la main » comme une calculatrice. On lui montre des milliers d'exemples, et elle en tire des régularités. C'est une énorme machine à généraliser.",
-                        "AI is not hand-programmed like a calculator. We show it thousands of examples, and it extracts patterns. It is a huge generalisation machine.",
-                        "الذكاء الاصطناعي لا يُبرمج يدوياً كالآلة الحاسبة. نريه آلاف الأمثلة فيستخرج انتظامات. إنه آلة تعميم هائلة.",
-                    ),
-                },
-                {
-                    "t": "note",
-                    "kind": "idea",
-                    **L(
-                        "<strong>Analogie pour te souvenir :</strong> comment un enfant reconnaît-il un chien ? Il en a vu beaucoup. Il n'apprend pas une définition : il reconnaît des ressemblances. L'IA fait pareil, à grande échelle.",
-                        "<strong>Analogy to remember:</strong> how does a child recognise a dog? He has seen many. He does not learn a definition: he recognises similarities. AI does the same, at scale.",
-                        "<strong>تشبيه للتذكّر:</strong> كيف يتعرّف الطفل على الكلب؟ رآه مرات كثيرة. لا يتعلم تعريفاً، بل يتعرّف على أوجه الشبه. الذكاء الاصطناعي يفعل ذلك على نطاق واسع.",
+                        "Pas de cours magistral : dans 10 minutes, tu auras déjà parlé à une IA. Voici les 3 résultats concrets que tu produiras pendant cette séance.",
+                        "No lecture: in 10 minutes, you will already have talked to an AI. Here are the 3 concrete results you will produce during this session.",
+                        "لا محاضرة: بعد 10 دقائق ستكون قد تحدثت إلى ذكاء اصطناعي. هذه النتائج الملموسة الثلاث التي ستنتجها خلال هذه الحصة.",
                     ),
                 },
                 {
                     "t": "ul",
                     **L(
                         [
-                            "<strong>Données d'entraînement :</strong> les exemples qu'on montre à l'IA (textes, images, sons).",
-                            "<strong>Modèle :</strong> le résultat de l'apprentissage — un « cerveau » numérique qui généralise à partir des exemples.",
-                            "<strong>Prédiction :</strong> quand tu lui poses une question, il ne « cherche » pas la réponse : il la reconstruit à partir de ce qu'il a appris.",
+                            "<strong>1.</strong> Poser 2 questions à un chatbot (prompts prêts ci-dessous) et obtenir 2 réponses utilisables.",
+                            "<strong>2.</strong> Juger chaque réponse : noter 1 chose claire + 1 chose confuse ou douteuse.",
+                            "<strong>3.</strong> Expliquer l'IA en 1 phrase à un enfant de 12 ans — et prouver que tu as compris.",
                         ],
                         [
-                            "<strong>Training data:</strong> the examples shown to AI (texts, images, sounds).",
-                            "<strong>Model:</strong> the result of learning — a digital \"brain\" that generalises from examples.",
-                            "<strong>Prediction:</strong> when you ask a question, it does not \"look up\" the answer: it rebuilds it from what it learned.",
+                            "<strong>1.</strong> Ask a chatbot 2 questions (ready prompts below) and get 2 usable answers.",
+                            "<strong>2.</strong> Judge each answer: note 1 clear + 1 confusing or doubtful thing.",
+                            "<strong>3.</strong> Explain AI in 1 sentence to a 12-year-old — proving you understood.",
                         ],
                         [
-                            "<strong>بيانات التدريب:</strong> الأمثلة المعروضة على الذكاء الاصطناعي (نصوص، صور، أصوات).",
-                            "<strong>النموذج:</strong> نتيجة التعلم — « دماغ » رقمي يعمّم انطلاقاً من الأمثلة.",
-                            "<strong>التنبؤ:</strong> عندما تسأله، لا « يبحث » عن الجواب بل يعيد بناءه مما تعلّمه.",
+                            "<strong>1.</strong> طرح سؤالين على روبوت دردشة (صياغات جاهزة أدناه) والحصول على جوابين صالحين.",
+                            "<strong>2.</strong> الحكم على كل جواب: تسجيل شيء واضح + شيء مربك أو مشكوك.",
+                            "<strong>3.</strong> شرح الذكاء في جملة واحدة لطفل في الثانية عشرة — إثباتاً لفهمك.",
                         ],
-                    ),
-                },
-                {
-                    "t": "pre",
-                    **L(
-                        """Schéma simple — comment l'IA apprend :
-
-    EXEMPLES (milliers)          APPRENTISSAGE              MODÈLE
-    "ceci est un chat"     ──►  régularités trouvées  ──►  "reconnaît" un chat
-    "ceci est un chien"         poids chiffrés ajustés      puis répond / prédit""",
-                        """Simple diagram — how AI learns:
-
-    EXAMPLES (thousands)         LEARNING                   MODEL
-    "this is a cat"        ──►  patterns found        ──►  "recognises" a cat
-    "this is a dog"             tuned numeric weights      then answers / predicts""",
                     ),
                 },
             ],
         },
         {
-            "id": "b2",
+            "id": "s2",
             "titre": L(
-                "Idée clé 2 — Un chatbot prédit le mot suivant",
-                "Key idea 2 — A chatbot predicts the next word",
-                "الفكرة الثانية — روبوت الدردشة يتنبأ بالكلمة التالية",
+                "🚀 Action immédiate — ta première fois (5 minutes)",
+                "🚀 Instant action — your first time (5 minutes)",
+                "🚀 إجراء فوري — مرتك الأولى (5 دقائق)",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "ChatGPT, Gemini ou Copilot sont des « modèles de langage » (LLM). Leur secret : ils ont été entraînés sur des milliards de phrases, et ils ont appris une seule chose — quel mot vient le plus probablement après celui-ci.",
-                        "ChatGPT, Gemini or Copilot are \"language models\" (LLMs). Their secret: they were trained on billions of sentences, and they learned one thing — which word most probably comes after this one.",
-                        "ChatGPT أو Gemini أو Copilot هي « نماذج لغة » (LLM). سرّها: درّبت على مليارات الجمل وتعلّمت شيئاً واحداً — ما الكلمة الأكثر احتمالاً بعد هذه.",
+                        "Sors ton téléphone. Dans 5 minutes, tu auras posé ta première question à une IA. Suis les étapes, ne saute rien.",
+                        "Take out your phone. In 5 minutes, you will have asked an AI your first question. Follow the steps, skip nothing.",
+                        "أخرج هاتفك. بعد 5 دقائق ستكون قد طرحت أول سؤال على ذكاء اصطناعي. اتبع الخطوات ولا تتجاوز شيئاً.",
                     ),
                 },
                 {
-                    "t": "ul",
+                    "t": "ol",
                     **L(
                         [
-                            "« Hier, je suis allé … » → le modèle propose « au marché » parce que c'est très fréquent dans ses données.",
-                            "Il génère mot après mot, jusqu'à former une phrase entière. Résultat : un texte qui paraît très naturel.",
-                            "Il est entraîné à être <strong>convaincant</strong>, pas à être <strong>vrai</strong>. D'où les erreurs et les hallucinations.",
+                            "<strong>Ouvre</strong> chatgpt.com (ou gemini.google.com) → bouton « S'inscrire » → compte gratuit (1 minute, e-mail suffit).",
+                            "<strong>Clique</strong> « Nouveau chat » : tu vois une grande barre vide en bas. C'est là qu'on tape.",
+                            "<strong>Copie-colle EXACTEMENT</strong> le prompt 1 ci-dessous, puis appuie sur Envoyer (▶ ou Entrée).",
+                            "<strong>Lis</strong> la réponse : note sur papier 1 phrase CLAIRE (tu as compris) + 1 phrase CONFUSE (tu n'as pas compris).",
+                            "<strong>Montre</strong> ton papier au voisin : comparez vos phrases confuses.",
                         ],
                         [
-                            "\"Yesterday I went to …\" → the model suggests \"the market\" because it is very frequent in its data.",
-                            "It generates word after word, until a whole sentence forms. Result: text that looks very natural.",
-                            "It is trained to be <strong>convincing</strong>, not <strong>true</strong>. Hence errors and hallucinations.",
+                            "<strong>Open</strong> chatgpt.com (or gemini.google.com) → \"Sign up\" button → free account (1 minute, e-mail is enough).",
+                            "<strong>Click</strong> \"New chat\": you see a big empty bar at the bottom. That is where you type.",
+                            "<strong>Copy-paste EXACTLY</strong> prompt 1 below, then press Send (▶ or Enter).",
+                            "<strong>Read</strong> the answer: write down 1 CLEAR sentence (you got it) + 1 CONFUSING one (you did not).",
+                            "<strong>Show</strong> your paper to your neighbour: compare your confusing sentences.",
                         ],
                         [
-                            "« بالأمس ذهبت … » → يقترح النموذج « إلى السوق » لأنه متكرر جداً في بياناته.",
-                            "يولّد الكلمة بعد الكلمة حتى تتكوّن جملة كاملة. النتيجة: نص يبدو طبيعياً جداً.",
-                            "دُرِّب على <strong>الإقناع</strong> لا على <strong>الصدق</strong>. من هنا تأتي الأخطاء والهلوسة.",
+                            "<strong>افتح</strong> chatgpt.com (أو gemini.google.com) ← زر « التسجيل » ← حساب مجاني (دقيقة، يكفي بريد).",
+                            "<strong>انقر</strong> « دردشة جديدة »: ترى شريطاً فارغاً كبيراً أسفل. هناك تكتب.",
+                            "<strong>انسخ والصق حرفياً</strong> الصياغة 1 أدناه ثم اضغط إرسال (▶ أو Enter).",
+                            "<strong>اقرأ</strong> الجواب: سجّل جملة واضحة (فهمتَها) + جملة مربكة (لم تفهمها).",
+                            "<strong>اعرض</strong> ورقتك على جارك: قارنا جمليكما المربكتين.",
                         ],
-                    ),
-                },
-                {
-                    "t": "note",
-                    "kind": "warn",
-                    **L(
-                        "<strong>Hallucination =</strong> quand l'IA affirme avec assurance un fait inventé (une référence, un chiffre, une date). Ce n'est pas un bug rare : c'est un comportement fréquent. Toujours vérifier.",
-                        "<strong>Hallucination =</strong> when AI confidently states an invented fact (a reference, a figure, a date). It is not a rare bug: it is common behaviour. Always check.",
-                        "<strong>الهلوسة =</strong> أن يؤكد الذكاء الاصطناعي حقيقة مختلقة بثقة (مرجعاً، رقماً، تاريخاً). ليست خللاً نادراً بل سلوكاً شائعاً. تحقّق دائماً.",
                     ),
                 },
                 {
                     "t": "pre",
-                    **L(
-                        """Jeu de devinettes — prédire la suite :
-
-    « L'IA, c'est un programme qui ______ »
-    Probabilités : apprend(?) > calcule(?) > ...
-    → le modèle choisit le mot le plus probable, puis recommence.""",
-                        """Guessing game — predict the rest:
-
-    \"AI is a program that ______\"
-    Probabilities: learns(?) > computes(?) > ...
-    → the model picks the most probable word, then starts again.""",
-                    ),
-                },
-            ],
-        },
-        {
-            "id": "b3",
-            "titre": L(
-                "Idée clé 3 — Trois familles d'IA",
-                "Key idea 3 — Three families of AI",
-                "الفكرة الثالثة — ثلاث عائلات للذكاء الاصطناعي",
-            ),
-            "blocks": [
-                {
-                    "t": "p",
-                    **L(
-                        "Il faut savoir classer ce dont on parle : tout ce que tu utilises aujourd'hui appartient à la première famille.",
-                        "You should know how to classify what we talk about: everything you use today belongs to the first family.",
-                        "يجب أن تعرف كيف تصنّف ما نتحدث عنه: كل ما تستعمله اليوم ينتمي إلى العائلة الأولى.",
-                    ),
-                },
-                {
-                    "t": "ul",
-                    **L(
-                        [
-                            "<strong>1. IA faible (étroite)</strong> : excellente dans UNE tâche (traduire, trier, générer du texte). → Tout ce qui existe aujourd'hui.",
-                            "<strong>2. IA générale</strong> : égalerait l'humain dans TOUTES les tâches. → N'existe pas encore.",
-                            "<strong>3. Super-IA</strong> : dépasserait l'humain. → Scénario hypothétique qui alimente les films et les débats.",
-                        ],
-                        [
-                            "<strong>1. Narrow AI</strong>: excellent at ONE task (translating, sorting, generating text). → Everything that exists today.",
-                            "<strong>2. General AI</strong>: would equal humans at ALL tasks. → Does not exist yet.",
-                            "<strong>3. Super-intelligence</strong>: would surpass humans. → Hypothetical scenario that fuels films and debates.",
-                        ],
-                        [
-                            "<strong>1. الذكاء الضيّق</strong>: بارع في مهمة واحدة (ترجمة، فرز، توليد نص). → كل ما هو موجود اليوم.",
-                            "<strong>2. الذكاء العام</strong>: يساوي الإنسان في كل المهام. → غير موجود بعد.",
-                            "<strong>3. الذكاء الفائق</strong>: يفوق الإنسان. → سيناريو افتراضي يغذّي الأفلام والنقاشات.",
-                        ],
-                    ),
+                    "fr": "Explique-moi ce qu'est l'intelligence artificielle comme si j'avais 12 ans, en 3 phrases.",
+                    "en": "Explain to me what artificial intelligence is as if I were 12 years old, in 3 sentences.",
                 },
                 {
                     "t": "note",
                     "kind": "goal",
                     **L(
-                        "<strong>Schéma pour la classe :</strong> écrire les trois familles au tableau comme trois escaliers. On monte les marches : le dernier étage (super-IA) n'existe QUE dans les films.",
-                        "<strong>Diagram for the class:</strong> draw the three families as three stairs. We climb the steps: the top floor (super-AI) exists ONLY in films.",
-                        "<strong>مخطط للقسم:</strong> ارسم العائلات الثلاث كثلاث درجات. نصعد الدرجات: الطابق الأخير (الذكاء الفائق) موجود في الأفلام فقط.",
+                        "<strong>✅ Résultat attendu :</strong> une réponse courte (3 phrases simples, sans jargon). Si tu reçois 20 lignes compliquées : c'est normal, la séance 2 t'apprendra à cadrer tes demandes.",
+                        "<strong>✅ Expected result:</strong> a short answer (3 simple sentences, no jargon). If you get 20 complicated lines: normal, session 2 will teach you to frame requests.",
+                        "<strong>✅ النتيجة المنتظرة:</strong> جواب قصير (3 جمل بسيطة دون مصطلحات). إذا تلقيت 20 سطراً معقداً: عادي، الحصة 2 ستعلّمك تأطير طلباتك.",
                     ),
                 },
             ],
         },
         {
-            "id": "demo",
+            "id": "s3",
             "titre": L(
-                "Démonstration — un résumé de cours, du mauvais au bon prompt",
-                "Demonstration — a course summary, from bad to good prompt",
-                "عرض تطبيقي — تلخيص درس، من صياغة ضعيفة إلى قوية",
+                "📋 Recette pas à pas : 2e question et comparaison",
+                "📋 Step-by-step recipe: 2nd question and comparison",
+                "📋 وصفة خطوة بخطوة: السؤال الثاني والمقارنة",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Étudiant : « Je dois préparer mon exposé de psychologie de l'enfant. Je colle mon cours et je demande à l'IA de l'aider. » Regardons la différence entre une question paresseuse et une question qui guide.",
-                        "Student: \"I must prepare my child-psychology presentation. I paste my lesson and ask AI to help.\" Look at the difference between a lazy question and a guiding one.",
-                        "طالب: « يجب أن أحضر عرضي في علم نفس الطفل. ألصق درسي وأطلب من الذكاء الاصطناعي مساعدتي ». لاحظوا الفرق بين سؤال كسول وسؤال موجّه.",
+                        "Reste dans le MÊME chat. Tu vas poser une 2e question, observer ce qui change, puis comparer avec la liste du cours.",
+                        "Stay in the SAME chat. You will ask a 2nd question, watch what changes, then compare with the lesson list.",
+                        "ابقَ في نفس الدردشة. ستطرح سؤالاً ثانياً وتلاحظ ما يتغيّر ثم تقارن مع قائمة الدرس.",
                     ),
                 },
                 {
-                    "t": "table",
-                    "header": L(
-                        ["", "Mauvais prompt", "Bon prompt"],
-                        ["", "Bad prompt", "Good prompt"],
-                        ["", "صياغة ضعيفة", "صياغة قوية"],
+                    "t": "ol",
+                    **L(
+                        [
+                            "<strong>Tape</strong> le prompt 2 ci-dessous et envoie. <strong>Observe :</strong> la réponse est-elle plus longue ? Donne-t-elle des exemples ? Quel ton (simple, savant) ?",
+                            "<strong>Compare</strong> avec la liste du cours : téléphone (déverrouillage), GPS, anti-spam, Netflix, traducteur. Coche ✓ ce que l'IA a trouvé, ✗ ce qu'elle a raté.",
+                            "<strong>Note</strong> dans ton cahier : 1 chose apprise + 1 question qui te reste.",
+                            "<strong>Retiens le mécanisme :</strong> quand tu appuies sur Envoyer, le chatbot ne CHERCHE pas la réponse — il PRÉDIT le mot suivant, mot après mot, d'après des milliards d'exemples. C'est pour ça qu'il faut vérifier.",
+                        ],
+                        [
+                            "<strong>Type</strong> prompt 2 below and send. <strong>Watch:</strong> is the answer longer? Does it give examples? What tone (simple, scholarly)?",
+                            "<strong>Compare</strong> with the lesson list: phone (unlock), GPS, spam filter, Netflix, translator. Tick ✓ what AI found, ✗ what it missed.",
+                            "<strong>Write</strong> in your notebook: 1 thing learned + 1 remaining question.",
+                            "<strong>Keep the mechanism in mind:</strong> when you press Send, the chatbot does NOT LOOK UP the answer — it PREDICTS the next word, word after word, from billions of examples. That is why you must check.",
+                        ],
+                        [
+                            "<strong>اكتب</strong> الصياغة 2 أدناه وأرسل. <strong>لاحظ:</strong> هل الجواب أطول؟ هل يعطي أمثلة؟ ما النبرة (بسيطة، علمية)؟",
+                            "<strong>قارن</strong> مع قائمة الدرس: الهاتف (الفتح) ونظام الملاحة وفلتر الرسائل وNetflix والمترجم. علّم ✓ ما وجده الذكاء و✗ ما فاته.",
+                            "<strong>سجّل</strong> في دفترك: شيئاً تعلمتَه + سؤالاً بقي لك.",
+                            "<strong>احفظ الآلية:</strong> عندما تضغط إرسال لا يبحث الروبوت عن الجواب — بل يتنبأ بالكلمة التالية كلمة كلمة من مليارات الأمثلة. لهذا يجب التحقق.",
+                        ],
                     ),
-                    "rows": L(
-                        [
-                            ["Requête", "Résume ce cours.", "Je suis étudiant en 2ème année PEP. Résume ce cours de psychologie en 5 idées clés, avec un exemple concret pour le primaire à chaque idée, et sans rien inventer : dis-moi ce qui manque."],
-                            ["Résultat", "Générique, trop long, aucun lien avec l'exposé.", "Ciblé, structuré, réutilisable pour l'exposé, limites signalées."],
-                        ],
-                        [
-                            ["Prompt", "Summarise this lesson.", "I am a 2nd-year PEP student. Summarise this psychology lesson in 5 key ideas, with a concrete primary-class example per idea, and without inventing anything: tell me what is missing."],
-                            ["Result", "Generic, too long, no link to the presentation.", "Targeted, structured, reusable for the presentation, limits flagged."],
-                        ],
-                        [
-                            ["الطلب", "لخّص هذا الدرس.", "أنا طالب السنة الثانية PEP. لخّص درس علم النفس هذا في خمس أفكار رئيسية، مع مثال ملموس للمرحلة الابتدائية في كل فكرة، ودون اختلاق: حدّد ما هو ناقص."],
-                            ["النتيجة", "عام، طويل، بلا صلة بالعرض.", "محدد، منظم، قابل لإعادة الاستعمال، مع تنبيه إلى الحدود."],
-                        ],
-                    ),
+                },
+                {
+                    "t": "pre",
+                    "fr": "Donne-moi 3 exemples d'intelligence artificielle que j'utilise sans le savoir dans ma vie quotidienne, avec 1 phrase d'explication pour chacun.",
+                    "en": "Give me 3 examples of artificial intelligence I use without knowing it in my daily life, with 1 explanatory sentence for each.",
                 },
                 {
                     "t": "note",
-                    "kind": "warn",
+                    "kind": "goal",
                     **L(
-                        "<strong>Le piège du jour :</strong> posons la même question « Donne-moi 2 études sur Piaget » à un chatbot puis à un outil sourcé. Le chatbot peut inventer des références avec assurance ; l'outil sourcé affiche des liens à ouvrir. C'est une raison d'apprendre à vérifier (séance 02).",
-                        "<strong>Today's trap:</strong> let's ask the same question \"Give me 2 studies on Piaget\" to a chatbot then to a sourced tool. The chatbot may invent references with confidence; the sourced tool shows links to open. That is a reason to learn to verify (session 02).",
-                        "<strong>مصيدة اليوم:</strong> لنطرح السؤال نفسه « أعطني دراستين عن بياجيه » على روبوت محادثة ثم على أداة بمصادر. قد يختلق الروبوت مراجع بثقة؛ والأداة الموجّهة تعرض روابط تفتحها. لهذا نتعلّم التحقق (الحصة 2).",
+                        "<strong>✅ Résultat attendu :</strong> 3 exemples (souvent : assistant vocal, recommandations, correcteur). Si un exemple te surprend (« mon téléphone me reconnaît ?! »), c'est gagné : tu viens de découvrir l'IA invisible.",
+                        "<strong>✅ Expected result:</strong> 3 examples (often: voice assistant, recommendations, spellchecker). If one surprises you (\"my phone recognises me?!\"), you win: you just discovered invisible AI.",
+                        "<strong>✅ النتيجة المنتظرة:</strong> 3 أمثلة (غالباً: مساعد صوتي وتوصيات ومصحح). إذا فاجأك مثال (« هاتفي يتعرّف عليّ؟! ») فقد ربحت: اكتشفتَ الذكاء الخفي.",
                     ),
                 },
             ],
         },
         {
-            "id": "profiter",
+            "id": "s4",
             "titre": L(
-                "Comment en profiter au maximum",
-                "How to get the most out of it",
-                "كيف تستفيد إلى أقصى حد",
+                "⚠️ Erreurs fréquentes des débutants",
+                "⚠️ Frequent beginner mistakes",
+                "⚠️ أخطاء المبتدئين الشائعة",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Dès la première séance, retenez l'essentiel : l'IA vaut ce que vaut la question posée, et la réponse vaut ce que vaut la vérification. Utilisée ainsi, elle devient un tuteur personnel disponible 24 h/24 — jamais un remplaçant de ta mémoire.",
-                        "From the very first session, remember the key idea: AI is only as good as the question you ask, and the answer is only as good as your verification. Used this way, it becomes a personal tutor available 24/7 — never a substitute for your memory.",
-                        "من الحصة الأولى تذكّر الجوهر: الذكاء الاصطناعي بقدر السؤال الذي تطرحه، والإجابة بقدر تحققك منها. بهذا الاستعمال يصبح معلماً شخصياً متاحاً على مدار الساعة — لا بديلاً عن ذاكرتك.",
+                        "Regarde ton écran : as-tu fait l'une de ces 3 erreurs ? Chacune a sa correction immédiate — teste-la tout de suite.",
+                        "Look at your screen: did you make one of these 3 mistakes? Each has its instant fix — try it right now.",
+                        "انظر إلى شاشتك: هل وقعت في أحد هذه الأخطاء الثلاثة؟ لكل منها تصحيح فوري — جرّبه الآن.",
                     ),
                 },
                 {
                     "t": "ul",
                     **L(
                         [
-                            "<strong>✅ Commencez petit :</strong> une tâche précise (résumer, expliquer, reformuler), jamais « fais tout mon travail ».",
-                            "<strong>✅ Donnez du contexte :</strong> matière, niveau, objectif, format attendu et longueur.",
-                            "<strong>✅ Vérifiez systématiquement :</strong> chaque date, chiffre et référence doit être confirmé dans ton cours.",
-                            "<strong>✅ Demandez la méthode :</strong> « explique comment tu arrives à cette conclusion » pour apprendre, pas seulement subir.",
+                            "<strong>❌ « Explique-moi tout sur l'IA »</strong> → réponse de 20 lignes inutilisable. <strong>✅ Dis plutôt :</strong> sujet + format + pour qui (« explique X en 5 phrases pour un étudiant de 2e année »).",
+                            "<strong>❌ Croire parce que ça a l'air sûr</strong> → la confiance n'est pas la vérité : l'IA invente parfois (hallucination). <strong>✅ Vérifie</strong> 1 fait avec ton cours avant de l'utiliser.",
+                            "<strong>❌ Demander AVANT de réfléchir</strong> → ton cerveau s'éteint. <strong>✅ Pense 1 minute</strong>, devine la réponse, PUIS compare avec l'IA.",
                         ],
                         [
-                            "<strong>✅ Start small:</strong> one precise task (summarise, explain, rephrase), never \"do all my work\".",
-                            "<strong>✅ Give context:</strong> subject, level, goal, expected format and length.",
-                            "<strong>✅ Check systematically:</strong> every date, figure and reference must be confirmed in your lesson.",
-                            "<strong>✅ Ask for the method:</strong> \"explain how you reach this conclusion\" to learn, not just to receive.",
+                            "<strong>❌ \"Explain everything about AI to me\"</strong> → unusable 20-line answer. <strong>✅ Say instead:</strong> topic + format + for whom (\"explain X in 5 sentences for a 2nd-year student\").",
+                            "<strong>❌ Believing because it sounds sure</strong> → confidence is not truth: AI sometimes invents (hallucination). <strong>✅ Check</strong> 1 fact against your lesson before using it.",
+                            "<strong>❌ Asking BEFORE thinking</strong> → your brain switches off. <strong>✅ Think 1 minute</strong>, guess the answer, THEN compare with AI.",
                         ],
                         [
-                            "<strong>✅ ابدأ صغيراً:</strong> مهمة واحدة دقيقة (تلخيص، شرح، إعادة صياغة)، وليس « أنجز كل عملي ».",
-                            "<strong>✅ قدّم السياق:</strong> المادة، المستوى، الهدف، الصيغة المطلوبة، والطول.",
-                            "<strong>✅ تحقّق دائماً:</strong> كل تاريخ ورقم ومرجع يجب أن يتأكد في درسك.",
-                            "<strong>✅ اطلب المنهجية:</strong> « اشرح كيف تصل إلى هذه النتيجة » لتتعلم لا لتتلقى فقط.",
-                        ],
-                    ),
-                },
-                {
-                    "t": "note",
-                    "kind": "warn",
-                    **L(
-                        "<strong>❌ Erreurs à éviter :</strong> recopier une réponse sans la relire ; faire confiance à un chatbot parce qu'il paraît sûr de lui (la confiance n'est pas la vérité) ; devenir dépendant (demander l'IA avant de réfléchir une seule minute) ; et le plagiat — déposer un texte généré comme s'il était de vous, sans le citer ni l'arranger.",
-                        "<strong>❌ Mistakes to avoid:</strong> copying an answer without reading it; trusting a chatbot because it sounds sure (confidence is not truth); becoming dependent (asking AI before thinking for one minute); and plagiarism — submitting a generated text as your own, without citing or editing it.",
-                        "<strong>❌ أخطاء يجب تجنّبها:</strong> نسخ إجابة دون قراءتها؛ الثقة بروبوت لأنّه يبدو واثقاً (الثقة ليست صدقاً)؛ الاعتماد المفرط (سؤال الذكاء الاصطناعي قبل التفكير لمدة دقيقة)؛ والغش — تسليم نص مولّد كأنه لك دون استشهاد أو مراجعة.",
-                    ),
-                },
-                {
-                    "t": "table",
-                    "header": L(
-                        ["", "Mauvais prompt", "Bon prompt"],
-                        ["", "Bad prompt", "Good prompt"],
-                        ["", "صياغة ضعيفة", "صياغة قوية"],
-                    ),
-                    "rows": L(
-                        [
-                            ["Requête", "Résume ce cours.", "Je suis étudiant 2A PEP. Résume ce cours de psychologie en 5 idées clés avec un exemple pour le primaire à chaque idée, et dis-moi ce qui manque."],
-                            ["Résultat", "Générique, trop long, vérifications impossibles.", "Ciblé, réutilisable pour l'exposé, limites signalées."],
-                        ],
-                        [
-                            ["Prompt", "Summarise this lesson.", "I am a 2nd-year PEP student. Summarise this psychology lesson in 5 key ideas with a primary-class example per idea, and tell me what is missing."],
-                            ["Result", "Generic, too long, impossible to check.", "Targeted, reusable for the presentation, limits flagged."],
-                        ],
-                        [
-                            ["الطلب", "لخّص هذا الدرس.", "أنا طالب السنة الثانية PEP. لخّص درس علم النفس هذا في خمس أفكار رئيسية مع مثال للمرحلة الابتدائية لكل فكرة، وحدّد ما ينقص."],
-                            ["النتيجة", "عام، طويل، تعذر التحقق منه.", "محدد، قابل لإعادة الاستعمال، مع تنبيه إلى الحدود."],
+                            "<strong>❌ « اشرح لي كل شيء عن الذكاء »</strong> ← جواب من 20 سطراً لا يُستعمَل. <strong>✅ قل بدلاً:</strong> الموضوع + الصيغة + لمن (« اشرح X في 5 جمل لطالب سنة ثانية »).",
+                            "<strong>❌ التصديق لأنه يبدو واثقاً</strong> ← الثقة ليست صدقاً: يختلق الذكاء أحياناً (هلوسة). <strong>✅ تحقق</strong> من معلومة مع درسك قبل استعمالها.",
+                            "<strong>❌ السؤال قبل التفكير</strong> ← دماغك ينطفئ. <strong>✅ فكّر دقيقة</strong> وخمّن الجواب ثم قارن مع الذكاء.",
                         ],
                     ),
                 },
@@ -453,69 +333,105 @@ SEANCE = {
                     "t": "note",
                     "kind": "tip",
                     **L(
-                        "<strong>Astuce gain de temps :</strong> créez dès maintenant un fichier « mémo prompts » (dans Notion ou un simple bloc-notes) et enregistrez-y chaque invitation réussie. Posez la question d'abord, réfléchissez-y une minute, puis lisez la réponse comme un livre que vous devez critiquer.",
-                        "<strong>Time-saving tip:</strong> create a \"prompt memo\" file right now (in Notion or a simple notepad) and save every successful prompt. Ask the question first, think about it for one minute, then read the answer like a book you must critique.",
-                        "<strong>نصيحة لكسب الوقت:</strong> أنشئ الآن ملف « مذكرة الصيغ » (في Notion أو دفتر بسيط) وسجّل فيه كل صياغة ناجحة. اطرح السؤال أولاً، فكّر فيه لدقيقة، ثم اقرأ الجواب ككتاب يجب أن تنقّده.",
+                        "<strong>Teste maintenant :</strong> reprends ta 1re réponse et demande « résume ta réponse en 1 phrase simple ». Observe : l'IA obéit au format que TU imposes.",
+                        "<strong>Try now:</strong> take your 1st answer and ask \"summarise your answer in 1 simple sentence\". Watch: AI obeys the format YOU set.",
+                        "<strong>جرّب الآن:</strong> خذ جوابك الأول واطلب « لخّص جوابك في جملة بسيطة واحدة ». لاحظ: الذكاء يطيع الصيغة التي تفرضها أنت.",
+                    ),
+                },
+            ],
+        },
+        {
+            "id": "s5",
+            "titre": L(
+                "🧪 Votre mission — le livrable",
+                "🧪 Your mission — the deliverable",
+                "🧪 مهمتك — المطلوب",
+            ),
+            "blocks": [
+                {
+                    "t": "p",
+                    **L(
+                        "En binôme, produisez UNE page (papier ou document) : c'est ce que vous rendrez au début de la séance 2.",
+                        "In pairs, produce ONE page (paper or document): you will hand it in at the start of session 2.",
+                        "ثنائياً أنتجا صفحة واحدة (ورق أو مستند): ستسلّمانها بداية الحصة 2.",
+                    ),
+                },
+                {
+                    "t": "ul",
+                    **L(
+                        [
+                            "<strong>1.</strong> Les 2 prompts utilisés, copiés mot pour mot.",
+                            "<strong>2.</strong> Les 2 réponses, résumées en 2 phrases chacune.",
+                            "<strong>3.</strong> Votre avis en 3 lignes : qu'est-ce qui est clair ? utile ? douteux ?",
+                            "<strong>4.</strong> Votre phrase de 12 ans : « L'IA, c'est… ».",
+                        ],
+                        [
+                            "<strong>1.</strong> The 2 used prompts, copied word for word.",
+                            "<strong>2.</strong> The 2 answers, summarised in 2 sentences each.",
+                            "<strong>3.</strong> Your review in 3 lines: what is clear? useful? doubtful?",
+                            "<strong>4.</strong> Your 12-year-old sentence: \"AI is…\".",
+                        ],
+                        [
+                            "<strong>1.</strong> الصياغتان المستعملتان منسوختين حرفياً.",
+                            "<strong>2.</strong> الجوابان ملخّصين في جملتين لكل منهما.",
+                            "<strong>3.</strong> رأيكما في 3 أسطر: ما الواضح؟ المفيد؟ المشكوك؟",
+                            "<strong>4.</strong> جملتكما لذي 12 سنة: « الذكاء هو… ».",
+                        ],
+                    ),
+                },
+                {
+                    "t": "note",
+                    "kind": "goal",
+                    **L(
+                        "<strong>🎯 Pour aller plus loin (séance 2) :</strong> gardez vos 2 prompts : vous apprendrez à les transformer en requêtes précises (contexte, objectif, format, contrainte).",
+                        "<strong>🎯 Going further (session 2):</strong> keep your 2 prompts: you will learn to turn them into precise queries (context, goal, format, constraint).",
+                        "<strong>🎯 للمضي أبعد (الحصة 2):</strong> احتفظا بصياغتيكما: ستتعلمان تحويلهما إلى طلبات دقيقة (سياق وهدف وصيغة وقيد).",
+                    ),
+                },
+            ],
+        },
+        {
+            "id": "s6",
+            "titre": L(
+                "✅ Checklist de validation",
+                "✅ Validation checklist",
+                "✅ قائمة التحقق",
+            ),
+            "blocks": [
+                {
+                    "t": "p",
+                    **L(
+                        "Avant de partir, coche avec ton binôme. Tout doit être coché :",
+                        "Before leaving, tick with your partner. Everything must be ticked:",
+                        "قبل المغادرة علّم مع زميلك. يجب تأشير الكل:",
+                    ),
+                },
+                {
+                    "t": "ul",
+                    **L(
+                        [
+                            "☐ J'ai ouvert ChatGPT ou Gemini (outil ouvert, compte créé).",
+                            "☐ J'ai posé au moins 2 questions (prompts 1 et 2 envoyés).",
+                            "☐ J'ai obtenu un résultat utilisable (1 chose claire notée).",
+                            "☐ J'ai identifié 1 erreur ou limite (trop long, exemple raté, doute sur un fait).",
+                        ],
+                        [
+                            "☐ I opened ChatGPT or Gemini (tool open, account created).",
+                            "☐ I asked at least 2 questions (prompts 1 and 2 sent).",
+                            "☐ I got a usable result (1 clear thing noted).",
+                            "☐ I spotted 1 mistake or limit (too long, missed example, doubt on a fact).",
+                        ],
+                        [
+                            "☐ فتحت ChatGPT أو Gemini (الأداة مفتوحة والحساب منشأ).",
+                            "☐ طرحت سؤالين على الأقل (الصياغتان 1 و2 مرسلتان).",
+                            "☐ حصلت على نتيجة صالحة (شيء واضح مسجَّل).",
+                            "☐ رصدت خطأ أو حداً (طول مفرط أو مثال فائت أو شك في معلومة).",
+                        ],
                     ),
                 },
             ],
         },
     ],
-    "verifications": [
-        {
-            "q": L(
-                "Le chatbot « cherche » la réponse dans une grande bibliothèque ?",
-                "Does a chatbot \"look up\" the answer in a big library?",
-                "هل « يبحث » روبوت الدردشة عن الجواب في مكتبة كبيرة؟",
-            ),
-            "r": L(
-                "Non. Il reconstitue la réponse mot après mot, selon les probabilités apprises sur ses données. Il n'a pas accès à « la vérité ».",
-                "No. It rebuilds the answer word by word, according to probabilities learned from its data. It has no access to \"the truth\".",
-                "لا. يعيد بناء الجواب كلمة كلمة حسب الاحتمالات المتعلَّمة من بياناته. ليس لديه وصول إلى « الحقيقة ».",
-            ),
-        },
-        {
-            "q": L(
-                "Pourquoi peut-il inventer une référence quand il a l'air si sûr de lui ?",
-                "Why can it invent a reference when it looks so confident?",
-                "لماذا يختلق مرجعاً رغم أنه يبدو واثقاً جداً؟",
-            ),
-            "r": L(
-                "Parce qu'il est entraîné à produire des phrases plausibles et convaincantes. La confiance n'est PAS un indicateur de vérité.",
-                "Because it is trained to produce plausible, convincing sentences. Confidence is NOT an indicator of truth.",
-                "لأنه مدرَّب على إنتاج جُمل محتملة ومقنعة. الثقة ليست مؤشراً على الصدق.",
-            ),
-        },
-        {
-            "q": L(
-                "ChatGPT appartient à quelle famille d'IA : faible, générale ou super-IA ?",
-                "Which AI family does ChatGPT belong to: narrow, general or super-AI?",
-                "إلى أي عائلة ينتمي ChatGPT: ضيّقة، أم عامة، أم فائقة؟",
-            ),
-            "r": L(
-                "IA faible : excellente dans la génération de texte, mais incapable de faire « n'importe quelle tâche » comme un humain.",
-                "Narrow AI: excellent at text generation, but unable to do \"any task\" like a human.",
-                "ذكاء ضيّق: بارع في توليد النصوص، لكنه غير قادر على أداء « أي مهمة » كالإنسان.",
-            ),
-        },
-    ],
-    "exercise_guide": {
-        "enonce": L(
-            "Classe les 6 affirmations suivantes en Vrai (V) ou Faux (F), puis justifie en une ligne : 1) L'IA pense comme un humain. 2) L'IA a été entraînée sur des textes. 3) L'IA donne toujours des bonnes réponses. 4) L'IA peut inventer une référence. 5) L'IA remplace le professeur. 6) L'IA peut t'aider à réviser si tu vérifies.",
-            "Classify the 6 statements as True (T) or False (F), then justify in one line: 1) AI thinks like a human. 2) AI was trained on texts. 3) AI always gives good answers. 4) AI can invent a reference. 5) AI replaces the teacher. 6) AI can help you revise if you check.",
-            "صنّف الجمل الست صحيح (ص) أو خطأ (خ)، ثم برّر في سطر واحد: 1) يفكر الذكاء الاصطناعي كالإنسان. 2) دُرِّب الذكاء الاصطناعي على نصوص. 3) يعطي الذكاء الاصطناعي إجابات صحيحة دائماً. 4) يمكن للذكاء الاصطناعي اختلاق مرجع. 5) يعوّض الذكاء الاصطناعي الأستاذ. 6) يساعدك الذكاء الاصطناعي على المراجعة إذا تحققت.",
-        ),
-        "demarche": L(
-            "1) Lis chaque affirmation. 2) Demande-toi : « Qu'ai-je appris sur la façon dont l'IA produit une réponse ? ». 3) Note V ou F puis une justification. 4) Compare avec ton voisin avant la correction collective.",
-            "1) Read each statement. 2) Ask yourself: \"What did I learn about how AI produces an answer?\". 3) Write T or F plus a justification. 4) Compare with your neighbour before the collective correction.",
-            "1) اقرأ كل جملة. 2) اسأل نفسك: « ماذا تعلمت عن طريقة إنتاج الذكاء الاصطناعي للإجابة؟ ». 3) سجّل ص أو خ ثم تبريراً. 4) قارن مع زميلك قبل التصحيح الجماعي.",
-        ),
-        "solution": L(
-            "1) F — l'IA calcule des probabilités, elle n'a ni conscience ni pensées. 2) V — c'est son apprentissage. 3) F — elle peut se tromper et même inventer (halluciner). 4) V — c'est très fréquent, d'où la règle « vérifie ». 5) F — elle assiste l'étudiant, l'évaluation et le dialogue restent humains. 6) V — à condition de vérifier le contenu avec ton cours et tes sources.",
-            "1) F — AI computes probabilities; it has neither consciousness nor thoughts. 2) T — that is its training. 3) F — it can err and even invent (hallucinate). 4) T — very common, hence the \"verify\" rule. 5) F — it assists the student; assessment and dialogue remain human. 6) T — provided you check the content against your lesson and sources.",
-            "1) خ — يحسب الاحتمالات، لا وعي ولا أفكار. 2) ص — ذلك هو تدريبه. 3) خ — يخطئ وقد يختلق (يهلوس). 4) ص — شائع جداً، ومن هنا قاعدة « تحقّق ». 5) خ — يساعد الطالب؛ التقييم والحوار يبقيان بشريين. 6) ص — بشرط التحقق بالمقارنة مع درسك ومصادرك.",
-        ),
-    },
     "videos": [
         {
             "titre": L(
@@ -563,24 +479,24 @@ SEANCE = {
     "fiche_synthese": {
         "points": [
             L(
-                "L'IA est un programme qui apprend à partir d'exemples pour imiter des capacités humaines.",
-                "AI is a program that learns from examples to imitate human abilities.",
-                "الذكاء الاصطناعي برنامج يتعلم من الأمثلة ليحاكي قدرات بشرية.",
+                "J'ai ouvert un chatbot et posé 2 vraies questions (prompts 1 et 2).",
+                "I opened a chatbot and asked 2 real questions (prompts 1 and 2).",
+                "فتحت روبوت دردشة وطرحت سؤالين حقيقيين (الصياغتان 1 و2).",
             ),
             L(
-                "Un chatbot est une machine à prédire le mot suivant, entraînée à être convaincante — pas vraie.",
-                "A chatbot is a next-word prediction machine, trained to be convincing — not true.",
-                "روبوت الدردشة آلة تتنبأ بالكلمة التالية، مدرَّبة على الإقناع — لا على الصدق.",
+                "Je sais juger une réponse : 1 chose claire + 1 chose confuse ou douteuse.",
+                "I can judge an answer: 1 clear + 1 confusing or doubtful thing.",
+                "أعرف الحكم على جواب: شيء واضح + شيء مربك أو مشكوك.",
             ),
             L(
-                "Hallucination = invention confiante. C'est fréquent, pas un bug.",
-                "Hallucination = confident invention. It is common, not a bug.",
-                "الهلوسة = اختلاق بثقة. شائعة، وليست خللاً.",
+                "Je connais les 3 erreurs qui tuent un bon usage (vague, confiance aveugle, zéro réflexion).",
+                "I know the 3 mistakes killing good use (vague, blind trust, zero thinking).",
+                "أعرف الأخطاء الثلاثة القاتلة للاستعمال الجيد (الغموض والثقة العمياء وانعدام التفكير).",
             ),
             L(
-                "3 familles : IA faible (tout ce qu'on utilise), générale (future), super-IA (films).",
-                "3 families: narrow AI (everything we use), general (future), super-AI (films).",
-                "3 عائلات: ضيّق (كل ما نستعمله)، عام (مستقبلي)، فائق (أفلام).",
+                "J'ai produit ma fiche d'usage : prompts + réponses + avis en 3 lignes.",
+                "I produced my usage sheet: prompts + answers + 3-line review.",
+                "أنتجت بطاقة استعمالي: الصياغات + الأجوبة + الرأي في 3 أسطر.",
             ),
             L(
                 "3 règles d'or : vérifier, citer, garder ton jugement.",

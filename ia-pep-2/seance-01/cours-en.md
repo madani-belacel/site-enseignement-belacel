@@ -4,117 +4,96 @@
 **Auteur : Dr. Madani BELACEL — Université de Mostaganem**  
 **Durée : 1 h 30**  
 
-Understand what AI is in simple words — with everyday comparisons — to use it today in your studies, without naivety, without fear and with your critical thinking.
+Open a chatbot, ask your first 2 questions with ready prompts, judge the answers and leave with your first usage sheet — your very first AI interaction, guided step by step.
 
 ## Objectifs pédagogiques
-- Define in your own words: AI, language model and prompt.
-- Explain simply how a chatbot answers (it predicts the most probable word from examples).
-- List 5 AI uses helpful for your studies (search, summarise, write, revise, organise).
-- Identify 3 limits: errors, hallucinations, biases.
+- Open ChatGPT or Gemini and ask your first question with a ready-to-copy prompt.
+- Get a simple explanation of AI + 3 examples you already use unknowingly.
+- Judge an AI answer: note what is clear, confusing or doubtful.
+- Explain AI in 1 sentence to a 12-year-old.
 - Apply the 3 golden rules: verify, cite, keep your judgement.
 
 ## Déroulé de la séance (1 h 30)
-- **00–05 — Hook and survey** : The "does your phone use AI?" question + round table on uses already seen.
-- **05–20 — Step-by-step: 3 key ideas** : 1) AI learns from examples (apprentice chef). 2) A chatbot predicts the next word. 3) Narrow / general / super AI.
-- **20–40 — Demonstration: a lesson summary** : Bad prompt vs good prompt, then the hallucination trap: the same question asked to a chatbot and to a sourced engine.
-- **40–55 — Guided exercise: true or false?** : 6 statements about AI to classify + collective correction.
-- **55–60 — Visual summary and quick quiz** : Summary sheet (+3 points) and a 3-question quick quiz.
-- **60–90 — Workshop: dialogues and role-play** : Act out dialogues A and B in pairs, then a 3-minute mini role-play.
+- **00–05 — 🚀 Instant action: your first question** : Open ChatGPT or Gemini, paste prompt 1, read the answer and note 1 clear + 1 confusing thing.
+- **05–20 — 📋 Step-by-step recipe: 2nd question and comparison** : Prompt 2 (3 everyday examples), comparison with the lesson list, and what happens when you type (next-word prediction).
+- **20–40 — 🛠️ Demo: frequent mistakes and 2nd opinion** : 3 beginner mistakes live + the hallucination trap: same question to chatbot and sourced engine.
+- **40–55 — 🧪 Mission: your first usage sheet** : Produce the deliverable: used prompts + answers + your 3-line review.
+- **55–60 — ✅ Checklist and quick quiz** : Tick the 4 boxes (tool opened, 3 questions, usable result, spotted limit) + 5-question quiz.
+- **60–90 — 🤝 Workshop: mission and dialogues** : Finalise the usage sheet, act out dialogues A and B in pairs, then a 3-minute mini role-play.
 
 ## A. Accroche et analogie (5 min)
-- **Question :** Did you know your phone uses AI dozens of times a day, without you noticing? Face unlock, translation, keyboard correction, video recommendations…
-- **Analogie :** 🍳 AI is like an apprentice chef: he tastes thousands of dishes (the examples), notices patterns (sugar is sweet, lemon is sour) and ends up able to create his own recipe. He does not know WHY it works, he just learned THAT it works.
-- **En une phrase :** 💡 AI is a computer program that learns from examples to imitate certain human abilities: understanding, speaking, translating, seeing, deciding.
 
 ## B + C. Explication pas à pas et démonstration
-### Key idea 1 — AI learns from examples
-AI is not hand-programmed like a calculator. We show it thousands of examples, and it extracts patterns. It is a huge generalisation machine.
-> 💡 **<strong>Analogy to remember:</strong> how does a child recognise a dog? He has seen many. He does not learn a definition: he recognises similarities. AI does the same, at scale.**
+### 🎯 What you will be able to do by the end
+No lecture: in 10 minutes, you will already have talked to an AI. Here are the 3 concrete results you will produce during this session.
 
-- <strong>Training data:</strong> the examples shown to AI (texts, images, sounds).
-- <strong>Model:</strong> the result of learning — a digital "brain" that generalises from examples.
-- <strong>Prediction:</strong> when you ask a question, it does not "look up" the answer: it rebuilds it from what it learned.
+- <strong>1.</strong> Ask a chatbot 2 questions (ready prompts below) and get 2 usable answers.
+- <strong>2.</strong> Judge each answer: note 1 clear + 1 confusing or doubtful thing.
+- <strong>3.</strong> Explain AI in 1 sentence to a 12-year-old — proving you understood.
 
-```
-Simple diagram — how AI learns:
+### 🚀 Instant action — your first time (5 minutes)
+Take out your phone. In 5 minutes, you will have asked an AI your first question. Follow the steps, skip nothing.
 
-    EXAMPLES (thousands)         LEARNING                   MODEL
-    "this is a cat"        ──►  patterns found        ──►  "recognises" a cat
-    "this is a dog"             tuned numeric weights      then answers / predicts
-```
-
-### Key idea 2 — A chatbot predicts the next word
-ChatGPT, Gemini or Copilot are "language models" (LLMs). Their secret: they were trained on billions of sentences, and they learned one thing — which word most probably comes after this one.
-
-- "Yesterday I went to …" → the model suggests "the market" because it is very frequent in its data.
-- It generates word after word, until a whole sentence forms. Result: text that looks very natural.
-- It is trained to be <strong>convincing</strong>, not <strong>true</strong>. Hence errors and hallucinations.
-> 💡 **<strong>Hallucination =</strong> when AI confidently states an invented fact (a reference, a figure, a date). It is not a rare bug: it is common behaviour. Always check.**
+- <strong>Open</strong> chatgpt.com (or gemini.google.com) → "Sign up" button → free account (1 minute, e-mail is enough).
+- <strong>Click</strong> "New chat": you see a big empty bar at the bottom. That is where you type.
+- <strong>Copy-paste EXACTLY</strong> prompt 1 below, then press Send (▶ or Enter).
+- <strong>Read</strong> the answer: write down 1 CLEAR sentence (you got it) + 1 CONFUSING one (you did not).
+- <strong>Show</strong> your paper to your neighbour: compare your confusing sentences.
 
 ```
-Guessing game — predict the rest:
-
-    "AI is a program that ______"
-    Probabilities: learns(?) > computes(?) > ...
-    → the model picks the most probable word, then starts again.
+Explain to me what artificial intelligence is as if I were 12 years old, in 3 sentences.
 ```
+> 💡 **<strong>✅ Expected result:</strong> a short answer (3 simple sentences, no jargon). If you get 20 complicated lines: normal, session 2 will teach you to frame requests.**
 
-### Key idea 3 — Three families of AI
-You should know how to classify what we talk about: everything you use today belongs to the first family.
+### 📋 Step-by-step recipe: 2nd question and comparison
+Stay in the SAME chat. You will ask a 2nd question, watch what changes, then compare with the lesson list.
 
-- <strong>1. Narrow AI</strong>: excellent at ONE task (translating, sorting, generating text). → Everything that exists today.
-- <strong>2. General AI</strong>: would equal humans at ALL tasks. → Does not exist yet.
-- <strong>3. Super-intelligence</strong>: would surpass humans. → Hypothetical scenario that fuels films and debates.
-> 💡 **<strong>Diagram for the class:</strong> draw the three families as three stairs. We climb the steps: the top floor (super-AI) exists ONLY in films.**
+- <strong>Type</strong> prompt 2 below and send. <strong>Watch:</strong> is the answer longer? Does it give examples? What tone (simple, scholarly)?
+- <strong>Compare</strong> with the lesson list: phone (unlock), GPS, spam filter, Netflix, translator. Tick ✓ what AI found, ✗ what it missed.
+- <strong>Write</strong> in your notebook: 1 thing learned + 1 remaining question.
+- <strong>Keep the mechanism in mind:</strong> when you press Send, the chatbot does NOT LOOK UP the answer — it PREDICTS the next word, word after word, from billions of examples. That is why you must check.
 
-### Demonstration — a course summary, from bad to good prompt
-Student: "I must prepare my child-psychology presentation. I paste my lesson and ask AI to help." Look at the difference between a lazy question and a guiding one.
+```
+Give me 3 examples of artificial intelligence I use without knowing it in my daily life, with 1 explanatory sentence for each.
+```
+> 💡 **<strong>✅ Expected result:</strong> 3 examples (often: voice assistant, recommendations, spellchecker). If one surprises you ("my phone recognises me?!"), you win: you just discovered invisible AI.**
 
-|  | Bad prompt | Good prompt |
-|---|---|---|
-| Prompt | Summarise this lesson. | I am a 2nd-year PEP student. Summarise this psychology lesson in 5 key ideas, with a concrete primary-class example per idea, and without inventing anything: tell me what is missing. |
-| Result | Generic, too long, no link to the presentation. | Targeted, structured, reusable for the presentation, limits flagged. |
-> 💡 **<strong>Today's trap:</strong> let's ask the same question "Give me 2 studies on Piaget" to a chatbot then to a sourced tool. The chatbot may invent references with confidence; the sourced tool shows links to open. That is a reason to learn to verify (session 02).**
+### ⚠️ Frequent beginner mistakes
+Look at your screen: did you make one of these 3 mistakes? Each has its instant fix — try it right now.
 
-### How to get the most out of it
-From the very first session, remember the key idea: AI is only as good as the question you ask, and the answer is only as good as your verification. Used this way, it becomes a personal tutor available 24/7 — never a substitute for your memory.
+- <strong>❌ "Explain everything about AI to me"</strong> → unusable 20-line answer. <strong>✅ Say instead:</strong> topic + format + for whom ("explain X in 5 sentences for a 2nd-year student").
+- <strong>❌ Believing because it sounds sure</strong> → confidence is not truth: AI sometimes invents (hallucination). <strong>✅ Check</strong> 1 fact against your lesson before using it.
+- <strong>❌ Asking BEFORE thinking</strong> → your brain switches off. <strong>✅ Think 1 minute</strong>, guess the answer, THEN compare with AI.
+> 💡 **<strong>Try now:</strong> take your 1st answer and ask "summarise your answer in 1 simple sentence". Watch: AI obeys the format YOU set.**
 
-- <strong>✅ Start small:</strong> one precise task (summarise, explain, rephrase), never "do all my work".
-- <strong>✅ Give context:</strong> subject, level, goal, expected format and length.
-- <strong>✅ Check systematically:</strong> every date, figure and reference must be confirmed in your lesson.
-- <strong>✅ Ask for the method:</strong> "explain how you reach this conclusion" to learn, not just to receive.
-> 💡 **<strong>❌ Mistakes to avoid:</strong> copying an answer without reading it; trusting a chatbot because it sounds sure (confidence is not truth); becoming dependent (asking AI before thinking for one minute); and plagiarism — submitting a generated text as your own, without citing or editing it.**
+### 🧪 Your mission — the deliverable
+In pairs, produce ONE page (paper or document): you will hand it in at the start of session 2.
 
-|  | Bad prompt | Good prompt |
-|---|---|---|
-| Prompt | Summarise this lesson. | I am a 2nd-year PEP student. Summarise this psychology lesson in 5 key ideas with a primary-class example per idea, and tell me what is missing. |
-| Result | Generic, too long, impossible to check. | Targeted, reusable for the presentation, limits flagged. |
-> 💡 **<strong>Time-saving tip:</strong> create a "prompt memo" file right now (in Notion or a simple notepad) and save every successful prompt. Ask the question first, think about it for one minute, then read the answer like a book you must critique.**
+- <strong>1.</strong> The 2 used prompts, copied word for word.
+- <strong>2.</strong> The 2 answers, summarised in 2 sentences each.
+- <strong>3.</strong> Your review in 3 lines: what is clear? useful? doubtful?
+- <strong>4.</strong> Your 12-year-old sentence: "AI is…".
+> 💡 **<strong>🎯 Going further (session 2):</strong> keep your 2 prompts: you will learn to turn them into precise queries (context, goal, format, constraint).**
+
+### ✅ Validation checklist
+Before leaving, tick with your partner. Everything must be ticked:
+
+- ☐ I opened ChatGPT or Gemini (tool open, account created).
+- ☐ I asked at least 2 questions (prompts 1 and 2 sent).
+- ☐ I got a usable result (1 clear thing noted).
+- ☐ I spotted 1 mistake or limit (too long, missed example, doubt on a fact).
 
 ## 📺 Ressources vidéo
 - **What is AI? Simple explanation for beginners (AI بالعربي)** (ar): https://www.youtube.com/watch?v=wdbb-X5qH4w — Great to revise the definition of AI with everyday examples.
 - **What is AI? A simple explanation** (ar): https://www.youtube.com/watch?v=vCKHeYQp8nk — A second, very didactic look: AI in the phone and in the classroom.
 - **The Age of A.I. (Kurzgesagt)** (en): https://www.youtube.com/watch?v=UwsrzCVZAb8 — What AI can and cannot do — to stay clear-headed (FR subtitles available).
 
-## D. Exercice guidé (15 min)
-**Énoncé :** Classify the 6 statements as True (T) or False (F), then justify in one line: 1) AI thinks like a human. 2) AI was trained on texts. 3) AI always gives good answers. 4) AI can invent a reference. 5) AI replaces the teacher. 6) AI can help you revise if you check.
-**Méthode :** 1) Read each statement. 2) Ask yourself: "What did I learn about how AI produces an answer?". 3) Write T or F plus a justification. 4) Compare with your neighbour before the collective correction.
-**Solution :** 1) F — AI computes probabilities; it has neither consciousness nor thoughts. 2) T — that is its training. 3) F — it can err and even invent (hallucinate). 4) T — very common, hence the "verify" rule. 5) F — it assists the student; assessment and dialogue remain human. 6) T — provided you check the content against your lesson and sources.
-
-## 💭 As-tu bien compris ?
-- **Q1.** Does a chatbot "look up" the answer in a big library?
-  *Réponse :* No. It rebuilds the answer word by word, according to probabilities learned from its data. It has no access to "the truth".
-- **Q2.** Why can it invent a reference when it looks so confident?
-  *Réponse :* Because it is trained to produce plausible, convincing sentences. Confidence is NOT an indicator of truth.
-- **Q3.** Which AI family does ChatGPT belong to: narrow, general or super-AI?
-  *Réponse :* Narrow AI: excellent at text generation, but unable to do "any task" like a human.
-
 ## E. Résumé visuel et mémorable (5 min)
 ### Points clés
-- AI is a program that learns from examples to imitate human abilities.
-- A chatbot is a next-word prediction machine, trained to be convincing — not true.
-- Hallucination = confident invention. It is common, not a bug.
-- 3 families: narrow AI (everything we use), general (future), super-AI (films).
+- I opened a chatbot and asked 2 real questions (prompts 1 and 2).
+- I can judge an answer: 1 clear + 1 confusing or doubtful thing.
+- I know the 3 mistakes killing good use (vague, blind trust, zero thinking).
+- I produced my usage sheet: prompts + answers + 3-line review.
 - 3 golden rules: verify, cite, keep your judgement.
 ### Analogies utilisées
 - 🍳 The apprentice chef who tastes thousands of dishes before creating his recipe.
