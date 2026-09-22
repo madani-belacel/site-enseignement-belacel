@@ -18,36 +18,36 @@ SEANCE = {
         "نظرة عامة على أكثر من 12 أداة ذكاء اصطناعي للطالب",
     ),
     "descriptions": L(
-        "Vue d'ensemble des outils d'IA : à quoi sert chacun, comment les classer en 4 familles, démonstration rapide de 3 outils et méthode pour toujours choisir le bon.",
-        "Overview of AI tools: what each is for, how to sort them into 4 families, quick demo of 3 tools and a method to always pick the right one.",
-        "نظرة شاملة على أدوات الذكاء: وظيفة كل منها وكيفية تصنيفها في 4 عائلات وعرض سريع لثلاث أدوات ومنهجية لاختيار المناسب دائماً.",
+        "Ouvrir Perplexity sans compte, tester 3 outils de 3 familles sur la même question, prescrire le bon outil avec l'arbre de décision et repartir avec tes 4 favoris.",
+        "Open Perplexity with no account, test 3 tools from 3 families on the same question, prescribe the right tool with the decision tree and leave with your 4 favourites.",
+        "افتح Perplexity دون حساب وجرّب 3 أدوات من 3 عائلات على نفس السؤال واصرف الأداة المناسبة بشجرة القرار واخرج بمفضلاتك الأربع.",
     ),
     "duration": "1 h 30",
     "objectifs": [
         L(
-            "Classer les outils d'IA en 4 familles : comprendre, chercher, créer, organiser-coder.",
-            "Sort AI tools into 4 families: understand, search, create, organise-code.",
-            "أن يصنّف أدوات الذكاء في 4 عائلات: الفهم والبحث والإنشاء والتنظيم-البرمجة.",
+            "Ouvrir Perplexity sans créer de compte et y poser ta première question sourcée.",
+            "Open Perplexity with no account and ask your first sourced question there.",
+            "أن تفتح Perplexity دون إنشاء حساب وتطرح أول سؤال بمصادر.",
         ),
         L(
-            "Décrire en une phrase l'usage de chacun des 12 outils du module.",
-            "Describe in one sentence the use of each of the module's 12 tools.",
-            "أن يصف بجملة استعمال كل أداة من أدوات الوحدة الاثنتي عشرة.",
+            "Tester 3 outils (ChatGPT, Perplexity, Canva) sur la même question et comparer.",
+            "Test 3 tools (ChatGPT, Perplexity, Canva) on the same question and compare.",
+            "أن تجرّب 3 أدوات (ChatGPT وPerplexity وCanva) على نفس السؤال وتقارن.",
         ),
         L(
-            "Comparer 3 outils en démonstration : assistant, moteur sourcé, création visuelle.",
-            "Compare 3 tools in a demo: assistant, sourced engine, visual creation.",
-            "أن يقارن 3 أدوات عملياً: مساعد ومحرّك بمصادر وإنشاء بصري.",
+            "Prescrire le bon outil pour 3 situations avec l'arbre de décision.",
+            "Prescribe the right tool for 3 situations with the decision tree.",
+            "أن تصرف الأداة المناسبة لثلاث حالات بشجرة القرار.",
         ),
         L(
-            "Choisir le bon outil pour une tâche avec l'arbre de décision.",
-            "Pick the right tool for a task with the decision tree.",
-            "أن يختار الأداة المناسبة لمهمة بشجرة القرار.",
+            "Choisir tes 4 outils favoris (1 par famille) et justifier chaque choix.",
+            "Pick your 4 favourite tools (1 per family) and justify each pick.",
+            "أن تختار أدواتك الأربع المفضلة (واحدة لكل عائلة) وتبرّر كل اختيار.",
         ),
         L(
-            "Éviter les 3 erreurs de débutant : tout demander au même outil, croire sans vérifier, payer avant d'essayer le gratuit.",
-            "Avoid 3 beginner mistakes: asking everything to one tool, believing without checking, paying before trying free.",
-            "أن يتجنّب 3 أخطاء مبتدئة: طلب كل شيء من أداة واحدة والتصديق دون تحقق والدفع قبل تجربة المجاني.",
+            "Éviter les 3 erreurs de débutant : sirop unique, confiance aveugle, abonnement aveugle.",
+            "Avoid 3 beginner mistakes: single syrup, blind trust, blind subscription.",
+            "أن تتجنّب 3 أخطاء مبتدئة: الشراب الوحيد والثقة العمياء والاشتراك الأعمى.",
         ),
     ],
     "prerequis": L(
@@ -55,106 +55,89 @@ SEANCE = {
         "Session 1 completed. Know how to open a browser and, if possible, have a free account on an AI tool.",
         "إتمام الحصة الأولى. معرفة فتح متصفّح، وإن أمكن امتلاك حساب مجاني على أداة ذكاء اصطناعي.",
     ),
-    "accroche": {
-        "question": L(
-            "ChatGPT, Gemini, Perplexity, Canva, Notion… 12 noms sur le tableau : qui peut dire à quoi sert chacun ? Aujourd'hui, on range cette jungle.",
-            "ChatGPT, Gemini, Perplexity, Canva, Notion… 12 names on the board: who can say what each is for? Today, we tidy this jungle.",
-            "ChatGPT وGemini وPerplexity وCanva وNotion… 12 اسماً على السبورة: من يقول وظيفة كل منها؟ اليوم نرتّب هذه الغابة.",
-        ),
-        "analogie": L(
-            "🍳 Les outils d'IA, c'est comme la pharmacie : on ne soigne pas tout avec le même sirop. Le pharmacien (vous, bientôt) lit l'ordonnance (la tâche) puis choisit le bon flacon.",
-            "🍳 AI tools are like the pharmacy: you do not cure everything with the same syrup. The pharmacist (you, soon) reads the prescription (the task) then picks the right bottle.",
-            "🍳 أدوات الذكاء كالصيدلية: لا نداوي كل شيء بنفس الشراب. والصيدلي (أنت قريباً) يقرأ الوصفة (المهمة) ثم يختار القارورة المناسبة.",
-        ),
-        "phrase": L(
-            "💡 12 outils, 4 familles : COMPRENDRE (assistants), CHERCHER (moteurs sourcés), CRÉER (slides, images, voix), ORGANISER-CODER (notes, code, local).",
-            "💡 12 tools, 4 families: UNDERSTAND (assistants), SEARCH (sourced engines), CREATE (slides, images, voice), ORGANISE-CODE (notes, code, local).",
-            "💡 12 أداة و4 عائلات: الفهم (مساعدات) والبحث (محرّكات بمصادر) والإنشاء (عروض وصور وصوت) والتنظيم-البرمجة (ملاحظات وكود ومحلي).",
-        ),
-    },
     "plan": [
         {
             "time": "00–05",
             "badge": "🎬 A",
             **L(
-                "Accroche : la jungle des 12 noms",
-                "Hook: the 12-name jungle",
-                "انطلاقة: غابة الأسماء الاثني عشر",
+                "🚀 Action immédiate : Perplexity sans compte",
+                "🚀 Instant action: Perplexity with no account",
+                "🚀 إجراء فوري: Perplexity دون حساب",
             ),
             "detail": L(
-                "Sondage : qui utilise quoi ? + analogie de la pharmacie.",
-                "Survey: who uses what? + pharmacy analogy.",
-                "استطلاع: من يستعمل ماذا؟ + تشبيه الصيدلية.",
+                "Ouvrir perplexity.ai, taper le prompt prêt, observer les sources, cliquer 1 lien.",
+                "Open perplexity.ai, type the ready prompt, watch the sources, click 1 link.",
+                "افتح perplexity.ai واكتب الصياغة الجاهزة ولاحظ المصادر وانقر رابطاً.",
             ),
         },
         {
             "time": "05–25",
             "badge": "🧱 B",
             **L(
-                "Explication : les 4 familles",
-                "Explanation: the 4 families",
-                "شرح: العائلات الأربع",
+                "📋 Recette : tester 3 outils sur 1 question",
+                "📋 Recipe: test 3 tools on 1 question",
+                "📋 وصفة: تجربة 3 أدوات على سؤال واحد",
             ),
             "detail": L(
-                "Comprendre, chercher, créer, organiser-coder : 1 exemple étudiant par famille.",
-                "Understand, search, create, organise-code: 1 student example per family.",
-                "الفهم والبحث والإنشاء والتنظيم-البرمجة: مثال طلابي لكل عائلة.",
+                "ChatGPT, Perplexity, Canva : même question, 3 réponses, tableau comparatif.",
+                "ChatGPT, Perplexity, Canva: same question, 3 answers, comparison table.",
+                "ChatGPT وPerplexity وCanva: نفس السؤال و3 أجوبة وجدول مقارنة.",
             ),
         },
         {
             "time": "25–50",
             "badge": "🛠️ C",
             **L(
-                "Démo : 3 outils en action",
-                "Demo: 3 tools in action",
-                "عرض: 3 أدوات عملياً",
+                "🛠️ Démo : l'arbre de décision du pharmacien",
+                "🛠️ Demo: the pharmacist's decision tree",
+                "🛠️ عرض: شجرة قرار الصيدلي",
             ),
             "detail": L(
-                "Même question à ChatGPT, Perplexity et Canva : comparer les réponses.",
-                "Same question to ChatGPT, Perplexity and Canva: compare answers.",
-                "نفس السؤال لـ ChatGPT وPerplexity وCanva: قارن الأجوبة.",
+                "3 questions (sources ? créer ? organiser ?) + 4 composantes d'une bonne requête.",
+                "3 questions (sources? create? organise?) + 4 components of a good query.",
+                "3 أسئلة (مصادر؟ إنشاء؟ تنظيم؟) + عناصر الصياغة الجيدة الأربعة.",
             ),
         },
         {
             "time": "50–70",
             "badge": "✏️ D",
             **L(
-                "Exercice guidé : le bon pharmacien",
-                "Guided exercise: the good pharmacist",
-                "تمرين موجّه: الصيدلي الجيد",
+                "🧪 Mission : tableau comparatif + 4 favoris",
+                "🧪 Mission: comparison table + 4 favourites",
+                "🧪 المهمة: جدول مقارنة + 4 مفضلات",
             ),
             "detail": L(
-                "8 situations d'étudiant → prescrire le bon outil avec l'arbre de décision.",
-                "8 student situations → prescribe the right tool with the decision tree.",
-                "8 حالات طلابية ← اصرف الأداة المناسبة بشجرة القرار.",
+                "Livrable : 1 question testée sur 3 outils + verdict + tes 4 favoris justifiés.",
+                "Deliverable: 1 question tested on 3 tools + verdict + your 4 justified favourites.",
+                "المطلوب: سؤال مجرَّب على 3 أدوات + حكم + مفضلاتك الأربع مبرَّرة.",
             ),
         },
         {
             "time": "70–80",
             "badge": "🛠️ C",
             **L(
-                "Démo 2 : mauvais vs bon prompt",
-                "Demo 2: bad vs good prompt",
-                "عرض 2: صياغة ضعيفة مقابل قوية",
+                "⚠️ Erreurs : sirop unique et confiance aveugle",
+                "⚠️ Mistakes: single syrup and blind trust",
+                "⚠️ أخطاء: الشراب الوحيد والثقة العمياء",
             ),
             "detail": L(
-                "« Fais mon exposé » contre la requête en 4 composantes : le fossé en direct.",
-                "“Do my talk” vs the 4-component query: the gap, live.",
-                "« أنجز عرضي » مقابل الصياغة بالعناصر الأربعة: الهوة مباشرة.",
+                "3 erreurs en direct + mauvais vs bon prompt : le fossé sous vos yeux.",
+                "3 mistakes live + bad vs good prompt: the gap before your eyes.",
+                "3 أخطاء مباشرة + صياغة ضعيفة مقابل قوية: الهوة أمام أعينكم.",
             ),
         },
         {
             "time": "80–90",
             "badge": "📋 E",
             **L(
-                "Synthèse, quiz et annonce de la séance 3",
-                "Wrap-up, quiz and preview of session 3",
-                "خلاصة واختبار وتقديم الحصة الثالثة",
+                "✅ Checklist, quiz et annonce de la séance 3",
+                "✅ Checklist, quiz and preview of session 3",
+                "✅ قائمة تحقق واختبار وتقديم الحصة الثالثة",
             ),
             "detail": L(
-                "« À retenir ». Annonce : la recherche approfondie avec Perplexity et Scholar.",
-                "Key takeaways. Preview: deep research with Perplexity and Scholar.",
-                "« ما يجب تذكّره ». تقديم: البحث المعمَّق بـ Perplexity وScholar.",
+                "Cocher les 4 cases + quiz de 5 questions. Annonce : la recherche approfondie (séance 3).",
+                "Tick the 4 boxes + 5-question quiz. Preview: deep research (session 3).",
+                "علّم الخانات الأربع + اختبار 5 أسئلة. تقديم: البحث المعمَّق (الحصة 3).",
             ),
         },
     ],
@@ -162,17 +145,122 @@ SEANCE = {
         {
             "id": "s1",
             "titre": L(
-                "Les 4 familles : rangez la jungle",
-                "The 4 families: tidy the jungle",
-                "العائلات الأربع: رتّب الغابة",
+                "🎯 Ce que vous saurez faire à la fin",
+                "🎯 What you will be able to do by the end",
+                "🎯 ما ستعرف فعله في النهاية",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Retenez 4 tiroirs, pas 12 noms. Devant chaque tâche, demandez-vous : est-ce que je veux COMPRENDRE, CHERCHER, CRÉER ou ORGANISER-CODER ? Le tiroir désigne l'outil.",
-                        "Remember 4 drawers, not 12 names. Before each task, ask: do I want to UNDERSTAND, SEARCH, CREATE or ORGANISE-CODE? The drawer points to the tool.",
-                        "احفظ 4 أدراج لا 12 اسماً. أمام كل مهمة اسأل: هل أريد الفهم أم البحث أم الإنشاء أم التنظيم-البرمجة؟ الدرج يدل على الأداة.",
+                        "Aujourd'hui, pas de théorie : tu vas TOUCHER à 3 outils. Voici les 3 résultats concrets de la séance.",
+                        "Today, no theory: you will TOUCH 3 tools. Here are the 3 concrete results of the session.",
+                        "اليوم لا نظرية: ستلمس 3 أدوات. هذه النتائج الملموسة الثلاث للحصة.",
+                    ),
+                },
+                {
+                    "t": "ul",
+                    **L(
+                        [
+                            "<strong>1.</strong> Ouvrir Perplexity SANS compte et obtenir une réponse avec des sources cliquables.",
+                            "<strong>2.</strong> Tester la même question sur 3 outils (ChatGPT, Perplexity, Canva) et dire lequel fait quoi.",
+                            "<strong>3.</strong> Repartir avec tes 4 outils favoris (1 par famille), chacun justifié en 1 phrase.",
+                        ],
+                        [
+                            "<strong>1.</strong> Open Perplexity with NO account and get an answer with clickable sources.",
+                            "<strong>2.</strong> Test the same question on 3 tools (ChatGPT, Perplexity, Canva) and say which does what.",
+                            "<strong>3.</strong> Leave with your 4 favourite tools (1 per family), each justified in 1 sentence.",
+                        ],
+                        [
+                            "<strong>1.</strong> فتح Perplexity دون حساب والحصول على جواب بمصادر قابلة للنقر.",
+                            "<strong>2.</strong> تجربة نفس السؤال على 3 أدوات (ChatGPT وPerplexity وCanva) وقول ماذا تفعل كل منها.",
+                            "<strong>3.</strong> المغادرة بأدواتك الأربع المفضلة (واحدة لكل عائلة) مبرَّرة كل منها بجملة.",
+                        ],
+                    ),
+                },
+                {
+                    "t": "note",
+                    "kind": "idea",
+                    **L(
+                        "<strong>🔗 Rappel séance 1 :</strong> tu sais déjà poser une question et juger une réponse (clair/confus). Aujourd'hui, tu apprends OÙ la poser : le bon tiroir pour chaque besoin.",
+                        "<strong>🔗 Reminder of session 1:</strong> you already ask a question and judge an answer (clear/confusing). Today, you learn WHERE to ask it: the right drawer per need.",
+                        "<strong>🔗 تذكير بالحصة 1:</strong> تعرف طرح سؤال والحكم على جواب (واضح/مربك). اليوم تتعلم أين تطرحه: الدرج المناسب لكل حاجة.",
+                    ),
+                },
+            ],
+        },
+        {
+            "id": "s2",
+            "titre": L(
+                "🚀 Action immédiate — Perplexity sans compte (5 minutes)",
+                "🚀 Instant action — Perplexity with no account (5 minutes)",
+                "🚀 إجراء فوري — Perplexity دون حساب (5 دقائق)",
+            ),
+            "blocks": [
+                {
+                    "t": "p",
+                    **L(
+                        "Bonne nouvelle : Perplexity marche SANS inscription. En 5 minutes, tu obtiendras ta première réponse SOURCÉE.",
+                        "Good news: Perplexity works with NO signup. In 5 minutes, you will get your first SOURCED answer.",
+                        "خبر سار: يعمل Perplexity دون تسجيل. في 5 دقائق ستحصل على أول جواب بمصادر.",
+                    ),
+                },
+                {
+                    "t": "ol",
+                    **L(
+                        [
+                            "<strong>Ouvre</strong> perplexity.ai (téléphone ou PC). Pas de compte, pas de mot de passe : la barre est devant toi.",
+                            "<strong>Copie-colle EXACTEMENT</strong> le prompt ci-dessous et envoie.",
+                            "<strong>Observe :</strong> la réponse arrive AVEC des petits numéros [1][2][3]. Ce sont des sources cliquables — ChatGPT ne fait pas ça.",
+                            "<strong>Clique</strong> sur la source [1] : elle s'ouvre. Vrai article ou page web ? Note-le.",
+                            "<strong>Note</strong> sur papier : la réponse + le titre de la source ouverte.",
+                        ],
+                        [
+                            "<strong>Open</strong> perplexity.ai (phone or PC). No account, no password: the bar is in front of you.",
+                            "<strong>Copy-paste EXACTLY</strong> the prompt below and send.",
+                            "<strong>Watch:</strong> the answer comes WITH small numbers [1][2][3]. These are clickable sources — ChatGPT does not do that.",
+                            "<strong>Click</strong> source [1]: it opens. Real paper or web page? Note it.",
+                            "<strong>Write down:</strong> the answer + the opened source title.",
+                        ],
+                        [
+                            "<strong>افتح</strong> perplexity.ai (هاتف أو حاسوب). لا حساب ولا كلمة مرور: الشريط أمامك.",
+                            "<strong>انسخ والصق حرفياً</strong> الصياغة أدناه وأرسل.",
+                            "<strong>لاحظ:</strong> يصل الجواب مع أرقام صغيرة [1][2][3]. هذه مصادر قابلة للنقر — ChatGPT لا يفعل ذلك.",
+                            "<strong>انقر</strong> المصدر [1]: سيُفتَح. مقال حقيقي أم صفحة ويب؟ سجّله.",
+                            "<strong>دوّن:</strong> الجواب + عنوان المصدر المفتوح.",
+                        ],
+                    ),
+                },
+                {
+                    "t": "pre",
+                    "fr": "Quelle est la différence entre l'IA faible et l'IA générale ? Donne 3 exemples concrets pour chacune.",
+                    "en": "What is the difference between narrow AI and general AI? Give 3 concrete examples of each.",
+                },
+                {
+                    "t": "note",
+                    "kind": "goal",
+                    **L(
+                        "<strong>✅ Résultat attendu :</strong> une réponse courte + 2 à 4 sources numérotées en bas. Clique : au moins 1 lien doit s'ouvrir sur une vraie page. Sinon, repose la question mot pour mot.",
+                        "<strong>✅ Expected result:</strong> a short answer + 2 to 4 numbered sources below. Click: at least 1 link must open a real page. Else, ask again word for word.",
+                        "<strong>✅ النتيجة المنتظرة:</strong> جواب قصير + 2 إلى 4 مصادر مرقمة أسفل. انقر: رابط واحد على الأقل يجب أن يفتح صفحة حقيقية. وإلا أعد السؤال حرفياً.",
+                    ),
+                },
+            ],
+        },
+        {
+            "id": "s3",
+            "titre": L(
+                "📋 Recette : 3 outils, 1 question, 1 verdict",
+                "📋 Recipe: 3 tools, 1 question, 1 verdict",
+                "📋 وصفة: 3 أدوات وسؤال واحد وحكم واحد",
+            ),
+            "blocks": [
+                {
+                    "t": "p",
+                    **L(
+                        "Étape 0 — range d'abord : 4 tiroirs, pas 12 noms. Devant chaque tâche : COMPRENDRE, CHERCHER, CRÉER ou ORGANISER-CODER ? Le tiroir désigne l'outil.",
+                        "Step 0 — sort first: 4 drawers, not 12 names. Before each task: UNDERSTAND, SEARCH, CREATE or ORGANISE-CODE? The drawer points to the tool.",
+                        "الخطوة 0 — رتّب أولاً: 4 أدراج لا 12 اسماً. أمام كل مهمة: فهم أم بحث أم إنشاء أم تنظيم-برمجة؟ الدرج يدل على الأداة.",
                     ),
                 },
                 {
@@ -204,111 +292,40 @@ SEANCE = {
                     ),
                 },
                 {
-                    "t": "note",
-                    "kind": "idea",
-                    **L(
-                        "<strong>🔗 Rappel séance 1 :</strong> les 3 règles d'or (vérifier, citer, garder son jugement) s'appliquent aux 4 familles. Et souvenez-vous de l'acteur brillant : convaincant ne veut pas dire vrai — dans AUCUNE famille.",
-                        "<strong>🔗 Reminder of session 1:</strong> the 3 golden rules (verify, cite, keep judgement) apply to all 4 families. And remember the brilliant actor: convincing does not mean true — in NO family.",
-                        "<strong>🔗 تذكير بالحصة 1:</strong> القواعد الذهبية الثلاث (تحقّق واستشهد وحافظ على حكمك) تنطبق على العائلات الأربع. وتذكّر الممثل البارع: المقنع لا يعني الصحيح — في أي عائلة.",
-                    ),
-                },
-            ],
-        },
-        {
-            "id": "s2",
-            "titre": L(
-                "Les 12 outils en fiches express",
-                "The 12 tools in flash sheets",
-                "الأدوات الاثنتا عشرة في بطاقات سريعة",
-            ),
-            "blocks": [
-                {
                     "t": "p",
                     **L(
-                        "Une phrase par outil, à connaître par cœur. Le détail complet (étapes, forces, limites) est sur la page « Outils IA » du module : chaque outil y a sa fiche.",
-                        "One sentence per tool, to know by heart. Full detail (steps, strengths, limits) is on the module's \"AI Tools\" page: each tool has its sheet there.",
-                        "جملة لكل أداة تُحفَظ. والتفصيل الكامل (خطوات ومزايا وحدود) في صفحة « أدوات الذكاء » للوحدة: لكل أداة بطاقتها.",
+                        "Détail complet de chaque outil sur la page « Outils IA » du module. Maintenant, teste : même question, 3 outils, 1 verdict.",
+                        "Full detail of each tool on the module's \"AI Tools\" page. Now test: same question, 3 tools, 1 verdict.",
+                        "التفصيل الكامل لكل أداة في صفحة « أدوات الذكاء ». الآن جرّب: نفس السؤال و3 أدوات وحكم واحد.",
                     ),
                 },
                 {
-                    "t": "ul",
+                    "t": "ol",
                     **L(
                         [
-                            "<strong>ChatGPT :</strong> l'assistant généraliste qui explique, résume et rédige.",
-                            "<strong>Gemini :</strong> comme ChatGPT + lit images et PDF.",
-                            "<strong>Claude :</strong> le champion des longs textes en bon français.",
-                            "<strong>Perplexity :</strong> répond AVEC les sources à ouvrir.",
-                            "<strong>Scholar / Consensus :</strong> la bibliothèque scientifique (articles, consensus).",
-                            "<strong>NotebookLM :</strong> interroge VOS propres PDF de cours.",
-                            "<strong>Gamma :</strong> transforme un plan en diaporama.",
-                            "<strong>Canva IA :</strong> affiches et visuels magnifiques.",
-                            "<strong>Copilot / Cursor :</strong> le copilote du programmeur.",
-                            "<strong>Notion AI :</strong> notes, plannings et tableaux intelligents.",
-                            "<strong>DALL·E :</strong> dessine ce que vous décrivez.",
-                            "<strong>ElevenLabs / Whisper :</strong> voix de synthèse et transcription.",
-                            "<strong>Ollama :</strong> une IA chez vous, hors-ligne et gratuite.",
-                            "<strong>Dify :</strong> votre chatbot sans coder.",
+                            "<strong>ChatGPT (🔵) :</strong> colle le prompt A ci-dessous → note : explication claire ? exemple donné ? sources ? (réponse attendue : non).",
+                            "<strong>Perplexity (🟢) :</strong> colle le MÊME prompt A → note : réponse plus courte ? liens [1][2] présents ? Ouvre-en 1.",
+                            "<strong>Canva (🟠, démo projetée) :</strong> suis l'enseignant : canva.com → « Magic Design » → décris « affiche différenciation, style dessin animé » → observe le résultat.",
+                            "<strong>Verdict :</strong> remplis 1 ligne par outil : COMPRENDRE / PROUVER / MONTRER. Quel outil pour quel métier ?",
                         ],
                         [
-                            "<strong>ChatGPT:</strong> the generalist assistant explaining, summarising, writing.",
-                            "<strong>Gemini:</strong> like ChatGPT + reads images and PDFs.",
-                            "<strong>Claude:</strong> the champion of long texts in good French.",
-                            "<strong>Perplexity:</strong> answers WITH sources to open.",
-                            "<strong>Scholar / Consensus:</strong> the scientific library (papers, consensus).",
-                            "<strong>NotebookLM:</strong> questions YOUR own course PDFs.",
-                            "<strong>Gamma:</strong> turns an outline into slides.",
-                            "<strong>Canva AI:</strong> gorgeous posters and visuals.",
-                            "<strong>Copilot / Cursor:</strong> the programmer's copilot.",
-                            "<strong>Notion AI:</strong> smart notes, schedules and boards.",
-                            "<strong>DALL·E:</strong> draws what you describe.",
-                            "<strong>ElevenLabs / Whisper:</strong> synthetic voice and transcription.",
-                            "<strong>Ollama:</strong> an AI at home, offline and free.",
-                            "<strong>Dify:</strong> your chatbot without coding.",
+                            "<strong>ChatGPT (🔵):</strong> paste prompt A below → note: clear explanation? example given? sources? (expected: no).",
+                            "<strong>Perplexity (🟢):</strong> paste the SAME prompt A → note: shorter answer? [1][2] links present? Open 1.",
+                            "<strong>Canva (🟠, projected demo):</strong> follow the teacher: canva.com → \"Magic Design\" → describe \"differentiation poster, cartoon style\" → watch the result.",
+                            "<strong>Verdict:</strong> fill 1 line per tool: UNDERSTAND / PROVE / SHOW. Which tool for which job?",
                         ],
                         [
-                            "<strong>ChatGPT:</strong> المساعد العام الذي يشرح ويلخّص ويكتب.",
-                            "<strong>Gemini:</strong> مثل ChatGPT + يقرأ الصور وPDF.",
-                            "<strong>Claude:</strong> بطل النصوص الطويلة بفرنسية جيدة.",
-                            "<strong>Perplexity:</strong> يجيب مع مصادر تُفتَح.",
-                            "<strong>Scholar / Consensus:</strong> المكتبة العلمية (مقالات وإجماع).",
-                            "<strong>NotebookLM:</strong> يستجوب ملفات دروسك الخاصة.",
-                            "<strong>Gamma:</strong> يحوّل الخطة إلى شرائح.",
-                            "<strong>Canva IA:</strong> ملصقات وصور رائعة.",
-                            "<strong>Copilot / Cursor:</strong> مساعد المبرمج.",
-                            "<strong>Notion AI:</strong> ملاحظات ومخططات ولوحات ذكية.",
-                            "<strong>DALL·E:</strong> يرسم ما تصفه.",
-                            "<strong>ElevenLabs / Whisper:</strong> صوت اصطناعي ونسخ.",
-                            "<strong>Ollama:</strong> ذكاء عندك دون اتصال ومجاناً.",
-                            "<strong>Dify:</strong> روبوتك دون برمجة.",
+                            "<strong>ChatGPT (🔵):</strong> الصق الصياغة A أدناه ← لاحظ: شرح واضح؟ مثال؟ مصادر؟ (المنتظر: لا).",
+                            "<strong>Perplexity (🟢):</strong> الصق نفس الصياغة A ← لاحظ: جواب أقصر؟ روابط [1][2] موجودة؟ افتح واحداً.",
+                            "<strong>Canva (🟠، عرض مسقَط):</strong> تابع الأستاذ: canva.com ← « Magic Design » ← صِف « ملصق التفريد بأسلوب كرتوني » ← لاحظ النتيجة.",
+                            "<strong>الحكم:</strong> املأ سطراً لكل أداة: فهم / إثبات / عرض. أي أداة لأي مهنة؟",
                         ],
                     ),
                 },
                 {
-                    "t": "note",
-                    "kind": "tip",
-                    **L(
-                        "<strong>Astuce mémoire :</strong> 4 couleurs = 4 familles (🔵🟢🟠🟣). Demandez à un camarade : « cite-moi les 3 outils verts » — celui qui hésite révise la fiche !",
-                        "<strong>Memory tip:</strong> 4 colours = 4 families (🔵🟢🟠🟣). Ask a classmate: \"name the 3 green tools\" — whoever hesitates revises the sheet!",
-                        "<strong>نصيحة حفظ:</strong> 4 ألوان = 4 عائلات (🔵🟢🟠🟣). اسأل زميلك: « سمِّ الأدوات الخضراء الثلاث » — من يتردد يراجع البطاقة!",
-                    ),
-                },
-            ],
-        },
-        {
-            "id": "s3",
-            "titre": L(
-                "Démo : la même question à 3 outils",
-                "Demo: the same question to 3 tools",
-                "عرض: نفس السؤال لثلاث أدوات",
-            ),
-            "blocks": [
-                {
-                    "t": "p",
-                    **L(
-                        "Question test : « Explique la différenciation pédagogique avec un exemple de primaire. » Regardez ce que CHAQUE outil apporte — aucun ne fait tout.",
-                        "Test question: \"Explain pedagogical differentiation with a primary example.\" Watch what EACH tool brings — none does everything.",
-                        "السؤال الاختباري: « اشرح التفريد البيداغوجي بمثال ابتدائي ». لاحظ ما يقدمه كل أداة — لا واحدة تفعل كل شيء.",
-                    ),
+                    "t": "pre",
+                    "fr": "Explique la différenciation pédagogique avec un exemple de classe primaire, en 8 lignes.",
+                    "en": "Explain pedagogical differentiation with a primary-class example, in 8 lines.",
                 },
                 {
                     "t": "ul",
@@ -342,41 +359,50 @@ SEANCE = {
                         "<strong>🧪 مثال ملموس:</strong> كريم يحضّر عرضاً عن الماء: ChatGPT يعطيه الخطة في دقيقة وPerplexity يجد 3 مصادر مؤرَّخة وCanva يرسم ملصق الدورة. ثلاثة صيادلة ووصفة واحدة: العرض.",
                     ),
                 },
+                {
+                    "t": "note",
+                    "kind": "tip",
+                    **L(
+                        "<strong>Les 4 composantes d'une bonne requête :</strong> contexte (qui tu es, quel cours), objectif (comprendre, citer, réviser), format (liste, tableau, 5 lignes), contrainte (sources, langue, dates). Teste : ajoute « en 5 phrases » à ton prompt et compare.",
+                        "<strong>The 4 components of a good query:</strong> context (who you are, which course), goal (understand, cite, revise), format (list, table, 5 lines), constraint (sources, language, dates). Try: add \"in 5 sentences\" to your prompt and compare.",
+                        "<strong>عناصر الصياغة الجيدة الأربعة:</strong> السياق (من أنت وأي درس) والهدف (فهم واستشهاد ومراجعة) والصيغة (قائمة وجدول و5 أسطر) والقيد (مصادر ولغة وتواريخ). جرّب: أضف « في 5 جمل » لصياغتك وقارن.",
+                    ),
+                },
             ],
         },
         {
             "id": "s4",
             "titre": L(
-                "Bien choisir : l'arbre de décision du pharmacien",
-                "Choose well: the pharmacist's decision tree",
-                "أحسِن الاختيار: شجرة قرار الصيدلي",
+                "⚠️ Erreurs fréquentes des pharmaciens débutants",
+                "⚠️ Frequent rookie-pharmacist mistakes",
+                "⚠️ أخطاء الصيادلة المبتدئين الشائعة",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Trois questions suffisent pour ne plus jamais se tromper d'outil.",
-                        "Three questions are enough to never pick the wrong tool again.",
-                        "تكفي ثلاثة أسئلة لئلا تخطئ الأداة أبداً.",
+                        "Vérifie ton tableau comparatif : as-tu commis l'une de ces 3 erreurs ? Corrige-la tout de suite sur ton écran.",
+                        "Check your comparison table: did you make one of these 3 mistakes? Fix it right now on your screen.",
+                        "راجع جدول مقارنتك: هل وقعت في أحد هذه الأخطاء الثلاثة؟ صحّحه فوراً على شاشتك.",
                     ),
                 },
                 {
-                    "t": "ol",
+                    "t": "ul",
                     **L(
                         [
-                            "<strong>1. Ai-je besoin de SOURCES ?</strong> Oui → 🟢 (Perplexity, Scholar). Non → question 2.",
-                            "<strong>2. Est-ce que je CRÉE quelque chose à montrer ?</strong> Oui → 🟠 (Gamma, Canva, DALL·E). Non → question 3.",
-                            "<strong>3. Est-ce que j'ORGANISE ou je CODE ?</strong> Oui → 🟣 (Notion, Copilot, Ollama, Dify). Non → 🔵 (ChatGPT, Gemini, Claude).",
+                            "<strong>❌ Le sirop unique :</strong> tout demander au même outil. <strong>✅ Prescris</strong> avec l'arbre : sources ? → 🟢 ; créer ? → 🟠 ; organiser-coder ? → 🟣 ; sinon 🔵.",
+                            "<strong>❌ Croire sans ouvrir :</strong> la réponse a l'air sûre, mais les liens ? <strong>✅ Ouvre</strong> au moins 1 source avant de noter quoi que ce soit.",
+                            "<strong>❌ Payer avant d'essayer :</strong> cliquer « Premium » par impatience. <strong>✅ Épuise</strong> d'abord le gratuit étudiant (largement suffisant pour ce module).",
                         ],
                         [
-                            "<strong>1. Do I need SOURCES?</strong> Yes → 🟢 (Perplexity, Scholar). No → question 2.",
-                            "<strong>2. Am I CREATING something to show?</strong> Yes → 🟠 (Gamma, Canva, DALL·E). No → question 3.",
-                            "<strong>3. Am I ORGANISING or CODING?</strong> Yes → 🟣 (Notion, Copilot, Ollama, Dify). No → 🔵 (ChatGPT, Gemini, Claude).",
+                            "<strong>❌ The single syrup:</strong> asking everything to one tool. <strong>✅ Prescribe</strong> with the tree: sources? → 🟢; create? → 🟠; organise-code? → 🟣; else 🔵.",
+                            "<strong>❌ Believing without opening:</strong> the answer looks sure, but the links? <strong>✅ Open</strong> at least 1 source before noting anything.",
+                            "<strong>❌ Paying before trying:</strong> clicking \"Premium\" impatiently. <strong>✅ Exhaust</strong> student free tiers first (plenty for this module).",
                         ],
                         [
-                            "<strong>1. هل أحتاج مصادر؟</strong> نعم ← 🟢 (Perplexity وScholar). لا ← السؤال 2.",
-                            "<strong>2. هل أُنشئ شيئاً للعرض؟</strong> نعم ← 🟠 (Gamma وCanva وDALL·E). لا ← السؤال 3.",
-                            "<strong>3. هل أنظّم أم أبرمج؟</strong> نعم ← 🟣 (Notion وCopilot وOllama وDify). لا ← 🔵 (ChatGPT وGemini وClaude).",
+                            "<strong>❌ الشراب الوحيد:</strong> طلب كل شيء من أداة واحدة. <strong>✅ اصرف</strong> بالشجرة: مصادر؟ ← 🟢؛ إنشاء؟ ← 🟠؛ تنظيم-برمجة؟ ← 🟣؛ وإلا 🔵.",
+                            "<strong>❌ التصديق دون فتح:</strong> الجواب يبدو واثقاً لكن الروابط؟ <strong>✅ افتح</strong> مصدراً واحداً على الأقل قبل تدوين أي شيء.",
+                            "<strong>❌ الدفع قبل التجربة:</strong> النقر على « Premium » بتسرّع. <strong>✅ استنفد</strong> المجاني الطلابي أولاً (كافٍ تماماً لهذه الوحدة).",
                         ],
                     ),
                 },
@@ -384,36 +410,53 @@ SEANCE = {
                     "t": "note",
                     "kind": "tip",
                     **L(
-                        "<strong>Les 4 composantes d'une bonne requête :</strong> contexte (qui tu es, quel cours), objectif (comprendre, citer, réviser), format (liste, tableau, 5 lignes), contrainte (sources, langue, dates). La démo 2 les applique en direct.",
-                        "<strong>The 4 components of a good query:</strong> context (who you are, which course), goal (understand, cite, revise), format (list, table, 5 lines), constraint (sources, language, dates). Demo 2 applies them live.",
-                        "<strong>عناصر الصياغة الجيدة الأربعة:</strong> السياق (من أنت وأي درس) والهدف (فهم واستشهاد ومراجعة) والصيغة (قائمة وجدول و5 أسطر) والقيد (مصادر ولغة وتواريخ). العرض 2 يطبّقها مباشرة.",
-                    ),
-                },
-                {
-                    "t": "note",
-                    "kind": "warn",
-                    **L(
-                        "<strong>❌ 3 erreurs de débutant :</strong> 1) tout demander au même outil (le sirop unique) ; 2) croire sans ouvrir les sources ; 3) payer un abonnement avant d'avoir épuisé le gratuit étudiant.",
-                        "<strong>❌ 3 beginner mistakes:</strong> 1) asking everything to one tool (the single syrup); 2) believing without opening sources; 3) paying before exhausting free student tiers.",
-                        "<strong>❌ 3 أخطاء مبتدئة:</strong> 1) طلب كل شيء من أداة واحدة (الشراب الوحيد)؛ 2) التصديق دون فتح المصادر؛ 3) الدفع قبل استنفاد المجاني الطلابي.",
+                        "<strong>Teste maintenant :</strong> reprends ta question et ajoute « avec 2 sources datées ». Compare avant/après : le VERT obéit quand on exige des sources.",
+                        "<strong>Try now:</strong> take your question back and add \"with 2 dated sources\". Compare before/after: GREEN obeys when you demand sources.",
+                        "<strong>جرّب الآن:</strong> خذ سؤالك وأضف « مع مصدرين مؤرَّخين ». قارن قبل/بعد: الأخضر يطيع عندما تطلب المصادر.",
                     ),
                 },
             ],
         },
         {
-            "id": "profiter",
+            "id": "s5",
             "titre": L(
-                "Comment en profiter au maximum",
-                "How to get the most out of it",
-                "كيف تستفيد إلى أقصى حد",
+                "🧪 Votre mission — ordonnance complète",
+                "🧪 Your mission — full prescription",
+                "🧪 مهمتك — وصفة كاملة",
             ),
             "blocks": [
                 {
                     "t": "p",
                     **L(
-                        "Le bon pharmacien ne connaît pas 12 sirops par cœur le premier jour : il connaît 4 tiroirs, 1 outil préféré par tiroir, et la page « Outils IA » pour le reste.",
-                        "The good pharmacist does not memorise 12 syrups on day one: he knows 4 drawers, 1 favourite tool per drawer, and the \"AI Tools\" page for the rest.",
-                        "الصيدلي الجيد لا يحفظ 12 شراباً أول يوم: يعرف 4 أدراج وأداة مفضلة لكل درج وصفحة « أدوات الذكاء » للباقي.",
+                        "En binôme, produisez UNE page : votre ordonnance pour 1 vraie question de cours. À rendre au début de la séance 3.",
+                        "In pairs, produce ONE page: your prescription for 1 real lesson question. Hand it in at the start of session 3.",
+                        "ثنائياً أنتجا صفحة واحدة: وصفتكما لسؤال درس حقيقي. تُسلَّم بداية الحصة 3.",
+                    ),
+                },
+                {
+                    "t": "ol",
+                    **L(
+                        [
+                            "<strong>Choisissez</strong> 1 question de VOTRE cours (ex : « c'est quoi la motivation scolaire ? »).",
+                            "<strong>Testez-la</strong> sur 2 outils de familles différentes (ex : 🔵 ChatGPT + 🟢 Perplexity).",
+                            "<strong>Remplissez</strong> le tableau : outil | réponse en 1 phrase | + (point fort) | − (limite vue).",
+                            "<strong>Prescrivez</strong> avec l'arbre : sources ? → 🟢 ; créer ? → 🟠 ; organiser-coder ? → 🟣 ; sinon 🔵.",
+                            "<strong>Choisissez</strong> vos 4 favoris (1 par tiroir), chacun justifié en 1 phrase.",
+                        ],
+                        [
+                            "<strong>Pick</strong> 1 question from YOUR lesson (e.g. \"what is school motivation?\").",
+                            "<strong>Test it</strong> on 2 tools from different families (e.g. 🔵 ChatGPT + 🟢 Perplexity).",
+                            "<strong>Fill</strong> the table: tool | 1-sentence answer | + (strength) | − (seen limit).",
+                            "<strong>Prescribe</strong> with the tree: sources? → 🟢; create? → 🟠; organise-code? → 🟣; else 🔵.",
+                            "<strong>Pick</strong> your 4 favourites (1 per drawer), each justified in 1 sentence.",
+                        ],
+                        [
+                            "<strong>اختارا</strong> سؤالاً من درسكما (مثال: « ما الدافعية المدرسية؟ »).",
+                            "<strong>جرّباه</strong> على أداتين من عائلتين مختلفتين (مثال: 🔵 ChatGPT + 🟢 Perplexity).",
+                            "<strong>املآ</strong> الجدول: الأداة | الجواب في جملة | + (ميزة) | − (حد مرصود).",
+                            "<strong>اصرفا</strong> بالشجرة: مصادر؟ ← 🟢؛ إنشاء؟ ← 🟠؛ تنظيم-برمجة؟ ← 🟣؛ وإلا 🔵.",
+                            "<strong>اختارا</strong> مفضلاتكما الأربع (واحدة لكل درج) مبرَّرة كل منها بجملة.",
+                        ],
                     ),
                 },
                 {
@@ -425,118 +468,50 @@ SEANCE = {
                         "<strong>➡️ جسر إلى الحصة 3:</strong> العائلة الخضراء (البحث) تستحق حصة كاملة: Perplexity بعمق وScholar كباحث وفن التحقق (الحصة 3).",
                     ),
                 },
+            ],
+        },
+        {
+            "id": "s6",
+            "titre": L(
+                "✅ Checklist de validation",
+                "✅ Validation checklist",
+                "✅ قائمة التحقق",
+            ),
+            "blocks": [
+                {
+                    "t": "p",
+                    **L(
+                        "Avant de partir, coche avec ton binôme. Tout doit être coché :",
+                        "Before leaving, tick with your partner. Everything must be ticked:",
+                        "قبل المغادرة علّم مع زميلك. يجب تأشير الكل:",
+                    ),
+                },
                 {
                     "t": "ul",
                     **L(
                         [
-                            "<strong>✅ 1 favori par tiroir :</strong> choisissez vos 4 outils de tous les jours cette semaine.",
-                            "<strong>✅ Gratuit d'abord :</strong> comptes étudiants gratuits avant tout abonnement.",
-                            "<strong>✅ Fiche outils :</strong> gardez la page « Outils IA » en favori du navigateur.",
-                            "<strong>✅ Testez à deux :</strong> même question, deux outils, comparez — le meilleur exercice.",
+                            "☐ J'ai ouvert Perplexity SANS compte et obtenu une réponse sourcée.",
+                            "☐ J'ai testé 1 question sur 2 outils et rempli le tableau comparatif.",
+                            "☐ J'ai prescrit le bon tiroir avec l'arbre (sources ? créer ? organiser ?).",
+                            "☐ J'ai repéré 1 limite (pas de sources, réponse inventée, compte exigé).",
                         ],
                         [
-                            "<strong>✅ 1 favourite per drawer:</strong> pick your 4 everyday tools this week.",
-                            "<strong>✅ Free first:</strong> free student accounts before any subscription.",
-                            "<strong>✅ Tools sheet:</strong> bookmark the \"AI Tools\" page in your browser.",
-                            "<strong>✅ Test in pairs:</strong> same question, two tools, compare — the best exercise.",
+                            "☐ I opened Perplexity with NO account and got a sourced answer.",
+                            "☐ I tested 1 question on 2 tools and filled the comparison table.",
+                            "☐ I prescribed the right drawer with the tree (sources? create? organise?).",
+                            "☐ I spotted 1 limit (no sources, invented answer, account required).",
                         ],
                         [
-                            "<strong>✅ مفضلة لكل درج:</strong> اختر أدواتك الأربع اليومية هذا الأسبوع.",
-                            "<strong>✅ المجاني أولاً:</strong> حسابات طلابية مجانية قبل أي اشتراك.",
-                            "<strong>✅ بطاقة الأدوات:</strong> احفظ صفحة « أدوات الذكاء » في متصفحك.",
-                            "<strong>✅ جرّب ثنائياً:</strong> نفس السؤال وأداتان وقارن — أفضل تمرين.",
-                        ],
-                    ),
-                },
-                {
-                    "t": "note",
-                    "kind": "warn",
-                    **L(
-                        "<strong>❌ Erreurs à éviter :</strong> collectionner 12 comptes qu'on n'ouvre jamais, demander des sources à un outil bleu, demander un poème à un outil vert.",
-                        "<strong>❌ Mistakes to avoid:</strong> collecting 12 accounts you never open, asking a blue tool for sources, asking a green tool for a poem.",
-                        "<strong>❌ أخطاء يجب تجنّبها:</strong> جمع 12 حساباً لا تُفتَح أبداً وطلب المصادر من أداة زرقاء وطلب قصيدة من أداة خضراء.",
-                    ),
-                },
-                {
-                    "t": "table",
-                    "header": L(
-                        ["", "Mauvais usage", "Bon usage"],
-                        ["", "Bad use", "Good use"],
-                        ["", "استعمال سيئ", "استعمال جيد"],
-                    ),
-                    "rows": L(
-                        [
-                            ["Demande", "« Fais tout pour mon exposé » à un seul outil.", "« Plan (bleu) + sources (vert) + affiche (orange) » : 3 outils, 3 métiers."],
-                            ["Résultat", "Un seul sirop pour tous les maux.", "Le bon flacon pour chaque symptôme."],
-                        ],
-                        [
-                            ["Prompt", "\"Do everything for my talk\" to a single tool.", "\"Outline (blue) + sources (green) + poster (orange)\": 3 tools, 3 jobs."],
-                            ["Result", "One syrup for all ills.", "The right bottle for each symptom."],
-                        ],
-                        [
-                            ["الطلب", "« افعل كل شيء لعرضي » لأداة واحدة.", "« خطة (أزرق) + مصادر (أخضر) + ملصق (برتقالي) »: 3 أدوات و3 مهن."],
-                            ["النتيجة", "شراب واحد لكل الأدواء.", "القارورة المناسبة لكل عرَض."],
+                            "☐ فتحت Perplexity دون حساب وحصلت على جواب بمصادر.",
+                            "☐ جرّبت سؤالاً على أداتين وملأت جدول المقارنة.",
+                            "☐ صرفت الدرج المناسب بالشجرة (مصادر؟ إنشاء؟ تنظيم؟).",
+                            "☐ رصدت حداً واحداً (لا مصادر أو جواب مختلَق أو حساب مطلوب).",
                         ],
                     ),
                 },
             ],
         },
     ],
-    "verifications": [
-        {
-            "q": L(
-                "Que faire si vous avez besoin de SOURCES ?",
-                "What to do if you need SOURCES?",
-                "ماذا تفعل إذا احتجت مصادر؟",
-            ),
-            "r": L(
-                "Tiroir vert : Perplexity pour une réponse sourcée rapide, Scholar/Consensus pour des articles vérifiables.",
-                "Green drawer: Perplexity for a fast sourced answer, Scholar/Consensus for verifiable papers.",
-                "الدرج الأخضر: Perplexity لجواب مسنَد سريع وScholar/Consensus لمقالات قابلة للتحقق.",
-            ),
-        },
-        {
-            "q": L(
-                "NotebookLM appartient à quelle famille, et pourquoi ?",
-                "Which family is NotebookLM in, and why?",
-                "إلى أي عائلة ينتمي NotebookLM ولماذا؟",
-            ),
-            "r": L(
-                "CHERCHER (vert) : il répond à partir de VOS documents, sources affichées — c'est un moteur sur vos PDF.",
-                "SEARCH (green): it answers from YOUR documents, sources shown — an engine over your PDFs.",
-                "البحث (أخضر): يجيب من وثائقك مع عرض المصادر — محرّك فوق ملفاتك.",
-            ),
-        },
-        {
-            "q": L(
-                "Ollama et Dify : quelle différence en une phrase ?",
-                "Ollama and Dify: what difference in one sentence?",
-                "Ollama وDify: ما الفرق في جملة؟",
-            ),
-            "r": L(
-                "Ollama fait tourner un modèle chez vous hors-ligne ; Dify construit un chatbot sur vos PDF sans coder.",
-                "Ollama runs a model at home offline; Dify builds a chatbot on your PDFs without coding.",
-                "يشغّل Ollama نموذجاً عندك دون اتصال؛ ويبني Dify روبوتاً على ملفاتك دون برمجة.",
-            ),
-        },
-    ],
-    "exercise_guide": {
-        "enonce": L(
-            "8 situations d'étudiant : prescrivez le bon outil avec l'arbre de décision (sources ? créer ? organiser-coder ?). Justifiez en 1 phrase.",
-            "8 student situations: prescribe the right tool with the decision tree (sources? create? organise-code?). Justify in 1 sentence.",
-            "8 حالات طلابية: اصرف الأداة المناسبة بشجرة القرار (مصادر؟ إنشاء؟ تنظيم-برمجة؟). برّر في جملة.",
-        ),
-        "demarche": L(
-            "1) Lire la situation. 2) Poser les 3 questions de l'arbre dans l'ordre. 3) Nommer l'outil + la famille (couleur). 4) Comparer avec le voisin avant correction.",
-            "1) Read the situation. 2) Ask the tree's 3 questions in order. 3) Name the tool + family (colour). 4) Compare with neighbour before correction.",
-            "1) اقرأ الحالة. 2) اطرح أسئلة الشجرة الثلاثة بالترتيب. 3) سمِّ الأداة + العائلة (اللون). 4) قارن مع الجار قبل التصحيح.",
-        ),
-        "solution": L(
-            "1) Expliquer une notion → 🔵 ChatGPT. 2) Citer 2 études → 🟢 Perplexity/Scholar. 3) Slides d'exposé → 🟠 Gamma. 4) Affiche → 🟠 Canva. 5) Planning révisions → 🟣 Notion. 6) Bug Python → 🟣 Copilot. 7) Résumer VOS PDF → 🟢 NotebookLM. 8) Chatbot sans code → 🟣 Dify.",
-            "1) Explain a notion → 🔵 ChatGPT. 2) Cite 2 studies → 🟢 Perplexity/Scholar. 3) Talk slides → 🟠 Gamma. 4) Poster → 🟠 Canva. 5) Revision plan → 🟣 Notion. 6) Python bug → 🟣 Copilot. 7) Summarise YOUR PDFs → 🟢 NotebookLM. 8) No-code chatbot → 🟣 Dify.",
-            "1) شرح مفهوم ← 🔵 ChatGPT. 2) الاستشهاد بدراستين ← 🟢 Perplexity/Scholar. 3) شرائح عرض ← 🟠 Gamma. 4) ملصق ← 🟠 Canva. 5) مخطط مراجعات ← 🟣 Notion. 6) خطأ بايثون ← 🟣 Copilot. 7) تلخيص ملفاتك ← 🟢 NotebookLM. 8) روبوت دون كود ← 🟣 Dify.",
-        ),
-    },
     "videos": [
         {
             "titre": L(
@@ -584,24 +559,24 @@ SEANCE = {
     "fiche_synthese": {
         "points": [
             L(
-                "4 tiroirs : 🔵 comprendre, 🟢 chercher, 🟠 créer, 🟣 organiser-coder.",
-                "4 drawers: 🔵 understand, 🟢 search, 🟠 create, 🟣 organise-code.",
-                "4 أدراج: 🔵 الفهم و🟢 البحث و🟠 الإنشاء و🟣 التنظيم-البرمجة.",
+                "J'ai ouvert Perplexity SANS compte et obtenu une réponse avec sources cliquables.",
+                "I opened Perplexity with NO account and got an answer with clickable sources.",
+                "فتحت Perplexity دون حساب وحصلت على جواب بمصادر قابلة للنقر.",
             ),
             L(
-                "Arbre : sources ? → créer ? → organiser-coder ? → sinon bleu.",
-                "Tree: sources? → create? → organise-code? → else blue.",
-                "الشجرة: مصادر؟ ← إنشاء؟ ← تنظيم-برمجة؟ ← وإلا أزرق.",
+                "J'ai testé 1 question sur 2 outils et rempli mon tableau (fort + limite).",
+                "I tested 1 question on 2 tools and filled my table (strength + limit).",
+                "جرّبت سؤالاً على أداتين وملأت جدولي (ميزة + حد).",
             ),
             L(
-                "1 favori par tiroir + page Outils IA en favori.",
-                "1 favourite per drawer + AI Tools page bookmarked.",
-                "مفضلة لكل درج + صفحة أدوات الذكاء محفوظة.",
+                "Je prescris avec l'arbre : sources ? créer ? organiser-coder ? sinon bleu.",
+                "I prescribe with the tree: sources? create? organise-code? else blue.",
+                "أصرف بالشجرة: مصادر؟ إنشاء؟ تنظيم-برمجة؟ وإلا أزرق.",
             ),
             L(
-                "Gratuit étudiant d'abord, jamais d'abonnement aveugle.",
-                "Student free first, never a blind subscription.",
-                "المجاني الطلابي أولاً ولا اشتراك أعمى أبداً.",
+                "J'ai mes 4 favoris (1 par tiroir), justifiés en 1 phrase chacun.",
+                "I have my 4 favourites (1 per drawer), each justified in 1 sentence.",
+                "عندي مفضلاتي الأربع (واحدة لكل درج) مبرَّرة كل منها بجملة.",
             ),
             L(
                 "3 règles d'or partout : vérifier, citer, juger.",

@@ -2,21 +2,21 @@
 
 **Overview of 12+ AI tools for students**
 
-> Vue d'ensemble des outils d'IA : à quoi sert chacun, comment les classer en 4 familles, démonstration rapide de 3 outils et méthode pour toujours choisir le bon.
+> Ouvrir Perplexity sans compte, tester 3 outils de 3 familles sur la même question, prescrire le bon outil avec l'arbre de décision et repartir avec tes 4 favoris.
 
 ## Points clés
-1. 4 tiroirs : 🔵 comprendre, 🟢 chercher, 🟠 créer, 🟣 organiser-coder.
-> EN: 4 drawers: 🔵 understand, 🟢 search, 🟠 create, 🟣 organise-code.
-> AR: 4 أدراج: 🔵 الفهم و🟢 البحث و🟠 الإنشاء و🟣 التنظيم-البرمجة.
-1. Arbre : sources ? → créer ? → organiser-coder ? → sinon bleu.
-> EN: Tree: sources? → create? → organise-code? → else blue.
-> AR: الشجرة: مصادر؟ ← إنشاء؟ ← تنظيم-برمجة؟ ← وإلا أزرق.
-1. 1 favori par tiroir + page Outils IA en favori.
-> EN: 1 favourite per drawer + AI Tools page bookmarked.
-> AR: مفضلة لكل درج + صفحة أدوات الذكاء محفوظة.
-1. Gratuit étudiant d'abord, jamais d'abonnement aveugle.
-> EN: Student free first, never a blind subscription.
-> AR: المجاني الطلابي أولاً ولا اشتراك أعمى أبداً.
+1. J'ai ouvert Perplexity SANS compte et obtenu une réponse avec sources cliquables.
+> EN: I opened Perplexity with NO account and got an answer with clickable sources.
+> AR: فتحت Perplexity دون حساب وحصلت على جواب بمصادر قابلة للنقر.
+1. J'ai testé 1 question sur 2 outils et rempli mon tableau (fort + limite).
+> EN: I tested 1 question on 2 tools and filled my table (strength + limit).
+> AR: جرّبت سؤالاً على أداتين وملأت جدولي (ميزة + حد).
+1. Je prescris avec l'arbre : sources ? créer ? organiser-coder ? sinon bleu.
+> EN: I prescribe with the tree: sources? create? organise-code? else blue.
+> AR: أصرف بالشجرة: مصادر؟ إنشاء؟ تنظيم-برمجة؟ وإلا أزرق.
+1. J'ai mes 4 favoris (1 par tiroir), justifiés en 1 phrase chacun.
+> EN: I have my 4 favourites (1 per drawer), each justified in 1 sentence.
+> AR: عندي مفضلاتي الأربع (واحدة لكل درج) مبرَّرة كل منها بجملة.
 1. 3 règles d'or partout : vérifier, citer, juger.
 > EN: 3 golden rules everywhere: verify, cite, judge.
 > AR: القواعد الذهبية الثلاث دائماً: تحقّق واستشهد واحكم.

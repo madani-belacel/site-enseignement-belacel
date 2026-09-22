@@ -4,31 +4,50 @@
 **Auteur : Dr. Madani BELACEL — Université de Mostaganem**  
 **Durée : 1 h 30**  
 
-Vue d'ensemble des outils d'IA : à quoi sert chacun, comment les classer en 4 familles, démonstration rapide de 3 outils et méthode pour toujours choisir le bon.
+Ouvrir Perplexity sans compte, tester 3 outils de 3 familles sur la même question, prescrire le bon outil avec l'arbre de décision et repartir avec tes 4 favoris.
 
 ## Objectifs pédagogiques
-- Classer les outils d'IA en 4 familles : comprendre, chercher, créer, organiser-coder.
-- Décrire en une phrase l'usage de chacun des 12 outils du module.
-- Comparer 3 outils en démonstration : assistant, moteur sourcé, création visuelle.
-- Choisir le bon outil pour une tâche avec l'arbre de décision.
-- Éviter les 3 erreurs de débutant : tout demander au même outil, croire sans vérifier, payer avant d'essayer le gratuit.
+- Ouvrir Perplexity sans créer de compte et y poser ta première question sourcée.
+- Tester 3 outils (ChatGPT, Perplexity, Canva) sur la même question et comparer.
+- Prescrire le bon outil pour 3 situations avec l'arbre de décision.
+- Choisir tes 4 outils favoris (1 par famille) et justifier chaque choix.
+- Éviter les 3 erreurs de débutant : sirop unique, confiance aveugle, abonnement aveugle.
 
 ## Déroulé de la séance (1 h 30)
-- **00–05 — Accroche : la jungle des 12 noms** : Sondage : qui utilise quoi ? + analogie de la pharmacie.
-- **05–25 — Explication : les 4 familles** : Comprendre, chercher, créer, organiser-coder : 1 exemple étudiant par famille.
-- **25–50 — Démo : 3 outils en action** : Même question à ChatGPT, Perplexity et Canva : comparer les réponses.
-- **50–70 — Exercice guidé : le bon pharmacien** : 8 situations d'étudiant → prescrire le bon outil avec l'arbre de décision.
-- **70–80 — Démo 2 : mauvais vs bon prompt** : « Fais mon exposé » contre la requête en 4 composantes : le fossé en direct.
-- **80–90 — Synthèse, quiz et annonce de la séance 3** : « À retenir ». Annonce : la recherche approfondie avec Perplexity et Scholar.
+- **00–05 — 🚀 Action immédiate : Perplexity sans compte** : Ouvrir perplexity.ai, taper le prompt prêt, observer les sources, cliquer 1 lien.
+- **05–25 — 📋 Recette : tester 3 outils sur 1 question** : ChatGPT, Perplexity, Canva : même question, 3 réponses, tableau comparatif.
+- **25–50 — 🛠️ Démo : l'arbre de décision du pharmacien** : 3 questions (sources ? créer ? organiser ?) + 4 composantes d'une bonne requête.
+- **50–70 — 🧪 Mission : tableau comparatif + 4 favoris** : Livrable : 1 question testée sur 3 outils + verdict + tes 4 favoris justifiés.
+- **70–80 — ⚠️ Erreurs : sirop unique et confiance aveugle** : 3 erreurs en direct + mauvais vs bon prompt : le fossé sous vos yeux.
+- **80–90 — ✅ Checklist, quiz et annonce de la séance 3** : Cocher les 4 cases + quiz de 5 questions. Annonce : la recherche approfondie (séance 3).
 
 ## A. Accroche et analogie (5 min)
-- **Question :** ChatGPT, Gemini, Perplexity, Canva, Notion… 12 noms sur le tableau : qui peut dire à quoi sert chacun ? Aujourd'hui, on range cette jungle.
-- **Analogie :** 🍳 Les outils d'IA, c'est comme la pharmacie : on ne soigne pas tout avec le même sirop. Le pharmacien (vous, bientôt) lit l'ordonnance (la tâche) puis choisit le bon flacon.
-- **En une phrase :** 💡 12 outils, 4 familles : COMPRENDRE (assistants), CHERCHER (moteurs sourcés), CRÉER (slides, images, voix), ORGANISER-CODER (notes, code, local).
 
 ## B + C. Explication pas à pas et démonstration
-### Les 4 familles : rangez la jungle
-Retenez 4 tiroirs, pas 12 noms. Devant chaque tâche, demandez-vous : est-ce que je veux COMPRENDRE, CHERCHER, CRÉER ou ORGANISER-CODER ? Le tiroir désigne l'outil.
+### 🎯 Ce que vous saurez faire à la fin
+Aujourd'hui, pas de théorie : tu vas TOUCHER à 3 outils. Voici les 3 résultats concrets de la séance.
+
+- <strong>1.</strong> Ouvrir Perplexity SANS compte et obtenir une réponse avec des sources cliquables.
+- <strong>2.</strong> Tester la même question sur 3 outils (ChatGPT, Perplexity, Canva) et dire lequel fait quoi.
+- <strong>3.</strong> Repartir avec tes 4 outils favoris (1 par famille), chacun justifié en 1 phrase.
+> 💡 **<strong>🔗 Rappel séance 1 :</strong> tu sais déjà poser une question et juger une réponse (clair/confus). Aujourd'hui, tu apprends OÙ la poser : le bon tiroir pour chaque besoin.**
+
+### 🚀 Action immédiate — Perplexity sans compte (5 minutes)
+Bonne nouvelle : Perplexity marche SANS inscription. En 5 minutes, tu obtiendras ta première réponse SOURCÉE.
+
+- <strong>Ouvre</strong> perplexity.ai (téléphone ou PC). Pas de compte, pas de mot de passe : la barre est devant toi.
+- <strong>Copie-colle EXACTEMENT</strong> le prompt ci-dessous et envoie.
+- <strong>Observe :</strong> la réponse arrive AVEC des petits numéros [1][2][3]. Ce sont des sources cliquables — ChatGPT ne fait pas ça.
+- <strong>Clique</strong> sur la source [1] : elle s'ouvre. Vrai article ou page web ? Note-le.
+- <strong>Note</strong> sur papier : la réponse + le titre de la source ouverte.
+
+```
+Quelle est la différence entre l'IA faible et l'IA générale ? Donne 3 exemples concrets pour chacune.
+```
+> 💡 **<strong>✅ Résultat attendu :</strong> une réponse courte + 2 à 4 sources numérotées en bas. Clique : au moins 1 lien doit s'ouvrir sur une vraie page. Sinon, repose la question mot pour mot.**
+
+### 📋 Recette : 3 outils, 1 question, 1 verdict
+Étape 0 — range d'abord : 4 tiroirs, pas 12 noms. Devant chaque tâche : COMPRENDRE, CHERCHER, CRÉER ou ORGANISER-CODER ? Le tiroir désigne l'outil.
 
 | Famille | Outils | Exemple étudiant |
 |---|---|---|
@@ -36,84 +55,61 @@ Retenez 4 tiroirs, pas 12 noms. Devant chaque tâche, demandez-vous : est-ce que
 | 🟢 CHERCHER | Perplexity, Scholar, Consensus, NotebookLM | « Quelles études 2020-2026 sur les écrans ? » |
 | 🟠 CRÉER | Gamma, Canva IA, DALL·E, ElevenLabs | « 5 slides + 1 affiche pour mon exposé » |
 | 🟣 ORGANISER-CODER | Notion AI, Copilot/Cursor, Ollama, Dify | « Planning 4 semaines + script Python » |
-> 💡 **<strong>🔗 Rappel séance 1 :</strong> les 3 règles d'or (vérifier, citer, garder son jugement) s'appliquent aux 4 familles. Et souvenez-vous de l'acteur brillant : convaincant ne veut pas dire vrai — dans AUCUNE famille.**
+Détail complet de chaque outil sur la page « Outils IA » du module. Maintenant, teste : même question, 3 outils, 1 verdict.
 
-### Les 12 outils en fiches express
-Une phrase par outil, à connaître par cœur. Le détail complet (étapes, forces, limites) est sur la page « Outils IA » du module : chaque outil y a sa fiche.
+- <strong>ChatGPT (🔵) :</strong> colle le prompt A ci-dessous → note : explication claire ? exemple donné ? sources ? (réponse attendue : non).
+- <strong>Perplexity (🟢) :</strong> colle le MÊME prompt A → note : réponse plus courte ? liens [1][2] présents ? Ouvre-en 1.
+- <strong>Canva (🟠, démo projetée) :</strong> suis l'enseignant : canva.com → « Magic Design » → décris « affiche différenciation, style dessin animé » → observe le résultat.
+- <strong>Verdict :</strong> remplis 1 ligne par outil : COMPRENDRE / PROUVER / MONTRER. Quel outil pour quel métier ?
 
-- <strong>ChatGPT :</strong> l'assistant généraliste qui explique, résume et rédige.
-- <strong>Gemini :</strong> comme ChatGPT + lit images et PDF.
-- <strong>Claude :</strong> le champion des longs textes en bon français.
-- <strong>Perplexity :</strong> répond AVEC les sources à ouvrir.
-- <strong>Scholar / Consensus :</strong> la bibliothèque scientifique (articles, consensus).
-- <strong>NotebookLM :</strong> interroge VOS propres PDF de cours.
-- <strong>Gamma :</strong> transforme un plan en diaporama.
-- <strong>Canva IA :</strong> affiches et visuels magnifiques.
-- <strong>Copilot / Cursor :</strong> le copilote du programmeur.
-- <strong>Notion AI :</strong> notes, plannings et tableaux intelligents.
-- <strong>DALL·E :</strong> dessine ce que vous décrivez.
-- <strong>ElevenLabs / Whisper :</strong> voix de synthèse et transcription.
-- <strong>Ollama :</strong> une IA chez vous, hors-ligne et gratuite.
-- <strong>Dify :</strong> votre chatbot sans coder.
-> 💡 **<strong>Astuce mémoire :</strong> 4 couleurs = 4 familles (🔵🟢🟠🟣). Demandez à un camarade : « cite-moi les 3 outils verts » — celui qui hésite révise la fiche !**
-
-### Démo : la même question à 3 outils
-Question test : « Explique la différenciation pédagogique avec un exemple de primaire. » Regardez ce que CHAQUE outil apporte — aucun ne fait tout.
+```
+Explique la différenciation pédagogique avec un exemple de classe primaire, en 8 lignes.
+```
 
 - <strong>ChatGPT (🔵) :</strong> explication claire + exemple, sans sources. Parfait pour COMPRENDRE vite.
 - <strong>Perplexity (🟢) :</strong> réponse plus courte MAIS avec 3 liens : parfait pour VÉRIFIER et citer.
 - <strong>Canva IA (🟠) :</strong> une affiche « différenciation » pour la classe : parfait pour MONTRER.
 - <strong>Leçon :</strong> comprendre → bleu ; prouver → vert ; montrer → orange. Trois outils, trois métiers.
 > 💡 **<strong>🧪 Exemple concret :</strong> Karim prépare un exposé sur l'eau : ChatGPT lui donne le plan en 1 minute, Perplexity lui trouve 3 sources datées, Canva lui dessine l'affiche du cycle. Trois pharmaciens, une ordonnance : l'exposé.**
+> 💡 **<strong>Les 4 composantes d'une bonne requête :</strong> contexte (qui tu es, quel cours), objectif (comprendre, citer, réviser), format (liste, tableau, 5 lignes), contrainte (sources, langue, dates). Teste : ajoute « en 5 phrases » à ton prompt et compare.**
 
-### Bien choisir : l'arbre de décision du pharmacien
-Trois questions suffisent pour ne plus jamais se tromper d'outil.
+### ⚠️ Erreurs fréquentes des pharmaciens débutants
+Vérifie ton tableau comparatif : as-tu commis l'une de ces 3 erreurs ? Corrige-la tout de suite sur ton écran.
 
-- <strong>1. Ai-je besoin de SOURCES ?</strong> Oui → 🟢 (Perplexity, Scholar). Non → question 2.
-- <strong>2. Est-ce que je CRÉE quelque chose à montrer ?</strong> Oui → 🟠 (Gamma, Canva, DALL·E). Non → question 3.
-- <strong>3. Est-ce que j'ORGANISE ou je CODE ?</strong> Oui → 🟣 (Notion, Copilot, Ollama, Dify). Non → 🔵 (ChatGPT, Gemini, Claude).
-> 💡 **<strong>Les 4 composantes d'une bonne requête :</strong> contexte (qui tu es, quel cours), objectif (comprendre, citer, réviser), format (liste, tableau, 5 lignes), contrainte (sources, langue, dates). La démo 2 les applique en direct.**
-> 💡 **<strong>❌ 3 erreurs de débutant :</strong> 1) tout demander au même outil (le sirop unique) ; 2) croire sans ouvrir les sources ; 3) payer un abonnement avant d'avoir épuisé le gratuit étudiant.**
+- <strong>❌ Le sirop unique :</strong> tout demander au même outil. <strong>✅ Prescris</strong> avec l'arbre : sources ? → 🟢 ; créer ? → 🟠 ; organiser-coder ? → 🟣 ; sinon 🔵.
+- <strong>❌ Croire sans ouvrir :</strong> la réponse a l'air sûre, mais les liens ? <strong>✅ Ouvre</strong> au moins 1 source avant de noter quoi que ce soit.
+- <strong>❌ Payer avant d'essayer :</strong> cliquer « Premium » par impatience. <strong>✅ Épuise</strong> d'abord le gratuit étudiant (largement suffisant pour ce module).
+> 💡 **<strong>Teste maintenant :</strong> reprends ta question et ajoute « avec 2 sources datées ». Compare avant/après : le VERT obéit quand on exige des sources.**
 
-### Comment en profiter au maximum
-Le bon pharmacien ne connaît pas 12 sirops par cœur le premier jour : il connaît 4 tiroirs, 1 outil préféré par tiroir, et la page « Outils IA » pour le reste.
+### 🧪 Votre mission — ordonnance complète
+En binôme, produisez UNE page : votre ordonnance pour 1 vraie question de cours. À rendre au début de la séance 3.
+
+- <strong>Choisissez</strong> 1 question de VOTRE cours (ex : « c'est quoi la motivation scolaire ? »).
+- <strong>Testez-la</strong> sur 2 outils de familles différentes (ex : 🔵 ChatGPT + 🟢 Perplexity).
+- <strong>Remplissez</strong> le tableau : outil | réponse en 1 phrase | + (point fort) | − (limite vue).
+- <strong>Prescrivez</strong> avec l'arbre : sources ? → 🟢 ; créer ? → 🟠 ; organiser-coder ? → 🟣 ; sinon 🔵.
+- <strong>Choisissez</strong> vos 4 favoris (1 par tiroir), chacun justifié en 1 phrase.
 > 💡 **<strong>➡️ Pont vers la séance 3 :</strong> la famille verte (CHERCHER) mérite une séance entière : Perplexity en profondeur, Scholar comme un chercheur, et l'art de vérifier (séance 3).**
 
-- <strong>✅ 1 favori par tiroir :</strong> choisissez vos 4 outils de tous les jours cette semaine.
-- <strong>✅ Gratuit d'abord :</strong> comptes étudiants gratuits avant tout abonnement.
-- <strong>✅ Fiche outils :</strong> gardez la page « Outils IA » en favori du navigateur.
-- <strong>✅ Testez à deux :</strong> même question, deux outils, comparez — le meilleur exercice.
-> 💡 **<strong>❌ Erreurs à éviter :</strong> collectionner 12 comptes qu'on n'ouvre jamais, demander des sources à un outil bleu, demander un poème à un outil vert.**
+### ✅ Checklist de validation
+Avant de partir, coche avec ton binôme. Tout doit être coché :
 
-|  | Mauvais usage | Bon usage |
-|---|---|---|
-| Demande | « Fais tout pour mon exposé » à un seul outil. | « Plan (bleu) + sources (vert) + affiche (orange) » : 3 outils, 3 métiers. |
-| Résultat | Un seul sirop pour tous les maux. | Le bon flacon pour chaque symptôme. |
+- ☐ J'ai ouvert Perplexity SANS compte et obtenu une réponse sourcée.
+- ☐ J'ai testé 1 question sur 2 outils et rempli le tableau comparatif.
+- ☐ J'ai prescrit le bon tiroir avec l'arbre (sources ? créer ? organiser ?).
+- ☐ J'ai repéré 1 limite (pas de sources, réponse inventée, compte exigé).
 
 ## 📺 Ressources vidéo
 - **Playlist IA de Mohammad Dawoud (référence du module)** (ar): https://www.youtube.com/watch?v=H5WUwwivEaI&list=PLbR_CTcUs1088jfqbbO5AqwODO9MgYA85 — Comprendre ce qu'il y a SOUS les outils : introduction, ML, réseaux de neurones.
 - **Comparatif assistants IA 2026 : lequel choisir ?** (fr): https://www.youtube.com/results?search_query=comparatif+chatgpt+gemini+claude+2026+francais — Voir les différences bleu contre bleu avant de choisir votre favori.
 - **10 outils IA pour étudiants : panorama guidé** (fr): https://www.youtube.com/results?search_query=outils+ia+etudiants+universite+tutoriel — Le panorama en vidéo : quand passer du tiroir bleu au vert puis à l'orange.
 
-## D. Exercice guidé (15 min)
-**Énoncé :** 8 situations d'étudiant : prescrivez le bon outil avec l'arbre de décision (sources ? créer ? organiser-coder ?). Justifiez en 1 phrase.
-**Méthode :** 1) Lire la situation. 2) Poser les 3 questions de l'arbre dans l'ordre. 3) Nommer l'outil + la famille (couleur). 4) Comparer avec le voisin avant correction.
-**Solution :** 1) Expliquer une notion → 🔵 ChatGPT. 2) Citer 2 études → 🟢 Perplexity/Scholar. 3) Slides d'exposé → 🟠 Gamma. 4) Affiche → 🟠 Canva. 5) Planning révisions → 🟣 Notion. 6) Bug Python → 🟣 Copilot. 7) Résumer VOS PDF → 🟢 NotebookLM. 8) Chatbot sans code → 🟣 Dify.
-
-## 💭 As-tu bien compris ?
-- **Q1.** Que faire si vous avez besoin de SOURCES ?
-  *Réponse :* Tiroir vert : Perplexity pour une réponse sourcée rapide, Scholar/Consensus pour des articles vérifiables.
-- **Q2.** NotebookLM appartient à quelle famille, et pourquoi ?
-  *Réponse :* CHERCHER (vert) : il répond à partir de VOS documents, sources affichées — c'est un moteur sur vos PDF.
-- **Q3.** Ollama et Dify : quelle différence en une phrase ?
-  *Réponse :* Ollama fait tourner un modèle chez vous hors-ligne ; Dify construit un chatbot sur vos PDF sans coder.
-
 ## E. Résumé visuel et mémorable (5 min)
 ### Points clés
-- 4 tiroirs : 🔵 comprendre, 🟢 chercher, 🟠 créer, 🟣 organiser-coder.
-- Arbre : sources ? → créer ? → organiser-coder ? → sinon bleu.
-- 1 favori par tiroir + page Outils IA en favori.
-- Gratuit étudiant d'abord, jamais d'abonnement aveugle.
+- J'ai ouvert Perplexity SANS compte et obtenu une réponse avec sources cliquables.
+- J'ai testé 1 question sur 2 outils et rempli mon tableau (fort + limite).
+- Je prescris avec l'arbre : sources ? créer ? organiser-coder ? sinon bleu.
+- J'ai mes 4 favoris (1 par tiroir), justifiés en 1 phrase chacun.
 - 3 règles d'or partout : vérifier, citer, juger.
 ### Analogies utilisées
 - 🍳 La pharmacie : l'ordonnance (tâche) désigne le flacon (outil).
