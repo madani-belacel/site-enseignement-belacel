@@ -243,10 +243,10 @@ def render_blocks(blocks):
                     f'<table class="plan-table lang-{lang}"><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table>'
                 )
         elif typ == "pre":
-            for lang in ("fr", "en"):
-                acc_target = fr if lang == "fr" else en
+            for lang in ("fr", "en", "ar"):
+                acc_target = fr if lang == "fr" else en if lang == "en" else ar
                 acc_target.append(
-                    f'<pre class="lang-{lang}"><code>{md_escape(b[lang])}</code></pre>'
+                    f'<pre class="lang-{lang}"><code>{md_escape(b.get(lang, b.get("fr", "")))}</code></pre>'
                 )
     return "\n".join(fr), "\n".join(en), "\n".join(ar)
 
@@ -388,6 +388,29 @@ def trija3(d):
     return "".join(tri(d, "span"))
 
 
+def quiz_opts(q):
+    """Normalise les options d'une question quiz en liste de dicts {fr,en,ar}.
+
+    Les sources utilisent L([...],[...],[...]) soit un dict de listes ;
+    le rendu attend une liste de dicts. Les deux formats sont acceptés.
+    """
+    opts = q.get("options")
+    if isinstance(opts, dict):
+        fr = opts.get("fr", []) or []
+        en = opts.get("en", []) or []
+        ar = opts.get("ar", []) or []
+        n = max(len(fr), len(en), len(ar))
+        return [
+            {
+                "fr": fr[k] if k < len(fr) else "",
+                "en": en[k] if k < len(en) else "",
+                "ar": ar[k] if k < len(ar) else "",
+            }
+            for k in range(n)
+        ]
+    return opts or []
+
+
 def render_quiz_html(seance):
     """Quiz de 3 à 5 questions — les réponses sont dans des <details>."""
     fs = seance.get("fiche_synthese") or {}
@@ -397,7 +420,7 @@ def render_quiz_html(seance):
     items = []
     for i, q in enumerate(quiz, 1):
         opts = []
-        for j, opt in enumerate(q["options"]):
+        for j, opt in enumerate(quiz_opts(q)):
             mark = "✅" if j == q.get("answer", 0) else "🔘"
             fd = f'<div class="lang-fr">{opt["fr"]}</div><div class="lang-en">{opt["en"]}</div><div class="lang-ar">{opt["ar"]}</div>'
             opts.append(f'<div class="quiz-opt {("quiz-ok" if j == q.get("answer", 0) else "")}">{mark} {fd}</div>')
@@ -652,7 +675,7 @@ def md_for(lang, seance):
             elif t == "pre":
                 m.append("")
                 m.append("```")
-                m.append(b[lang])
+                m.append(b.get(lang, b.get("fr", "")))
                 m.append("```")
         m.append("")
     vids = seance.get("videos") or []
@@ -696,7 +719,7 @@ def md_for(lang, seance):
             m.append("### Quiz — vérifie ta compréhension")
             for i, q in enumerate(quiz, 1):
                 m.append(f"**Q{i}.** {q['q'][lang]}")
-                for j, opt in enumerate(q["options"]):
+                for j, opt in enumerate(quiz_opts(q)):
                     mark = "✅" if j == q.get("answer", 0) else "🔘"
                     m.append(f"   - {mark} {opt[lang]}")
                 m.append(f"   *Explication :* {q.get('exp', q['q'])[lang]}")
@@ -761,7 +784,7 @@ def fiche_synthese_md(seance):
     m.append("")
     for i, q in enumerate(quiz, 1):
         m.append(f"**Q{i}. {q['q']['fr']}**")
-        for j, opt in enumerate(q["options"]):
+        for j, opt in enumerate(quiz_opts(q)):
             mark = "✅" if j == q.get("answer", 0) else "🔘"
             m.append(f"- {mark} {opt['fr']}")
         m.append(f"*Explication : {q.get('exp', q['q'])['fr']}*")
@@ -1018,7 +1041,7 @@ def slides_md(seance):
         lines += ["", "---", "", "## ✅ Quiz éclair (1 min)", ""]
         for i, q in enumerate(quiz[:3]):
             lines.append(f"**Q{i+1}. {q['q']['fr']}**")
-            for j, opt in enumerate(q["options"]):
+            for j, opt in enumerate(quiz_opts(q)):
                 mark = "✅" if j == q.get("answer", 0) else "🔘"
                 lines.append(f"   - {mark} {opt['fr']}")
     # Activités
