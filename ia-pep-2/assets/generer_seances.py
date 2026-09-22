@@ -1159,7 +1159,7 @@ def render_module_index(seances):
         <div class="module-card-content">
           <div class="module-card-date"><span class="lang-fr">Atelier code</span><span class="lang-en">Code workshop</span><span class="lang-ar">ورشة البرمجة</span></div>
           <h3><span class="lang-fr">Construire sa propre IA</span><span class="lang-en">Build your own AI</span><span class="lang-ar">بناء ذكاء اصطناعي خاص بك</span></h3>
-          <p><span class="lang-fr">3 approches : no-code (Dify), API Python (Gemini/OpenAI), local (Ollama). Projet de la séance 06.</span><span class="lang-en">3 approaches: no-code (Dify), Python API (Gemini/OpenAI), local (Ollama). Session 6 project.</span><span class="lang-ar">ثلاث مقاربات: بدون كود (Dify)، بواجهة Python (Gemini/OpenAI)، ومحلياً (Ollama). مشروع الحصة السادسة.</span></p>
+          <p><span class="lang-fr">3 approches : no-code (Dify), API Python (Gemini/OpenAI), local (Ollama). Projet de la séance 07.</span><span class="lang-en">3 approaches: no-code (Dify), Python API (Gemini/OpenAI), local (Ollama). Session 7 project.</span><span class="lang-ar">ثلاث مقاربات: بدون كود (Dify)، بواجهة Python (Gemini/OpenAI)، ومحلياً (Ollama). مشروع الحصة السابعة.</span></p>
           <span class="module-card-link"><span class="lang-fr">Ouvrir la page</span><span class="lang-en">Open the page</span><span class="lang-ar">فتح الصفحة</span></span>
         </div>
       </a>
@@ -1375,9 +1375,9 @@ def render_outils_ia(seances):
     <h3 class="lang-fr">Où tester ces outils dans le module ?</h3>
     <h3 class="lang-en">Where to try these tools in the module?</h3>
     <h3 class="lang-ar">أين تجرّب هذه الأدوات في الوحدة؟</h3>
-    <p class="lang-fr">🧾 Chercher/résumer : séances 02 et 03 · ✍️ Rédiger : séance 04 · 🎤 Exposé (Gamma/Canva) : séance 05 · 💻 Coder avec l'IA (mini-projet Python) : séance 06 · 🧠 Réviser (quiz/flashcards) : séance 07 · 🗂️ S'organiser (Notion) : séance 08 · 🛠️ Construire sa propre IA : <a href="construire-ia.html">construire-ia.html</a>.</p>
-    <p class="lang-en">🧾 Search/summarise: sessions 02 and 03 · ✍️ Writing: session 04 · 🎤 Presentation (Gamma/Canva): session 05 · 💻 Coding with AI (Python mini-project): session 06 · 🧠 Revising (quiz/flashcards): session 07 · 🗂️ Organising (Notion): session 08 · 🛠️ Build your own AI: <a href="construire-ia.html">construire-ia.html</a>.</p>
-    <p class="lang-ar">🧾 البحث/التلخيص: الحصتان 2 و3 · ✍️ الكتابة: الحصة 4 · 🎤 العرض: الحصة 5 · 💻 البرمجة مع الذكاء الاصطناعي (مشروع بايثون): الحصة 6 · 🧠 المراجعة: الحصة 7 · 🗂️ التنظيم: الحصة 8 · 🛠️ بناء الذكاء الخاص: <a href="construire-ia.html">construire-ia.html</a>.</p>
+    <p class="lang-fr">🧾 Chercher/résumer : séances 03 et 04 · ✍️ Rédiger : séance 08 · 🎤 Exposé (Gamma/Canva) : séance 05 · 💻 Coder avec l'IA (mini-projet Python) : séance 07 · 🧠 Réviser (quiz/flashcards) : séance 06 · 🗂️ S'organiser (Notion) : séance 09 · 🛠️ Construire sa propre IA : <a href="construire-ia.html">construire-ia.html</a>.</p>
+    <p class="lang-en">🧾 Search/summarise: sessions 03 and 04 · ✍️ Writing: session 08 · 🎤 Presentation (Gamma/Canva): session 05 · 💻 Coding with AI (Python mini-project): session 07 · 🧠 Revising (quiz/flashcards): session 06 · 🗂️ Organising (Notion): session 09 · 🛠️ Build your own AI: <a href="construire-ia.html">construire-ia.html</a>.</p>
+    <p class="lang-ar">🧾 البحث/التلخيص: الحصتان 3 و4 · ✍️ الكتابة: الحصة 8 · 🎤 العرض: الحصة 5 · 💻 البرمجة مع الذكاء الاصطناعي (مشروع بايثون): الحصة 7 · 🧠 المراجعة: الحصة 6 · 🗂️ التنظيم: الحصة 9 · 🛠️ بناء الذكاء الخاص: <a href="construire-ia.html">construire-ia.html</a>.</p>
   </div>
 </div>"""
 
@@ -1435,7 +1435,7 @@ footer_placeholder"""""
 
 
 # --------------------------------------------------------------------------
-# Page « Construire son IA » (3 approches + projet séance 06)
+# Page « Construire son IA » (3 approches + projet séance 07)
 # --------------------------------------------------------------------------
 def render_construire_ia(seances):
     prefix = "../"
@@ -1448,7 +1448,7 @@ def render_construire_ia(seances):
   "author": {{ "@type": "Person", "name": "Dr. BELACEL Madani" }},
   "inLanguage": "fr"
 }}"""
-    code_py = """# assistant_chat.py -- mini assistant IA (projet séance 06)
+    code_py = """# assistant_chat.py -- mini assistant IA (projet séance 07)
 # python -m pip install google-generativeai
 import google.generativeai as genai
 
@@ -1476,7 +1476,7 @@ while True:
             "emoji": "🐍",
             "nom": L("2. Avec code : Python + API Gemini/OpenAI", "2. With code: Python + Gemini/OpenAI API", "2. بالكود: Python + واجهة Gemini/OpenAI"),
             "difficulte": L("Moyenne — notions de base en Python", "Medium — basic Python", "متوسطة — أساسيات بايثون"),
-            "temps": L("± 1 h 30 (projet de la séance 06)", "About 1h30 (session 6 project)", "حوالي ساعة و30 دقيقة (مشروع الحصة 6)"),
+            "temps": L("± 1 h 30 (projet de la séance 07)", "About 1h30 (session 7 project)", "حوالي ساعة و30 دقيقة (مشروع الحصة 7)"),
             "prerequis": L("Python installé, clé API gratuite (ai.google.dev)", "Python installed, free API key (ai.google.dev)", "بايثون مثبّتة، مفتاح API مجاني (ai.google.dev)"),
             "usage": L("Un script qui dialogue avec un modèle d'IA, et qu'on peut modifier (historique, fonctions, sauvegarde).", "A script that chats with an AI model and can be modified (history, functions, saving).", "برنامج يحاور نموذج ذكاء اصطناعي ويمكن تعديله (تاريخ، وظائف، حفظ)."),
             "exemple": L("`python assistant_chat.py` puis taper ses questions de révision.", "`python assistant_chat.py` then type your revision questions.", "`python assistant_chat.py` ثم اكتب أسئلة مراجعتك."),
@@ -1505,7 +1505,7 @@ while True:
 
     html = head_html(
         "Construire son IA — 3 approches · Module IA PEP 2A — Dr. Madani BELACEL",
-        "Trois façons de construire une IA personnelle : no-code avec Dify, API Python avec Gemini/OpenAI, et local avec Ollama. Projet de la séance 06.",
+        "Trois façons de construire une IA personnelle : no-code avec Dify, API Python avec Gemini/OpenAI, et local avec Ollama. Projet de la séance 07.",
         canonical,
         prefix,
         json_ld,
@@ -1522,15 +1522,15 @@ while True:
 <main class="page-content"><div class="ia-page" style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
   <h1 style="font-family:var(--font-heading);color:var(--primary);margin:1.2rem 0 0.2rem;font-size:1.6rem;">🛠️ <span class="lang-fr">Construire sa propre IA</span><span class="lang-en">Build your own AI</span><span class="lang-ar">بناء ذكاء اصطناعي خاص بك</span></h1>
   <p style="color:var(--text-muted);font-size:.95rem;">
-    <span class="lang-fr">Trois chemins possibles, du plus facile au plus « geek » : sans code, avec code, ou en local. La voie « code » est le projet de la <a href="seance-06/index.html">séance 06</a>.</span>
-    <span class="lang-en">Three possible paths, from easiest to most \"geek\": no-code, with code, or locally. The \"code\" path is the <a href="seance-06/index.html">session 06</a> project.</span>
-    <span class="lang-ar">ثلاثة مسارات، من الأسهل إلى الأكثر « تقنياً »: بدون كود، بالكود، أو محلياً. مسار « الكود » هو مشروع <a href="seance-06/index.html">الحصة السادسة</a>.</span>
+    <span class="lang-fr">Trois chemins possibles, du plus facile au plus « geek » : sans code, avec code, ou en local. La voie « code » est le projet de la <a href="seance-07/index.html">séance 07</a>.</span>
+    <span class="lang-en">Three possible paths, from easiest to most \"geek\": no-code, with code, or locally. The \"code\" path is the <a href="seance-07/index.html">session 07</a> project.</span>
+    <span class="lang-ar">ثلاثة مسارات، من الأسهل إلى الأكثر « تقنياً »: بدون كود، بالكود، أو محلياً. مسار « الكود » هو مشروع <a href="seance-07/index.html">الحصة السابعة</a>.</span>
   </p>
   {lang_tabs()}
   <div class="outil-grid">
 {"".join(cards)}
   </div>
-  <h2 style="font-family:var(--font-heading);color:var(--navy);margin:1.4rem 0 .5rem;font-size:1.3rem;">🐍 <span class="lang-fr">Le projet de la séance 06 : assistant Python qui interroge une IA</span><span class="lang-en">Session 06 project: a Python assistant calling an AI</span><span class="lang-ar">مشروع الحصة السادسة: مساعد بايثون يستدعي ذكاءً اصطناعياً</span></h2>
+  <h2 style="font-family:var(--font-heading);color:var(--navy);margin:1.4rem 0 .5rem;font-size:1.3rem;">🐍 <span class="lang-fr">Le projet de la séance 07 : assistant Python qui interroge une IA</span><span class="lang-en">Session 07 project: a Python assistant calling an AI</span><span class="lang-ar">مشروع الحصة السابعة: مساعد بايثون يستدعي ذكاءً اصطناعياً</span></h2>
   <ol style="margin:.5rem 0 .5rem 1.4rem;line-height:1.8;">
     <li class="lang-fr">Obtenir une clé API gratuite sur <strong>ai.google.dev</strong> (Gemini) ou <strong>platform.openai.com</strong>.</li>
     <li class="lang-en">Get a free API key at <strong>ai.google.dev</strong> (Gemini) or <strong>platform.openai.com</strong>.</li>
