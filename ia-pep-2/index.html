@@ -1,14 +1,224 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="0; url=../cours/Module Intelligence Artificielle/seances/index.html">
-<title>Redirection… — le contenu a bougé</title>
+  <meta charset="UTF-8">
+  <title>Redirection…</title>
+  <meta http-equiv="refresh" content="0; url=../cours/Module Intelligence Artificielle/seances/index.html">
 </head>
-<body style="font-family:sans-serif;padding:2rem;line-height:1.7;">
-  <p>⚠️ <strong>Redirection…</strong> cette page a été déplacée.</p>
-  <p>Si la redirection ne se fait pas automatiquement, clique ici :<br>
-     <a href="../cours/Module Intelligence Artificielle/seances/index.html">Continuer vers la page demandée</a></p>
+<body>
+  <p>Redirection en cours…
+    <a href="../cours/Module Intelligence Artificielle/seances/index.html">Cliquez ici si rien ne se passe.</a>
+  </p>
+</body>
+</html>
+
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h4 {
+    margin-top: 0;
+    color: #177bbe;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #177bbe;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>📖 Module Intelligence Artificielle — 15 séances + 34 astuces</h1>
+  <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
+
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>🚀 Comment utiliser ce module</strong><br>
+    1. Avance dans l'ordre : chaque séance s'appuie sur la précédente, de la séance 01 à la séance 15.<br>
+    2. Le module ne se lit pas, il se pratique : copie les prompts, lance les étapes « pas à pas », compare tes réponses à celles affichées.<br>
+    3. Garde la page 💡 34 astuces à portée de main : c'est elle qui transforme ce que tu as appris en réflexes du quotidien.
+  </div>
+
+  <h2>🗺️ Le parcours des 15 séances</h2>
+  <div class="step">
+    <h4><a href="seance-01.html">🤖 Séance 01 — Comprendre l'IA et lui parler pour la première fois</a></h4>
+    <p>Ce que l'IA est vraiment, comment elle « prédit », et tes 5 premiers gestes.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-02.html">🤖 Séance 02 — Panorama des 14 outils d'IA pour l'étudiant</a></h4>
+    <p>Quel outil pour quelle tâche : ChatGPT, Gemini, Claude, DeepSeek, NotebookLM…</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-03.html">🤖 Séance 03 — Chercher et vérifier l'information avec l'IA</a></h4>
+    <p>Sources réelles, dates vérifiées et détection des hallucinations.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-04.html">🤖 Séance 04 — Résumer et créer des fiches de révision</a></h4>
+    <p>Du PDF de cours à la fiche, au QCM et aux flashcards.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-05.html">🤖 Séance 05 — Préparer un exposé de A à Z avec l'IA</a></h4>
+    <p>Plan, diapositives, script d'oral et réponses au jury.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-06.html">🤖 Séance 06 — Réviser un examen avec l'IA (QCM + flashcards)</a></h4>
+    <p>NotebookLM, 10 QCM corrigés, 10 flashcards et une simulation d'oral notée.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-07.html">🤖 Séance 07 — Programmer avec l'IA : mini-projet Python + API</a></h4>
+    <p>Écrire, lancer et comprendre un script qui interroge une vraie API.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-08.html">🤖 Séance 08 — Rédiger, corriger et traduire (FR / EN / AR)</a></h4>
+    <p>Prompts de rédaction, corrections avec la règle, traduction contrôlée.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-09.html">🤖 Séance 09 — VS Code + GitHub Copilot : ton premier assistant de code</a></h4>
+    <p>Complétion, chat intégré et débogage — sans savoir coder avant.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-10.html">🤖 Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix</a></h4>
+    <p>Décrire une modification en français, lire le diff, annuler proprement.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-11.html">🤖 Séance 11 — OpenCode + DeepSeek : piloter un agent IA</a></h4>
+    <p>L'agent lit, écrit et exécute : mode Plan, @fichier, /init, /undo.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-12.html">🤖 Séance 12 — Construire son IA : Dify + Charte d'usage</a></h4>
+    <p>Un assistant Dify qui connaît tes cours + les 7 articles de la charte.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-13.html">🤖 Séance 13 — Réparer, flasher et mettre à jour un appareil</a></h4>
+    <p>Téléphone, tablette, PC, GPS : diagnostiquer une panne, sauvegarder, suivre la procédure officielle, vérifier.</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-14.html">🤖 Séance 14 — Cybersécurité : attaques, défenses et éthique</a></h4>
+    <p>Se protéger, reconnaître une arnaque, et comprendre ce qu'une IA refuse de faire — et pourquoi (le test des 3 questions).</p>
+  </div>
+  <div class="step">
+    <h4><a href="seance-15.html">🤖 Séance 15 — Publier un article dans une revue Q1 avec l'IA <span style="background:#e3f2fd;color:#177bbe;padding:0.1rem 0.5rem;border-radius:10px;font-size:0.85em;">🎓</span></a></h4>
+    <p>Choisir sa revue, structurer en IMRAD, vérifier les références et déclarer l'IA.</p>
+  </div>
+
+  <h2>💡 La page bonus</h2>
+  <div class="step">
+    <h4><a href="astuces-ia.html">💡 34 astuces pour mieux profiter de l'IA <span style="background:#e3f2fd;color:#177bbe;padding:0.1rem 0.5rem;border-radius:10px;font-size:0.85em;">8 catégories</span></a></h4>
+    <p>Limites gratuites, prompts, comparaison d'outils, sauvegarde, vie privée, gain de temps, méthode, publication académique — les gestes malins qui font gagner un temps fou au quotidien.</p>
+  </div>
+
+  <div class="nav-footer">
+    <a href="seance-01.html">Commencer la séance 01 ▶</a>
+    <a href="astuces-ia.html">💡 34 astuces</a>
+  </div>
+
+</div>
 </body>
 </html>
