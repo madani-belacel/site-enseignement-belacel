@@ -1,46 +1,66 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Met à jour les statistiques du footer dans index.html.
+"""Met à jour les statistiques de contenu affichées dans index.html.
 
-Compte les fichiers réellement présents sous cours/ et remplace les
-nombres en dur du footer (anomalie B6 de l'audit). À relancer à
-chaque ajout de contenu :
+Compte les fichiers réellement présents sous ``cours/`` puis remplace les
+valeurs associées à leur libellé. Le script ne modifie plus le fichier si
+au moins une statistique attendue est introuvable.
+
+Usage :
     python3 scripts/generer_stats.py
 """
 from pathlib import Path
+import re
+import sys
 
 RACINE = Path(__file__).resolve().parent.parent
 COURS = RACINE / "cours"
 INDEX = RACINE / "index.html"
 
-REMPLACEMENTS = [
-    ("2 764", "html", "Pages de cours"),
-    ("10 466", "mp3", "Fichiers audio"),
-    ("1 475", "pptx", "Présentations PPTX"),
+STATISTIQUES = [
+    ("html", "Pages de cours"),
+    ("mp3", "Fichiers audio"),
+    ("pptx", "Présentations PPTX"),
 ]
 
 
-def compter(ext):
-    return sum(1 for p in COURS.rglob(f"*.{ext}") if p.is_file())
+def compter(extension: str) -> int:
+    return sum(1 for p in COURS.rglob(f"*.{extension}") if p.is_file())
 
 
-def formater(n):
-    return f"{n:,}".replace(",", " ")
+def formater(nombre: int) -> str:
+    return f"{nombre:,}".replace(",", " ")
 
 
-def main():
+def main() -> int:
     texte = INDEX.read_text(encoding="utf-8")
-    for ancien, ext, label in REMPLACEMENTS:
-        nouveau = formater(compter(ext))
-        balise = f'<span class="footer-stat-number">{ancien}</span>'
-        if balise not in texte:
-            print(f"⚠  {label}: balise '{balise}' introuvable, ignoré")
+    nouveau_texte = texte
+    erreurs: list[str] = []
+
+    for extension, libelle in STATISTIQUES:
+        nombre = formater(compter(extension))
+        motif = re.compile(
+            r'(<span class="footer-stat-number">)[^<]+'
+            r'(</span>\s*<span class="footer-stat-label">' + re.escape(libelle) + r'</span>)'
+        )
+        nouveau_texte, remplacements = motif.subn(
+            rf'\g<1>{nombre}\g<2>', nouveau_texte, count=1
+        )
+        if remplacements != 1:
+            erreurs.append(f"{libelle}: statistique introuvable dans index.html")
             continue
-        texte = texte.replace(balise, f'<span class="footer-stat-number">{nouveau}</span>')
-        print(f"✓ {label}: {nouveau}")
-    INDEX.write_text(texte, encoding="utf-8")
+        print(f"✓ {libelle}: {nombre}")
+
+    if erreurs:
+        for erreur in erreurs:
+            print(f"⚠ {erreur}", file=sys.stderr)
+        print("Aucune modification écrite.", file=sys.stderr)
+        return 1
+
+    INDEX.write_text(nouveau_texte, encoding="utf-8")
     print("index.html mis à jour.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

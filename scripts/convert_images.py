@@ -15,6 +15,12 @@ IMAGES_TO_CONVERT = [
     "LOGO-FLE-UNIV-Mosta.jpeg",
 ]
 
+# Small responsive variants used by the compact site header.
+HEADER_VARIANTS = {
+    "photo-profil.png": ("photo-profil-96", 96),
+    "Université_de_Mostaganem.png": ("universite-mostaganem-96", 96),
+}
+
 
 def generate_modern_formats():
     """Generate WebP and AVIF versions for each image."""
@@ -44,6 +50,19 @@ def generate_modern_formats():
 
         print(f"  {fname}: {orig_size:,}B → WebP {webp_size:,}B ({webp_size*100//orig_size}%) / AVIF {avif_size:,}B ({avif_size*100//orig_size}%)")
         created[fname] = (webp_path, avif_path)
+
+    for source_name, (variant_name, max_size) in HEADER_VARIANTS.items():
+        source_path = os.path.join(IMAGES_DIR, source_name)
+        image = Image.open(source_path).convert("RGBA")
+        image.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
+        image.save(os.path.join(IMAGES_DIR, f"{variant_name}.webp"), "WEBP", quality=82, method=6)
+        image.save(os.path.join(IMAGES_DIR, f"{variant_name}.avif"), "AVIF", quality=62)
+        print(
+            f"  {variant_name}: {image.width}×{image.height} "
+            f"WebP {os.path.getsize(os.path.join(IMAGES_DIR, f'{variant_name}.webp')):,}B / "
+            f"AVIF {os.path.getsize(os.path.join(IMAGES_DIR, f'{variant_name}.avif')):,}B"
+        )
+
     return created
 
 

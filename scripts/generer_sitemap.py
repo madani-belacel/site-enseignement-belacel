@@ -30,7 +30,6 @@ PAGES_PRINCIPALES = [
     ("habilitation.html", 0.8),
     ("ressources.html", 0.8),
     ("contact.html", 0.8),
-    ("404.html", 0.2),
 ]
 
 MODULES = {
