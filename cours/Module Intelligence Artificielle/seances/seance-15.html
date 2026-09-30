@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Séance 15 — Publier un article dans une revue Q1 avec l'IA</title>
+<meta name="description" content="Séance 15 — Publier un article dans une revue Q1 avec l&#x27;IA — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-15.html">
 <style>
   * { box-sizing: border-box; }
   body {
@@ -14,7 +17,9 @@
     margin: 0;
     padding: 0;
   }
-  .container {
+  /* Scope au contenu principal : sinon cette regle ecrasait aussi le
+     .container du pied de page (fond blanc sur footer sombre, largeur 820px). */
+  main .container {
     max-width: 820px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
@@ -22,7 +27,7 @@
     min-height: 100vh;
   }
   h1 {
-    color: #177bbe;
+    color: #146fa9;
     font-size: 1.9rem;
     margin: 0 0 0.5rem;
     line-height: 1.3;
@@ -34,7 +39,7 @@
     font-style: italic;
   }
   h2 {
-    color: #177bbe;
+    color: #146fa9;
     font-size: 1.4rem;
     margin: 2.5rem 0 1rem;
     padding-bottom: 0.4rem;
@@ -97,9 +102,11 @@
     margin: 1rem 0;
     border-radius: 0 8px 8px 0;
   }
+  .step h3,
+  .step h3,
   .step h4 {
     margin-top: 0;
-    color: #177bbe;
+    color: #146fa9;
   }
   .step-meta {
     display: flex;
@@ -151,9 +158,11 @@
     padding: 1rem 1.2rem;
     margin: 1rem 0;
   }
+  .exemple h3,
+  .exemple h3,
   .exemple h4 {
     margin-top: 0;
-    color: #177bbe;
+    color: #146fa9;
   }
   .astuces {
     background: #f0f7ff;
@@ -184,7 +193,7 @@
     gap: 0.5rem;
   }
   .nav-footer a {
-    color: #177bbe;
+    color: #146fa9;
     text-decoration: none;
     font-weight: 600;
     padding: 0.5rem 1rem;
@@ -201,11 +210,24 @@
 
 <link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
 <link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<link href="../../../css/style.css" rel="stylesheet"/>
-<link href="../../../images/Université_de_Mostaganem.avif" rel="icon"/>
+<link rel="stylesheet" href="../../../css/fonts/fonts.css">
+<link rel="preload" href="../../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../images/universite-mostaganem-96.avif" rel="icon"/>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dr. Madani BELACEL">
+<meta property="og:title" content="Séance 15 — Publier un article dans une revue Q1 avec l'IA">
+<meta property="og:description" content="Séance 15 — Publier un article dans une revue Q1 avec l&#x27;IA — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-15.html">
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Séance 15 — Publier un article dans une revue Q1 avec l'IA">
+<meta name="twitter:description" content="Séance 15 — Publier un article dans une revue Q1 avec l&#x27;IA — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta name="twitter:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
 </head>
 <body>
 
@@ -215,9 +237,9 @@
     <div class="header-left">
       <a href="../../../index.html" class="header-logo">
         <picture>
-          <source srcset="../../../images/Université_de_Mostaganem.avif" type="image/avif">
-          <source srcset="../../../images/Université_de_Mostaganem.webp" type="image/webp">
-          <img loading="eager" fetchpriority="high" width="960" height="931" src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+          <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+          <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+          <img loading="eager" fetchpriority="high" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem">
         </picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
@@ -246,17 +268,15 @@
         <li class="nav-dropdown">
           <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Domaines d'expertise">Domaines d'expertise</a>
           <ul class="nav-dropdown-menu">
-            <li><a href="../../../tic.html">TIC</a></li>
-            <li><a href="../../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-            <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
-            <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
-            <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
-            <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-            <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
-            <li><a href="../../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-            <li><a href="../../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-            <li><a href="../../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-          </ul>
+                  <li><a href="../../../tic.html">TIC</a></li>
+                  <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
         </li>
         <li><a href="../../../recherche.html">Recherche</a></li>
         <li class="nav-dropdown">
@@ -281,9 +301,16 @@
   </ol>
 </nav>
 <main class="page-content" id="main-content">
+  <nav class="navbar" aria-label="Navigation dans le séances">
+    <a class="btn" href="../index.html">← Module</a>
+    <a class="btn prev" href="seance-14.html">◀ Précédent</a>
+    <span class="spacer"></span>
+    <span class="btn next disabled" aria-disabled="true">Suivant ▶</span>
+  </nav>
+
 <div class="container">
 
-  <h1>🤖 Séance 15 — Publier un article dans une revue Q1 avec l'IA</h1>
+  <h2>🤖 Séance 15 — Publier un article dans une revue Q1 avec l'IA</h2>
   <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
     <div class="ok" style="margin:1rem 0;padding:1.2rem;">
     <strong>💡 Astuce IA — Vérifier une référence en 15 secondes</strong><br>
@@ -319,7 +346,7 @@
   <h2>📋 Comment faire — pas à pas</h2>
 
   <div class="step">
-    <h4>Étape 1 — Choisir la revue Q1 (6 min)</h4>
+    <h3>Étape 1 — Choisir la revue Q1 (6 min)</h3>
     <div class="step-meta">
       <span>📍 scimagojr.com + chatgpt.com</span>
       <span>⏱️ 6 min</span>
@@ -346,7 +373,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 2 — Structurer l'article avec IMRAD (6 min)</h4>
+    <h3>Étape 2 — Structurer l'article avec IMRAD (6 min)</h3>
     <div class="step-meta">
       <span>📍 chatgpt.com</span>
       <span>⏱️ 6 min</span>
@@ -382,7 +409,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 3 — Rédiger par sections : l'IA reformule, toi le fond (8 min)</h4>
+    <h3>Étape 3 — Rédiger par sections : l'IA reformule, toi le fond (8 min)</h3>
     <div class="step-meta">
       <span>📍 chatgpt.com</span>
       <span>⏱️ 8 min</span>
@@ -406,7 +433,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 4 — Vérifier chaque référence, une par une (7 min)</h4>
+    <h3>Étape 4 — Vérifier chaque référence, une par une (7 min)</h3>
     <div class="step-meta">
       <span>📍 Google Scholar + doi.org</span>
       <span>⏱️ 7 min</span>
@@ -433,7 +460,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 5 — Rédiger la lettre de réponse aux reviewers (8 min)</h4>
+    <h3>Étape 5 — Rédiger la lettre de réponse aux reviewers (8 min)</h3>
     <div class="step-meta">
       <span>📍 chatgpt.com</span>
       <span>⏱️ 8 min</span>
@@ -466,7 +493,7 @@
   <p><strong>Ce que ça change :</strong> tu sais exactement à quel moment tu interviens et à quel moment l'IA intervient — et surtout, à quel moment <strong>ta signature</strong> est engagée.</p>
 
   <div class="step">
-    <h4>Exemple 1 — Le parcours d'un article, pour la structure de ta Faculté</h4>
+    <h3>Exemple 1 — Le parcours d'un article, pour la structure de ta Faculté</h3>
 
     <p><strong>Situation :</strong> tu as une idée de recherche à la <strong>Faculté des Langues Étrangères — UNIVERSITÉ DE MOSTAGANEM</strong> et tu dois publier dans une revue Q1. Tu veux visualiser les 7 étapes et repérer celles où l'IA peut t'aider.</p>
 
@@ -505,7 +532,7 @@
   <h2>🧪 Exemples réels</h2>
 
   <div class="exemple">
-    <h4>Exemple 1 — Article en sciences de l'éducation (département Français)</h4>
+    <h3>Exemple 1 — Article en sciences de l'éducation (département Français)</h3>
     <p><strong>Situation :</strong> tu as achevé une étude quasi-expérimentale dans tes propres groupes de TP. Il te faut la structure et une bibliographie propre avant d'ouvrir le fichier vierge.</p>
 
     <p><strong>Ce que tu tapes :</strong></p>
@@ -531,7 +558,7 @@
   </div>
 
   <div class="exemple">
-    <h4>Exemple 2 — Article en linguistique appliquée : cover letter + réponse (département Anglais)</h4>
+    <h3>Exemple 2 — Article en linguistique appliquée : cover letter + réponse (département Anglais)</h3>
     <p><strong>Situation :</strong> l'article est écrit, la revue choisie. Il te manque la lettre de soumission — et un mois plus tard, la réponse aux reviewers.</p>
 
     <p><strong>Ce que tu tapes :</strong></p>
@@ -551,7 +578,7 @@
   </div>
 
   <div class="exemple">
-    <h4>Exemple 3 — Article en didactique de l'espagnol : résumé bilingue + choix de revue (département Espagnol)</h4>
+    <h3>Exemple 3 — Article en didactique de l'espagnol : résumé bilingue + choix de revue (département Espagnol)</h3>
     <p><strong>Situation :</strong> article terminé en français, la revue visée demande un abstract en anglais et un sujet tourné vers l'international.</p>
 
     <p><strong>Ce que tu tapes :</strong></p>
@@ -572,46 +599,46 @@
   <h2>🎓 Les astuces que personne ne dit</h2>
   <div class="astuces">
     <ul>
-      <li><strong>Choisis la revue avant d'écrire.</strong> Longueur, langue, structure et abstract dépendent de la revue : écrire d'abord, c'est réécrire deux fois.</li>
-      <li><strong>Rédige l'abstract en dernier.</strong> Il doit résumer ce que l'article est <em>devenu</em>, pas ce que tu comptais écrire au départ.</li>
-      <li><strong>Fais relire par un collègue de la langue cible.</strong> Un anglophone natif repère en dix minutes ce qu'aucune IA ne garantit : le naturel académique.</li>
-      <li><strong>Une seule revue à la fois.</strong> Soumettre au double est une faute grave, sanctionnée par un bannissement des deux revues.</li>
-      <li><strong>Note tes outils IA dès la première heure.</strong> Un carnet d'outils (outil + tâche + date) te rend la déclaration finale absolument indolore.</li>
-      <li><strong>Réponds à chaque remarque</strong> — même refusée : tu réponds en argumentant, jamais en ignorant (une remarque ignorée = rejet quasi automatique).</li>
-      <li><strong>Archive chaque étape.</strong> brouillon_v1, plan, version soumise, tracked changes : le peer review fait toujours revenir au fichier « celui d'avant ».</li>
+      <li><strong>Choisis la revue avant d'écrire.</strong> Longueur, langue, structure et résumé dépendent de la revue : écrire d'abord, c'est souvent réécrire deux fois.</li>
+      <li><strong>Rédige le résumé en dernier.</strong> Il doit présenter ce que l'article est <em>devenu</em>, pas le plan initial.</li>
+      <li><strong>Fais relire par un collègue de la langue cible.</strong> Un locuteur natif repère rapidement les tournures peu naturelles qu'une IA ne garantit pas.</li>
+      <li><strong>Évite les soumissions simultanées du même manuscrit.</strong> Sauf accord explicite, une seule revue doit évaluer le travail à la fois.</li>
+      <li><strong>Note tes outils IA dès la première heure.</strong> Conserve l'outil, la tâche, la date et les Prompts afin de pouvoir justifier ou déclarer leur usage.</li>
+      <li><strong>Réponds à chaque remarque</strong>, même lorsque tu la contestes : explique les modifications ou justifie clairement ton refus.</li>
+      <li><strong>Archive chaque étape.</strong> Brouillon, plan, version soumise et suivi des modifications facilitent nettement la préparation de la réponse aux évaluateurs.</li>
     </ul>
   </div>
 
   <h2>⚠️ Erreurs à éviter</h2>
   <ul class="erreurs">
-    <li>❌ Soumettre un texte généré par IA sans réécriture → détecté et rejeté, parfois inscrit dans un registre partagé entre éditeurs. <strong>✅ Tu écris le fond, l'IA reformule, tu réécris : et tu le déclares.</strong></li>
-    <li>❌ Copier une référence ChatGPT sans la vérifier → article rétracté après publication. <strong>✅ Titre exact dans Google Scholar, DOI sur doi.org, sinon suppression.</strong></li>
-    <li>❌ Oublier la déclaration d'usage de l'IA → manquement éthique, parfois rétractation. <strong>✅ Une phrase dans Methods ou Acknowledgements, dès la soumission.</strong></li>
+    <li>❌ Soumettre un texte généré par IA sans le relire ni respecter la politique de la revue. <strong>✅ Tu assumes le contenu, vérifies chaque affirmation et déclares l'usage selon les consignes de la revue.</strong></li>
+    <li>❌ Copier une référence ChatGPT sans la vérifier. <strong>✅ Vérifie titre, auteurs, revue, année et DOI sur la page de l'éditeur ou dans une base fiable.</strong></li>
+    <li>❌ Oublier la déclaration d'usage de l'IA lorsque la revue l'exige. <strong>✅ Précise l'outil, la finalité et les parties concernées, selon la section demandée.</strong></li>
   </ul>
 
   <h2>🧠 À retenir</h2>
   <div class="retenir">
     <ul>
-      <li><strong>L'IA aide à structurer, jamais à inventer</strong> : le fond et la signature restent les tiens.</li>
-      <li><strong>Chaque référence se vérifie une par une</strong> : Scholar pour l'existence, doi.org pour le DOI.</li>
-      <li><strong>La déclaration d'usage de l'IA est obligatoire</strong>, et une IA n'est jamais co-auteur.</li>
-      <li><strong>Le reviewer lit le fond, pas le style</strong> : réponds à chaque remarque, factuellement.</li>
-      <li><strong>Un article Q1 se prépare en mois, pas en jours</strong> — et commence par le choix de la revue.</li>
+      <li><strong>L'IA peut assumer une partie de la préparation, mais l'auteur reste responsable</strong> du fond, des sources et de la version finale.</li>
+      <li><strong>Chaque référence se vérifie une par une</strong> dans la source éditeur, la revue ou une base bibliographique fiable.</li>
+      <li><strong>L'IA ne peut pas être co-auteur</strong> et son usage doit être déclaré lorsque la politique de la revue l'exige.</li>
+      <li><strong>Le reviewer évalue le fond et la méthode</strong> : réponds précisément à chaque remarque.</li>
+      <li><strong>« Q1 » décrit un classement relatif</strong>, pas une garantie de qualité ni un délai de publication.</li>
     </ul>
   </div>
 
   <h2>❓ Questions que tout le monde se pose sur l'IA</h2>
 
-  <h3>1. Peut-on publier un article rédigé par l'IA ?</h3>
-  <p><strong>Pas pour le fond.</strong> Les grandes revues (Nature, Science, Cell) et les grands éditeurs (Elsevier, Springer, Wiley) l'interdisent pour la production intellectuelle, et <strong>une IA ne peut jamais être co-auteur</strong> : elle n'assume aucune responsabilité. En revanche, l'assistance rédactionnelle (reformulation, traduction, correction) est <strong>autorisée si elle est déclarée</strong>.</p>
+  <h3>1. Peut-on publier un article rédigé avec l'IA ?</h3>
+  <p>Cela dépend de la politique de la revue et du type d'usage. Une IA ne peut pas être co-auteur, car elle ne peut pas assumer la responsabilité du travail. En revanche, elle peut être utilisée pour explorer, structurer, reformuler ou corriger, à condition que l'auteur vérifie le résultat et déclare l'usage lorsque la revue l'exige.</p>
   <div class="warn">
-    <strong>⚠️ Attention :</strong> un texte généré puis à peine retouché peut être détecté — les éditeurs partagent désormais leurs signalements. Le risque n'est pas seulement un rejet : c'est un dossier marqué.
+    <strong>⚠️ Attention :</strong> les règles diffèrent selon les éditeurs. Certaines distinguent l'aide à la rédaction du texte généré comme contenu intellectuel. Lis la politique de la revue avant d'écrire et conserve une trace de tes Prompts et de tes vérifications.
   </div>
 
   <h3>2. Comment vérifier qu'une référence existe vraiment ?</h3>
-  <p>Trois étapes, 30 secondes : <strong>1)</strong> copie le titre exact dans <strong>Google Scholar</strong> ; <strong>2)</strong> si elle existe, clique <em>Citer</em> pour récupérer le format réel ; <strong>3)</strong> si elle n'existe pas, <strong>supprime-la immédiatement</strong>. Pour les articles récents, ouvre le <strong>DOI sur doi.org</strong> : pas de page ouverte, pas de référence.</p>
+  <p>Associe plusieurs contrôles : <strong>1)</strong> recherche le titre exact dans la revue, la base de données de la revue ou un catalogue scholarly ; <strong>2)</strong> compare auteurs, année, volume et pages ; <strong>3)</strong> si un DOI est fourni, résous-le sur <strong>doi.org</strong> et vérifie que ses métadonnées correspondent à l'article.</p>
   <div class="tip">
-    <strong>Contrôle rapide :</strong> une référence réelle a toujours <em>deux</em> traces indépendantes — l'éditeur et Scholar. Une seule trace = doute à lever avant soumission.
+    <strong>Contrôle rapide :</strong> l'absence de résultat dans un seul moteur ne prouve pas la nonexistence. Un article récent, sous embargo ou absent d'un index peut nécessiter une recherche chez l'éditeur, dans une bibliothèque ou via une base spécialisée.
   </div>
 
   <h3>3. Un détecteur de plagiat suffit-il à me protéger ?</h3>
@@ -623,19 +650,19 @@
   <h3>4. Mon brouillon d'article est-il en sécurité dans un chat ?</h3>
   <p><strong>À condition de trois réglages :</strong> 1) désactiver l'entraînement sur tes conversations (paramètres de données), 2) ne pas coller le manuscrit <em>entier</em> mais la section sur laquelle tu travailles, 3) garder la source sur ton ordinateur. Un manuscrit confidentiel — surtout s'il n'est pas encore publié — vaut mieux un assistant local (Ollama).</p>
   <div class="tip">
-    <strong>Pendant le peer review, la règle est absolue :</strong> le manuscrit est anonyme et confidentiel. Aucune pièce de l'évaluation (article, review) ne doit partir vers un service tiers — c'est écrit dans la charte de la plupart des revues.
+    <strong>Pendant l'évaluation par les pairs :</strong> le manuscrit est confidentiel et les règles de la revue s'appliquent. Avant d'utiliser un service externe pour le résumé ou la relecture, vérifie si le traitement par un tiers est autorisé ; privilégie les outils approuvés ou locaux lorsque la confidentialité est stricte.
   </div>
 
-  <h3>5. Faut-il payer un outil d'IA pour publier en Q1 ?</h3>
-  <p><strong>Non.</strong> Les vérifications (Scimago, Scholar, doi.org) sont gratuites, et les outils de reformulation gratuits suffisent pour un article de 6 000 mots. Ce qui est payant — et souvent annoncé comme miracle —, ce sont les services « publie en Q1 en 30 jours » : dans 90 % des cas, des <strong>revues prédatrices</strong> qui font payer l'auteur sans vraie relecture.</p>
+  <h3>5. Faut-il payer un outil d'IA pour publier ?</h3>
+  <p><strong>Non.</strong> Les outils gratuits ou institutionnels suffisent généralement pour la préparation, la relecture et la gestion des références. Méfie-toi surtout des services qui promettent une publication rapide ou « Q1 garantie ». Une parts importante des revues prédatrices facture l'auteur sans fournir le service éditorial annoncé.</p>
   <div class="warn">
-    <strong>Règle de survie :</strong> une revue qui te contacte la première, promet une décision rapide et réclame des frais avant acceptation est prédatrice. Tu choisis la revue, jamais l'inverse.
+    <strong>Règle de vérification :</strong> contrôle l'identité de l'éditeur, l'ISSN, le comité éditorial, les frais, les délais annoncés et l'indépendance de la revue avec la checklist Think. Check. Submit. Un indice suspect ne suffit pas à conclure, mais plusieurs signaux méritent une vérification sérieuse.
   </div>
 
   <h3>6. Combien de temps faut-il pour publier un article Q1 ?</h3>
-  <p><strong>Compte 6 à 18 mois</strong> : 4 à 8 semaines de relecture, souvent un ou deux cycles de révision (2 à 4 mois), puis mise en ligne puis numérotation. Aucune IA ne raccourcit la peer review — elle raccourcit seulement ta partie rédactionnelle.</p>
+  <p><strong>Il n'existe pas de durée universelle.</strong> Le délai dépend de la revue, du domaine, de la qualité de l'article, des cycles de révision et de la disponibilité des évaluateurs. Une IA peut accélérer la préparation éditoriale, mais elle ne garantit pas l'acceptation ni ne raccourcit la phase d'évaluation.</p>
   <div class="tip">
-    <strong>Travaille en chevauchement :</strong> rédige l'article N+1 pendant la relecture de l'article N. C'est la seule façon d'avoir deux publications par an sans te décourager.
+    <strong>Organisation réaliste :</strong> consulte les délais moyens de la revue, pars sur plusieurs mois et organise un nouveau projet uniquement après les décisions de la revue précédente afin d'éviter l'accumulation.
   </div>
 
   <h2>🔒 Vos données sont-elles en sécurité ?</h2>
@@ -652,35 +679,56 @@
   <h3>3. Puis-je coller un manuscrit déjà soumis ailleurs ?</h3>
   <p><strong>Non.</strong> Tu signes à chaque soumission une clause d'exclusivité : le texte ne doit être considéré nulle part ailleurs. Le soumettre simultanément — ou faire traiter son contenu par un service externe sans vérifier ses conditions — expose à un retrait des deux revues.</p>
 
-  <h3>4. Que dois-je désactiver dans les paramètres ?</h3>
+  <h3>4. Quels réglages vérifier avant d'utiliser un service ?</h3>
   <ul>
-    <li><strong>« Améliorer le modèle pour tous »</strong> (ChatGPT) et <strong>Gemini Apps Activity</strong> : tes brouillons ne servent plus à l'entraînement.</li>
-    <li><strong>Historique des conversations</strong> : à vider après une session sur un manuscrit sensible.</li>
-    <li><strong>Partage de liens de conversation</strong> : jamais de lien public contenant ton travail.</li>
+    <li><strong>Confidentialité et conservation</strong> : vérifie si les conversations sont conservées, utilisées pour l'amélioration du service ou soumises à une durée de conservation définie.</li>
+    <li><strong>Contrôle de l'organisation</strong> : certains services d'établissements et certains forfaits imposent des règles différentes des comptes personnels.</li>
+    <li><strong>Partage et liens publics</strong> : ne partage jamais un lien de conversation contenant un manuscrit sensible.</li>
   </ul>
 
   <h3>5. Comment protéger mon travail de bout en bout ?</h3>
   <ul>
     <li><strong>Sources locales</strong> + sauvegardes datées (le fichier du 12 mars ne se « perd » pas).</li>
     <li><strong>Outil local (Ollama)</strong> pour les parties sensibles : résultats non publiés, données d'enquête.</li>
-    <li><strong>Antivirus à jour</strong> — un clé USB de terrain reste le chemin d'entrée n°1.</li>
+    <li><strong>Stockage et sauvegardes sécurisés</strong> — évite les supports amovibles partagés pour les manuscrits non publiés.</li>
     <li><strong>Signal / ProtonMail</strong> pour échanger avec ton directeur de recherche.</li>
   </ul>
   <div class="tip">
-    <strong>Règle d'or du chercheur :</strong> ne mets jamais dans un chat IA ce que tu ne mettrais pas dans un e-mail à un concurrent de ton labo. Ton avance scientifique se perd en un copier-coller.
+    <strong>Règle d'or du chercheur :</strong> ne colle dans un service IA ni données confidentielles, ni résultats non publiés, ni informations personnelles sans vérifier la politique du service et les obligations de ton projet.
   </div>
+
+  <h2>🔗 Sources officielles à consulter</h2>
+  <ul>
+    <li><a href="https://publicationethics.org/guidance/cope-position/authorship-and-ai-tools" target="_blank" rel="noopener noreferrer">COPE — Authorship and AI tools</a> : l'IA ne peut pas être auteur ; l'usage doit êtretransparent.</li>
+    <li><a href="https://www.icmje.org/recommendations/browse/artificial-intelligence/ai-use-by-authors.html" target="_blank" rel="noopener noreferrer">ICMJE — Use of AI by Authors</a> : recommandations de déclaration de l'usage.</li>
+    <li><a href="https://thinkchecksubmit.org/journals/" target="_blank" rel="noopener noreferrer">Think. Check. Submit.</a> : checklist d'évaluation d'une revue ou d'un éditeur.</li>
+    <li><a href="https://www.scimagojr.com/journalrank.php" target="_blank" rel="noopener noreferrer">SCImago Journal Rank</a> : comparer les quartiles en tenant compte de la catégorie et de l'année.</li>
+    <li><a href="https://www.crossref.org/documentation/reference-linking/" target="_blank" rel="noopener noreferrer">Crossref — Reference Linking</a> : comprendre et vérifier l'usage des DOI.</li>
+  </ul>
 
   <h2>📺 Vidéos pour aller plus loin</h2>
   <ul>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=scimago+journal+rank+quartile+Q1+choisir+une+revue" target="_blank">Choisir une revue Q1 avec Scimago (FR)</a></li>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=structure+IMRAD+r%C3%A9diger+un+article+scientifique+tutoriel" target="_blank">Rédiger un article : la structure IMRAD (FR)</a></li>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=response+letter+reviewers+response+to+reviewers+example" target="_blank">Réponse aux reviewers : exemple de letter (EN)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=scimago+journal+rank+quartile+Q1+choisir+une+revue" target="_blank" rel="noopener noreferrer">Choisir une revue Q1 avec Scimago (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=structure+IMRAD+r%C3%A9diger+un+article+scientifique+tutoriel" target="_blank" rel="noopener noreferrer">Rédiger un article : la structure IMRAD (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=response+letter+reviewers+response+to+reviewers+example" target="_blank" rel="noopener noreferrer">Réponse aux reviewers : exemple de letter (EN)</a></li>
   </ul>
 
-  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+    <h2>✅ Checklist</h2>
+  <div class="retenir">
+  <ul>
+  <li>☐ Revue vérifiée sur Scimago</li>
+  <li>☐ Plan IMRAD</li>
+  <li>☐ Sections rédigées avec fond personnel</li>
+  <li>☐ Toutes les références vérifiées</li>
+  <li>☐ Déclaration IA prête</li>
+  <li>☐ Réponse reviewers en 3 colonnes + relecture humaine</li>
+  </ul>
+  </div>
+
+<h2>🧠 Quiz — vérifie ta compréhension</h2>
   <ol>
     <li>Où vérifies-tu le quartile d'une revue ? <br><em>(Réponse : sur Scimago Journal Rank ou Web of Science — jamais sur un classement de forum.)</em></li>
-    <li>Tu cites un article donné par l'IA et Scholar ne renvoie rien. Que fais-tu ? <br><em>(Réponse : tu supprimes la référence — et tu en cherches une réelle sur le même sujet.)</em></li>
+    <li>Une référence donnée par l'IA ne correspond à aucun résultat. Que fais-tu ? <br><em>(Réponse : tu ne la cites pas. Tu poursuis la vérification chez l'éditeur, dans un catalogue ou une base spécialisée, puis tu remplaces la référence si nécessaire.)</em></li>
     <li>Quelle structure la plupart des revues scientifiques imposent-elles ? <br><em>(Réponse : IMRAD — Introduction, Méthodes, Résultats, Discussion.)</em></li>
     <li>Une IA peut-elle figurer parmi les co-auteurs ? <br><em>(Réponse : non, jamais — mais son usage doit être déclaré dans Methods ou Acknowledgements.)</em></li>
     <li>Que contient la réponse aux reviewers ? <br><em>(Réponse : 3 colonnes — la remarque, ce que tu as modifié, et l'emplacement page/ligne ; et chaque remarque reçoit une réponse, même refusée.)</em></li>
@@ -688,13 +736,13 @@
 
   <h2>📖 Glossaire</h2>
   <ul>
-    <li><strong>Q1 (quartile 1)</strong> — Les 25 % de revues les plus citées d'un domaine, selon Scimago/Web of Science. La catégorie la plus exigeante.</li>
-    <li><strong>Peer review</strong> — Évaluation anonyme par des pairs : 2 reviewers lisent, critiquent, et l'éditeur décide (accepter / réviser / rejeter).</li>
-    <li><strong>IMRAD</strong> — Structure standard des articles scientifiques : Introduction, Methods, Results, And Discussion.</li>
-    <li><strong>DOI</strong> — Identifiant permanent d'un document (doi.org/10.…). Il prouve qu'un article existe : sans DOI plausible, pas de publication.</li>
-    <li><strong>Cover letter</strong> — Lettre de soumission à l'éditeur : nouveauté de l'article, originalité, déclaration d'usage de l'IA.</li>
-    <li><strong>Facteur d'impact</strong> — Indice de citation moyen d'une revue sur 2 ans (Journal Citation Reports). Complément du quartile, pas substitut.</li>
-    <li><strong>H-index</strong> — Individu ou revue : nombre d'articles cités au moins autant de fois. Mesure cumulative de l'impact d'un chercheur.</li>
+    <li><strong>Q1 (quartile 1)</strong> — Position dans le quartile supérieur d'une catégorie, selon un indicateur, une base et une année précis. « Q1 » ne mesure pas à lui seul la qualité d'un article.</li>
+    <li><strong>Peer review</strong> — Évaluation par un ou plusieurs lecteurs experts ; l'éditeur ou le comité éditorial prend la décision finale.</li>
+    <li><strong>IMRAD</strong> — Structure fréquente des articles scientifiques : Introduction, Methods, Results, Discussion.</li>
+    <li><strong>DOI</strong> — Identifiant numérique persistant d'un objet. Il faut vérifier que ses métadonnées et sa page éditeur correspondent réellement à la référence citée.</li>
+    <li><strong>Cover letter</strong> — Lettre adressée à l'éditeur : nouveauté, adaptation à la revue, originalité, portée et déclaration de l'usage de l'IA lorsqu'elle est demandée.</li>
+    <li><strong>Facteur d'impact</strong> — Indicateur de citations de la revue sur une période donnée. Il doit être interprété avec la discipline, la base et l'année.</li>
+    <li><strong>H-index</strong> — Plus grand nombre <em>h</em> pour lequel un chercheur ou un auteur a au moins <em>h</em> publications ayant chacune reçu au moins <em>h</em> citations.</li>
   </ul>
   <div class="nav-footer">
     <a href="seance-14.html">◀ Séance 14</a>
@@ -709,11 +757,11 @@
   <div class="container">
     <div class="footer-logos">
       <picture>
-        <source srcset="../../../images/Université_de_Mostaganem.avif" type="image/avif">
-        <source srcset="../../../images/Université_de_Mostaganem.webp" type="image/webp">
-        <img loading="lazy" width="960" height="931" src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"/>
+        <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+        <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+        <img loading="eager" decoding="async" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo">
       </picture>
-      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"/>
+      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">
       <span>📧 madani.belacel [at] univ-mosta.dz</span>

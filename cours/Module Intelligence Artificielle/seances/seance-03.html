@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Séance 03 — Chercher et vérifier l'information avec l'IA</title>
+<meta name="description" content="Séance 03 — Chercher et vérifier l&#x27;information avec l&#x27;IA — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-03.html">
 <style>
   * { box-sizing: border-box; }
   body {
@@ -14,7 +17,9 @@
     margin: 0;
     padding: 0;
   }
-  .container {
+  /* Scope au contenu principal : sinon cette regle ecrasait aussi le
+     .container du pied de page (fond blanc sur footer sombre, largeur 820px). */
+  main .container {
     max-width: 820px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
@@ -22,7 +27,7 @@
     min-height: 100vh;
   }
   h1 {
-    color: #177bbe;
+    color: #146fa9;
     font-size: 1.9rem;
     margin: 0 0 0.5rem;
     line-height: 1.3;
@@ -34,7 +39,7 @@
     font-style: italic;
   }
   h2 {
-    color: #177bbe;
+    color: #146fa9;
     font-size: 1.4rem;
     margin: 2.5rem 0 1rem;
     padding-bottom: 0.4rem;
@@ -97,9 +102,11 @@
     margin: 1rem 0;
     border-radius: 0 8px 8px 0;
   }
+  .step h3,
+  .step h3,
   .step h4 {
     margin-top: 0;
-    color: #177bbe;
+    color: #146fa9;
   }
   .step-meta {
     display: flex;
@@ -151,9 +158,11 @@
     padding: 1rem 1.2rem;
     margin: 1rem 0;
   }
+  .exemple h3,
+  .exemple h3,
   .exemple h4 {
     margin-top: 0;
-    color: #177bbe;
+    color: #146fa9;
   }
   .astuces {
     background: #f0f7ff;
@@ -184,7 +193,7 @@
     gap: 0.5rem;
   }
   .nav-footer a {
-    color: #177bbe;
+    color: #146fa9;
     text-decoration: none;
     font-weight: 600;
     padding: 0.5rem 1rem;
@@ -201,11 +210,24 @@
 
 <link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
 <link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<link href="../../../css/style.css" rel="stylesheet"/>
-<link href="../../../images/Université_de_Mostaganem.avif" rel="icon"/>
+<link rel="stylesheet" href="../../../css/fonts/fonts.css">
+<link rel="preload" href="../../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../images/universite-mostaganem-96.avif" rel="icon"/>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dr. Madani BELACEL">
+<meta property="og:title" content="Séance 03 — Chercher et vérifier l'information avec l'IA">
+<meta property="og:description" content="Séance 03 — Chercher et vérifier l&#x27;information avec l&#x27;IA — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-03.html">
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Séance 03 — Chercher et vérifier l'information avec l'IA">
+<meta name="twitter:description" content="Séance 03 — Chercher et vérifier l&#x27;information avec l&#x27;IA — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta name="twitter:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
 </head>
 <body>
 
@@ -215,9 +237,9 @@
     <div class="header-left">
       <a href="../../../index.html" class="header-logo">
         <picture>
-          <source srcset="../../../images/Université_de_Mostaganem.avif" type="image/avif">
-          <source srcset="../../../images/Université_de_Mostaganem.webp" type="image/webp">
-          <img loading="eager" fetchpriority="high" width="960" height="931" src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+          <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+          <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+          <img loading="eager" fetchpriority="high" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem">
         </picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
@@ -246,17 +268,15 @@
         <li class="nav-dropdown">
           <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Domaines d'expertise">Domaines d'expertise</a>
           <ul class="nav-dropdown-menu">
-            <li><a href="../../../tic.html">TIC</a></li>
-            <li><a href="../../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-            <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
-            <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
-            <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
-            <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-            <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
-            <li><a href="../../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-            <li><a href="../../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-            <li><a href="../../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-          </ul>
+                  <li><a href="../../../tic.html">TIC</a></li>
+                  <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
         </li>
         <li><a href="../../../recherche.html">Recherche</a></li>
         <li class="nav-dropdown">
@@ -281,9 +301,16 @@
   </ol>
 </nav>
 <main class="page-content" id="main-content">
+  <nav class="navbar" aria-label="Navigation dans le séances">
+    <a class="btn" href="../index.html">← Module</a>
+    <a class="btn prev" href="seance-02.html">◀ Précédent</a>
+    <span class="spacer"></span>
+    <a class="btn next" href="seance-04.html">Suivant ▶</a>
+  </nav>
+
 <div class="container">
 
-  <h1>🤖 Séance 03 — Chercher et vérifier l'information avec l'IA</h1>
+  <h2>🤖 Séance 03 — Chercher et vérifier l'information avec l'IA</h2>
   <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
   <div class="ok" style="margin:1rem 0;padding:1.2rem;">
     <strong>💡 Astuce IA — Activer la recherche web pour des sources réelles</strong><br>
@@ -312,7 +339,7 @@
   <h2>📋 Comment faire — pas à pas</h2>
 
   <div class="step">
-    <h4>Étape 1 — Cherche avec Perplexity (sources incluses)</h4>
+    <h3>Étape 1 — Cherche avec Perplexity (sources incluses) — 5 min</h3>
     <div class="step-meta">
       <span>📍 perplexity.ai</span>
       <span>⏱️ 5 min</span>
@@ -344,7 +371,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 2 — Cherche des articles sur Google Scholar</h4>
+    <h3>Étape 2 — Cherche des articles sur Google Scholar (5 min)</h3>
     <div class="step-meta">
       <span>📍 scholar.google.com</span>
       <span>⏱️ 5 min</span>
@@ -368,7 +395,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 3 — Vérifie un consensus avec Consensus</h4>
+    <h3>Étape 3 — Vérifie un consensus avec Consensus (5 min)</h3>
     <div class="step-meta">
       <span>📍 consensus.app</span>
       <span>⏱️ 5 min</span>
@@ -395,7 +422,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 4 — Vérifie l'info douteuse dans NotebookLM</h4>
+    <h3>Étape 4 — Vérifie l'info douteuse dans NotebookLM (6 min)</h3>
     <div class="step-meta">
       <span>📍 notebooklm.google.com</span>
       <span>⏱️ 6 min</span>
@@ -404,7 +431,7 @@
     <div class="prompt-box">D'après ces documents uniquement : ces trois études sont-elles d'accord sur l'effet de l'IA sur l'apprentissage ? Réponds en 3 points et cite la page de chaque document.</div>
     <p><strong>Voici ce que NotebookLM va probablement te répondre :</strong></p>
     <div class="exemple">
-      <h4>🤖 Réponse typique de NotebookLM</h4>
+      <h4>🤖 Exemple indicatif de réponse</h4>
       <ol>
         <li><strong>Accord sur le principe (p. 4 et p. 7)</strong> — Les trois études confirment un gain de cohérence dans les productions écrites lorsque l'outil IA est encadré par une consigne.</li>
         <li><strong>Désaccord sur l'ampleur (p. 6 et p. 11)</strong> — L'étude A mesure un gain de 24 %, l'étude B un gain de 8 %. Les méthodes de mesure diffèrent (taille d'échantillon : 40 vs 120 apprenants).</li>
@@ -419,7 +446,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 5 — Attrape une hallucination (exercice)</h4>
+    <h3>Étape 5 — Attrape une hallucination (exercice) — 5 min</h3>
     <div class="step-meta">
       <span>📍 chatgpt.com puis scholar.google.com</span>
       <span>⏱️ 5 min</span>
@@ -450,7 +477,7 @@
   <p>Ajoute <code>« avec un schéma en ASCII »</code> à la fin d'un prompt : l'IA te dessine le parcours avec des caractères du clavier. Ça marche partout, sans image.</p>
 
   <div class="step">
-    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+    <h3>Exemple 1 — Comprendre la structure de ta Faculté</h3>
 
     <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
 
@@ -480,7 +507,7 @@
     │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
     │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
     └──────────────────┘    └──────────────────┘    └──────────────────┘
-  
+
 </pre>
       <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
     </div>
@@ -526,15 +553,16 @@
   <h2>🧪 Exemples réels</h2>
 
   <div class="exemple">
-    <h4>Exemple 1 — Trouver 5 sources pour un exposé</h4>
+    <h3>Exemple 1 — Trouver 5 sources pour un exposé</h3>
     <p><strong>Situation :</strong> tu dois faire un exposé de 10 minutes sur « l'IA dans l'enseignement des langues » et il te faut 5 références citables.</p>
 
     <p><strong>Ce que tu tapes (dans Perplexity) :</strong></p>
     <div class="prompt-box">Trouve 5 sources académiques publiées après 2020 sur l'usage de l'intelligence artificielle dans l'enseignement des langues. Pour chaque source : auteur, année, titre de la revue, lien direct. Si tu n'es pas sûr d'un lien, dis-le.</div>
 
-    <p><strong>Voici ce que l'IA va probablement te répondre :</strong></p>
+    <p><strong>Voici un exemple volontairement fictif de réponse :</strong></p>
     <div class="exemple">
-      <h4>🤖 Réponse typique de Perplexity</h4>
+      <h4>🤖 Exemple fictif de réponse</h4>
+      <p><strong>Ne cite aucune de ces références : elles servent uniquement à illustrer une hallucination et la nécessité de vérifier chaque piste.</strong></p>
       <ol>
         <li><strong>Karim &amp; Wilkins (2023)</strong> — « AI feedback and EFL writing quality » — <em>Computer Assisted Language Learning</em> — [lien vérifié ✓]</li>
         <li><strong>Al-Rashdi (2022)</strong> — « AI tools in Arabic language teaching » — <em>Arab World English Journal</em> — [lien vérifié ✓]</li>
@@ -542,7 +570,7 @@
         <li><strong>Smith &amp; Lee (2022)</strong> — « Automatic correction for Spanish learners » — <em>Hispania</em> — [lien vérifié ✓]</li>
         <li><strong>Müller (2024)</strong> — « Generative AI and learner autonomy » — <em>System</em> — [⚠️ je ne suis pas certain de ce lien, à vérifier]</li>
       </ol>
-      <p>4 liens fiables, 1 signalé comme incertain par l'IA elle-même.</p>
+      <p>Même lorsque l'IA affirme que quatre liens sont « vérifiés », tu dois contrôler toi-même chaque métadonnée.</p>
     </div>
 
     <div class="tip">Note <strong>« si tu n'es pas sûr, dis-le »</strong> : l'IA te prévient au lieu d'inventer en silence. Mets toujours cette phrase dans un prompt de recherche.</div>
@@ -551,7 +579,7 @@
   </div>
 
   <div class="exemple">
-    <h4>Exemple 2 — Repérer une hallucination en 30 secondes</h4>
+    <h3>Exemple 2 — Repérer une hallucination en 30 secondes</h3>
     <p><strong>Situation :</strong> ChatGPT vient de te donner 3 références parfaites. Tu sens que c'est trop beau.</p>
 
     <p><strong>Ce que tu tapes (dans Google Scholar) :</strong></p>
@@ -565,13 +593,13 @@
       <p>0 résultat. Ou alors un article qui existe mais avec <strong>d'autres auteurs</strong> ou <strong>une autre année</strong>. Dans les deux cas, la référence de ChatGPT était fausse. ❌ Tu la supprimes et tu remplaces par une vraie source trouvée sur Scholar.</p>
     </div>
 
-    <div class="warn">Un titre exact entre guillemets + les noms d'auteurs + l'année : si Scholar ne trouve rien en 30 secondes, <strong>la référence n'existe pas</strong>. Ne la mets surtout pas dans ta bibliographie.</div>
+    <div class="warn">Un titre exact entre guillemets, les auteurs et l'année constituent un bon départ. Si aucun résultat n'apparaît, poursuis dans la revue, la bibliothèque et les bases spécialisées : l'absence dans un seul moteur ne suffit pas à conclure, mais la référence reste non vérifiée.</div>
 
     <div class="tip">Utilise les filtres de Scholar : <code>depuis 2020</code> et <code>langue : français ou anglais</code>. Tu élimines les sources mortes avant même de cliquer.</div>
   </div>
 
   <div class="exemple">
-    <h4>Exemple 3 — Découper un texte source avant de le citer</h4>
+    <h3>Exemple 3 — Découper un texte source avant de le citer</h3>
     <p><strong>Situation :</strong> tu as trouvé un article de 25 pages. Tu dois en extraire l'argument principal pour ton exposé.</p>
 
     <p><strong>Ce que tu tapes (dans NotebookLM, après avoir déposé l'article PDF) :</strong></p>
@@ -579,7 +607,7 @@
 
     <p><strong>Voici ce que NotebookLM va probablement te répondre :</strong></p>
     <div class="exemple">
-      <h4>🤖 Réponse typique de NotebookLM</h4>
+      <h4>🤖 Exemple indicatif de réponse</h4>
       <p><strong>Thèse principale :</strong> L'auteur soutient que l'outil IA n'améliore l'écriture que si l'enseignant donne une consigne d'utilisation précise. Sans consigne, l'élève copie la proposition de l'IA et progresse moins que s'il écrivait seul. L'effet dépend donc de la pédagogie, pas de l'outil (p. 14).</p>
       <p><strong>Citation exacte :</strong></p>
       <p><em>« The tool itself does not improve writing; the task design around it does. » (p. 14)</em></p>
@@ -594,7 +622,7 @@
   <h2>🎓 Les astuces que personne ne dit</h2>
   <div class="astuces">
     <ul>
-      <li><strong>La règle des 2 sources.</strong> Une info importante n'existe que si 2 sources indépendantes la confirment.</li>
+      <li><strong>Recouper les affirmations importantes.</strong> Une donnée gagne en fiabilité lorsqu'elle est confirmée par des sources indépendantes, concordantes et traçables.</li>
       <li><strong>La règle des 2 clics.</strong> Ouvre le lien, regarde l'auteur et la date. 30 secondes, pas plus.</li>
       <li><strong>Note tout de suite.</strong> Auteur + année + URL dans ton cahier au moment où tu trouves. Tu n'y penseras plus après.</li>
       <li><strong>Préfère les articles récents et cités.</strong> « Cité par 400 » en 2021 vaut mieux qu'un article de 2003 jamais lu.</li>
@@ -614,11 +642,11 @@
   <h2>🧠 À retenir</h2>
   <div class="retenir">
     <ul>
-      <li><strong>Une réponse sans source = une opinion.</strong> Tu ne peux pas la citer.</li>
+      <li><strong>Une réponse sans source ne peut pas être citée telle quelle.</strong> Retrouve et vérifie la source primaire avant de l'utiliser.</li>
       <li><strong>3 marques d'une source fiable :</strong> auteur, date, lien qui s'ouvre.</li>
       <li><strong>Vérifier prend 30 secondes.</strong> Copier sans vérifier peut te coûter ta note.</li>
-      <li><strong>Perplexity cherche, Scholar prouve, Consensus mesure, NotebookLM vérifie TES documents.</strong></li>
-      <li><strong>La règle d'or :</strong> 2 sources indépendantes avant d'affirmer quoi que ce soit.</li>
+      <li><strong>Les outils d'IA peuvent proposer des pistes ; la source primaire et ses métadonnées permettent la vérification finale.</strong></li>
+      <li><strong>La règle d'or :</strong> pour une affirmation importante, recoupe au moins deux sources fiables quand cela est possible et explique leurs éventuelles divergences.</li>
     </ul>
   </div>
 
@@ -663,12 +691,22 @@
 
   <h2>📺 Vidéos pour aller plus loin</h2>
   <ul>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=google+scholar+tutoriel+fran%C3%A7ais+trouver+des+articles" target="_blank">Google Scholar — trouver des articles (FR)</a></li>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=consensus+app+tutoriel+academic+search" target="_blank">Consensus App — search academic (EN)</a></li>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=perplexity+ai+v%C3%A9rifier+une+information+source" target="_blank">Vérifier une information trouvée avec l'IA (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=google+scholar+tutoriel+fran%C3%A7ais+trouver+des+articles" target="_blank" rel="noopener noreferrer">Google Scholar — trouver des articles (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=consensus+app+tutoriel+academic+search" target="_blank" rel="noopener noreferrer">Consensus App — search academic (EN)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=perplexity+ai+v%C3%A9rifier+une+information+source" target="_blank" rel="noopener noreferrer">Vérifier une information trouvée avec l'IA (FR)</a></li>
   </ul>
 
-  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+    <h2>✅ Checklist</h2>
+  <div class="retenir">
+  <ul>
+  <li>☐ J’ai utilisé Perplexity ou le mode web</li>
+  <li>☐ J’ai exigé des sources dans le prompt</li>
+  <li>☐ J’ai fait vérifier une réponse par une 2ᵉ IA</li>
+  <li>☐ J’ai testé un titre sur Google Scholar</li>
+  </ul>
+  </div>
+
+<h2>🧠 Quiz — vérifie ta compréhension</h2>
   <ol>
     <li>Quelles 3 choses doit avoir une source pour être citable ? <br><em>(Réponse : un auteur, une date, un lien qui s'ouvre.)</em></li>
     <li>Tu demandes 3 références à ChatGPT (sans recherche web) et il en donne 3. Que fais-tu ? <br><em>(Réponse : tu les vérifies sur Google Scholar avant de les citer.)</em></li>
@@ -702,11 +740,11 @@
   <div class="container">
     <div class="footer-logos">
       <picture>
-        <source srcset="../../../images/Université_de_Mostaganem.avif" type="image/avif">
-        <source srcset="../../../images/Université_de_Mostaganem.webp" type="image/webp">
-        <img loading="lazy" width="960" height="931" src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"/>
+        <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+        <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+        <img loading="eager" decoding="async" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo">
       </picture>
-      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"/>
+      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">
       <span>📧 madani.belacel [at] univ-mosta.dz</span>

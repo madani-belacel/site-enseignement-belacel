@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Séance 13 — Réparer, flasher et mettre à jour un appareil (téléphone, tablette, PC, GPS)</title>
+<title>Séance 13 — Réparer, flasher et mettre à jour un appareil…</title>
+<meta name="description" content="Séance 13 — Réparer, flasher et mettre à jour un appareil (téléphone, tablette, PC, GPS) — séance pratique du module Intelligence Artificielle pour la 2e…">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-13.html">
 <style>
   * { box-sizing: border-box; }
   body {
@@ -14,7 +17,9 @@
     margin: 0;
     padding: 0;
   }
-  .container {
+  /* Scope au contenu principal : sinon cette regle ecrasait aussi le
+     .container du pied de page (fond blanc sur footer sombre, largeur 820px). */
+  main .container {
     max-width: 820px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
@@ -22,7 +27,7 @@
     min-height: 100vh;
   }
   h1 {
-    color: #177bbe;
+    color: #146fa9;
     font-size: 1.9rem;
     margin: 0 0 0.5rem;
     line-height: 1.3;
@@ -34,7 +39,7 @@
     font-style: italic;
   }
   h2 {
-    color: #177bbe;
+    color: #146fa9;
     font-size: 1.4rem;
     margin: 2.5rem 0 1rem;
     padding-bottom: 0.4rem;
@@ -97,9 +102,11 @@
     margin: 1rem 0;
     border-radius: 0 8px 8px 0;
   }
+  .step h3,
+  .step h3,
   .step h4 {
     margin-top: 0;
-    color: #177bbe;
+    color: #146fa9;
   }
   .step-meta {
     display: flex;
@@ -151,9 +158,11 @@
     padding: 1rem 1.2rem;
     margin: 1rem 0;
   }
+  .exemple h3,
+  .exemple h3,
   .exemple h4 {
     margin-top: 0;
-    color: #177bbe;
+    color: #146fa9;
   }
   .astuces {
     background: #f0f7ff;
@@ -184,7 +193,7 @@
     gap: 0.5rem;
   }
   .nav-footer a {
-    color: #177bbe;
+    color: #146fa9;
     text-decoration: none;
     font-weight: 600;
     padding: 0.5rem 1rem;
@@ -201,11 +210,24 @@
 
 <link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
 <link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<link href="../../../css/style.css" rel="stylesheet"/>
-<link href="../../../images/Université_de_Mostaganem.avif" rel="icon"/>
+<link rel="stylesheet" href="../../../css/fonts/fonts.css">
+<link rel="preload" href="../../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../images/universite-mostaganem-96.avif" rel="icon"/>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dr. Madani BELACEL">
+<meta property="og:title" content="Séance 13 — Réparer, flasher et mettre à jour un appareil…">
+<meta property="og:description" content="Séance 13 — Réparer, flasher et mettre à jour un appareil (téléphone, tablette, PC, GPS) — séance pratique du module Intelligence Artificielle pour la 2e…">
+<meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-13.html">
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Séance 13 — Réparer, flasher et mettre à jour un appareil…">
+<meta name="twitter:description" content="Séance 13 — Réparer, flasher et mettre à jour un appareil (téléphone, tablette, PC, GPS) — séance pratique du module Intelligence Artificielle pour la 2e…">
+<meta name="twitter:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
 </head>
 <body>
 
@@ -215,9 +237,9 @@
     <div class="header-left">
       <a href="../../../index.html" class="header-logo">
         <picture>
-          <source srcset="../../../images/Université_de_Mostaganem.avif" type="image/avif">
-          <source srcset="../../../images/Université_de_Mostaganem.webp" type="image/webp">
-          <img loading="eager" fetchpriority="high" width="960" height="931" src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+          <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+          <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+          <img loading="eager" fetchpriority="high" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem">
         </picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
@@ -246,17 +268,15 @@
         <li class="nav-dropdown">
           <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Domaines d'expertise">Domaines d'expertise</a>
           <ul class="nav-dropdown-menu">
-            <li><a href="../../../tic.html">TIC</a></li>
-            <li><a href="../../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-            <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
-            <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
-            <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
-            <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-            <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
-            <li><a href="../../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-            <li><a href="../../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-            <li><a href="../../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-          </ul>
+                  <li><a href="../../../tic.html">TIC</a></li>
+                  <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
         </li>
         <li><a href="../../../recherche.html">Recherche</a></li>
         <li class="nav-dropdown">
@@ -281,9 +301,16 @@
   </ol>
 </nav>
 <main class="page-content" id="main-content">
+  <nav class="navbar" aria-label="Navigation dans le séances">
+    <a class="btn" href="../index.html">← Module</a>
+    <a class="btn prev" href="seance-12.html">◀ Précédent</a>
+    <span class="spacer"></span>
+    <a class="btn next" href="seance-14.html">Suivant ▶</a>
+  </nav>
+
 <div class="container">
 
-  <h1>🔧 Séance 13 — Réparer, flasher et mettre à jour un appareil</h1>
+  <h2>🔧 Séance 13 — Réparer, flasher et mettre à jour un appareil</h2>
   <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
 
   <div class="ok" style="margin:1rem 0;padding:1.2rem;">
@@ -312,7 +339,7 @@
   <h2>📋 Comment faire — pas à pas</h2>
 
   <div class="step">
-    <h4>Étape 1 — Décrire le symptôme précisément</h4>
+    <h3>Étape 1 — Décrire le symptôme précisément (3 min)</h3>
     <div class="step-meta">
       <span>📍 Dans ChatGPT / Claude / Gemini</span>
       <span>⏱️ 3 min</span>
@@ -335,7 +362,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 2 — Vérifier la sauvegarde</h4>
+    <h3>Étape 2 — Vérifier la sauvegarde (15 min)</h3>
     <div class="step-meta">
       <span>📍 Google Drive / PC / carte SD</span>
       <span>⏱️ 15 min</span>
@@ -361,7 +388,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 3 — Suivre la procédure officielle</h4>
+    <h3>Étape 3 — Suivre la procédure officielle (10 min)</h3>
     <div class="step-meta">
       <span>📍 Site du constructeur + IA</span>
       <span>⏱️ 10 min de lecture</span>
@@ -388,7 +415,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 4 — Vérifier le résultat</h4>
+    <h3>Étape 4 — Vérifier le résultat (5 min)</h3>
     <div class="step-meta">
       <span>📍 Sur l'appareil réparé</span>
       <span>⏱️ 5 min</span>
@@ -414,7 +441,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 5 — En cas de blocage, revenir avec le message d'erreur</h4>
+    <h3>Étape 5 — En cas de blocage, revenir avec le message d'erreur (2 min)</h3>
     <div class="step-meta">
       <span>📍 Copier-coller exact</span>
       <span>⏱️ 2 min</span>
@@ -438,7 +465,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 6 — Documenter pour la prochaine fois</h4>
+    <h3>Étape 6 — Documenter pour la prochaine fois (5 min)</h3>
     <div class="step-meta">
       <span>📍 Fichier notes_reparation.md</span>
       <span>⏱️ 5 min</span>
@@ -490,7 +517,7 @@ Date : AAAA-MM-JJ · Modèle : [appareil exact]</pre>
   <h2>🧪 Exemples réels</h2>
 
   <div class="exemple">
-    <h4>📱 Exemple 1 — Téléphone bloqué sur le logo Samsung</h4>
+    <h3>📱 Exemple 1 — Téléphone bloqué sur le logo Samsung</h3>
     <div class="prompt-box">Samsung Galaxy A12 bloqué sur le logo de démarrage, vibre 3 fois puis s'éteint. Que faire ? Étapes dans l'ordre, avec risques.</div>
     <p><strong>Réponse de l'IA :</strong></p>
     <ol>
@@ -505,7 +532,7 @@ Date : AAAA-MM-JJ · Modèle : [appareil exact]</pre>
   </div>
 
   <div class="exemple">
-    <h4>📲 Exemple 2 — Tablette Android 4.2 à mettre à jour vers Android 7.2</h4>
+    <h3>📲 Exemple 2 — Tablette Android 4.2 à mettre à jour vers Android 7.2</h3>
     <div class="prompt-box">J'ai une tablette Android 4.2 bloquée. Je veux la mettre à jour vers Android 7.2. Donne-moi les prérequis, les étapes, les risques, comment sauvegarder.</div>
     <p><strong>Réponse de l'IA :</strong></p>
     <ol>
@@ -521,7 +548,7 @@ Date : AAAA-MM-JJ · Modèle : [appareil exact]</pre>
   </div>
 
   <div class="exemple">
-    <h4>💻 Exemple 3 — PC écran bleu au démarrage (0xc000000f)</h4>
+    <h3>💻 Exemple 3 — PC écran bleu au démarrage (0xc000000f)</h3>
     <div class="prompt-box">Windows 11, erreur 0xc000000f au démarrage. Que faire étape par étape ?</div>
     <p><strong>Réponse de l'IA :</strong></p>
     <ol>
@@ -536,7 +563,7 @@ Date : AAAA-MM-JJ · Modèle : [appareil exact]</pre>
   </div>
 
   <div class="exemple">
-    <h4>🚗 Exemple 4 — GPS de voiture périmé</h4>
+    <h3>🚗 Exemple 4 — GPS de voiture périmé</h3>
     <div class="prompt-box">Comment mettre à jour le GPS d'une Peugeot 308 de 2018 ? Où télécharger les cartes officielles ? Peut-on le faire soi-même ?</div>
     <p><strong>Réponse de l'IA :</strong></p>
     <ol>
@@ -652,12 +679,23 @@ Date : AAAA-MM-JJ · Modèle : [appareil exact]</pre>
 
   <h2>📺 Vidéos pour aller plus loin</h2>
   <ul>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=comment+flasher+un+t%C3%A9l%C3%A9phone+android+tutoriel" target="_blank">Comment flasher un téléphone Android</a></li>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=r%C3%A9parer+un+pc+qui+ne+d%C3%A9marre+pas+%C3%A9cran+bleu" target="_blank">Réparer un PC qui ne démarre pas</a></li>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=mettre+%C3%A0+jour+gps+voiture+soi+m%C3%AAme+cartes" target="_blank">Mettre à jour un GPS de voiture soi-même</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=comment+flasher+un+t%C3%A9l%C3%A9phone+android+tutoriel" target="_blank" rel="noopener noreferrer">Comment flasher un téléphone Android</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=r%C3%A9parer+un+pc+qui+ne+d%C3%A9marre+pas+%C3%A9cran+bleu" target="_blank" rel="noopener noreferrer">Réparer un PC qui ne démarre pas</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=mettre+%C3%A0+jour+gps+voiture+soi+m%C3%AAme+cartes" target="_blank" rel="noopener noreferrer">Mettre à jour un GPS de voiture soi-même</a></li>
   </ul>
 
-  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+    <h2>✅ Checklist</h2>
+  <div class="retenir">
+  <ul>
+  <li>☐ Symptôme décrit avec modèle exact</li>
+  <li>☐ Sauvegarde faite ou étapes non destructives seulement</li>
+  <li>☐ Ordre : simple → risqué</li>
+  <li>☐ Erreurs collées mot pour mot</li>
+  <li>☐ Notes pour la prochaine fois</li>
+  </ul>
+  </div>
+
+<h2>🧠 Quiz — vérifie ta compréhension</h2>
   <ol>
     <li>Pourquoi sauvegarder avant de flasher ? <br><em>(Réponse : parce qu'aucune opération de flash ne garantit la conservation des données, et qu'une donnée effacée n'est pas récupérable par une IA.)</em></li>
     <li>Où télécharger une ROM officielle ? <br><em>(Réponse : uniquement sur le site officiel du fabricant — jamais sur un forum ou un site de téléchargement inconnu.)</em></li>
@@ -690,11 +728,11 @@ Date : AAAA-MM-JJ · Modèle : [appareil exact]</pre>
   <div class="container">
     <div class="footer-logos">
       <picture>
-        <source srcset="../../../images/Université_de_Mostaganem.avif" type="image/avif">
-        <source srcset="../../../images/Université_de_Mostaganem.webp" type="image/webp">
-        <img loading="lazy" width="960" height="931" src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"/>
+        <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+        <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+        <img loading="eager" decoding="async" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo">
       </picture>
-      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"/>
+      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">
       <span>📧 madani.belacel [at] univ-mosta.dz</span>

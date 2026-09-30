@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix</title>
+<meta name="description" content="Séance 10 — Cursor : l&#x27;éditeur qui modifie ton code à ta voix — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-10.html">
 <style>
   * { box-sizing: border-box; }
   body {
@@ -14,7 +17,9 @@
     margin: 0;
     padding: 0;
   }
-  .container {
+  /* Scope au contenu principal : sinon cette regle ecrasait aussi le
+     .container du pied de page (fond blanc sur footer sombre, largeur 820px). */
+  main .container {
     max-width: 820px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
@@ -22,7 +27,7 @@
     min-height: 100vh;
   }
   h1 {
-    color: #177bbe;
+    color: #146fa9;
     font-size: 1.9rem;
     margin: 0 0 0.5rem;
     line-height: 1.3;
@@ -34,7 +39,7 @@
     font-style: italic;
   }
   h2 {
-    color: #177bbe;
+    color: #146fa9;
     font-size: 1.4rem;
     margin: 2.5rem 0 1rem;
     padding-bottom: 0.4rem;
@@ -97,9 +102,11 @@
     margin: 1rem 0;
     border-radius: 0 8px 8px 0;
   }
+  .step h3,
+  .step h3,
   .step h4 {
     margin-top: 0;
-    color: #177bbe;
+    color: #146fa9;
   }
   .step-meta {
     display: flex;
@@ -151,9 +158,11 @@
     padding: 1rem 1.2rem;
     margin: 1rem 0;
   }
+  .exemple h3,
+  .exemple h3,
   .exemple h4 {
     margin-top: 0;
-    color: #177bbe;
+    color: #146fa9;
   }
   .astuces {
     background: #f0f7ff;
@@ -184,7 +193,7 @@
     gap: 0.5rem;
   }
   .nav-footer a {
-    color: #177bbe;
+    color: #146fa9;
     text-decoration: none;
     font-weight: 600;
     padding: 0.5rem 1rem;
@@ -201,11 +210,24 @@
 
 <link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
 <link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<link href="../../../css/style.css" rel="stylesheet"/>
-<link href="../../../images/Université_de_Mostaganem.avif" rel="icon"/>
+<link rel="stylesheet" href="../../../css/fonts/fonts.css">
+<link rel="preload" href="../../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../images/universite-mostaganem-96.avif" rel="icon"/>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dr. Madani BELACEL">
+<meta property="og:title" content="Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix">
+<meta property="og:description" content="Séance 10 — Cursor : l&#x27;éditeur qui modifie ton code à ta voix — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-10.html">
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix">
+<meta name="twitter:description" content="Séance 10 — Cursor : l&#x27;éditeur qui modifie ton code à ta voix — séance pratique du module Intelligence Artificielle pour la 2e année PEP, avec exemples…">
+<meta name="twitter:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
 </head>
 <body>
 
@@ -215,9 +237,9 @@
     <div class="header-left">
       <a href="../../../index.html" class="header-logo">
         <picture>
-          <source srcset="../../../images/Université_de_Mostaganem.avif" type="image/avif">
-          <source srcset="../../../images/Université_de_Mostaganem.webp" type="image/webp">
-          <img loading="eager" fetchpriority="high" width="960" height="931" src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem">
+          <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+          <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+          <img loading="eager" fetchpriority="high" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem">
         </picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
@@ -246,17 +268,15 @@
         <li class="nav-dropdown">
           <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Domaines d'expertise">Domaines d'expertise</a>
           <ul class="nav-dropdown-menu">
-            <li><a href="../../../tic.html">TIC</a></li>
-            <li><a href="../../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-            <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
-            <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
-            <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
-            <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-            <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
-            <li><a href="../../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-            <li><a href="../../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-            <li><a href="../../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-          </ul>
+                  <li><a href="../../../tic.html">TIC</a></li>
+                  <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
         </li>
         <li><a href="../../../recherche.html">Recherche</a></li>
         <li class="nav-dropdown">
@@ -281,9 +301,16 @@
   </ol>
 </nav>
 <main class="page-content" id="main-content">
+  <nav class="navbar" aria-label="Navigation dans le séances">
+    <a class="btn" href="../index.html">← Module</a>
+    <a class="btn prev" href="seance-09.html">◀ Précédent</a>
+    <span class="spacer"></span>
+    <a class="btn next" href="seance-11.html">Suivant ▶</a>
+  </nav>
+
 <div class="container">
 
-  <h1>🤖 Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix</h1>
+  <h2>🤖 Séance 10 — Cursor : l'éditeur qui modifie ton code à ta voix</h2>
   <p class="subtitle">Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p>
   <div class="ok" style="margin:1rem 0;padding:1.2rem;">
     <strong>💡 Astuce IA — Cmd/Ctrl + Z avant de fermer une session Cursor</strong><br>
@@ -304,6 +331,16 @@
     <li><strong>Ton code part vers le modèle :</strong> ce que tu as ouvert sert de contexte à l'IA. C'est puissant — et c'est exactement pour ça qu'on n'ouvre pas un travail sensible dans Cursor.</li>
   </ul>
 
+  <h2>🧠 L'astuce clé de la séance</h2>
+  <div class="ok" style="margin:1rem 0;padding:1.2rem;">
+    <strong>Astuce 36 — Lis le diff avant de valider</strong><br>
+    Cursor te montre exactement ce qu'il a modifié : <strong>en rouge</strong> ce qui disparaît, <strong>en vert</strong> ce qui apparaît. Une suppression que tu n'attendais pas = tu annules immédiatement. Puis relance ton programme. Jamais de validation à l'aveugle.
+  </div>
+  <div class="tip">
+    <strong>Et l'astuce 38 :</strong> un seul fichier à la fois. Écris « Modifie uniquement <code>index.html</code>, ne touche à rien d'autre ». C'est là que les agents cassent le plus de code : quand on leur donne tout le projet d'un coup.
+  </div>
+  <p><a href="astuces-ia.html#code">→ Lire les 152 astuces</a></p>
+
   <div class="ok" style="margin:1rem 0;padding:1.2rem;">
     <strong>🔧 IA au quotidien — Trouver une info officielle en 10 secondes (mieux que Google)</strong><br>
     Tu cherches une date ou un tarif officiel. Tu poses la question à Perplexity : « Quel est le tarif de l'inscription au DSD ? Donne-moi la source officielle. » L'IA te répond en 10 secondes avec le lien vers le document d'origine. Gagne du temps, mais vérifie toujours le lien : l'IA peut se tromper.
@@ -312,7 +349,7 @@
   <h2>📋 Comment faire — pas à pas</h2>
 
   <div class="step">
-    <h4>Étape 1 — Installer Cursor et importer ton projet (5 min)</h4>
+    <h3>Étape 1 — Installer Cursor et importer ton projet (5 min)</h3>
     <div class="step-meta">
       <span>📍 cursor.com</span>
       <span>⏱️ 5 min</span>
@@ -338,9 +375,9 @@
   </div>
 
   <div class="step">
-    <h4>Étape 2 — Modifier le code avec Cmd/Ctrl + K (7 min)</h4>
+    <h3>Étape 2 — Modifier le code avec Cmd/Ctrl + K (7 min)</h3>
     <div class="step-meta">
-      <span>📍 Curseur → raccourci Cmd/Ctrl + K</span>
+      <span>📍 Cursor → raccourci Cmd/Ctrl + K</span>
       <span>⏱️ 7 min</span>
     </div>
     <p><strong>Ce que tu vas faire :</strong> sélectionner une portion de code, demander une modification en langage naturel, puis lire le diff proposé. C'est la fonctionnalité qui rend Cursor célèbre.</p>
@@ -379,7 +416,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 3 — Poser une question sur ton code existant (5 min)</h4>
+    <h3>Étape 3 — Poser une question sur ton code existant (5 min)</h3>
     <div class="step-meta">
       <span>📍 Chat latéral (Cmd/Ctrl + L)</span>
       <span>⏱️ 5 min</span>
@@ -407,7 +444,7 @@
   </div>
 
   <div class="step">
-    <h4>Étape 4 — Générer un fichier complet à partir d'une description (6 min)</h4>
+    <h3>Étape 4 — Générer un fichier complet à partir d'une description (6 min)</h3>
     <div class="step-meta">
       <span>📍 Composer du Chat (Cmd/Ctrl + I)</span>
       <span>⏱️ 6 min</span>
@@ -459,7 +496,7 @@ Histogramme :
   </div>
 
   <div class="step">
-    <h4>Étape 5 — Valider, annuler et garder le contrôle (4 min)</h4>
+    <h3>Étape 5 — Valider, annuler et garder le contrôle (4 min)</h3>
     <div class="step-meta">
       <span>📍 Historique des modifications</span>
       <span>⏱️ 4 min</span>
@@ -488,7 +525,7 @@ Histogramme :
   <p><strong>Comment demander un schéma à l'IA ?</strong> Ajoute simplement <code>« avec un schéma en ASCII »</code> à la fin de ton prompt.</p>
 
   <div class="step">
-    <h4>Exemple 1 — Comprendre la structure de ta Faculté</h4>
+    <h3>Exemple 1 — Comprendre la structure de ta Faculté</h3>
 
     <p><strong>Situation :</strong> tu veux comprendre et retenir l'organisation de la Faculté des Langues Étrangères (FLE).</p>
 
@@ -518,7 +555,7 @@ Histogramme :
     │ • 2ème année     │    │ • 2ème année     │    │ • 2ème année     │
     │ • Module IA      │    │ • Module IA      │    │ • Module IA      │
     └──────────────────┘    └──────────────────┘    └──────────────────┘
-  
+
 </pre>
       <p>Ce schéma te montre d'un coup d'œil : la Faculté (FLE) chapeaute 3 départements, et les 3 départements forment ensemble les étudiants PEP 2ème année qui suivent le même module IA.</p>
     </div>
@@ -562,7 +599,7 @@ Histogramme :
   <h2>🧪 Exemples réels</h2>
 
   <div class="exemple">
-    <h4>Exemple 1 — Mettre en forme un formulaire d'inscription (département Anglais)</h4>
+    <h3>Exemple 1 — Mettre en forme un formulaire d'inscription (département Anglais)</h3>
     <p><strong>Situation :</strong> tu as un formulaire HTML basique pour un club d'anglais et tu veux validation + messages d'erreur, sans réécrire tout le fichier.</p>
 
     <p><strong>Ce que tu tapes (Cmd/Ctrl + K sur le formulaire) :</strong></p>
@@ -596,7 +633,7 @@ Histogramme :
   </div>
 
   <div class="exemple">
-    <h4>Exemple 2 — Automatiser le dépouillement d'un contrôle (département Français)</h4>
+    <h3>Exemple 2 — Automatiser le dépouillement d'un contrôle (département Français)</h3>
     <p><strong>Situation :</strong> 3 copies scannées, notes manuscrites, et un tableau à remplir avant demain.</p>
 
     <p><strong>Ce que tu tapes (Composer, mode Agent) :</strong></p>
@@ -647,7 +684,7 @@ Moyenne de la promotion : 12.50/20
   </div>
 
   <div class="exemple">
-    <h4>Exemple 3 — Construire un mini-lexique espagnol interactif (département Espagnol)</h4>
+    <h3>Exemple 3 — Construire un mini-lexique espagnol interactif (département Espagnol)</h3>
     <p><strong>Situation :</strong> révision en 10 minutes par jour : tu veux un programme qui te fait réciter ton lexique et te note.</p>
 
     <p><strong>Ce que tu tapes (Composer) :</strong></p>
@@ -917,12 +954,22 @@ model.fit(train, epochs=10)
 
   <h2>📺 Vidéos pour aller plus loin</h2>
   <ul>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=cursor+ai+editor+tutoriel+fran%C3%A7ais+d%C3%A9butant" target="_blank">Cursor : tutoriel débutant (FR)</a></li>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=cursor+ai+cmd+k+cmd+l+explain" target="_blank">Cursor : Cmd+K et Chat (EN)</a></li>
-    <li>▶️ <a href="https://www.youtube.com/results?search_query=lire+un+diff+git+add+remove+explication" target="_blank">Lire un diff : vert et rouge (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=cursor+ai+editor+tutoriel+fran%C3%A7ais+d%C3%A9butant" target="_blank" rel="noopener noreferrer">Cursor : tutoriel débutant (FR)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=cursor+ai+cmd+k+cmd+l+explain" target="_blank" rel="noopener noreferrer">Cursor : Cmd+K et Chat (EN)</a></li>
+    <li>▶️ <a href="https://www.youtube.com/results?search_query=lire+un+diff+git+add+remove+explication" target="_blank" rel="noopener noreferrer">Lire un diff : vert et rouge (FR)</a></li>
   </ul>
 
-  <h2>🧠 Quiz — vérifie ta compréhension</h2>
+    <h2>✅ Checklist</h2>
+  <div class="retenir">
+  <ul>
+  <li>☐ Cursor installé, projet ouvert</li>
+  <li>☐ Au moins une modif via Cmd/Ctrl+K acceptée</li>
+  <li>☐ Au moins un Reject / Undo</li>
+  <li>☐ Un nouveau fichier généré et compris</li>
+  </ul>
+  </div>
+
+<h2>🧠 Quiz — vérifie ta compréhension</h2>
   <ol>
     <li>Que fait le raccourci Cmd/Ctrl + K ? <br><em>(Réponse : ouvre l'édition inline sur la sélection pour modifier le code par instruction naturelle.)</em></li>
     <li>Que signifient les couleurs vert et rouge dans un diff ? <br><em>(Réponse : vert = lignes ajoutées, rouge = lignes supprimées.)</em></li>
@@ -955,11 +1002,11 @@ model.fit(train, epochs=10)
   <div class="container">
     <div class="footer-logos">
       <picture>
-        <source srcset="../../../images/Université_de_Mostaganem.avif" type="image/avif">
-        <source srcset="../../../images/Université_de_Mostaganem.webp" type="image/webp">
-        <img loading="lazy" width="960" height="931" src="../../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"/>
+        <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+        <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+        <img loading="eager" decoding="async" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo">
       </picture>
-      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo"/>
+      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">
       <span>📧 madani.belacel [at] univ-mosta.dz</span>
