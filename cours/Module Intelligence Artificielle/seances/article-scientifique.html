@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'IA et l'article scientifique — le risque à connaître</title>
+  <meta name="description" content="Ce que l'IA peut changer dans un article scientifique sans qu'on s'en aperçoive : chiffres inventés, références fictives, formules modifiées. La règle d'or, la méthode de travail sûre et les prompts à copier. Module Intelligence Artificielle, 2e année PEP.">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/article-scientifique.html">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  /* Scope au contenu principal : sinon cette regle ecrasait aussi le
+     .container du pied de page (fond blanc sur footer sombre, largeur 820px). */
+  main .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #146fa9;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #146fa9;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h3,
+  .step h3,
+  .step h4 {
+    margin-top: 0;
+    color: #146fa9;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h3,
+  .exemple h3,
+  .exemple h4 {
+    margin-top: 0;
+    color: #146fa9;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #146fa9;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+</style>
+
+<link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
+<link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
+<link rel="stylesheet" href="../../../css/fonts/fonts.css">
+<link rel="preload" href="../../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="../../../css/style.css" rel="stylesheet"/>
+<link href="../../../images/universite-mostaganem-96.avif" rel="icon"/>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dr. Madani BELACEL">
+
+
+<meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/seance-11.html">
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="twitter:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../index.html" class="header-logo">
+        <picture>
+          <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+          <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+          <img loading="eager" fetchpriority="high" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem">
+        </picture>
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <picture>
+          <source srcset="../../../images/LOGO-FLE-UNIV-Mosta.avif" type="image/avif">
+          <source srcset="../../../images/LOGO-FLE-UNIV-Mosta.webp" type="image/webp">
+          <img loading="eager" width="207" height="243" src="../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+        </picture>
+      </div>
+    </div>
+    <img loading="eager" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav aria-label="Navigation principale" role="navigation">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../index.html">Accueil</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu À Propos">À Propos</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../../../index.html#about">Présentation</a></li>
+            <li><a href="../../../habilitation.html">Habilitation Universitaire</a></li>
+            <li><a href="../../../contact.html">Contact</a></li>
+          </ul>
+        </li>
+        <li><a href="../../../enseignement.html">Enseignement</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Domaines d'expertise">Domaines d'expertise</a>
+          <ul class="nav-dropdown-menu">
+                  <li><a href="../../../tic.html">TIC</a></li>
+                  <li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
+        </li>
+        <li><a href="../../../recherche.html">Recherche</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Dernières Actualités">Dernières Actualités</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../../../index.html#news">Actualités des Modules</a></li>
+            <li><a href="../../../ressources.html">Ressources</a></li>
+          </ul>
+        </li>
+        <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header page-header-tic">
+  <div class="container"><h1>L'IA et l'article scientifique — le risque à connaître</h1><p>Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p></div>
+</div>
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../index.html">Accueil</a></li><li><a href="../../../enseignement.html">Enseignement</a></li><li><a href="../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li><li class="current">Séance 11</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="content-wrapper">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="../index.html">Module IA</a></li>
+        <li><a href="index.html">Séances</a></li>
+        <li class="current">Article scientifique</li>
+      </ol>
+    </nav>
+  <h2 id="avertissement-article">⚠️ Avertissement — l'IA peut transformer un article vrai en article faux</h2>
+  <p><strong>Réponse courte : OUI, c'est un risque réel et sérieux.</strong> Mais avec la bonne
+  méthode, ce risque devient contrôlable. Voici pourquoi, comment, et comment se protéger.</p>
+
+  <h3>1. Le risque est réel : l'IA peut introduire des erreurs</h3>
+  <p>Quand vous demandez à une IA « améliore mon article », « vérifie mes résultats » ou
+  « identifie les anomalies », elle ne <strong>connaît pas</strong> votre travail. Elle ne sait
+  pas ce que vous avez réellement mesuré, ce que contiennent vos données, ni ce que vos
+  protocoles ont produit.</p>
+  <p>Elle va donc <strong>deviner</strong> ce qui est plausible, et parfois remplacer une
+  information correcte par une information fausse mais plausible.</p>
+  <div class="warn">
+    <strong>Le piège principal : l'IA ne dit pas « je ne sais pas » — elle invente une réponse
+    crédible.</strong>
+  </div>
+
+  <h3>2. Les 7 types d'erreurs que l'IA peut introduire</h3>
+  <table>
+    <tr><th>Type d'erreur</th><th>Exemple concret</th></tr>
+    <tr><td><strong>1. Chiffres inventés</strong></td><td>Vous avez mesuré 87,3 %. L'IA écrit « environ 90 % » ou « 85 % ».</td></tr>
+    <tr><td><strong>2. Références fictives</strong></td><td>L'IA ajoute « (Winter et al., 2012) » alors que cet article n'existe pas.</td></tr>
+    <tr><td><strong>3. Termes techniques déformés</strong></td><td>Elle écrit « RPL utilise AODV » alors que RPL utilise son propre mécanisme.</td></tr>
+    <tr><td><strong>4. Formules modifiées</strong></td><td>Elle « simplifie » une équation et la rend fausse.</td></tr>
+    <tr><td><strong>5. Conclusions exagérées</strong></td><td>Vos résultats montrent une amélioration de 5 %. L'IA écrit « amélioration significative ».</td></tr>
+    <tr><td><strong>6. Unités changées</strong></td><td>Vous parlez en millisecondes, elle écrit en secondes.</td></tr>
+    <tr><td><strong>7. Contexte inventé</strong></td><td>Elle ajoute une comparaison avec un protocole que vous n'avez jamais testé.</td></tr>
+  </table>
+  <p><strong>Conséquence :</strong> un article scientifiquement correct peut devenir faux, non
+  vérifiable, voire frauduleux — sans que vous vous en rendiez compte.</p>
+
+  <h3>3. Pourquoi l'IA fait cela ?</h3>
+  <p>Parce qu'elle fonctionne par <strong>prédiction de texte</strong>, pas par vérification de
+  vérité.</p>
+  <ul>
+    <li>Elle ne « lit » pas vos données. Elle lit votre texte.</li>
+    <li>Elle ne « sait » pas ce qui est vrai. Elle sait ce qui <em>sonne bien</em>.</li>
+    <li>Elle ne « vérifie » pas. Elle <strong>reformule</strong>.</li>
+  </ul>
+  <p>Donc quand vous lui demandez « vérifie mon article », elle fait en réalité :</p>
+  <div class="prompt-box">« Je vais écrire une réponse qui ressemble à une vérification. »</div>
+  <p>Ce n'est pas de la malveillance. C'est sa nature.</p>
+
+  <h3>4. Les cas où l'IA est <strong>dangereuse</strong></h3>
+  <table>
+    <tr><th>Situation</th><th>Risque</th></tr>
+    <tr><td>Vous lui demandez de « réécrire » vos résultats</td><td>Elle peut modifier les chiffres</td></tr>
+    <tr><td>Vous lui demandez de « compléter » vos références</td><td>Elle peut inventer des articles</td></tr>
+    <tr><td>Vous lui demandez de « corriger » vos formules</td><td>Elle peut les casser</td></tr>
+    <tr><td>Vous lui demandez de « résumer » vos conclusions</td><td>Elle peut exagérer</td></tr>
+    <tr><td>Vous lui demandez de « vérifier » sans lui donner vos données brutes</td><td>Elle devine</td></tr>
+    <tr><td>Vous copiez-collez sa réponse sans relire</td><td>Catastrophe</td></tr>
+  </table>
+
+  <h3>5. Les cas où l'IA est <strong>utile et sûre</strong></h3>
+  <table>
+    <tr><th>Tâche</th><th>Pourquoi c'est sûr</th></tr>
+    <tr><td>Corriger orthographe et grammaire</td><td>L'IA ne touche pas au sens</td></tr>
+    <tr><td>Améliorer le style (phrases plus claires)</td><td>Vous relisez après</td></tr>
+    <tr><td>Reformuler une phrase sans changer le sens</td><td>Vous comparez</td></tr>
+    <tr><td>Vérifier la structure (intro, méthode, résultats, discussion)</td><td>L'IA ne touche pas aux données</td></tr>
+    <tr><td>Proposer un plan</td><td>Vous validez</td></tr>
+    <tr><td>Traduire un passage</td><td>Vous vérifiez avec un second outil</td></tr>
+    <tr><td>Détecter des répétitions</td><td>L'IA signale, vous décidez</td></tr>
+    <tr><td>Vérifier la cohérence des temps verbaux</td><td>L'IA ne touche pas aux chiffres</td></tr>
+  </table>
+
+  <h3>6. La règle d'or : ne jamais laisser l'IA toucher à vos données</h3>
+  <div class="reflexe">
+    <strong>L'IA peut toucher aux mots. Elle ne doit JAMAIS toucher aux chiffres, aux formules,
+    aux figures, aux résultats, aux références.</strong>
+  </div>
+  <p>Si vous suivez cette règle, vous êtes protégé à 90 %.</p>
+
+  <h3>7. Méthode de travail sécurisée pour un article de 20 pages</h3>
+  <ol>
+    <li><strong>Sauvegardez une version originale.</strong> Avant toute utilisation de l'IA :
+        <code>article_v1_original.docx</code> et <code>article_v1_original.pdf</code>. C'est votre
+        référence, et elle vous permet de comparer.</li>
+    <li><strong>Travaillez par sections</strong>, jamais sur tout l'article d'un coup.
+        Introduction, état de l'art, méthodologie, résultats, discussion, conclusion.</li>
+    <li><strong>Ne demandez jamais de « vérifier » vos résultats.</strong> Demandez plutôt :</li>
+  </ol>
+  <div class="prompt-box">Voici mes résultats. Ne les modifie pas. Ne les reformule pas.
+  Dis-moi seulement :
+  1) si la présentation est claire
+  2) s'il manque une information pour comprendre
+  3) si les unités sont cohérentes
+  Ne touche à aucun chiffre.</div>
+  <ol start="4">
+    <li><strong>Vérifiez chaque chiffre manuellement.</strong> Chiffre par chiffre, formule par
+        formule, référence par référence. Si un chiffre a changé, remettez-le.</li>
+    <li><strong>Vérifiez les références</strong> : Google Scholar, DOI, site de la revue. Si elle
+        n'existe pas, supprimez-la.</li>
+    <li><strong>Gardez une trace des modifications</strong> : mode « suivi des modifications » de
+        Word, ou comparaison de versions.</li>
+    <li><strong>Ne publiez jamais sans relecture humaine finale.</strong> Vous êtes l'auteur,
+        vous êtes responsable. L'IA n'est qu'un outil.</li>
+  </ol>
+
+  <h3>8. Exemple concret</h3>
+  <p>Votre article contient :</p>
+  <div class="prompt-box">« Le protocole RPL réduit la consommation d'énergie de 23,7 % par
+  rapport à AODV dans un réseau de 50 nœuds. »</div>
+  <p><strong>Ce qu'il ne faut pas faire :</strong> <code>Améliore cette phrase.</code></p>
+  <p><strong>Ce que l'IA pourrait écrire :</strong> « Le protocole RPL réduit la consommation
+  d'énergie d'environ 25 % par rapport à AODV. »</p>
+  <p>➡️ Le chiffre a changé. L'article devient faux.</p>
+  <p><strong>Ce qu'il faut faire :</strong></p>
+  <div class="prompt-box">Voici une phrase de mon article :
+  « Le protocole RPL réduit la consommation d'énergie de 23,7 % par rapport à AODV
+  dans un réseau de 50 nœuds. »
+
+  Reformule UNIQUEMENT le style, sans changer AUCUN chiffre, AUCUN nom de protocole,
+  AUCUNE unité. Donne-moi 2 versions.</div>
+  <p>➡️ L'IA garde 23,7 %, AODV, 50 nœuds. Vous relisez. C'est sûr.</p>
+
+  <h3>9. Prompts dangereux contre prompts sûrs</h3>
+  <table>
+    <tr><th>Prompt dangereux</th><th>Pourquoi</th><th>Prompt sûr</th></tr>
+    <tr><td>« Améliore mon article »</td><td>Elle peut tout changer</td><td>« Améliore le style de cette phrase sans changer les chiffres »</td></tr>
+    <tr><td>« Vérifie mes résultats »</td><td>Elle invente</td><td>« Vérifie si mes résultats sont clairement présentés, sans les modifier »</td></tr>
+    <tr><td>« Complète mes références »</td><td>Elle invente</td><td>« Voici mes références. Vérifie si le format est correct. »</td></tr>
+    <tr><td>« Corrige mes formules »</td><td>Elle casse</td><td>« Explique-moi cette formule, ne la modifie pas »</td></tr>
+    <tr><td>« Résume mes conclusions »</td><td>Elle exagère</td><td>« Reformule mes conclusions sans changer le sens »</td></tr>
+  </table>
+
+  <h3>10. Ce que l'IA ne doit <strong>jamais</strong> faire</h3>
+  <ul>
+    <li>Modifier un chiffre, une formule, une figure.</li>
+    <li>Ajouter une référence.</li>
+    <li>Changer un résultat ou inventer une comparaison.</li>
+    <li>Reformuler une conclusion sans votre validation.</li>
+    <li>Résumer vos données ou « corriger » vos mesures.</li>
+  </ul>
+
+  <h3>11. La règle des 3 vérifications</h3>
+  <table>
+    <tr><th>Vérification</th><th>Question à se poser</th></tr>
+    <tr><td><strong>1. Chiffres</strong></td><td>Tous les chiffres sont-ils identiques à l'original ?</td></tr>
+    <tr><td><strong>2. Références</strong></td><td>Toutes les références existent-elles vraiment ?</td></tr>
+    <tr><td><strong>3. Sens</strong></td><td>Le sens général est-il identique à l'original ?</td></tr>
+  </table>
+  <p>Trois « oui » → vous pouvez continuer. Un seul « non » → vous corrigez ou supprimez.</p>
+
+  <h3>12. Réponse directe</h3>
+  <p><strong>« Est-ce qu'une IA peut transformer un article vrai en article faux ? »</strong></p>
+  <p><strong>Oui, c'est possible.</strong> Cela arrive surtout si vous lui demandez de toucher
+  aux données, si vous ne relisez pas, ou si vous lui demandez de « compléter » ou « vérifier »
+  sans lui donner vos données brutes.</p>
+  <p><strong>Non, ce n'est pas inévitable.</strong> Si vous travaillez section par section, si
+  elle ne touche jamais aux chiffres, si vous vérifiez chaque référence et si vous gardez une
+  version originale, l'IA devient un <strong>assistant utile et sûr</strong>.</p>
+
+  <h3>13. Le réflexe à retenir</h3>
+  <div class="reflexe">
+    <strong>« Avant de demander à l'IA de toucher à mon article : est-ce que cette demande peut
+    modifier mes chiffres, mes formules ou mes références ? »</strong>
+  </div>
+  <p>Si oui → reformulez la demande pour l'interdire explicitement. Si non → vous pouvez
+  continuer.</p>
+
+  <h3>14. La phrase de protection à mettre dans tous vos prompts</h3>
+  <div class="prompt-box">RÈGLES ABSOLUES :
+  - Ne modifie AUCUN chiffre.
+  - Ne modifie AUCUNE formule.
+  - Ne modifie AUCUNE référence.
+  - Ne modifie AUCUN nom de protocole.
+  - Ne modifie AUCUNE unité.
+  - Si tu n'es pas sûr, dis « je ne suis pas certain » au lieu d'inventer.
+  - Signale clairement ce que tu changes et pourquoi.</div>
+  <p>Cette phrase, à elle seule, réduit énormément le risque.</p>
+
+  <h3>15. Résumé final</h3>
+  <table>
+    <tr><th>Question</th><th>Réponse</th></tr>
+    <tr><td>L'IA peut-elle introduire des erreurs ?</td><td>Oui</td></tr>
+    <tr><td>Peut-elle transformer un article vrai en faux ?</td><td>Oui, si vous la laissez toucher aux données</td></tr>
+    <tr><td>Peut-on l'éviter ?</td><td>Oui, avec une méthode stricte</td></tr>
+    <tr><td>Que ne doit-elle jamais toucher ?</td><td>Chiffres, formules, figures, références, résultats</td></tr>
+    <tr><td>Que peut-elle faire sans danger ?</td><td>Style, orthographe, structure, clarté</td></tr>
+    <tr><td>Quelle est la règle d'or ?</td><td>L'IA touche aux mots, jamais aux données</td></tr>
+    <tr><td>Qui est responsable ?</td><td>Vous, l'auteur</td></tr>
+  </table>
+  </div>
+</main>
+
+  <style>
+    .avertissement-corps h3 {
+      font-family: var(--font-heading); font-size: 1.05rem; color: var(--navy);
+      margin: 1.6rem 0 .5rem; padding-bottom: .3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .avertissement-corps h3:first-of-type { margin-top: 1rem; }
+  </style>
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <picture>
+        <source srcset="../../../images/universite-mostaganem-96.avif" type="image/avif">
+        <source srcset="../../../images/universite-mostaganem-96.webp" type="image/webp">
+        <img loading="eager" decoding="async" width="96" height="93" src="../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo">
+      </picture>
+      <img loading="lazy" width="132" height="95" src="../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../../../js/main.v2.js" defer></script>
+
+
+</body>
+</html>
