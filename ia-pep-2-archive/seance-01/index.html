@@ -1,11 +1,14 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, follow"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Séance 01 — Qu'est-ce que l'IA ? Introduction et démystification — IA en Éducation PEP 2A — Dr. Madani BELACEL</title>
-<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-01/index.html" rel="canonical"/>
-<meta name="description" content="Ouvrir un chatbot, poser tes 2 premières questions avec des prompts prêts, juger les réponses et repartir avec ta première fiche d'usage — ta toute première interaction avec une IA, guidée pas à pas.">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../ia-pep-2/assets/styles-seance.css">
-<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2-archive/seance-01/index.html" rel="canonical"/>
+<meta name="description" content="Ouvrir un chatbot, poser tes 2 premières questions avec des prompts prêts, juger les réponses et repartir avec ta première fiche d'usage — ta toute première…">
+<link rel="preload" href="../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../assets/styles-seance.css">
+<link rel="icon" href="../../images/universite-mostaganem-96.webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,7 +28,7 @@
   <div class="header-inner">
     <div class="header-left">
       <a href="../../index.html" class="header-logo">
-        <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="lazy" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem"></picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
@@ -33,7 +36,7 @@
       </div>
     </div>
     <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
       <li><a href="../../index.html">Accueil</a></li>
@@ -49,16 +52,15 @@
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="../../tic.html">TIC</a></li>
-          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-          <li><a href="../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-          <li><a href="../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-          <li><a href="../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-        </ul>
+                  <li><a href="../../tic.html">TIC</a></li>
+                  <li><a href="../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
       </li>
       <li><a href="../../recherche.html">Recherche</a></li>
       <li><a href="../../ressources.html">Ressources</a></li>
@@ -125,8 +127,8 @@
     <table class="plan-table lang-ar"><thead><tr><th>المدّة</th><th>المرحلة</th></tr></thead><tbody><tr><td class="time">00–05</td><td><span class="phase-badge">🎬 A</span> <strong>🚀 إجراء فوري: سؤالك الأول</strong><br><span style="color:var(--text-muted);font-size:.9em;">افتح ChatGPT أو Gemini والصق الصياغة 1 واقرأ الجواب وسجّل شيئاً واضحاً وآخر مربكاً.</span></td></tr><tr><td class="time">05–20</td><td><span class="phase-badge">🧱 B</span> <strong>📋 وصفة خطوة بخطوة: السؤال الثاني والمقارنة</strong><br><span style="color:var(--text-muted);font-size:.9em;">الصياغة 2 (3 أمثلة يومية) ومقارنة مع قائمة الدرس وما يحدث عندما تكتب (تنبؤ الكلمة التالية).</span></td></tr><tr><td class="time">20–40</td><td><span class="phase-badge">🛠️ C</span> <strong>🛠️ عرض: أخطاء شائعة ورأي ثانٍ</strong><br><span style="color:var(--text-muted);font-size:.9em;">3 أخطاء مبتدئة مباشرة + مصيدة الهلوسة: نفس السؤال لروبوت الدردشة والمحرّك بمصادر.</span></td></tr><tr><td class="time">40–55</td><td><span class="phase-badge">✏️ D</span> <strong>🧪 المهمة: أول بطاقة استعمال</strong><br><span style="color:var(--text-muted);font-size:.9em;">إنتاج المطلوب: الصياغات المستعملة + الأجوبة + رأيك في 3 أسطر.</span></td></tr><tr><td class="time">55–60</td><td><span class="phase-badge">🧠 E</span> <strong>✅ قائمة تحقق واختبار خاطف</strong><br><span style="color:var(--text-muted);font-size:.9em;">علّم على الخانات الأربع (الأداة مفتوحة و3 أسئلة ونتيجة صالحة وحد مرصود) + اختبار من 5 أسئلة.</span></td></tr><tr><td class="time">60–90</td><td><span class="phase-badge">🤝 Atelier</span> <strong>🤝 ورشة: المهمة والحوارات</strong><br><span style="color:var(--text-muted);font-size:.9em;">أنهِ بطاقة الاستعمال ومثّل الحوارين A وB ثنائياً ثم دوراً مصغّراً من 3 دقائق.</span></td></tr></tbody></table>
 
     <h2><span class="lang-fr">📚 Contenu de la séance</span><span class="lang-en">📚 Lesson content</span><span class="lang-ar">📚 محتوى الحصة</span></h2>
-    
-    
+
+
 <section id="s1">
 <h2><span class="lang-fr">🎯 Ce que vous saurez faire à la fin</span><span class="lang-en">🎯 What you will be able to do by the end</span><span class="lang-ar">🎯 ما ستعرف فعله في النهاية</span></h2>
 <div class="lang-fr"><p class="lang-fr">Pas de cours magistral : dans 10 minutes, tu auras déjà parlé à une IA. Voici les 3 résultats concrets que tu produiras pendant cette séance.</p>
@@ -208,8 +210,8 @@
 <h2><span class="lang-fr">📺 Vidéos pour mieux comprendre</span><span class="lang-en">📺 Videos to understand better</span><span class="lang-ar">📺 فيديوهات لفهم أفضل</span></h2>
 <div class="video-grid"><a class="video-card" href="https://www.youtube.com/watch?v=wdbb-X5qH4w" target="_blank" rel="noopener"><span class="vid-thumb">▶️</span><span class="vid-info"><div class="lang-fr">ما هو الذكاء الاصطناعي؟ شرح مبسط للمبتدئين (AI بالعربي)</div><div class="lang-en">What is AI? Simple explanation for beginners (AI بالعربي)</div><div class="lang-ar">ما هو الذكاء الاصطناعي؟ شرح مبسط للمبتدئين (AI بالعربي)</div><span class="vid-lang">🇩🇿 YouTube</span><div class="lang-fr">Idéale pour revoir la définition de l'IA avec des exemples de la vie quotidienne.</div><div class="lang-en">Great to revise the definition of AI with everyday examples.</div><div class="lang-ar">مثالية لمراجعة تعريف الذكاء الاصطناعي بأمثلة يومية.</div></span></a><a class="video-card" href="https://www.youtube.com/watch?v=vCKHeYQp8nk" target="_blank" rel="noopener"><span class="vid-thumb">▶️</span><span class="vid-info"><div class="lang-fr">ما هو الذكاء الاصطناعي؟ شرح مبسط</div><div class="lang-en">What is AI? A simple explanation</div><div class="lang-ar">ما هو الذكاء الاصطناعي؟ شرح مبسط</div><span class="vid-lang">🇩🇿 YouTube</span><div class="lang-fr">Deuxième regard, très pédagogique : l'IA dans le téléphone et dans la classe.</div><div class="lang-en">A second, very didactic look: AI in the phone and in the classroom.</div><div class="lang-ar">نظرة ثانية تعليمية جداً: الذكاء الاصطناعي في الهاتف وفي القسم.</div></span></a><a class="video-card" href="https://www.youtube.com/watch?v=UwsrzCVZAb8" target="_blank" rel="noopener"><span class="vid-thumb">▶️</span><span class="vid-info"><div class="lang-fr">The Age of A.I. (Kurzgesagt)</div><div class="lang-en">The Age of A.I. (Kurzgesagt)</div><div class="lang-ar">عصر الذكاء الاصطناعي (Kurzgesagt)</div><span class="vid-lang">🇬🇧 YouTube</span><div class="lang-fr">Ce que l'IA peut et ne peut pas faire — pour rester lucide (sous-titres FR disponibles).</div><div class="lang-en">What AI can and cannot do — to stay clear-headed (FR subtitles available).</div><div class="lang-ar">ما يستطيع الذكاء الاصطناعي فعله وما لا يستطيع — للبقاء صاحياً (ترجمة فرنسية متاحة).</div></span></a></div>
 </section>
-    
-    
+
+
     <section id="fiche"><h2><span class="lang-fr">📋 Fiche de synthèse — 5 min</span><span class="lang-en">📋 Summary sheet — 5 min</span><span class="lang-ar">📋 بطاقة التركيب — 5 دقائق</span></h2><div class="fiche-grid"><div class="fiche-col"><h3>🗝️ <span class="lang-fr">Points clés</span><span class="lang-en">Key points</span><span class="lang-ar">النقاط الرئيسية</span></h3><ul><li><span class="lang-fr">J'ai ouvert un chatbot et posé 2 vraies questions (prompts 1 et 2).</span><span class="lang-en">I opened a chatbot and asked 2 real questions (prompts 1 and 2).</span><span class="lang-ar">فتحت روبوت دردشة وطرحت سؤالين حقيقيين (الصياغتان 1 و2).</span></li><li><span class="lang-fr">Je sais juger une réponse : 1 chose claire + 1 chose confuse ou douteuse.</span><span class="lang-en">I can judge an answer: 1 clear + 1 confusing or doubtful thing.</span><span class="lang-ar">أعرف الحكم على جواب: شيء واضح + شيء مربك أو مشكوك.</span></li><li><span class="lang-fr">Je connais les 3 erreurs qui tuent un bon usage (vague, confiance aveugle, zéro réflexion).</span><span class="lang-en">I know the 3 mistakes killing good use (vague, blind trust, zero thinking).</span><span class="lang-ar">أعرف الأخطاء الثلاثة القاتلة للاستعمال الجيد (الغموض والثقة العمياء وانعدام التفكير).</span></li><li><span class="lang-fr">J'ai produit ma fiche d'usage : prompts + réponses + avis en 3 lignes.</span><span class="lang-en">I produced my usage sheet: prompts + answers + 3-line review.</span><span class="lang-ar">أنتجت بطاقة استعمالي: الصياغات + الأجوبة + الرأي في 3 أسطر.</span></li><li><span class="lang-fr">3 règles d'or : vérifier, citer, garder ton jugement.</span><span class="lang-en">3 golden rules: verify, cite, keep your judgement.</span><span class="lang-ar">3 قواعد ذهبية: تحقّق، استشهد، حافظ على حكمك.</span></li></ul></div><div class="fiche-col"><h3>🍳 <span class="lang-fr">Analogies utilisées</span><span class="lang-en">Analogies used</span><span class="lang-ar">التشبيهات المستعملة</span></h3><ul><li>🎯 <span class="lang-fr">L'apprenti cuisinier qui goûte des milliers de plats avant de créer sa recette.</span><span class="lang-en">The apprentice chef who tastes thousands of dishes before creating his recipe.</span><span class="lang-ar">الطبّاخ المبتدئ يتذوّق آلاف الأطباق قبل إبداع وصفته.</span></li><li>🎯 <span class="lang-fr">L'enfant qui reconnaît un chien parce qu'il en a déjà vu beaucoup.</span><span class="lang-en">The child who recognises a dog because he has already seen many.</span><span class="lang-ar">الطفل يتعرّف على الكلب لأنه رآه مرات كثيرة.</span></li><li>🎯 <span class="lang-fr">Le jeu de devinettes : deviner le mot suivant d'une phrase.</span><span class="lang-en">The guessing game: guess the next word of a sentence.</span><span class="lang-ar">لعبة التخمين: خمّن الكلمة التالية في الجملة.</span></li></ul></div><div class="fiche-col"><h3>🧩 <span class="lang-fr">Exemples concrets</span><span class="lang-en">Concrete examples</span><span class="lang-ar">أمثلة ملموسة</span></h3><ul><li>✏️ <span class="lang-fr">Ton téléphone utilise l'IA pour déverrouiller (reconnaissance faciale) et corriger ta frappe.</span><span class="lang-en">Your phone uses AI to unlock (face recognition) and fix your typing.</span><span class="lang-ar">هاتفك يستعمل الذكاء الاصطناعي لفتح الوجه وتصحيح الكتابة.</span></li><li>✏️ <span class="lang-fr">« Hier je suis allé… » → l'IA propose « au marché » car c'est probable.</span><span class="lang-en">"Yesterday I went…" → AI suggests "to the market" because it is probable.</span><span class="lang-ar">« بالأمس ذهبت… » → يقترح الذكاء الاصطناعي « إلى السوق » لأنها الحتملة.</span></li><li>✏️ <span class="lang-fr">Demander 2 études sur Piaget : le chatbot peut en inventer, l'outil sourcé affiche des liens.</span><span class="lang-en">Asking for 2 studies on Piaget: the chatbot may invent them, the sourced tool shows links.</span><span class="lang-ar">طلب دراستين عن بياجيه: قد يختلقهما روبوت المحادثة، والأداة الموجّهة تعرض روابط.</span></li></ul></div></div></section><section id="symbiose"><div class="hook-row hook-phrase"><span class="hook-emoji">🏁</span><div><div class="lang-fr">🏁 L'IA, c'est comme un excellent acteur : il peut jouer brillamment n'importe quel rôle de manière convaincante, mais ce qu'il raconte n'est pas forcément vrai. À toi de vérifier le scénario.</div><div class="lang-en">🏁 AI is like a brilliant actor: it can brilliantly play any role convincingly, but what it says is not necessarily true. You check the script.</div><div class="lang-ar">🏁 الذكاء الاصطناعي كممثل بارع: يلعب أي دور بشكل مقنع، لكن ما يقوله ليس صحيحاً بالضرورة. وأنت تتحقق من السيناريو.</div></div></div></section>
     <section id="quiz">
 <h2><span class="lang-fr">🧠 Quiz — vérifie ta compréhension</span><span class="lang-en">🧠 Quiz — check your understanding</span><span class="lang-ar">🧠 اختبار — تحقّق من فهمك</span></h2>
@@ -232,14 +234,14 @@
     <h2><span class="lang-fr">📂 Ressources de la séance</span><span class="lang-en">📂 Session resources</span><span class="lang-ar">📂 موارد الحصة</span></h2>
     <div class="resource-grid"><a class="resource-card" href="cours-fr.md"><span class="rc-icon">📘</span><div class="rc-title">Cours détaillé (Français)</div><div class="rc-desc">Document texte complet de la séance en français.</div></a><a class="resource-card" href="cours-en.md"><span class="rc-icon">📗</span><div class="rc-title">Course notes (English)</div><div class="rc-desc">Full written lesson in English.</div></a><a class="resource-card" href="cours-ar.md"><span class="rc-icon">📙</span><div class="rc-title">Cours résumé (العربية)</div><div class="rc-desc">ملخّص الدرس باللغة العربية.</div></a><a class="resource-card" href="fiche-synthese.md"><span class="rc-icon">🗒️</span><div class="rc-title">Fiche de synthèse + quiz</div><div class="rc-desc">Points clés, analogies, exemples et quiz corrigé.</div></a><a class="resource-card" href="presentation.pptx"><span class="rc-icon">🖥️</span><div class="rc-title">Présentation PowerPoint</div><div class="rc-desc">Support de cours à projeter en classe.</div></a><a class="resource-card" href="slides.md"><span class="rc-icon">🎞️</span><div class="rc-title">Diapositives (Marp)</div><div class="rc-desc">Support de présentation au format Markdown.</div></a><a class="resource-card" href="dialogues-fr.md"><span class="rc-icon">💬</span><div class="rc-title">Dialogues pédagogiques (FR)</div><div class="rc-desc">Scripts de dialogues à jouer en classe, en français.</div></a><a class="resource-card" href="dialogues-en.md"><span class="rc-icon">💬</span><div class="rc-title">Pedagogical dialogues (EN)</div><div class="rc-desc">Classroom dialogue scripts in English.</div></a><a class="resource-card" href="../outils-ia.html"><span class="rc-icon">🧰</span><div class="rc-title">Outils IA (boîte à outils)</div><div class="rc-desc">12+ outils IA détaillés : usage, exemple, forces, limites.</div></a><a class="resource-card" href="../construire-ia.html"><span class="rc-icon">🛠️</span><div class="rc-title">Construire son IA</div><div class="rc-desc">3 approches : no-code (Dify), API Python, local (Ollama).</div></a></div>
 
-    <div class="seance-nav"><a class="disabled">◀ Séance précédente</a><a href="../index.html">📋 Sommaire du module</a><a href="../seance-02/index.html">Séance suivante ▶</a></div>
+    <div class="seance-nav"><a class="disabled" aria-disabled="true">◀ Séance précédente</a><a href="../index.html">📋 Sommaire du module</a><a href="../seance-02/index.html">Séance suivante ▶</a></div>
   </div>
 </main>
 
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="eager" decoding="async" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo"></picture>
       <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">

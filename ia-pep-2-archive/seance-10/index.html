@@ -1,11 +1,14 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, follow"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Séance 10 — Esprit critique + Charte de l'étudiant + Construire son IA — IA en Éducation PEP 2A — Dr. Madani BELACEL</title>
-<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-10/index.html" rel="canonical"/>
-<meta name="description" content="Biais, hallucinations, fiabilité : penser contre la machine quand il faut. Adopter la Charte en 10 points et découvrir les 3 voies pour construire sa propre IA.">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../ia-pep-2/assets/styles-seance.css">
-<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2-archive/seance-10/index.html" rel="canonical"/>
+<meta name="description" content="Biais, hallucinations, fiabilité : penser contre la machine quand il faut. Adopter la Charte en 10 points et découvrir les 3 voies pour construire sa propre…">
+<link rel="preload" href="../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../assets/styles-seance.css">
+<link rel="icon" href="../../images/universite-mostaganem-96.webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,7 +28,7 @@
   <div class="header-inner">
     <div class="header-left">
       <a href="../../index.html" class="header-logo">
-        <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="lazy" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem"></picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
@@ -33,7 +36,7 @@
       </div>
     </div>
     <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
       <li><a href="../../index.html">Accueil</a></li>
@@ -49,16 +52,15 @@
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="../../tic.html">TIC</a></li>
-          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-          <li><a href="../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-          <li><a href="../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-          <li><a href="../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-        </ul>
+                  <li><a href="../../tic.html">TIC</a></li>
+                  <li><a href="../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
       </li>
       <li><a href="../../recherche.html">Recherche</a></li>
       <li><a href="../../ressources.html">Ressources</a></li>
@@ -129,7 +131,7 @@
 <h2><span class="lang-fr">🎬 Accroche et analogie — 5 min</span><span class="lang-en">🎬 Hook and analogy — 5 min</span><span class="lang-ar">🎬 انطلاقة وتشبيه — 5 دقائق</span></h2>
 <div class="hook-row"><span class="hook-emoji">❓</span><div><div class="lang-fr">L'IA vous a-t-elle déjà affirmé quelque chose de faux… avec un aplomb total ? Aujourd'hui, on apprend à ne plus jamais se faire avoir — puis à construire sa propre machine.</div><div class="lang-en">Has AI ever stated something false to you… with total confidence? Today, we learn to never be fooled again — then to build our own machine.</div><div class="lang-ar">هل أكّد لك الذكاء يوماً شيئاً خاطئاً… بثقة تامة؟ اليوم نتعلّم ألا نُخدَع أبداً — ثم نبني آلتنا الخاصة.</div></div></div><div class="hook-row"><span class="hook-emoji">🍳</span><div><div class="lang-fr">🍳 Croire l'IA sur parole, c'est comme acheter du poisson sans le sentir : parfois c'est frais, parfois non — et c'est votre nez (votre esprit critique) qui décide, pas le vendeur.</div><div class="lang-en">🍳 Believing AI at face value is like buying fish without smelling it: sometimes fresh, sometimes not — and it is your nose (your critical mind) deciding, not the seller.</div><div class="lang-ar">🍳 تصديق الذكاء دون تحقق كشراء السمك دون شمّه: أحياناً طازج وأحياناً لا — وأنفك (حسّك النقدي) هو من يقرّر لا البائع.</div></div></div><div class="hook-row hook-phrase"><span class="hook-emoji">💡</span><div><div class="lang-fr">💡 L'esprit critique, c'est le muscle du diplôme : l'IA propose toujours, vous disposez à la fin — et un jour, vous construirez la machine au lieu de la subir.</div><div class="lang-en">💡 Critical thinking is the diploma's muscle: AI always proposes, you decide in the end — and one day, you will build the machine instead of enduring it.</div><div class="lang-ar">💡 الحس النقدي عضلة الشهادة: الذكاء يقترح دائماً وأنت تقرّر أخيراً — ويوماً ما ستبني الآلة بدل أن تخضع لها.</div></div></div>
 </section>
-    
+
 <section id="s1">
 <h2><span class="lang-fr">Biais : l'IA apprend nos préjugés en même temps que nos savoirs</span><span class="lang-en">Bias: AI learns our prejudices along with our knowledge</span><span class="lang-ar">التحيز: يتعلّم الذكاء أحكامنا المسبقة مع معارفنا</span></h2>
 <div class="lang-fr"><p class="lang-fr">L'IA apprend sur des textes humains : elle hérite de leurs stéréotypes (métiers genrés, accents moqués, histoire racontée par les vainqueurs). La connaître, c'est pouvoir la contredire.</p>
@@ -241,14 +243,14 @@
     <h2><span class="lang-fr">📂 Ressources de la séance</span><span class="lang-en">📂 Session resources</span><span class="lang-ar">📂 موارد الحصة</span></h2>
     <div class="resource-grid"><a class="resource-card" href="cours-fr.md"><span class="rc-icon">📘</span><div class="rc-title">Cours détaillé (Français)</div><div class="rc-desc">Document texte complet de la séance en français.</div></a><a class="resource-card" href="cours-en.md"><span class="rc-icon">📗</span><div class="rc-title">Course notes (English)</div><div class="rc-desc">Full written lesson in English.</div></a><a class="resource-card" href="cours-ar.md"><span class="rc-icon">📙</span><div class="rc-title">Cours résumé (العربية)</div><div class="rc-desc">ملخّص الدرس باللغة العربية.</div></a><a class="resource-card" href="fiche-synthese.md"><span class="rc-icon">🗒️</span><div class="rc-title">Fiche de synthèse + quiz</div><div class="rc-desc">Points clés, analogies, exemples et quiz corrigé.</div></a><a class="resource-card" href="presentation.pptx"><span class="rc-icon">🖥️</span><div class="rc-title">Présentation PowerPoint</div><div class="rc-desc">Support de cours à projeter en classe.</div></a><a class="resource-card" href="slides.md"><span class="rc-icon">🎞️</span><div class="rc-title">Diapositives (Marp)</div><div class="rc-desc">Support de présentation au format Markdown.</div></a><a class="resource-card" href="dialogues-fr.md"><span class="rc-icon">💬</span><div class="rc-title">Dialogues pédagogiques (FR)</div><div class="rc-desc">Scripts de dialogues à jouer en classe, en français.</div></a><a class="resource-card" href="dialogues-en.md"><span class="rc-icon">💬</span><div class="rc-title">Pedagogical dialogues (EN)</div><div class="rc-desc">Classroom dialogue scripts in English.</div></a><a class="resource-card" href="../outils-ia.html"><span class="rc-icon">🧰</span><div class="rc-title">Outils IA (boîte à outils)</div><div class="rc-desc">12+ outils IA détaillés : usage, exemple, forces, limites.</div></a><a class="resource-card" href="../construire-ia.html"><span class="rc-icon">🛠️</span><div class="rc-title">Construire son IA</div><div class="rc-desc">3 approches : no-code (Dify), API Python, local (Ollama).</div></a></div>
 
-    <div class="seance-nav"><a href="../seance-09/index.html">◀ Séance précédente</a><a href="../index.html">📋 Sommaire du module</a><a class="disabled">Séance suivante ▶</a></div>
+    <div class="seance-nav"><a href="../seance-09/index.html">◀ Séance précédente</a><a href="../index.html">📋 Sommaire du module</a><a class="disabled" aria-disabled="true">Séance suivante ▶</a></div>
   </div>
 </main>
 
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="eager" decoding="async" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo"></picture>
       <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">

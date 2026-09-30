@@ -91,7 +91,7 @@ def head_html(title, desc, canonical, prefix, json_ld):
 <link href="{canonical}" rel="canonical"/>
 <meta name="description" content="{desc}">
 <link rel="stylesheet" href="{prefix}css/style.css">
-<link rel="stylesheet" href="{prefix}ia-pep-2/assets/styles-seance.css">
+<link rel="stylesheet" href="{prefix}assets/styles-seance.css">
 <link rel="icon" href="{prefix}images/Université_de_Mostaganem.png">
 <script type="application/ld+json">
 {json_ld}
@@ -110,7 +110,7 @@ def head_html(title, desc, canonical, prefix, json_ld):
       </div>
     </div>
     <img loading="lazy" width="132" height="95" src="{prefix}images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
       <li><a href="{prefix}index.html">Accueil</a></li>
@@ -132,9 +132,7 @@ def head_html(title, desc, canonical, prefix, json_ld):
           <li><a href="{prefix}recherche-documentaire.html">Recherche Documentaire</a></li>
           <li><a href="{prefix}reseaux.html">Réseaux Mostaganem</a></li>
           <li><a href="{prefix}cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-          <li><a href="{prefix}ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-          <li><a href="{prefix}ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-          <li><a href="{prefix}ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
+          <li><a href="{prefix}cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
         </ul>
       </li>
       <li><a href="{prefix}recherche.html">Recherche</a></li>
@@ -443,7 +441,7 @@ def render_seance_html(seance, prefix):
     seg = seance["slug"]
     icon = seance["icon"]
     t = seance["titles"]
-    canonical = f"{SITE}/ia-pep-2/{seg}/index.html"
+    canonical = f"{SITE}/ia-pep-2-archive/{seg}/index.html"
     json_ld = f"""{{
   "@context": "https://schema.org",
   "@type": "LearningResource",
@@ -1092,7 +1090,7 @@ def slides_md(seance):
 # --------------------------------------------------------------------------
 def render_module_index(seances):
     prefix = "../"
-    canonical = f"{SITE}/ia-pep-2/index.html"
+    canonical = f"{SITE}/ia-pep-2-archive/index.html"
     json_ld = f"""{{
   "@context": "https://schema.org",
   "@type": "Course",
@@ -1193,7 +1191,7 @@ footer_placeholder""" + TABS_SCRIPT
 # --------------------------------------------------------------------------
 def render_outils_ia(seances):
     prefix = "../"
-    canonical = f"{SITE}/ia-pep-2/outils-ia.html"
+    canonical = f"{SITE}/ia-pep-2-archive/outils-ia.html"
     json_ld = f"""{{
   "@context": "https://schema.org",
   "@type": "LearningResource",
@@ -1430,7 +1428,7 @@ footer_placeholder"""""
 # --------------------------------------------------------------------------
 def render_construire_ia(seances):
     prefix = "../"
-    canonical = f"{SITE}/ia-pep-2/construire-ia.html"
+    canonical = f"{SITE}/ia-pep-2-archive/construire-ia.html"
     json_ld = f"""{{
   "@context": "https://schema.org",
   "@type": "LearningResource",

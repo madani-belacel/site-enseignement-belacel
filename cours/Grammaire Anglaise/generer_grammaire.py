@@ -5,6 +5,7 @@ dans le même style que « dialogue anglais »."""
 
 import asyncio
 import os
+import re
 
 from data_grammaire import LEVELS
 from prononciation import ar_pron
@@ -78,8 +79,8 @@ body {
   font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
 }
 .side-link {
-  display: flex; align-items: center; justify-content: flex-start; gap: 8px;
-  padding: 9px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  display: flex; align-items: center; justify-content: flex-start; gap: 8px; min-height: 40px;
+  padding: 10px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
   border: 1px solid transparent; transition: all 0.2s ease;
 }
 .side-link:hover, .side-link.active {
@@ -98,7 +99,7 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 18px rgba(31,107,58,0.2); }
-.btn.disabled { background: #dde5dd; color: #728077; box-shadow: none; pointer-events: none; }
+.btn.disabled { background: #dde5dd; color: #56645b; box-shadow: none; pointer-events: none; }
 .spacer { flex: 1; }
 h1 {
   color: var(--primary-dark);
@@ -133,13 +134,13 @@ img.flag-corner {
   display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff;
   margin-right: 6px; letter-spacing: 0.03em; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-.badge.beginner { background: #4d9b43; }
-.badge.elementary { background: #7ca442; }
-.badge.intermediate { background: #d48a1d; }
-.badge.upper { background: #d56b1c; }
-.badge.advanced { background: #b94a31; }
-.badge.proficiency { background: #882f2e; }
-.badge.root { background: #5bb; }
+.badge.beginner { background: #3a8232; }
+.badge.elementary { background: #5c7e2b; }
+.badge.intermediate { background: #a0680e; }
+.badge.upper { background: #a85412; }
+.badge.advanced { background: #943a26; }
+.badge.proficiency { background: #6e2322; }
+.badge.root { background: #2f7188; }
 .card {
   background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
   border: 1px solid var(--line); border-radius: 16px; padding: 18px 18px 16px; margin: 18px 0;
@@ -171,7 +172,7 @@ table.pron { border-collapse: collapse; width: 100%; font-size: 0.92em; table-la
 table.pron th { background: linear-gradient(180deg, #1b653a 0%, #2b7d48 100%); color: #fff; padding: 10px 12px; }
 table.pron td { padding: 9px 12px; border-bottom: 1px solid #ebefe9; vertical-align: top; }
 table.pron tr:nth-child(even) td { background: #f7faf8; }
-table.pron td.num { width: 40px; text-align: center; color: #7a807b; font-weight: bold; white-space: nowrap; }
+table.pron td.num { width: 40px; text-align: center; color: #6d736e; font-weight: bold; white-space: nowrap; }
 table.pron td.ar { font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; color: #1a3c22; overflow-wrap: anywhere; }
 table.pron td.en { color: #0f3d24; overflow-wrap: anywhere; }
 table.pron tr.sec td { background: linear-gradient(180deg, #164f2d 0%, #2a6e45 100%); color: #fff; font-weight: 700; font-family: 'Traditional Arabic', 'Amiri', serif; direction: rtl; text-align: right; padding: 10px 12px; letter-spacing: 0.02em; }
@@ -192,6 +193,10 @@ button.say {
 }
 button.say:hover { transform: translateY(-1px) scale(1.06); box-shadow: 0 10px 16px rgba(20,61,41,0.28); }
 button.say:active { transform: translateY(0) scale(0.97); }
+button.say.wide {
+  width: auto; height: auto; min-height: 34px; border-radius: 999px; padding: 6px 16px;
+  font-size: 0.95em; font-family: 'Traditional Arabic', 'Amiri', 'Segoe UI', serif; line-height: 1.6;
+}
 .player-bar {
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: linear-gradient(180deg, #ecf6ee 0%, #e5f1e8 100%);
   border: 1px solid #cfe0d3; border-radius: 12px; padding: 10px 14px; margin: 14px 0;
@@ -253,7 +258,7 @@ table.pron { font-size: 0.95em; }
 
 def banner():
     return """<div class="header-banner">
-<picture><source srcset="../photo-profil.avif" type="image/avif"><source srcset="../photo-profil.webp" type="image/webp"><img class="prof-photo" src="../photo-profil.png" alt="Dr. BELACEL Madani"></picture>
+<picture><source srcset="../../../images/photo-profil.avif" type="image/avif"><source srcset="../../../images/photo-profil.webp" type="image/webp"><img class="prof-photo" src="../../../images/photo-profil.png" width="96" height="96" decoding="async" alt="Dr. BELACEL Madani"></picture>
 <div class="hb-info">
 <h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
 <p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
@@ -323,7 +328,7 @@ def table_rule_count(rows):
 def _audio_player_bar():
     return """<div class="player-bar">
 <audio id="gram-audio" preload="none"></audio>
-<button class="btn stop" id="gram-stop" onclick="stopAudio()">⏹ إيقاف</button>
+<button class="btn stop" id="gram-stop" type="button" onclick="stopAudio()">⏹ إيقاف</button>
 <span id="gram-now-playing" class="now-playing"></span>
 </div>"""
 
@@ -467,7 +472,7 @@ def render_table(lvl, emit_audio=True):
                 atext = ""
             if atext:
                 fname = _audio_fname(atext)
-                tds += f'<td class="audio-cell"><button class="say" data-src="_audio_niveaux/{fname}" data-label="{row[0]}" title="استمع إلى النطق" aria-label="استمع">▶</button></td>'
+                tds += f'<td class="audio-cell"><button class="say" type="button" data-src="_audio_niveaux/{fname}" data-label="{row[0]}" title="استمع إلى النطق" aria-label="استمع">▶</button></td>'
             else:
                 tds += '<td class="audio-cell"></td>'
         else:
@@ -540,7 +545,7 @@ def render_level(lvl):
                 say = ""
                 if en.strip():
                     fname = _audio_fname(_audio_clean(en))
-                    say = (f' <button class="say" data-src="_audio_niveaux/{fname}" '
+                    say = (f' <button class="say" type="button" data-src="_audio_niveaux/{fname}" '
                            f'data-label="{en}" title="استمع إلى النطق" aria-label="Écouter">▶</button>')
                 return (f'<tr>'
                         f'<td class="en-c">{en}{say}</td>'
@@ -605,6 +610,10 @@ def render_level(lvl):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قواعد اللغة الإنجليزية — Niveau {n}</title>
+<meta name="description" content="Fiche de grammaire anglaise niveau {n} : explications, exemples et exercices progressifs en français, anglais et arabe.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Grammaire%20Anglaise/niveaux/Niveau%20{n}.html">
+<link rel="icon" href="../../../images/universite-mostaganem-96.webp" type="image/webp">
 {STYLE_COMMON}{style_extra}
 </head>
 <body>
@@ -627,6 +636,7 @@ def render_level(lvl):
     {''.join(groups)}
   </div>
 </div>
+<main id="main-content">
 <div class="content-shell">
   <div class="page-shell">
     <div class="topbar">
@@ -664,7 +674,8 @@ def render_level(lvl):
     </div>
   </div>
 </div>
-<img src="../alg_drap.gif" alt="Algérie" class="flag-corner">
+</main>
+<img src="../alg_drap.gif" width="132" height="95" decoding="async" alt="Algérie" class="flag-corner">
 </body>
 </html>"""
     return html
@@ -709,6 +720,33 @@ body {
   font-family: 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 24px 18px 60px;
   background: radial-gradient(circle at top, #f9fcfa 0%, #f4f6f3 18%, #edf3ee 100%); color: var(--text);
 }
+.sidebar {
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf7 100%);
+  border: 1px solid var(--line); border-radius: 18px; padding: 16px 14px; margin: 0 0 18px;
+  box-shadow: 0 18px 26px rgba(17, 35, 25, 0.08);
+}
+.brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 8px 8px 12px; border-bottom: 1px solid #eaeef0; }
+.brand-mark {
+  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px;
+  background: linear-gradient(135deg, #144d2d 0%, #2f8b56 100%); color: #fff; font-size: 1.2rem;
+  box-shadow: 0 10px 14px rgba(20, 77, 45, 0.16);
+}
+.brand h3 { margin: 0; font-size: 1rem; color: var(--primary-dark); }
+.brand small { color: var(--muted); }
+.side-menu, .side-section { display: grid; gap: 8px; }
+.side-section { margin-top: 14px; }
+.side-section-title {
+  font-size: 0.72em; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 8px;
+}
+.side-link {
+  display: flex; align-items: center; gap: 8px; min-height: 40px;
+  padding: 10px 12px; border-radius: 10px; font-size: 0.9em; color: var(--text); text-decoration: none;
+  border: 1px solid transparent; transition: all 0.2s ease;
+}
+.side-link:hover, .side-link.active {
+  background: linear-gradient(180deg, var(--primary-soft) 0%, #eaf7ee 100%);
+  border-color: rgba(31, 107, 58, 0.14); color: var(--primary-dark);
+}
 h1 { color: var(--primary-dark); border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
 p.desc { color: var(--muted); }
 .table-wrap {
@@ -734,7 +772,7 @@ th {
   background: linear-gradient(180deg, #1b653a 0%, #2a804d 100%); color: #fff; text-align: left; padding: 12px 14px; }
 td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
 tr:hover td { background: #f1f8f3; }
-.num { width: 52px; color: #7a807b; font-weight: bold; }
+.num { width: 52px; color: #6d736e; font-weight: bold; }
 .nm { font-weight: bold; }
 .links { white-space: nowrap; }
 .links a {
@@ -756,12 +794,12 @@ img.flag-corner {
 .header-banner .hb-info h2 small { display: block; font-size: 0.85rem; opacity: 0.85; font-weight: normal; margin-top: 2px; }
 .header-banner .hb-info p { margin: 4px 0 0; font-size: 0.9em; opacity: 0.92; line-height: 1.45; }
 .badge { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 0.8em; font-weight: 700; color: #fff; }
-.badge.beginner { background: #4c9c3a; }
-.badge.elementary { background: #7a9c3a; }
-.badge.intermediate { background: #c98a2c; }
-.badge.upper { background: #c96a2c; }
-.badge.advanced { background: #b5482c; }
-.badge.proficiency { background: #8d2f2f; }
+.badge.beginner { background: #3a8232; }
+.badge.elementary { background: #5c7e2b; }
+.badge.intermediate { background: #a0680e; }
+.badge.upper { background: #a85412; }
+.badge.advanced { background: #943a26; }
+.badge.proficiency { background: #6e2323; }
 .legend { margin: 14px 0 0; font-size: 0.9em; color: #555; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .legend .badge { font-size: 0.76em; }
 .summary-grid {
@@ -808,6 +846,10 @@ img.flag-corner {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f1720">
 <title>قواعد اللغة الإنجليزية — Fiches de grammaire</title>
+<meta name="description" content="Fiches de grammaire anglaise progressives : plus de 100 niveaux avec explications, exemples, traductions et exercices.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Grammaire%20Anglaise/index.html">
+<link rel="icon" href="../../images/universite-mostaganem-96.webp" type="image/webp">
 {style}
 </head>
 <body>
@@ -831,12 +873,13 @@ img.flag-corner {
     {''.join(sidebar_links)}
   </div>
 </div>
+<main id="main-content">
 <div class="content-shell">
   <div class="page-shell">
-    <img src="alg_drap.gif" alt="Algérie" class="flag-corner">
+    <img src="alg_drap.gif" width="132" height="95" decoding="async" alt="Algérie" class="flag-corner">
     <h1>📚 قواعد اللغة الإنجليزية — English Grammar</h1>
     <div class="header-banner">
-      <picture><source srcset="photo-profil.avif" type="image/avif"><source srcset="photo-profil.webp" type="image/webp"><img class="prof-photo" src="photo-profil.png" alt="Dr. BELACEL Madani"></picture>
+      <picture><source srcset="../../images/photo-profil.avif" type="image/avif"><source srcset="../../images/photo-profil.webp" type="image/webp"><img class="prof-photo" src="../../images/photo-profil.png" width="96" height="96" decoding="async" alt="Dr. BELACEL Madani"></picture>
       <div class="hb-info">
         <h2>Dr. BELACEL Madani <small>Maître de Conférences B (MCB)</small></h2>
         <p>Université de Mostaganem — Faculté des langues étrangères · Département de français<br>madani.belacel@gmail.com</p>
@@ -870,6 +913,7 @@ img.flag-corner {
     </div>
   </div>
 </div>
+</main>
 <script>
   const searchInput = document.getElementById('level-search');
   const rows = Array.from(document.querySelectorAll('table tr')).filter((row) => !row.querySelector('th'));
@@ -899,18 +943,30 @@ img.flag-corner {
     return html
 
 
+def ensure_button_types(html):
+    """Ajoute type="button" aux <button> qui n'en ont pas (aucun <form> ici,
+    mais c'est la bonne pratique et cela evite les erreurs d'accessibilite)."""
+    def repl(m):
+        tag = m.group(0)
+        if re.search(r'\btype\s*=', tag, re.I):
+            return tag
+        return tag[: len("<button")] + ' type="button"' + tag[len("<button"):]
+
+    return re.sub(r"<button\b[^>]*>", repl, html, flags=re.I)
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     ensure_audio_files(LEVELS)
     with open(os.path.join(BASE, "index.html"), "w", encoding="utf-8") as f:
-        f.write(render_index())
+        f.write(ensure_button_types(render_index()))
     for lvl in LEVELS:
         if lvl.get("hidden"):
             continue
         page = render_level(lvl)
         path = os.path.join(OUT, f"Niveau {lvl['num']}.html")
         with open(path, "w", encoding="utf-8") as f:
-            f.write(page)
+            f.write(ensure_button_types(page))
         n_points = table_rule_count(lvl.get("table_rows", [])) if lvl.get("layout") == "table" else len(lvl["ideas"])
         print(f"Niveau {lvl['num']} : {n_points} idées → {path}")
     print(f"Total : {len(visible_levels())} niveaux générés.")

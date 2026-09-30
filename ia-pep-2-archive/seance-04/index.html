@@ -1,11 +1,14 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, follow"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Séance 04 — Résumer, synthétiser et créer des fiches de révision — IA en Éducation PEP 2A — Dr. Madani BELACEL</title>
-<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-04/index.html" rel="canonical"/>
-<meta name="description" content="Transformer n'importe quel cours en fiches de révision efficaces avec l'aide de l'IA — sans déléguer la compréhension : méthodes Cornell, protocole AIDE et prompts de synthèse.">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../ia-pep-2/assets/styles-seance.css">
-<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2-archive/seance-04/index.html" rel="canonical"/>
+<meta name="description" content="Transformer n'importe quel cours en fiches de révision efficaces avec l'aide de l'IA — sans déléguer la compréhension : méthodes Cornell, protocole AIDE et…">
+<link rel="preload" href="../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../assets/styles-seance.css">
+<link rel="icon" href="../../images/universite-mostaganem-96.webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,7 +28,7 @@
   <div class="header-inner">
     <div class="header-left">
       <a href="../../index.html" class="header-logo">
-        <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="lazy" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem"></picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
@@ -33,7 +36,7 @@
       </div>
     </div>
     <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
       <li><a href="../../index.html">Accueil</a></li>
@@ -49,16 +52,15 @@
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="../../tic.html">TIC</a></li>
-          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-          <li><a href="../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-          <li><a href="../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-          <li><a href="../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-        </ul>
+                  <li><a href="../../tic.html">TIC</a></li>
+                  <li><a href="../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
       </li>
       <li><a href="../../recherche.html">Recherche</a></li>
       <li><a href="../../ressources.html">Ressources</a></li>
@@ -129,7 +131,7 @@
 <h2><span class="lang-fr">🎬 Accroche et analogie — 5 min</span><span class="lang-en">🎬 Hook and analogy — 5 min</span><span class="lang-ar">🎬 انطلاقة وتشبيه — 5 دقائق</span></h2>
 <div class="hook-row"><span class="hook-emoji">❓</span><div><div class="lang-fr">Un résumé copié-collé qui ne rentre pas dans la tête, ou une fiche d'une page qui fait réfléchir ? Aujourd'hui, on fabrique des fiches qui restent.</div><div class="lang-en">A copy-pasted summary that never enters memory, or a one-page sheet that makes you think? Today, we craft sheets that stick.</div><div class="lang-ar">ملخص منسوخ لا يدخل الرأس، أم بطاقة صفحة واحدة تُفكِّر؟ اليوم نصنع بطاقات تبقى.</div></div></div><div class="hook-row"><span class="hook-emoji">🍳</span><div><div class="lang-fr">🍳 Résumer, c'est presser une orange : garder le jus (l'essentiel), jeter la pulpe (le remplissage). Synthétiser, c'est un cocktail de plusieurs fruits AVEC votre recette : le mélange n'existait pas avant vous.</div><div class="lang-en">🍳 Summarising is squeezing an orange: keep the juice (the essentials), throw the pulp (the filler). Synthesising is a multi-fruit cocktail WITH your recipe: the mix never existed before you.</div><div class="lang-ar">🍳 التلخيص عصر برتقالة: الاحتفاظ بالعصير (الأساس) ورمي اللب (الحشو). والتركيب كوكتيل فواكه متعددة مع وصفتك: المزيج لم يوجد قبلك.</div></div></div><div class="hook-row hook-phrase"><span class="hook-emoji">💡</span><div><div class="lang-fr">💡 Une bonne fiche = 1 page, vos mots, une structure fixe (idées, questions, exemples) — fabriquée AVEC l'IA, jamais À LA PLACE de vous.</div><div class="lang-en">💡 A good sheet = 1 page, your words, a fixed structure (ideas, questions, examples) — made WITH AI, never INSTEAD of you.</div><div class="lang-ar">💡 البطاقة الجيدة = صفحة واحدة وكلماتك وهيكل ثابت (أفكار وأسئلة وأمثلة) — مصنوعة مع الذكاء أبداً بدلاً منك.</div></div></div>
 </section>
-    
+
 <section id="s1">
 <h2><span class="lang-fr">Résumer, ce n'est pas synthétiser</span><span class="lang-en">Summarising is not synthesising</span><span class="lang-ar">التلخيص ليس تركيباً</span></h2>
 <div class="lang-fr"><p class="lang-fr">Résumer = réduire un seul texte à ses idées principales. Synthétiser = assembler et comparer plusieurs textes sur un même thème, en dégageant des idées nouvelles. L'IA excelle dans les deux, mais elle perd le contexte : plus tu lui donnes de matière, plus elle te rend un résultat fidèle.</p>
@@ -248,7 +250,7 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="eager" decoding="async" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo"></picture>
       <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">

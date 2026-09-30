@@ -1,11 +1,14 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, follow"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Séance 02 — Panorama des 12+ outils d'IA pour l'étudiant — IA en Éducation PEP 2A — Dr. Madani BELACEL</title>
-<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-02/index.html" rel="canonical"/>
-<meta name="description" content="Ouvrir Perplexity sans compte, tester 3 outils de 3 familles sur la même question, prescrire le bon outil avec l'arbre de décision et repartir avec tes 4 favoris.">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../ia-pep-2/assets/styles-seance.css">
-<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2-archive/seance-02/index.html" rel="canonical"/>
+<meta name="description" content="Ouvrir Perplexity sans compte, tester 3 outils de 3 familles sur la même question, prescrire le bon outil avec l'arbre de décision et repartir avec tes 4…">
+<link rel="preload" href="../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../assets/styles-seance.css">
+<link rel="icon" href="../../images/universite-mostaganem-96.webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,7 +28,7 @@
   <div class="header-inner">
     <div class="header-left">
       <a href="../../index.html" class="header-logo">
-        <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="lazy" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem"></picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
@@ -33,7 +36,7 @@
       </div>
     </div>
     <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
       <li><a href="../../index.html">Accueil</a></li>
@@ -49,16 +52,15 @@
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="../../tic.html">TIC</a></li>
-          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-          <li><a href="../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-          <li><a href="../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-          <li><a href="../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-        </ul>
+                  <li><a href="../../tic.html">TIC</a></li>
+                  <li><a href="../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
       </li>
       <li><a href="../../recherche.html">Recherche</a></li>
       <li><a href="../../ressources.html">Ressources</a></li>
@@ -125,8 +127,8 @@
     <table class="plan-table lang-ar"><thead><tr><th>المدّة</th><th>المرحلة</th></tr></thead><tbody><tr><td class="time">00–05</td><td><span class="phase-badge">🎬 A</span> <strong>🚀 إجراء فوري: Perplexity دون حساب</strong><br><span style="color:var(--text-muted);font-size:.9em;">افتح perplexity.ai واكتب الصياغة الجاهزة ولاحظ المصادر وانقر رابطاً.</span></td></tr><tr><td class="time">05–25</td><td><span class="phase-badge">🧱 B</span> <strong>📋 وصفة: تجربة 3 أدوات على سؤال واحد</strong><br><span style="color:var(--text-muted);font-size:.9em;">ChatGPT وPerplexity وCanva: نفس السؤال و3 أجوبة وجدول مقارنة.</span></td></tr><tr><td class="time">25–50</td><td><span class="phase-badge">🛠️ C</span> <strong>🛠️ عرض: شجرة قرار الصيدلي</strong><br><span style="color:var(--text-muted);font-size:.9em;">3 أسئلة (مصادر؟ إنشاء؟ تنظيم؟) + عناصر الصياغة الجيدة الأربعة.</span></td></tr><tr><td class="time">50–70</td><td><span class="phase-badge">✏️ D</span> <strong>🧪 المهمة: جدول مقارنة + 4 مفضلات</strong><br><span style="color:var(--text-muted);font-size:.9em;">المطلوب: سؤال مجرَّب على 3 أدوات + حكم + مفضلاتك الأربع مبرَّرة.</span></td></tr><tr><td class="time">70–80</td><td><span class="phase-badge">🛠️ C</span> <strong>⚠️ أخطاء: الشراب الوحيد والثقة العمياء</strong><br><span style="color:var(--text-muted);font-size:.9em;">3 أخطاء مباشرة + صياغة ضعيفة مقابل قوية: الهوة أمام أعينكم.</span></td></tr><tr><td class="time">80–90</td><td><span class="phase-badge">📋 E</span> <strong>✅ قائمة تحقق واختبار وتقديم الحصة الثالثة</strong><br><span style="color:var(--text-muted);font-size:.9em;">علّم الخانات الأربع + اختبار 5 أسئلة. تقديم: البحث المعمَّق (الحصة 3).</span></td></tr></tbody></table>
 
     <h2><span class="lang-fr">📚 Contenu de la séance</span><span class="lang-en">📚 Lesson content</span><span class="lang-ar">📚 محتوى الحصة</span></h2>
-    
-    
+
+
 <section id="s1">
 <h2><span class="lang-fr">🎯 Ce que vous saurez faire à la fin</span><span class="lang-en">🎯 What you will be able to do by the end</span><span class="lang-ar">🎯 ما ستعرف فعله في النهاية</span></h2>
 <div class="lang-fr"><p class="lang-fr">Aujourd'hui, pas de théorie : tu vas TOUCHER à 3 outils. Voici les 3 résultats concrets de la séance.</p>
@@ -225,8 +227,8 @@
 <!-- TODO: remplacer par lien définitif --><a class="video-card" href="https://www.youtube.com/results?search_query=outils+ia+etudiants+universite+tutoriel" target="_blank" rel="noopener"><span class="vid-thumb">▶️</span><span class="vid-info"><div class="lang-fr">10 outils IA pour étudiants : panorama guidé</div><div class="lang-en">10 AI tools for students: guided tour</div><div class="lang-ar">10 أدوات ذكاء للطلبة: جولة موجّهة</div><span class="vid-lang">🇫🇷 YouTube</span><div class="lang-fr">Le panorama en vidéo : quand passer du tiroir bleu au vert puis à l'orange.</div><div class="lang-en">The panorama on video: when to move from blue to green to orange drawer.</div><div class="lang-ar">النظرة العامة بالفيديو: متى تنتقل من الدرج الأزرق إلى الأخضر ثم البرتقالي.</div></span></a>
 <!-- TODO: remplacer par lien définitif --></div>
 </section>
-    
-    
+
+
     <section id="fiche"><h2><span class="lang-fr">📋 Fiche de synthèse — 5 min</span><span class="lang-en">📋 Summary sheet — 5 min</span><span class="lang-ar">📋 بطاقة التركيب — 5 دقائق</span></h2><div class="fiche-grid"><div class="fiche-col"><h3>🗝️ <span class="lang-fr">Points clés</span><span class="lang-en">Key points</span><span class="lang-ar">النقاط الرئيسية</span></h3><ul><li><span class="lang-fr">J'ai ouvert Perplexity SANS compte et obtenu une réponse avec sources cliquables.</span><span class="lang-en">I opened Perplexity with NO account and got an answer with clickable sources.</span><span class="lang-ar">فتحت Perplexity دون حساب وحصلت على جواب بمصادر قابلة للنقر.</span></li><li><span class="lang-fr">J'ai testé 1 question sur 2 outils et rempli mon tableau (fort + limite).</span><span class="lang-en">I tested 1 question on 2 tools and filled my table (strength + limit).</span><span class="lang-ar">جرّبت سؤالاً على أداتين وملأت جدولي (ميزة + حد).</span></li><li><span class="lang-fr">Je prescris avec l'arbre : sources ? créer ? organiser-coder ? sinon bleu.</span><span class="lang-en">I prescribe with the tree: sources? create? organise-code? else blue.</span><span class="lang-ar">أصرف بالشجرة: مصادر؟ إنشاء؟ تنظيم-برمجة؟ وإلا أزرق.</span></li><li><span class="lang-fr">J'ai mes 4 favoris (1 par tiroir), justifiés en 1 phrase chacun.</span><span class="lang-en">I have my 4 favourites (1 per drawer), each justified in 1 sentence.</span><span class="lang-ar">عندي مفضلاتي الأربع (واحدة لكل درج) مبرَّرة كل منها بجملة.</span></li><li><span class="lang-fr">3 règles d'or partout : vérifier, citer, juger.</span><span class="lang-en">3 golden rules everywhere: verify, cite, judge.</span><span class="lang-ar">القواعد الذهبية الثلاث دائماً: تحقّق واستشهد واحكم.</span></li></ul></div><div class="fiche-col"><h3>🍳 <span class="lang-fr">Analogies utilisées</span><span class="lang-en">Analogies used</span><span class="lang-ar">التشبيهات المستعملة</span></h3><ul><li>🎯 <span class="lang-fr">La pharmacie : l'ordonnance (tâche) désigne le flacon (outil).</span><span class="lang-en">The pharmacy: the prescription (task) points to the bottle (tool).</span><span class="lang-ar">الصيدلية: الوصفة (المهمة) تدل على القارورة (الأداة).</span></li><li>🎯 <span class="lang-fr">Les 4 tiroirs valent mieux que 12 noms en vrac.</span><span class="lang-en">4 drawers beat 12 loose names.</span><span class="lang-ar">4 أدراج خير من 12 اسماً مبعثراً.</span></li><li>🎯 <span class="lang-fr">Le sirop unique : l'erreur du débutant pressé.</span><span class="lang-en">The single syrup: the rushed beginner's mistake.</span><span class="lang-ar">الشراب الوحيد: خطأ المبتدئ المستعجل.</span></li></ul></div><div class="fiche-col"><h3>🧩 <span class="lang-fr">Exemples concrets</span><span class="lang-en">Concrete examples</span><span class="lang-ar">أمثلة ملموسة</span></h3><ul><li>✏️ <span class="lang-fr">Exposé eau : plan (bleu) + sources (vert) + affiche (orange).</span><span class="lang-en">Water talk: outline (blue) + sources (green) + poster (orange).</span><span class="lang-ar">عرض الماء: خطة (أزرق) + مصادر (أخضر) + ملصق (برتقالي).</span></li><li>✏️ <span class="lang-fr">« Différenciation » : ChatGPT explique, Perplexity prouve, Canva montre.</span><span class="lang-en">"Differentiation": ChatGPT explains, Perplexity proves, Canva shows.</span><span class="lang-ar">« التفريد »: ChatGPT يشرح وPerplexity يثبت وCanva يعرض.</span></li><li>✏️ <span class="lang-fr">Planning + bug + PDF : Notion, Copilot, NotebookLM (violet et vert).</span><span class="lang-en">Schedule + bug + PDFs: Notion, Copilot, NotebookLM (purple and green).</span><span class="lang-ar">مخطط + خطأ + ملفات: Notion وCopilot وNotebookLM (بنفسجي وأخضر).</span></li></ul></div></div></section><section id="symbiose"><div class="hook-row hook-phrase"><span class="hook-emoji">🏁</span><div><div class="lang-fr">🏁 Les outils d'IA et vous, c'est comme l'orchestre et le chef : chaque instrument (outil) a son timbre, mais c'est le chef (vous, et votre arbre de décision) qui décide qui joue, quand — et la musique, c'est vos études.</div><div class="lang-en">🏁 AI tools and you is like orchestra and conductor: each instrument (tool) has its tone, but the conductor (you, and your decision tree) decides who plays, when — and the music is your studies.</div><div class="lang-ar">🏁 أدوات الذكاء وأنت كالأوركسترا والقائد: لكل آلة (أداة) صوتها، لكن القائد (أنت وشجرة قرارك) يقرّر من يعزف ومتى — والموسيقى دراستك.</div></div></div></section>
     <section id="quiz">
 <h2><span class="lang-fr">🧠 Quiz — vérifie ta compréhension</span><span class="lang-en">🧠 Quiz — check your understanding</span><span class="lang-ar">🧠 اختبار — تحقّق من فهمك</span></h2>
@@ -256,7 +258,7 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="eager" decoding="async" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo"></picture>
       <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">

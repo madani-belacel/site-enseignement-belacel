@@ -1,11 +1,14 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, follow"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Séance 08 — Rédaction académique, traduction et correction — IA en Éducation PEP 2A — Dr. Madani BELACEL</title>
-<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-08/index.html" rel="canonical"/>
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2-archive/seance-08/index.html" rel="canonical"/>
 <meta name="description" content="Améliorer un texte en français, anglais ou arabe, traduire sans trahir, corriger vite — et surtout éviter le plagiat en citant correctement.">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../ia-pep-2/assets/styles-seance.css">
-<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<link rel="preload" href="../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../assets/styles-seance.css">
+<link rel="icon" href="../../images/universite-mostaganem-96.webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,7 +28,7 @@
   <div class="header-inner">
     <div class="header-left">
       <a href="../../index.html" class="header-logo">
-        <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="lazy" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem"></picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
@@ -33,7 +36,7 @@
       </div>
     </div>
     <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
       <li><a href="../../index.html">Accueil</a></li>
@@ -49,16 +52,15 @@
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="../../tic.html">TIC</a></li>
-          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-          <li><a href="../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-          <li><a href="../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-          <li><a href="../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-        </ul>
+                  <li><a href="../../tic.html">TIC</a></li>
+                  <li><a href="../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
       </li>
       <li><a href="../../recherche.html">Recherche</a></li>
       <li><a href="../../ressources.html">Ressources</a></li>
@@ -129,7 +131,7 @@
 <h2><span class="lang-fr">🎬 Accroche et analogie — 5 min</span><span class="lang-en">🎬 Hook and analogy — 5 min</span><span class="lang-ar">🎬 انطلاقة وتشبيه — 5 دقائق</span></h2>
 <div class="hook-row"><span class="hook-emoji">❓</span><div><div class="lang-fr">Si l'IA écrit votre introduction à votre place, à qui appartient votre note : à vous ou à la machine ? Et si elle se contente de corriger vos fautes ?</div><div class="lang-en">If AI writes your introduction for you, whose grade is it: yours or the machine's? And if it only fixes your mistakes?</div><div class="lang-ar">إذا كتب الذكاء الاصطناعي مقدمتك بدلاً منك، فلمن العلامة: لك أم للآلة؟ وماذا لو اكتفى بتصحيح أخطائك؟</div></div></div><div class="hook-row"><span class="hook-emoji">🍳</span><div><div class="lang-fr">🍳 L'IA et votre texte, c'est comme le correcteur et le devoir : le correcteur souligne les fautes au crayon, mais c'est l'élève qui réécrit au propre. Si le correcteur écrit tout le devoir, ce n'est plus le vôtre.</div><div class="lang-en">🍳 AI and your text is like the proofreader and the homework: the proofreader underlines mistakes in pencil, but the pupil rewrites neatly. If the proofreader writes all the homework, it is no longer yours.</div><div class="lang-ar">🍳 الذكاء الاصطناعي ونصّك كالمصحّح والواجب: المصحّح يضع خطاً تحت الأخطاء بالقلم، لكن التلميذ هو من يعيد الكتابة نظيفة. فإذا كتب المصحّح الواجب كله، لم يعد لك.</div></div></div><div class="hook-row hook-phrase"><span class="hook-emoji">💡</span><div><div class="lang-fr">💡 Règle des 3 couches : l'IA peut corriger la forme (couche 1) et suggérer le plan (couche 2), mais les idées et les sources (couche 3) restent VOS responsabilités.</div><div class="lang-en">💡 3-layer rule: AI may fix the form (layer 1) and suggest the outline (layer 2), but ideas and sources (layer 3) stay YOUR responsibilities.</div><div class="lang-ar">💡 قاعدة الطبقات الثلاث: يجوز للذكاء تصحيح الشكل (الطبقة 1) واقتراح الخطة (الطبقة 2)، لكن الأفكار والمصادر (الطبقة 3) تبقى مسؤوليتك أنت.</div></div></div>
 </section>
-    
+
 <section id="s1">
 <h2><span class="lang-fr">La règle des 3 couches : ce que l'IA peut et ne peut pas</span><span class="lang-en">The 3-layer rule: what AI can and cannot do</span><span class="lang-ar">قاعدة الطبقات الثلاث: ما يجوز للذكاء وما لا يجوز</span></h2>
 <div class="lang-fr"><p class="lang-fr">Tout texte académique a 3 couches. L'IA est excellente sur les deux premières, interdite sur la troisième sans votre travail.</p>
@@ -245,7 +247,7 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="eager" decoding="async" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo"></picture>
       <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">

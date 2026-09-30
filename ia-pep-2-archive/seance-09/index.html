@@ -1,11 +1,14 @@
 <!DOCTYPE html><html lang="fr" data-theme="light"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, follow"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Séance 09 — Organisation, gestion du temps et projets universitaires — IA en Éducation PEP 2A — Dr. Madani BELACEL</title>
-<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2/seance-09/index.html" rel="canonical"/>
-<meta name="description" content="Planifier ses révisions sur 4 semaines, suivre 6 modules sans rien oublier, piloter un exposé en équipe : Notion AI, Gemini et Trello au service de l'étudiant organisé.">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../ia-pep-2/assets/styles-seance.css">
-<link rel="icon" href="../../images/Université_de_Mostaganem.png">
+<link href="https://madani-belacel.github.io/site-enseignement-belacel/ia-pep-2-archive/seance-09/index.html" rel="canonical"/>
+<meta name="description" content="Planifier ses révisions sur 4 semaines, suivre 6 modules sans rien oublier, piloter un exposé en équipe : Notion AI, Gemini et Trello au service de…">
+<link rel="preload" href="../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../assets/styles-seance.css">
+<link rel="icon" href="../../images/universite-mostaganem-96.webp">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,7 +28,7 @@
   <div class="header-inner">
     <div class="header-left">
       <a href="../../index.html" class="header-logo">
-        <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem"></picture>
+        <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="lazy" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem"></picture>
         <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
       </a>
       <div class="header-faculty">
@@ -33,7 +36,7 @@
       </div>
     </div>
     <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
-    <button id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     <nav role="navigation" aria-label="Navigation principale">
       <ul id="nav-list" class="nav-list">
       <li><a href="../../index.html">Accueil</a></li>
@@ -49,16 +52,15 @@
       <li class="nav-dropdown">
         <a href="#" class="nav-dropdown-toggle" role="button">Domaines d'expertise</a>
         <ul class="nav-dropdown-menu">
-          <li><a href="../../tic.html">TIC</a></li>
-          <li><a href="../../cours/Examen-TIC/index.html">Examens TIC</a></li>
-          <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
-          <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
-          <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
-          <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
-          <li><a href="../../ia-pep-2/index.html">IA en Éducation (PEP 2A)</a></li>
-          <li><a href="../../ia-pep-2/outils-ia.html">IA PEP 2A — Outils</a></li>
-          <li><a href="../../ia-pep-2/construire-ia.html">IA PEP 2A — Construire</a></li>
-        </ul>
+                  <li><a href="../../tic.html">TIC</a></li>
+                  <li><a href="../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
       </li>
       <li><a href="../../recherche.html">Recherche</a></li>
       <li><a href="../../ressources.html">Ressources</a></li>
@@ -129,7 +131,7 @@
 <h2><span class="lang-fr">🎬 Accroche et analogie — 5 min</span><span class="lang-en">🎬 Hook and analogy — 5 min</span><span class="lang-ar">🎬 انطلاقة وتشبيه — 5 دقائق</span></h2>
 <div class="hook-row"><span class="hook-emoji">❓</span><div><div class="lang-fr">Combien d'exposés avez-vous commencés la veille au soir ? Le problème n'est pas la paresse : c'est l'absence de tableau de bord.</div><div class="lang-en">How many presentations did you start the night before? The problem is not laziness: it is the missing dashboard.</div><div class="lang-ar">كم عرضاً بدأتموه ليلة التسليم؟ المشكلة ليست الكسل: بل غياب لوحة القيادة.</div></div></div><div class="hook-row"><span class="hook-emoji">🍳</span><div><div class="lang-fr">🍳 S'organiser sans outil, c'est comme cuisiner un couscous de 6 plats en retenant tout dans sa tête : on oublie le sel, on brûle la viande. Avec un tableau de bord, chaque plat a sa minuterie.</div><div class="lang-en">🍳 Organising without a tool is like cooking a 6-dish couscous keeping everything in mind: you forget the salt, burn the meat. With a dashboard, each dish has its timer.</div><div class="lang-ar">🍳 التنظيم دون أداة كطهي كسكس بستة أطباق مع حفظ كل شيء في الرأس: تنسى الملح وتحرق اللحم. وبلوحة قيادة، لكل طبق مؤقّته.</div></div></div><div class="hook-row hook-phrase"><span class="hook-emoji">💡</span><div><div class="lang-fr">💡 L'IA n'ajoute pas des heures à votre journée : elle transforme vos notes en désordre en un plan clair, avec des rappels au bon moment.</div><div class="lang-en">💡 AI does not add hours to your day: it turns messy notes into a clear plan, with reminders at the right time.</div><div class="lang-ar">💡 لا يضيف الذكاء ساعات إلى يومك: بل يحوّل ملاحظاتك المبعثرة إلى خطة واضحة، مع تذكيرات في وقتها.</div></div></div>
 </section>
-    
+
 <section id="s1">
 <h2><span class="lang-fr">Le timeboxing : votre journée en blocs de 25 minutes</span><span class="lang-en">Timeboxing: your day in 25-minute blocks</span><span class="lang-ar">الكتل الزمنية: يومك في كتل من 25 دقيقة</span></h2>
 <div class="lang-fr"><p class="lang-fr">Le cerveau se fatigue comme un muscle : 25 minutes d'effort intense + 5 minutes de vraie pause (marcher, eau, pas d'écran) = 4 blocs productifs par heure et demie.</p>
@@ -245,7 +247,7 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-logos">
-      <picture><source srcset="../../images/Université_de_Mostaganem.avif" type="image/avif"><source srcset="../../images/Université_de_Mostaganem.webp" type="image/webp"><img loading="lazy" width="960" height="931" src="../../images/Université_de_Mostaganem.png" alt="Université de Mostaganem" class="footer-logo"></picture>
+      <picture><source srcset="../../images/universite-mostaganem-96.avif" type="image/avif"><source srcset="../../images/universite-mostaganem-96.webp" type="image/webp"><img loading="eager" decoding="async" width="96" height="93" src="../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo"></picture>
       <img loading="lazy" width="132" height="95" src="../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
     </div>
     <div class="footer-infos">
