@@ -133,10 +133,22 @@ def approfondir(html, niveaux=1):
 
 
 def gabarit():
+    """En-tête et pied de page, pris sur la séance 11.
+
+    La découpe s'arrête à la fin de <header>, et non au debut de <main>.
+    Entre les deux, la séance 11 porte un bandeau « page-header-tic » avec
+    son propre <h1> et son fil d'Ariane. Le recopier dans une page de détail
+    affichait « Séance 11 — OpenCode + DeepSeek » au-dessus de chaque astuce,
+    et laissait deux <h1> sur la page. Ces deux blocs sont propres à la
+    séance : le gabarit de détail fournit les siens.
+    """
     src = lire(MODELE)
-    main_o = src.find('<main class="page-content" id="main-content">')
+    fin_header = src.find("</header>")
     footer_d = src.find('<footer class="footer"')
-    tete, pied = src[:main_o], src[footer_d:]
+    if fin_header < 0 or footer_d < 0:
+        raise SystemExit("Gabarit seance-11.html : <header> ou <footer> introuvable.")
+    tete = src[:fin_header + len("</header>")]
+    pied = src[footer_d:]
     return approfondir(tete), approfondir(pied)
 
 
