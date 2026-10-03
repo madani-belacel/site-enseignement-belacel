@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+  <meta name="description" content="Explication détaillée de l'astuce 36 du module Intelligence Artificielle (Demander d'expliquer un code avant de le modifier) : comprendre, appliquer, éviter les…">
+  <link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/astuces-details/astuce-036.html">
+  <meta property="og:title" content="Astuce 36 — Demander d'expliquer un code avant de le modifier">
+  <meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/astuces-details/astuce-036.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astuce 36 — Demander d'expliquer un code avant de le modifier</title>
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  /* Scope au contenu principal : sinon cette regle ecrasait aussi le
+     .container du pied de page (fond blanc sur footer sombre, largeur 820px). */
+  main .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #146fa9;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #146fa9;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h3,
+  .step h3,
+  .step h4 {
+    margin-top: 0;
+    color: #146fa9;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h3,
+  .exemple h3,
+  .exemple h4 {
+    margin-top: 0;
+    color: #146fa9;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #146fa9;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+
+  /* ── pages « explication détaillée » ───────────────────────────────── */
+  .detail-nav { display: flex; justify-content: space-between; flex-wrap: wrap;
+    gap: .5rem; margin: 1.5rem 0; }
+  .detail-nav a { color: #146fa9; text-decoration: none; font-weight: 600;
+    padding: .5rem .9rem; border-radius: 6px; background: #e3f2fd; }
+  .detail-nav a:hover { background: #bbdefb; }
+  .detail-retour { display: inline-block; margin: 0 0 1.2rem; color: #146fa9;
+    font-weight: 600; text-decoration: none; }
+  .detail-retour:hover { text-decoration: underline; }
+  .detail-retour-haut { display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap; margin-bottom: 1.4rem; padding-bottom: 1rem;
+    border-bottom: 1px solid #e1e8ed; }
+  .detail-retour-bas { margin-top: 2.5rem; padding-top: 1.2rem;
+    border-top: 1px solid #e1e8ed; display: flex; align-items: center;
+    gap: 1rem; flex-wrap: wrap; }
+  .detail-retour-bas .detail-nav { flex: 1 1 100%; margin-bottom: .4rem; }
+  .detail-corps h2 { margin: 2rem 0 .6rem; padding-bottom: .3rem;
+    border-bottom: 1px solid #e1e8ed; }
+  .detail-corps pre { background: #1e293b; color: #e2e8f0; padding: 1rem 1.1rem;
+    border-radius: 8px; overflow-x: auto; font-size: .84rem; line-height: 1.55; }
+  .detail-corps pre code { background: none; color: inherit; padding: 0; }
+  .detail-corps table { width: 100%; border-collapse: collapse; margin: .9rem 0;
+    font-size: .92rem; }
+  .detail-corps th, .detail-corps td { border: 1px solid #e1e8ed; padding: .55rem .7rem;
+    text-align: left; vertical-align: top; }
+  .detail-corps th { background: #f4f6f8; }
+  .detail-corps .reflexe { background: #e8f5e9; border-left: 4px solid #2e7d32;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .warn { background: #fff3e0; border-left: 4px solid #ef6c00;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .ok { background: #e8f5e9; border-left: 4px solid #00875b;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .phrase { border-left: 3px solid #e1e8ed; padding-left: .9rem;
+    margin: .9rem 0; }
+  .detail-corps .phrase strong { color: #146fa9; }
+  .detail-corps .schema { background: #f8fafc; border: 1px solid #e1e8ed;
+    padding: 1rem; border-radius: 8px; overflow-x: auto; }
+</style>
+
+<link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
+<link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
+<link rel="stylesheet" href="../../../../css/fonts/fonts.css">
+<link rel="preload" href="../../../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="../../../../css/style.css" rel="stylesheet"/>
+<link href="../../../../images/universite-mostaganem-96.avif" rel="icon"/>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dr. Madani BELACEL">
+
+
+
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="twitter:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../index.html" class="header-logo">
+        <picture>
+          <source srcset="../../../../images/universite-mostaganem-96.avif" type="image/avif">
+          <source srcset="../../../../images/universite-mostaganem-96.webp" type="image/webp">
+          <img loading="eager" fetchpriority="high" width="96" height="93" src="../../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem">
+        </picture>
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <picture>
+          <source srcset="../../../../images/LOGO-FLE-UNIV-Mosta.avif" type="image/avif">
+          <source srcset="../../../../images/LOGO-FLE-UNIV-Mosta.webp" type="image/webp">
+          <img loading="eager" width="207" height="243" src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+        </picture>
+      </div>
+    </div>
+    <img loading="eager" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav aria-label="Navigation principale" role="navigation">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu À Propos">À Propos</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../../../../index.html#about">Présentation</a></li>
+            <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
+            <li><a href="../../../../contact.html">Contact</a></li>
+          </ul>
+        </li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Domaines d'expertise">Domaines d'expertise</a>
+          <ul class="nav-dropdown-menu">
+                  <li><a href="../../../../tic.html">TIC</a></li>
+                  <li><a href="../../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
+        </li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Dernières Actualités">Dernières Actualités</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../../../../index.html#news">Actualités des Modules</a></li>
+            <li><a href="../../../../ressources.html">Ressources</a></li>
+          </ul>
+        </li>
+        <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header page-header-tic">
+  <div class="container"><h1>Séance 11 — OpenCode + DeepSeek : piloter un agent IA</h1><p>Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p></div>
+</div>
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li><li><a href="../../../../enseignement.html">Enseignement</a></li><li><a href="../../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li><li class="current">Séance 11</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="container">
+    <nav aria-label="Fil d'Ariane">
+      <ol class="breadcrumb">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../index.html">Intelligence Artificielle</a></li>
+        <li><a href="../astuces-ia.html">Astuces</a></li>
+        <li class="current">Astuce 36</li>
+      </ol>
+    </nav>
+
+    <div class="page-header">
+      <h1>🔍 Astuce 36 — Demander d'expliquer un code avant de le modifier</h1>
+      <p>Explication détaillée · Module Intelligence Artificielle — 2e année PEP</p>
+    </div>
+
+    <div class="detail-retour-haut">
+      <a class="detail-retour" href="../astuces-ia.html">← Retour aux 152 astuces</a>
+      <div class="detail-nav"><a href="astuce-035.html">← Astuce 35</a>
+      <a href="astuce-037.html">Astuce 37 →</a></div>
+    </div>
+
+    <div class="detail-corps">
+<h2>1. Le texte source</h2>
+<div class="prompt-box">Dans Cursor ou OpenCode : demande d'abord le plan (« montre-moi les fichiers que tu vas toucher et pourquoi »). Valide le plan, puis lance l'écriture.</div>
+
+
+<h3><span class="tip-num">36</span> Demander d'expliquer un code avant de le modifier</h3>
+<div class="astuce-bloc">
+<h4>Pourquoi ça marche</h4>
+<p>Forcer l'IA à expliquer un bloc de code permet de vérifier qu'elle a bien compris son fonctionnement avant d'introduire des régressions.</p>
+<h4>Étapes</h4>
+<ol>
+<li>Soumets le code existant à l'assistant.</li>
+<li>Demande une explication détaillée ligne par ligne ou par bloc logique.</li>
+<li>Valide l'explication avant de demander des modifications.</li>
+</ol>
+<h4>Prompt à copier</h4>
+<div class="prompt-box">Explique-moi en détail ce que fait ce code, ligne par ligne, avant que nous ne commencions à y apporter des modifications : [insérer le code].</div>
+<h4>Exemple réel</h4>
+<div class="exemple"><p>Comprendre un script écrit par un tiers avant d'y intégrer une nouvelle règle.</p></div>
+<h4>Erreur fréquente</h4>
+<div class="warn">Modifier un code existant sans en comprendre la logique sous-jacente, en faisant confiance aveuglément à l'IA.</div>
+<h4>Vérification</h4>
+<div class="ok"><ul><li>☐ Le code a été expliqué par l'IA.</li><li>☐ L'explication correspond à la réalité technique.</li><li>☐ Les impacts potentiels des modifications ont été identifiés.</li></ul></div>
+<h4>Variante (Anglais / Français)</h4>
+<p><strong>Anglais :</strong> Ask the AI to explain the code before modifying it. <strong>Français :</strong> Demande à l'IA d'expliquer le code avant de le modifier.</p>
+</div>
+
+<h2>2. Explication phrase par phrase</h2>
+<p><strong>« Demande d'abord le plan »</strong> → Avant que l'agent modifie le moindre fichier, tu lui demandes de te dire <em>ce qu'il compte faire</em>. C'est une étape où rien n'est encore écrit sur le disque.</p>
+<p><strong>« Montre-moi les fichiers que tu vas toucher »</strong> → Tu exiges la liste précise des fichiers concernés. Si la liste est trop longue, tu peux arrêter et réduire le périmètre. C'est ton garde-fou contre les modifications massives.</p>
+<p><strong>« Et pourquoi »</strong> → Tu obliges l'agent à justifier chaque action. Cela révèle les faux pas : « je vais modifier <code>config.py</code> pour changer le port » — mais tu ne voulais pas toucher au port.</p>
+<p><strong>« Valide le plan, puis lance l'écriture »</strong> → Tu sépares les deux moments : réfléchir, puis exécuter. Tu ne mélanges jamais les deux, sinon tu perds le contrôle.</p>
+
+
+<h2>3. Une analogie pour comprendre</h2>
+<p>Imagine que tu fais construire une maison.</p>
+<p><strong>Sans plan :</strong> tu dis à l'ouvrier « construis-moi une maison ». Il commence par les fondations, mais il a oublié la salle de bain, il met la cuisine au premier étage, il n'y a pas de fenêtres au sud. À la fin, il faut tout casser.</p>
+<p><strong>Avec plan :</strong> tu dis « montre-moi les plans ». L'ouvrier te présente les 4 pièces, leur emplacement, l'orientation des fenêtres. Tu vois une erreur : la cuisine au premier étage. Tu la signales. Il corrige le plan. Puis il construit.</p>
+<p>Les agents IA fonctionnent pareil. Le mode Plan évite de casser 8 fichiers pour un résultat qui ne te convient pas.</p>
+
+
+<h2>4. Les composants décomposés</h2>
+<table>
+<tr><th>Élément du plan</th><th>Ce que ça te dit</th><th>Ce que tu vérifies</th></tr>
+<tr><td><strong>Liste des fichiers</strong></td><td>Où l'agent va écrire</td><td>Aucun fichier sensible ? Aucun fichier inutile ?</td></tr>
+<tr><td><strong>Raison de chaque action</strong></td><td>Le « pourquoi » derrière chaque modification</td><td>La raison correspond-elle à ton besoin ?</td></tr>
+<tr><td><strong>Ordre des étapes</strong></td><td>Ce qui se fait avant quoi</td><td>Y a-t-il un risque de casser avant de créer ?</td></tr>
+<tr><td><strong>Estimation</strong></td><td>Combien de fichiers, combien de temps</td><td>Est-ce proportionné à ta demande ?</td></tr>
+</table>
+
+
+<h2>5. Application pratique — ajouter une fonctionnalité à un site</h2>
+<p><strong>Sans mode Plan :</strong></p>
+<div class="prompt-box">Ajoute un formulaire de contact à mon site.</div>
+<p>L'agent modifie <code>index.html</code>, crée <code>contact.php</code>, ajoute du CSS dans <code>style.css</code>, modifie <code>main.js</code>, touche au <code>config.php</code> pour ajouter une adresse e-mail, et — au passage — renomme une variable dans 3 autres fichiers. Tu ne sais plus ce qui a changé, ni pourquoi.</p>
+<p><strong>Avec mode Plan :</strong></p>
+<div class="prompt-box">Demande : ajouter un formulaire de contact à mon site.
+AVANT TOUTE ÉCRITURE : donne-moi le plan.
+Format attendu :
+- Fichiers à créer
+- Fichiers à modifier
+- Raison pour chacun
+- Estimation (temps, risque)</div>
+<p>L'agent te renvoie :</p>
+<ul>
+<li>Créer <code>contact.html</code> (page de contact)</li>
+<li>Modifier <code>index.html</code> (ajout du lien vers la page)</li>
+<li>Ajouter CSS dans <code>style.css</code> (nouvelle section)</li>
+<li><em>Ne touche à aucun fichier PHP ou JS pour le moment.</em></li>
+</ul>
+<p>Tu valides. Il écrit. Tu vérifies. <strong>4 fichiers annoncés, 4 fichiers modifiés</strong> — pas de surprise.</p>
+
+
+<h2>6. Le réflexe à retenir</h2>
+<div class="reflexe"><strong>Plan d'abord, écriture ensuite. Jamais les deux en même temps.</strong></div>
+<p>La règle à appliquer à chaque nouvelle tâche : quand tu demandes quelque chose à un agent, termine toujours ton prompt par :</p>
+<div class="prompt-box">Donne-moi d'abord le plan. J'attends ma validation avant que tu écrives.</div>
+<p>Cette phrase seule transforme un agent imprévisible en collaborateur fiable.</p>
+
+
+<h2>7. Erreurs fréquentes à éviter</h2>
+<ol>
+<li><strong>Valider le plan sans le lire.</strong> Le plan n'a de valeur que si tu le lis. 30 secondes de lecture économisent 30 minutes de correction.</li>
+<li><strong>Accepter un plan trop large.</strong> Si l'agent annonce 15 fichiers modifiés, réduis. « Commence par les 3 premiers, montre-moi le résultat, on continue après. »</li>
+<li><strong>Modifier le plan au fur et à mesure.</strong> Si tu changes d'avis en cours d'exécution, arrête l'agent et refais un plan propre.</li>
+<li><strong>Utiliser le mode Plan pour tout.</strong> Pour une modification d'une ligne, pas besoin. Réserve le Plan aux tâches qui touchent 2 fichiers ou plus.</li>
+<li><strong>Ne pas sauvegarder avant.</strong> Même avec un plan validé, garde une copie (ou un <code>git init</code>) pour pouvoir revenir en arrière.</li>
+</ol>
+
+
+<h2>8. Résumé en une image</h2>
+<pre><code>  Ta demande
+       │
+       ▼
+  ┌──────────────┐
+  │  MODE PLAN   │  ← L'agent réfléchit, ne touche à rien
+  └──────┬───────┘
+         │
+         ▼
+  ┌──────────────┐   Non
+  │  Plan OK ?   ├──────▶ Corriger le plan
+  └──────┬───────┘
+         │ Oui
+         ▼
+  ┌──────────────┐
+  │  MODE BUILD  │  ← L'agent écrit
+  └──────────────┘
+         │
+         ▼
+  ┌──────────────┐
+  │  Vérifier     │
+  └──────────────┘
+</code></pre>
+
+
+<h2>9. Ce que tu dois retenir</h2>
+<ul>
+<li><strong>Plan avant écriture.</strong> La phrase magique : « Donne-moi d'abord le plan. »</li>
+<li><strong>Lire le plan.</strong> Vérifier les fichiers, les raisons, l'ordre.</li>
+<li><strong>Réduire si trop large.</strong> 3 fichiers par étape, pas 15.</li>
+<li><strong>Sauvegarder avant.</strong> Un plan ne remplace pas un filet de sécurité.</li>
+</ul>
+
+
+<h2>10. Sans / Avec — comparaison</h2>
+<table>
+<tr><th>Sans mode Plan</th><th>Avec mode Plan</th></tr>
+<tr><td>« Ajoute un formulaire »</td><td>« Donne-moi le plan d'abord »</td></tr>
+<tr><td>8 fichiers modifiés en vrac</td><td>4 fichiers annoncés et contrôlés</td></tr>
+<tr><td>Tu découvres après coup</td><td>Tu valides avant</td></tr>
+<tr><td>Correction difficile</td><td>Zéro surprise</td></tr>
+<tr><td><strong>Bilan : perte de contrôle</strong></td><td><strong>Bilan : collaboration fiable</strong></td></tr>
+</table>
+    </div>
+
+    <div class="detail-retour-bas">
+      <div class="detail-nav"><a href="astuce-035.html">← Astuce 35</a>
+      <a href="astuce-037.html">Astuce 37 →</a></div>
+      <a class="detail-retour" href="../astuces-ia.html">← Retour aux 152 astuces</a>
+      <a href="#main-content">↑ Haut de page</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <picture>
+        <source srcset="../../../../images/universite-mostaganem-96.avif" type="image/avif">
+        <source srcset="../../../../images/universite-mostaganem-96.webp" type="image/webp">
+        <img loading="eager" decoding="async" width="96" height="93" src="../../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo">
+      </picture>
+      <img loading="lazy" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../../../../js/main.v2.js" defer></script>
+
+</body>
+</html>

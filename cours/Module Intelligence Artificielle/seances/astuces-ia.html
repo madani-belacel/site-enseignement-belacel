@@ -73,7 +73,48 @@
   .astuce-detail > summary { display: inline-block; cursor: pointer; list-style: none; background: var(--primary); color: #fff; font-family: var(--font-heading); font-weight: 600; font-size: .82rem; padding: .4rem 1rem; border-radius: 999px; border: 1px solid var(--primary); transition: background .2s; }
   .astuce-detail > summary::-webkit-details-marker { display: none; }
   .astuce-detail-corps { margin-top: .8rem; padding: 1.1rem 1.3rem; background: var(--bg-alt); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius); }
-  .avertissement-corps h3 { font-family: var(--font-heading); font-size: 1.05rem; color: var(--navy); margin: 1.5rem 0 .5rem; padding-bottom: .3rem; border-bottom: 1px solid var(--border); }
+  /* Liens vers les outils IA (astuce « Alterner… »).
+   Necessaires car « a { color: inherit } » : sans cela un lien
+   serait invisible — meme couleur que le texte, aucun soulignement. */
+.tool-links { list-style: none; margin: .6rem 0 0; padding: 0; }
+.tool-links li { margin: .38rem 0; line-height: 1.5; }
+a.tool-link {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
+}
+a.tool-link:hover { color: var(--primary-hover); }
+a.tool-link:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+a.tool-link .tool-url {
+  display: block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: .82em;
+  font-weight: 400;
+  opacity: .78;
+}
+@media (prefers-color-scheme: dark) {
+  a.tool-link { color: var(--primary-hover); }
+}
+.avertissement-corps h3 { font-family: var(--font-heading); font-size: 1.05rem; color: var(--navy); margin: 1.5rem 0 .5rem; padding-bottom: .3rem; border-bottom: 1px solid var(--border); }
+
+  /* bouton « explication détaillée » */
+  .btn-detail {
+    display: inline-block; padding: .5rem 1rem;
+    background: var(--primary, #146fa9); color: #fff; text-decoration: none;
+    border-radius: 6px; font-weight: 600; font-size: .88rem;
+    margin-top: .9rem; border: 1px solid var(--primary, #146fa9);
+    transition: background .2s;
+  }
+  .btn-detail:hover { background: #0d5a8a; border-color: #0d5a8a; }
+  .detail-indispo {
+    display: inline-block; margin-top: .9rem; padding: .5rem 1rem;
+    background: var(--bg-alt, #f4f6f8); color: var(--text-muted, #5f6e80);
+    border-radius: 6px; font-size: .85rem;
+    border: 1px dashed var(--border, #dfe5ea);
+  }
 </style>
 <link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
 <link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
@@ -236,9 +277,11 @@ Format : titres courts, français clair. Si tu n'es pas sûr d'un fait, dis-le.<
 <div class="ok"><ul><li>☐ Mon message contient le contexte, les tâches numérotées et le format.</li><li>☐ Toutes les questions portent sur le même thème.</li><li>☐ J'ai relu la réponse : chaque tâche numérotée a bien sa réponse.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> règle + 2 exemples + 3 erreurs sur <em>present perfect</em> en un message. <strong>Français :</strong> même structure sur l'accord du participe passé. Seul le sujet change, la structure reste.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-001.html">🔍 Voir l'explication détaillée</a>
 </div>
 
-<h3><span class="tip-num">2</span> Alterner ChatGPT · Gemini · Claude · DeepSeek</h3>
+<h3><span class="tip-num">2</span> Alterner ChatGPT · Gemini · Claude · DeepSeek · AI Studio</h3>
 <div class="astuce-bloc">
 <h4>Pourquoi ça marche</h4>
 <p>Chaque outil a ses propres limites : quand l'un est saturé, un autre reste disponible. Poser la même question à deux ou trois outils permet aussi de repérer une erreur quand les réponses divergent.</p>
@@ -248,6 +291,15 @@ Format : titres courts, français clair. Si tu n'es pas sûr d'un fait, dis-le.<
 <li>Prépare une seule question, identique mot pour mot.</li>
 <li>Colle-la dans chaque onglet, compare, garde la réponse la plus claire, vérifie les faits importants.</li>
 </ol>
+<h4>Accès direct</h4>
+<ul class="tool-links">
+<li><a class="tool-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><strong>ChatGPT</strong> <span class="tool-url">https://chatgpt.com/</span></a> — assistant généraliste d'OpenAI</li>
+<li><a class="tool-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer"><strong>Gemini</strong> <span class="tool-url">https://gemini.google.com/</span></a> — assistant généraliste de Google</li>
+<li><a class="tool-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer"><strong>Claude</strong> <span class="tool-url">https://claude.ai/</span></a> — assistant généraliste d'Anthropic</li>
+<li><a class="tool-link" href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer"><strong>DeepSeek</strong> <span class="tool-url">https://chat.deepseek.com/</span></a> — modèle ouvert, utile pour comparer</li>
+<li><a class="tool-link" href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer"><strong>AI Studio</strong> <span class="tool-url">https://aistudio.google.com/</span></a> — atelier de Google pour tester des prompts et les modèles Gemini</li>
+</ul>
+
 <h4>Prompt à copier</h4>
 <div class="prompt-box">Explique [sujet] en 5 points concrets, avec 1 exemple réel pour chaque point. Si tu n'es pas sûr d'un fait, dis-le clairement plutôt que d'inventer.</div>
 <h4>Exemple réel</h4>
@@ -258,6 +310,8 @@ Format : titres courts, français clair. Si tu n'es pas sûr d'un fait, dis-le.<
 <div class="ok"><ul><li>☐ La question est identique dans tous les onglets.</li><li>☐ J'ai noté les points sur lesquels les outils se contredisent.</li><li>☐ J'ai vérifié ces points dans une source fiable (dictionnaire, cours).</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> demande des exemples avec traduction. <strong>Français :</strong> demande la règle et l'exception. Vérifie toujours dans un dictionnaire.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">3</span> Utiliser l'application mobile quand le web bloque</h3>
@@ -280,6 +334,8 @@ Format : titres courts, français clair. Si tu n'es pas sûr d'un fait, dis-le.<
 <div class="ok"><ul><li>☐ L'application vient de la page officielle de l'outil.</li><li>☐ Je suis connecté au bon compte.</li><li>☐ Les réponses longues sont relues sur grand écran avant utilisation.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Utilise la dictée vocale du mobile pour t'entraîner à l'oral : dicte ta question en <strong>anglais</strong> ou en <strong>français</strong> et vérifie la transcription.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">4</span> Planifier les gros travaux aux heures calmes</h3>
@@ -304,6 +360,8 @@ Maximum 1h30 par jour.</div>
 <div class="ok"><ul><li>☐ Mon prompt est prêt avant le créneau.</li><li>☐ J'ai sauvegardé la réponse dans un fichier.</li><li>☐ J'ai prévu un plan B (autre outil, astuce 2).</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Prépare deux prompts de la semaine d'un coup : un en <strong>anglais</strong> (essay), un en <strong>français</strong> (dissertation). Lance-les un par jour.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">5</span> Chercher les offres étudiantes officielles</h3>
@@ -326,6 +384,8 @@ Maximum 1h30 par jour.</div>
 <div class="ok"><ul><li>☐ Le domaine est celui de l'éditeur.</li><li>☐ L'offre est décrite sur une page officielle datée.</li><li>☐ Je n'ai fourni aucun mot de passe.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Pour les outils de traduction et de correction (DeepL, outils de grammaire), cherche la page éducation dans la langue du site : <em>education</em> ou <em>éducation</em>.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== PROMPTS ===================== -->
@@ -355,6 +415,8 @@ Contraintes : [langue, longueur, ne pas inventer de sources, dire si tu n'es pas
 <div class="ok"><ul><li>☐ Les 5 champs sont remplis.</li><li>☐ Le format demandé est respecté dans la réponse.</li><li>☐ Si c'est générique : j'ai ajouté le champ manquant.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> rôle « English grammar teacher ». <strong>Français :</strong> rôle « correcteur de français académique ». Demande la réponse dans la langue étudiée et une aide en français.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-006.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">7</span> « Pose-moi 3 questions avant de répondre »</h3>
@@ -378,6 +440,8 @@ Avant de répondre, pose-moi exactement 3 questions pour clarifier mon besoin. N
 <div class="ok"><ul><li>☐ Les 3 questions portent sur mon besoin réel.</li><li>☐ Mes réponses contiennent niveau, durée et usage final.</li><li>☐ La réponse finale en tient compte.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Pour un exposé : <strong>anglais</strong> (auteur, œuvre), <strong>français</strong> (mouvement littéraire). La question « quel angle ? » est utile dans les deux cas.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-007.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">8</span> Escalader le niveau d'explication</h3>
@@ -403,6 +467,8 @@ Sépare bien les deux niveaux.</div>
 <div class="ok"><ul><li>☐ Je sais redire le niveau 1 sans lire.</li><li>☐ J'ai noté les 3 termes techniques du niveau 2.</li><li>☐ J'ai comparé avec mon cours.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> <em>explain the passive voice</em>. <strong>Français :</strong> le subjonctif. Demande le niveau 2 dans la langue cible, avec traduction française des termes.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-008.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">9</span> Imposer le format exact (tableau, liste, JSON)</h3>
@@ -427,6 +493,8 @@ Sépare bien les deux niveaux.</div>
 <div class="ok"><ul><li>☐ Nombre de colonnes correct.</li><li>☐ Aucune ligne inventée.</li><li>☐ Le tableau se colle sans retouche.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Tableau bilingue : | Mot | Traduction | Exemple |. Utile pour <strong>anglais</strong> et <strong>français</strong> : vérifie les traductions dans un dictionnaire.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-009.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">10</span> Exemples + contre-exemples</h3>
@@ -449,6 +517,8 @@ Sépare bien les deux niveaux.</div>
 <div class="ok"><ul><li>☐ Chaque contre-exemple est expliqué.</li><li>☐ J'ai corrigé un contre-exemple moi-même.</li><li>☐ Règle confirmée dans mon cours.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> <em>since / for</em>. <strong>Français :</strong> « malgré que ».</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-010.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">11</span> Raisonnement étape par étape</h3>
@@ -471,6 +541,8 @@ Sépare bien les deux niveaux.</div>
 <div class="ok"><ul><li>☐ J'ai relu chaque étape.</li><li>☐ J'ai trouvé le raisonnement dans mon cours.</li><li>☐ Je peux le refaire sans l'IA.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Utile pour choisir un temps verbal : <strong>anglais</strong> (<em>past simple / present perfect</em>), <strong>français</strong> (imparfait / passé composé).</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">12</span> « Corrige-moi comme un professeur exigeant »</h3>
@@ -495,6 +567,8 @@ Texte : [colle ici]</div>
 <div class="ok"><ul><li>☐ Chaque faute a sa règle.</li><li>☐ J'ai vérifié une règle dans un manuel.</li><li>☐ Mon cahier d'erreurs est mis à jour.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Même prompt avec « professeur d'anglais » ou « de français ». Pour chaque langue, demande aussi la règle concernée (accentuation, accord, concordance).</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-012.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">13</span> Reformulation contrôlée</h3>
@@ -518,6 +592,8 @@ Texte : [colle ici]</div>
 <div class="ok"><ul><li>☐ Aucun chiffre, nom ou date n'a changé.</li><li>☐ Aucune idée nouvelle.</li><li>☐ Le texte final est dans mon style.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Demande aussi de passer du registre familier au registre académique, dans la langue du texte (<strong>anglais</strong> ou <strong>français</strong>), en gardant les citations intactes.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== OUTILS ===================== -->
@@ -557,6 +633,8 @@ Texte : [colle ici]</div>
 <div class="ok"><ul><li>☐ L'outil choisi correspond à ma tâche.</li><li>☐ J'ai ouvert au moins un lien avant de citer.</li><li>☐ J'ai un outil de secours.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Traduction : DeepL pour la base, puis un assistant pour signaler les faux-amis (<strong>anglais</strong>) ou les registres (<strong>français</strong>).</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">15</span> Faire vérifier une IA par une autre</h3>
@@ -581,6 +659,8 @@ Tu es un vérificateur strict. Liste : 1) les affirmations probablement exactes,
 <div class="ok"><ul><li>☐ Chaque point douteux a été vérifié hors IA.</li><li>☐ J'ai noté la source consultée.</li><li>☐ Je n'utilise pas ce que je n'ai pas vérifié.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Pour une règle de grammaire, vérifie dans une grammaire de référence de la langue (<strong>anglais</strong> ou <strong>français</strong>) plutôt que dans une troisième IA.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">16</span> Croiser plusieurs sources pour un fait</h3>
@@ -603,6 +683,8 @@ Tu es un vérificateur strict. Liste : 1) les affirmations probablement exactes,
 <div class="ok"><ul><li>☐ Au moins 2 liens ouverts.</li><li>☐ Auteur, date, éditeur identifiés.</li><li>☐ La divergence éventuelle est notée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Cherche aussi dans la langue du pays concerné : un fait sur la culture anglophone se vérifie souvent mieux dans une source en <strong>anglais</strong>.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">17</span> Comparer plusieurs modèles côte à côte</h3>
@@ -627,6 +709,8 @@ Aide-moi à construire une grille de notation sur 5 et à noter à l'aveugle.</d
 <div class="ok"><ul><li>☐ Permissions lues et acceptables.</li><li>☐ Question sans donnée personnelle.</li><li>☐ Grille de notation remplie.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Sans extension, tu peux simplement ouvrir deux onglets et comparer une même consigne en <strong>anglais</strong> ou en <strong>français</strong>.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== SAUVEGARDE ===================== -->
@@ -653,6 +737,8 @@ Tu es professeur de [matière]. À partir de ce cours : [colle], fais une fiche 
 <div class="ok"><ul><li>☐ Chaque prompt a un titre et une date.</li><li>☐ Les crochets sont visibles.</li><li>☐ Le fichier est sauvegardé ailleurs que sur un seul appareil.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Range tes prompts par langue : « EN — essay », « FR — dissertation ». Ajoute un exemple de réponse validée pour chacun.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">19</span> Exporter les conversations importantes</h3>
@@ -675,6 +761,8 @@ Tu es professeur de [matière]. À partir de ce cours : [colle], fais une fiche 
 <div class="ok"><ul><li>☐ Fichier daté et nommé.</li><li>☐ Aucune donnée personnelle dedans.</li><li>☐ Les points à vérifier sont listés.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Demande la fiche dans la langue du devoir (<strong>anglais</strong> ou <strong>français</strong>) pour réutiliser directement le vocabulaire.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">20</span> Nommer et épingler les conversations</h3>
@@ -699,6 +787,8 @@ Tu es professeur de [matière]. À partir de ce cours : [colle], fais une fiche 
 <div class="ok"><ul><li>☐ Je retrouve une conversation en moins de 10 secondes.</li><li>☐ Les conversations ratées sont supprimées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Ajoute un préfixe de langue : [EN] ou [FR], pour filtrer rapidement.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">21</span> Instructions personnalisées (réglages permanents)</h3>
@@ -725,6 +815,8 @@ Ne cite jamais une source que tu ne peux pas vérifier.</div>
 <div class="ok"><ul><li>☐ 5 consignes maximum.</li><li>☐ Test fait sur une question simple.</li><li>☐ Aucune donnée personnelle dans les réglages.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> « Answer in English, then give a French summary. » <strong>Français :</strong> « Réponds en français soutenu. »</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== VIE PRIVÉE ===================== -->
@@ -750,6 +842,8 @@ Ne cite jamais une source que tu ne peux pas vérifier.</div>
 <div class="ok"><ul><li>☐ Réglages lus à la date d'aujourd'hui.</li><li>☐ Historique inutile supprimé.</li><li>☐ Je sais ce que je ne dois jamais coller (astuce 23).</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Si l'interface est en anglais (<em>data controls</em>, <em>privacy</em>) ou en français (« contrôle des données »), cherche ces mots dans les paramètres.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">23</span> Ne jamais coller de données sensibles</h3>
@@ -772,6 +866,8 @@ Ne cite jamais une source que tu ne peux pas vérifier.</div>
 <div class="ok"><ul><li>☐ Aucun nom, numéro ou adresse dans le texte envoyé.</li><li>☐ Les détails indirects (promotion, lieu) sont retirés.</li><li>☐ L'original reste chez moi.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Pour une copie d'étudiant en <strong>anglais</strong> ou en <strong>français</strong> : garde le texte, retire le nom et le numéro d'étudiant avant de demander une correction.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-023.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">24</span> IA locale avec Ollama pour les textes sensibles</h3>
@@ -794,6 +890,8 @@ Ne cite jamais une source que tu ne peux pas vérifier.</div>
 <div class="ok"><ul><li>☐ Ollama et le modèle viennent des sources officielles.</li><li>☐ Test fait sur un texte non sensible.</li><li>☐ Résultat relu par moi.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Teste la qualité du modèle local dans chaque langue (<strong>anglais</strong> ou <strong>français</strong>) : certains modèles sont plus à l'aise dans une langue que dans une autre.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== TEMPS ===================== -->
@@ -819,6 +917,8 @@ Ne cite jamais une source que tu ne peux pas vérifier.</div>
 <div class="ok"><ul><li>☐ Je l'ai testé sur mon propre ordinateur.</li><li>☐ Je l'ai utilisé 5 fois aujourd'hui.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Si ton clavier est AZERTY ou QWERTY, ou si tu changes de langue de saisie (<strong>anglais</strong> ou <strong>français</strong>), cherche le raccourci de changement de disposition de ton système.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">26</span> Du PDF de cours à la fiche en une demande</h3>
@@ -845,6 +945,8 @@ Cite la page de chaque point. Si une information n'est pas dans le document, éc
 <div class="ok"><ul><li>☐ Chaque point a une page.</li><li>☐ J'ai vérifié 3 réponses dans le PDF.</li><li>☐ Rien ne vient « d'ailleurs » que du document.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Pour un cours en <strong>anglais</strong>, demande les termes clés en anglais avec traduction française. Pour un cours en <strong>français</strong> (littérature), demande les figures de style.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">27</span> Écouter ton cours : texte vers audio</h3>
@@ -867,6 +969,8 @@ Cite la page de chaque point. Si une information n'est pas dans le document, éc
 <div class="ok"><ul><li>☐ La voix prononce bien les termes importants.</li><li>☐ J'ai noté ce que je n'ai pas compris.</li><li>☐ Je revois les mots nouveaux par écrit.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Choisis une voix dans la bonne langue (<strong>anglais</strong> ou <strong>français</strong>) pour entendre une prononciation correcte. Compare avec un enregistrement de locuteur natif.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">28</span> Dicter au lieu de taper</h3>
@@ -891,6 +995,8 @@ Mets-le au propre : ponctuation, paragraphes, fautes. Garde mes mots et mon sens
 <div class="ok"><ul><li>☐ Noms propres vérifiés.</li><li>☐ Chiffres et dates relus.</li><li>☐ Aucune idée ajoutée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Dicte dans la langue cible (<strong>anglais</strong> ou <strong>français</strong>) : c'est aussi un entraînement à l'oral. Compare la transcription avec ce que tu voulais dire pour repérer ta prononciation à travailler.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">29</span> Demander un plan d'action avec dates et durées</h3>
@@ -917,6 +1023,8 @@ Sois réaliste, ajoute un jour de marge avant la date limite.</div>
 <div class="ok"><ul><li>☐ Chaque ligne a un résultat vérifiable.</li><li>☐ Un jour de marge est prévu.</li><li>☐ Mes jours indisponibles sont respectés.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Pour un travail en langue étrangère, ajoute chaque jour 15 minutes d'entraînement oral ou écrit dans la langue concernée (<strong>anglais</strong> ou <strong>français</strong>).</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== MÉTHODE ===================== -->
@@ -946,6 +1054,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ J'ai noté les points à risque.</li><li>☐ Chaque point est vérifié hors IA.</li><li>☐ Ce que je ne peux pas vérifier n'apparaît pas dans mon travail.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p>Pour des citations d'auteurs (<strong>anglais</strong> ou <strong>français</strong>), vérifie toujours dans l'édition originale ou un recueil de référence : une citation reformulée n'est plus une citation.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 
@@ -969,6 +1079,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le plan personnel est établi avant d'ouvrir l'IA.</li><li>☐ L'objectif principal est clairement formulé.</li><li>☐ Les limites du sujet sont fixées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Plan your work and outline the structure before prompting the AI for detailed generation. <strong>Français :</strong> Planifie ton travail et définis la structure avant de solliciter l'IA pour la rédaction détaillée.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">32</span> Valider chaque étape intermédiaire</h3>
@@ -991,6 +1103,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le travail est découpé en séquences courtes.</li><li>☐ Chaque étape est validée avant la suite.</li><li>☐ Les corrections sont appliquées au fil de l'eau.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Validate each intermediate step before moving to the next section. <strong>Français :</strong> Valide chaque étape intermédiaire avant de passer à la section suivante.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">33</span> Garder son esprit critique face aux belles tournures</h3>
@@ -1013,6 +1127,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le fond a été vérifié indépendamment de la forme.</li><li>☐ Les superlatifs et tournures vides ont été éliminés.</li><li>☐ Les arguments reposent sur des bases solides.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Maintain critical thinking despite smooth wording and confident phrasing. <strong>Français :</strong> Conserve un esprit critique malgré les tournures fluides et assurées.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">34</span> Savoir s'arrêter et reprendre le contrôle manuel</h3>
@@ -1035,6 +1151,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le seuil de rentabilité de l'outil a été évalué.</li><li>☐ La main a été reprise au bon moment.</li><li>☐ La touche personnelle est préservée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Know when to stop prompting and take manual control. <strong>Français :</strong> Savoir s'arrêter de prompter et reprendre le contrôle manuel.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== CODE ===================== -->
@@ -1060,6 +1178,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le contexte global du projet a été pris en compte.</li><li>☐ Les modifications ont été relues dans le panneau de diff.</li><li>☐ Le code compile et fonctionne après application.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use Cursor for AI-integrated coding with codebase awareness. <strong>Français :</strong> Utilise Cursor pour coder avec une IA intégrée consciente de la base de code.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-035.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">36</span> Demander d'expliquer un code avant de le modifier</h3>
@@ -1082,6 +1202,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le code a été expliqué par l'IA.</li><li>☐ L'explication correspond à la réalité technique.</li><li>☐ Les impacts potentiels des modifications ont été identifiés.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Ask the AI to explain the code before modifying it. <strong>Français :</strong> Demande à l'IA d'expliquer le code avant de le modifier.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-036.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">37</span> OpenCode pour explorer des projets open source</h3>
@@ -1104,6 +1226,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ L'architecture globale du projet a été cartographiée.</li><li>☐ Les points d'entrée principaux ont été identifiés.</li><li>☐ La logique de communication entre modules est claire.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use OpenCode to explore and understand open-source codebases. <strong>Français :</strong> Utilise OpenCode pour explorer et comprendre des bases de code open source.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-037.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">38</span> Déboguer en collant le message d'erreur exact</h3>
@@ -1126,6 +1250,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le message d'erreur complet a été fourni.</li><li>☐ Le code associé est inclus.</li><li>☐ La correction proposée résout le problème sans effet de bord.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Debug efficiently by pasting the exact error message and stack trace. <strong>Français :</strong> Débogue efficacement en collant le message d'erreur exact et la trace.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">39</span> Générer des tests unitaires</h3>
@@ -1148,6 +1274,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Les cas nominaux sont couverts.</li><li>☐ Les cas limites (valeurs nulles, négatives, extrêmes) sont testés.</li><li>☐ Le code de test s'exécute sans erreur.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate comprehensive unit tests including edge cases and exceptions. <strong>Français :</strong> Génère des tests unitaires complets incluant les cas limites et les exceptions.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== RÉDACTION ===================== -->
@@ -1173,6 +1301,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Seules les fautes ont été corrigées.</li><li>☐ Le style personnel a été intégralement conservé.</li><li>☐ Aucune phrase n'a été reformulée inutilement.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Correct spelling and grammar without altering your personal style. <strong>Français :</strong> Corrige l'orthographe et la grammaire sans altérer ton style personnel.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">41</span> Traduire en nuances (contexte culturel et registre)</h3>
@@ -1195,6 +1325,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le registre de langue est adapté au public cible.</li><li>☐ La terminologie technique est exacte.</li><li>☐ La fluidité dans la langue d'arrivée est naturelle.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Translate with attention to cultural context and professional register. <strong>Français :</strong> Traduis en tenant compte du contexte culturel et du registre professionnel.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">42</span> Reformuler un paragraphe pour un public spécifique</h3>
@@ -1217,6 +1349,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le niveau de lecture correspond au public visé.</li><li>☐ Les concepts clés restent exacts.</li><li>☐ Les tournures complexes ont été simplifiées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Rewrite a paragraph to target a specific audience's level. <strong>Français :</strong> Reformule un paragraphe pour l'adapter au niveau d'un public spécifique.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== VÉRIFICATION ===================== -->
@@ -1242,6 +1376,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Chaque référence a été vérifiée en ligne (Google Scholar, DOI).</li><li>☐ Aucune source fictive n'a été conservée.</li><li>☐ Les faits avancés sont recoupés.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Hunt down hallucinations and cross-check every single reference. <strong>Français :</strong> Chasse les hallucinations et vérifie systématiquement chaque référence.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-043.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">44</span> Croiser entre plusieurs modèles</h3>
@@ -1264,6 +1400,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Le prompt a été testé sur au moins deux modèles.</li><li>☐ Les divergences d'analyse ont été identifiées.</li><li>☐ La meilleure solution a été retenue après comparaison.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Cross-reference outputs between multiple AI models to compare insights. <strong>Français :</strong> Croise les résultats entre plusieurs modèles d'IA pour comparer les analyses.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-044.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">45</span> Demander à l'IA d'auto-critiquer sa réponse</h3>
@@ -1286,6 +1424,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ L'auto-critique a été demandée explicitement.</li><li>☐ Les faiblesses identifiées ont été corrigées.</li><li>☐ La qualité globale du livrable a progressé.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Ask the AI to critically review and audit its own output. <strong>Français :</strong> Demande à l'IA d'auditer et de critiquer sa propre production.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== ACADÉMIQUE ===================== -->
@@ -1311,6 +1451,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ La mention méthodologique est claire et transparente.</li><li>☐ Les règles de l'institution ou de la revue sont respectées.</li><li>☐ La nature exacte de l'assistance (relecture vs génération) est précisée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Disclose AI usage transparently in your methodological notes. <strong>Français :</strong> Divulgue l'utilisation de l'IA de manière transparente dans tes notes méthodologiques.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">47</span> Structurer une bibliographie aux normes (APA / MLA)</h3>
@@ -1333,6 +1475,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ La norme spécifiée a été strictement appliquée.</li><li>☐ Les éléments obligatoires (DOI, année, volume) sont présents.</li><li>☐ L'alignement et la typographie sont corrects.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Format bibliographies according to strict academic standards like APA or IEEE. <strong>Français :</strong> Structure les bibliographies selon des normes académiques strictes comme APA ou IEEE.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">48</span> Générer des contre-arguments pour renforcer son argumentation</h3>
@@ -1355,6 +1499,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ Les contre-arguments majeurs ont été identifiés.</li><li>☐ Une réponse ou une nuance a été apportée dans le texte.</li><li>☐ La robustesse de l'argumentation globale est renforcée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate counter-arguments to strengthen and bulletproof your reasoning. <strong>Français :</strong> Génère des contre-arguments pour renforcer et solidifier ton raisonnement.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">49</span> Résumer un long mémoire en chapitres thématiques</h3>
@@ -1377,6 +1523,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ La structure par thèmes est claire.</li><li>☐ Les points clés essentiels ont été conservés.</li><li>☐ Le résumé ne contient pas de distorsion par rapport au texte original.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Summarize long research papers into structured thematic chapters. <strong>Français :</strong> Résume les longs documents de recherche en chapitres thématiques structurés.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">50</span> Rédiger une introduction académique percutante</h3>
@@ -1399,6 +1547,8 @@ Réponds en 6 lignes maximum.</div>
 <div class="ok"><ul><li>☐ La problématique est clairement posée dès le début.</li><li>☐ L'état de l'art et la contribution sont explicites.</li><li>☐ Le plan est correctement annoncé en fin d'introduction.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Draft a compelling academic introduction following standard structural norms. <strong>Français :</strong> Rédige une introduction académique percutante en suivant les normes structurelles standard.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== PROMPTS AVANCÉS ===================== -->
@@ -1427,6 +1577,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ Un exemple clair a été fourni dans le prompt.</li><li>☐ Le résultat respecte scrupuleusement la structure de l'exemple.</li><li>☐ Le format de sortie est homogène.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use few-shot prompting by providing concrete input-output examples. <strong>Français :</strong> Utilise le few-shot prompting en fournissant des exemples concrets d'entrée-sortie.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">52</span> Chain-of-Thought (raisonnement étape par étape)</h3>
@@ -1449,6 +1601,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ Le raisonnement est décomposé en étapes distinctes.</li><li>☐ Chaque étape intermédiaire est logiquement valide.</li><li>☐ La conclusion découle directement du processus.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use Chain-of-Thought prompting to break down complex reasoning step by step. <strong>Français :</strong> Utilise le Chain-of-Thought pour décomposer un raisonnement complexe étape par étape.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">53</span> Role-playing avancé (incarner un expert critique)</h3>
@@ -1471,6 +1625,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ Le rôle attribué est précis et contextualisé.</li><li>☐ Le ton et les remarques correspondent aux standards du rôle.</li><li>☐ Les points d'amélioration relevés sont pertinents.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use advanced role-playing by assigning a precise, highly demanding expert persona. <strong>Français :</strong> Utilise le role-playing avancé en attribuant un profil d'expert précis et exigeant.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">54</span> Prompt « Meta » (demander à l'IA d'écrire un meilleur prompt)</h3>
@@ -1493,6 +1649,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ L'objectif initial a été clairement transmis à l'IA.</li><li>☐ Le prompt méta généré est structuré et réutilisable.</li><li>☐ Le résultat obtenu avec ce prompt est supérieur.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use meta-prompting to ask the AI to write a better, optimized prompt for you. <strong>Français :</strong> Utilise le méta-prompting pour demander à l'IA de rédiger un prompt optimisé pour toi.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">55</span> Découpage itératif de grands projets (Tree of Thoughts)</h3>
@@ -1515,6 +1673,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ Plusieurs approches distinctes ont été générées.</li><li>☐ Une analyse comparative objective a été menée.</li><li>☐ La solution finale a été choisie en toute connaissance de cause.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use iterative tree-of-thought branching to explore multiple problem-solving paths. <strong>Français :</strong> Utilise un découpage arborescent itératif pour explorer plusieurs pistes de résolution.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">56</span> Imposer des contraintes négatives strictes</h3>
@@ -1537,6 +1697,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ Les contraintes négatives ont été formulées clairement.</li><li>☐ Aucun élément interdit n'apparaît dans le texte final.</li><li>☐ Le format respecte les limites imposées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Enforce strict negative constraints to eliminate unwanted patterns and filler. <strong>Français :</strong> Impose des contraintes négatives strictes pour éliminer les tournures indésirables.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">57</span> Forcer l'auto-correction par cycles</h3>
@@ -1559,6 +1721,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ Plusieurs cycles de relecture ont été effectués.</li><li>☐ Les défauts identifiés à chaque tour ont disparu.</li><li>☐ Le rendu final est optimisé.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Force iterative self-correction cycles to polish your content. <strong>Français :</strong> Force des cycles d'auto-correction itératifs pour polir ton contenu.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">58</span> Créer un glossaire de termes avant la rédaction</h3>
@@ -1581,6 +1745,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ Le glossaire a été validé en amont.</li><li>☐ La terminologie est constante dans tout le document.</li><li>☐ Les abréviations sont correctement introduites.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Create a terminology glossary before starting the main writing process. <strong>Français :</strong> Crée un glossaire de terminologie avant d'entamer la rédaction principale.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">59</span> Simuler un échange contradicteur / avocat du diable</h3>
@@ -1603,6 +1769,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ L'IA a adopté une posture contradictoire.</li><li>☐ Les points faibles de l'argumentation ont été mis en lumière.</li><li>☐ Les réponses aux objections ont été formalisées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Simulate a devil's advocate debate to stress-test your arguments. <strong>Français :</strong> Simule un débat d'avocat du diable pour tester la résistance de tes arguments.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">60</span> Structurer un prompt modulaire (variables et blocs)</h3>
@@ -1628,6 +1796,8 @@ Applique exactement ce même format et ce même style pour traiter l'élément s
 <div class="ok"><ul><li>☐ Le prompt est découpé en blocs logiques clairs.</li><li>☐ Les sections Contexte, Rôle et Tâche sont distinctes.</li><li>☐ Le modèle génère exactement ce qui était attendu.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Structure modular prompts using clear labeled blocks and variables. <strong>Français :</strong> Structure des prompts modulaires en utilisant des blocs et des variables étiquetés.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 
@@ -1657,6 +1827,8 @@ Structure attendue :
 <div class="ok"><ul><li>☐ La réponse parse sans erreur dans un validateur JSON.</li><li>☐ Aucun texte parasite autour.</li><li>☐ La structure respecte exactement le modèle fourni.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Enforce strict output formats like JSON for downstream automation. <strong>Français :</strong> Impose un format de sortie strict comme le JSON pour une exploitation automatique.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">62</span> Chaînage de prompts (étapes numérotées)</h3>
@@ -1683,6 +1855,8 @@ Commence par l'étape 1.</div>
 <div class="ok"><ul><li>☐ Chaque étape produit une sortie vérifiée.</li><li>☐ La sortie de l'étape 1 est bien réinjectée dans l'étape 2.</li><li>☐ Le résultat final est cohérent avec les étapes intermédiaires.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Chain prompts in numbered steps with validation between each. <strong>Français :</strong> Chaîne les prompts en étapes numérotées avec validation entre chaque.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">63</span> Rôle ultra-précis (domaine + niveau + époque)</h3>
@@ -1705,6 +1879,8 @@ Commence par l'étape 1.</div>
 <div class="ok"><ul><li>☐ Le rôle précise un domaine réel.</li><li>☐ Le contexte géographique ou disciplinaire est explicite.</li><li>☐ Le modèle signale quand la question sort de son rôle.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Assign a highly specific role with domain, level and context. <strong>Français :</strong> Attribue un rôle ultra-précis avec domaine, niveau et contexte.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">64</span> Public cible explicite (âge, niveau, usage)</h3>
@@ -1727,6 +1903,8 @@ Commence par l'étape 1.</div>
 <div class="ok"><ul><li>☐ Le vocabulaire correspond au niveau annoncé.</li><li>☐ Les notions supposées connues ne sont pas réexpliquées.</li><li>☐ Le texte répond à l'usage final prévu.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> State the target audience explicitly (age, level, purpose). <strong>Français :</strong> Explicite le public cible (âge, niveau, usage).</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">65</span> Détection de biais (culturels, confirmation, sélection)</h3>
@@ -1749,6 +1927,8 @@ Commence par l'étape 1.</div>
 <div class="ok"><ul><li>☐ Chaque biais signalé est justifié par une phrase du texte.</li><li>☐ La version reformulée est plus neutre.</li><li>☐ Aucune idée n'a été ajoutée ou supprimée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Detect biases (cultural, confirmation, selection) in your text. <strong>Français :</strong> Détecte les biais (culturels, de confirmation, de sélection) dans ton texte.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== WORKFLOWS ===================== -->
@@ -1778,6 +1958,8 @@ Contraintes : [LONGUEUR], [TON], [LANGUE].</div>
 <div class="ok"><ul><li>☐ Aucun crochet non remplacé.</li><li>☐ Le résultat respecte la structure attendue.</li><li>☐ Le template est enregistré.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Save reusable prompt templates with variables. <strong>Français :</strong> Sauvegarde des templates de prompts réutilisables avec variables.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">67</span> Prompt chaining sauvegardé (fichiers intermédiaires)</h3>
@@ -1800,6 +1982,8 @@ Contraintes : [LONGUEUR], [TON], [LANGUE].</div>
 <div class="ok"><ul><li>☐ Chaque étape a son fichier.</li><li>☐ Les noms disent l'ordre et le contenu.</li><li>☐ Tu peux reprendre à n'importe quelle étape.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Save intermediate outputs between chained prompts. <strong>Français :</strong> Sauvegarde les sorties intermédiaires entre les prompts chaînés.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">68</span> Automatiser avec Make ou Zapier</h3>
@@ -1826,6 +2010,8 @@ Vérifie : où l'humain doit-il relire avant envoi ?</div>
 <div class="ok"><ul><li>☐ Le scénario fonctionne sur 3 tests.</li><li>☐ Un humain relit la sortie avant envoi.</li><li>☐ Le coût reste acceptable.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Automate repetitive tasks with Make or Zapier. <strong>Français :</strong> Automatise les tâches répétitives avec Make ou Zapier.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">69</span> GPTs personnalisés (assistant dédié)</h3>
@@ -1849,6 +2035,8 @@ Prompt système : « Tu es correcteur d'assignments de 2e année. Corrige selon 
 <div class="ok"><ul><li>☐ Le prompt système contient rôle, grille et format.</li><li>☐ Les réponses sont cohérentes entre sessions.</li><li>☐ Les données sensibles ne sont pas dans les réglages.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Create custom GPTs for recurring tasks. <strong>Français :</strong> Crée des GPT personnalisés pour les tâches récurrentes.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">70</span> Projects Claude (contexte permanent)</h3>
@@ -1871,6 +2059,8 @@ Prompt système : « Tu es correcteur d'assignments de 2e année. Corrige selon 
 <div class="ok"><ul><li>☐ Les documents sont bien déposés.</li><li>☐ L'instruction de périmètre est en première ligne.</li><li>☐ Chaque réponse cite la page.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use Claude Projects for permanent document context. <strong>Français :</strong> Utilise les Projects Claude pour un contexte documentaire permanent.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">71</span> Bot Telegram / Discord via API</h3>
@@ -1897,6 +2087,8 @@ Explique où mettre le token et comment le protéger.</div>
 <div class="ok"><ul><li>☐ Le token est dans un gestionnaire de mots de passe.</li><li>☐ Une limite de dépenses est configurée.</li><li>☐ Le bot est fermé après la période d'usage.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build a Telegram or Discord bot via the API. <strong>Français :</strong> Construis un bot Telegram ou Discord via l'API.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">72</span> Multi-agents (rédacteur + critique + vérificateur)</h3>
@@ -1923,6 +2115,8 @@ Tu joues chaque rôle séparément, dans l'ordre. Je valide entre chaque.</div>
 <div class="ok"><ul><li>☐ Chaque rôle produit une sortie distincte.</li><li>☐ Les critiques sont prises en compte dans la version finale.</li><li>☐ Les sources sont vérifiées une par une.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use multi-agent workflow (writer + critic + fact-checker). <strong>Français :</strong> Utilise un workflow multi-agents (rédacteur + critique + vérificateur).</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">73</span> RAG simple (poser des questions à ses PDF)</h3>
@@ -1945,6 +2139,8 @@ Tu joues chaque rôle séparément, dans l'ordre. Je valide entre chaque.</div>
 <div class="ok"><ul><li>☐ Chaque réponse a une citation.</li><li>☐ La citation existe bien dans le document.</li><li>☐ Aucune information extérieure n'est ajoutée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build a simple RAG by querying your own PDFs. <strong>Français :</strong> Construis un RAG simple en interrogeant tes propres PDF.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">74</span> Embeddings (recherche par sens)</h3>
@@ -1967,6 +2163,8 @@ Tu joues chaque rôle séparément, dans l'ordre. Je valide entre chaque.</div>
 <div class="ok"><ul><li>☐ La recherche retourne les passages utiles.</li><li>☐ Les résultats sont classés par proximité.</li><li>☐ Le sens reste correct.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use embeddings for semantic search across your notes. <strong>Français :</strong> Utilise les embeddings pour une recherche sémantique dans tes notes.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">75</span> Fine-tuning léger (dernier recours)</h3>
@@ -1989,6 +2187,8 @@ Tu joues chaque rôle séparément, dans l'ordre. Je valide entre chaque.</div>
 <div class="ok"><ul><li>☐ Un prompt système a été testé d'abord.</li><li>☐ Les exemples d'entraînement sont propres.</li><li>☐ Le modèle final est testé sur des cas nouveaux.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Consider light fine-tuning only as a last resort. <strong>Français :</strong> Envisage un fine-tuning léger uniquement en dernier recours.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== DONNÉES ===================== -->
@@ -2014,6 +2214,8 @@ Tu joues chaque rôle séparément, dans l'ordre. Je valide entre chaque.</div>
 <div class="ok"><ul><li>☐ La formule donne le bon résultat.</li><li>☐ Les cas limites sont testés.</li><li>☐ La formule se copie correctement vers le bas.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate Excel or Sheets formulas from a plain-language description. <strong>Français :</strong> Génère des formules Excel ou Sheets à partir d'une description en français.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">77</span> Analyse de CSV (avec échantillon)</h3>
@@ -2039,6 +2241,8 @@ Propose 3 graphiques pertinents et dis ce que chacun doit montrer.</div>
 <div class="ok"><ul><li>☐ L'analyse distingue les observations des conclusions.</li><li>☐ Les anomalies repérées existent vraiment.</li><li>☐ Les données personnelles ont été retirées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Analyze a CSV sample for trends and anomalies. <strong>Français :</strong> Analyse un échantillon CSV pour repérer tendances et anomalies.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">78</span> Requêtes SQL</h3>
@@ -2061,6 +2265,8 @@ Propose 3 graphiques pertinents et dis ce que chacun doit montrer.</div>
 <div class="ok"><ul><li>☐ La requête fait ce qui est attendu.</li><li>☐ Chaque clause est comprise.</li><li>☐ Le test est fait sur une copie.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Write SQL queries from a plain-language description. <strong>Français :</strong> Écris des requêtes SQL à partir d'une description en français.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">79</span> Nettoyage de données (pandas)</h3>
@@ -2083,6 +2289,8 @@ Propose 3 graphiques pertinents et dis ce que chacun doit montrer.</div>
 <div class="ok"><ul><li>☐ <code>df.shape</code> avant et après est noté.</li><li>☐ Le fichier original est conservé.</li><li>☐ Chaque étape est comprise.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate a pandas script for data cleaning. <strong>Français :</strong> Génère un script pandas pour le nettoyage des données.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">80</span> Visualisation (matplotlib / seaborn)</h3>
@@ -2105,6 +2313,8 @@ Propose 3 graphiques pertinents et dis ce que chacun doit montrer.</div>
 <div class="ok"><ul><li>☐ Le graphique est lisible en noir et blanc.</li><li>☐ Les axes et titres sont explicites.</li><li>☐ L'interprétation est nuancée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Visualize data clearly with matplotlib or seaborn. <strong>Français :</strong> Visualise les données clairement avec matplotlib ou seaborn.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">81</span> Vérifier les calculs (deux méthodes)</h3>
@@ -2127,6 +2337,8 @@ Propose 3 graphiques pertinents et dis ce que chacun doit montrer.</div>
 <div class="ok"><ul><li>☐ Le calcul manuel et le script donnent le même résultat.</li><li>☐ Les étapes intermédiaires sont notées.</li><li>☐ Le résultat est vérifié dans un tableur.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Verify calculations with a second method or a script. <strong>Français :</strong> Vérifie les calculs par une seconde méthode ou un script.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">82</span> Google Colab (exécuter sans rien installer)</h3>
@@ -2149,6 +2361,8 @@ Propose 3 graphiques pertinents et dis ce que chacun doit montrer.</div>
 <div class="ok"><ul><li>☐ Le code s'exécute sans erreur.</li><li>☐ Le fichier est exporté ou copié en local.</li><li>☐ Le résultat est noté.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Run code without installing anything with Google Colab. <strong>Français :</strong> Exécute du code sans rien installer avec Google Colab.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== CRÉATIVITÉ ===================== -->
@@ -2176,6 +2390,8 @@ Puis inverse chaque cause pour obtenir 10 bonnes pratiques.</div>
 <div class="ok"><ul><li>☐ Les causes sont spécifiques à ton projet.</li><li>☐ Chaque cause a une pratique inversée.</li><li>☐ Tu peux en appliquer au moins 3 aujourd'hui.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Reverse brainstorming: list failure causes to derive best practices. <strong>Français :</strong> Brainstorming inversé : liste les causes d'échec pour en tirer de bonnes pratiques.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">84</span> Contraintes créatives (style + longueur + interdit)</h3>
@@ -2199,6 +2415,8 @@ Contraintes : pas de clichés, une seule métaphore filée, chute surprenante.</
 <div class="ok"><ul><li>☐ La longueur demandée est respectée.</li><li>☐ Les interdits sont respectés.</li><li>☐ La contrainte de style est visible.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Add creative constraints (style, length, forbidden elements). <strong>Français :</strong> Ajoute des contraintes créatives (style, longueur, interdits).</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">85</span> Carte mentale en texte hiérarchique</h3>
@@ -2227,6 +2445,8 @@ Format :
 <div class="ok"><ul><li>☐ La hiérarchie a 3 niveaux.</li><li>☐ Chaque branche principale a plusieurs sous-branches.</li><li>☐ Aucun thème majeur n'est oublié.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate a mind map as structured text with three levels. <strong>Français :</strong> Génère une carte mentale en texte hiérarchique à trois niveaux.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">86</span> Script vidéo (tableau temps / visuel / texte)</h3>
@@ -2253,6 +2473,8 @@ Ton : dynamique mais clair. Maximum 300 mots au total.</div>
 <div class="ok"><ul><li>☐ La durée totale est respectée.</li><li>☐ Le nombre de mots correspond au temps.</li><li>☐ Chaque plan a un visuel distinct.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Write a short video script as a time / visual / text table. <strong>Français :</strong> Rédige un script vidéo en tableau temps / visuel / texte.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">87</span> Personas marketing (public précis)</h3>
@@ -2277,6 +2499,8 @@ Signale que ce sont des hypothèses, pas des données.</div>
 <div class="ok"><ul><li>☐ Chaque persona est précis et cohérent.</li><li>☐ Les arguments correspondent aux douleurs listées.</li><li>☐ Tu peux expliquer pourquoi ce persona achèterait.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build detailed marketing personas. <strong>Français :</strong> Construis des personas marketing détaillés.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">88</span> Prompts images structurés (sujet / style / lumière)</h3>
@@ -2305,6 +2529,8 @@ Palette : [sèche / chaude / monochrome]</div>
 <div class="ok"><ul><li>☐ Les champs décrivent bien ce que tu veux.</li><li>☐ Une seule variable est modifiée à la fois.</li><li>☐ L'image finale correspond à l'objectif.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use structured image prompts (subject / style / light / palette). <strong>Français :</strong> Utilise des prompts images structurés (sujet / style / lumière / palette).</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">89</span> Storyboard (décor, plan, émotion)</h3>
@@ -2329,6 +2555,8 @@ Si deux plans ont la même émotion, fusionne-les.</div>
 <div class="ok"><ul><li>☐ Chaque plan a un cadrage distinct.</li><li>☐ Les émotions varient.</li><li>☐ La vidéo peut être tournée sans matériel spécial.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Create a storyboard with shot, action, text and emotion. <strong>Français :</strong> Crée un storyboard avec cadrage, action, texte et émotion.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">90</span> Adapter un contenu multi-plateformes</h3>
@@ -2356,6 +2584,8 @@ Garde le message principal, adapte le ton et le format.</div>
 <div class="ok"><ul><li>☐ Chaque version respecte la limite annoncée.</li><li>☐ Le message central reste identique.</li><li>☐ Aucune donnée personnelle.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Adapt one content piece across multiple platforms. <strong>Français :</strong> Adapte un même contenu sur plusieurs plateformes.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 
@@ -2386,6 +2616,8 @@ Classe-les par difficulté croissante. Réponse de 5 mots maximum. Une seule not
 <div class="ok"><ul><li>☐ Chaque carte teste une seule notion.</li><li>☐ Les réponses font 5 mots maximum.</li><li>☐ L'importation dans Anki/Quizlet fonctionne.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate flashcards for active recall practice. <strong>Français :</strong> Génère des flashcards pour un entraînement en rappel actif.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-091.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <h3><span class="tip-num">92</span> Méthode Feynman (expliquer pour comprendre)</h3>
@@ -2410,6 +2642,8 @@ Corrige mes erreurs, simplifie ce qui reste flou, et propose une analogie.</div>
 <div class="ok"><ul><li>☐ Tu as réexpliqué sans regarder.</li><li>☐ L'IA a corrigé au moins une erreur.</li><li>☐ L'analogie finale est claire.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use the Feynman method: explain the concept in your own words. <strong>Français :</strong> Utilise la méthode Feynman : réexplique le concept avec tes propres mots.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">93</span> Quiz adaptatif (difficulté qui s'ajuste)</h3>
@@ -2432,6 +2666,8 @@ Corrige mes erreurs, simplifie ce qui reste flou, et propose une analogie.</div>
 <div class="ok"><ul><li>☐ La difficulté s'ajuste bien entre les questions.</li><li>☐ Chaque corrigé est justifié.</li><li>☐ Tu sais où sont tes faiblesses.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Run an adaptive quiz that adjusts to your level. <strong>Français :</strong> Fais un quiz adaptatif qui s'ajuste à ton niveau.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">94</span> Plan d'étude avec révisions espacées</h3>
@@ -2459,6 +2695,8 @@ Inclus :
 <div class="ok"><ul><li>☐ Les rappels espacés sont explicites.</li><li>☐ Un jour de repos est prévu.</li><li>☐ L'auto-évaluation finale est planifiée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build a spaced-repetition study plan. <strong>Français :</strong> Construis un plan d'étude avec révisions espacées.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">95</span> Analyse d'erreurs (trouver le pattern)</h3>
@@ -2484,6 +2722,8 @@ Explique ce que je dois vérifier avant de rendre.</div>
 <div class="ok"><ul><li>☐ Le pattern est identifié précisément.</li><li>☐ Les exercices ciblent bien ce pattern.</li><li>☐ La checklist est applicable au prochain devoir.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Analyze recurring errors to find the pattern. <strong>Français :</strong> Analyse tes erreurs récurrentes pour trouver le pattern.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== SÉCURITÉ ===================== -->
@@ -2509,6 +2749,8 @@ Explique ce que je dois vérifier avant de rendre.</div>
 <div class="ok"><ul><li>☐ Aucun nom, numéro ou adresse dans le texte envoyé.</li><li>☐ Les détails indirects sont retirés.</li><li>☐ L'original reste chez toi.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Anonymize personal data before pasting into any AI tool. <strong>Français :</strong> Anonymise les données personnelles avant de coller dans un outil IA.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">97</span> Vérifier les permissions des extensions IA</h3>
@@ -2531,6 +2773,8 @@ Explique ce que je dois vérifier avant de rendre.</div>
 <div class="ok"><ul><li>☐ Les permissions sont lues.</li><li>☐ L'accès est restreint aux sites utiles.</li><li>☐ Les extensions inutilisées sont supprimées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Review and restrict AI browser extension permissions. <strong>Français :</strong> Vérifie et restreins les permissions des extensions IA.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">98</span> Code propriétaire (respect de la confidentialité)</h3>
@@ -2553,6 +2797,8 @@ Explique ce que je dois vérifier avant de rendre.</div>
 <div class="ok"><ul><li>☐ Aucun fichier confidentiel n'est collé.</li><li>☐ Un exemple générique est utilisé.</li><li>☐ La politique de l'organisation est respectée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Protect proprietary code when using online AI tools. <strong>Français :</strong> Protège le code propriétaire lors de l'utilisation d'outils IA en ligne.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">99</span> Licences des modèles (usage commercial)</h3>
@@ -2575,6 +2821,8 @@ Explique ce que je dois vérifier avant de rendre.</div>
 <div class="ok"><ul><li>☐ Les conditions d'utilisation sont lues.</li><li>☐ L'usage final est compatible.</li><li>☐ Les règles de la plateforme sont respectées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Check model licenses before any commercial use. <strong>Français :</strong> Vérifie les licences des modèles avant tout usage commercial.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">100</span> Déclarer l'usage de l'IA (méthodologie)</h3>
@@ -2597,6 +2845,8 @@ Explique ce que je dois vérifier avant de rendre.</div>
 <div class="ok"><ul><li>☐ La déclaration précise l'outil et la version.</li><li>☐ La nature exacte de l'aide est décrite.</li><li>☐ La mention figure au bon endroit.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Disclose AI usage in your methodology notes. <strong>Français :</strong> Déclare l'usage de l'IA dans tes notes méthodologiques.</p>
+
+  <a class="btn-detail" href="astuces-details/astuce-100.html">🔍 Voir l'explication détaillée</a>
 </div>
 
 <!-- ===================== API & DEV ===================== -->
@@ -2624,6 +2874,8 @@ Explique les deux options en 5 lignes, avec les implications de coût et de fiab
 <div class="ok"><ul><li>☐ Le choix correspond à l'usage réel.</li><li>☐ Le coût est estimé.</li><li>☐ La solution est automatisable.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Understand the difference between chat and API usage. <strong>Français :</strong> Comprends la différence entre l'usage chat et l'usage API.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">102</span> Variables d'environnement pour les clés API</h3>
@@ -2653,6 +2905,8 @@ CLE = os.getenv("OPENAI_API_KEY")</pre></div>
 <div class="ok"><ul><li>☐ Le fichier .env est dans .gitignore.</li><li>☐ Aucune clé en dur dans le code.</li><li>☐ La clé est aussi dans un gestionnaire de mots de passe.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Store API keys in environment variables, never in code. <strong>Français :</strong> Stocke les clés API dans des variables d'environnement, jamais dans le code.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">103</span> Comprendre les tokens (entrée + sortie)</h3>
@@ -2675,6 +2929,8 @@ CLE = os.getenv("OPENAI_API_KEY")</pre></div>
 <div class="ok"><ul><li>☐ La réponse tient dans la limite demandée.</li><li>☐ Le coût est suivi dans le tableau de bord.</li><li>☐ Les réponses inutiles sont coupées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Understand token cost: both input and output matter. <strong>Français :</strong> Comprends le coût des tokens : entrée et sortie comptent.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">104</span> Streaming pour les réponses longues</h3>
@@ -2700,6 +2956,8 @@ CLE = os.getenv("OPENAI_API_KEY")</pre></div>
 <div class="ok"><ul><li>☐ Le texte s'affiche progressivement.</li><li>☐ Le cas de réponse vide est géré.</li><li>☐ Les erreurs en cours de flux sont captées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Use streaming for long responses. <strong>Français :</strong> Utilise le streaming pour les réponses longues.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">105</span> Retry automatique sur erreur 429</h3>
@@ -2726,6 +2984,8 @@ CLE = os.getenv("OPENAI_API_KEY")</pre></div>
 <div class="ok"><ul><li>☐ Le délai augmente à chaque tentative.</li><li>☐ Le plafond de tentatives est respecté.</li><li>☐ Les erreurs sont journalisées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Add automatic retry with exponential backoff on 429 errors. <strong>Français :</strong> Ajoute un retry automatique avec backoff exponentiel sur les erreurs 429.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">106</span> Cache des réponses (économiser tokens)</h3>
@@ -2752,6 +3012,8 @@ CLE = os.getenv("OPENAI_API_KEY")</pre></div>
 <div class="ok"><ul><li>☐ Le cache renvoie bien la réponse enregistrée.</li><li>☐ Le cache est vidé après changement de modèle.</li><li>☐ Le cache n'est pas versionné.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Cache identical prompts to avoid paying twice. <strong>Français :</strong> Mets en cache les prompts identiques pour éviter de payer deux fois.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">107</span> Tester plusieurs modèles sur une tâche</h3>
@@ -2775,6 +3037,8 @@ CLE = os.getenv("OPENAI_API_KEY")</pre></div>
 <div class="ok"><ul><li>☐ Les 3 modèles ont reçu la même question.</li><li>☐ La notation est faite à l'aveugle.</li><li>☐ Le meilleur rapport coût/qualité est identifié.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Benchmark several models on a representative task. <strong>Français :</strong> Compare plusieurs modèles sur une tâche représentative.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">108</span> Chaîner avec LangChain ou LlamaIndex</h3>
@@ -2801,6 +3065,8 @@ CLE = os.getenv("OPENAI_API_KEY")</pre></div>
 <div class="ok"><ul><li>☐ Chaque étape produit un fichier séparé.</li><li>☐ La relance sur erreur fonctionne.</li><li>☐ Le framework apporte un vrai gain.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Chain calls with a framework like LangChain or LlamaIndex. <strong>Français :</strong> Chaîne les appels avec un framework comme LangChain ou LlamaIndex.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">109</span> Function calling (outils à l'IA)</h3>
@@ -2827,6 +3093,8 @@ Décris pour chaque outil : nom, description, paramètres, ce qu'il renvoie.</di
 <div class="ok"><ul><li>☐ Chaque outil a une description précise.</li><li>☐ L'IA appelle le bon outil.</li><li>☐ Le résultat est vérifié.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Give the AI tools via function calling instead of guessing. <strong>Français :</strong> Donne des outils à l'IA via le function calling au lieu de la laisser deviner.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">110</span> Loguer chaque appel pour déboguer</h3>
@@ -2857,6 +3125,8 @@ Format : un fichier JSONL, une ligne par appel.</div>
 <div class="ok"><ul><li>☐ Chaque appel produit une ligne de log.</li><li>☐ Les prompts et réponses sont complets.</li><li>☐ Aucune donnée personnelle dans le log.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Log every API call to debug quickly. <strong>Français :</strong> Log chaque appel API pour déboguer rapidement.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== RECHERCHE ===================== -->
@@ -2885,6 +3155,8 @@ Fais une étape à la fois, j'attends ma validation.</div>
 <div class="ok"><ul><li>☐ Chaque article est vérifié sur Google Scholar.</li><li>☐ Chaque courant a au moins 2 articles.</li><li>☐ Les débats sont documentés.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build a literature review in three clear steps. <strong>Français :</strong> Construis une revue de littérature en trois étapes claires.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">112</span> Repérer les articles fondateurs</h3>
@@ -2909,6 +3181,8 @@ Signale clairement ce dont tu n'es pas sûr. Ne donne pas de nombre de citations
 <div class="ok"><ul><li>☐ Chaque article existe sur Google Scholar.</li><li>☐ Les apports principaux sont confirmés.</li><li>☐ Les incertitudes sont notées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Identify the founding papers of a field. <strong>Français :</strong> Repère les articles fondateurs d'un domaine.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">113</span> Tableau comparatif d'articles</h3>
@@ -2934,6 +3208,8 @@ Laisse « non précisé » si l'information n'est pas dans le résumé.</div>
 <div class="ok"><ul><li>☐ Chaque cellule est vérifiée dans le résumé.</li><li>☐ Les cases incertaines sont marquées « non précisé ».</li><li>☐ Le tableau est directement utilisable.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Extract a comparative table from several papers. <strong>Français :</strong> Extrais un tableau comparatif de plusieurs articles.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">114</span> Reformuler une problématique (5 angles)</h3>
@@ -2963,6 +3239,8 @@ Pour chacune, dis en une ligne ce qu'elle promettrait comme résultats.</div>
 <div class="ok"><ul><li>☐ Les 5 reformulations sont différentes.</li><li>☐ Chacune promet des résultats distincts.</li><li>☐ Tu peux choisir en connaissance de cause.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Reformulate a research question from five angles. <strong>Français :</strong> Reformule une problématique selon cinq angles.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">115</span> Trouver le gap (ce qui n'a pas été étudié)</h3>
@@ -2990,6 +3268,8 @@ Cite l'article qui soutient chaque affirmation.</div>
 <div class="ok"><ul><li>☐ Le gap est identifié avec citations.</li><li>☐ Une littérature voisine existe.</li><li>☐ Le gap a un intérêt réel.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Identify a research gap from a set of papers. <strong>Français :</strong> Identifie un gap de recherche à partir d'un ensemble d'articles.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">116</span> Abstract en 5 phrases (IMRAD condensé)</h3>
@@ -3019,6 +3299,8 @@ Ne mets aucun chiffre qui ne soit pas dans le texte que je te donne.</div>
 <div class="ok"><ul><li>☐ Les 5 rôles sont présents.</li><li>☐ Les chiffres viennent du texte source.</li><li>☐ La longueur est respectée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Write an abstract in five sentences (context, problem, method, result, implication). <strong>Français :</strong> Rédige un abstract en cinq phrases (contexte, problème, méthode, résultat, implication).</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">117</span> Simuler une soutenance (jury de 10 questions)</h3>
@@ -3044,6 +3326,8 @@ Commence par les questions de méthode, puis de résultats, puis de contribution
 <div class="ok"><ul><li>☐ Les questions couvrent méthode, résultats, contribution.</li><li>☐ Tu réponds à voix haute.</li><li>☐ Tu identifies tes deux points faibles.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Simulate a thesis defence with 10 tough questions. <strong>Français :</strong> Simule une soutenance avec 10 questions difficiles.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">118</span> Veille automatisée (alertes + résumé)</h3>
@@ -3068,6 +3352,8 @@ Résume en 5 lignes ceux qui sont directement liés à mon sujet, et indique les
 <div class="ok"><ul><li>☐ Les alertes sont ciblées.</li><li>☐ Le résumé hebdomadaire tient en 10 minutes.</li><li>☐ Tu ne consultes que ce qui est utile.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Set up a lightweight automated research watch. <strong>Français :</strong> Mets en place une veille automatisée légère.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">119</span> Fiche de lecture express</h3>
@@ -3097,6 +3383,8 @@ Pour les citations, donne le texte exact et le numéro de page.</div>
 <div class="ok"><ul><li>☐ Chaque citation a sa page.</li><li>☐ La référence est complète.</li><li>☐ La rubrique « réutilisable » est remplie.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Fill in a quick reading sheet for each paper. <strong>Français :</strong> Remplis une fiche de lecture express pour chaque article.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">120</span> Traduire un article scientifique</h3>
@@ -3122,6 +3410,8 @@ Ne reformule pas le sens : traduis fidèlement.</div>
 <div class="ok"><ul><li>☐ Les termes techniques sont conservés en anglais.</li><li>☐ Les faux-amis sont signalés.</li><li>☐ Le sens original est préservé.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Translate scientific articles while preserving technical terms. <strong>Français :</strong> Traduis des articles scientifiques en conservant les termes techniques.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 
@@ -3155,6 +3445,8 @@ Ton : professionnel, direct, sans jargon. Public : [qui exactement, quel niveau]
 <div class="ok"><ul><li>☐ Le problème du client est en premier.</li><li>☐ Les trois formules sont distinctes.</li><li>☐ La prochaine étape est claire.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Write a clear service offer starting with the client's problem. <strong>Français :</strong> Rédige une offre de service claire en commençant par le problème du client.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">122</span> 20 idées de contenu pour un mois</h3>
@@ -3180,6 +3472,8 @@ Varie les formats : story, conseil, coulisses, opinion, tutoriel.</div>
 <div class="ok"><ul><li>☐ Les 20 idées couvrent des formats variés.</li><li>☐ 5 idées contiennent tes exemples personnels.</li><li>☐ Le calendrier est réaliste.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate 20 content ideas for a month. <strong>Français :</strong> Génère 20 idées de contenu pour un mois.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">123</span> Préparer un rendez-vous client</h3>
@@ -3207,6 +3501,8 @@ Prépare :
 <div class="ok"><ul><li>☐ Les questions couvrent les 4 axes.</li><li>☐ Les objections sont réalistes.</li><li>☐ Tu as une phrase de clôture prête.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Prepare a client meeting with questions and objection answers. <strong>Français :</strong> Prépare un rendez-vous client avec questions et réponses aux objections.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">124</span> Rédiger un e-mail difficile</h3>
@@ -3232,6 +3528,8 @@ Maximum 150 mots.</div>
 <div class="ok"><ul><li>☐ L'objet est explicite.</li><li>☐ La demande est claire.</li><li>☐ La prochaine étape est indiquée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Draft a difficult email in under 150 words. <strong>Français :</strong> Rédige un e-mail difficile en moins de 150 mots.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">125</span> Analyser un contrat ou des CGV</h3>
@@ -3259,6 +3557,8 @@ Ce n'est pas un avis juridique : signale les points à vérifier avec un avocat.
 <div class="ok"><ul><li>☐ Chaque point a sa citation.</li><li>☐ Les manques sont signalés.</li><li>☐ L'avertissement « pas un avis juridique » est présent.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Analyze a contract in ten points, with quotes and warnings. <strong>Français :</strong> Analyse un contrat en dix points, avec citations et avertissements.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">126</span> Étude de marché rapide</h3>
@@ -3284,6 +3584,8 @@ Signale les sources et les incertitudes. Si tu n'as pas de source, écris « à 
 <div class="ok"><ul><li>☐ Chaque chiffre a une source vérifiable.</li><li>☐ Les incertitudes sont marquées.</li><li>☐ Les 5 acteurs existent réellement.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Run a quick market study with clear sourcing. <strong>Français :</strong> Réalise une étude de marché rapide avec sourçage clair.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">127</span> Business plan d'une page</h3>
@@ -3309,6 +3611,8 @@ Si une information manque, écris [à compléter] — n'invente aucun chiffre.</
 <div class="ok"><ul><li>☐ L'ordre imposé est respecté.</li><li>☐ Les fourchettes ont une base de calcul.</li><li>☐ Aucun chiffre inventé n'est présenté comme réel.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Write a one-page business plan with ranges, not fake numbers. <strong>Français :</strong> Rédige un business plan d'une page avec des fourchettes, sans faux chiffres.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">128</span> Proposition commerciale structurée</h3>
@@ -3339,6 +3643,8 @@ Client : [qui, quel secteur, quel niveau de maturité].</div>
 <div class="ok"><ul><li>☐ Le besoin est bien reformulé.</li><li>☐ Le planning est réaliste.</li><li>☐ Le tarif est justifié.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Structure a commercial proposal around the client's need. <strong>Français :</strong> Structure une proposition commerciale autour du besoin du client.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">129</span> Simuler un entretien d'embauche</h3>
@@ -3364,6 +3670,8 @@ Note finale sur 10 et 3 conseils prioritaires.</div>
 <div class="ok"><ul><li>☐ Les questions couvrent 3 niveaux de difficulté.</li><li>☐ Tu as identifié 2 points à améliorer.</li><li>☐ Tu as préparé une question à poser au recruteur.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Simulate a job interview with progressive questions and feedback. <strong>Français :</strong> Simule un entretien d'embauche avec questions progressives et feedback.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">130</span> Optimiser son CV pour une offre</h3>
@@ -3392,6 +3700,8 @@ Ne mens pas : reformule uniquement ce que j'ai déjà fait.</div>
 <div class="ok"><ul><li>☐ Les 5 compétences sont réelles.</li><li>☐ Les réalisations sont chiffrées quand possible.</li><li>☐ Aucune compétence inventée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Tailor your CV to a specific job ad without lying. <strong>Français :</strong> Adapte ton CV à une offre précise sans mentir.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== ENSEIGNEMENT ===================== -->
@@ -3420,6 +3730,8 @@ Précise pour chaque séance : durée, objectif, activité, production attendue.
 <div class="ok"><ul><li>☐ Les objectifs sont vérifiables.</li><li>☐ Les durées sont réalistes.</li><li>☐ Chaque séance produit quelque chose de visible.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate a full course plan in one prompt. <strong>Français :</strong> Génère un plan de cours complet en un seul prompt.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">132</span> Différencier pour 3 niveaux</h3>
@@ -3447,6 +3759,8 @@ Pour chaque version, dis ce que l'élève doit produire.</div>
 <div class="ok"><ul><li>☐ L'objectif reste le même.</li><li>☐ Chaque version a une production claire.</li><li>☐ La version « difficulté » est plus guidée, pas plus courte.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Differentiate an activity for three levels with the same goal. <strong>Français :</strong> Différencie une activité pour trois niveaux avec le même objectif.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">133</span> QCM équilibrés (facile / moyen / difficile)</h3>
@@ -3472,6 +3786,8 @@ Format : question + 4 propositions + bonne réponse + explication.
 <div class="ok"><ul><li>☐ La répartition des niveaux est respectée.</li><li>☐ Chaque explication est vérifiée.</li><li>☐ Les positions des bonnes réponses sont variées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Generate balanced MCQs with plausible distractors. <strong>Français :</strong> Génère des QCM équilibrés avec distracteurs plausibles.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">134</span> Grille d'évaluation (critères observables)</h3>
@@ -3497,6 +3813,8 @@ Décris les niveaux en actions observables, pas en adjectifs (« ne cite aucune 
 <div class="ok"><ul><li>☐ Chaque niveau est décrit par une action observable.</li><li>☐ La pondération fait bien 20.</li><li>☐ Deux correcteurs donneraient la même note.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build a rubric with observable criteria and levels. <strong>Français :</strong> Construis une grille d'évaluation avec critères et niveaux observables.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">135</span> Feedback personnalisé (précis + exemples)</h3>
@@ -3524,6 +3842,8 @@ Maximum 200 mots.</div>
 <div class="ok"><ul><li>☐ Les 3 points positifs citent la copie.</li><li>☐ Les 3 axes sont chiffrés ou exemplifiés.</li><li>☐ Le conseil prioritaire est unique.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Write precise, example-based student feedback. <strong>Français :</strong> Rédige un feedback étudiant précis et illustré d'exemples.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">136</span> Escape game pédagogique</h3>
@@ -3549,6 +3869,8 @@ Chaque énigme doit tester une notion précise du cours et sa solution doit êtr
 <div class="ok"><ul><li>☐ Chaque énigme teste une notion vue.</li><li>☐ La solution est écrite pour l'enseignant.</li><li>☐ La durée est réaliste.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Design a pedagogical escape game on a specific topic. <strong>Français :</strong> Conçois un escape game pédagogique sur un sujet précis.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">137</span> Adapter un cours pour l'oral</h3>
@@ -3574,6 +3896,8 @@ Ajoute 5 questions à poser au public.
 <div class="ok"><ul><li>☐ Le total des mots correspond à la durée.</li><li>☐ Les transitions sont explicites.</li><li>☐ Les questions au public sont prêtes.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Turn a written course into a timed oral presentation. <strong>Français :</strong> Transforme un cours écrit en présentation orale minutée.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">138</span> Fiche méthode pour les élèves</h3>
@@ -3598,6 +3922,8 @@ Format : 5 étapes, 1 exemple, 3 erreurs à éviter, 1 phrase à retenir.
 <div class="ok"><ul><li>☐ Chaque étape est vérifiable.</li><li>☐ L'exemple est concret.</li><li>☐ Les erreurs viennent de la pratique.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Write a step-by-step method sheet for students. <strong>Français :</strong> Rédige une fiche méthode étape par étape pour les élèves.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">139</span> Corriger 30 copies avec la même exigence</h3>
@@ -3622,6 +3948,8 @@ Pour chaque copie, je veux : grille complétée + 3 points positifs + 1 conseil 
 <div class="ok"><ul><li>☐ La grille est validée avant de commencer.</li><li>☐ Chaque copie reçoit la même grille.</li><li>☐ Relève manuelle effectuée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Grade many copies consistently using one rubric. <strong>Français :</strong> Corrige de nombreuses copies avec la même grille.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">140</span> Projet interdisciplinaire</h3>
@@ -3647,6 +3975,8 @@ Propose 3 projets différents.</div>
 <div class="ok"><ul><li>☐ La problématique est commune.</li><li>☐ Les deux disciplines sont mobilisées ensemble.</li><li>☐ L'évaluation distingue les deux apports.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Design an interdisciplinary project around a shared problem. <strong>Français :</strong> Conçois un projet interdisciplinaire autour d'une problématique commune.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== PRODUCTIVITÉ ===================== -->
@@ -3675,6 +4005,8 @@ Commence par la plus simple et donne-moi le geste à faire maintenant.</div>
 <div class="ok"><ul><li>☐ Chaque étape commence par un geste physique.</li><li>☐ Aucune étape ne dépasse 15 minutes.</li><li>☐ Tu peux commencer dans la minute.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Break a paralyzing task into 15-minute micro-steps. <strong>Français :</strong> Décompose une tâche paralysante en micro-étapes de 15 minutes.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">142</span> Journal de décision (critères avant arguments)</h3>
@@ -3700,6 +4032,8 @@ avec le critère qui l'emporte et pourquoi.</div>
 <div class="ok"><ul><li>☐ Les critères sont explicites.</li><li>☐ Chaque critère a un poids.</li><li>☐ La décision peut être expliquée à quelqu'un.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Write a decision journal clarifying criteria before arguments. <strong>Français :</strong> Tiens un journal de décision en clarifiant les critères avant les arguments.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">143</span> Revue hebdomadaire guidée</h3>
@@ -3728,6 +4062,8 @@ Pose-les une par une.</div>
 <div class="ok"><ul><li>☐ Les 10 questions ont reçu une réponse.</li><li>☐ Au moins un élément est abandonné.</li><li>☐ 3 priorités sont fixées.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Run a guided weekly review in ten questions. <strong>Français :</strong> Fais une revue hebdomadaire guidée en dix questions.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">144</span> Rituel de démarrage (3 actions, 5 minutes)</h3>
@@ -3752,6 +4088,8 @@ La première doit être physique (ouvrir, poser, écrire), sinon le rituel saute
 <div class="ok"><ul><li>☐ Le rituel dure moins de 5 minutes.</li><li>☐ La première action est physique.</li><li>☐ Tu peux le faire même fatigué.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build a five-minute starting ritual with three physical actions. <strong>Français :</strong> Construis un rituel de démarrage de 5 minutes en 3 actions physiques.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">145</span> Gérer la procrastination (identifier la cause)</h3>
@@ -3777,6 +4115,8 @@ pas des conseils génériques.</div>
 <div class="ok"><ul><li>☐ La cause est identifiée précisément.</li><li>☐ Les 3 stratégies correspondent à cette cause.</li><li>☐ Tu as commencé une des trois.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Overcome procrastination by identifying the underlying cause. <strong>Français :</strong> Gère la procrastination en identifiant la cause profonde.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== META ===================== -->
@@ -3807,6 +4147,8 @@ Pour chaque fait, dis quelle source permettrait de le vérifier.</div>
 <div class="ok"><ul><li>☐ Chaque catégorie est justifiée.</li><li>☐ Les faits ont une source identifiée.</li><li>☐ Les hypothèses sont présentées comme telles.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Separate fact, opinion and hypothesis in a text. <strong>Français :</strong> Distingue fait, opinion et hypothèse dans un texte.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">147</span> Cartographier un sujet en 10 minutes</h3>
@@ -3835,6 +4177,8 @@ Signale ce dont tu n'es pas sûr.</div>
 <div class="ok"><ul><li>☐ Chaque acteur est vérifié.</li><li>☐ Chaque débat a au moins 2 sources.</li><li>☐ Les ressources sont de types variés.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Map a subject in ten minutes with concepts, actors and debates. <strong>Français :</strong> Cartographie un sujet en dix minutes avec concepts, acteurs et débats.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">148</span> Apprendre à apprendre (plan en 30 jours)</h3>
@@ -3860,6 +4204,8 @@ Décris la production attendue de chaque séance (pas seulement le thème).</div
 <div class="ok"><ul><li>☐ Chaque séance a une production visible.</li><li>☐ Les auto-évaluations sont prévues.</li><li>☐ Le plan est réaliste (1h/jour).</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build a 30-day learning plan with checkpoints. <strong>Français :</strong> Construis un plan d'apprentissage sur 30 jours avec paliers.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">149</span> Débat contradictoire (défenseur vs critique)</h3>
@@ -3886,6 +4232,8 @@ Sois exigeant : ne m'accorde pas un point facile.</div>
 <div class="ok"><ul><li>☐ Les deux rôles sont joués distinctement.</li><li>☐ Les objections sont sérieuses.</li><li>☐ La synthèse est nuancée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Simulate a critical debate to stress-test your thesis. <strong>Français :</strong> Simule un débat contradictoire pour éprouver ta thèse.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">150</span> Créer son propre système d'astuces</h3>
@@ -3914,6 +4262,8 @@ Demande-moi d'abord mes prompts existants.</div>
 <div class="ok"><ul><li>☐ La fiche tient sur une page.</li><li>☐ Les 10 prompts sont les tiens.</li><li>☐ La mise à jour mensuelle est planifiée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Build your own one-page AI workflow system. <strong>Français :</strong> Construis ton propre système IA en une page.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <!-- ===================== BONUS ===================== -->
@@ -3940,6 +4290,8 @@ Transforme-le en texte agréable à écouter : phrases courtes, pas de tableau, 
 <div class="ok"><ul><li>☐ La voix prononce correctement les termes clés.</li><li>☐ Tu notes les points à revoir.</li><li>☐ Les mots nouveaux sont révisés à l'écrit.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Turn a text into an audio file for revision on the move. <strong>Français :</strong> Transforme un texte en fichier audio pour réviser en déplacement.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <h3><span class="tip-num">152</span> Dicter au lieu de taper</h3>
@@ -3963,6 +4315,8 @@ Mets-le au propre : ponctuation, paragraphes, fautes. Garde mes mots et mon sens
 <div class="ok"><ul><li>☐ Noms propres vérifiés.</li><li>☐ Chiffres et dates relus.</li><li>☐ Aucune idée ajoutée.</li></ul></div>
 <h4>Variante (Anglais / Français)</h4>
 <p><strong>Anglais :</strong> Dictate instead of typing to move faster. <strong>Français :</strong> Dicte au lieu de taper pour gagner en vitesse.</p>
+
+  <span class="detail-indispo">🔍 Explication détaillée — en préparation</span>
 </div>
 
 <div class="reflexe">

@@ -229,7 +229,13 @@ def audit_meta():
         de = None
         for balise_meta in re.findall(r"<meta\b[^>]*>", t, re.I):
             if re.search(r'name\s*=\s*["\']description["\']', balise_meta, re.I):
-                de = re.search(r'content\s*=\s*["\']([^"\']*)', balise_meta, re.I)
+                # Le contenu peut contenir une apostrophe (« l'astuce 1 ») :
+                # une classe de caractères qui exclut les deux quoting styles
+                # tronquait la description a 26 caracteres et declenchait un
+                # faux positif sur les 15 pages de detail. On respekte donc
+                # le guillemet fermant correspondant a celui d'ouverture.
+                de = (re.search(r'content\s*=\s*"([^"]*)"', balise_meta, re.I)
+                      or re.search(r"content\s*=\s*'([^']*)'", balise_meta, re.I))
                 break
         if not ti:
             res["title manquant"].append(rel)

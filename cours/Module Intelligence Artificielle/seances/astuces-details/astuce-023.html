@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+  <meta name="description" content="Explication détaillée de l'astuce 23 du module Intelligence Artificielle (Ne jamais coller de données sensibles) : comprendre, appliquer, éviter les erreurs. 2e…">
+  <link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/astuces-details/astuce-023.html">
+  <meta property="og:title" content="Astuce 23 — Ne jamais coller de données sensibles | Module IA">
+  <meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/astuces-details/astuce-023.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astuce 23 — Ne jamais coller de données sensibles | Module IA</title>
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  /* Scope au contenu principal : sinon cette regle ecrasait aussi le
+     .container du pied de page (fond blanc sur footer sombre, largeur 820px). */
+  main .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #146fa9;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #146fa9;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h3,
+  .step h3,
+  .step h4 {
+    margin-top: 0;
+    color: #146fa9;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h3,
+  .exemple h3,
+  .exemple h4 {
+    margin-top: 0;
+    color: #146fa9;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #146fa9;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+
+  /* ── pages « explication détaillée » ───────────────────────────────── */
+  .detail-nav { display: flex; justify-content: space-between; flex-wrap: wrap;
+    gap: .5rem; margin: 1.5rem 0; }
+  .detail-nav a { color: #146fa9; text-decoration: none; font-weight: 600;
+    padding: .5rem .9rem; border-radius: 6px; background: #e3f2fd; }
+  .detail-nav a:hover { background: #bbdefb; }
+  .detail-retour { display: inline-block; margin: 0 0 1.2rem; color: #146fa9;
+    font-weight: 600; text-decoration: none; }
+  .detail-retour:hover { text-decoration: underline; }
+  .detail-retour-haut { display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap; margin-bottom: 1.4rem; padding-bottom: 1rem;
+    border-bottom: 1px solid #e1e8ed; }
+  .detail-retour-bas { margin-top: 2.5rem; padding-top: 1.2rem;
+    border-top: 1px solid #e1e8ed; display: flex; align-items: center;
+    gap: 1rem; flex-wrap: wrap; }
+  .detail-retour-bas .detail-nav { flex: 1 1 100%; margin-bottom: .4rem; }
+  .detail-corps h2 { margin: 2rem 0 .6rem; padding-bottom: .3rem;
+    border-bottom: 1px solid #e1e8ed; }
+  .detail-corps pre { background: #1e293b; color: #e2e8f0; padding: 1rem 1.1rem;
+    border-radius: 8px; overflow-x: auto; font-size: .84rem; line-height: 1.55; }
+  .detail-corps pre code { background: none; color: inherit; padding: 0; }
+  .detail-corps table { width: 100%; border-collapse: collapse; margin: .9rem 0;
+    font-size: .92rem; }
+  .detail-corps th, .detail-corps td { border: 1px solid #e1e8ed; padding: .55rem .7rem;
+    text-align: left; vertical-align: top; }
+  .detail-corps th { background: #f4f6f8; }
+  .detail-corps .reflexe { background: #e8f5e9; border-left: 4px solid #2e7d32;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .warn { background: #fff3e0; border-left: 4px solid #ef6c00;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .ok { background: #e8f5e9; border-left: 4px solid #00875b;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .phrase { border-left: 3px solid #e1e8ed; padding-left: .9rem;
+    margin: .9rem 0; }
+  .detail-corps .phrase strong { color: #146fa9; }
+  .detail-corps .schema { background: #f8fafc; border: 1px solid #e1e8ed;
+    padding: 1rem; border-radius: 8px; overflow-x: auto; }
+</style>
+
+<link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
+<link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
+<link rel="stylesheet" href="../../../../css/fonts/fonts.css">
+<link rel="preload" href="../../../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="../../../../css/style.css" rel="stylesheet"/>
+<link href="../../../../images/universite-mostaganem-96.avif" rel="icon"/>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dr. Madani BELACEL">
+
+
+
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="twitter:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../index.html" class="header-logo">
+        <picture>
+          <source srcset="../../../../images/universite-mostaganem-96.avif" type="image/avif">
+          <source srcset="../../../../images/universite-mostaganem-96.webp" type="image/webp">
+          <img loading="eager" fetchpriority="high" width="96" height="93" src="../../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem">
+        </picture>
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <picture>
+          <source srcset="../../../../images/LOGO-FLE-UNIV-Mosta.avif" type="image/avif">
+          <source srcset="../../../../images/LOGO-FLE-UNIV-Mosta.webp" type="image/webp">
+          <img loading="eager" width="207" height="243" src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+        </picture>
+      </div>
+    </div>
+    <img loading="eager" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav aria-label="Navigation principale" role="navigation">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu À Propos">À Propos</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../../../../index.html#about">Présentation</a></li>
+            <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
+            <li><a href="../../../../contact.html">Contact</a></li>
+          </ul>
+        </li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Domaines d'expertise">Domaines d'expertise</a>
+          <ul class="nav-dropdown-menu">
+                  <li><a href="../../../../tic.html">TIC</a></li>
+                  <li><a href="../../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
+        </li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Dernières Actualités">Dernières Actualités</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../../../../index.html#news">Actualités des Modules</a></li>
+            <li><a href="../../../../ressources.html">Ressources</a></li>
+          </ul>
+        </li>
+        <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header page-header-tic">
+  <div class="container"><h1>Séance 11 — OpenCode + DeepSeek : piloter un agent IA</h1><p>Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p></div>
+</div>
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li><li><a href="../../../../enseignement.html">Enseignement</a></li><li><a href="../../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li><li class="current">Séance 11</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="container">
+    <nav aria-label="Fil d'Ariane">
+      <ol class="breadcrumb">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../index.html">Intelligence Artificielle</a></li>
+        <li><a href="../astuces-ia.html">Astuces</a></li>
+        <li class="current">Astuce 23</li>
+      </ol>
+    </nav>
+
+    <div class="page-header">
+      <h1>🔍 Astuce 23 — Ne jamais coller de données sensibles</h1>
+      <p>Explication détaillée · Module Intelligence Artificielle — 2e année PEP</p>
+    </div>
+
+    <div class="detail-retour-haut">
+      <a class="detail-retour" href="../astuces-ia.html">← Retour aux 152 astuces</a>
+      <div class="detail-nav"><a href="../astuces-ia.html">← Retour aux 152 astuces</a></div>
+    </div>
+
+    <div class="detail-corps">
+<h2>1. Le texte source</h2>
+<div class="warn"><strong>Règle absolue :</strong> si tu ne le mettrais pas sur un forum public, ne le colle pas dans une IA en ligne.</div>
+<h3><span class="tip-num">23</span> Ne jamais coller de données sensibles</h3>
+<div class="astuce-bloc">
+<h4>Pourquoi ça marche</h4>
+<p>Ce que tu colles quitte ton ordinateur et passe par un service externe. La règle simple : n'envoie rien que tu ne mettrais pas sur un forum public.</p>
+<h4>Étapes</h4>
+<ol>
+<li>Avant de coller, relis le texte.</li>
+<li>Remplace noms, e-mails, numéros, adresses, notes nominatives par [NOM], [EMAIL], [NUMÉRO], [ADRESSE], [NOTE].</li>
+<li>Garde l'original chez toi.</li>
+</ol>
+<h4>Prompt à copier</h4>
+<div class="prompt-box">Voici un texte que je veux anonymiser. Remplace tous les noms, e-mails, numéros et adresses par des balises [NOM], [EMAIL], [NUMÉRO], [ADRESSE]. Signale aussi tout détail qui pourrait encore identifier quelqu'un. Texte : [colle ici un texte sans mots de passe]</div>
+<h4>Exemple réel</h4>
+<div class="exemple"><p>Un message d'un camarade devient « [NOM] a obtenu [NOTE] au contrôle de [MATIÈRE] ». Les initiales et la promotion peuvent suffire à identifier : retire-les aussi.</p></div>
+<h4>Erreur fréquente</h4>
+<div class="warn">Coller un mot de passe, un numéro de carte, une pièce d'identité ou un sujet d'examen non public pour « gagner du temps ». Pour les mots de passe, utilise un gestionnaire dédié, jamais un chat.</div>
+<h4>Vérification</h4>
+<div class="ok"><ul><li>☐ Aucun nom, numéro ou adresse dans le texte envoyé.</li><li>☐ Les détails indirects (promotion, lieu) sont retirés.</li><li>☐ L'original reste chez moi.</li></ul></div>
+<h4>Variante (Anglais / Français)</h4>
+<p>Pour une copie d'étudiant en <strong>anglais</strong> ou en <strong>français</strong> : garde le texte, retire le nom et le numéro d'étudiant avant de demander une correction.</p>
+</div>
+
+
+
+<h2>2. Explication phrase par phrase</h2>
+<p><strong>« Si tu ne le mettrais pas sur un forum public »</strong> → C'est le test à faire en 2 secondes. Imagine que tu postes le texte sur un forum. Si ça te gêne, ne le colle pas dans l'IA. Ce test simple remplace tous les raisonnements techniques.</p>
+<p><strong>« Ne le colle pas dans une IA en ligne »</strong> → Le mot « en ligne » est important. Il y a deux types d'IA : celles qui envoient ton texte à un serveur étranger (ChatGPT, Gemini, Claude…), et celles qui tournent sur ton ordinateur (Ollama). La règle s'applique aux premières.</p>
+<p>Ce qui part : ton texte. Où : sur les serveurs de la société, souvent aux États-Unis ou en Europe. Combien de temps : variable selon les politiques — parfois plusieurs années. Qui peut le lire : les employés de la société, et toute personne qui aurait un accès légal (mandat, réquisition).</p>
+
+
+<h2>3. Une analogie pour comprendre</h2>
+<p>Imagine que tu écris une carte postale. <strong>Ne pas coller de données sensibles dans une IA, c'est comme ne pas écrire un numéro de carte bancaire sur une carte postale.</strong></p>
+<p>La carte postale voyage par la poste, passe par plusieurs mains, peut être lue par n'importe qui. Elle peut finir dans une boîte aux lettres qui n'est pas la bonne. Ou être conservée dans un service de tri pendant des années.</p>
+<p>Une IA en ligne, c'est pareil. Ton texte fait le voyage, il est stocké, indexé, parfois conservé plusieurs années. Le fait qu'il soit chiffré en transit ne change rien à l'arrivée : sur le serveur, il est lisible.</p>
+
+
+<h2>4. Les composants décomposés</h2>
+<table>
+<tr><th>Type de donnée</th><th>Peut-on la coller ?</th><th>Pourquoi</th></tr>
+<tr><td>Mot de passe</td><td>Jamais</td><td>Identifiant + accès = compromission immédiate</td></tr>
+<tr><td>Numéro de carte bancaire</td><td>Jamais</td><td>Fraude possible pendant des mois</td></tr>
+<tr><td>Carte d'identité / passeport</td><td>Jamais</td><td>Usurpation d'identité</td></tr>
+<tr><td>Adresse personnelle précise</td><td>À éviter</td><td>Pas nécessaire pour une correction</td></tr>
+<tr><td>Nom complet d'un tiers</td><td>Anonymiser</td><td>Violation du droit à l'image / RGPD</td></tr>
+<tr><td>Notes nominatives d'élèves</td><td>Anonymiser</td><td>Données protégées</td></tr>
+<tr><td>Question d'étude, texte de cours</td><td>Oui</td><td>Aucun risque</td></tr>
+</table>
+
+
+<h2>5. Application pratique — anonymiser un message reçu</h2>
+<p><strong>Texte original à ne pas coller :</strong></p>
+<div class="warn">« Mohamed B., promo B, a obtenu 4/20 au contrôle de phonétique. Il habite à la cité 500 logements, appartement 12, à Mostaganem. Son numéro : 05 55 12 34 56. »</div>
+<p><strong>Version anonymisée à coller :</strong></p>
+<div class="ok">« [NOM] a obtenu [NOTE] au contrôle de [MATIÈRE]. »</div>
+<p><strong>Règle :</strong> même les initiales et la promotion doivent partir. « Mohamed B., promo B » ne suffit pas — sur une petite promotion, trois personnes peuvent correspondre, et l'identité devient devinable.</p>
+
+
+<h2>6. Le réflexe à retenir</h2>
+<div class="reflexe"><strong>Avant de coller : « Est-ce que je posterais ça sur un forum public ? » Si la réponse est non, je ne colle pas.</strong></div>
+<p>Ce test remplace toute une série de questions techniques. Il prend 2 secondes et il couvre 95 % des cas.</p>
+
+
+<h2>7. Erreurs fréquentes à éviter</h2>
+<ol>
+<li><strong>Anonymisation incomplète.</strong> Tu retires le nom mais pas les initiales ni la promotion. Cela donne un faux sentiment de sécurité : « Mohamed B., promo B » suffit à identifier dans une petite promo.</li>
+<li><strong>Mettre un mot de passe dans un prompt.</strong> « Écris-moi un script qui se connecte avec le mot de passe X ». Le mot de passe part sur un serveur et reste dans l'historique.</li>
+<li><strong>Coller un sujet d'examen non public.</strong> Un devoir sur table, un sujet de partiel confidentiel — ce n'est pas « juste un texte », c'est un document protégé.</li>
+<li><strong>Croire que « supprimer la conversation » efface tout.</strong> L'historique est aussi dans les sauvegardes. La seule protection réelle est de ne jamais coller.</li>
+<li><strong>Utiliser son numéro d'étudiant réel.</strong> Un correcteur qui connaît ta fac peut croiser les informations avec une seule recherche.</li>
+</ol>
+
+
+<h2>8. Résumé en une image</h2>
+<pre><code>Donnée à coller
+       │
+       ▼
+┌───────────────────────┐    Non
+│  Forum public ?       ├────────▶  Ne pas coller
+└───────────┬───────────┘
+            │ Oui
+            ▼
+     ┌──────────────┐
+     │  OK à coller │
+     └──────────────┘
+</code></pre>
+
+
+<h2>9. Ce que tu dois retenir</h2>
+<ul>
+<li><strong>Le test forum public :</strong> 2 secondes, 95 % des cas couverts.</li>
+<li><strong>Ce qui part quitte ton ordinateur.</strong> Supprimer la conversation ne suffit pas.</li>
+<li><strong>Anonymiser à fond :</strong> noms, initiales, promotions, lieux, numéros.</li>
+<li><strong>Pour les textes vraiment sensibles :</strong> utilise une IA locale (Ollama).</li>
+</ul>
+
+
+<h2>10. Sans / Avec — comparaison</h2>
+<table>
+<tr><th>Sans l'astuce</th><th>Avec l'astuce</th></tr>
+<tr><td>Tu colles le message brut</td><td>Tu anonymises d'abord</td></tr>
+<tr><td>Noms et numéros partent</td><td>Balises [NOM], [NUMÉRO]</td></tr>
+<tr><td>Risque RGPD + faute professionnelle</td><td>Zéro risque identifiable</td></tr>
+<tr><td>Tu dois vérifier après coup</td><td>Tu vérifies avant</td></tr>
+<tr><td><strong>Bilan : risque permanent</strong></td><td><strong>Bilan : sérénité</strong></td></tr>
+</table>
+    </div>
+
+    <div class="detail-retour-bas">
+      <div class="detail-nav"><a href="../astuces-ia.html">← Retour aux 152 astuces</a></div>
+      <a class="detail-retour" href="../astuces-ia.html">← Retour aux 152 astuces</a>
+      <a href="#main-content">↑ Haut de page</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <picture>
+        <source srcset="../../../../images/universite-mostaganem-96.avif" type="image/avif">
+        <source srcset="../../../../images/universite-mostaganem-96.webp" type="image/webp">
+        <img loading="eager" decoding="async" width="96" height="93" src="../../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo">
+      </picture>
+      <img loading="lazy" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../../../../js/main.v2.js" defer></script>
+
+</body>
+</html>

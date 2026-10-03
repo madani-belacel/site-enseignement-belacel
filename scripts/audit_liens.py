@@ -54,8 +54,13 @@ def resoudre(dossier, chemin):
 
 def main():
     fichiers = []
+    # Les dossiers de sauvegarde sont des copies de travail posees ailleurs
+    # dans l'arborescence : leurs chemins relatifs ne peuvent pas resulter.
+    # Les inclure noyerait le rapport sous des faux positifs sans valeur.
+    ignores = (".git", "node_modules", "__pycache__",
+               "backup_2026-10-02", "backup_2026-10-03")
     for d, sous, noms in os.walk(RACINE):
-        sous[:] = [s for s in sous if s not in (".git", "node_modules", "__pycache__")]
+        sous[:] = [s for s in sous if s not in ignores]
         for n in noms:
             fichiers.append(os.path.normpath(os.path.join(d, n)))
 

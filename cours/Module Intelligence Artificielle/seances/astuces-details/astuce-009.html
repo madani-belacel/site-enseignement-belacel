@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+  <meta name="description" content="Explication détaillée de l'astuce 9 du module Intelligence Artificielle (Imposer le format exact (tableau, liste, JSON)) : comprendre, appliquer, éviter les…">
+  <link rel="canonical" href="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/astuces-details/astuce-009.html">
+  <meta property="og:title" content="Astuce 9 — Imposer le format exact (tableau, liste, JSON) | Module IA">
+  <meta property="og:url" content="https://madani-belacel.github.io/site-enseignement-belacel/cours/Module%20Intelligence%20Artificielle/seances/astuces-details/astuce-009.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astuce 9 — Imposer le format exact (tableau, liste, JSON) | Module IA</title>
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+  }
+  /* Scope au contenu principal : sinon cette regle ecrasait aussi le
+     .container du pied de page (fond blanc sur footer sombre, largeur 820px). */
+  main .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    background: #fff;
+    min-height: 100vh;
+  }
+  h1 {
+    color: #146fa9;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  h2 {
+    color: #146fa9;
+    font-size: 1.4rem;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e1e8ed;
+  }
+  h3 {
+    color: #263238;
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.6rem;
+  }
+  h4 {
+    color: #37474f;
+    font-size: 1rem;
+    margin: 1.2rem 0 0.4rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { margin: 0.7rem 0; padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9em;
+    color: #c0392b;
+  }
+  pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    position: relative;
+  }
+  pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .prompt-box {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.8rem 0;
+    font-family: "Consolas", "Monaco", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-left: 4px solid #177bbe;
+  }
+  .step {
+    background: #f8fafc;
+    border-left: 4px solid #177bbe;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .step h3,
+  .step h3,
+  .step h4 {
+    margin-top: 0;
+    color: #146fa9;
+  }
+  .step-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  .step-meta span {
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+  .tip {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .tip::before {
+    content: "💡 Astuce : ";
+    font-weight: 700;
+    color: #f57f17;
+  }
+  .warn {
+    background: #ffebee;
+    border-left: 4px solid #e53935;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .ok {
+    background: #e8f5e9;
+    border-left: 4px solid #43a047;
+    padding: 0.7rem 1rem;
+    margin: 0.8rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+  .exemple {
+    background: #f8fafc;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .exemple h3,
+  .exemple h3,
+  .exemple h4 {
+    margin-top: 0;
+    color: #146fa9;
+  }
+  .astuces {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .astuces ul { margin: 0.5rem 0; }
+  .astuces li { margin: 0.6rem 0; }
+  .astuces li strong { color: #0d47a1; }
+  .erreurs li { margin: 0.6rem 0; }
+  .erreurs li::marker { color: #e53935; }
+  .retenir {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.4rem;
+    margin: 1rem 0;
+  }
+  .retenir ul { margin: 0.5rem 0; }
+  .retenir li strong { color: #1b5e20; }
+  .nav-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e1e8ed;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .nav-footer a {
+    color: #146fa9;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: #e3f2fd;
+  }
+  .nav-footer a:hover { background: #bbdefb; }
+  @media (max-width: 600px) {
+    .container { padding: 1.2rem 1rem 3rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+  }
+
+  /* ── pages « explication détaillée » ───────────────────────────────── */
+  .detail-nav { display: flex; justify-content: space-between; flex-wrap: wrap;
+    gap: .5rem; margin: 1.5rem 0; }
+  .detail-nav a { color: #146fa9; text-decoration: none; font-weight: 600;
+    padding: .5rem .9rem; border-radius: 6px; background: #e3f2fd; }
+  .detail-nav a:hover { background: #bbdefb; }
+  .detail-retour { display: inline-block; margin: 0 0 1.2rem; color: #146fa9;
+    font-weight: 600; text-decoration: none; }
+  .detail-retour:hover { text-decoration: underline; }
+  .detail-retour-haut { display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap; margin-bottom: 1.4rem; padding-bottom: 1rem;
+    border-bottom: 1px solid #e1e8ed; }
+  .detail-retour-bas { margin-top: 2.5rem; padding-top: 1.2rem;
+    border-top: 1px solid #e1e8ed; display: flex; align-items: center;
+    gap: 1rem; flex-wrap: wrap; }
+  .detail-retour-bas .detail-nav { flex: 1 1 100%; margin-bottom: .4rem; }
+  .detail-corps h2 { margin: 2rem 0 .6rem; padding-bottom: .3rem;
+    border-bottom: 1px solid #e1e8ed; }
+  .detail-corps pre { background: #1e293b; color: #e2e8f0; padding: 1rem 1.1rem;
+    border-radius: 8px; overflow-x: auto; font-size: .84rem; line-height: 1.55; }
+  .detail-corps pre code { background: none; color: inherit; padding: 0; }
+  .detail-corps table { width: 100%; border-collapse: collapse; margin: .9rem 0;
+    font-size: .92rem; }
+  .detail-corps th, .detail-corps td { border: 1px solid #e1e8ed; padding: .55rem .7rem;
+    text-align: left; vertical-align: top; }
+  .detail-corps th { background: #f4f6f8; }
+  .detail-corps .reflexe { background: #e8f5e9; border-left: 4px solid #2e7d32;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .warn { background: #fff3e0; border-left: 4px solid #ef6c00;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .ok { background: #e8f5e9; border-left: 4px solid #00875b;
+    padding: .8rem 1.1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+  .detail-corps .phrase { border-left: 3px solid #e1e8ed; padding-left: .9rem;
+    margin: .9rem 0; }
+  .detail-corps .phrase strong { color: #146fa9; }
+  .detail-corps .schema { background: #f8fafc; border: 1px solid #e1e8ed;
+    padding: 1rem; border-radius: 8px; overflow-x: auto; }
+</style>
+
+<link rel="dns-prefetch" href="https://madani-belacel.github.io/site-enseignement-belacel">
+<link rel="preconnect" href="https://madani-belacel.github.io/site-enseignement-belacel">
+<link rel="stylesheet" href="../../../../css/fonts/fonts.css">
+<link rel="preload" href="../../../../css/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../css/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link href="../../../../css/style.css" rel="stylesheet"/>
+<link href="../../../../images/universite-mostaganem-96.avif" rel="icon"/>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Dr. Madani BELACEL">
+
+
+
+<meta property="og:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta name="twitter:image" content="https://madani-belacel.github.io/site-enseignement-belacel/images/og-image.jpg">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-left">
+      <a href="../../../../index.html" class="header-logo">
+        <picture>
+          <source srcset="../../../../images/universite-mostaganem-96.avif" type="image/avif">
+          <source srcset="../../../../images/universite-mostaganem-96.webp" type="image/webp">
+          <img loading="eager" fetchpriority="high" width="96" height="93" src="../../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem">
+        </picture>
+        <div class="header-logo-text">Dr. BELACEL Madani<small>MCB — Université de Mostaganem</small></div>
+      </a>
+      <div class="header-faculty">
+        <picture>
+          <source srcset="../../../../images/LOGO-FLE-UNIV-Mosta.avif" type="image/avif">
+          <source srcset="../../../../images/LOGO-FLE-UNIV-Mosta.webp" type="image/webp">
+          <img loading="eager" width="207" height="243" src="../../../../images/LOGO-FLE-UNIV-Mosta.jpeg" alt="Faculté des langues étrangères">
+        </picture>
+      </div>
+    </div>
+    <img loading="eager" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="flag-corner">
+    <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav aria-label="Navigation principale" role="navigation">
+      <ul id="nav-list" class="nav-list">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu À Propos">À Propos</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../../../../index.html#about">Présentation</a></li>
+            <li><a href="../../../../habilitation.html">Habilitation Universitaire</a></li>
+            <li><a href="../../../../contact.html">Contact</a></li>
+          </ul>
+        </li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Domaines d'expertise">Domaines d'expertise</a>
+          <ul class="nav-dropdown-menu">
+                  <li><a href="../../../../tic.html">TIC</a></li>
+                  <li><a href="../../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li>
+                  <li><a href="../../../../cours/_index_Licence_1_Anglais.html">Licence 1 Anglais</a></li>
+                  <li><a href="../../../../informatique-ens.html">Informatique ENS</a></li>
+                  <li><a href="../../../../recherche-documentaire.html">Recherche Documentaire</a></li>
+                  <li><a href="../../../../reseaux.html">Réseaux Mostaganem</a></li>
+                  <li><a href="../../../../cours/_index_Module_Recherche_Articles.html">Recherche &amp; Articles</a></li>
+                  <li class="nav-dropdown-sub"><a href="../../../../cours/Examen-TIC/index.html">↳ Examens TIC</a></li>
+                </ul>
+        </li>
+        <li><a href="../../../../recherche.html">Recherche</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" role="button" aria-label="Ouvrir le menu Dernières Actualités">Dernières Actualités</a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../../../../index.html#news">Actualités des Modules</a></li>
+            <li><a href="../../../../ressources.html">Ressources</a></li>
+          </ul>
+        </li>
+        <li><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">☾</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-header page-header-tic">
+  <div class="container"><h1>Séance 11 — OpenCode + DeepSeek : piloter un agent IA</h1><p>Module Intelligence Artificielle — 2ème année PEP · ENS Université de Mostaganem</p></div>
+</div>
+<nav aria-label="Fil d'Ariane">
+  <ol class="breadcrumb">
+    <li><a href="../../../../index.html">Accueil</a></li><li><a href="../../../../enseignement.html">Enseignement</a></li><li><a href="../../../../cours/Module%20Intelligence%20Artificielle/index.html">Intelligence Artificielle</a></li><li class="current">Séance 11</li>
+  </ol>
+</nav>
+
+<main class="page-content" id="main-content">
+  <div class="container">
+    <nav aria-label="Fil d'Ariane">
+      <ol class="breadcrumb">
+        <li><a href="../../../../index.html">Accueil</a></li>
+        <li><a href="../../../../enseignement.html">Enseignement</a></li>
+        <li><a href="../../index.html">Intelligence Artificielle</a></li>
+        <li><a href="../astuces-ia.html">Astuces</a></li>
+        <li class="current">Astuce 9</li>
+      </ol>
+    </nav>
+
+    <div class="page-header">
+      <h1>🔍 Astuce 9 — Imposer le format exact (tableau, liste, JSON)</h1>
+      <p>Explication détaillée · Module Intelligence Artificielle — 2e année PEP</p>
+    </div>
+
+    <div class="detail-retour-haut">
+      <a class="detail-retour" href="../astuces-ia.html">← Retour aux 152 astuces</a>
+      <div class="detail-nav"><a href="astuce-008.html">← Astuce 8</a>
+      <a href="astuce-010.html">Astuce 10 →</a></div>
+    </div>
+
+    <div class="detail-corps">
+<h2>1. Le texte source</h2>
+<div class="prompt-box">Réponds UNIQUEMENT sous forme de tableau à 3 colonnes :
+| Étape | Action concrète | Temps estimé |
+5 lignes maximum. Rien d'autre avant ou après le tableau.</div>
+
+
+<h3><span class="tip-num">9</span> Imposer le format exact (tableau, liste, JSON)</h3>
+<div class="astuce-bloc">
+<h4>Pourquoi ça marche</h4>
+<p>Un tableau se copie directement dans une fiche ou une présentation. Sans format imposé, tu reçois de la prose qu'il faut retravailler.</p>
+<h4>Étapes</h4>
+<ol>
+<li>Choisis le format (tableau, liste numérotée, checklist).</li>
+<li>Précise colonnes et nombre de lignes.</li>
+<li>Écris « rien d'autre avant ou après ».</li>
+</ol>
+<h4>Prompt à copier</h4>
+<div class="prompt-box">Réponds UNIQUEMENT sous forme de tableau à 3 colonnes :
+| Étape | Action concrète | Temps estimé |
+5 lignes maximum. Rien d'autre avant ou après le tableau.</div>
+<h4>Exemple réel</h4>
+<div class="exemple"><p>Sujet : « préparer un oral d'anglais ». Tu obtiens 5 lignes que tu colles dans ton planning.</p></div>
+<h4>Erreur fréquente</h4>
+<div class="warn">Ne pas préciser les colonnes : tu en reçois 3 quand tu en voulais 4. Si du texte déborde, réponds : « Seulement le tableau. »</div>
+<h4>Vérification</h4>
+<div class="ok"><ul><li>☐ Nombre de colonnes correct.</li><li>☐ Aucune ligne inventée.</li><li>☐ Le tableau se colle sans retouche.</li></ul></div>
+<h4>Variante (Anglais / Français)</h4>
+<p>Tableau bilingue : | Mot | Traduction | Exemple |. Utile pour <strong>anglais</strong> et <strong>français</strong> : vérifie les traductions dans un dictionnaire.</p>
+</div>
+
+<h2>2. Explication phrase par phrase</h2>
+<p><strong>« Réponds UNIQUEMENT »</strong> → Le mot « uniquement » en majuscules est un signal fort. Sans lui, l'IA ajoute toujours une introduction (« Voici un tableau qui… ») et une conclusion (« J'espère que ce tableau vous aidera… »). Tu veux juste le tableau, rien de plus.</p>
+<p><strong>« Sous forme de tableau à 3 colonnes »</strong> → Tu imposes la structure. Sans cette précision, tu obtiens soit un paragraphe, soit une liste à puces, soit un tableau à 2 ou 5 colonnes. Tu veux 3 colonnes, tu demandes 3 colonnes.</p>
+<p><strong>« | Étape | Action concrète | Temps estimé | »</strong> → Tu montres le gabarit exact. C'est encore mieux que « 3 colonnes » : tu montres à l'IA <em>quel contenu</em> va dans chaque colonne. Le résultat est immédiatement exploitable.</p>
+<p><strong>« 5 lignes maximum »</strong> → Tu bornes la longueur. Sans cette limite, l'IA peut produire 15 lignes quand tu en veux 5. La contrainte t'oblige à ne garder que l'essentiel.</p>
+<p><strong>« Rien d'autre avant ou après le tableau »</strong> → Tu interdis les formules de politesse. C'est la phrase qui transforme une réponse « polie » en réponse « copiable ».</p>
+
+
+<h2>3. Une analogie pour comprendre</h2>
+<p>Imagine que tu commandes un meuble en kit.</p>
+<p><strong>Cas 1 (mauvais) :</strong> tu dis « envoie-moi les instructions ». Tu reçois une lettre de 3 pages avec des blablas (« Nous sommes ravis de vous compter parmi nos clients… »), puis les étapes noyées dans le texte.</p>
+<p><strong>Cas 2 (bon) :</strong> tu dis « je veux un tableau de montage : Étape | Pièce | Outil | Temps ». Tu reçois exactement ça, sur une page, collable sur le mur à côté du meuble.</p>
+<p>Avec l'IA, c'est pareil. Un format imposé = une réponse utilisable. Pas de format = une réponse à retravailler.</p>
+
+
+<h2>4. Les formats courants et leur usage</h2>
+<table>
+<tr><th>Format</th><th>Syntaxe à écrire</th><th>Cas d'usage</th></tr>
+<tr><td><strong>Tableau</strong></td><td>| Col 1 | Col 2 | Col 3 |</td><td>Comparer, organiser, résumer</td></tr>
+<tr><td><strong>Liste numérotée</strong></td><td>1. … 2. … 3. …</td><td>Étapes dans l'ordre</td></tr>
+<tr><td><strong>Liste à puces</strong></td><td>- … - … - …</td><td>Éléments sans ordre</td></tr>
+<tr><td><strong>JSON</strong></td><td>{ "clé": "valeur" }</td><td>Traitement par un script</td></tr>
+<tr><td><strong>YAML</strong></td><td>clé: valeur</td><td>Configuration lisible</td></tr>
+<tr><td><strong>Checklist</strong></td><td>☐ … ☐ … ☐ …</td><td>Suivi de tâches</td></tr>
+<tr><td><strong>Markdown pur</strong></td><td># Titre ## Sous-titre</td><td>Document structuré</td></tr>
+</table>
+
+
+<h2>5. Application pratique — préparer un oral d'anglais</h2>
+<p><strong>Sans format imposé :</strong></p>
+<div class="prompt-box">Comment préparer un oral d'anglais de 10 minutes ?</div>
+<p>Réponse : 600 mots de conseils généraux en paragraphes. Tu dois extraire 5 étapes à la main.</p>
+<p><strong>Avec format imposé :</strong></p>
+<div class="prompt-box">Réponds UNIQUEMENT sous forme de tableau à 3 colonnes :
+| Étape | Action concrète | Temps estimé |
+5 lignes maximum. Rien d'autre avant ou après le tableau.</div>
+<p><strong>Réponse obtenue :</strong></p>
+<table>
+<tr><th>Étape</th><th>Action concrète</th><th>Temps estimé</th></tr>
+<tr><td>1</td><td>Choisir le sujet et formuler la problématique</td><td>20 min</td></tr>
+<tr><td>2</td><td>Rédiger le plan en 3 parties</td><td>30 min</td></tr>
+<tr><td>3</td><td>Écrire l'intro et la conclusion</td><td>40 min</td></tr>
+<tr><td>4</td><td>S'enregistrer et écouter</td><td>20 min</td></tr>
+<tr><td>5</td><td>Répéter à voix haute chronométré</td><td>30 min</td></tr>
+</table>
+<p><strong>Tu peux coller ce tableau dans ton cahier de préparation</strong>, ou dans ton Google Docs. Aucune reformulation. Aucun tri. Utilisation immédiate.</p>
+
+
+<h2>6. Le réflexe à retenir</h2>
+<div class="reflexe"><strong>Avant d'envoyer, demande-toi : « Sous quelle forme je veux la réponse ? »</strong></div>
+<p>Puis impose ce format. Trois formats couvrent 90 % des cas :</p>
+<ul>
+<li><strong>Tableau</strong> : quand tu compares ou organises.</li>
+<li><strong>Liste numérotée</strong> : quand il y a un ordre.</li>
+<li><strong>Liste à puces</strong> : quand il n'y a pas d'ordre.</li>
+</ul>
+<p>Ajoute toujours : « Rien d'autre avant ou après ». Cela élimine les politesses inutiles.</p>
+
+
+<h2>7. Erreurs fréquentes à éviter</h2>
+<ol>
+<li><strong>Oublier « Rien d'autre ».</strong> Sans cette phrase, l'IA ajoute toujours un paragraphe d'introduction et de conclusion. Tu perds 5 secondes à les supprimer à chaque fois.</li>
+<li><strong>Ne pas préciser les colonnes.</strong> Tu écris « fais un tableau », tu obtiens 3 colonnes quand tu en voulais 4. Précise : « tableau à 4 colonnes : A | B | C | D ».</li>
+<li><strong>Ne pas limiter la longueur.</strong> Un tableau sans limite de lignes devient illisible. Ajoute « 5 lignes max » ou « 10 lignes max ».</li>
+<li><strong>Ne pas écrire le format entre balises.</strong> « tableau à 3 colonnes : | Étape | Action | Temps | » est plus clair que « tableau à 3 colonnes avec étape, action et temps ». Le gabarit montre, l'énoncé décrit.</li>
+<li><strong>Changer le format en cours de conversation.</strong> Si tu demandes un tableau, puis une liste, puis un JSON, l'IA s'y perd. Un format par demande.</li>
+</ol>
+
+
+<h2>8. Résumé en une image</h2>
+<pre><code>   Ta demande
+        │
+        ▼
+   ┌──────────────────────┐
+   │  Quel format ?       │
+   │  - Tableau           │
+   │  - Liste             │
+   │  - JSON              │
+   │  - Checklist         │
+   └──────────┬───────────┘
+              │
+              ▼
+   Prompt avec gabarit :
+   | Col A | Col B | Col C |
+   + « 5 lignes max »
+   + « Rien d'autre »
+              │
+              ▼
+   Réponse copiable
+</code></pre>
+
+
+<h2>9. Ce que tu dois retenir</h2>
+<ul>
+<li><strong>Impose le format explicitement.</strong> Sinon tu obtiens des paragraphes par défaut.</li>
+<li><strong>Montre le gabarit</strong> : | Col 1 | Col 2 | Col 3 |.</li>
+<li><strong>Limite la longueur</strong> : 5 lignes, 10 lignes.</li>
+<li><strong>Termine par « Rien d'autre avant ou après »</strong> pour supprimer les politesses.</li>
+</ul>
+
+
+<h2>10. Sans / Avec — comparaison</h2>
+<table>
+<tr><th>Sans l'astuce</th><th>Avec l'astuce</th></tr>
+<tr><td>« Fais un résumé »</td><td>« Tableau 3 colonnes, 5 lignes, rien d'autre »</td></tr>
+<tr><td>Paragraphe de 400 mots</td><td>Tableau de 5 lignes</td></tr>
+<tr><td>Tu extrais à la main</td><td>Tu copies-colles</td></tr>
+<tr><td>Format incontrôlé</td><td>Format exact</td></tr>
+<tr><td><strong>Bilan : 5 min de tri</strong></td><td><strong>Bilan : 5 sec d'utilisation</strong></td></tr>
+</table>
+    </div>
+
+    <div class="detail-retour-bas">
+      <div class="detail-nav"><a href="astuce-008.html">← Astuce 8</a>
+      <a href="astuce-010.html">Astuce 10 →</a></div>
+      <a class="detail-retour" href="../astuces-ia.html">← Retour aux 152 astuces</a>
+      <a href="#main-content">↑ Haut de page</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logos">
+      <picture>
+        <source srcset="../../../../images/universite-mostaganem-96.avif" type="image/avif">
+        <source srcset="../../../../images/universite-mostaganem-96.webp" type="image/webp">
+        <img loading="eager" decoding="async" width="96" height="93" src="../../../../images/universite-mostaganem-96.webp" alt="Université de Mostaganem" class="footer-logo">
+      </picture>
+      <img loading="lazy" width="132" height="95" src="../../../../images/alg_drap.gif" alt="Algérie" class="footer-logo">
+    </div>
+    <div class="footer-infos">
+      <span>📧 madani.belacel [at] univ-mosta.dz</span>
+      <span>📍 Université de Mostaganem</span>
+      <span>📅 2026-2027</span>
+    </div>
+    <p>© 2026 Dr. Madani BELACEL — Tous droits réservés. Supports pédagogiques librement téléchargeables.</p>
+  </div>
+</footer>
+<script src="../../../../js/main.v2.js" defer></script>
+
+</body>
+</html>
