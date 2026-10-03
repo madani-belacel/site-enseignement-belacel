@@ -24,6 +24,20 @@ SEANCES = os.path.join(RACINE, "cours", "Module Intelligence Artificielle",
 SOURCE = os.path.join(SEANCES, "astuces-ia.html")
 MODELE = os.path.join(SEANCES, "seance-11.html")
 DEST = os.path.join(SEANCES, "astuces-details")
+
+# Astuces dont le contenu est ecrit mais volontairement non publie.
+#
+# 35 et 37 : le lot 1 a ete redige avant la fusion du module (42 + 150
+# versions Gives 152 astuces). La numerotation a bouge depuis : 35 vaut
+# aujourd'hui « Cursor pour coder avec l'IA integree », 37 « OpenCode pour
+# explorer les projets open source ». Le contenu existant explique « decrire
+# le besoin, pas la technique » et « @fichier / /undo » : neuf sections sur
+# dix contredisent le titre. Publier tel quel sur un site public serait la
+# contradiction la plus visible de la page.
+#
+# Le texte n'est pas perdu : il reste dans scripts/contenus_details/lot_1.py,
+# en attente du contenu correspondant aux sujets actuels.
+EN_ATTENTE = {35, 37}
 CONTENU = os.path.join(RACINE, "scripts", "contenus_details")
 
 BASE = ("https://madani-belacel.github.io/site-enseignement-belacel/"
@@ -399,21 +413,29 @@ def main():
 
     cibles = [int(a) for a in sys.argv[1:]] or sorted(
         int(k.split("_")[1]) for k in contenus)
-    # pages déjà présentes : une page peut viser un voisin produit plus tôt,
-    # même si son contenu n'est pas dans le lot en cours
-    dispo = set(cibles)
+    # Pages déjà présentes : une page peut viser un voisin produit plus tôt,
+    # même si son contenu n'est pas dans le lot en cours. Les astuces en
+    # attente sont exclues, faute de quoi la navigation d'une page voisine
+    # pointerait vers une page qui n'est pas produite.
+    dispo = set(cibles) - EN_ATTENTE
     if os.path.isdir(DEST):
         for f in os.listdir(DEST):
             m = re.match(r"astuce-(\d+)\.html$", f)
             if m:
                 dispo.add(int(m.group(1)))
+    dispo -= EN_ATTENTE
     if not cibles:
         print("Aucun contenu dans scripts/contenus_details/ — rien a generer.")
         return 1
 
-    ecrites, refusees = [], []
+    ecrites, refusees, en_attente = [], [], []
     for n in cibles:
         cle = "ASTUCE_%d" % n
+        if n in EN_ATTENTE:
+            # Contenu ecrit mais non publie : on ne produit pas la page, et on
+            # ne la compte pas comme un echec.
+            en_attente.append(n)
+            continue
         if cle not in contenus:
             refusees.append((n, "pas de contenu redige"))
             continue
@@ -446,6 +468,10 @@ def main():
     print("Pages ecrites   : %d" % len(ecrites))
     if ecrites:
         print("   %s" % ", ".join(str(x) for x in ecrites))
+    if en_attente:
+        print("Mise en attente : %d" % len(en_attente))
+        print("   %s  (contenu redige, sujet different du titre actuel)"
+              % ", ".join(str(x) for x in en_attente))
     if refusees:
         print("Pages refusees  : %d" % len(refusees))
         for n, why in refusees:

@@ -21,6 +21,11 @@ DET = os.path.join(RACINE, "cours", "Module Intelligence Artificielle",
                    "seances", "astuces-details")
 MARQUEUR = "# VERSION PUBLIÉE DES PAGES DE DÉTAIL"
 
+# Astuces en attente de reecriture : leur contenu ne correspond pas au titre
+# actuel (voir EN_ATTENTE dans generateur_details_astuces.py). Le texte reste
+# dans les fichiers de lot, il n'est pas publie.
+EN_ATTENTE = {35, 37}
+
 LOTS = [(1, [6, 12, 23, 35, 37]),
         (2, [36, 43, 44, 91, 100]),
         (3, [1, 7, 8, 9, 10])]
@@ -28,6 +33,8 @@ LOTS = [(1, [6, 12, 23, 35, 37]),
 
 def corps(n):
     """Le contenu des 10 sections, tel qu'il est publié."""
+    if n in EN_ATTENTE:
+        return None, None
     p = os.path.join(DET, "astuce-%03d.html" % n)
     if not os.path.isfile(p):
         return None, None
@@ -84,7 +91,8 @@ def main():
         "",
         "| Lot | Astuces | État |",
         "|-----|---------|------|",
-        "| 1 | 6, 12, 23, 35, 37 | publié |",
+        "| 1 | 6, 12, 23 | publié |",
+        "| 1 | 35, 37 | en attente : le contenu ne correspond pas au titre actuel |",
         "| 2 | 36, 43, 44, 91, 100 | publié |",
         "| 3 | 1, 7, 8, 9, 10 | publié |",
         "",
