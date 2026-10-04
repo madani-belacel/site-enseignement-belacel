@@ -58,7 +58,7 @@ def main():
     # dans l'arborescence : leurs chemins relatifs ne peuvent pas resulter.
     # Les inclure noyerait le rapport sous des faux positifs sans valeur.
     ignores = (".git", "node_modules", "__pycache__",
-               "backup_2026-10-02", "backup_2026-10-03")
+               "backup_2026-10-02", "backup_2026-10-03", "backup_2026-10-04")
     for d, sous, noms in os.walk(RACINE):
         sous[:] = [s for s in sous if s not in ignores]
         for n in noms:
